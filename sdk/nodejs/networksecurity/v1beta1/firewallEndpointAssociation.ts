@@ -6,7 +6,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new FirewallEndpointAssociation in a given project and location.
- * Auto-naming is currently not supported for this resource.
  */
 export class FirewallEndpointAssociation extends pulumi.CustomResource {
     /**
@@ -40,6 +39,10 @@ export class FirewallEndpointAssociation extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Optional. Whether the association is disabled. True indicates that traffic won't be intercepted
+     */
+    public readonly disabled!: pulumi.Output<boolean>;
+    /**
      * The URL of the FirewallEndpoint that is being associated.
      */
     public readonly firewallEndpoint!: pulumi.Output<string>;
@@ -53,9 +56,9 @@ export class FirewallEndpointAssociation extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * name of resource
+     * Immutable. Identifier. name of resource
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The URL of the network that is being associated.
      */
@@ -99,21 +102,23 @@ export class FirewallEndpointAssociation extends pulumi.CustomResource {
             if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
             resourceInputs["firewallEndpoint"] = args ? args.firewallEndpoint : undefined;
             resourceInputs["firewallEndpointAssociationId"] = args ? args.firewallEndpointAssociationId : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["tlsInspectionPolicy"] = args ? args.tlsInspectionPolicy : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
-            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["disabled"] = undefined /*out*/;
             resourceInputs["firewallEndpoint"] = undefined /*out*/;
             resourceInputs["firewallEndpointAssociationId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
@@ -139,6 +144,10 @@ export class FirewallEndpointAssociation extends pulumi.CustomResource {
  */
 export interface FirewallEndpointAssociationArgs {
     /**
+     * Optional. Whether the association is disabled. True indicates that traffic won't be intercepted
+     */
+    disabled?: pulumi.Input<boolean>;
+    /**
      * The URL of the FirewallEndpoint that is being associated.
      */
     firewallEndpoint: pulumi.Input<string>;
@@ -151,6 +160,10 @@ export interface FirewallEndpointAssociationArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
+    /**
+     * Immutable. Identifier. name of resource
+     */
+    name?: pulumi.Input<string>;
     /**
      * The URL of the network that is being associated.
      */

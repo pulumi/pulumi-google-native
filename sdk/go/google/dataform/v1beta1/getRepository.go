@@ -29,13 +29,15 @@ type LookupRepositoryArgs struct {
 }
 
 type LookupRepositoryResult struct {
+	// The timestamp of when the repository was created.
+	CreateTime string `pulumi:"createTime"`
 	// Optional. The repository's user-friendly name.
 	DisplayName string `pulumi:"displayName"`
 	// Optional. If set, configures this repository to be linked to a Git remote.
 	GitRemoteSettings GitRemoteSettingsResponse `pulumi:"gitRemoteSettings"`
 	// Optional. Repository user labels.
 	Labels map[string]string `pulumi:"labels"`
-	// The repository's name.
+	// Identifier. The repository's name.
 	Name string `pulumi:"name"`
 	// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
 	NpmrcEnvironmentVariablesSecretVersion string `pulumi:"npmrcEnvironmentVariablesSecretVersion"`
@@ -84,6 +86,11 @@ func (o LookupRepositoryResultOutput) ToLookupRepositoryResultOutputWithContext(
 	return o
 }
 
+// The timestamp of when the repository was created.
+func (o LookupRepositoryResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // Optional. The repository's user-friendly name.
 func (o LookupRepositoryResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.DisplayName }).(pulumi.StringOutput)
@@ -99,7 +106,7 @@ func (o LookupRepositoryResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The repository's name.
+// Identifier. The repository's name.
 func (o LookupRepositoryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.Name }).(pulumi.StringOutput)
 }

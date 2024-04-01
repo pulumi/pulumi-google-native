@@ -60,6 +60,8 @@ type MigrationJob struct {
 	Source pulumi.StringOutput `pulumi:"source"`
 	// The database engine type and provider of the source.
 	SourceDatabase DatabaseTypeResponseOutput `pulumi:"sourceDatabase"`
+	// Optional. Configuration for SQL Server homogeneous migration.
+	SqlserverHomogeneousMigrationJobConfig SqlServerHomogeneousMigrationJobConfigResponseOutput `pulumi:"sqlserverHomogeneousMigrationJobConfig"`
 	// The current migration job state.
 	State pulumi.StringOutput `pulumi:"state"`
 	// static ip connectivity data (default, no additional details needed).
@@ -164,6 +166,8 @@ type migrationJobArgs struct {
 	Source string `pulumi:"source"`
 	// The database engine type and provider of the source.
 	SourceDatabase *DatabaseType `pulumi:"sourceDatabase"`
+	// Optional. Configuration for SQL Server homogeneous migration.
+	SqlserverHomogeneousMigrationJobConfig *SqlServerHomogeneousMigrationJobConfig `pulumi:"sqlserverHomogeneousMigrationJobConfig"`
 	// The current migration job state.
 	State *MigrationJobStateEnum `pulumi:"state"`
 	// static ip connectivity data (default, no additional details needed).
@@ -210,6 +214,8 @@ type MigrationJobArgs struct {
 	Source pulumi.StringInput
 	// The database engine type and provider of the source.
 	SourceDatabase DatabaseTypePtrInput
+	// Optional. Configuration for SQL Server homogeneous migration.
+	SqlserverHomogeneousMigrationJobConfig SqlServerHomogeneousMigrationJobConfigPtrInput
 	// The current migration job state.
 	State MigrationJobStateEnumPtrInput
 	// static ip connectivity data (default, no additional details needed).
@@ -368,6 +374,13 @@ func (o MigrationJobOutput) Source() pulumi.StringOutput {
 // The database engine type and provider of the source.
 func (o MigrationJobOutput) SourceDatabase() DatabaseTypeResponseOutput {
 	return o.ApplyT(func(v *MigrationJob) DatabaseTypeResponseOutput { return v.SourceDatabase }).(DatabaseTypeResponseOutput)
+}
+
+// Optional. Configuration for SQL Server homogeneous migration.
+func (o MigrationJobOutput) SqlserverHomogeneousMigrationJobConfig() SqlServerHomogeneousMigrationJobConfigResponseOutput {
+	return o.ApplyT(func(v *MigrationJob) SqlServerHomogeneousMigrationJobConfigResponseOutput {
+		return v.SqlserverHomogeneousMigrationJobConfig
+	}).(SqlServerHomogeneousMigrationJobConfigResponseOutput)
 }
 
 // The current migration job state.

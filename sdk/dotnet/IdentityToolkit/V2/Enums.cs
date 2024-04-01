@@ -218,6 +218,51 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
     }
 
     /// <summary>
+    /// The client's platform type.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyType : IEquatable<GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyType>
+    {
+        private readonly string _value;
+
+        private GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Client type is not specified.
+        /// </summary>
+        public static GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyType ClientTypeUnspecified { get; } = new GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyType("CLIENT_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Client type is web.
+        /// </summary>
+        public static GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyType Web { get; } = new GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyType("WEB");
+        /// <summary>
+        /// Client type is iOS.
+        /// </summary>
+        public static GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyType Ios { get; } = new GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyType("IOS");
+        /// <summary>
+        /// Client type is Android.
+        /// </summary>
+        public static GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyType Android { get; } = new GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyType("ANDROID");
+
+        public static bool operator ==(GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyType left, GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyType right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyType left, GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyType right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyType other && Equals(other);
+        public bool Equals(GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The action taken if the reCAPTCHA score of a request is within the interval [start_score, end_score].
     /// </summary>
     [EnumType]

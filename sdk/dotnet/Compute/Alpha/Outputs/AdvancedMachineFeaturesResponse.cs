@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly bool EnableUefiNetworking;
         /// <summary>
+        /// Whether to enable the watchdog timer.
+        /// </summary>
+        public readonly bool EnableWatchdogTimer;
+        /// <summary>
         /// The number of vNUMA nodes.
         /// </summary>
         public readonly int NumaNodeCount;
@@ -47,6 +51,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             bool enableUefiNetworking,
 
+            bool enableWatchdogTimer,
+
             int numaNodeCount,
 
             string performanceMonitoringUnit,
@@ -57,6 +63,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         {
             EnableNestedVirtualization = enableNestedVirtualization;
             EnableUefiNetworking = enableUefiNetworking;
+            EnableWatchdogTimer = enableWatchdogTimer;
             NumaNodeCount = numaNodeCount;
             PerformanceMonitoringUnit = performanceMonitoringUnit;
             ThreadsPerCore = threadsPerCore;

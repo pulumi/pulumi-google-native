@@ -10,15 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Configures the access a dataset defined in an external metadata storage.
+    /// </summary>
     [OutputType]
     public sealed class ExternalDatasetReferenceResponse
     {
         /// <summary>
-        /// [Required] The connection id that is used to access the external_source. Format: projects/{project_id}/locations/{location_id}/connections/{connection_id}
+        /// The connection id that is used to access the external_source. Format: projects/{project_id}/locations/{location_id}/connections/{connection_id}
         /// </summary>
         public readonly string Connection;
         /// <summary>
-        /// [Required] External source that backs this dataset.
+        /// External source that backs this dataset.
         /// </summary>
         public readonly string ExternalSource;
 

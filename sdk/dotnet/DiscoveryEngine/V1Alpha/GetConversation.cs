@@ -27,9 +27,6 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
 
     public sealed class GetConversationArgs : global::Pulumi.InvokeArgs
     {
-        [Input("collectionId", required: true)]
-        public string CollectionId { get; set; } = null!;
-
         [Input("conversationId", required: true)]
         public string ConversationId { get; set; } = null!;
 
@@ -50,9 +47,6 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
 
     public sealed class GetConversationInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("collectionId", required: true)]
-        public Input<string> CollectionId { get; set; } = null!;
-
         [Input("conversationId", required: true)]
         public Input<string> ConversationId { get; set; } = null!;
 
@@ -84,7 +78,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDiscoveryengineV1alphaConversationMessageResponse> Messages;
         /// <summary>
-        /// Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*`
+        /// Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*` or `project/*/locations/global/collections/{collection}/engines/*/conversations/*`.
         /// </summary>
         public readonly string Name;
         /// <summary>

@@ -21,14 +21,12 @@ class OrganizationBucketLinkArgs:
                  organization_id: pulumi.Input[str],
                  bigquery_dataset: Optional[pulumi.Input['BigQueryDatasetArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 location: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 location: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OrganizationBucketLink resource.
         :param pulumi.Input[str] link_id: Required. The ID to use for the link. The link_id can have up to 100 characters. A valid link_id must only have alphanumeric characters and underscores within it.
-        :param pulumi.Input['BigQueryDatasetArgs'] bigquery_dataset: The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
-        :param pulumi.Input[str] description: Describes this link.The maximum length of the description is 8000 characters.
-        :param pulumi.Input[str] name: The resource name of the link. The name can have up to 100 characters. A valid link id (at the end of the link name) must only have alphanumeric characters and underscores within it. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" For example:`projects/my-project/locations/global/buckets/my-bucket/links/my_link
+        :param pulumi.Input['BigQueryDatasetArgs'] bigquery_dataset: Optional. The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
+        :param pulumi.Input[str] description: Optional. Describes this link.The maximum length of the description is 8000 characters.
         """
         pulumi.set(__self__, "bucket_id", bucket_id)
         pulumi.set(__self__, "link_id", link_id)
@@ -39,8 +37,6 @@ class OrganizationBucketLinkArgs:
             pulumi.set(__self__, "description", description)
         if location is not None:
             pulumi.set(__self__, "location", location)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="bucketId")
@@ -76,7 +72,7 @@ class OrganizationBucketLinkArgs:
     @pulumi.getter(name="bigqueryDataset")
     def bigquery_dataset(self) -> Optional[pulumi.Input['BigQueryDatasetArgs']]:
         """
-        The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
+        Optional. The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
         """
         return pulumi.get(self, "bigquery_dataset")
 
@@ -88,7 +84,7 @@ class OrganizationBucketLinkArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Describes this link.The maximum length of the description is 8000 characters.
+        Optional. Describes this link.The maximum length of the description is 8000 characters.
         """
         return pulumi.get(self, "description")
 
@@ -105,18 +101,6 @@ class OrganizationBucketLinkArgs:
     def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
 
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The resource name of the link. The name can have up to 100 characters. A valid link id (at the end of the link name) must only have alphanumeric characters and underscores within it. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" For example:`projects/my-project/locations/global/buckets/my-bucket/links/my_link
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
 
 class OrganizationBucketLink(pulumi.CustomResource):
     @overload
@@ -128,7 +112,6 @@ class OrganizationBucketLink(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  link_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -137,10 +120,9 @@ class OrganizationBucketLink(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BigQueryDatasetArgs']] bigquery_dataset: The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
-        :param pulumi.Input[str] description: Describes this link.The maximum length of the description is 8000 characters.
+        :param pulumi.Input[pulumi.InputType['BigQueryDatasetArgs']] bigquery_dataset: Optional. The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
+        :param pulumi.Input[str] description: Optional. Describes this link.The maximum length of the description is 8000 characters.
         :param pulumi.Input[str] link_id: Required. The ID to use for the link. The link_id can have up to 100 characters. A valid link_id must only have alphanumeric characters and underscores within it.
-        :param pulumi.Input[str] name: The resource name of the link. The name can have up to 100 characters. A valid link id (at the end of the link name) must only have alphanumeric characters and underscores within it. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" For example:`projects/my-project/locations/global/buckets/my-bucket/links/my_link
         """
         ...
     @overload
@@ -172,7 +154,6 @@ class OrganizationBucketLink(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  link_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -192,12 +173,12 @@ class OrganizationBucketLink(pulumi.CustomResource):
                 raise TypeError("Missing required property 'link_id'")
             __props__.__dict__["link_id"] = link_id
             __props__.__dict__["location"] = location
-            __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["lifecycle_state"] = None
+            __props__.__dict__["name"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["bucket_id", "link_id", "location", "organization_id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(OrganizationBucketLink, __self__).__init__(
@@ -237,7 +218,7 @@ class OrganizationBucketLink(pulumi.CustomResource):
     @pulumi.getter(name="bigqueryDataset")
     def bigquery_dataset(self) -> pulumi.Output['outputs.BigQueryDatasetResponse']:
         """
-        The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
+        Optional. The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
         """
         return pulumi.get(self, "bigquery_dataset")
 
@@ -258,7 +239,7 @@ class OrganizationBucketLink(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        Describes this link.The maximum length of the description is 8000 characters.
+        Optional. Describes this link.The maximum length of the description is 8000 characters.
         """
         return pulumi.get(self, "description")
 

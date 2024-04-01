@@ -530,7 +530,7 @@ export const MetricThresholdEvaluationMissingData = {
 } as const;
 
 /**
- * A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+ * A condition control that determines how metric-threshold conditions are evaluated when data stops arriving. To use this control, the value of the duration field must be greater than or equal to 60 seconds.
  */
 export type MetricThresholdEvaluationMissingData = (typeof MetricThresholdEvaluationMissingData)[keyof typeof MetricThresholdEvaluationMissingData];
 

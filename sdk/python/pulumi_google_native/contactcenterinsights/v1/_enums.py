@@ -45,6 +45,10 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSumm
     """
     The CCAI baseline model.
     """
+    BASELINE_MODEL_V20 = "BASELINE_MODEL_V2_0"
+    """
+    The CCAI baseline model, V2.0.
+    """
 
 
 class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium(str, Enum):

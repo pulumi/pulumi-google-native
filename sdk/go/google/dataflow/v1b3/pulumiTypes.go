@@ -1975,6 +1975,8 @@ type Environment struct {
 	ServiceKmsKeyName *string `pulumi:"serviceKmsKeyName"`
 	// The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on).
 	ServiceOptions []string `pulumi:"serviceOptions"`
+	// Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
+	StreamingMode *EnvironmentStreamingMode `pulumi:"streamingMode"`
 	// The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
 	TempStoragePrefix *string `pulumi:"tempStoragePrefix"`
 	// A description of the process that generated the request.
@@ -2022,6 +2024,8 @@ type EnvironmentArgs struct {
 	ServiceKmsKeyName pulumi.StringPtrInput `pulumi:"serviceKmsKeyName"`
 	// The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on).
 	ServiceOptions pulumi.StringArrayInput `pulumi:"serviceOptions"`
+	// Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
+	StreamingMode EnvironmentStreamingModePtrInput `pulumi:"streamingMode"`
 	// The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
 	TempStoragePrefix pulumi.StringPtrInput `pulumi:"tempStoragePrefix"`
 	// A description of the process that generated the request.
@@ -2162,6 +2166,11 @@ func (o EnvironmentOutput) ServiceKmsKeyName() pulumi.StringPtrOutput {
 // The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on).
 func (o EnvironmentOutput) ServiceOptions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Environment) []string { return v.ServiceOptions }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
+func (o EnvironmentOutput) StreamingMode() EnvironmentStreamingModePtrOutput {
+	return o.ApplyT(func(v Environment) *EnvironmentStreamingMode { return v.StreamingMode }).(EnvironmentStreamingModePtrOutput)
 }
 
 // The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
@@ -2318,6 +2327,16 @@ func (o EnvironmentPtrOutput) ServiceOptions() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
+func (o EnvironmentPtrOutput) StreamingMode() EnvironmentStreamingModePtrOutput {
+	return o.ApplyT(func(v *Environment) *EnvironmentStreamingMode {
+		if v == nil {
+			return nil
+		}
+		return v.StreamingMode
+	}).(EnvironmentStreamingModePtrOutput)
+}
+
 // The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
 func (o EnvironmentPtrOutput) TempStoragePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Environment) *string {
@@ -2402,9 +2421,11 @@ type EnvironmentResponse struct {
 	ServiceOptions []string `pulumi:"serviceOptions"`
 	// The shuffle mode used for the job.
 	ShuffleMode string `pulumi:"shuffleMode"`
+	// Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
+	StreamingMode string `pulumi:"streamingMode"`
 	// The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
 	TempStoragePrefix string `pulumi:"tempStoragePrefix"`
-	// Whether the job uses the new streaming engine billing model based on resource usage.
+	// Whether the job uses the Streaming Engine resource-based billing model.
 	UseStreamingEngineResourceBasedBilling bool `pulumi:"useStreamingEngineResourceBasedBilling"`
 	// A description of the process that generated the request.
 	UserAgent map[string]string `pulumi:"userAgent"`
@@ -2488,12 +2509,17 @@ func (o EnvironmentResponseOutput) ShuffleMode() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentResponse) string { return v.ShuffleMode }).(pulumi.StringOutput)
 }
 
+// Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
+func (o EnvironmentResponseOutput) StreamingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentResponse) string { return v.StreamingMode }).(pulumi.StringOutput)
+}
+
 // The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
 func (o EnvironmentResponseOutput) TempStoragePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentResponse) string { return v.TempStoragePrefix }).(pulumi.StringOutput)
 }
 
-// Whether the job uses the new streaming engine billing model based on resource usage.
+// Whether the job uses the Streaming Engine resource-based billing model.
 func (o EnvironmentResponseOutput) UseStreamingEngineResourceBasedBilling() pulumi.BoolOutput {
 	return o.ApplyT(func(v EnvironmentResponse) bool { return v.UseStreamingEngineResourceBasedBilling }).(pulumi.BoolOutput)
 }
@@ -3846,6 +3872,8 @@ type ParameterMetadataResponse struct {
 	GroupName string `pulumi:"groupName"`
 	// The help text to display for the parameter.
 	HelpText string `pulumi:"helpText"`
+	// Optional. Whether the parameter should be hidden in the UI.
+	HiddenUi bool `pulumi:"hiddenUi"`
 	// Optional. Whether the parameter is optional. Defaults to false.
 	IsOptional bool `pulumi:"isOptional"`
 	// The label to display for the parameter.
@@ -3900,6 +3928,11 @@ func (o ParameterMetadataResponseOutput) GroupName() pulumi.StringOutput {
 // The help text to display for the parameter.
 func (o ParameterMetadataResponseOutput) HelpText() pulumi.StringOutput {
 	return o.ApplyT(func(v ParameterMetadataResponse) string { return v.HelpText }).(pulumi.StringOutput)
+}
+
+// Optional. Whether the parameter should be hidden in the UI.
+func (o ParameterMetadataResponseOutput) HiddenUi() pulumi.BoolOutput {
+	return o.ApplyT(func(v ParameterMetadataResponse) bool { return v.HiddenUi }).(pulumi.BoolOutput)
 }
 
 // Optional. Whether the parameter is optional. Defaults to false.
@@ -4363,7 +4396,7 @@ func (o PubSubIODetailsResponseArrayOutput) Index(i pulumi.IntInput) PubSubIODet
 	}).(PubSubIODetailsResponseOutput)
 }
 
-// The environment values to set at runtime.
+// The environment values to set at runtime. LINT.IfChange
 type RuntimeEnvironment struct {
 	// Optional. Additional experiment flags for the job, specified with the `--experiments` option.
 	AdditionalExperiments []string `pulumi:"additionalExperiments"`
@@ -4389,6 +4422,8 @@ type RuntimeEnvironment struct {
 	NumWorkers *int `pulumi:"numWorkers"`
 	// Optional. The email address of the service account to run the job as.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
+	// Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
+	StreamingMode *RuntimeEnvironmentStreamingMode `pulumi:"streamingMode"`
 	// Optional. Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
 	Subnetwork *string `pulumi:"subnetwork"`
 	// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.
@@ -4412,7 +4447,7 @@ type RuntimeEnvironmentInput interface {
 	ToRuntimeEnvironmentOutputWithContext(context.Context) RuntimeEnvironmentOutput
 }
 
-// The environment values to set at runtime.
+// The environment values to set at runtime. LINT.IfChange
 type RuntimeEnvironmentArgs struct {
 	// Optional. Additional experiment flags for the job, specified with the `--experiments` option.
 	AdditionalExperiments pulumi.StringArrayInput `pulumi:"additionalExperiments"`
@@ -4438,6 +4473,8 @@ type RuntimeEnvironmentArgs struct {
 	NumWorkers pulumi.IntPtrInput `pulumi:"numWorkers"`
 	// Optional. The email address of the service account to run the job as.
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
+	// Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
+	StreamingMode RuntimeEnvironmentStreamingModePtrInput `pulumi:"streamingMode"`
 	// Optional. Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
 	// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.
@@ -4503,7 +4540,7 @@ func (i *runtimeEnvironmentPtrType) ToRuntimeEnvironmentPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeEnvironmentPtrOutput)
 }
 
-// The environment values to set at runtime.
+// The environment values to set at runtime. LINT.IfChange
 type RuntimeEnvironmentOutput struct{ *pulumi.OutputState }
 
 func (RuntimeEnvironmentOutput) ElementType() reflect.Type {
@@ -4586,6 +4623,11 @@ func (o RuntimeEnvironmentOutput) NumWorkers() pulumi.IntPtrOutput {
 // Optional. The email address of the service account to run the job as.
 func (o RuntimeEnvironmentOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeEnvironment) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
+func (o RuntimeEnvironmentOutput) StreamingMode() RuntimeEnvironmentStreamingModePtrOutput {
+	return o.ApplyT(func(v RuntimeEnvironment) *RuntimeEnvironmentStreamingMode { return v.StreamingMode }).(RuntimeEnvironmentStreamingModePtrOutput)
 }
 
 // Optional. Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
@@ -4757,6 +4799,16 @@ func (o RuntimeEnvironmentPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
+func (o RuntimeEnvironmentPtrOutput) StreamingMode() RuntimeEnvironmentStreamingModePtrOutput {
+	return o.ApplyT(func(v *RuntimeEnvironment) *RuntimeEnvironmentStreamingMode {
+		if v == nil {
+			return nil
+		}
+		return v.StreamingMode
+	}).(RuntimeEnvironmentStreamingModePtrOutput)
+}
+
 // Optional. Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
 func (o RuntimeEnvironmentPtrOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuntimeEnvironment) *string {
@@ -4846,7 +4898,7 @@ type RuntimeUpdatableParams struct {
 	MaxNumWorkers *int `pulumi:"maxNumWorkers"`
 	// The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
 	MinNumWorkers *int `pulumi:"minNumWorkers"`
-	// Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog.
+	// Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog. For more information, see [Update an existing pipeline](https://cloud.google.com/dataflow/docs/guides/updating-a-pipeline).
 	WorkerUtilizationHint *float64 `pulumi:"workerUtilizationHint"`
 }
 
@@ -4867,7 +4919,7 @@ type RuntimeUpdatableParamsArgs struct {
 	MaxNumWorkers pulumi.IntPtrInput `pulumi:"maxNumWorkers"`
 	// The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
 	MinNumWorkers pulumi.IntPtrInput `pulumi:"minNumWorkers"`
-	// Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog.
+	// Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog. For more information, see [Update an existing pipeline](https://cloud.google.com/dataflow/docs/guides/updating-a-pipeline).
 	WorkerUtilizationHint pulumi.Float64PtrInput `pulumi:"workerUtilizationHint"`
 }
 
@@ -4959,7 +5011,7 @@ func (o RuntimeUpdatableParamsOutput) MinNumWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RuntimeUpdatableParams) *int { return v.MinNumWorkers }).(pulumi.IntPtrOutput)
 }
 
-// Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog.
+// Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog. For more information, see [Update an existing pipeline](https://cloud.google.com/dataflow/docs/guides/updating-a-pipeline).
 func (o RuntimeUpdatableParamsOutput) WorkerUtilizationHint() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v RuntimeUpdatableParams) *float64 { return v.WorkerUtilizationHint }).(pulumi.Float64PtrOutput)
 }
@@ -5008,7 +5060,7 @@ func (o RuntimeUpdatableParamsPtrOutput) MinNumWorkers() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog.
+// Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog. For more information, see [Update an existing pipeline](https://cloud.google.com/dataflow/docs/guides/updating-a-pipeline).
 func (o RuntimeUpdatableParamsPtrOutput) WorkerUtilizationHint() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *RuntimeUpdatableParams) *float64 {
 		if v == nil {
@@ -5024,7 +5076,7 @@ type RuntimeUpdatableParamsResponse struct {
 	MaxNumWorkers int `pulumi:"maxNumWorkers"`
 	// The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
 	MinNumWorkers int `pulumi:"minNumWorkers"`
-	// Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog.
+	// Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog. For more information, see [Update an existing pipeline](https://cloud.google.com/dataflow/docs/guides/updating-a-pipeline).
 	WorkerUtilizationHint float64 `pulumi:"workerUtilizationHint"`
 }
 
@@ -5053,7 +5105,7 @@ func (o RuntimeUpdatableParamsResponseOutput) MinNumWorkers() pulumi.IntOutput {
 	return o.ApplyT(func(v RuntimeUpdatableParamsResponse) int { return v.MinNumWorkers }).(pulumi.IntOutput)
 }
 
-// Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog.
+// Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog. For more information, see [Update an existing pipeline](https://cloud.google.com/dataflow/docs/guides/updating-a-pipeline).
 func (o RuntimeUpdatableParamsResponseOutput) WorkerUtilizationHint() pulumi.Float64Output {
 	return o.ApplyT(func(v RuntimeUpdatableParamsResponse) float64 { return v.WorkerUtilizationHint }).(pulumi.Float64Output)
 }
@@ -6802,6 +6854,12 @@ type TemplateMetadataResponse struct {
 	Name string `pulumi:"name"`
 	// The parameters for the template.
 	Parameters []ParameterMetadataResponse `pulumi:"parameters"`
+	// Optional. Indicates if the template is streaming or not.
+	Streaming bool `pulumi:"streaming"`
+	// Optional. Indicates if the streaming template supports at least once mode.
+	SupportsAtLeastOnce bool `pulumi:"supportsAtLeastOnce"`
+	// Optional. Indicates if the streaming template supports exactly once mode.
+	SupportsExactlyOnce bool `pulumi:"supportsExactlyOnce"`
 }
 
 // Metadata describing a template.
@@ -6832,6 +6890,21 @@ func (o TemplateMetadataResponseOutput) Name() pulumi.StringOutput {
 // The parameters for the template.
 func (o TemplateMetadataResponseOutput) Parameters() ParameterMetadataResponseArrayOutput {
 	return o.ApplyT(func(v TemplateMetadataResponse) []ParameterMetadataResponse { return v.Parameters }).(ParameterMetadataResponseArrayOutput)
+}
+
+// Optional. Indicates if the template is streaming or not.
+func (o TemplateMetadataResponseOutput) Streaming() pulumi.BoolOutput {
+	return o.ApplyT(func(v TemplateMetadataResponse) bool { return v.Streaming }).(pulumi.BoolOutput)
+}
+
+// Optional. Indicates if the streaming template supports at least once mode.
+func (o TemplateMetadataResponseOutput) SupportsAtLeastOnce() pulumi.BoolOutput {
+	return o.ApplyT(func(v TemplateMetadataResponse) bool { return v.SupportsAtLeastOnce }).(pulumi.BoolOutput)
+}
+
+// Optional. Indicates if the streaming template supports exactly once mode.
+func (o TemplateMetadataResponseOutput) SupportsExactlyOnce() pulumi.BoolOutput {
+	return o.ApplyT(func(v TemplateMetadataResponse) bool { return v.SupportsExactlyOnce }).(pulumi.BoolOutput)
 }
 
 // Description of the type, names/ids, and input/outputs for a transform.

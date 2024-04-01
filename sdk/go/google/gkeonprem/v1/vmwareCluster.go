@@ -28,6 +28,8 @@ type VmwareCluster struct {
 	Authorization AuthorizationResponseOutput `pulumi:"authorization"`
 	// Configuration for auto repairing.
 	AutoRepairConfig VmwareAutoRepairConfigResponseOutput `pulumi:"autoRepairConfig"`
+	// Binary Authorization related configurations.
+	BinaryAuthorization BinaryAuthorizationResponseOutput `pulumi:"binaryAuthorization"`
 	// VMware user cluster control plane nodes must have either 1 or 3 replicas.
 	ControlPlaneNode VmwareControlPlaneNodeConfigResponseOutput `pulumi:"controlPlaneNode"`
 	// The time at which VMware user cluster was created.
@@ -145,6 +147,8 @@ type vmwareClusterArgs struct {
 	Authorization *Authorization `pulumi:"authorization"`
 	// Configuration for auto repairing.
 	AutoRepairConfig *VmwareAutoRepairConfig `pulumi:"autoRepairConfig"`
+	// Binary Authorization related configurations.
+	BinaryAuthorization *BinaryAuthorization `pulumi:"binaryAuthorization"`
 	// VMware user cluster control plane nodes must have either 1 or 3 replicas.
 	ControlPlaneNode *VmwareControlPlaneNodeConfig `pulumi:"controlPlaneNode"`
 	// VmwareDataplaneV2Config specifies configuration for Dataplane V2.
@@ -191,6 +195,8 @@ type VmwareClusterArgs struct {
 	Authorization AuthorizationPtrInput
 	// Configuration for auto repairing.
 	AutoRepairConfig VmwareAutoRepairConfigPtrInput
+	// Binary Authorization related configurations.
+	BinaryAuthorization BinaryAuthorizationPtrInput
 	// VMware user cluster control plane nodes must have either 1 or 3 replicas.
 	ControlPlaneNode VmwareControlPlaneNodeConfigPtrInput
 	// VmwareDataplaneV2Config specifies configuration for Dataplane V2.
@@ -290,6 +296,11 @@ func (o VmwareClusterOutput) Authorization() AuthorizationResponseOutput {
 // Configuration for auto repairing.
 func (o VmwareClusterOutput) AutoRepairConfig() VmwareAutoRepairConfigResponseOutput {
 	return o.ApplyT(func(v *VmwareCluster) VmwareAutoRepairConfigResponseOutput { return v.AutoRepairConfig }).(VmwareAutoRepairConfigResponseOutput)
+}
+
+// Binary Authorization related configurations.
+func (o VmwareClusterOutput) BinaryAuthorization() BinaryAuthorizationResponseOutput {
+	return o.ApplyT(func(v *VmwareCluster) BinaryAuthorizationResponseOutput { return v.BinaryAuthorization }).(BinaryAuthorizationResponseOutput)
 }
 
 // VMware user cluster control plane nodes must have either 1 or 3 replicas.

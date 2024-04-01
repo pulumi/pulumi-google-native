@@ -55,6 +55,8 @@ type LookupServiceAttachmentResult struct {
 	NatSubnets []string `pulumi:"natSubnets"`
 	// The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
 	ProducerForwardingRule string `pulumi:"producerForwardingRule"`
+	// The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center. This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer. If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list. If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint. If unspecified, the default propagated connection limit is 250.
+	PropagatedConnectionLimit int `pulumi:"propagatedConnectionLimit"`
 	// An 128-bit global unique ID of the PSC service attachment.
 	PscServiceAttachmentId Uint128Response `pulumi:"pscServiceAttachmentId"`
 	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to false.
@@ -173,6 +175,11 @@ func (o LookupServiceAttachmentResultOutput) NatSubnets() pulumi.StringArrayOutp
 // The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
 func (o LookupServiceAttachmentResultOutput) ProducerForwardingRule() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceAttachmentResult) string { return v.ProducerForwardingRule }).(pulumi.StringOutput)
+}
+
+// The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center. This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer. If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list. If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint. If unspecified, the default propagated connection limit is 250.
+func (o LookupServiceAttachmentResultOutput) PropagatedConnectionLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupServiceAttachmentResult) int { return v.PropagatedConnectionLimit }).(pulumi.IntOutput)
 }
 
 // An 128-bit global unique ID of the PSC service attachment.

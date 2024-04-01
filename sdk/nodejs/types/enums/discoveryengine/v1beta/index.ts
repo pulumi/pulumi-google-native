@@ -22,6 +22,204 @@ export const ConversationState = {
  */
 export type ConversationState = (typeof ConversationState)[keyof typeof ConversationState];
 
+export const DataStoreContentConfig = {
+    /**
+     * Default value.
+     */
+    ContentConfigUnspecified: "CONTENT_CONFIG_UNSPECIFIED",
+    /**
+     * Only contains documents without any Document.content.
+     */
+    NoContent: "NO_CONTENT",
+    /**
+     * Only contains documents with Document.content.
+     */
+    ContentRequired: "CONTENT_REQUIRED",
+    /**
+     * The data store is used for public website search.
+     */
+    PublicWebsite: "PUBLIC_WEBSITE",
+} as const;
+
+/**
+ * Immutable. The content config of the data store. If this field is unset, the server behavior defaults to ContentConfig.NO_CONTENT.
+ */
+export type DataStoreContentConfig = (typeof DataStoreContentConfig)[keyof typeof DataStoreContentConfig];
+
+export const DataStoreConversationState = {
+    /**
+     * Unknown.
+     */
+    StateUnspecified: "STATE_UNSPECIFIED",
+    /**
+     * Conversation is currently open.
+     */
+    InProgress: "IN_PROGRESS",
+    /**
+     * Conversation has been completed.
+     */
+    Completed: "COMPLETED",
+} as const;
+
+/**
+ * The state of the Conversation.
+ */
+export type DataStoreConversationState = (typeof DataStoreConversationState)[keyof typeof DataStoreConversationState];
+
+export const DataStoreIndustryVertical = {
+    /**
+     * Value used when unset.
+     */
+    IndustryVerticalUnspecified: "INDUSTRY_VERTICAL_UNSPECIFIED",
+    /**
+     * The generic vertical for documents that are not specific to any industry vertical.
+     */
+    Generic: "GENERIC",
+    /**
+     * The media industry vertical.
+     */
+    Media: "MEDIA",
+    /**
+     * The healthcare FHIR vertical.
+     */
+    HealthcareFhir: "HEALTHCARE_FHIR",
+} as const;
+
+/**
+ * Immutable. The industry vertical that the data store registers.
+ */
+export type DataStoreIndustryVertical = (typeof DataStoreIndustryVertical)[keyof typeof DataStoreIndustryVertical];
+
+export const DataStoreSolutionTypesItem = {
+    /**
+     * Default value.
+     */
+    SolutionTypeUnspecified: "SOLUTION_TYPE_UNSPECIFIED",
+    /**
+     * Used for Recommendations AI.
+     */
+    SolutionTypeRecommendation: "SOLUTION_TYPE_RECOMMENDATION",
+    /**
+     * Used for Discovery Search.
+     */
+    SolutionTypeSearch: "SOLUTION_TYPE_SEARCH",
+    /**
+     * Used for use cases related to the Generative AI agent.
+     */
+    SolutionTypeChat: "SOLUTION_TYPE_CHAT",
+    /**
+     * Used for use cases related to the Generative Chat agent. It's used for Generative chat engine only, the associated data stores must enrolled with `SOLUTION_TYPE_CHAT` solution.
+     */
+    SolutionTypeGenerativeChat: "SOLUTION_TYPE_GENERATIVE_CHAT",
+} as const;
+
+export type DataStoreSolutionTypesItem = (typeof DataStoreSolutionTypesItem)[keyof typeof DataStoreSolutionTypesItem];
+
+export const EngineConversationState = {
+    /**
+     * Unknown.
+     */
+    StateUnspecified: "STATE_UNSPECIFIED",
+    /**
+     * Conversation is currently open.
+     */
+    InProgress: "IN_PROGRESS",
+    /**
+     * Conversation has been completed.
+     */
+    Completed: "COMPLETED",
+} as const;
+
+/**
+ * The state of the Conversation.
+ */
+export type EngineConversationState = (typeof EngineConversationState)[keyof typeof EngineConversationState];
+
+export const EngineIndustryVertical = {
+    /**
+     * Value used when unset.
+     */
+    IndustryVerticalUnspecified: "INDUSTRY_VERTICAL_UNSPECIFIED",
+    /**
+     * The generic vertical for documents that are not specific to any industry vertical.
+     */
+    Generic: "GENERIC",
+    /**
+     * The media industry vertical.
+     */
+    Media: "MEDIA",
+    /**
+     * The healthcare FHIR vertical.
+     */
+    HealthcareFhir: "HEALTHCARE_FHIR",
+} as const;
+
+/**
+ * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to `GENERIC`. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+ */
+export type EngineIndustryVertical = (typeof EngineIndustryVertical)[keyof typeof EngineIndustryVertical];
+
+export const EngineSolutionType = {
+    /**
+     * Default value.
+     */
+    SolutionTypeUnspecified: "SOLUTION_TYPE_UNSPECIFIED",
+    /**
+     * Used for Recommendations AI.
+     */
+    SolutionTypeRecommendation: "SOLUTION_TYPE_RECOMMENDATION",
+    /**
+     * Used for Discovery Search.
+     */
+    SolutionTypeSearch: "SOLUTION_TYPE_SEARCH",
+    /**
+     * Used for use cases related to the Generative AI agent.
+     */
+    SolutionTypeChat: "SOLUTION_TYPE_CHAT",
+    /**
+     * Used for use cases related to the Generative Chat agent. It's used for Generative chat engine only, the associated data stores must enrolled with `SOLUTION_TYPE_CHAT` solution.
+     */
+    SolutionTypeGenerativeChat: "SOLUTION_TYPE_GENERATIVE_CHAT",
+} as const;
+
+/**
+ * Required. The solutions of the engine.
+ */
+export type EngineSolutionType = (typeof EngineSolutionType)[keyof typeof EngineSolutionType];
+
+export const GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem = {
+    /**
+     * Default value when the enum is unspecified. This is invalid to use.
+     */
+    SearchAddOnUnspecified: "SEARCH_ADD_ON_UNSPECIFIED",
+    /**
+     * Large language model add-on.
+     */
+    SearchAddOnLlm: "SEARCH_ADD_ON_LLM",
+} as const;
+
+export type GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem = (typeof GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem)[keyof typeof GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem];
+
+export const GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier = {
+    /**
+     * Default value when the enum is unspecified. This is invalid to use.
+     */
+    SearchTierUnspecified: "SEARCH_TIER_UNSPECIFIED",
+    /**
+     * Standard tier.
+     */
+    SearchTierStandard: "SEARCH_TIER_STANDARD",
+    /**
+     * Enterprise tier.
+     */
+    SearchTierEnterprise: "SEARCH_TIER_ENTERPRISE",
+} as const;
+
+/**
+ * The search feature tier of this engine. Different tiers might have different pricing. To learn more, please check the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
+ */
+export type GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier = (typeof GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier)[keyof typeof GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier];
+
 export const GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem = {
     /**
      * Default value. The summary skipped reason is not specified.
@@ -50,3 +248,23 @@ export const GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkipped
 } as const;
 
 export type GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem = (typeof GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem)[keyof typeof GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem];
+
+export const TargetSiteType = {
+    /**
+     * This value is unused. In this case, server behavior defaults to Type.INCLUDE.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * Include the target site.
+     */
+    Include: "INCLUDE",
+    /**
+     * Exclude the target site.
+     */
+    Exclude: "EXCLUDE",
+} as const;
+
+/**
+ * The type of the target site, e.g., whether the site is to be included or excluded.
+ */
+export type TargetSiteType = (typeof TargetSiteType)[keyof typeof TargetSiteType];

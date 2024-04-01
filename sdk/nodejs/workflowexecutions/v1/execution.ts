@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a new execution using the latest revision of the given workflow.
+ * Creates a new execution using the latest revision of the given workflow. For more information, see Execute a workflow.
  * Auto-naming is currently not supported for this resource.
  * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
  * on Google Cloud even though it will be deleted from Pulumi state.
@@ -48,6 +48,14 @@ export class Execution extends pulumi.CustomResource {
      * The call logging level associated to this execution.
      */
     public readonly callLogLevel!: pulumi.Output<string>;
+    /**
+     * Marks the creation of the execution.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Optional. If set to true, the execution will not be backlogged when the concurrency quota is exhausted. The backlog execution starts when the concurrency quota becomes available.
+     */
+    public readonly disableConcurrencyQuotaOverflowBuffering!: pulumi.Output<boolean>;
     /**
      * Measures the duration of the execution.
      */
@@ -112,10 +120,12 @@ export class Execution extends pulumi.CustomResource {
             }
             resourceInputs["argument"] = args ? args.argument : undefined;
             resourceInputs["callLogLevel"] = args ? args.callLogLevel : undefined;
+            resourceInputs["disableConcurrencyQuotaOverflowBuffering"] = args ? args.disableConcurrencyQuotaOverflowBuffering : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["workflowId"] = args ? args.workflowId : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["duration"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
@@ -129,6 +139,8 @@ export class Execution extends pulumi.CustomResource {
         } else {
             resourceInputs["argument"] = undefined /*out*/;
             resourceInputs["callLogLevel"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["disableConcurrencyQuotaOverflowBuffering"] = undefined /*out*/;
             resourceInputs["duration"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
@@ -163,6 +175,10 @@ export interface ExecutionArgs {
      * The call logging level associated to this execution.
      */
     callLogLevel?: pulumi.Input<enums.workflowexecutions.v1.ExecutionCallLogLevel>;
+    /**
+     * Optional. If set to true, the execution will not be backlogged when the concurrency quota is exhausted. The backlog execution starts when the concurrency quota becomes available.
+     */
+    disableConcurrencyQuotaOverflowBuffering?: pulumi.Input<boolean>;
     /**
      * Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. By default, labels are inherited from the workflow but are overridden by any labels associated with the execution.
      */

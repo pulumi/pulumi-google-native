@@ -365,6 +365,360 @@ func (in *dashConfigSegmentReferenceSchemePtr) ToOutput(ctx context.Context) pul
 	}
 }
 
+// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+type H264CodecSettingsFrameRateConversionStrategy string
+
+const (
+	// Unspecified frame rate conversion strategy.
+	H264CodecSettingsFrameRateConversionStrategyFrameRateConversionStrategyUnspecified = H264CodecSettingsFrameRateConversionStrategy("FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED")
+	// Selectively retain frames to reduce the output frame rate. Every _n_ th frame is kept, where `n = ceil(input frame rate / target frame rate)`. When _n_ = 1 (that is, the target frame rate is greater than the input frame rate), the output frame rate matches the input frame rate. When _n_ > 1, frames are dropped and the output frame rate is equal to `(input frame rate / n)`. For more information, see [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate).
+	H264CodecSettingsFrameRateConversionStrategyDownsample = H264CodecSettingsFrameRateConversionStrategy("DOWNSAMPLE")
+	// Drop or duplicate frames to match the specified frame rate.
+	H264CodecSettingsFrameRateConversionStrategyDropDuplicate = H264CodecSettingsFrameRateConversionStrategy("DROP_DUPLICATE")
+)
+
+func (H264CodecSettingsFrameRateConversionStrategy) ElementType() reflect.Type {
+	return reflect.TypeOf((*H264CodecSettingsFrameRateConversionStrategy)(nil)).Elem()
+}
+
+func (e H264CodecSettingsFrameRateConversionStrategy) ToH264CodecSettingsFrameRateConversionStrategyOutput() H264CodecSettingsFrameRateConversionStrategyOutput {
+	return pulumi.ToOutput(e).(H264CodecSettingsFrameRateConversionStrategyOutput)
+}
+
+func (e H264CodecSettingsFrameRateConversionStrategy) ToH264CodecSettingsFrameRateConversionStrategyOutputWithContext(ctx context.Context) H264CodecSettingsFrameRateConversionStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(H264CodecSettingsFrameRateConversionStrategyOutput)
+}
+
+func (e H264CodecSettingsFrameRateConversionStrategy) ToH264CodecSettingsFrameRateConversionStrategyPtrOutput() H264CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return e.ToH264CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(context.Background())
+}
+
+func (e H264CodecSettingsFrameRateConversionStrategy) ToH264CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(ctx context.Context) H264CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return H264CodecSettingsFrameRateConversionStrategy(e).ToH264CodecSettingsFrameRateConversionStrategyOutputWithContext(ctx).ToH264CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(ctx)
+}
+
+func (e H264CodecSettingsFrameRateConversionStrategy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e H264CodecSettingsFrameRateConversionStrategy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e H264CodecSettingsFrameRateConversionStrategy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e H264CodecSettingsFrameRateConversionStrategy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type H264CodecSettingsFrameRateConversionStrategyOutput struct{ *pulumi.OutputState }
+
+func (H264CodecSettingsFrameRateConversionStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*H264CodecSettingsFrameRateConversionStrategy)(nil)).Elem()
+}
+
+func (o H264CodecSettingsFrameRateConversionStrategyOutput) ToH264CodecSettingsFrameRateConversionStrategyOutput() H264CodecSettingsFrameRateConversionStrategyOutput {
+	return o
+}
+
+func (o H264CodecSettingsFrameRateConversionStrategyOutput) ToH264CodecSettingsFrameRateConversionStrategyOutputWithContext(ctx context.Context) H264CodecSettingsFrameRateConversionStrategyOutput {
+	return o
+}
+
+func (o H264CodecSettingsFrameRateConversionStrategyOutput) ToH264CodecSettingsFrameRateConversionStrategyPtrOutput() H264CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return o.ToH264CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o H264CodecSettingsFrameRateConversionStrategyOutput) ToH264CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(ctx context.Context) H264CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v H264CodecSettingsFrameRateConversionStrategy) *H264CodecSettingsFrameRateConversionStrategy {
+		return &v
+	}).(H264CodecSettingsFrameRateConversionStrategyPtrOutput)
+}
+
+func (o H264CodecSettingsFrameRateConversionStrategyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o H264CodecSettingsFrameRateConversionStrategyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e H264CodecSettingsFrameRateConversionStrategy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o H264CodecSettingsFrameRateConversionStrategyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o H264CodecSettingsFrameRateConversionStrategyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e H264CodecSettingsFrameRateConversionStrategy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type H264CodecSettingsFrameRateConversionStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (H264CodecSettingsFrameRateConversionStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**H264CodecSettingsFrameRateConversionStrategy)(nil)).Elem()
+}
+
+func (o H264CodecSettingsFrameRateConversionStrategyPtrOutput) ToH264CodecSettingsFrameRateConversionStrategyPtrOutput() H264CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return o
+}
+
+func (o H264CodecSettingsFrameRateConversionStrategyPtrOutput) ToH264CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(ctx context.Context) H264CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return o
+}
+
+func (o H264CodecSettingsFrameRateConversionStrategyPtrOutput) Elem() H264CodecSettingsFrameRateConversionStrategyOutput {
+	return o.ApplyT(func(v *H264CodecSettingsFrameRateConversionStrategy) H264CodecSettingsFrameRateConversionStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret H264CodecSettingsFrameRateConversionStrategy
+		return ret
+	}).(H264CodecSettingsFrameRateConversionStrategyOutput)
+}
+
+func (o H264CodecSettingsFrameRateConversionStrategyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o H264CodecSettingsFrameRateConversionStrategyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *H264CodecSettingsFrameRateConversionStrategy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// H264CodecSettingsFrameRateConversionStrategyInput is an input type that accepts values of the H264CodecSettingsFrameRateConversionStrategy enum
+// A concrete instance of `H264CodecSettingsFrameRateConversionStrategyInput` can be one of the following:
+//
+//	H264CodecSettingsFrameRateConversionStrategyFrameRateConversionStrategyUnspecified
+//	H264CodecSettingsFrameRateConversionStrategyDownsample
+//	H264CodecSettingsFrameRateConversionStrategyDropDuplicate
+type H264CodecSettingsFrameRateConversionStrategyInput interface {
+	pulumi.Input
+
+	ToH264CodecSettingsFrameRateConversionStrategyOutput() H264CodecSettingsFrameRateConversionStrategyOutput
+	ToH264CodecSettingsFrameRateConversionStrategyOutputWithContext(context.Context) H264CodecSettingsFrameRateConversionStrategyOutput
+}
+
+var h264codecSettingsFrameRateConversionStrategyPtrType = reflect.TypeOf((**H264CodecSettingsFrameRateConversionStrategy)(nil)).Elem()
+
+type H264CodecSettingsFrameRateConversionStrategyPtrInput interface {
+	pulumi.Input
+
+	ToH264CodecSettingsFrameRateConversionStrategyPtrOutput() H264CodecSettingsFrameRateConversionStrategyPtrOutput
+	ToH264CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(context.Context) H264CodecSettingsFrameRateConversionStrategyPtrOutput
+}
+
+type h264codecSettingsFrameRateConversionStrategyPtr string
+
+func H264CodecSettingsFrameRateConversionStrategyPtr(v string) H264CodecSettingsFrameRateConversionStrategyPtrInput {
+	return (*h264codecSettingsFrameRateConversionStrategyPtr)(&v)
+}
+
+func (*h264codecSettingsFrameRateConversionStrategyPtr) ElementType() reflect.Type {
+	return h264codecSettingsFrameRateConversionStrategyPtrType
+}
+
+func (in *h264codecSettingsFrameRateConversionStrategyPtr) ToH264CodecSettingsFrameRateConversionStrategyPtrOutput() H264CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return pulumi.ToOutput(in).(H264CodecSettingsFrameRateConversionStrategyPtrOutput)
+}
+
+func (in *h264codecSettingsFrameRateConversionStrategyPtr) ToH264CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(ctx context.Context) H264CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(H264CodecSettingsFrameRateConversionStrategyPtrOutput)
+}
+
+func (in *h264codecSettingsFrameRateConversionStrategyPtr) ToOutput(ctx context.Context) pulumix.Output[*H264CodecSettingsFrameRateConversionStrategy] {
+	return pulumix.Output[*H264CodecSettingsFrameRateConversionStrategy]{
+		OutputState: in.ToH264CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+type H265CodecSettingsFrameRateConversionStrategy string
+
+const (
+	// Unspecified frame rate conversion strategy.
+	H265CodecSettingsFrameRateConversionStrategyFrameRateConversionStrategyUnspecified = H265CodecSettingsFrameRateConversionStrategy("FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED")
+	// Selectively retain frames to reduce the output frame rate. Every _n_ th frame is kept, where `n = ceil(input frame rate / target frame rate)`. When _n_ = 1 (that is, the target frame rate is greater than the input frame rate), the output frame rate matches the input frame rate. When _n_ > 1, frames are dropped and the output frame rate is equal to `(input frame rate / n)`. For more information, see [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate).
+	H265CodecSettingsFrameRateConversionStrategyDownsample = H265CodecSettingsFrameRateConversionStrategy("DOWNSAMPLE")
+	// Drop or duplicate frames to match the specified frame rate.
+	H265CodecSettingsFrameRateConversionStrategyDropDuplicate = H265CodecSettingsFrameRateConversionStrategy("DROP_DUPLICATE")
+)
+
+func (H265CodecSettingsFrameRateConversionStrategy) ElementType() reflect.Type {
+	return reflect.TypeOf((*H265CodecSettingsFrameRateConversionStrategy)(nil)).Elem()
+}
+
+func (e H265CodecSettingsFrameRateConversionStrategy) ToH265CodecSettingsFrameRateConversionStrategyOutput() H265CodecSettingsFrameRateConversionStrategyOutput {
+	return pulumi.ToOutput(e).(H265CodecSettingsFrameRateConversionStrategyOutput)
+}
+
+func (e H265CodecSettingsFrameRateConversionStrategy) ToH265CodecSettingsFrameRateConversionStrategyOutputWithContext(ctx context.Context) H265CodecSettingsFrameRateConversionStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(H265CodecSettingsFrameRateConversionStrategyOutput)
+}
+
+func (e H265CodecSettingsFrameRateConversionStrategy) ToH265CodecSettingsFrameRateConversionStrategyPtrOutput() H265CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return e.ToH265CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(context.Background())
+}
+
+func (e H265CodecSettingsFrameRateConversionStrategy) ToH265CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(ctx context.Context) H265CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return H265CodecSettingsFrameRateConversionStrategy(e).ToH265CodecSettingsFrameRateConversionStrategyOutputWithContext(ctx).ToH265CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(ctx)
+}
+
+func (e H265CodecSettingsFrameRateConversionStrategy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e H265CodecSettingsFrameRateConversionStrategy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e H265CodecSettingsFrameRateConversionStrategy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e H265CodecSettingsFrameRateConversionStrategy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type H265CodecSettingsFrameRateConversionStrategyOutput struct{ *pulumi.OutputState }
+
+func (H265CodecSettingsFrameRateConversionStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*H265CodecSettingsFrameRateConversionStrategy)(nil)).Elem()
+}
+
+func (o H265CodecSettingsFrameRateConversionStrategyOutput) ToH265CodecSettingsFrameRateConversionStrategyOutput() H265CodecSettingsFrameRateConversionStrategyOutput {
+	return o
+}
+
+func (o H265CodecSettingsFrameRateConversionStrategyOutput) ToH265CodecSettingsFrameRateConversionStrategyOutputWithContext(ctx context.Context) H265CodecSettingsFrameRateConversionStrategyOutput {
+	return o
+}
+
+func (o H265CodecSettingsFrameRateConversionStrategyOutput) ToH265CodecSettingsFrameRateConversionStrategyPtrOutput() H265CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return o.ToH265CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o H265CodecSettingsFrameRateConversionStrategyOutput) ToH265CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(ctx context.Context) H265CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v H265CodecSettingsFrameRateConversionStrategy) *H265CodecSettingsFrameRateConversionStrategy {
+		return &v
+	}).(H265CodecSettingsFrameRateConversionStrategyPtrOutput)
+}
+
+func (o H265CodecSettingsFrameRateConversionStrategyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o H265CodecSettingsFrameRateConversionStrategyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e H265CodecSettingsFrameRateConversionStrategy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o H265CodecSettingsFrameRateConversionStrategyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o H265CodecSettingsFrameRateConversionStrategyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e H265CodecSettingsFrameRateConversionStrategy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type H265CodecSettingsFrameRateConversionStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (H265CodecSettingsFrameRateConversionStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**H265CodecSettingsFrameRateConversionStrategy)(nil)).Elem()
+}
+
+func (o H265CodecSettingsFrameRateConversionStrategyPtrOutput) ToH265CodecSettingsFrameRateConversionStrategyPtrOutput() H265CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return o
+}
+
+func (o H265CodecSettingsFrameRateConversionStrategyPtrOutput) ToH265CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(ctx context.Context) H265CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return o
+}
+
+func (o H265CodecSettingsFrameRateConversionStrategyPtrOutput) Elem() H265CodecSettingsFrameRateConversionStrategyOutput {
+	return o.ApplyT(func(v *H265CodecSettingsFrameRateConversionStrategy) H265CodecSettingsFrameRateConversionStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret H265CodecSettingsFrameRateConversionStrategy
+		return ret
+	}).(H265CodecSettingsFrameRateConversionStrategyOutput)
+}
+
+func (o H265CodecSettingsFrameRateConversionStrategyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o H265CodecSettingsFrameRateConversionStrategyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *H265CodecSettingsFrameRateConversionStrategy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// H265CodecSettingsFrameRateConversionStrategyInput is an input type that accepts values of the H265CodecSettingsFrameRateConversionStrategy enum
+// A concrete instance of `H265CodecSettingsFrameRateConversionStrategyInput` can be one of the following:
+//
+//	H265CodecSettingsFrameRateConversionStrategyFrameRateConversionStrategyUnspecified
+//	H265CodecSettingsFrameRateConversionStrategyDownsample
+//	H265CodecSettingsFrameRateConversionStrategyDropDuplicate
+type H265CodecSettingsFrameRateConversionStrategyInput interface {
+	pulumi.Input
+
+	ToH265CodecSettingsFrameRateConversionStrategyOutput() H265CodecSettingsFrameRateConversionStrategyOutput
+	ToH265CodecSettingsFrameRateConversionStrategyOutputWithContext(context.Context) H265CodecSettingsFrameRateConversionStrategyOutput
+}
+
+var h265codecSettingsFrameRateConversionStrategyPtrType = reflect.TypeOf((**H265CodecSettingsFrameRateConversionStrategy)(nil)).Elem()
+
+type H265CodecSettingsFrameRateConversionStrategyPtrInput interface {
+	pulumi.Input
+
+	ToH265CodecSettingsFrameRateConversionStrategyPtrOutput() H265CodecSettingsFrameRateConversionStrategyPtrOutput
+	ToH265CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(context.Context) H265CodecSettingsFrameRateConversionStrategyPtrOutput
+}
+
+type h265codecSettingsFrameRateConversionStrategyPtr string
+
+func H265CodecSettingsFrameRateConversionStrategyPtr(v string) H265CodecSettingsFrameRateConversionStrategyPtrInput {
+	return (*h265codecSettingsFrameRateConversionStrategyPtr)(&v)
+}
+
+func (*h265codecSettingsFrameRateConversionStrategyPtr) ElementType() reflect.Type {
+	return h265codecSettingsFrameRateConversionStrategyPtrType
+}
+
+func (in *h265codecSettingsFrameRateConversionStrategyPtr) ToH265CodecSettingsFrameRateConversionStrategyPtrOutput() H265CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return pulumi.ToOutput(in).(H265CodecSettingsFrameRateConversionStrategyPtrOutput)
+}
+
+func (in *h265codecSettingsFrameRateConversionStrategyPtr) ToH265CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(ctx context.Context) H265CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(H265CodecSettingsFrameRateConversionStrategyPtrOutput)
+}
+
+func (in *h265codecSettingsFrameRateConversionStrategyPtr) ToOutput(ctx context.Context) pulumix.Output[*H265CodecSettingsFrameRateConversionStrategy] {
+	return pulumix.Output[*H265CodecSettingsFrameRateConversionStrategy]{
+		OutputState: in.ToH265CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
 type JobMode string
 
@@ -896,25 +1250,214 @@ func (in *manifestTypePtr) ToOutput(ctx context.Context) pulumix.Output[*Manifes
 	}
 }
 
+// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+type Vp9CodecSettingsFrameRateConversionStrategy string
+
+const (
+	// Unspecified frame rate conversion strategy.
+	Vp9CodecSettingsFrameRateConversionStrategyFrameRateConversionStrategyUnspecified = Vp9CodecSettingsFrameRateConversionStrategy("FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED")
+	// Selectively retain frames to reduce the output frame rate. Every _n_ th frame is kept, where `n = ceil(input frame rate / target frame rate)`. When _n_ = 1 (that is, the target frame rate is greater than the input frame rate), the output frame rate matches the input frame rate. When _n_ > 1, frames are dropped and the output frame rate is equal to `(input frame rate / n)`. For more information, see [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate).
+	Vp9CodecSettingsFrameRateConversionStrategyDownsample = Vp9CodecSettingsFrameRateConversionStrategy("DOWNSAMPLE")
+	// Drop or duplicate frames to match the specified frame rate.
+	Vp9CodecSettingsFrameRateConversionStrategyDropDuplicate = Vp9CodecSettingsFrameRateConversionStrategy("DROP_DUPLICATE")
+)
+
+func (Vp9CodecSettingsFrameRateConversionStrategy) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vp9CodecSettingsFrameRateConversionStrategy)(nil)).Elem()
+}
+
+func (e Vp9CodecSettingsFrameRateConversionStrategy) ToVp9CodecSettingsFrameRateConversionStrategyOutput() Vp9CodecSettingsFrameRateConversionStrategyOutput {
+	return pulumi.ToOutput(e).(Vp9CodecSettingsFrameRateConversionStrategyOutput)
+}
+
+func (e Vp9CodecSettingsFrameRateConversionStrategy) ToVp9CodecSettingsFrameRateConversionStrategyOutputWithContext(ctx context.Context) Vp9CodecSettingsFrameRateConversionStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(Vp9CodecSettingsFrameRateConversionStrategyOutput)
+}
+
+func (e Vp9CodecSettingsFrameRateConversionStrategy) ToVp9CodecSettingsFrameRateConversionStrategyPtrOutput() Vp9CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return e.ToVp9CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(context.Background())
+}
+
+func (e Vp9CodecSettingsFrameRateConversionStrategy) ToVp9CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(ctx context.Context) Vp9CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return Vp9CodecSettingsFrameRateConversionStrategy(e).ToVp9CodecSettingsFrameRateConversionStrategyOutputWithContext(ctx).ToVp9CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(ctx)
+}
+
+func (e Vp9CodecSettingsFrameRateConversionStrategy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e Vp9CodecSettingsFrameRateConversionStrategy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e Vp9CodecSettingsFrameRateConversionStrategy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e Vp9CodecSettingsFrameRateConversionStrategy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type Vp9CodecSettingsFrameRateConversionStrategyOutput struct{ *pulumi.OutputState }
+
+func (Vp9CodecSettingsFrameRateConversionStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vp9CodecSettingsFrameRateConversionStrategy)(nil)).Elem()
+}
+
+func (o Vp9CodecSettingsFrameRateConversionStrategyOutput) ToVp9CodecSettingsFrameRateConversionStrategyOutput() Vp9CodecSettingsFrameRateConversionStrategyOutput {
+	return o
+}
+
+func (o Vp9CodecSettingsFrameRateConversionStrategyOutput) ToVp9CodecSettingsFrameRateConversionStrategyOutputWithContext(ctx context.Context) Vp9CodecSettingsFrameRateConversionStrategyOutput {
+	return o
+}
+
+func (o Vp9CodecSettingsFrameRateConversionStrategyOutput) ToVp9CodecSettingsFrameRateConversionStrategyPtrOutput() Vp9CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return o.ToVp9CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o Vp9CodecSettingsFrameRateConversionStrategyOutput) ToVp9CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(ctx context.Context) Vp9CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Vp9CodecSettingsFrameRateConversionStrategy) *Vp9CodecSettingsFrameRateConversionStrategy {
+		return &v
+	}).(Vp9CodecSettingsFrameRateConversionStrategyPtrOutput)
+}
+
+func (o Vp9CodecSettingsFrameRateConversionStrategyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o Vp9CodecSettingsFrameRateConversionStrategyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e Vp9CodecSettingsFrameRateConversionStrategy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o Vp9CodecSettingsFrameRateConversionStrategyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o Vp9CodecSettingsFrameRateConversionStrategyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e Vp9CodecSettingsFrameRateConversionStrategy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type Vp9CodecSettingsFrameRateConversionStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (Vp9CodecSettingsFrameRateConversionStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vp9CodecSettingsFrameRateConversionStrategy)(nil)).Elem()
+}
+
+func (o Vp9CodecSettingsFrameRateConversionStrategyPtrOutput) ToVp9CodecSettingsFrameRateConversionStrategyPtrOutput() Vp9CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return o
+}
+
+func (o Vp9CodecSettingsFrameRateConversionStrategyPtrOutput) ToVp9CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(ctx context.Context) Vp9CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return o
+}
+
+func (o Vp9CodecSettingsFrameRateConversionStrategyPtrOutput) Elem() Vp9CodecSettingsFrameRateConversionStrategyOutput {
+	return o.ApplyT(func(v *Vp9CodecSettingsFrameRateConversionStrategy) Vp9CodecSettingsFrameRateConversionStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret Vp9CodecSettingsFrameRateConversionStrategy
+		return ret
+	}).(Vp9CodecSettingsFrameRateConversionStrategyOutput)
+}
+
+func (o Vp9CodecSettingsFrameRateConversionStrategyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o Vp9CodecSettingsFrameRateConversionStrategyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *Vp9CodecSettingsFrameRateConversionStrategy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// Vp9CodecSettingsFrameRateConversionStrategyInput is an input type that accepts values of the Vp9CodecSettingsFrameRateConversionStrategy enum
+// A concrete instance of `Vp9CodecSettingsFrameRateConversionStrategyInput` can be one of the following:
+//
+//	Vp9CodecSettingsFrameRateConversionStrategyFrameRateConversionStrategyUnspecified
+//	Vp9CodecSettingsFrameRateConversionStrategyDownsample
+//	Vp9CodecSettingsFrameRateConversionStrategyDropDuplicate
+type Vp9CodecSettingsFrameRateConversionStrategyInput interface {
+	pulumi.Input
+
+	ToVp9CodecSettingsFrameRateConversionStrategyOutput() Vp9CodecSettingsFrameRateConversionStrategyOutput
+	ToVp9CodecSettingsFrameRateConversionStrategyOutputWithContext(context.Context) Vp9CodecSettingsFrameRateConversionStrategyOutput
+}
+
+var vp9CodecSettingsFrameRateConversionStrategyPtrType = reflect.TypeOf((**Vp9CodecSettingsFrameRateConversionStrategy)(nil)).Elem()
+
+type Vp9CodecSettingsFrameRateConversionStrategyPtrInput interface {
+	pulumi.Input
+
+	ToVp9CodecSettingsFrameRateConversionStrategyPtrOutput() Vp9CodecSettingsFrameRateConversionStrategyPtrOutput
+	ToVp9CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(context.Context) Vp9CodecSettingsFrameRateConversionStrategyPtrOutput
+}
+
+type vp9CodecSettingsFrameRateConversionStrategyPtr string
+
+func Vp9CodecSettingsFrameRateConversionStrategyPtr(v string) Vp9CodecSettingsFrameRateConversionStrategyPtrInput {
+	return (*vp9CodecSettingsFrameRateConversionStrategyPtr)(&v)
+}
+
+func (*vp9CodecSettingsFrameRateConversionStrategyPtr) ElementType() reflect.Type {
+	return vp9CodecSettingsFrameRateConversionStrategyPtrType
+}
+
+func (in *vp9CodecSettingsFrameRateConversionStrategyPtr) ToVp9CodecSettingsFrameRateConversionStrategyPtrOutput() Vp9CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return pulumi.ToOutput(in).(Vp9CodecSettingsFrameRateConversionStrategyPtrOutput)
+}
+
+func (in *vp9CodecSettingsFrameRateConversionStrategyPtr) ToVp9CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(ctx context.Context) Vp9CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(Vp9CodecSettingsFrameRateConversionStrategyPtrOutput)
+}
+
+func (in *vp9CodecSettingsFrameRateConversionStrategyPtr) ToOutput(ctx context.Context) pulumix.Output[*Vp9CodecSettingsFrameRateConversionStrategy] {
+	return pulumix.Output[*Vp9CodecSettingsFrameRateConversionStrategy]{
+		OutputState: in.ToVp9CodecSettingsFrameRateConversionStrategyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AnimationFadeFadeTypeInput)(nil)).Elem(), AnimationFadeFadeType("FADE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AnimationFadeFadeTypePtrInput)(nil)).Elem(), AnimationFadeFadeType("FADE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DashConfigSegmentReferenceSchemeInput)(nil)).Elem(), DashConfigSegmentReferenceScheme("SEGMENT_REFERENCE_SCHEME_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DashConfigSegmentReferenceSchemePtrInput)(nil)).Elem(), DashConfigSegmentReferenceScheme("SEGMENT_REFERENCE_SCHEME_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*H264CodecSettingsFrameRateConversionStrategyInput)(nil)).Elem(), H264CodecSettingsFrameRateConversionStrategy("FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*H264CodecSettingsFrameRateConversionStrategyPtrInput)(nil)).Elem(), H264CodecSettingsFrameRateConversionStrategy("FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*H265CodecSettingsFrameRateConversionStrategyInput)(nil)).Elem(), H265CodecSettingsFrameRateConversionStrategy("FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*H265CodecSettingsFrameRateConversionStrategyPtrInput)(nil)).Elem(), H265CodecSettingsFrameRateConversionStrategy("FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*JobModeInput)(nil)).Elem(), JobMode("PROCESSING_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*JobModePtrInput)(nil)).Elem(), JobMode("PROCESSING_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*JobOptimizationInput)(nil)).Elem(), JobOptimization("OPTIMIZATION_STRATEGY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*JobOptimizationPtrInput)(nil)).Elem(), JobOptimization("OPTIMIZATION_STRATEGY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ManifestTypeInput)(nil)).Elem(), ManifestType("MANIFEST_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ManifestTypePtrInput)(nil)).Elem(), ManifestType("MANIFEST_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*Vp9CodecSettingsFrameRateConversionStrategyInput)(nil)).Elem(), Vp9CodecSettingsFrameRateConversionStrategy("FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*Vp9CodecSettingsFrameRateConversionStrategyPtrInput)(nil)).Elem(), Vp9CodecSettingsFrameRateConversionStrategy("FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AnimationFadeFadeTypeOutput{})
 	pulumi.RegisterOutputType(AnimationFadeFadeTypePtrOutput{})
 	pulumi.RegisterOutputType(DashConfigSegmentReferenceSchemeOutput{})
 	pulumi.RegisterOutputType(DashConfigSegmentReferenceSchemePtrOutput{})
+	pulumi.RegisterOutputType(H264CodecSettingsFrameRateConversionStrategyOutput{})
+	pulumi.RegisterOutputType(H264CodecSettingsFrameRateConversionStrategyPtrOutput{})
+	pulumi.RegisterOutputType(H265CodecSettingsFrameRateConversionStrategyOutput{})
+	pulumi.RegisterOutputType(H265CodecSettingsFrameRateConversionStrategyPtrOutput{})
 	pulumi.RegisterOutputType(JobModeOutput{})
 	pulumi.RegisterOutputType(JobModePtrOutput{})
 	pulumi.RegisterOutputType(JobOptimizationOutput{})
 	pulumi.RegisterOutputType(JobOptimizationPtrOutput{})
 	pulumi.RegisterOutputType(ManifestTypeOutput{})
 	pulumi.RegisterOutputType(ManifestTypePtrOutput{})
+	pulumi.RegisterOutputType(Vp9CodecSettingsFrameRateConversionStrategyOutput{})
+	pulumi.RegisterOutputType(Vp9CodecSettingsFrameRateConversionStrategyPtrOutput{})
 }

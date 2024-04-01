@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
         /// </summary>
         public readonly string MatchGrpcAddress;
         /// <summary>
+        /// PscAutomatedEndpoints is populated if private service connect is enabled if PscAutomatedConfig is set.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GoogleCloudAiplatformV1PscAutomatedEndpointsResponse> PscAutomatedEndpoints;
+        /// <summary>
         /// The name of the service attachment resource. Populated if private service connect is enabled.
         /// </summary>
         public readonly string ServiceAttachment;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
         private GoogleCloudAiplatformV1IndexPrivateEndpointsResponse(
             string matchGrpcAddress,
 
+            ImmutableArray<Outputs.GoogleCloudAiplatformV1PscAutomatedEndpointsResponse> pscAutomatedEndpoints,
+
             string serviceAttachment)
         {
             MatchGrpcAddress = matchGrpcAddress;
+            PscAutomatedEndpoints = pscAutomatedEndpoints;
             ServiceAttachment = serviceAttachment;
         }
     }

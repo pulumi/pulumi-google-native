@@ -26,6 +26,10 @@ export interface GetConnectivityTestArgs {
 
 export interface GetConnectivityTestResult {
     /**
+     * Whether the test should skip firewall checking. If not provided, we assume false.
+     */
+    readonly bypassFirewallChecks: boolean;
+    /**
      * The time the test was created.
      */
     readonly createTime: string;

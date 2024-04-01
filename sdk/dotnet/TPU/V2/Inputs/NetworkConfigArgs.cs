@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.TPU.V2.Inputs
         public Input<string>? Network { get; set; }
 
         /// <summary>
+        /// Optional. Specifies networking queue count for TPU VM instance's network interface.
+        /// </summary>
+        [Input("queueCount")]
+        public Input<int>? QueueCount { get; set; }
+
+        /// <summary>
         /// The name of the subnetwork for the TPU node. It must be a preexisting Google Compute Engine subnetwork. If none is provided, "default" will be used.
         /// </summary>
         [Input("subnetwork")]

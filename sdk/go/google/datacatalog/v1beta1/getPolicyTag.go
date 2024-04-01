@@ -36,7 +36,7 @@ type LookupPolicyTagResult struct {
 	Description string `pulumi:"description"`
 	// User defined name of this policy tag. It must: be unique within the parent taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
 	DisplayName string `pulumi:"displayName"`
-	// Resource name of this policy tag, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
+	// Identifier. Resource name of this policy tag, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
 	Name string `pulumi:"name"`
 	// Resource name of this policy tag's parent policy tag (e.g. for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag). If empty, it means this policy tag is a top level policy tag (e.g. this field is empty for the "Geolocation" policy tag in the example above). If not set, defaults to an empty string.
 	ParentPolicyTag string `pulumi:"parentPolicyTag"`
@@ -95,7 +95,7 @@ func (o LookupPolicyTagResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyTagResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Resource name of this policy tag, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
+// Identifier. Resource name of this policy tag, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
 func (o LookupPolicyTagResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyTagResult) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -77,6 +77,10 @@ export class EventSubscription extends pulumi.CustomResource {
      */
     public readonly subscriberLink!: pulumi.Output<string>;
     /**
+     * Optional. Configuration for configuring the trigger
+     */
+    public readonly triggerConfigVariables!: pulumi.Output<outputs.connectors.v1.ConfigVariableResponse[]>;
+    /**
      * Updated time.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -108,6 +112,7 @@ export class EventSubscription extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["subscriber"] = args ? args.subscriber : undefined;
             resourceInputs["subscriberLink"] = args ? args.subscriberLink : undefined;
+            resourceInputs["triggerConfigVariables"] = args ? args.triggerConfigVariables : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -124,6 +129,7 @@ export class EventSubscription extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["subscriber"] = undefined /*out*/;
             resourceInputs["subscriberLink"] = undefined /*out*/;
+            resourceInputs["triggerConfigVariables"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -168,4 +174,8 @@ export interface EventSubscriptionArgs {
      * Optional. Link for Subscriber of the current EventSubscription.
      */
     subscriberLink?: pulumi.Input<string>;
+    /**
+     * Optional. Configuration for configuring the trigger
+     */
+    triggerConfigVariables?: pulumi.Input<pulumi.Input<inputs.connectors.v1.ConfigVariableArgs>[]>;
 }

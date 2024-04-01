@@ -9,7 +9,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new FeatureView in a given FeatureOnlineStore.
- * Auto-naming is currently not supported for this resource.
  */
 export class FeatureView extends pulumi.CustomResource {
     /**
@@ -60,19 +59,31 @@ export class FeatureView extends pulumi.CustomResource {
      */
     public readonly featureViewId!: pulumi.Output<string>;
     /**
+     * Optional. Configuration for index preparation for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+     */
+    public readonly indexConfig!: pulumi.Output<outputs.aiplatform.v1beta1.GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponse>;
+    /**
      * Optional. The labels with user-defined metadata to organize your FeatureViews. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+     * Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
      * Immutable. If set to true, one on demand sync will be run immediately, regardless whether the FeatureView.sync_config is configured or not.
      */
     public readonly runSyncImmediately!: pulumi.Output<boolean | undefined>;
+    /**
+     * A Service Account unique to this FeatureView. The role bigquery.dataViewer should be granted to this service account to allow Vertex AI Feature Store to sync data to the online store.
+     */
+    public /*out*/ readonly serviceAccountEmail!: pulumi.Output<string>;
+    /**
+     * Optional. Service agent type used during data sync. By default, the Vertex AI Service Agent is used. When using an IAM Policy to isolate this FeatureView within a project, a separate service account should be provisioned by setting this field to `SERVICE_AGENT_TYPE_FEATURE_VIEW`. This will generate a separate service account to access the BigQuery source table.
+     */
+    public readonly serviceAgentType!: pulumi.Output<string>;
     /**
      * Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
      */
@@ -82,7 +93,9 @@ export class FeatureView extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
-     * Optional. Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+     * Optional. Deprecated: please use FeatureView.index_config instead.
+     *
+     * @deprecated Optional. Deprecated: please use FeatureView.index_config instead.
      */
     public readonly vectorSearchConfig!: pulumi.Output<outputs.aiplatform.v1beta1.GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponse>;
 
@@ -108,14 +121,17 @@ export class FeatureView extends pulumi.CustomResource {
             resourceInputs["featureOnlineStoreId"] = args ? args.featureOnlineStoreId : undefined;
             resourceInputs["featureRegistrySource"] = args ? args.featureRegistrySource : undefined;
             resourceInputs["featureViewId"] = args ? args.featureViewId : undefined;
+            resourceInputs["indexConfig"] = args ? args.indexConfig : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["runSyncImmediately"] = args ? args.runSyncImmediately : undefined;
+            resourceInputs["serviceAgentType"] = args ? args.serviceAgentType : undefined;
             resourceInputs["syncConfig"] = args ? args.syncConfig : undefined;
             resourceInputs["vectorSearchConfig"] = args ? args.vectorSearchConfig : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
-            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["serviceAccountEmail"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["bigQuerySource"] = undefined /*out*/;
@@ -124,11 +140,14 @@ export class FeatureView extends pulumi.CustomResource {
             resourceInputs["featureOnlineStoreId"] = undefined /*out*/;
             resourceInputs["featureRegistrySource"] = undefined /*out*/;
             resourceInputs["featureViewId"] = undefined /*out*/;
+            resourceInputs["indexConfig"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["runSyncImmediately"] = undefined /*out*/;
+            resourceInputs["serviceAccountEmail"] = undefined /*out*/;
+            resourceInputs["serviceAgentType"] = undefined /*out*/;
             resourceInputs["syncConfig"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["vectorSearchConfig"] = undefined /*out*/;
@@ -162,21 +181,35 @@ export interface FeatureViewArgs {
      */
     featureViewId: pulumi.Input<string>;
     /**
+     * Optional. Configuration for index preparation for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+     */
+    indexConfig?: pulumi.Input<inputs.aiplatform.v1beta1.GoogleCloudAiplatformV1beta1FeatureViewIndexConfigArgs>;
+    /**
      * Optional. The labels with user-defined metadata to organize your FeatureViews. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
+    /**
+     * Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+     */
+    name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * Immutable. If set to true, one on demand sync will be run immediately, regardless whether the FeatureView.sync_config is configured or not.
      */
     runSyncImmediately?: pulumi.Input<boolean>;
     /**
+     * Optional. Service agent type used during data sync. By default, the Vertex AI Service Agent is used. When using an IAM Policy to isolate this FeatureView within a project, a separate service account should be provisioned by setting this field to `SERVICE_AGENT_TYPE_FEATURE_VIEW`. This will generate a separate service account to access the BigQuery source table.
+     */
+    serviceAgentType?: pulumi.Input<enums.aiplatform.v1beta1.FeatureViewServiceAgentType>;
+    /**
      * Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
      */
     syncConfig?: pulumi.Input<inputs.aiplatform.v1beta1.GoogleCloudAiplatformV1beta1FeatureViewSyncConfigArgs>;
     /**
-     * Optional. Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+     * Optional. Deprecated: please use FeatureView.index_config instead.
+     *
+     * @deprecated Optional. Deprecated: please use FeatureView.index_config instead.
      */
     vectorSearchConfig?: pulumi.Input<inputs.aiplatform.v1beta1.GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigArgs>;
 }

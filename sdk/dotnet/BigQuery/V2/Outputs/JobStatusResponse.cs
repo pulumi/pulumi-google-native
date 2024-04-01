@@ -18,11 +18,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly Outputs.ErrorProtoResponse ErrorResult;
         /// <summary>
-        /// The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
+        /// The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has not completed or was unsuccessful.
         /// </summary>
         public readonly ImmutableArray<Outputs.ErrorProtoResponse> Errors;
         /// <summary>
-        /// Running state of the job.
+        /// Running state of the job. Valid states include 'PENDING', 'RUNNING', and 'DONE'.
         /// </summary>
         public readonly string State;
 

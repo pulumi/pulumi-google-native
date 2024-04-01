@@ -32,7 +32,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         private InputList<Inputs.GooglePrivacyDlpV2CustomInfoTypeArgs>? _customInfoTypes;
 
         /// <summary>
-        /// CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+        /// CustomInfoTypes provided by the user. See https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes to learn more.
         /// </summary>
         public InputList<Inputs.GooglePrivacyDlpV2CustomInfoTypeArgs> CustomInfoTypes
         {
@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         private InputList<Inputs.GooglePrivacyDlpV2InfoTypeArgs>? _infoTypes;
 
         /// <summary>
-        /// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
+        /// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
         /// </summary>
         public InputList<Inputs.GooglePrivacyDlpV2InfoTypeArgs> InfoTypes
         {
@@ -71,7 +71,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public Input<Inputs.GooglePrivacyDlpV2FindingLimitsArgs>? Limits { get; set; }
 
         /// <summary>
-        /// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
+        /// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/sensitive-data-protection/docs/likelihood).
         /// </summary>
         [Input("minLikelihood")]
         public Input<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2InspectConfigMinLikelihood>? MinLikelihood { get; set; }

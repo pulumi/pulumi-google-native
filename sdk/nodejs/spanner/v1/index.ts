@@ -50,6 +50,11 @@ export const getInstanceIamPolicy: typeof import("./getInstanceIamPolicy").getIn
 export const getInstanceIamPolicyOutput: typeof import("./getInstanceIamPolicy").getInstanceIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getInstanceIamPolicy","getInstanceIamPolicyOutput"], () => require("./getInstanceIamPolicy"));
 
+export { GetInstancePartitionArgs, GetInstancePartitionResult, GetInstancePartitionOutputArgs } from "./getInstancePartition";
+export const getInstancePartition: typeof import("./getInstancePartition").getInstancePartition = null as any;
+export const getInstancePartitionOutput: typeof import("./getInstancePartition").getInstancePartitionOutput = null as any;
+utilities.lazyLoad(exports, ["getInstancePartition","getInstancePartitionOutput"], () => require("./getInstancePartition"));
+
 export { GetSessionArgs, GetSessionResult, GetSessionOutputArgs } from "./getSession";
 export const getSession: typeof import("./getSession").getSession = null as any;
 export const getSessionOutput: typeof import("./getSession").getSessionOutput = null as any;
@@ -110,6 +115,11 @@ export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
 export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIamPolicy = null as any;
 utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
 
+export { InstancePartitionArgs } from "./instancePartition";
+export type InstancePartition = import("./instancePartition").InstancePartition;
+export const InstancePartition: typeof import("./instancePartition").InstancePartition = null as any;
+utilities.lazyLoad(exports, ["InstancePartition"], () => require("./instancePartition"));
+
 export { SessionArgs } from "./session";
 export type Session = import("./session").Session;
 export const Session: typeof import("./session").Session = null as any;
@@ -149,6 +159,8 @@ const _module = {
                 return new InstanceIamMember(name, <any>undefined, { urn })
             case "google-native:spanner/v1:InstanceIamPolicy":
                 return new InstanceIamPolicy(name, <any>undefined, { urn })
+            case "google-native:spanner/v1:InstancePartition":
+                return new InstancePartition(name, <any>undefined, { urn })
             case "google-native:spanner/v1:Session":
                 return new Session(name, <any>undefined, { urn })
             default:

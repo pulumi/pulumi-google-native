@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetFeatureViewResult:
-    def __init__(__self__, big_query_source=None, create_time=None, etag=None, feature_registry_source=None, labels=None, name=None, sync_config=None, update_time=None, vector_search_config=None):
+    def __init__(__self__, big_query_source=None, create_time=None, etag=None, feature_registry_source=None, index_config=None, labels=None, name=None, service_account_email=None, service_agent_type=None, sync_config=None, update_time=None, vector_search_config=None):
         if big_query_source and not isinstance(big_query_source, dict):
             raise TypeError("Expected argument 'big_query_source' to be a dict")
         pulumi.set(__self__, "big_query_source", big_query_source)
@@ -32,12 +32,21 @@ class GetFeatureViewResult:
         if feature_registry_source and not isinstance(feature_registry_source, dict):
             raise TypeError("Expected argument 'feature_registry_source' to be a dict")
         pulumi.set(__self__, "feature_registry_source", feature_registry_source)
+        if index_config and not isinstance(index_config, dict):
+            raise TypeError("Expected argument 'index_config' to be a dict")
+        pulumi.set(__self__, "index_config", index_config)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if service_account_email and not isinstance(service_account_email, str):
+            raise TypeError("Expected argument 'service_account_email' to be a str")
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        if service_agent_type and not isinstance(service_agent_type, str):
+            raise TypeError("Expected argument 'service_agent_type' to be a str")
+        pulumi.set(__self__, "service_agent_type", service_agent_type)
         if sync_config and not isinstance(sync_config, dict):
             raise TypeError("Expected argument 'sync_config' to be a dict")
         pulumi.set(__self__, "sync_config", sync_config)
@@ -81,6 +90,14 @@ class GetFeatureViewResult:
         return pulumi.get(self, "feature_registry_source")
 
     @property
+    @pulumi.getter(name="indexConfig")
+    def index_config(self) -> 'outputs.GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponse':
+        """
+        Optional. Configuration for index preparation for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+        """
+        return pulumi.get(self, "index_config")
+
+    @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
@@ -92,9 +109,25 @@ class GetFeatureViewResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+        Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> str:
+        """
+        A Service Account unique to this FeatureView. The role bigquery.dataViewer should be granted to this service account to allow Vertex AI Feature Store to sync data to the online store.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @property
+    @pulumi.getter(name="serviceAgentType")
+    def service_agent_type(self) -> str:
+        """
+        Optional. Service agent type used during data sync. By default, the Vertex AI Service Agent is used. When using an IAM Policy to isolate this FeatureView within a project, a separate service account should be provisioned by setting this field to `SERVICE_AGENT_TYPE_FEATURE_VIEW`. This will generate a separate service account to access the BigQuery source table.
+        """
+        return pulumi.get(self, "service_agent_type")
 
     @property
     @pulumi.getter(name="syncConfig")
@@ -116,8 +149,11 @@ class GetFeatureViewResult:
     @pulumi.getter(name="vectorSearchConfig")
     def vector_search_config(self) -> 'outputs.GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponse':
         """
-        Optional. Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+        Optional. Deprecated: please use FeatureView.index_config instead.
         """
+        warnings.warn("""Optional. Deprecated: please use FeatureView.index_config instead.""", DeprecationWarning)
+        pulumi.log.warn("""vector_search_config is deprecated: Optional. Deprecated: please use FeatureView.index_config instead.""")
+
         return pulumi.get(self, "vector_search_config")
 
 
@@ -131,8 +167,11 @@ class AwaitableGetFeatureViewResult(GetFeatureViewResult):
             create_time=self.create_time,
             etag=self.etag,
             feature_registry_source=self.feature_registry_source,
+            index_config=self.index_config,
             labels=self.labels,
             name=self.name,
+            service_account_email=self.service_account_email,
+            service_agent_type=self.service_agent_type,
             sync_config=self.sync_config,
             update_time=self.update_time,
             vector_search_config=self.vector_search_config)
@@ -159,8 +198,11 @@ def get_feature_view(feature_online_store_id: Optional[str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         etag=pulumi.get(__ret__, 'etag'),
         feature_registry_source=pulumi.get(__ret__, 'feature_registry_source'),
+        index_config=pulumi.get(__ret__, 'index_config'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
+        service_account_email=pulumi.get(__ret__, 'service_account_email'),
+        service_agent_type=pulumi.get(__ret__, 'service_agent_type'),
         sync_config=pulumi.get(__ret__, 'sync_config'),
         update_time=pulumi.get(__ret__, 'update_time'),
         vector_search_config=pulumi.get(__ret__, 'vector_search_config'))

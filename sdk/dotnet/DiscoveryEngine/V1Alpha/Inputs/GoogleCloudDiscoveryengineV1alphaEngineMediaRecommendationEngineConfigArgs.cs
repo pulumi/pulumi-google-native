@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha.Inputs
     public sealed class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The optimization objective e.g. `cvr`. This field together with optimization_objective describe engine metadata to use to control engine training and serving. Currently supported values: `ctr`, `cvr`. If not specified, we choose default based on engine type. Default depends on type of recommendation: `recommended-for-you` =&gt; `ctr` `others-you-may-like` =&gt; `ctr`
+        /// The optimization objective. e.g., `cvr`. This field together with optimization_objective describe engine metadata to use to control engine training and serving. Currently supported values: `ctr`, `cvr`. If not specified, we choose default based on engine type. Default depends on type of recommendation: `recommended-for-you` =&gt; `ctr` `others-you-may-like` =&gt; `ctr`
         /// </summary>
         [Input("optimizationObjective")]
         public Input<string>? OptimizationObjective { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha.Inputs
         public Input<Pulumi.GoogleNative.DiscoveryEngine.V1Alpha.GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingState>? TrainingState { get; set; }
 
         /// <summary>
-        /// The type of engine e.g. `recommended-for-you`. This field together with optimization_objective describe engine metadata to use to control engine training and serving. Currently supported values: `recommended-for-you`, `others-you-may-like`, `more-like-this`, `most-popular-items`.
+        /// The type of engine. e.g., `recommended-for-you`. This field together with optimization_objective describe engine metadata to use to control engine training and serving. Currently supported values: `recommended-for-you`, `others-you-may-like`, `more-like-this`, `most-popular-items`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

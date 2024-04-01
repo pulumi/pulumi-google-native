@@ -86,6 +86,10 @@ export interface GetConversationResult {
      */
     readonly obfuscatedUserId: string;
     /**
+     * Conversation metadata related to quality management.
+     */
+    readonly qualityMetadata: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponse;
+    /**
      * The annotations that were generated during the customer and agent interaction.
      */
     readonly runtimeAnnotations: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse[];

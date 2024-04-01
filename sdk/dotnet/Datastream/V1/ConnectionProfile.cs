@@ -107,6 +107,12 @@ namespace Pulumi.GoogleNative.Datastream.V1
         public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
+        /// SQLServer Connection Profile configuration.
+        /// </summary>
+        [Output("sqlServerProfile")]
+        public Output<Outputs.SqlServerProfileResponse> SqlServerProfile { get; private set; } = null!;
+
+        /// <summary>
         /// Static Service IP connectivity.
         /// </summary>
         [Output("staticServiceIpConnectivity")]
@@ -252,6 +258,12 @@ namespace Pulumi.GoogleNative.Datastream.V1
         /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
+
+        /// <summary>
+        /// SQLServer Connection Profile configuration.
+        /// </summary>
+        [Input("sqlServerProfile")]
+        public Input<Inputs.SqlServerProfileArgs>? SqlServerProfile { get; set; }
 
         /// <summary>
         /// Static Service IP connectivity.

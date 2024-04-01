@@ -63,6 +63,10 @@ export const GoogleCloudRecaptchaenterpriseV1WafSettingsWafService = {
      * Fastly
      */
     Fastly: "FASTLY",
+    /**
+     * Cloudflare
+     */
+    Cloudflare: "CLOUDFLARE",
 } as const;
 
 /**

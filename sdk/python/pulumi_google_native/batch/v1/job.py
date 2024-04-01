@@ -408,7 +408,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def uid(self) -> pulumi.Output[str]:
         """
-        A system generated unique ID (in UUID4 format) for the Job.
+        A system generated unique ID for the Job.
         """
         return pulumi.get(self, "uid")
 

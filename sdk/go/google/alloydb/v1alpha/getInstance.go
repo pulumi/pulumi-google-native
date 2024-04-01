@@ -49,6 +49,8 @@ type LookupInstanceResult struct {
 	Etag string `pulumi:"etag"`
 	// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
 	GceZone string `pulumi:"gceZone"`
+	// Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+	GeminiConfig GeminiInstanceConfigResponse `pulumi:"geminiConfig"`
 	// The type of the instance. Specified at creation time.
 	InstanceType string `pulumi:"instanceType"`
 	// The IP address for the Instance. This is the connection endpoint for an end-user application.
@@ -59,14 +61,24 @@ type LookupInstanceResult struct {
 	MachineConfig MachineConfigResponse `pulumi:"machineConfig"`
 	// The name of the instance resource with the format: * projects/{project}/locations/{region}/clusters/{cluster_id}/instances/{instance_id} where the cluster and instance ID segments should satisfy the regex expression `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`, e.g. 1-63 characters of lowercase letters, numbers, and dashes, starting with a letter, and ending with a letter or number. For more details see https://google.aip.dev/122. The prefix of the instance resource name is the name of the parent resource: * projects/{project}/locations/{region}/clusters/{cluster_id}
 	Name string `pulumi:"name"`
+	// Optional. Instance level network configuration.
+	NetworkConfig InstanceNetworkConfigResponse `pulumi:"networkConfig"`
 	// List of available read-only VMs in this instance, including the standby for a PRIMARY instance.
 	Nodes []NodeResponse `pulumi:"nodes"`
+	// Configuration for observability.
+	ObservabilityConfig ObservabilityInstanceConfigResponse `pulumi:"observabilityConfig"`
+	// Optional. The configuration for Private Service Connect (PSC) for the instance.
+	PscInstanceConfig PscInstanceConfigResponse `pulumi:"pscInstanceConfig"`
+	// The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set. This is the connection endpoint for an end-user application.
+	PublicIpAddress string `pulumi:"publicIpAddress"`
 	// Configuration for query insights.
 	QueryInsightsConfig QueryInsightsInstanceConfigResponse `pulumi:"queryInsightsConfig"`
 	// Read pool instance configuration. This is required if the value of instanceType is READ_POOL.
 	ReadPoolConfig ReadPoolConfigResponse `pulumi:"readPoolConfig"`
 	// Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling bool `pulumi:"reconciling"`
+	// Reserved for future use.
+	SatisfiesPzi bool `pulumi:"satisfiesPzi"`
 	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// The current serving state of the instance.
@@ -165,6 +177,11 @@ func (o LookupInstanceResultOutput) GceZone() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.GceZone }).(pulumi.StringOutput)
 }
 
+// Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+func (o LookupInstanceResultOutput) GeminiConfig() GeminiInstanceConfigResponseOutput {
+	return o.ApplyT(func(v LookupInstanceResult) GeminiInstanceConfigResponse { return v.GeminiConfig }).(GeminiInstanceConfigResponseOutput)
+}
+
 // The type of the instance. Specified at creation time.
 func (o LookupInstanceResultOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.InstanceType }).(pulumi.StringOutput)
@@ -190,9 +207,29 @@ func (o LookupInstanceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Optional. Instance level network configuration.
+func (o LookupInstanceResultOutput) NetworkConfig() InstanceNetworkConfigResponseOutput {
+	return o.ApplyT(func(v LookupInstanceResult) InstanceNetworkConfigResponse { return v.NetworkConfig }).(InstanceNetworkConfigResponseOutput)
+}
+
 // List of available read-only VMs in this instance, including the standby for a PRIMARY instance.
 func (o LookupInstanceResultOutput) Nodes() NodeResponseArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []NodeResponse { return v.Nodes }).(NodeResponseArrayOutput)
+}
+
+// Configuration for observability.
+func (o LookupInstanceResultOutput) ObservabilityConfig() ObservabilityInstanceConfigResponseOutput {
+	return o.ApplyT(func(v LookupInstanceResult) ObservabilityInstanceConfigResponse { return v.ObservabilityConfig }).(ObservabilityInstanceConfigResponseOutput)
+}
+
+// Optional. The configuration for Private Service Connect (PSC) for the instance.
+func (o LookupInstanceResultOutput) PscInstanceConfig() PscInstanceConfigResponseOutput {
+	return o.ApplyT(func(v LookupInstanceResult) PscInstanceConfigResponse { return v.PscInstanceConfig }).(PscInstanceConfigResponseOutput)
+}
+
+// The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set. This is the connection endpoint for an end-user application.
+func (o LookupInstanceResultOutput) PublicIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.PublicIpAddress }).(pulumi.StringOutput)
 }
 
 // Configuration for query insights.
@@ -208,6 +245,11 @@ func (o LookupInstanceResultOutput) ReadPoolConfig() ReadPoolConfigResponseOutpu
 // Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
 func (o LookupInstanceResultOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupInstanceResult) bool { return v.Reconciling }).(pulumi.BoolOutput)
+}
+
+// Reserved for future use.
+func (o LookupInstanceResultOutput) SatisfiesPzi() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceResult) bool { return v.SatisfiesPzi }).(pulumi.BoolOutput)
 }
 
 // Reserved for future use.

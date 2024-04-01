@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetMachineImageResult:
-    def __init__(__self__, creation_timestamp=None, description=None, guest_flush=None, instance_properties=None, kind=None, machine_image_encryption_key=None, name=None, satisfies_pzs=None, saved_disks=None, self_link=None, self_link_with_id=None, source_disk_encryption_keys=None, source_instance=None, source_instance_properties=None, status=None, storage_locations=None, total_storage_bytes=None):
+    def __init__(__self__, creation_timestamp=None, description=None, guest_flush=None, instance_properties=None, kind=None, machine_image_encryption_key=None, name=None, satisfies_pzi=None, satisfies_pzs=None, saved_disks=None, self_link=None, self_link_with_id=None, source_disk_encryption_keys=None, source_instance=None, source_instance_properties=None, status=None, storage_locations=None, total_storage_bytes=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -41,6 +41,9 @@ class GetMachineImageResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if satisfies_pzi and not isinstance(satisfies_pzi, bool):
+            raise TypeError("Expected argument 'satisfies_pzi' to be a bool")
+        pulumi.set(__self__, "satisfies_pzi", satisfies_pzi)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -127,6 +130,14 @@ class GetMachineImageResult:
         Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> bool:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzi")
 
     @property
     @pulumi.getter(name="satisfiesPzs")
@@ -222,6 +233,7 @@ class AwaitableGetMachineImageResult(GetMachineImageResult):
             kind=self.kind,
             machine_image_encryption_key=self.machine_image_encryption_key,
             name=self.name,
+            satisfies_pzi=self.satisfies_pzi,
             satisfies_pzs=self.satisfies_pzs,
             saved_disks=self.saved_disks,
             self_link=self.self_link,
@@ -254,6 +266,7 @@ def get_machine_image(machine_image: Optional[str] = None,
         kind=pulumi.get(__ret__, 'kind'),
         machine_image_encryption_key=pulumi.get(__ret__, 'machine_image_encryption_key'),
         name=pulumi.get(__ret__, 'name'),
+        satisfies_pzi=pulumi.get(__ret__, 'satisfies_pzi'),
         satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         saved_disks=pulumi.get(__ret__, 'saved_disks'),
         self_link=pulumi.get(__ret__, 'self_link'),

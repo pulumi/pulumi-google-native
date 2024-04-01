@@ -76,6 +76,12 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Replication specification.
+        /// </summary>
+        [Output("replicationSpec")]
+        public Output<Outputs.ReplicationSpecResponse> ReplicationSpec { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job never executes a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
         /// </summary>
         [Output("schedule")]
@@ -179,6 +185,12 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Replication specification.
+        /// </summary>
+        [Input("replicationSpec")]
+        public Input<Inputs.ReplicationSpecArgs>? ReplicationSpec { get; set; }
 
         /// <summary>
         /// Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job never executes a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.

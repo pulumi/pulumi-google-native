@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
         [Input("destination")]
         public Input<Inputs.HttpRouteDestinationArgs>? Destination { get; set; }
 
+        /// <summary>
+        /// Optional. The percentage of requests to get mirrored to the desired destination.
+        /// </summary>
+        [Input("mirrorPercent")]
+        public Input<double>? MirrorPercent { get; set; }
+
         public HttpRouteRequestMirrorPolicyArgs()
         {
         }

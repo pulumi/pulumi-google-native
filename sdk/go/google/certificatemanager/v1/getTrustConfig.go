@@ -29,6 +29,8 @@ type LookupTrustConfigArgs struct {
 }
 
 type LookupTrustConfigResult struct {
+	// Optional. A certificate matching an allowlisted certificate is always considered valid as long as the certificate is parseable, proof of private key possession is established, and constraints on the certificate’s SAN field are met.
+	AllowlistedCertificates []AllowlistedCertificateResponse `pulumi:"allowlistedCertificates"`
 	// The creation timestamp of a TrustConfig.
 	CreateTime string `pulumi:"createTime"`
 	// One or more paragraphs of text description of a TrustConfig.
@@ -80,6 +82,11 @@ func (o LookupTrustConfigResultOutput) ToLookupTrustConfigResultOutput() LookupT
 
 func (o LookupTrustConfigResultOutput) ToLookupTrustConfigResultOutputWithContext(ctx context.Context) LookupTrustConfigResultOutput {
 	return o
+}
+
+// Optional. A certificate matching an allowlisted certificate is always considered valid as long as the certificate is parseable, proof of private key possession is established, and constraints on the certificate’s SAN field are met.
+func (o LookupTrustConfigResultOutput) AllowlistedCertificates() AllowlistedCertificateResponseArrayOutput {
+	return o.ApplyT(func(v LookupTrustConfigResult) []AllowlistedCertificateResponse { return v.AllowlistedCertificates }).(AllowlistedCertificateResponseArrayOutput)
 }
 
 // The creation timestamp of a TrustConfig.

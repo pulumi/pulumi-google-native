@@ -300,6 +300,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly resourceUsageExportConfig!: pulumi.Output<outputs.container.v1beta1.ResourceUsageExportConfigResponse>;
     /**
+     * Secret CSI driver configuration.
+     */
+    public readonly secretManagerConfig!: pulumi.Output<outputs.container.v1beta1.SecretManagerConfigResponse>;
+    /**
      * Enable/Disable Security Posture API features for the cluster.
      */
     public readonly securityPostureConfig!: pulumi.Output<outputs.container.v1beta1.SecurityPostureConfigResponse>;
@@ -427,6 +431,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["releaseChannel"] = args ? args.releaseChannel : undefined;
             resourceInputs["resourceLabels"] = args ? args.resourceLabels : undefined;
             resourceInputs["resourceUsageExportConfig"] = args ? args.resourceUsageExportConfig : undefined;
+            resourceInputs["secretManagerConfig"] = args ? args.secretManagerConfig : undefined;
             resourceInputs["securityPostureConfig"] = args ? args.securityPostureConfig : undefined;
             resourceInputs["shieldedNodes"] = args ? args.shieldedNodes : undefined;
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
@@ -513,6 +518,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["releaseChannel"] = undefined /*out*/;
             resourceInputs["resourceLabels"] = undefined /*out*/;
             resourceInputs["resourceUsageExportConfig"] = undefined /*out*/;
+            resourceInputs["secretManagerConfig"] = undefined /*out*/;
             resourceInputs["securityPostureConfig"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["servicesIpv4Cidr"] = undefined /*out*/;
@@ -792,6 +798,10 @@ export interface ClusterArgs {
      * Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
      */
     resourceUsageExportConfig?: pulumi.Input<inputs.container.v1beta1.ResourceUsageExportConfigArgs>;
+    /**
+     * Secret CSI driver configuration.
+     */
+    secretManagerConfig?: pulumi.Input<inputs.container.v1beta1.SecretManagerConfigArgs>;
     /**
      * Enable/Disable Security Posture API features for the cluster.
      */

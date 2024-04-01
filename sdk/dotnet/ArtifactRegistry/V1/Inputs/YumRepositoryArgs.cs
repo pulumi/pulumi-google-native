@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1.Inputs
     public sealed class YumRepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Customer-specified remote repository.
+        /// </summary>
+        [Input("customRepository")]
+        public Input<Inputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryArgs>? CustomRepository { get; set; }
+
+        /// <summary>
         /// One of the publicly available Yum repositories supported by Artifact Registry.
         /// </summary>
         [Input("publicRepository")]

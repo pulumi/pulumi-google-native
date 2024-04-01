@@ -2,6 +2,30 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const AOFConfigAppendFsync = {
+    /**
+     * Not set. Default: EVERYSEC
+     */
+    AppendFsyncUnspecified: "APPEND_FSYNC_UNSPECIFIED",
+    /**
+     * Never fsync. Normally Linux will flush data every 30 seconds with this configuration, but it's up to the kernel's exact tuning.
+     */
+    No: "NO",
+    /**
+     * fsync every second. Fast enough, and you may lose 1 second of data if there is a disaster
+     */
+    Everysec: "EVERYSEC",
+    /**
+     * fsync every time new commands are appended to the AOF. It has the best data loss protection at the cost of performance
+     */
+    Always: "ALWAYS",
+} as const;
+
+/**
+ * Optional. fsync configuration.
+ */
+export type AOFConfigAppendFsync = (typeof AOFConfigAppendFsync)[keyof typeof AOFConfigAppendFsync];
+
 export const ClusterAuthorizationMode = {
     /**
      * Not set.
@@ -21,6 +45,55 @@ export const ClusterAuthorizationMode = {
  * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
  */
 export type ClusterAuthorizationMode = (typeof ClusterAuthorizationMode)[keyof typeof ClusterAuthorizationMode];
+
+export const ClusterNodeType = {
+    NodeTypeUnspecified: "NODE_TYPE_UNSPECIFIED",
+    /**
+     * Redis shared core nano node_type.
+     */
+    RedisSharedCoreNano: "REDIS_SHARED_CORE_NANO",
+    /**
+     * Redis highmem medium node_type.
+     */
+    RedisHighmemMedium: "REDIS_HIGHMEM_MEDIUM",
+    /**
+     * Redis highmem xlarge node_type.
+     */
+    RedisHighmemXlarge: "REDIS_HIGHMEM_XLARGE",
+    /**
+     * Redis standard small node_type.
+     */
+    RedisStandardSmall: "REDIS_STANDARD_SMALL",
+} as const;
+
+/**
+ * Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node.
+ */
+export type ClusterNodeType = (typeof ClusterNodeType)[keyof typeof ClusterNodeType];
+
+export const ClusterPersistenceConfigMode = {
+    /**
+     * Not set.
+     */
+    PersistenceModeUnspecified: "PERSISTENCE_MODE_UNSPECIFIED",
+    /**
+     * Persistence is disabled, and any snapshot data is deleted.
+     */
+    Disabled: "DISABLED",
+    /**
+     * RDB based persistence is enabled.
+     */
+    Rdb: "RDB",
+    /**
+     * AOF based persistence is enabled.
+     */
+    Aof: "AOF",
+} as const;
+
+/**
+ * Optional. The mode of persistence.
+ */
+export type ClusterPersistenceConfigMode = (typeof ClusterPersistenceConfigMode)[keyof typeof ClusterPersistenceConfigMode];
 
 export const ClusterTransitEncryptionMode = {
     /**
@@ -182,6 +255,34 @@ export const PersistenceConfigRdbSnapshotPeriod = {
  * Optional. Period between RDB snapshots. Snapshots will be attempted every period starting from the provided snapshot start time. For example, a start time of 01/01/2033 06:45 and SIX_HOURS snapshot period will do nothing until 01/01/2033, and then trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as default.
  */
 export type PersistenceConfigRdbSnapshotPeriod = (typeof PersistenceConfigRdbSnapshotPeriod)[keyof typeof PersistenceConfigRdbSnapshotPeriod];
+
+export const RDBConfigRdbSnapshotPeriod = {
+    /**
+     * Not set.
+     */
+    SnapshotPeriodUnspecified: "SNAPSHOT_PERIOD_UNSPECIFIED",
+    /**
+     * One hour.
+     */
+    OneHour: "ONE_HOUR",
+    /**
+     * Six hours.
+     */
+    SixHours: "SIX_HOURS",
+    /**
+     * Twelve hours.
+     */
+    TwelveHours: "TWELVE_HOURS",
+    /**
+     * Twenty four hours.
+     */
+    TwentyFourHours: "TWENTY_FOUR_HOURS",
+} as const;
+
+/**
+ * Optional. Period between RDB snapshots.
+ */
+export type RDBConfigRdbSnapshotPeriod = (typeof RDBConfigRdbSnapshotPeriod)[keyof typeof RDBConfigRdbSnapshotPeriod];
 
 export const WeeklyMaintenanceWindowDay = {
     /**

@@ -30,6 +30,7 @@ class ConnectionProfileArgs:
                  private_connectivity: Optional[pulumi.Input['PrivateConnectivityArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 sql_server_profile: Optional[pulumi.Input['SqlServerProfileArgs']] = None,
                  static_service_ip_connectivity: Optional[pulumi.Input['StaticServiceIpConnectivityArgs']] = None):
         """
         The set of arguments for constructing a ConnectionProfile resource.
@@ -45,6 +46,7 @@ class ConnectionProfileArgs:
         :param pulumi.Input['PostgresqlProfileArgs'] postgresql_profile: PostgreSQL Connection Profile configuration.
         :param pulumi.Input['PrivateConnectivityArgs'] private_connectivity: Private connectivity.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input['SqlServerProfileArgs'] sql_server_profile: SQLServer Connection Profile configuration.
         :param pulumi.Input['StaticServiceIpConnectivityArgs'] static_service_ip_connectivity: Static Service IP connectivity.
         """
         pulumi.set(__self__, "connection_profile_id", connection_profile_id)
@@ -73,6 +75,8 @@ class ConnectionProfileArgs:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if sql_server_profile is not None:
+            pulumi.set(__self__, "sql_server_profile", sql_server_profile)
         if static_service_ip_connectivity is not None:
             pulumi.set(__self__, "static_service_ip_connectivity", static_service_ip_connectivity)
 
@@ -239,6 +243,18 @@ class ConnectionProfileArgs:
         pulumi.set(self, "request_id", value)
 
     @property
+    @pulumi.getter(name="sqlServerProfile")
+    def sql_server_profile(self) -> Optional[pulumi.Input['SqlServerProfileArgs']]:
+        """
+        SQLServer Connection Profile configuration.
+        """
+        return pulumi.get(self, "sql_server_profile")
+
+    @sql_server_profile.setter
+    def sql_server_profile(self, value: Optional[pulumi.Input['SqlServerProfileArgs']]):
+        pulumi.set(self, "sql_server_profile", value)
+
+    @property
     @pulumi.getter(name="staticServiceIpConnectivity")
     def static_service_ip_connectivity(self) -> Optional[pulumi.Input['StaticServiceIpConnectivityArgs']]:
         """
@@ -270,6 +286,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  private_connectivity: Optional[pulumi.Input[pulumi.InputType['PrivateConnectivityArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 sql_server_profile: Optional[pulumi.Input[pulumi.InputType['SqlServerProfileArgs']]] = None,
                  static_service_ip_connectivity: Optional[pulumi.Input[pulumi.InputType['StaticServiceIpConnectivityArgs']]] = None,
                  __props__=None):
         """
@@ -290,6 +307,7 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PostgresqlProfileArgs']] postgresql_profile: PostgreSQL Connection Profile configuration.
         :param pulumi.Input[pulumi.InputType['PrivateConnectivityArgs']] private_connectivity: Private connectivity.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[pulumi.InputType['SqlServerProfileArgs']] sql_server_profile: SQLServer Connection Profile configuration.
         :param pulumi.Input[pulumi.InputType['StaticServiceIpConnectivityArgs']] static_service_ip_connectivity: Static Service IP connectivity.
         """
         ...
@@ -331,6 +349,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  private_connectivity: Optional[pulumi.Input[pulumi.InputType['PrivateConnectivityArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 sql_server_profile: Optional[pulumi.Input[pulumi.InputType['SqlServerProfileArgs']]] = None,
                  static_service_ip_connectivity: Optional[pulumi.Input[pulumi.InputType['StaticServiceIpConnectivityArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -359,6 +378,7 @@ class ConnectionProfile(pulumi.CustomResource):
             __props__.__dict__["private_connectivity"] = private_connectivity
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
+            __props__.__dict__["sql_server_profile"] = sql_server_profile
             __props__.__dict__["static_service_ip_connectivity"] = static_service_ip_connectivity
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
@@ -403,6 +423,7 @@ class ConnectionProfile(pulumi.CustomResource):
         __props__.__dict__["private_connectivity"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["request_id"] = None
+        __props__.__dict__["sql_server_profile"] = None
         __props__.__dict__["static_service_ip_connectivity"] = None
         __props__.__dict__["update_time"] = None
         return ConnectionProfile(resource_name, opts=opts, __props__=__props__)
@@ -528,6 +549,14 @@ class ConnectionProfile(pulumi.CustomResource):
         Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         return pulumi.get(self, "request_id")
+
+    @property
+    @pulumi.getter(name="sqlServerProfile")
+    def sql_server_profile(self) -> pulumi.Output['outputs.SqlServerProfileResponse']:
+        """
+        SQLServer Connection Profile configuration.
+        """
+        return pulumi.get(self, "sql_server_profile")
 
     @property
     @pulumi.getter(name="staticServiceIpConnectivity")

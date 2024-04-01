@@ -17,6 +17,7 @@ __all__ = ['ConversationArgs', 'Conversation']
 @pulumi.input_type
 class ConversationArgs:
     def __init__(__self__, *,
+                 parent: pulumi.Input[str],
                  agent_id: Optional[pulumi.Input[str]] = None,
                  call_metadata: Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs']] = None,
                  conversation_id: Optional[pulumi.Input[str]] = None,
@@ -29,13 +30,17 @@ class ConversationArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  obfuscated_user_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 quality_metadata: Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs']] = None,
+                 redaction_config: Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1RedactionConfigArgs']] = None,
+                 speech_config: Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1SpeechConfigArgs']] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Conversation resource.
+        :param pulumi.Input[str] parent: The parent resource of the conversation.
         :param pulumi.Input[str] agent_id: An opaque, user-specified string representing the human agent who handled the conversation.
         :param pulumi.Input['GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs'] call_metadata: Call-specific metadata.
-        :param pulumi.Input[str] conversation_id: A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
+        :param pulumi.Input[str] conversation_id: Optional. A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
         :param pulumi.Input['GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs'] data_source: The source of the audio and transcription for the conversation.
         :param pulumi.Input[str] expire_time: The time at which this conversation should expire. After this time, the conversation data and any associated analyses will be deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map for the user to specify any custom fields. A maximum of 20 labels per conversation is allowed, with a maximum of 256 characters per entry.
@@ -43,9 +48,13 @@ class ConversationArgs:
         :param pulumi.Input['ConversationMedium'] medium: Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
         :param pulumi.Input[str] name: Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation}
         :param pulumi.Input[str] obfuscated_user_id: Obfuscated user ID which the customer sent to us.
+        :param pulumi.Input['GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs'] quality_metadata: Conversation metadata related to quality management.
+        :param pulumi.Input['GoogleCloudContactcenterinsightsV1RedactionConfigArgs'] redaction_config: Optional. DLP settings for transcript redaction. Will default to the config specified in Settings.
+        :param pulumi.Input['GoogleCloudContactcenterinsightsV1SpeechConfigArgs'] speech_config: Optional. Speech-to-Text configuration. Will default to the config specified in Settings.
         :param pulumi.Input[str] start_time: The time at which the conversation started.
         :param pulumi.Input[str] ttl: Input only. The TTL for this resource. If specified, then this TTL will be used to calculate the expire time.
         """
+        pulumi.set(__self__, "parent", parent)
         if agent_id is not None:
             pulumi.set(__self__, "agent_id", agent_id)
         if call_metadata is not None:
@@ -70,10 +79,28 @@ class ConversationArgs:
             pulumi.set(__self__, "obfuscated_user_id", obfuscated_user_id)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if quality_metadata is not None:
+            pulumi.set(__self__, "quality_metadata", quality_metadata)
+        if redaction_config is not None:
+            pulumi.set(__self__, "redaction_config", redaction_config)
+        if speech_config is not None:
+            pulumi.set(__self__, "speech_config", speech_config)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[str]:
+        """
+        The parent resource of the conversation.
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[str]):
+        pulumi.set(self, "parent", value)
 
     @property
     @pulumi.getter(name="agentId")
@@ -103,7 +130,7 @@ class ConversationArgs:
     @pulumi.getter(name="conversationId")
     def conversation_id(self) -> Optional[pulumi.Input[str]]:
         """
-        A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
+        Optional. A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
         """
         return pulumi.get(self, "conversation_id")
 
@@ -214,6 +241,42 @@ class ConversationArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="qualityMetadata")
+    def quality_metadata(self) -> Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs']]:
+        """
+        Conversation metadata related to quality management.
+        """
+        return pulumi.get(self, "quality_metadata")
+
+    @quality_metadata.setter
+    def quality_metadata(self, value: Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs']]):
+        pulumi.set(self, "quality_metadata", value)
+
+    @property
+    @pulumi.getter(name="redactionConfig")
+    def redaction_config(self) -> Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1RedactionConfigArgs']]:
+        """
+        Optional. DLP settings for transcript redaction. Will default to the config specified in Settings.
+        """
+        return pulumi.get(self, "redaction_config")
+
+    @redaction_config.setter
+    def redaction_config(self, value: Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1RedactionConfigArgs']]):
+        pulumi.set(self, "redaction_config", value)
+
+    @property
+    @pulumi.getter(name="speechConfig")
+    def speech_config(self) -> Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1SpeechConfigArgs']]:
+        """
+        Optional. Speech-to-Text configuration. Will default to the config specified in Settings.
+        """
+        return pulumi.get(self, "speech_config")
+
+    @speech_config.setter
+    def speech_config(self, value: Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1SpeechConfigArgs']]):
+        pulumi.set(self, "speech_config", value)
+
+    @property
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -254,18 +317,22 @@ class Conversation(pulumi.CustomResource):
                  medium: Optional[pulumi.Input['ConversationMedium']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  obfuscated_user_id: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 quality_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs']]] = None,
+                 redaction_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1RedactionConfigArgs']]] = None,
+                 speech_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1SpeechConfigArgs']]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a conversation.
+        Create a longrunning conversation upload operation. This method differs from CreateConversation by allowing audio transcription and optional DLP redaction.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] agent_id: An opaque, user-specified string representing the human agent who handled the conversation.
         :param pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs']] call_metadata: Call-specific metadata.
-        :param pulumi.Input[str] conversation_id: A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
+        :param pulumi.Input[str] conversation_id: Optional. A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
         :param pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs']] data_source: The source of the audio and transcription for the conversation.
         :param pulumi.Input[str] expire_time: The time at which this conversation should expire. After this time, the conversation data and any associated analyses will be deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map for the user to specify any custom fields. A maximum of 20 labels per conversation is allowed, with a maximum of 256 characters per entry.
@@ -273,6 +340,10 @@ class Conversation(pulumi.CustomResource):
         :param pulumi.Input['ConversationMedium'] medium: Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
         :param pulumi.Input[str] name: Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation}
         :param pulumi.Input[str] obfuscated_user_id: Obfuscated user ID which the customer sent to us.
+        :param pulumi.Input[str] parent: The parent resource of the conversation.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs']] quality_metadata: Conversation metadata related to quality management.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1RedactionConfigArgs']] redaction_config: Optional. DLP settings for transcript redaction. Will default to the config specified in Settings.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1SpeechConfigArgs']] speech_config: Optional. Speech-to-Text configuration. Will default to the config specified in Settings.
         :param pulumi.Input[str] start_time: The time at which the conversation started.
         :param pulumi.Input[str] ttl: Input only. The TTL for this resource. If specified, then this TTL will be used to calculate the expire time.
         """
@@ -280,10 +351,10 @@ class Conversation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[ConversationArgs] = None,
+                 args: ConversationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a conversation.
+        Create a longrunning conversation upload operation. This method differs from CreateConversation by allowing audio transcription and optional DLP redaction.
 
         :param str resource_name: The name of the resource.
         :param ConversationArgs args: The arguments to use to populate this resource's properties.
@@ -311,7 +382,11 @@ class Conversation(pulumi.CustomResource):
                  medium: Optional[pulumi.Input['ConversationMedium']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  obfuscated_user_id: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 quality_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs']]] = None,
+                 redaction_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1RedactionConfigArgs']]] = None,
+                 speech_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1SpeechConfigArgs']]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -334,7 +409,13 @@ class Conversation(pulumi.CustomResource):
             __props__.__dict__["medium"] = medium
             __props__.__dict__["name"] = name
             __props__.__dict__["obfuscated_user_id"] = obfuscated_user_id
+            if parent is None and not opts.urn:
+                raise TypeError("Missing required property 'parent'")
+            __props__.__dict__["parent"] = parent
             __props__.__dict__["project"] = project
+            __props__.__dict__["quality_metadata"] = quality_metadata
+            __props__.__dict__["redaction_config"] = redaction_config
+            __props__.__dict__["speech_config"] = speech_config
             __props__.__dict__["start_time"] = start_time
             __props__.__dict__["ttl"] = ttl
             __props__.__dict__["create_time"] = None
@@ -372,7 +453,6 @@ class Conversation(pulumi.CustomResource):
 
         __props__.__dict__["agent_id"] = None
         __props__.__dict__["call_metadata"] = None
-        __props__.__dict__["conversation_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["data_source"] = None
         __props__.__dict__["dialogflow_intents"] = None
@@ -387,6 +467,7 @@ class Conversation(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["obfuscated_user_id"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["quality_metadata"] = None
         __props__.__dict__["runtime_annotations"] = None
         __props__.__dict__["start_time"] = None
         __props__.__dict__["transcript"] = None
@@ -410,14 +491,6 @@ class Conversation(pulumi.CustomResource):
         Call-specific metadata.
         """
         return pulumi.get(self, "call_metadata")
-
-    @property
-    @pulumi.getter(name="conversationId")
-    def conversation_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
-        """
-        return pulumi.get(self, "conversation_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -524,6 +597,14 @@ class Conversation(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="qualityMetadata")
+    def quality_metadata(self) -> pulumi.Output['outputs.GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponse']:
+        """
+        Conversation metadata related to quality management.
+        """
+        return pulumi.get(self, "quality_metadata")
 
     @property
     @pulumi.getter(name="runtimeAnnotations")

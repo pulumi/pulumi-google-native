@@ -38,7 +38,7 @@ export const ManagementServerType = {
 } as const;
 
 /**
- * Required. The type of the ManagementServer resource.
+ * Optional. The type of the ManagementServer resource.
  */
 export type ManagementServerType = (typeof ManagementServerType)[keyof typeof ManagementServerType];
 

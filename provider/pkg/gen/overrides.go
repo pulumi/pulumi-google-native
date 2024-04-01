@@ -79,6 +79,12 @@ var resourceNameByPathOverrides = map[string]string{
 	"apigeeregistry_v1.json:v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/deployments/{deploymentsId}/artifacts": "DeploymentArtifact",
 	"apigeeregistry_v1.json:v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions/{versionsId}/artifacts":       "VersionArtifact",
 
+	// Discovery Engine.
+	"discoveryengine_v1alpha.json:v1alpha/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/conversations": "DataStoreConversation",
+	"discoveryengine_v1alpha.json:v1alpha/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/conversations":       "EngineConversation",
+	"discoveryengine_v1beta.json:v1beta/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/conversations":   "DataStoreConversation",
+	"discoveryengine_v1beta.json:v1beta/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/conversations":         "EngineConversation",
+
 	// DLP.
 	"dlp_v2.json:v2/organizations/{organizationsId}/deidentifyTemplates":                         "",
 	"dlp_v2.json:v2/organizations/{organizationsId}/locations/{locationsId}/deidentifyTemplates": "OrganizationsDeidentifyTemplate",
@@ -163,6 +169,8 @@ var resourceNameByPathOverrides = map[string]string{
 	"securitycenter_v1.json:v1/organizations/{organizationsId}/securityHealthAnalyticsSettings/customModules": "OrganizationSecurityHealthAnalyticsSettingCustomModule",
 	"securitycenter_v1.json:v1/organizations/{organizationsId}/eventThreatDetectionSettings/customModules":    "OrganizationEventThreatDetectionSettingCustomModule",
 	"securitycenter_v1.json:v1/projects/{projectsId}/securityHealthAnalyticsSettings/customModules":           "ProjectSecurityHealthAnalyticsSettingCustomModule",
+	"securitycenter_v1.json:v1/folders/{foldersId}/eventThreatDetectionSettings/customModules":                "FolderEventThreatDetectionSettingCustomModule",
+	"securitycenter_v1.json:v1/projects/{projectsId}/eventThreatDetectionSettings/customModules":              "ProjectEventThreatDetectionSettingCustomModule",
 
 	// Storage.
 	"storage_v1.json:b/{bucket}/o":              "BucketObject",

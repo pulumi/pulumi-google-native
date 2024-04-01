@@ -51,6 +51,8 @@ type LookupConnectionProfileResult struct {
 	PostgresqlProfile PostgresqlProfileResponse `pulumi:"postgresqlProfile"`
 	// Private connectivity.
 	PrivateConnectivity PrivateConnectivityResponse `pulumi:"privateConnectivity"`
+	// SQLServer Connection Profile configuration.
+	SqlServerProfile SqlServerProfileResponse `pulumi:"sqlServerProfile"`
 	// Static Service IP connectivity.
 	StaticServiceIpConnectivity StaticServiceIpConnectivityResponse `pulumi:"staticServiceIpConnectivity"`
 	// The update time of the resource.
@@ -149,6 +151,11 @@ func (o LookupConnectionProfileResultOutput) PostgresqlProfile() PostgresqlProfi
 // Private connectivity.
 func (o LookupConnectionProfileResultOutput) PrivateConnectivity() PrivateConnectivityResponseOutput {
 	return o.ApplyT(func(v LookupConnectionProfileResult) PrivateConnectivityResponse { return v.PrivateConnectivity }).(PrivateConnectivityResponseOutput)
+}
+
+// SQLServer Connection Profile configuration.
+func (o LookupConnectionProfileResultOutput) SqlServerProfile() SqlServerProfileResponseOutput {
+	return o.ApplyT(func(v LookupConnectionProfileResult) SqlServerProfileResponse { return v.SqlServerProfile }).(SqlServerProfileResponseOutput)
 }
 
 // Static Service IP connectivity.

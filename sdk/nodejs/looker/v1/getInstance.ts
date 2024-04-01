@@ -65,6 +65,10 @@ export interface GetInstanceResult {
      */
     readonly lastDenyMaintenancePeriod: outputs.looker.v1.DenyMaintenancePeriodResponse;
     /**
+     * Optional. Linked Google Cloud Project Number for Looker Studio Pro.
+     */
+    readonly linkedLspProjectNumber: string;
+    /**
      * Looker instance URI which can be used to access the Looker Instance UI.
      */
     readonly lookerUri: string;

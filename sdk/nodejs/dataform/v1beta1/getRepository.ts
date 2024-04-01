@@ -28,6 +28,10 @@ export interface GetRepositoryArgs {
 
 export interface GetRepositoryResult {
     /**
+     * The timestamp of when the repository was created.
+     */
+    readonly createTime: string;
+    /**
      * Optional. The repository's user-friendly name.
      */
     readonly displayName: string;
@@ -40,7 +44,7 @@ export interface GetRepositoryResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * The repository's name.
+     * Identifier. The repository's name.
      */
     readonly name: string;
     /**

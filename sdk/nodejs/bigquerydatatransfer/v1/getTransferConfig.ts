@@ -44,7 +44,7 @@ export interface GetTransferConfigResult {
      */
     readonly destinationDatasetId: string;
     /**
-     * Is this config disabled. When set to true, no runs are scheduled for a given transfer.
+     * Is this config disabled. When set to true, no runs will be scheduled for this transfer config.
      */
     readonly disabled: boolean;
     /**
@@ -60,7 +60,7 @@ export interface GetTransferConfigResult {
      */
     readonly encryptionConfiguration: outputs.bigquerydatatransfer.v1.EncryptionConfigurationResponse;
     /**
-     * The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+     * Identifier. The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
      */
     readonly name: string;
     /**
@@ -68,7 +68,7 @@ export interface GetTransferConfigResult {
      */
     readonly nextRunTime: string;
     /**
-     * Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
+     * Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project_id}/topics/{topic_id}`
      */
     readonly notificationPubsubTopic: string;
     /**

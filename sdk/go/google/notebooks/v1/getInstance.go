@@ -65,7 +65,7 @@ type LookupInstanceResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
 	MachineType string `pulumi:"machineType"`
-	// Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
+	// Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=BUCKET"`.
 	Metadata map[string]string `pulumi:"metadata"`
 	// Bool indicating whether this notebook has been migrated to a Workbench Instance
 	Migrated bool `pulumi:"migrated"`
@@ -236,7 +236,7 @@ func (o LookupInstanceResultOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.MachineType }).(pulumi.StringOutput)
 }
 
-// Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=“BUCKET”"`.
+// Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=BUCKET"`.
 func (o LookupInstanceResultOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }

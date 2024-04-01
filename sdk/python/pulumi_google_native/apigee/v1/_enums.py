@@ -120,11 +120,11 @@ class EnvironmentType(str, Enum):
     """
     BASE = "BASE"
     """
-    Base environment has limited capacity and capabilities and are usually used when you are getting started with Apigee or while experimenting. Refer to Apigee's public documentation for more details.
+    This is the default type. Base environment has limited capacity and capabilities and are usually used when you are getting started with Apigee or while experimenting. Refer to Apigee's public documentation for more details.
     """
     INTERMEDIATE = "INTERMEDIATE"
     """
-    This is the default type and it supports API management features and higher capacity than Base environment. Refer to Apigee's public documentation for more details.
+    Intermediate environment supports API management features and higher capacity than Base environment. Refer to Apigee's public documentation for more details.
     """
     COMPREHENSIVE = "COMPREHENSIVE"
     """

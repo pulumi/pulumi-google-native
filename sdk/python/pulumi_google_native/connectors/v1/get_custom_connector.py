@@ -18,7 +18,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetCustomConnectorResult:
-    def __init__(__self__, create_time=None, custom_connector_type=None, description=None, display_name=None, labels=None, logo=None, name=None, update_time=None):
+    def __init__(__self__, active_connector_versions=None, create_time=None, custom_connector_type=None, description=None, display_name=None, labels=None, logo=None, name=None, update_time=None):
+        if active_connector_versions and not isinstance(active_connector_versions, list):
+            raise TypeError("Expected argument 'active_connector_versions' to be a list")
+        pulumi.set(__self__, "active_connector_versions", active_connector_versions)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -43,6 +46,14 @@ class GetCustomConnectorResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="activeConnectorVersions")
+    def active_connector_versions(self) -> Sequence[str]:
+        """
+        Optional. Active connector versions.
+        """
+        return pulumi.get(self, "active_connector_versions")
 
     @property
     @pulumi.getter(name="createTime")
@@ -115,6 +126,7 @@ class AwaitableGetCustomConnectorResult(GetCustomConnectorResult):
         if False:
             yield self
         return GetCustomConnectorResult(
+            active_connector_versions=self.active_connector_versions,
             create_time=self.create_time,
             custom_connector_type=self.custom_connector_type,
             description=self.description,
@@ -138,6 +150,7 @@ def get_custom_connector(custom_connector_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:connectors/v1:getCustomConnector', __args__, opts=opts, typ=GetCustomConnectorResult).value
 
     return AwaitableGetCustomConnectorResult(
+        active_connector_versions=pulumi.get(__ret__, 'active_connector_versions'),
         create_time=pulumi.get(__ret__, 'create_time'),
         custom_connector_type=pulumi.get(__ret__, 'custom_connector_type'),
         description=pulumi.get(__ret__, 'description'),

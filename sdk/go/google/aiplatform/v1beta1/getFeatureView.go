@@ -38,15 +38,23 @@ type LookupFeatureViewResult struct {
 	Etag string `pulumi:"etag"`
 	// Optional. Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
 	FeatureRegistrySource GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponse `pulumi:"featureRegistrySource"`
+	// Optional. Configuration for index preparation for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+	IndexConfig GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponse `pulumi:"indexConfig"`
 	// Optional. The labels with user-defined metadata to organize your FeatureViews. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
 	Labels map[string]string `pulumi:"labels"`
-	// Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+	// Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
 	Name string `pulumi:"name"`
+	// A Service Account unique to this FeatureView. The role bigquery.dataViewer should be granted to this service account to allow Vertex AI Feature Store to sync data to the online store.
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+	// Optional. Service agent type used during data sync. By default, the Vertex AI Service Agent is used. When using an IAM Policy to isolate this FeatureView within a project, a separate service account should be provisioned by setting this field to `SERVICE_AGENT_TYPE_FEATURE_VIEW`. This will generate a separate service account to access the BigQuery source table.
+	ServiceAgentType string `pulumi:"serviceAgentType"`
 	// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
 	SyncConfig GoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponse `pulumi:"syncConfig"`
 	// Timestamp when this FeatureView was last updated.
 	UpdateTime string `pulumi:"updateTime"`
-	// Optional. Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+	// Optional. Deprecated: please use FeatureView.index_config instead.
+	//
+	// Deprecated: Optional. Deprecated: please use FeatureView.index_config instead.
 	VectorSearchConfig GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponse `pulumi:"vectorSearchConfig"`
 }
 
@@ -112,14 +120,31 @@ func (o LookupFeatureViewResultOutput) FeatureRegistrySource() GoogleCloudAiplat
 	}).(GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponseOutput)
 }
 
+// Optional. Configuration for index preparation for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+func (o LookupFeatureViewResultOutput) IndexConfig() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponseOutput {
+	return o.ApplyT(func(v LookupFeatureViewResult) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponse {
+		return v.IndexConfig
+	}).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponseOutput)
+}
+
 // Optional. The labels with user-defined metadata to organize your FeatureViews. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
 func (o LookupFeatureViewResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupFeatureViewResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+// Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
 func (o LookupFeatureViewResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureViewResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A Service Account unique to this FeatureView. The role bigquery.dataViewer should be granted to this service account to allow Vertex AI Feature Store to sync data to the online store.
+func (o LookupFeatureViewResultOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFeatureViewResult) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+// Optional. Service agent type used during data sync. By default, the Vertex AI Service Agent is used. When using an IAM Policy to isolate this FeatureView within a project, a separate service account should be provisioned by setting this field to `SERVICE_AGENT_TYPE_FEATURE_VIEW`. This will generate a separate service account to access the BigQuery source table.
+func (o LookupFeatureViewResultOutput) ServiceAgentType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFeatureViewResult) string { return v.ServiceAgentType }).(pulumi.StringOutput)
 }
 
 // Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
@@ -134,7 +159,9 @@ func (o LookupFeatureViewResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureViewResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// Optional. Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+// Optional. Deprecated: please use FeatureView.index_config instead.
+//
+// Deprecated: Optional. Deprecated: please use FeatureView.index_config instead.
 func (o LookupFeatureViewResultOutput) VectorSearchConfig() GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponseOutput {
 	return o.ApplyT(func(v LookupFeatureViewResult) GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponse {
 		return v.VectorSearchConfig

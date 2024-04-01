@@ -60,6 +60,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does not track whether network policy is enabled for the nodes.
         /// </summary>
         public readonly Outputs.NetworkPolicyConfigResponse NetworkPolicyConfig;
+        /// <summary>
+        /// Optional. Configuration for the StatefulHA add-on.
+        /// </summary>
+        public readonly Outputs.StatefulHAConfigResponse StatefulHaConfig;
 
         [OutputConstructor]
         private AddonsConfigResponse(
@@ -83,7 +87,9 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             Outputs.KubernetesDashboardResponse kubernetesDashboard,
 
-            Outputs.NetworkPolicyConfigResponse networkPolicyConfig)
+            Outputs.NetworkPolicyConfigResponse networkPolicyConfig,
+
+            Outputs.StatefulHAConfigResponse statefulHaConfig)
         {
             CloudRunConfig = cloudRunConfig;
             ConfigConnectorConfig = configConnectorConfig;
@@ -96,6 +102,7 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
             HttpLoadBalancing = httpLoadBalancing;
             KubernetesDashboard = kubernetesDashboard;
             NetworkPolicyConfig = networkPolicyConfig;
+            StatefulHaConfig = statefulHaConfig;
         }
     }
 }

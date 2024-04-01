@@ -72,6 +72,10 @@ export interface GetConnectionProfileResult {
      */
     readonly privateConnectivity: outputs.datastream.v1.PrivateConnectivityResponse;
     /**
+     * SQLServer Connection Profile configuration.
+     */
+    readonly sqlServerProfile: outputs.datastream.v1.SqlServerProfileResponse;
+    /**
      * Static Service IP connectivity.
      */
     readonly staticServiceIpConnectivity: outputs.datastream.v1.StaticServiceIpConnectivityResponse;

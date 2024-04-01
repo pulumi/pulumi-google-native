@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.DLP.V2
     public static class GetInspectTemplate
     {
         /// <summary>
-        /// Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        /// Gets an InspectTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
         /// </summary>
         public static Task<GetInspectTemplateResult> InvokeAsync(GetInspectTemplateArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInspectTemplateResult>("google-native:dlp/v2:getInspectTemplate", args ?? new GetInspectTemplateArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        /// Gets an InspectTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
         /// </summary>
         public static Output<GetInspectTemplateResult> Invoke(GetInspectTemplateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInspectTemplateResult>("google-native:dlp/v2:getInspectTemplate", args ?? new GetInspectTemplateInvokeArgs(), options.WithDefaults());

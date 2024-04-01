@@ -38,7 +38,9 @@ export class InstanceGroupManagerResizeRequest extends pulumi.CustomResource {
     }
 
     /**
-     * The count of instances to create as part of this resize request.
+     * This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
+     *
+     * @deprecated This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
      */
     public readonly count!: pulumi.Output<number>;
     /**
@@ -60,7 +62,9 @@ export class InstanceGroupManagerResizeRequest extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
+     * This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
+     *
+     * @deprecated This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
      */
     public readonly queuingPolicy!: pulumi.Output<outputs.compute.alpha.QueuingPolicyResponse>;
     /**
@@ -153,7 +157,9 @@ export class InstanceGroupManagerResizeRequest extends pulumi.CustomResource {
  */
 export interface InstanceGroupManagerResizeRequestArgs {
     /**
-     * The count of instances to create as part of this resize request.
+     * This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
+     *
+     * @deprecated This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
      */
     count?: pulumi.Input<number>;
     /**
@@ -167,7 +173,9 @@ export interface InstanceGroupManagerResizeRequestArgs {
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
+     * This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
+     *
+     * @deprecated This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
      */
     queuingPolicy?: pulumi.Input<inputs.compute.alpha.QueuingPolicyArgs>;
     /**

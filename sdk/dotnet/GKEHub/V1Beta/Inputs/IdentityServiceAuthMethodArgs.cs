@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Inputs
         public Input<Inputs.IdentityServiceGoogleConfigArgs>? GoogleConfig { get; set; }
 
         /// <summary>
+        /// LDAP specific configuration.
+        /// </summary>
+        [Input("ldapConfig")]
+        public Input<Inputs.IdentityServiceLdapConfigArgs>? LdapConfig { get; set; }
+
+        /// <summary>
         /// Identifier for auth config.
         /// </summary>
         [Input("name")]
@@ -44,6 +50,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Inputs
         /// </summary>
         [Input("proxy")]
         public Input<string>? Proxy { get; set; }
+
+        /// <summary>
+        /// SAML specific configuration.
+        /// </summary>
+        [Input("samlConfig")]
+        public Input<Inputs.IdentityServiceSamlConfigArgs>? SamlConfig { get; set; }
 
         public IdentityServiceAuthMethodArgs()
         {

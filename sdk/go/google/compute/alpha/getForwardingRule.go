@@ -31,20 +31,24 @@ type LookupForwardingRuleArgs struct {
 type LookupForwardingRuleResult struct {
 	// The ports, portRange, and allPorts fields are mutually exclusive. Only packets addressed to ports in the specified range will be forwarded to the backends configured with this forwarding rule. The allPorts field has the following limitations: - It requires that the forwarding rule IPProtocol be TCP, UDP, SCTP, or L3_DEFAULT. - It's applicable only to the following products: internal passthrough Network Load Balancers, backend service-based external passthrough Network Load Balancers, and internal and external protocol forwarding. - Set this field to true to allow packets addressed to any port or packets lacking destination port information (for example, UDP fragments after the first fragment) to be forwarded to the backends configured with this forwarding rule. The L3_DEFAULT protocol requires allPorts be set to true.
 	AllPorts bool `pulumi:"allPorts"`
-	// This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. If set to true, clients can access the Internal TCP/UDP Load Balancer, Internal HTTP(S) and TCP Proxy Load Balancer from all regions. If false, only allows access from the local region the load balancer is located at. Note that for INTERNAL_MANAGED forwarding rules, this field cannot be changed after the forwarding rule is created.
+	// If set to true, clients can access the internal passthrough Network Load Balancers, the regional internal Application Load Balancer, and the regional internal proxy Network Load Balancer from all regions. If false, only allows access from the local region the load balancer is located at. Note that for INTERNAL_MANAGED forwarding rules, this field cannot be changed after the forwarding rule is created.
 	AllowGlobalAccess bool `pulumi:"allowGlobalAccess"`
 	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
 	AllowPscGlobalAccess bool `pulumi:"allowPscGlobalAccess"`
 	// This is used in PSC consumer ForwardingRule to control whether the producer is allowed to inject packets into the consumer's network. If set to true, the target service attachment must have tunneling enabled and TunnelingConfig.RoutingMode set to PACKET_INJECTION Non-PSC forwarding rules should not use this field.
 	AllowPscPacketInjection bool `pulumi:"allowPscPacketInjection"`
-	// Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
+	// Identifies the backend service to which the forwarding rule sends traffic. Required for internal and external passthrough Network Load Balancers; must be omitted for all other load balancer types.
 	BackendService string `pulumi:"backendService"`
-	// The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
+	// The URL for the corresponding base forwarding rule. By base forwarding rule, we mean the forwarding rule that has the same IP address, protocol, and port settings with the current forwarding rule, but without sourceIPRanges specified. Always empty if the current forwarding rule does not have sourceIPRanges specified.
 	BaseForwardingRule string `pulumi:"baseForwardingRule"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
+	// Specifies the canary migration state for the backend buckets attached to this forwarding rule. Possible values are PREPARE, TEST, and FINALIZE. To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to PREPARE. The state must be changed to FINALIZE before the loadBalancingScheme can be changed to EXTERNAL_MANAGED. Optionally, the TEST state can be used to migrate traffic to backend buckets attached to this forwarding rule by percentage using externalManagedBackendBucketMigrationTestingPercentage. Rolling back a migration requires the states to be set in reverse order. So changing the scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to FINALIZE at the same time. Optionally, the TEST state can be used to migrate some traffic back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+	ExternalManagedBackendBucketMigrationState string `pulumi:"externalManagedBackendBucketMigrationState"`
+	// Determines the fraction of requests to backend buckets that should be processed by the Global external Application Load Balancer. The value of this field must be in the range [0, 100]. This value is only used if the loadBalancingScheme is set to EXTERNAL (when using the Classic ALB).
+	ExternalManagedBackendBucketMigrationTestingPercentage float64 `pulumi:"externalManagedBackendBucketMigrationTestingPercentage"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ForwardingRule. Include the fingerprint in patch request to ensure that you do not overwrite changes that were applied from another concurrent request. To see the latest fingerprint, make a get() request to retrieve a ForwardingRule.
 	Fingerprint string `pulumi:"fingerprint"`
 	// IP address for which this forwarding rule accepts traffic. When a client sends traffic to this IP address, the forwarding rule directs the traffic to the referenced target or backendService. While creating a forwarding rule, specifying an IPAddress is required under the following circumstances: - When the target is set to targetGrpcProxy and validateForProxyless is set to true, the IPAddress should be set to 0.0.0.0. - When the target is a Private Service Connect Google APIs bundle, you must specify an IPAddress. Otherwise, you can optionally specify an IP address that references an existing static (reserved) IP address resource. When omitted, Google Cloud assigns an ephemeral IP address. Use one of the following formats to specify an IP address while creating a forwarding rule: * IP address number, as in `100.1.2.3` * IPv6 address range, as in `2600:1234::/96` * Full resource URL, as in https://www.googleapis.com/compute/v1/projects/ project_id/regions/region/addresses/address-name * Partial URL or by name, as in: - projects/project_id/regions/region/addresses/address-name - regions/region/addresses/address-name - global/addresses/address-name - address-name The forwarding rule's target or backendService, and in most cases, also the loadBalancingScheme, determine the type of IP address that you can use. For detailed information, see [IP address specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications). When reading an IPAddress, the API always returns the IP address number.
@@ -57,7 +61,7 @@ type LookupForwardingRuleResult struct {
 	IpVersion string `pulumi:"ipVersion"`
 	// Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent mirroring loops, instances behind this load balancer will not have their traffic mirrored even if a PacketMirroring rule applies to them. This can only be set to true for load balancers that have their loadBalancingScheme set to INTERNAL.
 	IsMirroringCollector bool `pulumi:"isMirroringCollector"`
-	// Type of the resource. Always compute#forwardingRule for Forwarding Rule resources.
+	// Type of the resource. Always compute#forwardingRule for forwarding rule resources.
 	Kind string `pulumi:"kind"`
 	// A fingerprint for the labels being applied to this resource, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a ForwardingRule.
 	LabelFingerprint string `pulumi:"labelFingerprint"`
@@ -69,7 +73,7 @@ type LookupForwardingRuleResult struct {
 	MetadataFilters []MetadataFilterResponse `pulumi:"metadataFilters"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. For Private Service Connect forwarding rules that forward traffic to Google APIs, the forwarding rule name must be a 1-20 characters string with lowercase letters and numbers and must start with a letter.
 	Name string `pulumi:"name"`
-	// This field is not used for global external load balancing. For Internal TCP/UDP Load Balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If the subnetwork is specified, the network of the subnetwork will be used. If neither subnetwork nor this field is specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
+	// This field is not used for global external load balancing. For internal passthrough Network Load Balancers, this field identifies the network that the load balanced IP should belong to for this forwarding rule. If the subnetwork is specified, the network of the subnetwork will be used. If neither subnetwork nor this field is specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
 	Network string `pulumi:"network"`
 	// This signifies the networking tier used for configuring this load balancer and can only take the following values: PREMIUM, STANDARD. For regional ForwardingRule, the valid values are PREMIUM and STANDARD. For GlobalForwardingRule, the valid value is PREMIUM. If this field is not specified, it is assumed to be PREMIUM. If IPAddress is specified, this value must be equal to the networkTier of the Address.
 	NetworkTier string `pulumi:"networkTier"`
@@ -79,7 +83,7 @@ type LookupForwardingRuleResult struct {
 	PortRange string `pulumi:"portRange"`
 	// The ports, portRange, and allPorts fields are mutually exclusive. Only packets addressed to ports in the specified range will be forwarded to the backends configured with this forwarding rule. The ports field has the following limitations: - It requires that the forwarding rule IPProtocol be TCP, UDP, or SCTP, and - It's applicable only to the following products: internal passthrough Network Load Balancers, backend service-based external passthrough Network Load Balancers, and internal protocol forwarding. - You can specify a list of up to five ports by number, separated by commas. The ports can be contiguous or discontiguous. For external forwarding rules, two or more forwarding rules cannot use the same [IPAddress, IPProtocol] pair if they share at least one port number. For internal forwarding rules within the same VPC network, two or more forwarding rules cannot use the same [IPAddress, IPProtocol] pair if they share at least one port number. @pattern: \\d+(?:-\\d+)?
 	Ports []string `pulumi:"ports"`
-	// The PSC connection id of the PSC Forwarding Rule.
+	// The PSC connection id of the PSC forwarding rule.
 	PscConnectionId     string `pulumi:"pscConnectionId"`
 	PscConnectionStatus string `pulumi:"pscConnectionStatus"`
 	// URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
@@ -90,13 +94,13 @@ type LookupForwardingRuleResult struct {
 	SelfLinkWithId string `pulumi:"selfLinkWithId"`
 	// Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource.
 	ServiceDirectoryRegistrations []ForwardingRuleServiceDirectoryRegistrationResponse `pulumi:"serviceDirectoryRegistrations"`
-	// An optional prefix to the service name for this Forwarding Rule. If specified, the prefix is the first label of the fully qualified service name. The label must be 1-63 characters long, and comply with RFC1035. Specifically, the label must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. This field is only used for internal load balancing.
+	// An optional prefix to the service name for this forwarding rule. If specified, the prefix is the first label of the fully qualified service name. The label must be 1-63 characters long, and comply with RFC1035. Specifically, the label must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. This field is only used for internal load balancing.
 	ServiceLabel string `pulumi:"serviceLabel"`
-	// The internal fully qualified service name for this Forwarding Rule. This field is only used for internal load balancing.
+	// The internal fully qualified service name for this forwarding rule. This field is only used for internal load balancing.
 	ServiceName string `pulumi:"serviceName"`
-	// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each source_ip_range entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+	// If not empty, this forwarding rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a forwarding rule can only have up to 64 source IP ranges, and this field can only be used with a regional forwarding rule whose scheme is EXTERNAL. Each source_ip_range entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
 	SourceIpRanges []string `pulumi:"sourceIpRanges"`
-	// This field identifies the subnetwork that the load balanced IP should belong to for this Forwarding Rule, used in internal load balancing and network load balancing with IPv6. If the network specified is in auto subnet mode, this field is optional. However, a subnetwork must be specified if the network is in custom subnet mode or when creating external forwarding rule with IPv6.
+	// This field identifies the subnetwork that the load balanced IP should belong to for this forwarding rule, used with internal load balancers and external passthrough Network Load Balancers with IPv6. If the network specified is in auto subnet mode, this field is optional. However, a subnetwork must be specified if the network is in custom subnet mode or when creating external forwarding rule with IPv6.
 	Subnetwork string `pulumi:"subnetwork"`
 	// The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must be in the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing resource. The forwarded traffic must be of a type appropriate to the target object. - For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications). - For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle: - vpc-sc - APIs that support VPC Service Controls. - all-apis - All supported Google APIs. - For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment. The target is not mutable once set as a service attachment.
 	Target string `pulumi:"target"`
@@ -144,7 +148,7 @@ func (o LookupForwardingRuleResultOutput) AllPorts() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) bool { return v.AllPorts }).(pulumi.BoolOutput)
 }
 
-// This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. If set to true, clients can access the Internal TCP/UDP Load Balancer, Internal HTTP(S) and TCP Proxy Load Balancer from all regions. If false, only allows access from the local region the load balancer is located at. Note that for INTERNAL_MANAGED forwarding rules, this field cannot be changed after the forwarding rule is created.
+// If set to true, clients can access the internal passthrough Network Load Balancers, the regional internal Application Load Balancer, and the regional internal proxy Network Load Balancer from all regions. If false, only allows access from the local region the load balancer is located at. Note that for INTERNAL_MANAGED forwarding rules, this field cannot be changed after the forwarding rule is created.
 func (o LookupForwardingRuleResultOutput) AllowGlobalAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) bool { return v.AllowGlobalAccess }).(pulumi.BoolOutput)
 }
@@ -159,12 +163,12 @@ func (o LookupForwardingRuleResultOutput) AllowPscPacketInjection() pulumi.BoolO
 	return o.ApplyT(func(v LookupForwardingRuleResult) bool { return v.AllowPscPacketInjection }).(pulumi.BoolOutput)
 }
 
-// Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
+// Identifies the backend service to which the forwarding rule sends traffic. Required for internal and external passthrough Network Load Balancers; must be omitted for all other load balancer types.
 func (o LookupForwardingRuleResultOutput) BackendService() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.BackendService }).(pulumi.StringOutput)
 }
 
-// The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
+// The URL for the corresponding base forwarding rule. By base forwarding rule, we mean the forwarding rule that has the same IP address, protocol, and port settings with the current forwarding rule, but without sourceIPRanges specified. Always empty if the current forwarding rule does not have sourceIPRanges specified.
 func (o LookupForwardingRuleResultOutput) BaseForwardingRule() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.BaseForwardingRule }).(pulumi.StringOutput)
 }
@@ -177,6 +181,18 @@ func (o LookupForwardingRuleResultOutput) CreationTimestamp() pulumi.StringOutpu
 // An optional description of this resource. Provide this property when you create the resource.
 func (o LookupForwardingRuleResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Specifies the canary migration state for the backend buckets attached to this forwarding rule. Possible values are PREPARE, TEST, and FINALIZE. To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to PREPARE. The state must be changed to FINALIZE before the loadBalancingScheme can be changed to EXTERNAL_MANAGED. Optionally, the TEST state can be used to migrate traffic to backend buckets attached to this forwarding rule by percentage using externalManagedBackendBucketMigrationTestingPercentage. Rolling back a migration requires the states to be set in reverse order. So changing the scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to FINALIZE at the same time. Optionally, the TEST state can be used to migrate some traffic back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+func (o LookupForwardingRuleResultOutput) ExternalManagedBackendBucketMigrationState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.ExternalManagedBackendBucketMigrationState }).(pulumi.StringOutput)
+}
+
+// Determines the fraction of requests to backend buckets that should be processed by the Global external Application Load Balancer. The value of this field must be in the range [0, 100]. This value is only used if the loadBalancingScheme is set to EXTERNAL (when using the Classic ALB).
+func (o LookupForwardingRuleResultOutput) ExternalManagedBackendBucketMigrationTestingPercentage() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupForwardingRuleResult) float64 {
+		return v.ExternalManagedBackendBucketMigrationTestingPercentage
+	}).(pulumi.Float64Output)
 }
 
 // Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ForwardingRule. Include the fingerprint in patch request to ensure that you do not overwrite changes that were applied from another concurrent request. To see the latest fingerprint, make a get() request to retrieve a ForwardingRule.
@@ -209,7 +225,7 @@ func (o LookupForwardingRuleResultOutput) IsMirroringCollector() pulumi.BoolOutp
 	return o.ApplyT(func(v LookupForwardingRuleResult) bool { return v.IsMirroringCollector }).(pulumi.BoolOutput)
 }
 
-// Type of the resource. Always compute#forwardingRule for Forwarding Rule resources.
+// Type of the resource. Always compute#forwardingRule for forwarding rule resources.
 func (o LookupForwardingRuleResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -239,7 +255,7 @@ func (o LookupForwardingRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// This field is not used for global external load balancing. For Internal TCP/UDP Load Balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If the subnetwork is specified, the network of the subnetwork will be used. If neither subnetwork nor this field is specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
+// This field is not used for global external load balancing. For internal passthrough Network Load Balancers, this field identifies the network that the load balanced IP should belong to for this forwarding rule. If the subnetwork is specified, the network of the subnetwork will be used. If neither subnetwork nor this field is specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
 func (o LookupForwardingRuleResultOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.Network }).(pulumi.StringOutput)
 }
@@ -264,7 +280,7 @@ func (o LookupForwardingRuleResultOutput) Ports() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) []string { return v.Ports }).(pulumi.StringArrayOutput)
 }
 
-// The PSC connection id of the PSC Forwarding Rule.
+// The PSC connection id of the PSC forwarding rule.
 func (o LookupForwardingRuleResultOutput) PscConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.PscConnectionId }).(pulumi.StringOutput)
 }
@@ -295,22 +311,22 @@ func (o LookupForwardingRuleResultOutput) ServiceDirectoryRegistrations() Forwar
 	}).(ForwardingRuleServiceDirectoryRegistrationResponseArrayOutput)
 }
 
-// An optional prefix to the service name for this Forwarding Rule. If specified, the prefix is the first label of the fully qualified service name. The label must be 1-63 characters long, and comply with RFC1035. Specifically, the label must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. This field is only used for internal load balancing.
+// An optional prefix to the service name for this forwarding rule. If specified, the prefix is the first label of the fully qualified service name. The label must be 1-63 characters long, and comply with RFC1035. Specifically, the label must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. This field is only used for internal load balancing.
 func (o LookupForwardingRuleResultOutput) ServiceLabel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.ServiceLabel }).(pulumi.StringOutput)
 }
 
-// The internal fully qualified service name for this Forwarding Rule. This field is only used for internal load balancing.
+// The internal fully qualified service name for this forwarding rule. This field is only used for internal load balancing.
 func (o LookupForwardingRuleResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each source_ip_range entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+// If not empty, this forwarding rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a forwarding rule can only have up to 64 source IP ranges, and this field can only be used with a regional forwarding rule whose scheme is EXTERNAL. Each source_ip_range entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
 func (o LookupForwardingRuleResultOutput) SourceIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) []string { return v.SourceIpRanges }).(pulumi.StringArrayOutput)
 }
 
-// This field identifies the subnetwork that the load balanced IP should belong to for this Forwarding Rule, used in internal load balancing and network load balancing with IPv6. If the network specified is in auto subnet mode, this field is optional. However, a subnetwork must be specified if the network is in custom subnet mode or when creating external forwarding rule with IPv6.
+// This field identifies the subnetwork that the load balanced IP should belong to for this forwarding rule, used with internal load balancers and external passthrough Network Load Balancers with IPv6. If the network specified is in auto subnet mode, this field is optional. However, a subnetwork must be specified if the network is in custom subnet mode or when creating external forwarding rule with IPv6.
 func (o LookupForwardingRuleResultOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.Subnetwork }).(pulumi.StringOutput)
 }

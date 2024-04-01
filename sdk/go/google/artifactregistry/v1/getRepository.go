@@ -37,6 +37,8 @@ type LookupRepositoryResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// The user-provided description of the repository.
 	Description string `pulumi:"description"`
+	// Optional. If this is true, aunspecified repo type will be treated as error. Is used for new repo types that don't have any specific fields. Right now is used by AOSS team when creating repos for customers.
+	DisallowUnspecifiedMode bool `pulumi:"disallowUnspecifiedMode"`
 	// Docker repository config contains repository level configuration for the repositories of docker type.
 	DockerConfig DockerRepositoryConfigResponse `pulumi:"dockerConfig"`
 	// Optional. The format of packages that are stored in the repository.
@@ -118,6 +120,11 @@ func (o LookupRepositoryResultOutput) CreateTime() pulumi.StringOutput {
 // The user-provided description of the repository.
 func (o LookupRepositoryResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. If this is true, aunspecified repo type will be treated as error. Is used for new repo types that don't have any specific fields. Right now is used by AOSS team when creating repos for customers.
+func (o LookupRepositoryResultOutput) DisallowUnspecifiedMode() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) bool { return v.DisallowUnspecifiedMode }).(pulumi.BoolOutput)
 }
 
 // Docker repository config contains repository level configuration for the repositories of docker type.

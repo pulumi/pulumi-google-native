@@ -21,7 +21,7 @@ type WorkflowTemplate struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
 	DagTimeout pulumi.StringOutput `pulumi:"dagTimeout"`
-	// Optional. Encryption settings for the encrypting customer core content.
+	// Optional. Encryption settings for encrypting workflow template job arguments.
 	EncryptionConfig GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponseOutput `pulumi:"encryptionConfig"`
 	// The Directed Acyclic Graph of Jobs to submit.
 	Jobs OrderedJobResponseArrayOutput `pulumi:"jobs"`
@@ -94,7 +94,7 @@ func (WorkflowTemplateState) ElementType() reflect.Type {
 type workflowTemplateArgs struct {
 	// Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
 	DagTimeout *string `pulumi:"dagTimeout"`
-	// Optional. Encryption settings for the encrypting customer core content.
+	// Optional. Encryption settings for encrypting workflow template job arguments.
 	EncryptionConfig *GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig `pulumi:"encryptionConfig"`
 	Id               *string                                                `pulumi:"id"`
 	// The Directed Acyclic Graph of Jobs to submit.
@@ -115,7 +115,7 @@ type workflowTemplateArgs struct {
 type WorkflowTemplateArgs struct {
 	// Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
 	DagTimeout pulumi.StringPtrInput
-	// Optional. Encryption settings for the encrypting customer core content.
+	// Optional. Encryption settings for encrypting workflow template job arguments.
 	EncryptionConfig GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigPtrInput
 	Id               pulumi.StringPtrInput
 	// The Directed Acyclic Graph of Jobs to submit.
@@ -179,7 +179,7 @@ func (o WorkflowTemplateOutput) DagTimeout() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowTemplate) pulumi.StringOutput { return v.DagTimeout }).(pulumi.StringOutput)
 }
 
-// Optional. Encryption settings for the encrypting customer core content.
+// Optional. Encryption settings for encrypting workflow template job arguments.
 func (o WorkflowTemplateOutput) EncryptionConfig() GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponseOutput {
 	return o.ApplyT(func(v *WorkflowTemplate) GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponseOutput {
 		return v.EncryptionConfig

@@ -42,7 +42,7 @@ type LookupFhirStoreResult struct {
 	EnableUpdateCreate bool `pulumi:"enableUpdateCreate"`
 	// User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels map[string]string `pulumi:"labels"`
-	// Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+	// Identifier. Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
 	Name string `pulumi:"name"`
 	// Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
 	//
@@ -126,7 +126,7 @@ func (o LookupFhirStoreResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupFhirStoreResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+// Identifier. Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
 func (o LookupFhirStoreResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFhirStoreResult) string { return v.Name }).(pulumi.StringOutput)
 }

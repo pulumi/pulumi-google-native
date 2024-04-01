@@ -24,6 +24,7 @@ __all__ = [
     'AutopilotConversionStatusResponse',
     'AutopilotResponse',
     'AutoprovisioningNodePoolDefaultsResponse',
+    'AutoscaledRolloutPolicyResponse',
     'AvailableVersionResponse',
     'BestEffortProvisioningResponse',
     'BigQueryDestinationResponse',
@@ -103,6 +104,7 @@ __all__ = [
     'NodePoolResponse',
     'NodeTaintResponse',
     'NotificationConfigResponse',
+    'OperationErrorResponse',
     'OpportunisticMaintenanceStrategyResponse',
     'ParentProductConfigResponse',
     'PlacementPolicyResponse',
@@ -123,12 +125,16 @@ __all__ = [
     'ResourceManagerTagsResponse',
     'ResourceUsageExportConfigResponse',
     'SandboxConfigResponse',
+    'SecondaryBootDiskResponse',
+    'SecondaryBootDiskUpdateStrategyResponse',
+    'SecretManagerConfigResponse',
     'SecurityPostureConfigResponse',
     'ServiceExternalIPsConfigResponse',
     'ShieldedInstanceConfigResponse',
     'ShieldedNodesResponse',
     'SoleTenantConfigResponse',
     'StandardRolloutPolicyResponse',
+    'StatefulHAConfigResponse',
     'StatusConditionResponse',
     'TimeWindowResponse',
     'TpuConfigResponse',
@@ -431,6 +437,8 @@ class AddonsConfigResponse(dict):
             suggest = "kubernetes_dashboard"
         elif key == "networkPolicyConfig":
             suggest = "network_policy_config"
+        elif key == "statefulHaConfig":
+            suggest = "stateful_ha_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AddonsConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -456,7 +464,8 @@ class AddonsConfigResponse(dict):
                  istio_config: 'outputs.IstioConfigResponse',
                  kalm_config: 'outputs.KalmConfigResponse',
                  kubernetes_dashboard: 'outputs.KubernetesDashboardResponse',
-                 network_policy_config: 'outputs.NetworkPolicyConfigResponse'):
+                 network_policy_config: 'outputs.NetworkPolicyConfigResponse',
+                 stateful_ha_config: 'outputs.StatefulHAConfigResponse'):
         """
         Configuration for the addons that can be automatically spun up in the cluster, enabling additional functionality.
         :param 'CloudRunConfigResponse' cloud_run_config: Configuration for the Cloud Run addon. The `IstioConfig` addon must be enabled in order to enable Cloud Run addon. This option can only be enabled at cluster creation time.
@@ -472,6 +481,7 @@ class AddonsConfigResponse(dict):
         :param 'KalmConfigResponse' kalm_config: Configuration for the KALM addon, which manages the lifecycle of k8s applications.
         :param 'KubernetesDashboardResponse' kubernetes_dashboard: Configuration for the Kubernetes Dashboard. This addon is deprecated, and will be disabled in 1.15. It is recommended to use the Cloud Console to manage and monitor your Kubernetes clusters, workloads and applications. For more information, see: https://cloud.google.com/kubernetes-engine/docs/concepts/dashboards
         :param 'NetworkPolicyConfigResponse' network_policy_config: Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does not track whether network policy is enabled for the nodes.
+        :param 'StatefulHAConfigResponse' stateful_ha_config: Optional. Configuration for the StatefulHA add-on.
         """
         pulumi.set(__self__, "cloud_run_config", cloud_run_config)
         pulumi.set(__self__, "config_connector_config", config_connector_config)
@@ -486,6 +496,7 @@ class AddonsConfigResponse(dict):
         pulumi.set(__self__, "kalm_config", kalm_config)
         pulumi.set(__self__, "kubernetes_dashboard", kubernetes_dashboard)
         pulumi.set(__self__, "network_policy_config", network_policy_config)
+        pulumi.set(__self__, "stateful_ha_config", stateful_ha_config)
 
     @property
     @pulumi.getter(name="cloudRunConfig")
@@ -591,6 +602,14 @@ class AddonsConfigResponse(dict):
         """
         return pulumi.get(self, "network_policy_config")
 
+    @property
+    @pulumi.getter(name="statefulHaConfig")
+    def stateful_ha_config(self) -> 'outputs.StatefulHAConfigResponse':
+        """
+        Optional. Configuration for the StatefulHA add-on.
+        """
+        return pulumi.get(self, "stateful_ha_config")
+
 
 @pulumi.output_type
 class AdvancedDatapathObservabilityConfigResponse(dict):
@@ -602,6 +621,8 @@ class AdvancedDatapathObservabilityConfigResponse(dict):
         suggest = None
         if key == "enableMetrics":
             suggest = "enable_metrics"
+        elif key == "enableRelay":
+            suggest = "enable_relay"
         elif key == "relayMode":
             suggest = "relay_mode"
 
@@ -618,13 +639,16 @@ class AdvancedDatapathObservabilityConfigResponse(dict):
 
     def __init__(__self__, *,
                  enable_metrics: bool,
+                 enable_relay: bool,
                  relay_mode: str):
         """
         AdvancedDatapathObservabilityConfig specifies configuration of observability features of advanced datapath.
         :param bool enable_metrics: Expose flow metrics on nodes
+        :param bool enable_relay: Enable Relay component
         :param str relay_mode: Method used to make Relay available
         """
         pulumi.set(__self__, "enable_metrics", enable_metrics)
+        pulumi.set(__self__, "enable_relay", enable_relay)
         pulumi.set(__self__, "relay_mode", relay_mode)
 
     @property
@@ -634,6 +658,14 @@ class AdvancedDatapathObservabilityConfigResponse(dict):
         Expose flow metrics on nodes
         """
         return pulumi.get(self, "enable_metrics")
+
+    @property
+    @pulumi.getter(name="enableRelay")
+    def enable_relay(self) -> bool:
+        """
+        Enable Relay component
+        """
+        return pulumi.get(self, "enable_relay")
 
     @property
     @pulumi.getter(name="relayMode")
@@ -1039,6 +1071,18 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
 
 
 @pulumi.output_type
+class AutoscaledRolloutPolicyResponse(dict):
+    """
+    Autoscaled rollout policy uses cluster autoscaler during blue-green upgrades to scale both the green and blue pools.
+    """
+    def __init__(__self__):
+        """
+        Autoscaled rollout policy uses cluster autoscaler during blue-green upgrades to scale both the green and blue pools.
+        """
+        pass
+
+
+@pulumi.output_type
 class AvailableVersionResponse(dict):
     """
     Deprecated.
@@ -1323,7 +1367,9 @@ class BlueGreenSettingsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "nodePoolSoakDuration":
+        if key == "autoscaledRolloutPolicy":
+            suggest = "autoscaled_rollout_policy"
+        elif key == "nodePoolSoakDuration":
             suggest = "node_pool_soak_duration"
         elif key == "standardRolloutPolicy":
             suggest = "standard_rollout_policy"
@@ -1340,15 +1386,26 @@ class BlueGreenSettingsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 autoscaled_rollout_policy: 'outputs.AutoscaledRolloutPolicyResponse',
                  node_pool_soak_duration: str,
                  standard_rollout_policy: 'outputs.StandardRolloutPolicyResponse'):
         """
         Settings for blue-green upgrade.
+        :param 'AutoscaledRolloutPolicyResponse' autoscaled_rollout_policy: Autoscaled policy for cluster autoscaler enabled blue-green upgrade.
         :param str node_pool_soak_duration: Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
         :param 'StandardRolloutPolicyResponse' standard_rollout_policy: Standard policy for the blue-green upgrade.
         """
+        pulumi.set(__self__, "autoscaled_rollout_policy", autoscaled_rollout_policy)
         pulumi.set(__self__, "node_pool_soak_duration", node_pool_soak_duration)
         pulumi.set(__self__, "standard_rollout_policy", standard_rollout_policy)
+
+    @property
+    @pulumi.getter(name="autoscaledRolloutPolicy")
+    def autoscaled_rollout_policy(self) -> 'outputs.AutoscaledRolloutPolicyResponse':
+        """
+        Autoscaled policy for cluster autoscaler enabled blue-green upgrade.
+        """
+        return pulumi.get(self, "autoscaled_rollout_policy")
 
     @property
     @pulumi.getter(name="nodePoolSoakDuration")
@@ -1871,8 +1928,14 @@ class DatabaseEncryptionResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "keyName":
+        if key == "currentState":
+            suggest = "current_state"
+        elif key == "decryptionKeys":
+            suggest = "decryption_keys"
+        elif key == "keyName":
             suggest = "key_name"
+        elif key == "lastOperationErrors":
+            suggest = "last_operation_errors"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DatabaseEncryptionResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1886,15 +1949,40 @@ class DatabaseEncryptionResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 current_state: str,
+                 decryption_keys: Sequence[str],
                  key_name: str,
+                 last_operation_errors: Sequence['outputs.OperationErrorResponse'],
                  state: str):
         """
         Configuration of etcd encryption.
+        :param str current_state: The current state of etcd encryption.
+        :param Sequence[str] decryption_keys: Keys in use by the cluster for decrypting existing objects, in addition to the key in `key_name`. Each item is a CloudKMS key resource.
         :param str key_name: Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
+        :param Sequence['OperationErrorResponse'] last_operation_errors: Records errors seen during DatabaseEncryption update operations.
         :param str state: The desired state of etcd encryption.
         """
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "decryption_keys", decryption_keys)
         pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "last_operation_errors", last_operation_errors)
         pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> str:
+        """
+        The current state of etcd encryption.
+        """
+        return pulumi.get(self, "current_state")
+
+    @property
+    @pulumi.getter(name="decryptionKeys")
+    def decryption_keys(self) -> Sequence[str]:
+        """
+        Keys in use by the cluster for decrypting existing objects, in addition to the key in `key_name`. Each item is a CloudKMS key resource.
+        """
+        return pulumi.get(self, "decryption_keys")
 
     @property
     @pulumi.getter(name="keyName")
@@ -1903,6 +1991,14 @@ class DatabaseEncryptionResponse(dict):
         Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
         """
         return pulumi.get(self, "key_name")
+
+    @property
+    @pulumi.getter(name="lastOperationErrors")
+    def last_operation_errors(self) -> Sequence['outputs.OperationErrorResponse']:
+        """
+        Records errors seen during DatabaseEncryption update operations.
+        """
+        return pulumi.get(self, "last_operation_errors")
 
     @property
     @pulumi.getter
@@ -3701,6 +3797,8 @@ class NetworkConfigResponse(dict):
             suggest = "default_snat_status"
         elif key == "dnsConfig":
             suggest = "dns_config"
+        elif key == "enableCiliumClusterwideNetworkPolicy":
+            suggest = "enable_cilium_clusterwide_network_policy"
         elif key == "enableFqdnNetworkPolicy":
             suggest = "enable_fqdn_network_policy"
         elif key == "enableIntraNodeVisibility":
@@ -3735,6 +3833,7 @@ class NetworkConfigResponse(dict):
                  datapath_provider: str,
                  default_snat_status: 'outputs.DefaultSnatStatusResponse',
                  dns_config: 'outputs.DNSConfigResponse',
+                 enable_cilium_clusterwide_network_policy: bool,
                  enable_fqdn_network_policy: bool,
                  enable_intra_node_visibility: bool,
                  enable_l4ilb_subsetting: bool,
@@ -3751,6 +3850,7 @@ class NetworkConfigResponse(dict):
         :param str datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param 'DefaultSnatStatusResponse' default_snat_status: Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
         :param 'DNSConfigResponse' dns_config: DNSConfig contains clusterDNS config for this cluster.
+        :param bool enable_cilium_clusterwide_network_policy: Whether CiliumClusterWideNetworkPolicy is enabled on this cluster.
         :param bool enable_fqdn_network_policy: Whether FQDN Network Policy is enabled on this cluster.
         :param bool enable_intra_node_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param bool enable_l4ilb_subsetting: Whether L4ILB Subsetting is enabled for this cluster.
@@ -3766,6 +3866,7 @@ class NetworkConfigResponse(dict):
         pulumi.set(__self__, "datapath_provider", datapath_provider)
         pulumi.set(__self__, "default_snat_status", default_snat_status)
         pulumi.set(__self__, "dns_config", dns_config)
+        pulumi.set(__self__, "enable_cilium_clusterwide_network_policy", enable_cilium_clusterwide_network_policy)
         pulumi.set(__self__, "enable_fqdn_network_policy", enable_fqdn_network_policy)
         pulumi.set(__self__, "enable_intra_node_visibility", enable_intra_node_visibility)
         pulumi.set(__self__, "enable_l4ilb_subsetting", enable_l4ilb_subsetting)
@@ -3801,6 +3902,14 @@ class NetworkConfigResponse(dict):
         DNSConfig contains clusterDNS config for this cluster.
         """
         return pulumi.get(self, "dns_config")
+
+    @property
+    @pulumi.getter(name="enableCiliumClusterwideNetworkPolicy")
+    def enable_cilium_clusterwide_network_policy(self) -> bool:
+        """
+        Whether CiliumClusterWideNetworkPolicy is enabled on this cluster.
+        """
+        return pulumi.get(self, "enable_cilium_clusterwide_network_policy")
 
     @property
     @pulumi.getter(name="enableFqdnNetworkPolicy")
@@ -4187,6 +4296,10 @@ class NodeConfigResponse(dict):
             suggest = "resource_manager_tags"
         elif key == "sandboxConfig":
             suggest = "sandbox_config"
+        elif key == "secondaryBootDiskUpdateStrategy":
+            suggest = "secondary_boot_disk_update_strategy"
+        elif key == "secondaryBootDisks":
+            suggest = "secondary_boot_disks"
         elif key == "serviceAccount":
             suggest = "service_account"
         elif key == "shieldedInstanceConfig":
@@ -4240,6 +4353,8 @@ class NodeConfigResponse(dict):
                  resource_labels: Mapping[str, str],
                  resource_manager_tags: 'outputs.ResourceManagerTagsResponse',
                  sandbox_config: 'outputs.SandboxConfigResponse',
+                 secondary_boot_disk_update_strategy: 'outputs.SecondaryBootDiskUpdateStrategyResponse',
+                 secondary_boot_disks: Sequence['outputs.SecondaryBootDiskResponse'],
                  service_account: str,
                  shielded_instance_config: 'outputs.ShieldedInstanceConfigResponse',
                  sole_tenant_config: 'outputs.SoleTenantConfigResponse',
@@ -4256,7 +4371,7 @@ class NodeConfigResponse(dict):
         :param 'ConfidentialNodesResponse' confidential_nodes: Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled.
         :param int disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
         :param str disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
-        :param bool enable_confidential_storage: Optional. Enable confidential storage on Hyperdisk. boot_disk_kms_key is required when enable_confidential_storage is true. This is only available for private preview.
+        :param bool enable_confidential_storage: Optional. Reserved for future use.
         :param 'EphemeralStorageConfigResponse' ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
         :param 'EphemeralStorageLocalSsdConfigResponse' ephemeral_storage_local_ssd_config: Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by the boot disk. This field is functionally equivalent to the ephemeral_storage_config
         :param 'FastSocketResponse' fast_socket: Enable or disable NCCL fast socket for the node pool.
@@ -4280,6 +4395,8 @@ class NodeConfigResponse(dict):
         :param Mapping[str, str] resource_labels: The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
         :param 'ResourceManagerTagsResponse' resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes.
         :param 'SandboxConfigResponse' sandbox_config: Sandbox configuration for this node.
+        :param 'SecondaryBootDiskUpdateStrategyResponse' secondary_boot_disk_update_strategy: Secondary boot disk update strategy.
+        :param Sequence['SecondaryBootDiskResponse'] secondary_boot_disks: List of secondary boot disks attached to the nodes.
         :param str service_account: The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
         :param 'ShieldedInstanceConfigResponse' shielded_instance_config: Shielded Instance options.
         :param 'SoleTenantConfigResponse' sole_tenant_config: Parameters for node pools to be backed by shared sole tenant node groups.
@@ -4319,6 +4436,8 @@ class NodeConfigResponse(dict):
         pulumi.set(__self__, "resource_labels", resource_labels)
         pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         pulumi.set(__self__, "sandbox_config", sandbox_config)
+        pulumi.set(__self__, "secondary_boot_disk_update_strategy", secondary_boot_disk_update_strategy)
+        pulumi.set(__self__, "secondary_boot_disks", secondary_boot_disks)
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         pulumi.set(__self__, "sole_tenant_config", sole_tenant_config)
@@ -4380,7 +4499,7 @@ class NodeConfigResponse(dict):
     @pulumi.getter(name="enableConfidentialStorage")
     def enable_confidential_storage(self) -> bool:
         """
-        Optional. Enable confidential storage on Hyperdisk. boot_disk_kms_key is required when enable_confidential_storage is true. This is only available for private preview.
+        Optional. Reserved for future use.
         """
         return pulumi.get(self, "enable_confidential_storage")
 
@@ -4567,6 +4686,22 @@ class NodeConfigResponse(dict):
         Sandbox configuration for this node.
         """
         return pulumi.get(self, "sandbox_config")
+
+    @property
+    @pulumi.getter(name="secondaryBootDiskUpdateStrategy")
+    def secondary_boot_disk_update_strategy(self) -> 'outputs.SecondaryBootDiskUpdateStrategyResponse':
+        """
+        Secondary boot disk update strategy.
+        """
+        return pulumi.get(self, "secondary_boot_disk_update_strategy")
+
+    @property
+    @pulumi.getter(name="secondaryBootDisks")
+    def secondary_boot_disks(self) -> Sequence['outputs.SecondaryBootDiskResponse']:
+        """
+        List of secondary boot disks attached to the nodes.
+        """
+        return pulumi.get(self, "secondary_boot_disks")
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -5526,6 +5661,69 @@ class NotificationConfigResponse(dict):
 
 
 @pulumi.output_type
+class OperationErrorResponse(dict):
+    """
+    OperationError records errors seen from CloudKMS keys encountered during updates to DatabaseEncryption configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorMessage":
+            suggest = "error_message"
+        elif key == "keyName":
+            suggest = "key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OperationErrorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OperationErrorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OperationErrorResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error_message: str,
+                 key_name: str,
+                 timestamp: str):
+        """
+        OperationError records errors seen from CloudKMS keys encountered during updates to DatabaseEncryption configuration.
+        :param str error_message: Description of the error seen during the operation.
+        :param str key_name: CloudKMS key resource that had the error.
+        :param str timestamp: Time when the CloudKMS error was seen.
+        """
+        pulumi.set(__self__, "error_message", error_message)
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "timestamp", timestamp)
+
+    @property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> str:
+        """
+        Description of the error seen during the operation.
+        """
+        return pulumi.get(self, "error_message")
+
+    @property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> str:
+        """
+        CloudKMS key resource that had the error.
+        """
+        return pulumi.get(self, "key_name")
+
+    @property
+    @pulumi.getter
+    def timestamp(self) -> str:
+        """
+        Time when the CloudKMS error was seen.
+        """
+        return pulumi.get(self, "timestamp")
+
+
+@pulumi.output_type
 class OpportunisticMaintenanceStrategyResponse(dict):
     """
     Strategy that will trigger maintenance on behalf of the customer.
@@ -6462,6 +6660,90 @@ class SandboxConfigResponse(dict):
 
 
 @pulumi.output_type
+class SecondaryBootDiskResponse(dict):
+    """
+    SecondaryBootDisk represents a persistent disk attached to a node with special configurations based on its mode.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskImage":
+            suggest = "disk_image"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecondaryBootDiskResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecondaryBootDiskResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecondaryBootDiskResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_image: str,
+                 mode: str):
+        """
+        SecondaryBootDisk represents a persistent disk attached to a node with special configurations based on its mode.
+        :param str disk_image: Fully-qualified resource ID for an existing disk image.
+        :param str mode: Disk mode (container image cache, etc.)
+        """
+        pulumi.set(__self__, "disk_image", disk_image)
+        pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter(name="diskImage")
+    def disk_image(self) -> str:
+        """
+        Fully-qualified resource ID for an existing disk image.
+        """
+        return pulumi.get(self, "disk_image")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        Disk mode (container image cache, etc.)
+        """
+        return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class SecondaryBootDiskUpdateStrategyResponse(dict):
+    """
+    SecondaryBootDiskUpdateStrategy is a placeholder which will be extended in the future to define different options for updating secondary boot disks.
+    """
+    def __init__(__self__):
+        """
+        SecondaryBootDiskUpdateStrategy is a placeholder which will be extended in the future to define different options for updating secondary boot disks.
+        """
+        pass
+
+
+@pulumi.output_type
+class SecretManagerConfigResponse(dict):
+    """
+    SecretManagerConfig is config for secret manager enablement.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        SecretManagerConfig is config for secret manager enablement.
+        :param bool enabled: Whether the cluster is configured to use secret manager CSI component.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether the cluster is configured to use secret manager CSI component.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class SecurityPostureConfigResponse(dict):
     """
     SecurityPostureConfig defines the flags needed to enable/disable features for the Security Posture API.
@@ -6709,6 +6991,28 @@ class StandardRolloutPolicyResponse(dict):
         Soak time after each batch gets drained. Default to zero.
         """
         return pulumi.get(self, "batch_soak_duration")
+
+
+@pulumi.output_type
+class StatefulHAConfigResponse(dict):
+    """
+    Configuration for the Stateful HA add-on.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        Configuration for the Stateful HA add-on.
+        :param bool enabled: Whether the Stateful HA add-on is enabled for this cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether the Stateful HA add-on is enabled for this cluster.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

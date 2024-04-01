@@ -39,6 +39,8 @@ type InstantSnapshot struct {
 	// Status information for the instant snapshot resource.
 	ResourceStatus InstantSnapshotResourceStatusResponseOutput `pulumi:"resourceStatus"`
 	// Reserved for future use.
+	SatisfiesPzi pulumi.BoolOutput `pulumi:"satisfiesPzi"`
+	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -222,6 +224,11 @@ func (o InstantSnapshotOutput) RequestId() pulumi.StringPtrOutput {
 // Status information for the instant snapshot resource.
 func (o InstantSnapshotOutput) ResourceStatus() InstantSnapshotResourceStatusResponseOutput {
 	return o.ApplyT(func(v *InstantSnapshot) InstantSnapshotResourceStatusResponseOutput { return v.ResourceStatus }).(InstantSnapshotResourceStatusResponseOutput)
+}
+
+// Reserved for future use.
+func (o InstantSnapshotOutput) SatisfiesPzi() pulumi.BoolOutput {
+	return o.ApplyT(func(v *InstantSnapshot) pulumi.BoolOutput { return v.SatisfiesPzi }).(pulumi.BoolOutput)
 }
 
 // Reserved for future use.

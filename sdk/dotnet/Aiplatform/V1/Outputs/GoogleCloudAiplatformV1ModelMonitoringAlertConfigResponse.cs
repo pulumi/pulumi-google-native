@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
 {
 
+    /// <summary>
+    /// The alert config for model monitoring.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudAiplatformV1ModelMonitoringAlertConfigResponse
     {

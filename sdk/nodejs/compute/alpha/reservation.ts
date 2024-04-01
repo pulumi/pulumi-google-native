@@ -50,11 +50,11 @@ export class Reservation extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
-     * Duration time relative to reservation creation when GCE will automatically delete this resource.
+     * Duration time relative to reservation creation when Compute Engine will automatically delete this resource.
      */
     public readonly deleteAfterDuration!: pulumi.Output<outputs.compute.alpha.DurationResponse>;
     /**
-     * Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+     * Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
      */
     public readonly deleteAtTime!: pulumi.Output<string>;
     /**
@@ -181,11 +181,11 @@ export interface ReservationArgs {
      */
     aggregateReservation?: pulumi.Input<inputs.compute.alpha.AllocationAggregateReservationArgs>;
     /**
-     * Duration time relative to reservation creation when GCE will automatically delete this resource.
+     * Duration time relative to reservation creation when Compute Engine will automatically delete this resource.
      */
     deleteAfterDuration?: pulumi.Input<inputs.compute.alpha.DurationArgs>;
     /**
-     * Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+     * Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
      */
     deleteAtTime?: pulumi.Input<string>;
     /**

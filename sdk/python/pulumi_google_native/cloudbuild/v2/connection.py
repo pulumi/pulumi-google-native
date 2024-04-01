@@ -18,6 +18,8 @@ class ConnectionArgs:
     def __init__(__self__, *,
                  connection_id: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 bitbucket_cloud_config: Optional[pulumi.Input['BitbucketCloudConfigArgs']] = None,
+                 bitbucket_data_center_config: Optional[pulumi.Input['BitbucketDataCenterConfigArgs']] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  github_config: Optional[pulumi.Input['GitHubConfigArgs']] = None,
@@ -30,6 +32,8 @@ class ConnectionArgs:
         The set of arguments for constructing a Connection resource.
         :param pulumi.Input[str] connection_id: Required. The ID to use for the Connection, which will become the final component of the Connection's resource name. Names must be unique per-project per-location. Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Allows clients to store small amounts of arbitrary data.
+        :param pulumi.Input['BitbucketCloudConfigArgs'] bitbucket_cloud_config: Configuration for connections to Bitbucket Cloud.
+        :param pulumi.Input['BitbucketDataCenterConfigArgs'] bitbucket_data_center_config: Configuration for connections to Bitbucket Data Center.
         :param pulumi.Input[bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input['GitHubConfigArgs'] github_config: Configuration for connections to github.com.
@@ -40,6 +44,10 @@ class ConnectionArgs:
         pulumi.set(__self__, "connection_id", connection_id)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if bitbucket_cloud_config is not None:
+            pulumi.set(__self__, "bitbucket_cloud_config", bitbucket_cloud_config)
+        if bitbucket_data_center_config is not None:
+            pulumi.set(__self__, "bitbucket_data_center_config", bitbucket_data_center_config)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if etag is not None:
@@ -80,6 +88,30 @@ class ConnectionArgs:
     @annotations.setter
     def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter(name="bitbucketCloudConfig")
+    def bitbucket_cloud_config(self) -> Optional[pulumi.Input['BitbucketCloudConfigArgs']]:
+        """
+        Configuration for connections to Bitbucket Cloud.
+        """
+        return pulumi.get(self, "bitbucket_cloud_config")
+
+    @bitbucket_cloud_config.setter
+    def bitbucket_cloud_config(self, value: Optional[pulumi.Input['BitbucketCloudConfigArgs']]):
+        pulumi.set(self, "bitbucket_cloud_config", value)
+
+    @property
+    @pulumi.getter(name="bitbucketDataCenterConfig")
+    def bitbucket_data_center_config(self) -> Optional[pulumi.Input['BitbucketDataCenterConfigArgs']]:
+        """
+        Configuration for connections to Bitbucket Data Center.
+        """
+        return pulumi.get(self, "bitbucket_data_center_config")
+
+    @bitbucket_data_center_config.setter
+    def bitbucket_data_center_config(self, value: Optional[pulumi.Input['BitbucketDataCenterConfigArgs']]):
+        pulumi.set(self, "bitbucket_data_center_config", value)
 
     @property
     @pulumi.getter
@@ -178,6 +210,8 @@ class Connection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 bitbucket_cloud_config: Optional[pulumi.Input[pulumi.InputType['BitbucketCloudConfigArgs']]] = None,
+                 bitbucket_data_center_config: Optional[pulumi.Input[pulumi.InputType['BitbucketDataCenterConfigArgs']]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -194,6 +228,8 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Allows clients to store small amounts of arbitrary data.
+        :param pulumi.Input[pulumi.InputType['BitbucketCloudConfigArgs']] bitbucket_cloud_config: Configuration for connections to Bitbucket Cloud.
+        :param pulumi.Input[pulumi.InputType['BitbucketDataCenterConfigArgs']] bitbucket_data_center_config: Configuration for connections to Bitbucket Data Center.
         :param pulumi.Input[str] connection_id: Required. The ID to use for the Connection, which will become the final component of the Connection's resource name. Names must be unique per-project per-location. Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
         :param pulumi.Input[bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -227,6 +263,8 @@ class Connection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 bitbucket_cloud_config: Optional[pulumi.Input[pulumi.InputType['BitbucketCloudConfigArgs']]] = None,
+                 bitbucket_data_center_config: Optional[pulumi.Input[pulumi.InputType['BitbucketDataCenterConfigArgs']]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -246,6 +284,8 @@ class Connection(pulumi.CustomResource):
             __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
             __props__.__dict__["annotations"] = annotations
+            __props__.__dict__["bitbucket_cloud_config"] = bitbucket_cloud_config
+            __props__.__dict__["bitbucket_data_center_config"] = bitbucket_data_center_config
             if connection_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_id'")
             __props__.__dict__["connection_id"] = connection_id
@@ -286,6 +326,8 @@ class Connection(pulumi.CustomResource):
         __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
         __props__.__dict__["annotations"] = None
+        __props__.__dict__["bitbucket_cloud_config"] = None
+        __props__.__dict__["bitbucket_data_center_config"] = None
         __props__.__dict__["connection_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["disabled"] = None
@@ -308,6 +350,22 @@ class Connection(pulumi.CustomResource):
         Allows clients to store small amounts of arbitrary data.
         """
         return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="bitbucketCloudConfig")
+    def bitbucket_cloud_config(self) -> pulumi.Output['outputs.BitbucketCloudConfigResponse']:
+        """
+        Configuration for connections to Bitbucket Cloud.
+        """
+        return pulumi.get(self, "bitbucket_cloud_config")
+
+    @property
+    @pulumi.getter(name="bitbucketDataCenterConfig")
+    def bitbucket_data_center_config(self) -> pulumi.Output['outputs.BitbucketDataCenterConfigResponse']:
+        """
+        Configuration for connections to Bitbucket Data Center.
+        """
+        return pulumi.get(self, "bitbucket_data_center_config")
 
     @property
     @pulumi.getter(name="connectionId")

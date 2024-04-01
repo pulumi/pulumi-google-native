@@ -1277,6 +1277,8 @@ const (
 	ServiceIngressIngressTrafficInternalOnly = ServiceIngress("INGRESS_TRAFFIC_INTERNAL_ONLY")
 	// Both internal and Google Cloud Load Balancer traffic is allowed.
 	ServiceIngressIngressTrafficInternalLoadBalancer = ServiceIngress("INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER")
+	// No ingress traffic is allowed.
+	ServiceIngressIngressTrafficNone = ServiceIngress("INGRESS_TRAFFIC_NONE")
 )
 
 func (ServiceIngress) ElementType() reflect.Type {
@@ -1405,6 +1407,7 @@ func (o ServiceIngressPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 //	ServiceIngressIngressTrafficAll
 //	ServiceIngressIngressTrafficInternalOnly
 //	ServiceIngressIngressTrafficInternalLoadBalancer
+//	ServiceIngressIngressTrafficNone
 type ServiceIngressInput interface {
 	pulumi.Input
 

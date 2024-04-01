@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly Outputs.ConfigMapVolumeSourceResponse ConfigMap;
         /// <summary>
+        /// Volume specified by the Container Storage Interface driver
+        /// </summary>
+        public readonly Outputs.CSIVolumeSourceResponse Csi;
+        /// <summary>
         /// Ephemeral storage used as a shared volume.
         /// </summary>
         public readonly Outputs.EmptyDirVolumeSourceResponse EmptyDir;
@@ -28,6 +32,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
         /// </summary>
         public readonly string Name;
+        public readonly Outputs.NFSVolumeSourceResponse Nfs;
         /// <summary>
         /// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secretName.
         /// </summary>
@@ -37,15 +42,21 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         private VolumeResponse(
             Outputs.ConfigMapVolumeSourceResponse configMap,
 
+            Outputs.CSIVolumeSourceResponse csi,
+
             Outputs.EmptyDirVolumeSourceResponse emptyDir,
 
             string name,
 
+            Outputs.NFSVolumeSourceResponse nfs,
+
             Outputs.SecretVolumeSourceResponse secret)
         {
             ConfigMap = configMap;
+            Csi = csi;
             EmptyDir = emptyDir;
             Name = name;
+            Nfs = nfs;
             Secret = secret;
         }
     }

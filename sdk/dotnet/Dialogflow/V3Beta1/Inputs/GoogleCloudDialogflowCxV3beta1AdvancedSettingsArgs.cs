@@ -33,6 +33,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         [Input("loggingSettings")]
         public Input<Inputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsArgs>? LoggingSettings { get; set; }
 
+        /// <summary>
+        /// Settings for speech to text detection. Exposed at the following levels: - Agent level - Flow level - Page level - Parameter level
+        /// </summary>
+        [Input("speechSettings")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettingsArgs>? SpeechSettings { get; set; }
+
         public GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs()
         {
         }

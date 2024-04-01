@@ -48,6 +48,24 @@ namespace Pulumi.GoogleNative.Redis.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node.
+        /// </summary>
+        [Output("nodeType")]
+        public Output<string> NodeType { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Persistence config (RDB, AOF) for the cluster.
+        /// </summary>
+        [Output("persistenceConfig")]
+        public Output<Outputs.ClusterPersistenceConfigResponse> PersistenceConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Precise value of redis memory size in GB for the entire cluster.
+        /// </summary>
+        [Output("preciseSizeGb")]
+        public Output<double> PreciseSizeGb { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -62,6 +80,12 @@ namespace Pulumi.GoogleNative.Redis.V1
         /// </summary>
         [Output("pscConnections")]
         public Output<ImmutableArray<Outputs.PscConnectionResponse>> PscConnections { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Key/Value pairs of customer overrides for mutable Redis Configs
+        /// </summary>
+        [Output("redisConfigs")]
+        public Output<ImmutableDictionary<string, string>> RedisConfigs { get; private set; } = null!;
 
         /// <summary>
         /// Optional. The number of replica nodes per shard.
@@ -82,7 +106,7 @@ namespace Pulumi.GoogleNative.Redis.V1
         public Output<int> ShardCount { get; private set; } = null!;
 
         /// <summary>
-        /// Redis memory size in GB for the entire cluster.
+        /// Redis memory size in GB for the entire cluster rounded up to the next integer.
         /// </summary>
         [Output("sizeGb")]
         public Output<int> SizeGb { get; private set; } = null!;
@@ -183,6 +207,18 @@ namespace Pulumi.GoogleNative.Redis.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node.
+        /// </summary>
+        [Input("nodeType")]
+        public Input<Pulumi.GoogleNative.Redis.V1.ClusterNodeType>? NodeType { get; set; }
+
+        /// <summary>
+        /// Optional. Persistence config (RDB, AOF) for the cluster.
+        /// </summary>
+        [Input("persistenceConfig")]
+        public Input<Inputs.ClusterPersistenceConfigArgs>? PersistenceConfig { get; set; }
+
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -196,6 +232,18 @@ namespace Pulumi.GoogleNative.Redis.V1
         {
             get => _pscConfigs ?? (_pscConfigs = new InputList<Inputs.PscConfigArgs>());
             set => _pscConfigs = value;
+        }
+
+        [Input("redisConfigs")]
+        private InputMap<string>? _redisConfigs;
+
+        /// <summary>
+        /// Optional. Key/Value pairs of customer overrides for mutable Redis Configs
+        /// </summary>
+        public InputMap<string> RedisConfigs
+        {
+            get => _redisConfigs ?? (_redisConfigs = new InputMap<string>());
+            set => _redisConfigs = value;
         }
 
         /// <summary>

@@ -89,7 +89,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public Output<Outputs.MeshIstioResponse> MeshIstio { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
+        /// Identifier. Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -241,7 +241,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public Input<Inputs.MeshIstioArgs>? MeshIstio { get; set; }
 
         /// <summary>
-        /// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
+        /// Identifier. Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

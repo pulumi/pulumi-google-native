@@ -30,6 +30,8 @@ type LookupDatabaseArgs struct {
 type LookupDatabaseResult struct {
 	// The App Engine integration mode to use for this database.
 	AppEngineIntegrationMode string `pulumi:"appEngineIntegrationMode"`
+	// Optional. Presence indicates CMEK is enabled for this database.
+	CmekConfig GoogleFirestoreAdminV1CmekConfigResponse `pulumi:"cmekConfig"`
 	// The concurrency control mode to use for this database.
 	ConcurrencyMode string `pulumi:"concurrencyMode"`
 	// The timestamp at which this database was created. Databases created before 2016 do not populate create_time.
@@ -97,6 +99,11 @@ func (o LookupDatabaseResultOutput) ToLookupDatabaseResultOutputWithContext(ctx 
 // The App Engine integration mode to use for this database.
 func (o LookupDatabaseResultOutput) AppEngineIntegrationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.AppEngineIntegrationMode }).(pulumi.StringOutput)
+}
+
+// Optional. Presence indicates CMEK is enabled for this database.
+func (o LookupDatabaseResultOutput) CmekConfig() GoogleFirestoreAdminV1CmekConfigResponseOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) GoogleFirestoreAdminV1CmekConfigResponse { return v.CmekConfig }).(GoogleFirestoreAdminV1CmekConfigResponseOutput)
 }
 
 // The concurrency control mode to use for this database.

@@ -88,6 +88,10 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly networkFirewallPolicyEnforcementOrder!: pulumi.Output<string>;
     /**
+     * A full or partial URL of the network placement to apply to this network. This field can be set only at resource creation time. For example, the following are valid URLs: - https://www.googleapis.com/compute/alpha/projects/{project_id}/global/networkPlacements/{network_placement_name} - projects/{project_id}/global/networkPlacements/{network_placement_name} 
+     */
+    public readonly networkPlacement!: pulumi.Output<string>;
+    /**
      * A list of network peerings for the resource.
      */
     public /*out*/ readonly peerings!: pulumi.Output<outputs.compute.alpha.NetworkPeeringResponse[]>;
@@ -136,6 +140,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["mtu"] = args ? args.mtu : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkFirewallPolicyEnforcementOrder"] = args ? args.networkFirewallPolicyEnforcementOrder : undefined;
+            resourceInputs["networkPlacement"] = args ? args.networkPlacement : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["routingConfig"] = args ? args.routingConfig : undefined;
@@ -161,6 +166,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["mtu"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networkFirewallPolicyEnforcementOrder"] = undefined /*out*/;
+            resourceInputs["networkPlacement"] = undefined /*out*/;
             resourceInputs["peerings"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
@@ -215,6 +221,10 @@ export interface NetworkArgs {
      * The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
      */
     networkFirewallPolicyEnforcementOrder?: pulumi.Input<enums.compute.alpha.NetworkNetworkFirewallPolicyEnforcementOrder>;
+    /**
+     * A full or partial URL of the network placement to apply to this network. This field can be set only at resource creation time. For example, the following are valid URLs: - https://www.googleapis.com/compute/alpha/projects/{project_id}/global/networkPlacements/{network_placement_name} - projects/{project_id}/global/networkPlacements/{network_placement_name} 
+     */
+    networkPlacement?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).

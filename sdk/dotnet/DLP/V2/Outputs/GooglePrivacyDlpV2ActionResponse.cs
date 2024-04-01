@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
     /// <summary>
-    /// A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
+    /// A task to execute on the completion of a job. See https://cloud.google.com/sensitive-data-protection/docs/concepts-actions to learn more.
     /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2ActionResponse

@@ -88,9 +88,17 @@ export interface GetInstanceResult {
      */
     readonly name: string;
     /**
+     * Optional. Instance level network configuration.
+     */
+    readonly networkConfig: outputs.alloydb.v1.InstanceNetworkConfigResponse;
+    /**
      * List of available read-only VMs in this instance, including the standby for a PRIMARY instance.
      */
     readonly nodes: outputs.alloydb.v1.NodeResponse[];
+    /**
+     * The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set. This is the connection endpoint for an end-user application.
+     */
+    readonly publicIpAddress: string;
     /**
      * Configuration for query insights.
      */
@@ -103,6 +111,10 @@ export interface GetInstanceResult {
      * Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
      */
     readonly reconciling: boolean;
+    /**
+     * Reserved for future use.
+     */
+    readonly satisfiesPzs: boolean;
     /**
      * The current serving state of the instance.
      */

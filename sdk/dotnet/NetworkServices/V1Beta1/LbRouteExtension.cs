@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public Output<ImmutableArray<string>> ForwardingRules { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the following requirements](/compute/docs/labeling-resources#requirements).
+        /// Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the requirements for labels](https://cloud.google.com/compute/docs/labeling-resources#requirements) for Google Cloud resources.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
@@ -61,7 +61,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
+        /// Identifier. Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the following requirements](/compute/docs/labeling-resources#requirements).
+        /// Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the requirements for labels](https://cloud.google.com/compute/docs/labeling-resources#requirements) for Google Cloud resources.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -190,7 +190,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
+        /// Identifier. Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

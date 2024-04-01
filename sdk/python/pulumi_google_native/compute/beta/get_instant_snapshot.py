@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstantSnapshotResult:
-    def __init__(__self__, architecture=None, creation_timestamp=None, description=None, disk_size_gb=None, kind=None, label_fingerprint=None, labels=None, name=None, region=None, resource_status=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, source_disk=None, source_disk_id=None, status=None, zone=None):
+    def __init__(__self__, architecture=None, creation_timestamp=None, description=None, disk_size_gb=None, kind=None, label_fingerprint=None, labels=None, name=None, region=None, resource_status=None, satisfies_pzi=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, source_disk=None, source_disk_id=None, status=None, zone=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         pulumi.set(__self__, "architecture", architecture)
@@ -50,6 +50,9 @@ class GetInstantSnapshotResult:
         if resource_status and not isinstance(resource_status, dict):
             raise TypeError("Expected argument 'resource_status' to be a dict")
         pulumi.set(__self__, "resource_status", resource_status)
+        if satisfies_pzi and not isinstance(satisfies_pzi, bool):
+            raise TypeError("Expected argument 'satisfies_pzi' to be a bool")
+        pulumi.set(__self__, "satisfies_pzi", satisfies_pzi)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -153,6 +156,14 @@ class GetInstantSnapshotResult:
         return pulumi.get(self, "resource_status")
 
     @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> bool:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzi")
+
+    @property
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> bool:
         """
@@ -225,6 +236,7 @@ class AwaitableGetInstantSnapshotResult(GetInstantSnapshotResult):
             name=self.name,
             region=self.region,
             resource_status=self.resource_status,
+            satisfies_pzi=self.satisfies_pzi,
             satisfies_pzs=self.satisfies_pzs,
             self_link=self.self_link,
             self_link_with_id=self.self_link_with_id,
@@ -259,6 +271,7 @@ def get_instant_snapshot(instant_snapshot: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         region=pulumi.get(__ret__, 'region'),
         resource_status=pulumi.get(__ret__, 'resource_status'),
+        satisfies_pzi=pulumi.get(__ret__, 'satisfies_pzi'),
         satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         self_link=pulumi.get(__ret__, 'self_link'),
         self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),

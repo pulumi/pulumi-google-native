@@ -31,6 +31,8 @@ const (
 	AcceleratorConfigTypeNvidiaTeslaA100 = AcceleratorConfigType("NVIDIA_TESLA_A100")
 	// Accelerator type is Nvidia Tesla L4.
 	AcceleratorConfigTypeNvidiaL4 = AcceleratorConfigType("NVIDIA_L4")
+	// Accelerator type is Nvidia Tesla A100 80GB.
+	AcceleratorConfigTypeNvidiaA10080gb = AcceleratorConfigType("NVIDIA_A100_80GB")
 	// Accelerator type is NVIDIA Tesla T4 Virtual Workstations.
 	AcceleratorConfigTypeNvidiaTeslaT4Vws = AcceleratorConfigType("NVIDIA_TESLA_T4_VWS")
 	// Accelerator type is NVIDIA Tesla P100 Virtual Workstations.
@@ -173,6 +175,7 @@ func (o AcceleratorConfigTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 //	AcceleratorConfigTypeNvidiaTeslaT4
 //	AcceleratorConfigTypeNvidiaTeslaA100
 //	AcceleratorConfigTypeNvidiaL4
+//	AcceleratorConfigTypeNvidiaA10080gb
 //	AcceleratorConfigTypeNvidiaTeslaT4Vws
 //	AcceleratorConfigTypeNvidiaTeslaP100Vws
 //	AcceleratorConfigTypeNvidiaTeslaP4Vws

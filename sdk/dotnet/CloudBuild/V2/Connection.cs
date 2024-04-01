@@ -22,6 +22,18 @@ namespace Pulumi.GoogleNative.CloudBuild.V2
         public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for connections to Bitbucket Cloud.
+        /// </summary>
+        [Output("bitbucketCloudConfig")]
+        public Output<Outputs.BitbucketCloudConfigResponse> BitbucketCloudConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for connections to Bitbucket Data Center.
+        /// </summary>
+        [Output("bitbucketDataCenterConfig")]
+        public Output<Outputs.BitbucketDataCenterConfigResponse> BitbucketDataCenterConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Required. The ID to use for the Connection, which will become the final component of the Connection's resource name. Names must be unique per-project per-location. Allows alphanumeric characters and any of -._~%!$&amp;'()*+,;=@.
         /// </summary>
         [Output("connectionId")]
@@ -155,6 +167,18 @@ namespace Pulumi.GoogleNative.CloudBuild.V2
             get => _annotations ?? (_annotations = new InputMap<string>());
             set => _annotations = value;
         }
+
+        /// <summary>
+        /// Configuration for connections to Bitbucket Cloud.
+        /// </summary>
+        [Input("bitbucketCloudConfig")]
+        public Input<Inputs.BitbucketCloudConfigArgs>? BitbucketCloudConfig { get; set; }
+
+        /// <summary>
+        /// Configuration for connections to Bitbucket Data Center.
+        /// </summary>
+        [Input("bitbucketDataCenterConfig")]
+        public Input<Inputs.BitbucketDataCenterConfigArgs>? BitbucketDataCenterConfig { get; set; }
 
         /// <summary>
         /// Required. The ID to use for the Connection, which will become the final component of the Connection's resource name. Names must be unique per-project per-location. Allows alphanumeric characters and any of -._~%!$&amp;'()*+,;=@.

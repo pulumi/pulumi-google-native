@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBackendServiceResult:
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, compression_mode=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, kind=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, metadatas=None, name=None, network=None, outlier_detection=None, port=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, service_bindings=None, session_affinity=None, subsetting=None, timeout_sec=None, used_by=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, compression_mode=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, kind=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, metadatas=None, name=None, network=None, outlier_detection=None, port=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, service_bindings=None, service_lb_policy=None, session_affinity=None, subsetting=None, timeout_sec=None, used_by=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -128,6 +128,9 @@ class GetBackendServiceResult:
         if service_bindings and not isinstance(service_bindings, list):
             raise TypeError("Expected argument 'service_bindings' to be a list")
         pulumi.set(__self__, "service_bindings", service_bindings)
+        if service_lb_policy and not isinstance(service_lb_policy, str):
+            raise TypeError("Expected argument 'service_lb_policy' to be a str")
+        pulumi.set(__self__, "service_lb_policy", service_lb_policy)
         if session_affinity and not isinstance(session_affinity, str):
             raise TypeError("Expected argument 'session_affinity' to be a str")
         pulumi.set(__self__, "session_affinity", session_affinity)
@@ -145,7 +148,7 @@ class GetBackendServiceResult:
     @pulumi.getter(name="affinityCookieTtlSec")
     def affinity_cookie_ttl_sec(self) -> int:
         """
-        Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Lifetime of cookies in seconds. This setting is applicable to Application Load Balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "affinity_cookie_ttl_sec")
 
@@ -187,7 +190,7 @@ class GetBackendServiceResult:
     @pulumi.getter(name="connectionTrackingPolicy")
     def connection_tracking_policy(self) -> 'outputs.BackendServiceConnectionTrackingPolicyResponse':
         """
-        Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for Network Load Balancing and Internal TCP/UDP Load Balancing.
+        Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for external passthrough Network Load Balancers and internal passthrough Network Load Balancers.
         """
         return pulumi.get(self, "connection_tracking_policy")
 
@@ -243,7 +246,7 @@ class GetBackendServiceResult:
     @pulumi.getter(name="enableCDN")
     def enable_cdn(self) -> bool:
         """
-        If true, enables Cloud CDN for the backend service of an external HTTP(S) load balancer.
+        If true, enables Cloud CDN for the backend service of a global external Application Load Balancer.
         """
         return pulumi.get(self, "enable_cdn")
 
@@ -251,7 +254,7 @@ class GetBackendServiceResult:
     @pulumi.getter(name="failoverPolicy")
     def failover_policy(self) -> 'outputs.BackendServiceFailoverPolicyResponse':
         """
-        Requires at least one backend instance group to be defined as a backup (failover) backend. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
+        Requires at least one backend instance group to be defined as a backup (failover) backend. For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
         """
         return pulumi.get(self, "failover_policy")
 
@@ -275,7 +278,7 @@ class GetBackendServiceResult:
     @pulumi.getter
     def iap(self) -> 'outputs.BackendServiceIAPResponse':
         """
-        The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
+        The configurations for Identity-Aware Proxy on this resource. Not available for internal passthrough Network Load Balancers and external passthrough Network Load Balancers.
         """
         return pulumi.get(self, "iap")
 
@@ -363,10 +366,10 @@ class GetBackendServiceResult:
     @pulumi.getter
     def port(self) -> int:
         """
-        Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.
+        Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For internal passthrough Network Load Balancers and external passthrough Network Load Balancers, omit port.
         """
-        warnings.warn("""Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.""", DeprecationWarning)
-        pulumi.log.warn("""port is deprecated: Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.""")
+        warnings.warn("""Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For internal passthrough Network Load Balancers and external passthrough Network Load Balancers, omit port.""", DeprecationWarning)
+        pulumi.log.warn("""port is deprecated: Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For internal passthrough Network Load Balancers and external passthrough Network Load Balancers, omit port.""")
 
         return pulumi.get(self, "port")
 
@@ -374,7 +377,7 @@ class GetBackendServiceResult:
     @pulumi.getter(name="portName")
     def port_name(self) -> str:
         """
-        A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port_name.
+        A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For internal passthrough Network Load Balancers and external passthrough Network Load Balancers, omit port_name.
         """
         return pulumi.get(self, "port_name")
 
@@ -425,6 +428,14 @@ class GetBackendServiceResult:
         URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
         """
         return pulumi.get(self, "service_bindings")
+
+    @property
+    @pulumi.getter(name="serviceLbPolicy")
+    def service_lb_policy(self) -> str:
+        """
+        URL to networkservices.ServiceLbPolicy resource. Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+        """
+        return pulumi.get(self, "service_lb_policy")
 
     @property
     @pulumi.getter(name="sessionAffinity")
@@ -495,6 +506,7 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             security_settings=self.security_settings,
             self_link=self.self_link,
             service_bindings=self.service_bindings,
+            service_lb_policy=self.service_lb_policy,
             session_affinity=self.session_affinity,
             subsetting=self.subsetting,
             timeout_sec=self.timeout_sec,
@@ -550,6 +562,7 @@ def get_backend_service(backend_service: Optional[str] = None,
         security_settings=pulumi.get(__ret__, 'security_settings'),
         self_link=pulumi.get(__ret__, 'self_link'),
         service_bindings=pulumi.get(__ret__, 'service_bindings'),
+        service_lb_policy=pulumi.get(__ret__, 'service_lb_policy'),
         session_affinity=pulumi.get(__ret__, 'session_affinity'),
         subsetting=pulumi.get(__ret__, 'subsetting'),
         timeout_sec=pulumi.get(__ret__, 'timeout_sec'),

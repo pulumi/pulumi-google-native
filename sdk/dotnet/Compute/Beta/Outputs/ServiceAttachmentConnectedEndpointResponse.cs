@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string Endpoint;
         /// <summary>
+        /// The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+        /// </summary>
+        public readonly int PropagatedConnectionCount;
+        /// <summary>
         /// The PSC connection id of the connected endpoint.
         /// </summary>
         public readonly string PscConnectionId;
@@ -39,12 +43,15 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             string endpoint,
 
+            int propagatedConnectionCount,
+
             string pscConnectionId,
 
             string status)
         {
             ConsumerNetwork = consumerNetwork;
             Endpoint = endpoint;
+            PropagatedConnectionCount = propagatedConnectionCount;
             PscConnectionId = pscConnectionId;
             Status = status;
         }

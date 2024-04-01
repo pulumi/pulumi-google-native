@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a new network peering between the peer network and VMware Engine network provided in a `NetworkPeering` resource.
+ * Creates a new network peering between the peer network and VMware Engine network provided in a `NetworkPeering` resource. NetworkPeering is a global resource and location can only be global.
  * Auto-naming is currently not supported for this resource.
  */
 export class NetworkPeering extends pulumi.CustomResource {
@@ -66,8 +66,9 @@ export class NetworkPeering extends pulumi.CustomResource {
      * Optional. True if all subnet routes with public IP address range are imported; false otherwise. The default value is true. IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported to peers and are not controlled by this field.
      */
     public readonly importCustomRoutesWithPublicIp!: pulumi.Output<boolean>;
+    public readonly location!: pulumi.Output<string>;
     /**
-     * The resource name of the network peering. Resource names are scheme-less URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/networkPeerings/my-peering`
+     * The resource name of the network peering. NetworkPeering is a global resource and location can only be global. Resource names are scheme-less URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/networkPeerings/my-peering`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -141,6 +142,7 @@ export class NetworkPeering extends pulumi.CustomResource {
             resourceInputs["exportCustomRoutesWithPublicIp"] = args ? args.exportCustomRoutesWithPublicIp : undefined;
             resourceInputs["importCustomRoutes"] = args ? args.importCustomRoutes : undefined;
             resourceInputs["importCustomRoutesWithPublicIp"] = args ? args.importCustomRoutesWithPublicIp : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["networkPeeringId"] = args ? args.networkPeeringId : undefined;
             resourceInputs["peerMtu"] = args ? args.peerMtu : undefined;
             resourceInputs["peerNetwork"] = args ? args.peerNetwork : undefined;
@@ -162,6 +164,7 @@ export class NetworkPeering extends pulumi.CustomResource {
             resourceInputs["exportCustomRoutesWithPublicIp"] = undefined /*out*/;
             resourceInputs["importCustomRoutes"] = undefined /*out*/;
             resourceInputs["importCustomRoutesWithPublicIp"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networkPeeringId"] = undefined /*out*/;
             resourceInputs["peerMtu"] = undefined /*out*/;
@@ -176,7 +179,7 @@ export class NetworkPeering extends pulumi.CustomResource {
             resourceInputs["vmwareEngineNetwork"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["networkPeeringId", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["location", "networkPeeringId", "project"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(NetworkPeering.__pulumiType, name, resourceInputs, opts);
     }
@@ -210,6 +213,7 @@ export interface NetworkPeeringArgs {
      * Optional. True if all subnet routes with public IP address range are imported; false otherwise. The default value is true. IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported to peers and are not controlled by this field.
      */
     importCustomRoutesWithPublicIp?: pulumi.Input<boolean>;
+    location?: pulumi.Input<string>;
     /**
      * Required. The user-provided identifier of the new `NetworkPeering`. This identifier must be unique among `NetworkPeering` resources within the parent and becomes the final token in the name URI. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
      */

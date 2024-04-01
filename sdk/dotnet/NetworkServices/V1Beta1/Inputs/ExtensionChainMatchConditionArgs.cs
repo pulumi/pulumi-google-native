@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
     public sealed class ExtensionChainMatchConditionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+        /// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed. For more information, see [CEL matcher language reference](https://cloud.google.com/service-extensions/docs/cel-matcher-language-reference).
         /// </summary>
         [Input("celExpression", required: true)]
         public Input<string> CelExpression { get; set; } = null!;

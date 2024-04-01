@@ -112,6 +112,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Optional. Settings for end user personalization.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowCxV3beta1AgentPersonalizationSettingsResponse PersonalizationSettings;
+        /// <summary>
         /// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
         /// </summary>
         public readonly string SecuritySettings;
@@ -162,6 +166,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
 
             string name,
 
+            Outputs.GoogleCloudDialogflowCxV3beta1AgentPersonalizationSettingsResponse personalizationSettings,
+
             string securitySettings,
 
             Outputs.GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse speechToTextSettings,
@@ -186,6 +192,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
             GitIntegrationSettings = gitIntegrationSettings;
             Locked = locked;
             Name = name;
+            PersonalizationSettings = personalizationSettings;
             SecuritySettings = securitySettings;
             SpeechToTextSettings = speechToTextSettings;
             StartFlow = startFlow;

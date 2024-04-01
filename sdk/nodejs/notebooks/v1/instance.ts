@@ -116,7 +116,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly machineType!: pulumi.Output<string>;
     /**
-     * Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
+     * Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=BUCKET"`.
      */
     public readonly metadata!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -371,7 +371,7 @@ export interface InstanceArgs {
      */
     machineType: pulumi.Input<string>;
     /**
-     * Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
+     * Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=BUCKET"`.
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

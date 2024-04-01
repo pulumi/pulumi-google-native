@@ -24,6 +24,7 @@ class TransferJobArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input['NotificationConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 replication_spec: Optional[pulumi.Input['ReplicationSpecArgs']] = None,
                  schedule: Optional[pulumi.Input['ScheduleArgs']] = None,
                  status: Optional[pulumi.Input['TransferJobStatus']] = None,
                  transfer_spec: Optional[pulumi.Input['TransferSpecArgs']] = None):
@@ -36,6 +37,7 @@ class TransferJobArgs:
         :param pulumi.Input[str] name: A unique name (within the transfer project) assigned when the job is created. If this field is empty in a CreateTransferJobRequest, Storage Transfer Service assigns a unique name. Otherwise, the specified name is used as the unique name for this job. If the specified name is in use by a job, the creation request fails with an ALREADY_EXISTS error. This name must start with `"transferJobs/"` prefix and end with a letter or a number, and should be no more than 128 characters. For transfers involving PosixFilesystem, this name must start with `transferJobs/OPI` specifically. For all other transfer types, this name must not start with `transferJobs/OPI`. Non-PosixFilesystem example: `"transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$"` PosixFilesystem example: `"transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Applications must not rely on the enforcement of naming requirements involving OPI. Invalid job names fail with an INVALID_ARGUMENT error.
         :param pulumi.Input['NotificationConfigArgs'] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem.
         :param pulumi.Input[str] project: The ID of the Google Cloud project that owns the job.
+        :param pulumi.Input['ReplicationSpecArgs'] replication_spec: Replication specification.
         :param pulumi.Input['ScheduleArgs'] schedule: Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job never executes a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
         :param pulumi.Input['TransferJobStatus'] status: Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
         :param pulumi.Input['TransferSpecArgs'] transfer_spec: Transfer specification.
@@ -54,6 +56,8 @@ class TransferJobArgs:
             pulumi.set(__self__, "notification_config", notification_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if replication_spec is not None:
+            pulumi.set(__self__, "replication_spec", replication_spec)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
         if status is not None:
@@ -146,6 +150,18 @@ class TransferJobArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="replicationSpec")
+    def replication_spec(self) -> Optional[pulumi.Input['ReplicationSpecArgs']]:
+        """
+        Replication specification.
+        """
+        return pulumi.get(self, "replication_spec")
+
+    @replication_spec.setter
+    def replication_spec(self, value: Optional[pulumi.Input['ReplicationSpecArgs']]):
+        pulumi.set(self, "replication_spec", value)
+
+    @property
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input['ScheduleArgs']]:
         """
@@ -194,6 +210,7 @@ class TransferJob(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 replication_spec: Optional[pulumi.Input[pulumi.InputType['ReplicationSpecArgs']]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['ScheduleArgs']]] = None,
                  status: Optional[pulumi.Input['TransferJobStatus']] = None,
                  transfer_spec: Optional[pulumi.Input[pulumi.InputType['TransferSpecArgs']]] = None,
@@ -210,6 +227,7 @@ class TransferJob(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique name (within the transfer project) assigned when the job is created. If this field is empty in a CreateTransferJobRequest, Storage Transfer Service assigns a unique name. Otherwise, the specified name is used as the unique name for this job. If the specified name is in use by a job, the creation request fails with an ALREADY_EXISTS error. This name must start with `"transferJobs/"` prefix and end with a letter or a number, and should be no more than 128 characters. For transfers involving PosixFilesystem, this name must start with `transferJobs/OPI` specifically. For all other transfer types, this name must not start with `transferJobs/OPI`. Non-PosixFilesystem example: `"transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$"` PosixFilesystem example: `"transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Applications must not rely on the enforcement of naming requirements involving OPI. Invalid job names fail with an INVALID_ARGUMENT error.
         :param pulumi.Input[pulumi.InputType['NotificationConfigArgs']] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem.
         :param pulumi.Input[str] project: The ID of the Google Cloud project that owns the job.
+        :param pulumi.Input[pulumi.InputType['ReplicationSpecArgs']] replication_spec: Replication specification.
         :param pulumi.Input[pulumi.InputType['ScheduleArgs']] schedule: Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job never executes a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
         :param pulumi.Input['TransferJobStatus'] status: Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
         :param pulumi.Input[pulumi.InputType['TransferSpecArgs']] transfer_spec: Transfer specification.
@@ -245,6 +263,7 @@ class TransferJob(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 replication_spec: Optional[pulumi.Input[pulumi.InputType['ReplicationSpecArgs']]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['ScheduleArgs']]] = None,
                  status: Optional[pulumi.Input['TransferJobStatus']] = None,
                  transfer_spec: Optional[pulumi.Input[pulumi.InputType['TransferSpecArgs']]] = None,
@@ -264,6 +283,7 @@ class TransferJob(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["project"] = project
+            __props__.__dict__["replication_spec"] = replication_spec
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["status"] = status
             __props__.__dict__["transfer_spec"] = transfer_spec
@@ -302,6 +322,7 @@ class TransferJob(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["notification_config"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["replication_spec"] = None
         __props__.__dict__["schedule"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["transfer_spec"] = None
@@ -386,6 +407,14 @@ class TransferJob(pulumi.CustomResource):
         The ID of the Google Cloud project that owns the job.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="replicationSpec")
+    def replication_spec(self) -> pulumi.Output['outputs.ReplicationSpecResponse']:
+        """
+        Replication specification.
+        """
+        return pulumi.get(self, "replication_spec")
 
     @property
     @pulumi.getter

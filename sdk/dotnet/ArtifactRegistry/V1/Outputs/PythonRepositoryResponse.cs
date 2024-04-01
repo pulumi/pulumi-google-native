@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1.Outputs
     public sealed class PythonRepositoryResponse
     {
         /// <summary>
+        /// Customer-specified remote repository.
+        /// </summary>
+        public readonly Outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryResponse CustomRepository;
+        /// <summary>
         /// One of the publicly available Python repositories supported by Artifact Registry.
         /// </summary>
         public readonly string PublicRepository;
 
         [OutputConstructor]
-        private PythonRepositoryResponse(string publicRepository)
+        private PythonRepositoryResponse(
+            Outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryResponse customRepository,
+
+            string publicRepository)
         {
+            CustomRepository = customRepository;
             PublicRepository = publicRepository;
         }
     }

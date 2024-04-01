@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetWorkstationClusterResult:
-    def __init__(__self__, annotations=None, conditions=None, control_plane_ip=None, create_time=None, degraded=None, delete_time=None, display_name=None, etag=None, labels=None, name=None, network=None, private_cluster_config=None, reconciling=None, subnetwork=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, conditions=None, control_plane_ip=None, create_time=None, degraded=None, delete_time=None, display_name=None, domain_config=None, etag=None, labels=None, name=None, network=None, private_cluster_config=None, reconciling=None, subnetwork=None, uid=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -41,6 +41,9 @@ class GetWorkstationClusterResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if domain_config and not isinstance(domain_config, dict):
+            raise TypeError("Expected argument 'domain_config' to be a dict")
+        pulumi.set(__self__, "domain_config", domain_config)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
@@ -124,6 +127,14 @@ class GetWorkstationClusterResult:
         Optional. Human-readable name for this workstation cluster.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="domainConfig")
+    def domain_config(self) -> 'outputs.DomainConfigResponse':
+        """
+        Optional. Configuration options for a custom domain.
+        """
+        return pulumi.get(self, "domain_config")
 
     @property
     @pulumi.getter
@@ -211,6 +222,7 @@ class AwaitableGetWorkstationClusterResult(GetWorkstationClusterResult):
             degraded=self.degraded,
             delete_time=self.delete_time,
             display_name=self.display_name,
+            domain_config=self.domain_config,
             etag=self.etag,
             labels=self.labels,
             name=self.name,
@@ -244,6 +256,7 @@ def get_workstation_cluster(location: Optional[str] = None,
         degraded=pulumi.get(__ret__, 'degraded'),
         delete_time=pulumi.get(__ret__, 'delete_time'),
         display_name=pulumi.get(__ret__, 'display_name'),
+        domain_config=pulumi.get(__ret__, 'domain_config'),
         etag=pulumi.get(__ret__, 'etag'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),

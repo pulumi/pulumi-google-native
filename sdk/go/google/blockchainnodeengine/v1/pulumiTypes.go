@@ -85,8 +85,6 @@ type EthereumDetails struct {
 	ApiEnableAdmin *bool `pulumi:"apiEnableAdmin"`
 	// Immutable. Enables JSON-RPC access to functions in the `debug` namespace. Defaults to `false`.
 	ApiEnableDebug *bool `pulumi:"apiEnableDebug"`
-	// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
-	BeaconFeeRecipient *string `pulumi:"beaconFeeRecipient"`
 	// Immutable. The consensus client.
 	ConsensusClient *EthereumDetailsConsensusClient `pulumi:"consensusClient"`
 	// Immutable. The execution client
@@ -97,6 +95,8 @@ type EthereumDetails struct {
 	Network *EthereumDetailsNetwork `pulumi:"network"`
 	// Immutable. The type of Ethereum node.
 	NodeType *EthereumDetailsNodeType `pulumi:"nodeType"`
+	// Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client.
+	ValidatorConfig *ValidatorConfig `pulumi:"validatorConfig"`
 }
 
 // EthereumDetailsInput is an input type that accepts EthereumDetailsArgs and EthereumDetailsOutput values.
@@ -116,8 +116,6 @@ type EthereumDetailsArgs struct {
 	ApiEnableAdmin pulumi.BoolPtrInput `pulumi:"apiEnableAdmin"`
 	// Immutable. Enables JSON-RPC access to functions in the `debug` namespace. Defaults to `false`.
 	ApiEnableDebug pulumi.BoolPtrInput `pulumi:"apiEnableDebug"`
-	// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
-	BeaconFeeRecipient pulumi.StringPtrInput `pulumi:"beaconFeeRecipient"`
 	// Immutable. The consensus client.
 	ConsensusClient EthereumDetailsConsensusClientPtrInput `pulumi:"consensusClient"`
 	// Immutable. The execution client
@@ -128,6 +126,8 @@ type EthereumDetailsArgs struct {
 	Network EthereumDetailsNetworkPtrInput `pulumi:"network"`
 	// Immutable. The type of Ethereum node.
 	NodeType EthereumDetailsNodeTypePtrInput `pulumi:"nodeType"`
+	// Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client.
+	ValidatorConfig ValidatorConfigPtrInput `pulumi:"validatorConfig"`
 }
 
 func (EthereumDetailsArgs) ElementType() reflect.Type {
@@ -218,11 +218,6 @@ func (o EthereumDetailsOutput) ApiEnableDebug() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EthereumDetails) *bool { return v.ApiEnableDebug }).(pulumi.BoolPtrOutput)
 }
 
-// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
-func (o EthereumDetailsOutput) BeaconFeeRecipient() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EthereumDetails) *string { return v.BeaconFeeRecipient }).(pulumi.StringPtrOutput)
-}
-
 // Immutable. The consensus client.
 func (o EthereumDetailsOutput) ConsensusClient() EthereumDetailsConsensusClientPtrOutput {
 	return o.ApplyT(func(v EthereumDetails) *EthereumDetailsConsensusClient { return v.ConsensusClient }).(EthereumDetailsConsensusClientPtrOutput)
@@ -246,6 +241,11 @@ func (o EthereumDetailsOutput) Network() EthereumDetailsNetworkPtrOutput {
 // Immutable. The type of Ethereum node.
 func (o EthereumDetailsOutput) NodeType() EthereumDetailsNodeTypePtrOutput {
 	return o.ApplyT(func(v EthereumDetails) *EthereumDetailsNodeType { return v.NodeType }).(EthereumDetailsNodeTypePtrOutput)
+}
+
+// Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client.
+func (o EthereumDetailsOutput) ValidatorConfig() ValidatorConfigPtrOutput {
+	return o.ApplyT(func(v EthereumDetails) *ValidatorConfig { return v.ValidatorConfig }).(ValidatorConfigPtrOutput)
 }
 
 type EthereumDetailsPtrOutput struct{ *pulumi.OutputState }
@@ -290,16 +290,6 @@ func (o EthereumDetailsPtrOutput) ApiEnableDebug() pulumi.BoolPtrOutput {
 		}
 		return v.ApiEnableDebug
 	}).(pulumi.BoolPtrOutput)
-}
-
-// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
-func (o EthereumDetailsPtrOutput) BeaconFeeRecipient() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EthereumDetails) *string {
-		if v == nil {
-			return nil
-		}
-		return v.BeaconFeeRecipient
-	}).(pulumi.StringPtrOutput)
 }
 
 // Immutable. The consensus client.
@@ -352,6 +342,16 @@ func (o EthereumDetailsPtrOutput) NodeType() EthereumDetailsNodeTypePtrOutput {
 	}).(EthereumDetailsNodeTypePtrOutput)
 }
 
+// Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client.
+func (o EthereumDetailsPtrOutput) ValidatorConfig() ValidatorConfigPtrOutput {
+	return o.ApplyT(func(v *EthereumDetails) *ValidatorConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ValidatorConfig
+	}).(ValidatorConfigPtrOutput)
+}
+
 // Ethereum-specific blockchain node details.
 type EthereumDetailsResponse struct {
 	// Ethereum-specific endpoint information.
@@ -360,8 +360,6 @@ type EthereumDetailsResponse struct {
 	ApiEnableAdmin bool `pulumi:"apiEnableAdmin"`
 	// Immutable. Enables JSON-RPC access to functions in the `debug` namespace. Defaults to `false`.
 	ApiEnableDebug bool `pulumi:"apiEnableDebug"`
-	// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
-	BeaconFeeRecipient string `pulumi:"beaconFeeRecipient"`
 	// Immutable. The consensus client.
 	ConsensusClient string `pulumi:"consensusClient"`
 	// Immutable. The execution client
@@ -372,6 +370,8 @@ type EthereumDetailsResponse struct {
 	Network string `pulumi:"network"`
 	// Immutable. The type of Ethereum node.
 	NodeType string `pulumi:"nodeType"`
+	// Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client.
+	ValidatorConfig ValidatorConfigResponse `pulumi:"validatorConfig"`
 }
 
 // Ethereum-specific blockchain node details.
@@ -404,11 +404,6 @@ func (o EthereumDetailsResponseOutput) ApiEnableDebug() pulumi.BoolOutput {
 	return o.ApplyT(func(v EthereumDetailsResponse) bool { return v.ApiEnableDebug }).(pulumi.BoolOutput)
 }
 
-// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
-func (o EthereumDetailsResponseOutput) BeaconFeeRecipient() pulumi.StringOutput {
-	return o.ApplyT(func(v EthereumDetailsResponse) string { return v.BeaconFeeRecipient }).(pulumi.StringOutput)
-}
-
 // Immutable. The consensus client.
 func (o EthereumDetailsResponseOutput) ConsensusClient() pulumi.StringOutput {
 	return o.ApplyT(func(v EthereumDetailsResponse) string { return v.ConsensusClient }).(pulumi.StringOutput)
@@ -432,6 +427,11 @@ func (o EthereumDetailsResponseOutput) Network() pulumi.StringOutput {
 // Immutable. The type of Ethereum node.
 func (o EthereumDetailsResponseOutput) NodeType() pulumi.StringOutput {
 	return o.ApplyT(func(v EthereumDetailsResponse) string { return v.NodeType }).(pulumi.StringOutput)
+}
+
+// Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client.
+func (o EthereumDetailsResponseOutput) ValidatorConfig() ValidatorConfigResponseOutput {
+	return o.ApplyT(func(v EthereumDetailsResponse) ValidatorConfigResponse { return v.ValidatorConfig }).(ValidatorConfigResponseOutput)
 }
 
 // Contains endpoint information specific to Ethereum nodes.
@@ -640,11 +640,231 @@ func (o GethDetailsResponseOutput) GarbageCollectionMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GethDetailsResponse) string { return v.GarbageCollectionMode }).(pulumi.StringOutput)
 }
 
+// Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client.
+type ValidatorConfig struct {
+	// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
+	BeaconFeeRecipient *string `pulumi:"beaconFeeRecipient"`
+	// Immutable. When true, deploys a GCP-managed validator client alongside the beacon client.
+	ManagedValidatorClient *bool `pulumi:"managedValidatorClient"`
+	// URLs for MEV-relay services to use for block building. When set, a GCP-managed MEV-boost service is configured on the beacon client.
+	MevRelayUrls []string `pulumi:"mevRelayUrls"`
+}
+
+// ValidatorConfigInput is an input type that accepts ValidatorConfigArgs and ValidatorConfigOutput values.
+// You can construct a concrete instance of `ValidatorConfigInput` via:
+//
+//	ValidatorConfigArgs{...}
+type ValidatorConfigInput interface {
+	pulumi.Input
+
+	ToValidatorConfigOutput() ValidatorConfigOutput
+	ToValidatorConfigOutputWithContext(context.Context) ValidatorConfigOutput
+}
+
+// Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client.
+type ValidatorConfigArgs struct {
+	// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
+	BeaconFeeRecipient pulumi.StringPtrInput `pulumi:"beaconFeeRecipient"`
+	// Immutable. When true, deploys a GCP-managed validator client alongside the beacon client.
+	ManagedValidatorClient pulumi.BoolPtrInput `pulumi:"managedValidatorClient"`
+	// URLs for MEV-relay services to use for block building. When set, a GCP-managed MEV-boost service is configured on the beacon client.
+	MevRelayUrls pulumi.StringArrayInput `pulumi:"mevRelayUrls"`
+}
+
+func (ValidatorConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValidatorConfig)(nil)).Elem()
+}
+
+func (i ValidatorConfigArgs) ToValidatorConfigOutput() ValidatorConfigOutput {
+	return i.ToValidatorConfigOutputWithContext(context.Background())
+}
+
+func (i ValidatorConfigArgs) ToValidatorConfigOutputWithContext(ctx context.Context) ValidatorConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ValidatorConfigOutput)
+}
+
+func (i ValidatorConfigArgs) ToValidatorConfigPtrOutput() ValidatorConfigPtrOutput {
+	return i.ToValidatorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ValidatorConfigArgs) ToValidatorConfigPtrOutputWithContext(ctx context.Context) ValidatorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ValidatorConfigOutput).ToValidatorConfigPtrOutputWithContext(ctx)
+}
+
+// ValidatorConfigPtrInput is an input type that accepts ValidatorConfigArgs, ValidatorConfigPtr and ValidatorConfigPtrOutput values.
+// You can construct a concrete instance of `ValidatorConfigPtrInput` via:
+//
+//	        ValidatorConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ValidatorConfigPtrInput interface {
+	pulumi.Input
+
+	ToValidatorConfigPtrOutput() ValidatorConfigPtrOutput
+	ToValidatorConfigPtrOutputWithContext(context.Context) ValidatorConfigPtrOutput
+}
+
+type validatorConfigPtrType ValidatorConfigArgs
+
+func ValidatorConfigPtr(v *ValidatorConfigArgs) ValidatorConfigPtrInput {
+	return (*validatorConfigPtrType)(v)
+}
+
+func (*validatorConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ValidatorConfig)(nil)).Elem()
+}
+
+func (i *validatorConfigPtrType) ToValidatorConfigPtrOutput() ValidatorConfigPtrOutput {
+	return i.ToValidatorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *validatorConfigPtrType) ToValidatorConfigPtrOutputWithContext(ctx context.Context) ValidatorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ValidatorConfigPtrOutput)
+}
+
+// Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client.
+type ValidatorConfigOutput struct{ *pulumi.OutputState }
+
+func (ValidatorConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValidatorConfig)(nil)).Elem()
+}
+
+func (o ValidatorConfigOutput) ToValidatorConfigOutput() ValidatorConfigOutput {
+	return o
+}
+
+func (o ValidatorConfigOutput) ToValidatorConfigOutputWithContext(ctx context.Context) ValidatorConfigOutput {
+	return o
+}
+
+func (o ValidatorConfigOutput) ToValidatorConfigPtrOutput() ValidatorConfigPtrOutput {
+	return o.ToValidatorConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ValidatorConfigOutput) ToValidatorConfigPtrOutputWithContext(ctx context.Context) ValidatorConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ValidatorConfig) *ValidatorConfig {
+		return &v
+	}).(ValidatorConfigPtrOutput)
+}
+
+// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
+func (o ValidatorConfigOutput) BeaconFeeRecipient() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ValidatorConfig) *string { return v.BeaconFeeRecipient }).(pulumi.StringPtrOutput)
+}
+
+// Immutable. When true, deploys a GCP-managed validator client alongside the beacon client.
+func (o ValidatorConfigOutput) ManagedValidatorClient() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ValidatorConfig) *bool { return v.ManagedValidatorClient }).(pulumi.BoolPtrOutput)
+}
+
+// URLs for MEV-relay services to use for block building. When set, a GCP-managed MEV-boost service is configured on the beacon client.
+func (o ValidatorConfigOutput) MevRelayUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ValidatorConfig) []string { return v.MevRelayUrls }).(pulumi.StringArrayOutput)
+}
+
+type ValidatorConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ValidatorConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ValidatorConfig)(nil)).Elem()
+}
+
+func (o ValidatorConfigPtrOutput) ToValidatorConfigPtrOutput() ValidatorConfigPtrOutput {
+	return o
+}
+
+func (o ValidatorConfigPtrOutput) ToValidatorConfigPtrOutputWithContext(ctx context.Context) ValidatorConfigPtrOutput {
+	return o
+}
+
+func (o ValidatorConfigPtrOutput) Elem() ValidatorConfigOutput {
+	return o.ApplyT(func(v *ValidatorConfig) ValidatorConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ValidatorConfig
+		return ret
+	}).(ValidatorConfigOutput)
+}
+
+// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
+func (o ValidatorConfigPtrOutput) BeaconFeeRecipient() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ValidatorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BeaconFeeRecipient
+	}).(pulumi.StringPtrOutput)
+}
+
+// Immutable. When true, deploys a GCP-managed validator client alongside the beacon client.
+func (o ValidatorConfigPtrOutput) ManagedValidatorClient() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ValidatorConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedValidatorClient
+	}).(pulumi.BoolPtrOutput)
+}
+
+// URLs for MEV-relay services to use for block building. When set, a GCP-managed MEV-boost service is configured on the beacon client.
+func (o ValidatorConfigPtrOutput) MevRelayUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ValidatorConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MevRelayUrls
+	}).(pulumi.StringArrayOutput)
+}
+
+// Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client.
+type ValidatorConfigResponse struct {
+	// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
+	BeaconFeeRecipient string `pulumi:"beaconFeeRecipient"`
+	// Immutable. When true, deploys a GCP-managed validator client alongside the beacon client.
+	ManagedValidatorClient bool `pulumi:"managedValidatorClient"`
+	// URLs for MEV-relay services to use for block building. When set, a GCP-managed MEV-boost service is configured on the beacon client.
+	MevRelayUrls []string `pulumi:"mevRelayUrls"`
+}
+
+// Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client.
+type ValidatorConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ValidatorConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValidatorConfigResponse)(nil)).Elem()
+}
+
+func (o ValidatorConfigResponseOutput) ToValidatorConfigResponseOutput() ValidatorConfigResponseOutput {
+	return o
+}
+
+func (o ValidatorConfigResponseOutput) ToValidatorConfigResponseOutputWithContext(ctx context.Context) ValidatorConfigResponseOutput {
+	return o
+}
+
+// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
+func (o ValidatorConfigResponseOutput) BeaconFeeRecipient() pulumi.StringOutput {
+	return o.ApplyT(func(v ValidatorConfigResponse) string { return v.BeaconFeeRecipient }).(pulumi.StringOutput)
+}
+
+// Immutable. When true, deploys a GCP-managed validator client alongside the beacon client.
+func (o ValidatorConfigResponseOutput) ManagedValidatorClient() pulumi.BoolOutput {
+	return o.ApplyT(func(v ValidatorConfigResponse) bool { return v.ManagedValidatorClient }).(pulumi.BoolOutput)
+}
+
+// URLs for MEV-relay services to use for block building. When set, a GCP-managed MEV-boost service is configured on the beacon client.
+func (o ValidatorConfigResponseOutput) MevRelayUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ValidatorConfigResponse) []string { return v.MevRelayUrls }).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EthereumDetailsInput)(nil)).Elem(), EthereumDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EthereumDetailsPtrInput)(nil)).Elem(), EthereumDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GethDetailsInput)(nil)).Elem(), GethDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GethDetailsPtrInput)(nil)).Elem(), GethDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ValidatorConfigInput)(nil)).Elem(), ValidatorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ValidatorConfigPtrInput)(nil)).Elem(), ValidatorConfigArgs{})
 	pulumi.RegisterOutputType(ConnectionInfoResponseOutput{})
 	pulumi.RegisterOutputType(EndpointInfoResponseOutput{})
 	pulumi.RegisterOutputType(EthereumDetailsOutput{})
@@ -654,4 +874,7 @@ func init() {
 	pulumi.RegisterOutputType(GethDetailsOutput{})
 	pulumi.RegisterOutputType(GethDetailsPtrOutput{})
 	pulumi.RegisterOutputType(GethDetailsResponseOutput{})
+	pulumi.RegisterOutputType(ValidatorConfigOutput{})
+	pulumi.RegisterOutputType(ValidatorConfigPtrOutput{})
+	pulumi.RegisterOutputType(ValidatorConfigResponseOutput{})
 }

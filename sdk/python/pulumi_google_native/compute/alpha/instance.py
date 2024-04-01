@@ -866,6 +866,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["last_stop_timestamp"] = None
             __props__.__dict__["last_suspended_timestamp"] = None
             __props__.__dict__["resource_status"] = None
+            __props__.__dict__["satisfies_pzi"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
@@ -934,6 +935,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["reservation_affinity"] = None
         __props__.__dict__["resource_policies"] = None
         __props__.__dict__["resource_status"] = None
+        __props__.__dict__["satisfies_pzi"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["scheduling"] = None
         __props__.__dict__["secure_tags"] = None
@@ -1242,6 +1244,14 @@ class Instance(pulumi.CustomResource):
         Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
         """
         return pulumi.get(self, "resource_status")
+
+    @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> pulumi.Output[bool]:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzi")
 
     @property
     @pulumi.getter(name="satisfiesPzs")

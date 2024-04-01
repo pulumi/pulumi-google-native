@@ -27,7 +27,8 @@ class ProviderArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  oidc: Optional[pulumi.Input['OidcArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 saml: Optional[pulumi.Input['SamlArgs']] = None):
+                 saml: Optional[pulumi.Input['SamlArgs']] = None,
+                 x509: Optional[pulumi.Input['X509Args']] = None):
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] workload_identity_pool_provider_id: Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
@@ -39,6 +40,7 @@ class ProviderArgs:
         :param pulumi.Input[str] display_name: A display name for the provider. Cannot exceed 32 characters.
         :param pulumi.Input['OidcArgs'] oidc: An OpenId Connect 1.0 identity provider.
         :param pulumi.Input['SamlArgs'] saml: An SAML 2.0 identity provider.
+        :param pulumi.Input['X509Args'] x509: An X.509-type identity provider.
         """
         pulumi.set(__self__, "workload_identity_pool_id", workload_identity_pool_id)
         pulumi.set(__self__, "workload_identity_pool_provider_id", workload_identity_pool_provider_id)
@@ -62,6 +64,8 @@ class ProviderArgs:
             pulumi.set(__self__, "project", project)
         if saml is not None:
             pulumi.set(__self__, "saml", saml)
+        if x509 is not None:
+            pulumi.set(__self__, "x509", x509)
 
     @property
     @pulumi.getter(name="workloadIdentityPoolId")
@@ -198,6 +202,18 @@ class ProviderArgs:
     def saml(self, value: Optional[pulumi.Input['SamlArgs']]):
         pulumi.set(self, "saml", value)
 
+    @property
+    @pulumi.getter
+    def x509(self) -> Optional[pulumi.Input['X509Args']]:
+        """
+        An X.509-type identity provider.
+        """
+        return pulumi.get(self, "x509")
+
+    @x509.setter
+    def x509(self, value: Optional[pulumi.Input['X509Args']]):
+        pulumi.set(self, "x509", value)
+
 
 class Provider(pulumi.CustomResource):
     @overload
@@ -216,6 +232,7 @@ class Provider(pulumi.CustomResource):
                  saml: Optional[pulumi.Input[pulumi.InputType['SamlArgs']]] = None,
                  workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
                  workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None,
+                 x509: Optional[pulumi.Input[pulumi.InputType['X509Args']]] = None,
                  __props__=None):
         """
         Creates a new WorkloadIdentityPoolProvider in a WorkloadIdentityPool. You cannot reuse the name of a deleted provider until 30 days after deletion.
@@ -232,6 +249,7 @@ class Provider(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['OidcArgs']] oidc: An OpenId Connect 1.0 identity provider.
         :param pulumi.Input[pulumi.InputType['SamlArgs']] saml: An SAML 2.0 identity provider.
         :param pulumi.Input[str] workload_identity_pool_provider_id: Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
+        :param pulumi.Input[pulumi.InputType['X509Args']] x509: An X.509-type identity provider.
         """
         ...
     @overload
@@ -270,6 +288,7 @@ class Provider(pulumi.CustomResource):
                  saml: Optional[pulumi.Input[pulumi.InputType['SamlArgs']]] = None,
                  workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
                  workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None,
+                 x509: Optional[pulumi.Input[pulumi.InputType['X509Args']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -295,6 +314,7 @@ class Provider(pulumi.CustomResource):
             if workload_identity_pool_provider_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workload_identity_pool_provider_id'")
             __props__.__dict__["workload_identity_pool_provider_id"] = workload_identity_pool_provider_id
+            __props__.__dict__["x509"] = x509
             __props__.__dict__["expire_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
@@ -337,6 +357,7 @@ class Provider(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["workload_identity_pool_id"] = None
         __props__.__dict__["workload_identity_pool_provider_id"] = None
+        __props__.__dict__["x509"] = None
         return Provider(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -449,4 +470,12 @@ class Provider(pulumi.CustomResource):
         Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
         """
         return pulumi.get(self, "workload_identity_pool_provider_id")
+
+    @property
+    @pulumi.getter
+    def x509(self) -> pulumi.Output['outputs.X509Response']:
+        """
+        An X.509-type identity provider.
+        """
+        return pulumi.get(self, "x509")
 

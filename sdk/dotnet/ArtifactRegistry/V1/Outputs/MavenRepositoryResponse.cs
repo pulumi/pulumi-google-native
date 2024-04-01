@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1.Outputs
     public sealed class MavenRepositoryResponse
     {
         /// <summary>
+        /// Customer-specified remote repository.
+        /// </summary>
+        public readonly Outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryResponse CustomRepository;
+        /// <summary>
         /// One of the publicly available Maven repositories supported by Artifact Registry.
         /// </summary>
         public readonly string PublicRepository;
 
         [OutputConstructor]
-        private MavenRepositoryResponse(string publicRepository)
+        private MavenRepositoryResponse(
+            Outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryResponse customRepository,
+
+            string publicRepository)
         {
+            CustomRepository = customRepository;
             PublicRepository = publicRepository;
         }
     }

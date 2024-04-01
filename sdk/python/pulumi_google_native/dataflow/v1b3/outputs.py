@@ -716,6 +716,8 @@ class EnvironmentResponse(dict):
             suggest = "service_options"
         elif key == "shuffleMode":
             suggest = "shuffle_mode"
+        elif key == "streamingMode":
+            suggest = "streaming_mode"
         elif key == "tempStoragePrefix":
             suggest = "temp_storage_prefix"
         elif key == "useStreamingEngineResourceBasedBilling":
@@ -752,6 +754,7 @@ class EnvironmentResponse(dict):
                  service_kms_key_name: str,
                  service_options: Sequence[str],
                  shuffle_mode: str,
+                 streaming_mode: str,
                  temp_storage_prefix: str,
                  use_streaming_engine_resource_based_billing: bool,
                  user_agent: Mapping[str, str],
@@ -772,8 +775,9 @@ class EnvironmentResponse(dict):
         :param str service_kms_key_name: If set, contains the Cloud KMS key identifier used to encrypt data at rest, AKA a Customer Managed Encryption Key (CMEK). Format: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
         :param Sequence[str] service_options: The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on).
         :param str shuffle_mode: The shuffle mode used for the job.
+        :param str streaming_mode: Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
         :param str temp_storage_prefix: The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
-        :param bool use_streaming_engine_resource_based_billing: Whether the job uses the new streaming engine billing model based on resource usage.
+        :param bool use_streaming_engine_resource_based_billing: Whether the job uses the Streaming Engine resource-based billing model.
         :param Mapping[str, str] user_agent: A description of the process that generated the request.
         :param Mapping[str, str] version: A structure describing which components and their versions of the service are required in order to run the job.
         :param Sequence['WorkerPoolResponse'] worker_pools: The worker pools. At least one "harness" worker pool must be specified in order for the job to have workers.
@@ -791,6 +795,7 @@ class EnvironmentResponse(dict):
         pulumi.set(__self__, "service_kms_key_name", service_kms_key_name)
         pulumi.set(__self__, "service_options", service_options)
         pulumi.set(__self__, "shuffle_mode", shuffle_mode)
+        pulumi.set(__self__, "streaming_mode", streaming_mode)
         pulumi.set(__self__, "temp_storage_prefix", temp_storage_prefix)
         pulumi.set(__self__, "use_streaming_engine_resource_based_billing", use_streaming_engine_resource_based_billing)
         pulumi.set(__self__, "user_agent", user_agent)
@@ -888,6 +893,14 @@ class EnvironmentResponse(dict):
         return pulumi.get(self, "shuffle_mode")
 
     @property
+    @pulumi.getter(name="streamingMode")
+    def streaming_mode(self) -> str:
+        """
+        Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
+        """
+        return pulumi.get(self, "streaming_mode")
+
+    @property
     @pulumi.getter(name="tempStoragePrefix")
     def temp_storage_prefix(self) -> str:
         """
@@ -899,7 +912,7 @@ class EnvironmentResponse(dict):
     @pulumi.getter(name="useStreamingEngineResourceBasedBilling")
     def use_streaming_engine_resource_based_billing(self) -> bool:
         """
-        Whether the job uses the new streaming engine billing model based on resource usage.
+        Whether the job uses the Streaming Engine resource-based billing model.
         """
         return pulumi.get(self, "use_streaming_engine_resource_based_billing")
 
@@ -1408,6 +1421,8 @@ class ParameterMetadataResponse(dict):
             suggest = "group_name"
         elif key == "helpText":
             suggest = "help_text"
+        elif key == "hiddenUi":
+            suggest = "hidden_ui"
         elif key == "isOptional":
             suggest = "is_optional"
         elif key == "paramType":
@@ -1434,6 +1449,7 @@ class ParameterMetadataResponse(dict):
                  enum_options: Sequence['outputs.ParameterMetadataEnumOptionResponse'],
                  group_name: str,
                  help_text: str,
+                 hidden_ui: bool,
                  is_optional: bool,
                  label: str,
                  name: str,
@@ -1448,6 +1464,7 @@ class ParameterMetadataResponse(dict):
         :param Sequence['ParameterMetadataEnumOptionResponse'] enum_options: Optional. The options shown when ENUM ParameterType is specified.
         :param str group_name: Optional. Specifies a group name for this parameter to be rendered under. Group header text will be rendered exactly as specified in this field. Only considered when parent_name is NOT provided.
         :param str help_text: The help text to display for the parameter.
+        :param bool hidden_ui: Optional. Whether the parameter should be hidden in the UI.
         :param bool is_optional: Optional. Whether the parameter is optional. Defaults to false.
         :param str label: The label to display for the parameter.
         :param str name: The name of the parameter.
@@ -1461,6 +1478,7 @@ class ParameterMetadataResponse(dict):
         pulumi.set(__self__, "enum_options", enum_options)
         pulumi.set(__self__, "group_name", group_name)
         pulumi.set(__self__, "help_text", help_text)
+        pulumi.set(__self__, "hidden_ui", hidden_ui)
         pulumi.set(__self__, "is_optional", is_optional)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "name", name)
@@ -1508,6 +1526,14 @@ class ParameterMetadataResponse(dict):
         The help text to display for the parameter.
         """
         return pulumi.get(self, "help_text")
+
+    @property
+    @pulumi.getter(name="hiddenUi")
+    def hidden_ui(self) -> bool:
+        """
+        Optional. Whether the parameter should be hidden in the UI.
+        """
+        return pulumi.get(self, "hidden_ui")
 
     @property
     @pulumi.getter(name="isOptional")
@@ -1761,7 +1787,7 @@ class RuntimeUpdatableParamsResponse(dict):
         Additional job parameters that can only be updated during runtime using the projects.jobs.update method. These fields have no effect when specified during job creation.
         :param int max_num_workers: The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
         :param int min_num_workers: The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
-        :param float worker_utilization_hint: Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog.
+        :param float worker_utilization_hint: Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog. For more information, see [Update an existing pipeline](https://cloud.google.com/dataflow/docs/guides/updating-a-pipeline).
         """
         pulumi.set(__self__, "max_num_workers", max_num_workers)
         pulumi.set(__self__, "min_num_workers", min_num_workers)
@@ -1787,7 +1813,7 @@ class RuntimeUpdatableParamsResponse(dict):
     @pulumi.getter(name="workerUtilizationHint")
     def worker_utilization_hint(self) -> float:
         """
-        Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog.
+        Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to determine upscaling and downscaling when absent other constraints such as backlog. For more information, see [Update an existing pipeline](https://cloud.google.com/dataflow/docs/guides/updating-a-pipeline).
         """
         return pulumi.get(self, "worker_utilization_hint")
 
@@ -2522,19 +2548,47 @@ class TemplateMetadataResponse(dict):
     """
     Metadata describing a template.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "supportsAtLeastOnce":
+            suggest = "supports_at_least_once"
+        elif key == "supportsExactlyOnce":
+            suggest = "supports_exactly_once"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TemplateMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TemplateMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TemplateMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  description: str,
                  name: str,
-                 parameters: Sequence['outputs.ParameterMetadataResponse']):
+                 parameters: Sequence['outputs.ParameterMetadataResponse'],
+                 streaming: bool,
+                 supports_at_least_once: bool,
+                 supports_exactly_once: bool):
         """
         Metadata describing a template.
         :param str description: Optional. A description of the template.
         :param str name: The name of the template.
         :param Sequence['ParameterMetadataResponse'] parameters: The parameters for the template.
+        :param bool streaming: Optional. Indicates if the template is streaming or not.
+        :param bool supports_at_least_once: Optional. Indicates if the streaming template supports at least once mode.
+        :param bool supports_exactly_once: Optional. Indicates if the streaming template supports exactly once mode.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "parameters", parameters)
+        pulumi.set(__self__, "streaming", streaming)
+        pulumi.set(__self__, "supports_at_least_once", supports_at_least_once)
+        pulumi.set(__self__, "supports_exactly_once", supports_exactly_once)
 
     @property
     @pulumi.getter
@@ -2559,6 +2613,30 @@ class TemplateMetadataResponse(dict):
         The parameters for the template.
         """
         return pulumi.get(self, "parameters")
+
+    @property
+    @pulumi.getter
+    def streaming(self) -> bool:
+        """
+        Optional. Indicates if the template is streaming or not.
+        """
+        return pulumi.get(self, "streaming")
+
+    @property
+    @pulumi.getter(name="supportsAtLeastOnce")
+    def supports_at_least_once(self) -> bool:
+        """
+        Optional. Indicates if the streaming template supports at least once mode.
+        """
+        return pulumi.get(self, "supports_at_least_once")
+
+    @property
+    @pulumi.getter(name="supportsExactlyOnce")
+    def supports_exactly_once(self) -> bool:
+        """
+        Optional. Indicates if the streaming template supports exactly once mode.
+        """
+        return pulumi.get(self, "supports_exactly_once")
 
 
 @pulumi.output_type

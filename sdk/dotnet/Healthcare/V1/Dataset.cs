@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Healthcare.V1
     public partial class Dataset : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+        /// Required. The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
         /// </summary>
         [Output("datasetId")]
-        public Output<string?> DatasetId { get; private set; } = null!;
+        public Output<string> DatasetId { get; private set; } = null!;
 
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
+        /// Identifier. Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Dataset(string name, DatasetArgs? args = null, CustomResourceOptions? options = null)
+        public Dataset(string name, DatasetArgs args, CustomResourceOptions? options = null)
             : base("google-native:healthcare/v1:Dataset", name, args ?? new DatasetArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -64,6 +64,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
                 Version = Utilities.Version,
                 ReplaceOnChanges =
                 {
+                    "datasetId",
                     "location",
                     "project",
                 },
@@ -90,16 +91,16 @@ namespace Pulumi.GoogleNative.Healthcare.V1
     public sealed class DatasetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+        /// Required. The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
         /// </summary>
-        [Input("datasetId")]
-        public Input<string>? DatasetId { get; set; }
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
 
         [Input("location")]
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
+        /// Identifier. Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

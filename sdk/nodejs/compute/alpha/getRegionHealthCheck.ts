@@ -40,6 +40,7 @@ export interface GetRegionHealthCheckResult {
      */
     readonly description: string;
     readonly grpcHealthCheck: outputs.compute.alpha.GRPCHealthCheckResponse;
+    readonly grpcTlsHealthCheck: outputs.compute.alpha.GRPCTLSHealthCheckResponse;
     /**
      * A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
      */

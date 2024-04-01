@@ -31,7 +31,7 @@ type CompilationResult struct {
 	// The compilation result's name.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Immutable. The name of the release config to compile. The release config's 'current_compilation_result' field will be updated to this compilation result. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
+	// Immutable. The name of the release config to compile. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
 	ReleaseConfig pulumi.StringOutput `pulumi:"releaseConfig"`
 	RepositoryId  pulumi.StringOutput `pulumi:"repositoryId"`
 	// The fully resolved Git commit SHA of the code that was compiled. Not set for compilation results whose source is a workspace.
@@ -95,7 +95,7 @@ type compilationResultArgs struct {
 	GitCommitish *string `pulumi:"gitCommitish"`
 	Location     *string `pulumi:"location"`
 	Project      *string `pulumi:"project"`
-	// Immutable. The name of the release config to compile. The release config's 'current_compilation_result' field will be updated to this compilation result. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
+	// Immutable. The name of the release config to compile. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
 	ReleaseConfig *string `pulumi:"releaseConfig"`
 	RepositoryId  string  `pulumi:"repositoryId"`
 	// Immutable. The name of the workspace to compile. Must be in the format `projects/*/locations/*/repositories/*/workspaces/*`.
@@ -110,7 +110,7 @@ type CompilationResultArgs struct {
 	GitCommitish pulumi.StringPtrInput
 	Location     pulumi.StringPtrInput
 	Project      pulumi.StringPtrInput
-	// Immutable. The name of the release config to compile. The release config's 'current_compilation_result' field will be updated to this compilation result. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
+	// Immutable. The name of the release config to compile. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
 	ReleaseConfig pulumi.StringPtrInput
 	RepositoryId  pulumi.StringInput
 	// Immutable. The name of the workspace to compile. Must be in the format `projects/*/locations/*/repositories/*/workspaces/*`.
@@ -187,7 +187,7 @@ func (o CompilationResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *CompilationResult) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Immutable. The name of the release config to compile. The release config's 'current_compilation_result' field will be updated to this compilation result. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
+// Immutable. The name of the release config to compile. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
 func (o CompilationResultOutput) ReleaseConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v *CompilationResult) pulumi.StringOutput { return v.ReleaseConfig }).(pulumi.StringOutput)
 }

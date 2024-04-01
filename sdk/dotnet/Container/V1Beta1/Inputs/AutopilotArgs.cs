@@ -16,12 +16,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     public sealed class AutopilotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ConversionStatus shows conversion status.
-        /// </summary>
-        [Input("conversionStatus")]
-        public Input<Inputs.AutopilotConversionStatusArgs>? ConversionStatus { get; set; }
-
-        /// <summary>
         /// Enable Autopilot
         /// </summary>
         [Input("enabled")]

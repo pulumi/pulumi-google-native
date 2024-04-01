@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['FeatureViewArgs', 'FeatureView']
@@ -21,8 +22,10 @@ class FeatureViewArgs:
                  big_query_source: Optional[pulumi.Input['GoogleCloudAiplatformV1FeatureViewBigQuerySourceArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  feature_registry_source: Optional[pulumi.Input['GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceArgs']] = None,
+                 index_config: Optional[pulumi.Input['GoogleCloudAiplatformV1FeatureViewIndexConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  run_sync_immediately: Optional[pulumi.Input[bool]] = None,
                  sync_config: Optional[pulumi.Input['GoogleCloudAiplatformV1FeatureViewSyncConfigArgs']] = None):
@@ -32,7 +35,9 @@ class FeatureViewArgs:
         :param pulumi.Input['GoogleCloudAiplatformV1FeatureViewBigQuerySourceArgs'] big_query_source: Optional. Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
         :param pulumi.Input[str] etag: Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input['GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceArgs'] feature_registry_source: Optional. Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+        :param pulumi.Input['GoogleCloudAiplatformV1FeatureViewIndexConfigArgs'] index_config: Optional. Configuration for index preparation for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels with user-defined metadata to organize your FeatureViews. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
+        :param pulumi.Input[str] name: Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
         :param pulumi.Input[bool] run_sync_immediately: Immutable. If set to true, one on demand sync will be run immediately, regardless whether the FeatureView.sync_config is configured or not.
         :param pulumi.Input['GoogleCloudAiplatformV1FeatureViewSyncConfigArgs'] sync_config: Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
         """
@@ -44,10 +49,14 @@ class FeatureViewArgs:
             pulumi.set(__self__, "etag", etag)
         if feature_registry_source is not None:
             pulumi.set(__self__, "feature_registry_source", feature_registry_source)
+        if index_config is not None:
+            pulumi.set(__self__, "index_config", index_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if run_sync_immediately is not None:
@@ -113,6 +122,18 @@ class FeatureViewArgs:
         pulumi.set(self, "feature_registry_source", value)
 
     @property
+    @pulumi.getter(name="indexConfig")
+    def index_config(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1FeatureViewIndexConfigArgs']]:
+        """
+        Optional. Configuration for index preparation for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+        """
+        return pulumi.get(self, "index_config")
+
+    @index_config.setter
+    def index_config(self, value: Optional[pulumi.Input['GoogleCloudAiplatformV1FeatureViewIndexConfigArgs']]):
+        pulumi.set(self, "index_config", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -132,6 +153,18 @@ class FeatureViewArgs:
     @location.setter
     def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -177,15 +210,16 @@ class FeatureView(pulumi.CustomResource):
                  feature_online_store_id: Optional[pulumi.Input[str]] = None,
                  feature_registry_source: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceArgs']]] = None,
                  feature_view_id: Optional[pulumi.Input[str]] = None,
+                 index_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1FeatureViewIndexConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  run_sync_immediately: Optional[pulumi.Input[bool]] = None,
                  sync_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1FeatureViewSyncConfigArgs']]] = None,
                  __props__=None):
         """
         Creates a new FeatureView in a given FeatureOnlineStore.
-        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -193,7 +227,9 @@ class FeatureView(pulumi.CustomResource):
         :param pulumi.Input[str] etag: Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceArgs']] feature_registry_source: Optional. Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
         :param pulumi.Input[str] feature_view_id: Required. The ID to use for the FeatureView, which will become the final component of the FeatureView's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within a FeatureOnlineStore.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1FeatureViewIndexConfigArgs']] index_config: Optional. Configuration for index preparation for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels with user-defined metadata to organize your FeatureViews. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
+        :param pulumi.Input[str] name: Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
         :param pulumi.Input[bool] run_sync_immediately: Immutable. If set to true, one on demand sync will be run immediately, regardless whether the FeatureView.sync_config is configured or not.
         :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1FeatureViewSyncConfigArgs']] sync_config: Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
         """
@@ -205,7 +241,6 @@ class FeatureView(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new FeatureView in a given FeatureOnlineStore.
-        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param FeatureViewArgs args: The arguments to use to populate this resource's properties.
@@ -227,8 +262,10 @@ class FeatureView(pulumi.CustomResource):
                  feature_online_store_id: Optional[pulumi.Input[str]] = None,
                  feature_registry_source: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceArgs']]] = None,
                  feature_view_id: Optional[pulumi.Input[str]] = None,
+                 index_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1FeatureViewIndexConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  run_sync_immediately: Optional[pulumi.Input[bool]] = None,
                  sync_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1FeatureViewSyncConfigArgs']]] = None,
@@ -250,13 +287,14 @@ class FeatureView(pulumi.CustomResource):
             if feature_view_id is None and not opts.urn:
                 raise TypeError("Missing required property 'feature_view_id'")
             __props__.__dict__["feature_view_id"] = feature_view_id
+            __props__.__dict__["index_config"] = index_config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
+            __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["run_sync_immediately"] = run_sync_immediately
             __props__.__dict__["sync_config"] = sync_config
             __props__.__dict__["create_time"] = None
-            __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["feature_online_store_id", "feature_view_id", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -288,6 +326,7 @@ class FeatureView(pulumi.CustomResource):
         __props__.__dict__["feature_online_store_id"] = None
         __props__.__dict__["feature_registry_source"] = None
         __props__.__dict__["feature_view_id"] = None
+        __props__.__dict__["index_config"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
@@ -343,6 +382,14 @@ class FeatureView(pulumi.CustomResource):
         return pulumi.get(self, "feature_view_id")
 
     @property
+    @pulumi.getter(name="indexConfig")
+    def index_config(self) -> pulumi.Output['outputs.GoogleCloudAiplatformV1FeatureViewIndexConfigResponse']:
+        """
+        Optional. Configuration for index preparation for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+        """
+        return pulumi.get(self, "index_config")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
@@ -359,7 +406,7 @@ class FeatureView(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+        Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
         """
         return pulumi.get(self, "name")
 

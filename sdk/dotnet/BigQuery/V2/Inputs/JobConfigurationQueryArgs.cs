@@ -10,16 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
+    /// <summary>
+    /// JobConfigurationQuery configures a BigQuery query job.
+    /// </summary>
     public sealed class JobConfigurationQueryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Optional] If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance. Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed. However, you must still set destinationTable when result size exceeds the allowed maximum response size.
+        /// Optional. If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance. Requires destinationTable to be set. For GoogleSQL queries, this flag is ignored and large results are always allowed. However, you must still set destinationTable when result size exceeds the allowed maximum response size.
         /// </summary>
         [Input("allowLargeResults")]
         public Input<bool>? AllowLargeResults { get; set; }
 
         /// <summary>
-        /// [Beta] Clustering specification for the destination table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
+        /// Clustering specification for the destination table.
         /// </summary>
         [Input("clustering")]
         public Input<Inputs.ClusteringArgs>? Clustering { get; set; }
@@ -28,7 +31,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         private InputList<Inputs.ConnectionPropertyArgs>? _connectionProperties;
 
         /// <summary>
-        /// Connection properties.
+        /// Connection properties which can modify the query behavior.
         /// </summary>
         public InputList<Inputs.ConnectionPropertyArgs> ConnectionProperties
         {
@@ -43,55 +46,55 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<bool>? Continuous { get; set; }
 
         /// <summary>
-        /// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
+        /// Optional. Specifies whether the job is allowed to create new tables. The following values are supported: * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
         /// </summary>
         [Input("createDisposition")]
         public Input<string>? CreateDisposition { get; set; }
 
         /// <summary>
-        /// If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs query in non-session mode.
+        /// If this property is true, the job creates a new session using a randomly generated session_id. To continue using a created session with subsequent queries, pass the existing session identifier as a `ConnectionProperty` value. The session identifier is returned as part of the `SessionInfo` message within the query statistics. The new session's location will be set to `Job.JobReference.location` if it is present, otherwise it's set to the default location based on existing routing logic.
         /// </summary>
         [Input("createSession")]
         public Input<bool>? CreateSession { get; set; }
 
         /// <summary>
-        /// [Optional] Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
+        /// Optional. Specifies the default dataset to use for unqualified table names in the query. This setting does not alter behavior of unqualified dataset names. Setting the system variable `@@dataset_id` achieves the same behavior. See https://cloud.google.com/bigquery/docs/reference/system-variables for more information on system variables.
         /// </summary>
         [Input("defaultDataset")]
         public Input<Inputs.DatasetReferenceArgs>? DefaultDataset { get; set; }
 
         /// <summary>
-        /// Custom encryption configuration (e.g., Cloud KMS keys).
+        /// Custom encryption configuration (e.g., Cloud KMS keys)
         /// </summary>
         [Input("destinationEncryptionConfiguration")]
         public Input<Inputs.EncryptionConfigurationArgs>? DestinationEncryptionConfiguration { get; set; }
 
         /// <summary>
-        /// [Optional] Describes the table where the query results should be stored. If not present, a new table will be created to store the results. This property must be set for large results that exceed the maximum response size.
+        /// Optional. Describes the table where the query results should be stored. This property must be set for large results that exceed the maximum response size. For queries that produce anonymous (cached) results, this field will be populated by BigQuery.
         /// </summary>
         [Input("destinationTable")]
         public Input<Inputs.TableReferenceArgs>? DestinationTable { get; set; }
 
         /// <summary>
-        /// [Optional] If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results. allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.
+        /// Optional. If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results. allowLargeResults must be true if this is set to false. For GoogleSQL queries, this flag is ignored and results are never flattened.
         /// </summary>
         [Input("flattenResults")]
         public Input<bool>? FlattenResults { get; set; }
 
         /// <summary>
-        /// [Optional] Limits the billing tier for this job. Queries that have resource usage beyond this tier will fail (without incurring a charge). If unspecified, this will be set to your project default.
+        /// Optional. [Deprecated] Maximum billing tier allowed for this query. The billing tier controls the amount of compute resources allotted to the query, and multiplies the on-demand cost of the query accordingly. A query that runs within its allotted resources will succeed and indicate its billing tier in statistics.query.billingTier, but if the query exceeds its allotted resources, it will fail with billingTierLimitExceeded. WARNING: The billed byte amount can be multiplied by an amount up to this number! Most users should not need to alter this setting, and we recommend that you avoid introducing new uses of it.
         /// </summary>
         [Input("maximumBillingTier")]
         public Input<int>? MaximumBillingTier { get; set; }
 
         /// <summary>
-        /// [Optional] Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge). If unspecified, this will be set to your project default.
+        /// Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge). If unspecified, this will be set to your project default.
         /// </summary>
         [Input("maximumBytesBilled")]
         public Input<string>? MaximumBytesBilled { get; set; }
 
         /// <summary>
-        /// Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
+        /// GoogleSQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
         /// </summary>
         [Input("parameterMode")]
         public Input<string>? ParameterMode { get; set; }
@@ -103,13 +106,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<bool>? PreserveNulls { get; set; }
 
         /// <summary>
-        /// [Optional] Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
+        /// Optional. Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
         /// </summary>
         [Input("priority")]
         public Input<string>? Priority { get; set; }
 
         /// <summary>
-        /// [Required] SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+        /// [Required] SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or GoogleSQL.
         /// </summary>
         [Input("query")]
         public Input<string>? Query { get; set; }
@@ -118,7 +121,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         private InputList<Inputs.QueryParameterArgs>? _queryParameters;
 
         /// <summary>
-        /// Query parameters for standard SQL queries.
+        /// Query parameters for GoogleSQL queries.
         /// </summary>
         public InputList<Inputs.QueryParameterArgs> QueryParameters
         {
@@ -127,7 +130,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         }
 
         /// <summary>
-        /// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+        /// Range partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
         /// </summary>
         [Input("rangePartitioning")]
         public Input<Inputs.RangePartitioningArgs>? RangePartitioning { get; set; }
@@ -136,7 +139,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         private InputList<string>? _schemaUpdateOptions;
 
         /// <summary>
-        /// Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
+        /// Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: * ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. * ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
         /// </summary>
         public InputList<string> SchemaUpdateOptions
         {
@@ -144,11 +147,17 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
             set => _schemaUpdateOptions = value;
         }
 
+        /// <summary>
+        /// Options controlling the execution of scripts.
+        /// </summary>
+        [Input("scriptOptions")]
+        public Input<Inputs.ScriptOptionsArgs>? ScriptOptions { get; set; }
+
         [Input("tableDefinitions")]
         private InputMap<string>? _tableDefinitions;
 
         /// <summary>
-        /// [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
+        /// Optional. You can specify external table definitions, which operate as ephemeral tables that can be queried. These definitions are configured using a JSON map, where the string key represents the table identifier, and the value is the corresponding external data configuration object.
         /// </summary>
         public InputMap<string> TableDefinitions
         {
@@ -163,13 +172,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<Inputs.TimePartitioningArgs>? TimePartitioning { get; set; }
 
         /// <summary>
-        /// Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.
+        /// Optional. Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's GoogleSQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.
         /// </summary>
         [Input("useLegacySql")]
         public Input<bool>? UseLegacySql { get; set; }
 
         /// <summary>
-        /// [Optional] Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified. The default value is true.
+        /// Optional. Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified. The default value is true.
         /// </summary>
         [Input("useQueryCache")]
         public Input<bool>? UseQueryCache { get; set; }
@@ -187,7 +196,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         }
 
         /// <summary>
-        /// [Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
+        /// Optional. Specifies the action that occurs if the destination table already exists. The following values are supported: * WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the data, removes the constraints, and uses the schema from the query result. * WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
         /// </summary>
         [Input("writeDisposition")]
         public Input<string>? WriteDisposition { get; set; }

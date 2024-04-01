@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Reason about why no search index was used in the search query (or sub-query).
+    /// </summary>
     [OutputType]
     public sealed class IndexUnusedReasonResponse
     {

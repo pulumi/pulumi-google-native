@@ -7,9 +7,11 @@ import typing
 # Export this package's modules as members:
 from ._enums import *
 from .folder_big_query_export import *
+from .folder_event_threat_detection_setting_custom_module import *
 from .folder_notification_config import *
 from .folder_security_health_analytics_setting_custom_module import *
 from .get_folder_big_query_export import *
+from .get_folder_event_threat_detection_setting_custom_module import *
 from .get_folder_notification_config import *
 from .get_folder_security_health_analytics_setting_custom_module import *
 from .get_mute_config import *
@@ -21,6 +23,7 @@ from .get_organization_notification_config import *
 from .get_organization_security_health_analytics_setting_custom_module import *
 from .get_organization_source_iam_policy import *
 from .get_project_big_query_export import *
+from .get_project_event_threat_detection_setting_custom_module import *
 from .get_project_security_health_analytics_setting_custom_module import *
 from .get_source import *
 from .mute_config import *
@@ -34,6 +37,7 @@ from .organization_source_iam_binding import *
 from .organization_source_iam_member import *
 from .organization_source_iam_policy import *
 from .project_big_query_export import *
+from .project_event_threat_detection_setting_custom_module import *
 from .project_security_health_analytics_setting_custom_module import *
 from .source import *
 from ._inputs import *

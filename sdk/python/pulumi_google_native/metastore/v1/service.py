@@ -33,6 +33,7 @@ class ServiceArgs:
                  release_channel: Optional[pulumi.Input['ServiceReleaseChannel']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  scaling_config: Optional[pulumi.Input['ScalingConfigArgs']] = None,
+                 scheduled_backup: Optional[pulumi.Input['ScheduledBackupArgs']] = None,
                  telemetry_config: Optional[pulumi.Input['TelemetryConfigArgs']] = None,
                  tier: Optional[pulumi.Input['ServiceTier']] = None):
         """
@@ -51,6 +52,7 @@ class ServiceArgs:
         :param pulumi.Input['ServiceReleaseChannel'] release_channel: Immutable. The release channel of the service. If unspecified, defaults to STABLE.
         :param pulumi.Input[str] request_id: Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
         :param pulumi.Input['ScalingConfigArgs'] scaling_config: Scaling configuration of the metastore service.
+        :param pulumi.Input['ScheduledBackupArgs'] scheduled_backup: Optional. The configuration of scheduled backup for the metastore service.
         :param pulumi.Input['TelemetryConfigArgs'] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
         :param pulumi.Input['ServiceTier'] tier: The tier of the service.
         """
@@ -85,6 +87,8 @@ class ServiceArgs:
             pulumi.set(__self__, "request_id", request_id)
         if scaling_config is not None:
             pulumi.set(__self__, "scaling_config", scaling_config)
+        if scheduled_backup is not None:
+            pulumi.set(__self__, "scheduled_backup", scheduled_backup)
         if telemetry_config is not None:
             pulumi.set(__self__, "telemetry_config", telemetry_config)
         if tier is not None:
@@ -277,6 +281,18 @@ class ServiceArgs:
         pulumi.set(self, "scaling_config", value)
 
     @property
+    @pulumi.getter(name="scheduledBackup")
+    def scheduled_backup(self) -> Optional[pulumi.Input['ScheduledBackupArgs']]:
+        """
+        Optional. The configuration of scheduled backup for the metastore service.
+        """
+        return pulumi.get(self, "scheduled_backup")
+
+    @scheduled_backup.setter
+    def scheduled_backup(self, value: Optional[pulumi.Input['ScheduledBackupArgs']]):
+        pulumi.set(self, "scheduled_backup", value)
+
+    @property
     @pulumi.getter(name="telemetryConfig")
     def telemetry_config(self) -> Optional[pulumi.Input['TelemetryConfigArgs']]:
         """
@@ -321,6 +337,7 @@ class Service(pulumi.CustomResource):
                  release_channel: Optional[pulumi.Input['ServiceReleaseChannel']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  scaling_config: Optional[pulumi.Input[pulumi.InputType['ScalingConfigArgs']]] = None,
+                 scheduled_backup: Optional[pulumi.Input[pulumi.InputType['ScheduledBackupArgs']]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  telemetry_config: Optional[pulumi.Input[pulumi.InputType['TelemetryConfigArgs']]] = None,
                  tier: Optional[pulumi.Input['ServiceTier']] = None,
@@ -343,6 +360,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input['ServiceReleaseChannel'] release_channel: Immutable. The release channel of the service. If unspecified, defaults to STABLE.
         :param pulumi.Input[str] request_id: Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
         :param pulumi.Input[pulumi.InputType['ScalingConfigArgs']] scaling_config: Scaling configuration of the metastore service.
+        :param pulumi.Input[pulumi.InputType['ScheduledBackupArgs']] scheduled_backup: Optional. The configuration of scheduled backup for the metastore service.
         :param pulumi.Input[str] service_id: Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
         :param pulumi.Input[pulumi.InputType['TelemetryConfigArgs']] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
         :param pulumi.Input['ServiceTier'] tier: The tier of the service.
@@ -386,6 +404,7 @@ class Service(pulumi.CustomResource):
                  release_channel: Optional[pulumi.Input['ServiceReleaseChannel']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  scaling_config: Optional[pulumi.Input[pulumi.InputType['ScalingConfigArgs']]] = None,
+                 scheduled_backup: Optional[pulumi.Input[pulumi.InputType['ScheduledBackupArgs']]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  telemetry_config: Optional[pulumi.Input[pulumi.InputType['TelemetryConfigArgs']]] = None,
                  tier: Optional[pulumi.Input['ServiceTier']] = None,
@@ -413,6 +432,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["release_channel"] = release_channel
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["scaling_config"] = scaling_config
+            __props__.__dict__["scheduled_backup"] = scheduled_backup
             if service_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_id'")
             __props__.__dict__["service_id"] = service_id
@@ -469,6 +489,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["release_channel"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["scaling_config"] = None
+        __props__.__dict__["scheduled_backup"] = None
         __props__.__dict__["service_id"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["state_message"] = None
@@ -623,6 +644,14 @@ class Service(pulumi.CustomResource):
         Scaling configuration of the metastore service.
         """
         return pulumi.get(self, "scaling_config")
+
+    @property
+    @pulumi.getter(name="scheduledBackup")
+    def scheduled_backup(self) -> pulumi.Output['outputs.ScheduledBackupResponse']:
+        """
+        Optional. The configuration of scheduled backup for the metastore service.
+        """
+        return pulumi.get(self, "scheduled_backup")
 
     @property
     @pulumi.getter(name="serviceId")

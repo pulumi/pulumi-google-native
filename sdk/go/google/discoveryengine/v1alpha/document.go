@@ -16,8 +16,10 @@ import (
 type Document struct {
 	pulumi.CustomResourceState
 
-	BranchId     pulumi.StringOutput `pulumi:"branchId"`
-	CollectionId pulumi.StringOutput `pulumi:"collectionId"`
+	// Access control information for the document.
+	AclInfo      GoogleCloudDiscoveryengineV1alphaDocumentAclInfoResponseOutput `pulumi:"aclInfo"`
+	BranchId     pulumi.StringOutput                                            `pulumi:"branchId"`
+	CollectionId pulumi.StringOutput                                            `pulumi:"collectionId"`
 	// The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
 	Content     GoogleCloudDiscoveryengineV1alphaDocumentContentResponseOutput `pulumi:"content"`
 	DataStoreId pulumi.StringOutput                                            `pulumi:"dataStoreId"`
@@ -25,6 +27,8 @@ type Document struct {
 	DerivedStructData pulumi.StringMapOutput `pulumi:"derivedStructData"`
 	// Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
 	DocumentId pulumi.StringOutput `pulumi:"documentId"`
+	// The last time the document was indexed. If this field is set, the document could be returned in search results. This field is OUTPUT_ONLY. If this field is not populated, it means the document has never been indexed.
+	IndexTime pulumi.StringOutput `pulumi:"indexTime"`
 	// The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
 	JsonData pulumi.StringOutput `pulumi:"jsonData"`
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -100,8 +104,10 @@ func (DocumentState) ElementType() reflect.Type {
 }
 
 type documentArgs struct {
-	BranchId     string `pulumi:"branchId"`
-	CollectionId string `pulumi:"collectionId"`
+	// Access control information for the document.
+	AclInfo      *GoogleCloudDiscoveryengineV1alphaDocumentAclInfo `pulumi:"aclInfo"`
+	BranchId     string                                            `pulumi:"branchId"`
+	CollectionId string                                            `pulumi:"collectionId"`
 	// The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
 	Content     *GoogleCloudDiscoveryengineV1alphaDocumentContent `pulumi:"content"`
 	DataStoreId string                                            `pulumi:"dataStoreId"`
@@ -125,6 +131,8 @@ type documentArgs struct {
 
 // The set of arguments for constructing a Document resource.
 type DocumentArgs struct {
+	// Access control information for the document.
+	AclInfo      GoogleCloudDiscoveryengineV1alphaDocumentAclInfoPtrInput
 	BranchId     pulumi.StringInput
 	CollectionId pulumi.StringInput
 	// The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
@@ -185,6 +193,11 @@ func (o DocumentOutput) ToDocumentOutputWithContext(ctx context.Context) Documen
 	return o
 }
 
+// Access control information for the document.
+func (o DocumentOutput) AclInfo() GoogleCloudDiscoveryengineV1alphaDocumentAclInfoResponseOutput {
+	return o.ApplyT(func(v *Document) GoogleCloudDiscoveryengineV1alphaDocumentAclInfoResponseOutput { return v.AclInfo }).(GoogleCloudDiscoveryengineV1alphaDocumentAclInfoResponseOutput)
+}
+
 func (o DocumentOutput) BranchId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.BranchId }).(pulumi.StringOutput)
 }
@@ -210,6 +223,11 @@ func (o DocumentOutput) DerivedStructData() pulumi.StringMapOutput {
 // Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
 func (o DocumentOutput) DocumentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.DocumentId }).(pulumi.StringOutput)
+}
+
+// The last time the document was indexed. If this field is set, the document could be returned in search results. This field is OUTPUT_ONLY. If this field is not populated, it means the document has never been indexed.
+func (o DocumentOutput) IndexTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.IndexTime }).(pulumi.StringOutput)
 }
 
 // The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.

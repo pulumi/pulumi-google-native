@@ -72,6 +72,10 @@ export interface GetConnectionProfileResult {
      */
     readonly provider: string;
     /**
+     * Connection profile for a SQL Server data source.
+     */
+    readonly sqlserver: outputs.datamigration.v1.SqlServerConnectionProfileResponse;
+    /**
      * The current connection profile state (e.g. DRAFT, READY, or FAILED).
      */
     readonly state: string;

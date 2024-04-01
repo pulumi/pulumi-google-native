@@ -16,6 +16,8 @@ import (
 type TagTemplate struct {
 	pulumi.CustomResourceState
 
+	// Optional. Transfer status of the TagTemplate
+	DataplexTransferStatus pulumi.StringOutput `pulumi:"dataplexTransferStatus"`
 	// Display name for this template. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. The map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. The IDs have the following limitations: * Can contain uppercase and lowercase letters, numbers (0-9) and underscores (_). * Must be at least 1 character and at most 64 characters long. * Must start with a letter or underscore.
@@ -23,7 +25,7 @@ type TagTemplate struct {
 	// Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query in addition to using a ``tag:`` predicate.
 	IsPubliclyReadable pulumi.BoolOutput   `pulumi:"isPubliclyReadable"`
 	Location           pulumi.StringOutput `pulumi:"location"`
-	// The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
+	// Identifier. The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Required. The ID of the tag template to create. The ID must contain only lowercase letters (a-z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8.
@@ -82,6 +84,8 @@ func (TagTemplateState) ElementType() reflect.Type {
 }
 
 type tagTemplateArgs struct {
+	// Optional. Transfer status of the TagTemplate
+	DataplexTransferStatus *TagTemplateDataplexTransferStatus `pulumi:"dataplexTransferStatus"`
 	// Display name for this template. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. The map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. The IDs have the following limitations: * Can contain uppercase and lowercase letters, numbers (0-9) and underscores (_). * Must be at least 1 character and at most 64 characters long. * Must start with a letter or underscore.
@@ -89,7 +93,7 @@ type tagTemplateArgs struct {
 	// Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query in addition to using a ``tag:`` predicate.
 	IsPubliclyReadable *bool   `pulumi:"isPubliclyReadable"`
 	Location           *string `pulumi:"location"`
-	// The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
+	// Identifier. The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// Required. The ID of the tag template to create. The ID must contain only lowercase letters (a-z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8.
@@ -98,6 +102,8 @@ type tagTemplateArgs struct {
 
 // The set of arguments for constructing a TagTemplate resource.
 type TagTemplateArgs struct {
+	// Optional. Transfer status of the TagTemplate
+	DataplexTransferStatus TagTemplateDataplexTransferStatusPtrInput
 	// Display name for this template. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
 	DisplayName pulumi.StringPtrInput
 	// Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. The map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. The IDs have the following limitations: * Can contain uppercase and lowercase letters, numbers (0-9) and underscores (_). * Must be at least 1 character and at most 64 characters long. * Must start with a letter or underscore.
@@ -105,7 +111,7 @@ type TagTemplateArgs struct {
 	// Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query in addition to using a ``tag:`` predicate.
 	IsPubliclyReadable pulumi.BoolPtrInput
 	Location           pulumi.StringPtrInput
-	// The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
+	// Identifier. The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// Required. The ID of the tag template to create. The ID must contain only lowercase letters (a-z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8.
@@ -149,6 +155,11 @@ func (o TagTemplateOutput) ToTagTemplateOutputWithContext(ctx context.Context) T
 	return o
 }
 
+// Optional. Transfer status of the TagTemplate
+func (o TagTemplateOutput) DataplexTransferStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *TagTemplate) pulumi.StringOutput { return v.DataplexTransferStatus }).(pulumi.StringOutput)
+}
+
 // Display name for this template. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
 func (o TagTemplateOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagTemplate) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
@@ -168,7 +179,7 @@ func (o TagTemplateOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagTemplate) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
+// Identifier. The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
 func (o TagTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

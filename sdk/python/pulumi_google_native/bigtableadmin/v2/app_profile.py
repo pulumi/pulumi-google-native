@@ -19,6 +19,7 @@ class AppProfileArgs:
     def __init__(__self__, *,
                  app_profile_id: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
+                 data_boost_isolation_read_only: Optional[pulumi.Input['DataBoostIsolationReadOnlyArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  ignore_warnings: Optional[pulumi.Input[bool]] = None,
@@ -31,6 +32,7 @@ class AppProfileArgs:
         """
         The set of arguments for constructing a AppProfile resource.
         :param pulumi.Input[str] app_profile_id: Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`.
+        :param pulumi.Input['DataBoostIsolationReadOnlyArgs'] data_boost_isolation_read_only: Specifies that this app profile is intended for read-only usage via the Data Boost feature.
         :param pulumi.Input[str] description: Long form description of the use case for this AppProfile.
         :param pulumi.Input[str] etag: Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
         :param pulumi.Input[bool] ignore_warnings: If true, ignore safety checks when creating the app profile.
@@ -42,6 +44,8 @@ class AppProfileArgs:
         """
         pulumi.set(__self__, "app_profile_id", app_profile_id)
         pulumi.set(__self__, "instance_id", instance_id)
+        if data_boost_isolation_read_only is not None:
+            pulumi.set(__self__, "data_boost_isolation_read_only", data_boost_isolation_read_only)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if etag is not None:
@@ -81,6 +85,18 @@ class AppProfileArgs:
     @instance_id.setter
     def instance_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="dataBoostIsolationReadOnly")
+    def data_boost_isolation_read_only(self) -> Optional[pulumi.Input['DataBoostIsolationReadOnlyArgs']]:
+        """
+        Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+        """
+        return pulumi.get(self, "data_boost_isolation_read_only")
+
+    @data_boost_isolation_read_only.setter
+    def data_boost_isolation_read_only(self, value: Optional[pulumi.Input['DataBoostIsolationReadOnlyArgs']]):
+        pulumi.set(self, "data_boost_isolation_read_only", value)
 
     @property
     @pulumi.getter
@@ -194,6 +210,7 @@ class AppProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_profile_id: Optional[pulumi.Input[str]] = None,
+                 data_boost_isolation_read_only: Optional[pulumi.Input[pulumi.InputType['DataBoostIsolationReadOnlyArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  ignore_warnings: Optional[pulumi.Input[bool]] = None,
@@ -211,6 +228,7 @@ class AppProfile(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_profile_id: Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`.
+        :param pulumi.Input[pulumi.InputType['DataBoostIsolationReadOnlyArgs']] data_boost_isolation_read_only: Specifies that this app profile is intended for read-only usage via the Data Boost feature.
         :param pulumi.Input[str] description: Long form description of the use case for this AppProfile.
         :param pulumi.Input[str] etag: Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
         :param pulumi.Input[bool] ignore_warnings: If true, ignore safety checks when creating the app profile.
@@ -245,6 +263,7 @@ class AppProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_profile_id: Optional[pulumi.Input[str]] = None,
+                 data_boost_isolation_read_only: Optional[pulumi.Input[pulumi.InputType['DataBoostIsolationReadOnlyArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  ignore_warnings: Optional[pulumi.Input[bool]] = None,
@@ -267,6 +286,7 @@ class AppProfile(pulumi.CustomResource):
             if app_profile_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_profile_id'")
             __props__.__dict__["app_profile_id"] = app_profile_id
+            __props__.__dict__["data_boost_isolation_read_only"] = data_boost_isolation_read_only
             __props__.__dict__["description"] = description
             __props__.__dict__["etag"] = etag
             __props__.__dict__["ignore_warnings"] = ignore_warnings
@@ -304,6 +324,7 @@ class AppProfile(pulumi.CustomResource):
         __props__ = AppProfileArgs.__new__(AppProfileArgs)
 
         __props__.__dict__["app_profile_id"] = None
+        __props__.__dict__["data_boost_isolation_read_only"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["ignore_warnings"] = None
@@ -323,6 +344,14 @@ class AppProfile(pulumi.CustomResource):
         Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`.
         """
         return pulumi.get(self, "app_profile_id")
+
+    @property
+    @pulumi.getter(name="dataBoostIsolationReadOnly")
+    def data_boost_isolation_read_only(self) -> pulumi.Output['outputs.DataBoostIsolationReadOnlyResponse']:
+        """
+        Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+        """
+        return pulumi.get(self, "data_boost_isolation_read_only")
 
     @property
     @pulumi.getter

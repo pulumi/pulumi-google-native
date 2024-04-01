@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DatacenterConnector{}
 	case "google-native:vmmigration/v1:Group":
 		r = &Group{}
+	case "google-native:vmmigration/v1:ImageImport":
+		r = &ImageImport{}
 	case "google-native:vmmigration/v1:MigratingVm":
 		r = &MigratingVm{}
 	case "google-native:vmmigration/v1:Source":

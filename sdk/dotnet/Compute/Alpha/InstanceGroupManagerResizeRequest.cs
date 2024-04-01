@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public partial class InstanceGroupManagerResizeRequest : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The count of instances to create as part of this resize request.
+        /// This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
         /// </summary>
         [Output("count")]
         public Output<int> Count { get; private set; } = null!;
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
+        /// This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
         /// </summary>
         [Output("queuingPolicy")]
         public Output<Outputs.QueuingPolicyResponse> QueuingPolicy { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class InstanceGroupManagerResizeRequestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The count of instances to create as part of this resize request.
+        /// This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
         /// </summary>
         [Input("count")]
         public Input<int>? Count { get; set; }
@@ -178,7 +178,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
+        /// This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
         /// </summary>
         [Input("queuingPolicy")]
         public Input<Inputs.QueuingPolicyArgs>? QueuingPolicy { get; set; }

@@ -62,15 +62,19 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        /// Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
         /// </summary>
         public readonly Outputs.NetworkEndpointGroupAppEngineResponse AppEngine;
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        /// Only valid when networkEndpointType is GCE_VM_IP_PORT and the NEG is regional.
+        /// </summary>
+        public readonly string ClientPortMappingMode;
+        /// <summary>
+        /// Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
         /// </summary>
         public readonly Outputs.NetworkEndpointGroupCloudFunctionResponse CloudFunction;
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        /// Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
         /// </summary>
         public readonly Outputs.NetworkEndpointGroupCloudRunResponse CloudRun;
         /// <summary>
@@ -78,7 +82,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string CreationTimestamp;
         /// <summary>
-        /// The default port used if the port number is not specified in the network endpoint.
+        /// The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified.
         /// </summary>
         public readonly int DefaultPort;
         /// <summary>
@@ -98,7 +102,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+        /// The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified.
         /// </summary>
         public readonly string Network;
         /// <summary>
@@ -107,7 +111,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public readonly string NetworkEndpointType;
         public readonly Outputs.NetworkEndpointGroupPscDataResponse PscData;
         /// <summary>
-        /// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        /// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: asia-northeast3-cloudkms.googleapis.com
         /// </summary>
         public readonly string PscTargetService;
         /// <summary>
@@ -119,7 +123,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+        /// Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
         /// </summary>
         public readonly Outputs.NetworkEndpointGroupServerlessDeploymentResponse ServerlessDeployment;
         /// <summary>
@@ -140,6 +144,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
             ImmutableDictionary<string, string> annotations,
 
             Outputs.NetworkEndpointGroupAppEngineResponse appEngine,
+
+            string clientPortMappingMode,
 
             Outputs.NetworkEndpointGroupCloudFunctionResponse cloudFunction,
 
@@ -179,6 +185,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         {
             Annotations = annotations;
             AppEngine = appEngine;
+            ClientPortMappingMode = clientPortMappingMode;
             CloudFunction = cloudFunction;
             CloudRun = cloudRun;
             CreationTimestamp = creationTimestamp;

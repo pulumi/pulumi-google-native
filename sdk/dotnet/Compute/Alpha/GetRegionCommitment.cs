@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// List of create-on-create reseravtions for this commitment.
+        /// List of create-on-create reservations for this commitment.
         /// </summary>
         public readonly ImmutableArray<Outputs.ReservationResponse> Reservations;
         /// <summary>

@@ -55,7 +55,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
+     * Optional. Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
      */
     public readonly directoryServices!: pulumi.Output<outputs.file.v1beta1.DirectoryServicesConfigResponse>;
     /**
@@ -213,7 +213,7 @@ export interface InstanceArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
+     * Optional. Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
      */
     directoryServices?: pulumi.Input<inputs.file.v1beta1.DirectoryServicesConfigArgs>;
     /**

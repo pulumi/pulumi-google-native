@@ -16,9 +16,6 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
     [GoogleNativeResourceType("google-native:discoveryengine/v1alpha:Conversation")]
     public partial class Conversation : global::Pulumi.CustomResource
     {
-        [Output("collectionId")]
-        public Output<string> CollectionId { get; private set; } = null!;
-
         [Output("dataStoreId")]
         public Output<string> DataStoreId { get; private set; } = null!;
 
@@ -38,7 +35,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         public Output<ImmutableArray<Outputs.GoogleCloudDiscoveryengineV1alphaConversationMessageResponse>> Messages { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*`
+        /// Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*` or `project/*/locations/global/collections/{collection}/engines/*/conversations/*`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -89,7 +86,6 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
                 Version = Utilities.Version,
                 ReplaceOnChanges =
                 {
-                    "collectionId",
                     "dataStoreId",
                     "location",
                     "project",
@@ -116,9 +112,6 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
 
     public sealed class ConversationArgs : global::Pulumi.ResourceArgs
     {
-        [Input("collectionId", required: true)]
-        public Input<string> CollectionId { get; set; } = null!;
-
         [Input("dataStoreId", required: true)]
         public Input<string> DataStoreId { get; set; } = null!;
 
@@ -138,7 +131,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         }
 
         /// <summary>
-        /// Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*`
+        /// Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*` or `project/*/locations/global/collections/{collection}/engines/*/conversations/*`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

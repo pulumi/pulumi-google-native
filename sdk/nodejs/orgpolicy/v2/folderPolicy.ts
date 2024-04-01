@@ -48,6 +48,10 @@ export class FolderPolicy extends pulumi.CustomResource {
      * Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
      */
     public readonly dryRunSpec!: pulumi.Output<outputs.orgpolicy.v2.GoogleCloudOrgpolicyV2PolicySpecResponse>;
+    /**
+     * Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+     */
+    public readonly etag!: pulumi.Output<string>;
     public readonly folderId!: pulumi.Output<string>;
     /**
      * Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
@@ -74,12 +78,14 @@ export class FolderPolicy extends pulumi.CustomResource {
             }
             resourceInputs["alternate"] = args ? args.alternate : undefined;
             resourceInputs["dryRunSpec"] = args ? args.dryRunSpec : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["folderId"] = args ? args.folderId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["spec"] = args ? args.spec : undefined;
         } else {
             resourceInputs["alternate"] = undefined /*out*/;
             resourceInputs["dryRunSpec"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["folderId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["spec"] = undefined /*out*/;
@@ -105,6 +111,10 @@ export interface FolderPolicyArgs {
      * Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
      */
     dryRunSpec?: pulumi.Input<inputs.orgpolicy.v2.GoogleCloudOrgpolicyV2PolicySpecArgs>;
+    /**
+     * Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+     */
+    etag?: pulumi.Input<string>;
     folderId: pulumi.Input<string>;
     /**
      * Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.

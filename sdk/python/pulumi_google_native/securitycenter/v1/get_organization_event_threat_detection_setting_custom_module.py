@@ -18,7 +18,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetOrganizationEventThreatDetectionSettingCustomModuleResult:
-    def __init__(__self__, config=None, description=None, display_name=None, enablement_state=None, last_editor=None, name=None, type=None, update_time=None):
+    def __init__(__self__, ancestor_module=None, config=None, description=None, display_name=None, enablement_state=None, last_editor=None, name=None, type=None, update_time=None):
+        if ancestor_module and not isinstance(ancestor_module, str):
+            raise TypeError("Expected argument 'ancestor_module' to be a str")
+        pulumi.set(__self__, "ancestor_module", ancestor_module)
         if config and not isinstance(config, dict):
             raise TypeError("Expected argument 'config' to be a dict")
         pulumi.set(__self__, "config", config)
@@ -43,6 +46,14 @@ class GetOrganizationEventThreatDetectionSettingCustomModuleResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="ancestorModule")
+    def ancestor_module(self) -> str:
+        """
+        The closest ancestor module that this module inherits the enablement state from. The format is the same as the EventThreatDetectionCustomModule resource name.
+        """
+        return pulumi.get(self, "ancestor_module")
 
     @property
     @pulumi.getter
@@ -115,6 +126,7 @@ class AwaitableGetOrganizationEventThreatDetectionSettingCustomModuleResult(GetO
         if False:
             yield self
         return GetOrganizationEventThreatDetectionSettingCustomModuleResult(
+            ancestor_module=self.ancestor_module,
             config=self.config,
             description=self.description,
             display_name=self.display_name,
@@ -138,6 +150,7 @@ def get_organization_event_threat_detection_setting_custom_module(custom_module_
     __ret__ = pulumi.runtime.invoke('google-native:securitycenter/v1:getOrganizationEventThreatDetectionSettingCustomModule', __args__, opts=opts, typ=GetOrganizationEventThreatDetectionSettingCustomModuleResult).value
 
     return AwaitableGetOrganizationEventThreatDetectionSettingCustomModuleResult(
+        ancestor_module=pulumi.get(__ret__, 'ancestor_module'),
         config=pulumi.get(__ret__, 'config'),
         description=pulumi.get(__ret__, 'description'),
         display_name=pulumi.get(__ret__, 'display_name'),

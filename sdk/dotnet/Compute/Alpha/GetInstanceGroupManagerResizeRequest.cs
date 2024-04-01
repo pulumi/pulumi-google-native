@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class GetInstanceGroupManagerResizeRequestResult
     {
         /// <summary>
-        /// The count of instances to create as part of this resize request.
+        /// This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
         /// </summary>
         public readonly int Count;
         /// <summary>
@@ -90,7 +90,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
+        /// This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
         /// </summary>
         public readonly Outputs.QueuingPolicyResponse QueuingPolicy;
         /// <summary>

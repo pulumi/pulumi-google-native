@@ -20,12 +20,14 @@ __all__ = [
     'DateArgs',
     'EventStreamArgs',
     'GcsDataArgs',
+    'HdfsDataArgs',
     'HttpDataArgs',
     'LoggingConfigArgs',
     'MetadataOptionsArgs',
     'NotificationConfigArgs',
     'ObjectConditionsArgs',
     'PosixFilesystemArgs',
+    'ReplicationSpecArgs',
     'S3CompatibleMetadataArgs',
     'ScheduleArgs',
     'TimeOfDayArgs',
@@ -171,8 +173,8 @@ class AwsS3DataArgs:
         An AwsS3Data resource can be a data source, but not a data sink. In an AwsS3Data resource, an object's name is the S3 object's key name.
         :param pulumi.Input[str] bucket_name: S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
         :param pulumi.Input['AwsAccessKeyArgs'] aws_access_key: Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
-        :param pulumi.Input[str] cloudfront_domain: Optional. Cloudfront domain name pointing to this bucket (as origin), to use when fetching. Format: `https://{id}.cloudfront.net` or any valid custom domain `https://...`
-        :param pulumi.Input[str] credentials_secret: Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+        :param pulumi.Input[str] cloudfront_domain: Optional. The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: `https://{id}.cloudfront.net` or any valid custom domain. Must begin with `https://`.
+        :param pulumi.Input[str] credentials_secret: Optional. The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format: { "access_key_id": "ACCESS_KEY_ID", "secret_access_key": "SECRET_ACCESS_KEY" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Amazon S3] (https://cloud.google.com/storage-transfer/docs/source-amazon-s3#secret_manager) for more information. If `credentials_secret` is specified, do not specify role_arn or aws_access_key. Format: `projects/{project_number}/secrets/{secret_name}`
         :param pulumi.Input[str] path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         :param pulumi.Input[str] role_arn: The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
         """
@@ -216,7 +218,7 @@ class AwsS3DataArgs:
     @pulumi.getter(name="cloudfrontDomain")
     def cloudfront_domain(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Cloudfront domain name pointing to this bucket (as origin), to use when fetching. Format: `https://{id}.cloudfront.net` or any valid custom domain `https://...`
+        Optional. The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: `https://{id}.cloudfront.net` or any valid custom domain. Must begin with `https://`.
         """
         return pulumi.get(self, "cloudfront_domain")
 
@@ -228,7 +230,7 @@ class AwsS3DataArgs:
     @pulumi.getter(name="credentialsSecret")
     def credentials_secret(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+        Optional. The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format: { "access_key_id": "ACCESS_KEY_ID", "secret_access_key": "SECRET_ACCESS_KEY" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Amazon S3] (https://cloud.google.com/storage-transfer/docs/source-amazon-s3#secret_manager) for more information. If `credentials_secret` is specified, do not specify role_arn or aws_access_key. Format: `projects/{project_number}/secrets/{secret_name}`
         """
         return pulumi.get(self, "credentials_secret")
 
@@ -274,7 +276,7 @@ class AzureBlobStorageDataArgs:
         :param pulumi.Input['AzureCredentialsArgs'] azure_credentials: Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
         :param pulumi.Input[str] container: The container to transfer from the Azure Storage account.
         :param pulumi.Input[str] storage_account: The name of the Azure Storage account.
-        :param pulumi.Input[str] credentials_secret: Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+        :param pulumi.Input[str] credentials_secret: Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. Format: `projects/{project_number}/secrets/{secret_name}`
         :param pulumi.Input[str] path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         """
         pulumi.set(__self__, "azure_credentials", azure_credentials)
@@ -325,7 +327,7 @@ class AzureBlobStorageDataArgs:
     @pulumi.getter(name="credentialsSecret")
     def credentials_secret(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+        Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. Format: `projects/{project_number}/secrets/{secret_name}`
         """
         return pulumi.get(self, "credentials_secret")
 
@@ -508,13 +510,17 @@ class EventStreamArgs:
 class GcsDataArgs:
     def __init__(__self__, *,
                  bucket_name: pulumi.Input[str],
+                 managed_folder_transfer_enabled: Optional[pulumi.Input[bool]] = None,
                  path: Optional[pulumi.Input[str]] = None):
         """
         In a GcsData resource, an object's name is the Cloud Storage object's name and its "last modification time" refers to the object's `updated` property of Cloud Storage objects, which changes when the content or the metadata of the object is updated.
         :param pulumi.Input[str] bucket_name: Cloud Storage bucket name. Must meet [Bucket Name Requirements](/storage/docs/naming#requirements).
+        :param pulumi.Input[bool] managed_folder_transfer_enabled: Preview. Enables the transfer of managed folders between Cloud Storage buckets. Set this option on the gcs_data_source. If set to true: - Managed folders in the source bucket are transferred to the destination bucket. - Managed folders in the destination bucket are overwritten. Other OVERWRITE options are not supported. See [Transfer Cloud Storage managed folders](/storage-transfer/docs/managed-folders).
         :param pulumi.Input[str] path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. The root path value must meet [Object Name Requirements](/storage/docs/naming#objectnames).
         """
         pulumi.set(__self__, "bucket_name", bucket_name)
+        if managed_folder_transfer_enabled is not None:
+            pulumi.set(__self__, "managed_folder_transfer_enabled", managed_folder_transfer_enabled)
         if path is not None:
             pulumi.set(__self__, "path", path)
 
@@ -531,10 +537,46 @@ class GcsDataArgs:
         pulumi.set(self, "bucket_name", value)
 
     @property
+    @pulumi.getter(name="managedFolderTransferEnabled")
+    def managed_folder_transfer_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Preview. Enables the transfer of managed folders between Cloud Storage buckets. Set this option on the gcs_data_source. If set to true: - Managed folders in the source bucket are transferred to the destination bucket. - Managed folders in the destination bucket are overwritten. Other OVERWRITE options are not supported. See [Transfer Cloud Storage managed folders](/storage-transfer/docs/managed-folders).
+        """
+        return pulumi.get(self, "managed_folder_transfer_enabled")
+
+    @managed_folder_transfer_enabled.setter
+    def managed_folder_transfer_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "managed_folder_transfer_enabled", value)
+
+    @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
         Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. The root path value must meet [Object Name Requirements](/storage/docs/naming#objectnames).
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+
+@pulumi.input_type
+class HdfsDataArgs:
+    def __init__(__self__, *,
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        An HdfsData resource specifies a path within an HDFS entity (e.g. a cluster). All cluster-specific settings, such as namenodes and ports, are configured on the transfer agents servicing requests, so HdfsData only contains the root path to the data in our transfer.
+        :param pulumi.Input[str] path: Root path to transfer files.
+        """
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Root path to transfer files.
         """
         return pulumi.get(self, "path")
 
@@ -643,7 +685,7 @@ class MetadataOptionsArgs:
         :param pulumi.Input['MetadataOptionsStorageClass'] storage_class: Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
         :param pulumi.Input['MetadataOptionsSymlink'] symlink: Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
         :param pulumi.Input['MetadataOptionsTemporaryHold'] temporary_hold: Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
-        :param pulumi.Input['MetadataOptionsTimeCreated'] time_created: Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+        :param pulumi.Input['MetadataOptionsTimeCreated'] time_created: Specifies how each object's `timeCreated` metadata is preserved for transfers. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
         :param pulumi.Input['MetadataOptionsUid'] uid: Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
         """
         if acl is not None:
@@ -753,7 +795,7 @@ class MetadataOptionsArgs:
     @pulumi.getter(name="timeCreated")
     def time_created(self) -> Optional[pulumi.Input['MetadataOptionsTimeCreated']]:
         """
-        Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+        Specifies how each object's `timeCreated` metadata is preserved for transfers. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
         """
         return pulumi.get(self, "time_created")
 
@@ -954,6 +996,78 @@ class PosixFilesystemArgs:
     @root_directory.setter
     def root_directory(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "root_directory", value)
+
+
+@pulumi.input_type
+class ReplicationSpecArgs:
+    def __init__(__self__, *,
+                 gcs_data_sink: Optional[pulumi.Input['GcsDataArgs']] = None,
+                 gcs_data_source: Optional[pulumi.Input['GcsDataArgs']] = None,
+                 object_conditions: Optional[pulumi.Input['ObjectConditionsArgs']] = None,
+                 transfer_options: Optional[pulumi.Input['TransferOptionsArgs']] = None):
+        """
+        Specifies the configuration for running a replication job.
+        :param pulumi.Input['GcsDataArgs'] gcs_data_sink: Specifies cloud Storage data sink.
+        :param pulumi.Input['GcsDataArgs'] gcs_data_source: Specifies cloud Storage data source.
+        :param pulumi.Input['ObjectConditionsArgs'] object_conditions: Specifies the object conditions to only include objects that satisfy these conditions in the set of data source objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
+        :param pulumi.Input['TransferOptionsArgs'] transfer_options: Specifies the actions to be performed on the object during replication. Delete options are not supported for replication and when specified, the request fails with an INVALID_ARGUMENT error.
+        """
+        if gcs_data_sink is not None:
+            pulumi.set(__self__, "gcs_data_sink", gcs_data_sink)
+        if gcs_data_source is not None:
+            pulumi.set(__self__, "gcs_data_source", gcs_data_source)
+        if object_conditions is not None:
+            pulumi.set(__self__, "object_conditions", object_conditions)
+        if transfer_options is not None:
+            pulumi.set(__self__, "transfer_options", transfer_options)
+
+    @property
+    @pulumi.getter(name="gcsDataSink")
+    def gcs_data_sink(self) -> Optional[pulumi.Input['GcsDataArgs']]:
+        """
+        Specifies cloud Storage data sink.
+        """
+        return pulumi.get(self, "gcs_data_sink")
+
+    @gcs_data_sink.setter
+    def gcs_data_sink(self, value: Optional[pulumi.Input['GcsDataArgs']]):
+        pulumi.set(self, "gcs_data_sink", value)
+
+    @property
+    @pulumi.getter(name="gcsDataSource")
+    def gcs_data_source(self) -> Optional[pulumi.Input['GcsDataArgs']]:
+        """
+        Specifies cloud Storage data source.
+        """
+        return pulumi.get(self, "gcs_data_source")
+
+    @gcs_data_source.setter
+    def gcs_data_source(self, value: Optional[pulumi.Input['GcsDataArgs']]):
+        pulumi.set(self, "gcs_data_source", value)
+
+    @property
+    @pulumi.getter(name="objectConditions")
+    def object_conditions(self) -> Optional[pulumi.Input['ObjectConditionsArgs']]:
+        """
+        Specifies the object conditions to only include objects that satisfy these conditions in the set of data source objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
+        """
+        return pulumi.get(self, "object_conditions")
+
+    @object_conditions.setter
+    def object_conditions(self, value: Optional[pulumi.Input['ObjectConditionsArgs']]):
+        pulumi.set(self, "object_conditions", value)
+
+    @property
+    @pulumi.getter(name="transferOptions")
+    def transfer_options(self) -> Optional[pulumi.Input['TransferOptionsArgs']]:
+        """
+        Specifies the actions to be performed on the object during replication. Delete options are not supported for replication and when specified, the request fails with an INVALID_ARGUMENT error.
+        """
+        return pulumi.get(self, "transfer_options")
+
+    @transfer_options.setter
+    def transfer_options(self, value: Optional[pulumi.Input['TransferOptionsArgs']]):
+        pulumi.set(self, "transfer_options", value)
 
 
 @pulumi.input_type
@@ -1308,6 +1422,7 @@ class TransferSpecArgs:
                  gcs_data_sink: Optional[pulumi.Input['GcsDataArgs']] = None,
                  gcs_data_source: Optional[pulumi.Input['GcsDataArgs']] = None,
                  gcs_intermediate_data_location: Optional[pulumi.Input['GcsDataArgs']] = None,
+                 hdfs_data_source: Optional[pulumi.Input['HdfsDataArgs']] = None,
                  http_data_source: Optional[pulumi.Input['HttpDataArgs']] = None,
                  object_conditions: Optional[pulumi.Input['ObjectConditionsArgs']] = None,
                  posix_data_sink: Optional[pulumi.Input['PosixFilesystemArgs']] = None,
@@ -1324,6 +1439,7 @@ class TransferSpecArgs:
         :param pulumi.Input['GcsDataArgs'] gcs_data_sink: A Cloud Storage data sink.
         :param pulumi.Input['GcsDataArgs'] gcs_data_source: A Cloud Storage data source.
         :param pulumi.Input['GcsDataArgs'] gcs_intermediate_data_location: For transfers between file systems, specifies a Cloud Storage bucket to be used as an intermediate location through which to transfer data. See [Transfer data between file systems](https://cloud.google.com/storage-transfer/docs/file-to-file) for more information.
+        :param pulumi.Input['HdfsDataArgs'] hdfs_data_source: An HDFS cluster data source.
         :param pulumi.Input['HttpDataArgs'] http_data_source: An HTTP URL data source.
         :param pulumi.Input['ObjectConditionsArgs'] object_conditions: Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
         :param pulumi.Input['PosixFilesystemArgs'] posix_data_sink: A POSIX Filesystem data sink.
@@ -1345,6 +1461,8 @@ class TransferSpecArgs:
             pulumi.set(__self__, "gcs_data_source", gcs_data_source)
         if gcs_intermediate_data_location is not None:
             pulumi.set(__self__, "gcs_intermediate_data_location", gcs_intermediate_data_location)
+        if hdfs_data_source is not None:
+            pulumi.set(__self__, "hdfs_data_source", hdfs_data_source)
         if http_data_source is not None:
             pulumi.set(__self__, "http_data_source", http_data_source)
         if object_conditions is not None:
@@ -1433,6 +1551,18 @@ class TransferSpecArgs:
     @gcs_intermediate_data_location.setter
     def gcs_intermediate_data_location(self, value: Optional[pulumi.Input['GcsDataArgs']]):
         pulumi.set(self, "gcs_intermediate_data_location", value)
+
+    @property
+    @pulumi.getter(name="hdfsDataSource")
+    def hdfs_data_source(self) -> Optional[pulumi.Input['HdfsDataArgs']]:
+        """
+        An HDFS cluster data source.
+        """
+        return pulumi.get(self, "hdfs_data_source")
+
+    @hdfs_data_source.setter
+    def hdfs_data_source(self, value: Optional[pulumi.Input['HdfsDataArgs']]):
+        pulumi.set(self, "hdfs_data_source", value)
 
     @property
     @pulumi.getter(name="httpDataSource")

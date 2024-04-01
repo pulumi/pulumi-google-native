@@ -61,6 +61,10 @@ class AcceleratorConfigType(str, Enum):
     """
     Accelerator type is Nvidia Tesla L4.
     """
+    NVIDIA_A10080GB = "NVIDIA_A100_80GB"
+    """
+    Accelerator type is Nvidia Tesla A100 80GB.
+    """
     NVIDIA_TESLA_T4_VWS = "NVIDIA_TESLA_T4_VWS"
     """
     Accelerator type is NVIDIA Tesla T4 Virtual Workstations.

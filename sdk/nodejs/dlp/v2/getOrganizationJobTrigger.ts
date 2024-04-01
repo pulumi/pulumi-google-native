@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+ * Gets a job trigger. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
  */
 export function getOrganizationJobTrigger(args: GetOrganizationJobTriggerArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationJobTriggerResult> {
 
@@ -69,7 +69,7 @@ export interface GetOrganizationJobTriggerResult {
     readonly updateTime: string;
 }
 /**
- * Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+ * Gets a job trigger. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
  */
 export function getOrganizationJobTriggerOutput(args: GetOrganizationJobTriggerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationJobTriggerResult> {
     return pulumi.output(args).apply((a: any) => getOrganizationJobTrigger(a, opts))

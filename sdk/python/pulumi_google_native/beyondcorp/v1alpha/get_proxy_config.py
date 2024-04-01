@@ -97,7 +97,7 @@ class GetProxyConfigResult:
     @pulumi.getter(name="transportInfo")
     def transport_info(self) -> 'outputs.GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse':
         """
-        Transport layer information to verify for the proxy server.
+        Optional. Transport layer information to verify for the proxy server.
         """
         return pulumi.get(self, "transport_info")
 

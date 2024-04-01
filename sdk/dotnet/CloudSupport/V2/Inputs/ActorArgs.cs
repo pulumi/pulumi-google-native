@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.CloudSupport.V2.Inputs
 {
 
     /// <summary>
-    /// An object containing information about the effective user and authenticated principal responsible for an action.
+    /// An Actor represents an entity that performed an action. For example, an actor could be a user who posted a comment on a support case, a user who uploaded an attachment, or a service account that created a support case.
     /// </summary>
     public sealed class ActorArgs : global::Pulumi.ResourceArgs
     {
@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.CloudSupport.V2.Inputs
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The email address of the actor. If not provided, it is inferred from credentials supplied during case creation. If the authenticated principal does not have an email address, one must be provided. When a name is provided, an email must also be provided. This will be obfuscated if the user is a Google Support agent.
+        /// The email address of the actor. If not provided, it is inferred from the credentials supplied during case creation. When a name is provided, an email must also be provided. If the user is a Google Support agent, this is obfuscated. This field is deprecated. Use **username** field instead.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }

@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
     public sealed class ServiceAccountResponse
     {
         /// <summary>
-        /// Email address of the service account. If not specified, the default Compute Engine service account for the project will be used. If instance template is being used, the service account has to be specified in the instance template and it has to match the email field here.
+        /// Email address of the service account.
         /// </summary>
         public readonly string Email;
         /// <summary>
-        /// List of scopes to be enabled for this service account on the VM, in addition to the cloud-platform API scope that will be added by default.
+        /// List of scopes to be enabled for this service account.
         /// </summary>
         public readonly ImmutableArray<string> Scopes;
 

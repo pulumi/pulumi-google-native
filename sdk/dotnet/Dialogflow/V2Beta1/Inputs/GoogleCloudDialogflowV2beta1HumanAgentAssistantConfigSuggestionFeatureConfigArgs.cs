@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public Input<bool>? DisableAgentQueryLogging { get; set; }
 
         /// <summary>
+        /// Optional. Enable including conversation context during query answer generation. Supported features: KNOWLEDGE_SEARCH.
+        /// </summary>
+        [Input("enableConversationAugmentedQuery")]
+        public Input<bool>? EnableConversationAugmentedQuery { get; set; }
+
+        /// <summary>
         /// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, ENTITY_EXTRACTION, KNOWLEDGE_ASSIST.
         /// </summary>
         [Input("enableEventBasedSuggestion")]

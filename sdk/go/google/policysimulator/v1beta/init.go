@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:policysimulator/v1beta:FolderReplay":
 		r = &FolderReplay{}
+	case "google-native:policysimulator/v1beta:OrgPolicyViolationsPreview":
+		r = &OrgPolicyViolationsPreview{}
 	case "google-native:policysimulator/v1beta:OrganizationReplay":
 		r = &OrganizationReplay{}
 	case "google-native:policysimulator/v1beta:Replay":

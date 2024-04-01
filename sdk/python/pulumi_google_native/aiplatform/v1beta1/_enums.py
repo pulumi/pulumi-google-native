@@ -9,7 +9,9 @@ __all__ = [
     'ExecutionState',
     'FeatureGroupFeatureValueType',
     'FeatureStoreFeatureValueType',
+    'FeatureViewServiceAgentType',
     'GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat',
+    'GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType',
     'GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureType',
     'GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaseline',
     'GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisState',
@@ -18,6 +20,7 @@ __all__ = [
     'GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective',
     'GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoal',
     'GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm',
+    'GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType',
     'GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicy',
     'GoogleCloudAiplatformV1beta1PresetsModality',
     'GoogleCloudAiplatformV1beta1PresetsQuery',
@@ -178,6 +181,24 @@ class FeatureStoreFeatureValueType(str, Enum):
     """
 
 
+class FeatureViewServiceAgentType(str, Enum):
+    """
+    Optional. Service agent type used during data sync. By default, the Vertex AI Service Agent is used. When using an IAM Policy to isolate this FeatureView within a project, a separate service account should be provisioned by setting this field to `SERVICE_AGENT_TYPE_FEATURE_VIEW`. This will generate a separate service account to access the BigQuery source table.
+    """
+    SERVICE_AGENT_TYPE_UNSPECIFIED = "SERVICE_AGENT_TYPE_UNSPECIFIED"
+    """
+    By default, the project-level Vertex AI Service Agent is enabled.
+    """
+    SERVICE_AGENT_TYPE_PROJECT = "SERVICE_AGENT_TYPE_PROJECT"
+    """
+    Indicates the project-level Vertex AI Service Agent (https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents) will be used during sync jobs.
+    """
+    SERVICE_AGENT_TYPE_FEATURE_VIEW = "SERVICE_AGENT_TYPE_FEATURE_VIEW"
+    """
+    Enable a FeatureView service account to be created by Vertex AI and output in the field `service_account_email`. This service account will be used to read from the source BigQuery table during sync.
+    """
+
+
 class GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat(str, Enum):
     """
     The format in which instances are given, if not specified, assume it's JSONL format. Currently only JSONL format is supported.
@@ -189,6 +210,28 @@ class GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat(str, Enum):
     JSONL = "JSONL"
     """
     Examples are stored in JSONL files.
+    """
+
+
+class GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType(str, Enum):
+    """
+    Optional. The distance measure used in nearest neighbor search.
+    """
+    DISTANCE_MEASURE_TYPE_UNSPECIFIED = "DISTANCE_MEASURE_TYPE_UNSPECIFIED"
+    """
+    Should not be set.
+    """
+    SQUARED_L2_DISTANCE = "SQUARED_L2_DISTANCE"
+    """
+    Euclidean (L_2) Distance.
+    """
+    COSINE_DISTANCE = "COSINE_DISTANCE"
+    """
+    Cosine Distance. Defined as 1 - cosine similarity. We strongly suggest using DOT_PRODUCT_DISTANCE + UNIT_L2_NORM instead of COSINE distance. Our algorithms have been more optimized for DOT_PRODUCT distance which, when combined with UNIT_L2_NORM, is mathematically equivalent to COSINE distance and results in the same ranking.
+    """
+    DOT_PRODUCT_DISTANCE = "DOT_PRODUCT_DISTANCE"
+    """
+    Dot Product Distance. Defined as a negative of the dot product.
     """
 
 
@@ -397,6 +440,28 @@ class GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlg
     GRID_SEARCH = "GRID_SEARCH"
     """
     The Grid Search Algorithm for Multi-trial Neural Architecture Search (NAS).
+    """
+
+
+class GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType(str, Enum):
+    """
+    Required. Specifies the type of reservation from which this instance can consume resources: RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE. See Consuming reserved instances for examples.
+    """
+    RESERVATION_AFFINITY_TYPE_UNSPECIFIED = "RESERVATION_AFFINITY_TYPE_UNSPECIFIED"
+    """
+    Default type.
+    """
+    RESERVATION_NONE = "RESERVATION_NONE"
+    """
+    Do not consume from any allocated capacity.
+    """
+    RESERVATION_ANY = "RESERVATION_ANY"
+    """
+    Consume any reservation available.
+    """
+    RESERVATION_SPECIFIC = "RESERVATION_SPECIFIC"
+    """
+    Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
     """
 
 

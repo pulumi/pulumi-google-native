@@ -19,13 +19,19 @@ __all__ = [
 
 @pulumi.output_type
 class GetExecutionResult:
-    def __init__(__self__, argument=None, call_log_level=None, duration=None, end_time=None, error=None, labels=None, name=None, result=None, start_time=None, state=None, state_error=None, status=None, workflow_revision_id=None):
+    def __init__(__self__, argument=None, call_log_level=None, create_time=None, disable_concurrency_quota_overflow_buffering=None, duration=None, end_time=None, error=None, labels=None, name=None, result=None, start_time=None, state=None, state_error=None, status=None, workflow_revision_id=None):
         if argument and not isinstance(argument, str):
             raise TypeError("Expected argument 'argument' to be a str")
         pulumi.set(__self__, "argument", argument)
         if call_log_level and not isinstance(call_log_level, str):
             raise TypeError("Expected argument 'call_log_level' to be a str")
         pulumi.set(__self__, "call_log_level", call_log_level)
+        if create_time and not isinstance(create_time, str):
+            raise TypeError("Expected argument 'create_time' to be a str")
+        pulumi.set(__self__, "create_time", create_time)
+        if disable_concurrency_quota_overflow_buffering and not isinstance(disable_concurrency_quota_overflow_buffering, bool):
+            raise TypeError("Expected argument 'disable_concurrency_quota_overflow_buffering' to be a bool")
+        pulumi.set(__self__, "disable_concurrency_quota_overflow_buffering", disable_concurrency_quota_overflow_buffering)
         if duration and not isinstance(duration, str):
             raise TypeError("Expected argument 'duration' to be a str")
         pulumi.set(__self__, "duration", duration)
@@ -75,6 +81,22 @@ class GetExecutionResult:
         The call logging level associated to this execution.
         """
         return pulumi.get(self, "call_log_level")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Marks the creation of the execution.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="disableConcurrencyQuotaOverflowBuffering")
+    def disable_concurrency_quota_overflow_buffering(self) -> bool:
+        """
+        Optional. If set to true, the execution will not be backlogged when the concurrency quota is exhausted. The backlog execution starts when the concurrency quota becomes available.
+        """
+        return pulumi.get(self, "disable_concurrency_quota_overflow_buffering")
 
     @property
     @pulumi.getter
@@ -173,6 +195,8 @@ class AwaitableGetExecutionResult(GetExecutionResult):
         return GetExecutionResult(
             argument=self.argument,
             call_log_level=self.call_log_level,
+            create_time=self.create_time,
+            disable_concurrency_quota_overflow_buffering=self.disable_concurrency_quota_overflow_buffering,
             duration=self.duration,
             end_time=self.end_time,
             error=self.error,
@@ -207,6 +231,8 @@ def get_execution(execution_id: Optional[str] = None,
     return AwaitableGetExecutionResult(
         argument=pulumi.get(__ret__, 'argument'),
         call_log_level=pulumi.get(__ret__, 'call_log_level'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        disable_concurrency_quota_overflow_buffering=pulumi.get(__ret__, 'disable_concurrency_quota_overflow_buffering'),
         duration=pulumi.get(__ret__, 'duration'),
         end_time=pulumi.get(__ret__, 'end_time'),
         error=pulumi.get(__ret__, 'error'),

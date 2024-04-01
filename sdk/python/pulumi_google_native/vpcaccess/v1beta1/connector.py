@@ -298,6 +298,8 @@ class Connector(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["subnet"] = subnet
             __props__.__dict__["connected_projects"] = None
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["last_restart_time"] = None
             __props__.__dict__["state"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["connector_id", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -325,7 +327,9 @@ class Connector(pulumi.CustomResource):
 
         __props__.__dict__["connected_projects"] = None
         __props__.__dict__["connector_id"] = None
+        __props__.__dict__["create_time"] = None
         __props__.__dict__["ip_cidr_range"] = None
+        __props__.__dict__["last_restart_time"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["machine_type"] = None
         __props__.__dict__["max_instances"] = None
@@ -356,12 +360,28 @@ class Connector(pulumi.CustomResource):
         return pulumi.get(self, "connector_id")
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation time of the connector.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> pulumi.Output[str]:
         """
         The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         """
         return pulumi.get(self, "ip_cidr_range")
+
+    @property
+    @pulumi.getter(name="lastRestartTime")
+    def last_restart_time(self) -> pulumi.Output[str]:
+        """
+        The last restart time of the connector.
+        """
+        return pulumi.get(self, "last_restart_time")
 
     @property
     @pulumi.getter

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta.Inputs
 {
 
     /// <summary>
-    /// A classification object with a product type and value.
+    /// A Case Classification represents the topic that a case is about. It's very important to use accurate classifications, because they're used to route your cases to specialists who can help you. A classification always has an ID that is its unique identifier. A valid ID is required when creating a case.
     /// </summary>
     public sealed class CaseClassificationArgs : global::Pulumi.ResourceArgs
     {

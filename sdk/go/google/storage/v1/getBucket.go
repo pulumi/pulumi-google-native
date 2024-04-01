@@ -49,6 +49,8 @@ type LookupBucketResult struct {
 	Encryption BucketEncryptionResponse `pulumi:"encryption"`
 	// HTTP 1.1 Entity tag for the bucket.
 	Etag string `pulumi:"etag"`
+	// The bucket's hierarchical namespace configuration.
+	HierarchicalNamespace BucketHierarchicalNamespaceResponse `pulumi:"hierarchicalNamespace"`
 	// The bucket's IAM configuration.
 	IamConfiguration BucketIamConfigurationResponse `pulumi:"iamConfiguration"`
 	// The kind of item this is. For buckets, this is always storage#bucket.
@@ -177,6 +179,11 @@ func (o LookupBucketResultOutput) Encryption() BucketEncryptionResponseOutput {
 // HTTP 1.1 Entity tag for the bucket.
 func (o LookupBucketResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The bucket's hierarchical namespace configuration.
+func (o LookupBucketResultOutput) HierarchicalNamespace() BucketHierarchicalNamespaceResponseOutput {
+	return o.ApplyT(func(v LookupBucketResult) BucketHierarchicalNamespaceResponse { return v.HierarchicalNamespace }).(BucketHierarchicalNamespaceResponseOutput)
 }
 
 // The bucket's IAM configuration.

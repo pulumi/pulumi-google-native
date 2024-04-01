@@ -10,15 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Statistics for a search query. Populated as part of JobStatistics2.
+    /// </summary>
     [OutputType]
     public sealed class SearchStatisticsResponse
     {
         /// <summary>
-        /// When index_usage_mode is UNUSED or PARTIALLY_USED, this field explains why index was not used in all or part of the search query. If index_usage_mode is FULLLY_USED, this field is not populated.
+        /// When `indexUsageMode` is `UNUSED` or `PARTIALLY_USED`, this field explains why indexes were not used in all or part of the search query. If `indexUsageMode` is `FULLY_USED`, this field is not populated.
         /// </summary>
         public readonly ImmutableArray<Outputs.IndexUnusedReasonResponse> IndexUnusedReasons;
         /// <summary>
-        /// Specifies index usage mode for the query.
+        /// Specifies the index usage mode for the query.
         /// </summary>
         public readonly string IndexUsageMode;
 

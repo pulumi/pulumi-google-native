@@ -34,6 +34,8 @@ type LookupPageArgs struct {
 type LookupPageResult struct {
 	// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
 	AdvancedSettings GoogleCloudDialogflowCxV3AdvancedSettingsResponse `pulumi:"advancedSettings"`
+	// The description of the page. The maximum length is 500 characters.
+	Description string `pulumi:"description"`
 	// The human-readable name of the page, unique within the flow.
 	DisplayName string `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
@@ -95,6 +97,11 @@ func (o LookupPageResultOutput) ToLookupPageResultOutputWithContext(ctx context.
 // Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
 func (o LookupPageResultOutput) AdvancedSettings() GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput {
 	return o.ApplyT(func(v LookupPageResult) GoogleCloudDialogflowCxV3AdvancedSettingsResponse { return v.AdvancedSettings }).(GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput)
+}
+
+// The description of the page. The maximum length is 500 characters.
+func (o LookupPageResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPageResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The human-readable name of the page, unique within the flow.

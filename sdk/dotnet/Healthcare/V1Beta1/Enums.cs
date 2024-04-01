@@ -29,11 +29,11 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public static AccessDeterminationLogConfigLogLevel Disabled { get; } = new AccessDeterminationLogConfigLogLevel("DISABLED");
         /// <summary>
-        /// The following information is included: - One of the following [`consentMode`](https://cloud.google.com/healthcare-api/private/docs/how-tos/fhir-consent#audit_logs) fields: (`off`|`emptyScope`|`enforced`|`btg`|`bypass`). - The accessor's request headers - The `log_level` of the [AccessDeterminationLogConfig](google.cloud.healthcare.v1beta1.fhir.FhirStore.ConsentConfig.AccessDeterminationLogConfig) - The final consent evaluation (`PERMIT`, `DENY`, or `NO_CONSENT`) - A human-readable summary of the evaluation
+        /// The following information is included: * One of the following [`consentMode`](https://cloud.google.com/healthcare-api/docs/fhir-consent#audit_logs) fields: (`off`|`emptyScope`|`enforced`|`btg`|`bypass`). * The accessor's request headers * The `log_level` of the AccessDeterminationLogConfig * The final consent evaluation (`PERMIT`, `DENY`, or `NO_CONSENT`) * A human-readable summary of the evaluation
         /// </summary>
         public static AccessDeterminationLogConfigLogLevel Minimum { get; } = new AccessDeterminationLogConfigLogLevel("MINIMUM");
         /// <summary>
-        /// Includes `MINIMUM` and, for each resource owner, returns: - The resource owner's name - Most specific part of the `X-Consent-Scope` resulting in consensual determination - Timestamp of the applied enforcement leading to the decision - Enforcement version at the time the applicable consents were applied - The Consent resource name - The timestamp of the Consent resource used for enforcement - Policy type (PATIENT or ADMIN) Note that this mode adds some overhead to CRUD operations.
+        /// Includes `MINIMUM` and, for each resource owner, returns: * The resource owner's name * Most specific part of the `X-Consent-Scope` resulting in consensual determination * Timestamp of the applied enforcement leading to the decision * Enforcement version at the time the applicable consents were applied * The Consent resource name * The timestamp of the Consent resource used for enforcement * Policy type (`PATIENT` or `ADMIN`) Note that this mode adds some overhead to CRUD operations.
         /// </summary>
         public static AccessDeterminationLogConfigLogLevel Verbose { get; } = new AccessDeterminationLogConfigLogLevel("VERBOSE");
 
@@ -156,7 +156,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public static ConsentConfigVersion ConsentEnforcementVersionUnspecified { get; } = new ConsentConfigVersion("CONSENT_ENFORCEMENT_VERSION_UNSPECIFIED");
         /// <summary>
-        /// Enforcement version 1. See the [FHIR Consent resources in the Cloud Healthcare API](https://cloud.google.com/healthcare-api/private/docs/how-tos/fhir-consent) guide for more details.
+        /// Enforcement version 1. See the [FHIR Consent resources in the Cloud Healthcare API](https://cloud.google.com/healthcare-api/docs/fhir-consent) guide for more details.
         /// </summary>
         public static ConsentConfigVersion V1 { get; } = new ConsentConfigVersion("V1");
 
@@ -454,7 +454,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     }
 
     /// <summary>
-    /// Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
+    /// Required. Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
     /// </summary>
     [EnumType]
     public readonly struct FhirStoreVersion : IEquatable<FhirStoreVersion>

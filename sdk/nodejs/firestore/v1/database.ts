@@ -42,6 +42,10 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly appEngineIntegrationMode!: pulumi.Output<string>;
     /**
+     * Optional. Presence indicates CMEK is enabled for this database.
+     */
+    public readonly cmekConfig!: pulumi.Output<outputs.firestore.v1.GoogleFirestoreAdminV1CmekConfigResponse>;
+    /**
      * The concurrency control mode to use for this database.
      */
     public readonly concurrencyMode!: pulumi.Output<string>;
@@ -114,6 +118,7 @@ export class Database extends pulumi.CustomResource {
                 throw new Error("Missing required property 'databaseId'");
             }
             resourceInputs["appEngineIntegrationMode"] = args ? args.appEngineIntegrationMode : undefined;
+            resourceInputs["cmekConfig"] = args ? args.cmekConfig : undefined;
             resourceInputs["concurrencyMode"] = args ? args.concurrencyMode : undefined;
             resourceInputs["databaseId"] = args ? args.databaseId : undefined;
             resourceInputs["deleteProtectionState"] = args ? args.deleteProtectionState : undefined;
@@ -131,6 +136,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["versionRetentionPeriod"] = undefined /*out*/;
         } else {
             resourceInputs["appEngineIntegrationMode"] = undefined /*out*/;
+            resourceInputs["cmekConfig"] = undefined /*out*/;
             resourceInputs["concurrencyMode"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["databaseId"] = undefined /*out*/;
@@ -162,6 +168,10 @@ export interface DatabaseArgs {
      * The App Engine integration mode to use for this database.
      */
     appEngineIntegrationMode?: pulumi.Input<enums.firestore.v1.DatabaseAppEngineIntegrationMode>;
+    /**
+     * Optional. Presence indicates CMEK is enabled for this database.
+     */
+    cmekConfig?: pulumi.Input<inputs.firestore.v1.GoogleFirestoreAdminV1CmekConfigArgs>;
     /**
      * The concurrency control mode to use for this database.
      */

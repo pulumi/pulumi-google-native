@@ -74,6 +74,7 @@ __all__ = [
     'GlobalForwardingRuleLoadBalancingScheme',
     'GlobalForwardingRuleNetworkTier',
     'GlobalForwardingRulePscConnectionStatus',
+    'GlobalNetworkEndpointGroupClientPortMappingMode',
     'GlobalNetworkEndpointGroupNetworkEndpointType',
     'GuestOsFeatureType',
     'HTTP2HealthCheckPortSpecification',
@@ -115,6 +116,7 @@ __all__ = [
     'LogConfigDataAccessOptionsLogMode',
     'MetadataFilterFilterMatchCriteria',
     'NetworkAttachmentConnectionPreference',
+    'NetworkEndpointGroupClientPortMappingMode',
     'NetworkEndpointGroupNetworkEndpointType',
     'NetworkInterfaceNicType',
     'NetworkInterfaceStackType',
@@ -148,12 +150,14 @@ __all__ = [
     'RegionHealthCheckType',
     'RegionInstanceGroupManagerFailoverAction',
     'RegionInstanceGroupManagerListManagedInstancesResults',
+    'RegionNetworkEndpointGroupClientPortMappingMode',
     'RegionNetworkEndpointGroupNetworkEndpointType',
     'RegionSecurityPolicyType',
     'RegionSslCertificateType',
     'RegionSslPolicyMinTlsVersion',
     'RegionSslPolicyProfile',
     'RegionTargetHttpsProxyQuicOverride',
+    'RegionTargetHttpsProxyTlsEarlyData',
     'RegionTargetTcpProxyProxyHeader',
     'ReservationAffinityConsumeReservationType',
     'ResourceCommitmentType',
@@ -183,6 +187,7 @@ __all__ = [
     'SchedulingOnHostMaintenance',
     'SchedulingProvisioningModel',
     'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility',
+    'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType',
     'SecurityPolicyAdvancedOptionsConfigJsonParsing',
     'SecurityPolicyAdvancedOptionsConfigLogLevel',
     'SecurityPolicyDdosProtectionConfigDdosProtection',
@@ -203,6 +208,8 @@ __all__ = [
     'SslCertificateType',
     'SslPolicyMinTlsVersion',
     'SslPolicyProfile',
+    'StoragePoolCapacityProvisioningType',
+    'StoragePoolPerformanceProvisioningType',
     'SubnetworkIpv6AccessType',
     'SubnetworkLogConfigAggregationInterval',
     'SubnetworkLogConfigMetadata',
@@ -214,6 +221,7 @@ __all__ = [
     'TCPHealthCheckPortSpecification',
     'TCPHealthCheckProxyHeader',
     'TargetHttpsProxyQuicOverride',
+    'TargetHttpsProxyTlsEarlyData',
     'TargetInstanceNatPolicy',
     'TargetPoolSessionAffinity',
     'TargetSslProxyProxyHeader',
@@ -706,7 +714,7 @@ class BackendServiceConnectionTrackingPolicyTrackingMode(str, Enum):
 
 class BackendServiceIpAddressSelectionPolicy(str, Enum):
     """
-    Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
+    Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced global external Application Load Balancer (load balancing scheme EXTERNAL_MANAGED), - Regional external Application Load Balancer, - Internal proxy Network Load Balancer (load balancing scheme INTERNAL_MANAGED), - Regional internal Application Load Balancer (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
     """
     IPV4_ONLY = "IPV4_ONLY"
     """
@@ -732,19 +740,19 @@ class BackendServiceLoadBalancingScheme(str, Enum):
     """
     EXTERNAL = "EXTERNAL"
     """
-    Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
+    Signifies that this will be used for classic Application Load Balancers, global external proxy Network Load Balancers, or external passthrough Network Load Balancers.
     """
     EXTERNAL_MANAGED = "EXTERNAL_MANAGED"
     """
-    Signifies that this will be used for External Managed HTTP(S) Load Balancing.
+    Signifies that this will be used for global external Application Load Balancers, regional external Application Load Balancers, or regional external proxy Network Load Balancers.
     """
     INTERNAL = "INTERNAL"
     """
-    Signifies that this will be used for Internal TCP/UDP Load Balancing.
+    Signifies that this will be used for internal passthrough Network Load Balancers.
     """
     INTERNAL_MANAGED = "INTERNAL_MANAGED"
     """
-    Signifies that this will be used for Internal HTTP(S) Load Balancing.
+    Signifies that this will be used for internal Application Load Balancers.
     """
     INTERNAL_SELF_MANAGED = "INTERNAL_SELF_MANAGED"
     """
@@ -1021,6 +1029,10 @@ class ConfidentialInstanceConfigConfidentialInstanceType(str, Enum):
     """
     AMD Secure Encrypted Virtualization - Secure Nested Paging.
     """
+    TDX = "TDX"
+    """
+    Intel Trust Domain eXtension.
+    """
 
 
 class DeprecationStatusState(str, Enum):
@@ -1278,7 +1290,7 @@ class FutureReservationPlanningStatus(str, Enum):
 
 class GRPCHealthCheckPortSpecification(str, Enum):
     """
-    Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+    Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
     """
     USE_FIXED_PORT = "USE_FIXED_PORT"
     """
@@ -1472,6 +1484,20 @@ class GlobalForwardingRulePscConnectionStatus(str, Enum):
     STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED"
 
 
+class GlobalNetworkEndpointGroupClientPortMappingMode(str, Enum):
+    """
+    Only valid when networkEndpointType is GCE_VM_IP_PORT and the NEG is regional.
+    """
+    CLIENT_PORT_PER_ENDPOINT = "CLIENT_PORT_PER_ENDPOINT"
+    """
+    For each endpoint there is exactly one client port.
+    """
+    PORT_MAPPING_DISABLED = "PORT_MAPPING_DISABLED"
+    """
+    NEG should not be used for mapping client port to destination.
+    """
+
+
 class GlobalNetworkEndpointGroupNetworkEndpointType(str, Enum):
     """
     Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
@@ -1508,16 +1534,18 @@ class GlobalNetworkEndpointGroupNetworkEndpointType(str, Enum):
 
 class GuestOsFeatureType(str, Enum):
     """
-    The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+    The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE_V2 - SEV_SNP_CAPABLE - TDX_CAPABLE - IDPF For more information, see Enabling guest operating system features.
     """
     FEATURE_TYPE_UNSPECIFIED = "FEATURE_TYPE_UNSPECIFIED"
     GVNIC = "GVNIC"
+    IDPF = "IDPF"
     MULTI_IP_SUBNET = "MULTI_IP_SUBNET"
     SECURE_BOOT = "SECURE_BOOT"
     SEV_CAPABLE = "SEV_CAPABLE"
     SEV_LIVE_MIGRATABLE = "SEV_LIVE_MIGRATABLE"
     SEV_LIVE_MIGRATABLE_V2 = "SEV_LIVE_MIGRATABLE_V2"
     SEV_SNP_CAPABLE = "SEV_SNP_CAPABLE"
+    TDX_CAPABLE = "TDX_CAPABLE"
     UEFI_COMPATIBLE = "UEFI_COMPATIBLE"
     VIRTIO_SCSI_MULTIQUEUE = "VIRTIO_SCSI_MULTIQUEUE"
     WINDOWS = "WINDOWS"
@@ -1525,7 +1553,7 @@ class GuestOsFeatureType(str, Enum):
 
 class HTTP2HealthCheckPortSpecification(str, Enum):
     """
-    Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+    Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
     """
     USE_FIXED_PORT = "USE_FIXED_PORT"
     """
@@ -1551,7 +1579,7 @@ class HTTP2HealthCheckProxyHeader(str, Enum):
 
 class HTTPHealthCheckPortSpecification(str, Enum):
     """
-    Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+    Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
     """
     USE_FIXED_PORT = "USE_FIXED_PORT"
     """
@@ -1577,7 +1605,7 @@ class HTTPHealthCheckProxyHeader(str, Enum):
 
 class HTTPSHealthCheckPortSpecification(str, Enum):
     """
-    Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+    Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
     """
     USE_FIXED_PORT = "USE_FIXED_PORT"
     """
@@ -1722,15 +1750,15 @@ class InstanceGroupManagerListManagedInstancesResults(str, Enum):
 
 class InstanceGroupManagerStandbyPolicyMode(str, Enum):
     """
-    Defines behaviour of using instances from standby pool to resize MIG.
+    Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is `MANUAL`.
     """
     MANUAL = "MANUAL"
     """
-    MIG does not automatically stop/start or suspend/resume VMs.
+    MIG does not automatically resume or start VMs in the standby pool when the group scales out.
     """
     SCALE_OUT_POOL = "SCALE_OUT_POOL"
     """
-    MIG automatically resumes and starts VMs when it scales out, and replenishes the standby pool afterwards.
+    MIG automatically resumes or starts VMs in the standby pool when the group scales out, and replenishes the standby pool afterwards.
     """
 
 
@@ -2132,6 +2160,20 @@ class NetworkAttachmentConnectionPreference(str, Enum):
     INVALID = "INVALID"
 
 
+class NetworkEndpointGroupClientPortMappingMode(str, Enum):
+    """
+    Only valid when networkEndpointType is GCE_VM_IP_PORT and the NEG is regional.
+    """
+    CLIENT_PORT_PER_ENDPOINT = "CLIENT_PORT_PER_ENDPOINT"
+    """
+    For each endpoint there is exactly one client port.
+    """
+    PORT_MAPPING_DISABLED = "PORT_MAPPING_DISABLED"
+    """
+    NEG should not be used for mapping client port to destination.
+    """
+
+
 class NetworkEndpointGroupNetworkEndpointType(str, Enum):
     """
     Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
@@ -2403,7 +2445,7 @@ class RegionBackendServiceCompressionMode(str, Enum):
 
 class RegionBackendServiceIpAddressSelectionPolicy(str, Enum):
     """
-    Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
+    Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced global external Application Load Balancer (load balancing scheme EXTERNAL_MANAGED), - Regional external Application Load Balancer, - Internal proxy Network Load Balancer (load balancing scheme INTERNAL_MANAGED), - Regional internal Application Load Balancer (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
     """
     IPV4_ONLY = "IPV4_ONLY"
     """
@@ -2429,19 +2471,19 @@ class RegionBackendServiceLoadBalancingScheme(str, Enum):
     """
     EXTERNAL = "EXTERNAL"
     """
-    Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
+    Signifies that this will be used for classic Application Load Balancers, global external proxy Network Load Balancers, or external passthrough Network Load Balancers.
     """
     EXTERNAL_MANAGED = "EXTERNAL_MANAGED"
     """
-    Signifies that this will be used for External Managed HTTP(S) Load Balancing.
+    Signifies that this will be used for global external Application Load Balancers, regional external Application Load Balancers, or regional external proxy Network Load Balancers.
     """
     INTERNAL = "INTERNAL"
     """
-    Signifies that this will be used for Internal TCP/UDP Load Balancing.
+    Signifies that this will be used for internal passthrough Network Load Balancers.
     """
     INTERNAL_MANAGED = "INTERNAL_MANAGED"
     """
-    Signifies that this will be used for Internal HTTP(S) Load Balancing.
+    Signifies that this will be used for internal Application Load Balancers.
     """
     INTERNAL_SELF_MANAGED = "INTERNAL_SELF_MANAGED"
     """
@@ -2588,10 +2630,12 @@ class RegionCommitmentType(str, Enum):
     GENERAL_PURPOSE_E2 = "GENERAL_PURPOSE_E2"
     GENERAL_PURPOSE_N2 = "GENERAL_PURPOSE_N2"
     GENERAL_PURPOSE_N2D = "GENERAL_PURPOSE_N2D"
+    GENERAL_PURPOSE_N4 = "GENERAL_PURPOSE_N4"
     GENERAL_PURPOSE_T2D = "GENERAL_PURPOSE_T2D"
     GRAPHICS_OPTIMIZED = "GRAPHICS_OPTIMIZED"
     MEMORY_OPTIMIZED = "MEMORY_OPTIMIZED"
     MEMORY_OPTIMIZED_M3 = "MEMORY_OPTIMIZED_M3"
+    STORAGE_OPTIMIZED_Z3 = "STORAGE_OPTIMIZED_Z3"
     TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
 
 
@@ -2690,6 +2734,20 @@ class RegionInstanceGroupManagerListManagedInstancesResults(str, Enum):
     PAGINATED = "PAGINATED"
     """
     Pagination is enabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are respected.
+    """
+
+
+class RegionNetworkEndpointGroupClientPortMappingMode(str, Enum):
+    """
+    Only valid when networkEndpointType is GCE_VM_IP_PORT and the NEG is regional.
+    """
+    CLIENT_PORT_PER_ENDPOINT = "CLIENT_PORT_PER_ENDPOINT"
+    """
+    For each endpoint there is exactly one client port.
+    """
+    PORT_MAPPING_DISABLED = "PORT_MAPPING_DISABLED"
+    """
+    NEG should not be used for mapping client port to destination.
     """
 
 
@@ -2807,6 +2865,24 @@ class RegionTargetHttpsProxyQuicOverride(str, Enum):
     NONE = "NONE"
     """
     No overrides to the default QUIC policy. This option is implicit if no QUIC override has been specified in the request.
+    """
+
+
+class RegionTargetHttpsProxyTlsEarlyData(str, Enum):
+    """
+     Specifies whether TLS 1.3 0-RTT Data ("Early Data") should be accepted for this service. Early Data allows a TLS resumption handshake to include the initial application payload (a HTTP request) alongside the handshake, reducing the effective round trips to "zero". This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3). This can improve application performance, especially on networks where interruptions may be common, such as on mobile. Requests with Early Data will have the "Early-Data" HTTP header set on the request, with a value of "1", to allow the backend to determine whether Early Data was included. Note: TLS Early Data may allow requests to be replayed, as the data is sent to the backend before the handshake has fully completed. Applications that allow idempotent HTTP methods to make non-idempotent changes, such as a GET request updating a database, should not accept Early Data on those requests, and reject requests with the "Early-Data: 1" HTTP header by returning a HTTP 425 (Too Early) status code, in order to remain RFC compliant. The default value is DISABLED.
+    """
+    DISABLED = "DISABLED"
+    """
+    TLS 1.3 Early Data is not advertised, and any (invalid) attempts to send Early Data will be rejected by closing the connection.
+    """
+    PERMISSIVE = "PERMISSIVE"
+    """
+    This enables TLS 1.3 0-RTT, and only allows Early Data to be included on requests with safe HTTP methods (GET, HEAD, OPTIONS, TRACE). This mode does not enforce any other limitations for requests with Early Data. The application owner should validate that Early Data is acceptable for a given request path.
+    """
+    STRICT = "STRICT"
+    """
+    This enables TLS 1.3 0-RTT, and only allows Early Data to be included on requests with safe HTTP methods (GET, HEAD, OPTIONS, TRACE) without query parameters. Requests that send Early Data with non-idempotent HTTP methods or with query parameters will be rejected with a HTTP 425.
     """
 
 
@@ -3090,7 +3166,7 @@ class RuleAction(str, Enum):
 
 class SSLHealthCheckPortSpecification(str, Enum):
     """
-    Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+    Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
     """
     USE_FIXED_PORT = "USE_FIXED_PORT"
     """
@@ -3201,6 +3277,15 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilit
     STANDARD = "STANDARD"
 
 
+class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType(str, Enum):
+    """
+    Type of this configuration.
+    """
+    HTTP_HEADER_HOST = "HTTP_HEADER_HOST"
+    HTTP_PATH = "HTTP_PATH"
+    UNSPECIFIED_TYPE = "UNSPECIFIED_TYPE"
+
+
 class SecurityPolicyAdvancedOptionsConfigJsonParsing(str, Enum):
     DISABLED = "DISABLED"
     STANDARD = "STANDARD"
@@ -3265,7 +3350,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp(str, Enum):
 
 class SecurityPolicyRuleRateLimitOptionsEnforceOnKey(str, Enum):
     """
-    Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+    Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. 
     """
     ALL = "ALL"
     ALL_IPS = "ALL_IPS"
@@ -3275,12 +3360,14 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKey(str, Enum):
     IP = "IP"
     REGION_CODE = "REGION_CODE"
     SNI = "SNI"
+    TLS_JA3_FINGERPRINT = "TLS_JA3_FINGERPRINT"
+    USER_IP = "USER_IP"
     XFF_IP = "XFF_IP"
 
 
 class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType(str, Enum):
     """
-    Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+    Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. 
     """
     ALL = "ALL"
     ALL_IPS = "ALL_IPS"
@@ -3290,6 +3377,8 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType(str, 
     IP = "IP"
     REGION_CODE = "REGION_CODE"
     SNI = "SNI"
+    TLS_JA3_FINGERPRINT = "TLS_JA3_FINGERPRINT"
+    USER_IP = "USER_IP"
     XFF_IP = "XFF_IP"
 
 
@@ -3453,6 +3542,36 @@ class SslPolicyProfile(str, Enum):
     """
 
 
+class StoragePoolCapacityProvisioningType(str, Enum):
+    """
+    Provisioning type of the byte capacity of the pool.
+    """
+    ADVANCED = "ADVANCED"
+    """
+    Advanced provisioning "thinly" allocates the related resource.
+    """
+    STANDARD = "STANDARD"
+    """
+    Standard provisioning allocates the related resource for the pool disks' exclusive use.
+    """
+    UNSPECIFIED = "UNSPECIFIED"
+
+
+class StoragePoolPerformanceProvisioningType(str, Enum):
+    """
+    Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
+    """
+    ADVANCED = "ADVANCED"
+    """
+    Advanced provisioning "thinly" allocates the related resource.
+    """
+    STANDARD = "STANDARD"
+    """
+    Standard provisioning allocates the related resource for the pool disks' exclusive use.
+    """
+    UNSPECIFIED = "UNSPECIFIED"
+
+
 class SubnetworkIpv6AccessType(str, Enum):
     """
     The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack.
@@ -3508,7 +3627,7 @@ class SubnetworkPrivateIpv6GoogleAccess(str, Enum):
 
 class SubnetworkPurpose(str, Enum):
     """
-    The purpose of the resource. This field can be either PRIVATE, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or INTERNAL_HTTPS_LOAD_BALANCER. PRIVATE is the default purpose for user-created subnets or subnets that are automatically created in auto mode networks. A subnet with purpose set to REGIONAL_MANAGED_PROXY is a user-created subnetwork that is reserved for regional Envoy-based load balancers. A subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using Private Service Connect. A subnet with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a proxy-only subnet that can be used only by regional internal HTTP(S) load balancers. Note that REGIONAL_MANAGED_PROXY is the preferred setting for all regional Envoy load balancers. If unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+    The purpose of the resource. This field can be either PRIVATE, GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or PRIVATE is the default purpose for user-created subnets or subnets that are automatically created in auto mode networks. Subnets with purpose set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are user-created subnetworks that are reserved for Envoy-based load balancers. A subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using Private Service Connect. If unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported if the subnet purpose field is set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY.
     """
     GLOBAL_MANAGED_PROXY = "GLOBAL_MANAGED_PROXY"
     """
@@ -3516,7 +3635,7 @@ class SubnetworkPurpose(str, Enum):
     """
     INTERNAL_HTTPS_LOAD_BALANCER = "INTERNAL_HTTPS_LOAD_BALANCER"
     """
-    Subnet reserved for Internal HTTP(S) Load Balancing.
+    Subnet reserved for Internal HTTP(S) Load Balancing. This is a legacy purpose, please use REGIONAL_MANAGED_PROXY instead.
     """
     PRIVATE = "PRIVATE"
     """
@@ -3542,7 +3661,7 @@ class SubnetworkPurpose(str, Enum):
 
 class SubnetworkRole(str, Enum):
     """
-    The role of subnetwork. Currently, this field is only used when purpose = REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Envoy-based load balancers in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
+    The role of subnetwork. Currently, this field is only used when purpose is set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Envoy-based load balancers in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
     """
     ACTIVE = "ACTIVE"
     """
@@ -3581,7 +3700,7 @@ class SubsettingPolicy(str, Enum):
 
 class TCPHealthCheckPortSpecification(str, Enum):
     """
-    Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+    Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
     """
     USE_FIXED_PORT = "USE_FIXED_PORT"
     """
@@ -3620,6 +3739,24 @@ class TargetHttpsProxyQuicOverride(str, Enum):
     NONE = "NONE"
     """
     No overrides to the default QUIC policy. This option is implicit if no QUIC override has been specified in the request.
+    """
+
+
+class TargetHttpsProxyTlsEarlyData(str, Enum):
+    """
+     Specifies whether TLS 1.3 0-RTT Data ("Early Data") should be accepted for this service. Early Data allows a TLS resumption handshake to include the initial application payload (a HTTP request) alongside the handshake, reducing the effective round trips to "zero". This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3). This can improve application performance, especially on networks where interruptions may be common, such as on mobile. Requests with Early Data will have the "Early-Data" HTTP header set on the request, with a value of "1", to allow the backend to determine whether Early Data was included. Note: TLS Early Data may allow requests to be replayed, as the data is sent to the backend before the handshake has fully completed. Applications that allow idempotent HTTP methods to make non-idempotent changes, such as a GET request updating a database, should not accept Early Data on those requests, and reject requests with the "Early-Data: 1" HTTP header by returning a HTTP 425 (Too Early) status code, in order to remain RFC compliant. The default value is DISABLED.
+    """
+    DISABLED = "DISABLED"
+    """
+    TLS 1.3 Early Data is not advertised, and any (invalid) attempts to send Early Data will be rejected by closing the connection.
+    """
+    PERMISSIVE = "PERMISSIVE"
+    """
+    This enables TLS 1.3 0-RTT, and only allows Early Data to be included on requests with safe HTTP methods (GET, HEAD, OPTIONS, TRACE). This mode does not enforce any other limitations for requests with Early Data. The application owner should validate that Early Data is acceptable for a given request path.
+    """
+    STRICT = "STRICT"
+    """
+    This enables TLS 1.3 0-RTT, and only allows Early Data to be included on requests with safe HTTP methods (GET, HEAD, OPTIONS, TRACE) without query parameters. Requests that send Early Data with non-idempotent HTTP methods or with query parameters will be rejected with a HTTP 425.
     """
 
 
@@ -3712,4 +3849,8 @@ class VpnGatewayStackType(str, Enum):
     IPV4_ONLY = "IPV4_ONLY"
     """
     Enable VPN gateway with only IPv4 protocol.
+    """
+    IPV6_ONLY = "IPV6_ONLY"
+    """
+    Enable VPN gateway with only IPv6 protocol.
     """

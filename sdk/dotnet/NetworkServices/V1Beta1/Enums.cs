@@ -123,6 +123,14 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         /// If included in `supported_events`, the extension is called when the HTTP response body arrives.
         /// </summary>
         public static ExtensionChainExtensionSupportedEventsItem ResponseBody { get; } = new ExtensionChainExtensionSupportedEventsItem("RESPONSE_BODY");
+        /// <summary>
+        /// If included in `supported_events`, the extension is called when the HTTP request trailers arrives.
+        /// </summary>
+        public static ExtensionChainExtensionSupportedEventsItem RequestTrailers { get; } = new ExtensionChainExtensionSupportedEventsItem("REQUEST_TRAILERS");
+        /// <summary>
+        /// If included in `supported_events`, the extension is called when the HTTP response trailers arrives.
+        /// </summary>
+        public static ExtensionChainExtensionSupportedEventsItem ResponseTrailers { get; } = new ExtensionChainExtensionSupportedEventsItem("RESPONSE_TRAILERS");
 
         public static bool operator ==(ExtensionChainExtensionSupportedEventsItem left, ExtensionChainExtensionSupportedEventsItem right) => left.Equals(right);
         public static bool operator !=(ExtensionChainExtensionSupportedEventsItem left, ExtensionChainExtensionSupportedEventsItem right) => !left.Equals(right);
@@ -132,6 +140,88 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is ExtensionChainExtensionSupportedEventsItem other && Equals(other);
         public bool Equals(ExtensionChainExtensionSupportedEventsItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+    /// </summary>
+    [EnumType]
+    public readonly struct GatewayEnvoyHeaders : IEquatable<GatewayEnvoyHeaders>
+    {
+        private readonly string _value;
+
+        private GatewayEnvoyHeaders(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Defaults to NONE.
+        /// </summary>
+        public static GatewayEnvoyHeaders EnvoyHeadersUnspecified { get; } = new GatewayEnvoyHeaders("ENVOY_HEADERS_UNSPECIFIED");
+        /// <summary>
+        /// Suppress envoy debug headers.
+        /// </summary>
+        public static GatewayEnvoyHeaders None { get; } = new GatewayEnvoyHeaders("NONE");
+        /// <summary>
+        /// Envoy will insert default internal debug headers into upstream requests: x-envoy-attempt-count x-envoy-is-timeout-retry x-envoy-expected-rq-timeout-ms x-envoy-original-path x-envoy-upstream-stream-duration-ms
+        /// </summary>
+        public static GatewayEnvoyHeaders DebugHeaders { get; } = new GatewayEnvoyHeaders("DEBUG_HEADERS");
+
+        public static bool operator ==(GatewayEnvoyHeaders left, GatewayEnvoyHeaders right) => left.Equals(right);
+        public static bool operator !=(GatewayEnvoyHeaders left, GatewayEnvoyHeaders right) => !left.Equals(right);
+
+        public static explicit operator string(GatewayEnvoyHeaders value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GatewayEnvoyHeaders other && Equals(other);
+        public bool Equals(GatewayEnvoyHeaders other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+    /// </summary>
+    [EnumType]
+    public readonly struct GatewayIpVersion : IEquatable<GatewayIpVersion>
+    {
+        private readonly string _value;
+
+        private GatewayIpVersion(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The type when IP version is not specified. Defaults to IPV4.
+        /// </summary>
+        public static GatewayIpVersion IpVersionUnspecified { get; } = new GatewayIpVersion("IP_VERSION_UNSPECIFIED");
+        /// <summary>
+        /// The type for IP version 4.
+        /// </summary>
+        public static GatewayIpVersion Ipv4 { get; } = new GatewayIpVersion("IPV4");
+        /// <summary>
+        /// The type for IP version 6.
+        /// </summary>
+        public static GatewayIpVersion Ipv6 { get; } = new GatewayIpVersion("IPV6");
+
+        public static bool operator ==(GatewayIpVersion left, GatewayIpVersion right) => left.Equals(right);
+        public static bool operator !=(GatewayIpVersion left, GatewayIpVersion right) => !left.Equals(right);
+
+        public static explicit operator string(GatewayIpVersion value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GatewayIpVersion other && Equals(other);
+        public bool Equals(GatewayIpVersion other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -398,7 +488,48 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
     }
 
     /// <summary>
-    /// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+    /// Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+    /// </summary>
+    [EnumType]
+    public readonly struct MeshEnvoyHeaders : IEquatable<MeshEnvoyHeaders>
+    {
+        private readonly string _value;
+
+        private MeshEnvoyHeaders(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Defaults to NONE.
+        /// </summary>
+        public static MeshEnvoyHeaders EnvoyHeadersUnspecified { get; } = new MeshEnvoyHeaders("ENVOY_HEADERS_UNSPECIFIED");
+        /// <summary>
+        /// Suppress envoy debug headers.
+        /// </summary>
+        public static MeshEnvoyHeaders None { get; } = new MeshEnvoyHeaders("NONE");
+        /// <summary>
+        /// Envoy will insert default internal debug headers into upstream requests: x-envoy-attempt-count x-envoy-is-timeout-retry x-envoy-expected-rq-timeout-ms x-envoy-original-path x-envoy-upstream-stream-duration-ms
+        /// </summary>
+        public static MeshEnvoyHeaders DebugHeaders { get; } = new MeshEnvoyHeaders("DEBUG_HEADERS");
+
+        public static bool operator ==(MeshEnvoyHeaders left, MeshEnvoyHeaders right) => left.Equals(right);
+        public static bool operator !=(MeshEnvoyHeaders left, MeshEnvoyHeaders right) => !left.Equals(right);
+
+        public static explicit operator string(MeshEnvoyHeaders value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MeshEnvoyHeaders other && Equals(other);
+        public bool Equals(MeshEnvoyHeaders other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), pick up the one with older creation time.
     /// </summary>
     [EnumType]
     public readonly struct MetadataLabelMatcherMetadataLabelMatchCriteria : IEquatable<MetadataLabelMatcherMetadataLabelMatchCriteria>

@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Outputs
         /// </summary>
         public readonly bool DropUnknownFields;
         /// <summary>
+        /// Optional. The service account to use to write to BigQuery. The subscription creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        /// </summary>
+        public readonly string ServiceAccountEmail;
+        /// <summary>
         /// An output-only field that indicates whether or not the subscription can receive messages.
         /// </summary>
         public readonly string State;
@@ -29,7 +33,11 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Outputs
         /// </summary>
         public readonly string Table;
         /// <summary>
-        /// Optional. When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+        /// Optional. When true, use the BigQuery table's schema as the columns to write to in BigQuery. `use_table_schema` and `use_topic_schema` cannot be enabled at the same time.
+        /// </summary>
+        public readonly bool UseTableSchema;
+        /// <summary>
+        /// Optional. When true, use the topic's schema as the columns to write to in BigQuery, if it exists. `use_topic_schema` and `use_table_schema` cannot be enabled at the same time.
         /// </summary>
         public readonly bool UseTopicSchema;
         /// <summary>
@@ -41,17 +49,23 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Outputs
         private BigQueryConfigResponse(
             bool dropUnknownFields,
 
+            string serviceAccountEmail,
+
             string state,
 
             string table,
+
+            bool useTableSchema,
 
             bool useTopicSchema,
 
             bool writeMetadata)
         {
             DropUnknownFields = dropUnknownFields;
+            ServiceAccountEmail = serviceAccountEmail;
             State = state;
             Table = table;
+            UseTableSchema = useTableSchema;
             UseTopicSchema = useTopicSchema;
             WriteMetadata = writeMetadata;
         }

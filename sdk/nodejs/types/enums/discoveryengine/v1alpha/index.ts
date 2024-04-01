@@ -46,6 +46,26 @@ export const DataStoreContentConfig = {
  */
 export type DataStoreContentConfig = (typeof DataStoreContentConfig)[keyof typeof DataStoreContentConfig];
 
+export const DataStoreConversationState = {
+    /**
+     * Unknown.
+     */
+    StateUnspecified: "STATE_UNSPECIFIED",
+    /**
+     * Conversation is currently open.
+     */
+    InProgress: "IN_PROGRESS",
+    /**
+     * Conversation has been completed.
+     */
+    Completed: "COMPLETED",
+} as const;
+
+/**
+ * The state of the Conversation.
+ */
+export type DataStoreConversationState = (typeof DataStoreConversationState)[keyof typeof DataStoreConversationState];
+
 export const DataStoreIndustryVertical = {
     /**
      * Value used when unset.
@@ -59,6 +79,10 @@ export const DataStoreIndustryVertical = {
      * The media industry vertical.
      */
     Media: "MEDIA",
+    /**
+     * The healthcare FHIR vertical.
+     */
+    HealthcareFhir: "HEALTHCARE_FHIR",
 } as const;
 
 /**
@@ -83,9 +107,33 @@ export const DataStoreSolutionTypesItem = {
      * Used for use cases related to the Generative AI agent.
      */
     SolutionTypeChat: "SOLUTION_TYPE_CHAT",
+    /**
+     * Used for use cases related to the Generative Chat agent. It's used for Generative chat engine only, the associated data stores must enrolled with `SOLUTION_TYPE_CHAT` solution.
+     */
+    SolutionTypeGenerativeChat: "SOLUTION_TYPE_GENERATIVE_CHAT",
 } as const;
 
 export type DataStoreSolutionTypesItem = (typeof DataStoreSolutionTypesItem)[keyof typeof DataStoreSolutionTypesItem];
+
+export const EngineConversationState = {
+    /**
+     * Unknown.
+     */
+    StateUnspecified: "STATE_UNSPECIFIED",
+    /**
+     * Conversation is currently open.
+     */
+    InProgress: "IN_PROGRESS",
+    /**
+     * Conversation has been completed.
+     */
+    Completed: "COMPLETED",
+} as const;
+
+/**
+ * The state of the Conversation.
+ */
+export type EngineConversationState = (typeof EngineConversationState)[keyof typeof EngineConversationState];
 
 export const EngineIndustryVertical = {
     /**
@@ -100,6 +148,10 @@ export const EngineIndustryVertical = {
      * The media industry vertical.
      */
     Media: "MEDIA",
+    /**
+     * The healthcare FHIR vertical.
+     */
+    HealthcareFhir: "HEALTHCARE_FHIR",
 } as const;
 
 /**
@@ -124,6 +176,10 @@ export const EngineSolutionType = {
      * Used for use cases related to the Generative AI agent.
      */
     SolutionTypeChat: "SOLUTION_TYPE_CHAT",
+    /**
+     * Used for use cases related to the Generative Chat agent. It's used for Generative chat engine only, the associated data stores must enrolled with `SOLUTION_TYPE_CHAT` solution.
+     */
+    SolutionTypeGenerativeChat: "SOLUTION_TYPE_GENERATIVE_CHAT",
 } as const;
 
 /**
@@ -212,3 +268,23 @@ export const GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippe
 } as const;
 
 export type GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem = (typeof GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem)[keyof typeof GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem];
+
+export const TargetSiteType = {
+    /**
+     * This value is unused. In this case, server behavior defaults to Type.INCLUDE.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * Include the target site.
+     */
+    Include: "INCLUDE",
+    /**
+     * Exclude the target site.
+     */
+    Exclude: "EXCLUDE",
+} as const;
+
+/**
+ * The type of the target site, e.g., whether the site is to be included or excluded.
+ */
+export type TargetSiteType = (typeof TargetSiteType)[keyof typeof TargetSiteType];

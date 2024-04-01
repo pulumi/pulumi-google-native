@@ -77,7 +77,6 @@ __all__ = [
     'EnterpriseCrmLoggingGwsFieldLimitsResponse',
     'EnterpriseCrmLoggingGwsSanitizeOptionsResponse',
     'GoogleCloudIntegrationsV1alphaAccessTokenResponse',
-    'GoogleCloudIntegrationsV1alphaAssertionResponse',
     'GoogleCloudIntegrationsV1alphaAuthTokenResponse',
     'GoogleCloudIntegrationsV1alphaBooleanParameterArrayResponse',
     'GoogleCloudIntegrationsV1alphaClientCertificateResponse',
@@ -87,14 +86,13 @@ __all__ = [
     'GoogleCloudIntegrationsV1alphaCredentialResponse',
     'GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse',
     'GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse',
-    'GoogleCloudIntegrationsV1alphaEventParameterResponse',
     'GoogleCloudIntegrationsV1alphaFailurePolicyResponse',
     'GoogleCloudIntegrationsV1alphaIntParameterArrayResponse',
     'GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse',
     'GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueResponse',
+    'GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponse',
     'GoogleCloudIntegrationsV1alphaIntegrationParameterResponse',
     'GoogleCloudIntegrationsV1alphaJwtResponse',
-    'GoogleCloudIntegrationsV1alphaMockConfigResponse',
     'GoogleCloudIntegrationsV1alphaNextTaskResponse',
     'GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeResponse',
     'GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsResponse',
@@ -107,7 +105,6 @@ __all__ = [
     'GoogleCloudIntegrationsV1alphaStringParameterArrayResponse',
     'GoogleCloudIntegrationsV1alphaSuccessPolicyResponse',
     'GoogleCloudIntegrationsV1alphaTaskConfigResponse',
-    'GoogleCloudIntegrationsV1alphaTestTaskConfigResponse',
     'GoogleCloudIntegrationsV1alphaTriggerConfigResponse',
     'GoogleCloudIntegrationsV1alphaUsernameAndPasswordResponse',
     'GoogleCloudIntegrationsV1alphaValueTypeResponse',
@@ -153,6 +150,7 @@ class EnterpriseCrmEventbusProtoAttributesResponse(dict):
                  is_required: bool,
                  is_searchable: bool,
                  log_settings: 'outputs.EnterpriseCrmEventbusProtoLogSettingsResponse',
+                 masked: bool,
                  read_only: bool,
                  searchable: str,
                  task_visibility: Sequence[str]):
@@ -163,6 +161,7 @@ class EnterpriseCrmEventbusProtoAttributesResponse(dict):
         :param bool is_required: Required for event execution. The validation will be done by the event bus when the event is triggered.
         :param bool is_searchable: Used to indicate if a ParameterEntry should be converted to ParamIndexes for ST-Spanner full-text search. DEPRECATED: use searchable.
         :param 'EnterpriseCrmEventbusProtoLogSettingsResponse' log_settings: See
+        :param bool masked: True if this workflow parameter should be masked in the logs
         :param bool read_only: Used to indicate if the ParameterEntry is a read only field or not.
         :param Sequence[str] task_visibility: List of tasks that can view this property, if empty then all.
         """
@@ -171,6 +170,7 @@ class EnterpriseCrmEventbusProtoAttributesResponse(dict):
         pulumi.set(__self__, "is_required", is_required)
         pulumi.set(__self__, "is_searchable", is_searchable)
         pulumi.set(__self__, "log_settings", log_settings)
+        pulumi.set(__self__, "masked", masked)
         pulumi.set(__self__, "read_only", read_only)
         pulumi.set(__self__, "searchable", searchable)
         pulumi.set(__self__, "task_visibility", task_visibility)
@@ -217,6 +217,14 @@ class EnterpriseCrmEventbusProtoAttributesResponse(dict):
         See
         """
         return pulumi.get(self, "log_settings")
+
+    @property
+    @pulumi.getter
+    def masked(self) -> bool:
+        """
+        True if this workflow parameter should be masked in the logs
+        """
+        return pulumi.get(self, "masked")
 
     @property
     @pulumi.getter(name="readOnly")
@@ -1299,13 +1307,16 @@ class EnterpriseCrmEventbusProtoParameterEntryResponse(dict):
     """
     def __init__(__self__, *,
                  key: str,
+                 masked: bool,
                  value: 'outputs.EnterpriseCrmEventbusProtoParameterValueTypeResponse'):
         """
         Key-value pair of EventBus parameters.
         :param str key: Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
+        :param bool masked: True if this parameter should be masked in the logs
         :param 'EnterpriseCrmEventbusProtoParameterValueTypeResponse' value: Values for the defined keys. Each value can either be string, int, double or any proto message.
         """
         pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "masked", masked)
         pulumi.set(__self__, "value", value)
 
     @property
@@ -1315,6 +1326,14 @@ class EnterpriseCrmEventbusProtoParameterEntryResponse(dict):
         Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
         """
         return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def masked(self) -> bool:
+        """
+        True if this parameter should be masked in the logs
+        """
+        return pulumi.get(self, "masked")
 
     @property
     @pulumi.getter
@@ -3195,15 +3214,18 @@ class EnterpriseCrmFrontendsEventbusProtoParameterEntryResponse(dict):
     def __init__(__self__, *,
                  data_type: str,
                  key: str,
+                 masked: bool,
                  value: 'outputs.EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse'):
         """
         Key-value pair of EventBus parameters.
         :param str data_type: Explicitly getting the type of the parameter.
         :param str key: Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the workflow definition.
+        :param bool masked: True if this parameter should be masked in the logs
         :param 'EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse' value: Values for the defined keys. Each value can either be string, int, double or any proto message.
         """
         pulumi.set(__self__, "data_type", data_type)
         pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "masked", masked)
         pulumi.set(__self__, "value", value)
 
     @property
@@ -3221,6 +3243,14 @@ class EnterpriseCrmFrontendsEventbusProtoParameterEntryResponse(dict):
         Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the workflow definition.
         """
         return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def masked(self) -> bool:
+        """
+        True if this parameter should be masked in the logs
+        """
+        return pulumi.get(self, "masked")
 
     @property
     @pulumi.getter
@@ -4217,7 +4247,9 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "dataType":
+        if key == "containsLargeData":
+            suggest = "contains_large_data"
+        elif key == "dataType":
             suggest = "data_type"
         elif key == "defaultValue":
             suggest = "default_value"
@@ -4248,6 +4280,7 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse(dict):
     def __init__(__self__, *,
                  attributes: 'outputs.EnterpriseCrmEventbusProtoAttributesResponse',
                  children: Sequence['outputs.EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse'],
+                 contains_large_data: bool,
                  data_type: str,
                  default_value: 'outputs.EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse',
                  description: str,
@@ -4263,6 +4296,7 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse(dict):
         """
         :param 'EnterpriseCrmEventbusProtoAttributesResponse' attributes: Metadata information about the parameters.
         :param Sequence['EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse'] children: Child parameters nested within this parameter. This field only applies to protobuf parameters
+        :param bool contains_large_data: Indicates whether this variable contains large data and need to be uploaded to Cloud Storage.
         :param str data_type: The data type of the parameter.
         :param 'EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse' default_value: Default values for the defined keys. Each value can either be string, int, double or any proto message or a serialized object.
         :param str description: Optional. The description about the parameter
@@ -4277,6 +4311,7 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse(dict):
         """
         pulumi.set(__self__, "attributes", attributes)
         pulumi.set(__self__, "children", children)
+        pulumi.set(__self__, "contains_large_data", contains_large_data)
         pulumi.set(__self__, "data_type", data_type)
         pulumi.set(__self__, "default_value", default_value)
         pulumi.set(__self__, "description", description)
@@ -4305,6 +4340,14 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse(dict):
         Child parameters nested within this parameter. This field only applies to protobuf parameters
         """
         return pulumi.get(self, "children")
+
+    @property
+    @pulumi.getter(name="containsLargeData")
+    def contains_large_data(self) -> bool:
+        """
+        Indicates whether this variable contains large data and need to be uploaded to Cloud Storage.
+        """
+        return pulumi.get(self, "contains_large_data")
 
     @property
     @pulumi.getter(name="dataType")
@@ -4662,80 +4705,6 @@ class GoogleCloudIntegrationsV1alphaAccessTokenResponse(dict):
         Only support "bearer" token in v1 as bearer token is the predominant type used with OAuth 2.0.
         """
         return pulumi.get(self, "token_type")
-
-
-@pulumi.output_type
-class GoogleCloudIntegrationsV1alphaAssertionResponse(dict):
-    """
-    An assertion which will check for a condition over task execution status or an expression for task output variables Next available id: 5
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "assertionStrategy":
-            suggest = "assertion_strategy"
-        elif key == "retryCount":
-            suggest = "retry_count"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudIntegrationsV1alphaAssertionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GoogleCloudIntegrationsV1alphaAssertionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GoogleCloudIntegrationsV1alphaAssertionResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 assertion_strategy: str,
-                 condition: str,
-                 parameter: 'outputs.GoogleCloudIntegrationsV1alphaEventParameterResponse',
-                 retry_count: int):
-        """
-        An assertion which will check for a condition over task execution status or an expression for task output variables Next available id: 5
-        :param str assertion_strategy: The type of assertion to perform.
-        :param str condition: Optional. Standard filter expression for ASSERT_CONDITION to succeed
-        :param 'GoogleCloudIntegrationsV1alphaEventParameterResponse' parameter: Optional. Key-value pair for ASSERT_EQUALS, ASSERT_NOT_EQUALS, ASSERT_CONTAINS to succeed
-        :param int retry_count: Number of times given task should be retried in case of ASSERT_FAILED_EXECUTION
-        """
-        pulumi.set(__self__, "assertion_strategy", assertion_strategy)
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "parameter", parameter)
-        pulumi.set(__self__, "retry_count", retry_count)
-
-    @property
-    @pulumi.getter(name="assertionStrategy")
-    def assertion_strategy(self) -> str:
-        """
-        The type of assertion to perform.
-        """
-        return pulumi.get(self, "assertion_strategy")
-
-    @property
-    @pulumi.getter
-    def condition(self) -> str:
-        """
-        Optional. Standard filter expression for ASSERT_CONDITION to succeed
-        """
-        return pulumi.get(self, "condition")
-
-    @property
-    @pulumi.getter
-    def parameter(self) -> 'outputs.GoogleCloudIntegrationsV1alphaEventParameterResponse':
-        """
-        Optional. Key-value pair for ASSERT_EQUALS, ASSERT_NOT_EQUALS, ASSERT_CONTAINS to succeed
-        """
-        return pulumi.get(self, "parameter")
-
-    @property
-    @pulumi.getter(name="retryCount")
-    def retry_count(self) -> int:
-        """
-        Number of times given task should be retried in case of ASSERT_FAILED_EXECUTION
-        """
-        return pulumi.get(self, "retry_count")
 
 
 @pulumi.output_type
@@ -5313,39 +5282,6 @@ class GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse(dict):
 
 
 @pulumi.output_type
-class GoogleCloudIntegrationsV1alphaEventParameterResponse(dict):
-    """
-    This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus.
-    """
-    def __init__(__self__, *,
-                 key: str,
-                 value: 'outputs.GoogleCloudIntegrationsV1alphaValueTypeResponse'):
-        """
-        This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus.
-        :param str key: Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
-        :param 'GoogleCloudIntegrationsV1alphaValueTypeResponse' value: Values for the defined keys. Each value can either be string, int, double or any proto message.
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def key(self) -> str:
-        """
-        Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
-        """
-        return pulumi.get(self, "key")
-
-    @property
-    @pulumi.getter
-    def value(self) -> 'outputs.GoogleCloudIntegrationsV1alphaValueTypeResponse':
-        """
-        Values for the defined keys. Each value can either be string, int, double or any proto message.
-        """
-        return pulumi.get(self, "value")
-
-
-@pulumi.output_type
 class GoogleCloudIntegrationsV1alphaFailurePolicyResponse(dict):
     """
     Policy that defines the task retry logic and failure type. If no FailurePolicy is defined for a task, all its dependent tasks will not be executed (i.e, a `retry_strategy` of NONE will be applied).
@@ -5626,6 +5562,39 @@ class GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueResponse
 
 
 @pulumi.output_type
+class GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponse(dict):
+    """
+    Integration Config Parameter is defined in the integration config and are used to provide external configuration for integration. It provide information about data types of the expected parameters and provide any default values or value. They can also be used to add custom attributes.
+    """
+    def __init__(__self__, *,
+                 parameter: 'outputs.GoogleCloudIntegrationsV1alphaIntegrationParameterResponse',
+                 value: 'outputs.GoogleCloudIntegrationsV1alphaValueTypeResponse'):
+        """
+        Integration Config Parameter is defined in the integration config and are used to provide external configuration for integration. It provide information about data types of the expected parameters and provide any default values or value. They can also be used to add custom attributes.
+        :param 'GoogleCloudIntegrationsV1alphaIntegrationParameterResponse' parameter: Optional. Integration Parameter to provide the default value, data type and attributes required for the Integration config variables.
+        :param 'GoogleCloudIntegrationsV1alphaValueTypeResponse' value: Values for the defined keys. Each value can either be string, int, double or any proto message or a serialized object.
+        """
+        pulumi.set(__self__, "parameter", parameter)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def parameter(self) -> 'outputs.GoogleCloudIntegrationsV1alphaIntegrationParameterResponse':
+        """
+        Optional. Integration Parameter to provide the default value, data type and attributes required for the Integration config variables.
+        """
+        return pulumi.get(self, "parameter")
+
+    @property
+    @pulumi.getter
+    def value(self) -> 'outputs.GoogleCloudIntegrationsV1alphaValueTypeResponse':
+        """
+        Values for the defined keys. Each value can either be string, int, double or any proto message or a serialized object.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class GoogleCloudIntegrationsV1alphaIntegrationParameterResponse(dict):
     """
     Integration Parameter is defined in the integration config and are used to provide information about data types of the expected parameters and provide any default values if needed. They can also be used to add custom attributes. These are static in nature and should not be used for dynamic event definition.
@@ -5633,7 +5602,9 @@ class GoogleCloudIntegrationsV1alphaIntegrationParameterResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "dataType":
+        if key == "containsLargeData":
+            suggest = "contains_large_data"
+        elif key == "dataType":
             suggest = "data_type"
         elif key == "defaultValue":
             suggest = "default_value"
@@ -5658,6 +5629,7 @@ class GoogleCloudIntegrationsV1alphaIntegrationParameterResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 contains_large_data: bool,
                  data_type: str,
                  default_value: 'outputs.GoogleCloudIntegrationsV1alphaValueTypeResponse',
                  display_name: str,
@@ -5665,10 +5637,12 @@ class GoogleCloudIntegrationsV1alphaIntegrationParameterResponse(dict):
                  is_transient: bool,
                  json_schema: str,
                  key: str,
+                 masked: bool,
                  producer: str,
                  searchable: bool):
         """
         Integration Parameter is defined in the integration config and are used to provide information about data types of the expected parameters and provide any default values if needed. They can also be used to add custom attributes. These are static in nature and should not be used for dynamic event definition.
+        :param bool contains_large_data: Indicates whether this variable contains large data and need to be uploaded to Cloud Storage.
         :param str data_type: Type of the parameter.
         :param 'GoogleCloudIntegrationsV1alphaValueTypeResponse' default_value: Default values for the defined keys. Each value can either be string, int, double or any proto message or a serialized object.
         :param str display_name: The name (without prefix) to be displayed in the UI for this parameter. E.g. if the key is "foo.bar.myName", then the name would be "myName".
@@ -5676,9 +5650,11 @@ class GoogleCloudIntegrationsV1alphaIntegrationParameterResponse(dict):
         :param bool is_transient: Whether this parameter is a transient parameter.
         :param str json_schema: This schema will be used to validate runtime JSON-typed values of this parameter.
         :param str key: Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
+        :param bool masked: True if this parameter should be masked in the logs
         :param str producer: The identifier of the node (TaskConfig/TriggerConfig) this parameter was produced by, if it is a transient param or a copy of an input param.
         :param bool searchable: Searchable in the execution log or not.
         """
+        pulumi.set(__self__, "contains_large_data", contains_large_data)
         pulumi.set(__self__, "data_type", data_type)
         pulumi.set(__self__, "default_value", default_value)
         pulumi.set(__self__, "display_name", display_name)
@@ -5686,8 +5662,17 @@ class GoogleCloudIntegrationsV1alphaIntegrationParameterResponse(dict):
         pulumi.set(__self__, "is_transient", is_transient)
         pulumi.set(__self__, "json_schema", json_schema)
         pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "masked", masked)
         pulumi.set(__self__, "producer", producer)
         pulumi.set(__self__, "searchable", searchable)
+
+    @property
+    @pulumi.getter(name="containsLargeData")
+    def contains_large_data(self) -> bool:
+        """
+        Indicates whether this variable contains large data and need to be uploaded to Cloud Storage.
+        """
+        return pulumi.get(self, "contains_large_data")
 
     @property
     @pulumi.getter(name="dataType")
@@ -5744,6 +5729,14 @@ class GoogleCloudIntegrationsV1alphaIntegrationParameterResponse(dict):
         Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
         """
         return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def masked(self) -> bool:
+        """
+        True if this parameter should be masked in the logs
+        """
+        return pulumi.get(self, "masked")
 
     @property
     @pulumi.getter
@@ -5834,69 +5827,6 @@ class GoogleCloudIntegrationsV1alphaJwtResponse(dict):
         User's pre-shared secret to sign the token.
         """
         return pulumi.get(self, "secret")
-
-
-@pulumi.output_type
-class GoogleCloudIntegrationsV1alphaMockConfigResponse(dict):
-    """
-    The configuration for mocking of a task during test execution Next available id: 4
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "failedExecutions":
-            suggest = "failed_executions"
-        elif key == "mockStrategy":
-            suggest = "mock_strategy"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudIntegrationsV1alphaMockConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GoogleCloudIntegrationsV1alphaMockConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GoogleCloudIntegrationsV1alphaMockConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 failed_executions: str,
-                 mock_strategy: str,
-                 parameters: Sequence['outputs.GoogleCloudIntegrationsV1alphaEventParameterResponse']):
-        """
-        The configuration for mocking of a task during test execution Next available id: 4
-        :param str failed_executions: Optional. Number of times the given task should fail for failure mock strategy
-        :param str mock_strategy: Mockstrategy defines how the particular task should be mocked during test execution
-        :param Sequence['GoogleCloudIntegrationsV1alphaEventParameterResponse'] parameters: Optional. List of key-value pairs for specific mock strategy
-        """
-        pulumi.set(__self__, "failed_executions", failed_executions)
-        pulumi.set(__self__, "mock_strategy", mock_strategy)
-        pulumi.set(__self__, "parameters", parameters)
-
-    @property
-    @pulumi.getter(name="failedExecutions")
-    def failed_executions(self) -> str:
-        """
-        Optional. Number of times the given task should fail for failure mock strategy
-        """
-        return pulumi.get(self, "failed_executions")
-
-    @property
-    @pulumi.getter(name="mockStrategy")
-    def mock_strategy(self) -> str:
-        """
-        Mockstrategy defines how the particular task should be mocked during test execution
-        """
-        return pulumi.get(self, "mock_strategy")
-
-    @property
-    @pulumi.getter
-    def parameters(self) -> Sequence['outputs.GoogleCloudIntegrationsV1alphaEventParameterResponse']:
-        """
-        Optional. List of key-value pairs for specific mock strategy
-        """
-        return pulumi.get(self, "parameters")
 
 
 @pulumi.output_type
@@ -6979,80 +6909,6 @@ class GoogleCloudIntegrationsV1alphaTaskConfigResponse(dict):
         Optional. Used to define task-template name if task is of type task-template
         """
         return pulumi.get(self, "task_template")
-
-
-@pulumi.output_type
-class GoogleCloudIntegrationsV1alphaTestTaskConfigResponse(dict):
-    """
-    The task mock configuration details and assertions for functional tests. Next available id: 5
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "mockConfig":
-            suggest = "mock_config"
-        elif key == "taskNumber":
-            suggest = "task_number"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudIntegrationsV1alphaTestTaskConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GoogleCloudIntegrationsV1alphaTestTaskConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GoogleCloudIntegrationsV1alphaTestTaskConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 assertions: Sequence['outputs.GoogleCloudIntegrationsV1alphaAssertionResponse'],
-                 mock_config: 'outputs.GoogleCloudIntegrationsV1alphaMockConfigResponse',
-                 task: str,
-                 task_number: str):
-        """
-        The task mock configuration details and assertions for functional tests. Next available id: 5
-        :param Sequence['GoogleCloudIntegrationsV1alphaAssertionResponse'] assertions: Optional. List of conditions or expressions which should be evaluated to true unless there is a bug/problem in the integration. These are evaluated one the task execution is completed as per the mock strategy in test case
-        :param 'GoogleCloudIntegrationsV1alphaMockConfigResponse' mock_config: Optional. Defines how to mock the given task during test execution
-        :param str task: This defines in the test case, the task name in integration which will be mocked by this test task config
-        :param str task_number: This defines in the test case, the task in integration which will be mocked by this test task config
-        """
-        pulumi.set(__self__, "assertions", assertions)
-        pulumi.set(__self__, "mock_config", mock_config)
-        pulumi.set(__self__, "task", task)
-        pulumi.set(__self__, "task_number", task_number)
-
-    @property
-    @pulumi.getter
-    def assertions(self) -> Sequence['outputs.GoogleCloudIntegrationsV1alphaAssertionResponse']:
-        """
-        Optional. List of conditions or expressions which should be evaluated to true unless there is a bug/problem in the integration. These are evaluated one the task execution is completed as per the mock strategy in test case
-        """
-        return pulumi.get(self, "assertions")
-
-    @property
-    @pulumi.getter(name="mockConfig")
-    def mock_config(self) -> 'outputs.GoogleCloudIntegrationsV1alphaMockConfigResponse':
-        """
-        Optional. Defines how to mock the given task during test execution
-        """
-        return pulumi.get(self, "mock_config")
-
-    @property
-    @pulumi.getter
-    def task(self) -> str:
-        """
-        This defines in the test case, the task name in integration which will be mocked by this test task config
-        """
-        return pulumi.get(self, "task")
-
-    @property
-    @pulumi.getter(name="taskNumber")
-    def task_number(self) -> str:
-        """
-        This defines in the test case, the task in integration which will be mocked by this test task config
-        """
-        return pulumi.get(self, "task_number")
 
 
 @pulumi.output_type

@@ -370,9 +370,9 @@ func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConf
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role *string `pulumi:"role"`
 }
 
@@ -391,9 +391,9 @@ type BindingInput interface {
 type BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -454,12 +454,12 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -488,9 +488,9 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role string `pulumi:"role"`
 }
 
@@ -514,12 +514,12 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -542,6 +542,224 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
 		return vs[0].([]BindingResponse)[vs[1].(int)]
 	}).(BindingResponseOutput)
+}
+
+// Storage volume source using the Container Storage Interface.
+type CSIVolumeSource struct {
+	// name of the CSI driver for the requested storage system. Cloud Run supports the following drivers: * gcsfuse.run.googleapis.com : Mount a Cloud Storage Bucket as a volume.
+	Driver *string `pulumi:"driver"`
+	// If true, mount the volume as read only. Defaults to false.
+	ReadOnly *bool `pulumi:"readOnly"`
+	// stores driver specific attributes. For Google Cloud Storage volumes, the following attributes are supported: * bucketName: the name of the Cloud Storage bucket to mount. The Cloud Run Service identity must have access to this bucket.
+	VolumeAttributes map[string]string `pulumi:"volumeAttributes"`
+}
+
+// CSIVolumeSourceInput is an input type that accepts CSIVolumeSourceArgs and CSIVolumeSourceOutput values.
+// You can construct a concrete instance of `CSIVolumeSourceInput` via:
+//
+//	CSIVolumeSourceArgs{...}
+type CSIVolumeSourceInput interface {
+	pulumi.Input
+
+	ToCSIVolumeSourceOutput() CSIVolumeSourceOutput
+	ToCSIVolumeSourceOutputWithContext(context.Context) CSIVolumeSourceOutput
+}
+
+// Storage volume source using the Container Storage Interface.
+type CSIVolumeSourceArgs struct {
+	// name of the CSI driver for the requested storage system. Cloud Run supports the following drivers: * gcsfuse.run.googleapis.com : Mount a Cloud Storage Bucket as a volume.
+	Driver pulumi.StringPtrInput `pulumi:"driver"`
+	// If true, mount the volume as read only. Defaults to false.
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+	// stores driver specific attributes. For Google Cloud Storage volumes, the following attributes are supported: * bucketName: the name of the Cloud Storage bucket to mount. The Cloud Run Service identity must have access to this bucket.
+	VolumeAttributes pulumi.StringMapInput `pulumi:"volumeAttributes"`
+}
+
+func (CSIVolumeSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CSIVolumeSource)(nil)).Elem()
+}
+
+func (i CSIVolumeSourceArgs) ToCSIVolumeSourceOutput() CSIVolumeSourceOutput {
+	return i.ToCSIVolumeSourceOutputWithContext(context.Background())
+}
+
+func (i CSIVolumeSourceArgs) ToCSIVolumeSourceOutputWithContext(ctx context.Context) CSIVolumeSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CSIVolumeSourceOutput)
+}
+
+func (i CSIVolumeSourceArgs) ToCSIVolumeSourcePtrOutput() CSIVolumeSourcePtrOutput {
+	return i.ToCSIVolumeSourcePtrOutputWithContext(context.Background())
+}
+
+func (i CSIVolumeSourceArgs) ToCSIVolumeSourcePtrOutputWithContext(ctx context.Context) CSIVolumeSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CSIVolumeSourceOutput).ToCSIVolumeSourcePtrOutputWithContext(ctx)
+}
+
+// CSIVolumeSourcePtrInput is an input type that accepts CSIVolumeSourceArgs, CSIVolumeSourcePtr and CSIVolumeSourcePtrOutput values.
+// You can construct a concrete instance of `CSIVolumeSourcePtrInput` via:
+//
+//	        CSIVolumeSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type CSIVolumeSourcePtrInput interface {
+	pulumi.Input
+
+	ToCSIVolumeSourcePtrOutput() CSIVolumeSourcePtrOutput
+	ToCSIVolumeSourcePtrOutputWithContext(context.Context) CSIVolumeSourcePtrOutput
+}
+
+type csivolumeSourcePtrType CSIVolumeSourceArgs
+
+func CSIVolumeSourcePtr(v *CSIVolumeSourceArgs) CSIVolumeSourcePtrInput {
+	return (*csivolumeSourcePtrType)(v)
+}
+
+func (*csivolumeSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CSIVolumeSource)(nil)).Elem()
+}
+
+func (i *csivolumeSourcePtrType) ToCSIVolumeSourcePtrOutput() CSIVolumeSourcePtrOutput {
+	return i.ToCSIVolumeSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *csivolumeSourcePtrType) ToCSIVolumeSourcePtrOutputWithContext(ctx context.Context) CSIVolumeSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CSIVolumeSourcePtrOutput)
+}
+
+// Storage volume source using the Container Storage Interface.
+type CSIVolumeSourceOutput struct{ *pulumi.OutputState }
+
+func (CSIVolumeSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CSIVolumeSource)(nil)).Elem()
+}
+
+func (o CSIVolumeSourceOutput) ToCSIVolumeSourceOutput() CSIVolumeSourceOutput {
+	return o
+}
+
+func (o CSIVolumeSourceOutput) ToCSIVolumeSourceOutputWithContext(ctx context.Context) CSIVolumeSourceOutput {
+	return o
+}
+
+func (o CSIVolumeSourceOutput) ToCSIVolumeSourcePtrOutput() CSIVolumeSourcePtrOutput {
+	return o.ToCSIVolumeSourcePtrOutputWithContext(context.Background())
+}
+
+func (o CSIVolumeSourceOutput) ToCSIVolumeSourcePtrOutputWithContext(ctx context.Context) CSIVolumeSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CSIVolumeSource) *CSIVolumeSource {
+		return &v
+	}).(CSIVolumeSourcePtrOutput)
+}
+
+// name of the CSI driver for the requested storage system. Cloud Run supports the following drivers: * gcsfuse.run.googleapis.com : Mount a Cloud Storage Bucket as a volume.
+func (o CSIVolumeSourceOutput) Driver() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CSIVolumeSource) *string { return v.Driver }).(pulumi.StringPtrOutput)
+}
+
+// If true, mount the volume as read only. Defaults to false.
+func (o CSIVolumeSourceOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CSIVolumeSource) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// stores driver specific attributes. For Google Cloud Storage volumes, the following attributes are supported: * bucketName: the name of the Cloud Storage bucket to mount. The Cloud Run Service identity must have access to this bucket.
+func (o CSIVolumeSourceOutput) VolumeAttributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CSIVolumeSource) map[string]string { return v.VolumeAttributes }).(pulumi.StringMapOutput)
+}
+
+type CSIVolumeSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (CSIVolumeSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CSIVolumeSource)(nil)).Elem()
+}
+
+func (o CSIVolumeSourcePtrOutput) ToCSIVolumeSourcePtrOutput() CSIVolumeSourcePtrOutput {
+	return o
+}
+
+func (o CSIVolumeSourcePtrOutput) ToCSIVolumeSourcePtrOutputWithContext(ctx context.Context) CSIVolumeSourcePtrOutput {
+	return o
+}
+
+func (o CSIVolumeSourcePtrOutput) Elem() CSIVolumeSourceOutput {
+	return o.ApplyT(func(v *CSIVolumeSource) CSIVolumeSource {
+		if v != nil {
+			return *v
+		}
+		var ret CSIVolumeSource
+		return ret
+	}).(CSIVolumeSourceOutput)
+}
+
+// name of the CSI driver for the requested storage system. Cloud Run supports the following drivers: * gcsfuse.run.googleapis.com : Mount a Cloud Storage Bucket as a volume.
+func (o CSIVolumeSourcePtrOutput) Driver() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CSIVolumeSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Driver
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, mount the volume as read only. Defaults to false.
+func (o CSIVolumeSourcePtrOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CSIVolumeSource) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// stores driver specific attributes. For Google Cloud Storage volumes, the following attributes are supported: * bucketName: the name of the Cloud Storage bucket to mount. The Cloud Run Service identity must have access to this bucket.
+func (o CSIVolumeSourcePtrOutput) VolumeAttributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CSIVolumeSource) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeAttributes
+	}).(pulumi.StringMapOutput)
+}
+
+// Storage volume source using the Container Storage Interface.
+type CSIVolumeSourceResponse struct {
+	// name of the CSI driver for the requested storage system. Cloud Run supports the following drivers: * gcsfuse.run.googleapis.com : Mount a Cloud Storage Bucket as a volume.
+	Driver string `pulumi:"driver"`
+	// If true, mount the volume as read only. Defaults to false.
+	ReadOnly bool `pulumi:"readOnly"`
+	// stores driver specific attributes. For Google Cloud Storage volumes, the following attributes are supported: * bucketName: the name of the Cloud Storage bucket to mount. The Cloud Run Service identity must have access to this bucket.
+	VolumeAttributes map[string]string `pulumi:"volumeAttributes"`
+}
+
+// Storage volume source using the Container Storage Interface.
+type CSIVolumeSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (CSIVolumeSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CSIVolumeSourceResponse)(nil)).Elem()
+}
+
+func (o CSIVolumeSourceResponseOutput) ToCSIVolumeSourceResponseOutput() CSIVolumeSourceResponseOutput {
+	return o
+}
+
+func (o CSIVolumeSourceResponseOutput) ToCSIVolumeSourceResponseOutputWithContext(ctx context.Context) CSIVolumeSourceResponseOutput {
+	return o
+}
+
+// name of the CSI driver for the requested storage system. Cloud Run supports the following drivers: * gcsfuse.run.googleapis.com : Mount a Cloud Storage Bucket as a volume.
+func (o CSIVolumeSourceResponseOutput) Driver() pulumi.StringOutput {
+	return o.ApplyT(func(v CSIVolumeSourceResponse) string { return v.Driver }).(pulumi.StringOutput)
+}
+
+// If true, mount the volume as read only. Defaults to false.
+func (o CSIVolumeSourceResponseOutput) ReadOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v CSIVolumeSourceResponse) bool { return v.ReadOnly }).(pulumi.BoolOutput)
+}
+
+// stores driver specific attributes. For Google Cloud Storage volumes, the following attributes are supported: * bucketName: the name of the Cloud Storage bucket to mount. The Cloud Run Service identity must have access to this bucket.
+func (o CSIVolumeSourceResponseOutput) VolumeAttributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CSIVolumeSourceResponse) map[string]string { return v.VolumeAttributes }).(pulumi.StringMapOutput)
 }
 
 // Not supported by Cloud Run. ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
@@ -4606,9 +4824,227 @@ func (o LocalObjectReferenceResponseArrayOutput) Index(i pulumi.IntInput) LocalO
 	}).(LocalObjectReferenceResponseOutput)
 }
 
+// Represents a persistent volume that will be mounted using NFS. This volume will be shared between all instances of the resource and data will not be deleted when the instance is shut down.
+type NFSVolumeSource struct {
+	// Path that is exported by the NFS server.
+	Path *string `pulumi:"path"`
+	// If true, mount the NFS volume as read only. Defaults to false.
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Hostname or IP address of the NFS server.
+	Server *string `pulumi:"server"`
+}
+
+// NFSVolumeSourceInput is an input type that accepts NFSVolumeSourceArgs and NFSVolumeSourceOutput values.
+// You can construct a concrete instance of `NFSVolumeSourceInput` via:
+//
+//	NFSVolumeSourceArgs{...}
+type NFSVolumeSourceInput interface {
+	pulumi.Input
+
+	ToNFSVolumeSourceOutput() NFSVolumeSourceOutput
+	ToNFSVolumeSourceOutputWithContext(context.Context) NFSVolumeSourceOutput
+}
+
+// Represents a persistent volume that will be mounted using NFS. This volume will be shared between all instances of the resource and data will not be deleted when the instance is shut down.
+type NFSVolumeSourceArgs struct {
+	// Path that is exported by the NFS server.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// If true, mount the NFS volume as read only. Defaults to false.
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+	// Hostname or IP address of the NFS server.
+	Server pulumi.StringPtrInput `pulumi:"server"`
+}
+
+func (NFSVolumeSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NFSVolumeSource)(nil)).Elem()
+}
+
+func (i NFSVolumeSourceArgs) ToNFSVolumeSourceOutput() NFSVolumeSourceOutput {
+	return i.ToNFSVolumeSourceOutputWithContext(context.Background())
+}
+
+func (i NFSVolumeSourceArgs) ToNFSVolumeSourceOutputWithContext(ctx context.Context) NFSVolumeSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NFSVolumeSourceOutput)
+}
+
+func (i NFSVolumeSourceArgs) ToNFSVolumeSourcePtrOutput() NFSVolumeSourcePtrOutput {
+	return i.ToNFSVolumeSourcePtrOutputWithContext(context.Background())
+}
+
+func (i NFSVolumeSourceArgs) ToNFSVolumeSourcePtrOutputWithContext(ctx context.Context) NFSVolumeSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NFSVolumeSourceOutput).ToNFSVolumeSourcePtrOutputWithContext(ctx)
+}
+
+// NFSVolumeSourcePtrInput is an input type that accepts NFSVolumeSourceArgs, NFSVolumeSourcePtr and NFSVolumeSourcePtrOutput values.
+// You can construct a concrete instance of `NFSVolumeSourcePtrInput` via:
+//
+//	        NFSVolumeSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type NFSVolumeSourcePtrInput interface {
+	pulumi.Input
+
+	ToNFSVolumeSourcePtrOutput() NFSVolumeSourcePtrOutput
+	ToNFSVolumeSourcePtrOutputWithContext(context.Context) NFSVolumeSourcePtrOutput
+}
+
+type nfsvolumeSourcePtrType NFSVolumeSourceArgs
+
+func NFSVolumeSourcePtr(v *NFSVolumeSourceArgs) NFSVolumeSourcePtrInput {
+	return (*nfsvolumeSourcePtrType)(v)
+}
+
+func (*nfsvolumeSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NFSVolumeSource)(nil)).Elem()
+}
+
+func (i *nfsvolumeSourcePtrType) ToNFSVolumeSourcePtrOutput() NFSVolumeSourcePtrOutput {
+	return i.ToNFSVolumeSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *nfsvolumeSourcePtrType) ToNFSVolumeSourcePtrOutputWithContext(ctx context.Context) NFSVolumeSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NFSVolumeSourcePtrOutput)
+}
+
+// Represents a persistent volume that will be mounted using NFS. This volume will be shared between all instances of the resource and data will not be deleted when the instance is shut down.
+type NFSVolumeSourceOutput struct{ *pulumi.OutputState }
+
+func (NFSVolumeSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NFSVolumeSource)(nil)).Elem()
+}
+
+func (o NFSVolumeSourceOutput) ToNFSVolumeSourceOutput() NFSVolumeSourceOutput {
+	return o
+}
+
+func (o NFSVolumeSourceOutput) ToNFSVolumeSourceOutputWithContext(ctx context.Context) NFSVolumeSourceOutput {
+	return o
+}
+
+func (o NFSVolumeSourceOutput) ToNFSVolumeSourcePtrOutput() NFSVolumeSourcePtrOutput {
+	return o.ToNFSVolumeSourcePtrOutputWithContext(context.Background())
+}
+
+func (o NFSVolumeSourceOutput) ToNFSVolumeSourcePtrOutputWithContext(ctx context.Context) NFSVolumeSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NFSVolumeSource) *NFSVolumeSource {
+		return &v
+	}).(NFSVolumeSourcePtrOutput)
+}
+
+// Path that is exported by the NFS server.
+func (o NFSVolumeSourceOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NFSVolumeSource) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// If true, mount the NFS volume as read only. Defaults to false.
+func (o NFSVolumeSourceOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NFSVolumeSource) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Hostname or IP address of the NFS server.
+func (o NFSVolumeSourceOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NFSVolumeSource) *string { return v.Server }).(pulumi.StringPtrOutput)
+}
+
+type NFSVolumeSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (NFSVolumeSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NFSVolumeSource)(nil)).Elem()
+}
+
+func (o NFSVolumeSourcePtrOutput) ToNFSVolumeSourcePtrOutput() NFSVolumeSourcePtrOutput {
+	return o
+}
+
+func (o NFSVolumeSourcePtrOutput) ToNFSVolumeSourcePtrOutputWithContext(ctx context.Context) NFSVolumeSourcePtrOutput {
+	return o
+}
+
+func (o NFSVolumeSourcePtrOutput) Elem() NFSVolumeSourceOutput {
+	return o.ApplyT(func(v *NFSVolumeSource) NFSVolumeSource {
+		if v != nil {
+			return *v
+		}
+		var ret NFSVolumeSource
+		return ret
+	}).(NFSVolumeSourceOutput)
+}
+
+// Path that is exported by the NFS server.
+func (o NFSVolumeSourcePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NFSVolumeSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, mount the NFS volume as read only. Defaults to false.
+func (o NFSVolumeSourcePtrOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NFSVolumeSource) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Hostname or IP address of the NFS server.
+func (o NFSVolumeSourcePtrOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NFSVolumeSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Server
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a persistent volume that will be mounted using NFS. This volume will be shared between all instances of the resource and data will not be deleted when the instance is shut down.
+type NFSVolumeSourceResponse struct {
+	// Path that is exported by the NFS server.
+	Path string `pulumi:"path"`
+	// If true, mount the NFS volume as read only. Defaults to false.
+	ReadOnly bool `pulumi:"readOnly"`
+	// Hostname or IP address of the NFS server.
+	Server string `pulumi:"server"`
+}
+
+// Represents a persistent volume that will be mounted using NFS. This volume will be shared between all instances of the resource and data will not be deleted when the instance is shut down.
+type NFSVolumeSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (NFSVolumeSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NFSVolumeSourceResponse)(nil)).Elem()
+}
+
+func (o NFSVolumeSourceResponseOutput) ToNFSVolumeSourceResponseOutput() NFSVolumeSourceResponseOutput {
+	return o
+}
+
+func (o NFSVolumeSourceResponseOutput) ToNFSVolumeSourceResponseOutputWithContext(ctx context.Context) NFSVolumeSourceResponseOutput {
+	return o
+}
+
+// Path that is exported by the NFS server.
+func (o NFSVolumeSourceResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v NFSVolumeSourceResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// If true, mount the NFS volume as read only. Defaults to false.
+func (o NFSVolumeSourceResponseOutput) ReadOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v NFSVolumeSourceResponse) bool { return v.ReadOnly }).(pulumi.BoolOutput)
+}
+
+// Hostname or IP address of the NFS server.
+func (o NFSVolumeSourceResponseOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v NFSVolumeSourceResponse) string { return v.Server }).(pulumi.StringOutput)
+}
+
 // google.cloud.run.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
 type ObjectMeta struct {
-	// Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/container-dependencies`: Revision. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/disable-default-url`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/minScale`: Service (ALPHA) * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
+	// Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/container-dependencies`: Revision . * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/default-url-disabled`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/minScale`: Service (ALPHA) * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Not supported by Cloud Run
 	ClusterName *string `pulumi:"clusterName"`
@@ -4653,7 +5089,7 @@ type ObjectMetaInput interface {
 
 // google.cloud.run.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
 type ObjectMetaArgs struct {
-	// Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/container-dependencies`: Revision. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/disable-default-url`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/minScale`: Service (ALPHA) * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
+	// Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/container-dependencies`: Revision . * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/default-url-disabled`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/minScale`: Service (ALPHA) * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// Not supported by Cloud Run
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
@@ -4763,7 +5199,7 @@ func (o ObjectMetaOutput) ToObjectMetaPtrOutputWithContext(ctx context.Context) 
 	}).(ObjectMetaPtrOutput)
 }
 
-// Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/container-dependencies`: Revision. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/disable-default-url`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/minScale`: Service (ALPHA) * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
+// Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/container-dependencies`: Revision . * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/default-url-disabled`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/minScale`: Service (ALPHA) * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
 func (o ObjectMetaOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ObjectMeta) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -4862,7 +5298,7 @@ func (o ObjectMetaPtrOutput) Elem() ObjectMetaOutput {
 	}).(ObjectMetaOutput)
 }
 
-// Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/container-dependencies`: Revision. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/disable-default-url`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/minScale`: Service (ALPHA) * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
+// Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/container-dependencies`: Revision . * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/default-url-disabled`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/minScale`: Service (ALPHA) * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
 func (o ObjectMetaPtrOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ObjectMeta) map[string]string {
 		if v == nil {
@@ -5014,7 +5450,7 @@ func (o ObjectMetaPtrOutput) Uid() pulumi.StringPtrOutput {
 
 // google.cloud.run.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
 type ObjectMetaResponse struct {
-	// Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/container-dependencies`: Revision. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/disable-default-url`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/minScale`: Service (ALPHA) * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
+	// Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/container-dependencies`: Revision . * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/default-url-disabled`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/minScale`: Service (ALPHA) * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Not supported by Cloud Run
 	ClusterName string `pulumi:"clusterName"`
@@ -5061,7 +5497,7 @@ func (o ObjectMetaResponseOutput) ToObjectMetaResponseOutputWithContext(ctx cont
 	return o
 }
 
-// Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/container-dependencies`: Revision. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/disable-default-url`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/minScale`: Service (ALPHA) * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
+// Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/container-dependencies`: Revision . * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/default-url-disabled`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/minScale`: Service (ALPHA) * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
 func (o ObjectMetaResponseOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -7850,7 +8286,7 @@ func (o TCPSocketActionResponseOutput) Port() pulumi.IntOutput {
 
 // TaskSpec is a description of a task.
 type TaskSpec struct {
-	// Optional. List of containers belonging to the task. We disallow a number of fields on this Container. Only a single container may be provided.
+	// Optional. List of containers belonging to the task. We disallow a number of fields on this Container.
 	Containers []Container `pulumi:"containers"`
 	// Optional. Number of retries allowed per task, before marking this job failed. Defaults to 3.
 	MaxRetries *int `pulumi:"maxRetries"`
@@ -7864,7 +8300,7 @@ type TaskSpec struct {
 
 // TaskSpec is a description of a task.
 type TaskSpecResponse struct {
-	// Optional. List of containers belonging to the task. We disallow a number of fields on this Container. Only a single container may be provided.
+	// Optional. List of containers belonging to the task. We disallow a number of fields on this Container.
 	Containers []ContainerResponse `pulumi:"containers"`
 	// Optional. Number of retries allowed per task, before marking this job failed. Defaults to 3.
 	MaxRetries int `pulumi:"maxRetries"`
@@ -7891,7 +8327,7 @@ func (o TaskSpecResponseOutput) ToTaskSpecResponseOutputWithContext(ctx context.
 	return o
 }
 
-// Optional. List of containers belonging to the task. We disallow a number of fields on this Container. Only a single container may be provided.
+// Optional. List of containers belonging to the task. We disallow a number of fields on this Container.
 func (o TaskSpecResponseOutput) Containers() ContainerResponseArrayOutput {
 	return o.ApplyT(func(v TaskSpecResponse) []ContainerResponse { return v.Containers }).(ContainerResponseArrayOutput)
 }
@@ -8179,10 +8615,13 @@ func (o TrafficTargetResponseArrayOutput) Index(i pulumi.IntInput) TrafficTarget
 type Volume struct {
 	// Not supported in Cloud Run.
 	ConfigMap *ConfigMapVolumeSource `pulumi:"configMap"`
+	// Volume specified by the Container Storage Interface driver
+	Csi *CSIVolumeSource `pulumi:"csi"`
 	// Ephemeral storage used as a shared volume.
 	EmptyDir *EmptyDirVolumeSource `pulumi:"emptyDir"`
 	// Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
-	Name *string `pulumi:"name"`
+	Name *string          `pulumi:"name"`
+	Nfs  *NFSVolumeSource `pulumi:"nfs"`
 	// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secretName.
 	Secret *SecretVolumeSource `pulumi:"secret"`
 }
@@ -8202,10 +8641,13 @@ type VolumeInput interface {
 type VolumeArgs struct {
 	// Not supported in Cloud Run.
 	ConfigMap ConfigMapVolumeSourcePtrInput `pulumi:"configMap"`
+	// Volume specified by the Container Storage Interface driver
+	Csi CSIVolumeSourcePtrInput `pulumi:"csi"`
 	// Ephemeral storage used as a shared volume.
 	EmptyDir EmptyDirVolumeSourcePtrInput `pulumi:"emptyDir"`
 	// Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name pulumi.StringPtrInput   `pulumi:"name"`
+	Nfs  NFSVolumeSourcePtrInput `pulumi:"nfs"`
 	// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secretName.
 	Secret SecretVolumeSourcePtrInput `pulumi:"secret"`
 }
@@ -8267,6 +8709,11 @@ func (o VolumeOutput) ConfigMap() ConfigMapVolumeSourcePtrOutput {
 	return o.ApplyT(func(v Volume) *ConfigMapVolumeSource { return v.ConfigMap }).(ConfigMapVolumeSourcePtrOutput)
 }
 
+// Volume specified by the Container Storage Interface driver
+func (o VolumeOutput) Csi() CSIVolumeSourcePtrOutput {
+	return o.ApplyT(func(v Volume) *CSIVolumeSource { return v.Csi }).(CSIVolumeSourcePtrOutput)
+}
+
 // Ephemeral storage used as a shared volume.
 func (o VolumeOutput) EmptyDir() EmptyDirVolumeSourcePtrOutput {
 	return o.ApplyT(func(v Volume) *EmptyDirVolumeSource { return v.EmptyDir }).(EmptyDirVolumeSourcePtrOutput)
@@ -8275,6 +8722,10 @@ func (o VolumeOutput) EmptyDir() EmptyDirVolumeSourcePtrOutput {
 // Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
 func (o VolumeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Volume) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o VolumeOutput) Nfs() NFSVolumeSourcePtrOutput {
+	return o.ApplyT(func(v Volume) *NFSVolumeSource { return v.Nfs }).(NFSVolumeSourcePtrOutput)
 }
 
 // The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secretName.
@@ -8500,10 +8951,13 @@ func (o VolumeMountResponseArrayOutput) Index(i pulumi.IntInput) VolumeMountResp
 type VolumeResponse struct {
 	// Not supported in Cloud Run.
 	ConfigMap ConfigMapVolumeSourceResponse `pulumi:"configMap"`
+	// Volume specified by the Container Storage Interface driver
+	Csi CSIVolumeSourceResponse `pulumi:"csi"`
 	// Ephemeral storage used as a shared volume.
 	EmptyDir EmptyDirVolumeSourceResponse `pulumi:"emptyDir"`
 	// Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
-	Name string `pulumi:"name"`
+	Name string                  `pulumi:"name"`
+	Nfs  NFSVolumeSourceResponse `pulumi:"nfs"`
 	// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secretName.
 	Secret SecretVolumeSourceResponse `pulumi:"secret"`
 }
@@ -8528,6 +8982,11 @@ func (o VolumeResponseOutput) ConfigMap() ConfigMapVolumeSourceResponseOutput {
 	return o.ApplyT(func(v VolumeResponse) ConfigMapVolumeSourceResponse { return v.ConfigMap }).(ConfigMapVolumeSourceResponseOutput)
 }
 
+// Volume specified by the Container Storage Interface driver
+func (o VolumeResponseOutput) Csi() CSIVolumeSourceResponseOutput {
+	return o.ApplyT(func(v VolumeResponse) CSIVolumeSourceResponse { return v.Csi }).(CSIVolumeSourceResponseOutput)
+}
+
 // Ephemeral storage used as a shared volume.
 func (o VolumeResponseOutput) EmptyDir() EmptyDirVolumeSourceResponseOutput {
 	return o.ApplyT(func(v VolumeResponse) EmptyDirVolumeSourceResponse { return v.EmptyDir }).(EmptyDirVolumeSourceResponseOutput)
@@ -8536,6 +8995,10 @@ func (o VolumeResponseOutput) EmptyDir() EmptyDirVolumeSourceResponseOutput {
 // Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
 func (o VolumeResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o VolumeResponseOutput) Nfs() NFSVolumeSourceResponseOutput {
+	return o.ApplyT(func(v VolumeResponse) NFSVolumeSourceResponse { return v.Nfs }).(NFSVolumeSourceResponseOutput)
 }
 
 // The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secretName.
@@ -8570,6 +9033,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CSIVolumeSourceInput)(nil)).Elem(), CSIVolumeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CSIVolumeSourcePtrInput)(nil)).Elem(), CSIVolumeSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapEnvSourceInput)(nil)).Elem(), ConfigMapEnvSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapEnvSourcePtrInput)(nil)).Elem(), ConfigMapEnvSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMapKeySelectorInput)(nil)).Elem(), ConfigMapKeySelectorArgs{})
@@ -8605,6 +9070,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LocalObjectReferenceInput)(nil)).Elem(), LocalObjectReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocalObjectReferencePtrInput)(nil)).Elem(), LocalObjectReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocalObjectReferenceArrayInput)(nil)).Elem(), LocalObjectReferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NFSVolumeSourceInput)(nil)).Elem(), NFSVolumeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NFSVolumeSourcePtrInput)(nil)).Elem(), NFSVolumeSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectMetaInput)(nil)).Elem(), ObjectMetaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectMetaPtrInput)(nil)).Elem(), ObjectMetaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OwnerReferenceInput)(nil)).Elem(), OwnerReferenceArgs{})
@@ -8648,6 +9115,9 @@ func init() {
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
+	pulumi.RegisterOutputType(CSIVolumeSourceOutput{})
+	pulumi.RegisterOutputType(CSIVolumeSourcePtrOutput{})
+	pulumi.RegisterOutputType(CSIVolumeSourceResponseOutput{})
 	pulumi.RegisterOutputType(ConfigMapEnvSourceOutput{})
 	pulumi.RegisterOutputType(ConfigMapEnvSourcePtrOutput{})
 	pulumi.RegisterOutputType(ConfigMapEnvSourceResponseOutput{})
@@ -8715,6 +9185,9 @@ func init() {
 	pulumi.RegisterOutputType(LocalObjectReferenceArrayOutput{})
 	pulumi.RegisterOutputType(LocalObjectReferenceResponseOutput{})
 	pulumi.RegisterOutputType(LocalObjectReferenceResponseArrayOutput{})
+	pulumi.RegisterOutputType(NFSVolumeSourceOutput{})
+	pulumi.RegisterOutputType(NFSVolumeSourcePtrOutput{})
+	pulumi.RegisterOutputType(NFSVolumeSourceResponseOutput{})
 	pulumi.RegisterOutputType(ObjectMetaOutput{})
 	pulumi.RegisterOutputType(ObjectMetaPtrOutput{})
 	pulumi.RegisterOutputType(ObjectMetaResponseOutput{})

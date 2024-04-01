@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
     public sealed class GetTrustConfigResult
     {
         /// <summary>
+        /// Optional. A certificate matching an allowlisted certificate is always considered valid as long as the certificate is parseable, proof of private key possession is established, and constraints on the certificate’s SAN field are met.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AllowlistedCertificateResponse> AllowlistedCertificates;
+        /// <summary>
         /// The creation timestamp of a TrustConfig.
         /// </summary>
         public readonly string CreateTime;
@@ -94,6 +98,8 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
 
         [OutputConstructor]
         private GetTrustConfigResult(
+            ImmutableArray<Outputs.AllowlistedCertificateResponse> allowlistedCertificates,
+
             string createTime,
 
             string description,
@@ -108,6 +114,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
 
             string updateTime)
         {
+            AllowlistedCertificates = allowlistedCertificates;
             CreateTime = createTime;
             Description = description;
             Etag = etag;

@@ -4493,14 +4493,18 @@ type H264CodecSettings struct {
 	EnableTwoPass *bool `pulumi:"enableTwoPass"`
 	// The entropy coder to use. The default is `cabac`. Supported entropy coders: - `cavlc` - `cabac`
 	EntropyCoder *string `pulumi:"entropyCoder"`
-	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
 	FrameRate float64 `pulumi:"frameRate"`
+	// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+	FrameRateConversionStrategy *H264CodecSettingsFrameRateConversionStrategy `pulumi:"frameRateConversionStrategy"`
 	// Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
 	GopDuration *string `pulumi:"gopDuration"`
 	// Select the GOP size based on the specified frame count. Must be greater than zero.
 	GopFrameCount *int `pulumi:"gopFrameCount"`
 	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	HeightPixels *int `pulumi:"heightPixels"`
+	// Optional. HLG color format setting for H264.
+	Hlg *H264ColorFormatHLG `pulumi:"hlg"`
 	// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
 	PixelFormat *string `pulumi:"pixelFormat"`
 	// Enforces the specified codec preset. The default is `veryfast`. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Preset). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
@@ -4509,6 +4513,8 @@ type H264CodecSettings struct {
 	Profile *string `pulumi:"profile"`
 	// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
 	RateControlMode *string `pulumi:"rateControlMode"`
+	// Optional. SDR color format setting for H264.
+	Sdr *H264ColorFormatSDR `pulumi:"sdr"`
 	// Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
 	Tune *string `pulumi:"tune"`
 	// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H264CodecSettings.vbv_size_bits.
@@ -4548,14 +4554,18 @@ type H264CodecSettingsArgs struct {
 	EnableTwoPass pulumi.BoolPtrInput `pulumi:"enableTwoPass"`
 	// The entropy coder to use. The default is `cabac`. Supported entropy coders: - `cavlc` - `cabac`
 	EntropyCoder pulumi.StringPtrInput `pulumi:"entropyCoder"`
-	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
 	FrameRate pulumi.Float64Input `pulumi:"frameRate"`
+	// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+	FrameRateConversionStrategy H264CodecSettingsFrameRateConversionStrategyPtrInput `pulumi:"frameRateConversionStrategy"`
 	// Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
 	GopDuration pulumi.StringPtrInput `pulumi:"gopDuration"`
 	// Select the GOP size based on the specified frame count. Must be greater than zero.
 	GopFrameCount pulumi.IntPtrInput `pulumi:"gopFrameCount"`
 	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	HeightPixels pulumi.IntPtrInput `pulumi:"heightPixels"`
+	// Optional. HLG color format setting for H264.
+	Hlg H264ColorFormatHLGPtrInput `pulumi:"hlg"`
 	// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
 	PixelFormat pulumi.StringPtrInput `pulumi:"pixelFormat"`
 	// Enforces the specified codec preset. The default is `veryfast`. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Preset). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
@@ -4564,6 +4574,8 @@ type H264CodecSettingsArgs struct {
 	Profile pulumi.StringPtrInput `pulumi:"profile"`
 	// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
 	RateControlMode pulumi.StringPtrInput `pulumi:"rateControlMode"`
+	// Optional. SDR color format setting for H264.
+	Sdr H264ColorFormatSDRPtrInput `pulumi:"sdr"`
 	// Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
 	Tune pulumi.StringPtrInput `pulumi:"tune"`
 	// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H264CodecSettings.vbv_size_bits.
@@ -4692,9 +4704,16 @@ func (o H264CodecSettingsOutput) EntropyCoder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v H264CodecSettings) *string { return v.EntropyCoder }).(pulumi.StringPtrOutput)
 }
 
-// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+// The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
 func (o H264CodecSettingsOutput) FrameRate() pulumi.Float64Output {
 	return o.ApplyT(func(v H264CodecSettings) float64 { return v.FrameRate }).(pulumi.Float64Output)
+}
+
+// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+func (o H264CodecSettingsOutput) FrameRateConversionStrategy() H264CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return o.ApplyT(func(v H264CodecSettings) *H264CodecSettingsFrameRateConversionStrategy {
+		return v.FrameRateConversionStrategy
+	}).(H264CodecSettingsFrameRateConversionStrategyPtrOutput)
 }
 
 // Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
@@ -4710,6 +4729,11 @@ func (o H264CodecSettingsOutput) GopFrameCount() pulumi.IntPtrOutput {
 // The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o H264CodecSettingsOutput) HeightPixels() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v H264CodecSettings) *int { return v.HeightPixels }).(pulumi.IntPtrOutput)
+}
+
+// Optional. HLG color format setting for H264.
+func (o H264CodecSettingsOutput) Hlg() H264ColorFormatHLGPtrOutput {
+	return o.ApplyT(func(v H264CodecSettings) *H264ColorFormatHLG { return v.Hlg }).(H264ColorFormatHLGPtrOutput)
 }
 
 // Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
@@ -4730,6 +4754,11 @@ func (o H264CodecSettingsOutput) Profile() pulumi.StringPtrOutput {
 // Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
 func (o H264CodecSettingsOutput) RateControlMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v H264CodecSettings) *string { return v.RateControlMode }).(pulumi.StringPtrOutput)
+}
+
+// Optional. SDR color format setting for H264.
+func (o H264CodecSettingsOutput) Sdr() H264ColorFormatSDRPtrOutput {
+	return o.ApplyT(func(v H264CodecSettings) *H264ColorFormatSDR { return v.Sdr }).(H264ColorFormatSDRPtrOutput)
 }
 
 // Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
@@ -4856,7 +4885,7 @@ func (o H264CodecSettingsPtrOutput) EntropyCoder() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+// The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
 func (o H264CodecSettingsPtrOutput) FrameRate() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *H264CodecSettings) *float64 {
 		if v == nil {
@@ -4864,6 +4893,16 @@ func (o H264CodecSettingsPtrOutput) FrameRate() pulumi.Float64PtrOutput {
 		}
 		return &v.FrameRate
 	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+func (o H264CodecSettingsPtrOutput) FrameRateConversionStrategy() H264CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return o.ApplyT(func(v *H264CodecSettings) *H264CodecSettingsFrameRateConversionStrategy {
+		if v == nil {
+			return nil
+		}
+		return v.FrameRateConversionStrategy
+	}).(H264CodecSettingsFrameRateConversionStrategyPtrOutput)
 }
 
 // Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
@@ -4894,6 +4933,16 @@ func (o H264CodecSettingsPtrOutput) HeightPixels() pulumi.IntPtrOutput {
 		}
 		return v.HeightPixels
 	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. HLG color format setting for H264.
+func (o H264CodecSettingsPtrOutput) Hlg() H264ColorFormatHLGPtrOutput {
+	return o.ApplyT(func(v *H264CodecSettings) *H264ColorFormatHLG {
+		if v == nil {
+			return nil
+		}
+		return v.Hlg
+	}).(H264ColorFormatHLGPtrOutput)
 }
 
 // Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
@@ -4934,6 +4983,16 @@ func (o H264CodecSettingsPtrOutput) RateControlMode() pulumi.StringPtrOutput {
 		}
 		return v.RateControlMode
 	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. SDR color format setting for H264.
+func (o H264CodecSettingsPtrOutput) Sdr() H264ColorFormatSDRPtrOutput {
+	return o.ApplyT(func(v *H264CodecSettings) *H264ColorFormatSDR {
+		if v == nil {
+			return nil
+		}
+		return v.Sdr
+	}).(H264ColorFormatSDRPtrOutput)
 }
 
 // Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
@@ -4994,14 +5053,18 @@ type H264CodecSettingsResponse struct {
 	EnableTwoPass bool `pulumi:"enableTwoPass"`
 	// The entropy coder to use. The default is `cabac`. Supported entropy coders: - `cavlc` - `cabac`
 	EntropyCoder string `pulumi:"entropyCoder"`
-	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
 	FrameRate float64 `pulumi:"frameRate"`
+	// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+	FrameRateConversionStrategy string `pulumi:"frameRateConversionStrategy"`
 	// Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
 	GopDuration string `pulumi:"gopDuration"`
 	// Select the GOP size based on the specified frame count. Must be greater than zero.
 	GopFrameCount int `pulumi:"gopFrameCount"`
 	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	HeightPixels int `pulumi:"heightPixels"`
+	// Optional. HLG color format setting for H264.
+	Hlg H264ColorFormatHLGResponse `pulumi:"hlg"`
 	// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
 	PixelFormat string `pulumi:"pixelFormat"`
 	// Enforces the specified codec preset. The default is `veryfast`. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Preset). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
@@ -5010,6 +5073,8 @@ type H264CodecSettingsResponse struct {
 	Profile string `pulumi:"profile"`
 	// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
 	RateControlMode string `pulumi:"rateControlMode"`
+	// Optional. SDR color format setting for H264.
+	Sdr H264ColorFormatSDRResponse `pulumi:"sdr"`
 	// Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
 	Tune string `pulumi:"tune"`
 	// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H264CodecSettings.vbv_size_bits.
@@ -5075,9 +5140,14 @@ func (o H264CodecSettingsResponseOutput) EntropyCoder() pulumi.StringOutput {
 	return o.ApplyT(func(v H264CodecSettingsResponse) string { return v.EntropyCoder }).(pulumi.StringOutput)
 }
 
-// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+// The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
 func (o H264CodecSettingsResponseOutput) FrameRate() pulumi.Float64Output {
 	return o.ApplyT(func(v H264CodecSettingsResponse) float64 { return v.FrameRate }).(pulumi.Float64Output)
+}
+
+// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+func (o H264CodecSettingsResponseOutput) FrameRateConversionStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v H264CodecSettingsResponse) string { return v.FrameRateConversionStrategy }).(pulumi.StringOutput)
 }
 
 // Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
@@ -5093,6 +5163,11 @@ func (o H264CodecSettingsResponseOutput) GopFrameCount() pulumi.IntOutput {
 // The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o H264CodecSettingsResponseOutput) HeightPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v H264CodecSettingsResponse) int { return v.HeightPixels }).(pulumi.IntOutput)
+}
+
+// Optional. HLG color format setting for H264.
+func (o H264CodecSettingsResponseOutput) Hlg() H264ColorFormatHLGResponseOutput {
+	return o.ApplyT(func(v H264CodecSettingsResponse) H264ColorFormatHLGResponse { return v.Hlg }).(H264ColorFormatHLGResponseOutput)
 }
 
 // Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
@@ -5115,6 +5190,11 @@ func (o H264CodecSettingsResponseOutput) RateControlMode() pulumi.StringOutput {
 	return o.ApplyT(func(v H264CodecSettingsResponse) string { return v.RateControlMode }).(pulumi.StringOutput)
 }
 
+// Optional. SDR color format setting for H264.
+func (o H264CodecSettingsResponseOutput) Sdr() H264ColorFormatSDRResponseOutput {
+	return o.ApplyT(func(v H264CodecSettingsResponse) H264ColorFormatSDRResponse { return v.Sdr }).(H264ColorFormatSDRResponseOutput)
+}
+
 // Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field may cause the transcoder to override other fields you set in the `H264CodecSettings` message.
 func (o H264CodecSettingsResponseOutput) Tune() pulumi.StringOutput {
 	return o.ApplyT(func(v H264CodecSettingsResponse) string { return v.Tune }).(pulumi.StringOutput)
@@ -5135,6 +5215,286 @@ func (o H264CodecSettingsResponseOutput) WidthPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v H264CodecSettingsResponse) int { return v.WidthPixels }).(pulumi.IntOutput)
 }
 
+// Convert the input video to a Hybrid Log Gamma (HLG) video.
+type H264ColorFormatHLG struct {
+}
+
+// H264ColorFormatHLGInput is an input type that accepts H264ColorFormatHLGArgs and H264ColorFormatHLGOutput values.
+// You can construct a concrete instance of `H264ColorFormatHLGInput` via:
+//
+//	H264ColorFormatHLGArgs{...}
+type H264ColorFormatHLGInput interface {
+	pulumi.Input
+
+	ToH264ColorFormatHLGOutput() H264ColorFormatHLGOutput
+	ToH264ColorFormatHLGOutputWithContext(context.Context) H264ColorFormatHLGOutput
+}
+
+// Convert the input video to a Hybrid Log Gamma (HLG) video.
+type H264ColorFormatHLGArgs struct {
+}
+
+func (H264ColorFormatHLGArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*H264ColorFormatHLG)(nil)).Elem()
+}
+
+func (i H264ColorFormatHLGArgs) ToH264ColorFormatHLGOutput() H264ColorFormatHLGOutput {
+	return i.ToH264ColorFormatHLGOutputWithContext(context.Background())
+}
+
+func (i H264ColorFormatHLGArgs) ToH264ColorFormatHLGOutputWithContext(ctx context.Context) H264ColorFormatHLGOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(H264ColorFormatHLGOutput)
+}
+
+func (i H264ColorFormatHLGArgs) ToH264ColorFormatHLGPtrOutput() H264ColorFormatHLGPtrOutput {
+	return i.ToH264ColorFormatHLGPtrOutputWithContext(context.Background())
+}
+
+func (i H264ColorFormatHLGArgs) ToH264ColorFormatHLGPtrOutputWithContext(ctx context.Context) H264ColorFormatHLGPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(H264ColorFormatHLGOutput).ToH264ColorFormatHLGPtrOutputWithContext(ctx)
+}
+
+// H264ColorFormatHLGPtrInput is an input type that accepts H264ColorFormatHLGArgs, H264ColorFormatHLGPtr and H264ColorFormatHLGPtrOutput values.
+// You can construct a concrete instance of `H264ColorFormatHLGPtrInput` via:
+//
+//	        H264ColorFormatHLGArgs{...}
+//
+//	or:
+//
+//	        nil
+type H264ColorFormatHLGPtrInput interface {
+	pulumi.Input
+
+	ToH264ColorFormatHLGPtrOutput() H264ColorFormatHLGPtrOutput
+	ToH264ColorFormatHLGPtrOutputWithContext(context.Context) H264ColorFormatHLGPtrOutput
+}
+
+type h264colorFormatHLGPtrType H264ColorFormatHLGArgs
+
+func H264ColorFormatHLGPtr(v *H264ColorFormatHLGArgs) H264ColorFormatHLGPtrInput {
+	return (*h264colorFormatHLGPtrType)(v)
+}
+
+func (*h264colorFormatHLGPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**H264ColorFormatHLG)(nil)).Elem()
+}
+
+func (i *h264colorFormatHLGPtrType) ToH264ColorFormatHLGPtrOutput() H264ColorFormatHLGPtrOutput {
+	return i.ToH264ColorFormatHLGPtrOutputWithContext(context.Background())
+}
+
+func (i *h264colorFormatHLGPtrType) ToH264ColorFormatHLGPtrOutputWithContext(ctx context.Context) H264ColorFormatHLGPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(H264ColorFormatHLGPtrOutput)
+}
+
+// Convert the input video to a Hybrid Log Gamma (HLG) video.
+type H264ColorFormatHLGOutput struct{ *pulumi.OutputState }
+
+func (H264ColorFormatHLGOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*H264ColorFormatHLG)(nil)).Elem()
+}
+
+func (o H264ColorFormatHLGOutput) ToH264ColorFormatHLGOutput() H264ColorFormatHLGOutput {
+	return o
+}
+
+func (o H264ColorFormatHLGOutput) ToH264ColorFormatHLGOutputWithContext(ctx context.Context) H264ColorFormatHLGOutput {
+	return o
+}
+
+func (o H264ColorFormatHLGOutput) ToH264ColorFormatHLGPtrOutput() H264ColorFormatHLGPtrOutput {
+	return o.ToH264ColorFormatHLGPtrOutputWithContext(context.Background())
+}
+
+func (o H264ColorFormatHLGOutput) ToH264ColorFormatHLGPtrOutputWithContext(ctx context.Context) H264ColorFormatHLGPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v H264ColorFormatHLG) *H264ColorFormatHLG {
+		return &v
+	}).(H264ColorFormatHLGPtrOutput)
+}
+
+type H264ColorFormatHLGPtrOutput struct{ *pulumi.OutputState }
+
+func (H264ColorFormatHLGPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**H264ColorFormatHLG)(nil)).Elem()
+}
+
+func (o H264ColorFormatHLGPtrOutput) ToH264ColorFormatHLGPtrOutput() H264ColorFormatHLGPtrOutput {
+	return o
+}
+
+func (o H264ColorFormatHLGPtrOutput) ToH264ColorFormatHLGPtrOutputWithContext(ctx context.Context) H264ColorFormatHLGPtrOutput {
+	return o
+}
+
+func (o H264ColorFormatHLGPtrOutput) Elem() H264ColorFormatHLGOutput {
+	return o.ApplyT(func(v *H264ColorFormatHLG) H264ColorFormatHLG {
+		if v != nil {
+			return *v
+		}
+		var ret H264ColorFormatHLG
+		return ret
+	}).(H264ColorFormatHLGOutput)
+}
+
+// Convert the input video to a Hybrid Log Gamma (HLG) video.
+type H264ColorFormatHLGResponse struct {
+}
+
+// Convert the input video to a Hybrid Log Gamma (HLG) video.
+type H264ColorFormatHLGResponseOutput struct{ *pulumi.OutputState }
+
+func (H264ColorFormatHLGResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*H264ColorFormatHLGResponse)(nil)).Elem()
+}
+
+func (o H264ColorFormatHLGResponseOutput) ToH264ColorFormatHLGResponseOutput() H264ColorFormatHLGResponseOutput {
+	return o
+}
+
+func (o H264ColorFormatHLGResponseOutput) ToH264ColorFormatHLGResponseOutputWithContext(ctx context.Context) H264ColorFormatHLGResponseOutput {
+	return o
+}
+
+// Convert the input video to a Standard Dynamic Range (SDR) video.
+type H264ColorFormatSDR struct {
+}
+
+// H264ColorFormatSDRInput is an input type that accepts H264ColorFormatSDRArgs and H264ColorFormatSDROutput values.
+// You can construct a concrete instance of `H264ColorFormatSDRInput` via:
+//
+//	H264ColorFormatSDRArgs{...}
+type H264ColorFormatSDRInput interface {
+	pulumi.Input
+
+	ToH264ColorFormatSDROutput() H264ColorFormatSDROutput
+	ToH264ColorFormatSDROutputWithContext(context.Context) H264ColorFormatSDROutput
+}
+
+// Convert the input video to a Standard Dynamic Range (SDR) video.
+type H264ColorFormatSDRArgs struct {
+}
+
+func (H264ColorFormatSDRArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*H264ColorFormatSDR)(nil)).Elem()
+}
+
+func (i H264ColorFormatSDRArgs) ToH264ColorFormatSDROutput() H264ColorFormatSDROutput {
+	return i.ToH264ColorFormatSDROutputWithContext(context.Background())
+}
+
+func (i H264ColorFormatSDRArgs) ToH264ColorFormatSDROutputWithContext(ctx context.Context) H264ColorFormatSDROutput {
+	return pulumi.ToOutputWithContext(ctx, i).(H264ColorFormatSDROutput)
+}
+
+func (i H264ColorFormatSDRArgs) ToH264ColorFormatSDRPtrOutput() H264ColorFormatSDRPtrOutput {
+	return i.ToH264ColorFormatSDRPtrOutputWithContext(context.Background())
+}
+
+func (i H264ColorFormatSDRArgs) ToH264ColorFormatSDRPtrOutputWithContext(ctx context.Context) H264ColorFormatSDRPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(H264ColorFormatSDROutput).ToH264ColorFormatSDRPtrOutputWithContext(ctx)
+}
+
+// H264ColorFormatSDRPtrInput is an input type that accepts H264ColorFormatSDRArgs, H264ColorFormatSDRPtr and H264ColorFormatSDRPtrOutput values.
+// You can construct a concrete instance of `H264ColorFormatSDRPtrInput` via:
+//
+//	        H264ColorFormatSDRArgs{...}
+//
+//	or:
+//
+//	        nil
+type H264ColorFormatSDRPtrInput interface {
+	pulumi.Input
+
+	ToH264ColorFormatSDRPtrOutput() H264ColorFormatSDRPtrOutput
+	ToH264ColorFormatSDRPtrOutputWithContext(context.Context) H264ColorFormatSDRPtrOutput
+}
+
+type h264colorFormatSDRPtrType H264ColorFormatSDRArgs
+
+func H264ColorFormatSDRPtr(v *H264ColorFormatSDRArgs) H264ColorFormatSDRPtrInput {
+	return (*h264colorFormatSDRPtrType)(v)
+}
+
+func (*h264colorFormatSDRPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**H264ColorFormatSDR)(nil)).Elem()
+}
+
+func (i *h264colorFormatSDRPtrType) ToH264ColorFormatSDRPtrOutput() H264ColorFormatSDRPtrOutput {
+	return i.ToH264ColorFormatSDRPtrOutputWithContext(context.Background())
+}
+
+func (i *h264colorFormatSDRPtrType) ToH264ColorFormatSDRPtrOutputWithContext(ctx context.Context) H264ColorFormatSDRPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(H264ColorFormatSDRPtrOutput)
+}
+
+// Convert the input video to a Standard Dynamic Range (SDR) video.
+type H264ColorFormatSDROutput struct{ *pulumi.OutputState }
+
+func (H264ColorFormatSDROutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*H264ColorFormatSDR)(nil)).Elem()
+}
+
+func (o H264ColorFormatSDROutput) ToH264ColorFormatSDROutput() H264ColorFormatSDROutput {
+	return o
+}
+
+func (o H264ColorFormatSDROutput) ToH264ColorFormatSDROutputWithContext(ctx context.Context) H264ColorFormatSDROutput {
+	return o
+}
+
+func (o H264ColorFormatSDROutput) ToH264ColorFormatSDRPtrOutput() H264ColorFormatSDRPtrOutput {
+	return o.ToH264ColorFormatSDRPtrOutputWithContext(context.Background())
+}
+
+func (o H264ColorFormatSDROutput) ToH264ColorFormatSDRPtrOutputWithContext(ctx context.Context) H264ColorFormatSDRPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v H264ColorFormatSDR) *H264ColorFormatSDR {
+		return &v
+	}).(H264ColorFormatSDRPtrOutput)
+}
+
+type H264ColorFormatSDRPtrOutput struct{ *pulumi.OutputState }
+
+func (H264ColorFormatSDRPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**H264ColorFormatSDR)(nil)).Elem()
+}
+
+func (o H264ColorFormatSDRPtrOutput) ToH264ColorFormatSDRPtrOutput() H264ColorFormatSDRPtrOutput {
+	return o
+}
+
+func (o H264ColorFormatSDRPtrOutput) ToH264ColorFormatSDRPtrOutputWithContext(ctx context.Context) H264ColorFormatSDRPtrOutput {
+	return o
+}
+
+func (o H264ColorFormatSDRPtrOutput) Elem() H264ColorFormatSDROutput {
+	return o.ApplyT(func(v *H264ColorFormatSDR) H264ColorFormatSDR {
+		if v != nil {
+			return *v
+		}
+		var ret H264ColorFormatSDR
+		return ret
+	}).(H264ColorFormatSDROutput)
+}
+
+// Convert the input video to a Standard Dynamic Range (SDR) video.
+type H264ColorFormatSDRResponse struct {
+}
+
+// Convert the input video to a Standard Dynamic Range (SDR) video.
+type H264ColorFormatSDRResponseOutput struct{ *pulumi.OutputState }
+
+func (H264ColorFormatSDRResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*H264ColorFormatSDRResponse)(nil)).Elem()
+}
+
+func (o H264ColorFormatSDRResponseOutput) ToH264ColorFormatSDRResponseOutput() H264ColorFormatSDRResponseOutput {
+	return o
+}
+
+func (o H264ColorFormatSDRResponseOutput) ToH264ColorFormatSDRResponseOutputWithContext(ctx context.Context) H264ColorFormatSDRResponseOutput {
+	return o
+}
+
 // H265 codec settings.
 type H265CodecSettings struct {
 	// Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`.
@@ -5151,14 +5511,20 @@ type H265CodecSettings struct {
 	CrfLevel *int `pulumi:"crfLevel"`
 	// Use two-pass encoding strategy to achieve better video quality. H265CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
 	EnableTwoPass *bool `pulumi:"enableTwoPass"`
-	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
 	FrameRate float64 `pulumi:"frameRate"`
+	// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+	FrameRateConversionStrategy *H265CodecSettingsFrameRateConversionStrategy `pulumi:"frameRateConversionStrategy"`
 	// Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
 	GopDuration *string `pulumi:"gopDuration"`
 	// Select the GOP size based on the specified frame count. Must be greater than zero.
 	GopFrameCount *int `pulumi:"gopFrameCount"`
+	// Optional. HDR10 color format setting for H265.
+	Hdr10 *H265ColorFormatHDR10 `pulumi:"hdr10"`
 	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	HeightPixels *int `pulumi:"heightPixels"`
+	// Optional. HLG color format setting for H265.
+	Hlg *H265ColorFormatHLG `pulumi:"hlg"`
 	// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
 	PixelFormat *string `pulumi:"pixelFormat"`
 	// Enforces the specified codec preset. The default is `veryfast`. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
@@ -5167,6 +5533,8 @@ type H265CodecSettings struct {
 	Profile *string `pulumi:"profile"`
 	// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
 	RateControlMode *string `pulumi:"rateControlMode"`
+	// Optional. SDR color format setting for H265.
+	Sdr *H265ColorFormatSDR `pulumi:"sdr"`
 	// Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
 	Tune *string `pulumi:"tune"`
 	// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H265CodecSettings.vbv_size_bits.
@@ -5204,14 +5572,20 @@ type H265CodecSettingsArgs struct {
 	CrfLevel pulumi.IntPtrInput `pulumi:"crfLevel"`
 	// Use two-pass encoding strategy to achieve better video quality. H265CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
 	EnableTwoPass pulumi.BoolPtrInput `pulumi:"enableTwoPass"`
-	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
 	FrameRate pulumi.Float64Input `pulumi:"frameRate"`
+	// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+	FrameRateConversionStrategy H265CodecSettingsFrameRateConversionStrategyPtrInput `pulumi:"frameRateConversionStrategy"`
 	// Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
 	GopDuration pulumi.StringPtrInput `pulumi:"gopDuration"`
 	// Select the GOP size based on the specified frame count. Must be greater than zero.
 	GopFrameCount pulumi.IntPtrInput `pulumi:"gopFrameCount"`
+	// Optional. HDR10 color format setting for H265.
+	Hdr10 H265ColorFormatHDR10PtrInput `pulumi:"hdr10"`
 	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	HeightPixels pulumi.IntPtrInput `pulumi:"heightPixels"`
+	// Optional. HLG color format setting for H265.
+	Hlg H265ColorFormatHLGPtrInput `pulumi:"hlg"`
 	// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
 	PixelFormat pulumi.StringPtrInput `pulumi:"pixelFormat"`
 	// Enforces the specified codec preset. The default is `veryfast`. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
@@ -5220,6 +5594,8 @@ type H265CodecSettingsArgs struct {
 	Profile pulumi.StringPtrInput `pulumi:"profile"`
 	// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
 	RateControlMode pulumi.StringPtrInput `pulumi:"rateControlMode"`
+	// Optional. SDR color format setting for H265.
+	Sdr H265ColorFormatSDRPtrInput `pulumi:"sdr"`
 	// Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
 	Tune pulumi.StringPtrInput `pulumi:"tune"`
 	// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H265CodecSettings.vbv_size_bits.
@@ -5343,9 +5719,16 @@ func (o H265CodecSettingsOutput) EnableTwoPass() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v H265CodecSettings) *bool { return v.EnableTwoPass }).(pulumi.BoolPtrOutput)
 }
 
-// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+// The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
 func (o H265CodecSettingsOutput) FrameRate() pulumi.Float64Output {
 	return o.ApplyT(func(v H265CodecSettings) float64 { return v.FrameRate }).(pulumi.Float64Output)
+}
+
+// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+func (o H265CodecSettingsOutput) FrameRateConversionStrategy() H265CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return o.ApplyT(func(v H265CodecSettings) *H265CodecSettingsFrameRateConversionStrategy {
+		return v.FrameRateConversionStrategy
+	}).(H265CodecSettingsFrameRateConversionStrategyPtrOutput)
 }
 
 // Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
@@ -5358,9 +5741,19 @@ func (o H265CodecSettingsOutput) GopFrameCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v H265CodecSettings) *int { return v.GopFrameCount }).(pulumi.IntPtrOutput)
 }
 
+// Optional. HDR10 color format setting for H265.
+func (o H265CodecSettingsOutput) Hdr10() H265ColorFormatHDR10PtrOutput {
+	return o.ApplyT(func(v H265CodecSettings) *H265ColorFormatHDR10 { return v.Hdr10 }).(H265ColorFormatHDR10PtrOutput)
+}
+
 // The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o H265CodecSettingsOutput) HeightPixels() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v H265CodecSettings) *int { return v.HeightPixels }).(pulumi.IntPtrOutput)
+}
+
+// Optional. HLG color format setting for H265.
+func (o H265CodecSettingsOutput) Hlg() H265ColorFormatHLGPtrOutput {
+	return o.ApplyT(func(v H265CodecSettings) *H265ColorFormatHLG { return v.Hlg }).(H265ColorFormatHLGPtrOutput)
 }
 
 // Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
@@ -5381,6 +5774,11 @@ func (o H265CodecSettingsOutput) Profile() pulumi.StringPtrOutput {
 // Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
 func (o H265CodecSettingsOutput) RateControlMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v H265CodecSettings) *string { return v.RateControlMode }).(pulumi.StringPtrOutput)
+}
+
+// Optional. SDR color format setting for H265.
+func (o H265CodecSettingsOutput) Sdr() H265ColorFormatSDRPtrOutput {
+	return o.ApplyT(func(v H265CodecSettings) *H265ColorFormatSDR { return v.Sdr }).(H265ColorFormatSDRPtrOutput)
 }
 
 // Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
@@ -5497,7 +5895,7 @@ func (o H265CodecSettingsPtrOutput) EnableTwoPass() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+// The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
 func (o H265CodecSettingsPtrOutput) FrameRate() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *H265CodecSettings) *float64 {
 		if v == nil {
@@ -5505,6 +5903,16 @@ func (o H265CodecSettingsPtrOutput) FrameRate() pulumi.Float64PtrOutput {
 		}
 		return &v.FrameRate
 	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+func (o H265CodecSettingsPtrOutput) FrameRateConversionStrategy() H265CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return o.ApplyT(func(v *H265CodecSettings) *H265CodecSettingsFrameRateConversionStrategy {
+		if v == nil {
+			return nil
+		}
+		return v.FrameRateConversionStrategy
+	}).(H265CodecSettingsFrameRateConversionStrategyPtrOutput)
 }
 
 // Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
@@ -5527,6 +5935,16 @@ func (o H265CodecSettingsPtrOutput) GopFrameCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Optional. HDR10 color format setting for H265.
+func (o H265CodecSettingsPtrOutput) Hdr10() H265ColorFormatHDR10PtrOutput {
+	return o.ApplyT(func(v *H265CodecSettings) *H265ColorFormatHDR10 {
+		if v == nil {
+			return nil
+		}
+		return v.Hdr10
+	}).(H265ColorFormatHDR10PtrOutput)
+}
+
 // The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o H265CodecSettingsPtrOutput) HeightPixels() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *H265CodecSettings) *int {
@@ -5535,6 +5953,16 @@ func (o H265CodecSettingsPtrOutput) HeightPixels() pulumi.IntPtrOutput {
 		}
 		return v.HeightPixels
 	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. HLG color format setting for H265.
+func (o H265CodecSettingsPtrOutput) Hlg() H265ColorFormatHLGPtrOutput {
+	return o.ApplyT(func(v *H265CodecSettings) *H265ColorFormatHLG {
+		if v == nil {
+			return nil
+		}
+		return v.Hlg
+	}).(H265ColorFormatHLGPtrOutput)
 }
 
 // Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
@@ -5575,6 +6003,16 @@ func (o H265CodecSettingsPtrOutput) RateControlMode() pulumi.StringPtrOutput {
 		}
 		return v.RateControlMode
 	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. SDR color format setting for H265.
+func (o H265CodecSettingsPtrOutput) Sdr() H265ColorFormatSDRPtrOutput {
+	return o.ApplyT(func(v *H265CodecSettings) *H265ColorFormatSDR {
+		if v == nil {
+			return nil
+		}
+		return v.Sdr
+	}).(H265ColorFormatSDRPtrOutput)
 }
 
 // Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
@@ -5633,14 +6071,20 @@ type H265CodecSettingsResponse struct {
 	CrfLevel int `pulumi:"crfLevel"`
 	// Use two-pass encoding strategy to achieve better video quality. H265CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
 	EnableTwoPass bool `pulumi:"enableTwoPass"`
-	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
 	FrameRate float64 `pulumi:"frameRate"`
+	// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+	FrameRateConversionStrategy string `pulumi:"frameRateConversionStrategy"`
 	// Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
 	GopDuration string `pulumi:"gopDuration"`
 	// Select the GOP size based on the specified frame count. Must be greater than zero.
 	GopFrameCount int `pulumi:"gopFrameCount"`
+	// Optional. HDR10 color format setting for H265.
+	Hdr10 H265ColorFormatHDR10Response `pulumi:"hdr10"`
 	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	HeightPixels int `pulumi:"heightPixels"`
+	// Optional. HLG color format setting for H265.
+	Hlg H265ColorFormatHLGResponse `pulumi:"hlg"`
 	// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
 	PixelFormat string `pulumi:"pixelFormat"`
 	// Enforces the specified codec preset. The default is `veryfast`. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
@@ -5649,6 +6093,8 @@ type H265CodecSettingsResponse struct {
 	Profile string `pulumi:"profile"`
 	// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` - constant rate factor
 	RateControlMode string `pulumi:"rateControlMode"`
+	// Optional. SDR color format setting for H265.
+	Sdr H265ColorFormatSDRResponse `pulumi:"sdr"`
 	// Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
 	Tune string `pulumi:"tune"`
 	// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to 90% of H265CodecSettings.vbv_size_bits.
@@ -5709,9 +6155,14 @@ func (o H265CodecSettingsResponseOutput) EnableTwoPass() pulumi.BoolOutput {
 	return o.ApplyT(func(v H265CodecSettingsResponse) bool { return v.EnableTwoPass }).(pulumi.BoolOutput)
 }
 
-// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+// The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
 func (o H265CodecSettingsResponseOutput) FrameRate() pulumi.Float64Output {
 	return o.ApplyT(func(v H265CodecSettingsResponse) float64 { return v.FrameRate }).(pulumi.Float64Output)
+}
+
+// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+func (o H265CodecSettingsResponseOutput) FrameRateConversionStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v H265CodecSettingsResponse) string { return v.FrameRateConversionStrategy }).(pulumi.StringOutput)
 }
 
 // Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
@@ -5724,9 +6175,19 @@ func (o H265CodecSettingsResponseOutput) GopFrameCount() pulumi.IntOutput {
 	return o.ApplyT(func(v H265CodecSettingsResponse) int { return v.GopFrameCount }).(pulumi.IntOutput)
 }
 
+// Optional. HDR10 color format setting for H265.
+func (o H265CodecSettingsResponseOutput) Hdr10() H265ColorFormatHDR10ResponseOutput {
+	return o.ApplyT(func(v H265CodecSettingsResponse) H265ColorFormatHDR10Response { return v.Hdr10 }).(H265ColorFormatHDR10ResponseOutput)
+}
+
 // The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o H265CodecSettingsResponseOutput) HeightPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v H265CodecSettingsResponse) int { return v.HeightPixels }).(pulumi.IntOutput)
+}
+
+// Optional. HLG color format setting for H265.
+func (o H265CodecSettingsResponseOutput) Hlg() H265ColorFormatHLGResponseOutput {
+	return o.ApplyT(func(v H265CodecSettingsResponse) H265ColorFormatHLGResponse { return v.Hlg }).(H265ColorFormatHLGResponseOutput)
 }
 
 // Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
@@ -5749,6 +6210,11 @@ func (o H265CodecSettingsResponseOutput) RateControlMode() pulumi.StringOutput {
 	return o.ApplyT(func(v H265CodecSettingsResponse) string { return v.RateControlMode }).(pulumi.StringOutput)
 }
 
+// Optional. SDR color format setting for H265.
+func (o H265CodecSettingsResponseOutput) Sdr() H265ColorFormatSDRResponseOutput {
+	return o.ApplyT(func(v H265CodecSettingsResponse) H265ColorFormatSDRResponse { return v.Sdr }).(H265ColorFormatSDRResponseOutput)
+}
+
 // Enforces the specified codec tune. The available options are [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may cause the transcoder to override other fields you set in the `H265CodecSettings` message.
 func (o H265CodecSettingsResponseOutput) Tune() pulumi.StringOutput {
 	return o.ApplyT(func(v H265CodecSettingsResponse) string { return v.Tune }).(pulumi.StringOutput)
@@ -5767,6 +6233,426 @@ func (o H265CodecSettingsResponseOutput) VbvSizeBits() pulumi.IntOutput {
 // The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o H265CodecSettingsResponseOutput) WidthPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v H265CodecSettingsResponse) int { return v.WidthPixels }).(pulumi.IntOutput)
+}
+
+// Convert the input video to a High Dynamic Range 10 (HDR10) video.
+type H265ColorFormatHDR10 struct {
+}
+
+// H265ColorFormatHDR10Input is an input type that accepts H265ColorFormatHDR10Args and H265ColorFormatHDR10Output values.
+// You can construct a concrete instance of `H265ColorFormatHDR10Input` via:
+//
+//	H265ColorFormatHDR10Args{...}
+type H265ColorFormatHDR10Input interface {
+	pulumi.Input
+
+	ToH265ColorFormatHDR10Output() H265ColorFormatHDR10Output
+	ToH265ColorFormatHDR10OutputWithContext(context.Context) H265ColorFormatHDR10Output
+}
+
+// Convert the input video to a High Dynamic Range 10 (HDR10) video.
+type H265ColorFormatHDR10Args struct {
+}
+
+func (H265ColorFormatHDR10Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*H265ColorFormatHDR10)(nil)).Elem()
+}
+
+func (i H265ColorFormatHDR10Args) ToH265ColorFormatHDR10Output() H265ColorFormatHDR10Output {
+	return i.ToH265ColorFormatHDR10OutputWithContext(context.Background())
+}
+
+func (i H265ColorFormatHDR10Args) ToH265ColorFormatHDR10OutputWithContext(ctx context.Context) H265ColorFormatHDR10Output {
+	return pulumi.ToOutputWithContext(ctx, i).(H265ColorFormatHDR10Output)
+}
+
+func (i H265ColorFormatHDR10Args) ToH265ColorFormatHDR10PtrOutput() H265ColorFormatHDR10PtrOutput {
+	return i.ToH265ColorFormatHDR10PtrOutputWithContext(context.Background())
+}
+
+func (i H265ColorFormatHDR10Args) ToH265ColorFormatHDR10PtrOutputWithContext(ctx context.Context) H265ColorFormatHDR10PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(H265ColorFormatHDR10Output).ToH265ColorFormatHDR10PtrOutputWithContext(ctx)
+}
+
+// H265ColorFormatHDR10PtrInput is an input type that accepts H265ColorFormatHDR10Args, H265ColorFormatHDR10Ptr and H265ColorFormatHDR10PtrOutput values.
+// You can construct a concrete instance of `H265ColorFormatHDR10PtrInput` via:
+//
+//	        H265ColorFormatHDR10Args{...}
+//
+//	or:
+//
+//	        nil
+type H265ColorFormatHDR10PtrInput interface {
+	pulumi.Input
+
+	ToH265ColorFormatHDR10PtrOutput() H265ColorFormatHDR10PtrOutput
+	ToH265ColorFormatHDR10PtrOutputWithContext(context.Context) H265ColorFormatHDR10PtrOutput
+}
+
+type h265colorFormatHDR10PtrType H265ColorFormatHDR10Args
+
+func H265ColorFormatHDR10Ptr(v *H265ColorFormatHDR10Args) H265ColorFormatHDR10PtrInput {
+	return (*h265colorFormatHDR10PtrType)(v)
+}
+
+func (*h265colorFormatHDR10PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**H265ColorFormatHDR10)(nil)).Elem()
+}
+
+func (i *h265colorFormatHDR10PtrType) ToH265ColorFormatHDR10PtrOutput() H265ColorFormatHDR10PtrOutput {
+	return i.ToH265ColorFormatHDR10PtrOutputWithContext(context.Background())
+}
+
+func (i *h265colorFormatHDR10PtrType) ToH265ColorFormatHDR10PtrOutputWithContext(ctx context.Context) H265ColorFormatHDR10PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(H265ColorFormatHDR10PtrOutput)
+}
+
+// Convert the input video to a High Dynamic Range 10 (HDR10) video.
+type H265ColorFormatHDR10Output struct{ *pulumi.OutputState }
+
+func (H265ColorFormatHDR10Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*H265ColorFormatHDR10)(nil)).Elem()
+}
+
+func (o H265ColorFormatHDR10Output) ToH265ColorFormatHDR10Output() H265ColorFormatHDR10Output {
+	return o
+}
+
+func (o H265ColorFormatHDR10Output) ToH265ColorFormatHDR10OutputWithContext(ctx context.Context) H265ColorFormatHDR10Output {
+	return o
+}
+
+func (o H265ColorFormatHDR10Output) ToH265ColorFormatHDR10PtrOutput() H265ColorFormatHDR10PtrOutput {
+	return o.ToH265ColorFormatHDR10PtrOutputWithContext(context.Background())
+}
+
+func (o H265ColorFormatHDR10Output) ToH265ColorFormatHDR10PtrOutputWithContext(ctx context.Context) H265ColorFormatHDR10PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v H265ColorFormatHDR10) *H265ColorFormatHDR10 {
+		return &v
+	}).(H265ColorFormatHDR10PtrOutput)
+}
+
+type H265ColorFormatHDR10PtrOutput struct{ *pulumi.OutputState }
+
+func (H265ColorFormatHDR10PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**H265ColorFormatHDR10)(nil)).Elem()
+}
+
+func (o H265ColorFormatHDR10PtrOutput) ToH265ColorFormatHDR10PtrOutput() H265ColorFormatHDR10PtrOutput {
+	return o
+}
+
+func (o H265ColorFormatHDR10PtrOutput) ToH265ColorFormatHDR10PtrOutputWithContext(ctx context.Context) H265ColorFormatHDR10PtrOutput {
+	return o
+}
+
+func (o H265ColorFormatHDR10PtrOutput) Elem() H265ColorFormatHDR10Output {
+	return o.ApplyT(func(v *H265ColorFormatHDR10) H265ColorFormatHDR10 {
+		if v != nil {
+			return *v
+		}
+		var ret H265ColorFormatHDR10
+		return ret
+	}).(H265ColorFormatHDR10Output)
+}
+
+// Convert the input video to a High Dynamic Range 10 (HDR10) video.
+type H265ColorFormatHDR10Response struct {
+}
+
+// Convert the input video to a High Dynamic Range 10 (HDR10) video.
+type H265ColorFormatHDR10ResponseOutput struct{ *pulumi.OutputState }
+
+func (H265ColorFormatHDR10ResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*H265ColorFormatHDR10Response)(nil)).Elem()
+}
+
+func (o H265ColorFormatHDR10ResponseOutput) ToH265ColorFormatHDR10ResponseOutput() H265ColorFormatHDR10ResponseOutput {
+	return o
+}
+
+func (o H265ColorFormatHDR10ResponseOutput) ToH265ColorFormatHDR10ResponseOutputWithContext(ctx context.Context) H265ColorFormatHDR10ResponseOutput {
+	return o
+}
+
+// Convert the input video to a Hybrid Log Gamma (HLG) video.
+type H265ColorFormatHLG struct {
+}
+
+// H265ColorFormatHLGInput is an input type that accepts H265ColorFormatHLGArgs and H265ColorFormatHLGOutput values.
+// You can construct a concrete instance of `H265ColorFormatHLGInput` via:
+//
+//	H265ColorFormatHLGArgs{...}
+type H265ColorFormatHLGInput interface {
+	pulumi.Input
+
+	ToH265ColorFormatHLGOutput() H265ColorFormatHLGOutput
+	ToH265ColorFormatHLGOutputWithContext(context.Context) H265ColorFormatHLGOutput
+}
+
+// Convert the input video to a Hybrid Log Gamma (HLG) video.
+type H265ColorFormatHLGArgs struct {
+}
+
+func (H265ColorFormatHLGArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*H265ColorFormatHLG)(nil)).Elem()
+}
+
+func (i H265ColorFormatHLGArgs) ToH265ColorFormatHLGOutput() H265ColorFormatHLGOutput {
+	return i.ToH265ColorFormatHLGOutputWithContext(context.Background())
+}
+
+func (i H265ColorFormatHLGArgs) ToH265ColorFormatHLGOutputWithContext(ctx context.Context) H265ColorFormatHLGOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(H265ColorFormatHLGOutput)
+}
+
+func (i H265ColorFormatHLGArgs) ToH265ColorFormatHLGPtrOutput() H265ColorFormatHLGPtrOutput {
+	return i.ToH265ColorFormatHLGPtrOutputWithContext(context.Background())
+}
+
+func (i H265ColorFormatHLGArgs) ToH265ColorFormatHLGPtrOutputWithContext(ctx context.Context) H265ColorFormatHLGPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(H265ColorFormatHLGOutput).ToH265ColorFormatHLGPtrOutputWithContext(ctx)
+}
+
+// H265ColorFormatHLGPtrInput is an input type that accepts H265ColorFormatHLGArgs, H265ColorFormatHLGPtr and H265ColorFormatHLGPtrOutput values.
+// You can construct a concrete instance of `H265ColorFormatHLGPtrInput` via:
+//
+//	        H265ColorFormatHLGArgs{...}
+//
+//	or:
+//
+//	        nil
+type H265ColorFormatHLGPtrInput interface {
+	pulumi.Input
+
+	ToH265ColorFormatHLGPtrOutput() H265ColorFormatHLGPtrOutput
+	ToH265ColorFormatHLGPtrOutputWithContext(context.Context) H265ColorFormatHLGPtrOutput
+}
+
+type h265colorFormatHLGPtrType H265ColorFormatHLGArgs
+
+func H265ColorFormatHLGPtr(v *H265ColorFormatHLGArgs) H265ColorFormatHLGPtrInput {
+	return (*h265colorFormatHLGPtrType)(v)
+}
+
+func (*h265colorFormatHLGPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**H265ColorFormatHLG)(nil)).Elem()
+}
+
+func (i *h265colorFormatHLGPtrType) ToH265ColorFormatHLGPtrOutput() H265ColorFormatHLGPtrOutput {
+	return i.ToH265ColorFormatHLGPtrOutputWithContext(context.Background())
+}
+
+func (i *h265colorFormatHLGPtrType) ToH265ColorFormatHLGPtrOutputWithContext(ctx context.Context) H265ColorFormatHLGPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(H265ColorFormatHLGPtrOutput)
+}
+
+// Convert the input video to a Hybrid Log Gamma (HLG) video.
+type H265ColorFormatHLGOutput struct{ *pulumi.OutputState }
+
+func (H265ColorFormatHLGOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*H265ColorFormatHLG)(nil)).Elem()
+}
+
+func (o H265ColorFormatHLGOutput) ToH265ColorFormatHLGOutput() H265ColorFormatHLGOutput {
+	return o
+}
+
+func (o H265ColorFormatHLGOutput) ToH265ColorFormatHLGOutputWithContext(ctx context.Context) H265ColorFormatHLGOutput {
+	return o
+}
+
+func (o H265ColorFormatHLGOutput) ToH265ColorFormatHLGPtrOutput() H265ColorFormatHLGPtrOutput {
+	return o.ToH265ColorFormatHLGPtrOutputWithContext(context.Background())
+}
+
+func (o H265ColorFormatHLGOutput) ToH265ColorFormatHLGPtrOutputWithContext(ctx context.Context) H265ColorFormatHLGPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v H265ColorFormatHLG) *H265ColorFormatHLG {
+		return &v
+	}).(H265ColorFormatHLGPtrOutput)
+}
+
+type H265ColorFormatHLGPtrOutput struct{ *pulumi.OutputState }
+
+func (H265ColorFormatHLGPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**H265ColorFormatHLG)(nil)).Elem()
+}
+
+func (o H265ColorFormatHLGPtrOutput) ToH265ColorFormatHLGPtrOutput() H265ColorFormatHLGPtrOutput {
+	return o
+}
+
+func (o H265ColorFormatHLGPtrOutput) ToH265ColorFormatHLGPtrOutputWithContext(ctx context.Context) H265ColorFormatHLGPtrOutput {
+	return o
+}
+
+func (o H265ColorFormatHLGPtrOutput) Elem() H265ColorFormatHLGOutput {
+	return o.ApplyT(func(v *H265ColorFormatHLG) H265ColorFormatHLG {
+		if v != nil {
+			return *v
+		}
+		var ret H265ColorFormatHLG
+		return ret
+	}).(H265ColorFormatHLGOutput)
+}
+
+// Convert the input video to a Hybrid Log Gamma (HLG) video.
+type H265ColorFormatHLGResponse struct {
+}
+
+// Convert the input video to a Hybrid Log Gamma (HLG) video.
+type H265ColorFormatHLGResponseOutput struct{ *pulumi.OutputState }
+
+func (H265ColorFormatHLGResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*H265ColorFormatHLGResponse)(nil)).Elem()
+}
+
+func (o H265ColorFormatHLGResponseOutput) ToH265ColorFormatHLGResponseOutput() H265ColorFormatHLGResponseOutput {
+	return o
+}
+
+func (o H265ColorFormatHLGResponseOutput) ToH265ColorFormatHLGResponseOutputWithContext(ctx context.Context) H265ColorFormatHLGResponseOutput {
+	return o
+}
+
+// Convert the input video to a Standard Dynamic Range (SDR) video.
+type H265ColorFormatSDR struct {
+}
+
+// H265ColorFormatSDRInput is an input type that accepts H265ColorFormatSDRArgs and H265ColorFormatSDROutput values.
+// You can construct a concrete instance of `H265ColorFormatSDRInput` via:
+//
+//	H265ColorFormatSDRArgs{...}
+type H265ColorFormatSDRInput interface {
+	pulumi.Input
+
+	ToH265ColorFormatSDROutput() H265ColorFormatSDROutput
+	ToH265ColorFormatSDROutputWithContext(context.Context) H265ColorFormatSDROutput
+}
+
+// Convert the input video to a Standard Dynamic Range (SDR) video.
+type H265ColorFormatSDRArgs struct {
+}
+
+func (H265ColorFormatSDRArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*H265ColorFormatSDR)(nil)).Elem()
+}
+
+func (i H265ColorFormatSDRArgs) ToH265ColorFormatSDROutput() H265ColorFormatSDROutput {
+	return i.ToH265ColorFormatSDROutputWithContext(context.Background())
+}
+
+func (i H265ColorFormatSDRArgs) ToH265ColorFormatSDROutputWithContext(ctx context.Context) H265ColorFormatSDROutput {
+	return pulumi.ToOutputWithContext(ctx, i).(H265ColorFormatSDROutput)
+}
+
+func (i H265ColorFormatSDRArgs) ToH265ColorFormatSDRPtrOutput() H265ColorFormatSDRPtrOutput {
+	return i.ToH265ColorFormatSDRPtrOutputWithContext(context.Background())
+}
+
+func (i H265ColorFormatSDRArgs) ToH265ColorFormatSDRPtrOutputWithContext(ctx context.Context) H265ColorFormatSDRPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(H265ColorFormatSDROutput).ToH265ColorFormatSDRPtrOutputWithContext(ctx)
+}
+
+// H265ColorFormatSDRPtrInput is an input type that accepts H265ColorFormatSDRArgs, H265ColorFormatSDRPtr and H265ColorFormatSDRPtrOutput values.
+// You can construct a concrete instance of `H265ColorFormatSDRPtrInput` via:
+//
+//	        H265ColorFormatSDRArgs{...}
+//
+//	or:
+//
+//	        nil
+type H265ColorFormatSDRPtrInput interface {
+	pulumi.Input
+
+	ToH265ColorFormatSDRPtrOutput() H265ColorFormatSDRPtrOutput
+	ToH265ColorFormatSDRPtrOutputWithContext(context.Context) H265ColorFormatSDRPtrOutput
+}
+
+type h265colorFormatSDRPtrType H265ColorFormatSDRArgs
+
+func H265ColorFormatSDRPtr(v *H265ColorFormatSDRArgs) H265ColorFormatSDRPtrInput {
+	return (*h265colorFormatSDRPtrType)(v)
+}
+
+func (*h265colorFormatSDRPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**H265ColorFormatSDR)(nil)).Elem()
+}
+
+func (i *h265colorFormatSDRPtrType) ToH265ColorFormatSDRPtrOutput() H265ColorFormatSDRPtrOutput {
+	return i.ToH265ColorFormatSDRPtrOutputWithContext(context.Background())
+}
+
+func (i *h265colorFormatSDRPtrType) ToH265ColorFormatSDRPtrOutputWithContext(ctx context.Context) H265ColorFormatSDRPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(H265ColorFormatSDRPtrOutput)
+}
+
+// Convert the input video to a Standard Dynamic Range (SDR) video.
+type H265ColorFormatSDROutput struct{ *pulumi.OutputState }
+
+func (H265ColorFormatSDROutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*H265ColorFormatSDR)(nil)).Elem()
+}
+
+func (o H265ColorFormatSDROutput) ToH265ColorFormatSDROutput() H265ColorFormatSDROutput {
+	return o
+}
+
+func (o H265ColorFormatSDROutput) ToH265ColorFormatSDROutputWithContext(ctx context.Context) H265ColorFormatSDROutput {
+	return o
+}
+
+func (o H265ColorFormatSDROutput) ToH265ColorFormatSDRPtrOutput() H265ColorFormatSDRPtrOutput {
+	return o.ToH265ColorFormatSDRPtrOutputWithContext(context.Background())
+}
+
+func (o H265ColorFormatSDROutput) ToH265ColorFormatSDRPtrOutputWithContext(ctx context.Context) H265ColorFormatSDRPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v H265ColorFormatSDR) *H265ColorFormatSDR {
+		return &v
+	}).(H265ColorFormatSDRPtrOutput)
+}
+
+type H265ColorFormatSDRPtrOutput struct{ *pulumi.OutputState }
+
+func (H265ColorFormatSDRPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**H265ColorFormatSDR)(nil)).Elem()
+}
+
+func (o H265ColorFormatSDRPtrOutput) ToH265ColorFormatSDRPtrOutput() H265ColorFormatSDRPtrOutput {
+	return o
+}
+
+func (o H265ColorFormatSDRPtrOutput) ToH265ColorFormatSDRPtrOutputWithContext(ctx context.Context) H265ColorFormatSDRPtrOutput {
+	return o
+}
+
+func (o H265ColorFormatSDRPtrOutput) Elem() H265ColorFormatSDROutput {
+	return o.ApplyT(func(v *H265ColorFormatSDR) H265ColorFormatSDR {
+		if v != nil {
+			return *v
+		}
+		var ret H265ColorFormatSDR
+		return ret
+	}).(H265ColorFormatSDROutput)
+}
+
+// Convert the input video to a Standard Dynamic Range (SDR) video.
+type H265ColorFormatSDRResponse struct {
+}
+
+// Convert the input video to a Standard Dynamic Range (SDR) video.
+type H265ColorFormatSDRResponseOutput struct{ *pulumi.OutputState }
+
+func (H265ColorFormatSDRResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*H265ColorFormatSDRResponse)(nil)).Elem()
+}
+
+func (o H265ColorFormatSDRResponseOutput) ToH265ColorFormatSDRResponseOutput() H265ColorFormatSDRResponseOutput {
+	return o
+}
+
+func (o H265ColorFormatSDRResponseOutput) ToH265ColorFormatSDRResponseOutputWithContext(ctx context.Context) H265ColorFormatSDRResponseOutput {
+	return o
 }
 
 // Overlaid image.
@@ -10075,20 +10961,26 @@ type Vp9CodecSettings struct {
 	BitrateBps int `pulumi:"bitrateBps"`
 	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. **Note:** This field is not supported.
 	CrfLevel *int `pulumi:"crfLevel"`
-	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
 	FrameRate float64 `pulumi:"frameRate"`
+	// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+	FrameRateConversionStrategy *Vp9CodecSettingsFrameRateConversionStrategy `pulumi:"frameRateConversionStrategy"`
 	// Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
 	GopDuration *string `pulumi:"gopDuration"`
 	// Select the GOP size based on the specified frame count. Must be greater than zero.
 	GopFrameCount *int `pulumi:"gopFrameCount"`
 	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	HeightPixels *int `pulumi:"heightPixels"`
+	// Optional. HLG color format setting for VP9.
+	Hlg *Vp9ColorFormatHLG `pulumi:"hlg"`
 	// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
 	PixelFormat *string `pulumi:"pixelFormat"`
 	// Enforces the specified codec profile. The following profiles are supported: * `profile0` (default) * `profile1` * `profile2` * `profile3` The available options are [WebM-compatible](https://www.webmproject.org/vp9/profiles/). Note that certain values for this field may cause the transcoder to override other fields you set in the `Vp9CodecSettings` message.
 	Profile *string `pulumi:"profile"`
 	// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
 	RateControlMode *string `pulumi:"rateControlMode"`
+	// Optional. SDR color format setting for VP9.
+	Sdr *Vp9ColorFormatSDR `pulumi:"sdr"`
 	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	WidthPixels *int `pulumi:"widthPixels"`
 }
@@ -10110,20 +11002,26 @@ type Vp9CodecSettingsArgs struct {
 	BitrateBps pulumi.IntInput `pulumi:"bitrateBps"`
 	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. **Note:** This field is not supported.
 	CrfLevel pulumi.IntPtrInput `pulumi:"crfLevel"`
-	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
 	FrameRate pulumi.Float64Input `pulumi:"frameRate"`
+	// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+	FrameRateConversionStrategy Vp9CodecSettingsFrameRateConversionStrategyPtrInput `pulumi:"frameRateConversionStrategy"`
 	// Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
 	GopDuration pulumi.StringPtrInput `pulumi:"gopDuration"`
 	// Select the GOP size based on the specified frame count. Must be greater than zero.
 	GopFrameCount pulumi.IntPtrInput `pulumi:"gopFrameCount"`
 	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	HeightPixels pulumi.IntPtrInput `pulumi:"heightPixels"`
+	// Optional. HLG color format setting for VP9.
+	Hlg Vp9ColorFormatHLGPtrInput `pulumi:"hlg"`
 	// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
 	PixelFormat pulumi.StringPtrInput `pulumi:"pixelFormat"`
 	// Enforces the specified codec profile. The following profiles are supported: * `profile0` (default) * `profile1` * `profile2` * `profile3` The available options are [WebM-compatible](https://www.webmproject.org/vp9/profiles/). Note that certain values for this field may cause the transcoder to override other fields you set in the `Vp9CodecSettings` message.
 	Profile pulumi.StringPtrInput `pulumi:"profile"`
 	// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
 	RateControlMode pulumi.StringPtrInput `pulumi:"rateControlMode"`
+	// Optional. SDR color format setting for VP9.
+	Sdr Vp9ColorFormatSDRPtrInput `pulumi:"sdr"`
 	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	WidthPixels pulumi.IntPtrInput `pulumi:"widthPixels"`
 }
@@ -10216,9 +11114,16 @@ func (o Vp9CodecSettingsOutput) CrfLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Vp9CodecSettings) *int { return v.CrfLevel }).(pulumi.IntPtrOutput)
 }
 
-// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+// The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
 func (o Vp9CodecSettingsOutput) FrameRate() pulumi.Float64Output {
 	return o.ApplyT(func(v Vp9CodecSettings) float64 { return v.FrameRate }).(pulumi.Float64Output)
+}
+
+// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+func (o Vp9CodecSettingsOutput) FrameRateConversionStrategy() Vp9CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return o.ApplyT(func(v Vp9CodecSettings) *Vp9CodecSettingsFrameRateConversionStrategy {
+		return v.FrameRateConversionStrategy
+	}).(Vp9CodecSettingsFrameRateConversionStrategyPtrOutput)
 }
 
 // Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
@@ -10236,6 +11141,11 @@ func (o Vp9CodecSettingsOutput) HeightPixels() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Vp9CodecSettings) *int { return v.HeightPixels }).(pulumi.IntPtrOutput)
 }
 
+// Optional. HLG color format setting for VP9.
+func (o Vp9CodecSettingsOutput) Hlg() Vp9ColorFormatHLGPtrOutput {
+	return o.ApplyT(func(v Vp9CodecSettings) *Vp9ColorFormatHLG { return v.Hlg }).(Vp9ColorFormatHLGPtrOutput)
+}
+
 // Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
 func (o Vp9CodecSettingsOutput) PixelFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Vp9CodecSettings) *string { return v.PixelFormat }).(pulumi.StringPtrOutput)
@@ -10249,6 +11159,11 @@ func (o Vp9CodecSettingsOutput) Profile() pulumi.StringPtrOutput {
 // Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
 func (o Vp9CodecSettingsOutput) RateControlMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Vp9CodecSettings) *string { return v.RateControlMode }).(pulumi.StringPtrOutput)
+}
+
+// Optional. SDR color format setting for VP9.
+func (o Vp9CodecSettingsOutput) Sdr() Vp9ColorFormatSDRPtrOutput {
+	return o.ApplyT(func(v Vp9CodecSettings) *Vp9ColorFormatSDR { return v.Sdr }).(Vp9ColorFormatSDRPtrOutput)
 }
 
 // The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
@@ -10300,7 +11215,7 @@ func (o Vp9CodecSettingsPtrOutput) CrfLevel() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+// The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
 func (o Vp9CodecSettingsPtrOutput) FrameRate() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Vp9CodecSettings) *float64 {
 		if v == nil {
@@ -10308,6 +11223,16 @@ func (o Vp9CodecSettingsPtrOutput) FrameRate() pulumi.Float64PtrOutput {
 		}
 		return &v.FrameRate
 	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+func (o Vp9CodecSettingsPtrOutput) FrameRateConversionStrategy() Vp9CodecSettingsFrameRateConversionStrategyPtrOutput {
+	return o.ApplyT(func(v *Vp9CodecSettings) *Vp9CodecSettingsFrameRateConversionStrategy {
+		if v == nil {
+			return nil
+		}
+		return v.FrameRateConversionStrategy
+	}).(Vp9CodecSettingsFrameRateConversionStrategyPtrOutput)
 }
 
 // Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
@@ -10340,6 +11265,16 @@ func (o Vp9CodecSettingsPtrOutput) HeightPixels() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Optional. HLG color format setting for VP9.
+func (o Vp9CodecSettingsPtrOutput) Hlg() Vp9ColorFormatHLGPtrOutput {
+	return o.ApplyT(func(v *Vp9CodecSettings) *Vp9ColorFormatHLG {
+		if v == nil {
+			return nil
+		}
+		return v.Hlg
+	}).(Vp9ColorFormatHLGPtrOutput)
+}
+
 // Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
 func (o Vp9CodecSettingsPtrOutput) PixelFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vp9CodecSettings) *string {
@@ -10370,6 +11305,16 @@ func (o Vp9CodecSettingsPtrOutput) RateControlMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. SDR color format setting for VP9.
+func (o Vp9CodecSettingsPtrOutput) Sdr() Vp9ColorFormatSDRPtrOutput {
+	return o.ApplyT(func(v *Vp9CodecSettings) *Vp9ColorFormatSDR {
+		if v == nil {
+			return nil
+		}
+		return v.Sdr
+	}).(Vp9ColorFormatSDRPtrOutput)
+}
+
 // The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o Vp9CodecSettingsPtrOutput) WidthPixels() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Vp9CodecSettings) *int {
@@ -10386,20 +11331,26 @@ type Vp9CodecSettingsResponse struct {
 	BitrateBps int `pulumi:"bitrateBps"`
 	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. **Note:** This field is not supported.
 	CrfLevel int `pulumi:"crfLevel"`
-	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
 	FrameRate float64 `pulumi:"frameRate"`
+	// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+	FrameRateConversionStrategy string `pulumi:"frameRateConversionStrategy"`
 	// Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
 	GopDuration string `pulumi:"gopDuration"`
 	// Select the GOP size based on the specified frame count. Must be greater than zero.
 	GopFrameCount int `pulumi:"gopFrameCount"`
 	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	HeightPixels int `pulumi:"heightPixels"`
+	// Optional. HLG color format setting for VP9.
+	Hlg Vp9ColorFormatHLGResponse `pulumi:"hlg"`
 	// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
 	PixelFormat string `pulumi:"pixelFormat"`
 	// Enforces the specified codec profile. The following profiles are supported: * `profile0` (default) * `profile1` * `profile2` * `profile3` The available options are [WebM-compatible](https://www.webmproject.org/vp9/profiles/). Note that certain values for this field may cause the transcoder to override other fields you set in the `Vp9CodecSettings` message.
 	Profile string `pulumi:"profile"`
 	// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
 	RateControlMode string `pulumi:"rateControlMode"`
+	// Optional. SDR color format setting for VP9.
+	Sdr Vp9ColorFormatSDRResponse `pulumi:"sdr"`
 	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	WidthPixels int `pulumi:"widthPixels"`
 }
@@ -10429,9 +11380,14 @@ func (o Vp9CodecSettingsResponseOutput) CrfLevel() pulumi.IntOutput {
 	return o.ApplyT(func(v Vp9CodecSettingsResponse) int { return v.CrfLevel }).(pulumi.IntOutput)
 }
 
-// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+// The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
 func (o Vp9CodecSettingsResponseOutput) FrameRate() pulumi.Float64Output {
 	return o.ApplyT(func(v Vp9CodecSettingsResponse) float64 { return v.FrameRate }).(pulumi.Float64Output)
+}
+
+// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+func (o Vp9CodecSettingsResponseOutput) FrameRateConversionStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v Vp9CodecSettingsResponse) string { return v.FrameRateConversionStrategy }).(pulumi.StringOutput)
 }
 
 // Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
@@ -10449,6 +11405,11 @@ func (o Vp9CodecSettingsResponseOutput) HeightPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v Vp9CodecSettingsResponse) int { return v.HeightPixels }).(pulumi.IntOutput)
 }
 
+// Optional. HLG color format setting for VP9.
+func (o Vp9CodecSettingsResponseOutput) Hlg() Vp9ColorFormatHLGResponseOutput {
+	return o.ApplyT(func(v Vp9CodecSettingsResponse) Vp9ColorFormatHLGResponse { return v.Hlg }).(Vp9ColorFormatHLGResponseOutput)
+}
+
 // Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
 func (o Vp9CodecSettingsResponseOutput) PixelFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v Vp9CodecSettingsResponse) string { return v.PixelFormat }).(pulumi.StringOutput)
@@ -10464,9 +11425,294 @@ func (o Vp9CodecSettingsResponseOutput) RateControlMode() pulumi.StringOutput {
 	return o.ApplyT(func(v Vp9CodecSettingsResponse) string { return v.RateControlMode }).(pulumi.StringOutput)
 }
 
+// Optional. SDR color format setting for VP9.
+func (o Vp9CodecSettingsResponseOutput) Sdr() Vp9ColorFormatSDRResponseOutput {
+	return o.ApplyT(func(v Vp9CodecSettingsResponse) Vp9ColorFormatSDRResponse { return v.Sdr }).(Vp9ColorFormatSDRResponseOutput)
+}
+
 // The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o Vp9CodecSettingsResponseOutput) WidthPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v Vp9CodecSettingsResponse) int { return v.WidthPixels }).(pulumi.IntOutput)
+}
+
+// Convert the input video to a Hybrid Log Gamma (HLG) video.
+type Vp9ColorFormatHLG struct {
+}
+
+// Vp9ColorFormatHLGInput is an input type that accepts Vp9ColorFormatHLGArgs and Vp9ColorFormatHLGOutput values.
+// You can construct a concrete instance of `Vp9ColorFormatHLGInput` via:
+//
+//	Vp9ColorFormatHLGArgs{...}
+type Vp9ColorFormatHLGInput interface {
+	pulumi.Input
+
+	ToVp9ColorFormatHLGOutput() Vp9ColorFormatHLGOutput
+	ToVp9ColorFormatHLGOutputWithContext(context.Context) Vp9ColorFormatHLGOutput
+}
+
+// Convert the input video to a Hybrid Log Gamma (HLG) video.
+type Vp9ColorFormatHLGArgs struct {
+}
+
+func (Vp9ColorFormatHLGArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vp9ColorFormatHLG)(nil)).Elem()
+}
+
+func (i Vp9ColorFormatHLGArgs) ToVp9ColorFormatHLGOutput() Vp9ColorFormatHLGOutput {
+	return i.ToVp9ColorFormatHLGOutputWithContext(context.Background())
+}
+
+func (i Vp9ColorFormatHLGArgs) ToVp9ColorFormatHLGOutputWithContext(ctx context.Context) Vp9ColorFormatHLGOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vp9ColorFormatHLGOutput)
+}
+
+func (i Vp9ColorFormatHLGArgs) ToVp9ColorFormatHLGPtrOutput() Vp9ColorFormatHLGPtrOutput {
+	return i.ToVp9ColorFormatHLGPtrOutputWithContext(context.Background())
+}
+
+func (i Vp9ColorFormatHLGArgs) ToVp9ColorFormatHLGPtrOutputWithContext(ctx context.Context) Vp9ColorFormatHLGPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vp9ColorFormatHLGOutput).ToVp9ColorFormatHLGPtrOutputWithContext(ctx)
+}
+
+// Vp9ColorFormatHLGPtrInput is an input type that accepts Vp9ColorFormatHLGArgs, Vp9ColorFormatHLGPtr and Vp9ColorFormatHLGPtrOutput values.
+// You can construct a concrete instance of `Vp9ColorFormatHLGPtrInput` via:
+//
+//	        Vp9ColorFormatHLGArgs{...}
+//
+//	or:
+//
+//	        nil
+type Vp9ColorFormatHLGPtrInput interface {
+	pulumi.Input
+
+	ToVp9ColorFormatHLGPtrOutput() Vp9ColorFormatHLGPtrOutput
+	ToVp9ColorFormatHLGPtrOutputWithContext(context.Context) Vp9ColorFormatHLGPtrOutput
+}
+
+type vp9ColorFormatHLGPtrType Vp9ColorFormatHLGArgs
+
+func Vp9ColorFormatHLGPtr(v *Vp9ColorFormatHLGArgs) Vp9ColorFormatHLGPtrInput {
+	return (*vp9ColorFormatHLGPtrType)(v)
+}
+
+func (*vp9ColorFormatHLGPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vp9ColorFormatHLG)(nil)).Elem()
+}
+
+func (i *vp9ColorFormatHLGPtrType) ToVp9ColorFormatHLGPtrOutput() Vp9ColorFormatHLGPtrOutput {
+	return i.ToVp9ColorFormatHLGPtrOutputWithContext(context.Background())
+}
+
+func (i *vp9ColorFormatHLGPtrType) ToVp9ColorFormatHLGPtrOutputWithContext(ctx context.Context) Vp9ColorFormatHLGPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vp9ColorFormatHLGPtrOutput)
+}
+
+// Convert the input video to a Hybrid Log Gamma (HLG) video.
+type Vp9ColorFormatHLGOutput struct{ *pulumi.OutputState }
+
+func (Vp9ColorFormatHLGOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vp9ColorFormatHLG)(nil)).Elem()
+}
+
+func (o Vp9ColorFormatHLGOutput) ToVp9ColorFormatHLGOutput() Vp9ColorFormatHLGOutput {
+	return o
+}
+
+func (o Vp9ColorFormatHLGOutput) ToVp9ColorFormatHLGOutputWithContext(ctx context.Context) Vp9ColorFormatHLGOutput {
+	return o
+}
+
+func (o Vp9ColorFormatHLGOutput) ToVp9ColorFormatHLGPtrOutput() Vp9ColorFormatHLGPtrOutput {
+	return o.ToVp9ColorFormatHLGPtrOutputWithContext(context.Background())
+}
+
+func (o Vp9ColorFormatHLGOutput) ToVp9ColorFormatHLGPtrOutputWithContext(ctx context.Context) Vp9ColorFormatHLGPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Vp9ColorFormatHLG) *Vp9ColorFormatHLG {
+		return &v
+	}).(Vp9ColorFormatHLGPtrOutput)
+}
+
+type Vp9ColorFormatHLGPtrOutput struct{ *pulumi.OutputState }
+
+func (Vp9ColorFormatHLGPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vp9ColorFormatHLG)(nil)).Elem()
+}
+
+func (o Vp9ColorFormatHLGPtrOutput) ToVp9ColorFormatHLGPtrOutput() Vp9ColorFormatHLGPtrOutput {
+	return o
+}
+
+func (o Vp9ColorFormatHLGPtrOutput) ToVp9ColorFormatHLGPtrOutputWithContext(ctx context.Context) Vp9ColorFormatHLGPtrOutput {
+	return o
+}
+
+func (o Vp9ColorFormatHLGPtrOutput) Elem() Vp9ColorFormatHLGOutput {
+	return o.ApplyT(func(v *Vp9ColorFormatHLG) Vp9ColorFormatHLG {
+		if v != nil {
+			return *v
+		}
+		var ret Vp9ColorFormatHLG
+		return ret
+	}).(Vp9ColorFormatHLGOutput)
+}
+
+// Convert the input video to a Hybrid Log Gamma (HLG) video.
+type Vp9ColorFormatHLGResponse struct {
+}
+
+// Convert the input video to a Hybrid Log Gamma (HLG) video.
+type Vp9ColorFormatHLGResponseOutput struct{ *pulumi.OutputState }
+
+func (Vp9ColorFormatHLGResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vp9ColorFormatHLGResponse)(nil)).Elem()
+}
+
+func (o Vp9ColorFormatHLGResponseOutput) ToVp9ColorFormatHLGResponseOutput() Vp9ColorFormatHLGResponseOutput {
+	return o
+}
+
+func (o Vp9ColorFormatHLGResponseOutput) ToVp9ColorFormatHLGResponseOutputWithContext(ctx context.Context) Vp9ColorFormatHLGResponseOutput {
+	return o
+}
+
+// Convert the input video to a Standard Dynamic Range (SDR) video.
+type Vp9ColorFormatSDR struct {
+}
+
+// Vp9ColorFormatSDRInput is an input type that accepts Vp9ColorFormatSDRArgs and Vp9ColorFormatSDROutput values.
+// You can construct a concrete instance of `Vp9ColorFormatSDRInput` via:
+//
+//	Vp9ColorFormatSDRArgs{...}
+type Vp9ColorFormatSDRInput interface {
+	pulumi.Input
+
+	ToVp9ColorFormatSDROutput() Vp9ColorFormatSDROutput
+	ToVp9ColorFormatSDROutputWithContext(context.Context) Vp9ColorFormatSDROutput
+}
+
+// Convert the input video to a Standard Dynamic Range (SDR) video.
+type Vp9ColorFormatSDRArgs struct {
+}
+
+func (Vp9ColorFormatSDRArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vp9ColorFormatSDR)(nil)).Elem()
+}
+
+func (i Vp9ColorFormatSDRArgs) ToVp9ColorFormatSDROutput() Vp9ColorFormatSDROutput {
+	return i.ToVp9ColorFormatSDROutputWithContext(context.Background())
+}
+
+func (i Vp9ColorFormatSDRArgs) ToVp9ColorFormatSDROutputWithContext(ctx context.Context) Vp9ColorFormatSDROutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vp9ColorFormatSDROutput)
+}
+
+func (i Vp9ColorFormatSDRArgs) ToVp9ColorFormatSDRPtrOutput() Vp9ColorFormatSDRPtrOutput {
+	return i.ToVp9ColorFormatSDRPtrOutputWithContext(context.Background())
+}
+
+func (i Vp9ColorFormatSDRArgs) ToVp9ColorFormatSDRPtrOutputWithContext(ctx context.Context) Vp9ColorFormatSDRPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vp9ColorFormatSDROutput).ToVp9ColorFormatSDRPtrOutputWithContext(ctx)
+}
+
+// Vp9ColorFormatSDRPtrInput is an input type that accepts Vp9ColorFormatSDRArgs, Vp9ColorFormatSDRPtr and Vp9ColorFormatSDRPtrOutput values.
+// You can construct a concrete instance of `Vp9ColorFormatSDRPtrInput` via:
+//
+//	        Vp9ColorFormatSDRArgs{...}
+//
+//	or:
+//
+//	        nil
+type Vp9ColorFormatSDRPtrInput interface {
+	pulumi.Input
+
+	ToVp9ColorFormatSDRPtrOutput() Vp9ColorFormatSDRPtrOutput
+	ToVp9ColorFormatSDRPtrOutputWithContext(context.Context) Vp9ColorFormatSDRPtrOutput
+}
+
+type vp9ColorFormatSDRPtrType Vp9ColorFormatSDRArgs
+
+func Vp9ColorFormatSDRPtr(v *Vp9ColorFormatSDRArgs) Vp9ColorFormatSDRPtrInput {
+	return (*vp9ColorFormatSDRPtrType)(v)
+}
+
+func (*vp9ColorFormatSDRPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vp9ColorFormatSDR)(nil)).Elem()
+}
+
+func (i *vp9ColorFormatSDRPtrType) ToVp9ColorFormatSDRPtrOutput() Vp9ColorFormatSDRPtrOutput {
+	return i.ToVp9ColorFormatSDRPtrOutputWithContext(context.Background())
+}
+
+func (i *vp9ColorFormatSDRPtrType) ToVp9ColorFormatSDRPtrOutputWithContext(ctx context.Context) Vp9ColorFormatSDRPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vp9ColorFormatSDRPtrOutput)
+}
+
+// Convert the input video to a Standard Dynamic Range (SDR) video.
+type Vp9ColorFormatSDROutput struct{ *pulumi.OutputState }
+
+func (Vp9ColorFormatSDROutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vp9ColorFormatSDR)(nil)).Elem()
+}
+
+func (o Vp9ColorFormatSDROutput) ToVp9ColorFormatSDROutput() Vp9ColorFormatSDROutput {
+	return o
+}
+
+func (o Vp9ColorFormatSDROutput) ToVp9ColorFormatSDROutputWithContext(ctx context.Context) Vp9ColorFormatSDROutput {
+	return o
+}
+
+func (o Vp9ColorFormatSDROutput) ToVp9ColorFormatSDRPtrOutput() Vp9ColorFormatSDRPtrOutput {
+	return o.ToVp9ColorFormatSDRPtrOutputWithContext(context.Background())
+}
+
+func (o Vp9ColorFormatSDROutput) ToVp9ColorFormatSDRPtrOutputWithContext(ctx context.Context) Vp9ColorFormatSDRPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Vp9ColorFormatSDR) *Vp9ColorFormatSDR {
+		return &v
+	}).(Vp9ColorFormatSDRPtrOutput)
+}
+
+type Vp9ColorFormatSDRPtrOutput struct{ *pulumi.OutputState }
+
+func (Vp9ColorFormatSDRPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vp9ColorFormatSDR)(nil)).Elem()
+}
+
+func (o Vp9ColorFormatSDRPtrOutput) ToVp9ColorFormatSDRPtrOutput() Vp9ColorFormatSDRPtrOutput {
+	return o
+}
+
+func (o Vp9ColorFormatSDRPtrOutput) ToVp9ColorFormatSDRPtrOutputWithContext(ctx context.Context) Vp9ColorFormatSDRPtrOutput {
+	return o
+}
+
+func (o Vp9ColorFormatSDRPtrOutput) Elem() Vp9ColorFormatSDROutput {
+	return o.ApplyT(func(v *Vp9ColorFormatSDR) Vp9ColorFormatSDR {
+		if v != nil {
+			return *v
+		}
+		var ret Vp9ColorFormatSDR
+		return ret
+	}).(Vp9ColorFormatSDROutput)
+}
+
+// Convert the input video to a Standard Dynamic Range (SDR) video.
+type Vp9ColorFormatSDRResponse struct {
+}
+
+// Convert the input video to a Standard Dynamic Range (SDR) video.
+type Vp9ColorFormatSDRResponseOutput struct{ *pulumi.OutputState }
+
+func (Vp9ColorFormatSDRResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vp9ColorFormatSDRResponse)(nil)).Elem()
+}
+
+func (o Vp9ColorFormatSDRResponseOutput) ToVp9ColorFormatSDRResponseOutput() Vp9ColorFormatSDRResponseOutput {
+	return o
+}
+
+func (o Vp9ColorFormatSDRResponseOutput) ToVp9ColorFormatSDRResponseOutputWithContext(ctx context.Context) Vp9ColorFormatSDRResponseOutput {
+	return o
 }
 
 // Widevine configuration.
@@ -10901,8 +12147,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*Fmp4ConfigPtrInput)(nil)).Elem(), Fmp4ConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*H264CodecSettingsInput)(nil)).Elem(), H264CodecSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*H264CodecSettingsPtrInput)(nil)).Elem(), H264CodecSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*H264ColorFormatHLGInput)(nil)).Elem(), H264ColorFormatHLGArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*H264ColorFormatHLGPtrInput)(nil)).Elem(), H264ColorFormatHLGArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*H264ColorFormatSDRInput)(nil)).Elem(), H264ColorFormatSDRArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*H264ColorFormatSDRPtrInput)(nil)).Elem(), H264ColorFormatSDRArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*H265CodecSettingsInput)(nil)).Elem(), H265CodecSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*H265CodecSettingsPtrInput)(nil)).Elem(), H265CodecSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*H265ColorFormatHDR10Input)(nil)).Elem(), H265ColorFormatHDR10Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*H265ColorFormatHDR10PtrInput)(nil)).Elem(), H265ColorFormatHDR10Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*H265ColorFormatHLGInput)(nil)).Elem(), H265ColorFormatHLGArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*H265ColorFormatHLGPtrInput)(nil)).Elem(), H265ColorFormatHLGArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*H265ColorFormatSDRInput)(nil)).Elem(), H265ColorFormatSDRArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*H265ColorFormatSDRPtrInput)(nil)).Elem(), H265ColorFormatSDRArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageInput)(nil)).Elem(), ImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImagePtrInput)(nil)).Elem(), ImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InputInput)(nil)).Elem(), InputArgs{})
@@ -10945,6 +12201,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VideoStreamPtrInput)(nil)).Elem(), VideoStreamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Vp9CodecSettingsInput)(nil)).Elem(), Vp9CodecSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Vp9CodecSettingsPtrInput)(nil)).Elem(), Vp9CodecSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Vp9ColorFormatHLGInput)(nil)).Elem(), Vp9ColorFormatHLGArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Vp9ColorFormatHLGPtrInput)(nil)).Elem(), Vp9ColorFormatHLGArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Vp9ColorFormatSDRInput)(nil)).Elem(), Vp9ColorFormatSDRArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Vp9ColorFormatSDRPtrInput)(nil)).Elem(), Vp9ColorFormatSDRArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WidevineInput)(nil)).Elem(), WidevineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WidevinePtrInput)(nil)).Elem(), WidevineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*YadifConfigInput)(nil)).Elem(), YadifConfigArgs{})
@@ -11026,9 +12286,24 @@ func init() {
 	pulumi.RegisterOutputType(H264CodecSettingsOutput{})
 	pulumi.RegisterOutputType(H264CodecSettingsPtrOutput{})
 	pulumi.RegisterOutputType(H264CodecSettingsResponseOutput{})
+	pulumi.RegisterOutputType(H264ColorFormatHLGOutput{})
+	pulumi.RegisterOutputType(H264ColorFormatHLGPtrOutput{})
+	pulumi.RegisterOutputType(H264ColorFormatHLGResponseOutput{})
+	pulumi.RegisterOutputType(H264ColorFormatSDROutput{})
+	pulumi.RegisterOutputType(H264ColorFormatSDRPtrOutput{})
+	pulumi.RegisterOutputType(H264ColorFormatSDRResponseOutput{})
 	pulumi.RegisterOutputType(H265CodecSettingsOutput{})
 	pulumi.RegisterOutputType(H265CodecSettingsPtrOutput{})
 	pulumi.RegisterOutputType(H265CodecSettingsResponseOutput{})
+	pulumi.RegisterOutputType(H265ColorFormatHDR10Output{})
+	pulumi.RegisterOutputType(H265ColorFormatHDR10PtrOutput{})
+	pulumi.RegisterOutputType(H265ColorFormatHDR10ResponseOutput{})
+	pulumi.RegisterOutputType(H265ColorFormatHLGOutput{})
+	pulumi.RegisterOutputType(H265ColorFormatHLGPtrOutput{})
+	pulumi.RegisterOutputType(H265ColorFormatHLGResponseOutput{})
+	pulumi.RegisterOutputType(H265ColorFormatSDROutput{})
+	pulumi.RegisterOutputType(H265ColorFormatSDRPtrOutput{})
+	pulumi.RegisterOutputType(H265ColorFormatSDRResponseOutput{})
 	pulumi.RegisterOutputType(ImageOutput{})
 	pulumi.RegisterOutputType(ImagePtrOutput{})
 	pulumi.RegisterOutputType(ImageResponseOutput{})
@@ -11099,6 +12374,12 @@ func init() {
 	pulumi.RegisterOutputType(Vp9CodecSettingsOutput{})
 	pulumi.RegisterOutputType(Vp9CodecSettingsPtrOutput{})
 	pulumi.RegisterOutputType(Vp9CodecSettingsResponseOutput{})
+	pulumi.RegisterOutputType(Vp9ColorFormatHLGOutput{})
+	pulumi.RegisterOutputType(Vp9ColorFormatHLGPtrOutput{})
+	pulumi.RegisterOutputType(Vp9ColorFormatHLGResponseOutput{})
+	pulumi.RegisterOutputType(Vp9ColorFormatSDROutput{})
+	pulumi.RegisterOutputType(Vp9ColorFormatSDRPtrOutput{})
+	pulumi.RegisterOutputType(Vp9ColorFormatSDRResponseOutput{})
 	pulumi.RegisterOutputType(WidevineOutput{})
 	pulumi.RegisterOutputType(WidevinePtrOutput{})
 	pulumi.RegisterOutputType(WidevineResponseOutput{})

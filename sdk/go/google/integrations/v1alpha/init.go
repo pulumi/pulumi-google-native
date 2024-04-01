@@ -31,8 +31,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SfdcInstance{}
 	case "google-native:integrations/v1alpha:TemplatesVersion":
 		r = &TemplatesVersion{}
-	case "google-native:integrations/v1alpha:TestCase":
-		r = &TestCase{}
 	case "google-native:integrations/v1alpha:Version":
 		r = &Version{}
 	default:

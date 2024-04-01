@@ -17,6 +17,8 @@ type Function struct {
 
 	// Describes the Build step of the function that builds a container from the given source.
 	BuildConfig BuildConfigResponseOutput `pulumi:"buildConfig"`
+	// The create timestamp of a Cloud Function. This is only applicable to 2nd Gen functions.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// User-provided description of a function.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Describe whether the function is 1st Gen or 2nd Gen.
@@ -43,6 +45,8 @@ type Function struct {
 	StateMessages GoogleCloudFunctionsV2StateMessageResponseArrayOutput `pulumi:"stateMessages"`
 	// The last update timestamp of a Cloud Function.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// UpgradeInfo for this Cloud Function
+	UpgradeInfo UpgradeInfoResponseOutput `pulumi:"upgradeInfo"`
 	// The deployed url for the function.
 	Url pulumi.StringOutput `pulumi:"url"`
 }
@@ -180,6 +184,11 @@ func (o FunctionOutput) BuildConfig() BuildConfigResponseOutput {
 	return o.ApplyT(func(v *Function) BuildConfigResponseOutput { return v.BuildConfig }).(BuildConfigResponseOutput)
 }
 
+// The create timestamp of a Cloud Function. This is only applicable to 2nd Gen functions.
+func (o FunctionOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // User-provided description of a function.
 func (o FunctionOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
@@ -246,6 +255,11 @@ func (o FunctionOutput) StateMessages() GoogleCloudFunctionsV2StateMessageRespon
 // The last update timestamp of a Cloud Function.
 func (o FunctionOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// UpgradeInfo for this Cloud Function
+func (o FunctionOutput) UpgradeInfo() UpgradeInfoResponseOutput {
+	return o.ApplyT(func(v *Function) UpgradeInfoResponseOutput { return v.UpgradeInfo }).(UpgradeInfoResponseOutput)
 }
 
 // The deployed url for the function.

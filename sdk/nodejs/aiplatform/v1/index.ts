@@ -250,10 +250,20 @@ export const getMetadataStore: typeof import("./getMetadataStore").getMetadataSt
 export const getMetadataStoreOutput: typeof import("./getMetadataStore").getMetadataStoreOutput = null as any;
 utilities.lazyLoad(exports, ["getMetadataStore","getMetadataStoreOutput"], () => require("./getMetadataStore"));
 
+export { GetModelArgs, GetModelResult, GetModelOutputArgs } from "./getModel";
+export const getModel: typeof import("./getModel").getModel = null as any;
+export const getModelOutput: typeof import("./getModel").getModelOutput = null as any;
+utilities.lazyLoad(exports, ["getModel","getModelOutput"], () => require("./getModel"));
+
 export { GetModelDeploymentMonitoringJobArgs, GetModelDeploymentMonitoringJobResult, GetModelDeploymentMonitoringJobOutputArgs } from "./getModelDeploymentMonitoringJob";
 export const getModelDeploymentMonitoringJob: typeof import("./getModelDeploymentMonitoringJob").getModelDeploymentMonitoringJob = null as any;
 export const getModelDeploymentMonitoringJobOutput: typeof import("./getModelDeploymentMonitoringJob").getModelDeploymentMonitoringJobOutput = null as any;
 utilities.lazyLoad(exports, ["getModelDeploymentMonitoringJob","getModelDeploymentMonitoringJobOutput"], () => require("./getModelDeploymentMonitoringJob"));
+
+export { GetModelIamPolicyArgs, GetModelIamPolicyResult, GetModelIamPolicyOutputArgs } from "./getModelIamPolicy";
+export const getModelIamPolicy: typeof import("./getModelIamPolicy").getModelIamPolicy = null as any;
+export const getModelIamPolicyOutput: typeof import("./getModelIamPolicy").getModelIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getModelIamPolicy","getModelIamPolicyOutput"], () => require("./getModelIamPolicy"));
 
 export { GetNasJobArgs, GetNasJobResult, GetNasJobOutputArgs } from "./getNasJob";
 export const getNasJob: typeof import("./getNasJob").getNasJob = null as any;
@@ -269,6 +279,11 @@ export { GetNotebookRuntimeTemplateIamPolicyArgs, GetNotebookRuntimeTemplateIamP
 export const getNotebookRuntimeTemplateIamPolicy: typeof import("./getNotebookRuntimeTemplateIamPolicy").getNotebookRuntimeTemplateIamPolicy = null as any;
 export const getNotebookRuntimeTemplateIamPolicyOutput: typeof import("./getNotebookRuntimeTemplateIamPolicy").getNotebookRuntimeTemplateIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getNotebookRuntimeTemplateIamPolicy","getNotebookRuntimeTemplateIamPolicyOutput"], () => require("./getNotebookRuntimeTemplateIamPolicy"));
+
+export { GetPersistentResourceArgs, GetPersistentResourceResult, GetPersistentResourceOutputArgs } from "./getPersistentResource";
+export const getPersistentResource: typeof import("./getPersistentResource").getPersistentResource = null as any;
+export const getPersistentResourceOutput: typeof import("./getPersistentResource").getPersistentResourceOutput = null as any;
+utilities.lazyLoad(exports, ["getPersistentResource","getPersistentResourceOutput"], () => require("./getPersistentResource"));
 
 export { GetPipelineJobArgs, GetPipelineJobResult, GetPipelineJobOutputArgs } from "./getPipelineJob";
 export const getPipelineJob: typeof import("./getPipelineJob").getPipelineJob = null as any;
@@ -340,10 +355,30 @@ export type MetadataStore = import("./metadataStore").MetadataStore;
 export const MetadataStore: typeof import("./metadataStore").MetadataStore = null as any;
 utilities.lazyLoad(exports, ["MetadataStore"], () => require("./metadataStore"));
 
+export { ModelArgs } from "./model";
+export type Model = import("./model").Model;
+export const Model: typeof import("./model").Model = null as any;
+utilities.lazyLoad(exports, ["Model"], () => require("./model"));
+
 export { ModelDeploymentMonitoringJobArgs } from "./modelDeploymentMonitoringJob";
 export type ModelDeploymentMonitoringJob = import("./modelDeploymentMonitoringJob").ModelDeploymentMonitoringJob;
 export const ModelDeploymentMonitoringJob: typeof import("./modelDeploymentMonitoringJob").ModelDeploymentMonitoringJob = null as any;
 utilities.lazyLoad(exports, ["ModelDeploymentMonitoringJob"], () => require("./modelDeploymentMonitoringJob"));
+
+export { ModelIamBindingArgs } from "./modelIamBinding";
+export type ModelIamBinding = import("./modelIamBinding").ModelIamBinding;
+export const ModelIamBinding: typeof import("./modelIamBinding").ModelIamBinding = null as any;
+utilities.lazyLoad(exports, ["ModelIamBinding"], () => require("./modelIamBinding"));
+
+export { ModelIamMemberArgs } from "./modelIamMember";
+export type ModelIamMember = import("./modelIamMember").ModelIamMember;
+export const ModelIamMember: typeof import("./modelIamMember").ModelIamMember = null as any;
+utilities.lazyLoad(exports, ["ModelIamMember"], () => require("./modelIamMember"));
+
+export { ModelIamPolicyArgs } from "./modelIamPolicy";
+export type ModelIamPolicy = import("./modelIamPolicy").ModelIamPolicy;
+export const ModelIamPolicy: typeof import("./modelIamPolicy").ModelIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ModelIamPolicy"], () => require("./modelIamPolicy"));
 
 export { NasJobArgs } from "./nasJob";
 export type NasJob = import("./nasJob").NasJob;
@@ -369,6 +404,11 @@ export { NotebookRuntimeTemplateIamPolicyArgs } from "./notebookRuntimeTemplateI
 export type NotebookRuntimeTemplateIamPolicy = import("./notebookRuntimeTemplateIamPolicy").NotebookRuntimeTemplateIamPolicy;
 export const NotebookRuntimeTemplateIamPolicy: typeof import("./notebookRuntimeTemplateIamPolicy").NotebookRuntimeTemplateIamPolicy = null as any;
 utilities.lazyLoad(exports, ["NotebookRuntimeTemplateIamPolicy"], () => require("./notebookRuntimeTemplateIamPolicy"));
+
+export { PersistentResourceArgs } from "./persistentResource";
+export type PersistentResource = import("./persistentResource").PersistentResource;
+export const PersistentResource: typeof import("./persistentResource").PersistentResource = null as any;
+utilities.lazyLoad(exports, ["PersistentResource"], () => require("./persistentResource"));
 
 export { PipelineJobArgs } from "./pipelineJob";
 export type PipelineJob = import("./pipelineJob").PipelineJob;
@@ -481,8 +521,16 @@ const _module = {
                 return new MetadataSchema(name, <any>undefined, { urn })
             case "google-native:aiplatform/v1:MetadataStore":
                 return new MetadataStore(name, <any>undefined, { urn })
+            case "google-native:aiplatform/v1:Model":
+                return new Model(name, <any>undefined, { urn })
             case "google-native:aiplatform/v1:ModelDeploymentMonitoringJob":
                 return new ModelDeploymentMonitoringJob(name, <any>undefined, { urn })
+            case "google-native:aiplatform/v1:ModelIamBinding":
+                return new ModelIamBinding(name, <any>undefined, { urn })
+            case "google-native:aiplatform/v1:ModelIamMember":
+                return new ModelIamMember(name, <any>undefined, { urn })
+            case "google-native:aiplatform/v1:ModelIamPolicy":
+                return new ModelIamPolicy(name, <any>undefined, { urn })
             case "google-native:aiplatform/v1:NasJob":
                 return new NasJob(name, <any>undefined, { urn })
             case "google-native:aiplatform/v1:NotebookRuntimeTemplate":
@@ -493,6 +541,8 @@ const _module = {
                 return new NotebookRuntimeTemplateIamMember(name, <any>undefined, { urn })
             case "google-native:aiplatform/v1:NotebookRuntimeTemplateIamPolicy":
                 return new NotebookRuntimeTemplateIamPolicy(name, <any>undefined, { urn })
+            case "google-native:aiplatform/v1:PersistentResource":
+                return new PersistentResource(name, <any>undefined, { urn })
             case "google-native:aiplatform/v1:PipelineJob":
                 return new PipelineJob(name, <any>undefined, { urn })
             case "google-native:aiplatform/v1:Run":

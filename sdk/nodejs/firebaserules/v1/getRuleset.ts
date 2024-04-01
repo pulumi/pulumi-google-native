@@ -26,6 +26,10 @@ export interface GetRulesetArgs {
 
 export interface GetRulesetResult {
     /**
+     * Immutable. Intended resource to which this Ruleset should be released. May be left blank to signify the resource associated with the default release. Expected format: firestore.googleapis.com/projects//databases/
+     */
+    readonly attachmentPoint: string;
+    /**
      * Time the `Ruleset` was created.
      */
     readonly createTime: string;

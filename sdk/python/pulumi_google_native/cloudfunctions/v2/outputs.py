@@ -14,12 +14,14 @@ from ._enums import *
 __all__ = [
     'AuditConfigResponse',
     'AuditLogConfigResponse',
+    'AutomaticUpdatePolicyResponse',
     'BindingResponse',
     'BuildConfigResponse',
     'EventFilterResponse',
     'EventTriggerResponse',
     'ExprResponse',
     'GoogleCloudFunctionsV2StateMessageResponse',
+    'OnDeployUpdatePolicyResponse',
     'RepoSourceResponse',
     'SecretEnvVarResponse',
     'SecretVersionResponse',
@@ -28,6 +30,7 @@ __all__ = [
     'SourceProvenanceResponse',
     'SourceResponse',
     'StorageSourceResponse',
+    'UpgradeInfoResponse',
 ]
 
 @pulumi.output_type
@@ -133,6 +136,18 @@ class AuditLogConfigResponse(dict):
 
 
 @pulumi.output_type
+class AutomaticUpdatePolicyResponse(dict):
+    """
+    Security patches are applied automatically to the runtime without requiring the function to be redeployed.
+    """
+    def __init__(__self__):
+        """
+        Security patches are applied automatically to the runtime without requiring the function to be redeployed.
+        """
+        pass
+
+
+@pulumi.output_type
 class BindingResponse(dict):
     """
     Associates `members`, or principals, with a `role`.
@@ -144,8 +159,8 @@ class BindingResponse(dict):
         """
         Associates `members`, or principals, with a `role`.
         :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "members", members)
@@ -163,7 +178,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         """
         return pulumi.get(self, "members")
 
@@ -171,7 +186,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         return pulumi.get(self, "role")
 
@@ -184,7 +199,9 @@ class BuildConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "dockerRegistry":
+        if key == "automaticUpdatePolicy":
+            suggest = "automatic_update_policy"
+        elif key == "dockerRegistry":
             suggest = "docker_registry"
         elif key == "dockerRepository":
             suggest = "docker_repository"
@@ -192,6 +209,10 @@ class BuildConfigResponse(dict):
             suggest = "entry_point"
         elif key == "environmentVariables":
             suggest = "environment_variables"
+        elif key == "onDeployUpdatePolicy":
+            suggest = "on_deploy_update_policy"
+        elif key == "serviceAccount":
+            suggest = "service_account"
         elif key == "sourceProvenance":
             suggest = "source_provenance"
         elif key == "sourceToken":
@@ -211,12 +232,15 @@ class BuildConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 automatic_update_policy: 'outputs.AutomaticUpdatePolicyResponse',
                  build: str,
                  docker_registry: str,
                  docker_repository: str,
                  entry_point: str,
                  environment_variables: Mapping[str, str],
+                 on_deploy_update_policy: 'outputs.OnDeployUpdatePolicyResponse',
                  runtime: str,
+                 service_account: str,
                  source: 'outputs.SourceResponse',
                  source_provenance: 'outputs.SourceProvenanceResponse',
                  source_token: str,
@@ -224,26 +248,35 @@ class BuildConfigResponse(dict):
         """
         Describes the Build step of the function that builds a container from the given source.
         :param str build: The Cloud Build name of the latest successful deployment of the function.
-        :param str docker_registry: Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
-        :param str docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+        :param str docker_registry: Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
+        :param str docker_repository: Repository in Artifact Registry to which the function docker image will be pushed after it is built by Cloud Build. If specified by user, it is created and managed by user with a customer managed encryption key. Otherwise, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
         :param str entry_point: The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
         :param Mapping[str, str] environment_variables: User-provided build-time environment variables for the function
         :param str runtime: The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
+        :param str service_account: [Preview] Service account to be used for building the container
         :param 'SourceResponse' source: The location of the function source code.
         :param 'SourceProvenanceResponse' source_provenance: A permanent fixed identifier for source.
         :param str source_token: An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.
         :param str worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
         """
+        pulumi.set(__self__, "automatic_update_policy", automatic_update_policy)
         pulumi.set(__self__, "build", build)
         pulumi.set(__self__, "docker_registry", docker_registry)
         pulumi.set(__self__, "docker_repository", docker_repository)
         pulumi.set(__self__, "entry_point", entry_point)
         pulumi.set(__self__, "environment_variables", environment_variables)
+        pulumi.set(__self__, "on_deploy_update_policy", on_deploy_update_policy)
         pulumi.set(__self__, "runtime", runtime)
+        pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "source_provenance", source_provenance)
         pulumi.set(__self__, "source_token", source_token)
         pulumi.set(__self__, "worker_pool", worker_pool)
+
+    @property
+    @pulumi.getter(name="automaticUpdatePolicy")
+    def automatic_update_policy(self) -> 'outputs.AutomaticUpdatePolicyResponse':
+        return pulumi.get(self, "automatic_update_policy")
 
     @property
     @pulumi.getter
@@ -257,7 +290,7 @@ class BuildConfigResponse(dict):
     @pulumi.getter(name="dockerRegistry")
     def docker_registry(self) -> str:
         """
-        Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+        Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
         """
         return pulumi.get(self, "docker_registry")
 
@@ -265,7 +298,7 @@ class BuildConfigResponse(dict):
     @pulumi.getter(name="dockerRepository")
     def docker_repository(self) -> str:
         """
-        User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+        Repository in Artifact Registry to which the function docker image will be pushed after it is built by Cloud Build. If specified by user, it is created and managed by user with a customer managed encryption key. Otherwise, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
         """
         return pulumi.get(self, "docker_repository")
 
@@ -286,12 +319,25 @@ class BuildConfigResponse(dict):
         return pulumi.get(self, "environment_variables")
 
     @property
+    @pulumi.getter(name="onDeployUpdatePolicy")
+    def on_deploy_update_policy(self) -> 'outputs.OnDeployUpdatePolicyResponse':
+        return pulumi.get(self, "on_deploy_update_policy")
+
+    @property
     @pulumi.getter
     def runtime(self) -> str:
         """
         The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
         """
         return pulumi.get(self, "runtime")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> str:
+        """
+        [Preview] Service account to be used for building the container
+        """
+        return pulumi.get(self, "service_account")
 
     @property
     @pulumi.getter
@@ -408,6 +454,7 @@ class EventTriggerResponse(dict):
                  event_type: str,
                  pubsub_topic: str,
                  retry_policy: str,
+                 service: str,
                  service_account_email: str,
                  trigger: str,
                  trigger_region: str):
@@ -418,6 +465,7 @@ class EventTriggerResponse(dict):
         :param str event_type: The type of event to observe. For example: `google.cloud.audit.log.v1.written` or `google.cloud.pubsub.topic.v1.messagePublished`.
         :param str pubsub_topic: Optional. The name of a Pub/Sub topic in the same project that will be used as the transport topic for the event delivery. Format: `projects/{project}/topics/{topic}`. This is only valid for events of type `google.cloud.pubsub.topic.v1.messagePublished`. The topic provided here will not be deleted at function deletion.
         :param str retry_policy: Optional. If unset, then defaults to ignoring failures (i.e. not retrying them).
+        :param str service: Optional. The hostname of the service that 1st Gen function should be observed. If no string is provided, the default service implementing the API will be used. For example, `storage.googleapis.com` is the default for all event types in the `google.storage` namespace. The field is only applicable to 1st Gen functions.
         :param str service_account_email: Optional. The email of the trigger's service account. The service account must have permission to invoke Cloud Run services, the permission is `run.routes.invoke`. If empty, defaults to the Compute Engine default service account: `{project_number}-compute@developer.gserviceaccount.com`.
         :param str trigger: The resource name of the Eventarc trigger. The format of this field is `projects/{project}/locations/{region}/triggers/{trigger}`.
         :param str trigger_region: The region that the trigger will be in. The trigger will only receive events originating in this region. It can be the same region as the function, a different region or multi-region, or the global region. If not provided, defaults to the same region as the function.
@@ -427,6 +475,7 @@ class EventTriggerResponse(dict):
         pulumi.set(__self__, "event_type", event_type)
         pulumi.set(__self__, "pubsub_topic", pubsub_topic)
         pulumi.set(__self__, "retry_policy", retry_policy)
+        pulumi.set(__self__, "service", service)
         pulumi.set(__self__, "service_account_email", service_account_email)
         pulumi.set(__self__, "trigger", trigger)
         pulumi.set(__self__, "trigger_region", trigger_region)
@@ -470,6 +519,14 @@ class EventTriggerResponse(dict):
         Optional. If unset, then defaults to ignoring failures (i.e. not retrying them).
         """
         return pulumi.get(self, "retry_policy")
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        Optional. The hostname of the service that 1st Gen function should be observed. If no string is provided, the default service implementing the API will be used. For example, `storage.googleapis.com` is the default for all event types in the `google.storage` namespace. The field is only applicable to 1st Gen functions.
+        """
+        return pulumi.get(self, "service")
 
     @property
     @pulumi.getter(name="serviceAccountEmail")
@@ -593,6 +650,45 @@ class GoogleCloudFunctionsV2StateMessageResponse(dict):
         One-word CamelCase type of the state message.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class OnDeployUpdatePolicyResponse(dict):
+    """
+    Security patches are only applied when a function is redeployed.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "runtimeVersion":
+            suggest = "runtime_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OnDeployUpdatePolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OnDeployUpdatePolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OnDeployUpdatePolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 runtime_version: str):
+        """
+        Security patches are only applied when a function is redeployed.
+        :param str runtime_version: contains the runtime version which was used during latest function deployment.
+        """
+        pulumi.set(__self__, "runtime_version", runtime_version)
+
+    @property
+    @pulumi.getter(name="runtimeVersion")
+    def runtime_version(self) -> str:
+        """
+        contains the runtime version which was used during latest function deployment.
+        """
+        return pulumi.get(self, "runtime_version")
 
 
 @pulumi.output_type
@@ -927,12 +1023,12 @@ class ServiceConfigResponse(dict):
         """
         Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).
         :param bool all_traffic_on_latest_revision: Whether 100% of traffic is routed to the latest revision. On CreateFunction and UpdateFunction, when set to true, the revision being deployed will serve 100% of traffic, ignoring any traffic split settings, if any. On GetFunction, true will be returned if the latest revision is serving 100% of traffic.
-        :param str available_cpu: [Preview] The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
+        :param str available_cpu: The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
         :param str available_memory: The amount of memory available for a function. Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is supplied the value is interpreted as bytes. See https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go a full description.
         :param Mapping[str, str] environment_variables: Environment variables that shall be available during function execution.
         :param str ingress_settings: The ingress settings for the function, controlling what traffic can reach it.
         :param int max_instance_count: The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
-        :param int max_instance_request_concurrency: [Preview] Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+        :param int max_instance_request_concurrency: Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
         :param int min_instance_count: The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
         :param str revision: The name of service revision.
         :param Sequence['SecretEnvVarResponse'] secret_environment_variables: Secret environment variables configuration.
@@ -976,7 +1072,7 @@ class ServiceConfigResponse(dict):
     @pulumi.getter(name="availableCpu")
     def available_cpu(self) -> str:
         """
-        [Preview] The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
+        The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
         """
         return pulumi.get(self, "available_cpu")
 
@@ -1016,7 +1112,7 @@ class ServiceConfigResponse(dict):
     @pulumi.getter(name="maxInstanceRequestConcurrency")
     def max_instance_request_concurrency(self) -> int:
         """
-        [Preview] Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+        Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
         """
         return pulumi.get(self, "max_instance_request_concurrency")
 
@@ -1281,5 +1377,83 @@ class StorageSourceResponse(dict):
         Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
         """
         return pulumi.get(self, "object")
+
+
+@pulumi.output_type
+class UpgradeInfoResponse(dict):
+    """
+    Information related to: * A function's eligibility for 1st Gen to 2nd Gen migration * Current state of migration for function undergoing migration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "buildConfig":
+            suggest = "build_config"
+        elif key == "eventTrigger":
+            suggest = "event_trigger"
+        elif key == "serviceConfig":
+            suggest = "service_config"
+        elif key == "upgradeState":
+            suggest = "upgrade_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UpgradeInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UpgradeInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UpgradeInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 build_config: 'outputs.BuildConfigResponse',
+                 event_trigger: 'outputs.EventTriggerResponse',
+                 service_config: 'outputs.ServiceConfigResponse',
+                 upgrade_state: str):
+        """
+        Information related to: * A function's eligibility for 1st Gen to 2nd Gen migration * Current state of migration for function undergoing migration.
+        :param 'BuildConfigResponse' build_config: Describes the Build step of the function that builds a container to prepare for 2nd gen upgrade.
+        :param 'EventTriggerResponse' event_trigger: Describes the Event trigger which has been setup to prepare for 2nd gen upgrade.
+        :param 'ServiceConfigResponse' service_config: Describes the Cloud Run service which has been setup to prepare for 2nd gen upgrade.
+        :param str upgrade_state: UpgradeState of the function
+        """
+        pulumi.set(__self__, "build_config", build_config)
+        pulumi.set(__self__, "event_trigger", event_trigger)
+        pulumi.set(__self__, "service_config", service_config)
+        pulumi.set(__self__, "upgrade_state", upgrade_state)
+
+    @property
+    @pulumi.getter(name="buildConfig")
+    def build_config(self) -> 'outputs.BuildConfigResponse':
+        """
+        Describes the Build step of the function that builds a container to prepare for 2nd gen upgrade.
+        """
+        return pulumi.get(self, "build_config")
+
+    @property
+    @pulumi.getter(name="eventTrigger")
+    def event_trigger(self) -> 'outputs.EventTriggerResponse':
+        """
+        Describes the Event trigger which has been setup to prepare for 2nd gen upgrade.
+        """
+        return pulumi.get(self, "event_trigger")
+
+    @property
+    @pulumi.getter(name="serviceConfig")
+    def service_config(self) -> 'outputs.ServiceConfigResponse':
+        """
+        Describes the Cloud Run service which has been setup to prepare for 2nd gen upgrade.
+        """
+        return pulumi.get(self, "service_config")
+
+    @property
+    @pulumi.getter(name="upgradeState")
+    def upgrade_state(self) -> str:
+        """
+        UpgradeState of the function
+        """
+        return pulumi.get(self, "upgrade_state")
 
 

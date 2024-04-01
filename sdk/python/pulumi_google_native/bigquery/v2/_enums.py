@@ -8,13 +8,29 @@ __all__ = [
     'ArgumentArgumentKind',
     'ArgumentMode',
     'AuditLogConfigLogType',
+    'BigLakeConfigurationFileFormat',
+    'BigLakeConfigurationTableFormat',
     'DatasetAccessEntryTargetTypesItem',
+    'DatasetDefaultRoundingMode',
+    'DatasetStorageBillingModel',
+    'ExternalDataConfigurationDecimalTargetTypesItem',
+    'ExternalDataConfigurationFileSetSpecType',
+    'ExternalDataConfigurationJsonExtension',
+    'ExternalDataConfigurationMetadataCacheMode',
+    'ExternalDataConfigurationObjectMetadata',
+    'JobConfigurationLoadDecimalTargetTypesItem',
+    'JobConfigurationLoadFileSetSpecType',
+    'JobConfigurationLoadJsonExtension',
+    'JobConfigurationTableCopyOperationType',
     'RoutineDataGovernanceType',
     'RoutineDeterminismLevel',
     'RoutineLanguage',
     'RoutineRoutineType',
     'RoutineSecurityMode',
+    'ScriptOptionsKeyResultStatement',
     'StandardSqlDataTypeTypeKind',
+    'TableDefaultRoundingMode',
+    'TableFieldSchemaRoundingMode',
 ]
 
 
@@ -80,6 +96,34 @@ class AuditLogConfigLogType(str, Enum):
     """
 
 
+class BigLakeConfigurationFileFormat(str, Enum):
+    """
+    Required. The file format the table data is stored in.
+    """
+    FILE_FORMAT_UNSPECIFIED = "FILE_FORMAT_UNSPECIFIED"
+    """
+    Default Value.
+    """
+    PARQUET = "PARQUET"
+    """
+    Apache Parquet format.
+    """
+
+
+class BigLakeConfigurationTableFormat(str, Enum):
+    """
+    Required. The table format the metadata only snapshots are stored in.
+    """
+    TABLE_FORMAT_UNSPECIFIED = "TABLE_FORMAT_UNSPECIFIED"
+    """
+    Default Value.
+    """
+    ICEBERG = "ICEBERG"
+    """
+    Apache Iceberg format.
+    """
+
+
 class DatasetAccessEntryTargetTypesItem(str, Enum):
     TARGET_TYPE_UNSPECIFIED = "TARGET_TYPE_UNSPECIFIED"
     """
@@ -92,6 +136,198 @@ class DatasetAccessEntryTargetTypesItem(str, Enum):
     ROUTINES = "ROUTINES"
     """
     This entry applies to routines in the dataset.
+    """
+
+
+class DatasetDefaultRoundingMode(str, Enum):
+    """
+    Optional. Defines the default rounding mode specification of new tables created within this dataset. During table creation, if this field is specified, the table within this dataset will inherit the default rounding mode of the dataset. Setting the default rounding mode on a table overrides this option. Existing tables in the dataset are unaffected. If columns are defined during that table creation, they will immediately inherit the table's default rounding mode, unless otherwise specified.
+    """
+    ROUNDING_MODE_UNSPECIFIED = "ROUNDING_MODE_UNSPECIFIED"
+    """
+    Unspecified will default to using ROUND_HALF_AWAY_FROM_ZERO.
+    """
+    ROUND_HALF_AWAY_FROM_ZERO = "ROUND_HALF_AWAY_FROM_ZERO"
+    """
+    ROUND_HALF_AWAY_FROM_ZERO rounds half values away from zero when applying precision and scale upon writing of NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 => 1 1.5, 1.6, 1.7, 1.8, 1.9 => 2
+    """
+    ROUND_HALF_EVEN = "ROUND_HALF_EVEN"
+    """
+    ROUND_HALF_EVEN rounds half values to the nearest even value when applying precision and scale upon writing of NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 => 1 1.5 => 2 1.6, 1.7, 1.8, 1.9 => 2 2.5 => 2
+    """
+
+
+class DatasetStorageBillingModel(str, Enum):
+    """
+    Optional. Updates storage_billing_model for the dataset.
+    """
+    STORAGE_BILLING_MODEL_UNSPECIFIED = "STORAGE_BILLING_MODEL_UNSPECIFIED"
+    """
+    Value not set.
+    """
+    LOGICAL = "LOGICAL"
+    """
+    Billing for logical bytes.
+    """
+    PHYSICAL = "PHYSICAL"
+    """
+    Billing for physical bytes.
+    """
+
+
+class ExternalDataConfigurationDecimalTargetTypesItem(str, Enum):
+    DECIMAL_TARGET_TYPE_UNSPECIFIED = "DECIMAL_TARGET_TYPE_UNSPECIFIED"
+    """
+    Invalid type.
+    """
+    NUMERIC = "NUMERIC"
+    """
+    Decimal values could be converted to NUMERIC type.
+    """
+    BIGNUMERIC = "BIGNUMERIC"
+    """
+    Decimal values could be converted to BIGNUMERIC type.
+    """
+    STRING = "STRING"
+    """
+    Decimal values could be converted to STRING type.
+    """
+
+
+class ExternalDataConfigurationFileSetSpecType(str, Enum):
+    """
+    Optional. Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+    """
+    FILE_SET_SPEC_TYPE_FILE_SYSTEM_MATCH = "FILE_SET_SPEC_TYPE_FILE_SYSTEM_MATCH"
+    """
+    This option expands source URIs by listing files from the object store. It is the default behavior if FileSetSpecType is not set.
+    """
+    FILE_SET_SPEC_TYPE_NEW_LINE_DELIMITED_MANIFEST = "FILE_SET_SPEC_TYPE_NEW_LINE_DELIMITED_MANIFEST"
+    """
+    This option indicates that the provided URIs are newline-delimited manifest files, with one URI per line. Wildcard URIs are not supported.
+    """
+
+
+class ExternalDataConfigurationJsonExtension(str, Enum):
+    """
+    Optional. Load option to be used together with source_format newline-delimited JSON to indicate that a variant of JSON is being loaded. To load newline-delimited GeoJSON, specify GEOJSON (and source_format must be set to NEWLINE_DELIMITED_JSON).
+    """
+    JSON_EXTENSION_UNSPECIFIED = "JSON_EXTENSION_UNSPECIFIED"
+    """
+    The default if provided value is not one included in the enum, or the value is not specified. The source formate is parsed without any modification.
+    """
+    GEOJSON = "GEOJSON"
+    """
+    Use GeoJSON variant of JSON. See https://tools.ietf.org/html/rfc7946.
+    """
+
+
+class ExternalDataConfigurationMetadataCacheMode(str, Enum):
+    """
+    Optional. Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
+    """
+    METADATA_CACHE_MODE_UNSPECIFIED = "METADATA_CACHE_MODE_UNSPECIFIED"
+    """
+    Unspecified metadata cache mode.
+    """
+    AUTOMATIC = "AUTOMATIC"
+    """
+    Set this mode to trigger automatic background refresh of metadata cache from the external source. Queries will use the latest available cache version within the table's maxStaleness interval.
+    """
+    MANUAL = "MANUAL"
+    """
+    Set this mode to enable triggering manual refresh of the metadata cache from external source. Queries will use the latest manually triggered cache version within the table's maxStaleness interval.
+    """
+
+
+class ExternalDataConfigurationObjectMetadata(str, Enum):
+    """
+    Optional. ObjectMetadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the source_uris. If ObjectMetadata is set, source_format should be omitted. Currently SIMPLE is the only supported Object Metadata type.
+    """
+    OBJECT_METADATA_UNSPECIFIED = "OBJECT_METADATA_UNSPECIFIED"
+    """
+    Unspecified by default.
+    """
+    DIRECTORY = "DIRECTORY"
+    """
+    A synonym for `SIMPLE`.
+    """
+    SIMPLE = "SIMPLE"
+    """
+    Directory listing of objects.
+    """
+
+
+class JobConfigurationLoadDecimalTargetTypesItem(str, Enum):
+    DECIMAL_TARGET_TYPE_UNSPECIFIED = "DECIMAL_TARGET_TYPE_UNSPECIFIED"
+    """
+    Invalid type.
+    """
+    NUMERIC = "NUMERIC"
+    """
+    Decimal values could be converted to NUMERIC type.
+    """
+    BIGNUMERIC = "BIGNUMERIC"
+    """
+    Decimal values could be converted to BIGNUMERIC type.
+    """
+    STRING = "STRING"
+    """
+    Decimal values could be converted to STRING type.
+    """
+
+
+class JobConfigurationLoadFileSetSpecType(str, Enum):
+    """
+    Optional. Specifies how source URIs are interpreted for constructing the file set to load. By default, source URIs are expanded against the underlying storage. You can also specify manifest files to control how the file set is constructed. This option is only applicable to object storage systems.
+    """
+    FILE_SET_SPEC_TYPE_FILE_SYSTEM_MATCH = "FILE_SET_SPEC_TYPE_FILE_SYSTEM_MATCH"
+    """
+    This option expands source URIs by listing files from the object store. It is the default behavior if FileSetSpecType is not set.
+    """
+    FILE_SET_SPEC_TYPE_NEW_LINE_DELIMITED_MANIFEST = "FILE_SET_SPEC_TYPE_NEW_LINE_DELIMITED_MANIFEST"
+    """
+    This option indicates that the provided URIs are newline-delimited manifest files, with one URI per line. Wildcard URIs are not supported.
+    """
+
+
+class JobConfigurationLoadJsonExtension(str, Enum):
+    """
+    Optional. Load option to be used together with source_format newline-delimited JSON to indicate that a variant of JSON is being loaded. To load newline-delimited GeoJSON, specify GEOJSON (and source_format must be set to NEWLINE_DELIMITED_JSON).
+    """
+    JSON_EXTENSION_UNSPECIFIED = "JSON_EXTENSION_UNSPECIFIED"
+    """
+    The default if provided value is not one included in the enum, or the value is not specified. The source formate is parsed without any modification.
+    """
+    GEOJSON = "GEOJSON"
+    """
+    Use GeoJSON variant of JSON. See https://tools.ietf.org/html/rfc7946.
+    """
+
+
+class JobConfigurationTableCopyOperationType(str, Enum):
+    """
+    Optional. Supported operation types in table copy job.
+    """
+    OPERATION_TYPE_UNSPECIFIED = "OPERATION_TYPE_UNSPECIFIED"
+    """
+    Unspecified operation type.
+    """
+    COPY = "COPY"
+    """
+    The source and destination table have the same table type.
+    """
+    SNAPSHOT = "SNAPSHOT"
+    """
+    The source table type is TABLE and the destination table type is SNAPSHOT.
+    """
+    RESTORE = "RESTORE"
+    """
+    The source table type is SNAPSHOT and the destination table type is TABLE.
+    """
+    CLONE = "CLONE"
+    """
+    The source and destination table have the same table type, but only bill for unique data.
     """
 
 
@@ -201,6 +437,24 @@ class RoutineSecurityMode(str, Enum):
     """
 
 
+class ScriptOptionsKeyResultStatement(str, Enum):
+    """
+    Determines which statement in the script represents the "key result", used to populate the schema and query results of the script job. Default is LAST.
+    """
+    KEY_RESULT_STATEMENT_KIND_UNSPECIFIED = "KEY_RESULT_STATEMENT_KIND_UNSPECIFIED"
+    """
+    Default value.
+    """
+    LAST = "LAST"
+    """
+    The last result determines the key result.
+    """
+    FIRST_SELECT = "FIRST_SELECT"
+    """
+    The first SELECT statement determines the key result.
+    """
+
+
 class StandardSqlDataTypeTypeKind(str, Enum):
     """
     Required. The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
@@ -276,4 +530,40 @@ class StandardSqlDataTypeTypeKind(str, Enum):
     RANGE = "RANGE"
     """
     Encoded as a pair with types matching range_element_type. Pairs must begin with "[", end with ")", and be separated by ", ".
+    """
+
+
+class TableDefaultRoundingMode(str, Enum):
+    """
+    Optional. Defines the default rounding mode specification of new decimal fields (NUMERIC OR BIGNUMERIC) in the table. During table creation or update, if a decimal field is added to this table without an explicit rounding mode specified, then the field inherits the table default rounding mode. Changing this field doesn't affect existing fields.
+    """
+    ROUNDING_MODE_UNSPECIFIED = "ROUNDING_MODE_UNSPECIFIED"
+    """
+    Unspecified will default to using ROUND_HALF_AWAY_FROM_ZERO.
+    """
+    ROUND_HALF_AWAY_FROM_ZERO = "ROUND_HALF_AWAY_FROM_ZERO"
+    """
+    ROUND_HALF_AWAY_FROM_ZERO rounds half values away from zero when applying precision and scale upon writing of NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 => 1 1.5, 1.6, 1.7, 1.8, 1.9 => 2
+    """
+    ROUND_HALF_EVEN = "ROUND_HALF_EVEN"
+    """
+    ROUND_HALF_EVEN rounds half values to the nearest even value when applying precision and scale upon writing of NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 => 1 1.5 => 2 1.6, 1.7, 1.8, 1.9 => 2 2.5 => 2
+    """
+
+
+class TableFieldSchemaRoundingMode(str, Enum):
+    """
+    Optional. Specifies the rounding mode to be used when storing values of NUMERIC and BIGNUMERIC type.
+    """
+    ROUNDING_MODE_UNSPECIFIED = "ROUNDING_MODE_UNSPECIFIED"
+    """
+    Unspecified will default to using ROUND_HALF_AWAY_FROM_ZERO.
+    """
+    ROUND_HALF_AWAY_FROM_ZERO = "ROUND_HALF_AWAY_FROM_ZERO"
+    """
+    ROUND_HALF_AWAY_FROM_ZERO rounds half values away from zero when applying precision and scale upon writing of NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 => 1 1.5, 1.6, 1.7, 1.8, 1.9 => 2
+    """
+    ROUND_HALF_EVEN = "ROUND_HALF_EVEN"
+    """
+    ROUND_HALF_EVEN rounds half values to the nearest even value when applying precision and scale upon writing of NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 => 1 1.5 => 2 1.6, 1.7, 1.8, 1.9 => 2 2.5 => 2
     """

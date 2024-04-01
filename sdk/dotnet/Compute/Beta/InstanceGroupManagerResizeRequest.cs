@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public partial class InstanceGroupManagerResizeRequest : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The count of instances to create as part of this resize request.
+        /// This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
         /// </summary>
         [Output("count")]
         public Output<int> Count { get; private set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public sealed class InstanceGroupManagerResizeRequestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The count of instances to create as part of this resize request.
+        /// This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
         /// </summary>
         [Input("count")]
         public Input<int>? Count { get; set; }

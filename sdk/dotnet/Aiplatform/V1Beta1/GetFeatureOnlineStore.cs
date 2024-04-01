@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         /// </summary>
         public readonly Outputs.GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse DedicatedServingEndpoint;
         /// <summary>
-        /// Optional. The settings for embedding management in FeatureOnlineStore.
+        /// Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.
         /// </summary>
         public readonly Outputs.GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse EmbeddingManagement;
         /// <summary>
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+        /// Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
         /// </summary>
         public readonly string Name;
         /// <summary>

@@ -69,6 +69,10 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// The CCAI baseline model.
         /// </summary>
         public static GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel BaselineModel { get; } = new GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel("BASELINE_MODEL");
+        /// <summary>
+        /// The CCAI baseline model, V2.0.
+        /// </summary>
+        public static GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel BaselineModelV20 { get; } = new GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel("BASELINE_MODEL_V2_0");
 
         public static bool operator ==(GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel left, GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel right) => left.Equals(right);
         public static bool operator !=(GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel left, GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel right) => !left.Equals(right);

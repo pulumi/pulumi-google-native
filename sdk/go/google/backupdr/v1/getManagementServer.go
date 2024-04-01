@@ -39,7 +39,7 @@ type LookupManagementServerResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The hostname or ip address of the exposed AGM endpoints, used by clients to connect to AGM/RD graphical user interface and APIs.
 	ManagementUri ManagementURIResponse `pulumi:"managementUri"`
-	// The resource name.
+	// Identifier. The resource name.
 	Name string `pulumi:"name"`
 	// VPC networks to which the ManagementServer instance is connected. For this version, only a single network is supported.
 	Networks []NetworkConfigResponse `pulumi:"networks"`
@@ -47,7 +47,7 @@ type LookupManagementServerResult struct {
 	Oauth2ClientId string `pulumi:"oauth2ClientId"`
 	// The ManagementServer state.
 	State string `pulumi:"state"`
-	// The type of the ManagementServer resource.
+	// Optional. The type of the ManagementServer resource.
 	Type string `pulumi:"type"`
 	// The time when the instance was updated.
 	UpdateTime string `pulumi:"updateTime"`
@@ -119,7 +119,7 @@ func (o LookupManagementServerResultOutput) ManagementUri() ManagementURIRespons
 	return o.ApplyT(func(v LookupManagementServerResult) ManagementURIResponse { return v.ManagementUri }).(ManagementURIResponseOutput)
 }
 
-// The resource name.
+// Identifier. The resource name.
 func (o LookupManagementServerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementServerResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -139,7 +139,7 @@ func (o LookupManagementServerResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementServerResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// The type of the ManagementServer resource.
+// Optional. The type of the ManagementServer resource.
 func (o LookupManagementServerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementServerResult) string { return v.Type }).(pulumi.StringOutput)
 }

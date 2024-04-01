@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         /// </summary>
         public readonly Outputs.LocationPolicyResponse Location;
         /// <summary>
-        /// The network policy. If you define an instance template in the InstancePolicyOrTemplate field, Batch will use the network settings in the instance template instead of this field.
+        /// The network policy. If you define an instance template in the `InstancePolicyOrTemplate` field, Batch will use the network settings in the instance template instead of this field.
         /// </summary>
         public readonly Outputs.NetworkPolicyResponse Network;
         /// <summary>
@@ -37,9 +37,13 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         /// </summary>
         public readonly Outputs.PlacementPolicyResponse Placement;
         /// <summary>
-        /// Service account that VMs will run as.
+        /// Defines the service account for Batch-created VMs. If omitted, the [default Compute Engine service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used. Must match the service account specified in any used instance template configured in the Batch job. Includes the following fields: * email: The service account's email address. If not set, the default Compute Engine service account is used. * scopes: Additional OAuth scopes to grant the service account, beyond the default cloud-platform scope. (list of strings)
         /// </summary>
         public readonly Outputs.ServiceAccountResponse ServiceAccount;
+        /// <summary>
+        /// Optional. Tags applied to the VM instances. The tags identify valid sources or targets for network firewalls. Each tag must be 1-63 characters long, and comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+        /// </summary>
+        public readonly ImmutableArray<string> Tags;
 
         [OutputConstructor]
         private AllocationPolicyResponse(
@@ -53,7 +57,9 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
 
             Outputs.PlacementPolicyResponse placement,
 
-            Outputs.ServiceAccountResponse serviceAccount)
+            Outputs.ServiceAccountResponse serviceAccount,
+
+            ImmutableArray<string> tags)
         {
             Instances = instances;
             Labels = labels;
@@ -61,6 +67,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
             Network = network;
             Placement = placement;
             ServiceAccount = serviceAccount;
+            Tags = tags;
         }
     }
 }

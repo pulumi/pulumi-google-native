@@ -19,6 +19,7 @@ class SnapshotArgs:
     def __init__(__self__, *,
                  chain_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_hint: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -29,11 +30,14 @@ class SnapshotArgs:
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
                  source_disk_for_recovery_checkpoint: Optional[pulumi.Input[str]] = None,
+                 source_instant_snapshot: Optional[pulumi.Input[str]] = None,
+                 source_instant_snapshot_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Snapshot resource.
         :param pulumi.Input[str] chain_name: Creates the new snapshot in the snapshot chain labeled with the specified name. The chain name must be 1-63 characters long and comply with RFC1035. This is an uncommon option only for advanced service owners who needs to create separate snapshot chains, for example, for chargeback tracking. When you describe your snapshot resource, this field is visible only if it has a non-empty value.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[bool] enable_confidential_compute: Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this snapshot. These can be later modified by the setLabels method. Label values may be empty.
         :param pulumi.Input[str] location_hint: An opaque location hint used to place the snapshot close to other resources. This field is for use by internal tools that use the public API.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -43,12 +47,16 @@ class SnapshotArgs:
         :param pulumi.Input[str] source_disk: The source disk used to create this snapshot.
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
         :param pulumi.Input[str] source_disk_for_recovery_checkpoint: The source disk whose recovery checkpoint will be used to create this snapshot.
+        :param pulumi.Input[str] source_instant_snapshot: The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+        :param pulumi.Input['CustomerEncryptionKeyArgs'] source_instant_snapshot_encryption_key: Customer provided encryption key when creating Snapshot from Instant Snapshot.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         """
         if chain_name is not None:
             pulumi.set(__self__, "chain_name", chain_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_confidential_compute is not None:
+            pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location_hint is not None:
@@ -69,6 +77,10 @@ class SnapshotArgs:
             pulumi.set(__self__, "source_disk_encryption_key", source_disk_encryption_key)
         if source_disk_for_recovery_checkpoint is not None:
             pulumi.set(__self__, "source_disk_for_recovery_checkpoint", source_disk_for_recovery_checkpoint)
+        if source_instant_snapshot is not None:
+            pulumi.set(__self__, "source_instant_snapshot", source_instant_snapshot)
+        if source_instant_snapshot_encryption_key is not None:
+            pulumi.set(__self__, "source_instant_snapshot_encryption_key", source_instant_snapshot_encryption_key)
         if storage_locations is not None:
             pulumi.set(__self__, "storage_locations", storage_locations)
 
@@ -95,6 +107,18 @@ class SnapshotArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
+
+    @enable_confidential_compute.setter
+    def enable_confidential_compute(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_confidential_compute", value)
 
     @property
     @pulumi.getter
@@ -214,6 +238,30 @@ class SnapshotArgs:
         pulumi.set(self, "source_disk_for_recovery_checkpoint", value)
 
     @property
+    @pulumi.getter(name="sourceInstantSnapshot")
+    def source_instant_snapshot(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+        """
+        return pulumi.get(self, "source_instant_snapshot")
+
+    @source_instant_snapshot.setter
+    def source_instant_snapshot(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_instant_snapshot", value)
+
+    @property
+    @pulumi.getter(name="sourceInstantSnapshotEncryptionKey")
+    def source_instant_snapshot_encryption_key(self) -> Optional[pulumi.Input['CustomerEncryptionKeyArgs']]:
+        """
+        Customer provided encryption key when creating Snapshot from Instant Snapshot.
+        """
+        return pulumi.get(self, "source_instant_snapshot_encryption_key")
+
+    @source_instant_snapshot_encryption_key.setter
+    def source_instant_snapshot_encryption_key(self, value: Optional[pulumi.Input['CustomerEncryptionKeyArgs']]):
+        pulumi.set(self, "source_instant_snapshot_encryption_key", value)
+
+    @property
     @pulumi.getter(name="storageLocations")
     def storage_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -233,6 +281,7 @@ class Snapshot(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  chain_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_hint: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -243,6 +292,8 @@ class Snapshot(pulumi.CustomResource):
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  source_disk_for_recovery_checkpoint: Optional[pulumi.Input[str]] = None,
+                 source_instant_snapshot: Optional[pulumi.Input[str]] = None,
+                 source_instant_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -252,6 +303,7 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] chain_name: Creates the new snapshot in the snapshot chain labeled with the specified name. The chain name must be 1-63 characters long and comply with RFC1035. This is an uncommon option only for advanced service owners who needs to create separate snapshot chains, for example, for chargeback tracking. When you describe your snapshot resource, this field is visible only if it has a non-empty value.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[bool] enable_confidential_compute: Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this snapshot. These can be later modified by the setLabels method. Label values may be empty.
         :param pulumi.Input[str] location_hint: An opaque location hint used to place the snapshot close to other resources. This field is for use by internal tools that use the public API.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -261,6 +313,8 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[str] source_disk: The source disk used to create this snapshot.
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
         :param pulumi.Input[str] source_disk_for_recovery_checkpoint: The source disk whose recovery checkpoint will be used to create this snapshot.
+        :param pulumi.Input[str] source_instant_snapshot: The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+        :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_instant_snapshot_encryption_key: Customer provided encryption key when creating Snapshot from Instant Snapshot.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         """
         ...
@@ -289,6 +343,7 @@ class Snapshot(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  chain_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_hint: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -299,6 +354,8 @@ class Snapshot(pulumi.CustomResource):
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  source_disk_for_recovery_checkpoint: Optional[pulumi.Input[str]] = None,
+                 source_instant_snapshot: Optional[pulumi.Input[str]] = None,
+                 source_instant_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -311,6 +368,7 @@ class Snapshot(pulumi.CustomResource):
 
             __props__.__dict__["chain_name"] = chain_name
             __props__.__dict__["description"] = description
+            __props__.__dict__["enable_confidential_compute"] = enable_confidential_compute
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location_hint"] = location_hint
             __props__.__dict__["name"] = name
@@ -321,6 +379,8 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["source_disk"] = source_disk
             __props__.__dict__["source_disk_encryption_key"] = source_disk_encryption_key
             __props__.__dict__["source_disk_for_recovery_checkpoint"] = source_disk_for_recovery_checkpoint
+            __props__.__dict__["source_instant_snapshot"] = source_instant_snapshot
+            __props__.__dict__["source_instant_snapshot_encryption_key"] = source_instant_snapshot_encryption_key
             __props__.__dict__["storage_locations"] = storage_locations
             __props__.__dict__["architecture"] = None
             __props__.__dict__["auto_created"] = None
@@ -333,9 +393,11 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["license_codes"] = None
             __props__.__dict__["licenses"] = None
+            __props__.__dict__["satisfies_pzi"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["source_disk_id"] = None
+            __props__.__dict__["source_instant_snapshot_id"] = None
             __props__.__dict__["source_snapshot_schedule_policy"] = None
             __props__.__dict__["source_snapshot_schedule_policy_id"] = None
             __props__.__dict__["status"] = None
@@ -373,6 +435,7 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["disk_size_gb"] = None
         __props__.__dict__["download_bytes"] = None
+        __props__.__dict__["enable_confidential_compute"] = None
         __props__.__dict__["guest_os_features"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["label_fingerprint"] = None
@@ -383,6 +446,7 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["request_id"] = None
+        __props__.__dict__["satisfies_pzi"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["snapshot_encryption_key"] = None
@@ -391,6 +455,9 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["source_disk_encryption_key"] = None
         __props__.__dict__["source_disk_for_recovery_checkpoint"] = None
         __props__.__dict__["source_disk_id"] = None
+        __props__.__dict__["source_instant_snapshot"] = None
+        __props__.__dict__["source_instant_snapshot_encryption_key"] = None
+        __props__.__dict__["source_instant_snapshot_id"] = None
         __props__.__dict__["source_snapshot_schedule_policy"] = None
         __props__.__dict__["source_snapshot_schedule_policy_id"] = None
         __props__.__dict__["status"] = None
@@ -462,6 +529,14 @@ class Snapshot(pulumi.CustomResource):
         Number of bytes downloaded to restore a snapshot to a disk.
         """
         return pulumi.get(self, "download_bytes")
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> pulumi.Output[bool]:
+        """
+        Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
 
     @property
     @pulumi.getter(name="guestOsFeatures")
@@ -541,6 +616,14 @@ class Snapshot(pulumi.CustomResource):
         return pulumi.get(self, "request_id")
 
     @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> pulumi.Output[bool]:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzi")
+
+    @property
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> pulumi.Output[bool]:
         """
@@ -603,6 +686,30 @@ class Snapshot(pulumi.CustomResource):
         The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
         """
         return pulumi.get(self, "source_disk_id")
+
+    @property
+    @pulumi.getter(name="sourceInstantSnapshot")
+    def source_instant_snapshot(self) -> pulumi.Output[str]:
+        """
+        The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+        """
+        return pulumi.get(self, "source_instant_snapshot")
+
+    @property
+    @pulumi.getter(name="sourceInstantSnapshotEncryptionKey")
+    def source_instant_snapshot_encryption_key(self) -> pulumi.Output['outputs.CustomerEncryptionKeyResponse']:
+        """
+        Customer provided encryption key when creating Snapshot from Instant Snapshot.
+        """
+        return pulumi.get(self, "source_instant_snapshot_encryption_key")
+
+    @property
+    @pulumi.getter(name="sourceInstantSnapshotId")
+    def source_instant_snapshot_id(self) -> pulumi.Output[str]:
+        """
+        The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.
+        """
+        return pulumi.get(self, "source_instant_snapshot_id")
 
     @property
     @pulumi.getter(name="sourceSnapshotSchedulePolicy")

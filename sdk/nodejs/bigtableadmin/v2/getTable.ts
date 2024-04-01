@@ -30,6 +30,10 @@ export interface GetTableArgs {
 
 export interface GetTableResult {
     /**
+     * If specified, automated backups are enabled for this table. Otherwise, automated backups are disabled.
+     */
+    readonly automatedBackupPolicy: outputs.bigtableadmin.v2.AutomatedBackupPolicyResponse;
+    /**
      * If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
      */
     readonly changeStreamConfig: outputs.bigtableadmin.v2.ChangeStreamConfigResponse;

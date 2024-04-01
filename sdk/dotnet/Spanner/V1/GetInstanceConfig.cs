@@ -105,6 +105,10 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// The current instance config state. Applicable only for USER_MANAGED configs.
         /// </summary>
         public readonly string State;
+        /// <summary>
+        /// The storage limit in bytes per processing unit.
+        /// </summary>
+        public readonly string StorageLimitPerProcessingUnit;
 
         [OutputConstructor]
         private GetInstanceConfigResult(
@@ -130,7 +134,9 @@ namespace Pulumi.GoogleNative.Spanner.V1
 
             ImmutableArray<Outputs.ReplicaInfoResponse> replicas,
 
-            string state)
+            string state,
+
+            string storageLimitPerProcessingUnit)
         {
             BaseConfig = baseConfig;
             ConfigType = configType;
@@ -144,6 +150,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
             Reconciling = reconciling;
             Replicas = replicas;
             State = state;
+            StorageLimitPerProcessingUnit = storageLimitPerProcessingUnit;
         }
     }
 }

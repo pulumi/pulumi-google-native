@@ -13,7 +13,6 @@ import (
 )
 
 // Creates a new FeatureView in a given FeatureOnlineStore.
-// Auto-naming is currently not supported for this resource.
 type FeatureView struct {
 	pulumi.CustomResourceState
 
@@ -28,10 +27,12 @@ type FeatureView struct {
 	FeatureRegistrySource GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceResponseOutput `pulumi:"featureRegistrySource"`
 	// Required. The ID to use for the FeatureView, which will become the final component of the FeatureView's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within a FeatureOnlineStore.
 	FeatureViewId pulumi.StringOutput `pulumi:"featureViewId"`
+	// Optional. Configuration for index preparation for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+	IndexConfig GoogleCloudAiplatformV1FeatureViewIndexConfigResponseOutput `pulumi:"indexConfig"`
 	// Optional. The labels with user-defined metadata to organize your FeatureViews. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	// Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+	// Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Immutable. If set to true, one on demand sync will be run immediately, regardless whether the FeatureView.sync_config is configured or not.
@@ -104,10 +105,14 @@ type featureViewArgs struct {
 	FeatureRegistrySource *GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource `pulumi:"featureRegistrySource"`
 	// Required. The ID to use for the FeatureView, which will become the final component of the FeatureView's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within a FeatureOnlineStore.
 	FeatureViewId string `pulumi:"featureViewId"`
+	// Optional. Configuration for index preparation for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+	IndexConfig *GoogleCloudAiplatformV1FeatureViewIndexConfig `pulumi:"indexConfig"`
 	// Optional. The labels with user-defined metadata to organize your FeatureViews. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	Project  *string           `pulumi:"project"`
+	// Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+	Name    *string `pulumi:"name"`
+	Project *string `pulumi:"project"`
 	// Immutable. If set to true, one on demand sync will be run immediately, regardless whether the FeatureView.sync_config is configured or not.
 	RunSyncImmediately *bool `pulumi:"runSyncImmediately"`
 	// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
@@ -125,10 +130,14 @@ type FeatureViewArgs struct {
 	FeatureRegistrySource GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourcePtrInput
 	// Required. The ID to use for the FeatureView, which will become the final component of the FeatureView's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within a FeatureOnlineStore.
 	FeatureViewId pulumi.StringInput
+	// Optional. Configuration for index preparation for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+	IndexConfig GoogleCloudAiplatformV1FeatureViewIndexConfigPtrInput
 	// Optional. The labels with user-defined metadata to organize your FeatureViews. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	Project  pulumi.StringPtrInput
+	// Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
 	// Immutable. If set to true, one on demand sync will be run immediately, regardless whether the FeatureView.sync_config is configured or not.
 	RunSyncImmediately pulumi.BoolPtrInput
 	// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
@@ -205,6 +214,11 @@ func (o FeatureViewOutput) FeatureViewId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureView) pulumi.StringOutput { return v.FeatureViewId }).(pulumi.StringOutput)
 }
 
+// Optional. Configuration for index preparation for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+func (o FeatureViewOutput) IndexConfig() GoogleCloudAiplatformV1FeatureViewIndexConfigResponseOutput {
+	return o.ApplyT(func(v *FeatureView) GoogleCloudAiplatformV1FeatureViewIndexConfigResponseOutput { return v.IndexConfig }).(GoogleCloudAiplatformV1FeatureViewIndexConfigResponseOutput)
+}
+
 // Optional. The labels with user-defined metadata to organize your FeatureViews. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
 func (o FeatureViewOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *FeatureView) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
@@ -214,7 +228,7 @@ func (o FeatureViewOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureView) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+// Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
 func (o FeatureViewOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureView) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

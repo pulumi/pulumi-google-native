@@ -8,6 +8,7 @@ __all__ = [
     'AppProfilePriority',
     'AuditLogConfigLogType',
     'ClusterDefaultStorageType',
+    'DataBoostIsolationReadOnlyComputeBillingOwner',
     'InstanceType',
     'StandardIsolationPriority',
     'TableGranularity',
@@ -64,6 +65,20 @@ class ClusterDefaultStorageType(str, Enum):
     HDD = "HDD"
     """
     Magnetic drive (HDD) storage should be used.
+    """
+
+
+class DataBoostIsolationReadOnlyComputeBillingOwner(str, Enum):
+    """
+    The Compute Billing Owner for this Data Boost App Profile.
+    """
+    COMPUTE_BILLING_OWNER_UNSPECIFIED = "COMPUTE_BILLING_OWNER_UNSPECIFIED"
+    """
+    Unspecified value.
+    """
+    HOST_PAYS = "HOST_PAYS"
+    """
+    The host Cloud Project containing the targeted Bigtable Instance / Table pays for compute.
     """
 
 

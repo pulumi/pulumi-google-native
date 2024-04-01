@@ -78,6 +78,10 @@ export interface GetDeviceResult {
      */
     readonly encryptionState: string;
     /**
+     * Attributes specific to [Endpoint Verification](https://cloud.google.com/endpoint-verification/docs/overview) devices.
+     */
+    readonly endpointVerificationSpecificAttributes: outputs.cloudidentity.v1.GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponse;
+    /**
      * Host name of the device.
      */
     readonly hostname: string;

@@ -49,6 +49,8 @@ type LookupPipelineJobResult struct {
 	Network string `pulumi:"network"`
 	// The spec of the pipeline.
 	PipelineSpec map[string]string `pulumi:"pipelineSpec"`
+	// Optional. Whether to do component level validations before job creation.
+	PreflightValidations bool `pulumi:"preflightValidations"`
 	// A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
 	ReservedIpRanges []string `pulumi:"reservedIpRanges"`
 	// Runtime config of the pipeline.
@@ -158,6 +160,11 @@ func (o LookupPipelineJobResultOutput) Network() pulumi.StringOutput {
 // The spec of the pipeline.
 func (o LookupPipelineJobResultOutput) PipelineSpec() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPipelineJobResult) map[string]string { return v.PipelineSpec }).(pulumi.StringMapOutput)
+}
+
+// Optional. Whether to do component level validations before job creation.
+func (o LookupPipelineJobResultOutput) PreflightValidations() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupPipelineJobResult) bool { return v.PreflightValidations }).(pulumi.BoolOutput)
 }
 
 // A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].

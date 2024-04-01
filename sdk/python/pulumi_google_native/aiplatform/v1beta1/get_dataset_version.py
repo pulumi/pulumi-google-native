@@ -18,16 +18,22 @@ __all__ = [
 
 @pulumi.output_type
 class GetDatasetVersionResult:
-    def __init__(__self__, big_query_dataset_name=None, create_time=None, etag=None, name=None, update_time=None):
+    def __init__(__self__, big_query_dataset_name=None, create_time=None, display_name=None, etag=None, metadata=None, name=None, update_time=None):
         if big_query_dataset_name and not isinstance(big_query_dataset_name, str):
             raise TypeError("Expected argument 'big_query_dataset_name' to be a str")
         pulumi.set(__self__, "big_query_dataset_name", big_query_dataset_name)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if display_name and not isinstance(display_name, str):
+            raise TypeError("Expected argument 'display_name' to be a str")
+        pulumi.set(__self__, "display_name", display_name)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
+        if metadata and not isinstance(metadata, dict):
+            raise TypeError("Expected argument 'metadata' to be a dict")
+        pulumi.set(__self__, "metadata", metadata)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -52,12 +58,28 @@ class GetDatasetVersionResult:
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The user-defined name of the DatasetVersion. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
     @pulumi.getter
     def etag(self) -> str:
         """
         Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Any:
+        """
+        Additional information about the DatasetVersion.
+        """
+        return pulumi.get(self, "metadata")
 
     @property
     @pulumi.getter
@@ -84,7 +106,9 @@ class AwaitableGetDatasetVersionResult(GetDatasetVersionResult):
         return GetDatasetVersionResult(
             big_query_dataset_name=self.big_query_dataset_name,
             create_time=self.create_time,
+            display_name=self.display_name,
             etag=self.etag,
+            metadata=self.metadata,
             name=self.name,
             update_time=self.update_time)
 
@@ -110,7 +134,9 @@ def get_dataset_version(dataset_id: Optional[str] = None,
     return AwaitableGetDatasetVersionResult(
         big_query_dataset_name=pulumi.get(__ret__, 'big_query_dataset_name'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
         etag=pulumi.get(__ret__, 'etag'),
+        metadata=pulumi.get(__ret__, 'metadata'),
         name=pulumi.get(__ret__, 'name'),
         update_time=pulumi.get(__ret__, 'update_time'))
 

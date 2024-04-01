@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_config=None, cpu_platform=None, creation_timestamp=None, deletion_protection=None, description=None, disks=None, display_device=None, erase_windows_vss_signature=None, fingerprint=None, guest_accelerators=None, hostname=None, instance_encryption_key=None, key_revocation_action_type=None, kind=None, label_fingerprint=None, labels=None, last_start_timestamp=None, last_stop_timestamp=None, last_suspended_timestamp=None, machine_type=None, metadata=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_config=None, params=None, partner_metadata=None, post_key_revocation_action_type=None, preserved_state_size_gb=None, private_ipv6_google_access=None, reservation_affinity=None, resource_policies=None, resource_status=None, satisfies_pzs=None, scheduling=None, secure_tags=None, self_link=None, self_link_with_id=None, service_accounts=None, service_integration_specs=None, shielded_instance_config=None, shielded_instance_integrity_policy=None, shielded_vm_config=None, shielded_vm_integrity_policy=None, source_machine_image=None, source_machine_image_encryption_key=None, start_restricted=None, status=None, status_message=None, tags=None, upcoming_maintenance=None, zone=None):
+    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_config=None, cpu_platform=None, creation_timestamp=None, deletion_protection=None, description=None, disks=None, display_device=None, erase_windows_vss_signature=None, fingerprint=None, guest_accelerators=None, hostname=None, instance_encryption_key=None, key_revocation_action_type=None, kind=None, label_fingerprint=None, labels=None, last_start_timestamp=None, last_stop_timestamp=None, last_suspended_timestamp=None, machine_type=None, metadata=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_config=None, params=None, partner_metadata=None, post_key_revocation_action_type=None, preserved_state_size_gb=None, private_ipv6_google_access=None, reservation_affinity=None, resource_policies=None, resource_status=None, satisfies_pzi=None, satisfies_pzs=None, scheduling=None, secure_tags=None, self_link=None, self_link_with_id=None, service_accounts=None, service_integration_specs=None, shielded_instance_config=None, shielded_instance_integrity_policy=None, shielded_vm_config=None, shielded_vm_integrity_policy=None, source_machine_image=None, source_machine_image_encryption_key=None, start_restricted=None, status=None, status_message=None, tags=None, upcoming_maintenance=None, zone=None):
         if advanced_machine_features and not isinstance(advanced_machine_features, dict):
             raise TypeError("Expected argument 'advanced_machine_features' to be a dict")
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -125,6 +125,9 @@ class GetInstanceResult:
         if resource_status and not isinstance(resource_status, dict):
             raise TypeError("Expected argument 'resource_status' to be a dict")
         pulumi.set(__self__, "resource_status", resource_status)
+        if satisfies_pzi and not isinstance(satisfies_pzi, bool):
+            raise TypeError("Expected argument 'satisfies_pzi' to be a bool")
+        pulumi.set(__self__, "satisfies_pzi", satisfies_pzi)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -458,6 +461,14 @@ class GetInstanceResult:
         return pulumi.get(self, "resource_status")
 
     @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> bool:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzi")
+
+    @property
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> bool:
         """
@@ -645,6 +656,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             reservation_affinity=self.reservation_affinity,
             resource_policies=self.resource_policies,
             resource_status=self.resource_status,
+            satisfies_pzi=self.satisfies_pzi,
             satisfies_pzs=self.satisfies_pzs,
             scheduling=self.scheduling,
             secure_tags=self.secure_tags,
@@ -718,6 +730,7 @@ def get_instance(instance: Optional[str] = None,
         reservation_affinity=pulumi.get(__ret__, 'reservation_affinity'),
         resource_policies=pulumi.get(__ret__, 'resource_policies'),
         resource_status=pulumi.get(__ret__, 'resource_status'),
+        satisfies_pzi=pulumi.get(__ret__, 'satisfies_pzi'),
         satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         scheduling=pulumi.get(__ret__, 'scheduling'),
         secure_tags=pulumi.get(__ret__, 'secure_tags'),

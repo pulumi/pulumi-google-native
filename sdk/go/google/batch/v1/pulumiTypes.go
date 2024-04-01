@@ -391,12 +391,14 @@ type AllocationPolicy struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Location where compute resources should be allocated for the Job.
 	Location *LocationPolicy `pulumi:"location"`
-	// The network policy. If you define an instance template in the InstancePolicyOrTemplate field, Batch will use the network settings in the instance template instead of this field.
+	// The network policy. If you define an instance template in the `InstancePolicyOrTemplate` field, Batch will use the network settings in the instance template instead of this field.
 	Network *NetworkPolicy `pulumi:"network"`
 	// The placement policy.
 	Placement *PlacementPolicy `pulumi:"placement"`
-	// Service account that VMs will run as.
+	// Defines the service account for Batch-created VMs. If omitted, the [default Compute Engine service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used. Must match the service account specified in any used instance template configured in the Batch job. Includes the following fields: * email: The service account's email address. If not set, the default Compute Engine service account is used. * scopes: Additional OAuth scopes to grant the service account, beyond the default cloud-platform scope. (list of strings)
 	ServiceAccount *ServiceAccount `pulumi:"serviceAccount"`
+	// Optional. Tags applied to the VM instances. The tags identify valid sources or targets for network firewalls. Each tag must be 1-63 characters long, and comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+	Tags []string `pulumi:"tags"`
 }
 
 // AllocationPolicyInput is an input type that accepts AllocationPolicyArgs and AllocationPolicyOutput values.
@@ -418,12 +420,14 @@ type AllocationPolicyArgs struct {
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Location where compute resources should be allocated for the Job.
 	Location LocationPolicyPtrInput `pulumi:"location"`
-	// The network policy. If you define an instance template in the InstancePolicyOrTemplate field, Batch will use the network settings in the instance template instead of this field.
+	// The network policy. If you define an instance template in the `InstancePolicyOrTemplate` field, Batch will use the network settings in the instance template instead of this field.
 	Network NetworkPolicyPtrInput `pulumi:"network"`
 	// The placement policy.
 	Placement PlacementPolicyPtrInput `pulumi:"placement"`
-	// Service account that VMs will run as.
+	// Defines the service account for Batch-created VMs. If omitted, the [default Compute Engine service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used. Must match the service account specified in any used instance template configured in the Batch job. Includes the following fields: * email: The service account's email address. If not set, the default Compute Engine service account is used. * scopes: Additional OAuth scopes to grant the service account, beyond the default cloud-platform scope. (list of strings)
 	ServiceAccount ServiceAccountPtrInput `pulumi:"serviceAccount"`
+	// Optional. Tags applied to the VM instances. The tags identify valid sources or targets for network firewalls. Each tag must be 1-63 characters long, and comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
 func (AllocationPolicyArgs) ElementType() reflect.Type {
@@ -519,7 +523,7 @@ func (o AllocationPolicyOutput) Location() LocationPolicyPtrOutput {
 	return o.ApplyT(func(v AllocationPolicy) *LocationPolicy { return v.Location }).(LocationPolicyPtrOutput)
 }
 
-// The network policy. If you define an instance template in the InstancePolicyOrTemplate field, Batch will use the network settings in the instance template instead of this field.
+// The network policy. If you define an instance template in the `InstancePolicyOrTemplate` field, Batch will use the network settings in the instance template instead of this field.
 func (o AllocationPolicyOutput) Network() NetworkPolicyPtrOutput {
 	return o.ApplyT(func(v AllocationPolicy) *NetworkPolicy { return v.Network }).(NetworkPolicyPtrOutput)
 }
@@ -529,9 +533,14 @@ func (o AllocationPolicyOutput) Placement() PlacementPolicyPtrOutput {
 	return o.ApplyT(func(v AllocationPolicy) *PlacementPolicy { return v.Placement }).(PlacementPolicyPtrOutput)
 }
 
-// Service account that VMs will run as.
+// Defines the service account for Batch-created VMs. If omitted, the [default Compute Engine service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used. Must match the service account specified in any used instance template configured in the Batch job. Includes the following fields: * email: The service account's email address. If not set, the default Compute Engine service account is used. * scopes: Additional OAuth scopes to grant the service account, beyond the default cloud-platform scope. (list of strings)
 func (o AllocationPolicyOutput) ServiceAccount() ServiceAccountPtrOutput {
 	return o.ApplyT(func(v AllocationPolicy) *ServiceAccount { return v.ServiceAccount }).(ServiceAccountPtrOutput)
+}
+
+// Optional. Tags applied to the VM instances. The tags identify valid sources or targets for network firewalls. Each tag must be 1-63 characters long, and comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+func (o AllocationPolicyOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AllocationPolicy) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 type AllocationPolicyPtrOutput struct{ *pulumi.OutputState }
@@ -588,7 +597,7 @@ func (o AllocationPolicyPtrOutput) Location() LocationPolicyPtrOutput {
 	}).(LocationPolicyPtrOutput)
 }
 
-// The network policy. If you define an instance template in the InstancePolicyOrTemplate field, Batch will use the network settings in the instance template instead of this field.
+// The network policy. If you define an instance template in the `InstancePolicyOrTemplate` field, Batch will use the network settings in the instance template instead of this field.
 func (o AllocationPolicyPtrOutput) Network() NetworkPolicyPtrOutput {
 	return o.ApplyT(func(v *AllocationPolicy) *NetworkPolicy {
 		if v == nil {
@@ -608,7 +617,7 @@ func (o AllocationPolicyPtrOutput) Placement() PlacementPolicyPtrOutput {
 	}).(PlacementPolicyPtrOutput)
 }
 
-// Service account that VMs will run as.
+// Defines the service account for Batch-created VMs. If omitted, the [default Compute Engine service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used. Must match the service account specified in any used instance template configured in the Batch job. Includes the following fields: * email: The service account's email address. If not set, the default Compute Engine service account is used. * scopes: Additional OAuth scopes to grant the service account, beyond the default cloud-platform scope. (list of strings)
 func (o AllocationPolicyPtrOutput) ServiceAccount() ServiceAccountPtrOutput {
 	return o.ApplyT(func(v *AllocationPolicy) *ServiceAccount {
 		if v == nil {
@@ -616,6 +625,16 @@ func (o AllocationPolicyPtrOutput) ServiceAccount() ServiceAccountPtrOutput {
 		}
 		return v.ServiceAccount
 	}).(ServiceAccountPtrOutput)
+}
+
+// Optional. Tags applied to the VM instances. The tags identify valid sources or targets for network firewalls. Each tag must be 1-63 characters long, and comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+func (o AllocationPolicyPtrOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AllocationPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringArrayOutput)
 }
 
 // A Job's resource allocation policy describes when, where, and how compute resources should be allocated for the Job.
@@ -626,12 +645,14 @@ type AllocationPolicyResponse struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Location where compute resources should be allocated for the Job.
 	Location LocationPolicyResponse `pulumi:"location"`
-	// The network policy. If you define an instance template in the InstancePolicyOrTemplate field, Batch will use the network settings in the instance template instead of this field.
+	// The network policy. If you define an instance template in the `InstancePolicyOrTemplate` field, Batch will use the network settings in the instance template instead of this field.
 	Network NetworkPolicyResponse `pulumi:"network"`
 	// The placement policy.
 	Placement PlacementPolicyResponse `pulumi:"placement"`
-	// Service account that VMs will run as.
+	// Defines the service account for Batch-created VMs. If omitted, the [default Compute Engine service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used. Must match the service account specified in any used instance template configured in the Batch job. Includes the following fields: * email: The service account's email address. If not set, the default Compute Engine service account is used. * scopes: Additional OAuth scopes to grant the service account, beyond the default cloud-platform scope. (list of strings)
 	ServiceAccount ServiceAccountResponse `pulumi:"serviceAccount"`
+	// Optional. Tags applied to the VM instances. The tags identify valid sources or targets for network firewalls. Each tag must be 1-63 characters long, and comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+	Tags []string `pulumi:"tags"`
 }
 
 // A Job's resource allocation policy describes when, where, and how compute resources should be allocated for the Job.
@@ -664,7 +685,7 @@ func (o AllocationPolicyResponseOutput) Location() LocationPolicyResponseOutput 
 	return o.ApplyT(func(v AllocationPolicyResponse) LocationPolicyResponse { return v.Location }).(LocationPolicyResponseOutput)
 }
 
-// The network policy. If you define an instance template in the InstancePolicyOrTemplate field, Batch will use the network settings in the instance template instead of this field.
+// The network policy. If you define an instance template in the `InstancePolicyOrTemplate` field, Batch will use the network settings in the instance template instead of this field.
 func (o AllocationPolicyResponseOutput) Network() NetworkPolicyResponseOutput {
 	return o.ApplyT(func(v AllocationPolicyResponse) NetworkPolicyResponse { return v.Network }).(NetworkPolicyResponseOutput)
 }
@@ -674,9 +695,14 @@ func (o AllocationPolicyResponseOutput) Placement() PlacementPolicyResponseOutpu
 	return o.ApplyT(func(v AllocationPolicyResponse) PlacementPolicyResponse { return v.Placement }).(PlacementPolicyResponseOutput)
 }
 
-// Service account that VMs will run as.
+// Defines the service account for Batch-created VMs. If omitted, the [default Compute Engine service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used. Must match the service account specified in any used instance template configured in the Batch job. Includes the following fields: * email: The service account's email address. If not set, the default Compute Engine service account is used. * scopes: Additional OAuth scopes to grant the service account, beyond the default cloud-platform scope. (list of strings)
 func (o AllocationPolicyResponseOutput) ServiceAccount() ServiceAccountResponseOutput {
 	return o.ApplyT(func(v AllocationPolicyResponse) ServiceAccountResponse { return v.ServiceAccount }).(ServiceAccountResponseOutput)
+}
+
+// Optional. Tags applied to the VM instances. The tags identify valid sources or targets for network firewalls. Each tag must be 1-63 characters long, and comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+func (o AllocationPolicyResponseOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AllocationPolicyResponse) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // A new or an existing persistent disk (PD) or a local ssd attached to a VM instance.
@@ -1018,8 +1044,10 @@ func (o BarrierResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v BarrierResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// CloudLoggingOption contains additional settings for cloud logging generated by Batch job.
+// `CloudLoggingOption` contains additional settings for Cloud Logging logs generated by Batch job.
 type CloudLoggingOption struct {
+	// Optional. Set this flag to true to change the [monitored resource type](https://cloud.google.com/monitoring/api/resources) for Cloud Logging logs generated by this Batch job from the [`batch.googleapis.com/Job`](https://cloud.google.com/monitoring/api/resources#tag_batch.googleapis.com/Job) type to the formerly used [`generic_task`](https://cloud.google.com/monitoring/api/resources#tag_generic_task) type.
+	UseGenericTaskMonitoredResource *bool `pulumi:"useGenericTaskMonitoredResource"`
 }
 
 // CloudLoggingOptionInput is an input type that accepts CloudLoggingOptionArgs and CloudLoggingOptionOutput values.
@@ -1033,8 +1061,10 @@ type CloudLoggingOptionInput interface {
 	ToCloudLoggingOptionOutputWithContext(context.Context) CloudLoggingOptionOutput
 }
 
-// CloudLoggingOption contains additional settings for cloud logging generated by Batch job.
+// `CloudLoggingOption` contains additional settings for Cloud Logging logs generated by Batch job.
 type CloudLoggingOptionArgs struct {
+	// Optional. Set this flag to true to change the [monitored resource type](https://cloud.google.com/monitoring/api/resources) for Cloud Logging logs generated by this Batch job from the [`batch.googleapis.com/Job`](https://cloud.google.com/monitoring/api/resources#tag_batch.googleapis.com/Job) type to the formerly used [`generic_task`](https://cloud.google.com/monitoring/api/resources#tag_generic_task) type.
+	UseGenericTaskMonitoredResource pulumi.BoolPtrInput `pulumi:"useGenericTaskMonitoredResource"`
 }
 
 func (CloudLoggingOptionArgs) ElementType() reflect.Type {
@@ -1090,7 +1120,7 @@ func (i *cloudLoggingOptionPtrType) ToCloudLoggingOptionPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(CloudLoggingOptionPtrOutput)
 }
 
-// CloudLoggingOption contains additional settings for cloud logging generated by Batch job.
+// `CloudLoggingOption` contains additional settings for Cloud Logging logs generated by Batch job.
 type CloudLoggingOptionOutput struct{ *pulumi.OutputState }
 
 func (CloudLoggingOptionOutput) ElementType() reflect.Type {
@@ -1113,6 +1143,11 @@ func (o CloudLoggingOptionOutput) ToCloudLoggingOptionPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudLoggingOption) *CloudLoggingOption {
 		return &v
 	}).(CloudLoggingOptionPtrOutput)
+}
+
+// Optional. Set this flag to true to change the [monitored resource type](https://cloud.google.com/monitoring/api/resources) for Cloud Logging logs generated by this Batch job from the [`batch.googleapis.com/Job`](https://cloud.google.com/monitoring/api/resources#tag_batch.googleapis.com/Job) type to the formerly used [`generic_task`](https://cloud.google.com/monitoring/api/resources#tag_generic_task) type.
+func (o CloudLoggingOptionOutput) UseGenericTaskMonitoredResource() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudLoggingOption) *bool { return v.UseGenericTaskMonitoredResource }).(pulumi.BoolPtrOutput)
 }
 
 type CloudLoggingOptionPtrOutput struct{ *pulumi.OutputState }
@@ -1139,11 +1174,23 @@ func (o CloudLoggingOptionPtrOutput) Elem() CloudLoggingOptionOutput {
 	}).(CloudLoggingOptionOutput)
 }
 
-// CloudLoggingOption contains additional settings for cloud logging generated by Batch job.
-type CloudLoggingOptionResponse struct {
+// Optional. Set this flag to true to change the [monitored resource type](https://cloud.google.com/monitoring/api/resources) for Cloud Logging logs generated by this Batch job from the [`batch.googleapis.com/Job`](https://cloud.google.com/monitoring/api/resources#tag_batch.googleapis.com/Job) type to the formerly used [`generic_task`](https://cloud.google.com/monitoring/api/resources#tag_generic_task) type.
+func (o CloudLoggingOptionPtrOutput) UseGenericTaskMonitoredResource() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudLoggingOption) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseGenericTaskMonitoredResource
+	}).(pulumi.BoolPtrOutput)
 }
 
-// CloudLoggingOption contains additional settings for cloud logging generated by Batch job.
+// `CloudLoggingOption` contains additional settings for Cloud Logging logs generated by Batch job.
+type CloudLoggingOptionResponse struct {
+	// Optional. Set this flag to true to change the [monitored resource type](https://cloud.google.com/monitoring/api/resources) for Cloud Logging logs generated by this Batch job from the [`batch.googleapis.com/Job`](https://cloud.google.com/monitoring/api/resources#tag_batch.googleapis.com/Job) type to the formerly used [`generic_task`](https://cloud.google.com/monitoring/api/resources#tag_generic_task) type.
+	UseGenericTaskMonitoredResource bool `pulumi:"useGenericTaskMonitoredResource"`
+}
+
+// `CloudLoggingOption` contains additional settings for Cloud Logging logs generated by Batch job.
 type CloudLoggingOptionResponseOutput struct{ *pulumi.OutputState }
 
 func (CloudLoggingOptionResponseOutput) ElementType() reflect.Type {
@@ -1156,6 +1203,11 @@ func (o CloudLoggingOptionResponseOutput) ToCloudLoggingOptionResponseOutput() C
 
 func (o CloudLoggingOptionResponseOutput) ToCloudLoggingOptionResponseOutputWithContext(ctx context.Context) CloudLoggingOptionResponseOutput {
 	return o
+}
+
+// Optional. Set this flag to true to change the [monitored resource type](https://cloud.google.com/monitoring/api/resources) for Cloud Logging logs generated by this Batch job from the [`batch.googleapis.com/Job`](https://cloud.google.com/monitoring/api/resources#tag_batch.googleapis.com/Job) type to the formerly used [`generic_task`](https://cloud.google.com/monitoring/api/resources#tag_generic_task) type.
+func (o CloudLoggingOptionResponseOutput) UseGenericTaskMonitoredResource() pulumi.BoolOutput {
+	return o.ApplyT(func(v CloudLoggingOptionResponse) bool { return v.UseGenericTaskMonitoredResource }).(pulumi.BoolOutput)
 }
 
 // Compute resource requirements. ComputeResource defines the amount of resources required for each task. Make sure your tasks have enough resources to successfully run. If you also define the types of resources for a job to use with the [InstancePolicyOrTemplate](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicyortemplate) field, make sure both fields are compatible with each other.
@@ -1382,15 +1434,17 @@ type Container struct {
 	BlockExternalNetwork *bool `pulumi:"blockExternalNetwork"`
 	// Overrides the `CMD` specified in the container. If there is an ENTRYPOINT (either in the container image or with the entrypoint field below) then commands are appended as arguments to the ENTRYPOINT.
 	Commands []string `pulumi:"commands"`
+	// Optional. If set to true, this container runnable uses Image streaming. Use Image streaming to allow the runnable to initialize without waiting for the entire container image to download, which can significantly reduce startup time for large container images. When `enableImageStreaming` is set to true, the container runtime is [containerd](https://containerd.io/) instead of Docker. Additionally, this container runnable only supports the following `container` subfields: `imageUri`, `commands[]`, `entrypoint`, and `volumes[]`; any other `container` subfields are ignored. For more information about the requirements and limitations for using Image streaming with Batch, see the [`image-streaming` sample on GitHub](https://github.com/GoogleCloudPlatform/batch-samples/tree/main/api-samples/image-streaming).
+	EnableImageStreaming *bool `pulumi:"enableImageStreaming"`
 	// Overrides the `ENTRYPOINT` specified in the container.
 	Entrypoint *string `pulumi:"entrypoint"`
 	// The URI to pull the container image from.
 	ImageUri *string `pulumi:"imageUri"`
 	// Arbitrary additional options to include in the "docker run" command when running this container, e.g. "--network host".
 	Options *string `pulumi:"options"`
-	// Optional password for logging in to a docker registry. If password matches `projects/*/secrets/*/versions/*` then Batch will read the password from the Secret Manager;
+	// Required if the container image is from a private Docker registry. The password to login to the Docker registry that contains the image. For security, it is strongly recommended to specify an encrypted password by using a Secret Manager secret: `projects/*/secrets/*/versions/*`. Warning: If you specify the password using plain text, you risk the password being exposed to any users who can view the job or its logs. To avoid this risk, specify a secret that contains the password instead. Learn more about [Secret Manager](https://cloud.google.com/secret-manager/docs/) and [using Secret Manager with Batch](https://cloud.google.com/batch/docs/create-run-job-secret-manager).
 	Password *string `pulumi:"password"`
-	// Optional username for logging in to a docker registry. If username matches `projects/*/secrets/*/versions/*` then Batch will read the username from the Secret Manager.
+	// Required if the container image is from a private Docker registry. The username to login to the Docker registry that contains the image. You can either specify the username directly by using plain text or specify an encrypted username by using a Secret Manager secret: `projects/*/secrets/*/versions/*`. However, using a secret is recommended for enhanced security. Caution: If you specify the username using plain text, you risk the username being exposed to any users who can view the job or its logs. To avoid this risk, specify a secret that contains the username instead. Learn more about [Secret Manager](https://cloud.google.com/secret-manager/docs/) and [using Secret Manager with Batch](https://cloud.google.com/batch/docs/create-run-job-secret-manager).
 	Username *string `pulumi:"username"`
 	// Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro If the `TaskSpec.Volumes` field is specified but this field is not, Batch will mount each volume from the host machine to the container with the same mount path by default. In this case, the default mount option for containers will be read-only (ro) for existing persistent disks and read-write (rw) for other volume types, regardless of the original mount options specified in `TaskSpec.Volumes`. If you need different mount settings, you can explicitly configure them in this field.
 	Volumes []string `pulumi:"volumes"`
@@ -1413,15 +1467,17 @@ type ContainerArgs struct {
 	BlockExternalNetwork pulumi.BoolPtrInput `pulumi:"blockExternalNetwork"`
 	// Overrides the `CMD` specified in the container. If there is an ENTRYPOINT (either in the container image or with the entrypoint field below) then commands are appended as arguments to the ENTRYPOINT.
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Optional. If set to true, this container runnable uses Image streaming. Use Image streaming to allow the runnable to initialize without waiting for the entire container image to download, which can significantly reduce startup time for large container images. When `enableImageStreaming` is set to true, the container runtime is [containerd](https://containerd.io/) instead of Docker. Additionally, this container runnable only supports the following `container` subfields: `imageUri`, `commands[]`, `entrypoint`, and `volumes[]`; any other `container` subfields are ignored. For more information about the requirements and limitations for using Image streaming with Batch, see the [`image-streaming` sample on GitHub](https://github.com/GoogleCloudPlatform/batch-samples/tree/main/api-samples/image-streaming).
+	EnableImageStreaming pulumi.BoolPtrInput `pulumi:"enableImageStreaming"`
 	// Overrides the `ENTRYPOINT` specified in the container.
 	Entrypoint pulumi.StringPtrInput `pulumi:"entrypoint"`
 	// The URI to pull the container image from.
 	ImageUri pulumi.StringPtrInput `pulumi:"imageUri"`
 	// Arbitrary additional options to include in the "docker run" command when running this container, e.g. "--network host".
 	Options pulumi.StringPtrInput `pulumi:"options"`
-	// Optional password for logging in to a docker registry. If password matches `projects/*/secrets/*/versions/*` then Batch will read the password from the Secret Manager;
+	// Required if the container image is from a private Docker registry. The password to login to the Docker registry that contains the image. For security, it is strongly recommended to specify an encrypted password by using a Secret Manager secret: `projects/*/secrets/*/versions/*`. Warning: If you specify the password using plain text, you risk the password being exposed to any users who can view the job or its logs. To avoid this risk, specify a secret that contains the password instead. Learn more about [Secret Manager](https://cloud.google.com/secret-manager/docs/) and [using Secret Manager with Batch](https://cloud.google.com/batch/docs/create-run-job-secret-manager).
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	// Optional username for logging in to a docker registry. If username matches `projects/*/secrets/*/versions/*` then Batch will read the username from the Secret Manager.
+	// Required if the container image is from a private Docker registry. The username to login to the Docker registry that contains the image. You can either specify the username directly by using plain text or specify an encrypted username by using a Secret Manager secret: `projects/*/secrets/*/versions/*`. However, using a secret is recommended for enhanced security. Caution: If you specify the username using plain text, you risk the username being exposed to any users who can view the job or its logs. To avoid this risk, specify a secret that contains the username instead. Learn more about [Secret Manager](https://cloud.google.com/secret-manager/docs/) and [using Secret Manager with Batch](https://cloud.google.com/batch/docs/create-run-job-secret-manager).
 	Username pulumi.StringPtrInput `pulumi:"username"`
 	// Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro If the `TaskSpec.Volumes` field is specified but this field is not, Batch will mount each volume from the host machine to the container with the same mount path by default. In this case, the default mount option for containers will be read-only (ro) for existing persistent disks and read-write (rw) for other volume types, regardless of the original mount options specified in `TaskSpec.Volumes`. If you need different mount settings, you can explicitly configure them in this field.
 	Volumes pulumi.StringArrayInput `pulumi:"volumes"`
@@ -1515,6 +1571,11 @@ func (o ContainerOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Container) []string { return v.Commands }).(pulumi.StringArrayOutput)
 }
 
+// Optional. If set to true, this container runnable uses Image streaming. Use Image streaming to allow the runnable to initialize without waiting for the entire container image to download, which can significantly reduce startup time for large container images. When `enableImageStreaming` is set to true, the container runtime is [containerd](https://containerd.io/) instead of Docker. Additionally, this container runnable only supports the following `container` subfields: `imageUri`, `commands[]`, `entrypoint`, and `volumes[]`; any other `container` subfields are ignored. For more information about the requirements and limitations for using Image streaming with Batch, see the [`image-streaming` sample on GitHub](https://github.com/GoogleCloudPlatform/batch-samples/tree/main/api-samples/image-streaming).
+func (o ContainerOutput) EnableImageStreaming() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Container) *bool { return v.EnableImageStreaming }).(pulumi.BoolPtrOutput)
+}
+
 // Overrides the `ENTRYPOINT` specified in the container.
 func (o ContainerOutput) Entrypoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.Entrypoint }).(pulumi.StringPtrOutput)
@@ -1530,12 +1591,12 @@ func (o ContainerOutput) Options() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.Options }).(pulumi.StringPtrOutput)
 }
 
-// Optional password for logging in to a docker registry. If password matches `projects/*/secrets/*/versions/*` then Batch will read the password from the Secret Manager;
+// Required if the container image is from a private Docker registry. The password to login to the Docker registry that contains the image. For security, it is strongly recommended to specify an encrypted password by using a Secret Manager secret: `projects/*/secrets/*/versions/*`. Warning: If you specify the password using plain text, you risk the password being exposed to any users who can view the job or its logs. To avoid this risk, specify a secret that contains the password instead. Learn more about [Secret Manager](https://cloud.google.com/secret-manager/docs/) and [using Secret Manager with Batch](https://cloud.google.com/batch/docs/create-run-job-secret-manager).
 func (o ContainerOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// Optional username for logging in to a docker registry. If username matches `projects/*/secrets/*/versions/*` then Batch will read the username from the Secret Manager.
+// Required if the container image is from a private Docker registry. The username to login to the Docker registry that contains the image. You can either specify the username directly by using plain text or specify an encrypted username by using a Secret Manager secret: `projects/*/secrets/*/versions/*`. However, using a secret is recommended for enhanced security. Caution: If you specify the username using plain text, you risk the username being exposed to any users who can view the job or its logs. To avoid this risk, specify a secret that contains the username instead. Learn more about [Secret Manager](https://cloud.google.com/secret-manager/docs/) and [using Secret Manager with Batch](https://cloud.google.com/batch/docs/create-run-job-secret-manager).
 func (o ContainerOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -1589,6 +1650,16 @@ func (o ContainerPtrOutput) Commands() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Optional. If set to true, this container runnable uses Image streaming. Use Image streaming to allow the runnable to initialize without waiting for the entire container image to download, which can significantly reduce startup time for large container images. When `enableImageStreaming` is set to true, the container runtime is [containerd](https://containerd.io/) instead of Docker. Additionally, this container runnable only supports the following `container` subfields: `imageUri`, `commands[]`, `entrypoint`, and `volumes[]`; any other `container` subfields are ignored. For more information about the requirements and limitations for using Image streaming with Batch, see the [`image-streaming` sample on GitHub](https://github.com/GoogleCloudPlatform/batch-samples/tree/main/api-samples/image-streaming).
+func (o ContainerPtrOutput) EnableImageStreaming() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Container) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableImageStreaming
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Overrides the `ENTRYPOINT` specified in the container.
 func (o ContainerPtrOutput) Entrypoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Container) *string {
@@ -1619,7 +1690,7 @@ func (o ContainerPtrOutput) Options() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional password for logging in to a docker registry. If password matches `projects/*/secrets/*/versions/*` then Batch will read the password from the Secret Manager;
+// Required if the container image is from a private Docker registry. The password to login to the Docker registry that contains the image. For security, it is strongly recommended to specify an encrypted password by using a Secret Manager secret: `projects/*/secrets/*/versions/*`. Warning: If you specify the password using plain text, you risk the password being exposed to any users who can view the job or its logs. To avoid this risk, specify a secret that contains the password instead. Learn more about [Secret Manager](https://cloud.google.com/secret-manager/docs/) and [using Secret Manager with Batch](https://cloud.google.com/batch/docs/create-run-job-secret-manager).
 func (o ContainerPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Container) *string {
 		if v == nil {
@@ -1629,7 +1700,7 @@ func (o ContainerPtrOutput) Password() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional username for logging in to a docker registry. If username matches `projects/*/secrets/*/versions/*` then Batch will read the username from the Secret Manager.
+// Required if the container image is from a private Docker registry. The username to login to the Docker registry that contains the image. You can either specify the username directly by using plain text or specify an encrypted username by using a Secret Manager secret: `projects/*/secrets/*/versions/*`. However, using a secret is recommended for enhanced security. Caution: If you specify the username using plain text, you risk the username being exposed to any users who can view the job or its logs. To avoid this risk, specify a secret that contains the username instead. Learn more about [Secret Manager](https://cloud.google.com/secret-manager/docs/) and [using Secret Manager with Batch](https://cloud.google.com/batch/docs/create-run-job-secret-manager).
 func (o ContainerPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Container) *string {
 		if v == nil {
@@ -1655,15 +1726,17 @@ type ContainerResponse struct {
 	BlockExternalNetwork bool `pulumi:"blockExternalNetwork"`
 	// Overrides the `CMD` specified in the container. If there is an ENTRYPOINT (either in the container image or with the entrypoint field below) then commands are appended as arguments to the ENTRYPOINT.
 	Commands []string `pulumi:"commands"`
+	// Optional. If set to true, this container runnable uses Image streaming. Use Image streaming to allow the runnable to initialize without waiting for the entire container image to download, which can significantly reduce startup time for large container images. When `enableImageStreaming` is set to true, the container runtime is [containerd](https://containerd.io/) instead of Docker. Additionally, this container runnable only supports the following `container` subfields: `imageUri`, `commands[]`, `entrypoint`, and `volumes[]`; any other `container` subfields are ignored. For more information about the requirements and limitations for using Image streaming with Batch, see the [`image-streaming` sample on GitHub](https://github.com/GoogleCloudPlatform/batch-samples/tree/main/api-samples/image-streaming).
+	EnableImageStreaming bool `pulumi:"enableImageStreaming"`
 	// Overrides the `ENTRYPOINT` specified in the container.
 	Entrypoint string `pulumi:"entrypoint"`
 	// The URI to pull the container image from.
 	ImageUri string `pulumi:"imageUri"`
 	// Arbitrary additional options to include in the "docker run" command when running this container, e.g. "--network host".
 	Options string `pulumi:"options"`
-	// Optional password for logging in to a docker registry. If password matches `projects/*/secrets/*/versions/*` then Batch will read the password from the Secret Manager;
+	// Required if the container image is from a private Docker registry. The password to login to the Docker registry that contains the image. For security, it is strongly recommended to specify an encrypted password by using a Secret Manager secret: `projects/*/secrets/*/versions/*`. Warning: If you specify the password using plain text, you risk the password being exposed to any users who can view the job or its logs. To avoid this risk, specify a secret that contains the password instead. Learn more about [Secret Manager](https://cloud.google.com/secret-manager/docs/) and [using Secret Manager with Batch](https://cloud.google.com/batch/docs/create-run-job-secret-manager).
 	Password string `pulumi:"password"`
-	// Optional username for logging in to a docker registry. If username matches `projects/*/secrets/*/versions/*` then Batch will read the username from the Secret Manager.
+	// Required if the container image is from a private Docker registry. The username to login to the Docker registry that contains the image. You can either specify the username directly by using plain text or specify an encrypted username by using a Secret Manager secret: `projects/*/secrets/*/versions/*`. However, using a secret is recommended for enhanced security. Caution: If you specify the username using plain text, you risk the username being exposed to any users who can view the job or its logs. To avoid this risk, specify a secret that contains the username instead. Learn more about [Secret Manager](https://cloud.google.com/secret-manager/docs/) and [using Secret Manager with Batch](https://cloud.google.com/batch/docs/create-run-job-secret-manager).
 	Username string `pulumi:"username"`
 	// Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro If the `TaskSpec.Volumes` field is specified but this field is not, Batch will mount each volume from the host machine to the container with the same mount path by default. In this case, the default mount option for containers will be read-only (ro) for existing persistent disks and read-write (rw) for other volume types, regardless of the original mount options specified in `TaskSpec.Volumes`. If you need different mount settings, you can explicitly configure them in this field.
 	Volumes []string `pulumi:"volumes"`
@@ -1694,6 +1767,11 @@ func (o ContainerResponseOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []string { return v.Commands }).(pulumi.StringArrayOutput)
 }
 
+// Optional. If set to true, this container runnable uses Image streaming. Use Image streaming to allow the runnable to initialize without waiting for the entire container image to download, which can significantly reduce startup time for large container images. When `enableImageStreaming` is set to true, the container runtime is [containerd](https://containerd.io/) instead of Docker. Additionally, this container runnable only supports the following `container` subfields: `imageUri`, `commands[]`, `entrypoint`, and `volumes[]`; any other `container` subfields are ignored. For more information about the requirements and limitations for using Image streaming with Batch, see the [`image-streaming` sample on GitHub](https://github.com/GoogleCloudPlatform/batch-samples/tree/main/api-samples/image-streaming).
+func (o ContainerResponseOutput) EnableImageStreaming() pulumi.BoolOutput {
+	return o.ApplyT(func(v ContainerResponse) bool { return v.EnableImageStreaming }).(pulumi.BoolOutput)
+}
+
 // Overrides the `ENTRYPOINT` specified in the container.
 func (o ContainerResponseOutput) Entrypoint() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.Entrypoint }).(pulumi.StringOutput)
@@ -1709,12 +1787,12 @@ func (o ContainerResponseOutput) Options() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.Options }).(pulumi.StringOutput)
 }
 
-// Optional password for logging in to a docker registry. If password matches `projects/*/secrets/*/versions/*` then Batch will read the password from the Secret Manager;
+// Required if the container image is from a private Docker registry. The password to login to the Docker registry that contains the image. For security, it is strongly recommended to specify an encrypted password by using a Secret Manager secret: `projects/*/secrets/*/versions/*`. Warning: If you specify the password using plain text, you risk the password being exposed to any users who can view the job or its logs. To avoid this risk, specify a secret that contains the password instead. Learn more about [Secret Manager](https://cloud.google.com/secret-manager/docs/) and [using Secret Manager with Batch](https://cloud.google.com/batch/docs/create-run-job-secret-manager).
 func (o ContainerResponseOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// Optional username for logging in to a docker registry. If username matches `projects/*/secrets/*/versions/*` then Batch will read the username from the Secret Manager.
+// Required if the container image is from a private Docker registry. The username to login to the Docker registry that contains the image. You can either specify the username directly by using plain text or specify an encrypted username by using a Secret Manager secret: `projects/*/secrets/*/versions/*`. However, using a secret is recommended for enhanced security. Caution: If you specify the username using plain text, you risk the username being exposed to any users who can view the job or its logs. To avoid this risk, specify a secret that contains the username instead. Learn more about [Secret Manager](https://cloud.google.com/secret-manager/docs/) and [using Secret Manager with Batch](https://cloud.google.com/batch/docs/create-run-job-secret-manager).
 func (o ContainerResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -3664,7 +3742,7 @@ func (o LocationPolicyResponseOutput) AllowedLocations() pulumi.StringArrayOutpu
 
 // LogsPolicy describes how outputs from a Job's Tasks (stdout/stderr) will be preserved.
 type LogsPolicy struct {
-	// Optional. Additional settings for Cloud Logging. It will only take effect when the destination of LogsPolicy is set to CLOUD_LOGGING.
+	// Optional. Additional settings for Cloud Logging. It will only take effect when the destination of `LogsPolicy` is set to `CLOUD_LOGGING`.
 	CloudLoggingOption *CloudLoggingOption `pulumi:"cloudLoggingOption"`
 	// Where logs should be saved.
 	Destination *LogsPolicyDestination `pulumi:"destination"`
@@ -3685,7 +3763,7 @@ type LogsPolicyInput interface {
 
 // LogsPolicy describes how outputs from a Job's Tasks (stdout/stderr) will be preserved.
 type LogsPolicyArgs struct {
-	// Optional. Additional settings for Cloud Logging. It will only take effect when the destination of LogsPolicy is set to CLOUD_LOGGING.
+	// Optional. Additional settings for Cloud Logging. It will only take effect when the destination of `LogsPolicy` is set to `CLOUD_LOGGING`.
 	CloudLoggingOption CloudLoggingOptionPtrInput `pulumi:"cloudLoggingOption"`
 	// Where logs should be saved.
 	Destination LogsPolicyDestinationPtrInput `pulumi:"destination"`
@@ -3771,7 +3849,7 @@ func (o LogsPolicyOutput) ToLogsPolicyPtrOutputWithContext(ctx context.Context) 
 	}).(LogsPolicyPtrOutput)
 }
 
-// Optional. Additional settings for Cloud Logging. It will only take effect when the destination of LogsPolicy is set to CLOUD_LOGGING.
+// Optional. Additional settings for Cloud Logging. It will only take effect when the destination of `LogsPolicy` is set to `CLOUD_LOGGING`.
 func (o LogsPolicyOutput) CloudLoggingOption() CloudLoggingOptionPtrOutput {
 	return o.ApplyT(func(v LogsPolicy) *CloudLoggingOption { return v.CloudLoggingOption }).(CloudLoggingOptionPtrOutput)
 }
@@ -3810,7 +3888,7 @@ func (o LogsPolicyPtrOutput) Elem() LogsPolicyOutput {
 	}).(LogsPolicyOutput)
 }
 
-// Optional. Additional settings for Cloud Logging. It will only take effect when the destination of LogsPolicy is set to CLOUD_LOGGING.
+// Optional. Additional settings for Cloud Logging. It will only take effect when the destination of `LogsPolicy` is set to `CLOUD_LOGGING`.
 func (o LogsPolicyPtrOutput) CloudLoggingOption() CloudLoggingOptionPtrOutput {
 	return o.ApplyT(func(v *LogsPolicy) *CloudLoggingOption {
 		if v == nil {
@@ -3842,7 +3920,7 @@ func (o LogsPolicyPtrOutput) LogsPath() pulumi.StringPtrOutput {
 
 // LogsPolicy describes how outputs from a Job's Tasks (stdout/stderr) will be preserved.
 type LogsPolicyResponse struct {
-	// Optional. Additional settings for Cloud Logging. It will only take effect when the destination of LogsPolicy is set to CLOUD_LOGGING.
+	// Optional. Additional settings for Cloud Logging. It will only take effect when the destination of `LogsPolicy` is set to `CLOUD_LOGGING`.
 	CloudLoggingOption CloudLoggingOptionResponse `pulumi:"cloudLoggingOption"`
 	// Where logs should be saved.
 	Destination string `pulumi:"destination"`
@@ -3865,7 +3943,7 @@ func (o LogsPolicyResponseOutput) ToLogsPolicyResponseOutputWithContext(ctx cont
 	return o
 }
 
-// Optional. Additional settings for Cloud Logging. It will only take effect when the destination of LogsPolicy is set to CLOUD_LOGGING.
+// Optional. Additional settings for Cloud Logging. It will only take effect when the destination of `LogsPolicy` is set to `CLOUD_LOGGING`.
 func (o LogsPolicyResponseOutput) CloudLoggingOption() CloudLoggingOptionResponseOutput {
 	return o.ApplyT(func(v LogsPolicyResponse) CloudLoggingOptionResponse { return v.CloudLoggingOption }).(CloudLoggingOptionResponseOutput)
 }
@@ -5118,9 +5196,9 @@ func (o RunnableResponseArrayOutput) Index(i pulumi.IntInput) RunnableResponseOu
 
 // Script runnable.
 type Script struct {
-	// Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang line](<https://en.wikipedia.org/wiki/Shebang_(Unix)>)) as the first line of the file.(For example, to execute the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by default be excuted by `/bin/sh`.
+	// Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang line](<https://en.wikipedia.org/wiki/Shebang_(Unix)>)) as the first line of the file.(For example, to execute the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by default be executed by `/bin/sh`.
 	Path *string `pulumi:"path"`
-	// Shell script text. To specify an interpreter, please add a `#!\n` at the beginning of the text.(For example, to execute the script using bash, `#!/bin/bash\n` should be added. To execute the script using`Python3`, `#!/usr/bin/env python3\n` should be added.) Otherwise, the script will by default be excuted by `/bin/sh`.
+	// Shell script text. To specify an interpreter, please add a `#!\n` at the beginning of the text.(For example, to execute the script using bash, `#!/bin/bash\n` should be added. To execute the script using`Python3`, `#!/usr/bin/env python3\n` should be added.) Otherwise, the script will by default be executed by `/bin/sh`.
 	Text *string `pulumi:"text"`
 }
 
@@ -5137,9 +5215,9 @@ type ScriptInput interface {
 
 // Script runnable.
 type ScriptArgs struct {
-	// Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang line](<https://en.wikipedia.org/wiki/Shebang_(Unix)>)) as the first line of the file.(For example, to execute the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by default be excuted by `/bin/sh`.
+	// Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang line](<https://en.wikipedia.org/wiki/Shebang_(Unix)>)) as the first line of the file.(For example, to execute the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by default be executed by `/bin/sh`.
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	// Shell script text. To specify an interpreter, please add a `#!\n` at the beginning of the text.(For example, to execute the script using bash, `#!/bin/bash\n` should be added. To execute the script using`Python3`, `#!/usr/bin/env python3\n` should be added.) Otherwise, the script will by default be excuted by `/bin/sh`.
+	// Shell script text. To specify an interpreter, please add a `#!\n` at the beginning of the text.(For example, to execute the script using bash, `#!/bin/bash\n` should be added. To execute the script using`Python3`, `#!/usr/bin/env python3\n` should be added.) Otherwise, the script will by default be executed by `/bin/sh`.
 	Text pulumi.StringPtrInput `pulumi:"text"`
 }
 
@@ -5221,12 +5299,12 @@ func (o ScriptOutput) ToScriptPtrOutputWithContext(ctx context.Context) ScriptPt
 	}).(ScriptPtrOutput)
 }
 
-// Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang line](<https://en.wikipedia.org/wiki/Shebang_(Unix)>)) as the first line of the file.(For example, to execute the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by default be excuted by `/bin/sh`.
+// Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang line](<https://en.wikipedia.org/wiki/Shebang_(Unix)>)) as the first line of the file.(For example, to execute the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by default be executed by `/bin/sh`.
 func (o ScriptOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Script) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// Shell script text. To specify an interpreter, please add a `#!\n` at the beginning of the text.(For example, to execute the script using bash, `#!/bin/bash\n` should be added. To execute the script using`Python3`, `#!/usr/bin/env python3\n` should be added.) Otherwise, the script will by default be excuted by `/bin/sh`.
+// Shell script text. To specify an interpreter, please add a `#!\n` at the beginning of the text.(For example, to execute the script using bash, `#!/bin/bash\n` should be added. To execute the script using`Python3`, `#!/usr/bin/env python3\n` should be added.) Otherwise, the script will by default be executed by `/bin/sh`.
 func (o ScriptOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Script) *string { return v.Text }).(pulumi.StringPtrOutput)
 }
@@ -5255,7 +5333,7 @@ func (o ScriptPtrOutput) Elem() ScriptOutput {
 	}).(ScriptOutput)
 }
 
-// Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang line](<https://en.wikipedia.org/wiki/Shebang_(Unix)>)) as the first line of the file.(For example, to execute the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by default be excuted by `/bin/sh`.
+// Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang line](<https://en.wikipedia.org/wiki/Shebang_(Unix)>)) as the first line of the file.(For example, to execute the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by default be executed by `/bin/sh`.
 func (o ScriptPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Script) *string {
 		if v == nil {
@@ -5265,7 +5343,7 @@ func (o ScriptPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Shell script text. To specify an interpreter, please add a `#!\n` at the beginning of the text.(For example, to execute the script using bash, `#!/bin/bash\n` should be added. To execute the script using`Python3`, `#!/usr/bin/env python3\n` should be added.) Otherwise, the script will by default be excuted by `/bin/sh`.
+// Shell script text. To specify an interpreter, please add a `#!\n` at the beginning of the text.(For example, to execute the script using bash, `#!/bin/bash\n` should be added. To execute the script using`Python3`, `#!/usr/bin/env python3\n` should be added.) Otherwise, the script will by default be executed by `/bin/sh`.
 func (o ScriptPtrOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Script) *string {
 		if v == nil {
@@ -5277,9 +5355,9 @@ func (o ScriptPtrOutput) Text() pulumi.StringPtrOutput {
 
 // Script runnable.
 type ScriptResponse struct {
-	// Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang line](<https://en.wikipedia.org/wiki/Shebang_(Unix)>)) as the first line of the file.(For example, to execute the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by default be excuted by `/bin/sh`.
+	// Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang line](<https://en.wikipedia.org/wiki/Shebang_(Unix)>)) as the first line of the file.(For example, to execute the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by default be executed by `/bin/sh`.
 	Path string `pulumi:"path"`
-	// Shell script text. To specify an interpreter, please add a `#!\n` at the beginning of the text.(For example, to execute the script using bash, `#!/bin/bash\n` should be added. To execute the script using`Python3`, `#!/usr/bin/env python3\n` should be added.) Otherwise, the script will by default be excuted by `/bin/sh`.
+	// Shell script text. To specify an interpreter, please add a `#!\n` at the beginning of the text.(For example, to execute the script using bash, `#!/bin/bash\n` should be added. To execute the script using`Python3`, `#!/usr/bin/env python3\n` should be added.) Otherwise, the script will by default be executed by `/bin/sh`.
 	Text string `pulumi:"text"`
 }
 
@@ -5298,21 +5376,21 @@ func (o ScriptResponseOutput) ToScriptResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang line](<https://en.wikipedia.org/wiki/Shebang_(Unix)>)) as the first line of the file.(For example, to execute the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by default be excuted by `/bin/sh`.
+// Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang line](<https://en.wikipedia.org/wiki/Shebang_(Unix)>)) as the first line of the file.(For example, to execute the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by default be executed by `/bin/sh`.
 func (o ScriptResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v ScriptResponse) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// Shell script text. To specify an interpreter, please add a `#!\n` at the beginning of the text.(For example, to execute the script using bash, `#!/bin/bash\n` should be added. To execute the script using`Python3`, `#!/usr/bin/env python3\n` should be added.) Otherwise, the script will by default be excuted by `/bin/sh`.
+// Shell script text. To specify an interpreter, please add a `#!\n` at the beginning of the text.(For example, to execute the script using bash, `#!/bin/bash\n` should be added. To execute the script using`Python3`, `#!/usr/bin/env python3\n` should be added.) Otherwise, the script will by default be executed by `/bin/sh`.
 func (o ScriptResponseOutput) Text() pulumi.StringOutput {
 	return o.ApplyT(func(v ScriptResponse) string { return v.Text }).(pulumi.StringOutput)
 }
 
 // Carries information about a Google Cloud service account.
 type ServiceAccount struct {
-	// Email address of the service account. If not specified, the default Compute Engine service account for the project will be used. If instance template is being used, the service account has to be specified in the instance template and it has to match the email field here.
+	// Email address of the service account.
 	Email *string `pulumi:"email"`
-	// List of scopes to be enabled for this service account on the VM, in addition to the cloud-platform API scope that will be added by default.
+	// List of scopes to be enabled for this service account.
 	Scopes []string `pulumi:"scopes"`
 }
 
@@ -5329,9 +5407,9 @@ type ServiceAccountInput interface {
 
 // Carries information about a Google Cloud service account.
 type ServiceAccountArgs struct {
-	// Email address of the service account. If not specified, the default Compute Engine service account for the project will be used. If instance template is being used, the service account has to be specified in the instance template and it has to match the email field here.
+	// Email address of the service account.
 	Email pulumi.StringPtrInput `pulumi:"email"`
-	// List of scopes to be enabled for this service account on the VM, in addition to the cloud-platform API scope that will be added by default.
+	// List of scopes to be enabled for this service account.
 	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
 }
 
@@ -5413,12 +5491,12 @@ func (o ServiceAccountOutput) ToServiceAccountPtrOutputWithContext(ctx context.C
 	}).(ServiceAccountPtrOutput)
 }
 
-// Email address of the service account. If not specified, the default Compute Engine service account for the project will be used. If instance template is being used, the service account has to be specified in the instance template and it has to match the email field here.
+// Email address of the service account.
 func (o ServiceAccountOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceAccount) *string { return v.Email }).(pulumi.StringPtrOutput)
 }
 
-// List of scopes to be enabled for this service account on the VM, in addition to the cloud-platform API scope that will be added by default.
+// List of scopes to be enabled for this service account.
 func (o ServiceAccountOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceAccount) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
@@ -5447,7 +5525,7 @@ func (o ServiceAccountPtrOutput) Elem() ServiceAccountOutput {
 	}).(ServiceAccountOutput)
 }
 
-// Email address of the service account. If not specified, the default Compute Engine service account for the project will be used. If instance template is being used, the service account has to be specified in the instance template and it has to match the email field here.
+// Email address of the service account.
 func (o ServiceAccountPtrOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceAccount) *string {
 		if v == nil {
@@ -5457,7 +5535,7 @@ func (o ServiceAccountPtrOutput) Email() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of scopes to be enabled for this service account on the VM, in addition to the cloud-platform API scope that will be added by default.
+// List of scopes to be enabled for this service account.
 func (o ServiceAccountPtrOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServiceAccount) []string {
 		if v == nil {
@@ -5469,9 +5547,9 @@ func (o ServiceAccountPtrOutput) Scopes() pulumi.StringArrayOutput {
 
 // Carries information about a Google Cloud service account.
 type ServiceAccountResponse struct {
-	// Email address of the service account. If not specified, the default Compute Engine service account for the project will be used. If instance template is being used, the service account has to be specified in the instance template and it has to match the email field here.
+	// Email address of the service account.
 	Email string `pulumi:"email"`
-	// List of scopes to be enabled for this service account on the VM, in addition to the cloud-platform API scope that will be added by default.
+	// List of scopes to be enabled for this service account.
 	Scopes []string `pulumi:"scopes"`
 }
 
@@ -5490,12 +5568,12 @@ func (o ServiceAccountResponseOutput) ToServiceAccountResponseOutputWithContext(
 	return o
 }
 
-// Email address of the service account. If not specified, the default Compute Engine service account for the project will be used. If instance template is being used, the service account has to be specified in the instance template and it has to match the email field here.
+// Email address of the service account.
 func (o ServiceAccountResponseOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceAccountResponse) string { return v.Email }).(pulumi.StringOutput)
 }
 
-// List of scopes to be enabled for this service account on the VM, in addition to the cloud-platform API scope that will be added by default.
+// List of scopes to be enabled for this service account.
 func (o ServiceAccountResponseOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceAccountResponse) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
@@ -5606,8 +5684,10 @@ type TaskGroup struct {
 	Parallelism *string `pulumi:"parallelism"`
 	// When true, Batch will configure SSH to allow passwordless login between VMs running the Batch tasks in the same TaskGroup.
 	PermissiveSsh *bool `pulumi:"permissiveSsh"`
-	// When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false.
+	// When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false. The host file supports up to 1000 VMs.
 	RequireHostsFile *bool `pulumi:"requireHostsFile"`
+	// Optional. If not set or set to false, Batch uses the root user to execute runnables. If set to true, Batch runs the runnables using a non-root user. Currently, the non-root user Batch used is generated by OS Login. For more information, see [About OS Login](https://cloud.google.com/compute/docs/oslogin).
+	RunAsNonRoot *bool `pulumi:"runAsNonRoot"`
 	// Scheduling policy for Tasks in the TaskGroup. The default value is AS_SOON_AS_POSSIBLE.
 	SchedulingPolicy *TaskGroupSchedulingPolicy `pulumi:"schedulingPolicy"`
 	// Number of Tasks in the TaskGroup. Default is 1.
@@ -5637,8 +5717,10 @@ type TaskGroupArgs struct {
 	Parallelism pulumi.StringPtrInput `pulumi:"parallelism"`
 	// When true, Batch will configure SSH to allow passwordless login between VMs running the Batch tasks in the same TaskGroup.
 	PermissiveSsh pulumi.BoolPtrInput `pulumi:"permissiveSsh"`
-	// When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false.
+	// When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false. The host file supports up to 1000 VMs.
 	RequireHostsFile pulumi.BoolPtrInput `pulumi:"requireHostsFile"`
+	// Optional. If not set or set to false, Batch uses the root user to execute runnables. If set to true, Batch runs the runnables using a non-root user. Currently, the non-root user Batch used is generated by OS Login. For more information, see [About OS Login](https://cloud.google.com/compute/docs/oslogin).
+	RunAsNonRoot pulumi.BoolPtrInput `pulumi:"runAsNonRoot"`
 	// Scheduling policy for Tasks in the TaskGroup. The default value is AS_SOON_AS_POSSIBLE.
 	SchedulingPolicy TaskGroupSchedulingPolicyPtrInput `pulumi:"schedulingPolicy"`
 	// Number of Tasks in the TaskGroup. Default is 1.
@@ -5713,9 +5795,14 @@ func (o TaskGroupOutput) PermissiveSsh() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TaskGroup) *bool { return v.PermissiveSsh }).(pulumi.BoolPtrOutput)
 }
 
-// When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false.
+// When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false. The host file supports up to 1000 VMs.
 func (o TaskGroupOutput) RequireHostsFile() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TaskGroup) *bool { return v.RequireHostsFile }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. If not set or set to false, Batch uses the root user to execute runnables. If set to true, Batch runs the runnables using a non-root user. Currently, the non-root user Batch used is generated by OS Login. For more information, see [About OS Login](https://cloud.google.com/compute/docs/oslogin).
+func (o TaskGroupOutput) RunAsNonRoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TaskGroup) *bool { return v.RunAsNonRoot }).(pulumi.BoolPtrOutput)
 }
 
 // Scheduling policy for Tasks in the TaskGroup. The default value is AS_SOON_AS_POSSIBLE.
@@ -5771,8 +5858,10 @@ type TaskGroupResponse struct {
 	Parallelism string `pulumi:"parallelism"`
 	// When true, Batch will configure SSH to allow passwordless login between VMs running the Batch tasks in the same TaskGroup.
 	PermissiveSsh bool `pulumi:"permissiveSsh"`
-	// When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false.
+	// When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false. The host file supports up to 1000 VMs.
 	RequireHostsFile bool `pulumi:"requireHostsFile"`
+	// Optional. If not set or set to false, Batch uses the root user to execute runnables. If set to true, Batch runs the runnables using a non-root user. Currently, the non-root user Batch used is generated by OS Login. For more information, see [About OS Login](https://cloud.google.com/compute/docs/oslogin).
+	RunAsNonRoot bool `pulumi:"runAsNonRoot"`
 	// Scheduling policy for Tasks in the TaskGroup. The default value is AS_SOON_AS_POSSIBLE.
 	SchedulingPolicy string `pulumi:"schedulingPolicy"`
 	// Number of Tasks in the TaskGroup. Default is 1.
@@ -5815,9 +5904,14 @@ func (o TaskGroupResponseOutput) PermissiveSsh() pulumi.BoolOutput {
 	return o.ApplyT(func(v TaskGroupResponse) bool { return v.PermissiveSsh }).(pulumi.BoolOutput)
 }
 
-// When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false.
+// When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false. The host file supports up to 1000 VMs.
 func (o TaskGroupResponseOutput) RequireHostsFile() pulumi.BoolOutput {
 	return o.ApplyT(func(v TaskGroupResponse) bool { return v.RequireHostsFile }).(pulumi.BoolOutput)
+}
+
+// Optional. If not set or set to false, Batch uses the root user to execute runnables. If set to true, Batch runs the runnables using a non-root user. Currently, the non-root user Batch used is generated by OS Login. For more information, see [About OS Login](https://cloud.google.com/compute/docs/oslogin).
+func (o TaskGroupResponseOutput) RunAsNonRoot() pulumi.BoolOutput {
+	return o.ApplyT(func(v TaskGroupResponse) bool { return v.RunAsNonRoot }).(pulumi.BoolOutput)
 }
 
 // Scheduling policy for Tasks in the TaskGroup. The default value is AS_SOON_AS_POSSIBLE.
@@ -5879,7 +5973,7 @@ type TaskSpec struct {
 	LifecyclePolicies []LifecyclePolicy `pulumi:"lifecyclePolicies"`
 	// Maximum number of retries on failures. The default, 0, which means never retry. The valid value range is [0, 10].
 	MaxRetryCount *int `pulumi:"maxRetryCount"`
-	// Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit.
+	// Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit. The valid value range for max_run_duration in seconds is [0, 315576000000.999999999],
 	MaxRunDuration *string `pulumi:"maxRunDuration"`
 	// The sequence of scripts or containers to run for this Task. Each Task using this TaskSpec executes its list of runnables in order. The Task succeeds if all of its runnables either exit with a zero status or any that exit with a non-zero status have the ignore_exit_status flag. Background runnables are killed automatically (if they have not already exited) a short time after all foreground runnables have completed. Even though this is likely to result in a non-zero exit status for the background runnable, these automatic kills are not treated as Task failures.
 	Runnables []Runnable `pulumi:"runnables"`
@@ -5912,7 +6006,7 @@ type TaskSpecArgs struct {
 	LifecyclePolicies LifecyclePolicyArrayInput `pulumi:"lifecyclePolicies"`
 	// Maximum number of retries on failures. The default, 0, which means never retry. The valid value range is [0, 10].
 	MaxRetryCount pulumi.IntPtrInput `pulumi:"maxRetryCount"`
-	// Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit.
+	// Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit. The valid value range for max_run_duration in seconds is [0, 315576000000.999999999],
 	MaxRunDuration pulumi.StringPtrInput `pulumi:"maxRunDuration"`
 	// The sequence of scripts or containers to run for this Task. Each Task using this TaskSpec executes its list of runnables in order. The Task succeeds if all of its runnables either exit with a zero status or any that exit with a non-zero status have the ignore_exit_status flag. Background runnables are killed automatically (if they have not already exited) a short time after all foreground runnables have completed. Even though this is likely to result in a non-zero exit status for the background runnable, these automatic kills are not treated as Task failures.
 	Runnables RunnableArrayInput `pulumi:"runnables"`
@@ -5974,7 +6068,7 @@ func (o TaskSpecOutput) MaxRetryCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TaskSpec) *int { return v.MaxRetryCount }).(pulumi.IntPtrOutput)
 }
 
-// Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit.
+// Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit. The valid value range for max_run_duration in seconds is [0, 315576000000.999999999],
 func (o TaskSpecOutput) MaxRunDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TaskSpec) *string { return v.MaxRunDuration }).(pulumi.StringPtrOutput)
 }
@@ -6003,7 +6097,7 @@ type TaskSpecResponse struct {
 	LifecyclePolicies []LifecyclePolicyResponse `pulumi:"lifecyclePolicies"`
 	// Maximum number of retries on failures. The default, 0, which means never retry. The valid value range is [0, 10].
 	MaxRetryCount int `pulumi:"maxRetryCount"`
-	// Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit.
+	// Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit. The valid value range for max_run_duration in seconds is [0, 315576000000.999999999],
 	MaxRunDuration string `pulumi:"maxRunDuration"`
 	// The sequence of scripts or containers to run for this Task. Each Task using this TaskSpec executes its list of runnables in order. The Task succeeds if all of its runnables either exit with a zero status or any that exit with a non-zero status have the ignore_exit_status flag. Background runnables are killed automatically (if they have not already exited) a short time after all foreground runnables have completed. Even though this is likely to result in a non-zero exit status for the background runnable, these automatic kills are not treated as Task failures.
 	Runnables []RunnableResponse `pulumi:"runnables"`
@@ -6053,7 +6147,7 @@ func (o TaskSpecResponseOutput) MaxRetryCount() pulumi.IntOutput {
 	return o.ApplyT(func(v TaskSpecResponse) int { return v.MaxRetryCount }).(pulumi.IntOutput)
 }
 
-// Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit.
+// Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit. The valid value range for max_run_duration in seconds is [0, 315576000000.999999999],
 func (o TaskSpecResponseOutput) MaxRunDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v TaskSpecResponse) string { return v.MaxRunDuration }).(pulumi.StringOutput)
 }

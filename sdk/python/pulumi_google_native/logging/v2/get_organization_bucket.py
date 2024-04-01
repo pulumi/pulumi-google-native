@@ -66,7 +66,7 @@ class GetOrganizationBucketResult:
     @pulumi.getter(name="cmekSettings")
     def cmek_settings(self) -> 'outputs.CmekSettingsResponse':
         """
-        The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
+        Optional. The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
         """
         return pulumi.get(self, "cmek_settings")
 
@@ -82,7 +82,7 @@ class GetOrganizationBucketResult:
     @pulumi.getter
     def description(self) -> str:
         """
-        Describes this bucket.
+        Optional. Describes this bucket.
         """
         return pulumi.get(self, "description")
 
@@ -90,7 +90,7 @@ class GetOrganizationBucketResult:
     @pulumi.getter(name="indexConfigs")
     def index_configs(self) -> Sequence['outputs.IndexConfigResponse']:
         """
-        A list of indexed fields and related configuration data.
+        Optional. A list of indexed fields and related configuration data.
         """
         return pulumi.get(self, "index_configs")
 
@@ -106,7 +106,7 @@ class GetOrganizationBucketResult:
     @pulumi.getter
     def locked(self) -> bool:
         """
-        Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+        Optional. Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
         """
         return pulumi.get(self, "locked")
 
@@ -122,7 +122,7 @@ class GetOrganizationBucketResult:
     @pulumi.getter(name="restrictedFields")
     def restricted_fields(self) -> Sequence[str]:
         """
-        Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
+        Optional. Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
         """
         return pulumi.get(self, "restricted_fields")
 
@@ -130,7 +130,7 @@ class GetOrganizationBucketResult:
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> int:
         """
-        Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+        Optional. Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
         """
         return pulumi.get(self, "retention_days")
 

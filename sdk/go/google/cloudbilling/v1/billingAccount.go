@@ -24,9 +24,9 @@ type BillingAccount struct {
 	MasterBillingAccount pulumi.StringOutput `pulumi:"masterBillingAccount"`
 	// The resource name of the billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF` would be the resource name for billing account `012345-567890-ABCDEF`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it will be unable to use paid services.
+	// True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it are unable to use paid services.
 	Open pulumi.BoolOutput `pulumi:"open"`
-	// Optional. The parent to create a billing account from. Format: - organizations/{organization_id} eg organizations/12345678 - billingAccounts/{billing_account_id} eg `billingAccounts/012345-567890-ABCDEF`
+	// Optional. The parent to create a billing account from. Format: - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF`
 	Parent pulumi.StringOutput `pulumi:"parent"`
 }
 
@@ -74,7 +74,7 @@ type billingAccountArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// If this account is a [subaccount](https://cloud.google.com/billing/docs/concepts), then this will be the resource name of the parent billing account that it is being resold through. Otherwise this will be empty.
 	MasterBillingAccount *string `pulumi:"masterBillingAccount"`
-	// Optional. The parent to create a billing account from. Format: - organizations/{organization_id} eg organizations/12345678 - billingAccounts/{billing_account_id} eg `billingAccounts/012345-567890-ABCDEF`
+	// Optional. The parent to create a billing account from. Format: - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF`
 	Parent *string `pulumi:"parent"`
 }
 
@@ -84,7 +84,7 @@ type BillingAccountArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// If this account is a [subaccount](https://cloud.google.com/billing/docs/concepts), then this will be the resource name of the parent billing account that it is being resold through. Otherwise this will be empty.
 	MasterBillingAccount pulumi.StringPtrInput
-	// Optional. The parent to create a billing account from. Format: - organizations/{organization_id} eg organizations/12345678 - billingAccounts/{billing_account_id} eg `billingAccounts/012345-567890-ABCDEF`
+	// Optional. The parent to create a billing account from. Format: - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF`
 	Parent pulumi.StringPtrInput
 }
 
@@ -140,12 +140,12 @@ func (o BillingAccountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingAccount) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it will be unable to use paid services.
+// True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it are unable to use paid services.
 func (o BillingAccountOutput) Open() pulumi.BoolOutput {
 	return o.ApplyT(func(v *BillingAccount) pulumi.BoolOutput { return v.Open }).(pulumi.BoolOutput)
 }
 
-// Optional. The parent to create a billing account from. Format: - organizations/{organization_id} eg organizations/12345678 - billingAccounts/{billing_account_id} eg `billingAccounts/012345-567890-ABCDEF`
+// Optional. The parent to create a billing account from. Format: - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF`
 func (o BillingAccountOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingAccount) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

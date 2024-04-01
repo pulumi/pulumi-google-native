@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// </summary>
         public readonly string Complexity;
         /// <summary>
-        /// Disallow credentials that have been previously compromised by a public data breach.
+        /// This field is deprecated and will be removed in a future version of the API.
         /// </summary>
         public readonly bool DisallowCompromisedCredentials;
         /// <summary>

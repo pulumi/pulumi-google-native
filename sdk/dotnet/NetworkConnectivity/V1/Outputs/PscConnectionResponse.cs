@@ -49,6 +49,10 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Outputs
         /// </summary>
         public readonly string PscConnectionId;
         /// <summary>
+        /// The URI of the subnetwork selected to allocate IP address for this connection.
+        /// </summary>
+        public readonly string SelectedSubnetwork;
+        /// <summary>
         /// State of the PSC Connection
         /// </summary>
         public readonly string State;
@@ -71,6 +75,8 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Outputs
 
             string pscConnectionId,
 
+            string selectedSubnetwork,
+
             string state)
         {
             ConsumerAddress = consumerAddress;
@@ -81,6 +87,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Outputs
             ErrorType = errorType;
             GceOperation = gceOperation;
             PscConnectionId = pscConnectionId;
+            SelectedSubnetwork = selectedSubnetwork;
             State = state;
         }
     }

@@ -185,7 +185,7 @@ func (o DirectoryServicesConfigResponseOutput) ManagedActiveDirectory() ManagedA
 type FileShareConfig struct {
 	// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes.
 	CapacityGb *string `pulumi:"capacityGb"`
-	// The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores [a-z0-9_]. Must start with a letter. Immutable.
+	// The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores `[a-z0-9_]`. Must start with a letter. Immutable.
 	Name string `pulumi:"name"`
 	// Nfs Export Options. There is a limit of 10 export options per file share.
 	NfsExportOptions []NfsExportOptions `pulumi:"nfsExportOptions"`
@@ -208,7 +208,7 @@ type FileShareConfigInput interface {
 type FileShareConfigArgs struct {
 	// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes.
 	CapacityGb pulumi.StringPtrInput `pulumi:"capacityGb"`
-	// The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores [a-z0-9_]. Must start with a letter. Immutable.
+	// The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores `[a-z0-9_]`. Must start with a letter. Immutable.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Nfs Export Options. There is a limit of 10 export options per file share.
 	NfsExportOptions NfsExportOptionsArrayInput `pulumi:"nfsExportOptions"`
@@ -273,7 +273,7 @@ func (o FileShareConfigOutput) CapacityGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileShareConfig) *string { return v.CapacityGb }).(pulumi.StringPtrOutput)
 }
 
-// The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores [a-z0-9_]. Must start with a letter. Immutable.
+// The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores `[a-z0-9_]`. Must start with a letter. Immutable.
 func (o FileShareConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FileShareConfig) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -312,7 +312,7 @@ func (o FileShareConfigArrayOutput) Index(i pulumi.IntInput) FileShareConfigOutp
 type FileShareConfigResponse struct {
 	// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes.
 	CapacityGb string `pulumi:"capacityGb"`
-	// The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores [a-z0-9_]. Must start with a letter. Immutable.
+	// The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores `[a-z0-9_]`. Must start with a letter. Immutable.
 	Name string `pulumi:"name"`
 	// Nfs Export Options. There is a limit of 10 export options per file share.
 	NfsExportOptions []NfsExportOptionsResponse `pulumi:"nfsExportOptions"`
@@ -340,7 +340,7 @@ func (o FileShareConfigResponseOutput) CapacityGb() pulumi.StringOutput {
 	return o.ApplyT(func(v FileShareConfigResponse) string { return v.CapacityGb }).(pulumi.StringOutput)
 }
 
-// The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores [a-z0-9_]. Must start with a letter. Immutable.
+// The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores `[a-z0-9_]`. Must start with a letter. Immutable.
 func (o FileShareConfigResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FileShareConfigResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -377,10 +377,10 @@ func (o FileShareConfigResponseArrayOutput) Index(i pulumi.IntInput) FileShareCo
 
 // ManagedActiveDirectoryConfig contains all the parameters for connecting to Managed Active Directory.
 type ManagedActiveDirectoryConfig struct {
-	// The computer name is used as a prefix to the mount remote target. Example: if the computer_name is `my-computer`, the mount command will look like: `$mount -o vers=4,sec=krb5 my-computer.filestore.:`.
-	Computer *string `pulumi:"computer"`
-	// Fully qualified domain name.
-	Domain *string `pulumi:"domain"`
+	// The computer name is used as a prefix to the mount remote target. Example: if the computer is `my-computer`, the mount command will look like: ` $mount -o vers=4.1,sec=krb5 my-computer.filestore.:  `.
+	Computer string `pulumi:"computer"`
+	// The domain resource name, in the format `projects/{project_id}/locations/global/domains/{domain}`.
+	Domain string `pulumi:"domain"`
 }
 
 // ManagedActiveDirectoryConfigInput is an input type that accepts ManagedActiveDirectoryConfigArgs and ManagedActiveDirectoryConfigOutput values.
@@ -396,10 +396,10 @@ type ManagedActiveDirectoryConfigInput interface {
 
 // ManagedActiveDirectoryConfig contains all the parameters for connecting to Managed Active Directory.
 type ManagedActiveDirectoryConfigArgs struct {
-	// The computer name is used as a prefix to the mount remote target. Example: if the computer_name is `my-computer`, the mount command will look like: `$mount -o vers=4,sec=krb5 my-computer.filestore.:`.
-	Computer pulumi.StringPtrInput `pulumi:"computer"`
-	// Fully qualified domain name.
-	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// The computer name is used as a prefix to the mount remote target. Example: if the computer is `my-computer`, the mount command will look like: ` $mount -o vers=4.1,sec=krb5 my-computer.filestore.:  `.
+	Computer pulumi.StringInput `pulumi:"computer"`
+	// The domain resource name, in the format `projects/{project_id}/locations/global/domains/{domain}`.
+	Domain pulumi.StringInput `pulumi:"domain"`
 }
 
 func (ManagedActiveDirectoryConfigArgs) ElementType() reflect.Type {
@@ -480,14 +480,14 @@ func (o ManagedActiveDirectoryConfigOutput) ToManagedActiveDirectoryConfigPtrOut
 	}).(ManagedActiveDirectoryConfigPtrOutput)
 }
 
-// The computer name is used as a prefix to the mount remote target. Example: if the computer_name is `my-computer`, the mount command will look like: `$mount -o vers=4,sec=krb5 my-computer.filestore.:`.
-func (o ManagedActiveDirectoryConfigOutput) Computer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedActiveDirectoryConfig) *string { return v.Computer }).(pulumi.StringPtrOutput)
+// The computer name is used as a prefix to the mount remote target. Example: if the computer is `my-computer`, the mount command will look like: ` $mount -o vers=4.1,sec=krb5 my-computer.filestore.:  `.
+func (o ManagedActiveDirectoryConfigOutput) Computer() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedActiveDirectoryConfig) string { return v.Computer }).(pulumi.StringOutput)
 }
 
-// Fully qualified domain name.
-func (o ManagedActiveDirectoryConfigOutput) Domain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedActiveDirectoryConfig) *string { return v.Domain }).(pulumi.StringPtrOutput)
+// The domain resource name, in the format `projects/{project_id}/locations/global/domains/{domain}`.
+func (o ManagedActiveDirectoryConfigOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedActiveDirectoryConfig) string { return v.Domain }).(pulumi.StringOutput)
 }
 
 type ManagedActiveDirectoryConfigPtrOutput struct{ *pulumi.OutputState }
@@ -514,31 +514,31 @@ func (o ManagedActiveDirectoryConfigPtrOutput) Elem() ManagedActiveDirectoryConf
 	}).(ManagedActiveDirectoryConfigOutput)
 }
 
-// The computer name is used as a prefix to the mount remote target. Example: if the computer_name is `my-computer`, the mount command will look like: `$mount -o vers=4,sec=krb5 my-computer.filestore.:`.
+// The computer name is used as a prefix to the mount remote target. Example: if the computer is `my-computer`, the mount command will look like: ` $mount -o vers=4.1,sec=krb5 my-computer.filestore.:  `.
 func (o ManagedActiveDirectoryConfigPtrOutput) Computer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedActiveDirectoryConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Computer
+		return &v.Computer
 	}).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified domain name.
+// The domain resource name, in the format `projects/{project_id}/locations/global/domains/{domain}`.
 func (o ManagedActiveDirectoryConfigPtrOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedActiveDirectoryConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Domain
+		return &v.Domain
 	}).(pulumi.StringPtrOutput)
 }
 
 // ManagedActiveDirectoryConfig contains all the parameters for connecting to Managed Active Directory.
 type ManagedActiveDirectoryConfigResponse struct {
-	// The computer name is used as a prefix to the mount remote target. Example: if the computer_name is `my-computer`, the mount command will look like: `$mount -o vers=4,sec=krb5 my-computer.filestore.:`.
+	// The computer name is used as a prefix to the mount remote target. Example: if the computer is `my-computer`, the mount command will look like: ` $mount -o vers=4.1,sec=krb5 my-computer.filestore.:  `.
 	Computer string `pulumi:"computer"`
-	// Fully qualified domain name.
+	// The domain resource name, in the format `projects/{project_id}/locations/global/domains/{domain}`.
 	Domain string `pulumi:"domain"`
 }
 
@@ -557,12 +557,12 @@ func (o ManagedActiveDirectoryConfigResponseOutput) ToManagedActiveDirectoryConf
 	return o
 }
 
-// The computer name is used as a prefix to the mount remote target. Example: if the computer_name is `my-computer`, the mount command will look like: `$mount -o vers=4,sec=krb5 my-computer.filestore.:`.
+// The computer name is used as a prefix to the mount remote target. Example: if the computer is `my-computer`, the mount command will look like: ` $mount -o vers=4.1,sec=krb5 my-computer.filestore.:  `.
 func (o ManagedActiveDirectoryConfigResponseOutput) Computer() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedActiveDirectoryConfigResponse) string { return v.Computer }).(pulumi.StringOutput)
 }
 
-// Fully qualified domain name.
+// The domain resource name, in the format `projects/{project_id}/locations/global/domains/{domain}`.
 func (o ManagedActiveDirectoryConfigResponseOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedActiveDirectoryConfigResponse) string { return v.Domain }).(pulumi.StringOutput)
 }

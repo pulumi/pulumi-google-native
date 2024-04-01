@@ -29,6 +29,8 @@ type LookupAppProfileArgs struct {
 }
 
 type LookupAppProfileResult struct {
+	// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+	DataBoostIsolationReadOnly DataBoostIsolationReadOnlyResponse `pulumi:"dataBoostIsolationReadOnly"`
 	// Long form description of the use case for this AppProfile.
 	Description string `pulumi:"description"`
 	// Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
@@ -80,6 +82,11 @@ func (o LookupAppProfileResultOutput) ToLookupAppProfileResultOutput() LookupApp
 
 func (o LookupAppProfileResultOutput) ToLookupAppProfileResultOutputWithContext(ctx context.Context) LookupAppProfileResultOutput {
 	return o
+}
+
+// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+func (o LookupAppProfileResultOutput) DataBoostIsolationReadOnly() DataBoostIsolationReadOnlyResponseOutput {
+	return o.ApplyT(func(v LookupAppProfileResult) DataBoostIsolationReadOnlyResponse { return v.DataBoostIsolationReadOnly }).(DataBoostIsolationReadOnlyResponseOutput)
 }
 
 // Long form description of the use case for this AppProfile.

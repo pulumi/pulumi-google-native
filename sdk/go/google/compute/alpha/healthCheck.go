@@ -20,8 +20,9 @@ type HealthCheck struct {
 	// Creation timestamp in 3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
-	Description     pulumi.StringOutput           `pulumi:"description"`
-	GrpcHealthCheck GRPCHealthCheckResponseOutput `pulumi:"grpcHealthCheck"`
+	Description        pulumi.StringOutput              `pulumi:"description"`
+	GrpcHealthCheck    GRPCHealthCheckResponseOutput    `pulumi:"grpcHealthCheck"`
+	GrpcTlsHealthCheck GRPCTLSHealthCheckResponseOutput `pulumi:"grpcTlsHealthCheck"`
 	// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
 	HealthyThreshold pulumi.IntOutput               `pulumi:"healthyThreshold"`
 	Http2HealthCheck HTTP2HealthCheckResponseOutput `pulumi:"http2HealthCheck"`
@@ -102,8 +103,9 @@ type healthCheckArgs struct {
 	// How often (in seconds) to send a health check. The default value is 5 seconds.
 	CheckIntervalSec *int `pulumi:"checkIntervalSec"`
 	// An optional description of this resource. Provide this property when you create the resource.
-	Description     *string          `pulumi:"description"`
-	GrpcHealthCheck *GRPCHealthCheck `pulumi:"grpcHealthCheck"`
+	Description        *string             `pulumi:"description"`
+	GrpcHealthCheck    *GRPCHealthCheck    `pulumi:"grpcHealthCheck"`
+	GrpcTlsHealthCheck *GRPCTLSHealthCheck `pulumi:"grpcTlsHealthCheck"`
 	// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
 	HealthyThreshold *int                  `pulumi:"healthyThreshold"`
 	Http2HealthCheck *HTTP2HealthCheck     `pulumi:"http2HealthCheck"`
@@ -136,8 +138,9 @@ type HealthCheckArgs struct {
 	// How often (in seconds) to send a health check. The default value is 5 seconds.
 	CheckIntervalSec pulumi.IntPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
-	Description     pulumi.StringPtrInput
-	GrpcHealthCheck GRPCHealthCheckPtrInput
+	Description        pulumi.StringPtrInput
+	GrpcHealthCheck    GRPCHealthCheckPtrInput
+	GrpcTlsHealthCheck GRPCTLSHealthCheckPtrInput
 	// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
 	HealthyThreshold pulumi.IntPtrInput
 	Http2HealthCheck HTTP2HealthCheckPtrInput
@@ -219,6 +222,10 @@ func (o HealthCheckOutput) Description() pulumi.StringOutput {
 
 func (o HealthCheckOutput) GrpcHealthCheck() GRPCHealthCheckResponseOutput {
 	return o.ApplyT(func(v *HealthCheck) GRPCHealthCheckResponseOutput { return v.GrpcHealthCheck }).(GRPCHealthCheckResponseOutput)
+}
+
+func (o HealthCheckOutput) GrpcTlsHealthCheck() GRPCTLSHealthCheckResponseOutput {
+	return o.ApplyT(func(v *HealthCheck) GRPCTLSHealthCheckResponseOutput { return v.GrpcTlsHealthCheck }).(GRPCTLSHealthCheckResponseOutput)
 }
 
 // A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.

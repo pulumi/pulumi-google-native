@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetFunctionResult:
-    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, build_id=None, build_name=None, build_worker_pool=None, description=None, docker_registry=None, docker_repository=None, entry_point=None, environment_variables=None, event_trigger=None, https_trigger=None, ingress_settings=None, kms_key_name=None, labels=None, max_instances=None, min_instances=None, name=None, network=None, runtime=None, secret_environment_variables=None, secret_volumes=None, service_account_email=None, source_archive_url=None, source_repository=None, source_token=None, source_upload_url=None, status=None, timeout=None, update_time=None, version_id=None, vpc_connector=None, vpc_connector_egress_settings=None):
+    def __init__(__self__, automatic_update_policy=None, available_memory_mb=None, build_environment_variables=None, build_id=None, build_name=None, build_service_account=None, build_worker_pool=None, description=None, docker_registry=None, docker_repository=None, entry_point=None, environment_variables=None, event_trigger=None, https_trigger=None, ingress_settings=None, kms_key_name=None, labels=None, max_instances=None, min_instances=None, name=None, network=None, on_deploy_update_policy=None, runtime=None, secret_environment_variables=None, secret_volumes=None, service_account_email=None, source_archive_url=None, source_repository=None, source_token=None, source_upload_url=None, status=None, timeout=None, update_time=None, version_id=None, vpc_connector=None, vpc_connector_egress_settings=None):
+        if automatic_update_policy and not isinstance(automatic_update_policy, dict):
+            raise TypeError("Expected argument 'automatic_update_policy' to be a dict")
+        pulumi.set(__self__, "automatic_update_policy", automatic_update_policy)
         if available_memory_mb and not isinstance(available_memory_mb, int):
             raise TypeError("Expected argument 'available_memory_mb' to be a int")
         pulumi.set(__self__, "available_memory_mb", available_memory_mb)
@@ -32,6 +35,9 @@ class GetFunctionResult:
         if build_name and not isinstance(build_name, str):
             raise TypeError("Expected argument 'build_name' to be a str")
         pulumi.set(__self__, "build_name", build_name)
+        if build_service_account and not isinstance(build_service_account, str):
+            raise TypeError("Expected argument 'build_service_account' to be a str")
+        pulumi.set(__self__, "build_service_account", build_service_account)
         if build_worker_pool and not isinstance(build_worker_pool, str):
             raise TypeError("Expected argument 'build_worker_pool' to be a str")
         pulumi.set(__self__, "build_worker_pool", build_worker_pool)
@@ -77,6 +83,9 @@ class GetFunctionResult:
         if network and not isinstance(network, str):
             raise TypeError("Expected argument 'network' to be a str")
         pulumi.set(__self__, "network", network)
+        if on_deploy_update_policy and not isinstance(on_deploy_update_policy, dict):
+            raise TypeError("Expected argument 'on_deploy_update_policy' to be a dict")
+        pulumi.set(__self__, "on_deploy_update_policy", on_deploy_update_policy)
         if runtime and not isinstance(runtime, str):
             raise TypeError("Expected argument 'runtime' to be a str")
         pulumi.set(__self__, "runtime", runtime)
@@ -121,6 +130,11 @@ class GetFunctionResult:
         pulumi.set(__self__, "vpc_connector_egress_settings", vpc_connector_egress_settings)
 
     @property
+    @pulumi.getter(name="automaticUpdatePolicy")
+    def automatic_update_policy(self) -> 'outputs.AutomaticUpdatePolicyResponse':
+        return pulumi.get(self, "automatic_update_policy")
+
+    @property
     @pulumi.getter(name="availableMemoryMb")
     def available_memory_mb(self) -> int:
         """
@@ -153,6 +167,14 @@ class GetFunctionResult:
         return pulumi.get(self, "build_name")
 
     @property
+    @pulumi.getter(name="buildServiceAccount")
+    def build_service_account(self) -> str:
+        """
+        Optional. A service account the user provides for use with Cloud Build.
+        """
+        return pulumi.get(self, "build_service_account")
+
+    @property
     @pulumi.getter(name="buildWorkerPool")
     def build_worker_pool(self) -> str:
         """
@@ -172,7 +194,7 @@ class GetFunctionResult:
     @pulumi.getter(name="dockerRegistry")
     def docker_registry(self) -> str:
         """
-        Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+        Docker Registry to use for this deployment. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
         """
         return pulumi.get(self, "docker_registry")
 
@@ -274,6 +296,11 @@ class GetFunctionResult:
         pulumi.log.warn("""network is deprecated: Deprecated: use vpc_connector""")
 
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="onDeployUpdatePolicy")
+    def on_deploy_update_policy(self) -> 'outputs.OnDeployUpdatePolicyResponse':
+        return pulumi.get(self, "on_deploy_update_policy")
 
     @property
     @pulumi.getter
@@ -394,10 +421,12 @@ class AwaitableGetFunctionResult(GetFunctionResult):
         if False:
             yield self
         return GetFunctionResult(
+            automatic_update_policy=self.automatic_update_policy,
             available_memory_mb=self.available_memory_mb,
             build_environment_variables=self.build_environment_variables,
             build_id=self.build_id,
             build_name=self.build_name,
+            build_service_account=self.build_service_account,
             build_worker_pool=self.build_worker_pool,
             description=self.description,
             docker_registry=self.docker_registry,
@@ -413,6 +442,7 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             min_instances=self.min_instances,
             name=self.name,
             network=self.network,
+            on_deploy_update_policy=self.on_deploy_update_policy,
             runtime=self.runtime,
             secret_environment_variables=self.secret_environment_variables,
             secret_volumes=self.secret_volumes,
@@ -446,10 +476,12 @@ def get_function(function_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudfunctions/v1:getFunction', __args__, opts=opts, typ=GetFunctionResult).value
 
     return AwaitableGetFunctionResult(
+        automatic_update_policy=pulumi.get(__ret__, 'automatic_update_policy'),
         available_memory_mb=pulumi.get(__ret__, 'available_memory_mb'),
         build_environment_variables=pulumi.get(__ret__, 'build_environment_variables'),
         build_id=pulumi.get(__ret__, 'build_id'),
         build_name=pulumi.get(__ret__, 'build_name'),
+        build_service_account=pulumi.get(__ret__, 'build_service_account'),
         build_worker_pool=pulumi.get(__ret__, 'build_worker_pool'),
         description=pulumi.get(__ret__, 'description'),
         docker_registry=pulumi.get(__ret__, 'docker_registry'),
@@ -465,6 +497,7 @@ def get_function(function_id: Optional[str] = None,
         min_instances=pulumi.get(__ret__, 'min_instances'),
         name=pulumi.get(__ret__, 'name'),
         network=pulumi.get(__ret__, 'network'),
+        on_deploy_update_policy=pulumi.get(__ret__, 'on_deploy_update_policy'),
         runtime=pulumi.get(__ret__, 'runtime'),
         secret_environment_variables=pulumi.get(__ret__, 'secret_environment_variables'),
         secret_volumes=pulumi.get(__ret__, 'secret_volumes'),

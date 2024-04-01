@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Inputs
         private InputList<string>? _entityIdColumns;
 
         /// <summary>
-        /// Optional. Columns to construct entity_id / row keys. Currently only supports 1 entity_id_column. If not provided defaults to `entity_id`.
+        /// Optional. Columns to construct entity_id / row keys. If not provided defaults to `entity_id`.
         /// </summary>
         public InputList<string> EntityIdColumns
         {

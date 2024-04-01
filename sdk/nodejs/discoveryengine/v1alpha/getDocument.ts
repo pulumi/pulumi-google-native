@@ -34,6 +34,10 @@ export interface GetDocumentArgs {
 
 export interface GetDocumentResult {
     /**
+     * Access control information for the document.
+     */
+    readonly aclInfo: outputs.discoveryengine.v1alpha.GoogleCloudDiscoveryengineV1alphaDocumentAclInfoResponse;
+    /**
      * The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
      */
     readonly content: outputs.discoveryengine.v1alpha.GoogleCloudDiscoveryengineV1alphaDocumentContentResponse;
@@ -41,6 +45,10 @@ export interface GetDocumentResult {
      * This field is OUTPUT_ONLY. It contains derived data that are not in the original input document.
      */
     readonly derivedStructData: {[key: string]: string};
+    /**
+     * The last time the document was indexed. If this field is set, the document could be returned in search results. This field is OUTPUT_ONLY. If this field is not populated, it means the document has never been indexed.
+     */
+    readonly indexTime: string;
     /**
      * The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
      */

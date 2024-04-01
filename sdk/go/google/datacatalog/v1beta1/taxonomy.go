@@ -13,7 +13,6 @@ import (
 )
 
 // Creates a taxonomy in the specified project.
-// Auto-naming is currently not supported for this resource.
 type Taxonomy struct {
 	pulumi.CustomResourceState
 
@@ -24,7 +23,7 @@ type Taxonomy struct {
 	// User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8. The taxonomy display name must be unique within an organization.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	Location    pulumi.StringOutput `pulumi:"location"`
-	// Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
+	// Identifier. Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Number of policy tags contained in this taxonomy.
 	PolicyTagCount pulumi.IntOutput    `pulumi:"policyTagCount"`
@@ -90,7 +89,9 @@ type taxonomyArgs struct {
 	// User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8. The taxonomy display name must be unique within an organization.
 	DisplayName string  `pulumi:"displayName"`
 	Location    *string `pulumi:"location"`
-	Project     *string `pulumi:"project"`
+	// Identifier. Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
+	Name    *string `pulumi:"name"`
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Taxonomy resource.
@@ -102,7 +103,9 @@ type TaxonomyArgs struct {
 	// User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8. The taxonomy display name must be unique within an organization.
 	DisplayName pulumi.StringInput
 	Location    pulumi.StringPtrInput
-	Project     pulumi.StringPtrInput
+	// Identifier. Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
 }
 
 func (TaxonomyArgs) ElementType() reflect.Type {
@@ -161,7 +164,7 @@ func (o TaxonomyOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Taxonomy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
+// Identifier. Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
 func (o TaxonomyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Taxonomy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

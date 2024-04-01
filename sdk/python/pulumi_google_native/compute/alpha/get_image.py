@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetImageResult:
-    def __init__(__self__, architecture=None, archive_size_bytes=None, creation_timestamp=None, deprecated=None, description=None, disk_size_gb=None, enable_confidential_compute=None, family=None, guest_os_features=None, image_encryption_key=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, locked=None, name=None, raw_disk=None, rollout_override=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, shielded_instance_initial_state=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_type=None, status=None, storage_locations=None, user_licenses=None):
+    def __init__(__self__, architecture=None, archive_size_bytes=None, creation_timestamp=None, deprecated=None, description=None, disk_size_gb=None, enable_confidential_compute=None, family=None, guest_os_features=None, image_encryption_key=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, locked=None, name=None, raw_disk=None, rollout_override=None, satisfies_pzi=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, shielded_instance_initial_state=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_type=None, status=None, storage_locations=None, user_licenses=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         pulumi.set(__self__, "architecture", architecture)
@@ -77,6 +77,9 @@ class GetImageResult:
         if rollout_override and not isinstance(rollout_override, dict):
             raise TypeError("Expected argument 'rollout_override' to be a dict")
         pulumi.set(__self__, "rollout_override", rollout_override)
+        if satisfies_pzi and not isinstance(satisfies_pzi, bool):
+            raise TypeError("Expected argument 'satisfies_pzi' to be a bool")
+        pulumi.set(__self__, "satisfies_pzi", satisfies_pzi)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -282,6 +285,14 @@ class GetImageResult:
         return pulumi.get(self, "rollout_override")
 
     @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> bool:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzi")
+
+    @property
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> bool:
         """
@@ -443,6 +454,7 @@ class AwaitableGetImageResult(GetImageResult):
             name=self.name,
             raw_disk=self.raw_disk,
             rollout_override=self.rollout_override,
+            satisfies_pzi=self.satisfies_pzi,
             satisfies_pzs=self.satisfies_pzs,
             self_link=self.self_link,
             self_link_with_id=self.self_link_with_id,
@@ -494,6 +506,7 @@ def get_image(image: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         raw_disk=pulumi.get(__ret__, 'raw_disk'),
         rollout_override=pulumi.get(__ret__, 'rollout_override'),
+        satisfies_pzi=pulumi.get(__ret__, 'satisfies_pzi'),
         satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         self_link=pulumi.get(__ret__, 'self_link'),
         self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),

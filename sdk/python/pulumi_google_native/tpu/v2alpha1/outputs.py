@@ -505,6 +505,8 @@ class NetworkConfigResponse(dict):
             suggest = "can_ip_forward"
         elif key == "enableExternalIps":
             suggest = "enable_external_ips"
+        elif key == "queueCount":
+            suggest = "queue_count"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NetworkConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -521,17 +523,20 @@ class NetworkConfigResponse(dict):
                  can_ip_forward: bool,
                  enable_external_ips: bool,
                  network: str,
+                 queue_count: int,
                  subnetwork: str):
         """
         Network related configurations.
         :param bool can_ip_forward: Allows the TPU node to send and receive packets with non-matching destination or source IPs. This is required if you plan to use the TPU workers to forward routes.
         :param bool enable_external_ips: Indicates that external IP addresses would be associated with the TPU workers. If set to false, the specified subnetwork or network should have Private Google Access enabled.
         :param str network: The name of the network for the TPU node. It must be a preexisting Google Compute Engine network. If none is provided, "default" will be used.
+        :param int queue_count: Optional. Specifies networking queue count for TPU VM instance's network interface.
         :param str subnetwork: The name of the subnetwork for the TPU node. It must be a preexisting Google Compute Engine subnetwork. If none is provided, "default" will be used.
         """
         pulumi.set(__self__, "can_ip_forward", can_ip_forward)
         pulumi.set(__self__, "enable_external_ips", enable_external_ips)
         pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "queue_count", queue_count)
         pulumi.set(__self__, "subnetwork", subnetwork)
 
     @property
@@ -557,6 +562,14 @@ class NetworkConfigResponse(dict):
         The name of the network for the TPU node. It must be a preexisting Google Compute Engine network. If none is provided, "default" will be used.
         """
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="queueCount")
+    def queue_count(self) -> int:
+        """
+        Optional. Specifies networking queue count for TPU VM instance's network interface.
+        """
+        return pulumi.get(self, "queue_count")
 
     @property
     @pulumi.getter
@@ -1109,7 +1122,7 @@ class QueuedResourceStateResponse(dict):
         :param 'FailedDataResponse' failed_data: Further data for the failed state.
         :param 'ProvisioningDataResponse' provisioning_data: Further data for the provisioning state.
         :param str state: State of the QueuedResource request.
-        :param str state_initiator: The initiator of the QueuedResources's current state.
+        :param str state_initiator: The initiator of the QueuedResources's current state. Used to indicate whether the SUSPENDING/SUSPENDED state was initiated by the user or the service.
         :param 'SuspendedDataResponse' suspended_data: Further data for the suspended state.
         :param 'SuspendingDataResponse' suspending_data: Further data for the suspending state.
         """
@@ -1184,7 +1197,7 @@ class QueuedResourceStateResponse(dict):
     @pulumi.getter(name="stateInitiator")
     def state_initiator(self) -> str:
         """
-        The initiator of the QueuedResources's current state.
+        The initiator of the QueuedResources's current state. Used to indicate whether the SUSPENDING/SUSPENDED state was initiated by the user or the service.
         """
         return pulumi.get(self, "state_initiator")
 
@@ -1303,14 +1316,17 @@ class SchedulingConfigResponse(dict):
     """
     def __init__(__self__, *,
                  preemptible: bool,
-                 reserved: bool):
+                 reserved: bool,
+                 spot: bool):
         """
         Sets the scheduling options for this node.
         :param bool preemptible: Defines whether the node is preemptible.
         :param bool reserved: Whether the node is created under a reservation.
+        :param bool spot: Optional. Defines whether the node is Spot VM.
         """
         pulumi.set(__self__, "preemptible", preemptible)
         pulumi.set(__self__, "reserved", reserved)
+        pulumi.set(__self__, "spot", spot)
 
     @property
     @pulumi.getter
@@ -1327,6 +1343,14 @@ class SchedulingConfigResponse(dict):
         Whether the node is created under a reservation.
         """
         return pulumi.get(self, "reserved")
+
+    @property
+    @pulumi.getter
+    def spot(self) -> bool:
+        """
+        Optional. Defines whether the node is Spot VM.
+        """
+        return pulumi.get(self, "spot")
 
 
 @pulumi.output_type

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// A single stage of query execution.
+    /// </summary>
     [OutputType]
     public sealed class ExplainQueryStageResponse
     {
@@ -17,6 +20,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// Number of parallel input segments completed.
         /// </summary>
         public readonly string CompletedParallelInputs;
+        /// <summary>
+        /// Compute mode for this stage.
+        /// </summary>
+        public readonly string ComputeMode;
         /// <summary>
         /// Milliseconds the average shard spent on CPU-bound tasks.
         /// </summary>
@@ -34,7 +41,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly double ComputeRatioMax;
         /// <summary>
-        /// Stage end time represented as milliseconds since epoch.
+        /// Stage end time represented as milliseconds since the epoch.
         /// </summary>
         public readonly string EndMs;
         /// <summary>
@@ -42,11 +49,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> InputStages;
         /// <summary>
-        /// Human-readable name for stage.
+        /// Human-readable name for the stage.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Number of parallel input segments to be processed.
+        /// Number of parallel input segments to be processed
         /// </summary>
         public readonly string ParallelInputs;
         /// <summary>
@@ -86,11 +93,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string SlotMs;
         /// <summary>
-        /// Stage start time represented as milliseconds since epoch.
+        /// Stage start time represented as milliseconds since the epoch.
         /// </summary>
         public readonly string StartMs;
         /// <summary>
-        /// Current status for the stage.
+        /// Current status for this stage.
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -133,6 +140,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         [OutputConstructor]
         private ExplainQueryStageResponse(
             string completedParallelInputs,
+
+            string computeMode,
 
             string computeMsAvg,
 
@@ -191,6 +200,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             double writeRatioMax)
         {
             CompletedParallelInputs = completedParallelInputs;
+            ComputeMode = computeMode;
             ComputeMsAvg = computeMsAvg;
             ComputeMsMax = computeMsMax;
             ComputeRatioAvg = computeRatioAvg;

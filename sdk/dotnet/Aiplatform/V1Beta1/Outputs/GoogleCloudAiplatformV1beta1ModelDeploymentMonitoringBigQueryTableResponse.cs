@@ -28,6 +28,10 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Outputs
         /// The type of log.
         /// </summary>
         public readonly string LogType;
+        /// <summary>
+        /// The schema version of the request/response logging BigQuery table. Default to v1 if unset.
+        /// </summary>
+        public readonly string RequestResponseLoggingSchemaVersion;
 
         [OutputConstructor]
         private GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse(
@@ -35,11 +39,14 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Outputs
 
             string logSource,
 
-            string logType)
+            string logType,
+
+            string requestResponseLoggingSchemaVersion)
         {
             BigqueryTablePath = bigqueryTablePath;
             LogSource = logSource;
             LogType = logType;
+            RequestResponseLoggingSchemaVersion = requestResponseLoggingSchemaVersion;
         }
     }
 }

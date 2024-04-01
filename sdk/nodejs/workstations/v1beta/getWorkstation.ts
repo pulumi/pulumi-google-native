@@ -57,6 +57,10 @@ export interface GetWorkstationResult {
      */
     readonly host: string;
     /**
+     * The name of the Google Cloud KMS encryption key used to encrypt this workstation. The KMS key can only be configured in the WorkstationConfig. The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
+     */
+    readonly kmsKey: string;
+    /**
      * Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.
      */
     readonly labels: {[key: string]: string};

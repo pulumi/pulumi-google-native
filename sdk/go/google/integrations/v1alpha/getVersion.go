@@ -39,8 +39,12 @@ type LookupVersionResult struct {
 	DatabasePersistencePolicy string `pulumi:"databasePersistencePolicy"`
 	// Optional. The integration description.
 	Description string `pulumi:"description"`
+	// Optional. True if variable masking feature should be turned on for this version
+	EnableVariableMasking bool `pulumi:"enableVariableMasking"`
 	// Optional. Error Catch Task configuration for the integration. It's optional.
 	ErrorCatcherConfigs []GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse `pulumi:"errorCatcherConfigs"`
+	// Optional. Config Parameters that are expected to be passed to the integration when an integration is published. This consists of all the parameters that are expected to provide configuration in the integration execution. This gives the user the ability to provide default values, value, add information like connection url, project based configuration value and also provide data types of each parameter.
+	IntegrationConfigParameters []GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponse `pulumi:"integrationConfigParameters"`
 	// Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
 	IntegrationParameters []GoogleCloudIntegrationsV1alphaIntegrationParameterResponse `pulumi:"integrationParameters"`
 	// Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
@@ -140,11 +144,23 @@ func (o LookupVersionResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVersionResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Optional. True if variable masking feature should be turned on for this version
+func (o LookupVersionResultOutput) EnableVariableMasking() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupVersionResult) bool { return v.EnableVariableMasking }).(pulumi.BoolOutput)
+}
+
 // Optional. Error Catch Task configuration for the integration. It's optional.
 func (o LookupVersionResultOutput) ErrorCatcherConfigs() GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput {
 	return o.ApplyT(func(v LookupVersionResult) []GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse {
 		return v.ErrorCatcherConfigs
 	}).(GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput)
+}
+
+// Optional. Config Parameters that are expected to be passed to the integration when an integration is published. This consists of all the parameters that are expected to provide configuration in the integration execution. This gives the user the ability to provide default values, value, add information like connection url, project based configuration value and also provide data types of each parameter.
+func (o LookupVersionResultOutput) IntegrationConfigParameters() GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseArrayOutput {
+	return o.ApplyT(func(v LookupVersionResult) []GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponse {
+		return v.IntegrationConfigParameters
+	}).(GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseArrayOutput)
 }
 
 // Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.

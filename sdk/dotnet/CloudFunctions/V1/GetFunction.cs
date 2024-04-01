@@ -69,6 +69,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
     [OutputType]
     public sealed class GetFunctionResult
     {
+        public readonly Outputs.AutomaticUpdatePolicyResponse AutomaticUpdatePolicy;
         /// <summary>
         /// The amount of memory in MB available for a function. Defaults to 256MB.
         /// </summary>
@@ -86,6 +87,10 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         /// </summary>
         public readonly string BuildName;
         /// <summary>
+        /// Optional. A service account the user provides for use with Cloud Build.
+        /// </summary>
+        public readonly string BuildServiceAccount;
+        /// <summary>
         /// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
         /// </summary>
         public readonly string BuildWorkerPool;
@@ -94,7 +99,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+        /// Docker Registry to use for this deployment. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
         /// </summary>
         public readonly string DockerRegistry;
         /// <summary>
@@ -145,6 +150,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         /// Deprecated: use vpc_connector
         /// </summary>
         public readonly string Network;
+        public readonly Outputs.OnDeployUpdatePolicyResponse OnDeployUpdatePolicy;
         /// <summary>
         /// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
         /// </summary>
@@ -204,6 +210,8 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
 
         [OutputConstructor]
         private GetFunctionResult(
+            Outputs.AutomaticUpdatePolicyResponse automaticUpdatePolicy,
+
             int availableMemoryMb,
 
             ImmutableDictionary<string, string> buildEnvironmentVariables,
@@ -211,6 +219,8 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
             string buildId,
 
             string buildName,
+
+            string buildServiceAccount,
 
             string buildWorkerPool,
 
@@ -242,6 +252,8 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
 
             string network,
 
+            Outputs.OnDeployUpdatePolicyResponse onDeployUpdatePolicy,
+
             string runtime,
 
             ImmutableArray<Outputs.SecretEnvVarResponse> secretEnvironmentVariables,
@@ -270,10 +282,12 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
 
             string vpcConnectorEgressSettings)
         {
+            AutomaticUpdatePolicy = automaticUpdatePolicy;
             AvailableMemoryMb = availableMemoryMb;
             BuildEnvironmentVariables = buildEnvironmentVariables;
             BuildId = buildId;
             BuildName = buildName;
+            BuildServiceAccount = buildServiceAccount;
             BuildWorkerPool = buildWorkerPool;
             Description = description;
             DockerRegistry = dockerRegistry;
@@ -289,6 +303,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
             MinInstances = minInstances;
             Name = name;
             Network = network;
+            OnDeployUpdatePolicy = onDeployUpdatePolicy;
             Runtime = runtime;
             SecretEnvironmentVariables = secretEnvironmentVariables;
             SecretVolumes = secretVolumes;

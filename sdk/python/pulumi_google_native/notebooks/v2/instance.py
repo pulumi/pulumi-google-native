@@ -227,6 +227,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["proxy_uri"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["third_party_proxy_url"] = None
             __props__.__dict__["update_time"] = None
             __props__.__dict__["upgrade_history"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["instance_id", "location", "project"])
@@ -268,6 +269,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["proxy_uri"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["state"] = None
+        __props__.__dict__["third_party_proxy_url"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["upgrade_history"] = None
         return Instance(resource_name, opts=opts, __props__=__props__)
@@ -385,6 +387,14 @@ class Instance(pulumi.CustomResource):
         The state of this instance.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="thirdPartyProxyUrl")
+    def third_party_proxy_url(self) -> pulumi.Output[str]:
+        """
+        The workforce pools proxy endpoint that is used to access the Jupyter notebook.
+        """
+        return pulumi.get(self, "third_party_proxy_url")
 
     @property
     @pulumi.getter(name="updateTime")

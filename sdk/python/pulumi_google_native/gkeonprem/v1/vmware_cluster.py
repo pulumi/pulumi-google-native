@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['VmwareClusterArgs', 'VmwareCluster']
@@ -22,6 +23,7 @@ class VmwareClusterArgs:
                  anti_affinity_groups: Optional[pulumi.Input['VmwareAAGConfigArgs']] = None,
                  authorization: Optional[pulumi.Input['AuthorizationArgs']] = None,
                  auto_repair_config: Optional[pulumi.Input['VmwareAutoRepairConfigArgs']] = None,
+                 binary_authorization: Optional[pulumi.Input['BinaryAuthorizationArgs']] = None,
                  control_plane_node: Optional[pulumi.Input['VmwareControlPlaneNodeConfigArgs']] = None,
                  dataplane_v2: Optional[pulumi.Input['VmwareDataplaneV2ConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -46,6 +48,7 @@ class VmwareClusterArgs:
         :param pulumi.Input['VmwareAAGConfigArgs'] anti_affinity_groups: AAGConfig specifies whether to spread VMware user cluster nodes across at least three physical hosts in the datacenter.
         :param pulumi.Input['AuthorizationArgs'] authorization: RBAC policy that will be applied and managed by the Anthos On-Prem API.
         :param pulumi.Input['VmwareAutoRepairConfigArgs'] auto_repair_config: Configuration for auto repairing.
+        :param pulumi.Input['BinaryAuthorizationArgs'] binary_authorization: Binary Authorization related configurations.
         :param pulumi.Input['VmwareControlPlaneNodeConfigArgs'] control_plane_node: VMware user cluster control plane nodes must have either 1 or 3 replicas.
         :param pulumi.Input['VmwareDataplaneV2ConfigArgs'] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
         :param pulumi.Input[str] description: A human readable description of this VMware user cluster.
@@ -71,6 +74,8 @@ class VmwareClusterArgs:
             pulumi.set(__self__, "authorization", authorization)
         if auto_repair_config is not None:
             pulumi.set(__self__, "auto_repair_config", auto_repair_config)
+        if binary_authorization is not None:
+            pulumi.set(__self__, "binary_authorization", binary_authorization)
         if control_plane_node is not None:
             pulumi.set(__self__, "control_plane_node", control_plane_node)
         if dataplane_v2 is not None:
@@ -175,6 +180,18 @@ class VmwareClusterArgs:
     @auto_repair_config.setter
     def auto_repair_config(self, value: Optional[pulumi.Input['VmwareAutoRepairConfigArgs']]):
         pulumi.set(self, "auto_repair_config", value)
+
+    @property
+    @pulumi.getter(name="binaryAuthorization")
+    def binary_authorization(self) -> Optional[pulumi.Input['BinaryAuthorizationArgs']]:
+        """
+        Binary Authorization related configurations.
+        """
+        return pulumi.get(self, "binary_authorization")
+
+    @binary_authorization.setter
+    def binary_authorization(self, value: Optional[pulumi.Input['BinaryAuthorizationArgs']]):
+        pulumi.set(self, "binary_authorization", value)
 
     @property
     @pulumi.getter(name="controlPlaneNode")
@@ -373,6 +390,7 @@ class VmwareCluster(pulumi.CustomResource):
                  anti_affinity_groups: Optional[pulumi.Input[pulumi.InputType['VmwareAAGConfigArgs']]] = None,
                  authorization: Optional[pulumi.Input[pulumi.InputType['AuthorizationArgs']]] = None,
                  auto_repair_config: Optional[pulumi.Input[pulumi.InputType['VmwareAutoRepairConfigArgs']]] = None,
+                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['BinaryAuthorizationArgs']]] = None,
                  control_plane_node: Optional[pulumi.Input[pulumi.InputType['VmwareControlPlaneNodeConfigArgs']]] = None,
                  dataplane_v2: Optional[pulumi.Input[pulumi.InputType['VmwareDataplaneV2ConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -401,6 +419,7 @@ class VmwareCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['VmwareAAGConfigArgs']] anti_affinity_groups: AAGConfig specifies whether to spread VMware user cluster nodes across at least three physical hosts in the datacenter.
         :param pulumi.Input[pulumi.InputType['AuthorizationArgs']] authorization: RBAC policy that will be applied and managed by the Anthos On-Prem API.
         :param pulumi.Input[pulumi.InputType['VmwareAutoRepairConfigArgs']] auto_repair_config: Configuration for auto repairing.
+        :param pulumi.Input[pulumi.InputType['BinaryAuthorizationArgs']] binary_authorization: Binary Authorization related configurations.
         :param pulumi.Input[pulumi.InputType['VmwareControlPlaneNodeConfigArgs']] control_plane_node: VMware user cluster control plane nodes must have either 1 or 3 replicas.
         :param pulumi.Input[pulumi.InputType['VmwareDataplaneV2ConfigArgs']] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
         :param pulumi.Input[str] description: A human readable description of this VMware user cluster.
@@ -446,6 +465,7 @@ class VmwareCluster(pulumi.CustomResource):
                  anti_affinity_groups: Optional[pulumi.Input[pulumi.InputType['VmwareAAGConfigArgs']]] = None,
                  authorization: Optional[pulumi.Input[pulumi.InputType['AuthorizationArgs']]] = None,
                  auto_repair_config: Optional[pulumi.Input[pulumi.InputType['VmwareAutoRepairConfigArgs']]] = None,
+                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['BinaryAuthorizationArgs']]] = None,
                  control_plane_node: Optional[pulumi.Input[pulumi.InputType['VmwareControlPlaneNodeConfigArgs']]] = None,
                  dataplane_v2: Optional[pulumi.Input[pulumi.InputType['VmwareDataplaneV2ConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -479,6 +499,7 @@ class VmwareCluster(pulumi.CustomResource):
             __props__.__dict__["anti_affinity_groups"] = anti_affinity_groups
             __props__.__dict__["authorization"] = authorization
             __props__.__dict__["auto_repair_config"] = auto_repair_config
+            __props__.__dict__["binary_authorization"] = binary_authorization
             __props__.__dict__["control_plane_node"] = control_plane_node
             __props__.__dict__["dataplane_v2"] = dataplane_v2
             __props__.__dict__["description"] = description
@@ -540,6 +561,7 @@ class VmwareCluster(pulumi.CustomResource):
         __props__.__dict__["anti_affinity_groups"] = None
         __props__.__dict__["authorization"] = None
         __props__.__dict__["auto_repair_config"] = None
+        __props__.__dict__["binary_authorization"] = None
         __props__.__dict__["control_plane_node"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["dataplane_v2"] = None
@@ -617,6 +639,14 @@ class VmwareCluster(pulumi.CustomResource):
         Configuration for auto repairing.
         """
         return pulumi.get(self, "auto_repair_config")
+
+    @property
+    @pulumi.getter(name="binaryAuthorization")
+    def binary_authorization(self) -> pulumi.Output['outputs.BinaryAuthorizationResponse']:
+        """
+        Binary Authorization related configurations.
+        """
+        return pulumi.get(self, "binary_authorization")
 
     @property
     @pulumi.getter(name="controlPlaneNode")

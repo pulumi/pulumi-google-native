@@ -15,6 +15,7 @@ __all__ = [
     'GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs',
     'GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs',
     'GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs',
+    'GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionArgs',
     'GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs',
     'GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs',
     'GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs',
@@ -153,6 +154,15 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs:
 
 
 @pulumi.input_type
+class GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionArgs:
+    def __init__(__self__):
+        """
+        An include reCAPTCHA script action involves injecting reCAPTCHA JavaScript code into the HTML returned by the site backend. This reCAPTCHA script is tasked with collecting user signals on the requested web page, issuing tokens as a cookie within the site domain, and enabling their utilization in subsequent page requests.
+        """
+        pass
+
+
+@pulumi.input_type
 class GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs:
     def __init__(__self__):
         """
@@ -230,6 +240,7 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionArgs:
     def __init__(__self__, *,
                  allow: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs']] = None,
                  block: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs']] = None,
+                 include_recaptcha_script: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionArgs']] = None,
                  redirect: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs']] = None,
                  set_header: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs']] = None,
                  substitute: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs']] = None):
@@ -237,6 +248,7 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionArgs:
         An individual action. Each action represents what to do if a policy matches.
         :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs'] allow: The user request did not match any policy and should be allowed access to the requested resource.
         :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs'] block: This action will deny access to a given page. The user will get an HTTP error code.
+        :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionArgs'] include_recaptcha_script: This action will inject reCAPTCHA JavaScript code into the HTML page returned by the site backend.
         :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs'] redirect: This action will redirect the request to a ReCaptcha interstitial to attach a token.
         :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs'] set_header: This action will set a custom header but allow the request to continue to the customer backend.
         :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs'] substitute: This action will transparently serve a different page to an offending user.
@@ -245,6 +257,8 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionArgs:
             pulumi.set(__self__, "allow", allow)
         if block is not None:
             pulumi.set(__self__, "block", block)
+        if include_recaptcha_script is not None:
+            pulumi.set(__self__, "include_recaptcha_script", include_recaptcha_script)
         if redirect is not None:
             pulumi.set(__self__, "redirect", redirect)
         if set_header is not None:
@@ -275,6 +289,18 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionArgs:
     @block.setter
     def block(self, value: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs']]):
         pulumi.set(self, "block", value)
+
+    @property
+    @pulumi.getter(name="includeRecaptchaScript")
+    def include_recaptcha_script(self) -> Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionArgs']]:
+        """
+        This action will inject reCAPTCHA JavaScript code into the HTML page returned by the site backend.
+        """
+        return pulumi.get(self, "include_recaptcha_script")
+
+    @include_recaptcha_script.setter
+    def include_recaptcha_script(self, value: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionArgs']]):
+        pulumi.set(self, "include_recaptcha_script", value)
 
     @property
     @pulumi.getter

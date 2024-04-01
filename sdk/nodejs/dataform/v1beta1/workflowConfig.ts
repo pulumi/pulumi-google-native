@@ -9,7 +9,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new WorkflowConfig in a given Repository.
- * Auto-naming is currently not supported for this resource.
  */
 export class WorkflowConfig extends pulumi.CustomResource {
     /**
@@ -48,9 +47,9 @@ export class WorkflowConfig extends pulumi.CustomResource {
     public readonly invocationConfig!: pulumi.Output<outputs.dataform.v1beta1.InvocationConfigResponse>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * The workflow config's name.
+     * Identifier. The workflow config's name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
      * Records of the 10 most recent scheduled execution attempts, ordered in in descending order of `execution_time`. Updated whenever automatic creation of a workflow invocation is triggered by cron_schedule.
@@ -93,12 +92,12 @@ export class WorkflowConfig extends pulumi.CustomResource {
             resourceInputs["cronSchedule"] = args ? args.cronSchedule : undefined;
             resourceInputs["invocationConfig"] = args ? args.invocationConfig : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["releaseConfig"] = args ? args.releaseConfig : undefined;
             resourceInputs["repositoryId"] = args ? args.repositoryId : undefined;
             resourceInputs["timeZone"] = args ? args.timeZone : undefined;
             resourceInputs["workflowConfigId"] = args ? args.workflowConfigId : undefined;
-            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["recentScheduledExecutionRecords"] = undefined /*out*/;
         } else {
             resourceInputs["cronSchedule"] = undefined /*out*/;
@@ -132,6 +131,10 @@ export interface WorkflowConfigArgs {
      */
     invocationConfig?: pulumi.Input<inputs.dataform.v1beta1.InvocationConfigArgs>;
     location?: pulumi.Input<string>;
+    /**
+     * Identifier. The workflow config's name.
+     */
+    name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * The name of the release config whose release_compilation_result should be executed. Must be in the format `projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*`.

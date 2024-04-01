@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.WorkloadManager.V1
     public sealed class GetEvaluationResult
     {
         /// <summary>
+        /// Optional. BigQuery destination
+        /// </summary>
+        public readonly Outputs.BigQueryDestinationResponse BigQueryDestination;
+        /// <summary>
         /// [Output only] Create time stamp
         /// </summary>
         public readonly string CreateTime;
@@ -110,6 +114,8 @@ namespace Pulumi.GoogleNative.WorkloadManager.V1
 
         [OutputConstructor]
         private GetEvaluationResult(
+            Outputs.BigQueryDestinationResponse bigQueryDestination,
+
             string createTime,
 
             string customRulesBucket,
@@ -132,6 +138,7 @@ namespace Pulumi.GoogleNative.WorkloadManager.V1
 
             string updateTime)
         {
+            BigQueryDestination = bigQueryDestination;
             CreateTime = createTime;
             CustomRulesBucket = customRulesBucket;
             Description = description;

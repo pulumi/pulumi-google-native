@@ -50,8 +50,10 @@ type RegionInstanceGroupManager struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Named ports configured for the Instance Groups complementary to this Instance Group Manager.
 	NamedPorts NamedPortResponseArrayOutput `pulumi:"namedPorts"`
-	Project    pulumi.StringOutput          `pulumi:"project"`
-	Region     pulumi.StringOutput          `pulumi:"region"`
+	// Input only. Additional params passed with the request, but not persisted as part of resource payload.
+	Params  InstanceGroupManagerParamsResponseOutput `pulumi:"params"`
+	Project pulumi.StringOutput                      `pulumi:"project"`
+	Region  pulumi.StringOutput                      `pulumi:"region"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The URL for this managed instance group. The server defines this URL.
@@ -156,8 +158,10 @@ type regionInstanceGroupManagerArgs struct {
 	Name *string `pulumi:"name"`
 	// Named ports configured for the Instance Groups complementary to this Instance Group Manager.
 	NamedPorts []NamedPort `pulumi:"namedPorts"`
-	Project    *string     `pulumi:"project"`
-	Region     string      `pulumi:"region"`
+	// Input only. Additional params passed with the request, but not persisted as part of resource payload.
+	Params  *InstanceGroupManagerParams `pulumi:"params"`
+	Project *string                     `pulumi:"project"`
+	Region  string                      `pulumi:"region"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
@@ -208,8 +212,10 @@ type RegionInstanceGroupManagerArgs struct {
 	Name pulumi.StringPtrInput
 	// Named ports configured for the Instance Groups complementary to this Instance Group Manager.
 	NamedPorts NamedPortArrayInput
-	Project    pulumi.StringPtrInput
-	Region     pulumi.StringInput
+	// Input only. Additional params passed with the request, but not persisted as part of resource payload.
+	Params  InstanceGroupManagerParamsPtrInput
+	Project pulumi.StringPtrInput
+	Region  pulumi.StringInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
@@ -364,6 +370,11 @@ func (o RegionInstanceGroupManagerOutput) Name() pulumi.StringOutput {
 // Named ports configured for the Instance Groups complementary to this Instance Group Manager.
 func (o RegionInstanceGroupManagerOutput) NamedPorts() NamedPortResponseArrayOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) NamedPortResponseArrayOutput { return v.NamedPorts }).(NamedPortResponseArrayOutput)
+}
+
+// Input only. Additional params passed with the request, but not persisted as part of resource payload.
+func (o RegionInstanceGroupManagerOutput) Params() InstanceGroupManagerParamsResponseOutput {
+	return o.ApplyT(func(v *RegionInstanceGroupManager) InstanceGroupManagerParamsResponseOutput { return v.Params }).(InstanceGroupManagerParamsResponseOutput)
 }
 
 func (o RegionInstanceGroupManagerOutput) Project() pulumi.StringOutput {

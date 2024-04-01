@@ -25,6 +25,7 @@ class NetworkPeeringArgs:
                  export_custom_routes_with_public_ip: Optional[pulumi.Input[bool]] = None,
                  import_custom_routes: Optional[pulumi.Input[bool]] = None,
                  import_custom_routes_with_public_ip: Optional[pulumi.Input[bool]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  peer_mtu: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
@@ -59,6 +60,8 @@ class NetworkPeeringArgs:
             pulumi.set(__self__, "import_custom_routes", import_custom_routes)
         if import_custom_routes_with_public_ip is not None:
             pulumi.set(__self__, "import_custom_routes_with_public_ip", import_custom_routes_with_public_ip)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if peer_mtu is not None:
             pulumi.set(__self__, "peer_mtu", peer_mtu)
         if project is not None:
@@ -187,6 +190,15 @@ class NetworkPeeringArgs:
         pulumi.set(self, "import_custom_routes_with_public_ip", value)
 
     @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
     @pulumi.getter(name="peerMtu")
     def peer_mtu(self) -> Optional[pulumi.Input[int]]:
         """
@@ -231,6 +243,7 @@ class NetworkPeering(pulumi.CustomResource):
                  export_custom_routes_with_public_ip: Optional[pulumi.Input[bool]] = None,
                  import_custom_routes: Optional[pulumi.Input[bool]] = None,
                  import_custom_routes_with_public_ip: Optional[pulumi.Input[bool]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  network_peering_id: Optional[pulumi.Input[str]] = None,
                  peer_mtu: Optional[pulumi.Input[int]] = None,
                  peer_network: Optional[pulumi.Input[str]] = None,
@@ -240,7 +253,7 @@ class NetworkPeering(pulumi.CustomResource):
                  vmware_engine_network: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a new network peering between the peer network and VMware Engine network provided in a `NetworkPeering` resource.
+        Creates a new network peering between the peer network and VMware Engine network provided in a `NetworkPeering` resource. NetworkPeering is a global resource and location can only be global.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
@@ -265,7 +278,7 @@ class NetworkPeering(pulumi.CustomResource):
                  args: NetworkPeeringArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a new network peering between the peer network and VMware Engine network provided in a `NetworkPeering` resource.
+        Creates a new network peering between the peer network and VMware Engine network provided in a `NetworkPeering` resource. NetworkPeering is a global resource and location can only be global.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
@@ -289,6 +302,7 @@ class NetworkPeering(pulumi.CustomResource):
                  export_custom_routes_with_public_ip: Optional[pulumi.Input[bool]] = None,
                  import_custom_routes: Optional[pulumi.Input[bool]] = None,
                  import_custom_routes_with_public_ip: Optional[pulumi.Input[bool]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  network_peering_id: Optional[pulumi.Input[str]] = None,
                  peer_mtu: Optional[pulumi.Input[int]] = None,
                  peer_network: Optional[pulumi.Input[str]] = None,
@@ -311,6 +325,7 @@ class NetworkPeering(pulumi.CustomResource):
             __props__.__dict__["export_custom_routes_with_public_ip"] = export_custom_routes_with_public_ip
             __props__.__dict__["import_custom_routes"] = import_custom_routes
             __props__.__dict__["import_custom_routes_with_public_ip"] = import_custom_routes_with_public_ip
+            __props__.__dict__["location"] = location
             if network_peering_id is None and not opts.urn:
                 raise TypeError("Missing required property 'network_peering_id'")
             __props__.__dict__["network_peering_id"] = network_peering_id
@@ -332,7 +347,7 @@ class NetworkPeering(pulumi.CustomResource):
             __props__.__dict__["state_details"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["network_peering_id", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "network_peering_id", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(NetworkPeering, __self__).__init__(
             'google-native:vmwareengine/v1:NetworkPeering',
@@ -363,6 +378,7 @@ class NetworkPeering(pulumi.CustomResource):
         __props__.__dict__["export_custom_routes_with_public_ip"] = None
         __props__.__dict__["import_custom_routes"] = None
         __props__.__dict__["import_custom_routes_with_public_ip"] = None
+        __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network_peering_id"] = None
         __props__.__dict__["peer_mtu"] = None
@@ -435,9 +451,14 @@ class NetworkPeering(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of the network peering. Resource names are scheme-less URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/networkPeerings/my-peering`
+        The resource name of the network peering. NetworkPeering is a global resource and location can only be global. Resource names are scheme-less URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/networkPeerings/my-peering`
         """
         return pulumi.get(self, "name")
 

@@ -341,9 +341,9 @@ func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConf
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role *string `pulumi:"role"`
 }
 
@@ -362,9 +362,9 @@ type BindingInput interface {
 type BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -425,12 +425,12 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -459,9 +459,9 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role string `pulumi:"role"`
 }
 
@@ -485,12 +485,12 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -513,6 +513,557 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
 		return vs[0].([]BindingResponse)[vs[1].(int)]
 	}).(BindingResponseOutput)
+}
+
+// Configuration for connections to Bitbucket Cloud.
+type BitbucketCloudConfig struct {
+	// An access token with the `webhook`, `repository`, `repository:admin` and `pullrequest` scope access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate these credentials.
+	AuthorizerCredential UserCredential `pulumi:"authorizerCredential"`
+	// An access token with the `repository` access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate the credentials.
+	ReadAuthorizerCredential UserCredential `pulumi:"readAuthorizerCredential"`
+	// SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+	WebhookSecretSecretVersion string `pulumi:"webhookSecretSecretVersion"`
+	// The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform.
+	Workspace string `pulumi:"workspace"`
+}
+
+// BitbucketCloudConfigInput is an input type that accepts BitbucketCloudConfigArgs and BitbucketCloudConfigOutput values.
+// You can construct a concrete instance of `BitbucketCloudConfigInput` via:
+//
+//	BitbucketCloudConfigArgs{...}
+type BitbucketCloudConfigInput interface {
+	pulumi.Input
+
+	ToBitbucketCloudConfigOutput() BitbucketCloudConfigOutput
+	ToBitbucketCloudConfigOutputWithContext(context.Context) BitbucketCloudConfigOutput
+}
+
+// Configuration for connections to Bitbucket Cloud.
+type BitbucketCloudConfigArgs struct {
+	// An access token with the `webhook`, `repository`, `repository:admin` and `pullrequest` scope access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate these credentials.
+	AuthorizerCredential UserCredentialInput `pulumi:"authorizerCredential"`
+	// An access token with the `repository` access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate the credentials.
+	ReadAuthorizerCredential UserCredentialInput `pulumi:"readAuthorizerCredential"`
+	// SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+	WebhookSecretSecretVersion pulumi.StringInput `pulumi:"webhookSecretSecretVersion"`
+	// The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform.
+	Workspace pulumi.StringInput `pulumi:"workspace"`
+}
+
+func (BitbucketCloudConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketCloudConfig)(nil)).Elem()
+}
+
+func (i BitbucketCloudConfigArgs) ToBitbucketCloudConfigOutput() BitbucketCloudConfigOutput {
+	return i.ToBitbucketCloudConfigOutputWithContext(context.Background())
+}
+
+func (i BitbucketCloudConfigArgs) ToBitbucketCloudConfigOutputWithContext(ctx context.Context) BitbucketCloudConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketCloudConfigOutput)
+}
+
+func (i BitbucketCloudConfigArgs) ToBitbucketCloudConfigPtrOutput() BitbucketCloudConfigPtrOutput {
+	return i.ToBitbucketCloudConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BitbucketCloudConfigArgs) ToBitbucketCloudConfigPtrOutputWithContext(ctx context.Context) BitbucketCloudConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketCloudConfigOutput).ToBitbucketCloudConfigPtrOutputWithContext(ctx)
+}
+
+// BitbucketCloudConfigPtrInput is an input type that accepts BitbucketCloudConfigArgs, BitbucketCloudConfigPtr and BitbucketCloudConfigPtrOutput values.
+// You can construct a concrete instance of `BitbucketCloudConfigPtrInput` via:
+//
+//	        BitbucketCloudConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BitbucketCloudConfigPtrInput interface {
+	pulumi.Input
+
+	ToBitbucketCloudConfigPtrOutput() BitbucketCloudConfigPtrOutput
+	ToBitbucketCloudConfigPtrOutputWithContext(context.Context) BitbucketCloudConfigPtrOutput
+}
+
+type bitbucketCloudConfigPtrType BitbucketCloudConfigArgs
+
+func BitbucketCloudConfigPtr(v *BitbucketCloudConfigArgs) BitbucketCloudConfigPtrInput {
+	return (*bitbucketCloudConfigPtrType)(v)
+}
+
+func (*bitbucketCloudConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BitbucketCloudConfig)(nil)).Elem()
+}
+
+func (i *bitbucketCloudConfigPtrType) ToBitbucketCloudConfigPtrOutput() BitbucketCloudConfigPtrOutput {
+	return i.ToBitbucketCloudConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bitbucketCloudConfigPtrType) ToBitbucketCloudConfigPtrOutputWithContext(ctx context.Context) BitbucketCloudConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketCloudConfigPtrOutput)
+}
+
+// Configuration for connections to Bitbucket Cloud.
+type BitbucketCloudConfigOutput struct{ *pulumi.OutputState }
+
+func (BitbucketCloudConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketCloudConfig)(nil)).Elem()
+}
+
+func (o BitbucketCloudConfigOutput) ToBitbucketCloudConfigOutput() BitbucketCloudConfigOutput {
+	return o
+}
+
+func (o BitbucketCloudConfigOutput) ToBitbucketCloudConfigOutputWithContext(ctx context.Context) BitbucketCloudConfigOutput {
+	return o
+}
+
+func (o BitbucketCloudConfigOutput) ToBitbucketCloudConfigPtrOutput() BitbucketCloudConfigPtrOutput {
+	return o.ToBitbucketCloudConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BitbucketCloudConfigOutput) ToBitbucketCloudConfigPtrOutputWithContext(ctx context.Context) BitbucketCloudConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BitbucketCloudConfig) *BitbucketCloudConfig {
+		return &v
+	}).(BitbucketCloudConfigPtrOutput)
+}
+
+// An access token with the `webhook`, `repository`, `repository:admin` and `pullrequest` scope access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate these credentials.
+func (o BitbucketCloudConfigOutput) AuthorizerCredential() UserCredentialOutput {
+	return o.ApplyT(func(v BitbucketCloudConfig) UserCredential { return v.AuthorizerCredential }).(UserCredentialOutput)
+}
+
+// An access token with the `repository` access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate the credentials.
+func (o BitbucketCloudConfigOutput) ReadAuthorizerCredential() UserCredentialOutput {
+	return o.ApplyT(func(v BitbucketCloudConfig) UserCredential { return v.ReadAuthorizerCredential }).(UserCredentialOutput)
+}
+
+// SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+func (o BitbucketCloudConfigOutput) WebhookSecretSecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketCloudConfig) string { return v.WebhookSecretSecretVersion }).(pulumi.StringOutput)
+}
+
+// The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform.
+func (o BitbucketCloudConfigOutput) Workspace() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketCloudConfig) string { return v.Workspace }).(pulumi.StringOutput)
+}
+
+type BitbucketCloudConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BitbucketCloudConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BitbucketCloudConfig)(nil)).Elem()
+}
+
+func (o BitbucketCloudConfigPtrOutput) ToBitbucketCloudConfigPtrOutput() BitbucketCloudConfigPtrOutput {
+	return o
+}
+
+func (o BitbucketCloudConfigPtrOutput) ToBitbucketCloudConfigPtrOutputWithContext(ctx context.Context) BitbucketCloudConfigPtrOutput {
+	return o
+}
+
+func (o BitbucketCloudConfigPtrOutput) Elem() BitbucketCloudConfigOutput {
+	return o.ApplyT(func(v *BitbucketCloudConfig) BitbucketCloudConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BitbucketCloudConfig
+		return ret
+	}).(BitbucketCloudConfigOutput)
+}
+
+// An access token with the `webhook`, `repository`, `repository:admin` and `pullrequest` scope access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate these credentials.
+func (o BitbucketCloudConfigPtrOutput) AuthorizerCredential() UserCredentialPtrOutput {
+	return o.ApplyT(func(v *BitbucketCloudConfig) *UserCredential {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthorizerCredential
+	}).(UserCredentialPtrOutput)
+}
+
+// An access token with the `repository` access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate the credentials.
+func (o BitbucketCloudConfigPtrOutput) ReadAuthorizerCredential() UserCredentialPtrOutput {
+	return o.ApplyT(func(v *BitbucketCloudConfig) *UserCredential {
+		if v == nil {
+			return nil
+		}
+		return &v.ReadAuthorizerCredential
+	}).(UserCredentialPtrOutput)
+}
+
+// SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+func (o BitbucketCloudConfigPtrOutput) WebhookSecretSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketCloudConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WebhookSecretSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform.
+func (o BitbucketCloudConfigPtrOutput) Workspace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketCloudConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Workspace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for connections to Bitbucket Cloud.
+type BitbucketCloudConfigResponse struct {
+	// An access token with the `webhook`, `repository`, `repository:admin` and `pullrequest` scope access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate these credentials.
+	AuthorizerCredential UserCredentialResponse `pulumi:"authorizerCredential"`
+	// An access token with the `repository` access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate the credentials.
+	ReadAuthorizerCredential UserCredentialResponse `pulumi:"readAuthorizerCredential"`
+	// SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+	WebhookSecretSecretVersion string `pulumi:"webhookSecretSecretVersion"`
+	// The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform.
+	Workspace string `pulumi:"workspace"`
+}
+
+// Configuration for connections to Bitbucket Cloud.
+type BitbucketCloudConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (BitbucketCloudConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketCloudConfigResponse)(nil)).Elem()
+}
+
+func (o BitbucketCloudConfigResponseOutput) ToBitbucketCloudConfigResponseOutput() BitbucketCloudConfigResponseOutput {
+	return o
+}
+
+func (o BitbucketCloudConfigResponseOutput) ToBitbucketCloudConfigResponseOutputWithContext(ctx context.Context) BitbucketCloudConfigResponseOutput {
+	return o
+}
+
+// An access token with the `webhook`, `repository`, `repository:admin` and `pullrequest` scope access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate these credentials.
+func (o BitbucketCloudConfigResponseOutput) AuthorizerCredential() UserCredentialResponseOutput {
+	return o.ApplyT(func(v BitbucketCloudConfigResponse) UserCredentialResponse { return v.AuthorizerCredential }).(UserCredentialResponseOutput)
+}
+
+// An access token with the `repository` access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate the credentials.
+func (o BitbucketCloudConfigResponseOutput) ReadAuthorizerCredential() UserCredentialResponseOutput {
+	return o.ApplyT(func(v BitbucketCloudConfigResponse) UserCredentialResponse { return v.ReadAuthorizerCredential }).(UserCredentialResponseOutput)
+}
+
+// SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+func (o BitbucketCloudConfigResponseOutput) WebhookSecretSecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketCloudConfigResponse) string { return v.WebhookSecretSecretVersion }).(pulumi.StringOutput)
+}
+
+// The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform.
+func (o BitbucketCloudConfigResponseOutput) Workspace() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketCloudConfigResponse) string { return v.Workspace }).(pulumi.StringOutput)
+}
+
+// Configuration for connections to Bitbucket Data Center.
+type BitbucketDataCenterConfig struct {
+	// A http access token with the `REPO_ADMIN` scope access.
+	AuthorizerCredential UserCredential `pulumi:"authorizerCredential"`
+	// The URI of the Bitbucket Data Center instance or cluster this connection is for.
+	HostUri string `pulumi:"hostUri"`
+	// A http access token with the `REPO_READ` access.
+	ReadAuthorizerCredential UserCredential `pulumi:"readAuthorizerCredential"`
+	// Optional. Configuration for using Service Directory to privately connect to a Bitbucket Data Center. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet.
+	ServiceDirectoryConfig *GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig `pulumi:"serviceDirectoryConfig"`
+	// Optional. SSL certificate to use for requests to the Bitbucket Data Center.
+	SslCa *string `pulumi:"sslCa"`
+	// Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+	WebhookSecretSecretVersion string `pulumi:"webhookSecretSecretVersion"`
+}
+
+// BitbucketDataCenterConfigInput is an input type that accepts BitbucketDataCenterConfigArgs and BitbucketDataCenterConfigOutput values.
+// You can construct a concrete instance of `BitbucketDataCenterConfigInput` via:
+//
+//	BitbucketDataCenterConfigArgs{...}
+type BitbucketDataCenterConfigInput interface {
+	pulumi.Input
+
+	ToBitbucketDataCenterConfigOutput() BitbucketDataCenterConfigOutput
+	ToBitbucketDataCenterConfigOutputWithContext(context.Context) BitbucketDataCenterConfigOutput
+}
+
+// Configuration for connections to Bitbucket Data Center.
+type BitbucketDataCenterConfigArgs struct {
+	// A http access token with the `REPO_ADMIN` scope access.
+	AuthorizerCredential UserCredentialInput `pulumi:"authorizerCredential"`
+	// The URI of the Bitbucket Data Center instance or cluster this connection is for.
+	HostUri pulumi.StringInput `pulumi:"hostUri"`
+	// A http access token with the `REPO_READ` access.
+	ReadAuthorizerCredential UserCredentialInput `pulumi:"readAuthorizerCredential"`
+	// Optional. Configuration for using Service Directory to privately connect to a Bitbucket Data Center. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet.
+	ServiceDirectoryConfig GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigPtrInput `pulumi:"serviceDirectoryConfig"`
+	// Optional. SSL certificate to use for requests to the Bitbucket Data Center.
+	SslCa pulumi.StringPtrInput `pulumi:"sslCa"`
+	// Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+	WebhookSecretSecretVersion pulumi.StringInput `pulumi:"webhookSecretSecretVersion"`
+}
+
+func (BitbucketDataCenterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketDataCenterConfig)(nil)).Elem()
+}
+
+func (i BitbucketDataCenterConfigArgs) ToBitbucketDataCenterConfigOutput() BitbucketDataCenterConfigOutput {
+	return i.ToBitbucketDataCenterConfigOutputWithContext(context.Background())
+}
+
+func (i BitbucketDataCenterConfigArgs) ToBitbucketDataCenterConfigOutputWithContext(ctx context.Context) BitbucketDataCenterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketDataCenterConfigOutput)
+}
+
+func (i BitbucketDataCenterConfigArgs) ToBitbucketDataCenterConfigPtrOutput() BitbucketDataCenterConfigPtrOutput {
+	return i.ToBitbucketDataCenterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BitbucketDataCenterConfigArgs) ToBitbucketDataCenterConfigPtrOutputWithContext(ctx context.Context) BitbucketDataCenterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketDataCenterConfigOutput).ToBitbucketDataCenterConfigPtrOutputWithContext(ctx)
+}
+
+// BitbucketDataCenterConfigPtrInput is an input type that accepts BitbucketDataCenterConfigArgs, BitbucketDataCenterConfigPtr and BitbucketDataCenterConfigPtrOutput values.
+// You can construct a concrete instance of `BitbucketDataCenterConfigPtrInput` via:
+//
+//	        BitbucketDataCenterConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BitbucketDataCenterConfigPtrInput interface {
+	pulumi.Input
+
+	ToBitbucketDataCenterConfigPtrOutput() BitbucketDataCenterConfigPtrOutput
+	ToBitbucketDataCenterConfigPtrOutputWithContext(context.Context) BitbucketDataCenterConfigPtrOutput
+}
+
+type bitbucketDataCenterConfigPtrType BitbucketDataCenterConfigArgs
+
+func BitbucketDataCenterConfigPtr(v *BitbucketDataCenterConfigArgs) BitbucketDataCenterConfigPtrInput {
+	return (*bitbucketDataCenterConfigPtrType)(v)
+}
+
+func (*bitbucketDataCenterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BitbucketDataCenterConfig)(nil)).Elem()
+}
+
+func (i *bitbucketDataCenterConfigPtrType) ToBitbucketDataCenterConfigPtrOutput() BitbucketDataCenterConfigPtrOutput {
+	return i.ToBitbucketDataCenterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bitbucketDataCenterConfigPtrType) ToBitbucketDataCenterConfigPtrOutputWithContext(ctx context.Context) BitbucketDataCenterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BitbucketDataCenterConfigPtrOutput)
+}
+
+// Configuration for connections to Bitbucket Data Center.
+type BitbucketDataCenterConfigOutput struct{ *pulumi.OutputState }
+
+func (BitbucketDataCenterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketDataCenterConfig)(nil)).Elem()
+}
+
+func (o BitbucketDataCenterConfigOutput) ToBitbucketDataCenterConfigOutput() BitbucketDataCenterConfigOutput {
+	return o
+}
+
+func (o BitbucketDataCenterConfigOutput) ToBitbucketDataCenterConfigOutputWithContext(ctx context.Context) BitbucketDataCenterConfigOutput {
+	return o
+}
+
+func (o BitbucketDataCenterConfigOutput) ToBitbucketDataCenterConfigPtrOutput() BitbucketDataCenterConfigPtrOutput {
+	return o.ToBitbucketDataCenterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BitbucketDataCenterConfigOutput) ToBitbucketDataCenterConfigPtrOutputWithContext(ctx context.Context) BitbucketDataCenterConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BitbucketDataCenterConfig) *BitbucketDataCenterConfig {
+		return &v
+	}).(BitbucketDataCenterConfigPtrOutput)
+}
+
+// A http access token with the `REPO_ADMIN` scope access.
+func (o BitbucketDataCenterConfigOutput) AuthorizerCredential() UserCredentialOutput {
+	return o.ApplyT(func(v BitbucketDataCenterConfig) UserCredential { return v.AuthorizerCredential }).(UserCredentialOutput)
+}
+
+// The URI of the Bitbucket Data Center instance or cluster this connection is for.
+func (o BitbucketDataCenterConfigOutput) HostUri() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketDataCenterConfig) string { return v.HostUri }).(pulumi.StringOutput)
+}
+
+// A http access token with the `REPO_READ` access.
+func (o BitbucketDataCenterConfigOutput) ReadAuthorizerCredential() UserCredentialOutput {
+	return o.ApplyT(func(v BitbucketDataCenterConfig) UserCredential { return v.ReadAuthorizerCredential }).(UserCredentialOutput)
+}
+
+// Optional. Configuration for using Service Directory to privately connect to a Bitbucket Data Center. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet.
+func (o BitbucketDataCenterConfigOutput) ServiceDirectoryConfig() GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v BitbucketDataCenterConfig) *GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig {
+		return v.ServiceDirectoryConfig
+	}).(GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigPtrOutput)
+}
+
+// Optional. SSL certificate to use for requests to the Bitbucket Data Center.
+func (o BitbucketDataCenterConfigOutput) SslCa() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BitbucketDataCenterConfig) *string { return v.SslCa }).(pulumi.StringPtrOutput)
+}
+
+// Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+func (o BitbucketDataCenterConfigOutput) WebhookSecretSecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketDataCenterConfig) string { return v.WebhookSecretSecretVersion }).(pulumi.StringOutput)
+}
+
+type BitbucketDataCenterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BitbucketDataCenterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BitbucketDataCenterConfig)(nil)).Elem()
+}
+
+func (o BitbucketDataCenterConfigPtrOutput) ToBitbucketDataCenterConfigPtrOutput() BitbucketDataCenterConfigPtrOutput {
+	return o
+}
+
+func (o BitbucketDataCenterConfigPtrOutput) ToBitbucketDataCenterConfigPtrOutputWithContext(ctx context.Context) BitbucketDataCenterConfigPtrOutput {
+	return o
+}
+
+func (o BitbucketDataCenterConfigPtrOutput) Elem() BitbucketDataCenterConfigOutput {
+	return o.ApplyT(func(v *BitbucketDataCenterConfig) BitbucketDataCenterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BitbucketDataCenterConfig
+		return ret
+	}).(BitbucketDataCenterConfigOutput)
+}
+
+// A http access token with the `REPO_ADMIN` scope access.
+func (o BitbucketDataCenterConfigPtrOutput) AuthorizerCredential() UserCredentialPtrOutput {
+	return o.ApplyT(func(v *BitbucketDataCenterConfig) *UserCredential {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthorizerCredential
+	}).(UserCredentialPtrOutput)
+}
+
+// The URI of the Bitbucket Data Center instance or cluster this connection is for.
+func (o BitbucketDataCenterConfigPtrOutput) HostUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketDataCenterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HostUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// A http access token with the `REPO_READ` access.
+func (o BitbucketDataCenterConfigPtrOutput) ReadAuthorizerCredential() UserCredentialPtrOutput {
+	return o.ApplyT(func(v *BitbucketDataCenterConfig) *UserCredential {
+		if v == nil {
+			return nil
+		}
+		return &v.ReadAuthorizerCredential
+	}).(UserCredentialPtrOutput)
+}
+
+// Optional. Configuration for using Service Directory to privately connect to a Bitbucket Data Center. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet.
+func (o BitbucketDataCenterConfigPtrOutput) ServiceDirectoryConfig() GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v *BitbucketDataCenterConfig) *GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceDirectoryConfig
+	}).(GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigPtrOutput)
+}
+
+// Optional. SSL certificate to use for requests to the Bitbucket Data Center.
+func (o BitbucketDataCenterConfigPtrOutput) SslCa() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketDataCenterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCa
+	}).(pulumi.StringPtrOutput)
+}
+
+// Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+func (o BitbucketDataCenterConfigPtrOutput) WebhookSecretSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BitbucketDataCenterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WebhookSecretSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for connections to Bitbucket Data Center.
+type BitbucketDataCenterConfigResponse struct {
+	// A http access token with the `REPO_ADMIN` scope access.
+	AuthorizerCredential UserCredentialResponse `pulumi:"authorizerCredential"`
+	// The URI of the Bitbucket Data Center instance or cluster this connection is for.
+	HostUri string `pulumi:"hostUri"`
+	// A http access token with the `REPO_READ` access.
+	ReadAuthorizerCredential UserCredentialResponse `pulumi:"readAuthorizerCredential"`
+	// Version of the Bitbucket Data Center running on the `host_uri`.
+	ServerVersion string `pulumi:"serverVersion"`
+	// Optional. Configuration for using Service Directory to privately connect to a Bitbucket Data Center. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet.
+	ServiceDirectoryConfig GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse `pulumi:"serviceDirectoryConfig"`
+	// Optional. SSL certificate to use for requests to the Bitbucket Data Center.
+	SslCa string `pulumi:"sslCa"`
+	// Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+	WebhookSecretSecretVersion string `pulumi:"webhookSecretSecretVersion"`
+}
+
+// Configuration for connections to Bitbucket Data Center.
+type BitbucketDataCenterConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (BitbucketDataCenterConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BitbucketDataCenterConfigResponse)(nil)).Elem()
+}
+
+func (o BitbucketDataCenterConfigResponseOutput) ToBitbucketDataCenterConfigResponseOutput() BitbucketDataCenterConfigResponseOutput {
+	return o
+}
+
+func (o BitbucketDataCenterConfigResponseOutput) ToBitbucketDataCenterConfigResponseOutputWithContext(ctx context.Context) BitbucketDataCenterConfigResponseOutput {
+	return o
+}
+
+// A http access token with the `REPO_ADMIN` scope access.
+func (o BitbucketDataCenterConfigResponseOutput) AuthorizerCredential() UserCredentialResponseOutput {
+	return o.ApplyT(func(v BitbucketDataCenterConfigResponse) UserCredentialResponse { return v.AuthorizerCredential }).(UserCredentialResponseOutput)
+}
+
+// The URI of the Bitbucket Data Center instance or cluster this connection is for.
+func (o BitbucketDataCenterConfigResponseOutput) HostUri() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketDataCenterConfigResponse) string { return v.HostUri }).(pulumi.StringOutput)
+}
+
+// A http access token with the `REPO_READ` access.
+func (o BitbucketDataCenterConfigResponseOutput) ReadAuthorizerCredential() UserCredentialResponseOutput {
+	return o.ApplyT(func(v BitbucketDataCenterConfigResponse) UserCredentialResponse { return v.ReadAuthorizerCredential }).(UserCredentialResponseOutput)
+}
+
+// Version of the Bitbucket Data Center running on the `host_uri`.
+func (o BitbucketDataCenterConfigResponseOutput) ServerVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketDataCenterConfigResponse) string { return v.ServerVersion }).(pulumi.StringOutput)
+}
+
+// Optional. Configuration for using Service Directory to privately connect to a Bitbucket Data Center. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet.
+func (o BitbucketDataCenterConfigResponseOutput) ServiceDirectoryConfig() GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponseOutput {
+	return o.ApplyT(func(v BitbucketDataCenterConfigResponse) GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse {
+		return v.ServiceDirectoryConfig
+	}).(GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponseOutput)
+}
+
+// Optional. SSL certificate to use for requests to the Bitbucket Data Center.
+func (o BitbucketDataCenterConfigResponseOutput) SslCa() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketDataCenterConfigResponse) string { return v.SslCa }).(pulumi.StringOutput)
+}
+
+// Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
+func (o BitbucketDataCenterConfigResponseOutput) WebhookSecretSecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v BitbucketDataCenterConfigResponse) string { return v.WebhookSecretSecretVersion }).(pulumi.StringOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -2210,6 +2761,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketCloudConfigInput)(nil)).Elem(), BitbucketCloudConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketCloudConfigPtrInput)(nil)).Elem(), BitbucketCloudConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketDataCenterConfigInput)(nil)).Elem(), BitbucketDataCenterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketDataCenterConfigPtrInput)(nil)).Elem(), BitbucketDataCenterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitHubConfigInput)(nil)).Elem(), GitHubConfigArgs{})
@@ -2236,6 +2791,12 @@ func init() {
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
+	pulumi.RegisterOutputType(BitbucketCloudConfigOutput{})
+	pulumi.RegisterOutputType(BitbucketCloudConfigPtrOutput{})
+	pulumi.RegisterOutputType(BitbucketCloudConfigResponseOutput{})
+	pulumi.RegisterOutputType(BitbucketDataCenterConfigOutput{})
+	pulumi.RegisterOutputType(BitbucketDataCenterConfigPtrOutput{})
+	pulumi.RegisterOutputType(BitbucketDataCenterConfigResponseOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})

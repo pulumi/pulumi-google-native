@@ -1577,6 +1577,8 @@ type NetworkConfig struct {
 	EnableExternalIps *bool `pulumi:"enableExternalIps"`
 	// The name of the network for the TPU node. It must be a preexisting Google Compute Engine network. If none is provided, "default" will be used.
 	Network *string `pulumi:"network"`
+	// Optional. Specifies networking queue count for TPU VM instance's network interface.
+	QueueCount *int `pulumi:"queueCount"`
 	// The name of the subnetwork for the TPU node. It must be a preexisting Google Compute Engine subnetwork. If none is provided, "default" will be used.
 	Subnetwork *string `pulumi:"subnetwork"`
 }
@@ -1600,6 +1602,8 @@ type NetworkConfigArgs struct {
 	EnableExternalIps pulumi.BoolPtrInput `pulumi:"enableExternalIps"`
 	// The name of the network for the TPU node. It must be a preexisting Google Compute Engine network. If none is provided, "default" will be used.
 	Network pulumi.StringPtrInput `pulumi:"network"`
+	// Optional. Specifies networking queue count for TPU VM instance's network interface.
+	QueueCount pulumi.IntPtrInput `pulumi:"queueCount"`
 	// The name of the subnetwork for the TPU node. It must be a preexisting Google Compute Engine subnetwork. If none is provided, "default" will be used.
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
 }
@@ -1697,6 +1701,11 @@ func (o NetworkConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
+// Optional. Specifies networking queue count for TPU VM instance's network interface.
+func (o NetworkConfigOutput) QueueCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *int { return v.QueueCount }).(pulumi.IntPtrOutput)
+}
+
 // The name of the subnetwork for the TPU node. It must be a preexisting Google Compute Engine subnetwork. If none is provided, "default" will be used.
 func (o NetworkConfigOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
@@ -1756,6 +1765,16 @@ func (o NetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. Specifies networking queue count for TPU VM instance's network interface.
+func (o NetworkConfigPtrOutput) QueueCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworkConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.QueueCount
+	}).(pulumi.IntPtrOutput)
+}
+
 // The name of the subnetwork for the TPU node. It must be a preexisting Google Compute Engine subnetwork. If none is provided, "default" will be used.
 func (o NetworkConfigPtrOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkConfig) *string {
@@ -1774,6 +1793,8 @@ type NetworkConfigResponse struct {
 	EnableExternalIps bool `pulumi:"enableExternalIps"`
 	// The name of the network for the TPU node. It must be a preexisting Google Compute Engine network. If none is provided, "default" will be used.
 	Network string `pulumi:"network"`
+	// Optional. Specifies networking queue count for TPU VM instance's network interface.
+	QueueCount int `pulumi:"queueCount"`
 	// The name of the subnetwork for the TPU node. It must be a preexisting Google Compute Engine subnetwork. If none is provided, "default" will be used.
 	Subnetwork string `pulumi:"subnetwork"`
 }
@@ -1806,6 +1827,11 @@ func (o NetworkConfigResponseOutput) EnableExternalIps() pulumi.BoolOutput {
 // The name of the network for the TPU node. It must be a preexisting Google Compute Engine network. If none is provided, "default" will be used.
 func (o NetworkConfigResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Optional. Specifies networking queue count for TPU VM instance's network interface.
+func (o NetworkConfigResponseOutput) QueueCount() pulumi.IntOutput {
+	return o.ApplyT(func(v NetworkConfigResponse) int { return v.QueueCount }).(pulumi.IntOutput)
 }
 
 // The name of the subnetwork for the TPU node. It must be a preexisting Google Compute Engine subnetwork. If none is provided, "default" will be used.
@@ -2486,7 +2512,7 @@ type QueuedResourceStateResponse struct {
 	ProvisioningData ProvisioningDataResponse `pulumi:"provisioningData"`
 	// State of the QueuedResource request.
 	State string `pulumi:"state"`
-	// The initiator of the QueuedResources's current state.
+	// The initiator of the QueuedResources's current state. Used to indicate whether the SUSPENDING/SUSPENDED state was initiated by the user or the service.
 	StateInitiator string `pulumi:"stateInitiator"`
 	// Further data for the suspended state.
 	SuspendedData SuspendedDataResponse `pulumi:"suspendedData"`
@@ -2544,7 +2570,7 @@ func (o QueuedResourceStateResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v QueuedResourceStateResponse) string { return v.State }).(pulumi.StringOutput)
 }
 
-// The initiator of the QueuedResources's current state.
+// The initiator of the QueuedResources's current state. Used to indicate whether the SUSPENDING/SUSPENDED state was initiated by the user or the service.
 func (o QueuedResourceStateResponseOutput) StateInitiator() pulumi.StringOutput {
 	return o.ApplyT(func(v QueuedResourceStateResponse) string { return v.StateInitiator }).(pulumi.StringOutput)
 }
@@ -2835,6 +2861,8 @@ type SchedulingConfig struct {
 	Preemptible *bool `pulumi:"preemptible"`
 	// Whether the node is created under a reservation.
 	Reserved *bool `pulumi:"reserved"`
+	// Optional. Defines whether the node is Spot VM.
+	Spot *bool `pulumi:"spot"`
 }
 
 // SchedulingConfigInput is an input type that accepts SchedulingConfigArgs and SchedulingConfigOutput values.
@@ -2854,6 +2882,8 @@ type SchedulingConfigArgs struct {
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
 	// Whether the node is created under a reservation.
 	Reserved pulumi.BoolPtrInput `pulumi:"reserved"`
+	// Optional. Defines whether the node is Spot VM.
+	Spot pulumi.BoolPtrInput `pulumi:"spot"`
 }
 
 func (SchedulingConfigArgs) ElementType() reflect.Type {
@@ -2944,6 +2974,11 @@ func (o SchedulingConfigOutput) Reserved() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SchedulingConfig) *bool { return v.Reserved }).(pulumi.BoolPtrOutput)
 }
 
+// Optional. Defines whether the node is Spot VM.
+func (o SchedulingConfigOutput) Spot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SchedulingConfig) *bool { return v.Spot }).(pulumi.BoolPtrOutput)
+}
+
 type SchedulingConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (SchedulingConfigPtrOutput) ElementType() reflect.Type {
@@ -2988,12 +3023,24 @@ func (o SchedulingConfigPtrOutput) Reserved() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Optional. Defines whether the node is Spot VM.
+func (o SchedulingConfigPtrOutput) Spot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SchedulingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Spot
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Sets the scheduling options for this node.
 type SchedulingConfigResponse struct {
 	// Defines whether the node is preemptible.
 	Preemptible bool `pulumi:"preemptible"`
 	// Whether the node is created under a reservation.
 	Reserved bool `pulumi:"reserved"`
+	// Optional. Defines whether the node is Spot VM.
+	Spot bool `pulumi:"spot"`
 }
 
 // Sets the scheduling options for this node.
@@ -3019,6 +3066,11 @@ func (o SchedulingConfigResponseOutput) Preemptible() pulumi.BoolOutput {
 // Whether the node is created under a reservation.
 func (o SchedulingConfigResponseOutput) Reserved() pulumi.BoolOutput {
 	return o.ApplyT(func(v SchedulingConfigResponse) bool { return v.Reserved }).(pulumi.BoolOutput)
+}
+
+// Optional. Defines whether the node is Spot VM.
+func (o SchedulingConfigResponseOutput) Spot() pulumi.BoolOutput {
+	return o.ApplyT(func(v SchedulingConfigResponse) bool { return v.Spot }).(pulumi.BoolOutput)
 }
 
 // A service account.

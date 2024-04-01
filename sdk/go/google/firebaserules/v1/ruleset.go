@@ -17,6 +17,8 @@ import (
 type Ruleset struct {
 	pulumi.CustomResourceState
 
+	// Immutable. Intended resource to which this Ruleset should be released. May be left blank to signify the resource associated with the default release. Expected format: firestore.googleapis.com/projects//databases/
+	AttachmentPoint pulumi.StringOutput `pulumi:"attachmentPoint"`
 	// Time the `Ruleset` was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The metadata for this ruleset.
@@ -75,14 +77,18 @@ func (RulesetState) ElementType() reflect.Type {
 }
 
 type rulesetArgs struct {
-	Project *string `pulumi:"project"`
+	// Immutable. Intended resource to which this Ruleset should be released. May be left blank to signify the resource associated with the default release. Expected format: firestore.googleapis.com/projects//databases/
+	AttachmentPoint *string `pulumi:"attachmentPoint"`
+	Project         *string `pulumi:"project"`
 	// `Source` for the `Ruleset`.
 	Source Source `pulumi:"source"`
 }
 
 // The set of arguments for constructing a Ruleset resource.
 type RulesetArgs struct {
-	Project pulumi.StringPtrInput
+	// Immutable. Intended resource to which this Ruleset should be released. May be left blank to signify the resource associated with the default release. Expected format: firestore.googleapis.com/projects//databases/
+	AttachmentPoint pulumi.StringPtrInput
+	Project         pulumi.StringPtrInput
 	// `Source` for the `Ruleset`.
 	Source SourceInput
 }
@@ -122,6 +128,11 @@ func (o RulesetOutput) ToRulesetOutput() RulesetOutput {
 
 func (o RulesetOutput) ToRulesetOutputWithContext(ctx context.Context) RulesetOutput {
 	return o
+}
+
+// Immutable. Intended resource to which this Ruleset should be released. May be left blank to signify the resource associated with the default release. Expected format: firestore.googleapis.com/projects//databases/
+func (o RulesetOutput) AttachmentPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ruleset) pulumi.StringOutput { return v.AttachmentPoint }).(pulumi.StringOutput)
 }
 
 // Time the `Ruleset` was created.

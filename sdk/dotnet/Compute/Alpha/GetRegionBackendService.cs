@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class GetRegionBackendServiceResult
     {
         /// <summary>
-        /// Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        /// Lifetime of cookies in seconds. This setting is applicable to Application Load Balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         public readonly int AffinityCookieTtlSec;
         /// <summary>
@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public readonly string CompressionMode;
         public readonly Outputs.ConnectionDrainingResponse ConnectionDraining;
         /// <summary>
-        /// Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for Network Load Balancing and Internal TCP/UDP Load Balancing.
+        /// Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for external passthrough Network Load Balancers and internal passthrough Network Load Balancers.
         /// </summary>
         public readonly Outputs.BackendServiceConnectionTrackingPolicyResponse ConnectionTrackingPolicy;
         /// <summary>
@@ -110,11 +110,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string EdgeSecurityPolicy;
         /// <summary>
-        /// If true, enables Cloud CDN for the backend service of an external HTTP(S) load balancer.
+        /// If true, enables Cloud CDN for the backend service of a global external Application Load Balancer.
         /// </summary>
         public readonly bool EnableCDN;
         /// <summary>
-        /// Requires at least one backend instance group to be defined as a backup (failover) backend. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
+        /// Specifies the canary migration state. Possible values are PREPARE, TEST, and FINALIZE. To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to PREPARE. The state must be changed to FINALIZE before the loadBalancingScheme can be changed to EXTERNAL_MANAGED. Optionally, the TEST state can be used to migrate traffic by percentage using externalManagedMigrationTestingPercentage. Rolling back a migration requires the states to be set in reverse order. So changing the scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to FINALIZE at the same time. Optionally, the TEST state can be used to migrate some traffic back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+        /// </summary>
+        public readonly string ExternalManagedMigrationState;
+        /// <summary>
+        /// Determines the fraction of requests that should be processed by the Global external Application Load Balancer. The value of this field must be in the range [0, 100]. Session affinity options will slightly affect this routing behavior, for more details, see: Session Affinity. This value is only used if the loadBalancingScheme in the BackendService is set to EXTERNAL when using the classic Application Load Balancer.
+        /// </summary>
+        public readonly double ExternalManagedMigrationTestingPercentage;
+        /// <summary>
+        /// Requires at least one backend instance group to be defined as a backup (failover) backend. For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
         /// </summary>
         public readonly Outputs.BackendServiceFailoverPolicyResponse FailoverPolicy;
         /// <summary>
@@ -122,15 +130,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
+        /// Configuring haPolicy is not supported.
+        /// </summary>
+        public readonly Outputs.BackendServiceHAPolicyResponse HaPolicy;
+        /// <summary>
         /// The list of URLs to the healthChecks, httpHealthChecks (legacy), or httpsHealthChecks (legacy) resource for health checking this backend service. Not all backend services support legacy health checks. See Load balancer guide. Currently, at most one health check can be specified for each backend service. Backend services with instance group or zonal NEG backends must have a health check. Backend services with internet or serverless NEG backends must not have a health check.
         /// </summary>
         public readonly ImmutableArray<string> HealthChecks;
         /// <summary>
-        /// The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
+        /// The configurations for Identity-Aware Proxy on this resource. Not available for internal passthrough Network Load Balancers and external passthrough Network Load Balancers.
         /// </summary>
         public readonly Outputs.BackendServiceIAPResponse Iap;
         /// <summary>
-        /// Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
+        /// Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced global external Application Load Balancer (load balancing scheme EXTERNAL_MANAGED), - Regional external Application Load Balancer, - Internal proxy Network Load Balancer (load balancing scheme INTERNAL_MANAGED), - Regional internal Application Load Balancer (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
         /// </summary>
         public readonly string IpAddressSelectionPolicy;
         /// <summary>
@@ -174,11 +186,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.OutlierDetectionResponse OutlierDetection;
         /// <summary>
-        /// Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.
+        /// Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For internal passthrough Network Load Balancers and external passthrough Network Load Balancers, omit port.
         /// </summary>
         public readonly int Port;
         /// <summary>
-        /// A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port_name.
+        /// A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For internal passthrough Network Load Balancers and external passthrough Network Load Balancers, omit port_name.
         /// </summary>
         public readonly string PortName;
         /// <summary>
@@ -258,9 +270,15 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             bool enableCDN,
 
+            string externalManagedMigrationState,
+
+            double externalManagedMigrationTestingPercentage,
+
             Outputs.BackendServiceFailoverPolicyResponse failoverPolicy,
 
             string fingerprint,
+
+            Outputs.BackendServiceHAPolicyResponse haPolicy,
 
             ImmutableArray<string> healthChecks,
 
@@ -332,8 +350,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Description = description;
             EdgeSecurityPolicy = edgeSecurityPolicy;
             EnableCDN = enableCDN;
+            ExternalManagedMigrationState = externalManagedMigrationState;
+            ExternalManagedMigrationTestingPercentage = externalManagedMigrationTestingPercentage;
             FailoverPolicy = failoverPolicy;
             Fingerprint = fingerprint;
+            HaPolicy = haPolicy;
             HealthChecks = healthChecks;
             Iap = iap;
             IpAddressSelectionPolicy = ipAddressSelectionPolicy;

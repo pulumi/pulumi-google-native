@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         /// </summary>
         public readonly Outputs.ReleaseReadyConditionResponse ReleaseReadyCondition;
         /// <summary>
-        /// Details around the support state of the release's skaffold version.
+        /// Details around the support state of the release's Skaffold version.
         /// </summary>
         public readonly Outputs.SkaffoldSupportedConditionResponse SkaffoldSupportedCondition;
 

@@ -12,6 +12,11 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'GoogleCloudDataplexV1AspectTypeAuthorizationResponse',
+    'GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponse',
+    'GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsResponse',
+    'GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponse',
+    'GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse',
     'GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsResponse',
     'GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsResponse',
     'GoogleCloudDataplexV1AssetDiscoverySpecResponse',
@@ -52,17 +57,27 @@ __all__ = [
     'GoogleCloudDataplexV1DataQualityRuleResultResponse',
     'GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse',
     'GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse',
+    'GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponse',
     'GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse',
     'GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse',
     'GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponse',
     'GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse',
+    'GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerResponse',
+    'GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerResponse',
+    'GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponse',
+    'GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsResponse',
     'GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse',
+    'GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponse',
     'GoogleCloudDataplexV1DataQualitySpecResponse',
     'GoogleCloudDataplexV1DataScanExecutionSpecResponse',
     'GoogleCloudDataplexV1DataScanExecutionStatusResponse',
     'GoogleCloudDataplexV1DataSourceResponse',
     'GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse',
     'GoogleCloudDataplexV1EntityCompatibilityStatusResponse',
+    'GoogleCloudDataplexV1EntrySourceAncestorResponse',
+    'GoogleCloudDataplexV1EntrySourceResponse',
+    'GoogleCloudDataplexV1EntryTypeAspectInfoResponse',
+    'GoogleCloudDataplexV1EntryTypeAuthorizationResponse',
     'GoogleCloudDataplexV1EnvironmentEndpointsResponse',
     'GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse',
     'GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeResponse',
@@ -104,6 +119,370 @@ __all__ = [
     'GoogleIamV1BindingResponse',
     'GoogleTypeExprResponse',
 ]
+
+@pulumi.output_type
+class GoogleCloudDataplexV1AspectTypeAuthorizationResponse(dict):
+    """
+    Autorization for an Aspect Type.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alternateUsePermission":
+            suggest = "alternate_use_permission"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDataplexV1AspectTypeAuthorizationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDataplexV1AspectTypeAuthorizationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDataplexV1AspectTypeAuthorizationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alternate_use_permission: str):
+        """
+        Autorization for an Aspect Type.
+        :param str alternate_use_permission: Immutable. The IAM permission grantable on the Entry Group to allow access to instantiate Aspects of Dataplex owned Aspect Types, only settable for Dataplex owned Types.
+        """
+        pulumi.set(__self__, "alternate_use_permission", alternate_use_permission)
+
+    @property
+    @pulumi.getter(name="alternateUsePermission")
+    def alternate_use_permission(self) -> str:
+        """
+        Immutable. The IAM permission grantable on the Entry Group to allow access to instantiate Aspects of Dataplex owned Aspect Types, only settable for Dataplex owned Types.
+        """
+        return pulumi.get(self, "alternate_use_permission")
+
+
+@pulumi.output_type
+class GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponse(dict):
+    """
+    Definition of the annotations of a field
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "displayOrder":
+            suggest = "display_order"
+        elif key == "stringType":
+            suggest = "string_type"
+        elif key == "stringValues":
+            suggest = "string_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 deprecated: str,
+                 description: str,
+                 display_name: str,
+                 display_order: int,
+                 string_type: str,
+                 string_values: Sequence[str]):
+        """
+        Definition of the annotations of a field
+        :param str deprecated: Optional. Marks a field as deprecated, a deprecation message can be included.
+        :param str description: Optional. Specify a description for a field
+        :param str display_name: Optional. Specify a displayname for a field.
+        :param int display_order: Optional. Specify a display order for a field. Display order can be used to reorder where a field is rendered
+        :param str string_type: Optional. String Type annotations can be used to specify special meaning to string fields. The following values are supported: richText: The field must be interpreted as a rich text field. url: A fully qualified url link. resource: A service qualified resource reference.
+        :param Sequence[str] string_values: Optional. Suggested hints for string fields. These can be used to suggest values to users, through an UI for example.
+        """
+        pulumi.set(__self__, "deprecated", deprecated)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "display_order", display_order)
+        pulumi.set(__self__, "string_type", string_type)
+        pulumi.set(__self__, "string_values", string_values)
+
+    @property
+    @pulumi.getter
+    def deprecated(self) -> str:
+        """
+        Optional. Marks a field as deprecated, a deprecation message can be included.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Optional. Specify a description for a field
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Optional. Specify a displayname for a field.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="displayOrder")
+    def display_order(self) -> int:
+        """
+        Optional. Specify a display order for a field. Display order can be used to reorder where a field is rendered
+        """
+        return pulumi.get(self, "display_order")
+
+    @property
+    @pulumi.getter(name="stringType")
+    def string_type(self) -> str:
+        """
+        Optional. String Type annotations can be used to specify special meaning to string fields. The following values are supported: richText: The field must be interpreted as a rich text field. url: A fully qualified url link. resource: A service qualified resource reference.
+        """
+        return pulumi.get(self, "string_type")
+
+    @property
+    @pulumi.getter(name="stringValues")
+    def string_values(self) -> Sequence[str]:
+        """
+        Optional. Suggested hints for string fields. These can be used to suggest values to users, through an UI for example.
+        """
+        return pulumi.get(self, "string_values")
+
+
+@pulumi.output_type
+class GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsResponse(dict):
+    """
+    Definition of the constraints of a field
+    """
+    def __init__(__self__, *,
+                 required: bool):
+        """
+        Definition of the constraints of a field
+        :param bool required: Optional. Marks this as an optional/required field.
+        """
+        pulumi.set(__self__, "required", required)
+
+    @property
+    @pulumi.getter
+    def required(self) -> bool:
+        """
+        Optional. Marks this as an optional/required field.
+        """
+        return pulumi.get(self, "required")
+
+
+@pulumi.output_type
+class GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponse(dict):
+    """
+    Definition of Enumvalue (to be used by enum fields)
+    """
+    def __init__(__self__, *,
+                 deprecated: str,
+                 index: int,
+                 name: str):
+        """
+        Definition of Enumvalue (to be used by enum fields)
+        :param str deprecated: Optional. Optional deprecation message to be set if an enum value needs to be deprecated.
+        :param int index: Index for the enum. Cannot be modified.
+        :param str name: Name of the enumvalue. This is the actual value that the aspect will contain.
+        """
+        pulumi.set(__self__, "deprecated", deprecated)
+        pulumi.set(__self__, "index", index)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def deprecated(self) -> str:
+        """
+        Optional. Optional deprecation message to be set if an enum value needs to be deprecated.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @property
+    @pulumi.getter
+    def index(self) -> int:
+        """
+        Index for the enum. Cannot be modified.
+        """
+        return pulumi.get(self, "index")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the enumvalue. This is the actual value that the aspect will contain.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse(dict):
+    """
+    MetadataTemplate definition for AspectType
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "arrayItems":
+            suggest = "array_items"
+        elif key == "enumValues":
+            suggest = "enum_values"
+        elif key == "mapItems":
+            suggest = "map_items"
+        elif key == "recordFields":
+            suggest = "record_fields"
+        elif key == "typeId":
+            suggest = "type_id"
+        elif key == "typeRef":
+            suggest = "type_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 annotations: 'outputs.GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponse',
+                 array_items: 'outputs.GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse',
+                 constraints: 'outputs.GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsResponse',
+                 enum_values: Sequence['outputs.GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponse'],
+                 index: int,
+                 map_items: 'outputs.GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse',
+                 name: str,
+                 record_fields: Sequence['outputs.GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse'],
+                 type: str,
+                 type_id: str,
+                 type_ref: str):
+        """
+        MetadataTemplate definition for AspectType
+        :param 'GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponse' annotations: Optional. Specifies annotations on this field.
+        :param 'GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse' array_items: Optional. array_items needs to be set if the type is array. array_items can refer to a primitive field or a complex (record only) field. To specify a primitive field, just name and type needs to be set in the nested MetadataTemplate. The recommended value for the name field is item, as this is not used in the actual payload.
+        :param 'GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsResponse' constraints: Optional. Specifies the constraints on this field.
+        :param Sequence['GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponse'] enum_values: Optional. The list of values for an enum type. Needs to be defined if the type is enum.
+        :param int index: Optional. Index is used to encode Template messages. The value of index can range between 1 and 2,147,483,647. Index must be unique within all fields in a Template. (Nested Templates can reuse indexes). Once a Template is defined, the index cannot be changed, because it identifies the field in the actual storage format. Index is a mandatory field, but it is optional for top level fields, and map/array "values" definitions.
+        :param 'GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse' map_items: Optional. map_items needs to be set if the type is map. map_items can refer to a primitive field or a complex (record only) field. To specify a primitive field, just name and type needs to be set in the nested MetadataTemplate. The recommended value for the name field is item, as this is not used in the actual payload.
+        :param str name: The name of the field.
+        :param Sequence['GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse'] record_fields: Optional. Field definition, needs to be specified if the type is record. Defines the nested fields.
+        :param str type: The datatype of this field. The following values are supported: Primitive types (string, integer, boolean, double, datetime); datetime must be of the format RFC3339 UTC "Zulu" (Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"). Complex types (enum, array, map, record).
+        :param str type_id: Optional. Id can be used if this definition of the field needs to be reused later. Id needs to be unique across the entire template. Id can only be specified if the field type is record.
+        :param str type_ref: Optional. A reference to another field definition (instead of an inline definition). The value must be equal to the value of an id field defined elsewhere in the MetadataTemplate. Only fields with type as record can refer to other fields.
+        """
+        pulumi.set(__self__, "annotations", annotations)
+        pulumi.set(__self__, "array_items", array_items)
+        pulumi.set(__self__, "constraints", constraints)
+        pulumi.set(__self__, "enum_values", enum_values)
+        pulumi.set(__self__, "index", index)
+        pulumi.set(__self__, "map_items", map_items)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "record_fields", record_fields)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "type_id", type_id)
+        pulumi.set(__self__, "type_ref", type_ref)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> 'outputs.GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponse':
+        """
+        Optional. Specifies annotations on this field.
+        """
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="arrayItems")
+    def array_items(self) -> 'outputs.GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse':
+        """
+        Optional. array_items needs to be set if the type is array. array_items can refer to a primitive field or a complex (record only) field. To specify a primitive field, just name and type needs to be set in the nested MetadataTemplate. The recommended value for the name field is item, as this is not used in the actual payload.
+        """
+        return pulumi.get(self, "array_items")
+
+    @property
+    @pulumi.getter
+    def constraints(self) -> 'outputs.GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsResponse':
+        """
+        Optional. Specifies the constraints on this field.
+        """
+        return pulumi.get(self, "constraints")
+
+    @property
+    @pulumi.getter(name="enumValues")
+    def enum_values(self) -> Sequence['outputs.GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponse']:
+        """
+        Optional. The list of values for an enum type. Needs to be defined if the type is enum.
+        """
+        return pulumi.get(self, "enum_values")
+
+    @property
+    @pulumi.getter
+    def index(self) -> int:
+        """
+        Optional. Index is used to encode Template messages. The value of index can range between 1 and 2,147,483,647. Index must be unique within all fields in a Template. (Nested Templates can reuse indexes). Once a Template is defined, the index cannot be changed, because it identifies the field in the actual storage format. Index is a mandatory field, but it is optional for top level fields, and map/array "values" definitions.
+        """
+        return pulumi.get(self, "index")
+
+    @property
+    @pulumi.getter(name="mapItems")
+    def map_items(self) -> 'outputs.GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse':
+        """
+        Optional. map_items needs to be set if the type is map. map_items can refer to a primitive field or a complex (record only) field. To specify a primitive field, just name and type needs to be set in the nested MetadataTemplate. The recommended value for the name field is item, as this is not used in the actual payload.
+        """
+        return pulumi.get(self, "map_items")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the field.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="recordFields")
+    def record_fields(self) -> Sequence['outputs.GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse']:
+        """
+        Optional. Field definition, needs to be specified if the type is record. Defines the nested fields.
+        """
+        return pulumi.get(self, "record_fields")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The datatype of this field. The following values are supported: Primitive types (string, integer, boolean, double, datetime); datetime must be of the format RFC3339 UTC "Zulu" (Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"). Complex types (enum, array, map, record).
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="typeId")
+    def type_id(self) -> str:
+        """
+        Optional. Id can be used if this definition of the field needs to be reused later. Id needs to be unique across the entire template. Id can only be specified if the field type is record.
+        """
+        return pulumi.get(self, "type_id")
+
+    @property
+    @pulumi.getter(name="typeRef")
+    def type_ref(self) -> str:
+        """
+        Optional. A reference to another field definition (instead of an inline definition). The value must be equal to the value of an id field defined elsewhere in the MetadataTemplate. Only fields with type as record can refer to other fields.
+        """
+        return pulumi.get(self, "type_ref")
+
 
 @pulumi.output_type
 class GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsResponse(dict):
@@ -2113,6 +2492,8 @@ class GoogleCloudDataplexV1DataQualityRuleResponse(dict):
             suggest = "row_condition_expectation"
         elif key == "setExpectation":
             suggest = "set_expectation"
+        elif key == "sqlAssertion":
+            suggest = "sql_assertion"
         elif key == "statisticRangeExpectation":
             suggest = "statistic_range_expectation"
         elif key == "tableConditionExpectation":
@@ -2142,6 +2523,7 @@ class GoogleCloudDataplexV1DataQualityRuleResponse(dict):
                  regex_expectation: 'outputs.GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse',
                  row_condition_expectation: 'outputs.GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse',
                  set_expectation: 'outputs.GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse',
+                 sql_assertion: 'outputs.GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponse',
                  statistic_range_expectation: 'outputs.GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse',
                  table_condition_expectation: 'outputs.GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse',
                  threshold: float,
@@ -2151,13 +2533,14 @@ class GoogleCloudDataplexV1DataQualityRuleResponse(dict):
         :param str column: Optional. The unnested column which this rule is evaluated against.
         :param str description: Optional. Description of the rule. The maximum length is 1,024 characters.
         :param str dimension: The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
-        :param bool ignore_null: Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for row-level type rules.
+        :param bool ignore_null: Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for the following type of rules: RangeExpectation RegexExpectation SetExpectation UniquenessExpectation
         :param str name: Optional. A mutable name for the rule. The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-). The maximum length is 63 characters. Must start with a letter. Must end with a number or a letter.
         :param 'GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponse' non_null_expectation: Row-level rule which evaluates whether each column value is null.
         :param 'GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponse' range_expectation: Row-level rule which evaluates whether each column value lies between a specified range.
         :param 'GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse' regex_expectation: Row-level rule which evaluates whether each column value matches a specified regex.
         :param 'GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse' row_condition_expectation: Row-level rule which evaluates whether each row in a table passes the specified condition.
         :param 'GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse' set_expectation: Row-level rule which evaluates whether each column value is contained by a specified set.
+        :param 'GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponse' sql_assertion: Aggregate rule which evaluates the number of rows returned for the provided statement.
         :param 'GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse' statistic_range_expectation: Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
         :param 'GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse' table_condition_expectation: Aggregate rule which evaluates whether the provided expression is true for a table.
         :param float threshold: Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).This field is only valid for row-level type rules.
@@ -2173,6 +2556,7 @@ class GoogleCloudDataplexV1DataQualityRuleResponse(dict):
         pulumi.set(__self__, "regex_expectation", regex_expectation)
         pulumi.set(__self__, "row_condition_expectation", row_condition_expectation)
         pulumi.set(__self__, "set_expectation", set_expectation)
+        pulumi.set(__self__, "sql_assertion", sql_assertion)
         pulumi.set(__self__, "statistic_range_expectation", statistic_range_expectation)
         pulumi.set(__self__, "table_condition_expectation", table_condition_expectation)
         pulumi.set(__self__, "threshold", threshold)
@@ -2206,7 +2590,7 @@ class GoogleCloudDataplexV1DataQualityRuleResponse(dict):
     @pulumi.getter(name="ignoreNull")
     def ignore_null(self) -> bool:
         """
-        Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for row-level type rules.
+        Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for the following type of rules: RangeExpectation RegexExpectation SetExpectation UniquenessExpectation
         """
         return pulumi.get(self, "ignore_null")
 
@@ -2259,6 +2643,14 @@ class GoogleCloudDataplexV1DataQualityRuleResponse(dict):
         return pulumi.get(self, "set_expectation")
 
     @property
+    @pulumi.getter(name="sqlAssertion")
+    def sql_assertion(self) -> 'outputs.GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponse':
+        """
+        Aggregate rule which evaluates the number of rows returned for the provided statement.
+        """
+        return pulumi.get(self, "sql_assertion")
+
+    @property
     @pulumi.getter(name="statisticRangeExpectation")
     def statistic_range_expectation(self) -> 'outputs.GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse':
         """
@@ -2299,7 +2691,9 @@ class GoogleCloudDataplexV1DataQualityRuleResultResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "evaluatedCount":
+        if key == "assertionRowCount":
+            suggest = "assertion_row_count"
+        elif key == "evaluatedCount":
             suggest = "evaluated_count"
         elif key == "failingRowsQuery":
             suggest = "failing_rows_query"
@@ -2322,6 +2716,7 @@ class GoogleCloudDataplexV1DataQualityRuleResultResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 assertion_row_count: str,
                  evaluated_count: str,
                  failing_rows_query: str,
                  null_count: str,
@@ -2331,6 +2726,7 @@ class GoogleCloudDataplexV1DataQualityRuleResultResponse(dict):
                  rule: 'outputs.GoogleCloudDataplexV1DataQualityRuleResponse'):
         """
         DataQualityRuleResult provides a more detailed, per-rule view of the results.
+        :param str assertion_row_count: The number of rows returned by the sql statement in the SqlAssertion rule.This field is only valid for SqlAssertion rules.
         :param str evaluated_count: The number of rows a rule was evaluated against.This field is only valid for row-level type rules.Evaluated count can be configured to either include all rows (default) - with null rows automatically failing rule evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.
         :param str failing_rows_query: The query to find rows that did not pass this rule.This field is only valid for row-level type rules.
         :param str null_count: The number of rows with null values in the specified column.
@@ -2339,6 +2735,7 @@ class GoogleCloudDataplexV1DataQualityRuleResultResponse(dict):
         :param str passed_count: The number of rows which passed a rule evaluation.This field is only valid for row-level type rules.
         :param 'GoogleCloudDataplexV1DataQualityRuleResponse' rule: The rule specified in the DataQualitySpec, as is.
         """
+        pulumi.set(__self__, "assertion_row_count", assertion_row_count)
         pulumi.set(__self__, "evaluated_count", evaluated_count)
         pulumi.set(__self__, "failing_rows_query", failing_rows_query)
         pulumi.set(__self__, "null_count", null_count)
@@ -2346,6 +2743,14 @@ class GoogleCloudDataplexV1DataQualityRuleResultResponse(dict):
         pulumi.set(__self__, "passed", passed)
         pulumi.set(__self__, "passed_count", passed_count)
         pulumi.set(__self__, "rule", rule)
+
+    @property
+    @pulumi.getter(name="assertionRowCount")
+    def assertion_row_count(self) -> str:
+        """
+        The number of rows returned by the sql statement in the SqlAssertion rule.This field is only valid for SqlAssertion rules.
+        """
+        return pulumi.get(self, "assertion_row_count")
 
     @property
     @pulumi.getter(name="evaluatedCount")
@@ -2463,6 +2868,45 @@ class GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse(dict):
         Optional. Expected values for the column value.
         """
         return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponse(dict):
+    """
+    Queries for rows returned by the provided SQL statement. If any rows are are returned, this rule fails.The SQL statement needs to use BigQuery standard SQL syntax, and must not contain any semicolons.${data()} can be used to reference the rows being evaluated, i.e. the table after all additional filters (row filters, incremental data filters, sampling) are applied.Example: SELECT * FROM ${data()} WHERE price < 0
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sqlStatement":
+            suggest = "sql_statement"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 sql_statement: str):
+        """
+        Queries for rows returned by the provided SQL statement. If any rows are are returned, this rule fails.The SQL statement needs to use BigQuery standard SQL syntax, and must not contain any semicolons.${data()} can be used to reference the rows being evaluated, i.e. the table after all additional filters (row filters, incremental data filters, sampling) are applied.Example: SELECT * FROM ${data()} WHERE price < 0
+        :param str sql_statement: Optional. The SQL statement.
+        """
+        pulumi.set(__self__, "sql_statement", sql_statement)
+
+    @property
+    @pulumi.getter(name="sqlStatement")
+    def sql_statement(self) -> str:
+        """
+        Optional. The SQL statement.
+        """
+        return pulumi.get(self, "sql_statement")
 
 
 @pulumi.output_type
@@ -2645,6 +3089,128 @@ class GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse(
 
 
 @pulumi.output_type
+class GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerResponse(dict):
+    """
+    This trigger is triggered whenever a scan job run ends, regardless of the result.
+    """
+    def __init__(__self__):
+        """
+        This trigger is triggered whenever a scan job run ends, regardless of the result.
+        """
+        pass
+
+
+@pulumi.output_type
+class GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerResponse(dict):
+    """
+    This trigger is triggered when the scan job itself fails, regardless of the result.
+    """
+    def __init__(__self__):
+        """
+        This trigger is triggered when the scan job itself fails, regardless of the result.
+        """
+        pass
+
+
+@pulumi.output_type
+class GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponse(dict):
+    """
+    The configuration of notification report post scan action.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jobEndTrigger":
+            suggest = "job_end_trigger"
+        elif key == "jobFailureTrigger":
+            suggest = "job_failure_trigger"
+        elif key == "scoreThresholdTrigger":
+            suggest = "score_threshold_trigger"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 job_end_trigger: 'outputs.GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerResponse',
+                 job_failure_trigger: 'outputs.GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerResponse',
+                 recipients: 'outputs.GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsResponse',
+                 score_threshold_trigger: 'outputs.GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponse'):
+        """
+        The configuration of notification report post scan action.
+        :param 'GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerResponse' job_end_trigger: Optional. If set, report will be sent when a scan job ends.
+        :param 'GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerResponse' job_failure_trigger: Optional. If set, report will be sent when a scan job fails.
+        :param 'GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsResponse' recipients: The recipients who will receive the notification report.
+        :param 'GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponse' score_threshold_trigger: Optional. If set, report will be sent when score threshold is met.
+        """
+        pulumi.set(__self__, "job_end_trigger", job_end_trigger)
+        pulumi.set(__self__, "job_failure_trigger", job_failure_trigger)
+        pulumi.set(__self__, "recipients", recipients)
+        pulumi.set(__self__, "score_threshold_trigger", score_threshold_trigger)
+
+    @property
+    @pulumi.getter(name="jobEndTrigger")
+    def job_end_trigger(self) -> 'outputs.GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerResponse':
+        """
+        Optional. If set, report will be sent when a scan job ends.
+        """
+        return pulumi.get(self, "job_end_trigger")
+
+    @property
+    @pulumi.getter(name="jobFailureTrigger")
+    def job_failure_trigger(self) -> 'outputs.GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerResponse':
+        """
+        Optional. If set, report will be sent when a scan job fails.
+        """
+        return pulumi.get(self, "job_failure_trigger")
+
+    @property
+    @pulumi.getter
+    def recipients(self) -> 'outputs.GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsResponse':
+        """
+        The recipients who will receive the notification report.
+        """
+        return pulumi.get(self, "recipients")
+
+    @property
+    @pulumi.getter(name="scoreThresholdTrigger")
+    def score_threshold_trigger(self) -> 'outputs.GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponse':
+        """
+        Optional. If set, report will be sent when score threshold is met.
+        """
+        return pulumi.get(self, "score_threshold_trigger")
+
+
+@pulumi.output_type
+class GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsResponse(dict):
+    """
+    The individuals or groups who are designated to receive notifications upon triggers.
+    """
+    def __init__(__self__, *,
+                 emails: Sequence[str]):
+        """
+        The individuals or groups who are designated to receive notifications upon triggers.
+        :param Sequence[str] emails: Optional. The email recipients who will receive the DataQualityScan results report.
+        """
+        pulumi.set(__self__, "emails", emails)
+
+    @property
+    @pulumi.getter
+    def emails(self) -> Sequence[str]:
+        """
+        Optional. The email recipients who will receive the DataQualityScan results report.
+        """
+        return pulumi.get(self, "emails")
+
+
+@pulumi.output_type
 class GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse(dict):
     """
     The configuration of post scan actions of DataQualityScan.
@@ -2654,6 +3220,8 @@ class GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse(dict):
         suggest = None
         if key == "bigqueryExport":
             suggest = "bigquery_export"
+        elif key == "notificationReport":
+            suggest = "notification_report"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse. Access the value via the '{suggest}' property getter instead.")
@@ -2667,12 +3235,15 @@ class GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 bigquery_export: 'outputs.GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse'):
+                 bigquery_export: 'outputs.GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse',
+                 notification_report: 'outputs.GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponse'):
         """
         The configuration of post scan actions of DataQualityScan.
         :param 'GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse' bigquery_export: Optional. If set, results will be exported to the provided BigQuery table.
+        :param 'GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponse' notification_report: Optional. If set, results will be sent to the provided notification receipts upon triggers.
         """
         pulumi.set(__self__, "bigquery_export", bigquery_export)
+        pulumi.set(__self__, "notification_report", notification_report)
 
     @property
     @pulumi.getter(name="bigqueryExport")
@@ -2681,6 +3252,53 @@ class GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse(dict):
         Optional. If set, results will be exported to the provided BigQuery table.
         """
         return pulumi.get(self, "bigquery_export")
+
+    @property
+    @pulumi.getter(name="notificationReport")
+    def notification_report(self) -> 'outputs.GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponse':
+        """
+        Optional. If set, results will be sent to the provided notification receipts upon triggers.
+        """
+        return pulumi.get(self, "notification_report")
+
+
+@pulumi.output_type
+class GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponse(dict):
+    """
+    This trigger is triggered when the DQ score in the job result is less than a specified input score.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "scoreThreshold":
+            suggest = "score_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 score_threshold: float):
+        """
+        This trigger is triggered when the DQ score in the job result is less than a specified input score.
+        :param float score_threshold: Optional. The score range is in 0,100.
+        """
+        pulumi.set(__self__, "score_threshold", score_threshold)
+
+    @property
+    @pulumi.getter(name="scoreThreshold")
+    def score_threshold(self) -> float:
+        """
+        Optional. The score range is in 0,100.
+        """
+        return pulumi.get(self, "score_threshold")
 
 
 @pulumi.output_type
@@ -2958,6 +3576,227 @@ class GoogleCloudDataplexV1EntityCompatibilityStatusResponse(dict):
         Whether this entity is compatible with Hive Metastore.
         """
         return pulumi.get(self, "hive_metastore")
+
+
+@pulumi.output_type
+class GoogleCloudDataplexV1EntrySourceAncestorResponse(dict):
+    """
+    Ancestor contains information about individual items in the hierarchy of an Entry.
+    """
+    def __init__(__self__, *,
+                 name: str,
+                 type: str):
+        """
+        Ancestor contains information about individual items in the hierarchy of an Entry.
+        :param str name: Optional. The name of the ancestor resource.
+        :param str type: Optional. The type of the ancestor resource.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Optional. The name of the ancestor resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Optional. The type of the ancestor resource.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GoogleCloudDataplexV1EntrySourceResponse(dict):
+    """
+    EntrySource contains source system related information for the entry.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDataplexV1EntrySourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDataplexV1EntrySourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDataplexV1EntrySourceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ancestors: Sequence['outputs.GoogleCloudDataplexV1EntrySourceAncestorResponse'],
+                 create_time: str,
+                 description: str,
+                 display_name: str,
+                 labels: Mapping[str, str],
+                 platform: str,
+                 resource: str,
+                 system: str,
+                 update_time: str):
+        """
+        EntrySource contains source system related information for the entry.
+        :param Sequence['GoogleCloudDataplexV1EntrySourceAncestorResponse'] ancestors: Immutable. The ancestors of the Entry in the source system.
+        :param str create_time: The create time of the resource in the source system.
+        :param str description: Description of the Entry. The maximum size of the field is 2000 characters.
+        :param str display_name: User friendly display name. The maximum size of the field is 500 characters.
+        :param Mapping[str, str] labels: User-defined labels. The maximum size of keys and values is 128 characters each.
+        :param str platform: The platform containing the source system. The maximum size of the field is 64 characters.
+        :param str resource: The name of the resource in the source system. The maximum size of the field is 4000 characters.
+        :param str system: The name of the source system. The maximum size of the field is 64 characters.
+        :param str update_time: The update time of the resource in the source system.
+        """
+        pulumi.set(__self__, "ancestors", ancestors)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "platform", platform)
+        pulumi.set(__self__, "resource", resource)
+        pulumi.set(__self__, "system", system)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def ancestors(self) -> Sequence['outputs.GoogleCloudDataplexV1EntrySourceAncestorResponse']:
+        """
+        Immutable. The ancestors of the Entry in the source system.
+        """
+        return pulumi.get(self, "ancestors")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The create time of the resource in the source system.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Description of the Entry. The maximum size of the field is 2000 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        User friendly display name. The maximum size of the field is 500 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        User-defined labels. The maximum size of keys and values is 128 characters each.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def platform(self) -> str:
+        """
+        The platform containing the source system. The maximum size of the field is 64 characters.
+        """
+        return pulumi.get(self, "platform")
+
+    @property
+    @pulumi.getter
+    def resource(self) -> str:
+        """
+        The name of the resource in the source system. The maximum size of the field is 4000 characters.
+        """
+        return pulumi.get(self, "resource")
+
+    @property
+    @pulumi.getter
+    def system(self) -> str:
+        """
+        The name of the source system. The maximum size of the field is 64 characters.
+        """
+        return pulumi.get(self, "system")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The update time of the resource in the source system.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class GoogleCloudDataplexV1EntryTypeAspectInfoResponse(dict):
+    def __init__(__self__, *,
+                 type: str):
+        """
+        :param str type: Required aspect type for the entry type.
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Required aspect type for the entry type.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GoogleCloudDataplexV1EntryTypeAuthorizationResponse(dict):
+    """
+    Authorization for an Entry Type.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alternateUsePermission":
+            suggest = "alternate_use_permission"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDataplexV1EntryTypeAuthorizationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDataplexV1EntryTypeAuthorizationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDataplexV1EntryTypeAuthorizationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alternate_use_permission: str):
+        """
+        Authorization for an Entry Type.
+        :param str alternate_use_permission: Immutable. The IAM permission grantable on the Entry Group to allow access to instantiate Entries of Dataplex owned Entry Types, only settable for Dataplex owned Types.
+        """
+        pulumi.set(__self__, "alternate_use_permission", alternate_use_permission)
+
+    @property
+    @pulumi.getter(name="alternateUsePermission")
+    def alternate_use_permission(self) -> str:
+        """
+        Immutable. The IAM permission grantable on the Entry Group to allow access to instantiate Entries of Dataplex owned Entry Types, only settable for Dataplex owned Types.
+        """
+        return pulumi.get(self, "alternate_use_permission")
 
 
 @pulumi.output_type
@@ -5216,8 +6055,8 @@ class GoogleIamV1BindingResponse(dict):
         """
         Associates members, or principals, with a role.
         :param 'GoogleTypeExprResponse' condition: The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding.
-        :param str role: Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workforce identity pool. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}: All workforce identities in a group. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All workforce identities with a specific attribute value. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*: All identities in a workforce identity pool. principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workload identity pool. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}: A workload identity pool group. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All identities in a workload identity pool with a certain attribute. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*: All identities in a workload identity pool. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: Deleted single identity in a workforce identity pool. For example, deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value.
+        :param str role: Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.For an overview of the IAM roles and permissions, see the IAM documentation (https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see here (https://cloud.google.com/iam/docs/understanding-roles).
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "members", members)
@@ -5235,7 +6074,7 @@ class GoogleIamV1BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding.
+        Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workforce identity pool. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}: All workforce identities in a group. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All workforce identities with a specific attribute value. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*: All identities in a workforce identity pool. principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workload identity pool. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}: A workload identity pool group. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All identities in a workload identity pool with a certain attribute. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*: All identities in a workload identity pool. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: Deleted single identity in a workforce identity pool. For example, deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value.
         """
         return pulumi.get(self, "members")
 
@@ -5243,7 +6082,7 @@ class GoogleIamV1BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
+        Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.For an overview of the IAM roles and permissions, see the IAM documentation (https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see here (https://cloud.google.com/iam/docs/understanding-roles).
         """
         return pulumi.get(self, "role")
 

@@ -53,6 +53,10 @@ export class TemplatesVersion extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Optional. True if variable masking feature should be turned on for generated workflows
+     */
+    public readonly enableVariableMasking!: pulumi.Output<boolean>;
+    /**
      * Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
      */
     public readonly errorCatcherConfigs!: pulumi.Output<outputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse[]>;
@@ -124,6 +128,7 @@ export class TemplatesVersion extends pulumi.CustomResource {
             }
             resourceInputs["databasePersistencePolicy"] = args ? args.databasePersistencePolicy : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableVariableMasking"] = args ? args.enableVariableMasking : undefined;
             resourceInputs["errorCatcherConfigs"] = args ? args.errorCatcherConfigs : undefined;
             resourceInputs["integrationtemplateId"] = args ? args.integrationtemplateId : undefined;
             resourceInputs["lastModifierEmail"] = args ? args.lastModifierEmail : undefined;
@@ -145,6 +150,7 @@ export class TemplatesVersion extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["databasePersistencePolicy"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["enableVariableMasking"] = undefined /*out*/;
             resourceInputs["errorCatcherConfigs"] = undefined /*out*/;
             resourceInputs["integrationtemplateId"] = undefined /*out*/;
             resourceInputs["lastModifierEmail"] = undefined /*out*/;
@@ -181,6 +187,10 @@ export interface TemplatesVersionArgs {
      * Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Optional. True if variable masking feature should be turned on for generated workflows
+     */
+    enableVariableMasking?: pulumi.Input<boolean>;
     /**
      * Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
      */

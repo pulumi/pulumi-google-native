@@ -93,6 +93,47 @@ namespace Pulumi.GoogleNative.GKEHub.V1
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// Enables automatic Feature management.
+    /// </summary>
+    [EnumType]
+    public readonly struct ConfigManagementMembershipSpecManagement : IEquatable<ConfigManagementMembershipSpecManagement>
+    {
+        private readonly string _value;
+
+        private ConfigManagementMembershipSpecManagement(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified
+        /// </summary>
+        public static ConfigManagementMembershipSpecManagement ManagementUnspecified { get; } = new ConfigManagementMembershipSpecManagement("MANAGEMENT_UNSPECIFIED");
+        /// <summary>
+        /// Google will manage the Feature for the cluster.
+        /// </summary>
+        public static ConfigManagementMembershipSpecManagement ManagementAutomatic { get; } = new ConfigManagementMembershipSpecManagement("MANAGEMENT_AUTOMATIC");
+        /// <summary>
+        /// User will manually manage the Feature for the cluster.
+        /// </summary>
+        public static ConfigManagementMembershipSpecManagement ManagementManual { get; } = new ConfigManagementMembershipSpecManagement("MANAGEMENT_MANUAL");
+
+        public static bool operator ==(ConfigManagementMembershipSpecManagement left, ConfigManagementMembershipSpecManagement right) => left.Equals(right);
+        public static bool operator !=(ConfigManagementMembershipSpecManagement left, ConfigManagementMembershipSpecManagement right) => !left.Equals(right);
+
+        public static explicit operator string(ConfigManagementMembershipSpecManagement value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ConfigManagementMembershipSpecManagement other && Equals(other);
+        public bool Equals(ConfigManagementMembershipSpecManagement other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     [EnumType]
     public readonly struct ConfigManagementPolicyControllerMonitoringBackendsItem : IEquatable<ConfigManagementPolicyControllerMonitoringBackendsItem>
     {

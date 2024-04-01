@@ -13,6 +13,1333 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+// Autorization for an Aspect Type.
+type GoogleCloudDataplexV1AspectTypeAuthorization struct {
+	// Immutable. The IAM permission grantable on the Entry Group to allow access to instantiate Aspects of Dataplex owned Aspect Types, only settable for Dataplex owned Types.
+	AlternateUsePermission *string `pulumi:"alternateUsePermission"`
+}
+
+// GoogleCloudDataplexV1AspectTypeAuthorizationInput is an input type that accepts GoogleCloudDataplexV1AspectTypeAuthorizationArgs and GoogleCloudDataplexV1AspectTypeAuthorizationOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1AspectTypeAuthorizationInput` via:
+//
+//	GoogleCloudDataplexV1AspectTypeAuthorizationArgs{...}
+type GoogleCloudDataplexV1AspectTypeAuthorizationInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1AspectTypeAuthorizationOutput() GoogleCloudDataplexV1AspectTypeAuthorizationOutput
+	ToGoogleCloudDataplexV1AspectTypeAuthorizationOutputWithContext(context.Context) GoogleCloudDataplexV1AspectTypeAuthorizationOutput
+}
+
+// Autorization for an Aspect Type.
+type GoogleCloudDataplexV1AspectTypeAuthorizationArgs struct {
+	// Immutable. The IAM permission grantable on the Entry Group to allow access to instantiate Aspects of Dataplex owned Aspect Types, only settable for Dataplex owned Types.
+	AlternateUsePermission pulumi.StringPtrInput `pulumi:"alternateUsePermission"`
+}
+
+func (GoogleCloudDataplexV1AspectTypeAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeAuthorization)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1AspectTypeAuthorizationArgs) ToGoogleCloudDataplexV1AspectTypeAuthorizationOutput() GoogleCloudDataplexV1AspectTypeAuthorizationOutput {
+	return i.ToGoogleCloudDataplexV1AspectTypeAuthorizationOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1AspectTypeAuthorizationArgs) ToGoogleCloudDataplexV1AspectTypeAuthorizationOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1AspectTypeAuthorizationOutput)
+}
+
+func (i GoogleCloudDataplexV1AspectTypeAuthorizationArgs) ToGoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput() GoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput {
+	return i.ToGoogleCloudDataplexV1AspectTypeAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1AspectTypeAuthorizationArgs) ToGoogleCloudDataplexV1AspectTypeAuthorizationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1AspectTypeAuthorizationOutput).ToGoogleCloudDataplexV1AspectTypeAuthorizationPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1AspectTypeAuthorizationPtrInput is an input type that accepts GoogleCloudDataplexV1AspectTypeAuthorizationArgs, GoogleCloudDataplexV1AspectTypeAuthorizationPtr and GoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1AspectTypeAuthorizationPtrInput` via:
+//
+//	        GoogleCloudDataplexV1AspectTypeAuthorizationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1AspectTypeAuthorizationPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput() GoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput
+	ToGoogleCloudDataplexV1AspectTypeAuthorizationPtrOutputWithContext(context.Context) GoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput
+}
+
+type googleCloudDataplexV1AspectTypeAuthorizationPtrType GoogleCloudDataplexV1AspectTypeAuthorizationArgs
+
+func GoogleCloudDataplexV1AspectTypeAuthorizationPtr(v *GoogleCloudDataplexV1AspectTypeAuthorizationArgs) GoogleCloudDataplexV1AspectTypeAuthorizationPtrInput {
+	return (*googleCloudDataplexV1AspectTypeAuthorizationPtrType)(v)
+}
+
+func (*googleCloudDataplexV1AspectTypeAuthorizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1AspectTypeAuthorization)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1AspectTypeAuthorizationPtrType) ToGoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput() GoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput {
+	return i.ToGoogleCloudDataplexV1AspectTypeAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1AspectTypeAuthorizationPtrType) ToGoogleCloudDataplexV1AspectTypeAuthorizationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput)
+}
+
+// Autorization for an Aspect Type.
+type GoogleCloudDataplexV1AspectTypeAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1AspectTypeAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeAuthorization)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1AspectTypeAuthorizationOutput) ToGoogleCloudDataplexV1AspectTypeAuthorizationOutput() GoogleCloudDataplexV1AspectTypeAuthorizationOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeAuthorizationOutput) ToGoogleCloudDataplexV1AspectTypeAuthorizationOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeAuthorizationOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeAuthorizationOutput) ToGoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput() GoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput {
+	return o.ToGoogleCloudDataplexV1AspectTypeAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1AspectTypeAuthorizationOutput) ToGoogleCloudDataplexV1AspectTypeAuthorizationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1AspectTypeAuthorization) *GoogleCloudDataplexV1AspectTypeAuthorization {
+		return &v
+	}).(GoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput)
+}
+
+// Immutable. The IAM permission grantable on the Entry Group to allow access to instantiate Aspects of Dataplex owned Aspect Types, only settable for Dataplex owned Types.
+func (o GoogleCloudDataplexV1AspectTypeAuthorizationOutput) AlternateUsePermission() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeAuthorization) *string { return v.AlternateUsePermission }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1AspectTypeAuthorization)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput) ToGoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput() GoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput) ToGoogleCloudDataplexV1AspectTypeAuthorizationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput) Elem() GoogleCloudDataplexV1AspectTypeAuthorizationOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1AspectTypeAuthorization) GoogleCloudDataplexV1AspectTypeAuthorization {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1AspectTypeAuthorization
+		return ret
+	}).(GoogleCloudDataplexV1AspectTypeAuthorizationOutput)
+}
+
+// Immutable. The IAM permission grantable on the Entry Group to allow access to instantiate Aspects of Dataplex owned Aspect Types, only settable for Dataplex owned Types.
+func (o GoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput) AlternateUsePermission() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1AspectTypeAuthorization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AlternateUsePermission
+	}).(pulumi.StringPtrOutput)
+}
+
+// Autorization for an Aspect Type.
+type GoogleCloudDataplexV1AspectTypeAuthorizationResponse struct {
+	// Immutable. The IAM permission grantable on the Entry Group to allow access to instantiate Aspects of Dataplex owned Aspect Types, only settable for Dataplex owned Types.
+	AlternateUsePermission string `pulumi:"alternateUsePermission"`
+}
+
+// Autorization for an Aspect Type.
+type GoogleCloudDataplexV1AspectTypeAuthorizationResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1AspectTypeAuthorizationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeAuthorizationResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1AspectTypeAuthorizationResponseOutput) ToGoogleCloudDataplexV1AspectTypeAuthorizationResponseOutput() GoogleCloudDataplexV1AspectTypeAuthorizationResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeAuthorizationResponseOutput) ToGoogleCloudDataplexV1AspectTypeAuthorizationResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeAuthorizationResponseOutput {
+	return o
+}
+
+// Immutable. The IAM permission grantable on the Entry Group to allow access to instantiate Aspects of Dataplex owned Aspect Types, only settable for Dataplex owned Types.
+func (o GoogleCloudDataplexV1AspectTypeAuthorizationResponseOutput) AlternateUsePermission() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeAuthorizationResponse) string { return v.AlternateUsePermission }).(pulumi.StringOutput)
+}
+
+// MetadataTemplate definition for AspectType
+type GoogleCloudDataplexV1AspectTypeMetadataTemplate struct {
+	// Optional. Specifies annotations on this field.
+	Annotations *GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations `pulumi:"annotations"`
+	// Optional. array_items needs to be set if the type is array. array_items can refer to a primitive field or a complex (record only) field. To specify a primitive field, just name and type needs to be set in the nested MetadataTemplate. The recommended value for the name field is item, as this is not used in the actual payload.
+	ArrayItems *GoogleCloudDataplexV1AspectTypeMetadataTemplate `pulumi:"arrayItems"`
+	// Optional. Specifies the constraints on this field.
+	Constraints *GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints `pulumi:"constraints"`
+	// Optional. The list of values for an enum type. Needs to be defined if the type is enum.
+	EnumValues []GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue `pulumi:"enumValues"`
+	// Optional. Index is used to encode Template messages. The value of index can range between 1 and 2,147,483,647. Index must be unique within all fields in a Template. (Nested Templates can reuse indexes). Once a Template is defined, the index cannot be changed, because it identifies the field in the actual storage format. Index is a mandatory field, but it is optional for top level fields, and map/array "values" definitions.
+	Index *int `pulumi:"index"`
+	// Optional. map_items needs to be set if the type is map. map_items can refer to a primitive field or a complex (record only) field. To specify a primitive field, just name and type needs to be set in the nested MetadataTemplate. The recommended value for the name field is item, as this is not used in the actual payload.
+	MapItems *GoogleCloudDataplexV1AspectTypeMetadataTemplate `pulumi:"mapItems"`
+	// The name of the field.
+	Name string `pulumi:"name"`
+	// Optional. Field definition, needs to be specified if the type is record. Defines the nested fields.
+	RecordFields []GoogleCloudDataplexV1AspectTypeMetadataTemplate `pulumi:"recordFields"`
+	// The datatype of this field. The following values are supported: Primitive types (string, integer, boolean, double, datetime); datetime must be of the format RFC3339 UTC "Zulu" (Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"). Complex types (enum, array, map, record).
+	Type string `pulumi:"type"`
+	// Optional. Id can be used if this definition of the field needs to be reused later. Id needs to be unique across the entire template. Id can only be specified if the field type is record.
+	TypeId *string `pulumi:"typeId"`
+	// Optional. A reference to another field definition (instead of an inline definition). The value must be equal to the value of an id field defined elsewhere in the MetadataTemplate. Only fields with type as record can refer to other fields.
+	TypeRef *string `pulumi:"typeRef"`
+}
+
+// GoogleCloudDataplexV1AspectTypeMetadataTemplateInput is an input type that accepts GoogleCloudDataplexV1AspectTypeMetadataTemplateArgs and GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1AspectTypeMetadataTemplateInput` via:
+//
+//	GoogleCloudDataplexV1AspectTypeMetadataTemplateArgs{...}
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1AspectTypeMetadataTemplateOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput
+	ToGoogleCloudDataplexV1AspectTypeMetadataTemplateOutputWithContext(context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput
+}
+
+// MetadataTemplate definition for AspectType
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateArgs struct {
+	// Optional. Specifies annotations on this field.
+	Annotations GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrInput `pulumi:"annotations"`
+	// Optional. array_items needs to be set if the type is array. array_items can refer to a primitive field or a complex (record only) field. To specify a primitive field, just name and type needs to be set in the nested MetadataTemplate. The recommended value for the name field is item, as this is not used in the actual payload.
+	ArrayItems GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrInput `pulumi:"arrayItems"`
+	// Optional. Specifies the constraints on this field.
+	Constraints GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrInput `pulumi:"constraints"`
+	// Optional. The list of values for an enum type. Needs to be defined if the type is enum.
+	EnumValues GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayInput `pulumi:"enumValues"`
+	// Optional. Index is used to encode Template messages. The value of index can range between 1 and 2,147,483,647. Index must be unique within all fields in a Template. (Nested Templates can reuse indexes). Once a Template is defined, the index cannot be changed, because it identifies the field in the actual storage format. Index is a mandatory field, but it is optional for top level fields, and map/array "values" definitions.
+	Index pulumi.IntPtrInput `pulumi:"index"`
+	// Optional. map_items needs to be set if the type is map. map_items can refer to a primitive field or a complex (record only) field. To specify a primitive field, just name and type needs to be set in the nested MetadataTemplate. The recommended value for the name field is item, as this is not used in the actual payload.
+	MapItems GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrInput `pulumi:"mapItems"`
+	// The name of the field.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Optional. Field definition, needs to be specified if the type is record. Defines the nested fields.
+	RecordFields GoogleCloudDataplexV1AspectTypeMetadataTemplateArrayInput `pulumi:"recordFields"`
+	// The datatype of this field. The following values are supported: Primitive types (string, integer, boolean, double, datetime); datetime must be of the format RFC3339 UTC "Zulu" (Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"). Complex types (enum, array, map, record).
+	Type pulumi.StringInput `pulumi:"type"`
+	// Optional. Id can be used if this definition of the field needs to be reused later. Id needs to be unique across the entire template. Id can only be specified if the field type is record.
+	TypeId pulumi.StringPtrInput `pulumi:"typeId"`
+	// Optional. A reference to another field definition (instead of an inline definition). The value must be equal to the value of an id field defined elsewhere in the MetadataTemplate. Only fields with type as record can refer to other fields.
+	TypeRef pulumi.StringPtrInput `pulumi:"typeRef"`
+}
+
+func (GoogleCloudDataplexV1AspectTypeMetadataTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeMetadataTemplate)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1AspectTypeMetadataTemplateArgs) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput {
+	return i.ToGoogleCloudDataplexV1AspectTypeMetadataTemplateOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1AspectTypeMetadataTemplateArgs) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput)
+}
+
+func (i GoogleCloudDataplexV1AspectTypeMetadataTemplateArgs) ToGoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput {
+	return i.ToGoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1AspectTypeMetadataTemplateArgs) ToGoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput).ToGoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrInput is an input type that accepts GoogleCloudDataplexV1AspectTypeMetadataTemplateArgs, GoogleCloudDataplexV1AspectTypeMetadataTemplatePtr and GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrInput` via:
+//
+//	        GoogleCloudDataplexV1AspectTypeMetadataTemplateArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput
+	ToGoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutputWithContext(context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput
+}
+
+type googleCloudDataplexV1AspectTypeMetadataTemplatePtrType GoogleCloudDataplexV1AspectTypeMetadataTemplateArgs
+
+func GoogleCloudDataplexV1AspectTypeMetadataTemplatePtr(v *GoogleCloudDataplexV1AspectTypeMetadataTemplateArgs) GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrInput {
+	return (*googleCloudDataplexV1AspectTypeMetadataTemplatePtrType)(v)
+}
+
+func (*googleCloudDataplexV1AspectTypeMetadataTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1AspectTypeMetadataTemplate)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1AspectTypeMetadataTemplatePtrType) ToGoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput {
+	return i.ToGoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1AspectTypeMetadataTemplatePtrType) ToGoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput)
+}
+
+// GoogleCloudDataplexV1AspectTypeMetadataTemplateArrayInput is an input type that accepts GoogleCloudDataplexV1AspectTypeMetadataTemplateArray and GoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1AspectTypeMetadataTemplateArrayInput` via:
+//
+//	GoogleCloudDataplexV1AspectTypeMetadataTemplateArray{ GoogleCloudDataplexV1AspectTypeMetadataTemplateArgs{...} }
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutput
+	ToGoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutputWithContext(context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutput
+}
+
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateArray []GoogleCloudDataplexV1AspectTypeMetadataTemplateInput
+
+func (GoogleCloudDataplexV1AspectTypeMetadataTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDataplexV1AspectTypeMetadataTemplate)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1AspectTypeMetadataTemplateArray) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutput {
+	return i.ToGoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1AspectTypeMetadataTemplateArray) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutput)
+}
+
+// MetadataTemplate definition for AspectType
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeMetadataTemplate)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput {
+	return o.ToGoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1AspectTypeMetadataTemplate) *GoogleCloudDataplexV1AspectTypeMetadataTemplate {
+		return &v
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput)
+}
+
+// Optional. Specifies annotations on this field.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput) Annotations() GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplate) *GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations {
+		return v.Annotations
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput)
+}
+
+// Optional. array_items needs to be set if the type is array. array_items can refer to a primitive field or a complex (record only) field. To specify a primitive field, just name and type needs to be set in the nested MetadataTemplate. The recommended value for the name field is item, as this is not used in the actual payload.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput) ArrayItems() GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplate) *GoogleCloudDataplexV1AspectTypeMetadataTemplate {
+		return v.ArrayItems
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput)
+}
+
+// Optional. Specifies the constraints on this field.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput) Constraints() GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplate) *GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints {
+		return v.Constraints
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput)
+}
+
+// Optional. The list of values for an enum type. Needs to be defined if the type is enum.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput) EnumValues() GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplate) []GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue {
+		return v.EnumValues
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutput)
+}
+
+// Optional. Index is used to encode Template messages. The value of index can range between 1 and 2,147,483,647. Index must be unique within all fields in a Template. (Nested Templates can reuse indexes). Once a Template is defined, the index cannot be changed, because it identifies the field in the actual storage format. Index is a mandatory field, but it is optional for top level fields, and map/array "values" definitions.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput) Index() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplate) *int { return v.Index }).(pulumi.IntPtrOutput)
+}
+
+// Optional. map_items needs to be set if the type is map. map_items can refer to a primitive field or a complex (record only) field. To specify a primitive field, just name and type needs to be set in the nested MetadataTemplate. The recommended value for the name field is item, as this is not used in the actual payload.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput) MapItems() GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplate) *GoogleCloudDataplexV1AspectTypeMetadataTemplate {
+		return v.MapItems
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput)
+}
+
+// The name of the field.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplate) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Field definition, needs to be specified if the type is record. Defines the nested fields.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput) RecordFields() GoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplate) []GoogleCloudDataplexV1AspectTypeMetadataTemplate {
+		return v.RecordFields
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutput)
+}
+
+// The datatype of this field. The following values are supported: Primitive types (string, integer, boolean, double, datetime); datetime must be of the format RFC3339 UTC "Zulu" (Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"). Complex types (enum, array, map, record).
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplate) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Optional. Id can be used if this definition of the field needs to be reused later. Id needs to be unique across the entire template. Id can only be specified if the field type is record.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput) TypeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplate) *string { return v.TypeId }).(pulumi.StringPtrOutput)
+}
+
+// Optional. A reference to another field definition (instead of an inline definition). The value must be equal to the value of an id field defined elsewhere in the MetadataTemplate. Only fields with type as record can refer to other fields.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplate) *string { return v.TypeRef }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1AspectTypeMetadataTemplate)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput) Elem() GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1AspectTypeMetadataTemplate) GoogleCloudDataplexV1AspectTypeMetadataTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1AspectTypeMetadataTemplate
+		return ret
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput)
+}
+
+// Optional. Specifies annotations on this field.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput) Annotations() GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1AspectTypeMetadataTemplate) *GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations {
+		if v == nil {
+			return nil
+		}
+		return v.Annotations
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput)
+}
+
+// Optional. array_items needs to be set if the type is array. array_items can refer to a primitive field or a complex (record only) field. To specify a primitive field, just name and type needs to be set in the nested MetadataTemplate. The recommended value for the name field is item, as this is not used in the actual payload.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput) ArrayItems() GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1AspectTypeMetadataTemplate) *GoogleCloudDataplexV1AspectTypeMetadataTemplate {
+		if v == nil {
+			return nil
+		}
+		return v.ArrayItems
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput)
+}
+
+// Optional. Specifies the constraints on this field.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput) Constraints() GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1AspectTypeMetadataTemplate) *GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints {
+		if v == nil {
+			return nil
+		}
+		return v.Constraints
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput)
+}
+
+// Optional. The list of values for an enum type. Needs to be defined if the type is enum.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput) EnumValues() GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1AspectTypeMetadataTemplate) []GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue {
+		if v == nil {
+			return nil
+		}
+		return v.EnumValues
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutput)
+}
+
+// Optional. Index is used to encode Template messages. The value of index can range between 1 and 2,147,483,647. Index must be unique within all fields in a Template. (Nested Templates can reuse indexes). Once a Template is defined, the index cannot be changed, because it identifies the field in the actual storage format. Index is a mandatory field, but it is optional for top level fields, and map/array "values" definitions.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput) Index() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1AspectTypeMetadataTemplate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Index
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. map_items needs to be set if the type is map. map_items can refer to a primitive field or a complex (record only) field. To specify a primitive field, just name and type needs to be set in the nested MetadataTemplate. The recommended value for the name field is item, as this is not used in the actual payload.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput) MapItems() GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1AspectTypeMetadataTemplate) *GoogleCloudDataplexV1AspectTypeMetadataTemplate {
+		if v == nil {
+			return nil
+		}
+		return v.MapItems
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput)
+}
+
+// The name of the field.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1AspectTypeMetadataTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Field definition, needs to be specified if the type is record. Defines the nested fields.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput) RecordFields() GoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1AspectTypeMetadataTemplate) []GoogleCloudDataplexV1AspectTypeMetadataTemplate {
+		if v == nil {
+			return nil
+		}
+		return v.RecordFields
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutput)
+}
+
+// The datatype of this field. The following values are supported: Primitive types (string, integer, boolean, double, datetime); datetime must be of the format RFC3339 UTC "Zulu" (Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"). Complex types (enum, array, map, record).
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1AspectTypeMetadataTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Id can be used if this definition of the field needs to be reused later. Id needs to be unique across the entire template. Id can only be specified if the field type is record.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput) TypeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1AspectTypeMetadataTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TypeId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. A reference to another field definition (instead of an inline definition). The value must be equal to the value of an id field defined elsewhere in the MetadataTemplate. Only fields with type as record can refer to other fields.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput) TypeRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1AspectTypeMetadataTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TypeRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDataplexV1AspectTypeMetadataTemplate)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1AspectTypeMetadataTemplate {
+		return vs[0].([]GoogleCloudDataplexV1AspectTypeMetadataTemplate)[vs[1].(int)]
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput)
+}
+
+// Definition of the annotations of a field
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations struct {
+	// Optional. Marks a field as deprecated, a deprecation message can be included.
+	Deprecated *string `pulumi:"deprecated"`
+	// Optional. Specify a description for a field
+	Description *string `pulumi:"description"`
+	// Optional. Specify a displayname for a field.
+	DisplayName *string `pulumi:"displayName"`
+	// Optional. Specify a display order for a field. Display order can be used to reorder where a field is rendered
+	DisplayOrder *int `pulumi:"displayOrder"`
+	// Optional. String Type annotations can be used to specify special meaning to string fields. The following values are supported: richText: The field must be interpreted as a rich text field. url: A fully qualified url link. resource: A service qualified resource reference.
+	StringType *string `pulumi:"stringType"`
+	// Optional. Suggested hints for string fields. These can be used to suggest values to users, through an UI for example.
+	StringValues []string `pulumi:"stringValues"`
+}
+
+// GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsInput is an input type that accepts GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsArgs and GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsInput` via:
+//
+//	GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsArgs{...}
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput
+	ToGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutputWithContext(context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput
+}
+
+// Definition of the annotations of a field
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsArgs struct {
+	// Optional. Marks a field as deprecated, a deprecation message can be included.
+	Deprecated pulumi.StringPtrInput `pulumi:"deprecated"`
+	// Optional. Specify a description for a field
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Optional. Specify a displayname for a field.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Optional. Specify a display order for a field. Display order can be used to reorder where a field is rendered
+	DisplayOrder pulumi.IntPtrInput `pulumi:"displayOrder"`
+	// Optional. String Type annotations can be used to specify special meaning to string fields. The following values are supported: richText: The field must be interpreted as a rich text field. url: A fully qualified url link. resource: A service qualified resource reference.
+	StringType pulumi.StringPtrInput `pulumi:"stringType"`
+	// Optional. Suggested hints for string fields. These can be used to suggest values to users, through an UI for example.
+	StringValues pulumi.StringArrayInput `pulumi:"stringValues"`
+}
+
+func (GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsArgs) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput {
+	return i.ToGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsArgs) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput)
+}
+
+func (i GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsArgs) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput {
+	return i.ToGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsArgs) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput).ToGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrInput is an input type that accepts GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsArgs, GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtr and GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrInput` via:
+//
+//	        GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput
+	ToGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutputWithContext(context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput
+}
+
+type googleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrType GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsArgs
+
+func GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtr(v *GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsArgs) GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrInput {
+	return (*googleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrType)(v)
+}
+
+func (*googleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrType) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput {
+	return i.ToGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrType) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput)
+}
+
+// Definition of the annotations of a field
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput {
+	return o.ToGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations) *GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations {
+		return &v
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput)
+}
+
+// Optional. Marks a field as deprecated, a deprecation message can be included.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput) Deprecated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations) *string { return v.Deprecated }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specify a description for a field
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specify a displayname for a field.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specify a display order for a field. Display order can be used to reorder where a field is rendered
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput) DisplayOrder() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations) *int { return v.DisplayOrder }).(pulumi.IntPtrOutput)
+}
+
+// Optional. String Type annotations can be used to specify special meaning to string fields. The following values are supported: richText: The field must be interpreted as a rich text field. url: A fully qualified url link. resource: A service qualified resource reference.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput) StringType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations) *string { return v.StringType }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Suggested hints for string fields. These can be used to suggest values to users, through an UI for example.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput) StringValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations) []string { return v.StringValues }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput) Elem() GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations) GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations
+		return ret
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput)
+}
+
+// Optional. Marks a field as deprecated, a deprecation message can be included.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput) Deprecated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Deprecated
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specify a description for a field
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specify a displayname for a field.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specify a display order for a field. Display order can be used to reorder where a field is rendered
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput) DisplayOrder() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayOrder
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. String Type annotations can be used to specify special meaning to string fields. The following values are supported: richText: The field must be interpreted as a rich text field. url: A fully qualified url link. resource: A service qualified resource reference.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput) StringType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StringType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Suggested hints for string fields. These can be used to suggest values to users, through an UI for example.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput) StringValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations) []string {
+		if v == nil {
+			return nil
+		}
+		return v.StringValues
+	}).(pulumi.StringArrayOutput)
+}
+
+// Definition of the annotations of a field
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponse struct {
+	// Optional. Marks a field as deprecated, a deprecation message can be included.
+	Deprecated string `pulumi:"deprecated"`
+	// Optional. Specify a description for a field
+	Description string `pulumi:"description"`
+	// Optional. Specify a displayname for a field.
+	DisplayName string `pulumi:"displayName"`
+	// Optional. Specify a display order for a field. Display order can be used to reorder where a field is rendered
+	DisplayOrder int `pulumi:"displayOrder"`
+	// Optional. String Type annotations can be used to specify special meaning to string fields. The following values are supported: richText: The field must be interpreted as a rich text field. url: A fully qualified url link. resource: A service qualified resource reference.
+	StringType string `pulumi:"stringType"`
+	// Optional. Suggested hints for string fields. These can be used to suggest values to users, through an UI for example.
+	StringValues []string `pulumi:"stringValues"`
+}
+
+// Definition of the annotations of a field
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponseOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponseOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponseOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponseOutput {
+	return o
+}
+
+// Optional. Marks a field as deprecated, a deprecation message can be included.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponseOutput) Deprecated() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponse) string { return v.Deprecated }).(pulumi.StringOutput)
+}
+
+// Optional. Specify a description for a field
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponse) string {
+		return v.Description
+	}).(pulumi.StringOutput)
+}
+
+// Optional. Specify a displayname for a field.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponse) string {
+		return v.DisplayName
+	}).(pulumi.StringOutput)
+}
+
+// Optional. Specify a display order for a field. Display order can be used to reorder where a field is rendered
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponseOutput) DisplayOrder() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponse) int { return v.DisplayOrder }).(pulumi.IntOutput)
+}
+
+// Optional. String Type annotations can be used to specify special meaning to string fields. The following values are supported: richText: The field must be interpreted as a rich text field. url: A fully qualified url link. resource: A service qualified resource reference.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponseOutput) StringType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponse) string { return v.StringType }).(pulumi.StringOutput)
+}
+
+// Optional. Suggested hints for string fields. These can be used to suggest values to users, through an UI for example.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponseOutput) StringValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponse) []string {
+		return v.StringValues
+	}).(pulumi.StringArrayOutput)
+}
+
+// Definition of the constraints of a field
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints struct {
+	// Optional. Marks this as an optional/required field.
+	Required *bool `pulumi:"required"`
+}
+
+// GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsInput is an input type that accepts GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsArgs and GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsInput` via:
+//
+//	GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsArgs{...}
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutput
+	ToGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutputWithContext(context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutput
+}
+
+// Definition of the constraints of a field
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsArgs struct {
+	// Optional. Marks this as an optional/required field.
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+}
+
+func (GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsArgs) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutput {
+	return i.ToGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsArgs) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutput)
+}
+
+func (i GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsArgs) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput {
+	return i.ToGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsArgs) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutput).ToGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrInput is an input type that accepts GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsArgs, GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtr and GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrInput` via:
+//
+//	        GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput
+	ToGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutputWithContext(context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput
+}
+
+type googleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrType GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsArgs
+
+func GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtr(v *GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsArgs) GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrInput {
+	return (*googleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrType)(v)
+}
+
+func (*googleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrType) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput {
+	return i.ToGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrType) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput)
+}
+
+// Definition of the constraints of a field
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput {
+	return o.ToGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints) *GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints {
+		return &v
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput)
+}
+
+// Optional. Marks this as an optional/required field.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput) Elem() GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints) GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints
+		return ret
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutput)
+}
+
+// Optional. Marks this as an optional/required field.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Required
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Definition of the constraints of a field
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsResponse struct {
+	// Optional. Marks this as an optional/required field.
+	Required bool `pulumi:"required"`
+}
+
+// Definition of the constraints of a field
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsResponseOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsResponseOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsResponseOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsResponseOutput {
+	return o
+}
+
+// Optional. Marks this as an optional/required field.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsResponseOutput) Required() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsResponse) bool { return v.Required }).(pulumi.BoolOutput)
+}
+
+// Definition of Enumvalue (to be used by enum fields)
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue struct {
+	// Optional. Optional deprecation message to be set if an enum value needs to be deprecated.
+	Deprecated *string `pulumi:"deprecated"`
+	// Index for the enum. Cannot be modified.
+	Index int `pulumi:"index"`
+	// Name of the enumvalue. This is the actual value that the aspect will contain.
+	Name string `pulumi:"name"`
+}
+
+// GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueInput is an input type that accepts GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArgs and GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueInput` via:
+//
+//	GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArgs{...}
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutput
+	ToGoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutputWithContext(context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutput
+}
+
+// Definition of Enumvalue (to be used by enum fields)
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArgs struct {
+	// Optional. Optional deprecation message to be set if an enum value needs to be deprecated.
+	Deprecated pulumi.StringPtrInput `pulumi:"deprecated"`
+	// Index for the enum. Cannot be modified.
+	Index pulumi.IntInput `pulumi:"index"`
+	// Name of the enumvalue. This is the actual value that the aspect will contain.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArgs) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutput {
+	return i.ToGoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArgs) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutput)
+}
+
+// GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayInput is an input type that accepts GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArray and GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayInput` via:
+//
+//	GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArray{ GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArgs{...} }
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutput
+	ToGoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutputWithContext(context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutput
+}
+
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArray []GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueInput
+
+func (GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArray) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutput {
+	return i.ToGoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArray) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutput)
+}
+
+// Definition of Enumvalue (to be used by enum fields)
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutput {
+	return o
+}
+
+// Optional. Optional deprecation message to be set if an enum value needs to be deprecated.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutput) Deprecated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue) *string { return v.Deprecated }).(pulumi.StringPtrOutput)
+}
+
+// Index for the enum. Cannot be modified.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutput) Index() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue) int { return v.Index }).(pulumi.IntOutput)
+}
+
+// Name of the enumvalue. This is the actual value that the aspect will contain.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue {
+		return vs[0].([]GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue)[vs[1].(int)]
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutput)
+}
+
+// Definition of Enumvalue (to be used by enum fields)
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponse struct {
+	// Optional. Optional deprecation message to be set if an enum value needs to be deprecated.
+	Deprecated string `pulumi:"deprecated"`
+	// Index for the enum. Cannot be modified.
+	Index int `pulumi:"index"`
+	// Name of the enumvalue. This is the actual value that the aspect will contain.
+	Name string `pulumi:"name"`
+}
+
+// Definition of Enumvalue (to be used by enum fields)
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseOutput {
+	return o
+}
+
+// Optional. Optional deprecation message to be set if an enum value needs to be deprecated.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseOutput) Deprecated() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponse) string { return v.Deprecated }).(pulumi.StringOutput)
+}
+
+// Index for the enum. Cannot be modified.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseOutput) Index() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponse) int { return v.Index }).(pulumi.IntOutput)
+}
+
+// Name of the enumvalue. This is the actual value that the aspect will contain.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseArrayOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseArrayOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseArrayOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponse {
+		return vs[0].([]GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponse)[vs[1].(int)]
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseOutput)
+}
+
+// MetadataTemplate definition for AspectType
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse struct {
+	// Optional. Specifies annotations on this field.
+	Annotations GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponse `pulumi:"annotations"`
+	// Optional. array_items needs to be set if the type is array. array_items can refer to a primitive field or a complex (record only) field. To specify a primitive field, just name and type needs to be set in the nested MetadataTemplate. The recommended value for the name field is item, as this is not used in the actual payload.
+	ArrayItems GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse `pulumi:"arrayItems"`
+	// Optional. Specifies the constraints on this field.
+	Constraints GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsResponse `pulumi:"constraints"`
+	// Optional. The list of values for an enum type. Needs to be defined if the type is enum.
+	EnumValues []GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponse `pulumi:"enumValues"`
+	// Optional. Index is used to encode Template messages. The value of index can range between 1 and 2,147,483,647. Index must be unique within all fields in a Template. (Nested Templates can reuse indexes). Once a Template is defined, the index cannot be changed, because it identifies the field in the actual storage format. Index is a mandatory field, but it is optional for top level fields, and map/array "values" definitions.
+	Index int `pulumi:"index"`
+	// Optional. map_items needs to be set if the type is map. map_items can refer to a primitive field or a complex (record only) field. To specify a primitive field, just name and type needs to be set in the nested MetadataTemplate. The recommended value for the name field is item, as this is not used in the actual payload.
+	MapItems GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse `pulumi:"mapItems"`
+	// The name of the field.
+	Name string `pulumi:"name"`
+	// Optional. Field definition, needs to be specified if the type is record. Defines the nested fields.
+	RecordFields []GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse `pulumi:"recordFields"`
+	// The datatype of this field. The following values are supported: Primitive types (string, integer, boolean, double, datetime); datetime must be of the format RFC3339 UTC "Zulu" (Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"). Complex types (enum, array, map, record).
+	Type string `pulumi:"type"`
+	// Optional. Id can be used if this definition of the field needs to be reused later. Id needs to be unique across the entire template. Id can only be specified if the field type is record.
+	TypeId string `pulumi:"typeId"`
+	// Optional. A reference to another field definition (instead of an inline definition). The value must be equal to the value of an id field defined elsewhere in the MetadataTemplate. Only fields with type as record can refer to other fields.
+	TypeRef string `pulumi:"typeRef"`
+}
+
+// MetadataTemplate definition for AspectType
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput {
+	return o
+}
+
+// Optional. Specifies annotations on this field.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput) Annotations() GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse) GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponse {
+		return v.Annotations
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponseOutput)
+}
+
+// Optional. array_items needs to be set if the type is array. array_items can refer to a primitive field or a complex (record only) field. To specify a primitive field, just name and type needs to be set in the nested MetadataTemplate. The recommended value for the name field is item, as this is not used in the actual payload.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput) ArrayItems() GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse) GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse {
+		return v.ArrayItems
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput)
+}
+
+// Optional. Specifies the constraints on this field.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput) Constraints() GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse) GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsResponse {
+		return v.Constraints
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsResponseOutput)
+}
+
+// Optional. The list of values for an enum type. Needs to be defined if the type is enum.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput) EnumValues() GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse) []GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponse {
+		return v.EnumValues
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseArrayOutput)
+}
+
+// Optional. Index is used to encode Template messages. The value of index can range between 1 and 2,147,483,647. Index must be unique within all fields in a Template. (Nested Templates can reuse indexes). Once a Template is defined, the index cannot be changed, because it identifies the field in the actual storage format. Index is a mandatory field, but it is optional for top level fields, and map/array "values" definitions.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput) Index() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse) int { return v.Index }).(pulumi.IntOutput)
+}
+
+// Optional. map_items needs to be set if the type is map. map_items can refer to a primitive field or a complex (record only) field. To specify a primitive field, just name and type needs to be set in the nested MetadataTemplate. The recommended value for the name field is item, as this is not used in the actual payload.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput) MapItems() GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse) GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse {
+		return v.MapItems
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput)
+}
+
+// The name of the field.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Field definition, needs to be specified if the type is record. Defines the nested fields.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput) RecordFields() GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse) []GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse {
+		return v.RecordFields
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseArrayOutput)
+}
+
+// The datatype of this field. The following values are supported: Primitive types (string, integer, boolean, double, datetime); datetime must be of the format RFC3339 UTC "Zulu" (Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"). Complex types (enum, array, map, record).
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Optional. Id can be used if this definition of the field needs to be reused later. Id needs to be unique across the entire template. Id can only be specified if the field type is record.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput) TypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse) string { return v.TypeId }).(pulumi.StringOutput)
+}
+
+// Optional. A reference to another field definition (instead of an inline definition). The value must be equal to the value of an id field defined elsewhere in the MetadataTemplate. Only fields with type as record can refer to other fields.
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput) TypeRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse) string { return v.TypeRef }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseArrayOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateResponseArrayOutput() GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseArrayOutput) ToGoogleCloudDataplexV1AspectTypeMetadataTemplateResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse {
+		return vs[0].([]GoogleCloudDataplexV1AspectTypeMetadataTemplateResponse)[vs[1].(int)]
+	}).(GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput)
+}
+
 // Settings to manage the metadata discovery and publishing for an asset.
 type GoogleCloudDataplexV1AssetDiscoverySpec struct {
 	// Optional. Configuration for CSV data.
@@ -3386,7 +4713,7 @@ type GoogleCloudDataplexV1DataQualityRule struct {
 	Description *string `pulumi:"description"`
 	// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
 	Dimension string `pulumi:"dimension"`
-	// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for row-level type rules.
+	// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for the following type of rules: RangeExpectation RegexExpectation SetExpectation UniquenessExpectation
 	IgnoreNull *bool `pulumi:"ignoreNull"`
 	// Optional. A mutable name for the rule. The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-). The maximum length is 63 characters. Must start with a letter. Must end with a number or a letter.
 	Name *string `pulumi:"name"`
@@ -3400,6 +4727,8 @@ type GoogleCloudDataplexV1DataQualityRule struct {
 	RowConditionExpectation *GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation `pulumi:"rowConditionExpectation"`
 	// Row-level rule which evaluates whether each column value is contained by a specified set.
 	SetExpectation *GoogleCloudDataplexV1DataQualityRuleSetExpectation `pulumi:"setExpectation"`
+	// Aggregate rule which evaluates the number of rows returned for the provided statement.
+	SqlAssertion *GoogleCloudDataplexV1DataQualityRuleSqlAssertion `pulumi:"sqlAssertion"`
 	// Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
 	StatisticRangeExpectation *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation `pulumi:"statisticRangeExpectation"`
 	// Aggregate rule which evaluates whether the provided expression is true for a table.
@@ -3429,7 +4758,7 @@ type GoogleCloudDataplexV1DataQualityRuleArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
 	Dimension pulumi.StringInput `pulumi:"dimension"`
-	// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for row-level type rules.
+	// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for the following type of rules: RangeExpectation RegexExpectation SetExpectation UniquenessExpectation
 	IgnoreNull pulumi.BoolPtrInput `pulumi:"ignoreNull"`
 	// Optional. A mutable name for the rule. The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-). The maximum length is 63 characters. Must start with a letter. Must end with a number or a letter.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -3443,6 +4772,8 @@ type GoogleCloudDataplexV1DataQualityRuleArgs struct {
 	RowConditionExpectation GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrInput `pulumi:"rowConditionExpectation"`
 	// Row-level rule which evaluates whether each column value is contained by a specified set.
 	SetExpectation GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrInput `pulumi:"setExpectation"`
+	// Aggregate rule which evaluates the number of rows returned for the provided statement.
+	SqlAssertion GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrInput `pulumi:"sqlAssertion"`
 	// Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
 	StatisticRangeExpectation GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrInput `pulumi:"statisticRangeExpectation"`
 	// Aggregate rule which evaluates whether the provided expression is true for a table.
@@ -3520,7 +4851,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleOutput) Dimension() pulumi.StringOut
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) string { return v.Dimension }).(pulumi.StringOutput)
 }
 
-// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for row-level type rules.
+// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for the following type of rules: RangeExpectation RegexExpectation SetExpectation UniquenessExpectation
 func (o GoogleCloudDataplexV1DataQualityRuleOutput) IgnoreNull() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *bool { return v.IgnoreNull }).(pulumi.BoolPtrOutput)
 }
@@ -3563,6 +4894,13 @@ func (o GoogleCloudDataplexV1DataQualityRuleOutput) SetExpectation() GoogleCloud
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *GoogleCloudDataplexV1DataQualityRuleSetExpectation {
 		return v.SetExpectation
 	}).(GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput)
+}
+
+// Aggregate rule which evaluates the number of rows returned for the provided statement.
+func (o GoogleCloudDataplexV1DataQualityRuleOutput) SqlAssertion() GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *GoogleCloudDataplexV1DataQualityRuleSqlAssertion {
+		return v.SqlAssertion
+	}).(GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput)
 }
 
 // Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
@@ -4169,7 +5507,7 @@ type GoogleCloudDataplexV1DataQualityRuleResponse struct {
 	Description string `pulumi:"description"`
 	// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
 	Dimension string `pulumi:"dimension"`
-	// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for row-level type rules.
+	// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for the following type of rules: RangeExpectation RegexExpectation SetExpectation UniquenessExpectation
 	IgnoreNull bool `pulumi:"ignoreNull"`
 	// Optional. A mutable name for the rule. The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-). The maximum length is 63 characters. Must start with a letter. Must end with a number or a letter.
 	Name string `pulumi:"name"`
@@ -4183,6 +5521,8 @@ type GoogleCloudDataplexV1DataQualityRuleResponse struct {
 	RowConditionExpectation GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse `pulumi:"rowConditionExpectation"`
 	// Row-level rule which evaluates whether each column value is contained by a specified set.
 	SetExpectation GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse `pulumi:"setExpectation"`
+	// Aggregate rule which evaluates the number of rows returned for the provided statement.
+	SqlAssertion GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponse `pulumi:"sqlAssertion"`
 	// Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
 	StatisticRangeExpectation GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse `pulumi:"statisticRangeExpectation"`
 	// Aggregate rule which evaluates whether the provided expression is true for a table.
@@ -4223,7 +5563,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) Dimension() pulumi.S
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) string { return v.Dimension }).(pulumi.StringOutput)
 }
 
-// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for row-level type rules.
+// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for the following type of rules: RangeExpectation RegexExpectation SetExpectation UniquenessExpectation
 func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) IgnoreNull() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) bool { return v.IgnoreNull }).(pulumi.BoolOutput)
 }
@@ -4266,6 +5606,13 @@ func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) SetExpectation() Goo
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse {
 		return v.SetExpectation
 	}).(GoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutput)
+}
+
+// Aggregate rule which evaluates the number of rows returned for the provided statement.
+func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) SqlAssertion() GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponse {
+		return v.SqlAssertion
+	}).(GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponseOutput)
 }
 
 // Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
@@ -4316,6 +5663,8 @@ func (o GoogleCloudDataplexV1DataQualityRuleResponseArrayOutput) Index(i pulumi.
 
 // DataQualityRuleResult provides a more detailed, per-rule view of the results.
 type GoogleCloudDataplexV1DataQualityRuleResultResponse struct {
+	// The number of rows returned by the sql statement in the SqlAssertion rule.This field is only valid for SqlAssertion rules.
+	AssertionRowCount string `pulumi:"assertionRowCount"`
 	// The number of rows a rule was evaluated against.This field is only valid for row-level type rules.Evaluated count can be configured to either include all rows (default) - with null rows automatically failing rule evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.
 	EvaluatedCount string `pulumi:"evaluatedCount"`
 	// The query to find rows that did not pass this rule.This field is only valid for row-level type rules.
@@ -4345,6 +5694,11 @@ func (o GoogleCloudDataplexV1DataQualityRuleResultResponseOutput) ToGoogleCloudD
 
 func (o GoogleCloudDataplexV1DataQualityRuleResultResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleResultResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleResultResponseOutput {
 	return o
+}
+
+// The number of rows returned by the sql statement in the SqlAssertion rule.This field is only valid for SqlAssertion rules.
+func (o GoogleCloudDataplexV1DataQualityRuleResultResponseOutput) AssertionRowCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResultResponse) string { return v.AssertionRowCount }).(pulumi.StringOutput)
 }
 
 // The number of rows a rule was evaluated against.This field is only valid for row-level type rules.Evaluated count can be configured to either include all rows (default) - with null rows automatically failing rule evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.
@@ -4736,6 +6090,172 @@ func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutput) ToGoog
 // Optional. Expected values for the column value.
 func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+// Queries for rows returned by the provided SQL statement. If any rows are are returned, this rule fails.The SQL statement needs to use BigQuery standard SQL syntax, and must not contain any semicolons.${data()} can be used to reference the rows being evaluated, i.e. the table after all additional filters (row filters, incremental data filters, sampling) are applied.Example: SELECT * FROM ${data()} WHERE price < 0
+type GoogleCloudDataplexV1DataQualityRuleSqlAssertion struct {
+	// Optional. The SQL statement.
+	SqlStatement *string `pulumi:"sqlStatement"`
+}
+
+// GoogleCloudDataplexV1DataQualityRuleSqlAssertionInput is an input type that accepts GoogleCloudDataplexV1DataQualityRuleSqlAssertionArgs and GoogleCloudDataplexV1DataQualityRuleSqlAssertionOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualityRuleSqlAssertionInput` via:
+//
+//	GoogleCloudDataplexV1DataQualityRuleSqlAssertionArgs{...}
+type GoogleCloudDataplexV1DataQualityRuleSqlAssertionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualityRuleSqlAssertionOutput() GoogleCloudDataplexV1DataQualityRuleSqlAssertionOutput
+	ToGoogleCloudDataplexV1DataQualityRuleSqlAssertionOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualityRuleSqlAssertionOutput
+}
+
+// Queries for rows returned by the provided SQL statement. If any rows are are returned, this rule fails.The SQL statement needs to use BigQuery standard SQL syntax, and must not contain any semicolons.${data()} can be used to reference the rows being evaluated, i.e. the table after all additional filters (row filters, incremental data filters, sampling) are applied.Example: SELECT * FROM ${data()} WHERE price < 0
+type GoogleCloudDataplexV1DataQualityRuleSqlAssertionArgs struct {
+	// Optional. The SQL statement.
+	SqlStatement pulumi.StringPtrInput `pulumi:"sqlStatement"`
+}
+
+func (GoogleCloudDataplexV1DataQualityRuleSqlAssertionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleSqlAssertion)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleSqlAssertionArgs) ToGoogleCloudDataplexV1DataQualityRuleSqlAssertionOutput() GoogleCloudDataplexV1DataQualityRuleSqlAssertionOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleSqlAssertionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleSqlAssertionArgs) ToGoogleCloudDataplexV1DataQualityRuleSqlAssertionOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleSqlAssertionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleSqlAssertionOutput)
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleSqlAssertionArgs) ToGoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput() GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleSqlAssertionArgs) ToGoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleSqlAssertionOutput).ToGoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrInput is an input type that accepts GoogleCloudDataplexV1DataQualityRuleSqlAssertionArgs, GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtr and GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrInput` via:
+//
+//	        GoogleCloudDataplexV1DataQualityRuleSqlAssertionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput() GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput
+	ToGoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput
+}
+
+type googleCloudDataplexV1DataQualityRuleSqlAssertionPtrType GoogleCloudDataplexV1DataQualityRuleSqlAssertionArgs
+
+func GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtr(v *GoogleCloudDataplexV1DataQualityRuleSqlAssertionArgs) GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrInput {
+	return (*googleCloudDataplexV1DataQualityRuleSqlAssertionPtrType)(v)
+}
+
+func (*googleCloudDataplexV1DataQualityRuleSqlAssertionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualityRuleSqlAssertion)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1DataQualityRuleSqlAssertionPtrType) ToGoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput() GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1DataQualityRuleSqlAssertionPtrType) ToGoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput)
+}
+
+// Queries for rows returned by the provided SQL statement. If any rows are are returned, this rule fails.The SQL statement needs to use BigQuery standard SQL syntax, and must not contain any semicolons.${data()} can be used to reference the rows being evaluated, i.e. the table after all additional filters (row filters, incremental data filters, sampling) are applied.Example: SELECT * FROM ${data()} WHERE price < 0
+type GoogleCloudDataplexV1DataQualityRuleSqlAssertionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleSqlAssertionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleSqlAssertion)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleSqlAssertionOutput) ToGoogleCloudDataplexV1DataQualityRuleSqlAssertionOutput() GoogleCloudDataplexV1DataQualityRuleSqlAssertionOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleSqlAssertionOutput) ToGoogleCloudDataplexV1DataQualityRuleSqlAssertionOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleSqlAssertionOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleSqlAssertionOutput) ToGoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput() GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput {
+	return o.ToGoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleSqlAssertionOutput) ToGoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataQualityRuleSqlAssertion) *GoogleCloudDataplexV1DataQualityRuleSqlAssertion {
+		return &v
+	}).(GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput)
+}
+
+// Optional. The SQL statement.
+func (o GoogleCloudDataplexV1DataQualityRuleSqlAssertionOutput) SqlStatement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleSqlAssertion) *string { return v.SqlStatement }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualityRuleSqlAssertion)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput() GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput) Elem() GoogleCloudDataplexV1DataQualityRuleSqlAssertionOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleSqlAssertion) GoogleCloudDataplexV1DataQualityRuleSqlAssertion {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1DataQualityRuleSqlAssertion
+		return ret
+	}).(GoogleCloudDataplexV1DataQualityRuleSqlAssertionOutput)
+}
+
+// Optional. The SQL statement.
+func (o GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput) SqlStatement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleSqlAssertion) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlStatement
+	}).(pulumi.StringPtrOutput)
+}
+
+// Queries for rows returned by the provided SQL statement. If any rows are are returned, this rule fails.The SQL statement needs to use BigQuery standard SQL syntax, and must not contain any semicolons.${data()} can be used to reference the rows being evaluated, i.e. the table after all additional filters (row filters, incremental data filters, sampling) are applied.Example: SELECT * FROM ${data()} WHERE price < 0
+type GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponse struct {
+	// Optional. The SQL statement.
+	SqlStatement string `pulumi:"sqlStatement"`
+}
+
+// Queries for rows returned by the provided SQL statement. If any rows are are returned, this rule fails.The SQL statement needs to use BigQuery standard SQL syntax, and must not contain any semicolons.${data()} can be used to reference the rows being evaluated, i.e. the table after all additional filters (row filters, incremental data filters, sampling) are applied.Example: SELECT * FROM ${data()} WHERE price < 0
+type GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleSqlAssertionResponseOutput() GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleSqlAssertionResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponseOutput {
+	return o
+}
+
+// Optional. The SQL statement.
+func (o GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponseOutput) SqlStatement() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponse) string { return v.SqlStatement }).(pulumi.StringOutput)
 }
 
 // Evaluates whether the column aggregate statistic lies between a specified range.
@@ -5531,6 +7051,8 @@ func (o GoogleCloudDataplexV1DataQualitySpecPtrOutput) SamplingPercent() pulumi.
 type GoogleCloudDataplexV1DataQualitySpecPostScanActions struct {
 	// Optional. If set, results will be exported to the provided BigQuery table.
 	BigqueryExport *GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport `pulumi:"bigqueryExport"`
+	// Optional. If set, results will be sent to the provided notification receipts upon triggers.
+	NotificationReport *GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport `pulumi:"notificationReport"`
 }
 
 // GoogleCloudDataplexV1DataQualitySpecPostScanActionsInput is an input type that accepts GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs and GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput values.
@@ -5548,6 +7070,8 @@ type GoogleCloudDataplexV1DataQualitySpecPostScanActionsInput interface {
 type GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs struct {
 	// Optional. If set, results will be exported to the provided BigQuery table.
 	BigqueryExport GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrInput `pulumi:"bigqueryExport"`
+	// Optional. If set, results will be sent to the provided notification receipts upon triggers.
+	NotificationReport GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrInput `pulumi:"notificationReport"`
 }
 
 func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs) ElementType() reflect.Type {
@@ -5635,6 +7159,13 @@ func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput) BigqueryExpor
 	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput)
 }
 
+// Optional. If set, results will be sent to the provided notification receipts upon triggers.
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsOutput) NotificationReport() GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecPostScanActions) *GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport {
+		return v.NotificationReport
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput)
+}
+
 type GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput) ElementType() reflect.Type {
@@ -5667,6 +7198,16 @@ func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput) BigqueryEx
 		}
 		return v.BigqueryExport
 	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput)
+}
+
+// Optional. If set, results will be sent to the provided notification receipts upon triggers.
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrOutput) NotificationReport() GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualitySpecPostScanActions) *GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport {
+		if v == nil {
+			return nil
+		}
+		return v.NotificationReport
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput)
 }
 
 // The configuration of BigQuery export post scan action.
@@ -5839,10 +7380,720 @@ func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportRespons
 	}).(pulumi.StringOutput)
 }
 
+// This trigger is triggered whenever a scan job run ends, regardless of the result.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger struct {
+}
+
+// GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerInput is an input type that accepts GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerArgs and GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerInput` via:
+//
+//	GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerArgs{...}
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutput
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutput
+}
+
+// This trigger is triggered whenever a scan job run ends, regardless of the result.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerArgs struct {
+}
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutput {
+	return i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutput)
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutput).ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrInput is an input type that accepts GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerArgs, GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtr and GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrInput` via:
+//
+//	        GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput
+}
+
+type googleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrType GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerArgs
+
+func GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtr(v *GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerArgs) GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrInput {
+	return (*googleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrType)(v)
+}
+
+func (*googleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrType) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrType) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput)
+}
+
+// This trigger is triggered whenever a scan job run ends, regardless of the result.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput {
+	return o.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger) *GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger {
+		return &v
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput)
+}
+
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput) Elem() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger) GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger
+		return ret
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutput)
+}
+
+// This trigger is triggered whenever a scan job run ends, regardless of the result.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerResponse struct {
+}
+
+// This trigger is triggered whenever a scan job run ends, regardless of the result.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerResponseOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerResponseOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerResponseOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerResponseOutput {
+	return o
+}
+
+// This trigger is triggered when the scan job itself fails, regardless of the result.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger struct {
+}
+
+// GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerInput is an input type that accepts GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerArgs and GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerInput` via:
+//
+//	GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerArgs{...}
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutput
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutput
+}
+
+// This trigger is triggered when the scan job itself fails, regardless of the result.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerArgs struct {
+}
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutput {
+	return i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutput)
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutput).ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrInput is an input type that accepts GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerArgs, GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtr and GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrInput` via:
+//
+//	        GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput
+}
+
+type googleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrType GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerArgs
+
+func GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtr(v *GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerArgs) GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrInput {
+	return (*googleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrType)(v)
+}
+
+func (*googleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrType) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrType) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput)
+}
+
+// This trigger is triggered when the scan job itself fails, regardless of the result.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput {
+	return o.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger) *GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger {
+		return &v
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput)
+}
+
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput) Elem() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger) GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger
+		return ret
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutput)
+}
+
+// This trigger is triggered when the scan job itself fails, regardless of the result.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerResponse struct {
+}
+
+// This trigger is triggered when the scan job itself fails, regardless of the result.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerResponseOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerResponseOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerResponseOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerResponseOutput {
+	return o
+}
+
+// The configuration of notification report post scan action.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport struct {
+	// Optional. If set, report will be sent when a scan job ends.
+	JobEndTrigger *GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger `pulumi:"jobEndTrigger"`
+	// Optional. If set, report will be sent when a scan job fails.
+	JobFailureTrigger *GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger `pulumi:"jobFailureTrigger"`
+	// The recipients who will receive the notification report.
+	Recipients GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients `pulumi:"recipients"`
+	// Optional. If set, report will be sent when score threshold is met.
+	ScoreThresholdTrigger *GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger `pulumi:"scoreThresholdTrigger"`
+}
+
+// GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportInput is an input type that accepts GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportArgs and GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportInput` via:
+//
+//	GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportArgs{...}
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput
+}
+
+// The configuration of notification report post scan action.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportArgs struct {
+	// Optional. If set, report will be sent when a scan job ends.
+	JobEndTrigger GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrInput `pulumi:"jobEndTrigger"`
+	// Optional. If set, report will be sent when a scan job fails.
+	JobFailureTrigger GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrInput `pulumi:"jobFailureTrigger"`
+	// The recipients who will receive the notification report.
+	Recipients GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsInput `pulumi:"recipients"`
+	// Optional. If set, report will be sent when score threshold is met.
+	ScoreThresholdTrigger GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrInput `pulumi:"scoreThresholdTrigger"`
+}
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput {
+	return i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput)
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput).ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrInput is an input type that accepts GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportArgs, GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtr and GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrInput` via:
+//
+//	        GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput
+}
+
+type googleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrType GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportArgs
+
+func GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtr(v *GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportArgs) GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrInput {
+	return (*googleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrType)(v)
+}
+
+func (*googleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrType) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrType) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput)
+}
+
+// The configuration of notification report post scan action.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput {
+	return o.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport) *GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport {
+		return &v
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput)
+}
+
+// Optional. If set, report will be sent when a scan job ends.
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput) JobEndTrigger() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport) *GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger {
+		return v.JobEndTrigger
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput)
+}
+
+// Optional. If set, report will be sent when a scan job fails.
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput) JobFailureTrigger() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport) *GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger {
+		return v.JobFailureTrigger
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput)
+}
+
+// The recipients who will receive the notification report.
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput) Recipients() GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport) GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients {
+		return v.Recipients
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutput)
+}
+
+// Optional. If set, report will be sent when score threshold is met.
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput) ScoreThresholdTrigger() GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport) *GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger {
+		return v.ScoreThresholdTrigger
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput)
+}
+
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput) Elem() GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport) GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport
+		return ret
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput)
+}
+
+// Optional. If set, report will be sent when a scan job ends.
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput) JobEndTrigger() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport) *GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger {
+		if v == nil {
+			return nil
+		}
+		return v.JobEndTrigger
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput)
+}
+
+// Optional. If set, report will be sent when a scan job fails.
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput) JobFailureTrigger() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport) *GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger {
+		if v == nil {
+			return nil
+		}
+		return v.JobFailureTrigger
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput)
+}
+
+// The recipients who will receive the notification report.
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput) Recipients() GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport) *GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients {
+		if v == nil {
+			return nil
+		}
+		return &v.Recipients
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput)
+}
+
+// Optional. If set, report will be sent when score threshold is met.
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput) ScoreThresholdTrigger() GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport) *GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger {
+		if v == nil {
+			return nil
+		}
+		return v.ScoreThresholdTrigger
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput)
+}
+
+// The configuration of notification report post scan action.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponse struct {
+	// Optional. If set, report will be sent when a scan job ends.
+	JobEndTrigger GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerResponse `pulumi:"jobEndTrigger"`
+	// Optional. If set, report will be sent when a scan job fails.
+	JobFailureTrigger GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerResponse `pulumi:"jobFailureTrigger"`
+	// The recipients who will receive the notification report.
+	Recipients GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsResponse `pulumi:"recipients"`
+	// Optional. If set, report will be sent when score threshold is met.
+	ScoreThresholdTrigger GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponse `pulumi:"scoreThresholdTrigger"`
+}
+
+// The configuration of notification report post scan action.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponseOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponseOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponseOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponseOutput {
+	return o
+}
+
+// Optional. If set, report will be sent when a scan job ends.
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponseOutput) JobEndTrigger() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponse) GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerResponse {
+		return v.JobEndTrigger
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerResponseOutput)
+}
+
+// Optional. If set, report will be sent when a scan job fails.
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponseOutput) JobFailureTrigger() GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponse) GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerResponse {
+		return v.JobFailureTrigger
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerResponseOutput)
+}
+
+// The recipients who will receive the notification report.
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponseOutput) Recipients() GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponse) GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsResponse {
+		return v.Recipients
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsResponseOutput)
+}
+
+// Optional. If set, report will be sent when score threshold is met.
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponseOutput) ScoreThresholdTrigger() GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponse) GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponse {
+		return v.ScoreThresholdTrigger
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponseOutput)
+}
+
+// The individuals or groups who are designated to receive notifications upon triggers.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients struct {
+	// Optional. The email recipients who will receive the DataQualityScan results report.
+	Emails []string `pulumi:"emails"`
+}
+
+// GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsInput is an input type that accepts GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsArgs and GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsInput` via:
+//
+//	GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsArgs{...}
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutput
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutput
+}
+
+// The individuals or groups who are designated to receive notifications upon triggers.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsArgs struct {
+	// Optional. The email recipients who will receive the DataQualityScan results report.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+}
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutput {
+	return i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutput)
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutput).ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrInput is an input type that accepts GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsArgs, GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtr and GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrInput` via:
+//
+//	        GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput
+}
+
+type googleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrType GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsArgs
+
+func GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtr(v *GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsArgs) GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrInput {
+	return (*googleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrType)(v)
+}
+
+func (*googleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrType) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrType) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput)
+}
+
+// The individuals or groups who are designated to receive notifications upon triggers.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput {
+	return o.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients) *GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients {
+		return &v
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput)
+}
+
+// Optional. The email recipients who will receive the DataQualityScan results report.
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput) Elem() GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients) GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients
+		return ret
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutput)
+}
+
+// Optional. The email recipients who will receive the DataQualityScan results report.
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Emails
+	}).(pulumi.StringArrayOutput)
+}
+
+// The individuals or groups who are designated to receive notifications upon triggers.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsResponse struct {
+	// Optional. The email recipients who will receive the DataQualityScan results report.
+	Emails []string `pulumi:"emails"`
+}
+
+// The individuals or groups who are designated to receive notifications upon triggers.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsResponseOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsResponseOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsResponseOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsResponseOutput {
+	return o
+}
+
+// Optional. The email recipients who will receive the DataQualityScan results report.
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsResponseOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsResponse) []string {
+		return v.Emails
+	}).(pulumi.StringArrayOutput)
+}
+
 // The configuration of post scan actions of DataQualityScan.
 type GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse struct {
 	// Optional. If set, results will be exported to the provided BigQuery table.
 	BigqueryExport GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse `pulumi:"bigqueryExport"`
+	// Optional. If set, results will be sent to the provided notification receipts upon triggers.
+	NotificationReport GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponse `pulumi:"notificationReport"`
 }
 
 // The configuration of post scan actions of DataQualityScan.
@@ -5865,6 +8116,183 @@ func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponseOutput) Bigqu
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse) GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse {
 		return v.BigqueryExport
 	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponseOutput)
+}
+
+// Optional. If set, results will be sent to the provided notification receipts upon triggers.
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponseOutput) NotificationReport() GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse) GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponse {
+		return v.NotificationReport
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponseOutput)
+}
+
+// This trigger is triggered when the DQ score in the job result is less than a specified input score.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger struct {
+	// Optional. The score range is in 0,100.
+	ScoreThreshold *float64 `pulumi:"scoreThreshold"`
+}
+
+// GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerInput is an input type that accepts GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerArgs and GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerInput` via:
+//
+//	GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerArgs{...}
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutput
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutput
+}
+
+// This trigger is triggered when the DQ score in the job result is less than a specified input score.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerArgs struct {
+	// Optional. The score range is in 0,100.
+	ScoreThreshold pulumi.Float64PtrInput `pulumi:"scoreThreshold"`
+}
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutput {
+	return i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutput)
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerArgs) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutput).ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrInput is an input type that accepts GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerArgs, GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtr and GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrInput` via:
+//
+//	        GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput
+	ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput
+}
+
+type googleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrType GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerArgs
+
+func GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtr(v *GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerArgs) GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrInput {
+	return (*googleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrType)(v)
+}
+
+func (*googleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrType) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrType) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput)
+}
+
+// This trigger is triggered when the DQ score in the job result is less than a specified input score.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput {
+	return o.ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger) *GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger {
+		return &v
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput)
+}
+
+// Optional. The score range is in 0,100.
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutput) ScoreThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger) *float64 {
+		return v.ScoreThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput) Elem() GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger) GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger
+		return ret
+	}).(GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutput)
+}
+
+// Optional. The score range is in 0,100.
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput) ScoreThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ScoreThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// This trigger is triggered when the DQ score in the job result is less than a specified input score.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponse struct {
+	// Optional. The score range is in 0,100.
+	ScoreThreshold float64 `pulumi:"scoreThreshold"`
+}
+
+// This trigger is triggered when the DQ score in the job result is less than a specified input score.
+type GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponseOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponseOutput() GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponseOutput) ToGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponseOutput {
+	return o
+}
+
+// Optional. The score range is in 0,100.
+func (o GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponseOutput) ScoreThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponse) float64 {
+		return v.ScoreThreshold
+	}).(pulumi.Float64Output)
 }
 
 // DataQualityScan related setting.
@@ -6310,6 +8738,853 @@ func (o GoogleCloudDataplexV1EntityCompatibilityStatusResponseOutput) HiveMetast
 	return o.ApplyT(func(v GoogleCloudDataplexV1EntityCompatibilityStatusResponse) GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse {
 		return v.HiveMetastore
 	}).(GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponseOutput)
+}
+
+// EntrySource contains source system related information for the entry.
+type GoogleCloudDataplexV1EntrySource struct {
+	// Immutable. The ancestors of the Entry in the source system.
+	Ancestors []GoogleCloudDataplexV1EntrySourceAncestor `pulumi:"ancestors"`
+	// The create time of the resource in the source system.
+	CreateTime *string `pulumi:"createTime"`
+	// Description of the Entry. The maximum size of the field is 2000 characters.
+	Description *string `pulumi:"description"`
+	// User friendly display name. The maximum size of the field is 500 characters.
+	DisplayName *string `pulumi:"displayName"`
+	// User-defined labels. The maximum size of keys and values is 128 characters each.
+	Labels map[string]string `pulumi:"labels"`
+	// The platform containing the source system. The maximum size of the field is 64 characters.
+	Platform *string `pulumi:"platform"`
+	// The name of the resource in the source system. The maximum size of the field is 4000 characters.
+	Resource *string `pulumi:"resource"`
+	// The name of the source system. The maximum size of the field is 64 characters.
+	System *string `pulumi:"system"`
+	// The update time of the resource in the source system.
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
+// GoogleCloudDataplexV1EntrySourceInput is an input type that accepts GoogleCloudDataplexV1EntrySourceArgs and GoogleCloudDataplexV1EntrySourceOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1EntrySourceInput` via:
+//
+//	GoogleCloudDataplexV1EntrySourceArgs{...}
+type GoogleCloudDataplexV1EntrySourceInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1EntrySourceOutput() GoogleCloudDataplexV1EntrySourceOutput
+	ToGoogleCloudDataplexV1EntrySourceOutputWithContext(context.Context) GoogleCloudDataplexV1EntrySourceOutput
+}
+
+// EntrySource contains source system related information for the entry.
+type GoogleCloudDataplexV1EntrySourceArgs struct {
+	// Immutable. The ancestors of the Entry in the source system.
+	Ancestors GoogleCloudDataplexV1EntrySourceAncestorArrayInput `pulumi:"ancestors"`
+	// The create time of the resource in the source system.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// Description of the Entry. The maximum size of the field is 2000 characters.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// User friendly display name. The maximum size of the field is 500 characters.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// User-defined labels. The maximum size of keys and values is 128 characters each.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The platform containing the source system. The maximum size of the field is 64 characters.
+	Platform pulumi.StringPtrInput `pulumi:"platform"`
+	// The name of the resource in the source system. The maximum size of the field is 4000 characters.
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
+	// The name of the source system. The maximum size of the field is 64 characters.
+	System pulumi.StringPtrInput `pulumi:"system"`
+	// The update time of the resource in the source system.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (GoogleCloudDataplexV1EntrySourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1EntrySource)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1EntrySourceArgs) ToGoogleCloudDataplexV1EntrySourceOutput() GoogleCloudDataplexV1EntrySourceOutput {
+	return i.ToGoogleCloudDataplexV1EntrySourceOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1EntrySourceArgs) ToGoogleCloudDataplexV1EntrySourceOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntrySourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1EntrySourceOutput)
+}
+
+func (i GoogleCloudDataplexV1EntrySourceArgs) ToGoogleCloudDataplexV1EntrySourcePtrOutput() GoogleCloudDataplexV1EntrySourcePtrOutput {
+	return i.ToGoogleCloudDataplexV1EntrySourcePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1EntrySourceArgs) ToGoogleCloudDataplexV1EntrySourcePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntrySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1EntrySourceOutput).ToGoogleCloudDataplexV1EntrySourcePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1EntrySourcePtrInput is an input type that accepts GoogleCloudDataplexV1EntrySourceArgs, GoogleCloudDataplexV1EntrySourcePtr and GoogleCloudDataplexV1EntrySourcePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1EntrySourcePtrInput` via:
+//
+//	        GoogleCloudDataplexV1EntrySourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1EntrySourcePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1EntrySourcePtrOutput() GoogleCloudDataplexV1EntrySourcePtrOutput
+	ToGoogleCloudDataplexV1EntrySourcePtrOutputWithContext(context.Context) GoogleCloudDataplexV1EntrySourcePtrOutput
+}
+
+type googleCloudDataplexV1EntrySourcePtrType GoogleCloudDataplexV1EntrySourceArgs
+
+func GoogleCloudDataplexV1EntrySourcePtr(v *GoogleCloudDataplexV1EntrySourceArgs) GoogleCloudDataplexV1EntrySourcePtrInput {
+	return (*googleCloudDataplexV1EntrySourcePtrType)(v)
+}
+
+func (*googleCloudDataplexV1EntrySourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1EntrySource)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1EntrySourcePtrType) ToGoogleCloudDataplexV1EntrySourcePtrOutput() GoogleCloudDataplexV1EntrySourcePtrOutput {
+	return i.ToGoogleCloudDataplexV1EntrySourcePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1EntrySourcePtrType) ToGoogleCloudDataplexV1EntrySourcePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntrySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1EntrySourcePtrOutput)
+}
+
+// EntrySource contains source system related information for the entry.
+type GoogleCloudDataplexV1EntrySourceOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1EntrySourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1EntrySource)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1EntrySourceOutput) ToGoogleCloudDataplexV1EntrySourceOutput() GoogleCloudDataplexV1EntrySourceOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1EntrySourceOutput) ToGoogleCloudDataplexV1EntrySourceOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntrySourceOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1EntrySourceOutput) ToGoogleCloudDataplexV1EntrySourcePtrOutput() GoogleCloudDataplexV1EntrySourcePtrOutput {
+	return o.ToGoogleCloudDataplexV1EntrySourcePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1EntrySourceOutput) ToGoogleCloudDataplexV1EntrySourcePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntrySourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1EntrySource) *GoogleCloudDataplexV1EntrySource {
+		return &v
+	}).(GoogleCloudDataplexV1EntrySourcePtrOutput)
+}
+
+// Immutable. The ancestors of the Entry in the source system.
+func (o GoogleCloudDataplexV1EntrySourceOutput) Ancestors() GoogleCloudDataplexV1EntrySourceAncestorArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntrySource) []GoogleCloudDataplexV1EntrySourceAncestor {
+		return v.Ancestors
+	}).(GoogleCloudDataplexV1EntrySourceAncestorArrayOutput)
+}
+
+// The create time of the resource in the source system.
+func (o GoogleCloudDataplexV1EntrySourceOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntrySource) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// Description of the Entry. The maximum size of the field is 2000 characters.
+func (o GoogleCloudDataplexV1EntrySourceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntrySource) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// User friendly display name. The maximum size of the field is 500 characters.
+func (o GoogleCloudDataplexV1EntrySourceOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntrySource) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// User-defined labels. The maximum size of keys and values is 128 characters each.
+func (o GoogleCloudDataplexV1EntrySourceOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntrySource) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The platform containing the source system. The maximum size of the field is 64 characters.
+func (o GoogleCloudDataplexV1EntrySourceOutput) Platform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntrySource) *string { return v.Platform }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource in the source system. The maximum size of the field is 4000 characters.
+func (o GoogleCloudDataplexV1EntrySourceOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntrySource) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+// The name of the source system. The maximum size of the field is 64 characters.
+func (o GoogleCloudDataplexV1EntrySourceOutput) System() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntrySource) *string { return v.System }).(pulumi.StringPtrOutput)
+}
+
+// The update time of the resource in the source system.
+func (o GoogleCloudDataplexV1EntrySourceOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntrySource) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDataplexV1EntrySourcePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1EntrySourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1EntrySource)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1EntrySourcePtrOutput) ToGoogleCloudDataplexV1EntrySourcePtrOutput() GoogleCloudDataplexV1EntrySourcePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1EntrySourcePtrOutput) ToGoogleCloudDataplexV1EntrySourcePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntrySourcePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1EntrySourcePtrOutput) Elem() GoogleCloudDataplexV1EntrySourceOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1EntrySource) GoogleCloudDataplexV1EntrySource {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1EntrySource
+		return ret
+	}).(GoogleCloudDataplexV1EntrySourceOutput)
+}
+
+// Immutable. The ancestors of the Entry in the source system.
+func (o GoogleCloudDataplexV1EntrySourcePtrOutput) Ancestors() GoogleCloudDataplexV1EntrySourceAncestorArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1EntrySource) []GoogleCloudDataplexV1EntrySourceAncestor {
+		if v == nil {
+			return nil
+		}
+		return v.Ancestors
+	}).(GoogleCloudDataplexV1EntrySourceAncestorArrayOutput)
+}
+
+// The create time of the resource in the source system.
+func (o GoogleCloudDataplexV1EntrySourcePtrOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1EntrySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Description of the Entry. The maximum size of the field is 2000 characters.
+func (o GoogleCloudDataplexV1EntrySourcePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1EntrySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// User friendly display name. The maximum size of the field is 500 characters.
+func (o GoogleCloudDataplexV1EntrySourcePtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1EntrySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-defined labels. The maximum size of keys and values is 128 characters each.
+func (o GoogleCloudDataplexV1EntrySourcePtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1EntrySource) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// The platform containing the source system. The maximum size of the field is 64 characters.
+func (o GoogleCloudDataplexV1EntrySourcePtrOutput) Platform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1EntrySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Platform
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource in the source system. The maximum size of the field is 4000 characters.
+func (o GoogleCloudDataplexV1EntrySourcePtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1EntrySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the source system. The maximum size of the field is 64 characters.
+func (o GoogleCloudDataplexV1EntrySourcePtrOutput) System() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1EntrySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.System
+	}).(pulumi.StringPtrOutput)
+}
+
+// The update time of the resource in the source system.
+func (o GoogleCloudDataplexV1EntrySourcePtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1EntrySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Ancestor contains information about individual items in the hierarchy of an Entry.
+type GoogleCloudDataplexV1EntrySourceAncestor struct {
+	// Optional. The name of the ancestor resource.
+	Name *string `pulumi:"name"`
+	// Optional. The type of the ancestor resource.
+	Type *string `pulumi:"type"`
+}
+
+// GoogleCloudDataplexV1EntrySourceAncestorInput is an input type that accepts GoogleCloudDataplexV1EntrySourceAncestorArgs and GoogleCloudDataplexV1EntrySourceAncestorOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1EntrySourceAncestorInput` via:
+//
+//	GoogleCloudDataplexV1EntrySourceAncestorArgs{...}
+type GoogleCloudDataplexV1EntrySourceAncestorInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1EntrySourceAncestorOutput() GoogleCloudDataplexV1EntrySourceAncestorOutput
+	ToGoogleCloudDataplexV1EntrySourceAncestorOutputWithContext(context.Context) GoogleCloudDataplexV1EntrySourceAncestorOutput
+}
+
+// Ancestor contains information about individual items in the hierarchy of an Entry.
+type GoogleCloudDataplexV1EntrySourceAncestorArgs struct {
+	// Optional. The name of the ancestor resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Optional. The type of the ancestor resource.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GoogleCloudDataplexV1EntrySourceAncestorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1EntrySourceAncestor)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1EntrySourceAncestorArgs) ToGoogleCloudDataplexV1EntrySourceAncestorOutput() GoogleCloudDataplexV1EntrySourceAncestorOutput {
+	return i.ToGoogleCloudDataplexV1EntrySourceAncestorOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1EntrySourceAncestorArgs) ToGoogleCloudDataplexV1EntrySourceAncestorOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntrySourceAncestorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1EntrySourceAncestorOutput)
+}
+
+// GoogleCloudDataplexV1EntrySourceAncestorArrayInput is an input type that accepts GoogleCloudDataplexV1EntrySourceAncestorArray and GoogleCloudDataplexV1EntrySourceAncestorArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1EntrySourceAncestorArrayInput` via:
+//
+//	GoogleCloudDataplexV1EntrySourceAncestorArray{ GoogleCloudDataplexV1EntrySourceAncestorArgs{...} }
+type GoogleCloudDataplexV1EntrySourceAncestorArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1EntrySourceAncestorArrayOutput() GoogleCloudDataplexV1EntrySourceAncestorArrayOutput
+	ToGoogleCloudDataplexV1EntrySourceAncestorArrayOutputWithContext(context.Context) GoogleCloudDataplexV1EntrySourceAncestorArrayOutput
+}
+
+type GoogleCloudDataplexV1EntrySourceAncestorArray []GoogleCloudDataplexV1EntrySourceAncestorInput
+
+func (GoogleCloudDataplexV1EntrySourceAncestorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDataplexV1EntrySourceAncestor)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1EntrySourceAncestorArray) ToGoogleCloudDataplexV1EntrySourceAncestorArrayOutput() GoogleCloudDataplexV1EntrySourceAncestorArrayOutput {
+	return i.ToGoogleCloudDataplexV1EntrySourceAncestorArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1EntrySourceAncestorArray) ToGoogleCloudDataplexV1EntrySourceAncestorArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntrySourceAncestorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1EntrySourceAncestorArrayOutput)
+}
+
+// Ancestor contains information about individual items in the hierarchy of an Entry.
+type GoogleCloudDataplexV1EntrySourceAncestorOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1EntrySourceAncestorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1EntrySourceAncestor)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1EntrySourceAncestorOutput) ToGoogleCloudDataplexV1EntrySourceAncestorOutput() GoogleCloudDataplexV1EntrySourceAncestorOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1EntrySourceAncestorOutput) ToGoogleCloudDataplexV1EntrySourceAncestorOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntrySourceAncestorOutput {
+	return o
+}
+
+// Optional. The name of the ancestor resource.
+func (o GoogleCloudDataplexV1EntrySourceAncestorOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntrySourceAncestor) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The type of the ancestor resource.
+func (o GoogleCloudDataplexV1EntrySourceAncestorOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntrySourceAncestor) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDataplexV1EntrySourceAncestorArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1EntrySourceAncestorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDataplexV1EntrySourceAncestor)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1EntrySourceAncestorArrayOutput) ToGoogleCloudDataplexV1EntrySourceAncestorArrayOutput() GoogleCloudDataplexV1EntrySourceAncestorArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1EntrySourceAncestorArrayOutput) ToGoogleCloudDataplexV1EntrySourceAncestorArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntrySourceAncestorArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1EntrySourceAncestorArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1EntrySourceAncestorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1EntrySourceAncestor {
+		return vs[0].([]GoogleCloudDataplexV1EntrySourceAncestor)[vs[1].(int)]
+	}).(GoogleCloudDataplexV1EntrySourceAncestorOutput)
+}
+
+// Ancestor contains information about individual items in the hierarchy of an Entry.
+type GoogleCloudDataplexV1EntrySourceAncestorResponse struct {
+	// Optional. The name of the ancestor resource.
+	Name string `pulumi:"name"`
+	// Optional. The type of the ancestor resource.
+	Type string `pulumi:"type"`
+}
+
+// Ancestor contains information about individual items in the hierarchy of an Entry.
+type GoogleCloudDataplexV1EntrySourceAncestorResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1EntrySourceAncestorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1EntrySourceAncestorResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1EntrySourceAncestorResponseOutput) ToGoogleCloudDataplexV1EntrySourceAncestorResponseOutput() GoogleCloudDataplexV1EntrySourceAncestorResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1EntrySourceAncestorResponseOutput) ToGoogleCloudDataplexV1EntrySourceAncestorResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntrySourceAncestorResponseOutput {
+	return o
+}
+
+// Optional. The name of the ancestor resource.
+func (o GoogleCloudDataplexV1EntrySourceAncestorResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntrySourceAncestorResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. The type of the ancestor resource.
+func (o GoogleCloudDataplexV1EntrySourceAncestorResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntrySourceAncestorResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDataplexV1EntrySourceAncestorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1EntrySourceAncestorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDataplexV1EntrySourceAncestorResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1EntrySourceAncestorResponseArrayOutput) ToGoogleCloudDataplexV1EntrySourceAncestorResponseArrayOutput() GoogleCloudDataplexV1EntrySourceAncestorResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1EntrySourceAncestorResponseArrayOutput) ToGoogleCloudDataplexV1EntrySourceAncestorResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntrySourceAncestorResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1EntrySourceAncestorResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1EntrySourceAncestorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1EntrySourceAncestorResponse {
+		return vs[0].([]GoogleCloudDataplexV1EntrySourceAncestorResponse)[vs[1].(int)]
+	}).(GoogleCloudDataplexV1EntrySourceAncestorResponseOutput)
+}
+
+// EntrySource contains source system related information for the entry.
+type GoogleCloudDataplexV1EntrySourceResponse struct {
+	// Immutable. The ancestors of the Entry in the source system.
+	Ancestors []GoogleCloudDataplexV1EntrySourceAncestorResponse `pulumi:"ancestors"`
+	// The create time of the resource in the source system.
+	CreateTime string `pulumi:"createTime"`
+	// Description of the Entry. The maximum size of the field is 2000 characters.
+	Description string `pulumi:"description"`
+	// User friendly display name. The maximum size of the field is 500 characters.
+	DisplayName string `pulumi:"displayName"`
+	// User-defined labels. The maximum size of keys and values is 128 characters each.
+	Labels map[string]string `pulumi:"labels"`
+	// The platform containing the source system. The maximum size of the field is 64 characters.
+	Platform string `pulumi:"platform"`
+	// The name of the resource in the source system. The maximum size of the field is 4000 characters.
+	Resource string `pulumi:"resource"`
+	// The name of the source system. The maximum size of the field is 64 characters.
+	System string `pulumi:"system"`
+	// The update time of the resource in the source system.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// EntrySource contains source system related information for the entry.
+type GoogleCloudDataplexV1EntrySourceResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1EntrySourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1EntrySourceResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1EntrySourceResponseOutput) ToGoogleCloudDataplexV1EntrySourceResponseOutput() GoogleCloudDataplexV1EntrySourceResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1EntrySourceResponseOutput) ToGoogleCloudDataplexV1EntrySourceResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntrySourceResponseOutput {
+	return o
+}
+
+// Immutable. The ancestors of the Entry in the source system.
+func (o GoogleCloudDataplexV1EntrySourceResponseOutput) Ancestors() GoogleCloudDataplexV1EntrySourceAncestorResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntrySourceResponse) []GoogleCloudDataplexV1EntrySourceAncestorResponse {
+		return v.Ancestors
+	}).(GoogleCloudDataplexV1EntrySourceAncestorResponseArrayOutput)
+}
+
+// The create time of the resource in the source system.
+func (o GoogleCloudDataplexV1EntrySourceResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntrySourceResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Description of the Entry. The maximum size of the field is 2000 characters.
+func (o GoogleCloudDataplexV1EntrySourceResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntrySourceResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// User friendly display name. The maximum size of the field is 500 characters.
+func (o GoogleCloudDataplexV1EntrySourceResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntrySourceResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// User-defined labels. The maximum size of keys and values is 128 characters each.
+func (o GoogleCloudDataplexV1EntrySourceResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntrySourceResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The platform containing the source system. The maximum size of the field is 64 characters.
+func (o GoogleCloudDataplexV1EntrySourceResponseOutput) Platform() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntrySourceResponse) string { return v.Platform }).(pulumi.StringOutput)
+}
+
+// The name of the resource in the source system. The maximum size of the field is 4000 characters.
+func (o GoogleCloudDataplexV1EntrySourceResponseOutput) Resource() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntrySourceResponse) string { return v.Resource }).(pulumi.StringOutput)
+}
+
+// The name of the source system. The maximum size of the field is 64 characters.
+func (o GoogleCloudDataplexV1EntrySourceResponseOutput) System() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntrySourceResponse) string { return v.System }).(pulumi.StringOutput)
+}
+
+// The update time of the resource in the source system.
+func (o GoogleCloudDataplexV1EntrySourceResponseOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntrySourceResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDataplexV1EntryTypeAspectInfo struct {
+	// Required aspect type for the entry type.
+	Type *string `pulumi:"type"`
+}
+
+// GoogleCloudDataplexV1EntryTypeAspectInfoInput is an input type that accepts GoogleCloudDataplexV1EntryTypeAspectInfoArgs and GoogleCloudDataplexV1EntryTypeAspectInfoOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1EntryTypeAspectInfoInput` via:
+//
+//	GoogleCloudDataplexV1EntryTypeAspectInfoArgs{...}
+type GoogleCloudDataplexV1EntryTypeAspectInfoInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1EntryTypeAspectInfoOutput() GoogleCloudDataplexV1EntryTypeAspectInfoOutput
+	ToGoogleCloudDataplexV1EntryTypeAspectInfoOutputWithContext(context.Context) GoogleCloudDataplexV1EntryTypeAspectInfoOutput
+}
+
+type GoogleCloudDataplexV1EntryTypeAspectInfoArgs struct {
+	// Required aspect type for the entry type.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GoogleCloudDataplexV1EntryTypeAspectInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1EntryTypeAspectInfo)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1EntryTypeAspectInfoArgs) ToGoogleCloudDataplexV1EntryTypeAspectInfoOutput() GoogleCloudDataplexV1EntryTypeAspectInfoOutput {
+	return i.ToGoogleCloudDataplexV1EntryTypeAspectInfoOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1EntryTypeAspectInfoArgs) ToGoogleCloudDataplexV1EntryTypeAspectInfoOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntryTypeAspectInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1EntryTypeAspectInfoOutput)
+}
+
+// GoogleCloudDataplexV1EntryTypeAspectInfoArrayInput is an input type that accepts GoogleCloudDataplexV1EntryTypeAspectInfoArray and GoogleCloudDataplexV1EntryTypeAspectInfoArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1EntryTypeAspectInfoArrayInput` via:
+//
+//	GoogleCloudDataplexV1EntryTypeAspectInfoArray{ GoogleCloudDataplexV1EntryTypeAspectInfoArgs{...} }
+type GoogleCloudDataplexV1EntryTypeAspectInfoArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1EntryTypeAspectInfoArrayOutput() GoogleCloudDataplexV1EntryTypeAspectInfoArrayOutput
+	ToGoogleCloudDataplexV1EntryTypeAspectInfoArrayOutputWithContext(context.Context) GoogleCloudDataplexV1EntryTypeAspectInfoArrayOutput
+}
+
+type GoogleCloudDataplexV1EntryTypeAspectInfoArray []GoogleCloudDataplexV1EntryTypeAspectInfoInput
+
+func (GoogleCloudDataplexV1EntryTypeAspectInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDataplexV1EntryTypeAspectInfo)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1EntryTypeAspectInfoArray) ToGoogleCloudDataplexV1EntryTypeAspectInfoArrayOutput() GoogleCloudDataplexV1EntryTypeAspectInfoArrayOutput {
+	return i.ToGoogleCloudDataplexV1EntryTypeAspectInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1EntryTypeAspectInfoArray) ToGoogleCloudDataplexV1EntryTypeAspectInfoArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntryTypeAspectInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1EntryTypeAspectInfoArrayOutput)
+}
+
+type GoogleCloudDataplexV1EntryTypeAspectInfoOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1EntryTypeAspectInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1EntryTypeAspectInfo)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1EntryTypeAspectInfoOutput) ToGoogleCloudDataplexV1EntryTypeAspectInfoOutput() GoogleCloudDataplexV1EntryTypeAspectInfoOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1EntryTypeAspectInfoOutput) ToGoogleCloudDataplexV1EntryTypeAspectInfoOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntryTypeAspectInfoOutput {
+	return o
+}
+
+// Required aspect type for the entry type.
+func (o GoogleCloudDataplexV1EntryTypeAspectInfoOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntryTypeAspectInfo) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDataplexV1EntryTypeAspectInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1EntryTypeAspectInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDataplexV1EntryTypeAspectInfo)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1EntryTypeAspectInfoArrayOutput) ToGoogleCloudDataplexV1EntryTypeAspectInfoArrayOutput() GoogleCloudDataplexV1EntryTypeAspectInfoArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1EntryTypeAspectInfoArrayOutput) ToGoogleCloudDataplexV1EntryTypeAspectInfoArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntryTypeAspectInfoArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1EntryTypeAspectInfoArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1EntryTypeAspectInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1EntryTypeAspectInfo {
+		return vs[0].([]GoogleCloudDataplexV1EntryTypeAspectInfo)[vs[1].(int)]
+	}).(GoogleCloudDataplexV1EntryTypeAspectInfoOutput)
+}
+
+type GoogleCloudDataplexV1EntryTypeAspectInfoResponse struct {
+	// Required aspect type for the entry type.
+	Type string `pulumi:"type"`
+}
+
+type GoogleCloudDataplexV1EntryTypeAspectInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1EntryTypeAspectInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1EntryTypeAspectInfoResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1EntryTypeAspectInfoResponseOutput) ToGoogleCloudDataplexV1EntryTypeAspectInfoResponseOutput() GoogleCloudDataplexV1EntryTypeAspectInfoResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1EntryTypeAspectInfoResponseOutput) ToGoogleCloudDataplexV1EntryTypeAspectInfoResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntryTypeAspectInfoResponseOutput {
+	return o
+}
+
+// Required aspect type for the entry type.
+func (o GoogleCloudDataplexV1EntryTypeAspectInfoResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntryTypeAspectInfoResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDataplexV1EntryTypeAspectInfoResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1EntryTypeAspectInfoResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDataplexV1EntryTypeAspectInfoResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1EntryTypeAspectInfoResponseArrayOutput) ToGoogleCloudDataplexV1EntryTypeAspectInfoResponseArrayOutput() GoogleCloudDataplexV1EntryTypeAspectInfoResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1EntryTypeAspectInfoResponseArrayOutput) ToGoogleCloudDataplexV1EntryTypeAspectInfoResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntryTypeAspectInfoResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1EntryTypeAspectInfoResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1EntryTypeAspectInfoResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1EntryTypeAspectInfoResponse {
+		return vs[0].([]GoogleCloudDataplexV1EntryTypeAspectInfoResponse)[vs[1].(int)]
+	}).(GoogleCloudDataplexV1EntryTypeAspectInfoResponseOutput)
+}
+
+// Authorization for an Entry Type.
+type GoogleCloudDataplexV1EntryTypeAuthorization struct {
+	// Immutable. The IAM permission grantable on the Entry Group to allow access to instantiate Entries of Dataplex owned Entry Types, only settable for Dataplex owned Types.
+	AlternateUsePermission *string `pulumi:"alternateUsePermission"`
+}
+
+// GoogleCloudDataplexV1EntryTypeAuthorizationInput is an input type that accepts GoogleCloudDataplexV1EntryTypeAuthorizationArgs and GoogleCloudDataplexV1EntryTypeAuthorizationOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1EntryTypeAuthorizationInput` via:
+//
+//	GoogleCloudDataplexV1EntryTypeAuthorizationArgs{...}
+type GoogleCloudDataplexV1EntryTypeAuthorizationInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1EntryTypeAuthorizationOutput() GoogleCloudDataplexV1EntryTypeAuthorizationOutput
+	ToGoogleCloudDataplexV1EntryTypeAuthorizationOutputWithContext(context.Context) GoogleCloudDataplexV1EntryTypeAuthorizationOutput
+}
+
+// Authorization for an Entry Type.
+type GoogleCloudDataplexV1EntryTypeAuthorizationArgs struct {
+	// Immutable. The IAM permission grantable on the Entry Group to allow access to instantiate Entries of Dataplex owned Entry Types, only settable for Dataplex owned Types.
+	AlternateUsePermission pulumi.StringPtrInput `pulumi:"alternateUsePermission"`
+}
+
+func (GoogleCloudDataplexV1EntryTypeAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1EntryTypeAuthorization)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1EntryTypeAuthorizationArgs) ToGoogleCloudDataplexV1EntryTypeAuthorizationOutput() GoogleCloudDataplexV1EntryTypeAuthorizationOutput {
+	return i.ToGoogleCloudDataplexV1EntryTypeAuthorizationOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1EntryTypeAuthorizationArgs) ToGoogleCloudDataplexV1EntryTypeAuthorizationOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntryTypeAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1EntryTypeAuthorizationOutput)
+}
+
+func (i GoogleCloudDataplexV1EntryTypeAuthorizationArgs) ToGoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput() GoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput {
+	return i.ToGoogleCloudDataplexV1EntryTypeAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1EntryTypeAuthorizationArgs) ToGoogleCloudDataplexV1EntryTypeAuthorizationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1EntryTypeAuthorizationOutput).ToGoogleCloudDataplexV1EntryTypeAuthorizationPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1EntryTypeAuthorizationPtrInput is an input type that accepts GoogleCloudDataplexV1EntryTypeAuthorizationArgs, GoogleCloudDataplexV1EntryTypeAuthorizationPtr and GoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1EntryTypeAuthorizationPtrInput` via:
+//
+//	        GoogleCloudDataplexV1EntryTypeAuthorizationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1EntryTypeAuthorizationPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput() GoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput
+	ToGoogleCloudDataplexV1EntryTypeAuthorizationPtrOutputWithContext(context.Context) GoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput
+}
+
+type googleCloudDataplexV1EntryTypeAuthorizationPtrType GoogleCloudDataplexV1EntryTypeAuthorizationArgs
+
+func GoogleCloudDataplexV1EntryTypeAuthorizationPtr(v *GoogleCloudDataplexV1EntryTypeAuthorizationArgs) GoogleCloudDataplexV1EntryTypeAuthorizationPtrInput {
+	return (*googleCloudDataplexV1EntryTypeAuthorizationPtrType)(v)
+}
+
+func (*googleCloudDataplexV1EntryTypeAuthorizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1EntryTypeAuthorization)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1EntryTypeAuthorizationPtrType) ToGoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput() GoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput {
+	return i.ToGoogleCloudDataplexV1EntryTypeAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1EntryTypeAuthorizationPtrType) ToGoogleCloudDataplexV1EntryTypeAuthorizationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput)
+}
+
+// Authorization for an Entry Type.
+type GoogleCloudDataplexV1EntryTypeAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1EntryTypeAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1EntryTypeAuthorization)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1EntryTypeAuthorizationOutput) ToGoogleCloudDataplexV1EntryTypeAuthorizationOutput() GoogleCloudDataplexV1EntryTypeAuthorizationOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1EntryTypeAuthorizationOutput) ToGoogleCloudDataplexV1EntryTypeAuthorizationOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntryTypeAuthorizationOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1EntryTypeAuthorizationOutput) ToGoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput() GoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput {
+	return o.ToGoogleCloudDataplexV1EntryTypeAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1EntryTypeAuthorizationOutput) ToGoogleCloudDataplexV1EntryTypeAuthorizationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1EntryTypeAuthorization) *GoogleCloudDataplexV1EntryTypeAuthorization {
+		return &v
+	}).(GoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput)
+}
+
+// Immutable. The IAM permission grantable on the Entry Group to allow access to instantiate Entries of Dataplex owned Entry Types, only settable for Dataplex owned Types.
+func (o GoogleCloudDataplexV1EntryTypeAuthorizationOutput) AlternateUsePermission() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntryTypeAuthorization) *string { return v.AlternateUsePermission }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1EntryTypeAuthorization)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput) ToGoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput() GoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput) ToGoogleCloudDataplexV1EntryTypeAuthorizationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput) Elem() GoogleCloudDataplexV1EntryTypeAuthorizationOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1EntryTypeAuthorization) GoogleCloudDataplexV1EntryTypeAuthorization {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1EntryTypeAuthorization
+		return ret
+	}).(GoogleCloudDataplexV1EntryTypeAuthorizationOutput)
+}
+
+// Immutable. The IAM permission grantable on the Entry Group to allow access to instantiate Entries of Dataplex owned Entry Types, only settable for Dataplex owned Types.
+func (o GoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput) AlternateUsePermission() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1EntryTypeAuthorization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AlternateUsePermission
+	}).(pulumi.StringPtrOutput)
+}
+
+// Authorization for an Entry Type.
+type GoogleCloudDataplexV1EntryTypeAuthorizationResponse struct {
+	// Immutable. The IAM permission grantable on the Entry Group to allow access to instantiate Entries of Dataplex owned Entry Types, only settable for Dataplex owned Types.
+	AlternateUsePermission string `pulumi:"alternateUsePermission"`
+}
+
+// Authorization for an Entry Type.
+type GoogleCloudDataplexV1EntryTypeAuthorizationResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1EntryTypeAuthorizationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1EntryTypeAuthorizationResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1EntryTypeAuthorizationResponseOutput) ToGoogleCloudDataplexV1EntryTypeAuthorizationResponseOutput() GoogleCloudDataplexV1EntryTypeAuthorizationResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1EntryTypeAuthorizationResponseOutput) ToGoogleCloudDataplexV1EntryTypeAuthorizationResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1EntryTypeAuthorizationResponseOutput {
+	return o
+}
+
+// Immutable. The IAM permission grantable on the Entry Group to allow access to instantiate Entries of Dataplex owned Entry Types, only settable for Dataplex owned Types.
+func (o GoogleCloudDataplexV1EntryTypeAuthorizationResponseOutput) AlternateUsePermission() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1EntryTypeAuthorizationResponse) string { return v.AlternateUsePermission }).(pulumi.StringOutput)
 }
 
 // URI Endpoints to access sessions associated with the Environment.
@@ -12404,9 +15679,9 @@ func (o GoogleIamV1AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) G
 type GoogleIamV1Binding struct {
 	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *GoogleTypeExpr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workforce identity pool. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}: All workforce identities in a group. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All workforce identities with a specific attribute value. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*: All identities in a workforce identity pool. principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workload identity pool. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}: A workload identity pool group. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All identities in a workload identity pool with a certain attribute. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*: All identities in a workload identity pool. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: Deleted single identity in a workforce identity pool. For example, deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
+	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.For an overview of the IAM roles and permissions, see the IAM documentation (https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see here (https://cloud.google.com/iam/docs/understanding-roles).
 	Role *string `pulumi:"role"`
 }
 
@@ -12425,9 +15700,9 @@ type GoogleIamV1BindingInput interface {
 type GoogleIamV1BindingArgs struct {
 	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition GoogleTypeExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workforce identity pool. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}: All workforce identities in a group. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All workforce identities with a specific attribute value. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*: All identities in a workforce identity pool. principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workload identity pool. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}: A workload identity pool group. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All identities in a workload identity pool with a certain attribute. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*: All identities in a workload identity pool. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: Deleted single identity in a workforce identity pool. For example, deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
+	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.For an overview of the IAM roles and permissions, see the IAM documentation (https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see here (https://cloud.google.com/iam/docs/understanding-roles).
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -12488,12 +15763,12 @@ func (o GoogleIamV1BindingOutput) Condition() GoogleTypeExprPtrOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) *GoogleTypeExpr { return v.Condition }).(GoogleTypeExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workforce identity pool. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}: All workforce identities in a group. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All workforce identities with a specific attribute value. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*: All identities in a workforce identity pool. principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workload identity pool. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}: A workload identity pool group. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All identities in a workload identity pool with a certain attribute. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*: All identities in a workload identity pool. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: Deleted single identity in a workforce identity pool. For example, deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value.
 func (o GoogleIamV1BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
+// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.For an overview of the IAM roles and permissions, see the IAM documentation (https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see here (https://cloud.google.com/iam/docs/understanding-roles).
 func (o GoogleIamV1BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -12522,9 +15797,9 @@ func (o GoogleIamV1BindingArrayOutput) Index(i pulumi.IntInput) GoogleIamV1Bindi
 type GoogleIamV1BindingResponse struct {
 	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition GoogleTypeExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workforce identity pool. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}: All workforce identities in a group. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All workforce identities with a specific attribute value. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*: All identities in a workforce identity pool. principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workload identity pool. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}: A workload identity pool group. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All identities in a workload identity pool with a certain attribute. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*: All identities in a workload identity pool. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: Deleted single identity in a workforce identity pool. For example, deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
+	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.For an overview of the IAM roles and permissions, see the IAM documentation (https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see here (https://cloud.google.com/iam/docs/understanding-roles).
 	Role string `pulumi:"role"`
 }
 
@@ -12548,12 +15823,12 @@ func (o GoogleIamV1BindingResponseOutput) Condition() GoogleTypeExprResponseOutp
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) GoogleTypeExprResponse { return v.Condition }).(GoogleTypeExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workforce identity pool. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}: All workforce identities in a group. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All workforce identities with a specific attribute value. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*: All identities in a workforce identity pool. principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workload identity pool. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}: A workload identity pool group. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All identities in a workload identity pool with a certain attribute. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*: All identities in a workload identity pool. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: Deleted single identity in a workforce identity pool. For example, deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value.
 func (o GoogleIamV1BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
+// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.For an overview of the IAM roles and permissions, see the IAM documentation (https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see here (https://cloud.google.com/iam/docs/understanding-roles).
 func (o GoogleIamV1BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -12823,6 +16098,17 @@ func (o GoogleTypeExprResponseOutput) Title() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeAuthorizationInput)(nil)).Elem(), GoogleCloudDataplexV1AspectTypeAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeAuthorizationPtrInput)(nil)).Elem(), GoogleCloudDataplexV1AspectTypeAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeMetadataTemplateInput)(nil)).Elem(), GoogleCloudDataplexV1AspectTypeMetadataTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrInput)(nil)).Elem(), GoogleCloudDataplexV1AspectTypeMetadataTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeMetadataTemplateArrayInput)(nil)).Elem(), GoogleCloudDataplexV1AspectTypeMetadataTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsInput)(nil)).Elem(), GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrInput)(nil)).Elem(), GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsInput)(nil)).Elem(), GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrInput)(nil)).Elem(), GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueInput)(nil)).Elem(), GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayInput)(nil)).Elem(), GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1AssetDiscoverySpecInput)(nil)).Elem(), GoogleCloudDataplexV1AssetDiscoverySpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1AssetDiscoverySpecPtrInput)(nil)).Elem(), GoogleCloudDataplexV1AssetDiscoverySpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsInput)(nil)).Elem(), GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsArgs{})
@@ -12858,6 +16144,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleSetExpectationInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleSqlAssertionInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleSqlAssertionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleSqlAssertionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs{})
@@ -12870,9 +16158,27 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataScanExecutionSpecInput)(nil)).Elem(), GoogleCloudDataplexV1DataScanExecutionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataScanExecutionSpecPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataScanExecutionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataSourceInput)(nil)).Elem(), GoogleCloudDataplexV1DataSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1EntrySourceInput)(nil)).Elem(), GoogleCloudDataplexV1EntrySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1EntrySourcePtrInput)(nil)).Elem(), GoogleCloudDataplexV1EntrySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1EntrySourceAncestorInput)(nil)).Elem(), GoogleCloudDataplexV1EntrySourceAncestorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1EntrySourceAncestorArrayInput)(nil)).Elem(), GoogleCloudDataplexV1EntrySourceAncestorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1EntryTypeAspectInfoInput)(nil)).Elem(), GoogleCloudDataplexV1EntryTypeAspectInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1EntryTypeAspectInfoArrayInput)(nil)).Elem(), GoogleCloudDataplexV1EntryTypeAspectInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1EntryTypeAuthorizationInput)(nil)).Elem(), GoogleCloudDataplexV1EntryTypeAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1EntryTypeAuthorizationPtrInput)(nil)).Elem(), GoogleCloudDataplexV1EntryTypeAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1EnvironmentInfrastructureSpecInput)(nil)).Elem(), GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesInput)(nil)).Elem(), GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesPtrInput)(nil)).Elem(), GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesArgs{})
@@ -12930,6 +16236,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1BindingArrayInput)(nil)).Elem(), GoogleIamV1BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeExprInput)(nil)).Elem(), GoogleTypeExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeExprPtrInput)(nil)).Elem(), GoogleTypeExprArgs{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1AspectTypeAuthorizationOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1AspectTypeAuthorizationPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1AspectTypeAuthorizationResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1AspectTypeMetadataTemplateOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1AspectTypeMetadataTemplatePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1AspectTypeMetadataTemplateArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotationsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraintsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1AspectTypeMetadataTemplateResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1AssetDiscoverySpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1AssetDiscoverySpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsOutput{})
@@ -13012,6 +16336,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleSqlAssertionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleSqlAssertionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput{})
@@ -13028,7 +16355,22 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTriggerResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTriggerResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipientsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTriggerResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataScanExecutionSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput{})
@@ -13038,6 +16380,20 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataSourceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1EntityCompatibilityStatusResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1EntrySourceOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1EntrySourcePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1EntrySourceAncestorOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1EntrySourceAncestorArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1EntrySourceAncestorResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1EntrySourceAncestorResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1EntrySourceResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1EntryTypeAspectInfoOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1EntryTypeAspectInfoArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1EntryTypeAspectInfoResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1EntryTypeAspectInfoResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1EntryTypeAuthorizationOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1EntryTypeAuthorizationPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1EntryTypeAuthorizationResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1EnvironmentEndpointsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1EnvironmentInfrastructureSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesOutput{})

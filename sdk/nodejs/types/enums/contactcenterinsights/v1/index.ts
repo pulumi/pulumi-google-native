@@ -31,6 +31,10 @@ export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationCon
      * The CCAI baseline model.
      */
     BaselineModel: "BASELINE_MODEL",
+    /**
+     * The CCAI baseline model, V2.0.
+     */
+    BaselineModelV20: "BASELINE_MODEL_V2_0",
 } as const;
 
 /**

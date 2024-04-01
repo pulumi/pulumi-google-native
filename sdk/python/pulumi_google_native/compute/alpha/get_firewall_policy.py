@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetFirewallPolicyResult:
-    def __init__(__self__, associations=None, creation_timestamp=None, description=None, display_name=None, fingerprint=None, kind=None, name=None, parent=None, region=None, rule_tuple_count=None, rules=None, self_link=None, self_link_with_id=None, short_name=None, vpc_network_scope=None):
+    def __init__(__self__, associations=None, creation_timestamp=None, description=None, display_name=None, fingerprint=None, kind=None, name=None, packet_mirroring_rules=None, parent=None, region=None, rule_tuple_count=None, rules=None, self_link=None, self_link_with_id=None, short_name=None, vpc_network_scope=None):
         if associations and not isinstance(associations, list):
             raise TypeError("Expected argument 'associations' to be a list")
         pulumi.set(__self__, "associations", associations)
@@ -41,6 +41,9 @@ class GetFirewallPolicyResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if packet_mirroring_rules and not isinstance(packet_mirroring_rules, list):
+            raise TypeError("Expected argument 'packet_mirroring_rules' to be a list")
+        pulumi.set(__self__, "packet_mirroring_rules", packet_mirroring_rules)
         if parent and not isinstance(parent, str):
             raise TypeError("Expected argument 'parent' to be a str")
         pulumi.set(__self__, "parent", parent)
@@ -126,6 +129,14 @@ class GetFirewallPolicyResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="packetMirroringRules")
+    def packet_mirroring_rules(self) -> Sequence['outputs.FirewallPolicyRuleResponse']:
+        """
+        A list of packet mirroring rules that belong to this policy.
+        """
+        return pulumi.get(self, "packet_mirroring_rules")
+
+    @property
     @pulumi.getter
     def parent(self) -> str:
         """
@@ -203,6 +214,7 @@ class AwaitableGetFirewallPolicyResult(GetFirewallPolicyResult):
             fingerprint=self.fingerprint,
             kind=self.kind,
             name=self.name,
+            packet_mirroring_rules=self.packet_mirroring_rules,
             parent=self.parent,
             region=self.region,
             rule_tuple_count=self.rule_tuple_count,
@@ -231,6 +243,7 @@ def get_firewall_policy(firewall_policy: Optional[str] = None,
         fingerprint=pulumi.get(__ret__, 'fingerprint'),
         kind=pulumi.get(__ret__, 'kind'),
         name=pulumi.get(__ret__, 'name'),
+        packet_mirroring_rules=pulumi.get(__ret__, 'packet_mirroring_rules'),
         parent=pulumi.get(__ret__, 'parent'),
         region=pulumi.get(__ret__, 'region'),
         rule_tuple_count=pulumi.get(__ret__, 'rule_tuple_count'),

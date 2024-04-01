@@ -24,15 +24,22 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1.Outputs
         /// Preferences concerning the machine types to consider on Compute Engine.
         /// </summary>
         public readonly Outputs.MachinePreferencesResponse MachinePreferences;
+        /// <summary>
+        /// Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+        /// </summary>
+        public readonly string PersistentDiskType;
 
         [OutputConstructor]
         private ComputeEnginePreferencesResponse(
             string licenseType,
 
-            Outputs.MachinePreferencesResponse machinePreferences)
+            Outputs.MachinePreferencesResponse machinePreferences,
+
+            string persistentDiskType)
         {
             LicenseType = licenseType;
             MachinePreferences = machinePreferences;
+            PersistentDiskType = persistentDiskType;
         }
     }
 }

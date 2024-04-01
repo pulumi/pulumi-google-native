@@ -15,36 +15,45 @@ __all__ = [
     'AuditConfigResponse',
     'AuditLogConfigResponse',
     'AuthConfigResponse',
+    'AuthorizationCodeLinkResponse',
     'BindingResponse',
     'ConfigVariableResponse',
+    'ConfigVariableTemplateResponse',
     'ConnectionStatusResponse',
     'ConnectorVersionInfraConfigResponse',
     'ConnectorsLogConfigResponse',
+    'DeadLetterConfigResponse',
     'DestinationConfigResponse',
     'DestinationResponse',
     'EncryptionKeyResponse',
     'EndPointResponse',
+    'EnumOptionResponse',
     'EventSubscriptionDestinationResponse',
     'EventSubscriptionStatusResponse',
     'EventingConfigResponse',
     'EventingRuntimeDataResponse',
     'EventingStatusResponse',
     'ExprResponse',
+    'FieldComparisonResponse',
     'HPAConfigResponse',
     'HeaderResponse',
     'JMSResponse',
     'JwtClaimsResponse',
     'LockConfigResponse',
+    'LogicalExpressionResponse',
     'NodeConfigResponse',
     'Oauth2AuthCodeFlowResponse',
     'Oauth2ClientCredentialsResponse',
     'Oauth2JwtBearerResponse',
     'ResourceLimitsResponse',
     'ResourceRequestsResponse',
+    'ResourceResponse',
+    'RoleGrantResponse',
     'SecretResponse',
     'SshPublicKeyResponse',
     'SslConfigResponse',
     'UserPasswordResponse',
+    'WebhookDataResponse',
 ]
 
 @pulumi.output_type
@@ -280,6 +289,80 @@ class AuthConfigResponse(dict):
 
 
 @pulumi.output_type
+class AuthorizationCodeLinkResponse(dict):
+    """
+    This configuration captures the details required to render an authorization link for the OAuth Authorization Code Flow.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "enablePkce":
+            suggest = "enable_pkce"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthorizationCodeLinkResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthorizationCodeLinkResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthorizationCodeLinkResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_id: str,
+                 enable_pkce: bool,
+                 scopes: Sequence[str],
+                 uri: str):
+        """
+        This configuration captures the details required to render an authorization link for the OAuth Authorization Code Flow.
+        :param str client_id: The client ID assigned to the Google Cloud Connectors OAuth app for the connector data source.
+        :param bool enable_pkce: Whether to enable PKCE for the auth code flow.
+        :param Sequence[str] scopes: The scopes for which the user will authorize Google Cloud Connectors on the connector data source.
+        :param str uri: The base URI the user must click to trigger the authorization code login flow.
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "enable_pkce", enable_pkce)
+        pulumi.set(__self__, "scopes", scopes)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        """
+        The client ID assigned to the Google Cloud Connectors OAuth app for the connector data source.
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="enablePkce")
+    def enable_pkce(self) -> bool:
+        """
+        Whether to enable PKCE for the auth code flow.
+        """
+        return pulumi.get(self, "enable_pkce")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Sequence[str]:
+        """
+        The scopes for which the user will authorize Google Cloud Connectors on the connector data source.
+        """
+        return pulumi.get(self, "scopes")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        The base URI the user must click to trigger the authorization code login flow.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
 class BindingResponse(dict):
     """
     Associates `members`, or principals, with a `role`.
@@ -291,8 +374,8 @@ class BindingResponse(dict):
         """
         Associates `members`, or principals, with a `role`.
         :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "members", members)
@@ -310,7 +393,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         """
         return pulumi.get(self, "members")
 
@@ -318,7 +401,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         return pulumi.get(self, "role")
 
@@ -426,6 +509,206 @@ class ConfigVariableResponse(dict):
 
 
 @pulumi.output_type
+class ConfigVariableTemplateResponse(dict):
+    """
+    ConfigVariableTemplate provides metadata about a `ConfigVariable` that is used in a Connection.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorizationCodeLink":
+            suggest = "authorization_code_link"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "enumOptions":
+            suggest = "enum_options"
+        elif key == "enumSource":
+            suggest = "enum_source"
+        elif key == "isAdvanced":
+            suggest = "is_advanced"
+        elif key == "locationType":
+            suggest = "location_type"
+        elif key == "requiredCondition":
+            suggest = "required_condition"
+        elif key == "roleGrant":
+            suggest = "role_grant"
+        elif key == "validationRegex":
+            suggest = "validation_regex"
+        elif key == "valueType":
+            suggest = "value_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigVariableTemplateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigVariableTemplateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigVariableTemplateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authorization_code_link: 'outputs.AuthorizationCodeLinkResponse',
+                 description: str,
+                 display_name: str,
+                 enum_options: Sequence['outputs.EnumOptionResponse'],
+                 enum_source: str,
+                 is_advanced: bool,
+                 key: str,
+                 location_type: str,
+                 required: bool,
+                 required_condition: 'outputs.LogicalExpressionResponse',
+                 role_grant: 'outputs.RoleGrantResponse',
+                 state: str,
+                 validation_regex: str,
+                 value_type: str):
+        """
+        ConfigVariableTemplate provides metadata about a `ConfigVariable` that is used in a Connection.
+        :param 'AuthorizationCodeLinkResponse' authorization_code_link: Authorization code link options. To be populated if `ValueType` is `AUTHORIZATION_CODE`
+        :param str description: Description.
+        :param str display_name: Display name of the parameter.
+        :param Sequence['EnumOptionResponse'] enum_options: Enum options. To be populated if `ValueType` is `ENUM`
+        :param str enum_source: Optional. enum source denotes the source of api to fill the enum options
+        :param bool is_advanced: Indicates if current template is part of advanced settings
+        :param str key: Key of the config variable.
+        :param str location_type: Optional. Location Tyep denotes where this value should be sent in BYOC connections.
+        :param bool required: Flag represents that this `ConfigVariable` must be provided for a connection.
+        :param 'LogicalExpressionResponse' required_condition: Condition under which a field would be required. The condition can be represented in the form of a logical expression.
+        :param 'RoleGrantResponse' role_grant: Role grant configuration for the config variable.
+        :param str state: State of the config variable.
+        :param str validation_regex: Regular expression in RE2 syntax used for validating the `value` of a `ConfigVariable`.
+        :param str value_type: Type of the parameter: string, int, bool etc. consider custom type for the benefit for the validation.
+        """
+        pulumi.set(__self__, "authorization_code_link", authorization_code_link)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "enum_options", enum_options)
+        pulumi.set(__self__, "enum_source", enum_source)
+        pulumi.set(__self__, "is_advanced", is_advanced)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "location_type", location_type)
+        pulumi.set(__self__, "required", required)
+        pulumi.set(__self__, "required_condition", required_condition)
+        pulumi.set(__self__, "role_grant", role_grant)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "validation_regex", validation_regex)
+        pulumi.set(__self__, "value_type", value_type)
+
+    @property
+    @pulumi.getter(name="authorizationCodeLink")
+    def authorization_code_link(self) -> 'outputs.AuthorizationCodeLinkResponse':
+        """
+        Authorization code link options. To be populated if `ValueType` is `AUTHORIZATION_CODE`
+        """
+        return pulumi.get(self, "authorization_code_link")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Description.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Display name of the parameter.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="enumOptions")
+    def enum_options(self) -> Sequence['outputs.EnumOptionResponse']:
+        """
+        Enum options. To be populated if `ValueType` is `ENUM`
+        """
+        return pulumi.get(self, "enum_options")
+
+    @property
+    @pulumi.getter(name="enumSource")
+    def enum_source(self) -> str:
+        """
+        Optional. enum source denotes the source of api to fill the enum options
+        """
+        return pulumi.get(self, "enum_source")
+
+    @property
+    @pulumi.getter(name="isAdvanced")
+    def is_advanced(self) -> bool:
+        """
+        Indicates if current template is part of advanced settings
+        """
+        return pulumi.get(self, "is_advanced")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key of the config variable.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter(name="locationType")
+    def location_type(self) -> str:
+        """
+        Optional. Location Tyep denotes where this value should be sent in BYOC connections.
+        """
+        return pulumi.get(self, "location_type")
+
+    @property
+    @pulumi.getter
+    def required(self) -> bool:
+        """
+        Flag represents that this `ConfigVariable` must be provided for a connection.
+        """
+        return pulumi.get(self, "required")
+
+    @property
+    @pulumi.getter(name="requiredCondition")
+    def required_condition(self) -> 'outputs.LogicalExpressionResponse':
+        """
+        Condition under which a field would be required. The condition can be represented in the form of a logical expression.
+        """
+        return pulumi.get(self, "required_condition")
+
+    @property
+    @pulumi.getter(name="roleGrant")
+    def role_grant(self) -> 'outputs.RoleGrantResponse':
+        """
+        Role grant configuration for the config variable.
+        """
+        return pulumi.get(self, "role_grant")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the config variable.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="validationRegex")
+    def validation_regex(self) -> str:
+        """
+        Regular expression in RE2 syntax used for validating the `value` of a `ConfigVariable`.
+        """
+        return pulumi.get(self, "validation_regex")
+
+    @property
+    @pulumi.getter(name="valueType")
+    def value_type(self) -> str:
+        """
+        Type of the parameter: string, int, bool etc. consider custom type for the benefit for the validation.
+        """
+        return pulumi.get(self, "value_type")
+
+
+@pulumi.output_type
 class ConnectionStatusResponse(dict):
     """
     ConnectionStatus indicates the state of the connection.
@@ -479,6 +762,8 @@ class ConnectorVersionInfraConfigResponse(dict):
         suggest = None
         if key == "connectionRatelimitWindowSeconds":
             suggest = "connection_ratelimit_window_seconds"
+        elif key == "deploymentModel":
+            suggest = "deployment_model"
         elif key == "hpaConfig":
             suggest = "hpa_config"
         elif key == "internalclientRatelimitThreshold":
@@ -505,6 +790,7 @@ class ConnectorVersionInfraConfigResponse(dict):
 
     def __init__(__self__, *,
                  connection_ratelimit_window_seconds: str,
+                 deployment_model: str,
                  hpa_config: 'outputs.HPAConfigResponse',
                  internalclient_ratelimit_threshold: str,
                  ratelimit_threshold: str,
@@ -514,6 +800,7 @@ class ConnectorVersionInfraConfigResponse(dict):
         """
         This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version
         :param str connection_ratelimit_window_seconds: The window used for ratelimiting runtime requests to connections.
+        :param str deployment_model: Optional. Indicates whether connector is deployed on GKE/CloudRun
         :param 'HPAConfigResponse' hpa_config: HPA autoscaling config.
         :param str internalclient_ratelimit_threshold: Max QPS supported for internal requests originating from Connd.
         :param str ratelimit_threshold: Max QPS supported by the connector version before throttling of requests.
@@ -522,6 +809,7 @@ class ConnectorVersionInfraConfigResponse(dict):
         :param str shared_deployment: The name of shared connector deployment.
         """
         pulumi.set(__self__, "connection_ratelimit_window_seconds", connection_ratelimit_window_seconds)
+        pulumi.set(__self__, "deployment_model", deployment_model)
         pulumi.set(__self__, "hpa_config", hpa_config)
         pulumi.set(__self__, "internalclient_ratelimit_threshold", internalclient_ratelimit_threshold)
         pulumi.set(__self__, "ratelimit_threshold", ratelimit_threshold)
@@ -536,6 +824,14 @@ class ConnectorVersionInfraConfigResponse(dict):
         The window used for ratelimiting runtime requests to connections.
         """
         return pulumi.get(self, "connection_ratelimit_window_seconds")
+
+    @property
+    @pulumi.getter(name="deploymentModel")
+    def deployment_model(self) -> str:
+        """
+        Optional. Indicates whether connector is deployed on GKE/CloudRun
+        """
+        return pulumi.get(self, "deployment_model")
 
     @property
     @pulumi.getter(name="hpaConfig")
@@ -606,6 +902,39 @@ class ConnectorsLogConfigResponse(dict):
         Enabled represents whether logging is enabled or not for a connection.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class DeadLetterConfigResponse(dict):
+    """
+    Dead Letter configuration details provided by the user.
+    """
+    def __init__(__self__, *,
+                 project: str,
+                 topic: str):
+        """
+        Dead Letter configuration details provided by the user.
+        :param str project: Optional. Project which has the topic given.
+        :param str topic: Optional. Topic to push events which couldn't be processed.
+        """
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        Optional. Project which has the topic given.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def topic(self) -> str:
+        """
+        Optional. Topic to push events which couldn't be processed.
+        """
+        return pulumi.get(self, "topic")
 
 
 @pulumi.output_type
@@ -799,6 +1128,45 @@ class EndPointResponse(dict):
 
 
 @pulumi.output_type
+class EnumOptionResponse(dict):
+    """
+    EnumOption definition
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnumOptionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnumOptionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnumOptionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: str):
+        """
+        EnumOption definition
+        :param str display_name: Display name of the option.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Display name of the option.
+        """
+        return pulumi.get(self, "display_name")
+
+
+@pulumi.output_type
 class EventSubscriptionDestinationResponse(dict):
     """
     Message for EventSubscription Destination to act on receiving an event
@@ -904,6 +1272,8 @@ class EventingConfigResponse(dict):
             suggest = "additional_variables"
         elif key == "authConfig":
             suggest = "auth_config"
+        elif key == "deadLetterConfig":
+            suggest = "dead_letter_config"
         elif key == "enrichmentEnabled":
             suggest = "enrichment_enabled"
         elif key == "eventsListenerIngressEndpoint":
@@ -912,6 +1282,8 @@ class EventingConfigResponse(dict):
             suggest = "listener_auth_config"
         elif key == "privateConnectivityEnabled":
             suggest = "private_connectivity_enabled"
+        elif key == "proxyDestinationConfig":
+            suggest = "proxy_destination_config"
         elif key == "registrationDestinationConfig":
             suggest = "registration_destination_config"
 
@@ -929,27 +1301,33 @@ class EventingConfigResponse(dict):
     def __init__(__self__, *,
                  additional_variables: Sequence['outputs.ConfigVariableResponse'],
                  auth_config: 'outputs.AuthConfigResponse',
+                 dead_letter_config: 'outputs.DeadLetterConfigResponse',
                  enrichment_enabled: bool,
                  events_listener_ingress_endpoint: str,
                  listener_auth_config: 'outputs.AuthConfigResponse',
                  private_connectivity_enabled: bool,
+                 proxy_destination_config: 'outputs.DestinationConfigResponse',
                  registration_destination_config: 'outputs.DestinationConfigResponse'):
         """
         Eventing Configuration of a connection
         :param Sequence['ConfigVariableResponse'] additional_variables: Additional eventing related field values
         :param 'AuthConfigResponse' auth_config: Auth details for the webhook adapter.
+        :param 'DeadLetterConfigResponse' dead_letter_config: Optional. Dead letter configuration for eventing of a connection.
         :param bool enrichment_enabled: Enrichment Enabled.
         :param str events_listener_ingress_endpoint: Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
         :param 'AuthConfigResponse' listener_auth_config: Optional. Auth details for the event listener.
         :param bool private_connectivity_enabled: Optional. Private Connectivity Enabled.
+        :param 'DestinationConfigResponse' proxy_destination_config: Optional. Proxy for Eventing auto-registration.
         :param 'DestinationConfigResponse' registration_destination_config: Registration endpoint for auto registration.
         """
         pulumi.set(__self__, "additional_variables", additional_variables)
         pulumi.set(__self__, "auth_config", auth_config)
+        pulumi.set(__self__, "dead_letter_config", dead_letter_config)
         pulumi.set(__self__, "enrichment_enabled", enrichment_enabled)
         pulumi.set(__self__, "events_listener_ingress_endpoint", events_listener_ingress_endpoint)
         pulumi.set(__self__, "listener_auth_config", listener_auth_config)
         pulumi.set(__self__, "private_connectivity_enabled", private_connectivity_enabled)
+        pulumi.set(__self__, "proxy_destination_config", proxy_destination_config)
         pulumi.set(__self__, "registration_destination_config", registration_destination_config)
 
     @property
@@ -967,6 +1345,14 @@ class EventingConfigResponse(dict):
         Auth details for the webhook adapter.
         """
         return pulumi.get(self, "auth_config")
+
+    @property
+    @pulumi.getter(name="deadLetterConfig")
+    def dead_letter_config(self) -> 'outputs.DeadLetterConfigResponse':
+        """
+        Optional. Dead letter configuration for eventing of a connection.
+        """
+        return pulumi.get(self, "dead_letter_config")
 
     @property
     @pulumi.getter(name="enrichmentEnabled")
@@ -1001,6 +1387,14 @@ class EventingConfigResponse(dict):
         return pulumi.get(self, "private_connectivity_enabled")
 
     @property
+    @pulumi.getter(name="proxyDestinationConfig")
+    def proxy_destination_config(self) -> 'outputs.DestinationConfigResponse':
+        """
+        Optional. Proxy for Eventing auto-registration.
+        """
+        return pulumi.get(self, "proxy_destination_config")
+
+    @property
     @pulumi.getter(name="registrationDestinationConfig")
     def registration_destination_config(self) -> 'outputs.DestinationConfigResponse':
         """
@@ -1021,6 +1415,8 @@ class EventingRuntimeDataResponse(dict):
             suggest = "events_listener_endpoint"
         elif key == "eventsListenerPscSa":
             suggest = "events_listener_psc_sa"
+        elif key == "webhookData":
+            suggest = "webhook_data"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in EventingRuntimeDataResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1036,16 +1432,19 @@ class EventingRuntimeDataResponse(dict):
     def __init__(__self__, *,
                  events_listener_endpoint: str,
                  events_listener_psc_sa: str,
-                 status: 'outputs.EventingStatusResponse'):
+                 status: 'outputs.EventingStatusResponse',
+                 webhook_data: 'outputs.WebhookDataResponse'):
         """
         Eventing runtime data has the details related to eventing managed by the system.
         :param str events_listener_endpoint: Events listener endpoint. The value will populated after provisioning the events listener.
         :param str events_listener_psc_sa: Events listener PSC Service attachment. The value will be populated after provisioning the events listener with private connectivity enabled.
         :param 'EventingStatusResponse' status: Current status of eventing.
+        :param 'WebhookDataResponse' webhook_data: Webhook data.
         """
         pulumi.set(__self__, "events_listener_endpoint", events_listener_endpoint)
         pulumi.set(__self__, "events_listener_psc_sa", events_listener_psc_sa)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "webhook_data", webhook_data)
 
     @property
     @pulumi.getter(name="eventsListenerEndpoint")
@@ -1070,6 +1469,14 @@ class EventingRuntimeDataResponse(dict):
         Current status of eventing.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="webhookData")
+    def webhook_data(self) -> 'outputs.WebhookDataResponse':
+        """
+        Webhook data.
+        """
+        return pulumi.get(self, "webhook_data")
 
 
 @pulumi.output_type
@@ -1158,6 +1565,93 @@ class ExprResponse(dict):
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class FieldComparisonResponse(dict):
+    """
+    Field that needs to be compared.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "boolValue":
+            suggest = "bool_value"
+        elif key == "intValue":
+            suggest = "int_value"
+        elif key == "stringValue":
+            suggest = "string_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FieldComparisonResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FieldComparisonResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FieldComparisonResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bool_value: bool,
+                 comparator: str,
+                 int_value: str,
+                 key: str,
+                 string_value: str):
+        """
+        Field that needs to be compared.
+        :param bool bool_value: Boolean value
+        :param str comparator: Comparator to use for comparing the field value.
+        :param str int_value: Integer value
+        :param str key: Key of the field.
+        :param str string_value: String value
+        """
+        pulumi.set(__self__, "bool_value", bool_value)
+        pulumi.set(__self__, "comparator", comparator)
+        pulumi.set(__self__, "int_value", int_value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "string_value", string_value)
+
+    @property
+    @pulumi.getter(name="boolValue")
+    def bool_value(self) -> bool:
+        """
+        Boolean value
+        """
+        return pulumi.get(self, "bool_value")
+
+    @property
+    @pulumi.getter
+    def comparator(self) -> str:
+        """
+        Comparator to use for comparing the field value.
+        """
+        return pulumi.get(self, "comparator")
+
+    @property
+    @pulumi.getter(name="intValue")
+    def int_value(self) -> str:
+        """
+        Integer value
+        """
+        return pulumi.get(self, "int_value")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key of the field.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> str:
+        """
+        String value
+        """
+        return pulumi.get(self, "string_value")
 
 
 @pulumi.output_type
@@ -1353,6 +1847,71 @@ class LockConfigResponse(dict):
         Describes why a connection is locked.
         """
         return pulumi.get(self, "reason")
+
+
+@pulumi.output_type
+class LogicalExpressionResponse(dict):
+    """
+    Struct for representing boolean expressions.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldComparisons":
+            suggest = "field_comparisons"
+        elif key == "logicalExpressions":
+            suggest = "logical_expressions"
+        elif key == "logicalOperator":
+            suggest = "logical_operator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LogicalExpressionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LogicalExpressionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LogicalExpressionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 field_comparisons: Sequence['outputs.FieldComparisonResponse'],
+                 logical_expressions: Sequence['outputs.LogicalExpressionResponse'],
+                 logical_operator: str):
+        """
+        Struct for representing boolean expressions.
+        :param Sequence['FieldComparisonResponse'] field_comparisons: A list of fields to be compared.
+        :param Sequence['LogicalExpressionResponse'] logical_expressions: A list of nested conditions to be compared.
+        :param str logical_operator: The logical operator to use between the fields and conditions.
+        """
+        pulumi.set(__self__, "field_comparisons", field_comparisons)
+        pulumi.set(__self__, "logical_expressions", logical_expressions)
+        pulumi.set(__self__, "logical_operator", logical_operator)
+
+    @property
+    @pulumi.getter(name="fieldComparisons")
+    def field_comparisons(self) -> Sequence['outputs.FieldComparisonResponse']:
+        """
+        A list of fields to be compared.
+        """
+        return pulumi.get(self, "field_comparisons")
+
+    @property
+    @pulumi.getter(name="logicalExpressions")
+    def logical_expressions(self) -> Sequence['outputs.LogicalExpressionResponse']:
+        """
+        A list of nested conditions to be compared.
+        """
+        return pulumi.get(self, "logical_expressions")
+
+    @property
+    @pulumi.getter(name="logicalOperator")
+    def logical_operator(self) -> str:
+        """
+        The logical operator to use between the fields and conditions.
+        """
+        return pulumi.get(self, "logical_operator")
 
 
 @pulumi.output_type
@@ -1706,6 +2265,128 @@ class ResourceRequestsResponse(dict):
 
 
 @pulumi.output_type
+class ResourceResponse(dict):
+    """
+    Resource definition
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pathTemplate":
+            suggest = "path_template"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 path_template: str,
+                 type: str):
+        """
+        Resource definition
+        :param str path_template: Template to uniquely represent a Google Cloud resource in a format IAM expects This is a template that can have references to other values provided in the config variable template.
+        :param str type: Different types of resource supported.
+        """
+        pulumi.set(__self__, "path_template", path_template)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="pathTemplate")
+    def path_template(self) -> str:
+        """
+        Template to uniquely represent a Google Cloud resource in a format IAM expects This is a template that can have references to other values provided in the config variable template.
+        """
+        return pulumi.get(self, "path_template")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Different types of resource supported.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class RoleGrantResponse(dict):
+    """
+    This configuration defines all the Cloud IAM roles that needs to be granted to a particular Google Cloud resource for the selected principal like service account. These configurations will let UI display to customers what IAM roles need to be granted by them. Or these configurations can be used by the UI to render a 'grant' button to do the same on behalf of the user.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "helperTextTemplate":
+            suggest = "helper_text_template"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RoleGrantResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RoleGrantResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RoleGrantResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 helper_text_template: str,
+                 principal: str,
+                 resource: 'outputs.ResourceResponse',
+                 roles: Sequence[str]):
+        """
+        This configuration defines all the Cloud IAM roles that needs to be granted to a particular Google Cloud resource for the selected principal like service account. These configurations will let UI display to customers what IAM roles need to be granted by them. Or these configurations can be used by the UI to render a 'grant' button to do the same on behalf of the user.
+        :param str helper_text_template: Template that UI can use to provide helper text to customers.
+        :param str principal: Prinicipal/Identity for whom the role need to assigned.
+        :param 'ResourceResponse' resource: Resource on which the roles needs to be granted for the principal.
+        :param Sequence[str] roles: List of roles that need to be granted.
+        """
+        pulumi.set(__self__, "helper_text_template", helper_text_template)
+        pulumi.set(__self__, "principal", principal)
+        pulumi.set(__self__, "resource", resource)
+        pulumi.set(__self__, "roles", roles)
+
+    @property
+    @pulumi.getter(name="helperTextTemplate")
+    def helper_text_template(self) -> str:
+        """
+        Template that UI can use to provide helper text to customers.
+        """
+        return pulumi.get(self, "helper_text_template")
+
+    @property
+    @pulumi.getter
+    def principal(self) -> str:
+        """
+        Prinicipal/Identity for whom the role need to assigned.
+        """
+        return pulumi.get(self, "principal")
+
+    @property
+    @pulumi.getter
+    def resource(self) -> 'outputs.ResourceResponse':
+        """
+        Resource on which the roles needs to be granted for the principal.
+        """
+        return pulumi.get(self, "resource")
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Sequence[str]:
+        """
+        List of roles that need to be granted.
+        """
+        return pulumi.get(self, "roles")
+
+
+@pulumi.output_type
 class SecretResponse(dict):
     """
     Secret provides a reference to entries in Secret Manager.
@@ -2005,5 +2686,94 @@ class UserPasswordResponse(dict):
         Username.
         """
         return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class WebhookDataResponse(dict):
+    """
+    WebhookData has details of webhook configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalVariables":
+            suggest = "additional_variables"
+        elif key == "createTime":
+            suggest = "create_time"
+        elif key == "nextRefreshTime":
+            suggest = "next_refresh_time"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WebhookDataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WebhookDataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WebhookDataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 additional_variables: Sequence['outputs.ConfigVariableResponse'],
+                 create_time: str,
+                 name: str,
+                 next_refresh_time: str,
+                 update_time: str):
+        """
+        WebhookData has details of webhook configuration.
+        :param Sequence['ConfigVariableResponse'] additional_variables: Additional webhook related field values.
+        :param str create_time: Timestamp when the webhook was created.
+        :param str name: Name of the Webhook
+        :param str next_refresh_time: Next webhook refresh time. Will be null if refresh is not supported.
+        :param str update_time: Timestamp when the webhook was last updated.
+        """
+        pulumi.set(__self__, "additional_variables", additional_variables)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "next_refresh_time", next_refresh_time)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="additionalVariables")
+    def additional_variables(self) -> Sequence['outputs.ConfigVariableResponse']:
+        """
+        Additional webhook related field values.
+        """
+        return pulumi.get(self, "additional_variables")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Timestamp when the webhook was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the Webhook
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nextRefreshTime")
+    def next_refresh_time(self) -> str:
+        """
+        Next webhook refresh time. Will be null if refresh is not supported.
+        """
+        return pulumi.get(self, "next_refresh_time")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        Timestamp when the webhook was last updated.
+        """
+        return pulumi.get(self, "update_time")
 
 

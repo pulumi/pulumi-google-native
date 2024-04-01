@@ -27,6 +27,8 @@ type Session struct {
 	InstanceId  pulumi.StringOutput `pulumi:"instanceId"`
 	// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Optional. If true, specifies a multiplexed session. A multiplexed session may be used for multiple, concurrent read-only operations but can not be used for read-write transactions, partitioned reads, or partitioned queries. Multiplexed sessions can be created via CreateSession but not via BatchCreateSessions. Multiplexed sessions may not be deleted nor listed.
+	Multiplexed pulumi.BoolOutput `pulumi:"multiplexed"`
 	// The name of the session. This is always system-assigned.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -89,8 +91,10 @@ type sessionArgs struct {
 	DatabaseId  string  `pulumi:"databaseId"`
 	InstanceId  string  `pulumi:"instanceId"`
 	// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
-	Labels  map[string]string `pulumi:"labels"`
-	Project *string           `pulumi:"project"`
+	Labels map[string]string `pulumi:"labels"`
+	// Optional. If true, specifies a multiplexed session. A multiplexed session may be used for multiple, concurrent read-only operations but can not be used for read-write transactions, partitioned reads, or partitioned queries. Multiplexed sessions can be created via CreateSession but not via BatchCreateSessions. Multiplexed sessions may not be deleted nor listed.
+	Multiplexed *bool   `pulumi:"multiplexed"`
+	Project     *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Session resource.
@@ -100,8 +104,10 @@ type SessionArgs struct {
 	DatabaseId  pulumi.StringInput
 	InstanceId  pulumi.StringInput
 	// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
-	Labels  pulumi.StringMapInput
-	Project pulumi.StringPtrInput
+	Labels pulumi.StringMapInput
+	// Optional. If true, specifies a multiplexed session. A multiplexed session may be used for multiple, concurrent read-only operations but can not be used for read-write transactions, partitioned reads, or partitioned queries. Multiplexed sessions can be created via CreateSession but not via BatchCreateSessions. Multiplexed sessions may not be deleted nor listed.
+	Multiplexed pulumi.BoolPtrInput
+	Project     pulumi.StringPtrInput
 }
 
 func (SessionArgs) ElementType() reflect.Type {
@@ -167,6 +173,11 @@ func (o SessionOutput) InstanceId() pulumi.StringOutput {
 // The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
 func (o SessionOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Session) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Optional. If true, specifies a multiplexed session. A multiplexed session may be used for multiple, concurrent read-only operations but can not be used for read-write transactions, partitioned reads, or partitioned queries. Multiplexed sessions can be created via CreateSession but not via BatchCreateSessions. Multiplexed sessions may not be deleted nor listed.
+func (o SessionOutput) Multiplexed() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Session) pulumi.BoolOutput { return v.Multiplexed }).(pulumi.BoolOutput)
 }
 
 // The name of the session. This is always system-assigned.

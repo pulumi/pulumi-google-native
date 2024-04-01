@@ -31,10 +31,20 @@ type StoragePool struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
 	PerformanceProvisioningType pulumi.StringOutput `pulumi:"performanceProvisioningType"`
-	Project                     pulumi.StringOutput `pulumi:"project"`
-	// Provsioned IOPS of the storage pool.
-	ProvisionedIops pulumi.StringOutput `pulumi:"provisionedIops"`
+	// Size, in GiB, of the storage pool.
+	PoolProvisionedCapacityGb pulumi.StringOutput `pulumi:"poolProvisionedCapacityGb"`
+	// Provisioned IOPS of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced.
+	PoolProvisionedIops pulumi.StringOutput `pulumi:"poolProvisionedIops"`
 	// Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+	PoolProvisionedThroughput pulumi.StringOutput `pulumi:"poolProvisionedThroughput"`
+	Project                   pulumi.StringOutput `pulumi:"project"`
+	// DEPRECATED -- use "pool provisioned IOPS".
+	//
+	// Deprecated: DEPRECATED -- use "pool provisioned IOPS".
+	ProvisionedIops pulumi.StringOutput `pulumi:"provisionedIops"`
+	// DEPRECATED -- use "pool provisioned throughput".
+	//
+	// Deprecated: DEPRECATED -- use "pool provisioned throughput".
 	ProvisionedThroughput pulumi.StringOutput `pulumi:"provisionedThroughput"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
@@ -44,7 +54,9 @@ type StoragePool struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL for this resource's resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
-	// Size, in GiB, of the storage pool.
+	// DEPRECATED -- use "pool provisioned capacity gb".
+	//
+	// Deprecated: DEPRECATED -- use "pool provisioned capacity gb".
 	SizeGb pulumi.StringOutput `pulumi:"sizeGb"`
 	// The status of storage pool creation. - CREATING: Storage pool is provisioning. storagePool. - FAILED: Storage pool creation failed. - READY: Storage pool is ready for use. - DELETING: Storage pool is deleting.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -110,14 +122,26 @@ type storagePoolArgs struct {
 	Name *string `pulumi:"name"`
 	// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
 	PerformanceProvisioningType *StoragePoolPerformanceProvisioningType `pulumi:"performanceProvisioningType"`
-	Project                     *string                                 `pulumi:"project"`
-	// Provsioned IOPS of the storage pool.
-	ProvisionedIops *string `pulumi:"provisionedIops"`
+	// Size, in GiB, of the storage pool.
+	PoolProvisionedCapacityGb *string `pulumi:"poolProvisionedCapacityGb"`
+	// Provisioned IOPS of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced.
+	PoolProvisionedIops *string `pulumi:"poolProvisionedIops"`
 	// Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+	PoolProvisionedThroughput *string `pulumi:"poolProvisionedThroughput"`
+	Project                   *string `pulumi:"project"`
+	// DEPRECATED -- use "pool provisioned IOPS".
+	//
+	// Deprecated: DEPRECATED -- use "pool provisioned IOPS".
+	ProvisionedIops *string `pulumi:"provisionedIops"`
+	// DEPRECATED -- use "pool provisioned throughput".
+	//
+	// Deprecated: DEPRECATED -- use "pool provisioned throughput".
 	ProvisionedThroughput *string `pulumi:"provisionedThroughput"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
-	// Size, in GiB, of the storage pool.
+	// DEPRECATED -- use "pool provisioned capacity gb".
+	//
+	// Deprecated: DEPRECATED -- use "pool provisioned capacity gb".
 	SizeGb *string `pulumi:"sizeGb"`
 	// Type of the storage pool.
 	StoragePoolType *string `pulumi:"storagePoolType"`
@@ -136,14 +160,26 @@ type StoragePoolArgs struct {
 	Name pulumi.StringPtrInput
 	// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
 	PerformanceProvisioningType StoragePoolPerformanceProvisioningTypePtrInput
-	Project                     pulumi.StringPtrInput
-	// Provsioned IOPS of the storage pool.
-	ProvisionedIops pulumi.StringPtrInput
+	// Size, in GiB, of the storage pool.
+	PoolProvisionedCapacityGb pulumi.StringPtrInput
+	// Provisioned IOPS of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced.
+	PoolProvisionedIops pulumi.StringPtrInput
 	// Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+	PoolProvisionedThroughput pulumi.StringPtrInput
+	Project                   pulumi.StringPtrInput
+	// DEPRECATED -- use "pool provisioned IOPS".
+	//
+	// Deprecated: DEPRECATED -- use "pool provisioned IOPS".
+	ProvisionedIops pulumi.StringPtrInput
+	// DEPRECATED -- use "pool provisioned throughput".
+	//
+	// Deprecated: DEPRECATED -- use "pool provisioned throughput".
 	ProvisionedThroughput pulumi.StringPtrInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
-	// Size, in GiB, of the storage pool.
+	// DEPRECATED -- use "pool provisioned capacity gb".
+	//
+	// Deprecated: DEPRECATED -- use "pool provisioned capacity gb".
 	SizeGb pulumi.StringPtrInput
 	// Type of the storage pool.
 	StoragePoolType pulumi.StringPtrInput
@@ -227,16 +263,35 @@ func (o StoragePoolOutput) PerformanceProvisioningType() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.PerformanceProvisioningType }).(pulumi.StringOutput)
 }
 
+// Size, in GiB, of the storage pool.
+func (o StoragePoolOutput) PoolProvisionedCapacityGb() pulumi.StringOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.PoolProvisionedCapacityGb }).(pulumi.StringOutput)
+}
+
+// Provisioned IOPS of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced.
+func (o StoragePoolOutput) PoolProvisionedIops() pulumi.StringOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.PoolProvisionedIops }).(pulumi.StringOutput)
+}
+
+// Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+func (o StoragePoolOutput) PoolProvisionedThroughput() pulumi.StringOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.PoolProvisionedThroughput }).(pulumi.StringOutput)
+}
+
 func (o StoragePoolOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Provsioned IOPS of the storage pool.
+// DEPRECATED -- use "pool provisioned IOPS".
+//
+// Deprecated: DEPRECATED -- use "pool provisioned IOPS".
 func (o StoragePoolOutput) ProvisionedIops() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.ProvisionedIops }).(pulumi.StringOutput)
 }
 
-// Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+// DEPRECATED -- use "pool provisioned throughput".
+//
+// Deprecated: DEPRECATED -- use "pool provisioned throughput".
 func (o StoragePoolOutput) ProvisionedThroughput() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.ProvisionedThroughput }).(pulumi.StringOutput)
 }
@@ -261,7 +316,9 @@ func (o StoragePoolOutput) SelfLinkWithId() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.SelfLinkWithId }).(pulumi.StringOutput)
 }
 
-// Size, in GiB, of the storage pool.
+// DEPRECATED -- use "pool provisioned capacity gb".
+//
+// Deprecated: DEPRECATED -- use "pool provisioned capacity gb".
 func (o StoragePoolOutput) SizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.SizeGb }).(pulumi.StringOutput)
 }

@@ -41,7 +41,7 @@ type LookupBlockchainNodeResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The fully qualified name of the blockchain node. e.g. `projects/my-project/locations/us-central1/blockchainNodes/my-node`.
 	Name string `pulumi:"name"`
-	// Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are exposed. Otherwise, the node is only accessible via public endpoints. See https://cloud.google.com/vpc/docs/private-service-connect.
+	// Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are exposed. Otherwise, the node is only accessible via public endpoints. Warning: Private Service Connect enabled nodes may require a manual migration effort to remain compatible with future versions of the product. If this feature is enabled, you will be notified of these changes along with any required action to avoid disruption. See https://cloud.google.com/vpc/docs/private-service-connect.
 	PrivateServiceConnectEnabled bool `pulumi:"privateServiceConnectEnabled"`
 	// A status representing the state of the node.
 	State string `pulumi:"state"`
@@ -116,7 +116,7 @@ func (o LookupBlockchainNodeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBlockchainNodeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are exposed. Otherwise, the node is only accessible via public endpoints. See https://cloud.google.com/vpc/docs/private-service-connect.
+// Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are exposed. Otherwise, the node is only accessible via public endpoints. Warning: Private Service Connect enabled nodes may require a manual migration effort to remain compatible with future versions of the product. If this feature is enabled, you will be notified of these changes along with any required action to avoid disruption. See https://cloud.google.com/vpc/docs/private-service-connect.
 func (o LookupBlockchainNodeResultOutput) PrivateServiceConnectEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBlockchainNodeResult) bool { return v.PrivateServiceConnectEnabled }).(pulumi.BoolOutput)
 }

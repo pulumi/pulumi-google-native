@@ -7,11 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a conversation.
+// Create a longrunning conversation upload operation. This method differs from CreateConversation by allowing audio transcription and optional DLP redaction.
 type Conversation struct {
 	pulumi.CustomResourceState
 
@@ -19,8 +20,6 @@ type Conversation struct {
 	AgentId pulumi.StringOutput `pulumi:"agentId"`
 	// Call-specific metadata.
 	CallMetadata GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponseOutput `pulumi:"callMetadata"`
-	// A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
-	ConversationId pulumi.StringPtrOutput `pulumi:"conversationId"`
 	// The time at which the conversation was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The source of the audio and transcription for the conversation.
@@ -47,6 +46,8 @@ type Conversation struct {
 	// Obfuscated user ID which the customer sent to us.
 	ObfuscatedUserId pulumi.StringOutput `pulumi:"obfuscatedUserId"`
 	Project          pulumi.StringOutput `pulumi:"project"`
+	// Conversation metadata related to quality management.
+	QualityMetadata GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponseOutput `pulumi:"qualityMetadata"`
 	// The annotations that were generated during the customer and agent interaction.
 	RuntimeAnnotations GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponseArrayOutput `pulumi:"runtimeAnnotations"`
 	// The time at which the conversation started.
@@ -65,9 +66,12 @@ type Conversation struct {
 func NewConversation(ctx *pulumi.Context,
 	name string, args *ConversationArgs, opts ...pulumi.ResourceOption) (*Conversation, error) {
 	if args == nil {
-		args = &ConversationArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Parent == nil {
+		return nil, errors.New("invalid value for required argument 'Parent'")
+	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"location",
 		"project",
@@ -110,7 +114,7 @@ type conversationArgs struct {
 	AgentId *string `pulumi:"agentId"`
 	// Call-specific metadata.
 	CallMetadata *GoogleCloudContactcenterinsightsV1ConversationCallMetadata `pulumi:"callMetadata"`
-	// A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
+	// Optional. A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
 	ConversationId *string `pulumi:"conversationId"`
 	// The source of the audio and transcription for the conversation.
 	DataSource *GoogleCloudContactcenterinsightsV1ConversationDataSource `pulumi:"dataSource"`
@@ -127,7 +131,15 @@ type conversationArgs struct {
 	Name *string `pulumi:"name"`
 	// Obfuscated user ID which the customer sent to us.
 	ObfuscatedUserId *string `pulumi:"obfuscatedUserId"`
-	Project          *string `pulumi:"project"`
+	// The parent resource of the conversation.
+	Parent  string  `pulumi:"parent"`
+	Project *string `pulumi:"project"`
+	// Conversation metadata related to quality management.
+	QualityMetadata *GoogleCloudContactcenterinsightsV1ConversationQualityMetadata `pulumi:"qualityMetadata"`
+	// Optional. DLP settings for transcript redaction. Will default to the config specified in Settings.
+	RedactionConfig *GoogleCloudContactcenterinsightsV1RedactionConfig `pulumi:"redactionConfig"`
+	// Optional. Speech-to-Text configuration. Will default to the config specified in Settings.
+	SpeechConfig *GoogleCloudContactcenterinsightsV1SpeechConfig `pulumi:"speechConfig"`
 	// The time at which the conversation started.
 	StartTime *string `pulumi:"startTime"`
 	// Input only. The TTL for this resource. If specified, then this TTL will be used to calculate the expire time.
@@ -140,7 +152,7 @@ type ConversationArgs struct {
 	AgentId pulumi.StringPtrInput
 	// Call-specific metadata.
 	CallMetadata GoogleCloudContactcenterinsightsV1ConversationCallMetadataPtrInput
-	// A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
+	// Optional. A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
 	ConversationId pulumi.StringPtrInput
 	// The source of the audio and transcription for the conversation.
 	DataSource GoogleCloudContactcenterinsightsV1ConversationDataSourcePtrInput
@@ -157,7 +169,15 @@ type ConversationArgs struct {
 	Name pulumi.StringPtrInput
 	// Obfuscated user ID which the customer sent to us.
 	ObfuscatedUserId pulumi.StringPtrInput
-	Project          pulumi.StringPtrInput
+	// The parent resource of the conversation.
+	Parent  pulumi.StringInput
+	Project pulumi.StringPtrInput
+	// Conversation metadata related to quality management.
+	QualityMetadata GoogleCloudContactcenterinsightsV1ConversationQualityMetadataPtrInput
+	// Optional. DLP settings for transcript redaction. Will default to the config specified in Settings.
+	RedactionConfig GoogleCloudContactcenterinsightsV1RedactionConfigPtrInput
+	// Optional. Speech-to-Text configuration. Will default to the config specified in Settings.
+	SpeechConfig GoogleCloudContactcenterinsightsV1SpeechConfigPtrInput
 	// The time at which the conversation started.
 	StartTime pulumi.StringPtrInput
 	// Input only. The TTL for this resource. If specified, then this TTL will be used to calculate the expire time.
@@ -211,11 +231,6 @@ func (o ConversationOutput) CallMetadata() GoogleCloudContactcenterinsightsV1Con
 	return o.ApplyT(func(v *Conversation) GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponseOutput {
 		return v.CallMetadata
 	}).(GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponseOutput)
-}
-
-// A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
-func (o ConversationOutput) ConversationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Conversation) pulumi.StringPtrOutput { return v.ConversationId }).(pulumi.StringPtrOutput)
 }
 
 // The time at which the conversation was created.
@@ -290,6 +305,13 @@ func (o ConversationOutput) ObfuscatedUserId() pulumi.StringOutput {
 
 func (o ConversationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Conversation metadata related to quality management.
+func (o ConversationOutput) QualityMetadata() GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponseOutput {
+	return o.ApplyT(func(v *Conversation) GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponseOutput {
+		return v.QualityMetadata
+	}).(GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponseOutput)
 }
 
 // The annotations that were generated during the customer and agent interaction.

@@ -179,6 +179,10 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Reserved for future use.
      */
+    public /*out*/ readonly satisfiesPzi!: pulumi.Output<boolean>;
+    /**
+     * Reserved for future use.
+     */
     public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
     /**
      * Sets the scheduling options for this instance.
@@ -309,6 +313,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["lastStopTimestamp"] = undefined /*out*/;
             resourceInputs["lastSuspendedTimestamp"] = undefined /*out*/;
             resourceInputs["resourceStatus"] = undefined /*out*/;
+            resourceInputs["satisfiesPzi"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
@@ -354,6 +359,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["reservationAffinity"] = undefined /*out*/;
             resourceInputs["resourcePolicies"] = undefined /*out*/;
             resourceInputs["resourceStatus"] = undefined /*out*/;
+            resourceInputs["satisfiesPzi"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["scheduling"] = undefined /*out*/;
             resourceInputs["secureTags"] = undefined /*out*/;

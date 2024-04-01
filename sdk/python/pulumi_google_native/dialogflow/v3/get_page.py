@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetPageResult:
-    def __init__(__self__, advanced_settings=None, display_name=None, entry_fulfillment=None, event_handlers=None, form=None, knowledge_connector_settings=None, name=None, transition_route_groups=None, transition_routes=None):
+    def __init__(__self__, advanced_settings=None, description=None, display_name=None, entry_fulfillment=None, event_handlers=None, form=None, knowledge_connector_settings=None, name=None, transition_route_groups=None, transition_routes=None):
         if advanced_settings and not isinstance(advanced_settings, dict):
             raise TypeError("Expected argument 'advanced_settings' to be a dict")
         pulumi.set(__self__, "advanced_settings", advanced_settings)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -55,6 +58,14 @@ class GetPageResult:
         Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
         """
         return pulumi.get(self, "advanced_settings")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the page. The maximum length is 500 characters.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="displayName")
@@ -128,6 +139,7 @@ class AwaitableGetPageResult(GetPageResult):
             yield self
         return GetPageResult(
             advanced_settings=self.advanced_settings,
+            description=self.description,
             display_name=self.display_name,
             entry_fulfillment=self.entry_fulfillment,
             event_handlers=self.event_handlers,
@@ -160,6 +172,7 @@ def get_page(agent_id: Optional[str] = None,
 
     return AwaitableGetPageResult(
         advanced_settings=pulumi.get(__ret__, 'advanced_settings'),
+        description=pulumi.get(__ret__, 'description'),
         display_name=pulumi.get(__ret__, 'display_name'),
         entry_fulfillment=pulumi.get(__ret__, 'entry_fulfillment'),
         event_handlers=pulumi.get(__ret__, 'event_handlers'),

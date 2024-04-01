@@ -62,6 +62,10 @@ namespace Pulumi.GoogleNative.Firestore.V1
         /// </summary>
         public readonly string AppEngineIntegrationMode;
         /// <summary>
+        /// Optional. Presence indicates CMEK is enabled for this database.
+        /// </summary>
+        public readonly Outputs.GoogleFirestoreAdminV1CmekConfigResponse CmekConfig;
+        /// <summary>
         /// The concurrency control mode to use for this database.
         /// </summary>
         public readonly string ConcurrencyMode;
@@ -118,6 +122,8 @@ namespace Pulumi.GoogleNative.Firestore.V1
         private GetDatabaseResult(
             string appEngineIntegrationMode,
 
+            Outputs.GoogleFirestoreAdminV1CmekConfigResponse cmekConfig,
+
             string concurrencyMode,
 
             string createTime,
@@ -145,6 +151,7 @@ namespace Pulumi.GoogleNative.Firestore.V1
             string versionRetentionPeriod)
         {
             AppEngineIntegrationMode = appEngineIntegrationMode;
+            CmekConfig = cmekConfig;
             ConcurrencyMode = concurrencyMode;
             CreateTime = createTime;
             DeleteProtectionState = deleteProtectionState;

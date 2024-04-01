@@ -20,6 +20,7 @@ __all__ = [
     'DenyMaintenancePeriodArgs',
     'DiskEncryptionConfigurationArgs',
     'DiskEncryptionStatusArgs',
+    'GeminiInstanceConfigArgs',
     'InsightsConfigArgs',
     'InstanceFailoverReplicaArgs',
     'InstanceReferenceArgs',
@@ -33,6 +34,7 @@ __all__ = [
     'PasswordValidationPolicyArgs',
     'PscConfigArgs',
     'ReplicaConfigurationArgs',
+    'ReplicationClusterArgs',
     'SettingsArgs',
     'SqlActiveDirectoryConfigArgs',
     'SqlOutOfDiskReportArgs',
@@ -533,6 +535,15 @@ class DiskEncryptionStatusArgs:
 
 
 @pulumi.input_type
+class GeminiInstanceConfigArgs:
+    def __init__(__self__):
+        """
+        Gemini configuration.
+        """
+        pass
+
+
+@pulumi.input_type
 class InsightsConfigArgs:
     def __init__(__self__, *,
                  query_insights_enabled: Optional[pulumi.Input[bool]] = None,
@@ -735,8 +746,8 @@ class IpConfigurationArgs:
         :param pulumi.Input[bool] ipv4_enabled: Whether the instance is assigned a public IP address or not.
         :param pulumi.Input[str] private_network: The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
         :param pulumi.Input['PscConfigArgs'] psc_config: PSC settings for this instance.
-        :param pulumi.Input[bool] require_ssl: Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
-        :param pulumi.Input['IpConfigurationSslMode'] ssl_mode: Specify how SSL/TLS is enforced in database connections. This flag is supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict between those flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the value of `ssl_mode` gets priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database respects `ssl_mode` in this case and only accepts SSL connections.
+        :param pulumi.Input[bool] require_ssl: Use `ssl_mode` instead. Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
+        :param pulumi.Input['IpConfigurationSslMode'] ssl_mode: Specify how SSL/TLS is enforced in database connections. If you must use the `require_ssl` flag for backward compatibility, then only the following value pairs are valid: For PostgreSQL and MySQL: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` For SQL Server: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=true` The value of `ssl_mode` gets priority over the value of `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means only accept SSL connections, while the `require_ssl=false` means accept both non-SSL and SSL connections. MySQL and PostgreSQL databases respect `ssl_mode` in this case and accept only SSL connections.
         """
         if allocated_ip_range is not None:
             pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
@@ -831,7 +842,7 @@ class IpConfigurationArgs:
     @pulumi.getter(name="requireSsl")
     def require_ssl(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
+        Use `ssl_mode` instead. Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
         """
         return pulumi.get(self, "require_ssl")
 
@@ -843,7 +854,7 @@ class IpConfigurationArgs:
     @pulumi.getter(name="sslMode")
     def ssl_mode(self) -> Optional[pulumi.Input['IpConfigurationSslMode']]:
         """
-        Specify how SSL/TLS is enforced in database connections. This flag is supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict between those flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the value of `ssl_mode` gets priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database respects `ssl_mode` in this case and only accepts SSL connections.
+        Specify how SSL/TLS is enforced in database connections. If you must use the `require_ssl` flag for backward compatibility, then only the following value pairs are valid: For PostgreSQL and MySQL: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` For SQL Server: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=true` The value of `ssl_mode` gets priority over the value of `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means only accept SSL connections, while the `require_ssl=false` means accept both non-SSL and SSL connections. MySQL and PostgreSQL databases respect `ssl_mode` in this case and accept only SSL connections.
         """
         return pulumi.get(self, "ssl_mode")
 
@@ -1457,7 +1468,7 @@ class PasswordValidationPolicyArgs:
         """
         Database instance local user password validation policy
         :param pulumi.Input['PasswordValidationPolicyComplexity'] complexity: The complexity of the password.
-        :param pulumi.Input[bool] disallow_compromised_credentials: Disallow credentials that have been previously compromised by a public data breach.
+        :param pulumi.Input[bool] disallow_compromised_credentials: This field is deprecated and will be removed in a future version of the API.
         :param pulumi.Input[bool] disallow_username_substring: Disallow username as a part of the password.
         :param pulumi.Input[bool] enable_password_policy: Whether the password policy is enabled or not.
         :param pulumi.Input[int] min_length: Minimum number of characters allowed.
@@ -1466,6 +1477,9 @@ class PasswordValidationPolicyArgs:
         """
         if complexity is not None:
             pulumi.set(__self__, "complexity", complexity)
+        if disallow_compromised_credentials is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future version of the API.""", DeprecationWarning)
+            pulumi.log.warn("""disallow_compromised_credentials is deprecated: This field is deprecated and will be removed in a future version of the API.""")
         if disallow_compromised_credentials is not None:
             pulumi.set(__self__, "disallow_compromised_credentials", disallow_compromised_credentials)
         if disallow_username_substring is not None:
@@ -1495,8 +1509,11 @@ class PasswordValidationPolicyArgs:
     @pulumi.getter(name="disallowCompromisedCredentials")
     def disallow_compromised_credentials(self) -> Optional[pulumi.Input[bool]]:
         """
-        Disallow credentials that have been previously compromised by a public data breach.
+        This field is deprecated and will be removed in a future version of the API.
         """
+        warnings.warn("""This field is deprecated and will be removed in a future version of the API.""", DeprecationWarning)
+        pulumi.log.warn("""disallow_compromised_credentials is deprecated: This field is deprecated and will be removed in a future version of the API.""")
+
         return pulumi.get(self, "disallow_compromised_credentials")
 
     @disallow_compromised_credentials.setter
@@ -1677,6 +1694,30 @@ class ReplicaConfigurationArgs:
 
 
 @pulumi.input_type
+class ReplicationClusterArgs:
+    def __init__(__self__, *,
+                 failover_dr_replica_name: Optional[pulumi.Input[str]] = None):
+        """
+        Primary-DR replica pair
+        :param pulumi.Input[str] failover_dr_replica_name: Optional. If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. A DR replica is an optional configuration for Enterprise Plus edition instances. If the instance is a read replica, then the field is not set. Users can set this field to set a designated DR replica for a primary. Removing this field removes the DR replica.
+        """
+        if failover_dr_replica_name is not None:
+            pulumi.set(__self__, "failover_dr_replica_name", failover_dr_replica_name)
+
+    @property
+    @pulumi.getter(name="failoverDrReplicaName")
+    def failover_dr_replica_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. A DR replica is an optional configuration for Enterprise Plus edition instances. If the instance is a read replica, then the field is not set. Users can set this field to set a designated DR replica for a primary. Removing this field removes the DR replica.
+        """
+        return pulumi.get(self, "failover_dr_replica_name")
+
+    @failover_dr_replica_name.setter
+    def failover_dr_replica_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "failover_dr_replica_name", value)
+
+
+@pulumi.input_type
 class SettingsArgs:
     def __init__(__self__, *,
                  activation_policy: Optional[pulumi.Input['SettingsActivationPolicy']] = None,
@@ -1696,6 +1737,7 @@ class SettingsArgs:
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  deny_maintenance_periods: Optional[pulumi.Input[Sequence[pulumi.Input['DenyMaintenancePeriodArgs']]]] = None,
                  edition: Optional[pulumi.Input['SettingsEdition']] = None,
+                 enable_google_ml_integration: Optional[pulumi.Input[bool]] = None,
                  insights_config: Optional[pulumi.Input['InsightsConfigArgs']] = None,
                  ip_configuration: Optional[pulumi.Input['IpConfigurationArgs']] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -1730,6 +1772,7 @@ class SettingsArgs:
         :param pulumi.Input[bool] deletion_protection_enabled: Configuration to protect against accidental instance deletion.
         :param pulumi.Input[Sequence[pulumi.Input['DenyMaintenancePeriodArgs']]] deny_maintenance_periods: Deny maintenance periods
         :param pulumi.Input['SettingsEdition'] edition: Optional. The edition of the instance.
+        :param pulumi.Input[bool] enable_google_ml_integration: Optional. When this parameter is set to true, Cloud SQL instances can connect to Vertex AI to pass requests for real-time predictions and insights to the AI. The default value is false. This applies only to Cloud SQL for PostgreSQL instances.
         :param pulumi.Input['InsightsConfigArgs'] insights_config: Insights configuration, for now relevant only for Postgres.
         :param pulumi.Input['IpConfigurationArgs'] ip_configuration: The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
         :param pulumi.Input[str] kind: This is always `sql#settings`.
@@ -1783,6 +1826,8 @@ class SettingsArgs:
             pulumi.set(__self__, "deny_maintenance_periods", deny_maintenance_periods)
         if edition is not None:
             pulumi.set(__self__, "edition", edition)
+        if enable_google_ml_integration is not None:
+            pulumi.set(__self__, "enable_google_ml_integration", enable_google_ml_integration)
         if insights_config is not None:
             pulumi.set(__self__, "insights_config", insights_config)
         if ip_configuration is not None:
@@ -2023,6 +2068,18 @@ class SettingsArgs:
     @edition.setter
     def edition(self, value: Optional[pulumi.Input['SettingsEdition']]):
         pulumi.set(self, "edition", value)
+
+    @property
+    @pulumi.getter(name="enableGoogleMlIntegration")
+    def enable_google_ml_integration(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. When this parameter is set to true, Cloud SQL instances can connect to Vertex AI to pass requests for real-time predictions and insights to the AI. The default value is false. This applies only to Cloud SQL for PostgreSQL instances.
+        """
+        return pulumi.get(self, "enable_google_ml_integration")
+
+    @enable_google_ml_integration.setter
+    def enable_google_ml_integration(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_google_ml_integration", value)
 
     @property
     @pulumi.getter(name="insightsConfig")

@@ -287,6 +287,7 @@ class Registration(pulumi.CustomResource):
             __props__.__dict__["issues"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pending_contact_settings"] = None
+            __props__.__dict__["provider"] = None
             __props__.__dict__["register_failure_reason"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["supported_privacy"] = None
@@ -327,6 +328,7 @@ class Registration(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["pending_contact_settings"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["provider"] = None
         __props__.__dict__["register_failure_reason"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["supported_privacy"] = None
@@ -424,6 +426,14 @@ class Registration(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter
+    def provider(self) -> pulumi.Output[str]:
+        """
+        Current domain management provider.
+        """
+        return pulumi.get(self, "provider")
+
+    @property
     @pulumi.getter(name="registerFailureReason")
     def register_failure_reason(self) -> pulumi.Output[str]:
         """
@@ -451,10 +461,10 @@ class Registration(pulumi.CustomResource):
     @pulumi.getter(name="transferFailureReason")
     def transfer_failure_reason(self) -> pulumi.Output[str]:
         """
-        Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+        Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
         """
-        warnings.warn("""Output only. Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.""", DeprecationWarning)
-        pulumi.log.warn("""transfer_failure_reason is deprecated: Output only. Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.""")
+        warnings.warn("""Output only. Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.""", DeprecationWarning)
+        pulumi.log.warn("""transfer_failure_reason is deprecated: Output only. Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.""")
 
         return pulumi.get(self, "transfer_failure_reason")
 

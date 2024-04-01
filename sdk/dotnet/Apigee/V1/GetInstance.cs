@@ -58,6 +58,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
     public sealed class GetInstanceResult
     {
         /// <summary>
+        /// Optional. Access logging configuration enables the access logging feature at the instance. Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+        /// </summary>
+        public readonly Outputs.GoogleCloudApigeeV1AccessLoggingConfigResponse AccessLoggingConfig;
+        /// <summary>
         /// Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
         /// </summary>
         public readonly ImmutableArray<string> ConsumerAcceptList;
@@ -120,6 +124,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
         [OutputConstructor]
         private GetInstanceResult(
+            Outputs.GoogleCloudApigeeV1AccessLoggingConfigResponse accessLoggingConfig,
+
             ImmutableArray<string> consumerAcceptList,
 
             string createdAt,
@@ -150,6 +156,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
             string state)
         {
+            AccessLoggingConfig = accessLoggingConfig;
             ConsumerAcceptList = consumerAcceptList;
             CreatedAt = createdAt;
             Description = description;

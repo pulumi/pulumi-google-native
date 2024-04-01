@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetProviderResult:
-    def __init__(__self__, attribute_condition=None, attribute_mapping=None, aws=None, description=None, disabled=None, display_name=None, expire_time=None, name=None, oidc=None, saml=None, state=None):
+    def __init__(__self__, attribute_condition=None, attribute_mapping=None, aws=None, description=None, disabled=None, display_name=None, expire_time=None, name=None, oidc=None, saml=None, state=None, x509=None):
         if attribute_condition and not isinstance(attribute_condition, str):
             raise TypeError("Expected argument 'attribute_condition' to be a str")
         pulumi.set(__self__, "attribute_condition", attribute_condition)
@@ -53,6 +53,9 @@ class GetProviderResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if x509 and not isinstance(x509, dict):
+            raise TypeError("Expected argument 'x509' to be a dict")
+        pulumi.set(__self__, "x509", x509)
 
     @property
     @pulumi.getter(name="attributeCondition")
@@ -142,6 +145,14 @@ class GetProviderResult:
         """
         return pulumi.get(self, "state")
 
+    @property
+    @pulumi.getter
+    def x509(self) -> 'outputs.X509Response':
+        """
+        An X.509-type identity provider.
+        """
+        return pulumi.get(self, "x509")
+
 
 class AwaitableGetProviderResult(GetProviderResult):
     # pylint: disable=using-constant-test
@@ -159,7 +170,8 @@ class AwaitableGetProviderResult(GetProviderResult):
             name=self.name,
             oidc=self.oidc,
             saml=self.saml,
-            state=self.state)
+            state=self.state,
+            x509=self.x509)
 
 
 def get_provider(location: Optional[str] = None,
@@ -189,7 +201,8 @@ def get_provider(location: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         oidc=pulumi.get(__ret__, 'oidc'),
         saml=pulumi.get(__ret__, 'saml'),
-        state=pulumi.get(__ret__, 'state'))
+        state=pulumi.get(__ret__, 'state'),
+        x509=pulumi.get(__ret__, 'x509'))
 
 
 @_utilities.lift_output_func(get_provider)

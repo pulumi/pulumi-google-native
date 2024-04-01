@@ -45,6 +45,8 @@ type LookupWorkstationResult struct {
 	Etag string `pulumi:"etag"`
 	// Host to which clients can send HTTPS traffic that will be received by the workstation. Authorized traffic will be received to the workstation as HTTP on port 80. To send traffic to a different port, clients may prefix the host with the destination port in the format `{port}-{host}`.
 	Host string `pulumi:"host"`
+	// The name of the Google Cloud KMS encryption key used to encrypt this workstation. The KMS key can only be configured in the WorkstationConfig. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+	KmsKey string `pulumi:"kmsKey"`
 	// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.
 	Labels map[string]string `pulumi:"labels"`
 	// Identifier. Full name of this workstation.
@@ -133,6 +135,11 @@ func (o LookupWorkstationResultOutput) Etag() pulumi.StringOutput {
 // Host to which clients can send HTTPS traffic that will be received by the workstation. Authorized traffic will be received to the workstation as HTTP on port 80. To send traffic to a different port, clients may prefix the host with the destination port in the format `{port}-{host}`.
 func (o LookupWorkstationResultOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkstationResult) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The name of the Google Cloud KMS encryption key used to encrypt this workstation. The KMS key can only be configured in the WorkstationConfig. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+func (o LookupWorkstationResultOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkstationResult) string { return v.KmsKey }).(pulumi.StringOutput)
 }
 
 // Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.

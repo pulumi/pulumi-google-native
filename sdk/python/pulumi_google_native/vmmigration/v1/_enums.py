@@ -11,6 +11,7 @@ __all__ = [
     'ComputeSchedulingOnHostMaintenance',
     'ComputeSchedulingRestartType',
     'GroupMigrationTargetType',
+    'ImageImportOsAdaptationParametersLicenseType',
     'PersistentDiskDefaultsDiskType',
     'SchedulingNodeAffinityOperator',
     'UtilizationReportTimeFrame',
@@ -131,6 +132,24 @@ class GroupMigrationTargetType(str, Enum):
     MIGRATION_TARGET_TYPE_DISKS = "MIGRATION_TARGET_TYPE_DISKS"
     """
     All MigratingVMs in the group must have Compute Engine Disks targets.
+    """
+
+
+class ImageImportOsAdaptationParametersLicenseType(str, Enum):
+    """
+    Optional. Choose which type of license to apply to the imported image.
+    """
+    COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT = "COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT"
+    """
+    The license type is the default for the OS.
+    """
+    COMPUTE_ENGINE_LICENSE_TYPE_PAYG = "COMPUTE_ENGINE_LICENSE_TYPE_PAYG"
+    """
+    The license type is Pay As You Go license type.
+    """
+    COMPUTE_ENGINE_LICENSE_TYPE_BYOL = "COMPUTE_ENGINE_LICENSE_TYPE_BYOL"
+    """
+    The license type is Bring Your Own License type.
     """
 
 

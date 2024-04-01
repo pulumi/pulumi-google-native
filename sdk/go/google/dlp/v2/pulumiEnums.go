@@ -188,9 +188,11 @@ func (in *discoveryConfigStatusPtr) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
+// How to sample the data.
 type GooglePrivacyDlpV2BigQueryOptionsSampleMethod string
 
 const (
+	// No sampling.
 	GooglePrivacyDlpV2BigQueryOptionsSampleMethodSampleMethodUnspecified = GooglePrivacyDlpV2BigQueryOptionsSampleMethod("SAMPLE_METHOD_UNSPECIFIED")
 	// Scan groups of rows in the order BigQuery provides (default). Multiple groups of rows may be scanned in parallel, so results may not appear in the same order the rows are read.
 	GooglePrivacyDlpV2BigQueryOptionsSampleMethodTop = GooglePrivacyDlpV2BigQueryOptionsSampleMethod("TOP")
@@ -777,7 +779,7 @@ const (
 	GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemFileTypeUnspecified = GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("FILE_TYPE_UNSPECIFIED")
 	// Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other file types in your storage scan.
 	GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemBinaryFile = GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("BINARY_FILE")
-	// Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.
+	// Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, jsonl, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.
 	GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemTextFile = GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("TEXT_FILE")
 	// Included file extensions: bmp, gif, jpg, jpeg, jpe, png. Setting bytes_limit_per_file or bytes_limit_per_file_percent has no effect on image files. Image inspection is restricted to the `global`, `us`, `asia`, and `europe` regions.
 	GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemImage = GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("IMAGE")
@@ -1015,9 +1017,11 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArrayOutput) Index(i p
 	}).(GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemOutput)
 }
 
+// How to sample the data.
 type GooglePrivacyDlpV2CloudStorageOptionsSampleMethod string
 
 const (
+	// No sampling.
 	GooglePrivacyDlpV2CloudStorageOptionsSampleMethodSampleMethodUnspecified = GooglePrivacyDlpV2CloudStorageOptionsSampleMethod("SAMPLE_METHOD_UNSPECIFIED")
 	// Scan from the top (default).
 	GooglePrivacyDlpV2CloudStorageOptionsSampleMethodTop = GooglePrivacyDlpV2CloudStorageOptionsSampleMethod("TOP")
@@ -1932,7 +1936,7 @@ const (
 	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemFileTypeUnspecified = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("FILE_TYPE_UNSPECIFIED")
 	// Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other file types in your storage scan.
 	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemBinaryFile = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("BINARY_FILE")
-	// Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.
+	// Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, jsonl, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.
 	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemTextFile = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("TEXT_FILE")
 	// Included file extensions: bmp, gif, jpg, jpeg, jpe, png. Setting bytes_limit_per_file or bytes_limit_per_file_percent has no effect on image files. Image inspection is restricted to the `global`, `us`, `asia`, and `europe` regions.
 	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemImage = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("IMAGE")
@@ -3907,7 +3911,7 @@ func (o GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutput) Index(i pu
 	}).(GooglePrivacyDlpV2InspectConfigContentOptionsItemOutput)
 }
 
-// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
+// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/sensitive-data-protection/docs/likelihood).
 type GooglePrivacyDlpV2InspectConfigMinLikelihood string
 
 const (

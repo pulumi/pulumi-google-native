@@ -19,6 +19,8 @@ type Page struct {
 	// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
 	AdvancedSettings GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponseOutput `pulumi:"advancedSettings"`
 	AgentId          pulumi.StringOutput                                          `pulumi:"agentId"`
+	// The description of the page. The maximum length is 500 characters.
+	Description pulumi.StringOutput `pulumi:"description"`
 	// The human-readable name of the page, unique within the flow.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
@@ -101,6 +103,8 @@ type pageArgs struct {
 	// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
 	AdvancedSettings *GoogleCloudDialogflowCxV3beta1AdvancedSettings `pulumi:"advancedSettings"`
 	AgentId          string                                          `pulumi:"agentId"`
+	// The description of the page. The maximum length is 500 characters.
+	Description *string `pulumi:"description"`
 	// The human-readable name of the page, unique within the flow.
 	DisplayName string `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
@@ -129,6 +133,8 @@ type PageArgs struct {
 	// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
 	AdvancedSettings GoogleCloudDialogflowCxV3beta1AdvancedSettingsPtrInput
 	AgentId          pulumi.StringInput
+	// The description of the page. The maximum length is 500 characters.
+	Description pulumi.StringPtrInput
 	// The human-readable name of the page, unique within the flow.
 	DisplayName pulumi.StringInput
 	// The fulfillment to call when the session is entering the page.
@@ -196,6 +202,11 @@ func (o PageOutput) AdvancedSettings() GoogleCloudDialogflowCxV3beta1AdvancedSet
 
 func (o PageOutput) AgentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Page) pulumi.StringOutput { return v.AgentId }).(pulumi.StringOutput)
+}
+
+// The description of the page. The maximum length is 500 characters.
+func (o PageOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Page) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // The human-readable name of the page, unique within the flow.

@@ -68,6 +68,10 @@ export class DnsAuthorization extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: - in location global: FIXED_RECORD.
+     */
+    public readonly type!: pulumi.Output<string>;
+    /**
      * The last update timestamp of a DnsAuthorization.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -96,6 +100,7 @@ export class DnsAuthorization extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dnsResourceRecord"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -109,6 +114,7 @@ export class DnsAuthorization extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -144,4 +150,8 @@ export interface DnsAuthorizationArgs {
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: - in location global: FIXED_RECORD.
+     */
+    type?: pulumi.Input<enums.certificatemanager.v1.DnsAuthorizationType>;
 }

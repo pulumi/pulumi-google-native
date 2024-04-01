@@ -38,7 +38,9 @@ export class InstanceGroupManagerResizeRequest extends pulumi.CustomResource {
     }
 
     /**
-     * The count of instances to create as part of this resize request.
+     * This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
+     *
+     * @deprecated This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
      */
     public readonly count!: pulumi.Output<number>;
     /**
@@ -147,7 +149,9 @@ export class InstanceGroupManagerResizeRequest extends pulumi.CustomResource {
  */
 export interface InstanceGroupManagerResizeRequestArgs {
     /**
-     * The count of instances to create as part of this resize request.
+     * This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
+     *
+     * @deprecated This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
      */
     count?: pulumi.Input<number>;
     /**

@@ -24,15 +24,22 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1.Outputs
         /// Whether the node is created under a reservation.
         /// </summary>
         public readonly bool Reserved;
+        /// <summary>
+        /// Optional. Defines whether the node is Spot VM.
+        /// </summary>
+        public readonly bool Spot;
 
         [OutputConstructor]
         private SchedulingConfigResponse(
             bool preemptible,
 
-            bool reserved)
+            bool reserved,
+
+            bool spot)
         {
             Preemptible = preemptible;
             Reserved = reserved;
+            Spot = spot;
         }
     }
 }

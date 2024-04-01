@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
     public sealed class ModelDefinitionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
+        /// Deprecated.
         /// </summary>
         [Input("modelOptions")]
         public Input<Inputs.ModelDefinitionModelOptionsArgs>? ModelOptions { get; set; }
@@ -22,8 +22,9 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         private InputList<Inputs.BqmlTrainingRunArgs>? _trainingRuns;
 
         /// <summary>
-        /// [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
+        /// Deprecated.
         /// </summary>
+        [Obsolete(@"Deprecated.")]
         public InputList<Inputs.BqmlTrainingRunArgs> TrainingRuns
         {
             get => _trainingRuns ?? (_trainingRuns = new InputList<Inputs.BqmlTrainingRunArgs>());

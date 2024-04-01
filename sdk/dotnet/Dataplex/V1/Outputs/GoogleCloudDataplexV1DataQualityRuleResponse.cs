@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// </summary>
         public readonly string Dimension;
         /// <summary>
-        /// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for row-level type rules.
+        /// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for the following type of rules: RangeExpectation RegexExpectation SetExpectation UniquenessExpectation
         /// </summary>
         public readonly bool IgnoreNull;
         /// <summary>
@@ -56,6 +56,10 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// Row-level rule which evaluates whether each column value is contained by a specified set.
         /// </summary>
         public readonly Outputs.GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse SetExpectation;
+        /// <summary>
+        /// Aggregate rule which evaluates the number of rows returned for the provided statement.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponse SqlAssertion;
         /// <summary>
         /// Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
         /// </summary>
@@ -95,6 +99,8 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
 
             Outputs.GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse setExpectation,
 
+            Outputs.GoogleCloudDataplexV1DataQualityRuleSqlAssertionResponse sqlAssertion,
+
             Outputs.GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse statisticRangeExpectation,
 
             Outputs.GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse tableConditionExpectation,
@@ -113,6 +119,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
             RegexExpectation = regexExpectation;
             RowConditionExpectation = rowConditionExpectation;
             SetExpectation = setExpectation;
+            SqlAssertion = sqlAssertion;
             StatisticRangeExpectation = statisticRangeExpectation;
             TableConditionExpectation = tableConditionExpectation;
             Threshold = threshold;

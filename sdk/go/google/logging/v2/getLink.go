@@ -30,11 +30,11 @@ type LookupLinkArgs struct {
 }
 
 type LookupLinkResult struct {
-	// The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
+	// Optional. The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
 	BigqueryDataset BigQueryDatasetResponse `pulumi:"bigqueryDataset"`
 	// The creation timestamp of the link.
 	CreateTime string `pulumi:"createTime"`
-	// Describes this link.The maximum length of the description is 8000 characters.
+	// Optional. Describes this link.The maximum length of the description is 8000 characters.
 	Description string `pulumi:"description"`
 	// The resource lifecycle state.
 	LifecycleState string `pulumi:"lifecycleState"`
@@ -80,7 +80,7 @@ func (o LookupLinkResultOutput) ToLookupLinkResultOutputWithContext(ctx context.
 	return o
 }
 
-// The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
+// Optional. The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
 func (o LookupLinkResultOutput) BigqueryDataset() BigQueryDatasetResponseOutput {
 	return o.ApplyT(func(v LookupLinkResult) BigQueryDatasetResponse { return v.BigqueryDataset }).(BigQueryDatasetResponseOutput)
 }
@@ -90,7 +90,7 @@ func (o LookupLinkResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Describes this link.The maximum length of the description is 8000 characters.
+// Optional. Describes this link.The maximum length of the description is 8000 characters.
 func (o LookupLinkResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkResult) string { return v.Description }).(pulumi.StringOutput)
 }

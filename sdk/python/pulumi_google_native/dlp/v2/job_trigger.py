@@ -183,7 +183,7 @@ class JobTrigger(pulumi.CustomResource):
                  triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2TriggerArgs']]]]] = None,
                  __props__=None):
         """
-        Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+        Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set schedule. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -203,7 +203,7 @@ class JobTrigger(pulumi.CustomResource):
                  args: JobTriggerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+        Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set schedule. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
 
         :param str resource_name: The name of the resource.
         :param JobTriggerArgs args: The arguments to use to populate this resource's properties.

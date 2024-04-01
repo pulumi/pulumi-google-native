@@ -12,15 +12,23 @@ namespace Pulumi.GoogleNative.Connectors.V1
     /// <summary>
     /// Creates a new CustomConnectorVersion in a given project and location.
     /// Auto-naming is currently not supported for this resource.
+    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
+    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:connectors/v1:CustomConnectorVersion")]
     public partial class CustomConnectorVersion : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Configuration for establishing the authentication to the connector destination.
+        /// Optional. Authentication config for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
         /// </summary>
         [Output("authConfig")]
         public Output<Outputs.AuthConfigResponse> AuthConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Backend variables config templates. This translates to additional variable templates in connection.
+        /// </summary>
+        [Output("backendVariableTemplates")]
+        public Output<ImmutableArray<Outputs.ConfigVariableTemplateResponse>> BackendVariableTemplates { get; private set; } = null!;
 
         /// <summary>
         /// Created time.
@@ -38,13 +46,13 @@ namespace Pulumi.GoogleNative.Connectors.V1
         public Output<string> CustomConnectorVersionId { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration of the customConnector's destination.
+        /// Optional. Destination config(s) for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
         /// </summary>
-        [Output("destinationConfig")]
-        public Output<Outputs.DestinationConfigResponse> DestinationConfig { get; private set; } = null!;
+        [Output("destinationConfigs")]
+        public Output<ImmutableArray<Outputs.DestinationConfigResponse>> DestinationConfigs { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Whether to enable backend destination config. This is the backend server that the connector connects to.
+        /// Optional. When enabled, the connector will be a facade/ proxy, and connects to the destination provided during connection creation.
         /// </summary>
         [Output("enableBackendDestinationConfig")]
         public Output<bool> EnableBackendDestinationConfig { get; private set; } = null!;
@@ -65,16 +73,28 @@ namespace Pulumi.GoogleNative.Connectors.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Service account needed for runtime plane to access Custom Connector secrets.
+        /// Optional. Service account used by runtime plane to access auth config secrets.
         /// </summary>
         [Output("serviceAccount")]
         public Output<string> ServiceAccount { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Location of the custom connector spec.
+        /// Optional. Location of the custom connector spec. The location can be either a public url like `https://public-url.com/spec` Or a Google Cloud Storage location like `gs:///`
         /// </summary>
         [Output("specLocation")]
         public Output<string> SpecLocation { get; private set; } = null!;
+
+        /// <summary>
+        /// Server URLs parsed from the spec.
+        /// </summary>
+        [Output("specServerUrls")]
+        public Output<ImmutableArray<string>> SpecServerUrls { get; private set; } = null!;
+
+        /// <summary>
+        /// State of the custom connector version.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
 
         /// <summary>
         /// Updated time.
@@ -134,10 +154,22 @@ namespace Pulumi.GoogleNative.Connectors.V1
     public sealed class CustomConnectorVersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configuration for establishing the authentication to the connector destination.
+        /// Optional. Authentication config for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
         /// </summary>
-        [Input("authConfig", required: true)]
-        public Input<Inputs.AuthConfigArgs> AuthConfig { get; set; } = null!;
+        [Input("authConfig")]
+        public Input<Inputs.AuthConfigArgs>? AuthConfig { get; set; }
+
+        [Input("backendVariableTemplates")]
+        private InputList<Inputs.ConfigVariableTemplateArgs>? _backendVariableTemplates;
+
+        /// <summary>
+        /// Optional. Backend variables config templates. This translates to additional variable templates in connection.
+        /// </summary>
+        public InputList<Inputs.ConfigVariableTemplateArgs> BackendVariableTemplates
+        {
+            get => _backendVariableTemplates ?? (_backendVariableTemplates = new InputList<Inputs.ConfigVariableTemplateArgs>());
+            set => _backendVariableTemplates = value;
+        }
 
         [Input("customConnectorId", required: true)]
         public Input<string> CustomConnectorId { get; set; } = null!;
@@ -148,14 +180,20 @@ namespace Pulumi.GoogleNative.Connectors.V1
         [Input("customConnectorVersionId", required: true)]
         public Input<string> CustomConnectorVersionId { get; set; } = null!;
 
-        /// <summary>
-        /// Configuration of the customConnector's destination.
-        /// </summary>
-        [Input("destinationConfig", required: true)]
-        public Input<Inputs.DestinationConfigArgs> DestinationConfig { get; set; } = null!;
+        [Input("destinationConfigs")]
+        private InputList<Inputs.DestinationConfigArgs>? _destinationConfigs;
 
         /// <summary>
-        /// Optional. Whether to enable backend destination config. This is the backend server that the connector connects to.
+        /// Optional. Destination config(s) for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
+        /// </summary>
+        public InputList<Inputs.DestinationConfigArgs> DestinationConfigs
+        {
+            get => _destinationConfigs ?? (_destinationConfigs = new InputList<Inputs.DestinationConfigArgs>());
+            set => _destinationConfigs = value;
+        }
+
+        /// <summary>
+        /// Optional. When enabled, the connector will be a facade/ proxy, and connects to the destination provided during connection creation.
         /// </summary>
         [Input("enableBackendDestinationConfig")]
         public Input<bool>? EnableBackendDestinationConfig { get; set; }
@@ -176,13 +214,13 @@ namespace Pulumi.GoogleNative.Connectors.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Service account needed for runtime plane to access Custom Connector secrets.
+        /// Optional. Service account used by runtime plane to access auth config secrets.
         /// </summary>
-        [Input("serviceAccount", required: true)]
-        public Input<string> ServiceAccount { get; set; } = null!;
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
-        /// Optional. Location of the custom connector spec.
+        /// Optional. Location of the custom connector spec. The location can be either a public url like `https://public-url.com/spec` Or a Google Cloud Storage location like `gs:///`
         /// </summary>
         [Input("specLocation")]
         public Input<string>? SpecLocation { get; set; }

@@ -23,6 +23,8 @@ const (
 	AcceleratorConfigTypeV3 = AcceleratorConfigType("V3")
 	// TPU v4.
 	AcceleratorConfigTypeV4 = AcceleratorConfigType("V4")
+	// TPU v5.
+	AcceleratorConfigTypeV5p = AcceleratorConfigType("V5P")
 )
 
 func (AcceleratorConfigType) ElementType() reflect.Type {
@@ -151,6 +153,7 @@ func (o AcceleratorConfigTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 //	AcceleratorConfigTypeV2
 //	AcceleratorConfigTypeV3
 //	AcceleratorConfigTypeV4
+//	AcceleratorConfigTypeV5p
 type AcceleratorConfigTypeInput interface {
 	pulumi.Input
 

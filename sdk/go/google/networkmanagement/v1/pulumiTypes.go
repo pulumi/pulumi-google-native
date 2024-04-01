@@ -17,7 +17,9 @@ var _ = internal.GetEnvOrDefault
 type AbortInfoResponse struct {
 	// Causes that the analysis is aborted.
 	Cause string `pulumi:"cause"`
-	// List of project IDs that the user has specified in the request but does not have permission to access network configs. Analysis is aborted in this case with the PERMISSION_DENIED cause.
+	// IP address that caused the abort.
+	IpAddress string `pulumi:"ipAddress"`
+	// List of project IDs the user specified in the request but lacks access to. In this case, analysis is aborted with the PERMISSION_DENIED cause.
 	ProjectsMissingPermission []string `pulumi:"projectsMissingPermission"`
 	// URI of the resource that caused the abort.
 	ResourceUri string `pulumi:"resourceUri"`
@@ -43,7 +45,12 @@ func (o AbortInfoResponseOutput) Cause() pulumi.StringOutput {
 	return o.ApplyT(func(v AbortInfoResponse) string { return v.Cause }).(pulumi.StringOutput)
 }
 
-// List of project IDs that the user has specified in the request but does not have permission to access network configs. Analysis is aborted in this case with the PERMISSION_DENIED cause.
+// IP address that caused the abort.
+func (o AbortInfoResponseOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v AbortInfoResponse) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// List of project IDs the user specified in the request but lacks access to. In this case, analysis is aborted with the PERMISSION_DENIED cause.
 func (o AbortInfoResponseOutput) ProjectsMissingPermission() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AbortInfoResponse) []string { return v.ProjectsMissingPermission }).(pulumi.StringArrayOutput)
 }
@@ -594,9 +601,9 @@ func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConf
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role *string `pulumi:"role"`
 }
 
@@ -615,9 +622,9 @@ type BindingInput interface {
 type BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -678,12 +685,12 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -712,9 +719,9 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role string `pulumi:"role"`
 }
 
@@ -738,12 +745,12 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -1257,6 +1264,8 @@ func (o CloudSQLInstanceInfoResponseOutput) Uri() pulumi.StringOutput {
 
 // Details of the final state "deliver" and associated resource.
 type DeliverInfoResponse struct {
+	// IP address of the target (if applicable).
+	IpAddress string `pulumi:"ipAddress"`
 	// URI of the resource that the packet is delivered to.
 	ResourceUri string `pulumi:"resourceUri"`
 	// Target type where the packet is delivered to.
@@ -1278,6 +1287,11 @@ func (o DeliverInfoResponseOutput) ToDeliverInfoResponseOutputWithContext(ctx co
 	return o
 }
 
+// IP address of the target (if applicable).
+func (o DeliverInfoResponseOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliverInfoResponse) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
 // URI of the resource that the packet is delivered to.
 func (o DeliverInfoResponseOutput) ResourceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliverInfoResponse) string { return v.ResourceUri }).(pulumi.StringOutput)
@@ -1292,8 +1306,14 @@ func (o DeliverInfoResponseOutput) Target() pulumi.StringOutput {
 type DropInfoResponse struct {
 	// Cause that the packet is dropped.
 	Cause string `pulumi:"cause"`
+	// Destination IP address of the dropped packet (if relevant).
+	DestinationIp string `pulumi:"destinationIp"`
+	// Region of the dropped packet (if relevant).
+	Region string `pulumi:"region"`
 	// URI of the resource that caused the drop.
 	ResourceUri string `pulumi:"resourceUri"`
+	// Source IP address of the dropped packet (if relevant).
+	SourceIp string `pulumi:"sourceIp"`
 }
 
 // Details of the final state "drop" and associated resource.
@@ -1316,9 +1336,24 @@ func (o DropInfoResponseOutput) Cause() pulumi.StringOutput {
 	return o.ApplyT(func(v DropInfoResponse) string { return v.Cause }).(pulumi.StringOutput)
 }
 
+// Destination IP address of the dropped packet (if relevant).
+func (o DropInfoResponseOutput) DestinationIp() pulumi.StringOutput {
+	return o.ApplyT(func(v DropInfoResponse) string { return v.DestinationIp }).(pulumi.StringOutput)
+}
+
+// Region of the dropped packet (if relevant).
+func (o DropInfoResponseOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v DropInfoResponse) string { return v.Region }).(pulumi.StringOutput)
+}
+
 // URI of the resource that caused the drop.
 func (o DropInfoResponseOutput) ResourceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v DropInfoResponse) string { return v.ResourceUri }).(pulumi.StringOutput)
+}
+
+// Source IP address of the dropped packet (if relevant).
+func (o DropInfoResponseOutput) SourceIp() pulumi.StringOutput {
+	return o.ApplyT(func(v DropInfoResponse) string { return v.SourceIp }).(pulumi.StringOutput)
 }
 
 // Representation of a network edge location as per https://cloud.google.com/vpc/docs/edge-locations.
@@ -1363,7 +1398,7 @@ type Endpoint struct {
 	GkeMasterCluster *string `pulumi:"gkeMasterCluster"`
 	// A Compute Engine instance URI.
 	Instance *string `pulumi:"instance"`
-	// The IP address of the endpoint, which can be an external or internal IP. An IPv6 address is only allowed when the test's destination is a [global load balancer VIP](https://cloud.google.com/load-balancing/docs/load-balancing-overview).
+	// The IP address of the endpoint, which can be an external or internal IP.
 	IpAddress *string `pulumi:"ipAddress"`
 	// A Compute Engine network URI.
 	Network *string `pulumi:"network"`
@@ -1402,7 +1437,7 @@ type EndpointArgs struct {
 	GkeMasterCluster pulumi.StringPtrInput `pulumi:"gkeMasterCluster"`
 	// A Compute Engine instance URI.
 	Instance pulumi.StringPtrInput `pulumi:"instance"`
-	// The IP address of the endpoint, which can be an external or internal IP. An IPv6 address is only allowed when the test's destination is a [global load balancer VIP](https://cloud.google.com/load-balancing/docs/load-balancing-overview).
+	// The IP address of the endpoint, which can be an external or internal IP.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// A Compute Engine network URI.
 	Network pulumi.StringPtrInput `pulumi:"network"`
@@ -1476,7 +1511,7 @@ func (o EndpointOutput) Instance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoint) *string { return v.Instance }).(pulumi.StringPtrOutput)
 }
 
-// The IP address of the endpoint, which can be an external or internal IP. An IPv6 address is only allowed when the test's destination is a [global load balancer VIP](https://cloud.google.com/load-balancing/docs/load-balancing-overview).
+// The IP address of the endpoint, which can be an external or internal IP.
 func (o EndpointOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoint) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
@@ -1594,7 +1629,7 @@ type EndpointResponse struct {
 	GkeMasterCluster string `pulumi:"gkeMasterCluster"`
 	// A Compute Engine instance URI.
 	Instance string `pulumi:"instance"`
-	// The IP address of the endpoint, which can be an external or internal IP. An IPv6 address is only allowed when the test's destination is a [global load balancer VIP](https://cloud.google.com/load-balancing/docs/load-balancing-overview).
+	// The IP address of the endpoint, which can be an external or internal IP.
 	IpAddress string `pulumi:"ipAddress"`
 	// ID of the load balancer the forwarding rule points to. Empty for forwarding rules not related to load balancers.
 	LoadBalancerId string `pulumi:"loadBalancerId"`
@@ -1665,7 +1700,7 @@ func (o EndpointResponseOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v EndpointResponse) string { return v.Instance }).(pulumi.StringOutput)
 }
 
-// The IP address of the endpoint, which can be an external or internal IP. An IPv6 address is only allowed when the test's destination is a [global load balancer VIP](https://cloud.google.com/load-balancing/docs/load-balancing-overview).
+// The IP address of the endpoint, which can be an external or internal IP.
 func (o EndpointResponseOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v EndpointResponse) string { return v.IpAddress }).(pulumi.StringOutput)
 }
@@ -1946,7 +1981,7 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 
 // For display only. Metadata associated with a VPC firewall rule, an implied VPC firewall rule, or a hierarchical firewall policy rule.
 type FirewallInfoResponse struct {
-	// Possible values: ALLOW, DENY
+	// Possible values: ALLOW, DENY, APPLY_SECURITY_PROFILE_GROUP
 	Action string `pulumi:"action"`
 	// Possible values: INGRESS, EGRESS
 	Direction string `pulumi:"direction"`
@@ -1983,7 +2018,7 @@ func (o FirewallInfoResponseOutput) ToFirewallInfoResponseOutputWithContext(ctx 
 	return o
 }
 
-// Possible values: ALLOW, DENY
+// Possible values: ALLOW, DENY, APPLY_SECURITY_PROFILE_GROUP
 func (o FirewallInfoResponseOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallInfoResponse) string { return v.Action }).(pulumi.StringOutput)
 }
@@ -2035,6 +2070,8 @@ func (o FirewallInfoResponseOutput) Uri() pulumi.StringOutput {
 
 // Details of the final state "forward" and associated resource.
 type ForwardInfoResponse struct {
+	// IP address of the target (if applicable).
+	IpAddress string `pulumi:"ipAddress"`
 	// URI of the resource that the packet is forwarded to.
 	ResourceUri string `pulumi:"resourceUri"`
 	// Target type where this packet is forwarded to.
@@ -2054,6 +2091,11 @@ func (o ForwardInfoResponseOutput) ToForwardInfoResponseOutput() ForwardInfoResp
 
 func (o ForwardInfoResponseOutput) ToForwardInfoResponseOutputWithContext(ctx context.Context) ForwardInfoResponseOutput {
 	return o
+}
+
+// IP address of the target (if applicable).
+func (o ForwardInfoResponseOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v ForwardInfoResponse) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
 // URI of the resource that the packet is forwarded to.
@@ -2368,6 +2410,95 @@ func (o LatencyPercentileResponseArrayOutput) Index(i pulumi.IntInput) LatencyPe
 	}).(LatencyPercentileResponseOutput)
 }
 
+// For display only. Metadata associated with the load balancer backend.
+type LoadBalancerBackendInfoResponse struct {
+	// URI of the backend bucket this backend targets (if applicable).
+	BackendBucketUri string `pulumi:"backendBucketUri"`
+	// URI of the backend service this backend belongs to (if applicable).
+	BackendServiceUri string `pulumi:"backendServiceUri"`
+	// Health check firewalls configuration state for the backend. This is a result of the static firewall analysis (verifying that health check traffic from required IP ranges to the backend is allowed or not). The backend might still be unhealthy even if these firewalls are configured. Please refer to the documentation for more information: https://cloud.google.com/load-balancing/docs/firewall-rules
+	HealthCheckFirewallsConfigState string `pulumi:"healthCheckFirewallsConfigState"`
+	// URI of the health check attached to this backend (if applicable).
+	HealthCheckUri string `pulumi:"healthCheckUri"`
+	// URI of the instance group this backend belongs to (if applicable).
+	InstanceGroupUri string `pulumi:"instanceGroupUri"`
+	// URI of the backend instance (if applicable). Populated for instance group backends, and zonal NEG backends.
+	InstanceUri string `pulumi:"instanceUri"`
+	// Display name of the backend. For example, it might be an instance name for the instance group backends, or an IP address and port for zonal network endpoint group backends.
+	Name string `pulumi:"name"`
+	// URI of the network endpoint group this backend belongs to (if applicable).
+	NetworkEndpointGroupUri string `pulumi:"networkEndpointGroupUri"`
+	// PSC Google API target this PSC NEG backend targets (if applicable).
+	PscGoogleApiTarget string `pulumi:"pscGoogleApiTarget"`
+	// URI of the PSC service attachment this PSC NEG backend targets (if applicable).
+	PscServiceAttachmentUri string `pulumi:"pscServiceAttachmentUri"`
+}
+
+// For display only. Metadata associated with the load balancer backend.
+type LoadBalancerBackendInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerBackendInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerBackendInfoResponse)(nil)).Elem()
+}
+
+func (o LoadBalancerBackendInfoResponseOutput) ToLoadBalancerBackendInfoResponseOutput() LoadBalancerBackendInfoResponseOutput {
+	return o
+}
+
+func (o LoadBalancerBackendInfoResponseOutput) ToLoadBalancerBackendInfoResponseOutputWithContext(ctx context.Context) LoadBalancerBackendInfoResponseOutput {
+	return o
+}
+
+// URI of the backend bucket this backend targets (if applicable).
+func (o LoadBalancerBackendInfoResponseOutput) BackendBucketUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerBackendInfoResponse) string { return v.BackendBucketUri }).(pulumi.StringOutput)
+}
+
+// URI of the backend service this backend belongs to (if applicable).
+func (o LoadBalancerBackendInfoResponseOutput) BackendServiceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerBackendInfoResponse) string { return v.BackendServiceUri }).(pulumi.StringOutput)
+}
+
+// Health check firewalls configuration state for the backend. This is a result of the static firewall analysis (verifying that health check traffic from required IP ranges to the backend is allowed or not). The backend might still be unhealthy even if these firewalls are configured. Please refer to the documentation for more information: https://cloud.google.com/load-balancing/docs/firewall-rules
+func (o LoadBalancerBackendInfoResponseOutput) HealthCheckFirewallsConfigState() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerBackendInfoResponse) string { return v.HealthCheckFirewallsConfigState }).(pulumi.StringOutput)
+}
+
+// URI of the health check attached to this backend (if applicable).
+func (o LoadBalancerBackendInfoResponseOutput) HealthCheckUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerBackendInfoResponse) string { return v.HealthCheckUri }).(pulumi.StringOutput)
+}
+
+// URI of the instance group this backend belongs to (if applicable).
+func (o LoadBalancerBackendInfoResponseOutput) InstanceGroupUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerBackendInfoResponse) string { return v.InstanceGroupUri }).(pulumi.StringOutput)
+}
+
+// URI of the backend instance (if applicable). Populated for instance group backends, and zonal NEG backends.
+func (o LoadBalancerBackendInfoResponseOutput) InstanceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerBackendInfoResponse) string { return v.InstanceUri }).(pulumi.StringOutput)
+}
+
+// Display name of the backend. For example, it might be an instance name for the instance group backends, or an IP address and port for zonal network endpoint group backends.
+func (o LoadBalancerBackendInfoResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerBackendInfoResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// URI of the network endpoint group this backend belongs to (if applicable).
+func (o LoadBalancerBackendInfoResponseOutput) NetworkEndpointGroupUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerBackendInfoResponse) string { return v.NetworkEndpointGroupUri }).(pulumi.StringOutput)
+}
+
+// PSC Google API target this PSC NEG backend targets (if applicable).
+func (o LoadBalancerBackendInfoResponseOutput) PscGoogleApiTarget() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerBackendInfoResponse) string { return v.PscGoogleApiTarget }).(pulumi.StringOutput)
+}
+
+// URI of the PSC service attachment this PSC NEG backend targets (if applicable).
+func (o LoadBalancerBackendInfoResponseOutput) PscServiceAttachmentUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerBackendInfoResponse) string { return v.PscServiceAttachmentUri }).(pulumi.StringOutput)
+}
+
 // For display only. Metadata associated with a specific load balancer backend.
 type LoadBalancerBackendResponse struct {
 	// Name of a Compute Engine instance or network endpoint.
@@ -2500,6 +2631,116 @@ func (o LoadBalancerInfoResponseOutput) LoadBalancerType() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerInfoResponse) string { return v.LoadBalancerType }).(pulumi.StringOutput)
 }
 
+// For display only. Metadata associated with NAT.
+type NatInfoResponse struct {
+	// The name of Cloud NAT Gateway. Only valid when type is CLOUD_NAT.
+	NatGatewayName string `pulumi:"natGatewayName"`
+	// URI of the network where NAT translation takes place.
+	NetworkUri string `pulumi:"networkUri"`
+	// Destination IP address after NAT translation.
+	NewDestinationIp string `pulumi:"newDestinationIp"`
+	// Destination port after NAT translation. Only valid when protocol is TCP or UDP.
+	NewDestinationPort int `pulumi:"newDestinationPort"`
+	// Source IP address after NAT translation.
+	NewSourceIp string `pulumi:"newSourceIp"`
+	// Source port after NAT translation. Only valid when protocol is TCP or UDP.
+	NewSourcePort int `pulumi:"newSourcePort"`
+	// Destination IP address before NAT translation.
+	OldDestinationIp string `pulumi:"oldDestinationIp"`
+	// Destination port before NAT translation. Only valid when protocol is TCP or UDP.
+	OldDestinationPort int `pulumi:"oldDestinationPort"`
+	// Source IP address before NAT translation.
+	OldSourceIp string `pulumi:"oldSourceIp"`
+	// Source port before NAT translation. Only valid when protocol is TCP or UDP.
+	OldSourcePort int `pulumi:"oldSourcePort"`
+	// IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+	Protocol string `pulumi:"protocol"`
+	// Uri of the Cloud Router. Only valid when type is CLOUD_NAT.
+	RouterUri string `pulumi:"routerUri"`
+	// Type of NAT.
+	Type string `pulumi:"type"`
+}
+
+// For display only. Metadata associated with NAT.
+type NatInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (NatInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NatInfoResponse)(nil)).Elem()
+}
+
+func (o NatInfoResponseOutput) ToNatInfoResponseOutput() NatInfoResponseOutput {
+	return o
+}
+
+func (o NatInfoResponseOutput) ToNatInfoResponseOutputWithContext(ctx context.Context) NatInfoResponseOutput {
+	return o
+}
+
+// The name of Cloud NAT Gateway. Only valid when type is CLOUD_NAT.
+func (o NatInfoResponseOutput) NatGatewayName() pulumi.StringOutput {
+	return o.ApplyT(func(v NatInfoResponse) string { return v.NatGatewayName }).(pulumi.StringOutput)
+}
+
+// URI of the network where NAT translation takes place.
+func (o NatInfoResponseOutput) NetworkUri() pulumi.StringOutput {
+	return o.ApplyT(func(v NatInfoResponse) string { return v.NetworkUri }).(pulumi.StringOutput)
+}
+
+// Destination IP address after NAT translation.
+func (o NatInfoResponseOutput) NewDestinationIp() pulumi.StringOutput {
+	return o.ApplyT(func(v NatInfoResponse) string { return v.NewDestinationIp }).(pulumi.StringOutput)
+}
+
+// Destination port after NAT translation. Only valid when protocol is TCP or UDP.
+func (o NatInfoResponseOutput) NewDestinationPort() pulumi.IntOutput {
+	return o.ApplyT(func(v NatInfoResponse) int { return v.NewDestinationPort }).(pulumi.IntOutput)
+}
+
+// Source IP address after NAT translation.
+func (o NatInfoResponseOutput) NewSourceIp() pulumi.StringOutput {
+	return o.ApplyT(func(v NatInfoResponse) string { return v.NewSourceIp }).(pulumi.StringOutput)
+}
+
+// Source port after NAT translation. Only valid when protocol is TCP or UDP.
+func (o NatInfoResponseOutput) NewSourcePort() pulumi.IntOutput {
+	return o.ApplyT(func(v NatInfoResponse) int { return v.NewSourcePort }).(pulumi.IntOutput)
+}
+
+// Destination IP address before NAT translation.
+func (o NatInfoResponseOutput) OldDestinationIp() pulumi.StringOutput {
+	return o.ApplyT(func(v NatInfoResponse) string { return v.OldDestinationIp }).(pulumi.StringOutput)
+}
+
+// Destination port before NAT translation. Only valid when protocol is TCP or UDP.
+func (o NatInfoResponseOutput) OldDestinationPort() pulumi.IntOutput {
+	return o.ApplyT(func(v NatInfoResponse) int { return v.OldDestinationPort }).(pulumi.IntOutput)
+}
+
+// Source IP address before NAT translation.
+func (o NatInfoResponseOutput) OldSourceIp() pulumi.StringOutput {
+	return o.ApplyT(func(v NatInfoResponse) string { return v.OldSourceIp }).(pulumi.StringOutput)
+}
+
+// Source port before NAT translation. Only valid when protocol is TCP or UDP.
+func (o NatInfoResponseOutput) OldSourcePort() pulumi.IntOutput {
+	return o.ApplyT(func(v NatInfoResponse) int { return v.OldSourcePort }).(pulumi.IntOutput)
+}
+
+// IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+func (o NatInfoResponseOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v NatInfoResponse) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Uri of the Cloud Router. Only valid when type is CLOUD_NAT.
+func (o NatInfoResponseOutput) RouterUri() pulumi.StringOutput {
+	return o.ApplyT(func(v NatInfoResponse) string { return v.RouterUri }).(pulumi.StringOutput)
+}
+
+// Type of NAT.
+func (o NatInfoResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v NatInfoResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // For display only. Metadata associated with a Compute Engine network.
 type NetworkInfoResponse struct {
 	// Name of a Compute Engine network.
@@ -2620,6 +2861,102 @@ func (o ProbingDetailsResponseOutput) SuccessfulProbeCount() pulumi.IntOutput {
 // The time that reachability was assessed through active probing.
 func (o ProbingDetailsResponseOutput) VerifyTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ProbingDetailsResponse) string { return v.VerifyTime }).(pulumi.StringOutput)
+}
+
+// For display only. Metadata associated with ProxyConnection.
+type ProxyConnectionInfoResponse struct {
+	// URI of the network where connection is proxied.
+	NetworkUri string `pulumi:"networkUri"`
+	// Destination IP address of a new connection.
+	NewDestinationIp string `pulumi:"newDestinationIp"`
+	// Destination port of a new connection. Only valid when protocol is TCP or UDP.
+	NewDestinationPort int `pulumi:"newDestinationPort"`
+	// Source IP address of a new connection.
+	NewSourceIp string `pulumi:"newSourceIp"`
+	// Source port of a new connection. Only valid when protocol is TCP or UDP.
+	NewSourcePort int `pulumi:"newSourcePort"`
+	// Destination IP address of an original connection
+	OldDestinationIp string `pulumi:"oldDestinationIp"`
+	// Destination port of an original connection. Only valid when protocol is TCP or UDP.
+	OldDestinationPort int `pulumi:"oldDestinationPort"`
+	// Source IP address of an original connection.
+	OldSourceIp string `pulumi:"oldSourceIp"`
+	// Source port of an original connection. Only valid when protocol is TCP or UDP.
+	OldSourcePort int `pulumi:"oldSourcePort"`
+	// IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+	Protocol string `pulumi:"protocol"`
+	// Uri of proxy subnet.
+	SubnetUri string `pulumi:"subnetUri"`
+}
+
+// For display only. Metadata associated with ProxyConnection.
+type ProxyConnectionInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (ProxyConnectionInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProxyConnectionInfoResponse)(nil)).Elem()
+}
+
+func (o ProxyConnectionInfoResponseOutput) ToProxyConnectionInfoResponseOutput() ProxyConnectionInfoResponseOutput {
+	return o
+}
+
+func (o ProxyConnectionInfoResponseOutput) ToProxyConnectionInfoResponseOutputWithContext(ctx context.Context) ProxyConnectionInfoResponseOutput {
+	return o
+}
+
+// URI of the network where connection is proxied.
+func (o ProxyConnectionInfoResponseOutput) NetworkUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ProxyConnectionInfoResponse) string { return v.NetworkUri }).(pulumi.StringOutput)
+}
+
+// Destination IP address of a new connection.
+func (o ProxyConnectionInfoResponseOutput) NewDestinationIp() pulumi.StringOutput {
+	return o.ApplyT(func(v ProxyConnectionInfoResponse) string { return v.NewDestinationIp }).(pulumi.StringOutput)
+}
+
+// Destination port of a new connection. Only valid when protocol is TCP or UDP.
+func (o ProxyConnectionInfoResponseOutput) NewDestinationPort() pulumi.IntOutput {
+	return o.ApplyT(func(v ProxyConnectionInfoResponse) int { return v.NewDestinationPort }).(pulumi.IntOutput)
+}
+
+// Source IP address of a new connection.
+func (o ProxyConnectionInfoResponseOutput) NewSourceIp() pulumi.StringOutput {
+	return o.ApplyT(func(v ProxyConnectionInfoResponse) string { return v.NewSourceIp }).(pulumi.StringOutput)
+}
+
+// Source port of a new connection. Only valid when protocol is TCP or UDP.
+func (o ProxyConnectionInfoResponseOutput) NewSourcePort() pulumi.IntOutput {
+	return o.ApplyT(func(v ProxyConnectionInfoResponse) int { return v.NewSourcePort }).(pulumi.IntOutput)
+}
+
+// Destination IP address of an original connection
+func (o ProxyConnectionInfoResponseOutput) OldDestinationIp() pulumi.StringOutput {
+	return o.ApplyT(func(v ProxyConnectionInfoResponse) string { return v.OldDestinationIp }).(pulumi.StringOutput)
+}
+
+// Destination port of an original connection. Only valid when protocol is TCP or UDP.
+func (o ProxyConnectionInfoResponseOutput) OldDestinationPort() pulumi.IntOutput {
+	return o.ApplyT(func(v ProxyConnectionInfoResponse) int { return v.OldDestinationPort }).(pulumi.IntOutput)
+}
+
+// Source IP address of an original connection.
+func (o ProxyConnectionInfoResponseOutput) OldSourceIp() pulumi.StringOutput {
+	return o.ApplyT(func(v ProxyConnectionInfoResponse) string { return v.OldSourceIp }).(pulumi.StringOutput)
+}
+
+// Source port of an original connection. Only valid when protocol is TCP or UDP.
+func (o ProxyConnectionInfoResponseOutput) OldSourcePort() pulumi.IntOutput {
+	return o.ApplyT(func(v ProxyConnectionInfoResponse) int { return v.OldSourcePort }).(pulumi.IntOutput)
+}
+
+// IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+func (o ProxyConnectionInfoResponseOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v ProxyConnectionInfoResponse) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Uri of proxy subnet.
+func (o ProxyConnectionInfoResponseOutput) SubnetUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ProxyConnectionInfoResponse) string { return v.SubnetUri }).(pulumi.StringOutput)
 }
 
 // Results of the configuration analysis from the last run of the test.
@@ -2874,16 +3211,26 @@ type StepResponse struct {
 	GoogleService GoogleServiceInfoResponse `pulumi:"googleService"`
 	// Display information of a Compute Engine instance.
 	Instance InstanceInfoResponse `pulumi:"instance"`
-	// Display information of the load balancers.
+	// Display information of the load balancers. Deprecated in favor of the `load_balancer_backend_info` field, not used in new tests.
+	//
+	// Deprecated: Display information of the load balancers. Deprecated in favor of the `load_balancer_backend_info` field, not used in new tests.
 	LoadBalancer LoadBalancerInfoResponse `pulumi:"loadBalancer"`
+	// Display information of a specific load balancer backend.
+	LoadBalancerBackendInfo LoadBalancerBackendInfoResponse `pulumi:"loadBalancerBackendInfo"`
+	// Display information of a NAT.
+	Nat NatInfoResponse `pulumi:"nat"`
 	// Display information of a Google Cloud network.
 	Network NetworkInfoResponse `pulumi:"network"`
 	// Project ID that contains the configuration this step is validating.
 	Project string `pulumi:"project"`
+	// Display information of a ProxyConnection.
+	ProxyConnection ProxyConnectionInfoResponse `pulumi:"proxyConnection"`
 	// Display information of a Compute Engine route.
 	Route RouteInfoResponse `pulumi:"route"`
 	// Each step is in one of the pre-defined states.
 	State string `pulumi:"state"`
+	// Display information of a Storage Bucket. Used only for return traces.
+	StorageBucket StorageBucketInfoResponse `pulumi:"storageBucket"`
 	// Display information of a VPC connector.
 	VpcConnector VpcConnectorInfoResponse `pulumi:"vpcConnector"`
 	// Display information of a Compute Engine VPN gateway.
@@ -2987,9 +3334,21 @@ func (o StepResponseOutput) Instance() InstanceInfoResponseOutput {
 	return o.ApplyT(func(v StepResponse) InstanceInfoResponse { return v.Instance }).(InstanceInfoResponseOutput)
 }
 
-// Display information of the load balancers.
+// Display information of the load balancers. Deprecated in favor of the `load_balancer_backend_info` field, not used in new tests.
+//
+// Deprecated: Display information of the load balancers. Deprecated in favor of the `load_balancer_backend_info` field, not used in new tests.
 func (o StepResponseOutput) LoadBalancer() LoadBalancerInfoResponseOutput {
 	return o.ApplyT(func(v StepResponse) LoadBalancerInfoResponse { return v.LoadBalancer }).(LoadBalancerInfoResponseOutput)
+}
+
+// Display information of a specific load balancer backend.
+func (o StepResponseOutput) LoadBalancerBackendInfo() LoadBalancerBackendInfoResponseOutput {
+	return o.ApplyT(func(v StepResponse) LoadBalancerBackendInfoResponse { return v.LoadBalancerBackendInfo }).(LoadBalancerBackendInfoResponseOutput)
+}
+
+// Display information of a NAT.
+func (o StepResponseOutput) Nat() NatInfoResponseOutput {
+	return o.ApplyT(func(v StepResponse) NatInfoResponse { return v.Nat }).(NatInfoResponseOutput)
 }
 
 // Display information of a Google Cloud network.
@@ -3002,6 +3361,11 @@ func (o StepResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v StepResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// Display information of a ProxyConnection.
+func (o StepResponseOutput) ProxyConnection() ProxyConnectionInfoResponseOutput {
+	return o.ApplyT(func(v StepResponse) ProxyConnectionInfoResponse { return v.ProxyConnection }).(ProxyConnectionInfoResponseOutput)
+}
+
 // Display information of a Compute Engine route.
 func (o StepResponseOutput) Route() RouteInfoResponseOutput {
 	return o.ApplyT(func(v StepResponse) RouteInfoResponse { return v.Route }).(RouteInfoResponseOutput)
@@ -3010,6 +3374,11 @@ func (o StepResponseOutput) Route() RouteInfoResponseOutput {
 // Each step is in one of the pre-defined states.
 func (o StepResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v StepResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Display information of a Storage Bucket. Used only for return traces.
+func (o StepResponseOutput) StorageBucket() StorageBucketInfoResponseOutput {
+	return o.ApplyT(func(v StepResponse) StorageBucketInfoResponse { return v.StorageBucket }).(StorageBucketInfoResponseOutput)
 }
 
 // Display information of a VPC connector.
@@ -3047,10 +3416,38 @@ func (o StepResponseArrayOutput) Index(i pulumi.IntInput) StepResponseOutput {
 	}).(StepResponseOutput)
 }
 
+// For display only. Metadata associated with Storage Bucket.
+type StorageBucketInfoResponse struct {
+	// Cloud Storage Bucket name.
+	Bucket string `pulumi:"bucket"`
+}
+
+// For display only. Metadata associated with Storage Bucket.
+type StorageBucketInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (StorageBucketInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageBucketInfoResponse)(nil)).Elem()
+}
+
+func (o StorageBucketInfoResponseOutput) ToStorageBucketInfoResponseOutput() StorageBucketInfoResponseOutput {
+	return o
+}
+
+func (o StorageBucketInfoResponseOutput) ToStorageBucketInfoResponseOutputWithContext(ctx context.Context) StorageBucketInfoResponseOutput {
+	return o
+}
+
+// Cloud Storage Bucket name.
+func (o StorageBucketInfoResponseOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageBucketInfoResponse) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
 // Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ```|---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final))```
 type TraceResponse struct {
 	// Derived from the source and destination endpoints definition specified by user request, and validated by the data plane model. If there are multiple traces starting from different source locations, then the endpoint_info may be different between traces.
 	EndpointInfo EndpointInfoResponse `pulumi:"endpointInfo"`
+	// ID of trace. For forward traces, this ID is unique for each trace. For return traces, it matches ID of associated forward trace. A single forward trace can be associated with none, one or more than one return trace.
+	ForwardTraceId int `pulumi:"forwardTraceId"`
 	// A trace of a test contains multiple steps from the initial state to the final state (delivered, dropped, forwarded, or aborted). The steps are ordered by the processing sequence within the simulated network state machine. It is critical to preserve the order of the steps and avoid reordering or sorting them.
 	Steps []StepResponse `pulumi:"steps"`
 }
@@ -3073,6 +3470,11 @@ func (o TraceResponseOutput) ToTraceResponseOutputWithContext(ctx context.Contex
 // Derived from the source and destination endpoints definition specified by user request, and validated by the data plane model. If there are multiple traces starting from different source locations, then the endpoint_info may be different between traces.
 func (o TraceResponseOutput) EndpointInfo() EndpointInfoResponseOutput {
 	return o.ApplyT(func(v TraceResponse) EndpointInfoResponse { return v.EndpointInfo }).(EndpointInfoResponseOutput)
+}
+
+// ID of trace. For forward traces, this ID is unique for each trace. For return traces, it matches ID of associated forward trace. A single forward trace can be associated with none, one or more than one return trace.
+func (o TraceResponseOutput) ForwardTraceId() pulumi.IntOutput {
+	return o.ApplyT(func(v TraceResponse) int { return v.ForwardTraceId }).(pulumi.IntOutput)
 }
 
 // A trace of a test contains multiple steps from the initial state to the final state (delivered, dropped, forwarded, or aborted). The steps are ordered by the processing sequence within the simulated network state machine. It is critical to preserve the order of the steps and avoid reordering or sorting them.
@@ -3343,16 +3745,20 @@ func init() {
 	pulumi.RegisterOutputType(LatencyDistributionResponseOutput{})
 	pulumi.RegisterOutputType(LatencyPercentileResponseOutput{})
 	pulumi.RegisterOutputType(LatencyPercentileResponseArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerBackendInfoResponseOutput{})
 	pulumi.RegisterOutputType(LoadBalancerBackendResponseOutput{})
 	pulumi.RegisterOutputType(LoadBalancerBackendResponseArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerInfoResponseOutput{})
+	pulumi.RegisterOutputType(NatInfoResponseOutput{})
 	pulumi.RegisterOutputType(NetworkInfoResponseOutput{})
 	pulumi.RegisterOutputType(ProbingDetailsResponseOutput{})
+	pulumi.RegisterOutputType(ProxyConnectionInfoResponseOutput{})
 	pulumi.RegisterOutputType(ReachabilityDetailsResponseOutput{})
 	pulumi.RegisterOutputType(RouteInfoResponseOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
 	pulumi.RegisterOutputType(StepResponseOutput{})
 	pulumi.RegisterOutputType(StepResponseArrayOutput{})
+	pulumi.RegisterOutputType(StorageBucketInfoResponseOutput{})
 	pulumi.RegisterOutputType(TraceResponseOutput{})
 	pulumi.RegisterOutputType(TraceResponseArrayOutput{})
 	pulumi.RegisterOutputType(VpcConnectorInfoResponseOutput{})

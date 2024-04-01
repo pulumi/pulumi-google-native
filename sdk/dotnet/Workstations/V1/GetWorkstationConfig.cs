@@ -94,13 +94,25 @@ namespace Pulumi.GoogleNative.Workstations.V1
         /// </summary>
         public readonly string DeleteTime;
         /// <summary>
+        /// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections through a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain TCP connections, such as SSH. When enabled, all communication must occur over HTTPS or WSS.
+        /// </summary>
+        public readonly bool DisableTcpConnections;
+        /// <summary>
         /// Optional. Human-readable name for this workstation configuration.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
+        /// Optional. Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+        /// </summary>
+        public readonly bool EnableAuditAgent;
+        /// <summary>
         /// Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key (CMEK). If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk might be lost. If the encryption key is revoked, the workstation session automatically stops within 7 hours. Immutable after the workstation configuration is created.
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse EncryptionKey;
+        /// <summary>
+        /// Optional. Ephemeral directories which won't persist across workstation sessions.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.EphemeralDirectoryResponse> EphemeralDirectories;
         /// <summary>
         /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         /// </summary>
@@ -164,9 +176,15 @@ namespace Pulumi.GoogleNative.Workstations.V1
 
             string deleteTime,
 
+            bool disableTcpConnections,
+
             string displayName,
 
+            bool enableAuditAgent,
+
             Outputs.CustomerEncryptionKeyResponse encryptionKey,
+
+            ImmutableArray<Outputs.EphemeralDirectoryResponse> ephemeralDirectories,
 
             string etag,
 
@@ -198,8 +216,11 @@ namespace Pulumi.GoogleNative.Workstations.V1
             CreateTime = createTime;
             Degraded = degraded;
             DeleteTime = deleteTime;
+            DisableTcpConnections = disableTcpConnections;
             DisplayName = displayName;
+            EnableAuditAgent = enableAuditAgent;
             EncryptionKey = encryptionKey;
+            EphemeralDirectories = ephemeralDirectories;
             Etag = etag;
             Host = host;
             IdleTimeout = idleTimeout;

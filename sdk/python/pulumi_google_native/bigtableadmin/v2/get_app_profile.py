@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetAppProfileResult:
-    def __init__(__self__, description=None, etag=None, multi_cluster_routing_use_any=None, name=None, priority=None, single_cluster_routing=None, standard_isolation=None):
+    def __init__(__self__, data_boost_isolation_read_only=None, description=None, etag=None, multi_cluster_routing_use_any=None, name=None, priority=None, single_cluster_routing=None, standard_isolation=None):
+        if data_boost_isolation_read_only and not isinstance(data_boost_isolation_read_only, dict):
+            raise TypeError("Expected argument 'data_boost_isolation_read_only' to be a dict")
+        pulumi.set(__self__, "data_boost_isolation_read_only", data_boost_isolation_read_only)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -41,6 +44,14 @@ class GetAppProfileResult:
         if standard_isolation and not isinstance(standard_isolation, dict):
             raise TypeError("Expected argument 'standard_isolation' to be a dict")
         pulumi.set(__self__, "standard_isolation", standard_isolation)
+
+    @property
+    @pulumi.getter(name="dataBoostIsolationReadOnly")
+    def data_boost_isolation_read_only(self) -> 'outputs.DataBoostIsolationReadOnlyResponse':
+        """
+        Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+        """
+        return pulumi.get(self, "data_boost_isolation_read_only")
 
     @property
     @pulumi.getter
@@ -105,6 +116,7 @@ class AwaitableGetAppProfileResult(GetAppProfileResult):
         if False:
             yield self
         return GetAppProfileResult(
+            data_boost_isolation_read_only=self.data_boost_isolation_read_only,
             description=self.description,
             etag=self.etag,
             multi_cluster_routing_use_any=self.multi_cluster_routing_use_any,
@@ -129,6 +141,7 @@ def get_app_profile(app_profile_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:bigtableadmin/v2:getAppProfile', __args__, opts=opts, typ=GetAppProfileResult).value
 
     return AwaitableGetAppProfileResult(
+        data_boost_isolation_read_only=pulumi.get(__ret__, 'data_boost_isolation_read_only'),
         description=pulumi.get(__ret__, 'description'),
         etag=pulumi.get(__ret__, 'etag'),
         multi_cluster_routing_use_any=pulumi.get(__ret__, 'multi_cluster_routing_use_any'),

@@ -21,6 +21,18 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1.Inputs
         [Input("dataset")]
         public Input<string>? Dataset { get; set; }
 
+        [Input("selectedResources")]
+        private InputList<Inputs.SelectedResourceArgs>? _selectedResources;
+
+        /// <summary>
+        /// Optional. Resources in this dataset that are selectively shared. If this field is empty, then the entire dataset (all resources) are shared. This field is only valid for data clean room exchanges.
+        /// </summary>
+        public InputList<Inputs.SelectedResourceArgs> SelectedResources
+        {
+            get => _selectedResources ?? (_selectedResources = new InputList<Inputs.SelectedResourceArgs>());
+            set => _selectedResources = value;
+        }
+
         public BigQueryDatasetSourceArgs()
         {
         }

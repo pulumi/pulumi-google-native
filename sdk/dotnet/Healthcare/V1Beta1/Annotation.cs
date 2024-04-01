@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
+        /// Identifier. Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -118,8 +118,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// <summary>
         /// Details of the source.
         /// </summary>
-        [Input("annotationSource")]
-        public Input<Inputs.AnnotationSourceArgs>? AnnotationSource { get; set; }
+        [Input("annotationSource", required: true)]
+        public Input<Inputs.AnnotationSourceArgs> AnnotationSource { get; set; } = null!;
 
         [Input("annotationStoreId", required: true)]
         public Input<string> AnnotationStoreId { get; set; } = null!;
@@ -149,7 +149,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
+        /// Identifier. Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

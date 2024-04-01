@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Inputs
         }
 
         /// <summary>
-        /// Immutable. Deployment timeout. TODO (b/306244185): Revise documentation before exposing.
+        /// Immutable. Deployment timeout. Limit for deployment timeout is 2 hours.
         /// </summary>
         [Input("deploymentTimeout")]
         public Input<string>? DeploymentTimeout { get; set; }
@@ -57,8 +57,20 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Inputs
             set => _env = value;
         }
 
+        [Input("grpcPorts")]
+        private InputList<Inputs.GoogleCloudAiplatformV1PortArgs>? _grpcPorts;
+
         /// <summary>
-        /// Immutable. Specification for Kubernetes readiness probe. TODO (b/306244185): Revise documentation before exposing.
+        /// Immutable. List of ports to expose from the container. Vertex AI sends gRPC prediction requests that it receives to the first port on this list. Vertex AI also sends liveness and health checks to this port. If you do not specify this field, gRPC requests to the container will be disabled. Vertex AI does not use ports other than the first one listed. This field corresponds to the `ports` field of the Kubernetes Containers v1 core API.
+        /// </summary>
+        public InputList<Inputs.GoogleCloudAiplatformV1PortArgs> GrpcPorts
+        {
+            get => _grpcPorts ?? (_grpcPorts = new InputList<Inputs.GoogleCloudAiplatformV1PortArgs>());
+            set => _grpcPorts = value;
+        }
+
+        /// <summary>
+        /// Immutable. Specification for Kubernetes readiness probe.
         /// </summary>
         [Input("healthProbe")]
         public Input<Inputs.GoogleCloudAiplatformV1ProbeArgs>? HealthProbe { get; set; }
@@ -94,13 +106,13 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Inputs
         public Input<string>? PredictRoute { get; set; }
 
         /// <summary>
-        /// Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes. TODO (b/306244185): Revise documentation before exposing.
+        /// Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes.
         /// </summary>
         [Input("sharedMemorySizeMb")]
         public Input<string>? SharedMemorySizeMb { get; set; }
 
         /// <summary>
-        /// Immutable. Specification for Kubernetes startup probe. TODO (b/306244185): Revise documentation before exposing.
+        /// Immutable. Specification for Kubernetes startup probe.
         /// </summary>
         [Input("startupProbe")]
         public Input<Inputs.GoogleCloudAiplatformV1ProbeArgs>? StartupProbe { get; set; }

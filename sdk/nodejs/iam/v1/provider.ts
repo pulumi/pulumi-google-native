@@ -89,6 +89,10 @@ export class Provider extends pulumi.CustomResource {
      * Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
      */
     public readonly workloadIdentityPoolProviderId!: pulumi.Output<string>;
+    /**
+     * An X.509-type identity provider.
+     */
+    public readonly x509!: pulumi.Output<outputs.iam.v1.X509Response>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -119,6 +123,7 @@ export class Provider extends pulumi.CustomResource {
             resourceInputs["saml"] = args ? args.saml : undefined;
             resourceInputs["workloadIdentityPoolId"] = args ? args.workloadIdentityPoolId : undefined;
             resourceInputs["workloadIdentityPoolProviderId"] = args ? args.workloadIdentityPoolProviderId : undefined;
+            resourceInputs["x509"] = args ? args.x509 : undefined;
             resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -138,6 +143,7 @@ export class Provider extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["workloadIdentityPoolId"] = undefined /*out*/;
             resourceInputs["workloadIdentityPoolProviderId"] = undefined /*out*/;
+            resourceInputs["x509"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["location", "project", "workloadIdentityPoolId", "workloadIdentityPoolProviderId"] };
@@ -189,4 +195,8 @@ export interface ProviderArgs {
      * Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
      */
     workloadIdentityPoolProviderId: pulumi.Input<string>;
+    /**
+     * An X.509-type identity provider.
+     */
+    x509?: pulumi.Input<inputs.iam.v1.X509Args>;
 }

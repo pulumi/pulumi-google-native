@@ -36,7 +36,7 @@ class DashboardArgs:
         :param pulumi.Input['GridLayoutArgs'] grid_layout: Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels applied to the dashboard
         :param pulumi.Input['MosaicLayoutArgs'] mosaic_layout: The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
-        :param pulumi.Input[str] name: Immutable. The resource name of the dashboard.
+        :param pulumi.Input[str] name: Identifier. The resource name of the dashboard.
         :param pulumi.Input['RowLayoutArgs'] row_layout: The content is divided into equally spaced rows and the widgets are arranged horizontally.
         """
         pulumi.set(__self__, "display_name", display_name)
@@ -147,7 +147,7 @@ class DashboardArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. The resource name of the dashboard.
+        Identifier. The resource name of the dashboard.
         """
         return pulumi.get(self, "name")
 
@@ -205,7 +205,7 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GridLayoutArgs']] grid_layout: Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels applied to the dashboard
         :param pulumi.Input[pulumi.InputType['MosaicLayoutArgs']] mosaic_layout: The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
-        :param pulumi.Input[str] name: Immutable. The resource name of the dashboard.
+        :param pulumi.Input[str] name: Identifier. The resource name of the dashboard.
         :param pulumi.Input[pulumi.InputType['RowLayoutArgs']] row_layout: The content is divided into equally spaced rows and the widgets are arranged horizontally.
         """
         ...
@@ -359,7 +359,7 @@ class Dashboard(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Immutable. The resource name of the dashboard.
+        Identifier. The resource name of the dashboard.
         """
         return pulumi.get(self, "name")
 

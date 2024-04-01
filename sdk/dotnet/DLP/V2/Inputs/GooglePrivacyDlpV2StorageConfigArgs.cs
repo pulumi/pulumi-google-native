@@ -39,6 +39,9 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         [Input("hybridOptions")]
         public Input<Inputs.GooglePrivacyDlpV2HybridOptionsArgs>? HybridOptions { get; set; }
 
+        /// <summary>
+        /// Configuration of the timespan of the items to include in scanning.
+        /// </summary>
         [Input("timespanConfig")]
         public Input<Inputs.GooglePrivacyDlpV2TimespanConfigArgs>? TimespanConfig { get; set; }
 

@@ -91,6 +91,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceGroup{}
 	case "google-native:compute/v1:InstanceGroupManager":
 		r = &InstanceGroupManager{}
+	case "google-native:compute/v1:InstanceGroupManagerResizeRequest":
+		r = &InstanceGroupManagerResizeRequest{}
 	case "google-native:compute/v1:InstanceIamBinding":
 		r = &InstanceIamBinding{}
 	case "google-native:compute/v1:InstanceIamMember":
@@ -105,6 +107,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceTemplateIamMember{}
 	case "google-native:compute/v1:InstanceTemplateIamPolicy":
 		r = &InstanceTemplateIamPolicy{}
+	case "google-native:compute/v1:InstantSnapshot":
+		r = &InstantSnapshot{}
+	case "google-native:compute/v1:InstantSnapshotIamBinding":
+		r = &InstantSnapshotIamBinding{}
+	case "google-native:compute/v1:InstantSnapshotIamMember":
+		r = &InstantSnapshotIamMember{}
+	case "google-native:compute/v1:InstantSnapshotIamPolicy":
+		r = &InstantSnapshotIamPolicy{}
 	case "google-native:compute/v1:Interconnect":
 		r = &Interconnect{}
 	case "google-native:compute/v1:InterconnectAttachment":
@@ -197,6 +207,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionInstanceGroupManager{}
 	case "google-native:compute/v1:RegionInstanceTemplate":
 		r = &RegionInstanceTemplate{}
+	case "google-native:compute/v1:RegionInstantSnapshot":
+		r = &RegionInstantSnapshot{}
+	case "google-native:compute/v1:RegionInstantSnapshotIamBinding":
+		r = &RegionInstantSnapshotIamBinding{}
+	case "google-native:compute/v1:RegionInstantSnapshotIamMember":
+		r = &RegionInstantSnapshotIamMember{}
+	case "google-native:compute/v1:RegionInstantSnapshotIamPolicy":
+		r = &RegionInstantSnapshotIamPolicy{}
 	case "google-native:compute/v1:RegionNetworkEndpointGroup":
 		r = &RegionNetworkEndpointGroup{}
 	case "google-native:compute/v1:RegionNetworkFirewallPolicy":
@@ -265,6 +283,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SslCertificate{}
 	case "google-native:compute/v1:SslPolicy":
 		r = &SslPolicy{}
+	case "google-native:compute/v1:StoragePool":
+		r = &StoragePool{}
+	case "google-native:compute/v1:StoragePoolIamBinding":
+		r = &StoragePoolIamBinding{}
+	case "google-native:compute/v1:StoragePoolIamMember":
+		r = &StoragePoolIamMember{}
+	case "google-native:compute/v1:StoragePoolIamPolicy":
+		r = &StoragePoolIamPolicy{}
 	case "google-native:compute/v1:Subnetwork":
 		r = &Subnetwork{}
 	case "google-native:compute/v1:SubnetworkIamBinding":

@@ -21,6 +21,7 @@ class ConnectivityTestArgs:
                  name: pulumi.Input[str],
                  source: pulumi.Input['EndpointArgs'],
                  test_id: pulumi.Input[str],
+                 bypass_firewall_checks: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -32,6 +33,7 @@ class ConnectivityTestArgs:
         :param pulumi.Input[str] name: Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}`
         :param pulumi.Input['EndpointArgs'] source: Source specification of the Connectivity Test. You can use a combination of source IP address, virtual machine (VM) instance, or Compute Engine network to uniquely identify the source location. Examples: If the source IP address is an internal IP address within a Google Cloud Virtual Private Cloud (VPC) network, then you must also specify the VPC network. Otherwise, specify the VM instance, which already contains its internal IP address and VPC network information. If the source of the test is within an on-premises network, then you must provide the destination VPC network. If the source endpoint is a Compute Engine VM instance with multiple network interfaces, the instance itself is not sufficient to identify the endpoint. So, you must also specify the source IP address or VPC network. A reachability analysis proceeds even if the source location is ambiguous. However, the test result may include endpoints that you don't intend to test.
         :param pulumi.Input[str] test_id: Required. The logical name of the Connectivity Test in your project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project
+        :param pulumi.Input[bool] bypass_firewall_checks: Whether the test should skip firewall checking. If not provided, we assume false.
         :param pulumi.Input[str] description: The user-supplied description of the Connectivity Test. Maximum of 512 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] protocol: IP Protocol of the test. When not provided, "TCP" is assumed.
@@ -41,6 +43,8 @@ class ConnectivityTestArgs:
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "test_id", test_id)
+        if bypass_firewall_checks is not None:
+            pulumi.set(__self__, "bypass_firewall_checks", bypass_firewall_checks)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
@@ -99,6 +103,18 @@ class ConnectivityTestArgs:
     @test_id.setter
     def test_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "test_id", value)
+
+    @property
+    @pulumi.getter(name="bypassFirewallChecks")
+    def bypass_firewall_checks(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the test should skip firewall checking. If not provided, we assume false.
+        """
+        return pulumi.get(self, "bypass_firewall_checks")
+
+    @bypass_firewall_checks.setter
+    def bypass_firewall_checks(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "bypass_firewall_checks", value)
 
     @property
     @pulumi.getter
@@ -163,6 +179,7 @@ class ConnectivityTest(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 bypass_firewall_checks: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[pulumi.InputType['EndpointArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -179,6 +196,7 @@ class ConnectivityTest(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] bypass_firewall_checks: Whether the test should skip firewall checking. If not provided, we assume false.
         :param pulumi.Input[str] description: The user-supplied description of the Connectivity Test. Maximum of 512 characters.
         :param pulumi.Input[pulumi.InputType['EndpointArgs']] destination: Destination specification of the Connectivity Test. You can use a combination of destination IP address, Compute Engine VM instance, or VPC network to uniquely identify the destination location. Even if the destination IP address is not unique, the source IP location is unique. Usually, the analysis can infer the destination endpoint from route information. If the destination you specify is a VM instance and the instance has multiple network interfaces, then you must also specify either a destination IP address or VPC network to identify the destination interface. A reachability analysis proceeds even if the destination location is ambiguous. However, the result can include endpoints that you don't intend to test.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
@@ -213,6 +231,7 @@ class ConnectivityTest(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 bypass_firewall_checks: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[pulumi.InputType['EndpointArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -231,6 +250,7 @@ class ConnectivityTest(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectivityTestArgs.__new__(ConnectivityTestArgs)
 
+            __props__.__dict__["bypass_firewall_checks"] = bypass_firewall_checks
             __props__.__dict__["description"] = description
             if destination is None and not opts.urn:
                 raise TypeError("Missing required property 'destination'")
@@ -277,6 +297,7 @@ class ConnectivityTest(pulumi.CustomResource):
 
         __props__ = ConnectivityTestArgs.__new__(ConnectivityTestArgs)
 
+        __props__.__dict__["bypass_firewall_checks"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["destination"] = None
@@ -292,6 +313,14 @@ class ConnectivityTest(pulumi.CustomResource):
         __props__.__dict__["test_id"] = None
         __props__.__dict__["update_time"] = None
         return ConnectivityTest(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="bypassFirewallChecks")
+    def bypass_firewall_checks(self) -> pulumi.Output[bool]:
+        """
+        Whether the test should skip firewall checking. If not provided, we assume false.
+        """
+        return pulumi.get(self, "bypass_firewall_checks")
 
     @property
     @pulumi.getter(name="createTime")

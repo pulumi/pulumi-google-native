@@ -88,6 +88,10 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: - in location global: FIXED_RECORD.
+        /// </summary>
+        public readonly string Type;
+        /// <summary>
         /// The last update timestamp of a DnsAuthorization.
         /// </summary>
         public readonly string UpdateTime;
@@ -106,6 +110,8 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
 
             string name,
 
+            string type,
+
             string updateTime)
         {
             CreateTime = createTime;
@@ -114,6 +120,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
             Domain = domain;
             Labels = labels;
             Name = name;
+            Type = type;
             UpdateTime = updateTime;
         }
     }

@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetTestMatrixResult:
-    def __init__(__self__, client_info=None, environment_matrix=None, fail_fast=None, flaky_test_attempts=None, invalid_matrix_details=None, outcome_summary=None, project=None, result_storage=None, state=None, test_executions=None, test_matrix_id=None, test_specification=None, timestamp=None):
+    def __init__(__self__, client_info=None, environment_matrix=None, extended_invalid_matrix_details=None, fail_fast=None, flaky_test_attempts=None, invalid_matrix_details=None, outcome_summary=None, project=None, result_storage=None, state=None, test_executions=None, test_matrix_id=None, test_specification=None, timestamp=None):
         if client_info and not isinstance(client_info, dict):
             raise TypeError("Expected argument 'client_info' to be a dict")
         pulumi.set(__self__, "client_info", client_info)
         if environment_matrix and not isinstance(environment_matrix, dict):
             raise TypeError("Expected argument 'environment_matrix' to be a dict")
         pulumi.set(__self__, "environment_matrix", environment_matrix)
+        if extended_invalid_matrix_details and not isinstance(extended_invalid_matrix_details, list):
+            raise TypeError("Expected argument 'extended_invalid_matrix_details' to be a list")
+        pulumi.set(__self__, "extended_invalid_matrix_details", extended_invalid_matrix_details)
         if fail_fast and not isinstance(fail_fast, bool):
             raise TypeError("Expected argument 'fail_fast' to be a bool")
         pulumi.set(__self__, "fail_fast", fail_fast)
@@ -75,6 +78,14 @@ class GetTestMatrixResult:
         The devices the tests are being executed on.
         """
         return pulumi.get(self, "environment_matrix")
+
+    @property
+    @pulumi.getter(name="extendedInvalidMatrixDetails")
+    def extended_invalid_matrix_details(self) -> Sequence['outputs.MatrixErrorDetailResponse']:
+        """
+        Details about why a matrix was deemed invalid. If multiple checks can be safely performed, they will be reported but no assumptions should be made about the length of this list.
+        """
+        return pulumi.get(self, "extended_invalid_matrix_details")
 
     @property
     @pulumi.getter(name="failFast")
@@ -173,6 +184,7 @@ class AwaitableGetTestMatrixResult(GetTestMatrixResult):
         return GetTestMatrixResult(
             client_info=self.client_info,
             environment_matrix=self.environment_matrix,
+            extended_invalid_matrix_details=self.extended_invalid_matrix_details,
             fail_fast=self.fail_fast,
             flaky_test_attempts=self.flaky_test_attempts,
             invalid_matrix_details=self.invalid_matrix_details,
@@ -201,6 +213,7 @@ def get_test_matrix(project: Optional[str] = None,
     return AwaitableGetTestMatrixResult(
         client_info=pulumi.get(__ret__, 'client_info'),
         environment_matrix=pulumi.get(__ret__, 'environment_matrix'),
+        extended_invalid_matrix_details=pulumi.get(__ret__, 'extended_invalid_matrix_details'),
         fail_fast=pulumi.get(__ret__, 'fail_fast'),
         flaky_test_attempts=pulumi.get(__ret__, 'flaky_test_attempts'),
         invalid_matrix_details=pulumi.get(__ret__, 'invalid_matrix_details'),

@@ -25,7 +25,7 @@ class TagTemplateArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
         :param pulumi.Input[str] tag_template_id: Required. The id of the tag template to create.
         :param pulumi.Input[str] display_name: The display name for this template. Defaults to an empty string.
-        :param pulumi.Input[str] name: The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
+        :param pulumi.Input[str] name: Identifier. The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
         """
         pulumi.set(__self__, "fields", fields)
         pulumi.set(__self__, "tag_template_id", tag_template_id)
@@ -87,7 +87,7 @@ class TagTemplateArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
+        Identifier. The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
         """
         return pulumi.get(self, "name")
 
@@ -124,7 +124,7 @@ class TagTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The display name for this template. Defaults to an empty string.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
-        :param pulumi.Input[str] name: The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
+        :param pulumi.Input[str] name: Identifier. The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
         :param pulumi.Input[str] tag_template_id: Required. The id of the tag template to create.
         """
         ...
@@ -176,6 +176,7 @@ class TagTemplate(pulumi.CustomResource):
             if tag_template_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tag_template_id'")
             __props__.__dict__["tag_template_id"] = tag_template_id
+            __props__.__dict__["dataplex_transfer_status"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "tag_template_id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(TagTemplate, __self__).__init__(
@@ -200,6 +201,7 @@ class TagTemplate(pulumi.CustomResource):
 
         __props__ = TagTemplateArgs.__new__(TagTemplateArgs)
 
+        __props__.__dict__["dataplex_transfer_status"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["fields"] = None
         __props__.__dict__["location"] = None
@@ -207,6 +209,14 @@ class TagTemplate(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["tag_template_id"] = None
         return TagTemplate(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="dataplexTransferStatus")
+    def dataplex_transfer_status(self) -> pulumi.Output[str]:
+        """
+        Transfer status of the TagTemplate
+        """
+        return pulumi.get(self, "dataplex_transfer_status")
 
     @property
     @pulumi.getter(name="displayName")
@@ -233,7 +243,7 @@ class TagTemplate(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
+        Identifier. The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
         """
         return pulumi.get(self, "name")
 

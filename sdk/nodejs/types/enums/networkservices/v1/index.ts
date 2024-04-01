@@ -42,7 +42,7 @@ export const EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria = {
 } as const;
 
 /**
- * Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+ * Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), pick up the one with older creation time.
  */
 export type EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria = (typeof EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria)[keyof typeof EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria];
 
@@ -65,6 +65,79 @@ export const EndpointPolicyType = {
  * Required. The type of endpoint policy. This is primarily used to validate the configuration.
  */
 export type EndpointPolicyType = (typeof EndpointPolicyType)[keyof typeof EndpointPolicyType];
+
+export const ExtensionChainExtensionSupportedEventsItem = {
+    /**
+     * Unspecified value. Do not use.
+     */
+    EventTypeUnspecified: "EVENT_TYPE_UNSPECIFIED",
+    /**
+     * If included in `supported_events`, the extension is called when the HTTP request headers arrive.
+     */
+    RequestHeaders: "REQUEST_HEADERS",
+    /**
+     * If included in `supported_events`, the extension is called when the HTTP request body arrives.
+     */
+    RequestBody: "REQUEST_BODY",
+    /**
+     * If included in `supported_events`, the extension is called when the HTTP response headers arrive.
+     */
+    ResponseHeaders: "RESPONSE_HEADERS",
+    /**
+     * If included in `supported_events`, the extension is called when the HTTP response body arrives.
+     */
+    ResponseBody: "RESPONSE_BODY",
+    /**
+     * If included in `supported_events`, the extension is called when the HTTP request trailers arrives.
+     */
+    RequestTrailers: "REQUEST_TRAILERS",
+    /**
+     * If included in `supported_events`, the extension is called when the HTTP response trailers arrives.
+     */
+    ResponseTrailers: "RESPONSE_TRAILERS",
+} as const;
+
+export type ExtensionChainExtensionSupportedEventsItem = (typeof ExtensionChainExtensionSupportedEventsItem)[keyof typeof ExtensionChainExtensionSupportedEventsItem];
+
+export const GatewayEnvoyHeaders = {
+    /**
+     * Defaults to NONE.
+     */
+    EnvoyHeadersUnspecified: "ENVOY_HEADERS_UNSPECIFIED",
+    /**
+     * Suppress envoy debug headers.
+     */
+    None: "NONE",
+    /**
+     * Envoy will insert default internal debug headers into upstream requests: x-envoy-attempt-count x-envoy-is-timeout-retry x-envoy-expected-rq-timeout-ms x-envoy-original-path x-envoy-upstream-stream-duration-ms
+     */
+    DebugHeaders: "DEBUG_HEADERS",
+} as const;
+
+/**
+ * Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+ */
+export type GatewayEnvoyHeaders = (typeof GatewayEnvoyHeaders)[keyof typeof GatewayEnvoyHeaders];
+
+export const GatewayIpVersion = {
+    /**
+     * The type when IP version is not specified. Defaults to IPV4.
+     */
+    IpVersionUnspecified: "IP_VERSION_UNSPECIFIED",
+    /**
+     * The type for IP version 4.
+     */
+    Ipv4: "IPV4",
+    /**
+     * The type for IP version 6.
+     */
+    Ipv6: "IPV6",
+} as const;
+
+/**
+ * Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+ */
+export type GatewayIpVersion = (typeof GatewayIpVersion)[keyof typeof GatewayIpVersion];
 
 export const GatewayType = {
     /**
@@ -157,3 +230,91 @@ export const HttpRouteRedirectResponseCode = {
  * The HTTP Status code to use for the redirect.
  */
 export type HttpRouteRedirectResponseCode = (typeof HttpRouteRedirectResponseCode)[keyof typeof HttpRouteRedirectResponseCode];
+
+export const LbRouteExtensionLoadBalancingScheme = {
+    /**
+     * Default value. Do not use.
+     */
+    LoadBalancingSchemeUnspecified: "LOAD_BALANCING_SCHEME_UNSPECIFIED",
+    /**
+     * Signifies that this is used for Internal HTTP(S) Load Balancing.
+     */
+    InternalManaged: "INTERNAL_MANAGED",
+    /**
+     * Signifies that this is used for External Managed HTTP(S) Load Balancing.
+     */
+    ExternalManaged: "EXTERNAL_MANAGED",
+} as const;
+
+/**
+ * Required. All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
+ */
+export type LbRouteExtensionLoadBalancingScheme = (typeof LbRouteExtensionLoadBalancingScheme)[keyof typeof LbRouteExtensionLoadBalancingScheme];
+
+export const LbTrafficExtensionLoadBalancingScheme = {
+    /**
+     * Default value. Do not use.
+     */
+    LoadBalancingSchemeUnspecified: "LOAD_BALANCING_SCHEME_UNSPECIFIED",
+    /**
+     * Signifies that this is used for Internal HTTP(S) Load Balancing.
+     */
+    InternalManaged: "INTERNAL_MANAGED",
+    /**
+     * Signifies that this is used for External Managed HTTP(S) Load Balancing.
+     */
+    ExternalManaged: "EXTERNAL_MANAGED",
+} as const;
+
+/**
+ * Required. All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
+ */
+export type LbTrafficExtensionLoadBalancingScheme = (typeof LbTrafficExtensionLoadBalancingScheme)[keyof typeof LbTrafficExtensionLoadBalancingScheme];
+
+export const MeshEnvoyHeaders = {
+    /**
+     * Defaults to NONE.
+     */
+    EnvoyHeadersUnspecified: "ENVOY_HEADERS_UNSPECIFIED",
+    /**
+     * Suppress envoy debug headers.
+     */
+    None: "NONE",
+    /**
+     * Envoy will insert default internal debug headers into upstream requests: x-envoy-attempt-count x-envoy-is-timeout-retry x-envoy-expected-rq-timeout-ms x-envoy-original-path x-envoy-upstream-stream-duration-ms
+     */
+    DebugHeaders: "DEBUG_HEADERS",
+} as const;
+
+/**
+ * Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+ */
+export type MeshEnvoyHeaders = (typeof MeshEnvoyHeaders)[keyof typeof MeshEnvoyHeaders];
+
+export const ServiceLbPolicyLoadBalancingAlgorithm = {
+    /**
+     * The type of the loadbalancing algorithm is unspecified.
+     */
+    LoadBalancingAlgorithmUnspecified: "LOAD_BALANCING_ALGORITHM_UNSPECIFIED",
+    /**
+     * Balance traffic across all backends across the world proportionally based on capacity.
+     */
+    SprayToWorld: "SPRAY_TO_WORLD",
+    /**
+     * Direct traffic to the nearest region with endpoints and capacity before spilling over to other regions and spread the traffic from each client to all the MIGs/NEGs in a region.
+     */
+    SprayToRegion: "SPRAY_TO_REGION",
+    /**
+     * Direct traffic to the nearest region with endpoints and capacity before spilling over to other regions. All MIGs/NEGs within a region are evenly loaded but each client might not spread the traffic to all the MIGs/NEGs in the region.
+     */
+    WaterfallByRegion: "WATERFALL_BY_REGION",
+    /**
+     * Attempt to keep traffic in a single zone closest to the client, before spilling over to other zones.
+     */
+    WaterfallByZone: "WATERFALL_BY_ZONE",
+} as const;
+
+/**
+ * Optional. The type of load balancing algorithm to be used. The default behavior is WATERFALL_BY_REGION.
+ */
+export type ServiceLbPolicyLoadBalancingAlgorithm = (typeof ServiceLbPolicyLoadBalancingAlgorithm)[keyof typeof ServiceLbPolicyLoadBalancingAlgorithm];

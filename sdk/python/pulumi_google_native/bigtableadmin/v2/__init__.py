@@ -7,9 +7,11 @@ import typing
 # Export this package's modules as members:
 from ._enums import *
 from .app_profile import *
+from .authorized_view import *
 from .backup import *
 from .cluster import *
 from .get_app_profile import *
+from .get_authorized_view import *
 from .get_backup import *
 from .get_cluster import *
 from .get_instance import *

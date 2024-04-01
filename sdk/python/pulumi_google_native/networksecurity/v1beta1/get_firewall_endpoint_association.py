@@ -18,10 +18,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetFirewallEndpointAssociationResult:
-    def __init__(__self__, create_time=None, firewall_endpoint=None, labels=None, name=None, network=None, reconciling=None, state=None, tls_inspection_policy=None, update_time=None):
+    def __init__(__self__, create_time=None, disabled=None, firewall_endpoint=None, labels=None, name=None, network=None, reconciling=None, state=None, tls_inspection_policy=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if disabled and not isinstance(disabled, bool):
+            raise TypeError("Expected argument 'disabled' to be a bool")
+        pulumi.set(__self__, "disabled", disabled)
         if firewall_endpoint and not isinstance(firewall_endpoint, str):
             raise TypeError("Expected argument 'firewall_endpoint' to be a str")
         pulumi.set(__self__, "firewall_endpoint", firewall_endpoint)
@@ -56,6 +59,14 @@ class GetFirewallEndpointAssociationResult:
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter
+    def disabled(self) -> bool:
+        """
+        Optional. Whether the association is disabled. True indicates that traffic won't be intercepted
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
     @pulumi.getter(name="firewallEndpoint")
     def firewall_endpoint(self) -> str:
         """
@@ -75,7 +86,7 @@ class GetFirewallEndpointAssociationResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        name of resource
+        Immutable. Identifier. name of resource
         """
         return pulumi.get(self, "name")
 
@@ -127,6 +138,7 @@ class AwaitableGetFirewallEndpointAssociationResult(GetFirewallEndpointAssociati
             yield self
         return GetFirewallEndpointAssociationResult(
             create_time=self.create_time,
+            disabled=self.disabled,
             firewall_endpoint=self.firewall_endpoint,
             labels=self.labels,
             name=self.name,
@@ -153,6 +165,7 @@ def get_firewall_endpoint_association(firewall_endpoint_association_id: Optional
 
     return AwaitableGetFirewallEndpointAssociationResult(
         create_time=pulumi.get(__ret__, 'create_time'),
+        disabled=pulumi.get(__ret__, 'disabled'),
         firewall_endpoint=pulumi.get(__ret__, 'firewall_endpoint'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),

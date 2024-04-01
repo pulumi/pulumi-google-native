@@ -171,6 +171,8 @@ type LookupClusterResult struct {
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
 	// Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
 	ResourceUsageExportConfig ResourceUsageExportConfigResponse `pulumi:"resourceUsageExportConfig"`
+	// Secret CSI driver configuration.
+	SecretManagerConfig SecretManagerConfigResponse `pulumi:"secretManagerConfig"`
 	// Enable/Disable Security Posture API features for the cluster.
 	SecurityPostureConfig SecurityPostureConfigResponse `pulumi:"securityPostureConfig"`
 	// [Output only] Server-defined URL for the resource.
@@ -570,6 +572,11 @@ func (o LookupClusterResultOutput) ResourceLabels() pulumi.StringMapOutput {
 // Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
 func (o LookupClusterResultOutput) ResourceUsageExportConfig() ResourceUsageExportConfigResponseOutput {
 	return o.ApplyT(func(v LookupClusterResult) ResourceUsageExportConfigResponse { return v.ResourceUsageExportConfig }).(ResourceUsageExportConfigResponseOutput)
+}
+
+// Secret CSI driver configuration.
+func (o LookupClusterResultOutput) SecretManagerConfig() SecretManagerConfigResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) SecretManagerConfigResponse { return v.SecretManagerConfig }).(SecretManagerConfigResponseOutput)
 }
 
 // Enable/Disable Security Posture API features for the cluster.

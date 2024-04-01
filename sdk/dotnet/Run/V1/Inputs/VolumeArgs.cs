@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public Input<Inputs.ConfigMapVolumeSourceArgs>? ConfigMap { get; set; }
 
         /// <summary>
+        /// Volume specified by the Container Storage Interface driver
+        /// </summary>
+        [Input("csi")]
+        public Input<Inputs.CSIVolumeSourceArgs>? Csi { get; set; }
+
+        /// <summary>
         /// Ephemeral storage used as a shared volume.
         /// </summary>
         [Input("emptyDir")]
@@ -32,6 +38,9 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("nfs")]
+        public Input<Inputs.NFSVolumeSourceArgs>? Nfs { get; set; }
 
         /// <summary>
         /// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secretName.

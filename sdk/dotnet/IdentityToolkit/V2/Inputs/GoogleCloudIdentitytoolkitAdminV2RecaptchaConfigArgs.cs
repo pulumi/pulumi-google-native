@@ -33,6 +33,18 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2.Inputs
             set => _managedRules = value;
         }
 
+        [Input("recaptchaKeys")]
+        private InputList<Inputs.GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyArgs>? _recaptchaKeys;
+
+        /// <summary>
+        /// The reCAPTCHA keys.
+        /// </summary>
+        public InputList<Inputs.GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyArgs> RecaptchaKeys
+        {
+            get => _recaptchaKeys ?? (_recaptchaKeys = new InputList<Inputs.GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyArgs>());
+            set => _recaptchaKeys = value;
+        }
+
         /// <summary>
         /// Whether to use the account defender for reCAPTCHA assessment. Defaults to `false`.
         /// </summary>

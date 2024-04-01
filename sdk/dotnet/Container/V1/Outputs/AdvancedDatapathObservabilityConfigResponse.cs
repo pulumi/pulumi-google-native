@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly bool EnableMetrics;
         /// <summary>
+        /// Enable Relay component
+        /// </summary>
+        public readonly bool EnableRelay;
+        /// <summary>
         /// Method used to make Relay available
         /// </summary>
         public readonly string RelayMode;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         private AdvancedDatapathObservabilityConfigResponse(
             bool enableMetrics,
 
+            bool enableRelay,
+
             string relayMode)
         {
             EnableMetrics = enableMetrics;
+            EnableRelay = enableRelay;
             RelayMode = relayMode;
         }
     }

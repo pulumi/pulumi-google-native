@@ -28,6 +28,10 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha.Outputs
         /// The summary content.
         /// </summary>
         public readonly string SummaryText;
+        /// <summary>
+        /// Summary with metadata information.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummaryWithMetadataResponse SummaryWithMetadata;
 
         [OutputConstructor]
         private GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryResponse(
@@ -35,11 +39,14 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha.Outputs
 
             ImmutableArray<string> summarySkippedReasons,
 
-            string summaryText)
+            string summaryText,
+
+            Outputs.GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummaryWithMetadataResponse summaryWithMetadata)
         {
             SafetyAttributes = safetyAttributes;
             SummarySkippedReasons = summarySkippedReasons;
             SummaryText = summaryText;
+            SummaryWithMetadata = summaryWithMetadata;
         }
     }
 }

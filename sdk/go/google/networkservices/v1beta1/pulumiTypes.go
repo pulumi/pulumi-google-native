@@ -341,9 +341,9 @@ func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConf
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role *string `pulumi:"role"`
 }
 
@@ -362,9 +362,9 @@ type BindingInput interface {
 type BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -425,12 +425,12 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -459,9 +459,9 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role string `pulumi:"role"`
 }
 
@@ -485,12 +485,12 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -960,20 +960,20 @@ func (o ExtensionChainArrayOutput) Index(i pulumi.IntInput) ExtensionChainOutput
 
 // A single extension in the chain to execute for the matching request.
 type ExtensionChainExtension struct {
-	// The `:authority` header in the gRPC request sent from Envoy to the extension service.
-	Authority string `pulumi:"authority"`
-	// Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to `FALSE`: * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is reset. Default is `FALSE`.
+	// Optional. The `:authority` header in the gRPC request sent from Envoy to the extension service. Required for Callout extensions.
+	Authority *string `pulumi:"authority"`
+	// Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to `FALSE` or the default setting of `FALSE` is used, one of the following happens: * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
 	FailOpen *bool `pulumi:"failOpen"`
 	// Optional. List of the HTTP headers to forward to the extension (from the client or backend). If omitted, all headers are sent. Each element is a string indicating the header name.
 	ForwardHeaders []string `pulumi:"forwardHeaders"`
 	// The name for this extension. The name is logged as part of the HTTP request logs. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number.
 	Name string `pulumi:"name"`
-	// The reference to the service that runs the extension. Must be a reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+	// The reference to the service that runs the extension. Currently only callout extensions are supported here. To configure a callout extension, `service` must be a fully-qualified reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format: `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}`.
 	Service string `pulumi:"service"`
 	// Optional. A set of events during request or response processing for which this extension is called. This field is required for the `LbTrafficExtension` resource. It's not relevant for the `LbRouteExtension` resource.
 	SupportedEvents []ExtensionChainExtensionSupportedEventsItem `pulumi:"supportedEvents"`
-	// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
-	Timeout string `pulumi:"timeout"`
+	// Optional. Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds. Required for Callout extensions.
+	Timeout *string `pulumi:"timeout"`
 }
 
 // ExtensionChainExtensionInput is an input type that accepts ExtensionChainExtensionArgs and ExtensionChainExtensionOutput values.
@@ -989,20 +989,20 @@ type ExtensionChainExtensionInput interface {
 
 // A single extension in the chain to execute for the matching request.
 type ExtensionChainExtensionArgs struct {
-	// The `:authority` header in the gRPC request sent from Envoy to the extension service.
-	Authority pulumi.StringInput `pulumi:"authority"`
-	// Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to `FALSE`: * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is reset. Default is `FALSE`.
+	// Optional. The `:authority` header in the gRPC request sent from Envoy to the extension service. Required for Callout extensions.
+	Authority pulumi.StringPtrInput `pulumi:"authority"`
+	// Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to `FALSE` or the default setting of `FALSE` is used, one of the following happens: * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
 	FailOpen pulumi.BoolPtrInput `pulumi:"failOpen"`
 	// Optional. List of the HTTP headers to forward to the extension (from the client or backend). If omitted, all headers are sent. Each element is a string indicating the header name.
 	ForwardHeaders pulumi.StringArrayInput `pulumi:"forwardHeaders"`
 	// The name for this extension. The name is logged as part of the HTTP request logs. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The reference to the service that runs the extension. Must be a reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+	// The reference to the service that runs the extension. Currently only callout extensions are supported here. To configure a callout extension, `service` must be a fully-qualified reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format: `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}`.
 	Service pulumi.StringInput `pulumi:"service"`
 	// Optional. A set of events during request or response processing for which this extension is called. This field is required for the `LbTrafficExtension` resource. It's not relevant for the `LbRouteExtension` resource.
 	SupportedEvents ExtensionChainExtensionSupportedEventsItemArrayInput `pulumi:"supportedEvents"`
-	// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
-	Timeout pulumi.StringInput `pulumi:"timeout"`
+	// Optional. Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds. Required for Callout extensions.
+	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
 }
 
 func (ExtensionChainExtensionArgs) ElementType() reflect.Type {
@@ -1057,12 +1057,12 @@ func (o ExtensionChainExtensionOutput) ToExtensionChainExtensionOutputWithContex
 	return o
 }
 
-// The `:authority` header in the gRPC request sent from Envoy to the extension service.
-func (o ExtensionChainExtensionOutput) Authority() pulumi.StringOutput {
-	return o.ApplyT(func(v ExtensionChainExtension) string { return v.Authority }).(pulumi.StringOutput)
+// Optional. The `:authority` header in the gRPC request sent from Envoy to the extension service. Required for Callout extensions.
+func (o ExtensionChainExtensionOutput) Authority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExtensionChainExtension) *string { return v.Authority }).(pulumi.StringPtrOutput)
 }
 
-// Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to `FALSE`: * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is reset. Default is `FALSE`.
+// Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to `FALSE` or the default setting of `FALSE` is used, one of the following happens: * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
 func (o ExtensionChainExtensionOutput) FailOpen() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ExtensionChainExtension) *bool { return v.FailOpen }).(pulumi.BoolPtrOutput)
 }
@@ -1077,7 +1077,7 @@ func (o ExtensionChainExtensionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ExtensionChainExtension) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The reference to the service that runs the extension. Must be a reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+// The reference to the service that runs the extension. Currently only callout extensions are supported here. To configure a callout extension, `service` must be a fully-qualified reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format: `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}`.
 func (o ExtensionChainExtensionOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v ExtensionChainExtension) string { return v.Service }).(pulumi.StringOutput)
 }
@@ -1087,9 +1087,9 @@ func (o ExtensionChainExtensionOutput) SupportedEvents() ExtensionChainExtension
 	return o.ApplyT(func(v ExtensionChainExtension) []ExtensionChainExtensionSupportedEventsItem { return v.SupportedEvents }).(ExtensionChainExtensionSupportedEventsItemArrayOutput)
 }
 
-// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
-func (o ExtensionChainExtensionOutput) Timeout() pulumi.StringOutput {
-	return o.ApplyT(func(v ExtensionChainExtension) string { return v.Timeout }).(pulumi.StringOutput)
+// Optional. Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds. Required for Callout extensions.
+func (o ExtensionChainExtensionOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExtensionChainExtension) *string { return v.Timeout }).(pulumi.StringPtrOutput)
 }
 
 type ExtensionChainExtensionArrayOutput struct{ *pulumi.OutputState }
@@ -1114,19 +1114,19 @@ func (o ExtensionChainExtensionArrayOutput) Index(i pulumi.IntInput) ExtensionCh
 
 // A single extension in the chain to execute for the matching request.
 type ExtensionChainExtensionResponse struct {
-	// The `:authority` header in the gRPC request sent from Envoy to the extension service.
+	// Optional. The `:authority` header in the gRPC request sent from Envoy to the extension service. Required for Callout extensions.
 	Authority string `pulumi:"authority"`
-	// Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to `FALSE`: * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is reset. Default is `FALSE`.
+	// Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to `FALSE` or the default setting of `FALSE` is used, one of the following happens: * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
 	FailOpen bool `pulumi:"failOpen"`
 	// Optional. List of the HTTP headers to forward to the extension (from the client or backend). If omitted, all headers are sent. Each element is a string indicating the header name.
 	ForwardHeaders []string `pulumi:"forwardHeaders"`
 	// The name for this extension. The name is logged as part of the HTTP request logs. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number.
 	Name string `pulumi:"name"`
-	// The reference to the service that runs the extension. Must be a reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+	// The reference to the service that runs the extension. Currently only callout extensions are supported here. To configure a callout extension, `service` must be a fully-qualified reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format: `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}`.
 	Service string `pulumi:"service"`
 	// Optional. A set of events during request or response processing for which this extension is called. This field is required for the `LbTrafficExtension` resource. It's not relevant for the `LbRouteExtension` resource.
 	SupportedEvents []string `pulumi:"supportedEvents"`
-	// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+	// Optional. Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds. Required for Callout extensions.
 	Timeout string `pulumi:"timeout"`
 }
 
@@ -1145,12 +1145,12 @@ func (o ExtensionChainExtensionResponseOutput) ToExtensionChainExtensionResponse
 	return o
 }
 
-// The `:authority` header in the gRPC request sent from Envoy to the extension service.
+// Optional. The `:authority` header in the gRPC request sent from Envoy to the extension service. Required for Callout extensions.
 func (o ExtensionChainExtensionResponseOutput) Authority() pulumi.StringOutput {
 	return o.ApplyT(func(v ExtensionChainExtensionResponse) string { return v.Authority }).(pulumi.StringOutput)
 }
 
-// Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to `FALSE`: * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is reset. Default is `FALSE`.
+// Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to `FALSE` or the default setting of `FALSE` is used, one of the following happens: * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
 func (o ExtensionChainExtensionResponseOutput) FailOpen() pulumi.BoolOutput {
 	return o.ApplyT(func(v ExtensionChainExtensionResponse) bool { return v.FailOpen }).(pulumi.BoolOutput)
 }
@@ -1165,7 +1165,7 @@ func (o ExtensionChainExtensionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ExtensionChainExtensionResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The reference to the service that runs the extension. Must be a reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+// The reference to the service that runs the extension. Currently only callout extensions are supported here. To configure a callout extension, `service` must be a fully-qualified reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format: `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}`.
 func (o ExtensionChainExtensionResponseOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v ExtensionChainExtensionResponse) string { return v.Service }).(pulumi.StringOutput)
 }
@@ -1175,7 +1175,7 @@ func (o ExtensionChainExtensionResponseOutput) SupportedEvents() pulumi.StringAr
 	return o.ApplyT(func(v ExtensionChainExtensionResponse) []string { return v.SupportedEvents }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+// Optional. Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds. Required for Callout extensions.
 func (o ExtensionChainExtensionResponseOutput) Timeout() pulumi.StringOutput {
 	return o.ApplyT(func(v ExtensionChainExtensionResponse) string { return v.Timeout }).(pulumi.StringOutput)
 }
@@ -1202,7 +1202,7 @@ func (o ExtensionChainExtensionResponseArrayOutput) Index(i pulumi.IntInput) Ext
 
 // Conditions under which this chain is invoked for a request.
 type ExtensionChainMatchCondition struct {
-	// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+	// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed. For more information, see [CEL matcher language reference](https://cloud.google.com/service-extensions/docs/cel-matcher-language-reference).
 	CelExpression string `pulumi:"celExpression"`
 }
 
@@ -1219,7 +1219,7 @@ type ExtensionChainMatchConditionInput interface {
 
 // Conditions under which this chain is invoked for a request.
 type ExtensionChainMatchConditionArgs struct {
-	// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+	// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed. For more information, see [CEL matcher language reference](https://cloud.google.com/service-extensions/docs/cel-matcher-language-reference).
 	CelExpression pulumi.StringInput `pulumi:"celExpression"`
 }
 
@@ -1250,14 +1250,14 @@ func (o ExtensionChainMatchConditionOutput) ToExtensionChainMatchConditionOutput
 	return o
 }
 
-// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed. For more information, see [CEL matcher language reference](https://cloud.google.com/service-extensions/docs/cel-matcher-language-reference).
 func (o ExtensionChainMatchConditionOutput) CelExpression() pulumi.StringOutput {
 	return o.ApplyT(func(v ExtensionChainMatchCondition) string { return v.CelExpression }).(pulumi.StringOutput)
 }
 
 // Conditions under which this chain is invoked for a request.
 type ExtensionChainMatchConditionResponse struct {
-	// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+	// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed. For more information, see [CEL matcher language reference](https://cloud.google.com/service-extensions/docs/cel-matcher-language-reference).
 	CelExpression string `pulumi:"celExpression"`
 }
 
@@ -1276,7 +1276,7 @@ func (o ExtensionChainMatchConditionResponseOutput) ToExtensionChainMatchConditi
 	return o
 }
 
-// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed. For more information, see [CEL matcher language reference](https://cloud.google.com/service-extensions/docs/cel-matcher-language-reference).
 func (o ExtensionChainMatchConditionResponseOutput) CelExpression() pulumi.StringOutput {
 	return o.ApplyT(func(v ExtensionChainMatchConditionResponse) string { return v.CelExpression }).(pulumi.StringOutput)
 }
@@ -2703,6 +2703,8 @@ type GrpcRouteRouteAction struct {
 	Destinations []GrpcRouteDestination `pulumi:"destinations"`
 	// Optional. The specification for fault injection introduced into traffic to test the resiliency of clients to destination service failure. As part of fault injection, when clients send requests to a destination, delays can be introduced on a percentage of requests before sending those requests to the destination service. Similarly requests from clients can be aborted by for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
 	FaultInjectionPolicy *GrpcRouteFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
+	// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+	IdleTimeout *string `pulumi:"idleTimeout"`
 	// Optional. Specifies the retry policy associated with this route.
 	RetryPolicy *GrpcRouteRetryPolicy `pulumi:"retryPolicy"`
 	// Optional. Specifies cookie-based stateful session affinity.
@@ -2728,6 +2730,8 @@ type GrpcRouteRouteActionArgs struct {
 	Destinations GrpcRouteDestinationArrayInput `pulumi:"destinations"`
 	// Optional. The specification for fault injection introduced into traffic to test the resiliency of clients to destination service failure. As part of fault injection, when clients send requests to a destination, delays can be introduced on a percentage of requests before sending those requests to the destination service. Similarly requests from clients can be aborted by for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
 	FaultInjectionPolicy GrpcRouteFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
+	// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+	IdleTimeout pulumi.StringPtrInput `pulumi:"idleTimeout"`
 	// Optional. Specifies the retry policy associated with this route.
 	RetryPolicy GrpcRouteRetryPolicyPtrInput `pulumi:"retryPolicy"`
 	// Optional. Specifies cookie-based stateful session affinity.
@@ -2773,6 +2777,11 @@ func (o GrpcRouteRouteActionOutput) FaultInjectionPolicy() GrpcRouteFaultInjecti
 	return o.ApplyT(func(v GrpcRouteRouteAction) *GrpcRouteFaultInjectionPolicy { return v.FaultInjectionPolicy }).(GrpcRouteFaultInjectionPolicyPtrOutput)
 }
 
+// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+func (o GrpcRouteRouteActionOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GrpcRouteRouteAction) *string { return v.IdleTimeout }).(pulumi.StringPtrOutput)
+}
+
 // Optional. Specifies the retry policy associated with this route.
 func (o GrpcRouteRouteActionOutput) RetryPolicy() GrpcRouteRetryPolicyPtrOutput {
 	return o.ApplyT(func(v GrpcRouteRouteAction) *GrpcRouteRetryPolicy { return v.RetryPolicy }).(GrpcRouteRetryPolicyPtrOutput)
@@ -2794,6 +2803,8 @@ type GrpcRouteRouteActionResponse struct {
 	Destinations []GrpcRouteDestinationResponse `pulumi:"destinations"`
 	// Optional. The specification for fault injection introduced into traffic to test the resiliency of clients to destination service failure. As part of fault injection, when clients send requests to a destination, delays can be introduced on a percentage of requests before sending those requests to the destination service. Similarly requests from clients can be aborted by for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
 	FaultInjectionPolicy GrpcRouteFaultInjectionPolicyResponse `pulumi:"faultInjectionPolicy"`
+	// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+	IdleTimeout string `pulumi:"idleTimeout"`
 	// Optional. Specifies the retry policy associated with this route.
 	RetryPolicy GrpcRouteRetryPolicyResponse `pulumi:"retryPolicy"`
 	// Optional. Specifies cookie-based stateful session affinity.
@@ -2827,6 +2838,11 @@ func (o GrpcRouteRouteActionResponseOutput) FaultInjectionPolicy() GrpcRouteFaul
 	return o.ApplyT(func(v GrpcRouteRouteActionResponse) GrpcRouteFaultInjectionPolicyResponse {
 		return v.FaultInjectionPolicy
 	}).(GrpcRouteFaultInjectionPolicyResponseOutput)
+}
+
+// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+func (o GrpcRouteRouteActionResponseOutput) IdleTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GrpcRouteRouteActionResponse) string { return v.IdleTimeout }).(pulumi.StringOutput)
 }
 
 // Optional. Specifies the retry policy associated with this route.
@@ -3686,6 +3702,10 @@ func (o HttpRouteCorsPolicyResponseOutput) MaxAge() pulumi.StringOutput {
 
 // Specifications of a destination to which the request should be routed to.
 type HttpRouteDestination struct {
+	// Optional. The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
+	RequestHeaderModifier *HttpRouteHeaderModifier `pulumi:"requestHeaderModifier"`
+	// Optional. The specification for modifying the headers of a response prior to sending the response back to the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
+	ResponseHeaderModifier *HttpRouteHeaderModifier `pulumi:"responseHeaderModifier"`
 	// The URL of a BackendService to route traffic to.
 	ServiceName *string `pulumi:"serviceName"`
 	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
@@ -3705,6 +3725,10 @@ type HttpRouteDestinationInput interface {
 
 // Specifications of a destination to which the request should be routed to.
 type HttpRouteDestinationArgs struct {
+	// Optional. The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
+	RequestHeaderModifier HttpRouteHeaderModifierPtrInput `pulumi:"requestHeaderModifier"`
+	// Optional. The specification for modifying the headers of a response prior to sending the response back to the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
+	ResponseHeaderModifier HttpRouteHeaderModifierPtrInput `pulumi:"responseHeaderModifier"`
 	// The URL of a BackendService to route traffic to.
 	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
 	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
@@ -3814,6 +3838,16 @@ func (o HttpRouteDestinationOutput) ToHttpRouteDestinationPtrOutputWithContext(c
 	}).(HttpRouteDestinationPtrOutput)
 }
 
+// Optional. The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
+func (o HttpRouteDestinationOutput) RequestHeaderModifier() HttpRouteHeaderModifierPtrOutput {
+	return o.ApplyT(func(v HttpRouteDestination) *HttpRouteHeaderModifier { return v.RequestHeaderModifier }).(HttpRouteHeaderModifierPtrOutput)
+}
+
+// Optional. The specification for modifying the headers of a response prior to sending the response back to the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
+func (o HttpRouteDestinationOutput) ResponseHeaderModifier() HttpRouteHeaderModifierPtrOutput {
+	return o.ApplyT(func(v HttpRouteDestination) *HttpRouteHeaderModifier { return v.ResponseHeaderModifier }).(HttpRouteHeaderModifierPtrOutput)
+}
+
 // The URL of a BackendService to route traffic to.
 func (o HttpRouteDestinationOutput) ServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpRouteDestination) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
@@ -3846,6 +3880,26 @@ func (o HttpRouteDestinationPtrOutput) Elem() HttpRouteDestinationOutput {
 		var ret HttpRouteDestination
 		return ret
 	}).(HttpRouteDestinationOutput)
+}
+
+// Optional. The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
+func (o HttpRouteDestinationPtrOutput) RequestHeaderModifier() HttpRouteHeaderModifierPtrOutput {
+	return o.ApplyT(func(v *HttpRouteDestination) *HttpRouteHeaderModifier {
+		if v == nil {
+			return nil
+		}
+		return v.RequestHeaderModifier
+	}).(HttpRouteHeaderModifierPtrOutput)
+}
+
+// Optional. The specification for modifying the headers of a response prior to sending the response back to the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
+func (o HttpRouteDestinationPtrOutput) ResponseHeaderModifier() HttpRouteHeaderModifierPtrOutput {
+	return o.ApplyT(func(v *HttpRouteDestination) *HttpRouteHeaderModifier {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseHeaderModifier
+	}).(HttpRouteHeaderModifierPtrOutput)
 }
 
 // The URL of a BackendService to route traffic to.
@@ -3890,6 +3944,10 @@ func (o HttpRouteDestinationArrayOutput) Index(i pulumi.IntInput) HttpRouteDesti
 
 // Specifications of a destination to which the request should be routed to.
 type HttpRouteDestinationResponse struct {
+	// Optional. The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
+	RequestHeaderModifier HttpRouteHeaderModifierResponse `pulumi:"requestHeaderModifier"`
+	// Optional. The specification for modifying the headers of a response prior to sending the response back to the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
+	ResponseHeaderModifier HttpRouteHeaderModifierResponse `pulumi:"responseHeaderModifier"`
 	// The URL of a BackendService to route traffic to.
 	ServiceName string `pulumi:"serviceName"`
 	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
@@ -3909,6 +3967,16 @@ func (o HttpRouteDestinationResponseOutput) ToHttpRouteDestinationResponseOutput
 
 func (o HttpRouteDestinationResponseOutput) ToHttpRouteDestinationResponseOutputWithContext(ctx context.Context) HttpRouteDestinationResponseOutput {
 	return o
+}
+
+// Optional. The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
+func (o HttpRouteDestinationResponseOutput) RequestHeaderModifier() HttpRouteHeaderModifierResponseOutput {
+	return o.ApplyT(func(v HttpRouteDestinationResponse) HttpRouteHeaderModifierResponse { return v.RequestHeaderModifier }).(HttpRouteHeaderModifierResponseOutput)
+}
+
+// Optional. The specification for modifying the headers of a response prior to sending the response back to the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
+func (o HttpRouteDestinationResponseOutput) ResponseHeaderModifier() HttpRouteHeaderModifierResponseOutput {
+	return o.ApplyT(func(v HttpRouteDestinationResponse) HttpRouteHeaderModifierResponse { return v.ResponseHeaderModifier }).(HttpRouteHeaderModifierResponseOutput)
 }
 
 // The URL of a BackendService to route traffic to.
@@ -5189,6 +5257,224 @@ func (o HttpRouteHeaderModifierResponseOutput) Set() pulumi.StringMapOutput {
 	return o.ApplyT(func(v HttpRouteHeaderModifierResponse) map[string]string { return v.Set }).(pulumi.StringMapOutput)
 }
 
+// Static HTTP response object to be returned.
+type HttpRouteHttpDirectResponse struct {
+	// Optional. Response body as bytes. Maximum body size is 4096B.
+	BytesBody *string `pulumi:"bytesBody"`
+	// Status to return as part of HTTP Response. Must be a positive integer.
+	Status int `pulumi:"status"`
+	// Optional. Response body as a string. Maximum body length is 1024 characters.
+	StringBody *string `pulumi:"stringBody"`
+}
+
+// HttpRouteHttpDirectResponseInput is an input type that accepts HttpRouteHttpDirectResponseArgs and HttpRouteHttpDirectResponseOutput values.
+// You can construct a concrete instance of `HttpRouteHttpDirectResponseInput` via:
+//
+//	HttpRouteHttpDirectResponseArgs{...}
+type HttpRouteHttpDirectResponseInput interface {
+	pulumi.Input
+
+	ToHttpRouteHttpDirectResponseOutput() HttpRouteHttpDirectResponseOutput
+	ToHttpRouteHttpDirectResponseOutputWithContext(context.Context) HttpRouteHttpDirectResponseOutput
+}
+
+// Static HTTP response object to be returned.
+type HttpRouteHttpDirectResponseArgs struct {
+	// Optional. Response body as bytes. Maximum body size is 4096B.
+	BytesBody pulumi.StringPtrInput `pulumi:"bytesBody"`
+	// Status to return as part of HTTP Response. Must be a positive integer.
+	Status pulumi.IntInput `pulumi:"status"`
+	// Optional. Response body as a string. Maximum body length is 1024 characters.
+	StringBody pulumi.StringPtrInput `pulumi:"stringBody"`
+}
+
+func (HttpRouteHttpDirectResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteHttpDirectResponse)(nil)).Elem()
+}
+
+func (i HttpRouteHttpDirectResponseArgs) ToHttpRouteHttpDirectResponseOutput() HttpRouteHttpDirectResponseOutput {
+	return i.ToHttpRouteHttpDirectResponseOutputWithContext(context.Background())
+}
+
+func (i HttpRouteHttpDirectResponseArgs) ToHttpRouteHttpDirectResponseOutputWithContext(ctx context.Context) HttpRouteHttpDirectResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteHttpDirectResponseOutput)
+}
+
+func (i HttpRouteHttpDirectResponseArgs) ToHttpRouteHttpDirectResponsePtrOutput() HttpRouteHttpDirectResponsePtrOutput {
+	return i.ToHttpRouteHttpDirectResponsePtrOutputWithContext(context.Background())
+}
+
+func (i HttpRouteHttpDirectResponseArgs) ToHttpRouteHttpDirectResponsePtrOutputWithContext(ctx context.Context) HttpRouteHttpDirectResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteHttpDirectResponseOutput).ToHttpRouteHttpDirectResponsePtrOutputWithContext(ctx)
+}
+
+// HttpRouteHttpDirectResponsePtrInput is an input type that accepts HttpRouteHttpDirectResponseArgs, HttpRouteHttpDirectResponsePtr and HttpRouteHttpDirectResponsePtrOutput values.
+// You can construct a concrete instance of `HttpRouteHttpDirectResponsePtrInput` via:
+//
+//	        HttpRouteHttpDirectResponseArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpRouteHttpDirectResponsePtrInput interface {
+	pulumi.Input
+
+	ToHttpRouteHttpDirectResponsePtrOutput() HttpRouteHttpDirectResponsePtrOutput
+	ToHttpRouteHttpDirectResponsePtrOutputWithContext(context.Context) HttpRouteHttpDirectResponsePtrOutput
+}
+
+type httpRouteHttpDirectResponsePtrType HttpRouteHttpDirectResponseArgs
+
+func HttpRouteHttpDirectResponsePtr(v *HttpRouteHttpDirectResponseArgs) HttpRouteHttpDirectResponsePtrInput {
+	return (*httpRouteHttpDirectResponsePtrType)(v)
+}
+
+func (*httpRouteHttpDirectResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteHttpDirectResponse)(nil)).Elem()
+}
+
+func (i *httpRouteHttpDirectResponsePtrType) ToHttpRouteHttpDirectResponsePtrOutput() HttpRouteHttpDirectResponsePtrOutput {
+	return i.ToHttpRouteHttpDirectResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *httpRouteHttpDirectResponsePtrType) ToHttpRouteHttpDirectResponsePtrOutputWithContext(ctx context.Context) HttpRouteHttpDirectResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteHttpDirectResponsePtrOutput)
+}
+
+// Static HTTP response object to be returned.
+type HttpRouteHttpDirectResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteHttpDirectResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteHttpDirectResponse)(nil)).Elem()
+}
+
+func (o HttpRouteHttpDirectResponseOutput) ToHttpRouteHttpDirectResponseOutput() HttpRouteHttpDirectResponseOutput {
+	return o
+}
+
+func (o HttpRouteHttpDirectResponseOutput) ToHttpRouteHttpDirectResponseOutputWithContext(ctx context.Context) HttpRouteHttpDirectResponseOutput {
+	return o
+}
+
+func (o HttpRouteHttpDirectResponseOutput) ToHttpRouteHttpDirectResponsePtrOutput() HttpRouteHttpDirectResponsePtrOutput {
+	return o.ToHttpRouteHttpDirectResponsePtrOutputWithContext(context.Background())
+}
+
+func (o HttpRouteHttpDirectResponseOutput) ToHttpRouteHttpDirectResponsePtrOutputWithContext(ctx context.Context) HttpRouteHttpDirectResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteHttpDirectResponse) *HttpRouteHttpDirectResponse {
+		return &v
+	}).(HttpRouteHttpDirectResponsePtrOutput)
+}
+
+// Optional. Response body as bytes. Maximum body size is 4096B.
+func (o HttpRouteHttpDirectResponseOutput) BytesBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteHttpDirectResponse) *string { return v.BytesBody }).(pulumi.StringPtrOutput)
+}
+
+// Status to return as part of HTTP Response. Must be a positive integer.
+func (o HttpRouteHttpDirectResponseOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v HttpRouteHttpDirectResponse) int { return v.Status }).(pulumi.IntOutput)
+}
+
+// Optional. Response body as a string. Maximum body length is 1024 characters.
+func (o HttpRouteHttpDirectResponseOutput) StringBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteHttpDirectResponse) *string { return v.StringBody }).(pulumi.StringPtrOutput)
+}
+
+type HttpRouteHttpDirectResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteHttpDirectResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteHttpDirectResponse)(nil)).Elem()
+}
+
+func (o HttpRouteHttpDirectResponsePtrOutput) ToHttpRouteHttpDirectResponsePtrOutput() HttpRouteHttpDirectResponsePtrOutput {
+	return o
+}
+
+func (o HttpRouteHttpDirectResponsePtrOutput) ToHttpRouteHttpDirectResponsePtrOutputWithContext(ctx context.Context) HttpRouteHttpDirectResponsePtrOutput {
+	return o
+}
+
+func (o HttpRouteHttpDirectResponsePtrOutput) Elem() HttpRouteHttpDirectResponseOutput {
+	return o.ApplyT(func(v *HttpRouteHttpDirectResponse) HttpRouteHttpDirectResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRouteHttpDirectResponse
+		return ret
+	}).(HttpRouteHttpDirectResponseOutput)
+}
+
+// Optional. Response body as bytes. Maximum body size is 4096B.
+func (o HttpRouteHttpDirectResponsePtrOutput) BytesBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteHttpDirectResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BytesBody
+	}).(pulumi.StringPtrOutput)
+}
+
+// Status to return as part of HTTP Response. Must be a positive integer.
+func (o HttpRouteHttpDirectResponsePtrOutput) Status() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HttpRouteHttpDirectResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Status
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Response body as a string. Maximum body length is 1024 characters.
+func (o HttpRouteHttpDirectResponsePtrOutput) StringBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteHttpDirectResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StringBody
+	}).(pulumi.StringPtrOutput)
+}
+
+// Static HTTP response object to be returned.
+type HttpRouteHttpDirectResponseResponse struct {
+	// Optional. Response body as bytes. Maximum body size is 4096B.
+	BytesBody string `pulumi:"bytesBody"`
+	// Status to return as part of HTTP Response. Must be a positive integer.
+	Status int `pulumi:"status"`
+	// Optional. Response body as a string. Maximum body length is 1024 characters.
+	StringBody string `pulumi:"stringBody"`
+}
+
+// Static HTTP response object to be returned.
+type HttpRouteHttpDirectResponseResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteHttpDirectResponseResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteHttpDirectResponseResponse)(nil)).Elem()
+}
+
+func (o HttpRouteHttpDirectResponseResponseOutput) ToHttpRouteHttpDirectResponseResponseOutput() HttpRouteHttpDirectResponseResponseOutput {
+	return o
+}
+
+func (o HttpRouteHttpDirectResponseResponseOutput) ToHttpRouteHttpDirectResponseResponseOutputWithContext(ctx context.Context) HttpRouteHttpDirectResponseResponseOutput {
+	return o
+}
+
+// Optional. Response body as bytes. Maximum body size is 4096B.
+func (o HttpRouteHttpDirectResponseResponseOutput) BytesBody() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRouteHttpDirectResponseResponse) string { return v.BytesBody }).(pulumi.StringOutput)
+}
+
+// Status to return as part of HTTP Response. Must be a positive integer.
+func (o HttpRouteHttpDirectResponseResponseOutput) Status() pulumi.IntOutput {
+	return o.ApplyT(func(v HttpRouteHttpDirectResponseResponse) int { return v.Status }).(pulumi.IntOutput)
+}
+
+// Optional. Response body as a string. Maximum body length is 1024 characters.
+func (o HttpRouteHttpDirectResponseResponseOutput) StringBody() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRouteHttpDirectResponseResponse) string { return v.StringBody }).(pulumi.StringOutput)
+}
+
 // Specifications to match a query parameter in the request.
 type HttpRouteQueryParameterMatch struct {
 	// The value of the query parameter must exactly match the contents of exact_match. Only one of exact_match, regex_match, or present_match must be set.
@@ -5709,6 +5995,8 @@ func (o HttpRouteRedirectResponseOutput) StripQuery() pulumi.BoolOutput {
 type HttpRouteRequestMirrorPolicy struct {
 	// The destination the requests will be mirrored to. The weight of the destination will be ignored.
 	Destination *HttpRouteDestination `pulumi:"destination"`
+	// Optional. The percentage of requests to get mirrored to the desired destination.
+	MirrorPercent *float64 `pulumi:"mirrorPercent"`
 }
 
 // HttpRouteRequestMirrorPolicyInput is an input type that accepts HttpRouteRequestMirrorPolicyArgs and HttpRouteRequestMirrorPolicyOutput values.
@@ -5726,6 +6014,8 @@ type HttpRouteRequestMirrorPolicyInput interface {
 type HttpRouteRequestMirrorPolicyArgs struct {
 	// The destination the requests will be mirrored to. The weight of the destination will be ignored.
 	Destination HttpRouteDestinationPtrInput `pulumi:"destination"`
+	// Optional. The percentage of requests to get mirrored to the desired destination.
+	MirrorPercent pulumi.Float64PtrInput `pulumi:"mirrorPercent"`
 }
 
 func (HttpRouteRequestMirrorPolicyArgs) ElementType() reflect.Type {
@@ -5811,6 +6101,11 @@ func (o HttpRouteRequestMirrorPolicyOutput) Destination() HttpRouteDestinationPt
 	return o.ApplyT(func(v HttpRouteRequestMirrorPolicy) *HttpRouteDestination { return v.Destination }).(HttpRouteDestinationPtrOutput)
 }
 
+// Optional. The percentage of requests to get mirrored to the desired destination.
+func (o HttpRouteRequestMirrorPolicyOutput) MirrorPercent() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v HttpRouteRequestMirrorPolicy) *float64 { return v.MirrorPercent }).(pulumi.Float64PtrOutput)
+}
+
 type HttpRouteRequestMirrorPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteRequestMirrorPolicyPtrOutput) ElementType() reflect.Type {
@@ -5845,10 +6140,22 @@ func (o HttpRouteRequestMirrorPolicyPtrOutput) Destination() HttpRouteDestinatio
 	}).(HttpRouteDestinationPtrOutput)
 }
 
+// Optional. The percentage of requests to get mirrored to the desired destination.
+func (o HttpRouteRequestMirrorPolicyPtrOutput) MirrorPercent() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *HttpRouteRequestMirrorPolicy) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MirrorPercent
+	}).(pulumi.Float64PtrOutput)
+}
+
 // Specifies the policy on how requests are shadowed to a separate mirrored destination service. The proxy does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host/authority header is suffixed with -shadow.
 type HttpRouteRequestMirrorPolicyResponse struct {
 	// The destination the requests will be mirrored to. The weight of the destination will be ignored.
 	Destination HttpRouteDestinationResponse `pulumi:"destination"`
+	// Optional. The percentage of requests to get mirrored to the desired destination.
+	MirrorPercent float64 `pulumi:"mirrorPercent"`
 }
 
 // Specifies the policy on how requests are shadowed to a separate mirrored destination service. The proxy does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host/authority header is suffixed with -shadow.
@@ -5869,6 +6176,11 @@ func (o HttpRouteRequestMirrorPolicyResponseOutput) ToHttpRouteRequestMirrorPoli
 // The destination the requests will be mirrored to. The weight of the destination will be ignored.
 func (o HttpRouteRequestMirrorPolicyResponseOutput) Destination() HttpRouteDestinationResponseOutput {
 	return o.ApplyT(func(v HttpRouteRequestMirrorPolicyResponse) HttpRouteDestinationResponse { return v.Destination }).(HttpRouteDestinationResponseOutput)
+}
+
+// Optional. The percentage of requests to get mirrored to the desired destination.
+func (o HttpRouteRequestMirrorPolicyResponseOutput) MirrorPercent() pulumi.Float64Output {
+	return o.ApplyT(func(v HttpRouteRequestMirrorPolicyResponse) float64 { return v.MirrorPercent }).(pulumi.Float64Output)
 }
 
 // The specifications for retries.
@@ -6095,8 +6407,12 @@ type HttpRouteRouteAction struct {
 	CorsPolicy *HttpRouteCorsPolicy `pulumi:"corsPolicy"`
 	// The destination to which traffic should be forwarded.
 	Destinations []HttpRouteDestination `pulumi:"destinations"`
+	// Optional. Static HTTP Response object to be returned regardless of the request.
+	DirectResponse *HttpRouteHttpDirectResponse `pulumi:"directResponse"`
 	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
 	FaultInjectionPolicy *HttpRouteFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
+	// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+	IdleTimeout *string `pulumi:"idleTimeout"`
 	// If set, the request is directed as configured by this field.
 	Redirect *HttpRouteRedirect `pulumi:"redirect"`
 	// The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
@@ -6132,8 +6448,12 @@ type HttpRouteRouteActionArgs struct {
 	CorsPolicy HttpRouteCorsPolicyPtrInput `pulumi:"corsPolicy"`
 	// The destination to which traffic should be forwarded.
 	Destinations HttpRouteDestinationArrayInput `pulumi:"destinations"`
+	// Optional. Static HTTP Response object to be returned regardless of the request.
+	DirectResponse HttpRouteHttpDirectResponsePtrInput `pulumi:"directResponse"`
 	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
 	FaultInjectionPolicy HttpRouteFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
+	// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+	IdleTimeout pulumi.StringPtrInput `pulumi:"idleTimeout"`
 	// If set, the request is directed as configured by this field.
 	Redirect HttpRouteRedirectPtrInput `pulumi:"redirect"`
 	// The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
@@ -6240,9 +6560,19 @@ func (o HttpRouteRouteActionOutput) Destinations() HttpRouteDestinationArrayOutp
 	return o.ApplyT(func(v HttpRouteRouteAction) []HttpRouteDestination { return v.Destinations }).(HttpRouteDestinationArrayOutput)
 }
 
+// Optional. Static HTTP Response object to be returned regardless of the request.
+func (o HttpRouteRouteActionOutput) DirectResponse() HttpRouteHttpDirectResponsePtrOutput {
+	return o.ApplyT(func(v HttpRouteRouteAction) *HttpRouteHttpDirectResponse { return v.DirectResponse }).(HttpRouteHttpDirectResponsePtrOutput)
+}
+
 // The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
 func (o HttpRouteRouteActionOutput) FaultInjectionPolicy() HttpRouteFaultInjectionPolicyPtrOutput {
 	return o.ApplyT(func(v HttpRouteRouteAction) *HttpRouteFaultInjectionPolicy { return v.FaultInjectionPolicy }).(HttpRouteFaultInjectionPolicyPtrOutput)
+}
+
+// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+func (o HttpRouteRouteActionOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRouteAction) *string { return v.IdleTimeout }).(pulumi.StringPtrOutput)
 }
 
 // If set, the request is directed as configured by this field.
@@ -6329,6 +6659,16 @@ func (o HttpRouteRouteActionPtrOutput) Destinations() HttpRouteDestinationArrayO
 	}).(HttpRouteDestinationArrayOutput)
 }
 
+// Optional. Static HTTP Response object to be returned regardless of the request.
+func (o HttpRouteRouteActionPtrOutput) DirectResponse() HttpRouteHttpDirectResponsePtrOutput {
+	return o.ApplyT(func(v *HttpRouteRouteAction) *HttpRouteHttpDirectResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DirectResponse
+	}).(HttpRouteHttpDirectResponsePtrOutput)
+}
+
 // The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
 func (o HttpRouteRouteActionPtrOutput) FaultInjectionPolicy() HttpRouteFaultInjectionPolicyPtrOutput {
 	return o.ApplyT(func(v *HttpRouteRouteAction) *HttpRouteFaultInjectionPolicy {
@@ -6337,6 +6677,16 @@ func (o HttpRouteRouteActionPtrOutput) FaultInjectionPolicy() HttpRouteFaultInje
 		}
 		return v.FaultInjectionPolicy
 	}).(HttpRouteFaultInjectionPolicyPtrOutput)
+}
+
+// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+func (o HttpRouteRouteActionPtrOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRouteAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdleTimeout
+	}).(pulumi.StringPtrOutput)
 }
 
 // If set, the request is directed as configured by this field.
@@ -6425,8 +6775,12 @@ type HttpRouteRouteActionResponse struct {
 	CorsPolicy HttpRouteCorsPolicyResponse `pulumi:"corsPolicy"`
 	// The destination to which traffic should be forwarded.
 	Destinations []HttpRouteDestinationResponse `pulumi:"destinations"`
+	// Optional. Static HTTP Response object to be returned regardless of the request.
+	DirectResponse HttpRouteHttpDirectResponseResponse `pulumi:"directResponse"`
 	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
 	FaultInjectionPolicy HttpRouteFaultInjectionPolicyResponse `pulumi:"faultInjectionPolicy"`
+	// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+	IdleTimeout string `pulumi:"idleTimeout"`
 	// If set, the request is directed as configured by this field.
 	Redirect HttpRouteRedirectResponse `pulumi:"redirect"`
 	// The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
@@ -6470,11 +6824,21 @@ func (o HttpRouteRouteActionResponseOutput) Destinations() HttpRouteDestinationR
 	return o.ApplyT(func(v HttpRouteRouteActionResponse) []HttpRouteDestinationResponse { return v.Destinations }).(HttpRouteDestinationResponseArrayOutput)
 }
 
+// Optional. Static HTTP Response object to be returned regardless of the request.
+func (o HttpRouteRouteActionResponseOutput) DirectResponse() HttpRouteHttpDirectResponseResponseOutput {
+	return o.ApplyT(func(v HttpRouteRouteActionResponse) HttpRouteHttpDirectResponseResponse { return v.DirectResponse }).(HttpRouteHttpDirectResponseResponseOutput)
+}
+
 // The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
 func (o HttpRouteRouteActionResponseOutput) FaultInjectionPolicy() HttpRouteFaultInjectionPolicyResponseOutput {
 	return o.ApplyT(func(v HttpRouteRouteActionResponse) HttpRouteFaultInjectionPolicyResponse {
 		return v.FaultInjectionPolicy
 	}).(HttpRouteFaultInjectionPolicyResponseOutput)
+}
+
+// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+func (o HttpRouteRouteActionResponseOutput) IdleTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRouteRouteActionResponse) string { return v.IdleTimeout }).(pulumi.StringOutput)
 }
 
 // If set, the request is directed as configured by this field.
@@ -7269,7 +7633,7 @@ func (o HttpRouteURLRewriteResponseOutput) PathPrefixRewrite() pulumi.StringOutp
 
 // The matcher that is based on node metadata presented by xDS clients.
 type MetadataLabelMatcher struct {
-	// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+	// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), pick up the one with older creation time.
 	MetadataLabelMatchCriteria *MetadataLabelMatcherMetadataLabelMatchCriteria `pulumi:"metadataLabelMatchCriteria"`
 	// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list can have at most 64 entries. The list can be empty if the match criteria is MATCH_ANY, to specify a wildcard match (i.e this matches any client).
 	MetadataLabels []MetadataLabels `pulumi:"metadataLabels"`
@@ -7288,7 +7652,7 @@ type MetadataLabelMatcherInput interface {
 
 // The matcher that is based on node metadata presented by xDS clients.
 type MetadataLabelMatcherArgs struct {
-	// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+	// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), pick up the one with older creation time.
 	MetadataLabelMatchCriteria MetadataLabelMatcherMetadataLabelMatchCriteriaPtrInput `pulumi:"metadataLabelMatchCriteria"`
 	// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list can have at most 64 entries. The list can be empty if the match criteria is MATCH_ANY, to specify a wildcard match (i.e this matches any client).
 	MetadataLabels MetadataLabelsArrayInput `pulumi:"metadataLabels"`
@@ -7372,7 +7736,7 @@ func (o MetadataLabelMatcherOutput) ToMetadataLabelMatcherPtrOutputWithContext(c
 	}).(MetadataLabelMatcherPtrOutput)
 }
 
-// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), pick up the one with older creation time.
 func (o MetadataLabelMatcherOutput) MetadataLabelMatchCriteria() MetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput {
 	return o.ApplyT(func(v MetadataLabelMatcher) *MetadataLabelMatcherMetadataLabelMatchCriteria {
 		return v.MetadataLabelMatchCriteria
@@ -7408,7 +7772,7 @@ func (o MetadataLabelMatcherPtrOutput) Elem() MetadataLabelMatcherOutput {
 	}).(MetadataLabelMatcherOutput)
 }
 
-// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), pick up the one with older creation time.
 func (o MetadataLabelMatcherPtrOutput) MetadataLabelMatchCriteria() MetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput {
 	return o.ApplyT(func(v *MetadataLabelMatcher) *MetadataLabelMatcherMetadataLabelMatchCriteria {
 		if v == nil {
@@ -7430,7 +7794,7 @@ func (o MetadataLabelMatcherPtrOutput) MetadataLabels() MetadataLabelsArrayOutpu
 
 // The matcher that is based on node metadata presented by xDS clients.
 type MetadataLabelMatcherResponse struct {
-	// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+	// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), pick up the one with older creation time.
 	MetadataLabelMatchCriteria string `pulumi:"metadataLabelMatchCriteria"`
 	// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list can have at most 64 entries. The list can be empty if the match criteria is MATCH_ANY, to specify a wildcard match (i.e this matches any client).
 	MetadataLabels []MetadataLabelsResponse `pulumi:"metadataLabels"`
@@ -7451,7 +7815,7 @@ func (o MetadataLabelMatcherResponseOutput) ToMetadataLabelMatcherResponseOutput
 	return o
 }
 
-// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), pick up the one with older creation time.
 func (o MetadataLabelMatcherResponseOutput) MetadataLabelMatchCriteria() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataLabelMatcherResponse) string { return v.MetadataLabelMatchCriteria }).(pulumi.StringOutput)
 }
@@ -7959,6 +8323,8 @@ func (o ServiceLbPolicyFailoverConfigResponseOutput) FailoverHealthThreshold() p
 type TcpRouteRouteAction struct {
 	// Optional. The destination services to which traffic should be forwarded. At least one destination service is required. Only one of route destination or original destination can be set.
 	Destinations []TcpRouteRouteDestination `pulumi:"destinations"`
+	// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 30 seconds. If set to 0s, the timeout will be disabled.
+	IdleTimeout *string `pulumi:"idleTimeout"`
 	// Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false. Only one of route destinations or original destination can be set.
 	OriginalDestination *bool `pulumi:"originalDestination"`
 }
@@ -7978,6 +8344,8 @@ type TcpRouteRouteActionInput interface {
 type TcpRouteRouteActionArgs struct {
 	// Optional. The destination services to which traffic should be forwarded. At least one destination service is required. Only one of route destination or original destination can be set.
 	Destinations TcpRouteRouteDestinationArrayInput `pulumi:"destinations"`
+	// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 30 seconds. If set to 0s, the timeout will be disabled.
+	IdleTimeout pulumi.StringPtrInput `pulumi:"idleTimeout"`
 	// Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false. Only one of route destinations or original destination can be set.
 	OriginalDestination pulumi.BoolPtrInput `pulumi:"originalDestination"`
 }
@@ -8014,6 +8382,11 @@ func (o TcpRouteRouteActionOutput) Destinations() TcpRouteRouteDestinationArrayO
 	return o.ApplyT(func(v TcpRouteRouteAction) []TcpRouteRouteDestination { return v.Destinations }).(TcpRouteRouteDestinationArrayOutput)
 }
 
+// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 30 seconds. If set to 0s, the timeout will be disabled.
+func (o TcpRouteRouteActionOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TcpRouteRouteAction) *string { return v.IdleTimeout }).(pulumi.StringPtrOutput)
+}
+
 // Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false. Only one of route destinations or original destination can be set.
 func (o TcpRouteRouteActionOutput) OriginalDestination() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TcpRouteRouteAction) *bool { return v.OriginalDestination }).(pulumi.BoolPtrOutput)
@@ -8023,6 +8396,8 @@ func (o TcpRouteRouteActionOutput) OriginalDestination() pulumi.BoolPtrOutput {
 type TcpRouteRouteActionResponse struct {
 	// Optional. The destination services to which traffic should be forwarded. At least one destination service is required. Only one of route destination or original destination can be set.
 	Destinations []TcpRouteRouteDestinationResponse `pulumi:"destinations"`
+	// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 30 seconds. If set to 0s, the timeout will be disabled.
+	IdleTimeout string `pulumi:"idleTimeout"`
 	// Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false. Only one of route destinations or original destination can be set.
 	OriginalDestination bool `pulumi:"originalDestination"`
 }
@@ -8045,6 +8420,11 @@ func (o TcpRouteRouteActionResponseOutput) ToTcpRouteRouteActionResponseOutputWi
 // Optional. The destination services to which traffic should be forwarded. At least one destination service is required. Only one of route destination or original destination can be set.
 func (o TcpRouteRouteActionResponseOutput) Destinations() TcpRouteRouteDestinationResponseArrayOutput {
 	return o.ApplyT(func(v TcpRouteRouteActionResponse) []TcpRouteRouteDestinationResponse { return v.Destinations }).(TcpRouteRouteDestinationResponseArrayOutput)
+}
+
+// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 30 seconds. If set to 0s, the timeout will be disabled.
+func (o TcpRouteRouteActionResponseOutput) IdleTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v TcpRouteRouteActionResponse) string { return v.IdleTimeout }).(pulumi.StringOutput)
 }
 
 // Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false. Only one of route destinations or original destination can be set.
@@ -8542,6 +8922,8 @@ func (o TcpRouteRouteRuleResponseArrayOutput) Index(i pulumi.IntInput) TcpRouteR
 type TlsRouteRouteAction struct {
 	// The destination services to which traffic should be forwarded. At least one destination service is required.
 	Destinations []TlsRouteRouteDestination `pulumi:"destinations"`
+	// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+	IdleTimeout *string `pulumi:"idleTimeout"`
 }
 
 // TlsRouteRouteActionInput is an input type that accepts TlsRouteRouteActionArgs and TlsRouteRouteActionOutput values.
@@ -8559,6 +8941,8 @@ type TlsRouteRouteActionInput interface {
 type TlsRouteRouteActionArgs struct {
 	// The destination services to which traffic should be forwarded. At least one destination service is required.
 	Destinations TlsRouteRouteDestinationArrayInput `pulumi:"destinations"`
+	// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+	IdleTimeout pulumi.StringPtrInput `pulumi:"idleTimeout"`
 }
 
 func (TlsRouteRouteActionArgs) ElementType() reflect.Type {
@@ -8593,10 +8977,17 @@ func (o TlsRouteRouteActionOutput) Destinations() TlsRouteRouteDestinationArrayO
 	return o.ApplyT(func(v TlsRouteRouteAction) []TlsRouteRouteDestination { return v.Destinations }).(TlsRouteRouteDestinationArrayOutput)
 }
 
+// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+func (o TlsRouteRouteActionOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TlsRouteRouteAction) *string { return v.IdleTimeout }).(pulumi.StringPtrOutput)
+}
+
 // The specifications for routing traffic and applying associated policies.
 type TlsRouteRouteActionResponse struct {
 	// The destination services to which traffic should be forwarded. At least one destination service is required.
 	Destinations []TlsRouteRouteDestinationResponse `pulumi:"destinations"`
+	// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+	IdleTimeout string `pulumi:"idleTimeout"`
 }
 
 // The specifications for routing traffic and applying associated policies.
@@ -8617,6 +9008,11 @@ func (o TlsRouteRouteActionResponseOutput) ToTlsRouteRouteActionResponseOutputWi
 // The destination services to which traffic should be forwarded. At least one destination service is required.
 func (o TlsRouteRouteActionResponseOutput) Destinations() TlsRouteRouteDestinationResponseArrayOutput {
 	return o.ApplyT(func(v TlsRouteRouteActionResponse) []TlsRouteRouteDestinationResponse { return v.Destinations }).(TlsRouteRouteDestinationResponseArrayOutput)
+}
+
+// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+func (o TlsRouteRouteActionResponseOutput) IdleTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v TlsRouteRouteActionResponse) string { return v.IdleTimeout }).(pulumi.StringOutput)
 }
 
 // Describe the destination for traffic to be routed to.
@@ -9324,6 +9720,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteHeaderMatchIntegerRangePtrInput)(nil)).Elem(), HttpRouteHeaderMatchIntegerRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteHeaderModifierInput)(nil)).Elem(), HttpRouteHeaderModifierArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteHeaderModifierPtrInput)(nil)).Elem(), HttpRouteHeaderModifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteHttpDirectResponseInput)(nil)).Elem(), HttpRouteHttpDirectResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteHttpDirectResponsePtrInput)(nil)).Elem(), HttpRouteHttpDirectResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteQueryParameterMatchInput)(nil)).Elem(), HttpRouteQueryParameterMatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteQueryParameterMatchArrayInput)(nil)).Elem(), HttpRouteQueryParameterMatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRedirectInput)(nil)).Elem(), HttpRouteRedirectArgs{})
@@ -9456,6 +9854,9 @@ func init() {
 	pulumi.RegisterOutputType(HttpRouteHeaderModifierOutput{})
 	pulumi.RegisterOutputType(HttpRouteHeaderModifierPtrOutput{})
 	pulumi.RegisterOutputType(HttpRouteHeaderModifierResponseOutput{})
+	pulumi.RegisterOutputType(HttpRouteHttpDirectResponseOutput{})
+	pulumi.RegisterOutputType(HttpRouteHttpDirectResponsePtrOutput{})
+	pulumi.RegisterOutputType(HttpRouteHttpDirectResponseResponseOutput{})
 	pulumi.RegisterOutputType(HttpRouteQueryParameterMatchOutput{})
 	pulumi.RegisterOutputType(HttpRouteQueryParameterMatchArrayOutput{})
 	pulumi.RegisterOutputType(HttpRouteQueryParameterMatchResponseOutput{})

@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
         /// </summary>
         public readonly bool DisableAgentQueryLogging;
         /// <summary>
+        /// Optional. Enable including conversation context during query answer generation. Supported features: KNOWLEDGE_SEARCH.
+        /// </summary>
+        public readonly bool EnableConversationAugmentedQuery;
+        /// <summary>
         /// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, ENTITY_EXTRACTION, KNOWLEDGE_ASSIST.
         /// </summary>
         public readonly bool EnableEventBasedSuggestion;
@@ -53,6 +57,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
 
             bool disableAgentQueryLogging,
 
+            bool enableConversationAugmentedQuery,
+
             bool enableEventBasedSuggestion,
 
             Outputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigResponse queryConfig,
@@ -64,6 +70,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
             ConversationModelConfig = conversationModelConfig;
             ConversationProcessConfig = conversationProcessConfig;
             DisableAgentQueryLogging = disableAgentQueryLogging;
+            EnableConversationAugmentedQuery = enableConversationAugmentedQuery;
             EnableEventBasedSuggestion = enableEventBasedSuggestion;
             QueryConfig = queryConfig;
             SuggestionFeature = suggestionFeature;

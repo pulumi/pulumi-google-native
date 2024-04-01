@@ -16,6 +16,8 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// Optional. Access logging configuration enables the access logging feature at the instance. Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+	AccessLoggingConfig GoogleCloudApigeeV1AccessLoggingConfigResponseOutput `pulumi:"accessLoggingConfig"`
 	// Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
 	ConsumerAcceptList pulumi.StringArrayOutput `pulumi:"consumerAcceptList"`
 	// Time the instance was created in milliseconds since epoch.
@@ -96,6 +98,8 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// Optional. Access logging configuration enables the access logging feature at the instance. Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+	AccessLoggingConfig *GoogleCloudApigeeV1AccessLoggingConfig `pulumi:"accessLoggingConfig"`
 	// Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
 	ConsumerAcceptList []string `pulumi:"consumerAcceptList"`
 	// Optional. Description of the instance.
@@ -117,6 +121,8 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// Optional. Access logging configuration enables the access logging feature at the instance. Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+	AccessLoggingConfig GoogleCloudApigeeV1AccessLoggingConfigPtrInput
 	// Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
 	ConsumerAcceptList pulumi.StringArrayInput
 	// Optional. Description of the instance.
@@ -171,6 +177,11 @@ func (o InstanceOutput) ToInstanceOutput() InstanceOutput {
 
 func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) InstanceOutput {
 	return o
+}
+
+// Optional. Access logging configuration enables the access logging feature at the instance. Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+func (o InstanceOutput) AccessLoggingConfig() GoogleCloudApigeeV1AccessLoggingConfigResponseOutput {
+	return o.ApplyT(func(v *Instance) GoogleCloudApigeeV1AccessLoggingConfigResponseOutput { return v.AccessLoggingConfig }).(GoogleCloudApigeeV1AccessLoggingConfigResponseOutput)
 }
 
 // Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.

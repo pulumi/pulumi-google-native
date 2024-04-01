@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBackendServiceResult:
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, compression_mode=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, ip_address_selection_policy=None, kind=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, metadatas=None, name=None, network=None, outlier_detection=None, port=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, self_link_with_id=None, service_bindings=None, service_lb_policy=None, session_affinity=None, subsetting=None, timeout_sec=None, used_by=None, vpc_network_scope=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, compression_mode=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, external_managed_migration_state=None, external_managed_migration_testing_percentage=None, failover_policy=None, fingerprint=None, ha_policy=None, health_checks=None, iap=None, ip_address_selection_policy=None, kind=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, metadatas=None, name=None, network=None, outlier_detection=None, port=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, self_link_with_id=None, service_bindings=None, service_lb_policy=None, session_affinity=None, subsetting=None, timeout_sec=None, used_by=None, vpc_network_scope=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -62,12 +62,21 @@ class GetBackendServiceResult:
         if enable_cdn and not isinstance(enable_cdn, bool):
             raise TypeError("Expected argument 'enable_cdn' to be a bool")
         pulumi.set(__self__, "enable_cdn", enable_cdn)
+        if external_managed_migration_state and not isinstance(external_managed_migration_state, str):
+            raise TypeError("Expected argument 'external_managed_migration_state' to be a str")
+        pulumi.set(__self__, "external_managed_migration_state", external_managed_migration_state)
+        if external_managed_migration_testing_percentage and not isinstance(external_managed_migration_testing_percentage, float):
+            raise TypeError("Expected argument 'external_managed_migration_testing_percentage' to be a float")
+        pulumi.set(__self__, "external_managed_migration_testing_percentage", external_managed_migration_testing_percentage)
         if failover_policy and not isinstance(failover_policy, dict):
             raise TypeError("Expected argument 'failover_policy' to be a dict")
         pulumi.set(__self__, "failover_policy", failover_policy)
         if fingerprint and not isinstance(fingerprint, str):
             raise TypeError("Expected argument 'fingerprint' to be a str")
         pulumi.set(__self__, "fingerprint", fingerprint)
+        if ha_policy and not isinstance(ha_policy, dict):
+            raise TypeError("Expected argument 'ha_policy' to be a dict")
+        pulumi.set(__self__, "ha_policy", ha_policy)
         if health_checks and not isinstance(health_checks, list):
             raise TypeError("Expected argument 'health_checks' to be a list")
         pulumi.set(__self__, "health_checks", health_checks)
@@ -157,7 +166,7 @@ class GetBackendServiceResult:
     @pulumi.getter(name="affinityCookieTtlSec")
     def affinity_cookie_ttl_sec(self) -> int:
         """
-        Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Lifetime of cookies in seconds. This setting is applicable to Application Load Balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "affinity_cookie_ttl_sec")
 
@@ -199,7 +208,7 @@ class GetBackendServiceResult:
     @pulumi.getter(name="connectionTrackingPolicy")
     def connection_tracking_policy(self) -> 'outputs.BackendServiceConnectionTrackingPolicyResponse':
         """
-        Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for Network Load Balancing and Internal TCP/UDP Load Balancing.
+        Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for external passthrough Network Load Balancers and internal passthrough Network Load Balancers.
         """
         return pulumi.get(self, "connection_tracking_policy")
 
@@ -255,15 +264,31 @@ class GetBackendServiceResult:
     @pulumi.getter(name="enableCDN")
     def enable_cdn(self) -> bool:
         """
-        If true, enables Cloud CDN for the backend service of an external HTTP(S) load balancer.
+        If true, enables Cloud CDN for the backend service of a global external Application Load Balancer.
         """
         return pulumi.get(self, "enable_cdn")
+
+    @property
+    @pulumi.getter(name="externalManagedMigrationState")
+    def external_managed_migration_state(self) -> str:
+        """
+        Specifies the canary migration state. Possible values are PREPARE, TEST, and FINALIZE. To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to PREPARE. The state must be changed to FINALIZE before the loadBalancingScheme can be changed to EXTERNAL_MANAGED. Optionally, the TEST state can be used to migrate traffic by percentage using externalManagedMigrationTestingPercentage. Rolling back a migration requires the states to be set in reverse order. So changing the scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to FINALIZE at the same time. Optionally, the TEST state can be used to migrate some traffic back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
+        """
+        return pulumi.get(self, "external_managed_migration_state")
+
+    @property
+    @pulumi.getter(name="externalManagedMigrationTestingPercentage")
+    def external_managed_migration_testing_percentage(self) -> float:
+        """
+        Determines the fraction of requests that should be processed by the Global external Application Load Balancer. The value of this field must be in the range [0, 100]. Session affinity options will slightly affect this routing behavior, for more details, see: Session Affinity. This value is only used if the loadBalancingScheme in the BackendService is set to EXTERNAL when using the classic Application Load Balancer.
+        """
+        return pulumi.get(self, "external_managed_migration_testing_percentage")
 
     @property
     @pulumi.getter(name="failoverPolicy")
     def failover_policy(self) -> 'outputs.BackendServiceFailoverPolicyResponse':
         """
-        Requires at least one backend instance group to be defined as a backup (failover) backend. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
+        Requires at least one backend instance group to be defined as a backup (failover) backend. For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
         """
         return pulumi.get(self, "failover_policy")
 
@@ -274,6 +299,14 @@ class GetBackendServiceResult:
         Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a BackendService. An up-to-date fingerprint must be provided in order to update the BackendService, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a BackendService.
         """
         return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter(name="haPolicy")
+    def ha_policy(self) -> 'outputs.BackendServiceHAPolicyResponse':
+        """
+        Configuring haPolicy is not supported.
+        """
+        return pulumi.get(self, "ha_policy")
 
     @property
     @pulumi.getter(name="healthChecks")
@@ -287,7 +320,7 @@ class GetBackendServiceResult:
     @pulumi.getter
     def iap(self) -> 'outputs.BackendServiceIAPResponse':
         """
-        The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
+        The configurations for Identity-Aware Proxy on this resource. Not available for internal passthrough Network Load Balancers and external passthrough Network Load Balancers.
         """
         return pulumi.get(self, "iap")
 
@@ -295,7 +328,7 @@ class GetBackendServiceResult:
     @pulumi.getter(name="ipAddressSelectionPolicy")
     def ip_address_selection_policy(self) -> str:
         """
-        Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
+        Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced global external Application Load Balancer (load balancing scheme EXTERNAL_MANAGED), - Regional external Application Load Balancer, - Internal proxy Network Load Balancer (load balancing scheme INTERNAL_MANAGED), - Regional internal Application Load Balancer (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
         """
         return pulumi.get(self, "ip_address_selection_policy")
 
@@ -383,10 +416,10 @@ class GetBackendServiceResult:
     @pulumi.getter
     def port(self) -> int:
         """
-        Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.
+        Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For internal passthrough Network Load Balancers and external passthrough Network Load Balancers, omit port.
         """
-        warnings.warn("""Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.""", DeprecationWarning)
-        pulumi.log.warn("""port is deprecated: Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.""")
+        warnings.warn("""Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For internal passthrough Network Load Balancers and external passthrough Network Load Balancers, omit port.""", DeprecationWarning)
+        pulumi.log.warn("""port is deprecated: Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For internal passthrough Network Load Balancers and external passthrough Network Load Balancers, omit port.""")
 
         return pulumi.get(self, "port")
 
@@ -394,7 +427,7 @@ class GetBackendServiceResult:
     @pulumi.getter(name="portName")
     def port_name(self) -> str:
         """
-        A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port_name.
+        A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For internal passthrough Network Load Balancers and external passthrough Network Load Balancers, omit port_name.
         """
         return pulumi.get(self, "port_name")
 
@@ -517,8 +550,11 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             description=self.description,
             edge_security_policy=self.edge_security_policy,
             enable_cdn=self.enable_cdn,
+            external_managed_migration_state=self.external_managed_migration_state,
+            external_managed_migration_testing_percentage=self.external_managed_migration_testing_percentage,
             failover_policy=self.failover_policy,
             fingerprint=self.fingerprint,
+            ha_policy=self.ha_policy,
             health_checks=self.health_checks,
             iap=self.iap,
             ip_address_selection_policy=self.ip_address_selection_policy,
@@ -576,8 +612,11 @@ def get_backend_service(backend_service: Optional[str] = None,
         description=pulumi.get(__ret__, 'description'),
         edge_security_policy=pulumi.get(__ret__, 'edge_security_policy'),
         enable_cdn=pulumi.get(__ret__, 'enable_cdn'),
+        external_managed_migration_state=pulumi.get(__ret__, 'external_managed_migration_state'),
+        external_managed_migration_testing_percentage=pulumi.get(__ret__, 'external_managed_migration_testing_percentage'),
         failover_policy=pulumi.get(__ret__, 'failover_policy'),
         fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        ha_policy=pulumi.get(__ret__, 'ha_policy'),
         health_checks=pulumi.get(__ret__, 'health_checks'),
         iap=pulumi.get(__ret__, 'iap'),
         ip_address_selection_policy=pulumi.get(__ret__, 'ip_address_selection_policy'),

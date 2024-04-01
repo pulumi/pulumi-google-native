@@ -53,6 +53,10 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Outputs
         /// </summary>
         public readonly string PscConnectionId;
         /// <summary>
+        /// The URI of the selected subnetwork selected to allocate IP address for this connection.
+        /// </summary>
+        public readonly string SelectedSubnetwork;
+        /// <summary>
         /// The URI of a service attachment which is the target of the PSC connection.
         /// </summary>
         public readonly string ServiceAttachmentUri;
@@ -81,6 +85,8 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Outputs
 
             string pscConnectionId,
 
+            string selectedSubnetwork,
+
             string serviceAttachmentUri,
 
             string state)
@@ -94,6 +100,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Outputs
             Network = network;
             Project = project;
             PscConnectionId = pscConnectionId;
+            SelectedSubnetwork = selectedSubnetwork;
             ServiceAttachmentUri = serviceAttachmentUri;
             State = state;
         }

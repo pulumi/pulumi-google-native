@@ -134,7 +134,7 @@ export interface GetDiskResult {
      */
     readonly provisionedIops: string;
     /**
-     * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+     * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
      */
     readonly provisionedThroughput: string;
     /**
@@ -153,6 +153,10 @@ export interface GetDiskResult {
      * Status information for the disk resource.
      */
     readonly resourceStatus: outputs.compute.alpha.DiskResourceStatusResponse;
+    /**
+     * Reserved for future use.
+     */
+    readonly satisfiesPzi: boolean;
     /**
      * Reserved for future use.
      */

@@ -13,12 +13,13 @@ import (
 )
 
 // Creates a new FirewallEndpointAssociation in a given project and location.
-// Auto-naming is currently not supported for this resource.
 type FirewallEndpointAssociation struct {
 	pulumi.CustomResourceState
 
 	// Create time stamp
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Optional. Whether the association is disabled. True indicates that traffic won't be intercepted
+	Disabled pulumi.BoolOutput `pulumi:"disabled"`
 	// The URL of the FirewallEndpoint that is being associated.
 	FirewallEndpoint pulumi.StringOutput `pulumi:"firewallEndpoint"`
 	// Optional. Id of the requesting object. If auto-generating Id server-side, remove this field and firewall_endpoint_association_id from the method_signature of Create RPC.
@@ -26,7 +27,7 @@ type FirewallEndpointAssociation struct {
 	// Optional. Labels as key value pairs
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	// name of resource
+	// Immutable. Identifier. name of resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL of the network that is being associated.
 	Network pulumi.StringOutput `pulumi:"network"`
@@ -94,6 +95,8 @@ func (FirewallEndpointAssociationState) ElementType() reflect.Type {
 }
 
 type firewallEndpointAssociationArgs struct {
+	// Optional. Whether the association is disabled. True indicates that traffic won't be intercepted
+	Disabled *bool `pulumi:"disabled"`
 	// The URL of the FirewallEndpoint that is being associated.
 	FirewallEndpoint string `pulumi:"firewallEndpoint"`
 	// Optional. Id of the requesting object. If auto-generating Id server-side, remove this field and firewall_endpoint_association_id from the method_signature of Create RPC.
@@ -101,6 +104,8 @@ type firewallEndpointAssociationArgs struct {
 	// Optional. Labels as key value pairs
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
+	// Immutable. Identifier. name of resource
+	Name *string `pulumi:"name"`
 	// The URL of the network that is being associated.
 	Network string  `pulumi:"network"`
 	Project *string `pulumi:"project"`
@@ -112,6 +117,8 @@ type firewallEndpointAssociationArgs struct {
 
 // The set of arguments for constructing a FirewallEndpointAssociation resource.
 type FirewallEndpointAssociationArgs struct {
+	// Optional. Whether the association is disabled. True indicates that traffic won't be intercepted
+	Disabled pulumi.BoolPtrInput
 	// The URL of the FirewallEndpoint that is being associated.
 	FirewallEndpoint pulumi.StringInput
 	// Optional. Id of the requesting object. If auto-generating Id server-side, remove this field and firewall_endpoint_association_id from the method_signature of Create RPC.
@@ -119,6 +126,8 @@ type FirewallEndpointAssociationArgs struct {
 	// Optional. Labels as key value pairs
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
+	// Immutable. Identifier. name of resource
+	Name pulumi.StringPtrInput
 	// The URL of the network that is being associated.
 	Network pulumi.StringInput
 	Project pulumi.StringPtrInput
@@ -170,6 +179,11 @@ func (o FirewallEndpointAssociationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallEndpointAssociation) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Optional. Whether the association is disabled. True indicates that traffic won't be intercepted
+func (o FirewallEndpointAssociationOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *FirewallEndpointAssociation) pulumi.BoolOutput { return v.Disabled }).(pulumi.BoolOutput)
+}
+
 // The URL of the FirewallEndpoint that is being associated.
 func (o FirewallEndpointAssociationOutput) FirewallEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallEndpointAssociation) pulumi.StringOutput { return v.FirewallEndpoint }).(pulumi.StringOutput)
@@ -189,7 +203,7 @@ func (o FirewallEndpointAssociationOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallEndpointAssociation) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// name of resource
+// Immutable. Identifier. name of resource
 func (o FirewallEndpointAssociationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallEndpointAssociation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

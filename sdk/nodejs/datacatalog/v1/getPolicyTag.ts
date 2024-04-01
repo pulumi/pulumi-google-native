@@ -39,7 +39,7 @@ export interface GetPolicyTagResult {
      */
     readonly displayName: string;
     /**
-     * Resource name of this policy tag in the URL format. The policy tag manager generates unique taxonomy IDs and policy tag IDs.
+     * Identifier. Resource name of this policy tag in the URL format. The policy tag manager generates unique taxonomy IDs and policy tag IDs.
      */
     readonly name: string;
     /**

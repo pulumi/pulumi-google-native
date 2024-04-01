@@ -36,7 +36,7 @@ type LookupConsentStoreResult struct {
 	EnableConsentCreateOnUpdate bool `pulumi:"enableConsentCreateOnUpdate"`
 	// Optional. User-supplied key-value pairs used to organize consent stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}. Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}. No more than 64 labels can be associated with a given store. For more information: https://cloud.google.com/healthcare/docs/how-tos/labeling-resources
 	Labels map[string]string `pulumi:"labels"`
-	// Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
+	// Identifier. Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
 	Name string `pulumi:"name"`
 }
 
@@ -93,7 +93,7 @@ func (o LookupConsentStoreResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupConsentStoreResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
+// Identifier. Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
 func (o LookupConsentStoreResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConsentStoreResult) string { return v.Name }).(pulumi.StringOutput)
 }

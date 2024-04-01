@@ -62,7 +62,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public Output<string> SizeBytes { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//backups/.
+        /// Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//clusters//backups/
         /// </summary>
         [Output("sourceBackup")]
         public Output<string> SourceBackup { get; private set; } = null!;

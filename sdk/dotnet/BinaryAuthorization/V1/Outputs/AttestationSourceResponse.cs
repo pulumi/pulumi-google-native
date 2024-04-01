@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1.Outputs
     public sealed class AttestationSourceResponse
     {
         /// <summary>
-        /// The IDs of the GCP projects storing the SLSA attestations as Container Analysis Occurrences.
+        /// The IDs of the Google Cloud projects that store the SLSA attestations as Container Analysis Occurrences, in the format `projects/[PROJECT_ID]`. Maximum number of `container_analysis_attestation_projects` allowed in each `AttestationSource` is 10.
         /// </summary>
         public readonly ImmutableArray<string> ContainerAnalysisAttestationProjects;
 

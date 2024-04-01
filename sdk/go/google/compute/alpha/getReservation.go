@@ -35,9 +35,9 @@ type LookupReservationResult struct {
 	Commitment string `pulumi:"commitment"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
-	// Duration time relative to reservation creation when GCE will automatically delete this resource.
+	// Duration time relative to reservation creation when Compute Engine will automatically delete this resource.
 	DeleteAfterDuration DurationResponse `pulumi:"deleteAfterDuration"`
-	// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+	// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
 	DeleteAtTime string `pulumi:"deleteAtTime"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
@@ -119,12 +119,12 @@ func (o LookupReservationResultOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReservationResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
-// Duration time relative to reservation creation when GCE will automatically delete this resource.
+// Duration time relative to reservation creation when Compute Engine will automatically delete this resource.
 func (o LookupReservationResultOutput) DeleteAfterDuration() DurationResponseOutput {
 	return o.ApplyT(func(v LookupReservationResult) DurationResponse { return v.DeleteAfterDuration }).(DurationResponseOutput)
 }
 
-// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
 func (o LookupReservationResultOutput) DeleteAtTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReservationResult) string { return v.DeleteAtTime }).(pulumi.StringOutput)
 }

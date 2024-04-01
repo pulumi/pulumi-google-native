@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         /// </summary>
         public readonly Outputs.GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse RoutingInfo;
         /// <summary>
-        /// Transport layer information to verify for the proxy server.
+        /// Optional. Transport layer information to verify for the proxy server.
         /// </summary>
         public readonly Outputs.GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse TransportInfo;
         /// <summary>

@@ -341,9 +341,9 @@ func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConf
 type Binding struct {
 	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workforce identity pool. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}: All workforce identities in a group. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All workforce identities with a specific attribute value. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*: All identities in a workforce identity pool. principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workload identity pool. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}: A workload identity pool group. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All identities in a workload identity pool with a certain attribute. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*: All identities in a workload identity pool. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: Deleted single identity in a workforce identity pool. For example, deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
+	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.For an overview of the IAM roles and permissions, see the IAM documentation (https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see here (https://cloud.google.com/iam/docs/understanding-roles).
 	Role *string `pulumi:"role"`
 }
 
@@ -362,9 +362,9 @@ type BindingInput interface {
 type BindingArgs struct {
 	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workforce identity pool. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}: All workforce identities in a group. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All workforce identities with a specific attribute value. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*: All identities in a workforce identity pool. principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workload identity pool. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}: A workload identity pool group. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All identities in a workload identity pool with a certain attribute. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*: All identities in a workload identity pool. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: Deleted single identity in a workforce identity pool. For example, deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
+	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.For an overview of the IAM roles and permissions, see the IAM documentation (https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see here (https://cloud.google.com/iam/docs/understanding-roles).
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -425,12 +425,12 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workforce identity pool. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}: All workforce identities in a group. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All workforce identities with a specific attribute value. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*: All identities in a workforce identity pool. principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workload identity pool. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}: A workload identity pool group. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All identities in a workload identity pool with a certain attribute. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*: All identities in a workload identity pool. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: Deleted single identity in a workforce identity pool. For example, deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
+// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.For an overview of the IAM roles and permissions, see the IAM documentation (https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see here (https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -459,9 +459,9 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workforce identity pool. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}: All workforce identities in a group. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All workforce identities with a specific attribute value. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*: All identities in a workforce identity pool. principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workload identity pool. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}: A workload identity pool group. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All identities in a workload identity pool with a certain attribute. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*: All identities in a workload identity pool. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: Deleted single identity in a workforce identity pool. For example, deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
+	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.For an overview of the IAM roles and permissions, see the IAM documentation (https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see here (https://cloud.google.com/iam/docs/understanding-roles).
 	Role string `pulumi:"role"`
 }
 
@@ -485,12 +485,12 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workforce identity pool. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}: All workforce identities in a group. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All workforce identities with a specific attribute value. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*: All identities in a workforce identity pool. principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workload identity pool. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}: A workload identity pool group. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All identities in a workload identity pool with a certain attribute. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*: All identities in a workload identity pool. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: Deleted single identity in a workforce identity pool. For example, deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
+// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.For an overview of the IAM roles and permissions, see the IAM documentation (https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see here (https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -1087,7 +1087,7 @@ func (o DatabaseDumpResponseOutput) Type() pulumi.StringOutput {
 
 // Encryption settings for the service.
 type EncryptionConfig struct {
-	// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
+	// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following format:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
 	KmsKey *string `pulumi:"kmsKey"`
 }
 
@@ -1104,7 +1104,7 @@ type EncryptionConfigInput interface {
 
 // Encryption settings for the service.
 type EncryptionConfigArgs struct {
-	// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
+	// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following format:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
 	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
 }
 
@@ -1186,7 +1186,7 @@ func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutputWithContext(ctx conte
 	}).(EncryptionConfigPtrOutput)
 }
 
-// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
+// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following format:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
 func (o EncryptionConfigOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EncryptionConfig) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
 }
@@ -1215,7 +1215,7 @@ func (o EncryptionConfigPtrOutput) Elem() EncryptionConfigOutput {
 	}).(EncryptionConfigOutput)
 }
 
-// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
+// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following format:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
 func (o EncryptionConfigPtrOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EncryptionConfig) *string {
 		if v == nil {
@@ -1227,7 +1227,7 @@ func (o EncryptionConfigPtrOutput) KmsKey() pulumi.StringPtrOutput {
 
 // Encryption settings for the service.
 type EncryptionConfigResponse struct {
-	// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
+	// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following format:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
 	KmsKey string `pulumi:"kmsKey"`
 }
 
@@ -1246,7 +1246,7 @@ func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponseOutputWithCont
 	return o
 }
 
-// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
+// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following format:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
 func (o EncryptionConfigResponseOutput) KmsKey() pulumi.StringOutput {
 	return o.ApplyT(func(v EncryptionConfigResponse) string { return v.KmsKey }).(pulumi.StringOutput)
 }
@@ -1981,6 +1981,53 @@ func (o KerberosConfigResponseOutput) Krb5ConfigGcsUri() pulumi.StringOutput {
 // A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form primary/instance@REALM, but there is no exact format.
 func (o KerberosConfigResponseOutput) Principal() pulumi.StringOutput {
 	return o.ApplyT(func(v KerberosConfigResponse) string { return v.Principal }).(pulumi.StringOutput)
+}
+
+// The details of the latest scheduled backup.
+type LatestBackupResponse struct {
+	// The ID of an in-progress scheduled backup. Empty if no backup is in progress.
+	BackupId string `pulumi:"backupId"`
+	// The duration of the backup completion.
+	Duration string `pulumi:"duration"`
+	// The time when the backup was started.
+	StartTime string `pulumi:"startTime"`
+	// The current state of the backup.
+	State string `pulumi:"state"`
+}
+
+// The details of the latest scheduled backup.
+type LatestBackupResponseOutput struct{ *pulumi.OutputState }
+
+func (LatestBackupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LatestBackupResponse)(nil)).Elem()
+}
+
+func (o LatestBackupResponseOutput) ToLatestBackupResponseOutput() LatestBackupResponseOutput {
+	return o
+}
+
+func (o LatestBackupResponseOutput) ToLatestBackupResponseOutputWithContext(ctx context.Context) LatestBackupResponseOutput {
+	return o
+}
+
+// The ID of an in-progress scheduled backup. Empty if no backup is in progress.
+func (o LatestBackupResponseOutput) BackupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LatestBackupResponse) string { return v.BackupId }).(pulumi.StringOutput)
+}
+
+// The duration of the backup completion.
+func (o LatestBackupResponseOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v LatestBackupResponse) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// The time when the backup was started.
+func (o LatestBackupResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LatestBackupResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The current state of the backup.
+func (o LatestBackupResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LatestBackupResponse) string { return v.State }).(pulumi.StringOutput)
 }
 
 // Maintenance window. This specifies when Dataproc Metastore may perform system maintenance operation to the service.
@@ -2894,6 +2941,264 @@ func (o ScalingConfigResponseOutput) ScalingFactor() pulumi.Float64Output {
 	return o.ApplyT(func(v ScalingConfigResponse) float64 { return v.ScalingFactor }).(pulumi.Float64Output)
 }
 
+// This specifies the configuration of scheduled backup.
+type ScheduledBackup struct {
+	// Optional. A Cloud Storage URI of a folder, in the format gs:///. A sub-folder containing backup files will be stored below it.
+	BackupLocation *string `pulumi:"backupLocation"`
+	// Optional. The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+	CronSchedule *string `pulumi:"cronSchedule"`
+	// Optional. Defines whether the scheduled backup is enabled. The default value is false.
+	Enabled *bool `pulumi:"enabled"`
+	// Optional. Specifies the time zone to be used when interpreting cron_schedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// ScheduledBackupInput is an input type that accepts ScheduledBackupArgs and ScheduledBackupOutput values.
+// You can construct a concrete instance of `ScheduledBackupInput` via:
+//
+//	ScheduledBackupArgs{...}
+type ScheduledBackupInput interface {
+	pulumi.Input
+
+	ToScheduledBackupOutput() ScheduledBackupOutput
+	ToScheduledBackupOutputWithContext(context.Context) ScheduledBackupOutput
+}
+
+// This specifies the configuration of scheduled backup.
+type ScheduledBackupArgs struct {
+	// Optional. A Cloud Storage URI of a folder, in the format gs:///. A sub-folder containing backup files will be stored below it.
+	BackupLocation pulumi.StringPtrInput `pulumi:"backupLocation"`
+	// Optional. The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+	CronSchedule pulumi.StringPtrInput `pulumi:"cronSchedule"`
+	// Optional. Defines whether the scheduled backup is enabled. The default value is false.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Optional. Specifies the time zone to be used when interpreting cron_schedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+}
+
+func (ScheduledBackupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledBackup)(nil)).Elem()
+}
+
+func (i ScheduledBackupArgs) ToScheduledBackupOutput() ScheduledBackupOutput {
+	return i.ToScheduledBackupOutputWithContext(context.Background())
+}
+
+func (i ScheduledBackupArgs) ToScheduledBackupOutputWithContext(ctx context.Context) ScheduledBackupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledBackupOutput)
+}
+
+func (i ScheduledBackupArgs) ToScheduledBackupPtrOutput() ScheduledBackupPtrOutput {
+	return i.ToScheduledBackupPtrOutputWithContext(context.Background())
+}
+
+func (i ScheduledBackupArgs) ToScheduledBackupPtrOutputWithContext(ctx context.Context) ScheduledBackupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledBackupOutput).ToScheduledBackupPtrOutputWithContext(ctx)
+}
+
+// ScheduledBackupPtrInput is an input type that accepts ScheduledBackupArgs, ScheduledBackupPtr and ScheduledBackupPtrOutput values.
+// You can construct a concrete instance of `ScheduledBackupPtrInput` via:
+//
+//	        ScheduledBackupArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScheduledBackupPtrInput interface {
+	pulumi.Input
+
+	ToScheduledBackupPtrOutput() ScheduledBackupPtrOutput
+	ToScheduledBackupPtrOutputWithContext(context.Context) ScheduledBackupPtrOutput
+}
+
+type scheduledBackupPtrType ScheduledBackupArgs
+
+func ScheduledBackupPtr(v *ScheduledBackupArgs) ScheduledBackupPtrInput {
+	return (*scheduledBackupPtrType)(v)
+}
+
+func (*scheduledBackupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduledBackup)(nil)).Elem()
+}
+
+func (i *scheduledBackupPtrType) ToScheduledBackupPtrOutput() ScheduledBackupPtrOutput {
+	return i.ToScheduledBackupPtrOutputWithContext(context.Background())
+}
+
+func (i *scheduledBackupPtrType) ToScheduledBackupPtrOutputWithContext(ctx context.Context) ScheduledBackupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledBackupPtrOutput)
+}
+
+// This specifies the configuration of scheduled backup.
+type ScheduledBackupOutput struct{ *pulumi.OutputState }
+
+func (ScheduledBackupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledBackup)(nil)).Elem()
+}
+
+func (o ScheduledBackupOutput) ToScheduledBackupOutput() ScheduledBackupOutput {
+	return o
+}
+
+func (o ScheduledBackupOutput) ToScheduledBackupOutputWithContext(ctx context.Context) ScheduledBackupOutput {
+	return o
+}
+
+func (o ScheduledBackupOutput) ToScheduledBackupPtrOutput() ScheduledBackupPtrOutput {
+	return o.ToScheduledBackupPtrOutputWithContext(context.Background())
+}
+
+func (o ScheduledBackupOutput) ToScheduledBackupPtrOutputWithContext(ctx context.Context) ScheduledBackupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduledBackup) *ScheduledBackup {
+		return &v
+	}).(ScheduledBackupPtrOutput)
+}
+
+// Optional. A Cloud Storage URI of a folder, in the format gs:///. A sub-folder containing backup files will be stored below it.
+func (o ScheduledBackupOutput) BackupLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledBackup) *string { return v.BackupLocation }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+func (o ScheduledBackupOutput) CronSchedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledBackup) *string { return v.CronSchedule }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Defines whether the scheduled backup is enabled. The default value is false.
+func (o ScheduledBackupOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ScheduledBackup) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Specifies the time zone to be used when interpreting cron_schedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+func (o ScheduledBackupOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledBackup) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+type ScheduledBackupPtrOutput struct{ *pulumi.OutputState }
+
+func (ScheduledBackupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduledBackup)(nil)).Elem()
+}
+
+func (o ScheduledBackupPtrOutput) ToScheduledBackupPtrOutput() ScheduledBackupPtrOutput {
+	return o
+}
+
+func (o ScheduledBackupPtrOutput) ToScheduledBackupPtrOutputWithContext(ctx context.Context) ScheduledBackupPtrOutput {
+	return o
+}
+
+func (o ScheduledBackupPtrOutput) Elem() ScheduledBackupOutput {
+	return o.ApplyT(func(v *ScheduledBackup) ScheduledBackup {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduledBackup
+		return ret
+	}).(ScheduledBackupOutput)
+}
+
+// Optional. A Cloud Storage URI of a folder, in the format gs:///. A sub-folder containing backup files will be stored below it.
+func (o ScheduledBackupPtrOutput) BackupLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledBackup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BackupLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+func (o ScheduledBackupPtrOutput) CronSchedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledBackup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CronSchedule
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Defines whether the scheduled backup is enabled. The default value is false.
+func (o ScheduledBackupPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ScheduledBackup) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Specifies the time zone to be used when interpreting cron_schedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+func (o ScheduledBackupPtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledBackup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// This specifies the configuration of scheduled backup.
+type ScheduledBackupResponse struct {
+	// Optional. A Cloud Storage URI of a folder, in the format gs:///. A sub-folder containing backup files will be stored below it.
+	BackupLocation string `pulumi:"backupLocation"`
+	// Optional. The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+	CronSchedule string `pulumi:"cronSchedule"`
+	// Optional. Defines whether the scheduled backup is enabled. The default value is false.
+	Enabled bool `pulumi:"enabled"`
+	// The details of the latest scheduled backup.
+	LatestBackup LatestBackupResponse `pulumi:"latestBackup"`
+	// The time when the next backups execution is scheduled to start.
+	NextScheduledTime string `pulumi:"nextScheduledTime"`
+	// Optional. Specifies the time zone to be used when interpreting cron_schedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+	TimeZone string `pulumi:"timeZone"`
+}
+
+// This specifies the configuration of scheduled backup.
+type ScheduledBackupResponseOutput struct{ *pulumi.OutputState }
+
+func (ScheduledBackupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledBackupResponse)(nil)).Elem()
+}
+
+func (o ScheduledBackupResponseOutput) ToScheduledBackupResponseOutput() ScheduledBackupResponseOutput {
+	return o
+}
+
+func (o ScheduledBackupResponseOutput) ToScheduledBackupResponseOutputWithContext(ctx context.Context) ScheduledBackupResponseOutput {
+	return o
+}
+
+// Optional. A Cloud Storage URI of a folder, in the format gs:///. A sub-folder containing backup files will be stored below it.
+func (o ScheduledBackupResponseOutput) BackupLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduledBackupResponse) string { return v.BackupLocation }).(pulumi.StringOutput)
+}
+
+// Optional. The scheduled interval in Cron format, see https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup is not enabled. Must be specified to enable scheduled backups.
+func (o ScheduledBackupResponseOutput) CronSchedule() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduledBackupResponse) string { return v.CronSchedule }).(pulumi.StringOutput)
+}
+
+// Optional. Defines whether the scheduled backup is enabled. The default value is false.
+func (o ScheduledBackupResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ScheduledBackupResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The details of the latest scheduled backup.
+func (o ScheduledBackupResponseOutput) LatestBackup() LatestBackupResponseOutput {
+	return o.ApplyT(func(v ScheduledBackupResponse) LatestBackupResponse { return v.LatestBackup }).(LatestBackupResponseOutput)
+}
+
+// The time when the next backups execution is scheduled to start.
+func (o ScheduledBackupResponseOutput) NextScheduledTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduledBackupResponse) string { return v.NextScheduledTime }).(pulumi.StringOutput)
+}
+
+// Optional. Specifies the time zone to be used when interpreting cron_schedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g. America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is UTC.
+func (o ScheduledBackupResponseOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduledBackupResponse) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
 // A securely stored value.
 type Secret struct {
 	// The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
@@ -3094,6 +3399,8 @@ type ServiceResponse struct {
 	ReleaseChannel string `pulumi:"releaseChannel"`
 	// Scaling configuration of the metastore service.
 	ScalingConfig ScalingConfigResponse `pulumi:"scalingConfig"`
+	// Optional. The configuration of scheduled backup for the metastore service.
+	ScheduledBackup ScheduledBackupResponse `pulumi:"scheduledBackup"`
 	// The current state of the metastore service.
 	State string `pulumi:"state"`
 	// Additional information about the current state of the metastore service, if available.
@@ -3201,6 +3508,11 @@ func (o ServiceResponseOutput) ReleaseChannel() pulumi.StringOutput {
 // Scaling configuration of the metastore service.
 func (o ServiceResponseOutput) ScalingConfig() ScalingConfigResponseOutput {
 	return o.ApplyT(func(v ServiceResponse) ScalingConfigResponse { return v.ScalingConfig }).(ScalingConfigResponseOutput)
+}
+
+// Optional. The configuration of scheduled backup for the metastore service.
+func (o ServiceResponseOutput) ScheduledBackup() ScheduledBackupResponseOutput {
+	return o.ApplyT(func(v ServiceResponse) ScheduledBackupResponse { return v.ScheduledBackup }).(ScheduledBackupResponseOutput)
 }
 
 // The current state of the metastore service.
@@ -3428,6 +3740,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigPtrInput)(nil)).Elem(), NetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigInput)(nil)).Elem(), ScalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigPtrInput)(nil)).Elem(), ScalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledBackupInput)(nil)).Elem(), ScheduledBackupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledBackupPtrInput)(nil)).Elem(), ScheduledBackupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretInput)(nil)).Elem(), SecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretPtrInput)(nil)).Elem(), SecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryConfigInput)(nil)).Elem(), TelemetryConfigArgs{})
@@ -3466,6 +3780,7 @@ func init() {
 	pulumi.RegisterOutputType(KerberosConfigOutput{})
 	pulumi.RegisterOutputType(KerberosConfigPtrOutput{})
 	pulumi.RegisterOutputType(KerberosConfigResponseOutput{})
+	pulumi.RegisterOutputType(LatestBackupResponseOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowResponseOutput{})
@@ -3483,6 +3798,9 @@ func init() {
 	pulumi.RegisterOutputType(ScalingConfigOutput{})
 	pulumi.RegisterOutputType(ScalingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ScalingConfigResponseOutput{})
+	pulumi.RegisterOutputType(ScheduledBackupOutput{})
+	pulumi.RegisterOutputType(ScheduledBackupPtrOutput{})
+	pulumi.RegisterOutputType(ScheduledBackupResponseOutput{})
 	pulumi.RegisterOutputType(SecretOutput{})
 	pulumi.RegisterOutputType(SecretPtrOutput{})
 	pulumi.RegisterOutputType(SecretResponseOutput{})

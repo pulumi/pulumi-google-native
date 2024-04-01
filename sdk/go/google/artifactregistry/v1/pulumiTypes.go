@@ -15,6 +15,8 @@ var _ = internal.GetEnvOrDefault
 
 // Configuration for an Apt remote repository.
 type AptRepository struct {
+	// Customer-specified remote repository.
+	CustomRepository *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository `pulumi:"customRepository"`
 	// One of the publicly available Apt repositories supported by Artifact Registry.
 	PublicRepository *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository `pulumi:"publicRepository"`
 }
@@ -32,6 +34,8 @@ type AptRepositoryInput interface {
 
 // Configuration for an Apt remote repository.
 type AptRepositoryArgs struct {
+	// Customer-specified remote repository.
+	CustomRepository GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrInput `pulumi:"customRepository"`
 	// One of the publicly available Apt repositories supported by Artifact Registry.
 	PublicRepository GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrInput `pulumi:"publicRepository"`
 }
@@ -114,6 +118,13 @@ func (o AptRepositoryOutput) ToAptRepositoryPtrOutputWithContext(ctx context.Con
 	}).(AptRepositoryPtrOutput)
 }
 
+// Customer-specified remote repository.
+func (o AptRepositoryOutput) CustomRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyT(func(v AptRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository {
+		return v.CustomRepository
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput)
+}
+
 // One of the publicly available Apt repositories supported by Artifact Registry.
 func (o AptRepositoryOutput) PublicRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput {
 	return o.ApplyT(func(v AptRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository {
@@ -145,6 +156,16 @@ func (o AptRepositoryPtrOutput) Elem() AptRepositoryOutput {
 	}).(AptRepositoryOutput)
 }
 
+// Customer-specified remote repository.
+func (o AptRepositoryPtrOutput) CustomRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyT(func(v *AptRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository {
+		if v == nil {
+			return nil
+		}
+		return v.CustomRepository
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput)
+}
+
 // One of the publicly available Apt repositories supported by Artifact Registry.
 func (o AptRepositoryPtrOutput) PublicRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput {
 	return o.ApplyT(func(v *AptRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository {
@@ -157,6 +178,8 @@ func (o AptRepositoryPtrOutput) PublicRepository() GoogleDevtoolsArtifactregistr
 
 // Configuration for an Apt remote repository.
 type AptRepositoryResponse struct {
+	// Customer-specified remote repository.
+	CustomRepository GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryResponse `pulumi:"customRepository"`
 	// One of the publicly available Apt repositories supported by Artifact Registry.
 	PublicRepository GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse `pulumi:"publicRepository"`
 }
@@ -176,6 +199,13 @@ func (o AptRepositoryResponseOutput) ToAptRepositoryResponseOutputWithContext(ct
 	return o
 }
 
+// Customer-specified remote repository.
+func (o AptRepositoryResponseOutput) CustomRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryResponseOutput {
+	return o.ApplyT(func(v AptRepositoryResponse) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryResponse {
+		return v.CustomRepository
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryResponseOutput)
+}
+
 // One of the publicly available Apt repositories supported by Artifact Registry.
 func (o AptRepositoryResponseOutput) PublicRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponseOutput {
 	return o.ApplyT(func(v AptRepositoryResponse) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse {
@@ -187,9 +217,9 @@ func (o AptRepositoryResponseOutput) PublicRepository() GoogleDevtoolsArtifactre
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role *string `pulumi:"role"`
 }
 
@@ -208,9 +238,9 @@ type BindingInput interface {
 type BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -271,12 +301,12 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -305,9 +335,9 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role string `pulumi:"role"`
 }
 
@@ -331,12 +361,12 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -363,6 +393,8 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 
 // Configuration for a Docker remote repository.
 type DockerRepository struct {
+	// Customer-specified remote repository.
+	CustomRepository *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository `pulumi:"customRepository"`
 	// One of the publicly available Docker repositories supported by Artifact Registry.
 	PublicRepository *DockerRepositoryPublicRepository `pulumi:"publicRepository"`
 }
@@ -380,6 +412,8 @@ type DockerRepositoryInput interface {
 
 // Configuration for a Docker remote repository.
 type DockerRepositoryArgs struct {
+	// Customer-specified remote repository.
+	CustomRepository GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrInput `pulumi:"customRepository"`
 	// One of the publicly available Docker repositories supported by Artifact Registry.
 	PublicRepository DockerRepositoryPublicRepositoryPtrInput `pulumi:"publicRepository"`
 }
@@ -462,6 +496,13 @@ func (o DockerRepositoryOutput) ToDockerRepositoryPtrOutputWithContext(ctx conte
 	}).(DockerRepositoryPtrOutput)
 }
 
+// Customer-specified remote repository.
+func (o DockerRepositoryOutput) CustomRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyT(func(v DockerRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository {
+		return v.CustomRepository
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput)
+}
+
 // One of the publicly available Docker repositories supported by Artifact Registry.
 func (o DockerRepositoryOutput) PublicRepository() DockerRepositoryPublicRepositoryPtrOutput {
 	return o.ApplyT(func(v DockerRepository) *DockerRepositoryPublicRepository { return v.PublicRepository }).(DockerRepositoryPublicRepositoryPtrOutput)
@@ -489,6 +530,16 @@ func (o DockerRepositoryPtrOutput) Elem() DockerRepositoryOutput {
 		var ret DockerRepository
 		return ret
 	}).(DockerRepositoryOutput)
+}
+
+// Customer-specified remote repository.
+func (o DockerRepositoryPtrOutput) CustomRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyT(func(v *DockerRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository {
+		if v == nil {
+			return nil
+		}
+		return v.CustomRepository
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput)
 }
 
 // One of the publicly available Docker repositories supported by Artifact Registry.
@@ -669,6 +720,8 @@ func (o DockerRepositoryConfigResponseOutput) ImmutableTags() pulumi.BoolOutput 
 
 // Configuration for a Docker remote repository.
 type DockerRepositoryResponse struct {
+	// Customer-specified remote repository.
+	CustomRepository GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryResponse `pulumi:"customRepository"`
 	// One of the publicly available Docker repositories supported by Artifact Registry.
 	PublicRepository string `pulumi:"publicRepository"`
 }
@@ -686,6 +739,13 @@ func (o DockerRepositoryResponseOutput) ToDockerRepositoryResponseOutput() Docke
 
 func (o DockerRepositoryResponseOutput) ToDockerRepositoryResponseOutputWithContext(ctx context.Context) DockerRepositoryResponseOutput {
 	return o
+}
+
+// Customer-specified remote repository.
+func (o DockerRepositoryResponseOutput) CustomRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryResponseOutput {
+	return o.ApplyT(func(v DockerRepositoryResponse) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryResponse {
+		return v.CustomRepository
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryResponseOutput)
 }
 
 // One of the publicly available Docker repositories supported by Artifact Registry.
@@ -937,6 +997,176 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository struct {
+	// An http/https uri reference to the upstream remote repository, for ex: "https://my.apt.registry/".
+	Uri *string `pulumi:"uri"`
+}
+
+// GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryInput is an input type that accepts GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryArgs and GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryInput` via:
+//
+//	GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryArgs{...}
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutput
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutputWithContext(context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutput
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryArgs struct {
+	// An http/https uri reference to the upstream remote repository, for ex: "https://my.apt.registry/".
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutput {
+	return i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutput)
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput {
+	return i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutput).ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutputWithContext(ctx)
+}
+
+// GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrInput is an input type that accepts GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryArgs, GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtr and GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrInput` via:
+//
+//	        GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutputWithContext(context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput
+}
+
+type googleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrType GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryArgs
+
+func GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtr(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryArgs) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrInput {
+	return (*googleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrType)(v)
+}
+
+func (*googleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i *googleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrType) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput {
+	return i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *googleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrType) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput)
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput {
+	return o.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository {
+		return &v
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput)
+}
+
+// An http/https uri reference to the upstream remote repository, for ex: "https://my.apt.registry/".
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository) *string {
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput) Elem() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository
+		return ret
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutput)
+}
+
+// An http/https uri reference to the upstream remote repository, for ex: "https://my.apt.registry/".
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryResponse struct {
+	// An http/https uri reference to the upstream remote repository, for ex: "https://my.apt.registry/".
+	Uri string `pulumi:"uri"`
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryResponseOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryResponseOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryResponseOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryResponseOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryResponseOutput {
+	return o
+}
+
+// An http/https uri reference to the upstream remote repository, for ex: "https://my.apt.registry/".
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryResponse) string {
+		return v.Uri
+	}).(pulumi.StringOutput)
+}
+
 // Publicly available Apt repositories constructed from a common repository base and a custom repository path.
 type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository struct {
 	// A common public repository base for Apt.
@@ -1134,6 +1364,856 @@ func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPubli
 func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponseOutput) RepositoryPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse) string {
 		return v.RepositoryPath
+	}).(pulumi.StringOutput)
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository struct {
+	// An http/https uri reference to the custom remote repository, for ex: "https://registry-1.docker.io".
+	Uri *string `pulumi:"uri"`
+}
+
+// GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryInput is an input type that accepts GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs and GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryInput` via:
+//
+//	GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs{...}
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutputWithContext(context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs struct {
+	// An http/https uri reference to the custom remote repository, for ex: "https://registry-1.docker.io".
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput {
+	return i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput)
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput {
+	return i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput).ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutputWithContext(ctx)
+}
+
+// GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrInput is an input type that accepts GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs, GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtr and GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrInput` via:
+//
+//	        GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutputWithContext(context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput
+}
+
+type googleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrType GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs
+
+func GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtr(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrInput {
+	return (*googleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrType)(v)
+}
+
+func (*googleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i *googleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrType) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput {
+	return i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *googleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrType) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput)
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput {
+	return o.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository {
+		return &v
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput)
+}
+
+// An http/https uri reference to the custom remote repository, for ex: "https://registry-1.docker.io".
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository) *string {
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput) Elem() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository
+		return ret
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput)
+}
+
+// An http/https uri reference to the custom remote repository, for ex: "https://registry-1.docker.io".
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryResponse struct {
+	// An http/https uri reference to the custom remote repository, for ex: "https://registry-1.docker.io".
+	Uri string `pulumi:"uri"`
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryResponseOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryResponseOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryResponseOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryResponseOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryResponseOutput {
+	return o
+}
+
+// An http/https uri reference to the custom remote repository, for ex: "https://registry-1.docker.io".
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryResponse) string {
+		return v.Uri
+	}).(pulumi.StringOutput)
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository struct {
+	// An http/https uri reference to the upstream remote repository, for ex: "https://my.maven.registry/".
+	Uri *string `pulumi:"uri"`
+}
+
+// GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryInput is an input type that accepts GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs and GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryInput` via:
+//
+//	GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs{...}
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutputWithContext(context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs struct {
+	// An http/https uri reference to the upstream remote repository, for ex: "https://my.maven.registry/".
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput {
+	return i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput)
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput {
+	return i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput).ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutputWithContext(ctx)
+}
+
+// GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrInput is an input type that accepts GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs, GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtr and GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrInput` via:
+//
+//	        GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutputWithContext(context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput
+}
+
+type googleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrType GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs
+
+func GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtr(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrInput {
+	return (*googleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrType)(v)
+}
+
+func (*googleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i *googleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrType) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput {
+	return i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *googleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrType) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput)
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput {
+	return o.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository {
+		return &v
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput)
+}
+
+// An http/https uri reference to the upstream remote repository, for ex: "https://my.maven.registry/".
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository) *string {
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput) Elem() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository
+		return ret
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput)
+}
+
+// An http/https uri reference to the upstream remote repository, for ex: "https://my.maven.registry/".
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryResponse struct {
+	// An http/https uri reference to the upstream remote repository, for ex: "https://my.maven.registry/".
+	Uri string `pulumi:"uri"`
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryResponseOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryResponseOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryResponseOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryResponseOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryResponseOutput {
+	return o
+}
+
+// An http/https uri reference to the upstream remote repository, for ex: "https://my.maven.registry/".
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryResponse) string {
+		return v.Uri
+	}).(pulumi.StringOutput)
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository struct {
+	// An http/https uri reference to the upstream remote repository, for ex: "https://my.npm.registry/".
+	Uri *string `pulumi:"uri"`
+}
+
+// GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryInput is an input type that accepts GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs and GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryInput` via:
+//
+//	GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs{...}
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutputWithContext(context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs struct {
+	// An http/https uri reference to the upstream remote repository, for ex: "https://my.npm.registry/".
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput {
+	return i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput)
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput {
+	return i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput).ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutputWithContext(ctx)
+}
+
+// GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrInput is an input type that accepts GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs, GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtr and GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrInput` via:
+//
+//	        GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutputWithContext(context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput
+}
+
+type googleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrType GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs
+
+func GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtr(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrInput {
+	return (*googleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrType)(v)
+}
+
+func (*googleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i *googleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrType) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput {
+	return i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *googleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrType) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput)
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput {
+	return o.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository {
+		return &v
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput)
+}
+
+// An http/https uri reference to the upstream remote repository, for ex: "https://my.npm.registry/".
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository) *string {
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput) Elem() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository
+		return ret
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput)
+}
+
+// An http/https uri reference to the upstream remote repository, for ex: "https://my.npm.registry/".
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryResponse struct {
+	// An http/https uri reference to the upstream remote repository, for ex: "https://my.npm.registry/".
+	Uri string `pulumi:"uri"`
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryResponseOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryResponseOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryResponseOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryResponseOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryResponseOutput {
+	return o
+}
+
+// An http/https uri reference to the upstream remote repository, for ex: "https://my.npm.registry/".
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryResponse) string {
+		return v.Uri
+	}).(pulumi.StringOutput)
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository struct {
+	// An http/https uri reference to the upstream remote repository, for ex: "https://my.python.registry/".
+	Uri *string `pulumi:"uri"`
+}
+
+// GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryInput is an input type that accepts GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs and GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryInput` via:
+//
+//	GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs{...}
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutputWithContext(context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs struct {
+	// An http/https uri reference to the upstream remote repository, for ex: "https://my.python.registry/".
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput {
+	return i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput)
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput {
+	return i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput).ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutputWithContext(ctx)
+}
+
+// GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrInput is an input type that accepts GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs, GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtr and GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrInput` via:
+//
+//	        GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutputWithContext(context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput
+}
+
+type googleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrType GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs
+
+func GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtr(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrInput {
+	return (*googleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrType)(v)
+}
+
+func (*googleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i *googleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrType) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput {
+	return i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *googleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrType) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput)
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput {
+	return o.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository {
+		return &v
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput)
+}
+
+// An http/https uri reference to the upstream remote repository, for ex: "https://my.python.registry/".
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository) *string {
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput) Elem() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository
+		return ret
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput)
+}
+
+// An http/https uri reference to the upstream remote repository, for ex: "https://my.python.registry/".
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryResponse struct {
+	// An http/https uri reference to the upstream remote repository, for ex: "https://my.python.registry/".
+	Uri string `pulumi:"uri"`
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryResponseOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryResponseOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryResponseOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryResponseOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryResponseOutput {
+	return o
+}
+
+// An http/https uri reference to the upstream remote repository, for ex: "https://my.python.registry/".
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryResponse) string {
+		return v.Uri
+	}).(pulumi.StringOutput)
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository struct {
+	// An http/https uri reference to the upstream remote repository, for ex: "https://my.yum.registry/".
+	Uri *string `pulumi:"uri"`
+}
+
+// GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryInput is an input type that accepts GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryArgs and GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryInput` via:
+//
+//	GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryArgs{...}
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutput
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutputWithContext(context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutput
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryArgs struct {
+	// An http/https uri reference to the upstream remote repository, for ex: "https://my.yum.registry/".
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutput {
+	return i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutput)
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput {
+	return i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryArgs) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutput).ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutputWithContext(ctx)
+}
+
+// GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrInput is an input type that accepts GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryArgs, GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtr and GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrInput` via:
+//
+//	        GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput
+	ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutputWithContext(context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput
+}
+
+type googleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrType GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryArgs
+
+func GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtr(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryArgs) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrInput {
+	return (*googleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrType)(v)
+}
+
+func (*googleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (i *googleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrType) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput {
+	return i.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *googleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrType) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput)
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput {
+	return o.ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository {
+		return &v
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput)
+}
+
+// An http/https uri reference to the upstream remote repository, for ex: "https://my.yum.registry/".
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository) *string {
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput) Elem() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository
+		return ret
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutput)
+}
+
+// An http/https uri reference to the upstream remote repository, for ex: "https://my.yum.registry/".
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryResponse struct {
+	// An http/https uri reference to the upstream remote repository, for ex: "https://my.yum.registry/".
+	Uri string `pulumi:"uri"`
+}
+
+// Customer-specified publicly available remote repository.
+type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryResponseOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryResponseOutput() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryResponseOutput) ToGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryResponseOutputWithContext(ctx context.Context) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryResponseOutput {
+	return o
+}
+
+// An http/https uri reference to the upstream remote repository, for ex: "https://my.yum.registry/".
+func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryResponse) string {
+		return v.Uri
 	}).(pulumi.StringOutput)
 }
 
@@ -1339,6 +2419,8 @@ func (o GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPubli
 
 // Configuration for a Maven remote repository.
 type MavenRepository struct {
+	// Customer-specified remote repository.
+	CustomRepository *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository `pulumi:"customRepository"`
 	// One of the publicly available Maven repositories supported by Artifact Registry.
 	PublicRepository *MavenRepositoryPublicRepository `pulumi:"publicRepository"`
 }
@@ -1356,6 +2438,8 @@ type MavenRepositoryInput interface {
 
 // Configuration for a Maven remote repository.
 type MavenRepositoryArgs struct {
+	// Customer-specified remote repository.
+	CustomRepository GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrInput `pulumi:"customRepository"`
 	// One of the publicly available Maven repositories supported by Artifact Registry.
 	PublicRepository MavenRepositoryPublicRepositoryPtrInput `pulumi:"publicRepository"`
 }
@@ -1438,6 +2522,13 @@ func (o MavenRepositoryOutput) ToMavenRepositoryPtrOutputWithContext(ctx context
 	}).(MavenRepositoryPtrOutput)
 }
 
+// Customer-specified remote repository.
+func (o MavenRepositoryOutput) CustomRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyT(func(v MavenRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository {
+		return v.CustomRepository
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput)
+}
+
 // One of the publicly available Maven repositories supported by Artifact Registry.
 func (o MavenRepositoryOutput) PublicRepository() MavenRepositoryPublicRepositoryPtrOutput {
 	return o.ApplyT(func(v MavenRepository) *MavenRepositoryPublicRepository { return v.PublicRepository }).(MavenRepositoryPublicRepositoryPtrOutput)
@@ -1465,6 +2556,16 @@ func (o MavenRepositoryPtrOutput) Elem() MavenRepositoryOutput {
 		var ret MavenRepository
 		return ret
 	}).(MavenRepositoryOutput)
+}
+
+// Customer-specified remote repository.
+func (o MavenRepositoryPtrOutput) CustomRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyT(func(v *MavenRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository {
+		if v == nil {
+			return nil
+		}
+		return v.CustomRepository
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput)
 }
 
 // One of the publicly available Maven repositories supported by Artifact Registry.
@@ -1671,6 +2772,8 @@ func (o MavenRepositoryConfigResponseOutput) VersionPolicy() pulumi.StringOutput
 
 // Configuration for a Maven remote repository.
 type MavenRepositoryResponse struct {
+	// Customer-specified remote repository.
+	CustomRepository GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryResponse `pulumi:"customRepository"`
 	// One of the publicly available Maven repositories supported by Artifact Registry.
 	PublicRepository string `pulumi:"publicRepository"`
 }
@@ -1690,6 +2793,13 @@ func (o MavenRepositoryResponseOutput) ToMavenRepositoryResponseOutputWithContex
 	return o
 }
 
+// Customer-specified remote repository.
+func (o MavenRepositoryResponseOutput) CustomRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryResponseOutput {
+	return o.ApplyT(func(v MavenRepositoryResponse) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryResponse {
+		return v.CustomRepository
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryResponseOutput)
+}
+
 // One of the publicly available Maven repositories supported by Artifact Registry.
 func (o MavenRepositoryResponseOutput) PublicRepository() pulumi.StringOutput {
 	return o.ApplyT(func(v MavenRepositoryResponse) string { return v.PublicRepository }).(pulumi.StringOutput)
@@ -1697,6 +2807,8 @@ func (o MavenRepositoryResponseOutput) PublicRepository() pulumi.StringOutput {
 
 // Configuration for a Npm remote repository.
 type NpmRepository struct {
+	// Customer-specified remote repository.
+	CustomRepository *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository `pulumi:"customRepository"`
 	// One of the publicly available Npm repositories supported by Artifact Registry.
 	PublicRepository *NpmRepositoryPublicRepository `pulumi:"publicRepository"`
 }
@@ -1714,6 +2826,8 @@ type NpmRepositoryInput interface {
 
 // Configuration for a Npm remote repository.
 type NpmRepositoryArgs struct {
+	// Customer-specified remote repository.
+	CustomRepository GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrInput `pulumi:"customRepository"`
 	// One of the publicly available Npm repositories supported by Artifact Registry.
 	PublicRepository NpmRepositoryPublicRepositoryPtrInput `pulumi:"publicRepository"`
 }
@@ -1796,6 +2910,13 @@ func (o NpmRepositoryOutput) ToNpmRepositoryPtrOutputWithContext(ctx context.Con
 	}).(NpmRepositoryPtrOutput)
 }
 
+// Customer-specified remote repository.
+func (o NpmRepositoryOutput) CustomRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyT(func(v NpmRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository {
+		return v.CustomRepository
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput)
+}
+
 // One of the publicly available Npm repositories supported by Artifact Registry.
 func (o NpmRepositoryOutput) PublicRepository() NpmRepositoryPublicRepositoryPtrOutput {
 	return o.ApplyT(func(v NpmRepository) *NpmRepositoryPublicRepository { return v.PublicRepository }).(NpmRepositoryPublicRepositoryPtrOutput)
@@ -1825,6 +2946,16 @@ func (o NpmRepositoryPtrOutput) Elem() NpmRepositoryOutput {
 	}).(NpmRepositoryOutput)
 }
 
+// Customer-specified remote repository.
+func (o NpmRepositoryPtrOutput) CustomRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyT(func(v *NpmRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository {
+		if v == nil {
+			return nil
+		}
+		return v.CustomRepository
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput)
+}
+
 // One of the publicly available Npm repositories supported by Artifact Registry.
 func (o NpmRepositoryPtrOutput) PublicRepository() NpmRepositoryPublicRepositoryPtrOutput {
 	return o.ApplyT(func(v *NpmRepository) *NpmRepositoryPublicRepository {
@@ -1837,6 +2968,8 @@ func (o NpmRepositoryPtrOutput) PublicRepository() NpmRepositoryPublicRepository
 
 // Configuration for a Npm remote repository.
 type NpmRepositoryResponse struct {
+	// Customer-specified remote repository.
+	CustomRepository GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryResponse `pulumi:"customRepository"`
 	// One of the publicly available Npm repositories supported by Artifact Registry.
 	PublicRepository string `pulumi:"publicRepository"`
 }
@@ -1856,6 +2989,13 @@ func (o NpmRepositoryResponseOutput) ToNpmRepositoryResponseOutputWithContext(ct
 	return o
 }
 
+// Customer-specified remote repository.
+func (o NpmRepositoryResponseOutput) CustomRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryResponseOutput {
+	return o.ApplyT(func(v NpmRepositoryResponse) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryResponse {
+		return v.CustomRepository
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryResponseOutput)
+}
+
 // One of the publicly available Npm repositories supported by Artifact Registry.
 func (o NpmRepositoryResponseOutput) PublicRepository() pulumi.StringOutput {
 	return o.ApplyT(func(v NpmRepositoryResponse) string { return v.PublicRepository }).(pulumi.StringOutput)
@@ -1863,6 +3003,8 @@ func (o NpmRepositoryResponseOutput) PublicRepository() pulumi.StringOutput {
 
 // Configuration for a Python remote repository.
 type PythonRepository struct {
+	// Customer-specified remote repository.
+	CustomRepository *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository `pulumi:"customRepository"`
 	// One of the publicly available Python repositories supported by Artifact Registry.
 	PublicRepository *PythonRepositoryPublicRepository `pulumi:"publicRepository"`
 }
@@ -1880,6 +3022,8 @@ type PythonRepositoryInput interface {
 
 // Configuration for a Python remote repository.
 type PythonRepositoryArgs struct {
+	// Customer-specified remote repository.
+	CustomRepository GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrInput `pulumi:"customRepository"`
 	// One of the publicly available Python repositories supported by Artifact Registry.
 	PublicRepository PythonRepositoryPublicRepositoryPtrInput `pulumi:"publicRepository"`
 }
@@ -1962,6 +3106,13 @@ func (o PythonRepositoryOutput) ToPythonRepositoryPtrOutputWithContext(ctx conte
 	}).(PythonRepositoryPtrOutput)
 }
 
+// Customer-specified remote repository.
+func (o PythonRepositoryOutput) CustomRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyT(func(v PythonRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository {
+		return v.CustomRepository
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput)
+}
+
 // One of the publicly available Python repositories supported by Artifact Registry.
 func (o PythonRepositoryOutput) PublicRepository() PythonRepositoryPublicRepositoryPtrOutput {
 	return o.ApplyT(func(v PythonRepository) *PythonRepositoryPublicRepository { return v.PublicRepository }).(PythonRepositoryPublicRepositoryPtrOutput)
@@ -1991,6 +3142,16 @@ func (o PythonRepositoryPtrOutput) Elem() PythonRepositoryOutput {
 	}).(PythonRepositoryOutput)
 }
 
+// Customer-specified remote repository.
+func (o PythonRepositoryPtrOutput) CustomRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyT(func(v *PythonRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository {
+		if v == nil {
+			return nil
+		}
+		return v.CustomRepository
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput)
+}
+
 // One of the publicly available Python repositories supported by Artifact Registry.
 func (o PythonRepositoryPtrOutput) PublicRepository() PythonRepositoryPublicRepositoryPtrOutput {
 	return o.ApplyT(func(v *PythonRepository) *PythonRepositoryPublicRepository {
@@ -2003,6 +3164,8 @@ func (o PythonRepositoryPtrOutput) PublicRepository() PythonRepositoryPublicRepo
 
 // Configuration for a Python remote repository.
 type PythonRepositoryResponse struct {
+	// Customer-specified remote repository.
+	CustomRepository GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryResponse `pulumi:"customRepository"`
 	// One of the publicly available Python repositories supported by Artifact Registry.
 	PublicRepository string `pulumi:"publicRepository"`
 }
@@ -2022,6 +3185,13 @@ func (o PythonRepositoryResponseOutput) ToPythonRepositoryResponseOutputWithCont
 	return o
 }
 
+// Customer-specified remote repository.
+func (o PythonRepositoryResponseOutput) CustomRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryResponseOutput {
+	return o.ApplyT(func(v PythonRepositoryResponse) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryResponse {
+		return v.CustomRepository
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryResponseOutput)
+}
+
 // One of the publicly available Python repositories supported by Artifact Registry.
 func (o PythonRepositoryResponseOutput) PublicRepository() pulumi.StringOutput {
 	return o.ApplyT(func(v PythonRepositoryResponse) string { return v.PublicRepository }).(pulumi.StringOutput)
@@ -2033,6 +3203,8 @@ type RemoteRepositoryConfig struct {
 	AptRepository *AptRepository `pulumi:"aptRepository"`
 	// The description of the remote source.
 	Description *string `pulumi:"description"`
+	// Input only. A create/update remote repo option to avoid making a HEAD/GET request to validate a remote repo and any supplied upstream credentials.
+	DisableUpstreamValidation *bool `pulumi:"disableUpstreamValidation"`
 	// Specific settings for a Docker remote repository.
 	DockerRepository *DockerRepository `pulumi:"dockerRepository"`
 	// Specific settings for a Maven remote repository.
@@ -2064,6 +3236,8 @@ type RemoteRepositoryConfigArgs struct {
 	AptRepository AptRepositoryPtrInput `pulumi:"aptRepository"`
 	// The description of the remote source.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Input only. A create/update remote repo option to avoid making a HEAD/GET request to validate a remote repo and any supplied upstream credentials.
+	DisableUpstreamValidation pulumi.BoolPtrInput `pulumi:"disableUpstreamValidation"`
 	// Specific settings for a Docker remote repository.
 	DockerRepository DockerRepositoryPtrInput `pulumi:"dockerRepository"`
 	// Specific settings for a Maven remote repository.
@@ -2166,6 +3340,11 @@ func (o RemoteRepositoryConfigOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RemoteRepositoryConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Input only. A create/update remote repo option to avoid making a HEAD/GET request to validate a remote repo and any supplied upstream credentials.
+func (o RemoteRepositoryConfigOutput) DisableUpstreamValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RemoteRepositoryConfig) *bool { return v.DisableUpstreamValidation }).(pulumi.BoolPtrOutput)
+}
+
 // Specific settings for a Docker remote repository.
 func (o RemoteRepositoryConfigOutput) DockerRepository() DockerRepositoryPtrOutput {
 	return o.ApplyT(func(v RemoteRepositoryConfig) *DockerRepository { return v.DockerRepository }).(DockerRepositoryPtrOutput)
@@ -2240,6 +3419,16 @@ func (o RemoteRepositoryConfigPtrOutput) Description() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Input only. A create/update remote repo option to avoid making a HEAD/GET request to validate a remote repo and any supplied upstream credentials.
+func (o RemoteRepositoryConfigPtrOutput) DisableUpstreamValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RemoteRepositoryConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableUpstreamValidation
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Specific settings for a Docker remote repository.
 func (o RemoteRepositoryConfigPtrOutput) DockerRepository() DockerRepositoryPtrOutput {
 	return o.ApplyT(func(v *RemoteRepositoryConfig) *DockerRepository {
@@ -2306,6 +3495,8 @@ type RemoteRepositoryConfigResponse struct {
 	AptRepository AptRepositoryResponse `pulumi:"aptRepository"`
 	// The description of the remote source.
 	Description string `pulumi:"description"`
+	// Input only. A create/update remote repo option to avoid making a HEAD/GET request to validate a remote repo and any supplied upstream credentials.
+	DisableUpstreamValidation bool `pulumi:"disableUpstreamValidation"`
 	// Specific settings for a Docker remote repository.
 	DockerRepository DockerRepositoryResponse `pulumi:"dockerRepository"`
 	// Specific settings for a Maven remote repository.
@@ -2343,6 +3534,11 @@ func (o RemoteRepositoryConfigResponseOutput) AptRepository() AptRepositoryRespo
 // The description of the remote source.
 func (o RemoteRepositoryConfigResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v RemoteRepositoryConfigResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Input only. A create/update remote repo option to avoid making a HEAD/GET request to validate a remote repo and any supplied upstream credentials.
+func (o RemoteRepositoryConfigResponseOutput) DisableUpstreamValidation() pulumi.BoolOutput {
+	return o.ApplyT(func(v RemoteRepositoryConfigResponse) bool { return v.DisableUpstreamValidation }).(pulumi.BoolOutput)
 }
 
 // Specific settings for a Docker remote repository.
@@ -3074,6 +4270,8 @@ func (o VirtualRepositoryConfigResponseOutput) UpstreamPolicies() UpstreamPolicy
 
 // Configuration for a Yum remote repository.
 type YumRepository struct {
+	// Customer-specified remote repository.
+	CustomRepository *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository `pulumi:"customRepository"`
 	// One of the publicly available Yum repositories supported by Artifact Registry.
 	PublicRepository *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository `pulumi:"publicRepository"`
 }
@@ -3091,6 +4289,8 @@ type YumRepositoryInput interface {
 
 // Configuration for a Yum remote repository.
 type YumRepositoryArgs struct {
+	// Customer-specified remote repository.
+	CustomRepository GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrInput `pulumi:"customRepository"`
 	// One of the publicly available Yum repositories supported by Artifact Registry.
 	PublicRepository GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrInput `pulumi:"publicRepository"`
 }
@@ -3173,6 +4373,13 @@ func (o YumRepositoryOutput) ToYumRepositoryPtrOutputWithContext(ctx context.Con
 	}).(YumRepositoryPtrOutput)
 }
 
+// Customer-specified remote repository.
+func (o YumRepositoryOutput) CustomRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyT(func(v YumRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository {
+		return v.CustomRepository
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput)
+}
+
 // One of the publicly available Yum repositories supported by Artifact Registry.
 func (o YumRepositoryOutput) PublicRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput {
 	return o.ApplyT(func(v YumRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository {
@@ -3204,6 +4411,16 @@ func (o YumRepositoryPtrOutput) Elem() YumRepositoryOutput {
 	}).(YumRepositoryOutput)
 }
 
+// Customer-specified remote repository.
+func (o YumRepositoryPtrOutput) CustomRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput {
+	return o.ApplyT(func(v *YumRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository {
+		if v == nil {
+			return nil
+		}
+		return v.CustomRepository
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput)
+}
+
 // One of the publicly available Yum repositories supported by Artifact Registry.
 func (o YumRepositoryPtrOutput) PublicRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput {
 	return o.ApplyT(func(v *YumRepository) *GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository {
@@ -3216,6 +4433,8 @@ func (o YumRepositoryPtrOutput) PublicRepository() GoogleDevtoolsArtifactregistr
 
 // Configuration for a Yum remote repository.
 type YumRepositoryResponse struct {
+	// Customer-specified remote repository.
+	CustomRepository GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryResponse `pulumi:"customRepository"`
 	// One of the publicly available Yum repositories supported by Artifact Registry.
 	PublicRepository GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse `pulumi:"publicRepository"`
 }
@@ -3233,6 +4452,13 @@ func (o YumRepositoryResponseOutput) ToYumRepositoryResponseOutput() YumReposito
 
 func (o YumRepositoryResponseOutput) ToYumRepositoryResponseOutputWithContext(ctx context.Context) YumRepositoryResponseOutput {
 	return o
+}
+
+// Customer-specified remote repository.
+func (o YumRepositoryResponseOutput) CustomRepository() GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryResponseOutput {
+	return o.ApplyT(func(v YumRepositoryResponse) GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryResponse {
+		return v.CustomRepository
+	}).(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryResponseOutput)
 }
 
 // One of the publicly available Yum repositories supported by Artifact Registry.
@@ -3253,8 +4479,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DockerRepositoryConfigPtrInput)(nil)).Elem(), DockerRepositoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryInput)(nil)).Elem(), GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrInput)(nil)).Elem(), GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryInput)(nil)).Elem(), GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrInput)(nil)).Elem(), GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryInput)(nil)).Elem(), GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrInput)(nil)).Elem(), GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryInput)(nil)).Elem(), GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrInput)(nil)).Elem(), GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryInput)(nil)).Elem(), GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrInput)(nil)).Elem(), GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryInput)(nil)).Elem(), GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrInput)(nil)).Elem(), GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryInput)(nil)).Elem(), GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrInput)(nil)).Elem(), GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryInput)(nil)).Elem(), GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrInput)(nil)).Elem(), GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MavenRepositoryInput)(nil)).Elem(), MavenRepositoryArgs{})
@@ -3293,9 +4531,27 @@ func init() {
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryResponseOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponseOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryResponseOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryResponseOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryResponseOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryResponseOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryResponseOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryPtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponseOutput{})

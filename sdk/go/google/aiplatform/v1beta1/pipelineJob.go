@@ -39,7 +39,9 @@ type PipelineJob struct {
 	PipelineJobId pulumi.StringPtrOutput `pulumi:"pipelineJobId"`
 	// The spec of the pipeline.
 	PipelineSpec pulumi.StringMapOutput `pulumi:"pipelineSpec"`
-	Project      pulumi.StringOutput    `pulumi:"project"`
+	// Optional. Whether to do component level validations before job creation.
+	PreflightValidations pulumi.BoolOutput   `pulumi:"preflightValidations"`
+	Project              pulumi.StringOutput `pulumi:"project"`
 	// A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
 	ReservedIpRanges pulumi.StringArrayOutput `pulumi:"reservedIpRanges"`
 	// Runtime config of the pipeline.
@@ -118,7 +120,9 @@ type pipelineJobArgs struct {
 	PipelineJobId *string `pulumi:"pipelineJobId"`
 	// The spec of the pipeline.
 	PipelineSpec map[string]string `pulumi:"pipelineSpec"`
-	Project      *string           `pulumi:"project"`
+	// Optional. Whether to do component level validations before job creation.
+	PreflightValidations *bool   `pulumi:"preflightValidations"`
+	Project              *string `pulumi:"project"`
 	// A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
 	ReservedIpRanges []string `pulumi:"reservedIpRanges"`
 	// Runtime config of the pipeline.
@@ -144,7 +148,9 @@ type PipelineJobArgs struct {
 	PipelineJobId pulumi.StringPtrInput
 	// The spec of the pipeline.
 	PipelineSpec pulumi.StringMapInput
-	Project      pulumi.StringPtrInput
+	// Optional. Whether to do component level validations before job creation.
+	PreflightValidations pulumi.BoolPtrInput
+	Project              pulumi.StringPtrInput
 	// A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
 	ReservedIpRanges pulumi.StringArrayInput
 	// Runtime config of the pipeline.
@@ -249,6 +255,11 @@ func (o PipelineJobOutput) PipelineJobId() pulumi.StringPtrOutput {
 // The spec of the pipeline.
 func (o PipelineJobOutput) PipelineSpec() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *PipelineJob) pulumi.StringMapOutput { return v.PipelineSpec }).(pulumi.StringMapOutput)
+}
+
+// Optional. Whether to do component level validations before job creation.
+func (o PipelineJobOutput) PreflightValidations() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PipelineJob) pulumi.BoolOutput { return v.PreflightValidations }).(pulumi.BoolOutput)
 }
 
 func (o PipelineJobOutput) Project() pulumi.StringOutput {

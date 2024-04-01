@@ -84,6 +84,14 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         /// </summary>
         public readonly string CallLogLevel;
         /// <summary>
+        /// Marks the creation of the execution.
+        /// </summary>
+        public readonly string CreateTime;
+        /// <summary>
+        /// Optional. If set to true, the execution will not be backlogged when the concurrency quota is exhausted. The backlog execution starts when the concurrency quota becomes available.
+        /// </summary>
+        public readonly bool DisableConcurrencyQuotaOverflowBuffering;
+        /// <summary>
         /// Measures the duration of the execution.
         /// </summary>
         public readonly string Duration;
@@ -134,6 +142,10 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
 
             string callLogLevel,
 
+            string createTime,
+
+            bool disableConcurrencyQuotaOverflowBuffering,
+
             string duration,
 
             string endTime,
@@ -158,6 +170,8 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         {
             Argument = argument;
             CallLogLevel = callLogLevel;
+            CreateTime = createTime;
+            DisableConcurrencyQuotaOverflowBuffering = disableConcurrencyQuotaOverflowBuffering;
             Duration = duration;
             EndTime = endTime;
             Error = error;

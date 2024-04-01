@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetImageResult:
-    def __init__(__self__, architecture=None, archive_size_bytes=None, creation_timestamp=None, deprecated=None, description=None, disk_size_gb=None, family=None, guest_os_features=None, image_encryption_key=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, name=None, raw_disk=None, satisfies_pzs=None, self_link=None, shielded_instance_initial_state=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_type=None, status=None, storage_locations=None):
+    def __init__(__self__, architecture=None, archive_size_bytes=None, creation_timestamp=None, deprecated=None, description=None, disk_size_gb=None, enable_confidential_compute=None, family=None, guest_os_features=None, image_encryption_key=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, name=None, raw_disk=None, satisfies_pzi=None, satisfies_pzs=None, self_link=None, shielded_instance_initial_state=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_type=None, status=None, storage_locations=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         pulumi.set(__self__, "architecture", architecture)
@@ -38,6 +38,9 @@ class GetImageResult:
         if disk_size_gb and not isinstance(disk_size_gb, str):
             raise TypeError("Expected argument 'disk_size_gb' to be a str")
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if enable_confidential_compute and not isinstance(enable_confidential_compute, bool):
+            raise TypeError("Expected argument 'enable_confidential_compute' to be a bool")
+        pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         if family and not isinstance(family, str):
             raise TypeError("Expected argument 'family' to be a str")
         pulumi.set(__self__, "family", family)
@@ -68,6 +71,9 @@ class GetImageResult:
         if raw_disk and not isinstance(raw_disk, dict):
             raise TypeError("Expected argument 'raw_disk' to be a dict")
         pulumi.set(__self__, "raw_disk", raw_disk)
+        if satisfies_pzi and not isinstance(satisfies_pzi, bool):
+            raise TypeError("Expected argument 'satisfies_pzi' to be a bool")
+        pulumi.set(__self__, "satisfies_pzi", satisfies_pzi)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -163,6 +169,14 @@ class GetImageResult:
         return pulumi.get(self, "disk_size_gb")
 
     @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> bool:
+        """
+        Whether this image is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
+
+    @property
     @pulumi.getter
     def family(self) -> str:
         """
@@ -241,6 +255,14 @@ class GetImageResult:
         The parameters of the raw disk image.
         """
         return pulumi.get(self, "raw_disk")
+
+    @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> bool:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzi")
 
     @property
     @pulumi.getter(name="satisfiesPzs")
@@ -375,6 +397,7 @@ class AwaitableGetImageResult(GetImageResult):
             deprecated=self.deprecated,
             description=self.description,
             disk_size_gb=self.disk_size_gb,
+            enable_confidential_compute=self.enable_confidential_compute,
             family=self.family,
             guest_os_features=self.guest_os_features,
             image_encryption_key=self.image_encryption_key,
@@ -385,6 +408,7 @@ class AwaitableGetImageResult(GetImageResult):
             licenses=self.licenses,
             name=self.name,
             raw_disk=self.raw_disk,
+            satisfies_pzi=self.satisfies_pzi,
             satisfies_pzs=self.satisfies_pzs,
             self_link=self.self_link,
             shielded_instance_initial_state=self.shielded_instance_initial_state,
@@ -421,6 +445,7 @@ def get_image(image: Optional[str] = None,
         deprecated=pulumi.get(__ret__, 'deprecated'),
         description=pulumi.get(__ret__, 'description'),
         disk_size_gb=pulumi.get(__ret__, 'disk_size_gb'),
+        enable_confidential_compute=pulumi.get(__ret__, 'enable_confidential_compute'),
         family=pulumi.get(__ret__, 'family'),
         guest_os_features=pulumi.get(__ret__, 'guest_os_features'),
         image_encryption_key=pulumi.get(__ret__, 'image_encryption_key'),
@@ -431,6 +456,7 @@ def get_image(image: Optional[str] = None,
         licenses=pulumi.get(__ret__, 'licenses'),
         name=pulumi.get(__ret__, 'name'),
         raw_disk=pulumi.get(__ret__, 'raw_disk'),
+        satisfies_pzi=pulumi.get(__ret__, 'satisfies_pzi'),
         satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         self_link=pulumi.get(__ret__, 'self_link'),
         shielded_instance_initial_state=pulumi.get(__ret__, 'shielded_instance_initial_state'),

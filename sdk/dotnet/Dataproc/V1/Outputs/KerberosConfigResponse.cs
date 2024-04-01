@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         /// </summary>
         public readonly string KeystoreUri;
         /// <summary>
-        /// Optional. The uri of the KMS key used to encrypt various sensitive files.
+        /// Optional. The URI of the KMS key used to encrypt sensitive files.
         /// </summary>
         public readonly string KmsKeyUri;
         /// <summary>

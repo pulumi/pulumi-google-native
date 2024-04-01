@@ -287,6 +287,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SslCertificate{}
 	case "google-native:compute/beta:SslPolicy":
 		r = &SslPolicy{}
+	case "google-native:compute/beta:StoragePool":
+		r = &StoragePool{}
+	case "google-native:compute/beta:StoragePoolIamBinding":
+		r = &StoragePoolIamBinding{}
+	case "google-native:compute/beta:StoragePoolIamMember":
+		r = &StoragePoolIamMember{}
+	case "google-native:compute/beta:StoragePoolIamPolicy":
+		r = &StoragePoolIamPolicy{}
 	case "google-native:compute/beta:Subnetwork":
 		r = &Subnetwork{}
 	case "google-native:compute/beta:SubnetworkIamBinding":

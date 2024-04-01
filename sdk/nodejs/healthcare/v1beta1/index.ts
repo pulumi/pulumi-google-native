@@ -70,6 +70,21 @@ export type DatasetConsentStoreIamPolicy = import("./datasetConsentStoreIamPolic
 export const DatasetConsentStoreIamPolicy: typeof import("./datasetConsentStoreIamPolicy").DatasetConsentStoreIamPolicy = null as any;
 utilities.lazyLoad(exports, ["DatasetConsentStoreIamPolicy"], () => require("./datasetConsentStoreIamPolicy"));
 
+export { DatasetDataMapperWorkspaceIamBindingArgs } from "./datasetDataMapperWorkspaceIamBinding";
+export type DatasetDataMapperWorkspaceIamBinding = import("./datasetDataMapperWorkspaceIamBinding").DatasetDataMapperWorkspaceIamBinding;
+export const DatasetDataMapperWorkspaceIamBinding: typeof import("./datasetDataMapperWorkspaceIamBinding").DatasetDataMapperWorkspaceIamBinding = null as any;
+utilities.lazyLoad(exports, ["DatasetDataMapperWorkspaceIamBinding"], () => require("./datasetDataMapperWorkspaceIamBinding"));
+
+export { DatasetDataMapperWorkspaceIamMemberArgs } from "./datasetDataMapperWorkspaceIamMember";
+export type DatasetDataMapperWorkspaceIamMember = import("./datasetDataMapperWorkspaceIamMember").DatasetDataMapperWorkspaceIamMember;
+export const DatasetDataMapperWorkspaceIamMember: typeof import("./datasetDataMapperWorkspaceIamMember").DatasetDataMapperWorkspaceIamMember = null as any;
+utilities.lazyLoad(exports, ["DatasetDataMapperWorkspaceIamMember"], () => require("./datasetDataMapperWorkspaceIamMember"));
+
+export { DatasetDataMapperWorkspaceIamPolicyArgs } from "./datasetDataMapperWorkspaceIamPolicy";
+export type DatasetDataMapperWorkspaceIamPolicy = import("./datasetDataMapperWorkspaceIamPolicy").DatasetDataMapperWorkspaceIamPolicy;
+export const DatasetDataMapperWorkspaceIamPolicy: typeof import("./datasetDataMapperWorkspaceIamPolicy").DatasetDataMapperWorkspaceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["DatasetDataMapperWorkspaceIamPolicy"], () => require("./datasetDataMapperWorkspaceIamPolicy"));
+
 export { DatasetDicomStoreIamBindingArgs } from "./datasetDicomStoreIamBinding";
 export type DatasetDicomStoreIamBinding = import("./datasetDicomStoreIamBinding").DatasetDicomStoreIamBinding;
 export const DatasetDicomStoreIamBinding: typeof import("./datasetDicomStoreIamBinding").DatasetDicomStoreIamBinding = null as any;
@@ -185,6 +200,11 @@ export const getDatasetConsentStoreIamPolicy: typeof import("./getDatasetConsent
 export const getDatasetConsentStoreIamPolicyOutput: typeof import("./getDatasetConsentStoreIamPolicy").getDatasetConsentStoreIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getDatasetConsentStoreIamPolicy","getDatasetConsentStoreIamPolicyOutput"], () => require("./getDatasetConsentStoreIamPolicy"));
 
+export { GetDatasetDataMapperWorkspaceIamPolicyArgs, GetDatasetDataMapperWorkspaceIamPolicyResult, GetDatasetDataMapperWorkspaceIamPolicyOutputArgs } from "./getDatasetDataMapperWorkspaceIamPolicy";
+export const getDatasetDataMapperWorkspaceIamPolicy: typeof import("./getDatasetDataMapperWorkspaceIamPolicy").getDatasetDataMapperWorkspaceIamPolicy = null as any;
+export const getDatasetDataMapperWorkspaceIamPolicyOutput: typeof import("./getDatasetDataMapperWorkspaceIamPolicy").getDatasetDataMapperWorkspaceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getDatasetDataMapperWorkspaceIamPolicy","getDatasetDataMapperWorkspaceIamPolicyOutput"], () => require("./getDatasetDataMapperWorkspaceIamPolicy"));
+
 export { GetDatasetDicomStoreIamPolicyArgs, GetDatasetDicomStoreIamPolicyResult, GetDatasetDicomStoreIamPolicyOutputArgs } from "./getDatasetDicomStoreIamPolicy";
 export const getDatasetDicomStoreIamPolicy: typeof import("./getDatasetDicomStoreIamPolicy").getDatasetDicomStoreIamPolicy = null as any;
 export const getDatasetDicomStoreIamPolicyOutput: typeof import("./getDatasetDicomStoreIamPolicy").getDatasetDicomStoreIamPolicyOutput = null as any;
@@ -284,6 +304,12 @@ const _module = {
                 return new DatasetConsentStoreIamMember(name, <any>undefined, { urn })
             case "google-native:healthcare/v1beta1:DatasetConsentStoreIamPolicy":
                 return new DatasetConsentStoreIamPolicy(name, <any>undefined, { urn })
+            case "google-native:healthcare/v1beta1:DatasetDataMapperWorkspaceIamBinding":
+                return new DatasetDataMapperWorkspaceIamBinding(name, <any>undefined, { urn })
+            case "google-native:healthcare/v1beta1:DatasetDataMapperWorkspaceIamMember":
+                return new DatasetDataMapperWorkspaceIamMember(name, <any>undefined, { urn })
+            case "google-native:healthcare/v1beta1:DatasetDataMapperWorkspaceIamPolicy":
+                return new DatasetDataMapperWorkspaceIamPolicy(name, <any>undefined, { urn })
             case "google-native:healthcare/v1beta1:DatasetDicomStoreIamBinding":
                 return new DatasetDicomStoreIamBinding(name, <any>undefined, { urn })
             case "google-native:healthcare/v1beta1:DatasetDicomStoreIamMember":

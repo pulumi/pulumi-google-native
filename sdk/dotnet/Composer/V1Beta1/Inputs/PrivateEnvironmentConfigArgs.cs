@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
         public Input<string>? CloudSqlIpv4CidrBlock { get; set; }
 
         /// <summary>
+        /// Optional. If `true`, builds performed during operations that install Python packages have only private connectivity to Google services (including Artifact Registry) and VPC network (if either `NodeConfig.network` and `NodeConfig.subnetwork` fields or `NodeConfig.composer_network_attachment` field are specified). If `false`, the builds also have access to the internet. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Input("enablePrivateBuildsOnly")]
+        public Input<bool>? EnablePrivateBuildsOnly { get; set; }
+
+        /// <summary>
         /// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Input("enablePrivateEnvironment")]

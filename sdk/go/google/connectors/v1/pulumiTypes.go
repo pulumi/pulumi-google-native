@@ -685,13 +685,257 @@ func (o AuthConfigResponseOutput) UserPassword() UserPasswordResponseOutput {
 	return o.ApplyT(func(v AuthConfigResponse) UserPasswordResponse { return v.UserPassword }).(UserPasswordResponseOutput)
 }
 
+// This configuration captures the details required to render an authorization link for the OAuth Authorization Code Flow.
+type AuthorizationCodeLink struct {
+	// The client ID assigned to the Google Cloud Connectors OAuth app for the connector data source.
+	ClientId *string `pulumi:"clientId"`
+	// Whether to enable PKCE for the auth code flow.
+	EnablePkce *bool `pulumi:"enablePkce"`
+	// The scopes for which the user will authorize Google Cloud Connectors on the connector data source.
+	Scopes []string `pulumi:"scopes"`
+	// The base URI the user must click to trigger the authorization code login flow.
+	Uri *string `pulumi:"uri"`
+}
+
+// AuthorizationCodeLinkInput is an input type that accepts AuthorizationCodeLinkArgs and AuthorizationCodeLinkOutput values.
+// You can construct a concrete instance of `AuthorizationCodeLinkInput` via:
+//
+//	AuthorizationCodeLinkArgs{...}
+type AuthorizationCodeLinkInput interface {
+	pulumi.Input
+
+	ToAuthorizationCodeLinkOutput() AuthorizationCodeLinkOutput
+	ToAuthorizationCodeLinkOutputWithContext(context.Context) AuthorizationCodeLinkOutput
+}
+
+// This configuration captures the details required to render an authorization link for the OAuth Authorization Code Flow.
+type AuthorizationCodeLinkArgs struct {
+	// The client ID assigned to the Google Cloud Connectors OAuth app for the connector data source.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Whether to enable PKCE for the auth code flow.
+	EnablePkce pulumi.BoolPtrInput `pulumi:"enablePkce"`
+	// The scopes for which the user will authorize Google Cloud Connectors on the connector data source.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// The base URI the user must click to trigger the authorization code login flow.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (AuthorizationCodeLinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationCodeLink)(nil)).Elem()
+}
+
+func (i AuthorizationCodeLinkArgs) ToAuthorizationCodeLinkOutput() AuthorizationCodeLinkOutput {
+	return i.ToAuthorizationCodeLinkOutputWithContext(context.Background())
+}
+
+func (i AuthorizationCodeLinkArgs) ToAuthorizationCodeLinkOutputWithContext(ctx context.Context) AuthorizationCodeLinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationCodeLinkOutput)
+}
+
+func (i AuthorizationCodeLinkArgs) ToAuthorizationCodeLinkPtrOutput() AuthorizationCodeLinkPtrOutput {
+	return i.ToAuthorizationCodeLinkPtrOutputWithContext(context.Background())
+}
+
+func (i AuthorizationCodeLinkArgs) ToAuthorizationCodeLinkPtrOutputWithContext(ctx context.Context) AuthorizationCodeLinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationCodeLinkOutput).ToAuthorizationCodeLinkPtrOutputWithContext(ctx)
+}
+
+// AuthorizationCodeLinkPtrInput is an input type that accepts AuthorizationCodeLinkArgs, AuthorizationCodeLinkPtr and AuthorizationCodeLinkPtrOutput values.
+// You can construct a concrete instance of `AuthorizationCodeLinkPtrInput` via:
+//
+//	        AuthorizationCodeLinkArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthorizationCodeLinkPtrInput interface {
+	pulumi.Input
+
+	ToAuthorizationCodeLinkPtrOutput() AuthorizationCodeLinkPtrOutput
+	ToAuthorizationCodeLinkPtrOutputWithContext(context.Context) AuthorizationCodeLinkPtrOutput
+}
+
+type authorizationCodeLinkPtrType AuthorizationCodeLinkArgs
+
+func AuthorizationCodeLinkPtr(v *AuthorizationCodeLinkArgs) AuthorizationCodeLinkPtrInput {
+	return (*authorizationCodeLinkPtrType)(v)
+}
+
+func (*authorizationCodeLinkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorizationCodeLink)(nil)).Elem()
+}
+
+func (i *authorizationCodeLinkPtrType) ToAuthorizationCodeLinkPtrOutput() AuthorizationCodeLinkPtrOutput {
+	return i.ToAuthorizationCodeLinkPtrOutputWithContext(context.Background())
+}
+
+func (i *authorizationCodeLinkPtrType) ToAuthorizationCodeLinkPtrOutputWithContext(ctx context.Context) AuthorizationCodeLinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationCodeLinkPtrOutput)
+}
+
+// This configuration captures the details required to render an authorization link for the OAuth Authorization Code Flow.
+type AuthorizationCodeLinkOutput struct{ *pulumi.OutputState }
+
+func (AuthorizationCodeLinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationCodeLink)(nil)).Elem()
+}
+
+func (o AuthorizationCodeLinkOutput) ToAuthorizationCodeLinkOutput() AuthorizationCodeLinkOutput {
+	return o
+}
+
+func (o AuthorizationCodeLinkOutput) ToAuthorizationCodeLinkOutputWithContext(ctx context.Context) AuthorizationCodeLinkOutput {
+	return o
+}
+
+func (o AuthorizationCodeLinkOutput) ToAuthorizationCodeLinkPtrOutput() AuthorizationCodeLinkPtrOutput {
+	return o.ToAuthorizationCodeLinkPtrOutputWithContext(context.Background())
+}
+
+func (o AuthorizationCodeLinkOutput) ToAuthorizationCodeLinkPtrOutputWithContext(ctx context.Context) AuthorizationCodeLinkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorizationCodeLink) *AuthorizationCodeLink {
+		return &v
+	}).(AuthorizationCodeLinkPtrOutput)
+}
+
+// The client ID assigned to the Google Cloud Connectors OAuth app for the connector data source.
+func (o AuthorizationCodeLinkOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthorizationCodeLink) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable PKCE for the auth code flow.
+func (o AuthorizationCodeLinkOutput) EnablePkce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AuthorizationCodeLink) *bool { return v.EnablePkce }).(pulumi.BoolPtrOutput)
+}
+
+// The scopes for which the user will authorize Google Cloud Connectors on the connector data source.
+func (o AuthorizationCodeLinkOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuthorizationCodeLink) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// The base URI the user must click to trigger the authorization code login flow.
+func (o AuthorizationCodeLinkOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthorizationCodeLink) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type AuthorizationCodeLinkPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthorizationCodeLinkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorizationCodeLink)(nil)).Elem()
+}
+
+func (o AuthorizationCodeLinkPtrOutput) ToAuthorizationCodeLinkPtrOutput() AuthorizationCodeLinkPtrOutput {
+	return o
+}
+
+func (o AuthorizationCodeLinkPtrOutput) ToAuthorizationCodeLinkPtrOutputWithContext(ctx context.Context) AuthorizationCodeLinkPtrOutput {
+	return o
+}
+
+func (o AuthorizationCodeLinkPtrOutput) Elem() AuthorizationCodeLinkOutput {
+	return o.ApplyT(func(v *AuthorizationCodeLink) AuthorizationCodeLink {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorizationCodeLink
+		return ret
+	}).(AuthorizationCodeLinkOutput)
+}
+
+// The client ID assigned to the Google Cloud Connectors OAuth app for the connector data source.
+func (o AuthorizationCodeLinkPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthorizationCodeLink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable PKCE for the auth code flow.
+func (o AuthorizationCodeLinkPtrOutput) EnablePkce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AuthorizationCodeLink) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePkce
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The scopes for which the user will authorize Google Cloud Connectors on the connector data source.
+func (o AuthorizationCodeLinkPtrOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthorizationCodeLink) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The base URI the user must click to trigger the authorization code login flow.
+func (o AuthorizationCodeLinkPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthorizationCodeLink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+// This configuration captures the details required to render an authorization link for the OAuth Authorization Code Flow.
+type AuthorizationCodeLinkResponse struct {
+	// The client ID assigned to the Google Cloud Connectors OAuth app for the connector data source.
+	ClientId string `pulumi:"clientId"`
+	// Whether to enable PKCE for the auth code flow.
+	EnablePkce bool `pulumi:"enablePkce"`
+	// The scopes for which the user will authorize Google Cloud Connectors on the connector data source.
+	Scopes []string `pulumi:"scopes"`
+	// The base URI the user must click to trigger the authorization code login flow.
+	Uri string `pulumi:"uri"`
+}
+
+// This configuration captures the details required to render an authorization link for the OAuth Authorization Code Flow.
+type AuthorizationCodeLinkResponseOutput struct{ *pulumi.OutputState }
+
+func (AuthorizationCodeLinkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationCodeLinkResponse)(nil)).Elem()
+}
+
+func (o AuthorizationCodeLinkResponseOutput) ToAuthorizationCodeLinkResponseOutput() AuthorizationCodeLinkResponseOutput {
+	return o
+}
+
+func (o AuthorizationCodeLinkResponseOutput) ToAuthorizationCodeLinkResponseOutputWithContext(ctx context.Context) AuthorizationCodeLinkResponseOutput {
+	return o
+}
+
+// The client ID assigned to the Google Cloud Connectors OAuth app for the connector data source.
+func (o AuthorizationCodeLinkResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthorizationCodeLinkResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Whether to enable PKCE for the auth code flow.
+func (o AuthorizationCodeLinkResponseOutput) EnablePkce() pulumi.BoolOutput {
+	return o.ApplyT(func(v AuthorizationCodeLinkResponse) bool { return v.EnablePkce }).(pulumi.BoolOutput)
+}
+
+// The scopes for which the user will authorize Google Cloud Connectors on the connector data source.
+func (o AuthorizationCodeLinkResponseOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuthorizationCodeLinkResponse) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// The base URI the user must click to trigger the authorization code login flow.
+func (o AuthorizationCodeLinkResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthorizationCodeLinkResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
 // Associates `members`, or principals, with a `role`.
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role *string `pulumi:"role"`
 }
 
@@ -710,9 +954,9 @@ type BindingInput interface {
 type BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -773,12 +1017,12 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -807,9 +1051,9 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role string `pulumi:"role"`
 }
 
@@ -833,12 +1077,12 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -1089,6 +1333,360 @@ func (o ConfigVariableResponseArrayOutput) Index(i pulumi.IntInput) ConfigVariab
 	}).(ConfigVariableResponseOutput)
 }
 
+// ConfigVariableTemplate provides metadata about a `ConfigVariable` that is used in a Connection.
+type ConfigVariableTemplate struct {
+	// Authorization code link options. To be populated if `ValueType` is `AUTHORIZATION_CODE`
+	AuthorizationCodeLink *AuthorizationCodeLink `pulumi:"authorizationCodeLink"`
+	// Description.
+	Description *string `pulumi:"description"`
+	// Display name of the parameter.
+	DisplayName *string `pulumi:"displayName"`
+	// Enum options. To be populated if `ValueType` is `ENUM`
+	EnumOptions []EnumOption `pulumi:"enumOptions"`
+	// Optional. enum source denotes the source of api to fill the enum options
+	EnumSource *ConfigVariableTemplateEnumSource `pulumi:"enumSource"`
+	// Indicates if current template is part of advanced settings
+	IsAdvanced *bool `pulumi:"isAdvanced"`
+	// Key of the config variable.
+	Key *string `pulumi:"key"`
+	// Optional. Location Tyep denotes where this value should be sent in BYOC connections.
+	LocationType *ConfigVariableTemplateLocationType `pulumi:"locationType"`
+	// Flag represents that this `ConfigVariable` must be provided for a connection.
+	Required *bool `pulumi:"required"`
+	// Condition under which a field would be required. The condition can be represented in the form of a logical expression.
+	RequiredCondition *LogicalExpression `pulumi:"requiredCondition"`
+	// Role grant configuration for the config variable.
+	RoleGrant *RoleGrant `pulumi:"roleGrant"`
+	// State of the config variable.
+	State *ConfigVariableTemplateState `pulumi:"state"`
+	// Regular expression in RE2 syntax used for validating the `value` of a `ConfigVariable`.
+	ValidationRegex *string `pulumi:"validationRegex"`
+	// Type of the parameter: string, int, bool etc. consider custom type for the benefit for the validation.
+	ValueType *ConfigVariableTemplateValueType `pulumi:"valueType"`
+}
+
+// ConfigVariableTemplateInput is an input type that accepts ConfigVariableTemplateArgs and ConfigVariableTemplateOutput values.
+// You can construct a concrete instance of `ConfigVariableTemplateInput` via:
+//
+//	ConfigVariableTemplateArgs{...}
+type ConfigVariableTemplateInput interface {
+	pulumi.Input
+
+	ToConfigVariableTemplateOutput() ConfigVariableTemplateOutput
+	ToConfigVariableTemplateOutputWithContext(context.Context) ConfigVariableTemplateOutput
+}
+
+// ConfigVariableTemplate provides metadata about a `ConfigVariable` that is used in a Connection.
+type ConfigVariableTemplateArgs struct {
+	// Authorization code link options. To be populated if `ValueType` is `AUTHORIZATION_CODE`
+	AuthorizationCodeLink AuthorizationCodeLinkPtrInput `pulumi:"authorizationCodeLink"`
+	// Description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Display name of the parameter.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Enum options. To be populated if `ValueType` is `ENUM`
+	EnumOptions EnumOptionArrayInput `pulumi:"enumOptions"`
+	// Optional. enum source denotes the source of api to fill the enum options
+	EnumSource ConfigVariableTemplateEnumSourcePtrInput `pulumi:"enumSource"`
+	// Indicates if current template is part of advanced settings
+	IsAdvanced pulumi.BoolPtrInput `pulumi:"isAdvanced"`
+	// Key of the config variable.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Optional. Location Tyep denotes where this value should be sent in BYOC connections.
+	LocationType ConfigVariableTemplateLocationTypePtrInput `pulumi:"locationType"`
+	// Flag represents that this `ConfigVariable` must be provided for a connection.
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// Condition under which a field would be required. The condition can be represented in the form of a logical expression.
+	RequiredCondition LogicalExpressionPtrInput `pulumi:"requiredCondition"`
+	// Role grant configuration for the config variable.
+	RoleGrant RoleGrantPtrInput `pulumi:"roleGrant"`
+	// State of the config variable.
+	State ConfigVariableTemplateStatePtrInput `pulumi:"state"`
+	// Regular expression in RE2 syntax used for validating the `value` of a `ConfigVariable`.
+	ValidationRegex pulumi.StringPtrInput `pulumi:"validationRegex"`
+	// Type of the parameter: string, int, bool etc. consider custom type for the benefit for the validation.
+	ValueType ConfigVariableTemplateValueTypePtrInput `pulumi:"valueType"`
+}
+
+func (ConfigVariableTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigVariableTemplate)(nil)).Elem()
+}
+
+func (i ConfigVariableTemplateArgs) ToConfigVariableTemplateOutput() ConfigVariableTemplateOutput {
+	return i.ToConfigVariableTemplateOutputWithContext(context.Background())
+}
+
+func (i ConfigVariableTemplateArgs) ToConfigVariableTemplateOutputWithContext(ctx context.Context) ConfigVariableTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigVariableTemplateOutput)
+}
+
+// ConfigVariableTemplateArrayInput is an input type that accepts ConfigVariableTemplateArray and ConfigVariableTemplateArrayOutput values.
+// You can construct a concrete instance of `ConfigVariableTemplateArrayInput` via:
+//
+//	ConfigVariableTemplateArray{ ConfigVariableTemplateArgs{...} }
+type ConfigVariableTemplateArrayInput interface {
+	pulumi.Input
+
+	ToConfigVariableTemplateArrayOutput() ConfigVariableTemplateArrayOutput
+	ToConfigVariableTemplateArrayOutputWithContext(context.Context) ConfigVariableTemplateArrayOutput
+}
+
+type ConfigVariableTemplateArray []ConfigVariableTemplateInput
+
+func (ConfigVariableTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigVariableTemplate)(nil)).Elem()
+}
+
+func (i ConfigVariableTemplateArray) ToConfigVariableTemplateArrayOutput() ConfigVariableTemplateArrayOutput {
+	return i.ToConfigVariableTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigVariableTemplateArray) ToConfigVariableTemplateArrayOutputWithContext(ctx context.Context) ConfigVariableTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigVariableTemplateArrayOutput)
+}
+
+// ConfigVariableTemplate provides metadata about a `ConfigVariable` that is used in a Connection.
+type ConfigVariableTemplateOutput struct{ *pulumi.OutputState }
+
+func (ConfigVariableTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigVariableTemplate)(nil)).Elem()
+}
+
+func (o ConfigVariableTemplateOutput) ToConfigVariableTemplateOutput() ConfigVariableTemplateOutput {
+	return o
+}
+
+func (o ConfigVariableTemplateOutput) ToConfigVariableTemplateOutputWithContext(ctx context.Context) ConfigVariableTemplateOutput {
+	return o
+}
+
+// Authorization code link options. To be populated if `ValueType` is `AUTHORIZATION_CODE`
+func (o ConfigVariableTemplateOutput) AuthorizationCodeLink() AuthorizationCodeLinkPtrOutput {
+	return o.ApplyT(func(v ConfigVariableTemplate) *AuthorizationCodeLink { return v.AuthorizationCodeLink }).(AuthorizationCodeLinkPtrOutput)
+}
+
+// Description.
+func (o ConfigVariableTemplateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigVariableTemplate) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Display name of the parameter.
+func (o ConfigVariableTemplateOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigVariableTemplate) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Enum options. To be populated if `ValueType` is `ENUM`
+func (o ConfigVariableTemplateOutput) EnumOptions() EnumOptionArrayOutput {
+	return o.ApplyT(func(v ConfigVariableTemplate) []EnumOption { return v.EnumOptions }).(EnumOptionArrayOutput)
+}
+
+// Optional. enum source denotes the source of api to fill the enum options
+func (o ConfigVariableTemplateOutput) EnumSource() ConfigVariableTemplateEnumSourcePtrOutput {
+	return o.ApplyT(func(v ConfigVariableTemplate) *ConfigVariableTemplateEnumSource { return v.EnumSource }).(ConfigVariableTemplateEnumSourcePtrOutput)
+}
+
+// Indicates if current template is part of advanced settings
+func (o ConfigVariableTemplateOutput) IsAdvanced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigVariableTemplate) *bool { return v.IsAdvanced }).(pulumi.BoolPtrOutput)
+}
+
+// Key of the config variable.
+func (o ConfigVariableTemplateOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigVariableTemplate) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Location Tyep denotes where this value should be sent in BYOC connections.
+func (o ConfigVariableTemplateOutput) LocationType() ConfigVariableTemplateLocationTypePtrOutput {
+	return o.ApplyT(func(v ConfigVariableTemplate) *ConfigVariableTemplateLocationType { return v.LocationType }).(ConfigVariableTemplateLocationTypePtrOutput)
+}
+
+// Flag represents that this `ConfigVariable` must be provided for a connection.
+func (o ConfigVariableTemplateOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigVariableTemplate) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+// Condition under which a field would be required. The condition can be represented in the form of a logical expression.
+func (o ConfigVariableTemplateOutput) RequiredCondition() LogicalExpressionPtrOutput {
+	return o.ApplyT(func(v ConfigVariableTemplate) *LogicalExpression { return v.RequiredCondition }).(LogicalExpressionPtrOutput)
+}
+
+// Role grant configuration for the config variable.
+func (o ConfigVariableTemplateOutput) RoleGrant() RoleGrantPtrOutput {
+	return o.ApplyT(func(v ConfigVariableTemplate) *RoleGrant { return v.RoleGrant }).(RoleGrantPtrOutput)
+}
+
+// State of the config variable.
+func (o ConfigVariableTemplateOutput) State() ConfigVariableTemplateStatePtrOutput {
+	return o.ApplyT(func(v ConfigVariableTemplate) *ConfigVariableTemplateState { return v.State }).(ConfigVariableTemplateStatePtrOutput)
+}
+
+// Regular expression in RE2 syntax used for validating the `value` of a `ConfigVariable`.
+func (o ConfigVariableTemplateOutput) ValidationRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigVariableTemplate) *string { return v.ValidationRegex }).(pulumi.StringPtrOutput)
+}
+
+// Type of the parameter: string, int, bool etc. consider custom type for the benefit for the validation.
+func (o ConfigVariableTemplateOutput) ValueType() ConfigVariableTemplateValueTypePtrOutput {
+	return o.ApplyT(func(v ConfigVariableTemplate) *ConfigVariableTemplateValueType { return v.ValueType }).(ConfigVariableTemplateValueTypePtrOutput)
+}
+
+type ConfigVariableTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigVariableTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigVariableTemplate)(nil)).Elem()
+}
+
+func (o ConfigVariableTemplateArrayOutput) ToConfigVariableTemplateArrayOutput() ConfigVariableTemplateArrayOutput {
+	return o
+}
+
+func (o ConfigVariableTemplateArrayOutput) ToConfigVariableTemplateArrayOutputWithContext(ctx context.Context) ConfigVariableTemplateArrayOutput {
+	return o
+}
+
+func (o ConfigVariableTemplateArrayOutput) Index(i pulumi.IntInput) ConfigVariableTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigVariableTemplate {
+		return vs[0].([]ConfigVariableTemplate)[vs[1].(int)]
+	}).(ConfigVariableTemplateOutput)
+}
+
+// ConfigVariableTemplate provides metadata about a `ConfigVariable` that is used in a Connection.
+type ConfigVariableTemplateResponse struct {
+	// Authorization code link options. To be populated if `ValueType` is `AUTHORIZATION_CODE`
+	AuthorizationCodeLink AuthorizationCodeLinkResponse `pulumi:"authorizationCodeLink"`
+	// Description.
+	Description string `pulumi:"description"`
+	// Display name of the parameter.
+	DisplayName string `pulumi:"displayName"`
+	// Enum options. To be populated if `ValueType` is `ENUM`
+	EnumOptions []EnumOptionResponse `pulumi:"enumOptions"`
+	// Optional. enum source denotes the source of api to fill the enum options
+	EnumSource string `pulumi:"enumSource"`
+	// Indicates if current template is part of advanced settings
+	IsAdvanced bool `pulumi:"isAdvanced"`
+	// Key of the config variable.
+	Key string `pulumi:"key"`
+	// Optional. Location Tyep denotes where this value should be sent in BYOC connections.
+	LocationType string `pulumi:"locationType"`
+	// Flag represents that this `ConfigVariable` must be provided for a connection.
+	Required bool `pulumi:"required"`
+	// Condition under which a field would be required. The condition can be represented in the form of a logical expression.
+	RequiredCondition LogicalExpressionResponse `pulumi:"requiredCondition"`
+	// Role grant configuration for the config variable.
+	RoleGrant RoleGrantResponse `pulumi:"roleGrant"`
+	// State of the config variable.
+	State string `pulumi:"state"`
+	// Regular expression in RE2 syntax used for validating the `value` of a `ConfigVariable`.
+	ValidationRegex string `pulumi:"validationRegex"`
+	// Type of the parameter: string, int, bool etc. consider custom type for the benefit for the validation.
+	ValueType string `pulumi:"valueType"`
+}
+
+// ConfigVariableTemplate provides metadata about a `ConfigVariable` that is used in a Connection.
+type ConfigVariableTemplateResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigVariableTemplateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigVariableTemplateResponse)(nil)).Elem()
+}
+
+func (o ConfigVariableTemplateResponseOutput) ToConfigVariableTemplateResponseOutput() ConfigVariableTemplateResponseOutput {
+	return o
+}
+
+func (o ConfigVariableTemplateResponseOutput) ToConfigVariableTemplateResponseOutputWithContext(ctx context.Context) ConfigVariableTemplateResponseOutput {
+	return o
+}
+
+// Authorization code link options. To be populated if `ValueType` is `AUTHORIZATION_CODE`
+func (o ConfigVariableTemplateResponseOutput) AuthorizationCodeLink() AuthorizationCodeLinkResponseOutput {
+	return o.ApplyT(func(v ConfigVariableTemplateResponse) AuthorizationCodeLinkResponse { return v.AuthorizationCodeLink }).(AuthorizationCodeLinkResponseOutput)
+}
+
+// Description.
+func (o ConfigVariableTemplateResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigVariableTemplateResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Display name of the parameter.
+func (o ConfigVariableTemplateResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigVariableTemplateResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Enum options. To be populated if `ValueType` is `ENUM`
+func (o ConfigVariableTemplateResponseOutput) EnumOptions() EnumOptionResponseArrayOutput {
+	return o.ApplyT(func(v ConfigVariableTemplateResponse) []EnumOptionResponse { return v.EnumOptions }).(EnumOptionResponseArrayOutput)
+}
+
+// Optional. enum source denotes the source of api to fill the enum options
+func (o ConfigVariableTemplateResponseOutput) EnumSource() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigVariableTemplateResponse) string { return v.EnumSource }).(pulumi.StringOutput)
+}
+
+// Indicates if current template is part of advanced settings
+func (o ConfigVariableTemplateResponseOutput) IsAdvanced() pulumi.BoolOutput {
+	return o.ApplyT(func(v ConfigVariableTemplateResponse) bool { return v.IsAdvanced }).(pulumi.BoolOutput)
+}
+
+// Key of the config variable.
+func (o ConfigVariableTemplateResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigVariableTemplateResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Optional. Location Tyep denotes where this value should be sent in BYOC connections.
+func (o ConfigVariableTemplateResponseOutput) LocationType() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigVariableTemplateResponse) string { return v.LocationType }).(pulumi.StringOutput)
+}
+
+// Flag represents that this `ConfigVariable` must be provided for a connection.
+func (o ConfigVariableTemplateResponseOutput) Required() pulumi.BoolOutput {
+	return o.ApplyT(func(v ConfigVariableTemplateResponse) bool { return v.Required }).(pulumi.BoolOutput)
+}
+
+// Condition under which a field would be required. The condition can be represented in the form of a logical expression.
+func (o ConfigVariableTemplateResponseOutput) RequiredCondition() LogicalExpressionResponseOutput {
+	return o.ApplyT(func(v ConfigVariableTemplateResponse) LogicalExpressionResponse { return v.RequiredCondition }).(LogicalExpressionResponseOutput)
+}
+
+// Role grant configuration for the config variable.
+func (o ConfigVariableTemplateResponseOutput) RoleGrant() RoleGrantResponseOutput {
+	return o.ApplyT(func(v ConfigVariableTemplateResponse) RoleGrantResponse { return v.RoleGrant }).(RoleGrantResponseOutput)
+}
+
+// State of the config variable.
+func (o ConfigVariableTemplateResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigVariableTemplateResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Regular expression in RE2 syntax used for validating the `value` of a `ConfigVariable`.
+func (o ConfigVariableTemplateResponseOutput) ValidationRegex() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigVariableTemplateResponse) string { return v.ValidationRegex }).(pulumi.StringOutput)
+}
+
+// Type of the parameter: string, int, bool etc. consider custom type for the benefit for the validation.
+func (o ConfigVariableTemplateResponseOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigVariableTemplateResponse) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type ConfigVariableTemplateResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigVariableTemplateResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigVariableTemplateResponse)(nil)).Elem()
+}
+
+func (o ConfigVariableTemplateResponseArrayOutput) ToConfigVariableTemplateResponseArrayOutput() ConfigVariableTemplateResponseArrayOutput {
+	return o
+}
+
+func (o ConfigVariableTemplateResponseArrayOutput) ToConfigVariableTemplateResponseArrayOutputWithContext(ctx context.Context) ConfigVariableTemplateResponseArrayOutput {
+	return o
+}
+
+func (o ConfigVariableTemplateResponseArrayOutput) Index(i pulumi.IntInput) ConfigVariableTemplateResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigVariableTemplateResponse {
+		return vs[0].([]ConfigVariableTemplateResponse)[vs[1].(int)]
+	}).(ConfigVariableTemplateResponseOutput)
+}
+
 // ConnectionStatus indicates the state of the connection.
 type ConnectionStatusResponse struct {
 	// Description.
@@ -1133,6 +1731,8 @@ func (o ConnectionStatusResponseOutput) Status() pulumi.StringOutput {
 type ConnectorVersionInfraConfigResponse struct {
 	// The window used for ratelimiting runtime requests to connections.
 	ConnectionRatelimitWindowSeconds string `pulumi:"connectionRatelimitWindowSeconds"`
+	// Optional. Indicates whether connector is deployed on GKE/CloudRun
+	DeploymentModel string `pulumi:"deploymentModel"`
 	// HPA autoscaling config.
 	HpaConfig HPAConfigResponse `pulumi:"hpaConfig"`
 	// Max QPS supported for internal requests originating from Connd.
@@ -1165,6 +1765,11 @@ func (o ConnectorVersionInfraConfigResponseOutput) ToConnectorVersionInfraConfig
 // The window used for ratelimiting runtime requests to connections.
 func (o ConnectorVersionInfraConfigResponseOutput) ConnectionRatelimitWindowSeconds() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectorVersionInfraConfigResponse) string { return v.ConnectionRatelimitWindowSeconds }).(pulumi.StringOutput)
+}
+
+// Optional. Indicates whether connector is deployed on GKE/CloudRun
+func (o ConnectorVersionInfraConfigResponseOutput) DeploymentModel() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorVersionInfraConfigResponse) string { return v.DeploymentModel }).(pulumi.StringOutput)
 }
 
 // HPA autoscaling config.
@@ -1361,6 +1966,198 @@ func (o ConnectorsLogConfigResponseOutput) ToConnectorsLogConfigResponseOutputWi
 // Enabled represents whether logging is enabled or not for a connection.
 func (o ConnectorsLogConfigResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ConnectorsLogConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Dead Letter configuration details provided by the user.
+type DeadLetterConfig struct {
+	// Optional. Project which has the topic given.
+	Project *string `pulumi:"project"`
+	// Optional. Topic to push events which couldn't be processed.
+	Topic *string `pulumi:"topic"`
+}
+
+// DeadLetterConfigInput is an input type that accepts DeadLetterConfigArgs and DeadLetterConfigOutput values.
+// You can construct a concrete instance of `DeadLetterConfigInput` via:
+//
+//	DeadLetterConfigArgs{...}
+type DeadLetterConfigInput interface {
+	pulumi.Input
+
+	ToDeadLetterConfigOutput() DeadLetterConfigOutput
+	ToDeadLetterConfigOutputWithContext(context.Context) DeadLetterConfigOutput
+}
+
+// Dead Letter configuration details provided by the user.
+type DeadLetterConfigArgs struct {
+	// Optional. Project which has the topic given.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// Optional. Topic to push events which couldn't be processed.
+	Topic pulumi.StringPtrInput `pulumi:"topic"`
+}
+
+func (DeadLetterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeadLetterConfig)(nil)).Elem()
+}
+
+func (i DeadLetterConfigArgs) ToDeadLetterConfigOutput() DeadLetterConfigOutput {
+	return i.ToDeadLetterConfigOutputWithContext(context.Background())
+}
+
+func (i DeadLetterConfigArgs) ToDeadLetterConfigOutputWithContext(ctx context.Context) DeadLetterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeadLetterConfigOutput)
+}
+
+func (i DeadLetterConfigArgs) ToDeadLetterConfigPtrOutput() DeadLetterConfigPtrOutput {
+	return i.ToDeadLetterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DeadLetterConfigArgs) ToDeadLetterConfigPtrOutputWithContext(ctx context.Context) DeadLetterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeadLetterConfigOutput).ToDeadLetterConfigPtrOutputWithContext(ctx)
+}
+
+// DeadLetterConfigPtrInput is an input type that accepts DeadLetterConfigArgs, DeadLetterConfigPtr and DeadLetterConfigPtrOutput values.
+// You can construct a concrete instance of `DeadLetterConfigPtrInput` via:
+//
+//	        DeadLetterConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeadLetterConfigPtrInput interface {
+	pulumi.Input
+
+	ToDeadLetterConfigPtrOutput() DeadLetterConfigPtrOutput
+	ToDeadLetterConfigPtrOutputWithContext(context.Context) DeadLetterConfigPtrOutput
+}
+
+type deadLetterConfigPtrType DeadLetterConfigArgs
+
+func DeadLetterConfigPtr(v *DeadLetterConfigArgs) DeadLetterConfigPtrInput {
+	return (*deadLetterConfigPtrType)(v)
+}
+
+func (*deadLetterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeadLetterConfig)(nil)).Elem()
+}
+
+func (i *deadLetterConfigPtrType) ToDeadLetterConfigPtrOutput() DeadLetterConfigPtrOutput {
+	return i.ToDeadLetterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *deadLetterConfigPtrType) ToDeadLetterConfigPtrOutputWithContext(ctx context.Context) DeadLetterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeadLetterConfigPtrOutput)
+}
+
+// Dead Letter configuration details provided by the user.
+type DeadLetterConfigOutput struct{ *pulumi.OutputState }
+
+func (DeadLetterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeadLetterConfig)(nil)).Elem()
+}
+
+func (o DeadLetterConfigOutput) ToDeadLetterConfigOutput() DeadLetterConfigOutput {
+	return o
+}
+
+func (o DeadLetterConfigOutput) ToDeadLetterConfigOutputWithContext(ctx context.Context) DeadLetterConfigOutput {
+	return o
+}
+
+func (o DeadLetterConfigOutput) ToDeadLetterConfigPtrOutput() DeadLetterConfigPtrOutput {
+	return o.ToDeadLetterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DeadLetterConfigOutput) ToDeadLetterConfigPtrOutputWithContext(ctx context.Context) DeadLetterConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeadLetterConfig) *DeadLetterConfig {
+		return &v
+	}).(DeadLetterConfigPtrOutput)
+}
+
+// Optional. Project which has the topic given.
+func (o DeadLetterConfigOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeadLetterConfig) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Topic to push events which couldn't be processed.
+func (o DeadLetterConfigOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeadLetterConfig) *string { return v.Topic }).(pulumi.StringPtrOutput)
+}
+
+type DeadLetterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DeadLetterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeadLetterConfig)(nil)).Elem()
+}
+
+func (o DeadLetterConfigPtrOutput) ToDeadLetterConfigPtrOutput() DeadLetterConfigPtrOutput {
+	return o
+}
+
+func (o DeadLetterConfigPtrOutput) ToDeadLetterConfigPtrOutputWithContext(ctx context.Context) DeadLetterConfigPtrOutput {
+	return o
+}
+
+func (o DeadLetterConfigPtrOutput) Elem() DeadLetterConfigOutput {
+	return o.ApplyT(func(v *DeadLetterConfig) DeadLetterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DeadLetterConfig
+		return ret
+	}).(DeadLetterConfigOutput)
+}
+
+// Optional. Project which has the topic given.
+func (o DeadLetterConfigPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeadLetterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Topic to push events which couldn't be processed.
+func (o DeadLetterConfigPtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeadLetterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Topic
+	}).(pulumi.StringPtrOutput)
+}
+
+// Dead Letter configuration details provided by the user.
+type DeadLetterConfigResponse struct {
+	// Optional. Project which has the topic given.
+	Project string `pulumi:"project"`
+	// Optional. Topic to push events which couldn't be processed.
+	Topic string `pulumi:"topic"`
+}
+
+// Dead Letter configuration details provided by the user.
+type DeadLetterConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DeadLetterConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeadLetterConfigResponse)(nil)).Elem()
+}
+
+func (o DeadLetterConfigResponseOutput) ToDeadLetterConfigResponseOutput() DeadLetterConfigResponseOutput {
+	return o
+}
+
+func (o DeadLetterConfigResponseOutput) ToDeadLetterConfigResponseOutputWithContext(ctx context.Context) DeadLetterConfigResponseOutput {
+	return o
+}
+
+// Optional. Project which has the topic given.
+func (o DeadLetterConfigResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v DeadLetterConfigResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. Topic to push events which couldn't be processed.
+func (o DeadLetterConfigResponseOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v DeadLetterConfigResponse) string { return v.Topic }).(pulumi.StringOutput)
 }
 
 type Destination struct {
@@ -2177,6 +2974,161 @@ func (o EndPointResponseOutput) Headers() HeaderResponseArrayOutput {
 	return o.ApplyT(func(v EndPointResponse) []HeaderResponse { return v.Headers }).(HeaderResponseArrayOutput)
 }
 
+// EnumOption definition
+type EnumOption struct {
+	// Display name of the option.
+	DisplayName *string `pulumi:"displayName"`
+	// Id of the option.
+	Id *string `pulumi:"id"`
+}
+
+// EnumOptionInput is an input type that accepts EnumOptionArgs and EnumOptionOutput values.
+// You can construct a concrete instance of `EnumOptionInput` via:
+//
+//	EnumOptionArgs{...}
+type EnumOptionInput interface {
+	pulumi.Input
+
+	ToEnumOptionOutput() EnumOptionOutput
+	ToEnumOptionOutputWithContext(context.Context) EnumOptionOutput
+}
+
+// EnumOption definition
+type EnumOptionArgs struct {
+	// Display name of the option.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Id of the option.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (EnumOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnumOption)(nil)).Elem()
+}
+
+func (i EnumOptionArgs) ToEnumOptionOutput() EnumOptionOutput {
+	return i.ToEnumOptionOutputWithContext(context.Background())
+}
+
+func (i EnumOptionArgs) ToEnumOptionOutputWithContext(ctx context.Context) EnumOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnumOptionOutput)
+}
+
+// EnumOptionArrayInput is an input type that accepts EnumOptionArray and EnumOptionArrayOutput values.
+// You can construct a concrete instance of `EnumOptionArrayInput` via:
+//
+//	EnumOptionArray{ EnumOptionArgs{...} }
+type EnumOptionArrayInput interface {
+	pulumi.Input
+
+	ToEnumOptionArrayOutput() EnumOptionArrayOutput
+	ToEnumOptionArrayOutputWithContext(context.Context) EnumOptionArrayOutput
+}
+
+type EnumOptionArray []EnumOptionInput
+
+func (EnumOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnumOption)(nil)).Elem()
+}
+
+func (i EnumOptionArray) ToEnumOptionArrayOutput() EnumOptionArrayOutput {
+	return i.ToEnumOptionArrayOutputWithContext(context.Background())
+}
+
+func (i EnumOptionArray) ToEnumOptionArrayOutputWithContext(ctx context.Context) EnumOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnumOptionArrayOutput)
+}
+
+// EnumOption definition
+type EnumOptionOutput struct{ *pulumi.OutputState }
+
+func (EnumOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnumOption)(nil)).Elem()
+}
+
+func (o EnumOptionOutput) ToEnumOptionOutput() EnumOptionOutput {
+	return o
+}
+
+func (o EnumOptionOutput) ToEnumOptionOutputWithContext(ctx context.Context) EnumOptionOutput {
+	return o
+}
+
+// Display name of the option.
+func (o EnumOptionOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnumOption) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Id of the option.
+func (o EnumOptionOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnumOption) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type EnumOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (EnumOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnumOption)(nil)).Elem()
+}
+
+func (o EnumOptionArrayOutput) ToEnumOptionArrayOutput() EnumOptionArrayOutput {
+	return o
+}
+
+func (o EnumOptionArrayOutput) ToEnumOptionArrayOutputWithContext(ctx context.Context) EnumOptionArrayOutput {
+	return o
+}
+
+func (o EnumOptionArrayOutput) Index(i pulumi.IntInput) EnumOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnumOption {
+		return vs[0].([]EnumOption)[vs[1].(int)]
+	}).(EnumOptionOutput)
+}
+
+// EnumOption definition
+type EnumOptionResponse struct {
+	// Display name of the option.
+	DisplayName string `pulumi:"displayName"`
+}
+
+// EnumOption definition
+type EnumOptionResponseOutput struct{ *pulumi.OutputState }
+
+func (EnumOptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnumOptionResponse)(nil)).Elem()
+}
+
+func (o EnumOptionResponseOutput) ToEnumOptionResponseOutput() EnumOptionResponseOutput {
+	return o
+}
+
+func (o EnumOptionResponseOutput) ToEnumOptionResponseOutputWithContext(ctx context.Context) EnumOptionResponseOutput {
+	return o
+}
+
+// Display name of the option.
+func (o EnumOptionResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v EnumOptionResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+type EnumOptionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EnumOptionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnumOptionResponse)(nil)).Elem()
+}
+
+func (o EnumOptionResponseArrayOutput) ToEnumOptionResponseArrayOutput() EnumOptionResponseArrayOutput {
+	return o
+}
+
+func (o EnumOptionResponseArrayOutput) ToEnumOptionResponseArrayOutputWithContext(ctx context.Context) EnumOptionResponseArrayOutput {
+	return o
+}
+
+func (o EnumOptionResponseArrayOutput) Index(i pulumi.IntInput) EnumOptionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnumOptionResponse {
+		return vs[0].([]EnumOptionResponse)[vs[1].(int)]
+	}).(EnumOptionResponseOutput)
+}
+
 // Message for EventSubscription Destination to act on receiving an event
 type EventSubscriptionDestination struct {
 	// OPTION 1: Hit an endpoint when we receive an event.
@@ -2438,6 +3390,8 @@ type EventingConfig struct {
 	AdditionalVariables []ConfigVariable `pulumi:"additionalVariables"`
 	// Auth details for the webhook adapter.
 	AuthConfig *AuthConfig `pulumi:"authConfig"`
+	// Optional. Dead letter configuration for eventing of a connection.
+	DeadLetterConfig *DeadLetterConfig `pulumi:"deadLetterConfig"`
 	// Enrichment Enabled.
 	EnrichmentEnabled *bool `pulumi:"enrichmentEnabled"`
 	// Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
@@ -2446,6 +3400,8 @@ type EventingConfig struct {
 	ListenerAuthConfig *AuthConfig `pulumi:"listenerAuthConfig"`
 	// Optional. Private Connectivity Enabled.
 	PrivateConnectivityEnabled *bool `pulumi:"privateConnectivityEnabled"`
+	// Optional. Proxy for Eventing auto-registration.
+	ProxyDestinationConfig *DestinationConfig `pulumi:"proxyDestinationConfig"`
 	// Registration endpoint for auto registration.
 	RegistrationDestinationConfig *DestinationConfig `pulumi:"registrationDestinationConfig"`
 }
@@ -2467,6 +3423,8 @@ type EventingConfigArgs struct {
 	AdditionalVariables ConfigVariableArrayInput `pulumi:"additionalVariables"`
 	// Auth details for the webhook adapter.
 	AuthConfig AuthConfigPtrInput `pulumi:"authConfig"`
+	// Optional. Dead letter configuration for eventing of a connection.
+	DeadLetterConfig DeadLetterConfigPtrInput `pulumi:"deadLetterConfig"`
 	// Enrichment Enabled.
 	EnrichmentEnabled pulumi.BoolPtrInput `pulumi:"enrichmentEnabled"`
 	// Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
@@ -2475,6 +3433,8 @@ type EventingConfigArgs struct {
 	ListenerAuthConfig AuthConfigPtrInput `pulumi:"listenerAuthConfig"`
 	// Optional. Private Connectivity Enabled.
 	PrivateConnectivityEnabled pulumi.BoolPtrInput `pulumi:"privateConnectivityEnabled"`
+	// Optional. Proxy for Eventing auto-registration.
+	ProxyDestinationConfig DestinationConfigPtrInput `pulumi:"proxyDestinationConfig"`
 	// Registration endpoint for auto registration.
 	RegistrationDestinationConfig DestinationConfigPtrInput `pulumi:"registrationDestinationConfig"`
 }
@@ -2567,6 +3527,11 @@ func (o EventingConfigOutput) AuthConfig() AuthConfigPtrOutput {
 	return o.ApplyT(func(v EventingConfig) *AuthConfig { return v.AuthConfig }).(AuthConfigPtrOutput)
 }
 
+// Optional. Dead letter configuration for eventing of a connection.
+func (o EventingConfigOutput) DeadLetterConfig() DeadLetterConfigPtrOutput {
+	return o.ApplyT(func(v EventingConfig) *DeadLetterConfig { return v.DeadLetterConfig }).(DeadLetterConfigPtrOutput)
+}
+
 // Enrichment Enabled.
 func (o EventingConfigOutput) EnrichmentEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EventingConfig) *bool { return v.EnrichmentEnabled }).(pulumi.BoolPtrOutput)
@@ -2585,6 +3550,11 @@ func (o EventingConfigOutput) ListenerAuthConfig() AuthConfigPtrOutput {
 // Optional. Private Connectivity Enabled.
 func (o EventingConfigOutput) PrivateConnectivityEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EventingConfig) *bool { return v.PrivateConnectivityEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Proxy for Eventing auto-registration.
+func (o EventingConfigOutput) ProxyDestinationConfig() DestinationConfigPtrOutput {
+	return o.ApplyT(func(v EventingConfig) *DestinationConfig { return v.ProxyDestinationConfig }).(DestinationConfigPtrOutput)
 }
 
 // Registration endpoint for auto registration.
@@ -2636,6 +3606,16 @@ func (o EventingConfigPtrOutput) AuthConfig() AuthConfigPtrOutput {
 	}).(AuthConfigPtrOutput)
 }
 
+// Optional. Dead letter configuration for eventing of a connection.
+func (o EventingConfigPtrOutput) DeadLetterConfig() DeadLetterConfigPtrOutput {
+	return o.ApplyT(func(v *EventingConfig) *DeadLetterConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DeadLetterConfig
+	}).(DeadLetterConfigPtrOutput)
+}
+
 // Enrichment Enabled.
 func (o EventingConfigPtrOutput) EnrichmentEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EventingConfig) *bool {
@@ -2676,6 +3656,16 @@ func (o EventingConfigPtrOutput) PrivateConnectivityEnabled() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Optional. Proxy for Eventing auto-registration.
+func (o EventingConfigPtrOutput) ProxyDestinationConfig() DestinationConfigPtrOutput {
+	return o.ApplyT(func(v *EventingConfig) *DestinationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyDestinationConfig
+	}).(DestinationConfigPtrOutput)
+}
+
 // Registration endpoint for auto registration.
 func (o EventingConfigPtrOutput) RegistrationDestinationConfig() DestinationConfigPtrOutput {
 	return o.ApplyT(func(v *EventingConfig) *DestinationConfig {
@@ -2692,6 +3682,8 @@ type EventingConfigResponse struct {
 	AdditionalVariables []ConfigVariableResponse `pulumi:"additionalVariables"`
 	// Auth details for the webhook adapter.
 	AuthConfig AuthConfigResponse `pulumi:"authConfig"`
+	// Optional. Dead letter configuration for eventing of a connection.
+	DeadLetterConfig DeadLetterConfigResponse `pulumi:"deadLetterConfig"`
 	// Enrichment Enabled.
 	EnrichmentEnabled bool `pulumi:"enrichmentEnabled"`
 	// Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
@@ -2700,6 +3692,8 @@ type EventingConfigResponse struct {
 	ListenerAuthConfig AuthConfigResponse `pulumi:"listenerAuthConfig"`
 	// Optional. Private Connectivity Enabled.
 	PrivateConnectivityEnabled bool `pulumi:"privateConnectivityEnabled"`
+	// Optional. Proxy for Eventing auto-registration.
+	ProxyDestinationConfig DestinationConfigResponse `pulumi:"proxyDestinationConfig"`
 	// Registration endpoint for auto registration.
 	RegistrationDestinationConfig DestinationConfigResponse `pulumi:"registrationDestinationConfig"`
 }
@@ -2729,6 +3723,11 @@ func (o EventingConfigResponseOutput) AuthConfig() AuthConfigResponseOutput {
 	return o.ApplyT(func(v EventingConfigResponse) AuthConfigResponse { return v.AuthConfig }).(AuthConfigResponseOutput)
 }
 
+// Optional. Dead letter configuration for eventing of a connection.
+func (o EventingConfigResponseOutput) DeadLetterConfig() DeadLetterConfigResponseOutput {
+	return o.ApplyT(func(v EventingConfigResponse) DeadLetterConfigResponse { return v.DeadLetterConfig }).(DeadLetterConfigResponseOutput)
+}
+
 // Enrichment Enabled.
 func (o EventingConfigResponseOutput) EnrichmentEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v EventingConfigResponse) bool { return v.EnrichmentEnabled }).(pulumi.BoolOutput)
@@ -2749,6 +3748,11 @@ func (o EventingConfigResponseOutput) PrivateConnectivityEnabled() pulumi.BoolOu
 	return o.ApplyT(func(v EventingConfigResponse) bool { return v.PrivateConnectivityEnabled }).(pulumi.BoolOutput)
 }
 
+// Optional. Proxy for Eventing auto-registration.
+func (o EventingConfigResponseOutput) ProxyDestinationConfig() DestinationConfigResponseOutput {
+	return o.ApplyT(func(v EventingConfigResponse) DestinationConfigResponse { return v.ProxyDestinationConfig }).(DestinationConfigResponseOutput)
+}
+
 // Registration endpoint for auto registration.
 func (o EventingConfigResponseOutput) RegistrationDestinationConfig() DestinationConfigResponseOutput {
 	return o.ApplyT(func(v EventingConfigResponse) DestinationConfigResponse { return v.RegistrationDestinationConfig }).(DestinationConfigResponseOutput)
@@ -2762,6 +3766,8 @@ type EventingRuntimeDataResponse struct {
 	EventsListenerPscSa string `pulumi:"eventsListenerPscSa"`
 	// Current status of eventing.
 	Status EventingStatusResponse `pulumi:"status"`
+	// Webhook data.
+	WebhookData WebhookDataResponse `pulumi:"webhookData"`
 }
 
 // Eventing runtime data has the details related to eventing managed by the system.
@@ -2792,6 +3798,11 @@ func (o EventingRuntimeDataResponseOutput) EventsListenerPscSa() pulumi.StringOu
 // Current status of eventing.
 func (o EventingRuntimeDataResponseOutput) Status() EventingStatusResponseOutput {
 	return o.ApplyT(func(v EventingRuntimeDataResponse) EventingStatusResponse { return v.Status }).(EventingStatusResponseOutput)
+}
+
+// Webhook data.
+func (o EventingRuntimeDataResponseOutput) WebhookData() WebhookDataResponseOutput {
+	return o.ApplyT(func(v EventingRuntimeDataResponse) WebhookDataResponse { return v.WebhookData }).(WebhookDataResponseOutput)
 }
 
 // EventingStatus indicates the state of eventing.
@@ -3069,6 +4080,216 @@ func (o ExprResponseOutput) Location() pulumi.StringOutput {
 // Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
 func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// Field that needs to be compared.
+type FieldComparison struct {
+	// Boolean value
+	BoolValue *bool `pulumi:"boolValue"`
+	// Comparator to use for comparing the field value.
+	Comparator *FieldComparisonComparator `pulumi:"comparator"`
+	// Integer value
+	IntValue *string `pulumi:"intValue"`
+	// Key of the field.
+	Key *string `pulumi:"key"`
+	// String value
+	StringValue *string `pulumi:"stringValue"`
+}
+
+// FieldComparisonInput is an input type that accepts FieldComparisonArgs and FieldComparisonOutput values.
+// You can construct a concrete instance of `FieldComparisonInput` via:
+//
+//	FieldComparisonArgs{...}
+type FieldComparisonInput interface {
+	pulumi.Input
+
+	ToFieldComparisonOutput() FieldComparisonOutput
+	ToFieldComparisonOutputWithContext(context.Context) FieldComparisonOutput
+}
+
+// Field that needs to be compared.
+type FieldComparisonArgs struct {
+	// Boolean value
+	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
+	// Comparator to use for comparing the field value.
+	Comparator FieldComparisonComparatorPtrInput `pulumi:"comparator"`
+	// Integer value
+	IntValue pulumi.StringPtrInput `pulumi:"intValue"`
+	// Key of the field.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// String value
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
+}
+
+func (FieldComparisonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldComparison)(nil)).Elem()
+}
+
+func (i FieldComparisonArgs) ToFieldComparisonOutput() FieldComparisonOutput {
+	return i.ToFieldComparisonOutputWithContext(context.Background())
+}
+
+func (i FieldComparisonArgs) ToFieldComparisonOutputWithContext(ctx context.Context) FieldComparisonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FieldComparisonOutput)
+}
+
+// FieldComparisonArrayInput is an input type that accepts FieldComparisonArray and FieldComparisonArrayOutput values.
+// You can construct a concrete instance of `FieldComparisonArrayInput` via:
+//
+//	FieldComparisonArray{ FieldComparisonArgs{...} }
+type FieldComparisonArrayInput interface {
+	pulumi.Input
+
+	ToFieldComparisonArrayOutput() FieldComparisonArrayOutput
+	ToFieldComparisonArrayOutputWithContext(context.Context) FieldComparisonArrayOutput
+}
+
+type FieldComparisonArray []FieldComparisonInput
+
+func (FieldComparisonArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FieldComparison)(nil)).Elem()
+}
+
+func (i FieldComparisonArray) ToFieldComparisonArrayOutput() FieldComparisonArrayOutput {
+	return i.ToFieldComparisonArrayOutputWithContext(context.Background())
+}
+
+func (i FieldComparisonArray) ToFieldComparisonArrayOutputWithContext(ctx context.Context) FieldComparisonArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FieldComparisonArrayOutput)
+}
+
+// Field that needs to be compared.
+type FieldComparisonOutput struct{ *pulumi.OutputState }
+
+func (FieldComparisonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldComparison)(nil)).Elem()
+}
+
+func (o FieldComparisonOutput) ToFieldComparisonOutput() FieldComparisonOutput {
+	return o
+}
+
+func (o FieldComparisonOutput) ToFieldComparisonOutputWithContext(ctx context.Context) FieldComparisonOutput {
+	return o
+}
+
+// Boolean value
+func (o FieldComparisonOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FieldComparison) *bool { return v.BoolValue }).(pulumi.BoolPtrOutput)
+}
+
+// Comparator to use for comparing the field value.
+func (o FieldComparisonOutput) Comparator() FieldComparisonComparatorPtrOutput {
+	return o.ApplyT(func(v FieldComparison) *FieldComparisonComparator { return v.Comparator }).(FieldComparisonComparatorPtrOutput)
+}
+
+// Integer value
+func (o FieldComparisonOutput) IntValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FieldComparison) *string { return v.IntValue }).(pulumi.StringPtrOutput)
+}
+
+// Key of the field.
+func (o FieldComparisonOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FieldComparison) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// String value
+func (o FieldComparisonOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FieldComparison) *string { return v.StringValue }).(pulumi.StringPtrOutput)
+}
+
+type FieldComparisonArrayOutput struct{ *pulumi.OutputState }
+
+func (FieldComparisonArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FieldComparison)(nil)).Elem()
+}
+
+func (o FieldComparisonArrayOutput) ToFieldComparisonArrayOutput() FieldComparisonArrayOutput {
+	return o
+}
+
+func (o FieldComparisonArrayOutput) ToFieldComparisonArrayOutputWithContext(ctx context.Context) FieldComparisonArrayOutput {
+	return o
+}
+
+func (o FieldComparisonArrayOutput) Index(i pulumi.IntInput) FieldComparisonOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FieldComparison {
+		return vs[0].([]FieldComparison)[vs[1].(int)]
+	}).(FieldComparisonOutput)
+}
+
+// Field that needs to be compared.
+type FieldComparisonResponse struct {
+	// Boolean value
+	BoolValue bool `pulumi:"boolValue"`
+	// Comparator to use for comparing the field value.
+	Comparator string `pulumi:"comparator"`
+	// Integer value
+	IntValue string `pulumi:"intValue"`
+	// Key of the field.
+	Key string `pulumi:"key"`
+	// String value
+	StringValue string `pulumi:"stringValue"`
+}
+
+// Field that needs to be compared.
+type FieldComparisonResponseOutput struct{ *pulumi.OutputState }
+
+func (FieldComparisonResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldComparisonResponse)(nil)).Elem()
+}
+
+func (o FieldComparisonResponseOutput) ToFieldComparisonResponseOutput() FieldComparisonResponseOutput {
+	return o
+}
+
+func (o FieldComparisonResponseOutput) ToFieldComparisonResponseOutputWithContext(ctx context.Context) FieldComparisonResponseOutput {
+	return o
+}
+
+// Boolean value
+func (o FieldComparisonResponseOutput) BoolValue() pulumi.BoolOutput {
+	return o.ApplyT(func(v FieldComparisonResponse) bool { return v.BoolValue }).(pulumi.BoolOutput)
+}
+
+// Comparator to use for comparing the field value.
+func (o FieldComparisonResponseOutput) Comparator() pulumi.StringOutput {
+	return o.ApplyT(func(v FieldComparisonResponse) string { return v.Comparator }).(pulumi.StringOutput)
+}
+
+// Integer value
+func (o FieldComparisonResponseOutput) IntValue() pulumi.StringOutput {
+	return o.ApplyT(func(v FieldComparisonResponse) string { return v.IntValue }).(pulumi.StringOutput)
+}
+
+// Key of the field.
+func (o FieldComparisonResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v FieldComparisonResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// String value
+func (o FieldComparisonResponseOutput) StringValue() pulumi.StringOutput {
+	return o.ApplyT(func(v FieldComparisonResponse) string { return v.StringValue }).(pulumi.StringOutput)
+}
+
+type FieldComparisonResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FieldComparisonResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FieldComparisonResponse)(nil)).Elem()
+}
+
+func (o FieldComparisonResponseArrayOutput) ToFieldComparisonResponseArrayOutput() FieldComparisonResponseArrayOutput {
+	return o
+}
+
+func (o FieldComparisonResponseArrayOutput) ToFieldComparisonResponseArrayOutputWithContext(ctx context.Context) FieldComparisonResponseArrayOutput {
+	return o
+}
+
+func (o FieldComparisonResponseArrayOutput) Index(i pulumi.IntInput) FieldComparisonResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FieldComparisonResponse {
+		return vs[0].([]FieldComparisonResponse)[vs[1].(int)]
+	}).(FieldComparisonResponseOutput)
 }
 
 // Autoscaling config for connector deployment system metrics.
@@ -3866,6 +5087,289 @@ func (o LockConfigResponseOutput) Locked() pulumi.BoolOutput {
 // Describes why a connection is locked.
 func (o LockConfigResponseOutput) Reason() pulumi.StringOutput {
 	return o.ApplyT(func(v LockConfigResponse) string { return v.Reason }).(pulumi.StringOutput)
+}
+
+// Struct for representing boolean expressions.
+type LogicalExpression struct {
+	// A list of fields to be compared.
+	FieldComparisons []FieldComparison `pulumi:"fieldComparisons"`
+	// A list of nested conditions to be compared.
+	LogicalExpressions []LogicalExpression `pulumi:"logicalExpressions"`
+	// The logical operator to use between the fields and conditions.
+	LogicalOperator *LogicalExpressionLogicalOperator `pulumi:"logicalOperator"`
+}
+
+// LogicalExpressionInput is an input type that accepts LogicalExpressionArgs and LogicalExpressionOutput values.
+// You can construct a concrete instance of `LogicalExpressionInput` via:
+//
+//	LogicalExpressionArgs{...}
+type LogicalExpressionInput interface {
+	pulumi.Input
+
+	ToLogicalExpressionOutput() LogicalExpressionOutput
+	ToLogicalExpressionOutputWithContext(context.Context) LogicalExpressionOutput
+}
+
+// Struct for representing boolean expressions.
+type LogicalExpressionArgs struct {
+	// A list of fields to be compared.
+	FieldComparisons FieldComparisonArrayInput `pulumi:"fieldComparisons"`
+	// A list of nested conditions to be compared.
+	LogicalExpressions LogicalExpressionArrayInput `pulumi:"logicalExpressions"`
+	// The logical operator to use between the fields and conditions.
+	LogicalOperator LogicalExpressionLogicalOperatorPtrInput `pulumi:"logicalOperator"`
+}
+
+func (LogicalExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogicalExpression)(nil)).Elem()
+}
+
+func (i LogicalExpressionArgs) ToLogicalExpressionOutput() LogicalExpressionOutput {
+	return i.ToLogicalExpressionOutputWithContext(context.Background())
+}
+
+func (i LogicalExpressionArgs) ToLogicalExpressionOutputWithContext(ctx context.Context) LogicalExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogicalExpressionOutput)
+}
+
+func (i LogicalExpressionArgs) ToLogicalExpressionPtrOutput() LogicalExpressionPtrOutput {
+	return i.ToLogicalExpressionPtrOutputWithContext(context.Background())
+}
+
+func (i LogicalExpressionArgs) ToLogicalExpressionPtrOutputWithContext(ctx context.Context) LogicalExpressionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogicalExpressionOutput).ToLogicalExpressionPtrOutputWithContext(ctx)
+}
+
+// LogicalExpressionPtrInput is an input type that accepts LogicalExpressionArgs, LogicalExpressionPtr and LogicalExpressionPtrOutput values.
+// You can construct a concrete instance of `LogicalExpressionPtrInput` via:
+//
+//	        LogicalExpressionArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogicalExpressionPtrInput interface {
+	pulumi.Input
+
+	ToLogicalExpressionPtrOutput() LogicalExpressionPtrOutput
+	ToLogicalExpressionPtrOutputWithContext(context.Context) LogicalExpressionPtrOutput
+}
+
+type logicalExpressionPtrType LogicalExpressionArgs
+
+func LogicalExpressionPtr(v *LogicalExpressionArgs) LogicalExpressionPtrInput {
+	return (*logicalExpressionPtrType)(v)
+}
+
+func (*logicalExpressionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogicalExpression)(nil)).Elem()
+}
+
+func (i *logicalExpressionPtrType) ToLogicalExpressionPtrOutput() LogicalExpressionPtrOutput {
+	return i.ToLogicalExpressionPtrOutputWithContext(context.Background())
+}
+
+func (i *logicalExpressionPtrType) ToLogicalExpressionPtrOutputWithContext(ctx context.Context) LogicalExpressionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogicalExpressionPtrOutput)
+}
+
+// LogicalExpressionArrayInput is an input type that accepts LogicalExpressionArray and LogicalExpressionArrayOutput values.
+// You can construct a concrete instance of `LogicalExpressionArrayInput` via:
+//
+//	LogicalExpressionArray{ LogicalExpressionArgs{...} }
+type LogicalExpressionArrayInput interface {
+	pulumi.Input
+
+	ToLogicalExpressionArrayOutput() LogicalExpressionArrayOutput
+	ToLogicalExpressionArrayOutputWithContext(context.Context) LogicalExpressionArrayOutput
+}
+
+type LogicalExpressionArray []LogicalExpressionInput
+
+func (LogicalExpressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogicalExpression)(nil)).Elem()
+}
+
+func (i LogicalExpressionArray) ToLogicalExpressionArrayOutput() LogicalExpressionArrayOutput {
+	return i.ToLogicalExpressionArrayOutputWithContext(context.Background())
+}
+
+func (i LogicalExpressionArray) ToLogicalExpressionArrayOutputWithContext(ctx context.Context) LogicalExpressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogicalExpressionArrayOutput)
+}
+
+// Struct for representing boolean expressions.
+type LogicalExpressionOutput struct{ *pulumi.OutputState }
+
+func (LogicalExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogicalExpression)(nil)).Elem()
+}
+
+func (o LogicalExpressionOutput) ToLogicalExpressionOutput() LogicalExpressionOutput {
+	return o
+}
+
+func (o LogicalExpressionOutput) ToLogicalExpressionOutputWithContext(ctx context.Context) LogicalExpressionOutput {
+	return o
+}
+
+func (o LogicalExpressionOutput) ToLogicalExpressionPtrOutput() LogicalExpressionPtrOutput {
+	return o.ToLogicalExpressionPtrOutputWithContext(context.Background())
+}
+
+func (o LogicalExpressionOutput) ToLogicalExpressionPtrOutputWithContext(ctx context.Context) LogicalExpressionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogicalExpression) *LogicalExpression {
+		return &v
+	}).(LogicalExpressionPtrOutput)
+}
+
+// A list of fields to be compared.
+func (o LogicalExpressionOutput) FieldComparisons() FieldComparisonArrayOutput {
+	return o.ApplyT(func(v LogicalExpression) []FieldComparison { return v.FieldComparisons }).(FieldComparisonArrayOutput)
+}
+
+// A list of nested conditions to be compared.
+func (o LogicalExpressionOutput) LogicalExpressions() LogicalExpressionArrayOutput {
+	return o.ApplyT(func(v LogicalExpression) []LogicalExpression { return v.LogicalExpressions }).(LogicalExpressionArrayOutput)
+}
+
+// The logical operator to use between the fields and conditions.
+func (o LogicalExpressionOutput) LogicalOperator() LogicalExpressionLogicalOperatorPtrOutput {
+	return o.ApplyT(func(v LogicalExpression) *LogicalExpressionLogicalOperator { return v.LogicalOperator }).(LogicalExpressionLogicalOperatorPtrOutput)
+}
+
+type LogicalExpressionPtrOutput struct{ *pulumi.OutputState }
+
+func (LogicalExpressionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogicalExpression)(nil)).Elem()
+}
+
+func (o LogicalExpressionPtrOutput) ToLogicalExpressionPtrOutput() LogicalExpressionPtrOutput {
+	return o
+}
+
+func (o LogicalExpressionPtrOutput) ToLogicalExpressionPtrOutputWithContext(ctx context.Context) LogicalExpressionPtrOutput {
+	return o
+}
+
+func (o LogicalExpressionPtrOutput) Elem() LogicalExpressionOutput {
+	return o.ApplyT(func(v *LogicalExpression) LogicalExpression {
+		if v != nil {
+			return *v
+		}
+		var ret LogicalExpression
+		return ret
+	}).(LogicalExpressionOutput)
+}
+
+// A list of fields to be compared.
+func (o LogicalExpressionPtrOutput) FieldComparisons() FieldComparisonArrayOutput {
+	return o.ApplyT(func(v *LogicalExpression) []FieldComparison {
+		if v == nil {
+			return nil
+		}
+		return v.FieldComparisons
+	}).(FieldComparisonArrayOutput)
+}
+
+// A list of nested conditions to be compared.
+func (o LogicalExpressionPtrOutput) LogicalExpressions() LogicalExpressionArrayOutput {
+	return o.ApplyT(func(v *LogicalExpression) []LogicalExpression {
+		if v == nil {
+			return nil
+		}
+		return v.LogicalExpressions
+	}).(LogicalExpressionArrayOutput)
+}
+
+// The logical operator to use between the fields and conditions.
+func (o LogicalExpressionPtrOutput) LogicalOperator() LogicalExpressionLogicalOperatorPtrOutput {
+	return o.ApplyT(func(v *LogicalExpression) *LogicalExpressionLogicalOperator {
+		if v == nil {
+			return nil
+		}
+		return v.LogicalOperator
+	}).(LogicalExpressionLogicalOperatorPtrOutput)
+}
+
+type LogicalExpressionArrayOutput struct{ *pulumi.OutputState }
+
+func (LogicalExpressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogicalExpression)(nil)).Elem()
+}
+
+func (o LogicalExpressionArrayOutput) ToLogicalExpressionArrayOutput() LogicalExpressionArrayOutput {
+	return o
+}
+
+func (o LogicalExpressionArrayOutput) ToLogicalExpressionArrayOutputWithContext(ctx context.Context) LogicalExpressionArrayOutput {
+	return o
+}
+
+func (o LogicalExpressionArrayOutput) Index(i pulumi.IntInput) LogicalExpressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogicalExpression {
+		return vs[0].([]LogicalExpression)[vs[1].(int)]
+	}).(LogicalExpressionOutput)
+}
+
+// Struct for representing boolean expressions.
+type LogicalExpressionResponse struct {
+	// A list of fields to be compared.
+	FieldComparisons []FieldComparisonResponse `pulumi:"fieldComparisons"`
+	// A list of nested conditions to be compared.
+	LogicalExpressions []LogicalExpressionResponse `pulumi:"logicalExpressions"`
+	// The logical operator to use between the fields and conditions.
+	LogicalOperator string `pulumi:"logicalOperator"`
+}
+
+// Struct for representing boolean expressions.
+type LogicalExpressionResponseOutput struct{ *pulumi.OutputState }
+
+func (LogicalExpressionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogicalExpressionResponse)(nil)).Elem()
+}
+
+func (o LogicalExpressionResponseOutput) ToLogicalExpressionResponseOutput() LogicalExpressionResponseOutput {
+	return o
+}
+
+func (o LogicalExpressionResponseOutput) ToLogicalExpressionResponseOutputWithContext(ctx context.Context) LogicalExpressionResponseOutput {
+	return o
+}
+
+// A list of fields to be compared.
+func (o LogicalExpressionResponseOutput) FieldComparisons() FieldComparisonResponseArrayOutput {
+	return o.ApplyT(func(v LogicalExpressionResponse) []FieldComparisonResponse { return v.FieldComparisons }).(FieldComparisonResponseArrayOutput)
+}
+
+// A list of nested conditions to be compared.
+func (o LogicalExpressionResponseOutput) LogicalExpressions() LogicalExpressionResponseArrayOutput {
+	return o.ApplyT(func(v LogicalExpressionResponse) []LogicalExpressionResponse { return v.LogicalExpressions }).(LogicalExpressionResponseArrayOutput)
+}
+
+// The logical operator to use between the fields and conditions.
+func (o LogicalExpressionResponseOutput) LogicalOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v LogicalExpressionResponse) string { return v.LogicalOperator }).(pulumi.StringOutput)
+}
+
+type LogicalExpressionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LogicalExpressionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogicalExpressionResponse)(nil)).Elem()
+}
+
+func (o LogicalExpressionResponseArrayOutput) ToLogicalExpressionResponseArrayOutput() LogicalExpressionResponseArrayOutput {
+	return o
+}
+
+func (o LogicalExpressionResponseArrayOutput) ToLogicalExpressionResponseArrayOutputWithContext(ctx context.Context) LogicalExpressionResponseArrayOutput {
+	return o
+}
+
+func (o LogicalExpressionResponseArrayOutput) Index(i pulumi.IntInput) LogicalExpressionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogicalExpressionResponse {
+		return vs[0].([]LogicalExpressionResponse)[vs[1].(int)]
+	}).(LogicalExpressionResponseOutput)
 }
 
 // Node configuration for the connection.
@@ -4792,6 +6296,165 @@ func (o Oauth2JwtBearerResponseOutput) JwtClaims() JwtClaimsResponseOutput {
 	return o.ApplyT(func(v Oauth2JwtBearerResponse) JwtClaimsResponse { return v.JwtClaims }).(JwtClaimsResponseOutput)
 }
 
+// Resource definition
+type Resource struct {
+	// Template to uniquely represent a Google Cloud resource in a format IAM expects This is a template that can have references to other values provided in the config variable template.
+	PathTemplate *string `pulumi:"pathTemplate"`
+	// Different types of resource supported.
+	Type *ResourceType `pulumi:"type"`
+}
+
+// ResourceInput is an input type that accepts ResourceArgs and ResourceOutput values.
+// You can construct a concrete instance of `ResourceInput` via:
+//
+//	ResourceArgs{...}
+type ResourceInput interface {
+	pulumi.Input
+
+	ToResourceOutput() ResourceOutput
+	ToResourceOutputWithContext(context.Context) ResourceOutput
+}
+
+// Resource definition
+type ResourceArgs struct {
+	// Template to uniquely represent a Google Cloud resource in a format IAM expects This is a template that can have references to other values provided in the config variable template.
+	PathTemplate pulumi.StringPtrInput `pulumi:"pathTemplate"`
+	// Different types of resource supported.
+	Type ResourceTypePtrInput `pulumi:"type"`
+}
+
+func (ResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Resource)(nil)).Elem()
+}
+
+func (i ResourceArgs) ToResourceOutput() ResourceOutput {
+	return i.ToResourceOutputWithContext(context.Background())
+}
+
+func (i ResourceArgs) ToResourceOutputWithContext(ctx context.Context) ResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceOutput)
+}
+
+func (i ResourceArgs) ToResourcePtrOutput() ResourcePtrOutput {
+	return i.ToResourcePtrOutputWithContext(context.Background())
+}
+
+func (i ResourceArgs) ToResourcePtrOutputWithContext(ctx context.Context) ResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceOutput).ToResourcePtrOutputWithContext(ctx)
+}
+
+// ResourcePtrInput is an input type that accepts ResourceArgs, ResourcePtr and ResourcePtrOutput values.
+// You can construct a concrete instance of `ResourcePtrInput` via:
+//
+//	        ResourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourcePtrInput interface {
+	pulumi.Input
+
+	ToResourcePtrOutput() ResourcePtrOutput
+	ToResourcePtrOutputWithContext(context.Context) ResourcePtrOutput
+}
+
+type resourcePtrType ResourceArgs
+
+func ResourcePtr(v *ResourceArgs) ResourcePtrInput {
+	return (*resourcePtrType)(v)
+}
+
+func (*resourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Resource)(nil)).Elem()
+}
+
+func (i *resourcePtrType) ToResourcePtrOutput() ResourcePtrOutput {
+	return i.ToResourcePtrOutputWithContext(context.Background())
+}
+
+func (i *resourcePtrType) ToResourcePtrOutputWithContext(ctx context.Context) ResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePtrOutput)
+}
+
+// Resource definition
+type ResourceOutput struct{ *pulumi.OutputState }
+
+func (ResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Resource)(nil)).Elem()
+}
+
+func (o ResourceOutput) ToResourceOutput() ResourceOutput {
+	return o
+}
+
+func (o ResourceOutput) ToResourceOutputWithContext(ctx context.Context) ResourceOutput {
+	return o
+}
+
+func (o ResourceOutput) ToResourcePtrOutput() ResourcePtrOutput {
+	return o.ToResourcePtrOutputWithContext(context.Background())
+}
+
+func (o ResourceOutput) ToResourcePtrOutputWithContext(ctx context.Context) ResourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Resource) *Resource {
+		return &v
+	}).(ResourcePtrOutput)
+}
+
+// Template to uniquely represent a Google Cloud resource in a format IAM expects This is a template that can have references to other values provided in the config variable template.
+func (o ResourceOutput) PathTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Resource) *string { return v.PathTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Different types of resource supported.
+func (o ResourceOutput) Type() ResourceTypePtrOutput {
+	return o.ApplyT(func(v Resource) *ResourceType { return v.Type }).(ResourceTypePtrOutput)
+}
+
+type ResourcePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Resource)(nil)).Elem()
+}
+
+func (o ResourcePtrOutput) ToResourcePtrOutput() ResourcePtrOutput {
+	return o
+}
+
+func (o ResourcePtrOutput) ToResourcePtrOutputWithContext(ctx context.Context) ResourcePtrOutput {
+	return o
+}
+
+func (o ResourcePtrOutput) Elem() ResourceOutput {
+	return o.ApplyT(func(v *Resource) Resource {
+		if v != nil {
+			return *v
+		}
+		var ret Resource
+		return ret
+	}).(ResourceOutput)
+}
+
+// Template to uniquely represent a Google Cloud resource in a format IAM expects This is a template that can have references to other values provided in the config variable template.
+func (o ResourcePtrOutput) PathTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Resource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Different types of resource supported.
+func (o ResourcePtrOutput) Type() ResourceTypePtrOutput {
+	return o.ApplyT(func(v *Resource) *ResourceType {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(ResourceTypePtrOutput)
+}
+
 // Resource limits defined for connection pods of a given connector type.
 type ResourceLimitsResponse struct {
 	// CPU limit.
@@ -4856,6 +6519,283 @@ func (o ResourceRequestsResponseOutput) Cpu() pulumi.StringOutput {
 // Memory request.
 func (o ResourceRequestsResponseOutput) Memory() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceRequestsResponse) string { return v.Memory }).(pulumi.StringOutput)
+}
+
+// Resource definition
+type ResourceResponse struct {
+	// Template to uniquely represent a Google Cloud resource in a format IAM expects This is a template that can have references to other values provided in the config variable template.
+	PathTemplate string `pulumi:"pathTemplate"`
+	// Different types of resource supported.
+	Type string `pulumi:"type"`
+}
+
+// Resource definition
+type ResourceResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceResponse)(nil)).Elem()
+}
+
+func (o ResourceResponseOutput) ToResourceResponseOutput() ResourceResponseOutput {
+	return o
+}
+
+func (o ResourceResponseOutput) ToResourceResponseOutputWithContext(ctx context.Context) ResourceResponseOutput {
+	return o
+}
+
+// Template to uniquely represent a Google Cloud resource in a format IAM expects This is a template that can have references to other values provided in the config variable template.
+func (o ResourceResponseOutput) PathTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceResponse) string { return v.PathTemplate }).(pulumi.StringOutput)
+}
+
+// Different types of resource supported.
+func (o ResourceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// This configuration defines all the Cloud IAM roles that needs to be granted to a particular Google Cloud resource for the selected principal like service account. These configurations will let UI display to customers what IAM roles need to be granted by them. Or these configurations can be used by the UI to render a 'grant' button to do the same on behalf of the user.
+type RoleGrant struct {
+	// Template that UI can use to provide helper text to customers.
+	HelperTextTemplate *string `pulumi:"helperTextTemplate"`
+	// Prinicipal/Identity for whom the role need to assigned.
+	Principal *RoleGrantPrincipal `pulumi:"principal"`
+	// Resource on which the roles needs to be granted for the principal.
+	Resource *Resource `pulumi:"resource"`
+	// List of roles that need to be granted.
+	Roles []string `pulumi:"roles"`
+}
+
+// RoleGrantInput is an input type that accepts RoleGrantArgs and RoleGrantOutput values.
+// You can construct a concrete instance of `RoleGrantInput` via:
+//
+//	RoleGrantArgs{...}
+type RoleGrantInput interface {
+	pulumi.Input
+
+	ToRoleGrantOutput() RoleGrantOutput
+	ToRoleGrantOutputWithContext(context.Context) RoleGrantOutput
+}
+
+// This configuration defines all the Cloud IAM roles that needs to be granted to a particular Google Cloud resource for the selected principal like service account. These configurations will let UI display to customers what IAM roles need to be granted by them. Or these configurations can be used by the UI to render a 'grant' button to do the same on behalf of the user.
+type RoleGrantArgs struct {
+	// Template that UI can use to provide helper text to customers.
+	HelperTextTemplate pulumi.StringPtrInput `pulumi:"helperTextTemplate"`
+	// Prinicipal/Identity for whom the role need to assigned.
+	Principal RoleGrantPrincipalPtrInput `pulumi:"principal"`
+	// Resource on which the roles needs to be granted for the principal.
+	Resource ResourcePtrInput `pulumi:"resource"`
+	// List of roles that need to be granted.
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
+}
+
+func (RoleGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleGrant)(nil)).Elem()
+}
+
+func (i RoleGrantArgs) ToRoleGrantOutput() RoleGrantOutput {
+	return i.ToRoleGrantOutputWithContext(context.Background())
+}
+
+func (i RoleGrantArgs) ToRoleGrantOutputWithContext(ctx context.Context) RoleGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleGrantOutput)
+}
+
+func (i RoleGrantArgs) ToRoleGrantPtrOutput() RoleGrantPtrOutput {
+	return i.ToRoleGrantPtrOutputWithContext(context.Background())
+}
+
+func (i RoleGrantArgs) ToRoleGrantPtrOutputWithContext(ctx context.Context) RoleGrantPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleGrantOutput).ToRoleGrantPtrOutputWithContext(ctx)
+}
+
+// RoleGrantPtrInput is an input type that accepts RoleGrantArgs, RoleGrantPtr and RoleGrantPtrOutput values.
+// You can construct a concrete instance of `RoleGrantPtrInput` via:
+//
+//	        RoleGrantArgs{...}
+//
+//	or:
+//
+//	        nil
+type RoleGrantPtrInput interface {
+	pulumi.Input
+
+	ToRoleGrantPtrOutput() RoleGrantPtrOutput
+	ToRoleGrantPtrOutputWithContext(context.Context) RoleGrantPtrOutput
+}
+
+type roleGrantPtrType RoleGrantArgs
+
+func RoleGrantPtr(v *RoleGrantArgs) RoleGrantPtrInput {
+	return (*roleGrantPtrType)(v)
+}
+
+func (*roleGrantPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoleGrant)(nil)).Elem()
+}
+
+func (i *roleGrantPtrType) ToRoleGrantPtrOutput() RoleGrantPtrOutput {
+	return i.ToRoleGrantPtrOutputWithContext(context.Background())
+}
+
+func (i *roleGrantPtrType) ToRoleGrantPtrOutputWithContext(ctx context.Context) RoleGrantPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleGrantPtrOutput)
+}
+
+// This configuration defines all the Cloud IAM roles that needs to be granted to a particular Google Cloud resource for the selected principal like service account. These configurations will let UI display to customers what IAM roles need to be granted by them. Or these configurations can be used by the UI to render a 'grant' button to do the same on behalf of the user.
+type RoleGrantOutput struct{ *pulumi.OutputState }
+
+func (RoleGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleGrant)(nil)).Elem()
+}
+
+func (o RoleGrantOutput) ToRoleGrantOutput() RoleGrantOutput {
+	return o
+}
+
+func (o RoleGrantOutput) ToRoleGrantOutputWithContext(ctx context.Context) RoleGrantOutput {
+	return o
+}
+
+func (o RoleGrantOutput) ToRoleGrantPtrOutput() RoleGrantPtrOutput {
+	return o.ToRoleGrantPtrOutputWithContext(context.Background())
+}
+
+func (o RoleGrantOutput) ToRoleGrantPtrOutputWithContext(ctx context.Context) RoleGrantPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoleGrant) *RoleGrant {
+		return &v
+	}).(RoleGrantPtrOutput)
+}
+
+// Template that UI can use to provide helper text to customers.
+func (o RoleGrantOutput) HelperTextTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoleGrant) *string { return v.HelperTextTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Prinicipal/Identity for whom the role need to assigned.
+func (o RoleGrantOutput) Principal() RoleGrantPrincipalPtrOutput {
+	return o.ApplyT(func(v RoleGrant) *RoleGrantPrincipal { return v.Principal }).(RoleGrantPrincipalPtrOutput)
+}
+
+// Resource on which the roles needs to be granted for the principal.
+func (o RoleGrantOutput) Resource() ResourcePtrOutput {
+	return o.ApplyT(func(v RoleGrant) *Resource { return v.Resource }).(ResourcePtrOutput)
+}
+
+// List of roles that need to be granted.
+func (o RoleGrantOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RoleGrant) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+type RoleGrantPtrOutput struct{ *pulumi.OutputState }
+
+func (RoleGrantPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoleGrant)(nil)).Elem()
+}
+
+func (o RoleGrantPtrOutput) ToRoleGrantPtrOutput() RoleGrantPtrOutput {
+	return o
+}
+
+func (o RoleGrantPtrOutput) ToRoleGrantPtrOutputWithContext(ctx context.Context) RoleGrantPtrOutput {
+	return o
+}
+
+func (o RoleGrantPtrOutput) Elem() RoleGrantOutput {
+	return o.ApplyT(func(v *RoleGrant) RoleGrant {
+		if v != nil {
+			return *v
+		}
+		var ret RoleGrant
+		return ret
+	}).(RoleGrantOutput)
+}
+
+// Template that UI can use to provide helper text to customers.
+func (o RoleGrantPtrOutput) HelperTextTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoleGrant) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HelperTextTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Prinicipal/Identity for whom the role need to assigned.
+func (o RoleGrantPtrOutput) Principal() RoleGrantPrincipalPtrOutput {
+	return o.ApplyT(func(v *RoleGrant) *RoleGrantPrincipal {
+		if v == nil {
+			return nil
+		}
+		return v.Principal
+	}).(RoleGrantPrincipalPtrOutput)
+}
+
+// Resource on which the roles needs to be granted for the principal.
+func (o RoleGrantPtrOutput) Resource() ResourcePtrOutput {
+	return o.ApplyT(func(v *RoleGrant) *Resource {
+		if v == nil {
+			return nil
+		}
+		return v.Resource
+	}).(ResourcePtrOutput)
+}
+
+// List of roles that need to be granted.
+func (o RoleGrantPtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RoleGrant) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
+	}).(pulumi.StringArrayOutput)
+}
+
+// This configuration defines all the Cloud IAM roles that needs to be granted to a particular Google Cloud resource for the selected principal like service account. These configurations will let UI display to customers what IAM roles need to be granted by them. Or these configurations can be used by the UI to render a 'grant' button to do the same on behalf of the user.
+type RoleGrantResponse struct {
+	// Template that UI can use to provide helper text to customers.
+	HelperTextTemplate string `pulumi:"helperTextTemplate"`
+	// Prinicipal/Identity for whom the role need to assigned.
+	Principal string `pulumi:"principal"`
+	// Resource on which the roles needs to be granted for the principal.
+	Resource ResourceResponse `pulumi:"resource"`
+	// List of roles that need to be granted.
+	Roles []string `pulumi:"roles"`
+}
+
+// This configuration defines all the Cloud IAM roles that needs to be granted to a particular Google Cloud resource for the selected principal like service account. These configurations will let UI display to customers what IAM roles need to be granted by them. Or these configurations can be used by the UI to render a 'grant' button to do the same on behalf of the user.
+type RoleGrantResponseOutput struct{ *pulumi.OutputState }
+
+func (RoleGrantResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleGrantResponse)(nil)).Elem()
+}
+
+func (o RoleGrantResponseOutput) ToRoleGrantResponseOutput() RoleGrantResponseOutput {
+	return o
+}
+
+func (o RoleGrantResponseOutput) ToRoleGrantResponseOutputWithContext(ctx context.Context) RoleGrantResponseOutput {
+	return o
+}
+
+// Template that UI can use to provide helper text to customers.
+func (o RoleGrantResponseOutput) HelperTextTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v RoleGrantResponse) string { return v.HelperTextTemplate }).(pulumi.StringOutput)
+}
+
+// Prinicipal/Identity for whom the role need to assigned.
+func (o RoleGrantResponseOutput) Principal() pulumi.StringOutput {
+	return o.ApplyT(func(v RoleGrantResponse) string { return v.Principal }).(pulumi.StringOutput)
+}
+
+// Resource on which the roles needs to be granted for the principal.
+func (o RoleGrantResponseOutput) Resource() ResourceResponseOutput {
+	return o.ApplyT(func(v RoleGrantResponse) ResourceResponse { return v.Resource }).(ResourceResponseOutput)
+}
+
+// List of roles that need to be granted.
+func (o RoleGrantResponseOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RoleGrantResponse) []string { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
 // Secret provides a reference to entries in Secret Manager.
@@ -5860,6 +7800,60 @@ func (o UserPasswordResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v UserPasswordResponse) string { return v.Username }).(pulumi.StringOutput)
 }
 
+// WebhookData has details of webhook configuration.
+type WebhookDataResponse struct {
+	// Additional webhook related field values.
+	AdditionalVariables []ConfigVariableResponse `pulumi:"additionalVariables"`
+	// Timestamp when the webhook was created.
+	CreateTime string `pulumi:"createTime"`
+	// Name of the Webhook
+	Name string `pulumi:"name"`
+	// Next webhook refresh time. Will be null if refresh is not supported.
+	NextRefreshTime string `pulumi:"nextRefreshTime"`
+	// Timestamp when the webhook was last updated.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// WebhookData has details of webhook configuration.
+type WebhookDataResponseOutput struct{ *pulumi.OutputState }
+
+func (WebhookDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookDataResponse)(nil)).Elem()
+}
+
+func (o WebhookDataResponseOutput) ToWebhookDataResponseOutput() WebhookDataResponseOutput {
+	return o
+}
+
+func (o WebhookDataResponseOutput) ToWebhookDataResponseOutputWithContext(ctx context.Context) WebhookDataResponseOutput {
+	return o
+}
+
+// Additional webhook related field values.
+func (o WebhookDataResponseOutput) AdditionalVariables() ConfigVariableResponseArrayOutput {
+	return o.ApplyT(func(v WebhookDataResponse) []ConfigVariableResponse { return v.AdditionalVariables }).(ConfigVariableResponseArrayOutput)
+}
+
+// Timestamp when the webhook was created.
+func (o WebhookDataResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v WebhookDataResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Name of the Webhook
+func (o WebhookDataResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WebhookDataResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Next webhook refresh time. Will be null if refresh is not supported.
+func (o WebhookDataResponseOutput) NextRefreshTime() pulumi.StringOutput {
+	return o.ApplyT(func(v WebhookDataResponse) string { return v.NextRefreshTime }).(pulumi.StringOutput)
+}
+
+// Timestamp when the webhook was last updated.
+func (o WebhookDataResponseOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v WebhookDataResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
@@ -5867,12 +7861,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigInput)(nil)).Elem(), AuthConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigPtrInput)(nil)).Elem(), AuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationCodeLinkInput)(nil)).Elem(), AuthorizationCodeLinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationCodeLinkPtrInput)(nil)).Elem(), AuthorizationCodeLinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigVariableInput)(nil)).Elem(), ConfigVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigVariableArrayInput)(nil)).Elem(), ConfigVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigVariableTemplateInput)(nil)).Elem(), ConfigVariableTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigVariableTemplateArrayInput)(nil)).Elem(), ConfigVariableTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorsLogConfigInput)(nil)).Elem(), ConnectorsLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorsLogConfigPtrInput)(nil)).Elem(), ConnectorsLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeadLetterConfigInput)(nil)).Elem(), DeadLetterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeadLetterConfigPtrInput)(nil)).Elem(), DeadLetterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationInput)(nil)).Elem(), DestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationArrayInput)(nil)).Elem(), DestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationConfigInput)(nil)).Elem(), DestinationConfigArgs{})
@@ -5882,12 +7882,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionKeyPtrInput)(nil)).Elem(), EncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndPointInput)(nil)).Elem(), EndPointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndPointPtrInput)(nil)).Elem(), EndPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnumOptionInput)(nil)).Elem(), EnumOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnumOptionArrayInput)(nil)).Elem(), EnumOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EventSubscriptionDestinationInput)(nil)).Elem(), EventSubscriptionDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EventSubscriptionDestinationPtrInput)(nil)).Elem(), EventSubscriptionDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EventingConfigInput)(nil)).Elem(), EventingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EventingConfigPtrInput)(nil)).Elem(), EventingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldComparisonInput)(nil)).Elem(), FieldComparisonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldComparisonArrayInput)(nil)).Elem(), FieldComparisonArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HeaderInput)(nil)).Elem(), HeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HeaderArrayInput)(nil)).Elem(), HeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JMSInput)(nil)).Elem(), JMSArgs{})
@@ -5896,6 +7900,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JwtClaimsPtrInput)(nil)).Elem(), JwtClaimsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LockConfigInput)(nil)).Elem(), LockConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LockConfigPtrInput)(nil)).Elem(), LockConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogicalExpressionInput)(nil)).Elem(), LogicalExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogicalExpressionPtrInput)(nil)).Elem(), LogicalExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogicalExpressionArrayInput)(nil)).Elem(), LogicalExpressionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigInput)(nil)).Elem(), NodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigPtrInput)(nil)).Elem(), NodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Oauth2AuthCodeFlowInput)(nil)).Elem(), Oauth2AuthCodeFlowArgs{})
@@ -5904,6 +7911,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*Oauth2ClientCredentialsPtrInput)(nil)).Elem(), Oauth2ClientCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Oauth2JwtBearerInput)(nil)).Elem(), Oauth2JwtBearerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Oauth2JwtBearerPtrInput)(nil)).Elem(), Oauth2JwtBearerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceInput)(nil)).Elem(), ResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePtrInput)(nil)).Elem(), ResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoleGrantInput)(nil)).Elem(), RoleGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoleGrantPtrInput)(nil)).Elem(), RoleGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretInput)(nil)).Elem(), SecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretPtrInput)(nil)).Elem(), SecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SshPublicKeyInput)(nil)).Elem(), SshPublicKeyArgs{})
@@ -5923,6 +7934,9 @@ func init() {
 	pulumi.RegisterOutputType(AuthConfigOutput{})
 	pulumi.RegisterOutputType(AuthConfigPtrOutput{})
 	pulumi.RegisterOutputType(AuthConfigResponseOutput{})
+	pulumi.RegisterOutputType(AuthorizationCodeLinkOutput{})
+	pulumi.RegisterOutputType(AuthorizationCodeLinkPtrOutput{})
+	pulumi.RegisterOutputType(AuthorizationCodeLinkResponseOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
@@ -5931,11 +7945,18 @@ func init() {
 	pulumi.RegisterOutputType(ConfigVariableArrayOutput{})
 	pulumi.RegisterOutputType(ConfigVariableResponseOutput{})
 	pulumi.RegisterOutputType(ConfigVariableResponseArrayOutput{})
+	pulumi.RegisterOutputType(ConfigVariableTemplateOutput{})
+	pulumi.RegisterOutputType(ConfigVariableTemplateArrayOutput{})
+	pulumi.RegisterOutputType(ConfigVariableTemplateResponseOutput{})
+	pulumi.RegisterOutputType(ConfigVariableTemplateResponseArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionStatusResponseOutput{})
 	pulumi.RegisterOutputType(ConnectorVersionInfraConfigResponseOutput{})
 	pulumi.RegisterOutputType(ConnectorsLogConfigOutput{})
 	pulumi.RegisterOutputType(ConnectorsLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConnectorsLogConfigResponseOutput{})
+	pulumi.RegisterOutputType(DeadLetterConfigOutput{})
+	pulumi.RegisterOutputType(DeadLetterConfigPtrOutput{})
+	pulumi.RegisterOutputType(DeadLetterConfigResponseOutput{})
 	pulumi.RegisterOutputType(DestinationOutput{})
 	pulumi.RegisterOutputType(DestinationArrayOutput{})
 	pulumi.RegisterOutputType(DestinationConfigOutput{})
@@ -5951,6 +7972,10 @@ func init() {
 	pulumi.RegisterOutputType(EndPointOutput{})
 	pulumi.RegisterOutputType(EndPointPtrOutput{})
 	pulumi.RegisterOutputType(EndPointResponseOutput{})
+	pulumi.RegisterOutputType(EnumOptionOutput{})
+	pulumi.RegisterOutputType(EnumOptionArrayOutput{})
+	pulumi.RegisterOutputType(EnumOptionResponseOutput{})
+	pulumi.RegisterOutputType(EnumOptionResponseArrayOutput{})
 	pulumi.RegisterOutputType(EventSubscriptionDestinationOutput{})
 	pulumi.RegisterOutputType(EventSubscriptionDestinationPtrOutput{})
 	pulumi.RegisterOutputType(EventSubscriptionDestinationResponseOutput{})
@@ -5963,6 +7988,10 @@ func init() {
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(FieldComparisonOutput{})
+	pulumi.RegisterOutputType(FieldComparisonArrayOutput{})
+	pulumi.RegisterOutputType(FieldComparisonResponseOutput{})
+	pulumi.RegisterOutputType(FieldComparisonResponseArrayOutput{})
 	pulumi.RegisterOutputType(HPAConfigResponseOutput{})
 	pulumi.RegisterOutputType(HeaderOutput{})
 	pulumi.RegisterOutputType(HeaderArrayOutput{})
@@ -5977,6 +8006,11 @@ func init() {
 	pulumi.RegisterOutputType(LockConfigOutput{})
 	pulumi.RegisterOutputType(LockConfigPtrOutput{})
 	pulumi.RegisterOutputType(LockConfigResponseOutput{})
+	pulumi.RegisterOutputType(LogicalExpressionOutput{})
+	pulumi.RegisterOutputType(LogicalExpressionPtrOutput{})
+	pulumi.RegisterOutputType(LogicalExpressionArrayOutput{})
+	pulumi.RegisterOutputType(LogicalExpressionResponseOutput{})
+	pulumi.RegisterOutputType(LogicalExpressionResponseArrayOutput{})
 	pulumi.RegisterOutputType(NodeConfigOutput{})
 	pulumi.RegisterOutputType(NodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeConfigResponseOutput{})
@@ -5989,8 +8023,14 @@ func init() {
 	pulumi.RegisterOutputType(Oauth2JwtBearerOutput{})
 	pulumi.RegisterOutputType(Oauth2JwtBearerPtrOutput{})
 	pulumi.RegisterOutputType(Oauth2JwtBearerResponseOutput{})
+	pulumi.RegisterOutputType(ResourceOutput{})
+	pulumi.RegisterOutputType(ResourcePtrOutput{})
 	pulumi.RegisterOutputType(ResourceLimitsResponseOutput{})
 	pulumi.RegisterOutputType(ResourceRequestsResponseOutput{})
+	pulumi.RegisterOutputType(ResourceResponseOutput{})
+	pulumi.RegisterOutputType(RoleGrantOutput{})
+	pulumi.RegisterOutputType(RoleGrantPtrOutput{})
+	pulumi.RegisterOutputType(RoleGrantResponseOutput{})
 	pulumi.RegisterOutputType(SecretOutput{})
 	pulumi.RegisterOutputType(SecretPtrOutput{})
 	pulumi.RegisterOutputType(SecretResponseOutput{})
@@ -6003,4 +8043,5 @@ func init() {
 	pulumi.RegisterOutputType(UserPasswordOutput{})
 	pulumi.RegisterOutputType(UserPasswordPtrOutput{})
 	pulumi.RegisterOutputType(UserPasswordResponseOutput{})
+	pulumi.RegisterOutputType(WebhookDataResponseOutput{})
 }

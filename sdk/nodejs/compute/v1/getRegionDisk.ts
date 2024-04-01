@@ -52,6 +52,10 @@ export interface GetRegionDiskResult {
      */
     readonly diskEncryptionKey: outputs.compute.v1.CustomerEncryptionKeyResponse;
     /**
+     * Whether this disk is using confidential compute mode.
+     */
+    readonly enableConfidentialCompute: boolean;
+    /**
      * A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
      */
     readonly guestOsFeatures: outputs.compute.v1.GuestOsFeatureResponse[];
@@ -108,7 +112,7 @@ export interface GetRegionDiskResult {
      */
     readonly provisionedIops: string;
     /**
-     * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+     * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
      */
     readonly provisionedThroughput: string;
     /**
@@ -127,6 +131,10 @@ export interface GetRegionDiskResult {
      * Status information for the disk resource.
      */
     readonly resourceStatus: outputs.compute.v1.DiskResourceStatusResponse;
+    /**
+     * Reserved for future use.
+     */
+    readonly satisfiesPzi: boolean;
     /**
      * Reserved for future use.
      */
@@ -168,6 +176,14 @@ export interface GetRegionDiskResult {
      */
     readonly sourceImageId: string;
     /**
+     * The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+     */
+    readonly sourceInstantSnapshot: string;
+    /**
+     * The unique ID of the instant snapshot used to create this disk. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact version of the instant snapshot that was used.
+     */
+    readonly sourceInstantSnapshotId: string;
+    /**
      * The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot 
      */
     readonly sourceSnapshot: string;
@@ -187,6 +203,10 @@ export interface GetRegionDiskResult {
      * The status of disk creation. - CREATING: Disk is provisioning. - RESTORING: Source data is being copied into the disk. - FAILED: Disk creation failed. - READY: Disk is ready for use. - DELETING: Disk is deleting. 
      */
     readonly status: string;
+    /**
+     * The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
+     */
+    readonly storagePool: string;
     /**
      * URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
      */

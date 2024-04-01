@@ -53,7 +53,7 @@ export class Annotation extends pulumi.CustomResource {
     public readonly imageAnnotation!: pulumi.Output<outputs.healthcare.v1beta1.ImageAnnotationResponse>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
+     * Identifier. Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -77,6 +77,9 @@ export class Annotation extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.annotationSource === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'annotationSource'");
+            }
             if ((!args || args.annotationStoreId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'annotationStoreId'");
             }
@@ -119,7 +122,7 @@ export interface AnnotationArgs {
     /**
      * Details of the source.
      */
-    annotationSource?: pulumi.Input<inputs.healthcare.v1beta1.AnnotationSourceArgs>;
+    annotationSource: pulumi.Input<inputs.healthcare.v1beta1.AnnotationSourceArgs>;
     annotationStoreId: pulumi.Input<string>;
     /**
      * Additional information for this annotation record, such as annotator and verifier information or study campaign.
@@ -132,7 +135,7 @@ export interface AnnotationArgs {
     imageAnnotation?: pulumi.Input<inputs.healthcare.v1beta1.ImageAnnotationArgs>;
     location?: pulumi.Input<string>;
     /**
-     * Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
+     * Identifier. Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

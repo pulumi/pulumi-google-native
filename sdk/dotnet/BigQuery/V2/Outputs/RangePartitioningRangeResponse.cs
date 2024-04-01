@@ -11,21 +11,21 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
     /// <summary>
-    /// [TrustedTester] [Required] Defines the ranges for range partitioning.
+    /// [Experimental] Defines the ranges for range partitioning.
     /// </summary>
     [OutputType]
     public sealed class RangePartitioningRangeResponse
     {
         /// <summary>
-        /// [TrustedTester] [Required] The end of range partitioning, exclusive.
+        /// [Experimental] The end of range partitioning, exclusive.
         /// </summary>
         public readonly string End;
         /// <summary>
-        /// [TrustedTester] [Required] The width of each interval.
+        /// [Experimental] The width of each interval.
         /// </summary>
         public readonly string Interval;
         /// <summary>
-        /// [TrustedTester] [Required] The start of range partitioning, inclusive.
+        /// [Experimental] The start of range partitioning, inclusive.
         /// </summary>
         public readonly string Start;
 

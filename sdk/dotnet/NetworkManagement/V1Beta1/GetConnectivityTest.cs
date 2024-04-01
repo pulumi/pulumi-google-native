@@ -58,6 +58,10 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1
     public sealed class GetConnectivityTestResult
     {
         /// <summary>
+        /// Whether the test should skip firewall checking. If not provided, we assume false.
+        /// </summary>
+        public readonly bool BypassFirewallChecks;
+        /// <summary>
         /// The time the test was created.
         /// </summary>
         public readonly string CreateTime;
@@ -108,6 +112,8 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1
 
         [OutputConstructor]
         private GetConnectivityTestResult(
+            bool bypassFirewallChecks,
+
             string createTime,
 
             string description,
@@ -132,6 +138,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1
 
             string updateTime)
         {
+            BypassFirewallChecks = bypassFirewallChecks;
             CreateTime = createTime;
             Description = description;
             Destination = destination;

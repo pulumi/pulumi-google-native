@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
     public sealed class GoogleCloudRunV2ServiceScalingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (ALPHA)
+        /// total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (BETA)
         /// </summary>
         [Input("minInstanceCount")]
         public Input<int>? MinInstanceCount { get; set; }

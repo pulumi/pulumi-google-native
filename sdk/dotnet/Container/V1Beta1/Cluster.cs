@@ -388,6 +388,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Output<Outputs.ResourceUsageExportConfigResponse> ResourceUsageExportConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Secret CSI driver configuration.
+        /// </summary>
+        [Output("secretManagerConfig")]
+        public Output<Outputs.SecretManagerConfigResponse> SecretManagerConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Enable/Disable Security Posture API features for the cluster.
         /// </summary>
         [Output("securityPostureConfig")]
@@ -896,6 +902,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Input("resourceUsageExportConfig")]
         public Input<Inputs.ResourceUsageExportConfigArgs>? ResourceUsageExportConfig { get; set; }
+
+        /// <summary>
+        /// Secret CSI driver configuration.
+        /// </summary>
+        [Input("secretManagerConfig")]
+        public Input<Inputs.SecretManagerConfigArgs>? SecretManagerConfig { get; set; }
 
         /// <summary>
         /// Enable/Disable Security Posture API features for the cluster.

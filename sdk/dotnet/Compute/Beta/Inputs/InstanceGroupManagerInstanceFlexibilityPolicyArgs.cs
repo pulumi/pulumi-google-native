@@ -24,6 +24,18 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
             set => _instanceSelectionLists = value;
         }
 
+        [Input("instanceSelections")]
+        private InputMap<string>? _instanceSelections;
+
+        /// <summary>
+        /// Named instance selections configuring properties that the group will use when creating new VMs.
+        /// </summary>
+        public InputMap<string> InstanceSelections
+        {
+            get => _instanceSelections ?? (_instanceSelections = new InputMap<string>());
+            set => _instanceSelections = value;
+        }
+
         public InstanceGroupManagerInstanceFlexibilityPolicyArgs()
         {
         }

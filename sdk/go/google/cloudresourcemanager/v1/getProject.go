@@ -41,6 +41,8 @@ type LookupProjectResult struct {
 	ProjectId string `pulumi:"projectId"`
 	// The number uniquely identifying the project. Example: `415104041262` Read-only.
 	ProjectNumber string `pulumi:"projectNumber"`
+	// Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts ...pulumi.InvokeOption) LookupProjectResultOutput {
@@ -111,6 +113,11 @@ func (o LookupProjectResultOutput) ProjectId() pulumi.StringOutput {
 // The number uniquely identifying the project. Example: `415104041262` Read-only.
 func (o LookupProjectResultOutput) ProjectNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.ProjectNumber }).(pulumi.StringOutput)
+}
+
+// Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+func (o LookupProjectResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupProjectResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

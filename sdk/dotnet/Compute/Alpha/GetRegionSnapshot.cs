@@ -144,6 +144,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Region;
         /// <summary>
+        /// [Output only] ResourceStatus of the Snapshot resource
+        /// </summary>
+        public readonly Outputs.SnapshotResourceStatusResponse ResourceStatus;
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        public readonly bool SatisfiesPzi;
+        /// <summary>
         /// Reserved for future use.
         /// </summary>
         public readonly bool SatisfiesPzs;
@@ -262,6 +270,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string region,
 
+            Outputs.SnapshotResourceStatusResponse resourceStatus,
+
+            bool satisfiesPzi,
+
             bool satisfiesPzs,
 
             string selfLink,
@@ -320,6 +332,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             MaxRetentionDays = maxRetentionDays;
             Name = name;
             Region = region;
+            ResourceStatus = resourceStatus;
+            SatisfiesPzi = satisfiesPzi;
             SatisfiesPzs = satisfiesPzs;
             SelfLink = selfLink;
             SelfLinkWithId = selfLinkWithId;

@@ -64,7 +64,7 @@ export interface GetJobResult {
      */
     readonly taskGroups: outputs.batch.v1.TaskGroupResponse[];
     /**
-     * A system generated unique ID (in UUID4 format) for the Job.
+     * A system generated unique ID for the Job.
      */
     readonly uid: string;
     /**

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.WorkflowExecutions.V1
 {
     /// <summary>
-    /// Creates a new execution using the latest revision of the given workflow.
+    /// Creates a new execution using the latest revision of the given workflow. For more information, see Execute a workflow.
     /// Auto-naming is currently not supported for this resource.
     /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
     /// on Google Cloud even though it will be deleted from Pulumi state.
@@ -29,6 +29,18 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         /// </summary>
         [Output("callLogLevel")]
         public Output<string> CallLogLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// Marks the creation of the execution.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. If set to true, the execution will not be backlogged when the concurrency quota is exhausted. The backlog execution starts when the concurrency quota becomes available.
+        /// </summary>
+        [Output("disableConcurrencyQuotaOverflowBuffering")]
+        public Output<bool> DisableConcurrencyQuotaOverflowBuffering { get; private set; } = null!;
 
         /// <summary>
         /// Measures the duration of the execution.
@@ -167,6 +179,12 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         /// </summary>
         [Input("callLogLevel")]
         public Input<Pulumi.GoogleNative.WorkflowExecutions.V1.ExecutionCallLogLevel>? CallLogLevel { get; set; }
+
+        /// <summary>
+        /// Optional. If set to true, the execution will not be backlogged when the concurrency quota is exhausted. The backlog execution starts when the concurrency quota becomes available.
+        /// </summary>
+        [Input("disableConcurrencyQuotaOverflowBuffering")]
+        public Input<bool>? DisableConcurrencyQuotaOverflowBuffering { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

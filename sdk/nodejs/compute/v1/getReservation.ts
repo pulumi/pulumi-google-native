@@ -28,6 +28,10 @@ export interface GetReservationArgs {
 
 export interface GetReservationResult {
     /**
+     * Reservation for aggregated resources, providing shape flexibility.
+     */
+    readonly aggregateReservation: outputs.compute.v1.AllocationAggregateReservationResponse;
+    /**
      * Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
      */
     readonly commitment: string;

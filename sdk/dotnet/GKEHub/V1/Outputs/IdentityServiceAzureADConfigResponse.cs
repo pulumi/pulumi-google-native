@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Outputs
         /// </summary>
         public readonly string EncryptedClientSecret;
         /// <summary>
+        /// Optional. Format of the AzureAD groups that the client wants for auth.
+        /// </summary>
+        public readonly string GroupFormat;
+        /// <summary>
         /// The redirect URL that kubectl uses for authorization.
         /// </summary>
         public readonly string KubectlRedirectUri;
@@ -36,6 +40,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Outputs
         /// Kind of Azure AD account to be authenticated. Supported values are or for accounts belonging to a specific tenant.
         /// </summary>
         public readonly string Tenant;
+        /// <summary>
+        /// Optional. Claim in the AzureAD ID Token that holds the user details.
+        /// </summary>
+        public readonly string UserClaim;
 
         [OutputConstructor]
         private IdentityServiceAzureADConfigResponse(
@@ -45,15 +53,21 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Outputs
 
             string encryptedClientSecret,
 
+            string groupFormat,
+
             string kubectlRedirectUri,
 
-            string tenant)
+            string tenant,
+
+            string userClaim)
         {
             ClientId = clientId;
             ClientSecret = clientSecret;
             EncryptedClientSecret = encryptedClientSecret;
+            GroupFormat = groupFormat;
             KubectlRedirectUri = kubectlRedirectUri;
             Tenant = tenant;
+            UserClaim = userClaim;
         }
     }
 }

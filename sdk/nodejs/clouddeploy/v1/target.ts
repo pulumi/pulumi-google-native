@@ -50,6 +50,10 @@ export class Target extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Optional. Information specifying a Custom Target.
+     */
+    public readonly customTarget!: pulumi.Output<outputs.clouddeploy.v1.CustomTargetResponse>;
+    /**
      * Optional. The deploy parameters to use for this target.
      */
     public readonly deployParameters!: pulumi.Output<{[key: string]: string}>;
@@ -84,7 +88,7 @@ export class Target extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
     /**
@@ -124,6 +128,7 @@ export class Target extends pulumi.CustomResource {
             }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["anthosCluster"] = args ? args.anthosCluster : undefined;
+            resourceInputs["customTarget"] = args ? args.customTarget : undefined;
             resourceInputs["deployParameters"] = args ? args.deployParameters : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
@@ -145,6 +150,7 @@ export class Target extends pulumi.CustomResource {
             resourceInputs["annotations"] = undefined /*out*/;
             resourceInputs["anthosCluster"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["customTarget"] = undefined /*out*/;
             resourceInputs["deployParameters"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -182,6 +188,10 @@ export interface TargetArgs {
      */
     anthosCluster?: pulumi.Input<inputs.clouddeploy.v1.AnthosClusterArgs>;
     /**
+     * Optional. Information specifying a Custom Target.
+     */
+    customTarget?: pulumi.Input<inputs.clouddeploy.v1.CustomTargetArgs>;
+    /**
      * Optional. The deploy parameters to use for this target.
      */
     deployParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -216,7 +226,7 @@ export interface TargetArgs {
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      */
     requestId?: pulumi.Input<string>;
     /**

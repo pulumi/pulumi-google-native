@@ -31,6 +31,7 @@ class ConnectionProfileArgs:
                  provider: Optional[pulumi.Input['ConnectionProfileProvider']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  skip_validation: Optional[pulumi.Input[bool]] = None,
+                 sqlserver: Optional[pulumi.Input['SqlServerConnectionProfileArgs']] = None,
                  state: Optional[pulumi.Input['ConnectionProfileState']] = None):
         """
         The set of arguments for constructing a ConnectionProfile resource.
@@ -46,6 +47,7 @@ class ConnectionProfileArgs:
         :param pulumi.Input['ConnectionProfileProvider'] provider: The database provider.
         :param pulumi.Input[str] request_id: Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         :param pulumi.Input[bool] skip_validation: Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
+        :param pulumi.Input['SqlServerConnectionProfileArgs'] sqlserver: Connection profile for a SQL Server data source.
         :param pulumi.Input['ConnectionProfileState'] state: The current connection profile state (e.g. DRAFT, READY, or FAILED).
         """
         pulumi.set(__self__, "connection_profile_id", connection_profile_id)
@@ -75,6 +77,8 @@ class ConnectionProfileArgs:
             pulumi.set(__self__, "request_id", request_id)
         if skip_validation is not None:
             pulumi.set(__self__, "skip_validation", skip_validation)
+        if sqlserver is not None:
+            pulumi.set(__self__, "sqlserver", sqlserver)
         if state is not None:
             pulumi.set(__self__, "state", state)
 
@@ -242,6 +246,18 @@ class ConnectionProfileArgs:
 
     @property
     @pulumi.getter
+    def sqlserver(self) -> Optional[pulumi.Input['SqlServerConnectionProfileArgs']]:
+        """
+        Connection profile for a SQL Server data source.
+        """
+        return pulumi.get(self, "sqlserver")
+
+    @sqlserver.setter
+    def sqlserver(self, value: Optional[pulumi.Input['SqlServerConnectionProfileArgs']]):
+        pulumi.set(self, "sqlserver", value)
+
+    @property
+    @pulumi.getter
     def state(self) -> Optional[pulumi.Input['ConnectionProfileState']]:
         """
         The current connection profile state (e.g. DRAFT, READY, or FAILED).
@@ -272,6 +288,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  provider: Optional[pulumi.Input['ConnectionProfileProvider']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  skip_validation: Optional[pulumi.Input[bool]] = None,
+                 sqlserver: Optional[pulumi.Input[pulumi.InputType['SqlServerConnectionProfileArgs']]] = None,
                  state: Optional[pulumi.Input['ConnectionProfileState']] = None,
                  __props__=None):
         """
@@ -291,6 +308,7 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input['ConnectionProfileProvider'] provider: The database provider.
         :param pulumi.Input[str] request_id: Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         :param pulumi.Input[bool] skip_validation: Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
+        :param pulumi.Input[pulumi.InputType['SqlServerConnectionProfileArgs']] sqlserver: Connection profile for a SQL Server data source.
         :param pulumi.Input['ConnectionProfileState'] state: The current connection profile state (e.g. DRAFT, READY, or FAILED).
         """
         ...
@@ -331,6 +349,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  provider: Optional[pulumi.Input['ConnectionProfileProvider']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  skip_validation: Optional[pulumi.Input[bool]] = None,
+                 sqlserver: Optional[pulumi.Input[pulumi.InputType['SqlServerConnectionProfileArgs']]] = None,
                  state: Optional[pulumi.Input['ConnectionProfileState']] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -357,6 +376,7 @@ class ConnectionProfile(pulumi.CustomResource):
             __props__.__dict__["provider"] = provider
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["skip_validation"] = skip_validation
+            __props__.__dict__["sqlserver"] = sqlserver
             __props__.__dict__["state"] = state
             __props__.__dict__["create_time"] = None
             __props__.__dict__["error"] = None
@@ -401,6 +421,7 @@ class ConnectionProfile(pulumi.CustomResource):
         __props__.__dict__["provider"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["skip_validation"] = None
+        __props__.__dict__["sqlserver"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["update_time"] = None
         return ConnectionProfile(resource_name, opts=opts, __props__=__props__)
@@ -526,6 +547,14 @@ class ConnectionProfile(pulumi.CustomResource):
         Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
         """
         return pulumi.get(self, "skip_validation")
+
+    @property
+    @pulumi.getter
+    def sqlserver(self) -> pulumi.Output['outputs.SqlServerConnectionProfileResponse']:
+        """
+        Connection profile for a SQL Server data source.
+        """
+        return pulumi.get(self, "sqlserver")
 
     @property
     @pulumi.getter

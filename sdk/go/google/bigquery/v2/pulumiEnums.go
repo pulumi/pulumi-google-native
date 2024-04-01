@@ -548,6 +548,354 @@ func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
+// Required. The file format the table data is stored in.
+type BigLakeConfigurationFileFormat string
+
+const (
+	// Default Value.
+	BigLakeConfigurationFileFormatFileFormatUnspecified = BigLakeConfigurationFileFormat("FILE_FORMAT_UNSPECIFIED")
+	// Apache Parquet format.
+	BigLakeConfigurationFileFormatParquet = BigLakeConfigurationFileFormat("PARQUET")
+)
+
+func (BigLakeConfigurationFileFormat) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigLakeConfigurationFileFormat)(nil)).Elem()
+}
+
+func (e BigLakeConfigurationFileFormat) ToBigLakeConfigurationFileFormatOutput() BigLakeConfigurationFileFormatOutput {
+	return pulumi.ToOutput(e).(BigLakeConfigurationFileFormatOutput)
+}
+
+func (e BigLakeConfigurationFileFormat) ToBigLakeConfigurationFileFormatOutputWithContext(ctx context.Context) BigLakeConfigurationFileFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BigLakeConfigurationFileFormatOutput)
+}
+
+func (e BigLakeConfigurationFileFormat) ToBigLakeConfigurationFileFormatPtrOutput() BigLakeConfigurationFileFormatPtrOutput {
+	return e.ToBigLakeConfigurationFileFormatPtrOutputWithContext(context.Background())
+}
+
+func (e BigLakeConfigurationFileFormat) ToBigLakeConfigurationFileFormatPtrOutputWithContext(ctx context.Context) BigLakeConfigurationFileFormatPtrOutput {
+	return BigLakeConfigurationFileFormat(e).ToBigLakeConfigurationFileFormatOutputWithContext(ctx).ToBigLakeConfigurationFileFormatPtrOutputWithContext(ctx)
+}
+
+func (e BigLakeConfigurationFileFormat) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BigLakeConfigurationFileFormat) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BigLakeConfigurationFileFormat) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BigLakeConfigurationFileFormat) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BigLakeConfigurationFileFormatOutput struct{ *pulumi.OutputState }
+
+func (BigLakeConfigurationFileFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigLakeConfigurationFileFormat)(nil)).Elem()
+}
+
+func (o BigLakeConfigurationFileFormatOutput) ToBigLakeConfigurationFileFormatOutput() BigLakeConfigurationFileFormatOutput {
+	return o
+}
+
+func (o BigLakeConfigurationFileFormatOutput) ToBigLakeConfigurationFileFormatOutputWithContext(ctx context.Context) BigLakeConfigurationFileFormatOutput {
+	return o
+}
+
+func (o BigLakeConfigurationFileFormatOutput) ToBigLakeConfigurationFileFormatPtrOutput() BigLakeConfigurationFileFormatPtrOutput {
+	return o.ToBigLakeConfigurationFileFormatPtrOutputWithContext(context.Background())
+}
+
+func (o BigLakeConfigurationFileFormatOutput) ToBigLakeConfigurationFileFormatPtrOutputWithContext(ctx context.Context) BigLakeConfigurationFileFormatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigLakeConfigurationFileFormat) *BigLakeConfigurationFileFormat {
+		return &v
+	}).(BigLakeConfigurationFileFormatPtrOutput)
+}
+
+func (o BigLakeConfigurationFileFormatOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BigLakeConfigurationFileFormatOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BigLakeConfigurationFileFormat) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BigLakeConfigurationFileFormatOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BigLakeConfigurationFileFormatOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BigLakeConfigurationFileFormat) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BigLakeConfigurationFileFormatPtrOutput struct{ *pulumi.OutputState }
+
+func (BigLakeConfigurationFileFormatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigLakeConfigurationFileFormat)(nil)).Elem()
+}
+
+func (o BigLakeConfigurationFileFormatPtrOutput) ToBigLakeConfigurationFileFormatPtrOutput() BigLakeConfigurationFileFormatPtrOutput {
+	return o
+}
+
+func (o BigLakeConfigurationFileFormatPtrOutput) ToBigLakeConfigurationFileFormatPtrOutputWithContext(ctx context.Context) BigLakeConfigurationFileFormatPtrOutput {
+	return o
+}
+
+func (o BigLakeConfigurationFileFormatPtrOutput) Elem() BigLakeConfigurationFileFormatOutput {
+	return o.ApplyT(func(v *BigLakeConfigurationFileFormat) BigLakeConfigurationFileFormat {
+		if v != nil {
+			return *v
+		}
+		var ret BigLakeConfigurationFileFormat
+		return ret
+	}).(BigLakeConfigurationFileFormatOutput)
+}
+
+func (o BigLakeConfigurationFileFormatPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BigLakeConfigurationFileFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BigLakeConfigurationFileFormat) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BigLakeConfigurationFileFormatInput is an input type that accepts values of the BigLakeConfigurationFileFormat enum
+// A concrete instance of `BigLakeConfigurationFileFormatInput` can be one of the following:
+//
+//	BigLakeConfigurationFileFormatFileFormatUnspecified
+//	BigLakeConfigurationFileFormatParquet
+type BigLakeConfigurationFileFormatInput interface {
+	pulumi.Input
+
+	ToBigLakeConfigurationFileFormatOutput() BigLakeConfigurationFileFormatOutput
+	ToBigLakeConfigurationFileFormatOutputWithContext(context.Context) BigLakeConfigurationFileFormatOutput
+}
+
+var bigLakeConfigurationFileFormatPtrType = reflect.TypeOf((**BigLakeConfigurationFileFormat)(nil)).Elem()
+
+type BigLakeConfigurationFileFormatPtrInput interface {
+	pulumi.Input
+
+	ToBigLakeConfigurationFileFormatPtrOutput() BigLakeConfigurationFileFormatPtrOutput
+	ToBigLakeConfigurationFileFormatPtrOutputWithContext(context.Context) BigLakeConfigurationFileFormatPtrOutput
+}
+
+type bigLakeConfigurationFileFormatPtr string
+
+func BigLakeConfigurationFileFormatPtr(v string) BigLakeConfigurationFileFormatPtrInput {
+	return (*bigLakeConfigurationFileFormatPtr)(&v)
+}
+
+func (*bigLakeConfigurationFileFormatPtr) ElementType() reflect.Type {
+	return bigLakeConfigurationFileFormatPtrType
+}
+
+func (in *bigLakeConfigurationFileFormatPtr) ToBigLakeConfigurationFileFormatPtrOutput() BigLakeConfigurationFileFormatPtrOutput {
+	return pulumi.ToOutput(in).(BigLakeConfigurationFileFormatPtrOutput)
+}
+
+func (in *bigLakeConfigurationFileFormatPtr) ToBigLakeConfigurationFileFormatPtrOutputWithContext(ctx context.Context) BigLakeConfigurationFileFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BigLakeConfigurationFileFormatPtrOutput)
+}
+
+func (in *bigLakeConfigurationFileFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*BigLakeConfigurationFileFormat] {
+	return pulumix.Output[*BigLakeConfigurationFileFormat]{
+		OutputState: in.ToBigLakeConfigurationFileFormatPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Required. The table format the metadata only snapshots are stored in.
+type BigLakeConfigurationTableFormat string
+
+const (
+	// Default Value.
+	BigLakeConfigurationTableFormatTableFormatUnspecified = BigLakeConfigurationTableFormat("TABLE_FORMAT_UNSPECIFIED")
+	// Apache Iceberg format.
+	BigLakeConfigurationTableFormatIceberg = BigLakeConfigurationTableFormat("ICEBERG")
+)
+
+func (BigLakeConfigurationTableFormat) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigLakeConfigurationTableFormat)(nil)).Elem()
+}
+
+func (e BigLakeConfigurationTableFormat) ToBigLakeConfigurationTableFormatOutput() BigLakeConfigurationTableFormatOutput {
+	return pulumi.ToOutput(e).(BigLakeConfigurationTableFormatOutput)
+}
+
+func (e BigLakeConfigurationTableFormat) ToBigLakeConfigurationTableFormatOutputWithContext(ctx context.Context) BigLakeConfigurationTableFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BigLakeConfigurationTableFormatOutput)
+}
+
+func (e BigLakeConfigurationTableFormat) ToBigLakeConfigurationTableFormatPtrOutput() BigLakeConfigurationTableFormatPtrOutput {
+	return e.ToBigLakeConfigurationTableFormatPtrOutputWithContext(context.Background())
+}
+
+func (e BigLakeConfigurationTableFormat) ToBigLakeConfigurationTableFormatPtrOutputWithContext(ctx context.Context) BigLakeConfigurationTableFormatPtrOutput {
+	return BigLakeConfigurationTableFormat(e).ToBigLakeConfigurationTableFormatOutputWithContext(ctx).ToBigLakeConfigurationTableFormatPtrOutputWithContext(ctx)
+}
+
+func (e BigLakeConfigurationTableFormat) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BigLakeConfigurationTableFormat) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BigLakeConfigurationTableFormat) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BigLakeConfigurationTableFormat) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BigLakeConfigurationTableFormatOutput struct{ *pulumi.OutputState }
+
+func (BigLakeConfigurationTableFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigLakeConfigurationTableFormat)(nil)).Elem()
+}
+
+func (o BigLakeConfigurationTableFormatOutput) ToBigLakeConfigurationTableFormatOutput() BigLakeConfigurationTableFormatOutput {
+	return o
+}
+
+func (o BigLakeConfigurationTableFormatOutput) ToBigLakeConfigurationTableFormatOutputWithContext(ctx context.Context) BigLakeConfigurationTableFormatOutput {
+	return o
+}
+
+func (o BigLakeConfigurationTableFormatOutput) ToBigLakeConfigurationTableFormatPtrOutput() BigLakeConfigurationTableFormatPtrOutput {
+	return o.ToBigLakeConfigurationTableFormatPtrOutputWithContext(context.Background())
+}
+
+func (o BigLakeConfigurationTableFormatOutput) ToBigLakeConfigurationTableFormatPtrOutputWithContext(ctx context.Context) BigLakeConfigurationTableFormatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigLakeConfigurationTableFormat) *BigLakeConfigurationTableFormat {
+		return &v
+	}).(BigLakeConfigurationTableFormatPtrOutput)
+}
+
+func (o BigLakeConfigurationTableFormatOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BigLakeConfigurationTableFormatOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BigLakeConfigurationTableFormat) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BigLakeConfigurationTableFormatOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BigLakeConfigurationTableFormatOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BigLakeConfigurationTableFormat) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BigLakeConfigurationTableFormatPtrOutput struct{ *pulumi.OutputState }
+
+func (BigLakeConfigurationTableFormatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigLakeConfigurationTableFormat)(nil)).Elem()
+}
+
+func (o BigLakeConfigurationTableFormatPtrOutput) ToBigLakeConfigurationTableFormatPtrOutput() BigLakeConfigurationTableFormatPtrOutput {
+	return o
+}
+
+func (o BigLakeConfigurationTableFormatPtrOutput) ToBigLakeConfigurationTableFormatPtrOutputWithContext(ctx context.Context) BigLakeConfigurationTableFormatPtrOutput {
+	return o
+}
+
+func (o BigLakeConfigurationTableFormatPtrOutput) Elem() BigLakeConfigurationTableFormatOutput {
+	return o.ApplyT(func(v *BigLakeConfigurationTableFormat) BigLakeConfigurationTableFormat {
+		if v != nil {
+			return *v
+		}
+		var ret BigLakeConfigurationTableFormat
+		return ret
+	}).(BigLakeConfigurationTableFormatOutput)
+}
+
+func (o BigLakeConfigurationTableFormatPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BigLakeConfigurationTableFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BigLakeConfigurationTableFormat) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BigLakeConfigurationTableFormatInput is an input type that accepts values of the BigLakeConfigurationTableFormat enum
+// A concrete instance of `BigLakeConfigurationTableFormatInput` can be one of the following:
+//
+//	BigLakeConfigurationTableFormatTableFormatUnspecified
+//	BigLakeConfigurationTableFormatIceberg
+type BigLakeConfigurationTableFormatInput interface {
+	pulumi.Input
+
+	ToBigLakeConfigurationTableFormatOutput() BigLakeConfigurationTableFormatOutput
+	ToBigLakeConfigurationTableFormatOutputWithContext(context.Context) BigLakeConfigurationTableFormatOutput
+}
+
+var bigLakeConfigurationTableFormatPtrType = reflect.TypeOf((**BigLakeConfigurationTableFormat)(nil)).Elem()
+
+type BigLakeConfigurationTableFormatPtrInput interface {
+	pulumi.Input
+
+	ToBigLakeConfigurationTableFormatPtrOutput() BigLakeConfigurationTableFormatPtrOutput
+	ToBigLakeConfigurationTableFormatPtrOutputWithContext(context.Context) BigLakeConfigurationTableFormatPtrOutput
+}
+
+type bigLakeConfigurationTableFormatPtr string
+
+func BigLakeConfigurationTableFormatPtr(v string) BigLakeConfigurationTableFormatPtrInput {
+	return (*bigLakeConfigurationTableFormatPtr)(&v)
+}
+
+func (*bigLakeConfigurationTableFormatPtr) ElementType() reflect.Type {
+	return bigLakeConfigurationTableFormatPtrType
+}
+
+func (in *bigLakeConfigurationTableFormatPtr) ToBigLakeConfigurationTableFormatPtrOutput() BigLakeConfigurationTableFormatPtrOutput {
+	return pulumi.ToOutput(in).(BigLakeConfigurationTableFormatPtrOutput)
+}
+
+func (in *bigLakeConfigurationTableFormatPtr) ToBigLakeConfigurationTableFormatPtrOutputWithContext(ctx context.Context) BigLakeConfigurationTableFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BigLakeConfigurationTableFormatPtrOutput)
+}
+
+func (in *bigLakeConfigurationTableFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*BigLakeConfigurationTableFormat] {
+	return pulumix.Output[*BigLakeConfigurationTableFormat]{
+		OutputState: in.ToBigLakeConfigurationTableFormatPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DatasetAccessEntryTargetTypesItem string
 
 const (
@@ -767,6 +1115,2041 @@ func (o DatasetAccessEntryTargetTypesItemArrayOutput) Index(i pulumi.IntInput) D
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetAccessEntryTargetTypesItem {
 		return vs[0].([]DatasetAccessEntryTargetTypesItem)[vs[1].(int)]
 	}).(DatasetAccessEntryTargetTypesItemOutput)
+}
+
+// Optional. Defines the default rounding mode specification of new tables created within this dataset. During table creation, if this field is specified, the table within this dataset will inherit the default rounding mode of the dataset. Setting the default rounding mode on a table overrides this option. Existing tables in the dataset are unaffected. If columns are defined during that table creation, they will immediately inherit the table's default rounding mode, unless otherwise specified.
+type DatasetDefaultRoundingMode string
+
+const (
+	// Unspecified will default to using ROUND_HALF_AWAY_FROM_ZERO.
+	DatasetDefaultRoundingModeRoundingModeUnspecified = DatasetDefaultRoundingMode("ROUNDING_MODE_UNSPECIFIED")
+	// ROUND_HALF_AWAY_FROM_ZERO rounds half values away from zero when applying precision and scale upon writing of NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 => 1 1.5, 1.6, 1.7, 1.8, 1.9 => 2
+	DatasetDefaultRoundingModeRoundHalfAwayFromZero = DatasetDefaultRoundingMode("ROUND_HALF_AWAY_FROM_ZERO")
+	// ROUND_HALF_EVEN rounds half values to the nearest even value when applying precision and scale upon writing of NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 => 1 1.5 => 2 1.6, 1.7, 1.8, 1.9 => 2 2.5 => 2
+	DatasetDefaultRoundingModeRoundHalfEven = DatasetDefaultRoundingMode("ROUND_HALF_EVEN")
+)
+
+func (DatasetDefaultRoundingMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetDefaultRoundingMode)(nil)).Elem()
+}
+
+func (e DatasetDefaultRoundingMode) ToDatasetDefaultRoundingModeOutput() DatasetDefaultRoundingModeOutput {
+	return pulumi.ToOutput(e).(DatasetDefaultRoundingModeOutput)
+}
+
+func (e DatasetDefaultRoundingMode) ToDatasetDefaultRoundingModeOutputWithContext(ctx context.Context) DatasetDefaultRoundingModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DatasetDefaultRoundingModeOutput)
+}
+
+func (e DatasetDefaultRoundingMode) ToDatasetDefaultRoundingModePtrOutput() DatasetDefaultRoundingModePtrOutput {
+	return e.ToDatasetDefaultRoundingModePtrOutputWithContext(context.Background())
+}
+
+func (e DatasetDefaultRoundingMode) ToDatasetDefaultRoundingModePtrOutputWithContext(ctx context.Context) DatasetDefaultRoundingModePtrOutput {
+	return DatasetDefaultRoundingMode(e).ToDatasetDefaultRoundingModeOutputWithContext(ctx).ToDatasetDefaultRoundingModePtrOutputWithContext(ctx)
+}
+
+func (e DatasetDefaultRoundingMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DatasetDefaultRoundingMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DatasetDefaultRoundingMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DatasetDefaultRoundingMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DatasetDefaultRoundingModeOutput struct{ *pulumi.OutputState }
+
+func (DatasetDefaultRoundingModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetDefaultRoundingMode)(nil)).Elem()
+}
+
+func (o DatasetDefaultRoundingModeOutput) ToDatasetDefaultRoundingModeOutput() DatasetDefaultRoundingModeOutput {
+	return o
+}
+
+func (o DatasetDefaultRoundingModeOutput) ToDatasetDefaultRoundingModeOutputWithContext(ctx context.Context) DatasetDefaultRoundingModeOutput {
+	return o
+}
+
+func (o DatasetDefaultRoundingModeOutput) ToDatasetDefaultRoundingModePtrOutput() DatasetDefaultRoundingModePtrOutput {
+	return o.ToDatasetDefaultRoundingModePtrOutputWithContext(context.Background())
+}
+
+func (o DatasetDefaultRoundingModeOutput) ToDatasetDefaultRoundingModePtrOutputWithContext(ctx context.Context) DatasetDefaultRoundingModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetDefaultRoundingMode) *DatasetDefaultRoundingMode {
+		return &v
+	}).(DatasetDefaultRoundingModePtrOutput)
+}
+
+func (o DatasetDefaultRoundingModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DatasetDefaultRoundingModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatasetDefaultRoundingMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DatasetDefaultRoundingModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DatasetDefaultRoundingModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatasetDefaultRoundingMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatasetDefaultRoundingModePtrOutput struct{ *pulumi.OutputState }
+
+func (DatasetDefaultRoundingModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetDefaultRoundingMode)(nil)).Elem()
+}
+
+func (o DatasetDefaultRoundingModePtrOutput) ToDatasetDefaultRoundingModePtrOutput() DatasetDefaultRoundingModePtrOutput {
+	return o
+}
+
+func (o DatasetDefaultRoundingModePtrOutput) ToDatasetDefaultRoundingModePtrOutputWithContext(ctx context.Context) DatasetDefaultRoundingModePtrOutput {
+	return o
+}
+
+func (o DatasetDefaultRoundingModePtrOutput) Elem() DatasetDefaultRoundingModeOutput {
+	return o.ApplyT(func(v *DatasetDefaultRoundingMode) DatasetDefaultRoundingMode {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetDefaultRoundingMode
+		return ret
+	}).(DatasetDefaultRoundingModeOutput)
+}
+
+func (o DatasetDefaultRoundingModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DatasetDefaultRoundingModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DatasetDefaultRoundingMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DatasetDefaultRoundingModeInput is an input type that accepts values of the DatasetDefaultRoundingMode enum
+// A concrete instance of `DatasetDefaultRoundingModeInput` can be one of the following:
+//
+//	DatasetDefaultRoundingModeRoundingModeUnspecified
+//	DatasetDefaultRoundingModeRoundHalfAwayFromZero
+//	DatasetDefaultRoundingModeRoundHalfEven
+type DatasetDefaultRoundingModeInput interface {
+	pulumi.Input
+
+	ToDatasetDefaultRoundingModeOutput() DatasetDefaultRoundingModeOutput
+	ToDatasetDefaultRoundingModeOutputWithContext(context.Context) DatasetDefaultRoundingModeOutput
+}
+
+var datasetDefaultRoundingModePtrType = reflect.TypeOf((**DatasetDefaultRoundingMode)(nil)).Elem()
+
+type DatasetDefaultRoundingModePtrInput interface {
+	pulumi.Input
+
+	ToDatasetDefaultRoundingModePtrOutput() DatasetDefaultRoundingModePtrOutput
+	ToDatasetDefaultRoundingModePtrOutputWithContext(context.Context) DatasetDefaultRoundingModePtrOutput
+}
+
+type datasetDefaultRoundingModePtr string
+
+func DatasetDefaultRoundingModePtr(v string) DatasetDefaultRoundingModePtrInput {
+	return (*datasetDefaultRoundingModePtr)(&v)
+}
+
+func (*datasetDefaultRoundingModePtr) ElementType() reflect.Type {
+	return datasetDefaultRoundingModePtrType
+}
+
+func (in *datasetDefaultRoundingModePtr) ToDatasetDefaultRoundingModePtrOutput() DatasetDefaultRoundingModePtrOutput {
+	return pulumi.ToOutput(in).(DatasetDefaultRoundingModePtrOutput)
+}
+
+func (in *datasetDefaultRoundingModePtr) ToDatasetDefaultRoundingModePtrOutputWithContext(ctx context.Context) DatasetDefaultRoundingModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DatasetDefaultRoundingModePtrOutput)
+}
+
+func (in *datasetDefaultRoundingModePtr) ToOutput(ctx context.Context) pulumix.Output[*DatasetDefaultRoundingMode] {
+	return pulumix.Output[*DatasetDefaultRoundingMode]{
+		OutputState: in.ToDatasetDefaultRoundingModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. Updates storage_billing_model for the dataset.
+type DatasetStorageBillingModel string
+
+const (
+	// Value not set.
+	DatasetStorageBillingModelStorageBillingModelUnspecified = DatasetStorageBillingModel("STORAGE_BILLING_MODEL_UNSPECIFIED")
+	// Billing for logical bytes.
+	DatasetStorageBillingModelLogical = DatasetStorageBillingModel("LOGICAL")
+	// Billing for physical bytes.
+	DatasetStorageBillingModelPhysical = DatasetStorageBillingModel("PHYSICAL")
+)
+
+func (DatasetStorageBillingModel) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetStorageBillingModel)(nil)).Elem()
+}
+
+func (e DatasetStorageBillingModel) ToDatasetStorageBillingModelOutput() DatasetStorageBillingModelOutput {
+	return pulumi.ToOutput(e).(DatasetStorageBillingModelOutput)
+}
+
+func (e DatasetStorageBillingModel) ToDatasetStorageBillingModelOutputWithContext(ctx context.Context) DatasetStorageBillingModelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DatasetStorageBillingModelOutput)
+}
+
+func (e DatasetStorageBillingModel) ToDatasetStorageBillingModelPtrOutput() DatasetStorageBillingModelPtrOutput {
+	return e.ToDatasetStorageBillingModelPtrOutputWithContext(context.Background())
+}
+
+func (e DatasetStorageBillingModel) ToDatasetStorageBillingModelPtrOutputWithContext(ctx context.Context) DatasetStorageBillingModelPtrOutput {
+	return DatasetStorageBillingModel(e).ToDatasetStorageBillingModelOutputWithContext(ctx).ToDatasetStorageBillingModelPtrOutputWithContext(ctx)
+}
+
+func (e DatasetStorageBillingModel) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DatasetStorageBillingModel) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DatasetStorageBillingModel) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DatasetStorageBillingModel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DatasetStorageBillingModelOutput struct{ *pulumi.OutputState }
+
+func (DatasetStorageBillingModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetStorageBillingModel)(nil)).Elem()
+}
+
+func (o DatasetStorageBillingModelOutput) ToDatasetStorageBillingModelOutput() DatasetStorageBillingModelOutput {
+	return o
+}
+
+func (o DatasetStorageBillingModelOutput) ToDatasetStorageBillingModelOutputWithContext(ctx context.Context) DatasetStorageBillingModelOutput {
+	return o
+}
+
+func (o DatasetStorageBillingModelOutput) ToDatasetStorageBillingModelPtrOutput() DatasetStorageBillingModelPtrOutput {
+	return o.ToDatasetStorageBillingModelPtrOutputWithContext(context.Background())
+}
+
+func (o DatasetStorageBillingModelOutput) ToDatasetStorageBillingModelPtrOutputWithContext(ctx context.Context) DatasetStorageBillingModelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetStorageBillingModel) *DatasetStorageBillingModel {
+		return &v
+	}).(DatasetStorageBillingModelPtrOutput)
+}
+
+func (o DatasetStorageBillingModelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DatasetStorageBillingModelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatasetStorageBillingModel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DatasetStorageBillingModelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DatasetStorageBillingModelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatasetStorageBillingModel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatasetStorageBillingModelPtrOutput struct{ *pulumi.OutputState }
+
+func (DatasetStorageBillingModelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetStorageBillingModel)(nil)).Elem()
+}
+
+func (o DatasetStorageBillingModelPtrOutput) ToDatasetStorageBillingModelPtrOutput() DatasetStorageBillingModelPtrOutput {
+	return o
+}
+
+func (o DatasetStorageBillingModelPtrOutput) ToDatasetStorageBillingModelPtrOutputWithContext(ctx context.Context) DatasetStorageBillingModelPtrOutput {
+	return o
+}
+
+func (o DatasetStorageBillingModelPtrOutput) Elem() DatasetStorageBillingModelOutput {
+	return o.ApplyT(func(v *DatasetStorageBillingModel) DatasetStorageBillingModel {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetStorageBillingModel
+		return ret
+	}).(DatasetStorageBillingModelOutput)
+}
+
+func (o DatasetStorageBillingModelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DatasetStorageBillingModelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DatasetStorageBillingModel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DatasetStorageBillingModelInput is an input type that accepts values of the DatasetStorageBillingModel enum
+// A concrete instance of `DatasetStorageBillingModelInput` can be one of the following:
+//
+//	DatasetStorageBillingModelStorageBillingModelUnspecified
+//	DatasetStorageBillingModelLogical
+//	DatasetStorageBillingModelPhysical
+type DatasetStorageBillingModelInput interface {
+	pulumi.Input
+
+	ToDatasetStorageBillingModelOutput() DatasetStorageBillingModelOutput
+	ToDatasetStorageBillingModelOutputWithContext(context.Context) DatasetStorageBillingModelOutput
+}
+
+var datasetStorageBillingModelPtrType = reflect.TypeOf((**DatasetStorageBillingModel)(nil)).Elem()
+
+type DatasetStorageBillingModelPtrInput interface {
+	pulumi.Input
+
+	ToDatasetStorageBillingModelPtrOutput() DatasetStorageBillingModelPtrOutput
+	ToDatasetStorageBillingModelPtrOutputWithContext(context.Context) DatasetStorageBillingModelPtrOutput
+}
+
+type datasetStorageBillingModelPtr string
+
+func DatasetStorageBillingModelPtr(v string) DatasetStorageBillingModelPtrInput {
+	return (*datasetStorageBillingModelPtr)(&v)
+}
+
+func (*datasetStorageBillingModelPtr) ElementType() reflect.Type {
+	return datasetStorageBillingModelPtrType
+}
+
+func (in *datasetStorageBillingModelPtr) ToDatasetStorageBillingModelPtrOutput() DatasetStorageBillingModelPtrOutput {
+	return pulumi.ToOutput(in).(DatasetStorageBillingModelPtrOutput)
+}
+
+func (in *datasetStorageBillingModelPtr) ToDatasetStorageBillingModelPtrOutputWithContext(ctx context.Context) DatasetStorageBillingModelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DatasetStorageBillingModelPtrOutput)
+}
+
+func (in *datasetStorageBillingModelPtr) ToOutput(ctx context.Context) pulumix.Output[*DatasetStorageBillingModel] {
+	return pulumix.Output[*DatasetStorageBillingModel]{
+		OutputState: in.ToDatasetStorageBillingModelPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ExternalDataConfigurationDecimalTargetTypesItem string
+
+const (
+	// Invalid type.
+	ExternalDataConfigurationDecimalTargetTypesItemDecimalTargetTypeUnspecified = ExternalDataConfigurationDecimalTargetTypesItem("DECIMAL_TARGET_TYPE_UNSPECIFIED")
+	// Decimal values could be converted to NUMERIC type.
+	ExternalDataConfigurationDecimalTargetTypesItemNumeric = ExternalDataConfigurationDecimalTargetTypesItem("NUMERIC")
+	// Decimal values could be converted to BIGNUMERIC type.
+	ExternalDataConfigurationDecimalTargetTypesItemBignumeric = ExternalDataConfigurationDecimalTargetTypesItem("BIGNUMERIC")
+	// Decimal values could be converted to STRING type.
+	ExternalDataConfigurationDecimalTargetTypesItemString = ExternalDataConfigurationDecimalTargetTypesItem("STRING")
+)
+
+func (ExternalDataConfigurationDecimalTargetTypesItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalDataConfigurationDecimalTargetTypesItem)(nil)).Elem()
+}
+
+func (e ExternalDataConfigurationDecimalTargetTypesItem) ToExternalDataConfigurationDecimalTargetTypesItemOutput() ExternalDataConfigurationDecimalTargetTypesItemOutput {
+	return pulumi.ToOutput(e).(ExternalDataConfigurationDecimalTargetTypesItemOutput)
+}
+
+func (e ExternalDataConfigurationDecimalTargetTypesItem) ToExternalDataConfigurationDecimalTargetTypesItemOutputWithContext(ctx context.Context) ExternalDataConfigurationDecimalTargetTypesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ExternalDataConfigurationDecimalTargetTypesItemOutput)
+}
+
+func (e ExternalDataConfigurationDecimalTargetTypesItem) ToExternalDataConfigurationDecimalTargetTypesItemPtrOutput() ExternalDataConfigurationDecimalTargetTypesItemPtrOutput {
+	return e.ToExternalDataConfigurationDecimalTargetTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (e ExternalDataConfigurationDecimalTargetTypesItem) ToExternalDataConfigurationDecimalTargetTypesItemPtrOutputWithContext(ctx context.Context) ExternalDataConfigurationDecimalTargetTypesItemPtrOutput {
+	return ExternalDataConfigurationDecimalTargetTypesItem(e).ToExternalDataConfigurationDecimalTargetTypesItemOutputWithContext(ctx).ToExternalDataConfigurationDecimalTargetTypesItemPtrOutputWithContext(ctx)
+}
+
+func (e ExternalDataConfigurationDecimalTargetTypesItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExternalDataConfigurationDecimalTargetTypesItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExternalDataConfigurationDecimalTargetTypesItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ExternalDataConfigurationDecimalTargetTypesItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ExternalDataConfigurationDecimalTargetTypesItemOutput struct{ *pulumi.OutputState }
+
+func (ExternalDataConfigurationDecimalTargetTypesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalDataConfigurationDecimalTargetTypesItem)(nil)).Elem()
+}
+
+func (o ExternalDataConfigurationDecimalTargetTypesItemOutput) ToExternalDataConfigurationDecimalTargetTypesItemOutput() ExternalDataConfigurationDecimalTargetTypesItemOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationDecimalTargetTypesItemOutput) ToExternalDataConfigurationDecimalTargetTypesItemOutputWithContext(ctx context.Context) ExternalDataConfigurationDecimalTargetTypesItemOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationDecimalTargetTypesItemOutput) ToExternalDataConfigurationDecimalTargetTypesItemPtrOutput() ExternalDataConfigurationDecimalTargetTypesItemPtrOutput {
+	return o.ToExternalDataConfigurationDecimalTargetTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalDataConfigurationDecimalTargetTypesItemOutput) ToExternalDataConfigurationDecimalTargetTypesItemPtrOutputWithContext(ctx context.Context) ExternalDataConfigurationDecimalTargetTypesItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalDataConfigurationDecimalTargetTypesItem) *ExternalDataConfigurationDecimalTargetTypesItem {
+		return &v
+	}).(ExternalDataConfigurationDecimalTargetTypesItemPtrOutput)
+}
+
+func (o ExternalDataConfigurationDecimalTargetTypesItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ExternalDataConfigurationDecimalTargetTypesItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExternalDataConfigurationDecimalTargetTypesItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ExternalDataConfigurationDecimalTargetTypesItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalDataConfigurationDecimalTargetTypesItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExternalDataConfigurationDecimalTargetTypesItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ExternalDataConfigurationDecimalTargetTypesItemPtrOutput struct{ *pulumi.OutputState }
+
+func (ExternalDataConfigurationDecimalTargetTypesItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalDataConfigurationDecimalTargetTypesItem)(nil)).Elem()
+}
+
+func (o ExternalDataConfigurationDecimalTargetTypesItemPtrOutput) ToExternalDataConfigurationDecimalTargetTypesItemPtrOutput() ExternalDataConfigurationDecimalTargetTypesItemPtrOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationDecimalTargetTypesItemPtrOutput) ToExternalDataConfigurationDecimalTargetTypesItemPtrOutputWithContext(ctx context.Context) ExternalDataConfigurationDecimalTargetTypesItemPtrOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationDecimalTargetTypesItemPtrOutput) Elem() ExternalDataConfigurationDecimalTargetTypesItemOutput {
+	return o.ApplyT(func(v *ExternalDataConfigurationDecimalTargetTypesItem) ExternalDataConfigurationDecimalTargetTypesItem {
+		if v != nil {
+			return *v
+		}
+		var ret ExternalDataConfigurationDecimalTargetTypesItem
+		return ret
+	}).(ExternalDataConfigurationDecimalTargetTypesItemOutput)
+}
+
+func (o ExternalDataConfigurationDecimalTargetTypesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalDataConfigurationDecimalTargetTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ExternalDataConfigurationDecimalTargetTypesItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ExternalDataConfigurationDecimalTargetTypesItemInput is an input type that accepts values of the ExternalDataConfigurationDecimalTargetTypesItem enum
+// A concrete instance of `ExternalDataConfigurationDecimalTargetTypesItemInput` can be one of the following:
+//
+//	ExternalDataConfigurationDecimalTargetTypesItemDecimalTargetTypeUnspecified
+//	ExternalDataConfigurationDecimalTargetTypesItemNumeric
+//	ExternalDataConfigurationDecimalTargetTypesItemBignumeric
+//	ExternalDataConfigurationDecimalTargetTypesItemString
+type ExternalDataConfigurationDecimalTargetTypesItemInput interface {
+	pulumi.Input
+
+	ToExternalDataConfigurationDecimalTargetTypesItemOutput() ExternalDataConfigurationDecimalTargetTypesItemOutput
+	ToExternalDataConfigurationDecimalTargetTypesItemOutputWithContext(context.Context) ExternalDataConfigurationDecimalTargetTypesItemOutput
+}
+
+var externalDataConfigurationDecimalTargetTypesItemPtrType = reflect.TypeOf((**ExternalDataConfigurationDecimalTargetTypesItem)(nil)).Elem()
+
+type ExternalDataConfigurationDecimalTargetTypesItemPtrInput interface {
+	pulumi.Input
+
+	ToExternalDataConfigurationDecimalTargetTypesItemPtrOutput() ExternalDataConfigurationDecimalTargetTypesItemPtrOutput
+	ToExternalDataConfigurationDecimalTargetTypesItemPtrOutputWithContext(context.Context) ExternalDataConfigurationDecimalTargetTypesItemPtrOutput
+}
+
+type externalDataConfigurationDecimalTargetTypesItemPtr string
+
+func ExternalDataConfigurationDecimalTargetTypesItemPtr(v string) ExternalDataConfigurationDecimalTargetTypesItemPtrInput {
+	return (*externalDataConfigurationDecimalTargetTypesItemPtr)(&v)
+}
+
+func (*externalDataConfigurationDecimalTargetTypesItemPtr) ElementType() reflect.Type {
+	return externalDataConfigurationDecimalTargetTypesItemPtrType
+}
+
+func (in *externalDataConfigurationDecimalTargetTypesItemPtr) ToExternalDataConfigurationDecimalTargetTypesItemPtrOutput() ExternalDataConfigurationDecimalTargetTypesItemPtrOutput {
+	return pulumi.ToOutput(in).(ExternalDataConfigurationDecimalTargetTypesItemPtrOutput)
+}
+
+func (in *externalDataConfigurationDecimalTargetTypesItemPtr) ToExternalDataConfigurationDecimalTargetTypesItemPtrOutputWithContext(ctx context.Context) ExternalDataConfigurationDecimalTargetTypesItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ExternalDataConfigurationDecimalTargetTypesItemPtrOutput)
+}
+
+func (in *externalDataConfigurationDecimalTargetTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*ExternalDataConfigurationDecimalTargetTypesItem] {
+	return pulumix.Output[*ExternalDataConfigurationDecimalTargetTypesItem]{
+		OutputState: in.ToExternalDataConfigurationDecimalTargetTypesItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ExternalDataConfigurationDecimalTargetTypesItemArrayInput is an input type that accepts ExternalDataConfigurationDecimalTargetTypesItemArray and ExternalDataConfigurationDecimalTargetTypesItemArrayOutput values.
+// You can construct a concrete instance of `ExternalDataConfigurationDecimalTargetTypesItemArrayInput` via:
+//
+//	ExternalDataConfigurationDecimalTargetTypesItemArray{ ExternalDataConfigurationDecimalTargetTypesItemArgs{...} }
+type ExternalDataConfigurationDecimalTargetTypesItemArrayInput interface {
+	pulumi.Input
+
+	ToExternalDataConfigurationDecimalTargetTypesItemArrayOutput() ExternalDataConfigurationDecimalTargetTypesItemArrayOutput
+	ToExternalDataConfigurationDecimalTargetTypesItemArrayOutputWithContext(context.Context) ExternalDataConfigurationDecimalTargetTypesItemArrayOutput
+}
+
+type ExternalDataConfigurationDecimalTargetTypesItemArray []ExternalDataConfigurationDecimalTargetTypesItem
+
+func (ExternalDataConfigurationDecimalTargetTypesItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExternalDataConfigurationDecimalTargetTypesItem)(nil)).Elem()
+}
+
+func (i ExternalDataConfigurationDecimalTargetTypesItemArray) ToExternalDataConfigurationDecimalTargetTypesItemArrayOutput() ExternalDataConfigurationDecimalTargetTypesItemArrayOutput {
+	return i.ToExternalDataConfigurationDecimalTargetTypesItemArrayOutputWithContext(context.Background())
+}
+
+func (i ExternalDataConfigurationDecimalTargetTypesItemArray) ToExternalDataConfigurationDecimalTargetTypesItemArrayOutputWithContext(ctx context.Context) ExternalDataConfigurationDecimalTargetTypesItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalDataConfigurationDecimalTargetTypesItemArrayOutput)
+}
+
+type ExternalDataConfigurationDecimalTargetTypesItemArrayOutput struct{ *pulumi.OutputState }
+
+func (ExternalDataConfigurationDecimalTargetTypesItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExternalDataConfigurationDecimalTargetTypesItem)(nil)).Elem()
+}
+
+func (o ExternalDataConfigurationDecimalTargetTypesItemArrayOutput) ToExternalDataConfigurationDecimalTargetTypesItemArrayOutput() ExternalDataConfigurationDecimalTargetTypesItemArrayOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationDecimalTargetTypesItemArrayOutput) ToExternalDataConfigurationDecimalTargetTypesItemArrayOutputWithContext(ctx context.Context) ExternalDataConfigurationDecimalTargetTypesItemArrayOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationDecimalTargetTypesItemArrayOutput) Index(i pulumi.IntInput) ExternalDataConfigurationDecimalTargetTypesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExternalDataConfigurationDecimalTargetTypesItem {
+		return vs[0].([]ExternalDataConfigurationDecimalTargetTypesItem)[vs[1].(int)]
+	}).(ExternalDataConfigurationDecimalTargetTypesItemOutput)
+}
+
+// Optional. Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+type ExternalDataConfigurationFileSetSpecType string
+
+const (
+	// This option expands source URIs by listing files from the object store. It is the default behavior if FileSetSpecType is not set.
+	ExternalDataConfigurationFileSetSpecTypeFileSetSpecTypeFileSystemMatch = ExternalDataConfigurationFileSetSpecType("FILE_SET_SPEC_TYPE_FILE_SYSTEM_MATCH")
+	// This option indicates that the provided URIs are newline-delimited manifest files, with one URI per line. Wildcard URIs are not supported.
+	ExternalDataConfigurationFileSetSpecTypeFileSetSpecTypeNewLineDelimitedManifest = ExternalDataConfigurationFileSetSpecType("FILE_SET_SPEC_TYPE_NEW_LINE_DELIMITED_MANIFEST")
+)
+
+func (ExternalDataConfigurationFileSetSpecType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalDataConfigurationFileSetSpecType)(nil)).Elem()
+}
+
+func (e ExternalDataConfigurationFileSetSpecType) ToExternalDataConfigurationFileSetSpecTypeOutput() ExternalDataConfigurationFileSetSpecTypeOutput {
+	return pulumi.ToOutput(e).(ExternalDataConfigurationFileSetSpecTypeOutput)
+}
+
+func (e ExternalDataConfigurationFileSetSpecType) ToExternalDataConfigurationFileSetSpecTypeOutputWithContext(ctx context.Context) ExternalDataConfigurationFileSetSpecTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ExternalDataConfigurationFileSetSpecTypeOutput)
+}
+
+func (e ExternalDataConfigurationFileSetSpecType) ToExternalDataConfigurationFileSetSpecTypePtrOutput() ExternalDataConfigurationFileSetSpecTypePtrOutput {
+	return e.ToExternalDataConfigurationFileSetSpecTypePtrOutputWithContext(context.Background())
+}
+
+func (e ExternalDataConfigurationFileSetSpecType) ToExternalDataConfigurationFileSetSpecTypePtrOutputWithContext(ctx context.Context) ExternalDataConfigurationFileSetSpecTypePtrOutput {
+	return ExternalDataConfigurationFileSetSpecType(e).ToExternalDataConfigurationFileSetSpecTypeOutputWithContext(ctx).ToExternalDataConfigurationFileSetSpecTypePtrOutputWithContext(ctx)
+}
+
+func (e ExternalDataConfigurationFileSetSpecType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExternalDataConfigurationFileSetSpecType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExternalDataConfigurationFileSetSpecType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ExternalDataConfigurationFileSetSpecType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ExternalDataConfigurationFileSetSpecTypeOutput struct{ *pulumi.OutputState }
+
+func (ExternalDataConfigurationFileSetSpecTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalDataConfigurationFileSetSpecType)(nil)).Elem()
+}
+
+func (o ExternalDataConfigurationFileSetSpecTypeOutput) ToExternalDataConfigurationFileSetSpecTypeOutput() ExternalDataConfigurationFileSetSpecTypeOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationFileSetSpecTypeOutput) ToExternalDataConfigurationFileSetSpecTypeOutputWithContext(ctx context.Context) ExternalDataConfigurationFileSetSpecTypeOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationFileSetSpecTypeOutput) ToExternalDataConfigurationFileSetSpecTypePtrOutput() ExternalDataConfigurationFileSetSpecTypePtrOutput {
+	return o.ToExternalDataConfigurationFileSetSpecTypePtrOutputWithContext(context.Background())
+}
+
+func (o ExternalDataConfigurationFileSetSpecTypeOutput) ToExternalDataConfigurationFileSetSpecTypePtrOutputWithContext(ctx context.Context) ExternalDataConfigurationFileSetSpecTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalDataConfigurationFileSetSpecType) *ExternalDataConfigurationFileSetSpecType {
+		return &v
+	}).(ExternalDataConfigurationFileSetSpecTypePtrOutput)
+}
+
+func (o ExternalDataConfigurationFileSetSpecTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ExternalDataConfigurationFileSetSpecTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExternalDataConfigurationFileSetSpecType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ExternalDataConfigurationFileSetSpecTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalDataConfigurationFileSetSpecTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExternalDataConfigurationFileSetSpecType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ExternalDataConfigurationFileSetSpecTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ExternalDataConfigurationFileSetSpecTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalDataConfigurationFileSetSpecType)(nil)).Elem()
+}
+
+func (o ExternalDataConfigurationFileSetSpecTypePtrOutput) ToExternalDataConfigurationFileSetSpecTypePtrOutput() ExternalDataConfigurationFileSetSpecTypePtrOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationFileSetSpecTypePtrOutput) ToExternalDataConfigurationFileSetSpecTypePtrOutputWithContext(ctx context.Context) ExternalDataConfigurationFileSetSpecTypePtrOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationFileSetSpecTypePtrOutput) Elem() ExternalDataConfigurationFileSetSpecTypeOutput {
+	return o.ApplyT(func(v *ExternalDataConfigurationFileSetSpecType) ExternalDataConfigurationFileSetSpecType {
+		if v != nil {
+			return *v
+		}
+		var ret ExternalDataConfigurationFileSetSpecType
+		return ret
+	}).(ExternalDataConfigurationFileSetSpecTypeOutput)
+}
+
+func (o ExternalDataConfigurationFileSetSpecTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalDataConfigurationFileSetSpecTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ExternalDataConfigurationFileSetSpecType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ExternalDataConfigurationFileSetSpecTypeInput is an input type that accepts values of the ExternalDataConfigurationFileSetSpecType enum
+// A concrete instance of `ExternalDataConfigurationFileSetSpecTypeInput` can be one of the following:
+//
+//	ExternalDataConfigurationFileSetSpecTypeFileSetSpecTypeFileSystemMatch
+//	ExternalDataConfigurationFileSetSpecTypeFileSetSpecTypeNewLineDelimitedManifest
+type ExternalDataConfigurationFileSetSpecTypeInput interface {
+	pulumi.Input
+
+	ToExternalDataConfigurationFileSetSpecTypeOutput() ExternalDataConfigurationFileSetSpecTypeOutput
+	ToExternalDataConfigurationFileSetSpecTypeOutputWithContext(context.Context) ExternalDataConfigurationFileSetSpecTypeOutput
+}
+
+var externalDataConfigurationFileSetSpecTypePtrType = reflect.TypeOf((**ExternalDataConfigurationFileSetSpecType)(nil)).Elem()
+
+type ExternalDataConfigurationFileSetSpecTypePtrInput interface {
+	pulumi.Input
+
+	ToExternalDataConfigurationFileSetSpecTypePtrOutput() ExternalDataConfigurationFileSetSpecTypePtrOutput
+	ToExternalDataConfigurationFileSetSpecTypePtrOutputWithContext(context.Context) ExternalDataConfigurationFileSetSpecTypePtrOutput
+}
+
+type externalDataConfigurationFileSetSpecTypePtr string
+
+func ExternalDataConfigurationFileSetSpecTypePtr(v string) ExternalDataConfigurationFileSetSpecTypePtrInput {
+	return (*externalDataConfigurationFileSetSpecTypePtr)(&v)
+}
+
+func (*externalDataConfigurationFileSetSpecTypePtr) ElementType() reflect.Type {
+	return externalDataConfigurationFileSetSpecTypePtrType
+}
+
+func (in *externalDataConfigurationFileSetSpecTypePtr) ToExternalDataConfigurationFileSetSpecTypePtrOutput() ExternalDataConfigurationFileSetSpecTypePtrOutput {
+	return pulumi.ToOutput(in).(ExternalDataConfigurationFileSetSpecTypePtrOutput)
+}
+
+func (in *externalDataConfigurationFileSetSpecTypePtr) ToExternalDataConfigurationFileSetSpecTypePtrOutputWithContext(ctx context.Context) ExternalDataConfigurationFileSetSpecTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ExternalDataConfigurationFileSetSpecTypePtrOutput)
+}
+
+func (in *externalDataConfigurationFileSetSpecTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ExternalDataConfigurationFileSetSpecType] {
+	return pulumix.Output[*ExternalDataConfigurationFileSetSpecType]{
+		OutputState: in.ToExternalDataConfigurationFileSetSpecTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. Load option to be used together with source_format newline-delimited JSON to indicate that a variant of JSON is being loaded. To load newline-delimited GeoJSON, specify GEOJSON (and source_format must be set to NEWLINE_DELIMITED_JSON).
+type ExternalDataConfigurationJsonExtension string
+
+const (
+	// The default if provided value is not one included in the enum, or the value is not specified. The source formate is parsed without any modification.
+	ExternalDataConfigurationJsonExtensionJsonExtensionUnspecified = ExternalDataConfigurationJsonExtension("JSON_EXTENSION_UNSPECIFIED")
+	// Use GeoJSON variant of JSON. See https://tools.ietf.org/html/rfc7946.
+	ExternalDataConfigurationJsonExtensionGeojson = ExternalDataConfigurationJsonExtension("GEOJSON")
+)
+
+func (ExternalDataConfigurationJsonExtension) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalDataConfigurationJsonExtension)(nil)).Elem()
+}
+
+func (e ExternalDataConfigurationJsonExtension) ToExternalDataConfigurationJsonExtensionOutput() ExternalDataConfigurationJsonExtensionOutput {
+	return pulumi.ToOutput(e).(ExternalDataConfigurationJsonExtensionOutput)
+}
+
+func (e ExternalDataConfigurationJsonExtension) ToExternalDataConfigurationJsonExtensionOutputWithContext(ctx context.Context) ExternalDataConfigurationJsonExtensionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ExternalDataConfigurationJsonExtensionOutput)
+}
+
+func (e ExternalDataConfigurationJsonExtension) ToExternalDataConfigurationJsonExtensionPtrOutput() ExternalDataConfigurationJsonExtensionPtrOutput {
+	return e.ToExternalDataConfigurationJsonExtensionPtrOutputWithContext(context.Background())
+}
+
+func (e ExternalDataConfigurationJsonExtension) ToExternalDataConfigurationJsonExtensionPtrOutputWithContext(ctx context.Context) ExternalDataConfigurationJsonExtensionPtrOutput {
+	return ExternalDataConfigurationJsonExtension(e).ToExternalDataConfigurationJsonExtensionOutputWithContext(ctx).ToExternalDataConfigurationJsonExtensionPtrOutputWithContext(ctx)
+}
+
+func (e ExternalDataConfigurationJsonExtension) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExternalDataConfigurationJsonExtension) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExternalDataConfigurationJsonExtension) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ExternalDataConfigurationJsonExtension) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ExternalDataConfigurationJsonExtensionOutput struct{ *pulumi.OutputState }
+
+func (ExternalDataConfigurationJsonExtensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalDataConfigurationJsonExtension)(nil)).Elem()
+}
+
+func (o ExternalDataConfigurationJsonExtensionOutput) ToExternalDataConfigurationJsonExtensionOutput() ExternalDataConfigurationJsonExtensionOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationJsonExtensionOutput) ToExternalDataConfigurationJsonExtensionOutputWithContext(ctx context.Context) ExternalDataConfigurationJsonExtensionOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationJsonExtensionOutput) ToExternalDataConfigurationJsonExtensionPtrOutput() ExternalDataConfigurationJsonExtensionPtrOutput {
+	return o.ToExternalDataConfigurationJsonExtensionPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalDataConfigurationJsonExtensionOutput) ToExternalDataConfigurationJsonExtensionPtrOutputWithContext(ctx context.Context) ExternalDataConfigurationJsonExtensionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalDataConfigurationJsonExtension) *ExternalDataConfigurationJsonExtension {
+		return &v
+	}).(ExternalDataConfigurationJsonExtensionPtrOutput)
+}
+
+func (o ExternalDataConfigurationJsonExtensionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ExternalDataConfigurationJsonExtensionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExternalDataConfigurationJsonExtension) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ExternalDataConfigurationJsonExtensionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalDataConfigurationJsonExtensionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExternalDataConfigurationJsonExtension) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ExternalDataConfigurationJsonExtensionPtrOutput struct{ *pulumi.OutputState }
+
+func (ExternalDataConfigurationJsonExtensionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalDataConfigurationJsonExtension)(nil)).Elem()
+}
+
+func (o ExternalDataConfigurationJsonExtensionPtrOutput) ToExternalDataConfigurationJsonExtensionPtrOutput() ExternalDataConfigurationJsonExtensionPtrOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationJsonExtensionPtrOutput) ToExternalDataConfigurationJsonExtensionPtrOutputWithContext(ctx context.Context) ExternalDataConfigurationJsonExtensionPtrOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationJsonExtensionPtrOutput) Elem() ExternalDataConfigurationJsonExtensionOutput {
+	return o.ApplyT(func(v *ExternalDataConfigurationJsonExtension) ExternalDataConfigurationJsonExtension {
+		if v != nil {
+			return *v
+		}
+		var ret ExternalDataConfigurationJsonExtension
+		return ret
+	}).(ExternalDataConfigurationJsonExtensionOutput)
+}
+
+func (o ExternalDataConfigurationJsonExtensionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalDataConfigurationJsonExtensionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ExternalDataConfigurationJsonExtension) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ExternalDataConfigurationJsonExtensionInput is an input type that accepts values of the ExternalDataConfigurationJsonExtension enum
+// A concrete instance of `ExternalDataConfigurationJsonExtensionInput` can be one of the following:
+//
+//	ExternalDataConfigurationJsonExtensionJsonExtensionUnspecified
+//	ExternalDataConfigurationJsonExtensionGeojson
+type ExternalDataConfigurationJsonExtensionInput interface {
+	pulumi.Input
+
+	ToExternalDataConfigurationJsonExtensionOutput() ExternalDataConfigurationJsonExtensionOutput
+	ToExternalDataConfigurationJsonExtensionOutputWithContext(context.Context) ExternalDataConfigurationJsonExtensionOutput
+}
+
+var externalDataConfigurationJsonExtensionPtrType = reflect.TypeOf((**ExternalDataConfigurationJsonExtension)(nil)).Elem()
+
+type ExternalDataConfigurationJsonExtensionPtrInput interface {
+	pulumi.Input
+
+	ToExternalDataConfigurationJsonExtensionPtrOutput() ExternalDataConfigurationJsonExtensionPtrOutput
+	ToExternalDataConfigurationJsonExtensionPtrOutputWithContext(context.Context) ExternalDataConfigurationJsonExtensionPtrOutput
+}
+
+type externalDataConfigurationJsonExtensionPtr string
+
+func ExternalDataConfigurationJsonExtensionPtr(v string) ExternalDataConfigurationJsonExtensionPtrInput {
+	return (*externalDataConfigurationJsonExtensionPtr)(&v)
+}
+
+func (*externalDataConfigurationJsonExtensionPtr) ElementType() reflect.Type {
+	return externalDataConfigurationJsonExtensionPtrType
+}
+
+func (in *externalDataConfigurationJsonExtensionPtr) ToExternalDataConfigurationJsonExtensionPtrOutput() ExternalDataConfigurationJsonExtensionPtrOutput {
+	return pulumi.ToOutput(in).(ExternalDataConfigurationJsonExtensionPtrOutput)
+}
+
+func (in *externalDataConfigurationJsonExtensionPtr) ToExternalDataConfigurationJsonExtensionPtrOutputWithContext(ctx context.Context) ExternalDataConfigurationJsonExtensionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ExternalDataConfigurationJsonExtensionPtrOutput)
+}
+
+func (in *externalDataConfigurationJsonExtensionPtr) ToOutput(ctx context.Context) pulumix.Output[*ExternalDataConfigurationJsonExtension] {
+	return pulumix.Output[*ExternalDataConfigurationJsonExtension]{
+		OutputState: in.ToExternalDataConfigurationJsonExtensionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
+type ExternalDataConfigurationMetadataCacheMode string
+
+const (
+	// Unspecified metadata cache mode.
+	ExternalDataConfigurationMetadataCacheModeMetadataCacheModeUnspecified = ExternalDataConfigurationMetadataCacheMode("METADATA_CACHE_MODE_UNSPECIFIED")
+	// Set this mode to trigger automatic background refresh of metadata cache from the external source. Queries will use the latest available cache version within the table's maxStaleness interval.
+	ExternalDataConfigurationMetadataCacheModeAutomatic = ExternalDataConfigurationMetadataCacheMode("AUTOMATIC")
+	// Set this mode to enable triggering manual refresh of the metadata cache from external source. Queries will use the latest manually triggered cache version within the table's maxStaleness interval.
+	ExternalDataConfigurationMetadataCacheModeManual = ExternalDataConfigurationMetadataCacheMode("MANUAL")
+)
+
+func (ExternalDataConfigurationMetadataCacheMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalDataConfigurationMetadataCacheMode)(nil)).Elem()
+}
+
+func (e ExternalDataConfigurationMetadataCacheMode) ToExternalDataConfigurationMetadataCacheModeOutput() ExternalDataConfigurationMetadataCacheModeOutput {
+	return pulumi.ToOutput(e).(ExternalDataConfigurationMetadataCacheModeOutput)
+}
+
+func (e ExternalDataConfigurationMetadataCacheMode) ToExternalDataConfigurationMetadataCacheModeOutputWithContext(ctx context.Context) ExternalDataConfigurationMetadataCacheModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ExternalDataConfigurationMetadataCacheModeOutput)
+}
+
+func (e ExternalDataConfigurationMetadataCacheMode) ToExternalDataConfigurationMetadataCacheModePtrOutput() ExternalDataConfigurationMetadataCacheModePtrOutput {
+	return e.ToExternalDataConfigurationMetadataCacheModePtrOutputWithContext(context.Background())
+}
+
+func (e ExternalDataConfigurationMetadataCacheMode) ToExternalDataConfigurationMetadataCacheModePtrOutputWithContext(ctx context.Context) ExternalDataConfigurationMetadataCacheModePtrOutput {
+	return ExternalDataConfigurationMetadataCacheMode(e).ToExternalDataConfigurationMetadataCacheModeOutputWithContext(ctx).ToExternalDataConfigurationMetadataCacheModePtrOutputWithContext(ctx)
+}
+
+func (e ExternalDataConfigurationMetadataCacheMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExternalDataConfigurationMetadataCacheMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExternalDataConfigurationMetadataCacheMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ExternalDataConfigurationMetadataCacheMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ExternalDataConfigurationMetadataCacheModeOutput struct{ *pulumi.OutputState }
+
+func (ExternalDataConfigurationMetadataCacheModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalDataConfigurationMetadataCacheMode)(nil)).Elem()
+}
+
+func (o ExternalDataConfigurationMetadataCacheModeOutput) ToExternalDataConfigurationMetadataCacheModeOutput() ExternalDataConfigurationMetadataCacheModeOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationMetadataCacheModeOutput) ToExternalDataConfigurationMetadataCacheModeOutputWithContext(ctx context.Context) ExternalDataConfigurationMetadataCacheModeOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationMetadataCacheModeOutput) ToExternalDataConfigurationMetadataCacheModePtrOutput() ExternalDataConfigurationMetadataCacheModePtrOutput {
+	return o.ToExternalDataConfigurationMetadataCacheModePtrOutputWithContext(context.Background())
+}
+
+func (o ExternalDataConfigurationMetadataCacheModeOutput) ToExternalDataConfigurationMetadataCacheModePtrOutputWithContext(ctx context.Context) ExternalDataConfigurationMetadataCacheModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalDataConfigurationMetadataCacheMode) *ExternalDataConfigurationMetadataCacheMode {
+		return &v
+	}).(ExternalDataConfigurationMetadataCacheModePtrOutput)
+}
+
+func (o ExternalDataConfigurationMetadataCacheModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ExternalDataConfigurationMetadataCacheModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExternalDataConfigurationMetadataCacheMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ExternalDataConfigurationMetadataCacheModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalDataConfigurationMetadataCacheModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExternalDataConfigurationMetadataCacheMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ExternalDataConfigurationMetadataCacheModePtrOutput struct{ *pulumi.OutputState }
+
+func (ExternalDataConfigurationMetadataCacheModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalDataConfigurationMetadataCacheMode)(nil)).Elem()
+}
+
+func (o ExternalDataConfigurationMetadataCacheModePtrOutput) ToExternalDataConfigurationMetadataCacheModePtrOutput() ExternalDataConfigurationMetadataCacheModePtrOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationMetadataCacheModePtrOutput) ToExternalDataConfigurationMetadataCacheModePtrOutputWithContext(ctx context.Context) ExternalDataConfigurationMetadataCacheModePtrOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationMetadataCacheModePtrOutput) Elem() ExternalDataConfigurationMetadataCacheModeOutput {
+	return o.ApplyT(func(v *ExternalDataConfigurationMetadataCacheMode) ExternalDataConfigurationMetadataCacheMode {
+		if v != nil {
+			return *v
+		}
+		var ret ExternalDataConfigurationMetadataCacheMode
+		return ret
+	}).(ExternalDataConfigurationMetadataCacheModeOutput)
+}
+
+func (o ExternalDataConfigurationMetadataCacheModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalDataConfigurationMetadataCacheModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ExternalDataConfigurationMetadataCacheMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ExternalDataConfigurationMetadataCacheModeInput is an input type that accepts values of the ExternalDataConfigurationMetadataCacheMode enum
+// A concrete instance of `ExternalDataConfigurationMetadataCacheModeInput` can be one of the following:
+//
+//	ExternalDataConfigurationMetadataCacheModeMetadataCacheModeUnspecified
+//	ExternalDataConfigurationMetadataCacheModeAutomatic
+//	ExternalDataConfigurationMetadataCacheModeManual
+type ExternalDataConfigurationMetadataCacheModeInput interface {
+	pulumi.Input
+
+	ToExternalDataConfigurationMetadataCacheModeOutput() ExternalDataConfigurationMetadataCacheModeOutput
+	ToExternalDataConfigurationMetadataCacheModeOutputWithContext(context.Context) ExternalDataConfigurationMetadataCacheModeOutput
+}
+
+var externalDataConfigurationMetadataCacheModePtrType = reflect.TypeOf((**ExternalDataConfigurationMetadataCacheMode)(nil)).Elem()
+
+type ExternalDataConfigurationMetadataCacheModePtrInput interface {
+	pulumi.Input
+
+	ToExternalDataConfigurationMetadataCacheModePtrOutput() ExternalDataConfigurationMetadataCacheModePtrOutput
+	ToExternalDataConfigurationMetadataCacheModePtrOutputWithContext(context.Context) ExternalDataConfigurationMetadataCacheModePtrOutput
+}
+
+type externalDataConfigurationMetadataCacheModePtr string
+
+func ExternalDataConfigurationMetadataCacheModePtr(v string) ExternalDataConfigurationMetadataCacheModePtrInput {
+	return (*externalDataConfigurationMetadataCacheModePtr)(&v)
+}
+
+func (*externalDataConfigurationMetadataCacheModePtr) ElementType() reflect.Type {
+	return externalDataConfigurationMetadataCacheModePtrType
+}
+
+func (in *externalDataConfigurationMetadataCacheModePtr) ToExternalDataConfigurationMetadataCacheModePtrOutput() ExternalDataConfigurationMetadataCacheModePtrOutput {
+	return pulumi.ToOutput(in).(ExternalDataConfigurationMetadataCacheModePtrOutput)
+}
+
+func (in *externalDataConfigurationMetadataCacheModePtr) ToExternalDataConfigurationMetadataCacheModePtrOutputWithContext(ctx context.Context) ExternalDataConfigurationMetadataCacheModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ExternalDataConfigurationMetadataCacheModePtrOutput)
+}
+
+func (in *externalDataConfigurationMetadataCacheModePtr) ToOutput(ctx context.Context) pulumix.Output[*ExternalDataConfigurationMetadataCacheMode] {
+	return pulumix.Output[*ExternalDataConfigurationMetadataCacheMode]{
+		OutputState: in.ToExternalDataConfigurationMetadataCacheModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. ObjectMetadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the source_uris. If ObjectMetadata is set, source_format should be omitted. Currently SIMPLE is the only supported Object Metadata type.
+type ExternalDataConfigurationObjectMetadata string
+
+const (
+	// Unspecified by default.
+	ExternalDataConfigurationObjectMetadataObjectMetadataUnspecified = ExternalDataConfigurationObjectMetadata("OBJECT_METADATA_UNSPECIFIED")
+	// A synonym for `SIMPLE`.
+	ExternalDataConfigurationObjectMetadataDirectory = ExternalDataConfigurationObjectMetadata("DIRECTORY")
+	// Directory listing of objects.
+	ExternalDataConfigurationObjectMetadataSimple = ExternalDataConfigurationObjectMetadata("SIMPLE")
+)
+
+func (ExternalDataConfigurationObjectMetadata) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalDataConfigurationObjectMetadata)(nil)).Elem()
+}
+
+func (e ExternalDataConfigurationObjectMetadata) ToExternalDataConfigurationObjectMetadataOutput() ExternalDataConfigurationObjectMetadataOutput {
+	return pulumi.ToOutput(e).(ExternalDataConfigurationObjectMetadataOutput)
+}
+
+func (e ExternalDataConfigurationObjectMetadata) ToExternalDataConfigurationObjectMetadataOutputWithContext(ctx context.Context) ExternalDataConfigurationObjectMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ExternalDataConfigurationObjectMetadataOutput)
+}
+
+func (e ExternalDataConfigurationObjectMetadata) ToExternalDataConfigurationObjectMetadataPtrOutput() ExternalDataConfigurationObjectMetadataPtrOutput {
+	return e.ToExternalDataConfigurationObjectMetadataPtrOutputWithContext(context.Background())
+}
+
+func (e ExternalDataConfigurationObjectMetadata) ToExternalDataConfigurationObjectMetadataPtrOutputWithContext(ctx context.Context) ExternalDataConfigurationObjectMetadataPtrOutput {
+	return ExternalDataConfigurationObjectMetadata(e).ToExternalDataConfigurationObjectMetadataOutputWithContext(ctx).ToExternalDataConfigurationObjectMetadataPtrOutputWithContext(ctx)
+}
+
+func (e ExternalDataConfigurationObjectMetadata) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExternalDataConfigurationObjectMetadata) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExternalDataConfigurationObjectMetadata) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ExternalDataConfigurationObjectMetadata) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ExternalDataConfigurationObjectMetadataOutput struct{ *pulumi.OutputState }
+
+func (ExternalDataConfigurationObjectMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalDataConfigurationObjectMetadata)(nil)).Elem()
+}
+
+func (o ExternalDataConfigurationObjectMetadataOutput) ToExternalDataConfigurationObjectMetadataOutput() ExternalDataConfigurationObjectMetadataOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationObjectMetadataOutput) ToExternalDataConfigurationObjectMetadataOutputWithContext(ctx context.Context) ExternalDataConfigurationObjectMetadataOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationObjectMetadataOutput) ToExternalDataConfigurationObjectMetadataPtrOutput() ExternalDataConfigurationObjectMetadataPtrOutput {
+	return o.ToExternalDataConfigurationObjectMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalDataConfigurationObjectMetadataOutput) ToExternalDataConfigurationObjectMetadataPtrOutputWithContext(ctx context.Context) ExternalDataConfigurationObjectMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalDataConfigurationObjectMetadata) *ExternalDataConfigurationObjectMetadata {
+		return &v
+	}).(ExternalDataConfigurationObjectMetadataPtrOutput)
+}
+
+func (o ExternalDataConfigurationObjectMetadataOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ExternalDataConfigurationObjectMetadataOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExternalDataConfigurationObjectMetadata) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ExternalDataConfigurationObjectMetadataOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalDataConfigurationObjectMetadataOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExternalDataConfigurationObjectMetadata) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ExternalDataConfigurationObjectMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (ExternalDataConfigurationObjectMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalDataConfigurationObjectMetadata)(nil)).Elem()
+}
+
+func (o ExternalDataConfigurationObjectMetadataPtrOutput) ToExternalDataConfigurationObjectMetadataPtrOutput() ExternalDataConfigurationObjectMetadataPtrOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationObjectMetadataPtrOutput) ToExternalDataConfigurationObjectMetadataPtrOutputWithContext(ctx context.Context) ExternalDataConfigurationObjectMetadataPtrOutput {
+	return o
+}
+
+func (o ExternalDataConfigurationObjectMetadataPtrOutput) Elem() ExternalDataConfigurationObjectMetadataOutput {
+	return o.ApplyT(func(v *ExternalDataConfigurationObjectMetadata) ExternalDataConfigurationObjectMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret ExternalDataConfigurationObjectMetadata
+		return ret
+	}).(ExternalDataConfigurationObjectMetadataOutput)
+}
+
+func (o ExternalDataConfigurationObjectMetadataPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalDataConfigurationObjectMetadataPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ExternalDataConfigurationObjectMetadata) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ExternalDataConfigurationObjectMetadataInput is an input type that accepts values of the ExternalDataConfigurationObjectMetadata enum
+// A concrete instance of `ExternalDataConfigurationObjectMetadataInput` can be one of the following:
+//
+//	ExternalDataConfigurationObjectMetadataObjectMetadataUnspecified
+//	ExternalDataConfigurationObjectMetadataDirectory
+//	ExternalDataConfigurationObjectMetadataSimple
+type ExternalDataConfigurationObjectMetadataInput interface {
+	pulumi.Input
+
+	ToExternalDataConfigurationObjectMetadataOutput() ExternalDataConfigurationObjectMetadataOutput
+	ToExternalDataConfigurationObjectMetadataOutputWithContext(context.Context) ExternalDataConfigurationObjectMetadataOutput
+}
+
+var externalDataConfigurationObjectMetadataPtrType = reflect.TypeOf((**ExternalDataConfigurationObjectMetadata)(nil)).Elem()
+
+type ExternalDataConfigurationObjectMetadataPtrInput interface {
+	pulumi.Input
+
+	ToExternalDataConfigurationObjectMetadataPtrOutput() ExternalDataConfigurationObjectMetadataPtrOutput
+	ToExternalDataConfigurationObjectMetadataPtrOutputWithContext(context.Context) ExternalDataConfigurationObjectMetadataPtrOutput
+}
+
+type externalDataConfigurationObjectMetadataPtr string
+
+func ExternalDataConfigurationObjectMetadataPtr(v string) ExternalDataConfigurationObjectMetadataPtrInput {
+	return (*externalDataConfigurationObjectMetadataPtr)(&v)
+}
+
+func (*externalDataConfigurationObjectMetadataPtr) ElementType() reflect.Type {
+	return externalDataConfigurationObjectMetadataPtrType
+}
+
+func (in *externalDataConfigurationObjectMetadataPtr) ToExternalDataConfigurationObjectMetadataPtrOutput() ExternalDataConfigurationObjectMetadataPtrOutput {
+	return pulumi.ToOutput(in).(ExternalDataConfigurationObjectMetadataPtrOutput)
+}
+
+func (in *externalDataConfigurationObjectMetadataPtr) ToExternalDataConfigurationObjectMetadataPtrOutputWithContext(ctx context.Context) ExternalDataConfigurationObjectMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ExternalDataConfigurationObjectMetadataPtrOutput)
+}
+
+func (in *externalDataConfigurationObjectMetadataPtr) ToOutput(ctx context.Context) pulumix.Output[*ExternalDataConfigurationObjectMetadata] {
+	return pulumix.Output[*ExternalDataConfigurationObjectMetadata]{
+		OutputState: in.ToExternalDataConfigurationObjectMetadataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type JobConfigurationLoadDecimalTargetTypesItem string
+
+const (
+	// Invalid type.
+	JobConfigurationLoadDecimalTargetTypesItemDecimalTargetTypeUnspecified = JobConfigurationLoadDecimalTargetTypesItem("DECIMAL_TARGET_TYPE_UNSPECIFIED")
+	// Decimal values could be converted to NUMERIC type.
+	JobConfigurationLoadDecimalTargetTypesItemNumeric = JobConfigurationLoadDecimalTargetTypesItem("NUMERIC")
+	// Decimal values could be converted to BIGNUMERIC type.
+	JobConfigurationLoadDecimalTargetTypesItemBignumeric = JobConfigurationLoadDecimalTargetTypesItem("BIGNUMERIC")
+	// Decimal values could be converted to STRING type.
+	JobConfigurationLoadDecimalTargetTypesItemString = JobConfigurationLoadDecimalTargetTypesItem("STRING")
+)
+
+func (JobConfigurationLoadDecimalTargetTypesItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobConfigurationLoadDecimalTargetTypesItem)(nil)).Elem()
+}
+
+func (e JobConfigurationLoadDecimalTargetTypesItem) ToJobConfigurationLoadDecimalTargetTypesItemOutput() JobConfigurationLoadDecimalTargetTypesItemOutput {
+	return pulumi.ToOutput(e).(JobConfigurationLoadDecimalTargetTypesItemOutput)
+}
+
+func (e JobConfigurationLoadDecimalTargetTypesItem) ToJobConfigurationLoadDecimalTargetTypesItemOutputWithContext(ctx context.Context) JobConfigurationLoadDecimalTargetTypesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(JobConfigurationLoadDecimalTargetTypesItemOutput)
+}
+
+func (e JobConfigurationLoadDecimalTargetTypesItem) ToJobConfigurationLoadDecimalTargetTypesItemPtrOutput() JobConfigurationLoadDecimalTargetTypesItemPtrOutput {
+	return e.ToJobConfigurationLoadDecimalTargetTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (e JobConfigurationLoadDecimalTargetTypesItem) ToJobConfigurationLoadDecimalTargetTypesItemPtrOutputWithContext(ctx context.Context) JobConfigurationLoadDecimalTargetTypesItemPtrOutput {
+	return JobConfigurationLoadDecimalTargetTypesItem(e).ToJobConfigurationLoadDecimalTargetTypesItemOutputWithContext(ctx).ToJobConfigurationLoadDecimalTargetTypesItemPtrOutputWithContext(ctx)
+}
+
+func (e JobConfigurationLoadDecimalTargetTypesItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JobConfigurationLoadDecimalTargetTypesItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JobConfigurationLoadDecimalTargetTypesItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e JobConfigurationLoadDecimalTargetTypesItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type JobConfigurationLoadDecimalTargetTypesItemOutput struct{ *pulumi.OutputState }
+
+func (JobConfigurationLoadDecimalTargetTypesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobConfigurationLoadDecimalTargetTypesItem)(nil)).Elem()
+}
+
+func (o JobConfigurationLoadDecimalTargetTypesItemOutput) ToJobConfigurationLoadDecimalTargetTypesItemOutput() JobConfigurationLoadDecimalTargetTypesItemOutput {
+	return o
+}
+
+func (o JobConfigurationLoadDecimalTargetTypesItemOutput) ToJobConfigurationLoadDecimalTargetTypesItemOutputWithContext(ctx context.Context) JobConfigurationLoadDecimalTargetTypesItemOutput {
+	return o
+}
+
+func (o JobConfigurationLoadDecimalTargetTypesItemOutput) ToJobConfigurationLoadDecimalTargetTypesItemPtrOutput() JobConfigurationLoadDecimalTargetTypesItemPtrOutput {
+	return o.ToJobConfigurationLoadDecimalTargetTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (o JobConfigurationLoadDecimalTargetTypesItemOutput) ToJobConfigurationLoadDecimalTargetTypesItemPtrOutputWithContext(ctx context.Context) JobConfigurationLoadDecimalTargetTypesItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobConfigurationLoadDecimalTargetTypesItem) *JobConfigurationLoadDecimalTargetTypesItem {
+		return &v
+	}).(JobConfigurationLoadDecimalTargetTypesItemPtrOutput)
+}
+
+func (o JobConfigurationLoadDecimalTargetTypesItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o JobConfigurationLoadDecimalTargetTypesItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobConfigurationLoadDecimalTargetTypesItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o JobConfigurationLoadDecimalTargetTypesItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobConfigurationLoadDecimalTargetTypesItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobConfigurationLoadDecimalTargetTypesItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobConfigurationLoadDecimalTargetTypesItemPtrOutput struct{ *pulumi.OutputState }
+
+func (JobConfigurationLoadDecimalTargetTypesItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobConfigurationLoadDecimalTargetTypesItem)(nil)).Elem()
+}
+
+func (o JobConfigurationLoadDecimalTargetTypesItemPtrOutput) ToJobConfigurationLoadDecimalTargetTypesItemPtrOutput() JobConfigurationLoadDecimalTargetTypesItemPtrOutput {
+	return o
+}
+
+func (o JobConfigurationLoadDecimalTargetTypesItemPtrOutput) ToJobConfigurationLoadDecimalTargetTypesItemPtrOutputWithContext(ctx context.Context) JobConfigurationLoadDecimalTargetTypesItemPtrOutput {
+	return o
+}
+
+func (o JobConfigurationLoadDecimalTargetTypesItemPtrOutput) Elem() JobConfigurationLoadDecimalTargetTypesItemOutput {
+	return o.ApplyT(func(v *JobConfigurationLoadDecimalTargetTypesItem) JobConfigurationLoadDecimalTargetTypesItem {
+		if v != nil {
+			return *v
+		}
+		var ret JobConfigurationLoadDecimalTargetTypesItem
+		return ret
+	}).(JobConfigurationLoadDecimalTargetTypesItemOutput)
+}
+
+func (o JobConfigurationLoadDecimalTargetTypesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobConfigurationLoadDecimalTargetTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *JobConfigurationLoadDecimalTargetTypesItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// JobConfigurationLoadDecimalTargetTypesItemInput is an input type that accepts values of the JobConfigurationLoadDecimalTargetTypesItem enum
+// A concrete instance of `JobConfigurationLoadDecimalTargetTypesItemInput` can be one of the following:
+//
+//	JobConfigurationLoadDecimalTargetTypesItemDecimalTargetTypeUnspecified
+//	JobConfigurationLoadDecimalTargetTypesItemNumeric
+//	JobConfigurationLoadDecimalTargetTypesItemBignumeric
+//	JobConfigurationLoadDecimalTargetTypesItemString
+type JobConfigurationLoadDecimalTargetTypesItemInput interface {
+	pulumi.Input
+
+	ToJobConfigurationLoadDecimalTargetTypesItemOutput() JobConfigurationLoadDecimalTargetTypesItemOutput
+	ToJobConfigurationLoadDecimalTargetTypesItemOutputWithContext(context.Context) JobConfigurationLoadDecimalTargetTypesItemOutput
+}
+
+var jobConfigurationLoadDecimalTargetTypesItemPtrType = reflect.TypeOf((**JobConfigurationLoadDecimalTargetTypesItem)(nil)).Elem()
+
+type JobConfigurationLoadDecimalTargetTypesItemPtrInput interface {
+	pulumi.Input
+
+	ToJobConfigurationLoadDecimalTargetTypesItemPtrOutput() JobConfigurationLoadDecimalTargetTypesItemPtrOutput
+	ToJobConfigurationLoadDecimalTargetTypesItemPtrOutputWithContext(context.Context) JobConfigurationLoadDecimalTargetTypesItemPtrOutput
+}
+
+type jobConfigurationLoadDecimalTargetTypesItemPtr string
+
+func JobConfigurationLoadDecimalTargetTypesItemPtr(v string) JobConfigurationLoadDecimalTargetTypesItemPtrInput {
+	return (*jobConfigurationLoadDecimalTargetTypesItemPtr)(&v)
+}
+
+func (*jobConfigurationLoadDecimalTargetTypesItemPtr) ElementType() reflect.Type {
+	return jobConfigurationLoadDecimalTargetTypesItemPtrType
+}
+
+func (in *jobConfigurationLoadDecimalTargetTypesItemPtr) ToJobConfigurationLoadDecimalTargetTypesItemPtrOutput() JobConfigurationLoadDecimalTargetTypesItemPtrOutput {
+	return pulumi.ToOutput(in).(JobConfigurationLoadDecimalTargetTypesItemPtrOutput)
+}
+
+func (in *jobConfigurationLoadDecimalTargetTypesItemPtr) ToJobConfigurationLoadDecimalTargetTypesItemPtrOutputWithContext(ctx context.Context) JobConfigurationLoadDecimalTargetTypesItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(JobConfigurationLoadDecimalTargetTypesItemPtrOutput)
+}
+
+func (in *jobConfigurationLoadDecimalTargetTypesItemPtr) ToOutput(ctx context.Context) pulumix.Output[*JobConfigurationLoadDecimalTargetTypesItem] {
+	return pulumix.Output[*JobConfigurationLoadDecimalTargetTypesItem]{
+		OutputState: in.ToJobConfigurationLoadDecimalTargetTypesItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// JobConfigurationLoadDecimalTargetTypesItemArrayInput is an input type that accepts JobConfigurationLoadDecimalTargetTypesItemArray and JobConfigurationLoadDecimalTargetTypesItemArrayOutput values.
+// You can construct a concrete instance of `JobConfigurationLoadDecimalTargetTypesItemArrayInput` via:
+//
+//	JobConfigurationLoadDecimalTargetTypesItemArray{ JobConfigurationLoadDecimalTargetTypesItemArgs{...} }
+type JobConfigurationLoadDecimalTargetTypesItemArrayInput interface {
+	pulumi.Input
+
+	ToJobConfigurationLoadDecimalTargetTypesItemArrayOutput() JobConfigurationLoadDecimalTargetTypesItemArrayOutput
+	ToJobConfigurationLoadDecimalTargetTypesItemArrayOutputWithContext(context.Context) JobConfigurationLoadDecimalTargetTypesItemArrayOutput
+}
+
+type JobConfigurationLoadDecimalTargetTypesItemArray []JobConfigurationLoadDecimalTargetTypesItem
+
+func (JobConfigurationLoadDecimalTargetTypesItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobConfigurationLoadDecimalTargetTypesItem)(nil)).Elem()
+}
+
+func (i JobConfigurationLoadDecimalTargetTypesItemArray) ToJobConfigurationLoadDecimalTargetTypesItemArrayOutput() JobConfigurationLoadDecimalTargetTypesItemArrayOutput {
+	return i.ToJobConfigurationLoadDecimalTargetTypesItemArrayOutputWithContext(context.Background())
+}
+
+func (i JobConfigurationLoadDecimalTargetTypesItemArray) ToJobConfigurationLoadDecimalTargetTypesItemArrayOutputWithContext(ctx context.Context) JobConfigurationLoadDecimalTargetTypesItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobConfigurationLoadDecimalTargetTypesItemArrayOutput)
+}
+
+type JobConfigurationLoadDecimalTargetTypesItemArrayOutput struct{ *pulumi.OutputState }
+
+func (JobConfigurationLoadDecimalTargetTypesItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobConfigurationLoadDecimalTargetTypesItem)(nil)).Elem()
+}
+
+func (o JobConfigurationLoadDecimalTargetTypesItemArrayOutput) ToJobConfigurationLoadDecimalTargetTypesItemArrayOutput() JobConfigurationLoadDecimalTargetTypesItemArrayOutput {
+	return o
+}
+
+func (o JobConfigurationLoadDecimalTargetTypesItemArrayOutput) ToJobConfigurationLoadDecimalTargetTypesItemArrayOutputWithContext(ctx context.Context) JobConfigurationLoadDecimalTargetTypesItemArrayOutput {
+	return o
+}
+
+func (o JobConfigurationLoadDecimalTargetTypesItemArrayOutput) Index(i pulumi.IntInput) JobConfigurationLoadDecimalTargetTypesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobConfigurationLoadDecimalTargetTypesItem {
+		return vs[0].([]JobConfigurationLoadDecimalTargetTypesItem)[vs[1].(int)]
+	}).(JobConfigurationLoadDecimalTargetTypesItemOutput)
+}
+
+// Optional. Specifies how source URIs are interpreted for constructing the file set to load. By default, source URIs are expanded against the underlying storage. You can also specify manifest files to control how the file set is constructed. This option is only applicable to object storage systems.
+type JobConfigurationLoadFileSetSpecType string
+
+const (
+	// This option expands source URIs by listing files from the object store. It is the default behavior if FileSetSpecType is not set.
+	JobConfigurationLoadFileSetSpecTypeFileSetSpecTypeFileSystemMatch = JobConfigurationLoadFileSetSpecType("FILE_SET_SPEC_TYPE_FILE_SYSTEM_MATCH")
+	// This option indicates that the provided URIs are newline-delimited manifest files, with one URI per line. Wildcard URIs are not supported.
+	JobConfigurationLoadFileSetSpecTypeFileSetSpecTypeNewLineDelimitedManifest = JobConfigurationLoadFileSetSpecType("FILE_SET_SPEC_TYPE_NEW_LINE_DELIMITED_MANIFEST")
+)
+
+func (JobConfigurationLoadFileSetSpecType) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobConfigurationLoadFileSetSpecType)(nil)).Elem()
+}
+
+func (e JobConfigurationLoadFileSetSpecType) ToJobConfigurationLoadFileSetSpecTypeOutput() JobConfigurationLoadFileSetSpecTypeOutput {
+	return pulumi.ToOutput(e).(JobConfigurationLoadFileSetSpecTypeOutput)
+}
+
+func (e JobConfigurationLoadFileSetSpecType) ToJobConfigurationLoadFileSetSpecTypeOutputWithContext(ctx context.Context) JobConfigurationLoadFileSetSpecTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(JobConfigurationLoadFileSetSpecTypeOutput)
+}
+
+func (e JobConfigurationLoadFileSetSpecType) ToJobConfigurationLoadFileSetSpecTypePtrOutput() JobConfigurationLoadFileSetSpecTypePtrOutput {
+	return e.ToJobConfigurationLoadFileSetSpecTypePtrOutputWithContext(context.Background())
+}
+
+func (e JobConfigurationLoadFileSetSpecType) ToJobConfigurationLoadFileSetSpecTypePtrOutputWithContext(ctx context.Context) JobConfigurationLoadFileSetSpecTypePtrOutput {
+	return JobConfigurationLoadFileSetSpecType(e).ToJobConfigurationLoadFileSetSpecTypeOutputWithContext(ctx).ToJobConfigurationLoadFileSetSpecTypePtrOutputWithContext(ctx)
+}
+
+func (e JobConfigurationLoadFileSetSpecType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JobConfigurationLoadFileSetSpecType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JobConfigurationLoadFileSetSpecType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e JobConfigurationLoadFileSetSpecType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type JobConfigurationLoadFileSetSpecTypeOutput struct{ *pulumi.OutputState }
+
+func (JobConfigurationLoadFileSetSpecTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobConfigurationLoadFileSetSpecType)(nil)).Elem()
+}
+
+func (o JobConfigurationLoadFileSetSpecTypeOutput) ToJobConfigurationLoadFileSetSpecTypeOutput() JobConfigurationLoadFileSetSpecTypeOutput {
+	return o
+}
+
+func (o JobConfigurationLoadFileSetSpecTypeOutput) ToJobConfigurationLoadFileSetSpecTypeOutputWithContext(ctx context.Context) JobConfigurationLoadFileSetSpecTypeOutput {
+	return o
+}
+
+func (o JobConfigurationLoadFileSetSpecTypeOutput) ToJobConfigurationLoadFileSetSpecTypePtrOutput() JobConfigurationLoadFileSetSpecTypePtrOutput {
+	return o.ToJobConfigurationLoadFileSetSpecTypePtrOutputWithContext(context.Background())
+}
+
+func (o JobConfigurationLoadFileSetSpecTypeOutput) ToJobConfigurationLoadFileSetSpecTypePtrOutputWithContext(ctx context.Context) JobConfigurationLoadFileSetSpecTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobConfigurationLoadFileSetSpecType) *JobConfigurationLoadFileSetSpecType {
+		return &v
+	}).(JobConfigurationLoadFileSetSpecTypePtrOutput)
+}
+
+func (o JobConfigurationLoadFileSetSpecTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o JobConfigurationLoadFileSetSpecTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobConfigurationLoadFileSetSpecType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o JobConfigurationLoadFileSetSpecTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobConfigurationLoadFileSetSpecTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobConfigurationLoadFileSetSpecType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobConfigurationLoadFileSetSpecTypePtrOutput struct{ *pulumi.OutputState }
+
+func (JobConfigurationLoadFileSetSpecTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobConfigurationLoadFileSetSpecType)(nil)).Elem()
+}
+
+func (o JobConfigurationLoadFileSetSpecTypePtrOutput) ToJobConfigurationLoadFileSetSpecTypePtrOutput() JobConfigurationLoadFileSetSpecTypePtrOutput {
+	return o
+}
+
+func (o JobConfigurationLoadFileSetSpecTypePtrOutput) ToJobConfigurationLoadFileSetSpecTypePtrOutputWithContext(ctx context.Context) JobConfigurationLoadFileSetSpecTypePtrOutput {
+	return o
+}
+
+func (o JobConfigurationLoadFileSetSpecTypePtrOutput) Elem() JobConfigurationLoadFileSetSpecTypeOutput {
+	return o.ApplyT(func(v *JobConfigurationLoadFileSetSpecType) JobConfigurationLoadFileSetSpecType {
+		if v != nil {
+			return *v
+		}
+		var ret JobConfigurationLoadFileSetSpecType
+		return ret
+	}).(JobConfigurationLoadFileSetSpecTypeOutput)
+}
+
+func (o JobConfigurationLoadFileSetSpecTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobConfigurationLoadFileSetSpecTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *JobConfigurationLoadFileSetSpecType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// JobConfigurationLoadFileSetSpecTypeInput is an input type that accepts values of the JobConfigurationLoadFileSetSpecType enum
+// A concrete instance of `JobConfigurationLoadFileSetSpecTypeInput` can be one of the following:
+//
+//	JobConfigurationLoadFileSetSpecTypeFileSetSpecTypeFileSystemMatch
+//	JobConfigurationLoadFileSetSpecTypeFileSetSpecTypeNewLineDelimitedManifest
+type JobConfigurationLoadFileSetSpecTypeInput interface {
+	pulumi.Input
+
+	ToJobConfigurationLoadFileSetSpecTypeOutput() JobConfigurationLoadFileSetSpecTypeOutput
+	ToJobConfigurationLoadFileSetSpecTypeOutputWithContext(context.Context) JobConfigurationLoadFileSetSpecTypeOutput
+}
+
+var jobConfigurationLoadFileSetSpecTypePtrType = reflect.TypeOf((**JobConfigurationLoadFileSetSpecType)(nil)).Elem()
+
+type JobConfigurationLoadFileSetSpecTypePtrInput interface {
+	pulumi.Input
+
+	ToJobConfigurationLoadFileSetSpecTypePtrOutput() JobConfigurationLoadFileSetSpecTypePtrOutput
+	ToJobConfigurationLoadFileSetSpecTypePtrOutputWithContext(context.Context) JobConfigurationLoadFileSetSpecTypePtrOutput
+}
+
+type jobConfigurationLoadFileSetSpecTypePtr string
+
+func JobConfigurationLoadFileSetSpecTypePtr(v string) JobConfigurationLoadFileSetSpecTypePtrInput {
+	return (*jobConfigurationLoadFileSetSpecTypePtr)(&v)
+}
+
+func (*jobConfigurationLoadFileSetSpecTypePtr) ElementType() reflect.Type {
+	return jobConfigurationLoadFileSetSpecTypePtrType
+}
+
+func (in *jobConfigurationLoadFileSetSpecTypePtr) ToJobConfigurationLoadFileSetSpecTypePtrOutput() JobConfigurationLoadFileSetSpecTypePtrOutput {
+	return pulumi.ToOutput(in).(JobConfigurationLoadFileSetSpecTypePtrOutput)
+}
+
+func (in *jobConfigurationLoadFileSetSpecTypePtr) ToJobConfigurationLoadFileSetSpecTypePtrOutputWithContext(ctx context.Context) JobConfigurationLoadFileSetSpecTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(JobConfigurationLoadFileSetSpecTypePtrOutput)
+}
+
+func (in *jobConfigurationLoadFileSetSpecTypePtr) ToOutput(ctx context.Context) pulumix.Output[*JobConfigurationLoadFileSetSpecType] {
+	return pulumix.Output[*JobConfigurationLoadFileSetSpecType]{
+		OutputState: in.ToJobConfigurationLoadFileSetSpecTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. Load option to be used together with source_format newline-delimited JSON to indicate that a variant of JSON is being loaded. To load newline-delimited GeoJSON, specify GEOJSON (and source_format must be set to NEWLINE_DELIMITED_JSON).
+type JobConfigurationLoadJsonExtension string
+
+const (
+	// The default if provided value is not one included in the enum, or the value is not specified. The source formate is parsed without any modification.
+	JobConfigurationLoadJsonExtensionJsonExtensionUnspecified = JobConfigurationLoadJsonExtension("JSON_EXTENSION_UNSPECIFIED")
+	// Use GeoJSON variant of JSON. See https://tools.ietf.org/html/rfc7946.
+	JobConfigurationLoadJsonExtensionGeojson = JobConfigurationLoadJsonExtension("GEOJSON")
+)
+
+func (JobConfigurationLoadJsonExtension) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobConfigurationLoadJsonExtension)(nil)).Elem()
+}
+
+func (e JobConfigurationLoadJsonExtension) ToJobConfigurationLoadJsonExtensionOutput() JobConfigurationLoadJsonExtensionOutput {
+	return pulumi.ToOutput(e).(JobConfigurationLoadJsonExtensionOutput)
+}
+
+func (e JobConfigurationLoadJsonExtension) ToJobConfigurationLoadJsonExtensionOutputWithContext(ctx context.Context) JobConfigurationLoadJsonExtensionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(JobConfigurationLoadJsonExtensionOutput)
+}
+
+func (e JobConfigurationLoadJsonExtension) ToJobConfigurationLoadJsonExtensionPtrOutput() JobConfigurationLoadJsonExtensionPtrOutput {
+	return e.ToJobConfigurationLoadJsonExtensionPtrOutputWithContext(context.Background())
+}
+
+func (e JobConfigurationLoadJsonExtension) ToJobConfigurationLoadJsonExtensionPtrOutputWithContext(ctx context.Context) JobConfigurationLoadJsonExtensionPtrOutput {
+	return JobConfigurationLoadJsonExtension(e).ToJobConfigurationLoadJsonExtensionOutputWithContext(ctx).ToJobConfigurationLoadJsonExtensionPtrOutputWithContext(ctx)
+}
+
+func (e JobConfigurationLoadJsonExtension) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JobConfigurationLoadJsonExtension) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JobConfigurationLoadJsonExtension) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e JobConfigurationLoadJsonExtension) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type JobConfigurationLoadJsonExtensionOutput struct{ *pulumi.OutputState }
+
+func (JobConfigurationLoadJsonExtensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobConfigurationLoadJsonExtension)(nil)).Elem()
+}
+
+func (o JobConfigurationLoadJsonExtensionOutput) ToJobConfigurationLoadJsonExtensionOutput() JobConfigurationLoadJsonExtensionOutput {
+	return o
+}
+
+func (o JobConfigurationLoadJsonExtensionOutput) ToJobConfigurationLoadJsonExtensionOutputWithContext(ctx context.Context) JobConfigurationLoadJsonExtensionOutput {
+	return o
+}
+
+func (o JobConfigurationLoadJsonExtensionOutput) ToJobConfigurationLoadJsonExtensionPtrOutput() JobConfigurationLoadJsonExtensionPtrOutput {
+	return o.ToJobConfigurationLoadJsonExtensionPtrOutputWithContext(context.Background())
+}
+
+func (o JobConfigurationLoadJsonExtensionOutput) ToJobConfigurationLoadJsonExtensionPtrOutputWithContext(ctx context.Context) JobConfigurationLoadJsonExtensionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobConfigurationLoadJsonExtension) *JobConfigurationLoadJsonExtension {
+		return &v
+	}).(JobConfigurationLoadJsonExtensionPtrOutput)
+}
+
+func (o JobConfigurationLoadJsonExtensionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o JobConfigurationLoadJsonExtensionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobConfigurationLoadJsonExtension) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o JobConfigurationLoadJsonExtensionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobConfigurationLoadJsonExtensionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobConfigurationLoadJsonExtension) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobConfigurationLoadJsonExtensionPtrOutput struct{ *pulumi.OutputState }
+
+func (JobConfigurationLoadJsonExtensionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobConfigurationLoadJsonExtension)(nil)).Elem()
+}
+
+func (o JobConfigurationLoadJsonExtensionPtrOutput) ToJobConfigurationLoadJsonExtensionPtrOutput() JobConfigurationLoadJsonExtensionPtrOutput {
+	return o
+}
+
+func (o JobConfigurationLoadJsonExtensionPtrOutput) ToJobConfigurationLoadJsonExtensionPtrOutputWithContext(ctx context.Context) JobConfigurationLoadJsonExtensionPtrOutput {
+	return o
+}
+
+func (o JobConfigurationLoadJsonExtensionPtrOutput) Elem() JobConfigurationLoadJsonExtensionOutput {
+	return o.ApplyT(func(v *JobConfigurationLoadJsonExtension) JobConfigurationLoadJsonExtension {
+		if v != nil {
+			return *v
+		}
+		var ret JobConfigurationLoadJsonExtension
+		return ret
+	}).(JobConfigurationLoadJsonExtensionOutput)
+}
+
+func (o JobConfigurationLoadJsonExtensionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobConfigurationLoadJsonExtensionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *JobConfigurationLoadJsonExtension) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// JobConfigurationLoadJsonExtensionInput is an input type that accepts values of the JobConfigurationLoadJsonExtension enum
+// A concrete instance of `JobConfigurationLoadJsonExtensionInput` can be one of the following:
+//
+//	JobConfigurationLoadJsonExtensionJsonExtensionUnspecified
+//	JobConfigurationLoadJsonExtensionGeojson
+type JobConfigurationLoadJsonExtensionInput interface {
+	pulumi.Input
+
+	ToJobConfigurationLoadJsonExtensionOutput() JobConfigurationLoadJsonExtensionOutput
+	ToJobConfigurationLoadJsonExtensionOutputWithContext(context.Context) JobConfigurationLoadJsonExtensionOutput
+}
+
+var jobConfigurationLoadJsonExtensionPtrType = reflect.TypeOf((**JobConfigurationLoadJsonExtension)(nil)).Elem()
+
+type JobConfigurationLoadJsonExtensionPtrInput interface {
+	pulumi.Input
+
+	ToJobConfigurationLoadJsonExtensionPtrOutput() JobConfigurationLoadJsonExtensionPtrOutput
+	ToJobConfigurationLoadJsonExtensionPtrOutputWithContext(context.Context) JobConfigurationLoadJsonExtensionPtrOutput
+}
+
+type jobConfigurationLoadJsonExtensionPtr string
+
+func JobConfigurationLoadJsonExtensionPtr(v string) JobConfigurationLoadJsonExtensionPtrInput {
+	return (*jobConfigurationLoadJsonExtensionPtr)(&v)
+}
+
+func (*jobConfigurationLoadJsonExtensionPtr) ElementType() reflect.Type {
+	return jobConfigurationLoadJsonExtensionPtrType
+}
+
+func (in *jobConfigurationLoadJsonExtensionPtr) ToJobConfigurationLoadJsonExtensionPtrOutput() JobConfigurationLoadJsonExtensionPtrOutput {
+	return pulumi.ToOutput(in).(JobConfigurationLoadJsonExtensionPtrOutput)
+}
+
+func (in *jobConfigurationLoadJsonExtensionPtr) ToJobConfigurationLoadJsonExtensionPtrOutputWithContext(ctx context.Context) JobConfigurationLoadJsonExtensionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(JobConfigurationLoadJsonExtensionPtrOutput)
+}
+
+func (in *jobConfigurationLoadJsonExtensionPtr) ToOutput(ctx context.Context) pulumix.Output[*JobConfigurationLoadJsonExtension] {
+	return pulumix.Output[*JobConfigurationLoadJsonExtension]{
+		OutputState: in.ToJobConfigurationLoadJsonExtensionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. Supported operation types in table copy job.
+type JobConfigurationTableCopyOperationType string
+
+const (
+	// Unspecified operation type.
+	JobConfigurationTableCopyOperationTypeOperationTypeUnspecified = JobConfigurationTableCopyOperationType("OPERATION_TYPE_UNSPECIFIED")
+	// The source and destination table have the same table type.
+	JobConfigurationTableCopyOperationTypeCopy = JobConfigurationTableCopyOperationType("COPY")
+	// The source table type is TABLE and the destination table type is SNAPSHOT.
+	JobConfigurationTableCopyOperationTypeSnapshot = JobConfigurationTableCopyOperationType("SNAPSHOT")
+	// The source table type is SNAPSHOT and the destination table type is TABLE.
+	JobConfigurationTableCopyOperationTypeRestore = JobConfigurationTableCopyOperationType("RESTORE")
+	// The source and destination table have the same table type, but only bill for unique data.
+	JobConfigurationTableCopyOperationTypeClone = JobConfigurationTableCopyOperationType("CLONE")
+)
+
+func (JobConfigurationTableCopyOperationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobConfigurationTableCopyOperationType)(nil)).Elem()
+}
+
+func (e JobConfigurationTableCopyOperationType) ToJobConfigurationTableCopyOperationTypeOutput() JobConfigurationTableCopyOperationTypeOutput {
+	return pulumi.ToOutput(e).(JobConfigurationTableCopyOperationTypeOutput)
+}
+
+func (e JobConfigurationTableCopyOperationType) ToJobConfigurationTableCopyOperationTypeOutputWithContext(ctx context.Context) JobConfigurationTableCopyOperationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(JobConfigurationTableCopyOperationTypeOutput)
+}
+
+func (e JobConfigurationTableCopyOperationType) ToJobConfigurationTableCopyOperationTypePtrOutput() JobConfigurationTableCopyOperationTypePtrOutput {
+	return e.ToJobConfigurationTableCopyOperationTypePtrOutputWithContext(context.Background())
+}
+
+func (e JobConfigurationTableCopyOperationType) ToJobConfigurationTableCopyOperationTypePtrOutputWithContext(ctx context.Context) JobConfigurationTableCopyOperationTypePtrOutput {
+	return JobConfigurationTableCopyOperationType(e).ToJobConfigurationTableCopyOperationTypeOutputWithContext(ctx).ToJobConfigurationTableCopyOperationTypePtrOutputWithContext(ctx)
+}
+
+func (e JobConfigurationTableCopyOperationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JobConfigurationTableCopyOperationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JobConfigurationTableCopyOperationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e JobConfigurationTableCopyOperationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type JobConfigurationTableCopyOperationTypeOutput struct{ *pulumi.OutputState }
+
+func (JobConfigurationTableCopyOperationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobConfigurationTableCopyOperationType)(nil)).Elem()
+}
+
+func (o JobConfigurationTableCopyOperationTypeOutput) ToJobConfigurationTableCopyOperationTypeOutput() JobConfigurationTableCopyOperationTypeOutput {
+	return o
+}
+
+func (o JobConfigurationTableCopyOperationTypeOutput) ToJobConfigurationTableCopyOperationTypeOutputWithContext(ctx context.Context) JobConfigurationTableCopyOperationTypeOutput {
+	return o
+}
+
+func (o JobConfigurationTableCopyOperationTypeOutput) ToJobConfigurationTableCopyOperationTypePtrOutput() JobConfigurationTableCopyOperationTypePtrOutput {
+	return o.ToJobConfigurationTableCopyOperationTypePtrOutputWithContext(context.Background())
+}
+
+func (o JobConfigurationTableCopyOperationTypeOutput) ToJobConfigurationTableCopyOperationTypePtrOutputWithContext(ctx context.Context) JobConfigurationTableCopyOperationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobConfigurationTableCopyOperationType) *JobConfigurationTableCopyOperationType {
+		return &v
+	}).(JobConfigurationTableCopyOperationTypePtrOutput)
+}
+
+func (o JobConfigurationTableCopyOperationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o JobConfigurationTableCopyOperationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobConfigurationTableCopyOperationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o JobConfigurationTableCopyOperationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobConfigurationTableCopyOperationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobConfigurationTableCopyOperationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobConfigurationTableCopyOperationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (JobConfigurationTableCopyOperationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobConfigurationTableCopyOperationType)(nil)).Elem()
+}
+
+func (o JobConfigurationTableCopyOperationTypePtrOutput) ToJobConfigurationTableCopyOperationTypePtrOutput() JobConfigurationTableCopyOperationTypePtrOutput {
+	return o
+}
+
+func (o JobConfigurationTableCopyOperationTypePtrOutput) ToJobConfigurationTableCopyOperationTypePtrOutputWithContext(ctx context.Context) JobConfigurationTableCopyOperationTypePtrOutput {
+	return o
+}
+
+func (o JobConfigurationTableCopyOperationTypePtrOutput) Elem() JobConfigurationTableCopyOperationTypeOutput {
+	return o.ApplyT(func(v *JobConfigurationTableCopyOperationType) JobConfigurationTableCopyOperationType {
+		if v != nil {
+			return *v
+		}
+		var ret JobConfigurationTableCopyOperationType
+		return ret
+	}).(JobConfigurationTableCopyOperationTypeOutput)
+}
+
+func (o JobConfigurationTableCopyOperationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobConfigurationTableCopyOperationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *JobConfigurationTableCopyOperationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// JobConfigurationTableCopyOperationTypeInput is an input type that accepts values of the JobConfigurationTableCopyOperationType enum
+// A concrete instance of `JobConfigurationTableCopyOperationTypeInput` can be one of the following:
+//
+//	JobConfigurationTableCopyOperationTypeOperationTypeUnspecified
+//	JobConfigurationTableCopyOperationTypeCopy
+//	JobConfigurationTableCopyOperationTypeSnapshot
+//	JobConfigurationTableCopyOperationTypeRestore
+//	JobConfigurationTableCopyOperationTypeClone
+type JobConfigurationTableCopyOperationTypeInput interface {
+	pulumi.Input
+
+	ToJobConfigurationTableCopyOperationTypeOutput() JobConfigurationTableCopyOperationTypeOutput
+	ToJobConfigurationTableCopyOperationTypeOutputWithContext(context.Context) JobConfigurationTableCopyOperationTypeOutput
+}
+
+var jobConfigurationTableCopyOperationTypePtrType = reflect.TypeOf((**JobConfigurationTableCopyOperationType)(nil)).Elem()
+
+type JobConfigurationTableCopyOperationTypePtrInput interface {
+	pulumi.Input
+
+	ToJobConfigurationTableCopyOperationTypePtrOutput() JobConfigurationTableCopyOperationTypePtrOutput
+	ToJobConfigurationTableCopyOperationTypePtrOutputWithContext(context.Context) JobConfigurationTableCopyOperationTypePtrOutput
+}
+
+type jobConfigurationTableCopyOperationTypePtr string
+
+func JobConfigurationTableCopyOperationTypePtr(v string) JobConfigurationTableCopyOperationTypePtrInput {
+	return (*jobConfigurationTableCopyOperationTypePtr)(&v)
+}
+
+func (*jobConfigurationTableCopyOperationTypePtr) ElementType() reflect.Type {
+	return jobConfigurationTableCopyOperationTypePtrType
+}
+
+func (in *jobConfigurationTableCopyOperationTypePtr) ToJobConfigurationTableCopyOperationTypePtrOutput() JobConfigurationTableCopyOperationTypePtrOutput {
+	return pulumi.ToOutput(in).(JobConfigurationTableCopyOperationTypePtrOutput)
+}
+
+func (in *jobConfigurationTableCopyOperationTypePtr) ToJobConfigurationTableCopyOperationTypePtrOutputWithContext(ctx context.Context) JobConfigurationTableCopyOperationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(JobConfigurationTableCopyOperationTypePtrOutput)
+}
+
+func (in *jobConfigurationTableCopyOperationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*JobConfigurationTableCopyOperationType] {
+	return pulumix.Output[*JobConfigurationTableCopyOperationType]{
+		OutputState: in.ToJobConfigurationTableCopyOperationTypePtrOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Optional. If set to `DATA_MASKING`, the function is validated and made available as a masking function. For more information, see [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
@@ -1666,6 +4049,183 @@ func (in *routineSecurityModePtr) ToOutput(ctx context.Context) pulumix.Output[*
 	}
 }
 
+// Determines which statement in the script represents the "key result", used to populate the schema and query results of the script job. Default is LAST.
+type ScriptOptionsKeyResultStatement string
+
+const (
+	// Default value.
+	ScriptOptionsKeyResultStatementKeyResultStatementKindUnspecified = ScriptOptionsKeyResultStatement("KEY_RESULT_STATEMENT_KIND_UNSPECIFIED")
+	// The last result determines the key result.
+	ScriptOptionsKeyResultStatementLast = ScriptOptionsKeyResultStatement("LAST")
+	// The first SELECT statement determines the key result.
+	ScriptOptionsKeyResultStatementFirstSelect = ScriptOptionsKeyResultStatement("FIRST_SELECT")
+)
+
+func (ScriptOptionsKeyResultStatement) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScriptOptionsKeyResultStatement)(nil)).Elem()
+}
+
+func (e ScriptOptionsKeyResultStatement) ToScriptOptionsKeyResultStatementOutput() ScriptOptionsKeyResultStatementOutput {
+	return pulumi.ToOutput(e).(ScriptOptionsKeyResultStatementOutput)
+}
+
+func (e ScriptOptionsKeyResultStatement) ToScriptOptionsKeyResultStatementOutputWithContext(ctx context.Context) ScriptOptionsKeyResultStatementOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ScriptOptionsKeyResultStatementOutput)
+}
+
+func (e ScriptOptionsKeyResultStatement) ToScriptOptionsKeyResultStatementPtrOutput() ScriptOptionsKeyResultStatementPtrOutput {
+	return e.ToScriptOptionsKeyResultStatementPtrOutputWithContext(context.Background())
+}
+
+func (e ScriptOptionsKeyResultStatement) ToScriptOptionsKeyResultStatementPtrOutputWithContext(ctx context.Context) ScriptOptionsKeyResultStatementPtrOutput {
+	return ScriptOptionsKeyResultStatement(e).ToScriptOptionsKeyResultStatementOutputWithContext(ctx).ToScriptOptionsKeyResultStatementPtrOutputWithContext(ctx)
+}
+
+func (e ScriptOptionsKeyResultStatement) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ScriptOptionsKeyResultStatement) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ScriptOptionsKeyResultStatement) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ScriptOptionsKeyResultStatement) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ScriptOptionsKeyResultStatementOutput struct{ *pulumi.OutputState }
+
+func (ScriptOptionsKeyResultStatementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScriptOptionsKeyResultStatement)(nil)).Elem()
+}
+
+func (o ScriptOptionsKeyResultStatementOutput) ToScriptOptionsKeyResultStatementOutput() ScriptOptionsKeyResultStatementOutput {
+	return o
+}
+
+func (o ScriptOptionsKeyResultStatementOutput) ToScriptOptionsKeyResultStatementOutputWithContext(ctx context.Context) ScriptOptionsKeyResultStatementOutput {
+	return o
+}
+
+func (o ScriptOptionsKeyResultStatementOutput) ToScriptOptionsKeyResultStatementPtrOutput() ScriptOptionsKeyResultStatementPtrOutput {
+	return o.ToScriptOptionsKeyResultStatementPtrOutputWithContext(context.Background())
+}
+
+func (o ScriptOptionsKeyResultStatementOutput) ToScriptOptionsKeyResultStatementPtrOutputWithContext(ctx context.Context) ScriptOptionsKeyResultStatementPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScriptOptionsKeyResultStatement) *ScriptOptionsKeyResultStatement {
+		return &v
+	}).(ScriptOptionsKeyResultStatementPtrOutput)
+}
+
+func (o ScriptOptionsKeyResultStatementOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ScriptOptionsKeyResultStatementOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ScriptOptionsKeyResultStatement) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ScriptOptionsKeyResultStatementOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ScriptOptionsKeyResultStatementOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ScriptOptionsKeyResultStatement) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ScriptOptionsKeyResultStatementPtrOutput struct{ *pulumi.OutputState }
+
+func (ScriptOptionsKeyResultStatementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScriptOptionsKeyResultStatement)(nil)).Elem()
+}
+
+func (o ScriptOptionsKeyResultStatementPtrOutput) ToScriptOptionsKeyResultStatementPtrOutput() ScriptOptionsKeyResultStatementPtrOutput {
+	return o
+}
+
+func (o ScriptOptionsKeyResultStatementPtrOutput) ToScriptOptionsKeyResultStatementPtrOutputWithContext(ctx context.Context) ScriptOptionsKeyResultStatementPtrOutput {
+	return o
+}
+
+func (o ScriptOptionsKeyResultStatementPtrOutput) Elem() ScriptOptionsKeyResultStatementOutput {
+	return o.ApplyT(func(v *ScriptOptionsKeyResultStatement) ScriptOptionsKeyResultStatement {
+		if v != nil {
+			return *v
+		}
+		var ret ScriptOptionsKeyResultStatement
+		return ret
+	}).(ScriptOptionsKeyResultStatementOutput)
+}
+
+func (o ScriptOptionsKeyResultStatementPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ScriptOptionsKeyResultStatementPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ScriptOptionsKeyResultStatement) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ScriptOptionsKeyResultStatementInput is an input type that accepts values of the ScriptOptionsKeyResultStatement enum
+// A concrete instance of `ScriptOptionsKeyResultStatementInput` can be one of the following:
+//
+//	ScriptOptionsKeyResultStatementKeyResultStatementKindUnspecified
+//	ScriptOptionsKeyResultStatementLast
+//	ScriptOptionsKeyResultStatementFirstSelect
+type ScriptOptionsKeyResultStatementInput interface {
+	pulumi.Input
+
+	ToScriptOptionsKeyResultStatementOutput() ScriptOptionsKeyResultStatementOutput
+	ToScriptOptionsKeyResultStatementOutputWithContext(context.Context) ScriptOptionsKeyResultStatementOutput
+}
+
+var scriptOptionsKeyResultStatementPtrType = reflect.TypeOf((**ScriptOptionsKeyResultStatement)(nil)).Elem()
+
+type ScriptOptionsKeyResultStatementPtrInput interface {
+	pulumi.Input
+
+	ToScriptOptionsKeyResultStatementPtrOutput() ScriptOptionsKeyResultStatementPtrOutput
+	ToScriptOptionsKeyResultStatementPtrOutputWithContext(context.Context) ScriptOptionsKeyResultStatementPtrOutput
+}
+
+type scriptOptionsKeyResultStatementPtr string
+
+func ScriptOptionsKeyResultStatementPtr(v string) ScriptOptionsKeyResultStatementPtrInput {
+	return (*scriptOptionsKeyResultStatementPtr)(&v)
+}
+
+func (*scriptOptionsKeyResultStatementPtr) ElementType() reflect.Type {
+	return scriptOptionsKeyResultStatementPtrType
+}
+
+func (in *scriptOptionsKeyResultStatementPtr) ToScriptOptionsKeyResultStatementPtrOutput() ScriptOptionsKeyResultStatementPtrOutput {
+	return pulumi.ToOutput(in).(ScriptOptionsKeyResultStatementPtrOutput)
+}
+
+func (in *scriptOptionsKeyResultStatementPtr) ToScriptOptionsKeyResultStatementPtrOutputWithContext(ctx context.Context) ScriptOptionsKeyResultStatementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ScriptOptionsKeyResultStatementPtrOutput)
+}
+
+func (in *scriptOptionsKeyResultStatementPtr) ToOutput(ctx context.Context) pulumix.Output[*ScriptOptionsKeyResultStatement] {
+	return pulumix.Output[*ScriptOptionsKeyResultStatement]{
+		OutputState: in.ToScriptOptionsKeyResultStatementPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Required. The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
 type StandardSqlDataTypeTypeKind string
 
@@ -1888,6 +4448,360 @@ func (in *standardSqlDataTypeTypeKindPtr) ToOutput(ctx context.Context) pulumix.
 	}
 }
 
+// Optional. Defines the default rounding mode specification of new decimal fields (NUMERIC OR BIGNUMERIC) in the table. During table creation or update, if a decimal field is added to this table without an explicit rounding mode specified, then the field inherits the table default rounding mode. Changing this field doesn't affect existing fields.
+type TableDefaultRoundingMode string
+
+const (
+	// Unspecified will default to using ROUND_HALF_AWAY_FROM_ZERO.
+	TableDefaultRoundingModeRoundingModeUnspecified = TableDefaultRoundingMode("ROUNDING_MODE_UNSPECIFIED")
+	// ROUND_HALF_AWAY_FROM_ZERO rounds half values away from zero when applying precision and scale upon writing of NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 => 1 1.5, 1.6, 1.7, 1.8, 1.9 => 2
+	TableDefaultRoundingModeRoundHalfAwayFromZero = TableDefaultRoundingMode("ROUND_HALF_AWAY_FROM_ZERO")
+	// ROUND_HALF_EVEN rounds half values to the nearest even value when applying precision and scale upon writing of NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 => 1 1.5 => 2 1.6, 1.7, 1.8, 1.9 => 2 2.5 => 2
+	TableDefaultRoundingModeRoundHalfEven = TableDefaultRoundingMode("ROUND_HALF_EVEN")
+)
+
+func (TableDefaultRoundingMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableDefaultRoundingMode)(nil)).Elem()
+}
+
+func (e TableDefaultRoundingMode) ToTableDefaultRoundingModeOutput() TableDefaultRoundingModeOutput {
+	return pulumi.ToOutput(e).(TableDefaultRoundingModeOutput)
+}
+
+func (e TableDefaultRoundingMode) ToTableDefaultRoundingModeOutputWithContext(ctx context.Context) TableDefaultRoundingModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TableDefaultRoundingModeOutput)
+}
+
+func (e TableDefaultRoundingMode) ToTableDefaultRoundingModePtrOutput() TableDefaultRoundingModePtrOutput {
+	return e.ToTableDefaultRoundingModePtrOutputWithContext(context.Background())
+}
+
+func (e TableDefaultRoundingMode) ToTableDefaultRoundingModePtrOutputWithContext(ctx context.Context) TableDefaultRoundingModePtrOutput {
+	return TableDefaultRoundingMode(e).ToTableDefaultRoundingModeOutputWithContext(ctx).ToTableDefaultRoundingModePtrOutputWithContext(ctx)
+}
+
+func (e TableDefaultRoundingMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TableDefaultRoundingMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TableDefaultRoundingMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TableDefaultRoundingMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TableDefaultRoundingModeOutput struct{ *pulumi.OutputState }
+
+func (TableDefaultRoundingModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableDefaultRoundingMode)(nil)).Elem()
+}
+
+func (o TableDefaultRoundingModeOutput) ToTableDefaultRoundingModeOutput() TableDefaultRoundingModeOutput {
+	return o
+}
+
+func (o TableDefaultRoundingModeOutput) ToTableDefaultRoundingModeOutputWithContext(ctx context.Context) TableDefaultRoundingModeOutput {
+	return o
+}
+
+func (o TableDefaultRoundingModeOutput) ToTableDefaultRoundingModePtrOutput() TableDefaultRoundingModePtrOutput {
+	return o.ToTableDefaultRoundingModePtrOutputWithContext(context.Background())
+}
+
+func (o TableDefaultRoundingModeOutput) ToTableDefaultRoundingModePtrOutputWithContext(ctx context.Context) TableDefaultRoundingModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableDefaultRoundingMode) *TableDefaultRoundingMode {
+		return &v
+	}).(TableDefaultRoundingModePtrOutput)
+}
+
+func (o TableDefaultRoundingModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TableDefaultRoundingModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TableDefaultRoundingMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TableDefaultRoundingModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TableDefaultRoundingModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TableDefaultRoundingMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TableDefaultRoundingModePtrOutput struct{ *pulumi.OutputState }
+
+func (TableDefaultRoundingModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableDefaultRoundingMode)(nil)).Elem()
+}
+
+func (o TableDefaultRoundingModePtrOutput) ToTableDefaultRoundingModePtrOutput() TableDefaultRoundingModePtrOutput {
+	return o
+}
+
+func (o TableDefaultRoundingModePtrOutput) ToTableDefaultRoundingModePtrOutputWithContext(ctx context.Context) TableDefaultRoundingModePtrOutput {
+	return o
+}
+
+func (o TableDefaultRoundingModePtrOutput) Elem() TableDefaultRoundingModeOutput {
+	return o.ApplyT(func(v *TableDefaultRoundingMode) TableDefaultRoundingMode {
+		if v != nil {
+			return *v
+		}
+		var ret TableDefaultRoundingMode
+		return ret
+	}).(TableDefaultRoundingModeOutput)
+}
+
+func (o TableDefaultRoundingModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TableDefaultRoundingModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TableDefaultRoundingMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TableDefaultRoundingModeInput is an input type that accepts values of the TableDefaultRoundingMode enum
+// A concrete instance of `TableDefaultRoundingModeInput` can be one of the following:
+//
+//	TableDefaultRoundingModeRoundingModeUnspecified
+//	TableDefaultRoundingModeRoundHalfAwayFromZero
+//	TableDefaultRoundingModeRoundHalfEven
+type TableDefaultRoundingModeInput interface {
+	pulumi.Input
+
+	ToTableDefaultRoundingModeOutput() TableDefaultRoundingModeOutput
+	ToTableDefaultRoundingModeOutputWithContext(context.Context) TableDefaultRoundingModeOutput
+}
+
+var tableDefaultRoundingModePtrType = reflect.TypeOf((**TableDefaultRoundingMode)(nil)).Elem()
+
+type TableDefaultRoundingModePtrInput interface {
+	pulumi.Input
+
+	ToTableDefaultRoundingModePtrOutput() TableDefaultRoundingModePtrOutput
+	ToTableDefaultRoundingModePtrOutputWithContext(context.Context) TableDefaultRoundingModePtrOutput
+}
+
+type tableDefaultRoundingModePtr string
+
+func TableDefaultRoundingModePtr(v string) TableDefaultRoundingModePtrInput {
+	return (*tableDefaultRoundingModePtr)(&v)
+}
+
+func (*tableDefaultRoundingModePtr) ElementType() reflect.Type {
+	return tableDefaultRoundingModePtrType
+}
+
+func (in *tableDefaultRoundingModePtr) ToTableDefaultRoundingModePtrOutput() TableDefaultRoundingModePtrOutput {
+	return pulumi.ToOutput(in).(TableDefaultRoundingModePtrOutput)
+}
+
+func (in *tableDefaultRoundingModePtr) ToTableDefaultRoundingModePtrOutputWithContext(ctx context.Context) TableDefaultRoundingModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TableDefaultRoundingModePtrOutput)
+}
+
+func (in *tableDefaultRoundingModePtr) ToOutput(ctx context.Context) pulumix.Output[*TableDefaultRoundingMode] {
+	return pulumix.Output[*TableDefaultRoundingMode]{
+		OutputState: in.ToTableDefaultRoundingModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. Specifies the rounding mode to be used when storing values of NUMERIC and BIGNUMERIC type.
+type TableFieldSchemaRoundingMode string
+
+const (
+	// Unspecified will default to using ROUND_HALF_AWAY_FROM_ZERO.
+	TableFieldSchemaRoundingModeRoundingModeUnspecified = TableFieldSchemaRoundingMode("ROUNDING_MODE_UNSPECIFIED")
+	// ROUND_HALF_AWAY_FROM_ZERO rounds half values away from zero when applying precision and scale upon writing of NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 => 1 1.5, 1.6, 1.7, 1.8, 1.9 => 2
+	TableFieldSchemaRoundingModeRoundHalfAwayFromZero = TableFieldSchemaRoundingMode("ROUND_HALF_AWAY_FROM_ZERO")
+	// ROUND_HALF_EVEN rounds half values to the nearest even value when applying precision and scale upon writing of NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 => 1 1.5 => 2 1.6, 1.7, 1.8, 1.9 => 2 2.5 => 2
+	TableFieldSchemaRoundingModeRoundHalfEven = TableFieldSchemaRoundingMode("ROUND_HALF_EVEN")
+)
+
+func (TableFieldSchemaRoundingMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableFieldSchemaRoundingMode)(nil)).Elem()
+}
+
+func (e TableFieldSchemaRoundingMode) ToTableFieldSchemaRoundingModeOutput() TableFieldSchemaRoundingModeOutput {
+	return pulumi.ToOutput(e).(TableFieldSchemaRoundingModeOutput)
+}
+
+func (e TableFieldSchemaRoundingMode) ToTableFieldSchemaRoundingModeOutputWithContext(ctx context.Context) TableFieldSchemaRoundingModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TableFieldSchemaRoundingModeOutput)
+}
+
+func (e TableFieldSchemaRoundingMode) ToTableFieldSchemaRoundingModePtrOutput() TableFieldSchemaRoundingModePtrOutput {
+	return e.ToTableFieldSchemaRoundingModePtrOutputWithContext(context.Background())
+}
+
+func (e TableFieldSchemaRoundingMode) ToTableFieldSchemaRoundingModePtrOutputWithContext(ctx context.Context) TableFieldSchemaRoundingModePtrOutput {
+	return TableFieldSchemaRoundingMode(e).ToTableFieldSchemaRoundingModeOutputWithContext(ctx).ToTableFieldSchemaRoundingModePtrOutputWithContext(ctx)
+}
+
+func (e TableFieldSchemaRoundingMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TableFieldSchemaRoundingMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TableFieldSchemaRoundingMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TableFieldSchemaRoundingMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TableFieldSchemaRoundingModeOutput struct{ *pulumi.OutputState }
+
+func (TableFieldSchemaRoundingModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableFieldSchemaRoundingMode)(nil)).Elem()
+}
+
+func (o TableFieldSchemaRoundingModeOutput) ToTableFieldSchemaRoundingModeOutput() TableFieldSchemaRoundingModeOutput {
+	return o
+}
+
+func (o TableFieldSchemaRoundingModeOutput) ToTableFieldSchemaRoundingModeOutputWithContext(ctx context.Context) TableFieldSchemaRoundingModeOutput {
+	return o
+}
+
+func (o TableFieldSchemaRoundingModeOutput) ToTableFieldSchemaRoundingModePtrOutput() TableFieldSchemaRoundingModePtrOutput {
+	return o.ToTableFieldSchemaRoundingModePtrOutputWithContext(context.Background())
+}
+
+func (o TableFieldSchemaRoundingModeOutput) ToTableFieldSchemaRoundingModePtrOutputWithContext(ctx context.Context) TableFieldSchemaRoundingModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableFieldSchemaRoundingMode) *TableFieldSchemaRoundingMode {
+		return &v
+	}).(TableFieldSchemaRoundingModePtrOutput)
+}
+
+func (o TableFieldSchemaRoundingModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TableFieldSchemaRoundingModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TableFieldSchemaRoundingMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TableFieldSchemaRoundingModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TableFieldSchemaRoundingModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TableFieldSchemaRoundingMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TableFieldSchemaRoundingModePtrOutput struct{ *pulumi.OutputState }
+
+func (TableFieldSchemaRoundingModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableFieldSchemaRoundingMode)(nil)).Elem()
+}
+
+func (o TableFieldSchemaRoundingModePtrOutput) ToTableFieldSchemaRoundingModePtrOutput() TableFieldSchemaRoundingModePtrOutput {
+	return o
+}
+
+func (o TableFieldSchemaRoundingModePtrOutput) ToTableFieldSchemaRoundingModePtrOutputWithContext(ctx context.Context) TableFieldSchemaRoundingModePtrOutput {
+	return o
+}
+
+func (o TableFieldSchemaRoundingModePtrOutput) Elem() TableFieldSchemaRoundingModeOutput {
+	return o.ApplyT(func(v *TableFieldSchemaRoundingMode) TableFieldSchemaRoundingMode {
+		if v != nil {
+			return *v
+		}
+		var ret TableFieldSchemaRoundingMode
+		return ret
+	}).(TableFieldSchemaRoundingModeOutput)
+}
+
+func (o TableFieldSchemaRoundingModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TableFieldSchemaRoundingModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TableFieldSchemaRoundingMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TableFieldSchemaRoundingModeInput is an input type that accepts values of the TableFieldSchemaRoundingMode enum
+// A concrete instance of `TableFieldSchemaRoundingModeInput` can be one of the following:
+//
+//	TableFieldSchemaRoundingModeRoundingModeUnspecified
+//	TableFieldSchemaRoundingModeRoundHalfAwayFromZero
+//	TableFieldSchemaRoundingModeRoundHalfEven
+type TableFieldSchemaRoundingModeInput interface {
+	pulumi.Input
+
+	ToTableFieldSchemaRoundingModeOutput() TableFieldSchemaRoundingModeOutput
+	ToTableFieldSchemaRoundingModeOutputWithContext(context.Context) TableFieldSchemaRoundingModeOutput
+}
+
+var tableFieldSchemaRoundingModePtrType = reflect.TypeOf((**TableFieldSchemaRoundingMode)(nil)).Elem()
+
+type TableFieldSchemaRoundingModePtrInput interface {
+	pulumi.Input
+
+	ToTableFieldSchemaRoundingModePtrOutput() TableFieldSchemaRoundingModePtrOutput
+	ToTableFieldSchemaRoundingModePtrOutputWithContext(context.Context) TableFieldSchemaRoundingModePtrOutput
+}
+
+type tableFieldSchemaRoundingModePtr string
+
+func TableFieldSchemaRoundingModePtr(v string) TableFieldSchemaRoundingModePtrInput {
+	return (*tableFieldSchemaRoundingModePtr)(&v)
+}
+
+func (*tableFieldSchemaRoundingModePtr) ElementType() reflect.Type {
+	return tableFieldSchemaRoundingModePtrType
+}
+
+func (in *tableFieldSchemaRoundingModePtr) ToTableFieldSchemaRoundingModePtrOutput() TableFieldSchemaRoundingModePtrOutput {
+	return pulumi.ToOutput(in).(TableFieldSchemaRoundingModePtrOutput)
+}
+
+func (in *tableFieldSchemaRoundingModePtr) ToTableFieldSchemaRoundingModePtrOutputWithContext(ctx context.Context) TableFieldSchemaRoundingModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TableFieldSchemaRoundingModePtrOutput)
+}
+
+func (in *tableFieldSchemaRoundingModePtr) ToOutput(ctx context.Context) pulumix.Output[*TableFieldSchemaRoundingMode] {
+	return pulumix.Output[*TableFieldSchemaRoundingMode]{
+		OutputState: in.ToTableFieldSchemaRoundingModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ArgumentArgumentKindInput)(nil)).Elem(), ArgumentArgumentKind("ARGUMENT_KIND_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ArgumentArgumentKindPtrInput)(nil)).Elem(), ArgumentArgumentKind("ARGUMENT_KIND_UNSPECIFIED"))
@@ -1895,9 +4809,37 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ArgumentModePtrInput)(nil)).Elem(), ArgumentMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BigLakeConfigurationFileFormatInput)(nil)).Elem(), BigLakeConfigurationFileFormat("FILE_FORMAT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BigLakeConfigurationFileFormatPtrInput)(nil)).Elem(), BigLakeConfigurationFileFormat("FILE_FORMAT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BigLakeConfigurationTableFormatInput)(nil)).Elem(), BigLakeConfigurationTableFormat("TABLE_FORMAT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BigLakeConfigurationTableFormatPtrInput)(nil)).Elem(), BigLakeConfigurationTableFormat("TABLE_FORMAT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryTargetTypesItemInput)(nil)).Elem(), DatasetAccessEntryTargetTypesItem("TARGET_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryTargetTypesItemPtrInput)(nil)).Elem(), DatasetAccessEntryTargetTypesItem("TARGET_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessEntryTargetTypesItemArrayInput)(nil)).Elem(), DatasetAccessEntryTargetTypesItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetDefaultRoundingModeInput)(nil)).Elem(), DatasetDefaultRoundingMode("ROUNDING_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetDefaultRoundingModePtrInput)(nil)).Elem(), DatasetDefaultRoundingMode("ROUNDING_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetStorageBillingModelInput)(nil)).Elem(), DatasetStorageBillingModel("STORAGE_BILLING_MODEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetStorageBillingModelPtrInput)(nil)).Elem(), DatasetStorageBillingModel("STORAGE_BILLING_MODEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDataConfigurationDecimalTargetTypesItemInput)(nil)).Elem(), ExternalDataConfigurationDecimalTargetTypesItem("DECIMAL_TARGET_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDataConfigurationDecimalTargetTypesItemPtrInput)(nil)).Elem(), ExternalDataConfigurationDecimalTargetTypesItem("DECIMAL_TARGET_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDataConfigurationDecimalTargetTypesItemArrayInput)(nil)).Elem(), ExternalDataConfigurationDecimalTargetTypesItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDataConfigurationFileSetSpecTypeInput)(nil)).Elem(), ExternalDataConfigurationFileSetSpecType("FILE_SET_SPEC_TYPE_FILE_SYSTEM_MATCH"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDataConfigurationFileSetSpecTypePtrInput)(nil)).Elem(), ExternalDataConfigurationFileSetSpecType("FILE_SET_SPEC_TYPE_FILE_SYSTEM_MATCH"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDataConfigurationJsonExtensionInput)(nil)).Elem(), ExternalDataConfigurationJsonExtension("JSON_EXTENSION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDataConfigurationJsonExtensionPtrInput)(nil)).Elem(), ExternalDataConfigurationJsonExtension("JSON_EXTENSION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDataConfigurationMetadataCacheModeInput)(nil)).Elem(), ExternalDataConfigurationMetadataCacheMode("METADATA_CACHE_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDataConfigurationMetadataCacheModePtrInput)(nil)).Elem(), ExternalDataConfigurationMetadataCacheMode("METADATA_CACHE_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDataConfigurationObjectMetadataInput)(nil)).Elem(), ExternalDataConfigurationObjectMetadata("OBJECT_METADATA_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalDataConfigurationObjectMetadataPtrInput)(nil)).Elem(), ExternalDataConfigurationObjectMetadata("OBJECT_METADATA_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationLoadDecimalTargetTypesItemInput)(nil)).Elem(), JobConfigurationLoadDecimalTargetTypesItem("DECIMAL_TARGET_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationLoadDecimalTargetTypesItemPtrInput)(nil)).Elem(), JobConfigurationLoadDecimalTargetTypesItem("DECIMAL_TARGET_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationLoadDecimalTargetTypesItemArrayInput)(nil)).Elem(), JobConfigurationLoadDecimalTargetTypesItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationLoadFileSetSpecTypeInput)(nil)).Elem(), JobConfigurationLoadFileSetSpecType("FILE_SET_SPEC_TYPE_FILE_SYSTEM_MATCH"))
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationLoadFileSetSpecTypePtrInput)(nil)).Elem(), JobConfigurationLoadFileSetSpecType("FILE_SET_SPEC_TYPE_FILE_SYSTEM_MATCH"))
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationLoadJsonExtensionInput)(nil)).Elem(), JobConfigurationLoadJsonExtension("JSON_EXTENSION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationLoadJsonExtensionPtrInput)(nil)).Elem(), JobConfigurationLoadJsonExtension("JSON_EXTENSION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationTableCopyOperationTypeInput)(nil)).Elem(), JobConfigurationTableCopyOperationType("OPERATION_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*JobConfigurationTableCopyOperationTypePtrInput)(nil)).Elem(), JobConfigurationTableCopyOperationType("OPERATION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineDataGovernanceTypeInput)(nil)).Elem(), RoutineDataGovernanceType("DATA_GOVERNANCE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineDataGovernanceTypePtrInput)(nil)).Elem(), RoutineDataGovernanceType("DATA_GOVERNANCE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineDeterminismLevelInput)(nil)).Elem(), RoutineDeterminismLevel("DETERMINISM_LEVEL_UNSPECIFIED"))
@@ -1908,17 +4850,51 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineRoutineTypePtrInput)(nil)).Elem(), RoutineRoutineType("ROUTINE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineSecurityModeInput)(nil)).Elem(), RoutineSecurityMode("SECURITY_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineSecurityModePtrInput)(nil)).Elem(), RoutineSecurityMode("SECURITY_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ScriptOptionsKeyResultStatementInput)(nil)).Elem(), ScriptOptionsKeyResultStatement("KEY_RESULT_STATEMENT_KIND_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ScriptOptionsKeyResultStatementPtrInput)(nil)).Elem(), ScriptOptionsKeyResultStatement("KEY_RESULT_STATEMENT_KIND_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlDataTypeTypeKindInput)(nil)).Elem(), StandardSqlDataTypeTypeKind("TYPE_KIND_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlDataTypeTypeKindPtrInput)(nil)).Elem(), StandardSqlDataTypeTypeKind("TYPE_KIND_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TableDefaultRoundingModeInput)(nil)).Elem(), TableDefaultRoundingMode("ROUNDING_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TableDefaultRoundingModePtrInput)(nil)).Elem(), TableDefaultRoundingMode("ROUNDING_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaRoundingModeInput)(nil)).Elem(), TableFieldSchemaRoundingMode("ROUNDING_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaRoundingModePtrInput)(nil)).Elem(), TableFieldSchemaRoundingMode("ROUNDING_MODE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(ArgumentArgumentKindOutput{})
 	pulumi.RegisterOutputType(ArgumentArgumentKindPtrOutput{})
 	pulumi.RegisterOutputType(ArgumentModeOutput{})
 	pulumi.RegisterOutputType(ArgumentModePtrOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(BigLakeConfigurationFileFormatOutput{})
+	pulumi.RegisterOutputType(BigLakeConfigurationFileFormatPtrOutput{})
+	pulumi.RegisterOutputType(BigLakeConfigurationTableFormatOutput{})
+	pulumi.RegisterOutputType(BigLakeConfigurationTableFormatPtrOutput{})
 	pulumi.RegisterOutputType(DatasetAccessEntryTargetTypesItemOutput{})
 	pulumi.RegisterOutputType(DatasetAccessEntryTargetTypesItemPtrOutput{})
 	pulumi.RegisterOutputType(DatasetAccessEntryTargetTypesItemArrayOutput{})
+	pulumi.RegisterOutputType(DatasetDefaultRoundingModeOutput{})
+	pulumi.RegisterOutputType(DatasetDefaultRoundingModePtrOutput{})
+	pulumi.RegisterOutputType(DatasetStorageBillingModelOutput{})
+	pulumi.RegisterOutputType(DatasetStorageBillingModelPtrOutput{})
+	pulumi.RegisterOutputType(ExternalDataConfigurationDecimalTargetTypesItemOutput{})
+	pulumi.RegisterOutputType(ExternalDataConfigurationDecimalTargetTypesItemPtrOutput{})
+	pulumi.RegisterOutputType(ExternalDataConfigurationDecimalTargetTypesItemArrayOutput{})
+	pulumi.RegisterOutputType(ExternalDataConfigurationFileSetSpecTypeOutput{})
+	pulumi.RegisterOutputType(ExternalDataConfigurationFileSetSpecTypePtrOutput{})
+	pulumi.RegisterOutputType(ExternalDataConfigurationJsonExtensionOutput{})
+	pulumi.RegisterOutputType(ExternalDataConfigurationJsonExtensionPtrOutput{})
+	pulumi.RegisterOutputType(ExternalDataConfigurationMetadataCacheModeOutput{})
+	pulumi.RegisterOutputType(ExternalDataConfigurationMetadataCacheModePtrOutput{})
+	pulumi.RegisterOutputType(ExternalDataConfigurationObjectMetadataOutput{})
+	pulumi.RegisterOutputType(ExternalDataConfigurationObjectMetadataPtrOutput{})
+	pulumi.RegisterOutputType(JobConfigurationLoadDecimalTargetTypesItemOutput{})
+	pulumi.RegisterOutputType(JobConfigurationLoadDecimalTargetTypesItemPtrOutput{})
+	pulumi.RegisterOutputType(JobConfigurationLoadDecimalTargetTypesItemArrayOutput{})
+	pulumi.RegisterOutputType(JobConfigurationLoadFileSetSpecTypeOutput{})
+	pulumi.RegisterOutputType(JobConfigurationLoadFileSetSpecTypePtrOutput{})
+	pulumi.RegisterOutputType(JobConfigurationLoadJsonExtensionOutput{})
+	pulumi.RegisterOutputType(JobConfigurationLoadJsonExtensionPtrOutput{})
+	pulumi.RegisterOutputType(JobConfigurationTableCopyOperationTypeOutput{})
+	pulumi.RegisterOutputType(JobConfigurationTableCopyOperationTypePtrOutput{})
 	pulumi.RegisterOutputType(RoutineDataGovernanceTypeOutput{})
 	pulumi.RegisterOutputType(RoutineDataGovernanceTypePtrOutput{})
 	pulumi.RegisterOutputType(RoutineDeterminismLevelOutput{})
@@ -1929,6 +4905,12 @@ func init() {
 	pulumi.RegisterOutputType(RoutineRoutineTypePtrOutput{})
 	pulumi.RegisterOutputType(RoutineSecurityModeOutput{})
 	pulumi.RegisterOutputType(RoutineSecurityModePtrOutput{})
+	pulumi.RegisterOutputType(ScriptOptionsKeyResultStatementOutput{})
+	pulumi.RegisterOutputType(ScriptOptionsKeyResultStatementPtrOutput{})
 	pulumi.RegisterOutputType(StandardSqlDataTypeTypeKindOutput{})
 	pulumi.RegisterOutputType(StandardSqlDataTypeTypeKindPtrOutput{})
+	pulumi.RegisterOutputType(TableDefaultRoundingModeOutput{})
+	pulumi.RegisterOutputType(TableDefaultRoundingModePtrOutput{})
+	pulumi.RegisterOutputType(TableFieldSchemaRoundingModeOutput{})
+	pulumi.RegisterOutputType(TableFieldSchemaRoundingModePtrOutput{})
 }

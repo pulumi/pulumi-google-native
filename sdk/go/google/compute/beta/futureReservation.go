@@ -15,9 +15,9 @@ import (
 type FutureReservation struct {
 	pulumi.CustomResourceState
 
-	// Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+	// Future timestamp when the FR auto-created reservations will be deleted by Compute Engine. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
 	AutoCreatedReservationsDeleteTime pulumi.StringOutput `pulumi:"autoCreatedReservationsDeleteTime"`
-	// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+	// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
 	AutoCreatedReservationsDuration DurationResponseOutput `pulumi:"autoCreatedReservationsDuration"`
 	// Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [auto_created_reservations_delete_time, auto_created_reservations_duration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
 	AutoDeleteAutoCreatedReservations pulumi.BoolOutput `pulumi:"autoDeleteAutoCreatedReservations"`
@@ -96,9 +96,9 @@ func (FutureReservationState) ElementType() reflect.Type {
 }
 
 type futureReservationArgs struct {
-	// Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+	// Future timestamp when the FR auto-created reservations will be deleted by Compute Engine. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
 	AutoCreatedReservationsDeleteTime *string `pulumi:"autoCreatedReservationsDeleteTime"`
-	// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+	// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
 	AutoCreatedReservationsDuration *Duration `pulumi:"autoCreatedReservationsDuration"`
 	// Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [auto_created_reservations_delete_time, auto_created_reservations_duration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
 	AutoDeleteAutoCreatedReservations *bool `pulumi:"autoDeleteAutoCreatedReservations"`
@@ -124,9 +124,9 @@ type futureReservationArgs struct {
 
 // The set of arguments for constructing a FutureReservation resource.
 type FutureReservationArgs struct {
-	// Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+	// Future timestamp when the FR auto-created reservations will be deleted by Compute Engine. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
 	AutoCreatedReservationsDeleteTime pulumi.StringPtrInput
-	// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+	// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
 	AutoCreatedReservationsDuration DurationPtrInput
 	// Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [auto_created_reservations_delete_time, auto_created_reservations_duration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
 	AutoDeleteAutoCreatedReservations pulumi.BoolPtrInput
@@ -187,12 +187,12 @@ func (o FutureReservationOutput) ToFutureReservationOutputWithContext(ctx contex
 	return o
 }
 
-// Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+// Future timestamp when the FR auto-created reservations will be deleted by Compute Engine. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
 func (o FutureReservationOutput) AutoCreatedReservationsDeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *FutureReservation) pulumi.StringOutput { return v.AutoCreatedReservationsDeleteTime }).(pulumi.StringOutput)
 }
 
-// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
 func (o FutureReservationOutput) AutoCreatedReservationsDuration() DurationResponseOutput {
 	return o.ApplyT(func(v *FutureReservation) DurationResponseOutput { return v.AutoCreatedReservationsDuration }).(DurationResponseOutput)
 }

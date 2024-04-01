@@ -296,6 +296,10 @@ export interface GetClusterResult {
      */
     readonly resourceUsageExportConfig: outputs.container.v1beta1.ResourceUsageExportConfigResponse;
     /**
+     * Secret CSI driver configuration.
+     */
+    readonly secretManagerConfig: outputs.container.v1beta1.SecretManagerConfigResponse;
+    /**
      * Enable/Disable Security Posture API features for the cluster.
      */
     readonly securityPostureConfig: outputs.container.v1beta1.SecurityPostureConfigResponse;

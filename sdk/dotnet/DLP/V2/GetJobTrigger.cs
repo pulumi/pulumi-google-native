@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.DLP.V2
     public static class GetJobTrigger
     {
         /// <summary>
-        /// Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+        /// Gets a job trigger. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
         /// </summary>
         public static Task<GetJobTriggerResult> InvokeAsync(GetJobTriggerArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetJobTriggerResult>("google-native:dlp/v2:getJobTrigger", args ?? new GetJobTriggerArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+        /// Gets a job trigger. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
         /// </summary>
         public static Output<GetJobTriggerResult> Invoke(GetJobTriggerInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetJobTriggerResult>("google-native:dlp/v2:getJobTrigger", args ?? new GetJobTriggerInvokeArgs(), options.WithDefaults());

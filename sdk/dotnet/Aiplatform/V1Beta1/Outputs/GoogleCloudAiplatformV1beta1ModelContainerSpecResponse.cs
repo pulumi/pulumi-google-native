@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Command;
         /// <summary>
-        /// Immutable. Deployment timeout. TODO (b/306244185): Revise documentation before exposing.
+        /// Immutable. Deployment timeout. Limit for deployment timeout is 2 hours.
         /// </summary>
         public readonly string DeploymentTimeout;
         /// <summary>
@@ -33,7 +33,11 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudAiplatformV1beta1EnvVarResponse> Env;
         /// <summary>
-        /// Immutable. Specification for Kubernetes readiness probe. TODO (b/306244185): Revise documentation before exposing.
+        /// Immutable. List of ports to expose from the container. Vertex AI sends gRPC prediction requests that it receives to the first port on this list. Vertex AI also sends liveness and health checks to this port. If you do not specify this field, gRPC requests to the container will be disabled. Vertex AI does not use ports other than the first one listed. This field corresponds to the `ports` field of the Kubernetes Containers v1 core API.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GoogleCloudAiplatformV1beta1PortResponse> GrpcPorts;
+        /// <summary>
+        /// Immutable. Specification for Kubernetes readiness probe.
         /// </summary>
         public readonly Outputs.GoogleCloudAiplatformV1beta1ProbeResponse HealthProbe;
         /// <summary>
@@ -53,11 +57,11 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Outputs
         /// </summary>
         public readonly string PredictRoute;
         /// <summary>
-        /// Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes. TODO (b/306244185): Revise documentation before exposing.
+        /// Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes.
         /// </summary>
         public readonly string SharedMemorySizeMb;
         /// <summary>
-        /// Immutable. Specification for Kubernetes startup probe. TODO (b/306244185): Revise documentation before exposing.
+        /// Immutable. Specification for Kubernetes startup probe.
         /// </summary>
         public readonly Outputs.GoogleCloudAiplatformV1beta1ProbeResponse StartupProbe;
 
@@ -70,6 +74,8 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Outputs
             string deploymentTimeout,
 
             ImmutableArray<Outputs.GoogleCloudAiplatformV1beta1EnvVarResponse> env,
+
+            ImmutableArray<Outputs.GoogleCloudAiplatformV1beta1PortResponse> grpcPorts,
 
             Outputs.GoogleCloudAiplatformV1beta1ProbeResponse healthProbe,
 
@@ -89,6 +95,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Outputs
             Command = command;
             DeploymentTimeout = deploymentTimeout;
             Env = env;
+            GrpcPorts = grpcPorts;
             HealthProbe = healthProbe;
             HealthRoute = healthRoute;
             ImageUri = imageUri;

@@ -6,6 +6,8 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from ._enums import *
+from .discovery_client import *
+from .get_discovery_client import *
 from .get_group import *
 from .get_import_data_file import *
 from .get_import_job import *

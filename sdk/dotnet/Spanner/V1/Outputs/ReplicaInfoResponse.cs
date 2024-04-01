@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Spanner.V1.Outputs
         /// </summary>
         public readonly bool DefaultLeaderLocation;
         /// <summary>
-        /// The location of the serving resources, e.g. "us-central1".
+        /// The location of the serving resources, e.g., "us-central1".
         /// </summary>
         public readonly string Location;
         /// <summary>

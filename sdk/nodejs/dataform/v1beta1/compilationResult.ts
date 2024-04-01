@@ -63,7 +63,7 @@ export class CompilationResult extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * Immutable. The name of the release config to compile. The release config's 'current_compilation_result' field will be updated to this compilation result. Must be in the format `projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*`.
+     * Immutable. The name of the release config to compile. Must be in the format `projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*`.
      */
     public readonly releaseConfig!: pulumi.Output<string>;
     public readonly repositoryId!: pulumi.Output<string>;
@@ -136,7 +136,7 @@ export interface CompilationResultArgs {
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * Immutable. The name of the release config to compile. The release config's 'current_compilation_result' field will be updated to this compilation result. Must be in the format `projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*`.
+     * Immutable. The name of the release config to compile. Must be in the format `projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*`.
      */
     releaseConfig?: pulumi.Input<string>;
     repositoryId: pulumi.Input<string>;

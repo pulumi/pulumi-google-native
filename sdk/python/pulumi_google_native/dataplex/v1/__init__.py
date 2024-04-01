@@ -6,6 +6,7 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from ._enums import *
+from .aspect_type import *
 from .aspect_type_iam_binding import *
 from .aspect_type_iam_member import *
 from .aspect_type_iam_policy import *
@@ -29,13 +30,17 @@ from .data_taxonomy_iam_binding import *
 from .data_taxonomy_iam_member import *
 from .data_taxonomy_iam_policy import *
 from .entity import *
+from .entry import *
+from .entry_group import *
 from .entry_group_iam_binding import *
 from .entry_group_iam_member import *
 from .entry_group_iam_policy import *
+from .entry_type import *
 from .entry_type_iam_binding import *
 from .entry_type_iam_member import *
 from .entry_type_iam_policy import *
 from .environment import *
+from .get_aspect_type import *
 from .get_aspect_type_iam_policy import *
 from .get_asset import *
 from .get_attribute import *
@@ -49,7 +54,10 @@ from .get_data_taxonomy import *
 from .get_data_taxonomy_attribute_iam_policy import *
 from .get_data_taxonomy_iam_policy import *
 from .get_entity import *
+from .get_entry import *
+from .get_entry_group import *
 from .get_entry_group_iam_policy import *
+from .get_entry_type import *
 from .get_entry_type_iam_policy import *
 from .get_environment import *
 from .get_governance_rule_iam_policy import *

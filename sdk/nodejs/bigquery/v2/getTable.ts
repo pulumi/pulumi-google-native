@@ -32,15 +32,15 @@ export interface GetTableArgs {
 
 export interface GetTableResult {
     /**
-     * [Optional] Specifies the configuration of a BigLake managed table.
+     * Optional. Specifies the configuration of a BigLake managed table.
      */
     readonly biglakeConfiguration: outputs.bigquery.v2.BigLakeConfigurationResponse;
     /**
-     * Clone definition.
+     * Contains information about the clone. This value is set via the clone operation.
      */
     readonly cloneDefinition: outputs.bigquery.v2.CloneDefinitionResponse;
     /**
-     * [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
+     * Clustering specification for the table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
      */
     readonly clustering: outputs.bigquery.v2.ClusteringResponse;
     /**
@@ -48,15 +48,15 @@ export interface GetTableResult {
      */
     readonly creationTime: string;
     /**
-     * The default collation of the table.
+     * Optional. Defines the default collation specification of new STRING fields in the table. During table creation or update, if a STRING field is added to this table without explicit collation specified, then the table inherits the table default collation. A change to this field affects only fields added afterwards, and does not alter the existing fields. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * '': empty string. Default to case-sensitive behavior.
      */
     readonly defaultCollation: string;
     /**
-     * The default rounding mode of the table.
+     * Optional. Defines the default rounding mode specification of new decimal fields (NUMERIC OR BIGNUMERIC) in the table. During table creation or update, if a decimal field is added to this table without an explicit rounding mode specified, then the field inherits the table default rounding mode. Changing this field doesn't affect existing fields.
      */
     readonly defaultRoundingMode: string;
     /**
-     * [Optional] A user-friendly description of this table.
+     * Optional. A user-friendly description of this table.
      */
     readonly description: string;
     /**
@@ -64,23 +64,23 @@ export interface GetTableResult {
      */
     readonly encryptionConfiguration: outputs.bigquery.v2.EncryptionConfigurationResponse;
     /**
-     * A hash of the table metadata. Used to ensure there were no concurrent modifications to the resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
+     * A hash of this resource.
      */
     readonly etag: string;
     /**
-     * [Optional] The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
+     * Optional. The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
      */
     readonly expirationTime: string;
     /**
-     * [Optional] Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
+     * Optional. Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
      */
     readonly externalDataConfiguration: outputs.bigquery.v2.ExternalDataConfigurationResponse;
     /**
-     * [Optional] A descriptive name for this table.
+     * Optional. A descriptive name for this table.
      */
     readonly friendlyName: string;
     /**
-     * The type of the resource.
+     * The type of resource ID.
      */
     readonly kind: string;
     /**
@@ -96,15 +96,21 @@ export interface GetTableResult {
      */
     readonly location: string;
     /**
-     * [Optional] Materialized view definition.
+     * Optional. The materialized view definition.
      */
     readonly materializedView: outputs.bigquery.v2.MaterializedViewDefinitionResponse;
     /**
-     * [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
+     * The materialized view status.
+     */
+    readonly materializedViewStatus: outputs.bigquery.v2.MaterializedViewStatusResponse;
+    /**
+     * Optional. The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
      */
     readonly maxStaleness: string;
     /**
-     * [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
+     * Deprecated.
+     *
+     * @deprecated Deprecated.
      */
     readonly model: outputs.bigquery.v2.ModelDefinitionResponse;
     /**
@@ -116,11 +122,11 @@ export interface GetTableResult {
      */
     readonly numActivePhysicalBytes: string;
     /**
-     * The size of this table in bytes, excluding any data in the streaming buffer.
+     * The size of this table in logical bytes, excluding any data in the streaming buffer.
      */
     readonly numBytes: string;
     /**
-     * The number of bytes in the table that are considered "long-term storage".
+     * The number of logical bytes in the table that are considered "long-term storage".
      */
     readonly numLongTermBytes: string;
     /**
@@ -136,7 +142,7 @@ export interface GetTableResult {
      */
     readonly numPartitions: string;
     /**
-     * [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
+     * The physical size of this table in bytes. This includes storage used for time travel.
      */
     readonly numPhysicalBytes: string;
     /**
@@ -156,11 +162,19 @@ export interface GetTableResult {
      */
     readonly numTotalPhysicalBytes: string;
     /**
-     * [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+     * The partition information for all table formats, including managed partitioned tables, hive partitioned tables, and iceberg partitioned tables.
+     */
+    readonly partitionDefinition: outputs.bigquery.v2.PartitioningDefinitionResponse;
+    /**
+     * If specified, configures range partitioning for this table.
      */
     readonly rangePartitioning: outputs.bigquery.v2.RangePartitioningResponse;
     /**
-     * [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
+     * Optional. Output only. Table references of all replicas currently active on the table.
+     */
+    readonly replicas: outputs.bigquery.v2.TableReferenceResponse[];
+    /**
+     * Optional. If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
      */
     readonly requirePartitionFilter: boolean;
     /**
@@ -168,7 +182,7 @@ export interface GetTableResult {
      */
     readonly resourceTags: {[key: string]: string};
     /**
-     * [Optional] Describes the schema of this table.
+     * Optional. Describes the schema of this table.
      */
     readonly schema: outputs.bigquery.v2.TableSchemaResponse;
     /**
@@ -176,7 +190,7 @@ export interface GetTableResult {
      */
     readonly selfLink: string;
     /**
-     * Snapshot definition.
+     * Contains information about the snapshot. This value is set via snapshot creation.
      */
     readonly snapshotDefinition: outputs.bigquery.v2.SnapshotDefinitionResponse;
     /**
@@ -184,23 +198,27 @@ export interface GetTableResult {
      */
     readonly streamingBuffer: outputs.bigquery.v2.StreamingbufferResponse;
     /**
-     * [Optional] The table constraints on the table.
+     * Optional. Tables Primary Key and Foreign Key information
      */
     readonly tableConstraints: outputs.bigquery.v2.TableConstraintsResponse;
     /**
-     * [Required] Reference describing the ID of this table.
+     * Reference describing the ID of this table.
      */
     readonly tableReference: outputs.bigquery.v2.TableReferenceResponse;
     /**
-     * Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+     * Optional. Table replication info for table created `AS REPLICA` DDL like: `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`
+     */
+    readonly tableReplicationInfo: outputs.bigquery.v2.TableReplicationInfoResponse;
+    /**
+     * If specified, configures time-based partitioning for this table.
      */
     readonly timePartitioning: outputs.bigquery.v2.TimePartitioningResponse;
     /**
-     * Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
+     * Describes the table type. The following values are supported: * `TABLE`: A normal BigQuery table. * `VIEW`: A virtual table defined by a SQL query. * `EXTERNAL`: A table that references data stored in an external storage system, such as Google Cloud Storage. * `MATERIALIZED_VIEW`: A precomputed view defined by a SQL query. * `SNAPSHOT`: An immutable BigQuery table that preserves the contents of a base table at a particular time. See additional information on [table snapshots](/bigquery/docs/table-snapshots-intro). The default value is `TABLE`.
      */
     readonly type: string;
     /**
-     * [Optional] The view definition.
+     * Optional. The view definition.
      */
     readonly view: outputs.bigquery.v2.ViewDefinitionResponse;
 }

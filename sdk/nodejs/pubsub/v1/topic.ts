@@ -38,6 +38,10 @@ export class Topic extends pulumi.CustomResource {
     }
 
     /**
+     * Optional. Settings for ingestion from a data source into this topic.
+     */
+    public readonly ingestionDataSourceSettings!: pulumi.Output<outputs.pubsub.v1.IngestionDataSourceSettingsResponse>;
+    /**
      * Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      */
     public readonly kmsKeyName!: pulumi.Output<string>;
@@ -66,6 +70,10 @@ export class Topic extends pulumi.CustomResource {
      * Optional. Settings for validating messages published against a schema.
      */
     public readonly schemaSettings!: pulumi.Output<outputs.pubsub.v1.SchemaSettingsResponse>;
+    /**
+     * An output-only field indicating the state of the topic.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
     public readonly topicId!: pulumi.Output<string>;
 
     /**
@@ -82,6 +90,7 @@ export class Topic extends pulumi.CustomResource {
             if ((!args || args.topicId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topicId'");
             }
+            resourceInputs["ingestionDataSourceSettings"] = args ? args.ingestionDataSourceSettings : undefined;
             resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["messageRetentionDuration"] = args ? args.messageRetentionDuration : undefined;
@@ -91,7 +100,9 @@ export class Topic extends pulumi.CustomResource {
             resourceInputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
             resourceInputs["schemaSettings"] = args ? args.schemaSettings : undefined;
             resourceInputs["topicId"] = args ? args.topicId : undefined;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
+            resourceInputs["ingestionDataSourceSettings"] = undefined /*out*/;
             resourceInputs["kmsKeyName"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["messageRetentionDuration"] = undefined /*out*/;
@@ -100,6 +111,7 @@ export class Topic extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["schemaSettings"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
             resourceInputs["topicId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -113,6 +125,10 @@ export class Topic extends pulumi.CustomResource {
  * The set of arguments for constructing a Topic resource.
  */
 export interface TopicArgs {
+    /**
+     * Optional. Settings for ingestion from a data source into this topic.
+     */
+    ingestionDataSourceSettings?: pulumi.Input<inputs.pubsub.v1.IngestionDataSourceSettingsArgs>;
     /**
      * Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      */

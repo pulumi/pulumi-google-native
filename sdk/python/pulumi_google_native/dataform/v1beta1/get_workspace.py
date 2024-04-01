@@ -27,7 +27,7 @@ class GetWorkspaceResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The workspace's name.
+        Identifier. The workspace's name.
         """
         return pulumi.get(self, "name")
 

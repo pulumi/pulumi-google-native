@@ -74,6 +74,10 @@ export interface GetRegionInstantSnapshotResult {
     /**
      * Reserved for future use.
      */
+    readonly satisfiesPzi: boolean;
+    /**
+     * Reserved for future use.
+     */
     readonly satisfiesPzs: boolean;
     /**
      * Server-defined URL for the resource.

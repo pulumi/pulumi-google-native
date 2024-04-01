@@ -106,6 +106,10 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Entity responsible for maintaining this feature. Can be comma separated list of email addresses or URIs.
+        /// </summary>
+        public readonly string PointOfContact;
+        /// <summary>
         /// Only applicable for Vertex AI Feature Store (Legacy). Timestamp when this EntityType was most recently updated.
         /// </summary>
         public readonly string UpdateTime;
@@ -114,7 +118,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         /// </summary>
         public readonly string ValueType;
         /// <summary>
-        /// Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for this version. If no value is provided, will use feature_id.
+        /// Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use feature_id.
         /// </summary>
         public readonly string VersionColumnName;
 
@@ -138,6 +142,8 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
 
             string name,
 
+            string pointOfContact,
+
             string updateTime,
 
             string valueType,
@@ -153,6 +159,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
             MonitoringStats = monitoringStats;
             MonitoringStatsAnomalies = monitoringStatsAnomalies;
             Name = name;
+            PointOfContact = pointOfContact;
             UpdateTime = updateTime;
             ValueType = valueType;
             VersionColumnName = versionColumnName;

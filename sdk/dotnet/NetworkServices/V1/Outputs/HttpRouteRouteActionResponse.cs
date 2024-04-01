@@ -25,9 +25,17 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.HttpRouteDestinationResponse> Destinations;
         /// <summary>
+        /// Optional. Static HTTP Response object to be returned regardless of the request.
+        /// </summary>
+        public readonly Outputs.HttpRouteHttpDirectResponseResponse DirectResponse;
+        /// <summary>
         /// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
         /// </summary>
         public readonly Outputs.HttpRouteFaultInjectionPolicyResponse FaultInjectionPolicy;
+        /// <summary>
+        /// Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+        /// </summary>
+        public readonly string IdleTimeout;
         /// <summary>
         /// If set, the request is directed as configured by this field.
         /// </summary>
@@ -67,7 +75,11 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Outputs
 
             ImmutableArray<Outputs.HttpRouteDestinationResponse> destinations,
 
+            Outputs.HttpRouteHttpDirectResponseResponse directResponse,
+
             Outputs.HttpRouteFaultInjectionPolicyResponse faultInjectionPolicy,
+
+            string idleTimeout,
 
             Outputs.HttpRouteRedirectResponse redirect,
 
@@ -87,7 +99,9 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Outputs
         {
             CorsPolicy = corsPolicy;
             Destinations = destinations;
+            DirectResponse = directResponse;
             FaultInjectionPolicy = faultInjectionPolicy;
+            IdleTimeout = idleTimeout;
             Redirect = redirect;
             RequestHeaderModifier = requestHeaderModifier;
             RequestMirrorPolicy = requestMirrorPolicy;

@@ -11,6 +11,183 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Optional. Retention can be either enabled or disabled.
+type AirflowMetadataRetentionPolicyConfigRetentionMode string
+
+const (
+	// Default mode doesn't change environment parameters.
+	AirflowMetadataRetentionPolicyConfigRetentionModeRetentionModeUnspecified = AirflowMetadataRetentionPolicyConfigRetentionMode("RETENTION_MODE_UNSPECIFIED")
+	// Retention policy is enabled.
+	AirflowMetadataRetentionPolicyConfigRetentionModeRetentionModeEnabled = AirflowMetadataRetentionPolicyConfigRetentionMode("RETENTION_MODE_ENABLED")
+	// Retention policy is disabled.
+	AirflowMetadataRetentionPolicyConfigRetentionModeRetentionModeDisabled = AirflowMetadataRetentionPolicyConfigRetentionMode("RETENTION_MODE_DISABLED")
+)
+
+func (AirflowMetadataRetentionPolicyConfigRetentionMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*AirflowMetadataRetentionPolicyConfigRetentionMode)(nil)).Elem()
+}
+
+func (e AirflowMetadataRetentionPolicyConfigRetentionMode) ToAirflowMetadataRetentionPolicyConfigRetentionModeOutput() AirflowMetadataRetentionPolicyConfigRetentionModeOutput {
+	return pulumi.ToOutput(e).(AirflowMetadataRetentionPolicyConfigRetentionModeOutput)
+}
+
+func (e AirflowMetadataRetentionPolicyConfigRetentionMode) ToAirflowMetadataRetentionPolicyConfigRetentionModeOutputWithContext(ctx context.Context) AirflowMetadataRetentionPolicyConfigRetentionModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AirflowMetadataRetentionPolicyConfigRetentionModeOutput)
+}
+
+func (e AirflowMetadataRetentionPolicyConfigRetentionMode) ToAirflowMetadataRetentionPolicyConfigRetentionModePtrOutput() AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput {
+	return e.ToAirflowMetadataRetentionPolicyConfigRetentionModePtrOutputWithContext(context.Background())
+}
+
+func (e AirflowMetadataRetentionPolicyConfigRetentionMode) ToAirflowMetadataRetentionPolicyConfigRetentionModePtrOutputWithContext(ctx context.Context) AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput {
+	return AirflowMetadataRetentionPolicyConfigRetentionMode(e).ToAirflowMetadataRetentionPolicyConfigRetentionModeOutputWithContext(ctx).ToAirflowMetadataRetentionPolicyConfigRetentionModePtrOutputWithContext(ctx)
+}
+
+func (e AirflowMetadataRetentionPolicyConfigRetentionMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AirflowMetadataRetentionPolicyConfigRetentionMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AirflowMetadataRetentionPolicyConfigRetentionMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AirflowMetadataRetentionPolicyConfigRetentionMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AirflowMetadataRetentionPolicyConfigRetentionModeOutput struct{ *pulumi.OutputState }
+
+func (AirflowMetadataRetentionPolicyConfigRetentionModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AirflowMetadataRetentionPolicyConfigRetentionMode)(nil)).Elem()
+}
+
+func (o AirflowMetadataRetentionPolicyConfigRetentionModeOutput) ToAirflowMetadataRetentionPolicyConfigRetentionModeOutput() AirflowMetadataRetentionPolicyConfigRetentionModeOutput {
+	return o
+}
+
+func (o AirflowMetadataRetentionPolicyConfigRetentionModeOutput) ToAirflowMetadataRetentionPolicyConfigRetentionModeOutputWithContext(ctx context.Context) AirflowMetadataRetentionPolicyConfigRetentionModeOutput {
+	return o
+}
+
+func (o AirflowMetadataRetentionPolicyConfigRetentionModeOutput) ToAirflowMetadataRetentionPolicyConfigRetentionModePtrOutput() AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput {
+	return o.ToAirflowMetadataRetentionPolicyConfigRetentionModePtrOutputWithContext(context.Background())
+}
+
+func (o AirflowMetadataRetentionPolicyConfigRetentionModeOutput) ToAirflowMetadataRetentionPolicyConfigRetentionModePtrOutputWithContext(ctx context.Context) AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AirflowMetadataRetentionPolicyConfigRetentionMode) *AirflowMetadataRetentionPolicyConfigRetentionMode {
+		return &v
+	}).(AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput)
+}
+
+func (o AirflowMetadataRetentionPolicyConfigRetentionModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AirflowMetadataRetentionPolicyConfigRetentionModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AirflowMetadataRetentionPolicyConfigRetentionMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AirflowMetadataRetentionPolicyConfigRetentionModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AirflowMetadataRetentionPolicyConfigRetentionModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AirflowMetadataRetentionPolicyConfigRetentionMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput struct{ *pulumi.OutputState }
+
+func (AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AirflowMetadataRetentionPolicyConfigRetentionMode)(nil)).Elem()
+}
+
+func (o AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput) ToAirflowMetadataRetentionPolicyConfigRetentionModePtrOutput() AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput {
+	return o
+}
+
+func (o AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput) ToAirflowMetadataRetentionPolicyConfigRetentionModePtrOutputWithContext(ctx context.Context) AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput {
+	return o
+}
+
+func (o AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput) Elem() AirflowMetadataRetentionPolicyConfigRetentionModeOutput {
+	return o.ApplyT(func(v *AirflowMetadataRetentionPolicyConfigRetentionMode) AirflowMetadataRetentionPolicyConfigRetentionMode {
+		if v != nil {
+			return *v
+		}
+		var ret AirflowMetadataRetentionPolicyConfigRetentionMode
+		return ret
+	}).(AirflowMetadataRetentionPolicyConfigRetentionModeOutput)
+}
+
+func (o AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AirflowMetadataRetentionPolicyConfigRetentionMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AirflowMetadataRetentionPolicyConfigRetentionModeInput is an input type that accepts values of the AirflowMetadataRetentionPolicyConfigRetentionMode enum
+// A concrete instance of `AirflowMetadataRetentionPolicyConfigRetentionModeInput` can be one of the following:
+//
+//	AirflowMetadataRetentionPolicyConfigRetentionModeRetentionModeUnspecified
+//	AirflowMetadataRetentionPolicyConfigRetentionModeRetentionModeEnabled
+//	AirflowMetadataRetentionPolicyConfigRetentionModeRetentionModeDisabled
+type AirflowMetadataRetentionPolicyConfigRetentionModeInput interface {
+	pulumi.Input
+
+	ToAirflowMetadataRetentionPolicyConfigRetentionModeOutput() AirflowMetadataRetentionPolicyConfigRetentionModeOutput
+	ToAirflowMetadataRetentionPolicyConfigRetentionModeOutputWithContext(context.Context) AirflowMetadataRetentionPolicyConfigRetentionModeOutput
+}
+
+var airflowMetadataRetentionPolicyConfigRetentionModePtrType = reflect.TypeOf((**AirflowMetadataRetentionPolicyConfigRetentionMode)(nil)).Elem()
+
+type AirflowMetadataRetentionPolicyConfigRetentionModePtrInput interface {
+	pulumi.Input
+
+	ToAirflowMetadataRetentionPolicyConfigRetentionModePtrOutput() AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput
+	ToAirflowMetadataRetentionPolicyConfigRetentionModePtrOutputWithContext(context.Context) AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput
+}
+
+type airflowMetadataRetentionPolicyConfigRetentionModePtr string
+
+func AirflowMetadataRetentionPolicyConfigRetentionModePtr(v string) AirflowMetadataRetentionPolicyConfigRetentionModePtrInput {
+	return (*airflowMetadataRetentionPolicyConfigRetentionModePtr)(&v)
+}
+
+func (*airflowMetadataRetentionPolicyConfigRetentionModePtr) ElementType() reflect.Type {
+	return airflowMetadataRetentionPolicyConfigRetentionModePtrType
+}
+
+func (in *airflowMetadataRetentionPolicyConfigRetentionModePtr) ToAirflowMetadataRetentionPolicyConfigRetentionModePtrOutput() AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput {
+	return pulumi.ToOutput(in).(AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput)
+}
+
+func (in *airflowMetadataRetentionPolicyConfigRetentionModePtr) ToAirflowMetadataRetentionPolicyConfigRetentionModePtrOutputWithContext(ctx context.Context) AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput)
+}
+
+func (in *airflowMetadataRetentionPolicyConfigRetentionModePtr) ToOutput(ctx context.Context) pulumix.Output[*AirflowMetadataRetentionPolicyConfigRetentionMode] {
+	return pulumix.Output[*AirflowMetadataRetentionPolicyConfigRetentionMode]{
+		OutputState: in.ToAirflowMetadataRetentionPolicyConfigRetentionModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 type EnvironmentConfigEnvironmentSize string
 
@@ -728,7 +905,363 @@ func (in *networkingConfigConnectionTypePtr) ToOutput(ctx context.Context) pulum
 	}
 }
 
+// Optional. Whether or not the web server uses custom plugins. If unspecified, the field defaults to `PLUGINS_ENABLED`. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+type SoftwareConfigWebServerPluginsMode string
+
+const (
+	// Default mode.
+	SoftwareConfigWebServerPluginsModeWebServerPluginsModeUnspecified = SoftwareConfigWebServerPluginsMode("WEB_SERVER_PLUGINS_MODE_UNSPECIFIED")
+	// Web server plugins are not supported.
+	SoftwareConfigWebServerPluginsModePluginsDisabled = SoftwareConfigWebServerPluginsMode("PLUGINS_DISABLED")
+	// Web server plugins are supported.
+	SoftwareConfigWebServerPluginsModePluginsEnabled = SoftwareConfigWebServerPluginsMode("PLUGINS_ENABLED")
+)
+
+func (SoftwareConfigWebServerPluginsMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareConfigWebServerPluginsMode)(nil)).Elem()
+}
+
+func (e SoftwareConfigWebServerPluginsMode) ToSoftwareConfigWebServerPluginsModeOutput() SoftwareConfigWebServerPluginsModeOutput {
+	return pulumi.ToOutput(e).(SoftwareConfigWebServerPluginsModeOutput)
+}
+
+func (e SoftwareConfigWebServerPluginsMode) ToSoftwareConfigWebServerPluginsModeOutputWithContext(ctx context.Context) SoftwareConfigWebServerPluginsModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SoftwareConfigWebServerPluginsModeOutput)
+}
+
+func (e SoftwareConfigWebServerPluginsMode) ToSoftwareConfigWebServerPluginsModePtrOutput() SoftwareConfigWebServerPluginsModePtrOutput {
+	return e.ToSoftwareConfigWebServerPluginsModePtrOutputWithContext(context.Background())
+}
+
+func (e SoftwareConfigWebServerPluginsMode) ToSoftwareConfigWebServerPluginsModePtrOutputWithContext(ctx context.Context) SoftwareConfigWebServerPluginsModePtrOutput {
+	return SoftwareConfigWebServerPluginsMode(e).ToSoftwareConfigWebServerPluginsModeOutputWithContext(ctx).ToSoftwareConfigWebServerPluginsModePtrOutputWithContext(ctx)
+}
+
+func (e SoftwareConfigWebServerPluginsMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SoftwareConfigWebServerPluginsMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SoftwareConfigWebServerPluginsMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SoftwareConfigWebServerPluginsMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SoftwareConfigWebServerPluginsModeOutput struct{ *pulumi.OutputState }
+
+func (SoftwareConfigWebServerPluginsModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareConfigWebServerPluginsMode)(nil)).Elem()
+}
+
+func (o SoftwareConfigWebServerPluginsModeOutput) ToSoftwareConfigWebServerPluginsModeOutput() SoftwareConfigWebServerPluginsModeOutput {
+	return o
+}
+
+func (o SoftwareConfigWebServerPluginsModeOutput) ToSoftwareConfigWebServerPluginsModeOutputWithContext(ctx context.Context) SoftwareConfigWebServerPluginsModeOutput {
+	return o
+}
+
+func (o SoftwareConfigWebServerPluginsModeOutput) ToSoftwareConfigWebServerPluginsModePtrOutput() SoftwareConfigWebServerPluginsModePtrOutput {
+	return o.ToSoftwareConfigWebServerPluginsModePtrOutputWithContext(context.Background())
+}
+
+func (o SoftwareConfigWebServerPluginsModeOutput) ToSoftwareConfigWebServerPluginsModePtrOutputWithContext(ctx context.Context) SoftwareConfigWebServerPluginsModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareConfigWebServerPluginsMode) *SoftwareConfigWebServerPluginsMode {
+		return &v
+	}).(SoftwareConfigWebServerPluginsModePtrOutput)
+}
+
+func (o SoftwareConfigWebServerPluginsModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SoftwareConfigWebServerPluginsModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SoftwareConfigWebServerPluginsMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SoftwareConfigWebServerPluginsModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SoftwareConfigWebServerPluginsModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SoftwareConfigWebServerPluginsMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SoftwareConfigWebServerPluginsModePtrOutput struct{ *pulumi.OutputState }
+
+func (SoftwareConfigWebServerPluginsModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SoftwareConfigWebServerPluginsMode)(nil)).Elem()
+}
+
+func (o SoftwareConfigWebServerPluginsModePtrOutput) ToSoftwareConfigWebServerPluginsModePtrOutput() SoftwareConfigWebServerPluginsModePtrOutput {
+	return o
+}
+
+func (o SoftwareConfigWebServerPluginsModePtrOutput) ToSoftwareConfigWebServerPluginsModePtrOutputWithContext(ctx context.Context) SoftwareConfigWebServerPluginsModePtrOutput {
+	return o
+}
+
+func (o SoftwareConfigWebServerPluginsModePtrOutput) Elem() SoftwareConfigWebServerPluginsModeOutput {
+	return o.ApplyT(func(v *SoftwareConfigWebServerPluginsMode) SoftwareConfigWebServerPluginsMode {
+		if v != nil {
+			return *v
+		}
+		var ret SoftwareConfigWebServerPluginsMode
+		return ret
+	}).(SoftwareConfigWebServerPluginsModeOutput)
+}
+
+func (o SoftwareConfigWebServerPluginsModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SoftwareConfigWebServerPluginsModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SoftwareConfigWebServerPluginsMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SoftwareConfigWebServerPluginsModeInput is an input type that accepts values of the SoftwareConfigWebServerPluginsMode enum
+// A concrete instance of `SoftwareConfigWebServerPluginsModeInput` can be one of the following:
+//
+//	SoftwareConfigWebServerPluginsModeWebServerPluginsModeUnspecified
+//	SoftwareConfigWebServerPluginsModePluginsDisabled
+//	SoftwareConfigWebServerPluginsModePluginsEnabled
+type SoftwareConfigWebServerPluginsModeInput interface {
+	pulumi.Input
+
+	ToSoftwareConfigWebServerPluginsModeOutput() SoftwareConfigWebServerPluginsModeOutput
+	ToSoftwareConfigWebServerPluginsModeOutputWithContext(context.Context) SoftwareConfigWebServerPluginsModeOutput
+}
+
+var softwareConfigWebServerPluginsModePtrType = reflect.TypeOf((**SoftwareConfigWebServerPluginsMode)(nil)).Elem()
+
+type SoftwareConfigWebServerPluginsModePtrInput interface {
+	pulumi.Input
+
+	ToSoftwareConfigWebServerPluginsModePtrOutput() SoftwareConfigWebServerPluginsModePtrOutput
+	ToSoftwareConfigWebServerPluginsModePtrOutputWithContext(context.Context) SoftwareConfigWebServerPluginsModePtrOutput
+}
+
+type softwareConfigWebServerPluginsModePtr string
+
+func SoftwareConfigWebServerPluginsModePtr(v string) SoftwareConfigWebServerPluginsModePtrInput {
+	return (*softwareConfigWebServerPluginsModePtr)(&v)
+}
+
+func (*softwareConfigWebServerPluginsModePtr) ElementType() reflect.Type {
+	return softwareConfigWebServerPluginsModePtrType
+}
+
+func (in *softwareConfigWebServerPluginsModePtr) ToSoftwareConfigWebServerPluginsModePtrOutput() SoftwareConfigWebServerPluginsModePtrOutput {
+	return pulumi.ToOutput(in).(SoftwareConfigWebServerPluginsModePtrOutput)
+}
+
+func (in *softwareConfigWebServerPluginsModePtr) ToSoftwareConfigWebServerPluginsModePtrOutputWithContext(ctx context.Context) SoftwareConfigWebServerPluginsModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SoftwareConfigWebServerPluginsModePtrOutput)
+}
+
+func (in *softwareConfigWebServerPluginsModePtr) ToOutput(ctx context.Context) pulumix.Output[*SoftwareConfigWebServerPluginsMode] {
+	return pulumix.Output[*SoftwareConfigWebServerPluginsMode]{
+		OutputState: in.ToSoftwareConfigWebServerPluginsModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. The mode of storage for Airflow workers task logs.
+type TaskLogsRetentionConfigStorageMode string
+
+const (
+	// This configuration is not specified by the user.
+	TaskLogsRetentionConfigStorageModeTaskLogsStorageModeUnspecified = TaskLogsRetentionConfigStorageMode("TASK_LOGS_STORAGE_MODE_UNSPECIFIED")
+	// Store task logs in Cloud Logging and in the environment's Cloud Storage bucket.
+	TaskLogsRetentionConfigStorageModeCloudLoggingAndCloudStorage = TaskLogsRetentionConfigStorageMode("CLOUD_LOGGING_AND_CLOUD_STORAGE")
+	// Store task logs in Cloud Logging only.
+	TaskLogsRetentionConfigStorageModeCloudLoggingOnly = TaskLogsRetentionConfigStorageMode("CLOUD_LOGGING_ONLY")
+)
+
+func (TaskLogsRetentionConfigStorageMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskLogsRetentionConfigStorageMode)(nil)).Elem()
+}
+
+func (e TaskLogsRetentionConfigStorageMode) ToTaskLogsRetentionConfigStorageModeOutput() TaskLogsRetentionConfigStorageModeOutput {
+	return pulumi.ToOutput(e).(TaskLogsRetentionConfigStorageModeOutput)
+}
+
+func (e TaskLogsRetentionConfigStorageMode) ToTaskLogsRetentionConfigStorageModeOutputWithContext(ctx context.Context) TaskLogsRetentionConfigStorageModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TaskLogsRetentionConfigStorageModeOutput)
+}
+
+func (e TaskLogsRetentionConfigStorageMode) ToTaskLogsRetentionConfigStorageModePtrOutput() TaskLogsRetentionConfigStorageModePtrOutput {
+	return e.ToTaskLogsRetentionConfigStorageModePtrOutputWithContext(context.Background())
+}
+
+func (e TaskLogsRetentionConfigStorageMode) ToTaskLogsRetentionConfigStorageModePtrOutputWithContext(ctx context.Context) TaskLogsRetentionConfigStorageModePtrOutput {
+	return TaskLogsRetentionConfigStorageMode(e).ToTaskLogsRetentionConfigStorageModeOutputWithContext(ctx).ToTaskLogsRetentionConfigStorageModePtrOutputWithContext(ctx)
+}
+
+func (e TaskLogsRetentionConfigStorageMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TaskLogsRetentionConfigStorageMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TaskLogsRetentionConfigStorageMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TaskLogsRetentionConfigStorageMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TaskLogsRetentionConfigStorageModeOutput struct{ *pulumi.OutputState }
+
+func (TaskLogsRetentionConfigStorageModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskLogsRetentionConfigStorageMode)(nil)).Elem()
+}
+
+func (o TaskLogsRetentionConfigStorageModeOutput) ToTaskLogsRetentionConfigStorageModeOutput() TaskLogsRetentionConfigStorageModeOutput {
+	return o
+}
+
+func (o TaskLogsRetentionConfigStorageModeOutput) ToTaskLogsRetentionConfigStorageModeOutputWithContext(ctx context.Context) TaskLogsRetentionConfigStorageModeOutput {
+	return o
+}
+
+func (o TaskLogsRetentionConfigStorageModeOutput) ToTaskLogsRetentionConfigStorageModePtrOutput() TaskLogsRetentionConfigStorageModePtrOutput {
+	return o.ToTaskLogsRetentionConfigStorageModePtrOutputWithContext(context.Background())
+}
+
+func (o TaskLogsRetentionConfigStorageModeOutput) ToTaskLogsRetentionConfigStorageModePtrOutputWithContext(ctx context.Context) TaskLogsRetentionConfigStorageModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskLogsRetentionConfigStorageMode) *TaskLogsRetentionConfigStorageMode {
+		return &v
+	}).(TaskLogsRetentionConfigStorageModePtrOutput)
+}
+
+func (o TaskLogsRetentionConfigStorageModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TaskLogsRetentionConfigStorageModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TaskLogsRetentionConfigStorageMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TaskLogsRetentionConfigStorageModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TaskLogsRetentionConfigStorageModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TaskLogsRetentionConfigStorageMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TaskLogsRetentionConfigStorageModePtrOutput struct{ *pulumi.OutputState }
+
+func (TaskLogsRetentionConfigStorageModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskLogsRetentionConfigStorageMode)(nil)).Elem()
+}
+
+func (o TaskLogsRetentionConfigStorageModePtrOutput) ToTaskLogsRetentionConfigStorageModePtrOutput() TaskLogsRetentionConfigStorageModePtrOutput {
+	return o
+}
+
+func (o TaskLogsRetentionConfigStorageModePtrOutput) ToTaskLogsRetentionConfigStorageModePtrOutputWithContext(ctx context.Context) TaskLogsRetentionConfigStorageModePtrOutput {
+	return o
+}
+
+func (o TaskLogsRetentionConfigStorageModePtrOutput) Elem() TaskLogsRetentionConfigStorageModeOutput {
+	return o.ApplyT(func(v *TaskLogsRetentionConfigStorageMode) TaskLogsRetentionConfigStorageMode {
+		if v != nil {
+			return *v
+		}
+		var ret TaskLogsRetentionConfigStorageMode
+		return ret
+	}).(TaskLogsRetentionConfigStorageModeOutput)
+}
+
+func (o TaskLogsRetentionConfigStorageModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TaskLogsRetentionConfigStorageModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TaskLogsRetentionConfigStorageMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TaskLogsRetentionConfigStorageModeInput is an input type that accepts values of the TaskLogsRetentionConfigStorageMode enum
+// A concrete instance of `TaskLogsRetentionConfigStorageModeInput` can be one of the following:
+//
+//	TaskLogsRetentionConfigStorageModeTaskLogsStorageModeUnspecified
+//	TaskLogsRetentionConfigStorageModeCloudLoggingAndCloudStorage
+//	TaskLogsRetentionConfigStorageModeCloudLoggingOnly
+type TaskLogsRetentionConfigStorageModeInput interface {
+	pulumi.Input
+
+	ToTaskLogsRetentionConfigStorageModeOutput() TaskLogsRetentionConfigStorageModeOutput
+	ToTaskLogsRetentionConfigStorageModeOutputWithContext(context.Context) TaskLogsRetentionConfigStorageModeOutput
+}
+
+var taskLogsRetentionConfigStorageModePtrType = reflect.TypeOf((**TaskLogsRetentionConfigStorageMode)(nil)).Elem()
+
+type TaskLogsRetentionConfigStorageModePtrInput interface {
+	pulumi.Input
+
+	ToTaskLogsRetentionConfigStorageModePtrOutput() TaskLogsRetentionConfigStorageModePtrOutput
+	ToTaskLogsRetentionConfigStorageModePtrOutputWithContext(context.Context) TaskLogsRetentionConfigStorageModePtrOutput
+}
+
+type taskLogsRetentionConfigStorageModePtr string
+
+func TaskLogsRetentionConfigStorageModePtr(v string) TaskLogsRetentionConfigStorageModePtrInput {
+	return (*taskLogsRetentionConfigStorageModePtr)(&v)
+}
+
+func (*taskLogsRetentionConfigStorageModePtr) ElementType() reflect.Type {
+	return taskLogsRetentionConfigStorageModePtrType
+}
+
+func (in *taskLogsRetentionConfigStorageModePtr) ToTaskLogsRetentionConfigStorageModePtrOutput() TaskLogsRetentionConfigStorageModePtrOutput {
+	return pulumi.ToOutput(in).(TaskLogsRetentionConfigStorageModePtrOutput)
+}
+
+func (in *taskLogsRetentionConfigStorageModePtr) ToTaskLogsRetentionConfigStorageModePtrOutputWithContext(ctx context.Context) TaskLogsRetentionConfigStorageModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TaskLogsRetentionConfigStorageModePtrOutput)
+}
+
+func (in *taskLogsRetentionConfigStorageModePtr) ToOutput(ctx context.Context) pulumix.Output[*TaskLogsRetentionConfigStorageMode] {
+	return pulumix.Output[*TaskLogsRetentionConfigStorageMode]{
+		OutputState: in.ToTaskLogsRetentionConfigStorageModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AirflowMetadataRetentionPolicyConfigRetentionModeInput)(nil)).Elem(), AirflowMetadataRetentionPolicyConfigRetentionMode("RETENTION_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AirflowMetadataRetentionPolicyConfigRetentionModePtrInput)(nil)).Elem(), AirflowMetadataRetentionPolicyConfigRetentionMode("RETENTION_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigEnvironmentSizeInput)(nil)).Elem(), EnvironmentConfigEnvironmentSize("ENVIRONMENT_SIZE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigEnvironmentSizePtrInput)(nil)).Elem(), EnvironmentConfigEnvironmentSize("ENVIRONMENT_SIZE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigResilienceModeInput)(nil)).Elem(), EnvironmentConfigResilienceMode("RESILIENCE_MODE_UNSPECIFIED"))
@@ -737,6 +1270,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentStateEnumPtrInput)(nil)).Elem(), EnvironmentStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkingConfigConnectionTypeInput)(nil)).Elem(), NetworkingConfigConnectionType("CONNECTION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkingConfigConnectionTypePtrInput)(nil)).Elem(), NetworkingConfigConnectionType("CONNECTION_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigWebServerPluginsModeInput)(nil)).Elem(), SoftwareConfigWebServerPluginsMode("WEB_SERVER_PLUGINS_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigWebServerPluginsModePtrInput)(nil)).Elem(), SoftwareConfigWebServerPluginsMode("WEB_SERVER_PLUGINS_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskLogsRetentionConfigStorageModeInput)(nil)).Elem(), TaskLogsRetentionConfigStorageMode("TASK_LOGS_STORAGE_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskLogsRetentionConfigStorageModePtrInput)(nil)).Elem(), TaskLogsRetentionConfigStorageMode("TASK_LOGS_STORAGE_MODE_UNSPECIFIED"))
+	pulumi.RegisterOutputType(AirflowMetadataRetentionPolicyConfigRetentionModeOutput{})
+	pulumi.RegisterOutputType(AirflowMetadataRetentionPolicyConfigRetentionModePtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigEnvironmentSizeOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigEnvironmentSizePtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigResilienceModeOutput{})
@@ -745,4 +1284,8 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentStateEnumPtrOutput{})
 	pulumi.RegisterOutputType(NetworkingConfigConnectionTypeOutput{})
 	pulumi.RegisterOutputType(NetworkingConfigConnectionTypePtrOutput{})
+	pulumi.RegisterOutputType(SoftwareConfigWebServerPluginsModeOutput{})
+	pulumi.RegisterOutputType(SoftwareConfigWebServerPluginsModePtrOutput{})
+	pulumi.RegisterOutputType(TaskLogsRetentionConfigStorageModeOutput{})
+	pulumi.RegisterOutputType(TaskLogsRetentionConfigStorageModePtrOutput{})
 }

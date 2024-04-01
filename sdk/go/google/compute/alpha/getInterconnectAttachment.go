@@ -77,6 +77,8 @@ type LookupInterconnectAttachmentResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment. Only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
 	Mtu int `pulumi:"mtu"`
+	// Whether or not to permit multicast traffic for this attachment. Multicast packets will be dropped if this is not enabled.
+	MulticastEnabled bool `pulumi:"multicastEnabled"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
 	// The current status of whether or not this interconnect attachment is functional, which can take one of the following values: - OS_ACTIVE: The attachment has been turned up and is ready to use. - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
@@ -267,6 +269,11 @@ func (o LookupInterconnectAttachmentResultOutput) Labels() pulumi.StringMapOutpu
 // Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment. Only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
 func (o LookupInterconnectAttachmentResultOutput) Mtu() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupInterconnectAttachmentResult) int { return v.Mtu }).(pulumi.IntOutput)
+}
+
+// Whether or not to permit multicast traffic for this attachment. Multicast packets will be dropped if this is not enabled.
+func (o LookupInterconnectAttachmentResultOutput) MulticastEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInterconnectAttachmentResult) bool { return v.MulticastEnabled }).(pulumi.BoolOutput)
 }
 
 // Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.

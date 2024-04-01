@@ -14,6 +14,7 @@ export function getSecretIamPolicy(args: GetSecretIamPolicyArgs, opts?: pulumi.I
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:secretmanager/v1:getSecretIamPolicy", {
+        "location": args.location,
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
         "project": args.project,
         "secretId": args.secretId,
@@ -21,6 +22,7 @@ export function getSecretIamPolicy(args: GetSecretIamPolicyArgs, opts?: pulumi.I
 }
 
 export interface GetSecretIamPolicyArgs {
+    location: string;
     optionsRequestedPolicyVersion?: number;
     project?: string;
     secretId: string;
@@ -52,6 +54,7 @@ export function getSecretIamPolicyOutput(args: GetSecretIamPolicyOutputArgs, opt
 }
 
 export interface GetSecretIamPolicyOutputArgs {
+    location: pulumi.Input<string>;
     optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     secretId: pulumi.Input<string>;

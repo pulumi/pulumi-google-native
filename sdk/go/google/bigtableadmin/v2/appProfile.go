@@ -18,6 +18,8 @@ type AppProfile struct {
 
 	// Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`.
 	AppProfileId pulumi.StringOutput `pulumi:"appProfileId"`
+	// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+	DataBoostIsolationReadOnly DataBoostIsolationReadOnlyResponseOutput `pulumi:"dataBoostIsolationReadOnly"`
 	// Long form description of the use case for this AppProfile.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
@@ -92,6 +94,8 @@ func (AppProfileState) ElementType() reflect.Type {
 type appProfileArgs struct {
 	// Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`.
 	AppProfileId string `pulumi:"appProfileId"`
+	// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+	DataBoostIsolationReadOnly *DataBoostIsolationReadOnly `pulumi:"dataBoostIsolationReadOnly"`
 	// Long form description of the use case for this AppProfile.
 	Description *string `pulumi:"description"`
 	// Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
@@ -116,6 +120,8 @@ type appProfileArgs struct {
 type AppProfileArgs struct {
 	// Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`.
 	AppProfileId pulumi.StringInput
+	// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+	DataBoostIsolationReadOnly DataBoostIsolationReadOnlyPtrInput
 	// Long form description of the use case for this AppProfile.
 	Description pulumi.StringPtrInput
 	// Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
@@ -176,6 +182,11 @@ func (o AppProfileOutput) ToAppProfileOutputWithContext(ctx context.Context) App
 // Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`.
 func (o AppProfileOutput) AppProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppProfile) pulumi.StringOutput { return v.AppProfileId }).(pulumi.StringOutput)
+}
+
+// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+func (o AppProfileOutput) DataBoostIsolationReadOnly() DataBoostIsolationReadOnlyResponseOutput {
+	return o.ApplyT(func(v *AppProfile) DataBoostIsolationReadOnlyResponseOutput { return v.DataBoostIsolationReadOnly }).(DataBoostIsolationReadOnlyResponseOutput)
 }
 
 // Long form description of the use case for this AppProfile.

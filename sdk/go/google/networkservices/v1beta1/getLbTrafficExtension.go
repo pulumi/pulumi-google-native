@@ -37,11 +37,11 @@ type LookupLbTrafficExtensionResult struct {
 	ExtensionChains []ExtensionChainResponse `pulumi:"extensionChains"`
 	// A list of references to the forwarding rules to which this service extension is attached to. At least one forwarding rule is required. There can be only one `LBTrafficExtension` resource per forwarding rule.
 	ForwardingRules []string `pulumi:"forwardingRules"`
-	// Optional. Set of labels associated with the `LbTrafficExtension` resource. The format must comply with [the following requirements](/compute/docs/labeling-resources#requirements).
+	// Optional. Set of labels associated with the `LbTrafficExtension` resource. The format must comply with [the requirements for labels](https://cloud.google.com/compute/docs/labeling-resources#requirements) for Google Cloud resources.
 	Labels map[string]string `pulumi:"labels"`
 	// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 	LoadBalancingScheme string `pulumi:"loadBalancingScheme"`
-	// Name of the `LbTrafficExtension` resource in the following format: `projects/{project}/locations/{location}/lbTrafficExtensions/{lb_traffic_extension}`.
+	// Identifier. Name of the `LbTrafficExtension` resource in the following format: `projects/{project}/locations/{location}/lbTrafficExtensions/{lb_traffic_extension}`.
 	Name string `pulumi:"name"`
 	// The timestamp when the resource was updated.
 	UpdateTime string `pulumi:"updateTime"`
@@ -104,7 +104,7 @@ func (o LookupLbTrafficExtensionResultOutput) ForwardingRules() pulumi.StringArr
 	return o.ApplyT(func(v LookupLbTrafficExtensionResult) []string { return v.ForwardingRules }).(pulumi.StringArrayOutput)
 }
 
-// Optional. Set of labels associated with the `LbTrafficExtension` resource. The format must comply with [the following requirements](/compute/docs/labeling-resources#requirements).
+// Optional. Set of labels associated with the `LbTrafficExtension` resource. The format must comply with [the requirements for labels](https://cloud.google.com/compute/docs/labeling-resources#requirements) for Google Cloud resources.
 func (o LookupLbTrafficExtensionResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupLbTrafficExtensionResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -114,7 +114,7 @@ func (o LookupLbTrafficExtensionResultOutput) LoadBalancingScheme() pulumi.Strin
 	return o.ApplyT(func(v LookupLbTrafficExtensionResult) string { return v.LoadBalancingScheme }).(pulumi.StringOutput)
 }
 
-// Name of the `LbTrafficExtension` resource in the following format: `projects/{project}/locations/{location}/lbTrafficExtensions/{lb_traffic_extension}`.
+// Identifier. Name of the `LbTrafficExtension` resource in the following format: `projects/{project}/locations/{location}/lbTrafficExtensions/{lb_traffic_extension}`.
 func (o LookupLbTrafficExtensionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLbTrafficExtensionResult) string { return v.Name }).(pulumi.StringOutput)
 }

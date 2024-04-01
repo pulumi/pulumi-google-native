@@ -42,7 +42,7 @@ type LookupWorkstationConfigResult struct {
 	Degraded bool `pulumi:"degraded"`
 	// Time when this workstation configuration was soft-deleted.
 	DeleteTime string `pulumi:"deleteTime"`
-	// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+	// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections through a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain TCP connections, such as SSH. When enabled, all communication must occur over HTTPS or WSS.
 	DisableTcpConnections bool `pulumi:"disableTcpConnections"`
 	// Optional. Human-readable name for this workstation configuration.
 	DisplayName string `pulumi:"displayName"`
@@ -146,7 +146,7 @@ func (o LookupWorkstationConfigResultOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkstationConfigResult) string { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
-// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections through a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain TCP connections, such as SSH. When enabled, all communication must occur over HTTPS or WSS.
 func (o LookupWorkstationConfigResultOutput) DisableTcpConnections() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupWorkstationConfigResult) bool { return v.DisableTcpConnections }).(pulumi.BoolOutput)
 }

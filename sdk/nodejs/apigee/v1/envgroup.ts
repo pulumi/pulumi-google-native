@@ -47,7 +47,7 @@ export class Envgroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastModifiedAt!: pulumi.Output<string>;
     /**
-     * ID of the environment group. Overrides any ID in the environment_group resource.
+     * Optional. ID of the environment group. Overrides any ID in the environment_group resource.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly organizationId!: pulumi.Output<string>;

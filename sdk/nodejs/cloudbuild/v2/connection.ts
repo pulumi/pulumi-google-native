@@ -42,6 +42,14 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Configuration for connections to Bitbucket Cloud.
+     */
+    public readonly bitbucketCloudConfig!: pulumi.Output<outputs.cloudbuild.v2.BitbucketCloudConfigResponse>;
+    /**
+     * Configuration for connections to Bitbucket Data Center.
+     */
+    public readonly bitbucketDataCenterConfig!: pulumi.Output<outputs.cloudbuild.v2.BitbucketDataCenterConfigResponse>;
+    /**
      * Required. The ID to use for the Connection, which will become the final component of the Connection's resource name. Names must be unique per-project per-location. Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
      */
     public readonly connectionId!: pulumi.Output<string>;
@@ -103,6 +111,8 @@ export class Connection extends pulumi.CustomResource {
                 throw new Error("Missing required property 'connectionId'");
             }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["bitbucketCloudConfig"] = args ? args.bitbucketCloudConfig : undefined;
+            resourceInputs["bitbucketDataCenterConfig"] = args ? args.bitbucketDataCenterConfig : undefined;
             resourceInputs["connectionId"] = args ? args.connectionId : undefined;
             resourceInputs["disabled"] = args ? args.disabled : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
@@ -118,6 +128,8 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["annotations"] = undefined /*out*/;
+            resourceInputs["bitbucketCloudConfig"] = undefined /*out*/;
+            resourceInputs["bitbucketDataCenterConfig"] = undefined /*out*/;
             resourceInputs["connectionId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["disabled"] = undefined /*out*/;
@@ -147,6 +159,14 @@ export interface ConnectionArgs {
      * Allows clients to store small amounts of arbitrary data.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Configuration for connections to Bitbucket Cloud.
+     */
+    bitbucketCloudConfig?: pulumi.Input<inputs.cloudbuild.v2.BitbucketCloudConfigArgs>;
+    /**
+     * Configuration for connections to Bitbucket Data Center.
+     */
+    bitbucketDataCenterConfig?: pulumi.Input<inputs.cloudbuild.v2.BitbucketDataCenterConfigArgs>;
     /**
      * Required. The ID to use for the Connection, which will become the final component of the Connection's resource name. Names must be unique per-project per-location. Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
      */

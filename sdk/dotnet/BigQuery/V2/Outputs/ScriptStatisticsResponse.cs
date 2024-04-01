@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Job statistics specific to the child job of a script.
+    /// </summary>
     [OutputType]
     public sealed class ScriptStatisticsResponse
     {

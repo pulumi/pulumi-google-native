@@ -175,7 +175,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> ProvisionedIops { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
         /// </summary>
         [Output("provisionedThroughput")]
         public Output<string> ProvisionedThroughput { get; private set; } = null!;
@@ -206,6 +206,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Output("resourceStatus")]
         public Output<Outputs.DiskResourceStatusResponse> ResourceStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        [Output("satisfiesPzi")]
+        public Output<bool> SatisfiesPzi { get; private set; } = null!;
 
         /// <summary>
         /// Reserved for future use.
@@ -543,7 +549,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? ProvisionedIops { get; set; }
 
         /// <summary>
-        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
         /// </summary>
         [Input("provisionedThroughput")]
         public Input<string>? ProvisionedThroughput { get; set; }

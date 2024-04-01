@@ -10,11 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// [Preview] Information related to sessions.
+    /// </summary>
     [OutputType]
     public sealed class SessionInfoResponse
     {
         /// <summary>
-        /// // [Preview] Id of the session.
+        /// The id of the session.
         /// </summary>
         public readonly string SessionId;
 

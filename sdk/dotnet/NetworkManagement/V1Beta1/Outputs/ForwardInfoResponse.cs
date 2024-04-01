@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
     public sealed class ForwardInfoResponse
     {
         /// <summary>
+        /// IP address of the target (if applicable).
+        /// </summary>
+        public readonly string IpAddress;
+        /// <summary>
         /// URI of the resource that the packet is forwarded to.
         /// </summary>
         public readonly string ResourceUri;
@@ -27,10 +31,13 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
 
         [OutputConstructor]
         private ForwardInfoResponse(
+            string ipAddress,
+
             string resourceUri,
 
             string target)
         {
+            IpAddress = ipAddress;
             ResourceUri = resourceUri;
             Target = target;
         }

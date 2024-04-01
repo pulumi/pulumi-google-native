@@ -78,7 +78,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         public readonly string DagTimeout;
         /// <summary>
-        /// Optional. Encryption settings for the encrypting customer core content.
+        /// Optional. Encryption settings for encrypting workflow template job arguments.
         /// </summary>
         public readonly Outputs.GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse EncryptionConfig;
         /// <summary>

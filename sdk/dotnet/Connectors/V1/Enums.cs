@@ -110,6 +110,194 @@ namespace Pulumi.GoogleNative.Connectors.V1
     }
 
     /// <summary>
+    /// Optional. enum source denotes the source of api to fill the enum options
+    /// </summary>
+    [EnumType]
+    public readonly struct ConfigVariableTemplateEnumSource : IEquatable<ConfigVariableTemplateEnumSource>
+    {
+        private readonly string _value;
+
+        private ConfigVariableTemplateEnumSource(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Api type unspecified.
+        /// </summary>
+        public static ConfigVariableTemplateEnumSource EnumSourceUnspecified { get; } = new ConfigVariableTemplateEnumSource("ENUM_SOURCE_UNSPECIFIED");
+        /// <summary>
+        /// list event types.
+        /// </summary>
+        public static ConfigVariableTemplateEnumSource EventTypesApi { get; } = new ConfigVariableTemplateEnumSource("EVENT_TYPES_API");
+
+        public static bool operator ==(ConfigVariableTemplateEnumSource left, ConfigVariableTemplateEnumSource right) => left.Equals(right);
+        public static bool operator !=(ConfigVariableTemplateEnumSource left, ConfigVariableTemplateEnumSource right) => !left.Equals(right);
+
+        public static explicit operator string(ConfigVariableTemplateEnumSource value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ConfigVariableTemplateEnumSource other && Equals(other);
+        public bool Equals(ConfigVariableTemplateEnumSource other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Location Tyep denotes where this value should be sent in BYOC connections.
+    /// </summary>
+    [EnumType]
+    public readonly struct ConfigVariableTemplateLocationType : IEquatable<ConfigVariableTemplateLocationType>
+    {
+        private readonly string _value;
+
+        private ConfigVariableTemplateLocationType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Location type unspecified.
+        /// </summary>
+        public static ConfigVariableTemplateLocationType LocationTypeUnspecified { get; } = new ConfigVariableTemplateLocationType("LOCATION_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Request header.
+        /// </summary>
+        public static ConfigVariableTemplateLocationType Header { get; } = new ConfigVariableTemplateLocationType("HEADER");
+        /// <summary>
+        /// Request Payload.
+        /// </summary>
+        public static ConfigVariableTemplateLocationType Payload { get; } = new ConfigVariableTemplateLocationType("PAYLOAD");
+        /// <summary>
+        /// Request query param.
+        /// </summary>
+        public static ConfigVariableTemplateLocationType QueryParam { get; } = new ConfigVariableTemplateLocationType("QUERY_PARAM");
+        /// <summary>
+        /// Request path param.
+        /// </summary>
+        public static ConfigVariableTemplateLocationType PathParam { get; } = new ConfigVariableTemplateLocationType("PATH_PARAM");
+
+        public static bool operator ==(ConfigVariableTemplateLocationType left, ConfigVariableTemplateLocationType right) => left.Equals(right);
+        public static bool operator !=(ConfigVariableTemplateLocationType left, ConfigVariableTemplateLocationType right) => !left.Equals(right);
+
+        public static explicit operator string(ConfigVariableTemplateLocationType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ConfigVariableTemplateLocationType other && Equals(other);
+        public bool Equals(ConfigVariableTemplateLocationType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// State of the config variable.
+    /// </summary>
+    [EnumType]
+    public readonly struct ConfigVariableTemplateState : IEquatable<ConfigVariableTemplateState>
+    {
+        private readonly string _value;
+
+        private ConfigVariableTemplateState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Status is unspecified.
+        /// </summary>
+        public static ConfigVariableTemplateState StateUnspecified { get; } = new ConfigVariableTemplateState("STATE_UNSPECIFIED");
+        /// <summary>
+        /// Config variable is active
+        /// </summary>
+        public static ConfigVariableTemplateState Active { get; } = new ConfigVariableTemplateState("ACTIVE");
+        /// <summary>
+        /// Config variable is deprecated.
+        /// </summary>
+        public static ConfigVariableTemplateState Deprecated { get; } = new ConfigVariableTemplateState("DEPRECATED");
+
+        public static bool operator ==(ConfigVariableTemplateState left, ConfigVariableTemplateState right) => left.Equals(right);
+        public static bool operator !=(ConfigVariableTemplateState left, ConfigVariableTemplateState right) => !left.Equals(right);
+
+        public static explicit operator string(ConfigVariableTemplateState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ConfigVariableTemplateState other && Equals(other);
+        public bool Equals(ConfigVariableTemplateState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Type of the parameter: string, int, bool etc. consider custom type for the benefit for the validation.
+    /// </summary>
+    [EnumType]
+    public readonly struct ConfigVariableTemplateValueType : IEquatable<ConfigVariableTemplateValueType>
+    {
+        private readonly string _value;
+
+        private ConfigVariableTemplateValueType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Value type is not specified.
+        /// </summary>
+        public static ConfigVariableTemplateValueType ValueTypeUnspecified { get; } = new ConfigVariableTemplateValueType("VALUE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Value type is string.
+        /// </summary>
+        public static ConfigVariableTemplateValueType String { get; } = new ConfigVariableTemplateValueType("STRING");
+        /// <summary>
+        /// Value type is integer.
+        /// </summary>
+        public static ConfigVariableTemplateValueType Int { get; } = new ConfigVariableTemplateValueType("INT");
+        /// <summary>
+        /// Value type is boolean.
+        /// </summary>
+        public static ConfigVariableTemplateValueType Bool { get; } = new ConfigVariableTemplateValueType("BOOL");
+        /// <summary>
+        /// Value type is secret.
+        /// </summary>
+        public static ConfigVariableTemplateValueType Secret { get; } = new ConfigVariableTemplateValueType("SECRET");
+        /// <summary>
+        /// Value type is enum.
+        /// </summary>
+        public static ConfigVariableTemplateValueType Enum { get; } = new ConfigVariableTemplateValueType("ENUM");
+        /// <summary>
+        /// Value type is authorization code.
+        /// </summary>
+        public static ConfigVariableTemplateValueType AuthorizationCode { get; } = new ConfigVariableTemplateValueType("AUTHORIZATION_CODE");
+        /// <summary>
+        /// Encryption Key.
+        /// </summary>
+        public static ConfigVariableTemplateValueType EncryptionKey { get; } = new ConfigVariableTemplateValueType("ENCRYPTION_KEY");
+
+        public static bool operator ==(ConfigVariableTemplateValueType left, ConfigVariableTemplateValueType right) => left.Equals(right);
+        public static bool operator !=(ConfigVariableTemplateValueType left, ConfigVariableTemplateValueType right) => !left.Equals(right);
+
+        public static explicit operator string(ConfigVariableTemplateValueType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ConfigVariableTemplateValueType other && Equals(other);
+        public bool Equals(ConfigVariableTemplateValueType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Optional. Eventing enablement type. Will be nil if eventing is not enabled.
     /// </summary>
     [EnumType]
@@ -270,6 +458,47 @@ namespace Pulumi.GoogleNative.Connectors.V1
     }
 
     /// <summary>
+    /// Comparator to use for comparing the field value.
+    /// </summary>
+    [EnumType]
+    public readonly struct FieldComparisonComparator : IEquatable<FieldComparisonComparator>
+    {
+        private readonly string _value;
+
+        private FieldComparisonComparator(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The default value.
+        /// </summary>
+        public static FieldComparisonComparator ComparatorUnspecified { get; } = new FieldComparisonComparator("COMPARATOR_UNSPECIFIED");
+        /// <summary>
+        /// The field value must be equal to the specified value.
+        /// </summary>
+        public static FieldComparisonComparator EqualsValue { get; } = new FieldComparisonComparator("EQUALS");
+        /// <summary>
+        /// The field value must not be equal to the specified value.
+        /// </summary>
+        public static FieldComparisonComparator NotEquals { get; } = new FieldComparisonComparator("NOT_EQUALS");
+
+        public static bool operator ==(FieldComparisonComparator left, FieldComparisonComparator right) => left.Equals(right);
+        public static bool operator !=(FieldComparisonComparator left, FieldComparisonComparator right) => !left.Equals(right);
+
+        public static explicit operator string(FieldComparisonComparator value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is FieldComparisonComparator other && Equals(other);
+        public bool Equals(FieldComparisonComparator other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Optional. Type of the JMS Source. i.e. Queue or Topic
     /// </summary>
     [EnumType]
@@ -303,6 +532,133 @@ namespace Pulumi.GoogleNative.Connectors.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is JMSType other && Equals(other);
         public bool Equals(JMSType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The logical operator to use between the fields and conditions.
+    /// </summary>
+    [EnumType]
+    public readonly struct LogicalExpressionLogicalOperator : IEquatable<LogicalExpressionLogicalOperator>
+    {
+        private readonly string _value;
+
+        private LogicalExpressionLogicalOperator(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The default value.
+        /// </summary>
+        public static LogicalExpressionLogicalOperator OperatorUnspecified { get; } = new LogicalExpressionLogicalOperator("OPERATOR_UNSPECIFIED");
+        /// <summary>
+        /// AND operator; The conditions must all be true.
+        /// </summary>
+        public static LogicalExpressionLogicalOperator And { get; } = new LogicalExpressionLogicalOperator("AND");
+        /// <summary>
+        /// OR operator; At least one of the conditions must be true.
+        /// </summary>
+        public static LogicalExpressionLogicalOperator Or { get; } = new LogicalExpressionLogicalOperator("OR");
+
+        public static bool operator ==(LogicalExpressionLogicalOperator left, LogicalExpressionLogicalOperator right) => left.Equals(right);
+        public static bool operator !=(LogicalExpressionLogicalOperator left, LogicalExpressionLogicalOperator right) => !left.Equals(right);
+
+        public static explicit operator string(LogicalExpressionLogicalOperator value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is LogicalExpressionLogicalOperator other && Equals(other);
+        public bool Equals(LogicalExpressionLogicalOperator other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Different types of resource supported.
+    /// </summary>
+    [EnumType]
+    public readonly struct ResourceType : IEquatable<ResourceType>
+    {
+        private readonly string _value;
+
+        private ResourceType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Value type is not specified.
+        /// </summary>
+        public static ResourceType TypeUnspecified { get; } = new ResourceType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Google Cloud Project Resource.
+        /// </summary>
+        public static ResourceType GcpProject { get; } = new ResourceType("GCP_PROJECT");
+        /// <summary>
+        /// Any Google Cloud Resource which is identified uniquely by IAM.
+        /// </summary>
+        public static ResourceType GcpResource { get; } = new ResourceType("GCP_RESOURCE");
+        /// <summary>
+        /// Google Cloud Secret Resource.
+        /// </summary>
+        public static ResourceType GcpSecretmanagerSecret { get; } = new ResourceType("GCP_SECRETMANAGER_SECRET");
+        /// <summary>
+        /// Google Cloud Secret Version Resource.
+        /// </summary>
+        public static ResourceType GcpSecretmanagerSecretVersion { get; } = new ResourceType("GCP_SECRETMANAGER_SECRET_VERSION");
+
+        public static bool operator ==(ResourceType left, ResourceType right) => left.Equals(right);
+        public static bool operator !=(ResourceType left, ResourceType right) => !left.Equals(right);
+
+        public static explicit operator string(ResourceType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ResourceType other && Equals(other);
+        public bool Equals(ResourceType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Prinicipal/Identity for whom the role need to assigned.
+    /// </summary>
+    [EnumType]
+    public readonly struct RoleGrantPrincipal : IEquatable<RoleGrantPrincipal>
+    {
+        private readonly string _value;
+
+        private RoleGrantPrincipal(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Value type is not specified.
+        /// </summary>
+        public static RoleGrantPrincipal PrincipalUnspecified { get; } = new RoleGrantPrincipal("PRINCIPAL_UNSPECIFIED");
+        /// <summary>
+        /// Service Account used for Connector workload identity This is either the default service account if unspecified or Service Account provided by Customers through BYOSA.
+        /// </summary>
+        public static RoleGrantPrincipal ConnectorSa { get; } = new RoleGrantPrincipal("CONNECTOR_SA");
+
+        public static bool operator ==(RoleGrantPrincipal left, RoleGrantPrincipal right) => left.Equals(right);
+        public static bool operator !=(RoleGrantPrincipal left, RoleGrantPrincipal right) => !left.Equals(right);
+
+        public static explicit operator string(RoleGrantPrincipal value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RoleGrantPrincipal other && Equals(other);
+        public bool Equals(RoleGrantPrincipal other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

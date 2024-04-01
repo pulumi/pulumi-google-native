@@ -262,6 +262,47 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
     }
 
     /// <summary>
+    /// Optional. Choose which type of license to apply to the imported image.
+    /// </summary>
+    [EnumType]
+    public readonly struct ImageImportOsAdaptationParametersLicenseType : IEquatable<ImageImportOsAdaptationParametersLicenseType>
+    {
+        private readonly string _value;
+
+        private ImageImportOsAdaptationParametersLicenseType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The license type is the default for the OS.
+        /// </summary>
+        public static ImageImportOsAdaptationParametersLicenseType ComputeEngineLicenseTypeDefault { get; } = new ImageImportOsAdaptationParametersLicenseType("COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT");
+        /// <summary>
+        /// The license type is Pay As You Go license type.
+        /// </summary>
+        public static ImageImportOsAdaptationParametersLicenseType ComputeEngineLicenseTypePayg { get; } = new ImageImportOsAdaptationParametersLicenseType("COMPUTE_ENGINE_LICENSE_TYPE_PAYG");
+        /// <summary>
+        /// The license type is Bring Your Own License type.
+        /// </summary>
+        public static ImageImportOsAdaptationParametersLicenseType ComputeEngineLicenseTypeByol { get; } = new ImageImportOsAdaptationParametersLicenseType("COMPUTE_ENGINE_LICENSE_TYPE_BYOL");
+
+        public static bool operator ==(ImageImportOsAdaptationParametersLicenseType left, ImageImportOsAdaptationParametersLicenseType right) => left.Equals(right);
+        public static bool operator !=(ImageImportOsAdaptationParametersLicenseType left, ImageImportOsAdaptationParametersLicenseType right) => !left.Equals(right);
+
+        public static explicit operator string(ImageImportOsAdaptationParametersLicenseType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ImageImportOsAdaptationParametersLicenseType other && Equals(other);
+        public bool Equals(ImageImportOsAdaptationParametersLicenseType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The disk type to use.
     /// </summary>
     [EnumType]

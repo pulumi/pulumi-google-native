@@ -138,7 +138,7 @@ namespace Pulumi.GoogleNative.AlloyDB.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+        /// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
         /// </summary>
         public readonly string Network;
         public readonly Outputs.NetworkConfigResponse NetworkConfig;
@@ -150,6 +150,10 @@ namespace Pulumi.GoogleNative.AlloyDB.V1
         /// Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
         /// </summary>
         public readonly bool Reconciling;
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        public readonly bool SatisfiesPzs;
         /// <summary>
         /// Cross Region replication config specific to SECONDARY cluster.
         /// </summary>
@@ -215,6 +219,8 @@ namespace Pulumi.GoogleNative.AlloyDB.V1
 
             bool reconciling,
 
+            bool satisfiesPzs,
+
             Outputs.SecondaryConfigResponse secondaryConfig,
 
             Outputs.SslConfigResponse sslConfig,
@@ -246,6 +252,7 @@ namespace Pulumi.GoogleNative.AlloyDB.V1
             NetworkConfig = networkConfig;
             PrimaryConfig = primaryConfig;
             Reconciling = reconciling;
+            SatisfiesPzs = satisfiesPzs;
             SecondaryConfig = secondaryConfig;
             SslConfig = sslConfig;
             State = state;

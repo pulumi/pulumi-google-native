@@ -41,7 +41,7 @@ type LookupAttributeDefinitionResult struct {
 	DataMappingDefaultValue string `pulumi:"dataMappingDefaultValue"`
 	// Optional. A description of the attribute.
 	Description string `pulumi:"description"`
-	// Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
+	// Identifier. Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
 	Name string `pulumi:"name"`
 }
 
@@ -109,7 +109,7 @@ func (o LookupAttributeDefinitionResultOutput) Description() pulumi.StringOutput
 	return o.ApplyT(func(v LookupAttributeDefinitionResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
+// Identifier. Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
 func (o LookupAttributeDefinitionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAttributeDefinitionResult) string { return v.Name }).(pulumi.StringOutput)
 }

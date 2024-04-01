@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetReleaseConfigResult:
-    def __init__(__self__, code_compilation_config=None, cron_schedule=None, git_commitish=None, name=None, recent_scheduled_release_records=None, release_compilation_result=None, time_zone=None):
+    def __init__(__self__, code_compilation_config=None, cron_schedule=None, disabled=None, git_commitish=None, name=None, recent_scheduled_release_records=None, release_compilation_result=None, time_zone=None):
         if code_compilation_config and not isinstance(code_compilation_config, dict):
             raise TypeError("Expected argument 'code_compilation_config' to be a dict")
         pulumi.set(__self__, "code_compilation_config", code_compilation_config)
         if cron_schedule and not isinstance(cron_schedule, str):
             raise TypeError("Expected argument 'cron_schedule' to be a str")
         pulumi.set(__self__, "cron_schedule", cron_schedule)
+        if disabled and not isinstance(disabled, bool):
+            raise TypeError("Expected argument 'disabled' to be a bool")
+        pulumi.set(__self__, "disabled", disabled)
         if git_commitish and not isinstance(git_commitish, str):
             raise TypeError("Expected argument 'git_commitish' to be a str")
         pulumi.set(__self__, "git_commitish", git_commitish)
@@ -59,6 +62,14 @@ class GetReleaseConfigResult:
         return pulumi.get(self, "cron_schedule")
 
     @property
+    @pulumi.getter
+    def disabled(self) -> bool:
+        """
+        Optional. Disables automatic creation of compilation results.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
     @pulumi.getter(name="gitCommitish")
     def git_commitish(self) -> str:
         """
@@ -70,7 +81,7 @@ class GetReleaseConfigResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The release config's name.
+        Identifier. The release config's name.
         """
         return pulumi.get(self, "name")
 
@@ -86,7 +97,7 @@ class GetReleaseConfigResult:
     @pulumi.getter(name="releaseCompilationResult")
     def release_compilation_result(self) -> str:
         """
-        Optional. The name of the currently released compilation result for this release config. This value is updated when a compilation result is created from this release config, or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation result must have been created using this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+        Optional. The name of the currently released compilation result for this release config. This value is updated when a compilation result is automatically created from this release config (using cron_schedule), or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation result must have been created using this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
         """
         return pulumi.get(self, "release_compilation_result")
 
@@ -107,6 +118,7 @@ class AwaitableGetReleaseConfigResult(GetReleaseConfigResult):
         return GetReleaseConfigResult(
             code_compilation_config=self.code_compilation_config,
             cron_schedule=self.cron_schedule,
+            disabled=self.disabled,
             git_commitish=self.git_commitish,
             name=self.name,
             recent_scheduled_release_records=self.recent_scheduled_release_records,
@@ -133,6 +145,7 @@ def get_release_config(location: Optional[str] = None,
     return AwaitableGetReleaseConfigResult(
         code_compilation_config=pulumi.get(__ret__, 'code_compilation_config'),
         cron_schedule=pulumi.get(__ret__, 'cron_schedule'),
+        disabled=pulumi.get(__ret__, 'disabled'),
         git_commitish=pulumi.get(__ret__, 'git_commitish'),
         name=pulumi.get(__ret__, 'name'),
         recent_scheduled_release_records=pulumi.get(__ret__, 'recent_scheduled_release_records'),

@@ -9,7 +9,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a taxonomy in a specified project. The taxonomy is initially empty, that is, it doesn't contain policy tags.
- * Auto-naming is currently not supported for this resource.
  */
 export class Taxonomy extends pulumi.CustomResource {
     /**
@@ -52,9 +51,9 @@ export class Taxonomy extends pulumi.CustomResource {
     public readonly displayName!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs.
+     * Identifier. Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Number of policy tags in this taxonomy.
      */
@@ -87,8 +86,8 @@ export class Taxonomy extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["policyTagCount"] = undefined /*out*/;
             resourceInputs["service"] = undefined /*out*/;
             resourceInputs["taxonomyTimestamps"] = undefined /*out*/;
@@ -127,5 +126,9 @@ export interface TaxonomyArgs {
      */
     displayName: pulumi.Input<string>;
     location?: pulumi.Input<string>;
+    /**
+     * Identifier. Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs.
+     */
+    name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
 }

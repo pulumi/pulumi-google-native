@@ -40,7 +40,7 @@ export interface GetTaxonomyResult {
      */
     readonly displayName: string;
     /**
-     * Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
+     * Identifier. Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
      */
     readonly name: string;
     /**

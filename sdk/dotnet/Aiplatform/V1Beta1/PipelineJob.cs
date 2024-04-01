@@ -85,6 +85,12 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         [Output("pipelineSpec")]
         public Output<ImmutableDictionary<string, string>> PipelineSpec { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. Whether to do component level validations before job creation.
+        /// </summary>
+        [Output("preflightValidations")]
+        public Output<bool> PreflightValidations { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -242,6 +248,12 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
             get => _pipelineSpec ?? (_pipelineSpec = new InputMap<string>());
             set => _pipelineSpec = value;
         }
+
+        /// <summary>
+        /// Optional. Whether to do component level validations before job creation.
+        /// </summary>
+        [Input("preflightValidations")]
+        public Input<bool>? PreflightValidations { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

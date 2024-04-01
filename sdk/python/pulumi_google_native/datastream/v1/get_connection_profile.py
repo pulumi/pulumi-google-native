@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetConnectionProfileResult:
-    def __init__(__self__, bigquery_profile=None, create_time=None, display_name=None, forward_ssh_connectivity=None, gcs_profile=None, labels=None, mysql_profile=None, name=None, oracle_profile=None, postgresql_profile=None, private_connectivity=None, static_service_ip_connectivity=None, update_time=None):
+    def __init__(__self__, bigquery_profile=None, create_time=None, display_name=None, forward_ssh_connectivity=None, gcs_profile=None, labels=None, mysql_profile=None, name=None, oracle_profile=None, postgresql_profile=None, private_connectivity=None, sql_server_profile=None, static_service_ip_connectivity=None, update_time=None):
         if bigquery_profile and not isinstance(bigquery_profile, dict):
             raise TypeError("Expected argument 'bigquery_profile' to be a dict")
         pulumi.set(__self__, "bigquery_profile", bigquery_profile)
@@ -53,6 +53,9 @@ class GetConnectionProfileResult:
         if private_connectivity and not isinstance(private_connectivity, dict):
             raise TypeError("Expected argument 'private_connectivity' to be a dict")
         pulumi.set(__self__, "private_connectivity", private_connectivity)
+        if sql_server_profile and not isinstance(sql_server_profile, dict):
+            raise TypeError("Expected argument 'sql_server_profile' to be a dict")
+        pulumi.set(__self__, "sql_server_profile", sql_server_profile)
         if static_service_ip_connectivity and not isinstance(static_service_ip_connectivity, dict):
             raise TypeError("Expected argument 'static_service_ip_connectivity' to be a dict")
         pulumi.set(__self__, "static_service_ip_connectivity", static_service_ip_connectivity)
@@ -149,6 +152,14 @@ class GetConnectionProfileResult:
         return pulumi.get(self, "private_connectivity")
 
     @property
+    @pulumi.getter(name="sqlServerProfile")
+    def sql_server_profile(self) -> 'outputs.SqlServerProfileResponse':
+        """
+        SQLServer Connection Profile configuration.
+        """
+        return pulumi.get(self, "sql_server_profile")
+
+    @property
     @pulumi.getter(name="staticServiceIpConnectivity")
     def static_service_ip_connectivity(self) -> 'outputs.StaticServiceIpConnectivityResponse':
         """
@@ -182,6 +193,7 @@ class AwaitableGetConnectionProfileResult(GetConnectionProfileResult):
             oracle_profile=self.oracle_profile,
             postgresql_profile=self.postgresql_profile,
             private_connectivity=self.private_connectivity,
+            sql_server_profile=self.sql_server_profile,
             static_service_ip_connectivity=self.static_service_ip_connectivity,
             update_time=self.update_time)
 
@@ -212,6 +224,7 @@ def get_connection_profile(connection_profile_id: Optional[str] = None,
         oracle_profile=pulumi.get(__ret__, 'oracle_profile'),
         postgresql_profile=pulumi.get(__ret__, 'postgresql_profile'),
         private_connectivity=pulumi.get(__ret__, 'private_connectivity'),
+        sql_server_profile=pulumi.get(__ret__, 'sql_server_profile'),
         static_service_ip_connectivity=pulumi.get(__ret__, 'static_service_ip_connectivity'),
         update_time=pulumi.get(__ret__, 'update_time'))
 

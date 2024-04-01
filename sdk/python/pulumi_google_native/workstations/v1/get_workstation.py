@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetWorkstationResult:
-    def __init__(__self__, annotations=None, create_time=None, delete_time=None, display_name=None, env=None, etag=None, host=None, labels=None, name=None, reconciling=None, start_time=None, state=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, create_time=None, delete_time=None, display_name=None, env=None, etag=None, host=None, kms_key=None, labels=None, name=None, reconciling=None, start_time=None, state=None, uid=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -40,6 +40,9 @@ class GetWorkstationResult:
         if host and not isinstance(host, str):
             raise TypeError("Expected argument 'host' to be a str")
         pulumi.set(__self__, "host", host)
+        if kms_key and not isinstance(kms_key, str):
+            raise TypeError("Expected argument 'kms_key' to be a str")
+        pulumi.set(__self__, "kms_key", kms_key)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -119,6 +122,14 @@ class GetWorkstationResult:
         return pulumi.get(self, "host")
 
     @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> str:
+        """
+        The name of the Google Cloud KMS encryption key used to encrypt this workstation. The KMS key can only be configured in the WorkstationConfig. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
@@ -188,6 +199,7 @@ class AwaitableGetWorkstationResult(GetWorkstationResult):
             env=self.env,
             etag=self.etag,
             host=self.host,
+            kms_key=self.kms_key,
             labels=self.labels,
             name=self.name,
             reconciling=self.reconciling,
@@ -223,6 +235,7 @@ def get_workstation(location: Optional[str] = None,
         env=pulumi.get(__ret__, 'env'),
         etag=pulumi.get(__ret__, 'etag'),
         host=pulumi.get(__ret__, 'host'),
+        kms_key=pulumi.get(__ret__, 'kms_key'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         reconciling=pulumi.get(__ret__, 'reconciling'),

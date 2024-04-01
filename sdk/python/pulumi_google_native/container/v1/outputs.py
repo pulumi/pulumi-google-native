@@ -95,6 +95,7 @@ __all__ = [
     'NodePoolResponse',
     'NodeTaintResponse',
     'NotificationConfigResponse',
+    'OperationErrorResponse',
     'ParentProductConfigResponse',
     'PlacementPolicyResponse',
     'PodCIDROverprovisionConfigResponse',
@@ -111,12 +112,15 @@ __all__ = [
     'ResourceManagerTagsResponse',
     'ResourceUsageExportConfigResponse',
     'SandboxConfigResponse',
+    'SecondaryBootDiskResponse',
+    'SecondaryBootDiskUpdateStrategyResponse',
     'SecurityPostureConfigResponse',
     'ServiceExternalIPsConfigResponse',
     'ShieldedInstanceConfigResponse',
     'ShieldedNodesResponse',
     'SoleTenantConfigResponse',
     'StandardRolloutPolicyResponse',
+    'StatefulHAConfigResponse',
     'StatusConditionResponse',
     'TimeWindowResponse',
     'UpdateInfoResponse',
@@ -398,6 +402,8 @@ class AddonsConfigResponse(dict):
             suggest = "kubernetes_dashboard"
         elif key == "networkPolicyConfig":
             suggest = "network_policy_config"
+        elif key == "statefulHaConfig":
+            suggest = "stateful_ha_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AddonsConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -421,7 +427,8 @@ class AddonsConfigResponse(dict):
                  horizontal_pod_autoscaling: 'outputs.HorizontalPodAutoscalingResponse',
                  http_load_balancing: 'outputs.HttpLoadBalancingResponse',
                  kubernetes_dashboard: 'outputs.KubernetesDashboardResponse',
-                 network_policy_config: 'outputs.NetworkPolicyConfigResponse'):
+                 network_policy_config: 'outputs.NetworkPolicyConfigResponse',
+                 stateful_ha_config: 'outputs.StatefulHAConfigResponse'):
         """
         Configuration for the addons that can be automatically spun up in the cluster, enabling additional functionality.
         :param 'CloudRunConfigResponse' cloud_run_config: Configuration for the Cloud Run addon, which allows the user to use a managed Knative service.
@@ -435,6 +442,7 @@ class AddonsConfigResponse(dict):
         :param 'HttpLoadBalancingResponse' http_load_balancing: Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
         :param 'KubernetesDashboardResponse' kubernetes_dashboard: Configuration for the Kubernetes Dashboard. This addon is deprecated, and will be disabled in 1.15. It is recommended to use the Cloud Console to manage and monitor your Kubernetes clusters, workloads and applications. For more information, see: https://cloud.google.com/kubernetes-engine/docs/concepts/dashboards
         :param 'NetworkPolicyConfigResponse' network_policy_config: Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does not track whether network policy is enabled for the nodes.
+        :param 'StatefulHAConfigResponse' stateful_ha_config: Optional. Configuration for the StatefulHA add-on.
         """
         pulumi.set(__self__, "cloud_run_config", cloud_run_config)
         pulumi.set(__self__, "config_connector_config", config_connector_config)
@@ -447,6 +455,7 @@ class AddonsConfigResponse(dict):
         pulumi.set(__self__, "http_load_balancing", http_load_balancing)
         pulumi.set(__self__, "kubernetes_dashboard", kubernetes_dashboard)
         pulumi.set(__self__, "network_policy_config", network_policy_config)
+        pulumi.set(__self__, "stateful_ha_config", stateful_ha_config)
 
     @property
     @pulumi.getter(name="cloudRunConfig")
@@ -536,6 +545,14 @@ class AddonsConfigResponse(dict):
         """
         return pulumi.get(self, "network_policy_config")
 
+    @property
+    @pulumi.getter(name="statefulHaConfig")
+    def stateful_ha_config(self) -> 'outputs.StatefulHAConfigResponse':
+        """
+        Optional. Configuration for the StatefulHA add-on.
+        """
+        return pulumi.get(self, "stateful_ha_config")
+
 
 @pulumi.output_type
 class AdvancedDatapathObservabilityConfigResponse(dict):
@@ -547,6 +564,8 @@ class AdvancedDatapathObservabilityConfigResponse(dict):
         suggest = None
         if key == "enableMetrics":
             suggest = "enable_metrics"
+        elif key == "enableRelay":
+            suggest = "enable_relay"
         elif key == "relayMode":
             suggest = "relay_mode"
 
@@ -563,13 +582,16 @@ class AdvancedDatapathObservabilityConfigResponse(dict):
 
     def __init__(__self__, *,
                  enable_metrics: bool,
+                 enable_relay: bool,
                  relay_mode: str):
         """
         AdvancedDatapathObservabilityConfig specifies configuration of observability features of advanced datapath.
         :param bool enable_metrics: Expose flow metrics on nodes
+        :param bool enable_relay: Enable Relay component
         :param str relay_mode: Method used to make Relay available
         """
         pulumi.set(__self__, "enable_metrics", enable_metrics)
+        pulumi.set(__self__, "enable_relay", enable_relay)
         pulumi.set(__self__, "relay_mode", relay_mode)
 
     @property
@@ -579,6 +601,14 @@ class AdvancedDatapathObservabilityConfigResponse(dict):
         Expose flow metrics on nodes
         """
         return pulumi.get(self, "enable_metrics")
+
+    @property
+    @pulumi.getter(name="enableRelay")
+    def enable_relay(self) -> bool:
+        """
+        Enable Relay component
+        """
+        return pulumi.get(self, "enable_relay")
 
     @property
     @pulumi.getter(name="relayMode")
@@ -1713,8 +1743,14 @@ class DatabaseEncryptionResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "keyName":
+        if key == "currentState":
+            suggest = "current_state"
+        elif key == "decryptionKeys":
+            suggest = "decryption_keys"
+        elif key == "keyName":
             suggest = "key_name"
+        elif key == "lastOperationErrors":
+            suggest = "last_operation_errors"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DatabaseEncryptionResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1728,15 +1764,40 @@ class DatabaseEncryptionResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 current_state: str,
+                 decryption_keys: Sequence[str],
                  key_name: str,
+                 last_operation_errors: Sequence['outputs.OperationErrorResponse'],
                  state: str):
         """
         Configuration of etcd encryption.
+        :param str current_state: The current state of etcd encryption.
+        :param Sequence[str] decryption_keys: Keys in use by the cluster for decrypting existing objects, in addition to the key in `key_name`. Each item is a CloudKMS key resource.
         :param str key_name: Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
+        :param Sequence['OperationErrorResponse'] last_operation_errors: Records errors seen during DatabaseEncryption update operations.
         :param str state: The desired state of etcd encryption.
         """
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "decryption_keys", decryption_keys)
         pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "last_operation_errors", last_operation_errors)
         pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> str:
+        """
+        The current state of etcd encryption.
+        """
+        return pulumi.get(self, "current_state")
+
+    @property
+    @pulumi.getter(name="decryptionKeys")
+    def decryption_keys(self) -> Sequence[str]:
+        """
+        Keys in use by the cluster for decrypting existing objects, in addition to the key in `key_name`. Each item is a CloudKMS key resource.
+        """
+        return pulumi.get(self, "decryption_keys")
 
     @property
     @pulumi.getter(name="keyName")
@@ -1745,6 +1806,14 @@ class DatabaseEncryptionResponse(dict):
         Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
         """
         return pulumi.get(self, "key_name")
+
+    @property
+    @pulumi.getter(name="lastOperationErrors")
+    def last_operation_errors(self) -> Sequence['outputs.OperationErrorResponse']:
+        """
+        Records errors seen during DatabaseEncryption update operations.
+        """
+        return pulumi.get(self, "last_operation_errors")
 
     @property
     @pulumi.getter
@@ -3373,6 +3442,8 @@ class NetworkConfigResponse(dict):
             suggest = "default_snat_status"
         elif key == "dnsConfig":
             suggest = "dns_config"
+        elif key == "enableCiliumClusterwideNetworkPolicy":
+            suggest = "enable_cilium_clusterwide_network_policy"
         elif key == "enableFqdnNetworkPolicy":
             suggest = "enable_fqdn_network_policy"
         elif key == "enableIntraNodeVisibility":
@@ -3383,6 +3454,8 @@ class NetworkConfigResponse(dict):
             suggest = "enable_multi_networking"
         elif key == "gatewayApiConfig":
             suggest = "gateway_api_config"
+        elif key == "inTransitEncryptionConfig":
+            suggest = "in_transit_encryption_config"
         elif key == "networkPerformanceConfig":
             suggest = "network_performance_config"
         elif key == "privateIpv6GoogleAccess":
@@ -3405,11 +3478,13 @@ class NetworkConfigResponse(dict):
                  datapath_provider: str,
                  default_snat_status: 'outputs.DefaultSnatStatusResponse',
                  dns_config: 'outputs.DNSConfigResponse',
+                 enable_cilium_clusterwide_network_policy: bool,
                  enable_fqdn_network_policy: bool,
                  enable_intra_node_visibility: bool,
                  enable_l4ilb_subsetting: bool,
                  enable_multi_networking: bool,
                  gateway_api_config: 'outputs.GatewayAPIConfigResponse',
+                 in_transit_encryption_config: str,
                  network: str,
                  network_performance_config: 'outputs.ClusterNetworkPerformanceConfigResponse',
                  private_ipv6_google_access: str,
@@ -3420,11 +3495,13 @@ class NetworkConfigResponse(dict):
         :param str datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
         :param 'DefaultSnatStatusResponse' default_snat_status: Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
         :param 'DNSConfigResponse' dns_config: DNSConfig contains clusterDNS config for this cluster.
+        :param bool enable_cilium_clusterwide_network_policy: Whether CiliumClusterwideNetworkPolicy is enabled on this cluster.
         :param bool enable_fqdn_network_policy: Whether FQDN Network Policy is enabled on this cluster.
         :param bool enable_intra_node_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param bool enable_l4ilb_subsetting: Whether L4ILB Subsetting is enabled for this cluster.
         :param bool enable_multi_networking: Whether multi-networking is enabled for this cluster.
         :param 'GatewayAPIConfigResponse' gateway_api_config: GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+        :param str in_transit_encryption_config: Specify the details of in-transit encryption.
         :param str network: The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
         :param 'ClusterNetworkPerformanceConfigResponse' network_performance_config: Network bandwidth tier configuration.
         :param str private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
@@ -3434,11 +3511,13 @@ class NetworkConfigResponse(dict):
         pulumi.set(__self__, "datapath_provider", datapath_provider)
         pulumi.set(__self__, "default_snat_status", default_snat_status)
         pulumi.set(__self__, "dns_config", dns_config)
+        pulumi.set(__self__, "enable_cilium_clusterwide_network_policy", enable_cilium_clusterwide_network_policy)
         pulumi.set(__self__, "enable_fqdn_network_policy", enable_fqdn_network_policy)
         pulumi.set(__self__, "enable_intra_node_visibility", enable_intra_node_visibility)
         pulumi.set(__self__, "enable_l4ilb_subsetting", enable_l4ilb_subsetting)
         pulumi.set(__self__, "enable_multi_networking", enable_multi_networking)
         pulumi.set(__self__, "gateway_api_config", gateway_api_config)
+        pulumi.set(__self__, "in_transit_encryption_config", in_transit_encryption_config)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "network_performance_config", network_performance_config)
         pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
@@ -3468,6 +3547,14 @@ class NetworkConfigResponse(dict):
         DNSConfig contains clusterDNS config for this cluster.
         """
         return pulumi.get(self, "dns_config")
+
+    @property
+    @pulumi.getter(name="enableCiliumClusterwideNetworkPolicy")
+    def enable_cilium_clusterwide_network_policy(self) -> bool:
+        """
+        Whether CiliumClusterwideNetworkPolicy is enabled on this cluster.
+        """
+        return pulumi.get(self, "enable_cilium_clusterwide_network_policy")
 
     @property
     @pulumi.getter(name="enableFqdnNetworkPolicy")
@@ -3508,6 +3595,14 @@ class NetworkConfigResponse(dict):
         GatewayAPIConfig contains the desired config of Gateway API on this cluster.
         """
         return pulumi.get(self, "gateway_api_config")
+
+    @property
+    @pulumi.getter(name="inTransitEncryptionConfig")
+    def in_transit_encryption_config(self) -> str:
+        """
+        Specify the details of in-transit encryption.
+        """
+        return pulumi.get(self, "in_transit_encryption_config")
 
     @property
     @pulumi.getter
@@ -3780,6 +3875,8 @@ class NodeConfigResponse(dict):
             suggest = "disk_size_gb"
         elif key == "diskType":
             suggest = "disk_type"
+        elif key == "enableConfidentialStorage":
+            suggest = "enable_confidential_storage"
         elif key == "ephemeralStorageLocalSsdConfig":
             suggest = "ephemeral_storage_local_ssd_config"
         elif key == "fastSocket":
@@ -3814,6 +3911,10 @@ class NodeConfigResponse(dict):
             suggest = "resource_manager_tags"
         elif key == "sandboxConfig":
             suggest = "sandbox_config"
+        elif key == "secondaryBootDiskUpdateStrategy":
+            suggest = "secondary_boot_disk_update_strategy"
+        elif key == "secondaryBootDisks":
+            suggest = "secondary_boot_disks"
         elif key == "serviceAccount":
             suggest = "service_account"
         elif key == "shieldedInstanceConfig":
@@ -3843,6 +3944,7 @@ class NodeConfigResponse(dict):
                  confidential_nodes: 'outputs.ConfidentialNodesResponse',
                  disk_size_gb: int,
                  disk_type: str,
+                 enable_confidential_storage: bool,
                  ephemeral_storage_local_ssd_config: 'outputs.EphemeralStorageLocalSsdConfigResponse',
                  fast_socket: 'outputs.FastSocketResponse',
                  gcfs_config: 'outputs.GcfsConfigResponse',
@@ -3864,6 +3966,8 @@ class NodeConfigResponse(dict):
                  resource_labels: Mapping[str, str],
                  resource_manager_tags: 'outputs.ResourceManagerTagsResponse',
                  sandbox_config: 'outputs.SandboxConfigResponse',
+                 secondary_boot_disk_update_strategy: 'outputs.SecondaryBootDiskUpdateStrategyResponse',
+                 secondary_boot_disks: Sequence['outputs.SecondaryBootDiskResponse'],
                  service_account: str,
                  shielded_instance_config: 'outputs.ShieldedInstanceConfigResponse',
                  sole_tenant_config: 'outputs.SoleTenantConfigResponse',
@@ -3880,6 +3984,7 @@ class NodeConfigResponse(dict):
         :param 'ConfidentialNodesResponse' confidential_nodes: Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled.
         :param int disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
         :param str disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
+        :param bool enable_confidential_storage: Optional. Reserved for future use.
         :param 'EphemeralStorageLocalSsdConfigResponse' ephemeral_storage_local_ssd_config: Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by the boot disk.
         :param 'FastSocketResponse' fast_socket: Enable or disable NCCL fast socket for the node pool.
         :param 'GcfsConfigResponse' gcfs_config: Google Container File System (image streaming) configs.
@@ -3901,6 +4006,8 @@ class NodeConfigResponse(dict):
         :param Mapping[str, str] resource_labels: The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
         :param 'ResourceManagerTagsResponse' resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes.
         :param 'SandboxConfigResponse' sandbox_config: Sandbox configuration for this node.
+        :param 'SecondaryBootDiskUpdateStrategyResponse' secondary_boot_disk_update_strategy: Secondary boot disk update strategy.
+        :param Sequence['SecondaryBootDiskResponse'] secondary_boot_disks: List of secondary boot disks attached to the nodes.
         :param str service_account: The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
         :param 'ShieldedInstanceConfigResponse' shielded_instance_config: Shielded Instance options.
         :param 'SoleTenantConfigResponse' sole_tenant_config: Parameters for node pools to be backed by shared sole tenant node groups.
@@ -3916,6 +4023,7 @@ class NodeConfigResponse(dict):
         pulumi.set(__self__, "confidential_nodes", confidential_nodes)
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "enable_confidential_storage", enable_confidential_storage)
         pulumi.set(__self__, "ephemeral_storage_local_ssd_config", ephemeral_storage_local_ssd_config)
         pulumi.set(__self__, "fast_socket", fast_socket)
         pulumi.set(__self__, "gcfs_config", gcfs_config)
@@ -3937,6 +4045,8 @@ class NodeConfigResponse(dict):
         pulumi.set(__self__, "resource_labels", resource_labels)
         pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         pulumi.set(__self__, "sandbox_config", sandbox_config)
+        pulumi.set(__self__, "secondary_boot_disk_update_strategy", secondary_boot_disk_update_strategy)
+        pulumi.set(__self__, "secondary_boot_disks", secondary_boot_disks)
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         pulumi.set(__self__, "sole_tenant_config", sole_tenant_config)
@@ -3993,6 +4103,14 @@ class NodeConfigResponse(dict):
         Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
         """
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="enableConfidentialStorage")
+    def enable_confidential_storage(self) -> bool:
+        """
+        Optional. Reserved for future use.
+        """
+        return pulumi.get(self, "enable_confidential_storage")
 
     @property
     @pulumi.getter(name="ephemeralStorageLocalSsdConfig")
@@ -4161,6 +4279,22 @@ class NodeConfigResponse(dict):
         Sandbox configuration for this node.
         """
         return pulumi.get(self, "sandbox_config")
+
+    @property
+    @pulumi.getter(name="secondaryBootDiskUpdateStrategy")
+    def secondary_boot_disk_update_strategy(self) -> 'outputs.SecondaryBootDiskUpdateStrategyResponse':
+        """
+        Secondary boot disk update strategy.
+        """
+        return pulumi.get(self, "secondary_boot_disk_update_strategy")
+
+    @property
+    @pulumi.getter(name="secondaryBootDisks")
+    def secondary_boot_disks(self) -> Sequence['outputs.SecondaryBootDiskResponse']:
+        """
+        List of secondary boot disks attached to the nodes.
+        """
+        return pulumi.get(self, "secondary_boot_disks")
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -5120,6 +5254,69 @@ class NotificationConfigResponse(dict):
 
 
 @pulumi.output_type
+class OperationErrorResponse(dict):
+    """
+    OperationError records errors seen from CloudKMS keys encountered during updates to DatabaseEncryption configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorMessage":
+            suggest = "error_message"
+        elif key == "keyName":
+            suggest = "key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OperationErrorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OperationErrorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OperationErrorResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error_message: str,
+                 key_name: str,
+                 timestamp: str):
+        """
+        OperationError records errors seen from CloudKMS keys encountered during updates to DatabaseEncryption configuration.
+        :param str error_message: Description of the error seen during the operation.
+        :param str key_name: CloudKMS key resource that had the error.
+        :param str timestamp: Time when the CloudKMS error was seen.
+        """
+        pulumi.set(__self__, "error_message", error_message)
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "timestamp", timestamp)
+
+    @property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> str:
+        """
+        Description of the error seen during the operation.
+        """
+        return pulumi.get(self, "error_message")
+
+    @property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> str:
+        """
+        CloudKMS key resource that had the error.
+        """
+        return pulumi.get(self, "key_name")
+
+    @property
+    @pulumi.getter
+    def timestamp(self) -> str:
+        """
+        Time when the CloudKMS error was seen.
+        """
+        return pulumi.get(self, "timestamp")
+
+
+@pulumi.output_type
 class ParentProductConfigResponse(dict):
     """
     ParentProductConfig is the configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of a GKE cluster and take the ownership of the cluster.
@@ -5853,6 +6050,68 @@ class SandboxConfigResponse(dict):
 
 
 @pulumi.output_type
+class SecondaryBootDiskResponse(dict):
+    """
+    SecondaryBootDisk represents a persistent disk attached to a node with special configurations based on its mode.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskImage":
+            suggest = "disk_image"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecondaryBootDiskResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecondaryBootDiskResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecondaryBootDiskResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_image: str,
+                 mode: str):
+        """
+        SecondaryBootDisk represents a persistent disk attached to a node with special configurations based on its mode.
+        :param str disk_image: Fully-qualified resource ID for an existing disk image.
+        :param str mode: Disk mode (container image cache, etc.)
+        """
+        pulumi.set(__self__, "disk_image", disk_image)
+        pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter(name="diskImage")
+    def disk_image(self) -> str:
+        """
+        Fully-qualified resource ID for an existing disk image.
+        """
+        return pulumi.get(self, "disk_image")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        Disk mode (container image cache, etc.)
+        """
+        return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class SecondaryBootDiskUpdateStrategyResponse(dict):
+    """
+    SecondaryBootDiskUpdateStrategy is a placeholder which will be extended in the future to define different options for updating secondary boot disks.
+    """
+    def __init__(__self__):
+        """
+        SecondaryBootDiskUpdateStrategy is a placeholder which will be extended in the future to define different options for updating secondary boot disks.
+        """
+        pass
+
+
+@pulumi.output_type
 class SecurityPostureConfigResponse(dict):
     """
     SecurityPostureConfig defines the flags needed to enable/disable features for the Security Posture API.
@@ -6100,6 +6359,28 @@ class StandardRolloutPolicyResponse(dict):
         Soak time after each batch gets drained. Default to zero.
         """
         return pulumi.get(self, "batch_soak_duration")
+
+
+@pulumi.output_type
+class StatefulHAConfigResponse(dict):
+    """
+    Configuration for the Stateful HA add-on.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        Configuration for the Stateful HA add-on.
+        :param bool enabled: Whether the Stateful HA add-on is enabled for this cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether the Stateful HA add-on is enabled for this cluster.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

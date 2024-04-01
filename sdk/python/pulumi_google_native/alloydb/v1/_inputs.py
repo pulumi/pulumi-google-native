@@ -11,11 +11,13 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'AuthorizedNetworkArgs',
     'AutomatedBackupPolicyArgs',
     'ClientConnectionConfigArgs',
     'ContinuousBackupConfigArgs',
     'EncryptionConfigArgs',
     'GoogleTypeTimeOfDayArgs',
+    'InstanceNetworkConfigArgs',
     'MachineConfigArgs',
     'NetworkConfigArgs',
     'QuantityBasedRetentionArgs',
@@ -27,6 +29,30 @@ __all__ = [
     'UserPasswordArgs',
     'WeeklyScheduleArgs',
 ]
+
+@pulumi.input_type
+class AuthorizedNetworkArgs:
+    def __init__(__self__, *,
+                 cidr_range: Optional[pulumi.Input[str]] = None):
+        """
+        AuthorizedNetwork contains metadata for an authorized network.
+        :param pulumi.Input[str] cidr_range: CIDR range for one authorzied network of the instance.
+        """
+        if cidr_range is not None:
+            pulumi.set(__self__, "cidr_range", cidr_range)
+
+    @property
+    @pulumi.getter(name="cidrRange")
+    def cidr_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        CIDR range for one authorzied network of the instance.
+        """
+        return pulumi.get(self, "cidr_range")
+
+    @cidr_range.setter
+    def cidr_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cidr_range", value)
+
 
 @pulumi.input_type
 class AutomatedBackupPolicyArgs:
@@ -357,6 +383,46 @@ class GoogleTypeTimeOfDayArgs:
 
 
 @pulumi.input_type
+class InstanceNetworkConfigArgs:
+    def __init__(__self__, *,
+                 authorized_external_networks: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizedNetworkArgs']]]] = None,
+                 enable_public_ip: Optional[pulumi.Input[bool]] = None):
+        """
+        Metadata related to instance level network configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthorizedNetworkArgs']]] authorized_external_networks: Optional. A list of external network authorized to access this instance.
+        :param pulumi.Input[bool] enable_public_ip: Optional. Enabling public ip for the instance.
+        """
+        if authorized_external_networks is not None:
+            pulumi.set(__self__, "authorized_external_networks", authorized_external_networks)
+        if enable_public_ip is not None:
+            pulumi.set(__self__, "enable_public_ip", enable_public_ip)
+
+    @property
+    @pulumi.getter(name="authorizedExternalNetworks")
+    def authorized_external_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizedNetworkArgs']]]]:
+        """
+        Optional. A list of external network authorized to access this instance.
+        """
+        return pulumi.get(self, "authorized_external_networks")
+
+    @authorized_external_networks.setter
+    def authorized_external_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizedNetworkArgs']]]]):
+        pulumi.set(self, "authorized_external_networks", value)
+
+    @property
+    @pulumi.getter(name="enablePublicIp")
+    def enable_public_ip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Enabling public ip for the instance.
+        """
+        return pulumi.get(self, "enable_public_ip")
+
+    @enable_public_ip.setter
+    def enable_public_ip(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_public_ip", value)
+
+
+@pulumi.input_type
 class MachineConfigArgs:
     def __init__(__self__, *,
                  cpu_count: Optional[pulumi.Input[int]] = None):
@@ -388,7 +454,7 @@ class NetworkConfigArgs:
         """
         Metadata related to network configuration.
         :param pulumi.Input[str] allocated_ip_range: Optional. Name of the allocated IP range for the private IP AlloyDB cluster, for example: "google-managed-services-default". If set, the instance IPs for this cluster will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. Field name is intended to be consistent with Cloud SQL.
-        :param pulumi.Input[str] network: Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+        :param pulumi.Input[str] network: Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project_number}/global/networks/{network_id}`. This is required to create a cluster.
         """
         if allocated_ip_range is not None:
             pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
@@ -411,7 +477,7 @@ class NetworkConfigArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+        Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project_number}/global/networks/{network_id}`. This is required to create a cluster.
         """
         return pulumi.get(self, "network")
 

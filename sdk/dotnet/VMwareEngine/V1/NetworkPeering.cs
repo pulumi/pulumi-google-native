@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.VMwareEngine.V1
 {
     /// <summary>
-    /// Creates a new network peering between the peer network and VMware Engine network provided in a `NetworkPeering` resource.
+    /// Creates a new network peering between the peer network and VMware Engine network provided in a `NetworkPeering` resource. NetworkPeering is a global resource and location can only be global.
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:vmwareengine/v1:NetworkPeering")]
@@ -58,8 +58,11 @@ namespace Pulumi.GoogleNative.VMwareEngine.V1
         [Output("importCustomRoutesWithPublicIp")]
         public Output<bool> ImportCustomRoutesWithPublicIp { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
-        /// The resource name of the network peering. Resource names are scheme-less URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/networkPeerings/my-peering`
+        /// The resource name of the network peering. NetworkPeering is a global resource and location can only be global. Resource names are scheme-less URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/networkPeerings/my-peering`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -152,6 +155,7 @@ namespace Pulumi.GoogleNative.VMwareEngine.V1
                 Version = Utilities.Version,
                 ReplaceOnChanges =
                 {
+                    "location",
                     "networkPeeringId",
                     "project",
                 },
@@ -212,6 +216,9 @@ namespace Pulumi.GoogleNative.VMwareEngine.V1
         /// </summary>
         [Input("importCustomRoutesWithPublicIp")]
         public Input<bool>? ImportCustomRoutesWithPublicIp { get; set; }
+
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Required. The user-provided identifier of the new `NetworkPeering`. This identifier must be unique among `NetworkPeering` resources within the parent and becomes the final token in the name URI. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)

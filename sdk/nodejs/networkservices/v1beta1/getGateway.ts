@@ -41,9 +41,17 @@ export interface GetGatewayResult {
      */
     readonly description: string;
     /**
+     * Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+     */
+    readonly envoyHeaders: string;
+    /**
      * Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections. For example: `projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
      */
     readonly gatewaySecurityPolicy: string;
+    /**
+     * Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+     */
+    readonly ipVersion: string;
     /**
      * Optional. Set of label tags associated with the Gateway resource.
      */

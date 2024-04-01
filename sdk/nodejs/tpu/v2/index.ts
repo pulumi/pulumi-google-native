@@ -10,10 +10,20 @@ export const getNode: typeof import("./getNode").getNode = null as any;
 export const getNodeOutput: typeof import("./getNode").getNodeOutput = null as any;
 utilities.lazyLoad(exports, ["getNode","getNodeOutput"], () => require("./getNode"));
 
+export { GetQueuedResourceArgs, GetQueuedResourceResult, GetQueuedResourceOutputArgs } from "./getQueuedResource";
+export const getQueuedResource: typeof import("./getQueuedResource").getQueuedResource = null as any;
+export const getQueuedResourceOutput: typeof import("./getQueuedResource").getQueuedResourceOutput = null as any;
+utilities.lazyLoad(exports, ["getQueuedResource","getQueuedResourceOutput"], () => require("./getQueuedResource"));
+
 export { NodeArgs } from "./node";
 export type Node = import("./node").Node;
 export const Node: typeof import("./node").Node = null as any;
 utilities.lazyLoad(exports, ["Node"], () => require("./node"));
+
+export { QueuedResourceArgs } from "./queuedResource";
+export type QueuedResource = import("./queuedResource").QueuedResource;
+export const QueuedResource: typeof import("./queuedResource").QueuedResource = null as any;
+utilities.lazyLoad(exports, ["QueuedResource"], () => require("./queuedResource"));
 
 
 // Export enums:
@@ -25,6 +35,8 @@ const _module = {
         switch (type) {
             case "google-native:tpu/v2:Node":
                 return new Node(name, <any>undefined, { urn })
+            case "google-native:tpu/v2:QueuedResource":
+                return new QueuedResource(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

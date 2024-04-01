@@ -26,6 +26,7 @@ type LookupRegionInstanceTemplateArgs struct {
 	InstanceTemplate string  `pulumi:"instanceTemplate"`
 	Project          *string `pulumi:"project"`
 	Region           string  `pulumi:"region"`
+	View             *string `pulumi:"view"`
 }
 
 type LookupRegionInstanceTemplateResult struct {
@@ -66,6 +67,7 @@ type LookupRegionInstanceTemplateOutputArgs struct {
 	InstanceTemplate pulumi.StringInput    `pulumi:"instanceTemplate"`
 	Project          pulumi.StringPtrInput `pulumi:"project"`
 	Region           pulumi.StringInput    `pulumi:"region"`
+	View             pulumi.StringPtrInput `pulumi:"view"`
 }
 
 func (LookupRegionInstanceTemplateOutputArgs) ElementType() reflect.Type {

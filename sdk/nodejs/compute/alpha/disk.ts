@@ -145,7 +145,7 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly provisionedIops!: pulumi.Output<string>;
     /**
-     * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+     * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
      */
     public readonly provisionedThroughput!: pulumi.Output<string>;
     /**
@@ -168,6 +168,10 @@ export class Disk extends pulumi.CustomResource {
      * Status information for the disk resource.
      */
     public /*out*/ readonly resourceStatus!: pulumi.Output<outputs.compute.alpha.DiskResourceStatusResponse>;
+    /**
+     * Reserved for future use.
+     */
+    public /*out*/ readonly satisfiesPzi!: pulumi.Output<boolean>;
     /**
      * Reserved for future use.
      */
@@ -321,6 +325,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["locked"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["resourceStatus"] = undefined /*out*/;
+            resourceInputs["satisfiesPzi"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
@@ -366,6 +371,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["resourcePolicies"] = undefined /*out*/;
             resourceInputs["resourceStatus"] = undefined /*out*/;
+            resourceInputs["satisfiesPzi"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
@@ -482,7 +488,7 @@ export interface DiskArgs {
      */
     provisionedIops?: pulumi.Input<string>;
     /**
-     * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+     * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
      */
     provisionedThroughput?: pulumi.Input<string>;
     /**

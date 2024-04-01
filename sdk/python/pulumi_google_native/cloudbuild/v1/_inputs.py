@@ -2183,7 +2183,7 @@ class PullRequestFilterArgs:
         """
         PullRequestFilter contains filter properties for matching GitHub Pull Requests.
         :param pulumi.Input[str] branch: Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
-        :param pulumi.Input['PullRequestFilterCommentControl'] comment_control: Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
+        :param pulumi.Input['PullRequestFilterCommentControl'] comment_control: If CommentControl is enabled, depending on the setting, builds may not fire until a repository writer comments `/gcbrun` on a pull request or `/gcbrun` is in the pull request description. Only PR comments that contain `/gcbrun` will trigger builds. If CommentControl is set to disabled, comments with `/gcbrun` from a user with repository write permission or above will still trigger builds to run.
         :param pulumi.Input[bool] invert_regex: If true, branches that do NOT match the git_ref will trigger a build.
         """
         if branch is not None:
@@ -2209,7 +2209,7 @@ class PullRequestFilterArgs:
     @pulumi.getter(name="commentControl")
     def comment_control(self) -> Optional[pulumi.Input['PullRequestFilterCommentControl']]:
         """
-        Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
+        If CommentControl is enabled, depending on the setting, builds may not fire until a repository writer comments `/gcbrun` on a pull request or `/gcbrun` is in the pull request description. Only PR comments that contain `/gcbrun` will trigger builds. If CommentControl is set to disabled, comments with `/gcbrun` from a user with repository write permission or above will still trigger builds to run.
         """
         return pulumi.get(self, "comment_control")
 

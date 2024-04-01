@@ -12,6 +12,7 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AllowlistedCertificateResponse',
     'AuthorizationAttemptInfoResponse',
     'CertificateAuthorityConfigResponse',
     'CertificateAuthorityServiceConfigResponse',
@@ -25,6 +26,45 @@ __all__ = [
     'TrustAnchorResponse',
     'TrustStoreResponse',
 ]
+
+@pulumi.output_type
+class AllowlistedCertificateResponse(dict):
+    """
+    Defines an allowlisted certificate.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pemCertificate":
+            suggest = "pem_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AllowlistedCertificateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AllowlistedCertificateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AllowlistedCertificateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pem_certificate: str):
+        """
+        Defines an allowlisted certificate.
+        :param str pem_certificate: PEM certificate that is allowlisted. The certificate can be up to 5k bytes, and must be a parseable X.509 certificate.
+        """
+        pulumi.set(__self__, "pem_certificate", pem_certificate)
+
+    @property
+    @pulumi.getter(name="pemCertificate")
+    def pem_certificate(self) -> str:
+        """
+        PEM certificate that is allowlisted. The certificate can be up to 5k bytes, and must be a parseable X.509 certificate.
+        """
+        return pulumi.get(self, "pem_certificate")
+
 
 @pulumi.output_type
 class AuthorizationAttemptInfoResponse(dict):

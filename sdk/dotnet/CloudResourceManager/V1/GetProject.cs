@@ -79,6 +79,10 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1
         /// The number uniquely identifying the project. Example: `415104041262` Read-only.
         /// </summary>
         public readonly string ProjectNumber;
+        /// <summary>
+        /// Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
 
         [OutputConstructor]
         private GetProjectResult(
@@ -94,7 +98,9 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1
 
             string projectId,
 
-            string projectNumber)
+            string projectNumber,
+
+            ImmutableDictionary<string, string> tags)
         {
             CreateTime = createTime;
             Labels = labels;
@@ -103,6 +109,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1
             Parent = parent;
             ProjectId = projectId;
             ProjectNumber = projectNumber;
+            Tags = tags;
         }
     }
 }

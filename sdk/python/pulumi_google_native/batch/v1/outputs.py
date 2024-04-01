@@ -190,15 +190,17 @@ class AllocationPolicyResponse(dict):
                  location: 'outputs.LocationPolicyResponse',
                  network: 'outputs.NetworkPolicyResponse',
                  placement: 'outputs.PlacementPolicyResponse',
-                 service_account: 'outputs.ServiceAccountResponse'):
+                 service_account: 'outputs.ServiceAccountResponse',
+                 tags: Sequence[str]):
         """
         A Job's resource allocation policy describes when, where, and how compute resources should be allocated for the Job.
         :param Sequence['InstancePolicyOrTemplateResponse'] instances: Describe instances that can be created by this AllocationPolicy. Only instances[0] is supported now.
         :param Mapping[str, str] labels: Labels applied to all VM instances and other resources created by AllocationPolicy. Labels could be user provided or system generated. You can assign up to 64 labels. [Google Compute Engine label restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) apply. Label names that start with "goog-" or "google-" are reserved.
         :param 'LocationPolicyResponse' location: Location where compute resources should be allocated for the Job.
-        :param 'NetworkPolicyResponse' network: The network policy. If you define an instance template in the InstancePolicyOrTemplate field, Batch will use the network settings in the instance template instead of this field.
+        :param 'NetworkPolicyResponse' network: The network policy. If you define an instance template in the `InstancePolicyOrTemplate` field, Batch will use the network settings in the instance template instead of this field.
         :param 'PlacementPolicyResponse' placement: The placement policy.
-        :param 'ServiceAccountResponse' service_account: Service account that VMs will run as.
+        :param 'ServiceAccountResponse' service_account: Defines the service account for Batch-created VMs. If omitted, the [default Compute Engine service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used. Must match the service account specified in any used instance template configured in the Batch job. Includes the following fields: * email: The service account's email address. If not set, the default Compute Engine service account is used. * scopes: Additional OAuth scopes to grant the service account, beyond the default cloud-platform scope. (list of strings)
+        :param Sequence[str] tags: Optional. Tags applied to the VM instances. The tags identify valid sources or targets for network firewalls. Each tag must be 1-63 characters long, and comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
         """
         pulumi.set(__self__, "instances", instances)
         pulumi.set(__self__, "labels", labels)
@@ -206,6 +208,7 @@ class AllocationPolicyResponse(dict):
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "placement", placement)
         pulumi.set(__self__, "service_account", service_account)
+        pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -235,7 +238,7 @@ class AllocationPolicyResponse(dict):
     @pulumi.getter
     def network(self) -> 'outputs.NetworkPolicyResponse':
         """
-        The network policy. If you define an instance template in the InstancePolicyOrTemplate field, Batch will use the network settings in the instance template instead of this field.
+        The network policy. If you define an instance template in the `InstancePolicyOrTemplate` field, Batch will use the network settings in the instance template instead of this field.
         """
         return pulumi.get(self, "network")
 
@@ -251,9 +254,17 @@ class AllocationPolicyResponse(dict):
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> 'outputs.ServiceAccountResponse':
         """
-        Service account that VMs will run as.
+        Defines the service account for Batch-created VMs. If omitted, the [default Compute Engine service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used. Must match the service account specified in any used instance template configured in the Batch job. Includes the following fields: * email: The service account's email address. If not set, the default Compute Engine service account is used. * scopes: Additional OAuth scopes to grant the service account, beyond the default cloud-platform scope. (list of strings)
         """
         return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        """
+        Optional. Tags applied to the VM instances. The tags identify valid sources or targets for network firewalls. Each tag must be 1-63 characters long, and comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+        """
+        return pulumi.get(self, "tags")
 
 
 @pulumi.output_type
@@ -342,13 +353,40 @@ class BarrierResponse(dict):
 @pulumi.output_type
 class CloudLoggingOptionResponse(dict):
     """
-    CloudLoggingOption contains additional settings for cloud logging generated by Batch job.
+    `CloudLoggingOption` contains additional settings for Cloud Logging logs generated by Batch job.
     """
-    def __init__(__self__):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "useGenericTaskMonitoredResource":
+            suggest = "use_generic_task_monitored_resource"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudLoggingOptionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudLoggingOptionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudLoggingOptionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 use_generic_task_monitored_resource: bool):
         """
-        CloudLoggingOption contains additional settings for cloud logging generated by Batch job.
+        `CloudLoggingOption` contains additional settings for Cloud Logging logs generated by Batch job.
+        :param bool use_generic_task_monitored_resource: Optional. Set this flag to true to change the [monitored resource type](https://cloud.google.com/monitoring/api/resources) for Cloud Logging logs generated by this Batch job from the [`batch.googleapis.com/Job`](https://cloud.google.com/monitoring/api/resources#tag_batch.googleapis.com/Job) type to the formerly used [`generic_task`](https://cloud.google.com/monitoring/api/resources#tag_generic_task) type.
         """
-        pass
+        pulumi.set(__self__, "use_generic_task_monitored_resource", use_generic_task_monitored_resource)
+
+    @property
+    @pulumi.getter(name="useGenericTaskMonitoredResource")
+    def use_generic_task_monitored_resource(self) -> bool:
+        """
+        Optional. Set this flag to true to change the [monitored resource type](https://cloud.google.com/monitoring/api/resources) for Cloud Logging logs generated by this Batch job from the [`batch.googleapis.com/Job`](https://cloud.google.com/monitoring/api/resources#tag_batch.googleapis.com/Job) type to the formerly used [`generic_task`](https://cloud.google.com/monitoring/api/resources#tag_generic_task) type.
+        """
+        return pulumi.get(self, "use_generic_task_monitored_resource")
 
 
 @pulumi.output_type
@@ -426,6 +464,8 @@ class ContainerResponse(dict):
         suggest = None
         if key == "blockExternalNetwork":
             suggest = "block_external_network"
+        elif key == "enableImageStreaming":
+            suggest = "enable_image_streaming"
         elif key == "imageUri":
             suggest = "image_uri"
 
@@ -443,6 +483,7 @@ class ContainerResponse(dict):
     def __init__(__self__, *,
                  block_external_network: bool,
                  commands: Sequence[str],
+                 enable_image_streaming: bool,
                  entrypoint: str,
                  image_uri: str,
                  options: str,
@@ -453,15 +494,17 @@ class ContainerResponse(dict):
         Container runnable.
         :param bool block_external_network: If set to true, external network access to and from container will be blocked, containers that are with block_external_network as true can still communicate with each other, network cannot be specified in the `container.options` field.
         :param Sequence[str] commands: Overrides the `CMD` specified in the container. If there is an ENTRYPOINT (either in the container image or with the entrypoint field below) then commands are appended as arguments to the ENTRYPOINT.
+        :param bool enable_image_streaming: Optional. If set to true, this container runnable uses Image streaming. Use Image streaming to allow the runnable to initialize without waiting for the entire container image to download, which can significantly reduce startup time for large container images. When `enableImageStreaming` is set to true, the container runtime is [containerd](https://containerd.io/) instead of Docker. Additionally, this container runnable only supports the following `container` subfields: `imageUri`, `commands[]`, `entrypoint`, and `volumes[]`; any other `container` subfields are ignored. For more information about the requirements and limitations for using Image streaming with Batch, see the [`image-streaming` sample on GitHub](https://github.com/GoogleCloudPlatform/batch-samples/tree/main/api-samples/image-streaming).
         :param str entrypoint: Overrides the `ENTRYPOINT` specified in the container.
         :param str image_uri: The URI to pull the container image from.
         :param str options: Arbitrary additional options to include in the "docker run" command when running this container, e.g. "--network host".
-        :param str password: Optional password for logging in to a docker registry. If password matches `projects/*/secrets/*/versions/*` then Batch will read the password from the Secret Manager;
-        :param str username: Optional username for logging in to a docker registry. If username matches `projects/*/secrets/*/versions/*` then Batch will read the username from the Secret Manager.
+        :param str password: Required if the container image is from a private Docker registry. The password to login to the Docker registry that contains the image. For security, it is strongly recommended to specify an encrypted password by using a Secret Manager secret: `projects/*/secrets/*/versions/*`. Warning: If you specify the password using plain text, you risk the password being exposed to any users who can view the job or its logs. To avoid this risk, specify a secret that contains the password instead. Learn more about [Secret Manager](https://cloud.google.com/secret-manager/docs/) and [using Secret Manager with Batch](https://cloud.google.com/batch/docs/create-run-job-secret-manager).
+        :param str username: Required if the container image is from a private Docker registry. The username to login to the Docker registry that contains the image. You can either specify the username directly by using plain text or specify an encrypted username by using a Secret Manager secret: `projects/*/secrets/*/versions/*`. However, using a secret is recommended for enhanced security. Caution: If you specify the username using plain text, you risk the username being exposed to any users who can view the job or its logs. To avoid this risk, specify a secret that contains the username instead. Learn more about [Secret Manager](https://cloud.google.com/secret-manager/docs/) and [using Secret Manager with Batch](https://cloud.google.com/batch/docs/create-run-job-secret-manager).
         :param Sequence[str] volumes: Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro If the `TaskSpec.Volumes` field is specified but this field is not, Batch will mount each volume from the host machine to the container with the same mount path by default. In this case, the default mount option for containers will be read-only (ro) for existing persistent disks and read-write (rw) for other volume types, regardless of the original mount options specified in `TaskSpec.Volumes`. If you need different mount settings, you can explicitly configure them in this field.
         """
         pulumi.set(__self__, "block_external_network", block_external_network)
         pulumi.set(__self__, "commands", commands)
+        pulumi.set(__self__, "enable_image_streaming", enable_image_streaming)
         pulumi.set(__self__, "entrypoint", entrypoint)
         pulumi.set(__self__, "image_uri", image_uri)
         pulumi.set(__self__, "options", options)
@@ -484,6 +527,14 @@ class ContainerResponse(dict):
         Overrides the `CMD` specified in the container. If there is an ENTRYPOINT (either in the container image or with the entrypoint field below) then commands are appended as arguments to the ENTRYPOINT.
         """
         return pulumi.get(self, "commands")
+
+    @property
+    @pulumi.getter(name="enableImageStreaming")
+    def enable_image_streaming(self) -> bool:
+        """
+        Optional. If set to true, this container runnable uses Image streaming. Use Image streaming to allow the runnable to initialize without waiting for the entire container image to download, which can significantly reduce startup time for large container images. When `enableImageStreaming` is set to true, the container runtime is [containerd](https://containerd.io/) instead of Docker. Additionally, this container runnable only supports the following `container` subfields: `imageUri`, `commands[]`, `entrypoint`, and `volumes[]`; any other `container` subfields are ignored. For more information about the requirements and limitations for using Image streaming with Batch, see the [`image-streaming` sample on GitHub](https://github.com/GoogleCloudPlatform/batch-samples/tree/main/api-samples/image-streaming).
+        """
+        return pulumi.get(self, "enable_image_streaming")
 
     @property
     @pulumi.getter
@@ -513,7 +564,7 @@ class ContainerResponse(dict):
     @pulumi.getter
     def password(self) -> str:
         """
-        Optional password for logging in to a docker registry. If password matches `projects/*/secrets/*/versions/*` then Batch will read the password from the Secret Manager;
+        Required if the container image is from a private Docker registry. The password to login to the Docker registry that contains the image. For security, it is strongly recommended to specify an encrypted password by using a Secret Manager secret: `projects/*/secrets/*/versions/*`. Warning: If you specify the password using plain text, you risk the password being exposed to any users who can view the job or its logs. To avoid this risk, specify a secret that contains the password instead. Learn more about [Secret Manager](https://cloud.google.com/secret-manager/docs/) and [using Secret Manager with Batch](https://cloud.google.com/batch/docs/create-run-job-secret-manager).
         """
         return pulumi.get(self, "password")
 
@@ -521,7 +572,7 @@ class ContainerResponse(dict):
     @pulumi.getter
     def username(self) -> str:
         """
-        Optional username for logging in to a docker registry. If username matches `projects/*/secrets/*/versions/*` then Batch will read the username from the Secret Manager.
+        Required if the container image is from a private Docker registry. The username to login to the Docker registry that contains the image. You can either specify the username directly by using plain text or specify an encrypted username by using a Secret Manager secret: `projects/*/secrets/*/versions/*`. However, using a secret is recommended for enhanced security. Caution: If you specify the username using plain text, you risk the username being exposed to any users who can view the job or its logs. To avoid this risk, specify a secret that contains the username instead. Learn more about [Secret Manager](https://cloud.google.com/secret-manager/docs/) and [using Secret Manager with Batch](https://cloud.google.com/batch/docs/create-run-job-secret-manager).
         """
         return pulumi.get(self, "username")
 
@@ -1184,7 +1235,7 @@ class LogsPolicyResponse(dict):
                  logs_path: str):
         """
         LogsPolicy describes how outputs from a Job's Tasks (stdout/stderr) will be preserved.
-        :param 'CloudLoggingOptionResponse' cloud_logging_option: Optional. Additional settings for Cloud Logging. It will only take effect when the destination of LogsPolicy is set to CLOUD_LOGGING.
+        :param 'CloudLoggingOptionResponse' cloud_logging_option: Optional. Additional settings for Cloud Logging. It will only take effect when the destination of `LogsPolicy` is set to `CLOUD_LOGGING`.
         :param str destination: Where logs should be saved.
         :param str logs_path: The path to which logs are saved when the destination = PATH. This can be a local file path on the VM, or under the mount point of a Persistent Disk or Filestore, or a Cloud Storage path.
         """
@@ -1196,7 +1247,7 @@ class LogsPolicyResponse(dict):
     @pulumi.getter(name="cloudLoggingOption")
     def cloud_logging_option(self) -> 'outputs.CloudLoggingOptionResponse':
         """
-        Optional. Additional settings for Cloud Logging. It will only take effect when the destination of LogsPolicy is set to CLOUD_LOGGING.
+        Optional. Additional settings for Cloud Logging. It will only take effect when the destination of `LogsPolicy` is set to `CLOUD_LOGGING`.
         """
         return pulumi.get(self, "cloud_logging_option")
 
@@ -1632,8 +1683,8 @@ class ScriptResponse(dict):
                  text: str):
         """
         Script runnable.
-        :param str path: Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix))) as the first line of the file.(For example, to execute the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by default be excuted by `/bin/sh`.
-        :param str text: Shell script text. To specify an interpreter, please add a `#!\\n` at the beginning of the text.(For example, to execute the script using bash, `#!/bin/bash\\n` should be added. To execute the script using`Python3`, `#!/usr/bin/env python3\\n` should be added.) Otherwise, the script will by default be excuted by `/bin/sh`.
+        :param str path: Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix))) as the first line of the file.(For example, to execute the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by default be executed by `/bin/sh`.
+        :param str text: Shell script text. To specify an interpreter, please add a `#!\\n` at the beginning of the text.(For example, to execute the script using bash, `#!/bin/bash\\n` should be added. To execute the script using`Python3`, `#!/usr/bin/env python3\\n` should be added.) Otherwise, the script will by default be executed by `/bin/sh`.
         """
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "text", text)
@@ -1642,7 +1693,7 @@ class ScriptResponse(dict):
     @pulumi.getter
     def path(self) -> str:
         """
-        Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix))) as the first line of the file.(For example, to execute the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by default be excuted by `/bin/sh`.
+        Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix))) as the first line of the file.(For example, to execute the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by default be executed by `/bin/sh`.
         """
         return pulumi.get(self, "path")
 
@@ -1650,7 +1701,7 @@ class ScriptResponse(dict):
     @pulumi.getter
     def text(self) -> str:
         """
-        Shell script text. To specify an interpreter, please add a `#!\\n` at the beginning of the text.(For example, to execute the script using bash, `#!/bin/bash\\n` should be added. To execute the script using`Python3`, `#!/usr/bin/env python3\\n` should be added.) Otherwise, the script will by default be excuted by `/bin/sh`.
+        Shell script text. To specify an interpreter, please add a `#!\\n` at the beginning of the text.(For example, to execute the script using bash, `#!/bin/bash\\n` should be added. To execute the script using`Python3`, `#!/usr/bin/env python3\\n` should be added.) Otherwise, the script will by default be executed by `/bin/sh`.
         """
         return pulumi.get(self, "text")
 
@@ -1665,8 +1716,8 @@ class ServiceAccountResponse(dict):
                  scopes: Sequence[str]):
         """
         Carries information about a Google Cloud service account.
-        :param str email: Email address of the service account. If not specified, the default Compute Engine service account for the project will be used. If instance template is being used, the service account has to be specified in the instance template and it has to match the email field here.
-        :param Sequence[str] scopes: List of scopes to be enabled for this service account on the VM, in addition to the cloud-platform API scope that will be added by default.
+        :param str email: Email address of the service account.
+        :param Sequence[str] scopes: List of scopes to be enabled for this service account.
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "scopes", scopes)
@@ -1675,7 +1726,7 @@ class ServiceAccountResponse(dict):
     @pulumi.getter
     def email(self) -> str:
         """
-        Email address of the service account. If not specified, the default Compute Engine service account for the project will be used. If instance template is being used, the service account has to be specified in the instance template and it has to match the email field here.
+        Email address of the service account.
         """
         return pulumi.get(self, "email")
 
@@ -1683,7 +1734,7 @@ class ServiceAccountResponse(dict):
     @pulumi.getter
     def scopes(self) -> Sequence[str]:
         """
-        List of scopes to be enabled for this service account on the VM, in addition to the cloud-platform API scope that will be added by default.
+        List of scopes to be enabled for this service account.
         """
         return pulumi.get(self, "scopes")
 
@@ -1826,6 +1877,8 @@ class TaskGroupResponse(dict):
             suggest = "permissive_ssh"
         elif key == "requireHostsFile":
             suggest = "require_hosts_file"
+        elif key == "runAsNonRoot":
+            suggest = "run_as_non_root"
         elif key == "schedulingPolicy":
             suggest = "scheduling_policy"
         elif key == "taskCount":
@@ -1853,6 +1906,7 @@ class TaskGroupResponse(dict):
                  parallelism: str,
                  permissive_ssh: bool,
                  require_hosts_file: bool,
+                 run_as_non_root: bool,
                  scheduling_policy: str,
                  task_count: str,
                  task_count_per_node: str,
@@ -1863,7 +1917,8 @@ class TaskGroupResponse(dict):
         :param str name: TaskGroup name. The system generates this field based on parent Job name. For example: "projects/123456/locations/us-west1/jobs/job01/taskGroups/group01".
         :param str parallelism: Max number of tasks that can run in parallel. Default to min(task_count, parallel tasks per job limit). See: [Job Limits](https://cloud.google.com/batch/quotas#job_limits). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
         :param bool permissive_ssh: When true, Batch will configure SSH to allow passwordless login between VMs running the Batch tasks in the same TaskGroup.
-        :param bool require_hosts_file: When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false.
+        :param bool require_hosts_file: When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false. The host file supports up to 1000 VMs.
+        :param bool run_as_non_root: Optional. If not set or set to false, Batch uses the root user to execute runnables. If set to true, Batch runs the runnables using a non-root user. Currently, the non-root user Batch used is generated by OS Login. For more information, see [About OS Login](https://cloud.google.com/compute/docs/oslogin).
         :param str scheduling_policy: Scheduling policy for Tasks in the TaskGroup. The default value is AS_SOON_AS_POSSIBLE.
         :param str task_count: Number of Tasks in the TaskGroup. Default is 1.
         :param str task_count_per_node: Max number of tasks that can be run on a VM at the same time. If not specified, the system will decide a value based on available compute resources on a VM and task requirements.
@@ -1874,6 +1929,7 @@ class TaskGroupResponse(dict):
         pulumi.set(__self__, "parallelism", parallelism)
         pulumi.set(__self__, "permissive_ssh", permissive_ssh)
         pulumi.set(__self__, "require_hosts_file", require_hosts_file)
+        pulumi.set(__self__, "run_as_non_root", run_as_non_root)
         pulumi.set(__self__, "scheduling_policy", scheduling_policy)
         pulumi.set(__self__, "task_count", task_count)
         pulumi.set(__self__, "task_count_per_node", task_count_per_node)
@@ -1908,9 +1964,17 @@ class TaskGroupResponse(dict):
     @pulumi.getter(name="requireHostsFile")
     def require_hosts_file(self) -> bool:
         """
-        When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false.
+        When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false. The host file supports up to 1000 VMs.
         """
         return pulumi.get(self, "require_hosts_file")
+
+    @property
+    @pulumi.getter(name="runAsNonRoot")
+    def run_as_non_root(self) -> bool:
+        """
+        Optional. If not set or set to false, Batch uses the root user to execute runnables. If set to true, Batch runs the runnables using a non-root user. Currently, the non-root user Batch used is generated by OS Login. For more information, see [About OS Login](https://cloud.google.com/compute/docs/oslogin).
+        """
+        return pulumi.get(self, "run_as_non_root")
 
     @property
     @pulumi.getter(name="schedulingPolicy")
@@ -1997,7 +2061,7 @@ class TaskSpecResponse(dict):
         :param Mapping[str, str] environments: Deprecated: please use environment(non-plural) instead.
         :param Sequence['LifecyclePolicyResponse'] lifecycle_policies: Lifecycle management schema when any task in a task group is failed. Currently we only support one lifecycle policy. When the lifecycle policy condition is met, the action in the policy will execute. If task execution result does not meet with the defined lifecycle policy, we consider it as the default policy. Default policy means if the exit code is 0, exit task. If task ends with non-zero exit code, retry the task with max_retry_count.
         :param int max_retry_count: Maximum number of retries on failures. The default, 0, which means never retry. The valid value range is [0, 10].
-        :param str max_run_duration: Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit.
+        :param str max_run_duration: Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit. The valid value range for max_run_duration in seconds is [0, 315576000000.999999999],
         :param Sequence['RunnableResponse'] runnables: The sequence of scripts or containers to run for this Task. Each Task using this TaskSpec executes its list of runnables in order. The Task succeeds if all of its runnables either exit with a zero status or any that exit with a non-zero status have the ignore_exit_status flag. Background runnables are killed automatically (if they have not already exited) a short time after all foreground runnables have completed. Even though this is likely to result in a non-zero exit status for the background runnable, these automatic kills are not treated as Task failures.
         :param Sequence['VolumeResponse'] volumes: Volumes to mount before running Tasks using this TaskSpec.
         """
@@ -2057,7 +2121,7 @@ class TaskSpecResponse(dict):
     @pulumi.getter(name="maxRunDuration")
     def max_run_duration(self) -> str:
         """
-        Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit.
+        Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit. The valid value range for max_run_duration in seconds is [0, 315576000000.999999999],
         """
         return pulumi.get(self, "max_run_duration")
 

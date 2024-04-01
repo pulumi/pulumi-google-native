@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1
     public partial class ConnectivityTest : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Whether the test should skip firewall checking. If not provided, we assume false.
+        /// </summary>
+        [Output("bypassFirewallChecks")]
+        public Output<bool> BypassFirewallChecks { get; private set; } = null!;
+
+        /// <summary>
         /// The time the test was created.
         /// </summary>
         [Output("createTime")]
@@ -147,6 +153,12 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1
 
     public sealed class ConnectivityTestArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the test should skip firewall checking. If not provided, we assume false.
+        /// </summary>
+        [Input("bypassFirewallChecks")]
+        public Input<bool>? BypassFirewallChecks { get; set; }
+
         /// <summary>
         /// The user-supplied description of the Connectivity Test. Maximum of 512 characters.
         /// </summary>

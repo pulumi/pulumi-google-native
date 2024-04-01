@@ -132,9 +132,17 @@ namespace Pulumi.GoogleNative.AlloyDB.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Optional. Instance level network configuration.
+        /// </summary>
+        public readonly Outputs.InstanceNetworkConfigResponse NetworkConfig;
+        /// <summary>
         /// List of available read-only VMs in this instance, including the standby for a PRIMARY instance.
         /// </summary>
         public readonly ImmutableArray<Outputs.NodeResponse> Nodes;
+        /// <summary>
+        /// The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set. This is the connection endpoint for an end-user application.
+        /// </summary>
+        public readonly string PublicIpAddress;
         /// <summary>
         /// Configuration for query insights.
         /// </summary>
@@ -147,6 +155,10 @@ namespace Pulumi.GoogleNative.AlloyDB.V1
         /// Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
         /// </summary>
         public readonly bool Reconciling;
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        public readonly bool SatisfiesPzs;
         /// <summary>
         /// The current serving state of the instance.
         /// </summary>
@@ -194,13 +206,19 @@ namespace Pulumi.GoogleNative.AlloyDB.V1
 
             string name,
 
+            Outputs.InstanceNetworkConfigResponse networkConfig,
+
             ImmutableArray<Outputs.NodeResponse> nodes,
+
+            string publicIpAddress,
 
             Outputs.QueryInsightsInstanceConfigResponse queryInsightsConfig,
 
             Outputs.ReadPoolConfigResponse readPoolConfig,
 
             bool reconciling,
+
+            bool satisfiesPzs,
 
             string state,
 
@@ -224,10 +242,13 @@ namespace Pulumi.GoogleNative.AlloyDB.V1
             Labels = labels;
             MachineConfig = machineConfig;
             Name = name;
+            NetworkConfig = networkConfig;
             Nodes = nodes;
+            PublicIpAddress = publicIpAddress;
             QueryInsightsConfig = queryInsightsConfig;
             ReadPoolConfig = readPoolConfig;
             Reconciling = reconciling;
+            SatisfiesPzs = satisfiesPzs;
             State = state;
             Uid = uid;
             UpdateTime = updateTime;

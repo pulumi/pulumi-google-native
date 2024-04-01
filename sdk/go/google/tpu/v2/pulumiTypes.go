@@ -205,6 +205,25 @@ func (o AcceleratorConfigResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AcceleratorConfigResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Further data for the accepted state.
+type AcceptedDataResponse struct {
+}
+
+// Further data for the accepted state.
+type AcceptedDataResponseOutput struct{ *pulumi.OutputState }
+
+func (AcceptedDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceptedDataResponse)(nil)).Elem()
+}
+
+func (o AcceptedDataResponseOutput) ToAcceptedDataResponseOutput() AcceptedDataResponseOutput {
+	return o
+}
+
+func (o AcceptedDataResponseOutput) ToAcceptedDataResponseOutputWithContext(ctx context.Context) AcceptedDataResponseOutput {
+	return o
+}
+
 // An access config attached to the TPU worker.
 type AccessConfigResponse struct {
 	// An external IP address associated with the TPU worker.
@@ -229,6 +248,25 @@ func (o AccessConfigResponseOutput) ToAccessConfigResponseOutputWithContext(ctx 
 // An external IP address associated with the TPU worker.
 func (o AccessConfigResponseOutput) ExternalIp() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessConfigResponse) string { return v.ExternalIp }).(pulumi.StringOutput)
+}
+
+// Further data for the active state.
+type ActiveDataResponse struct {
+}
+
+// Further data for the active state.
+type ActiveDataResponseOutput struct{ *pulumi.OutputState }
+
+func (ActiveDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActiveDataResponse)(nil)).Elem()
+}
+
+func (o ActiveDataResponseOutput) ToActiveDataResponseOutput() ActiveDataResponseOutput {
+	return o
+}
+
+func (o ActiveDataResponseOutput) ToActiveDataResponseOutputWithContext(ctx context.Context) ActiveDataResponseOutput {
+	return o
 }
 
 // A node-attached disk resource. Next ID: 8;
@@ -393,6 +431,620 @@ func (o AttachedDiskResponseArrayOutput) Index(i pulumi.IntInput) AttachedDiskRe
 	}).(AttachedDiskResponseOutput)
 }
 
+// Further data for the creating state.
+type CreatingDataResponse struct {
+}
+
+// Further data for the creating state.
+type CreatingDataResponseOutput struct{ *pulumi.OutputState }
+
+func (CreatingDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreatingDataResponse)(nil)).Elem()
+}
+
+func (o CreatingDataResponseOutput) ToCreatingDataResponseOutput() CreatingDataResponseOutput {
+	return o
+}
+
+func (o CreatingDataResponseOutput) ToCreatingDataResponseOutputWithContext(ctx context.Context) CreatingDataResponseOutput {
+	return o
+}
+
+// Further data for the deleting state.
+type DeletingDataResponse struct {
+}
+
+// Further data for the deleting state.
+type DeletingDataResponseOutput struct{ *pulumi.OutputState }
+
+func (DeletingDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeletingDataResponse)(nil)).Elem()
+}
+
+func (o DeletingDataResponseOutput) ToDeletingDataResponseOutput() DeletingDataResponseOutput {
+	return o
+}
+
+func (o DeletingDataResponseOutput) ToDeletingDataResponseOutputWithContext(ctx context.Context) DeletingDataResponseOutput {
+	return o
+}
+
+// Further data for the failed state.
+type FailedDataResponse struct {
+	// The error that caused the queued resource to enter the FAILED state.
+	Error StatusResponse `pulumi:"error"`
+}
+
+// Further data for the failed state.
+type FailedDataResponseOutput struct{ *pulumi.OutputState }
+
+func (FailedDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FailedDataResponse)(nil)).Elem()
+}
+
+func (o FailedDataResponseOutput) ToFailedDataResponseOutput() FailedDataResponseOutput {
+	return o
+}
+
+func (o FailedDataResponseOutput) ToFailedDataResponseOutputWithContext(ctx context.Context) FailedDataResponseOutput {
+	return o
+}
+
+// The error that caused the queued resource to enter the FAILED state.
+func (o FailedDataResponseOutput) Error() StatusResponseOutput {
+	return o.ApplyT(func(v FailedDataResponse) StatusResponse { return v.Error }).(StatusResponseOutput)
+}
+
+// Guaranteed tier definition.
+type Guaranteed struct {
+	// Optional. Defines the minimum duration of the guarantee. If specified, the requested resources will only be provisioned if they can be allocated for at least the given duration.
+	MinDuration *string `pulumi:"minDuration"`
+}
+
+// GuaranteedInput is an input type that accepts GuaranteedArgs and GuaranteedOutput values.
+// You can construct a concrete instance of `GuaranteedInput` via:
+//
+//	GuaranteedArgs{...}
+type GuaranteedInput interface {
+	pulumi.Input
+
+	ToGuaranteedOutput() GuaranteedOutput
+	ToGuaranteedOutputWithContext(context.Context) GuaranteedOutput
+}
+
+// Guaranteed tier definition.
+type GuaranteedArgs struct {
+	// Optional. Defines the minimum duration of the guarantee. If specified, the requested resources will only be provisioned if they can be allocated for at least the given duration.
+	MinDuration pulumi.StringPtrInput `pulumi:"minDuration"`
+}
+
+func (GuaranteedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Guaranteed)(nil)).Elem()
+}
+
+func (i GuaranteedArgs) ToGuaranteedOutput() GuaranteedOutput {
+	return i.ToGuaranteedOutputWithContext(context.Background())
+}
+
+func (i GuaranteedArgs) ToGuaranteedOutputWithContext(ctx context.Context) GuaranteedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuaranteedOutput)
+}
+
+func (i GuaranteedArgs) ToGuaranteedPtrOutput() GuaranteedPtrOutput {
+	return i.ToGuaranteedPtrOutputWithContext(context.Background())
+}
+
+func (i GuaranteedArgs) ToGuaranteedPtrOutputWithContext(ctx context.Context) GuaranteedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuaranteedOutput).ToGuaranteedPtrOutputWithContext(ctx)
+}
+
+// GuaranteedPtrInput is an input type that accepts GuaranteedArgs, GuaranteedPtr and GuaranteedPtrOutput values.
+// You can construct a concrete instance of `GuaranteedPtrInput` via:
+//
+//	        GuaranteedArgs{...}
+//
+//	or:
+//
+//	        nil
+type GuaranteedPtrInput interface {
+	pulumi.Input
+
+	ToGuaranteedPtrOutput() GuaranteedPtrOutput
+	ToGuaranteedPtrOutputWithContext(context.Context) GuaranteedPtrOutput
+}
+
+type guaranteedPtrType GuaranteedArgs
+
+func GuaranteedPtr(v *GuaranteedArgs) GuaranteedPtrInput {
+	return (*guaranteedPtrType)(v)
+}
+
+func (*guaranteedPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Guaranteed)(nil)).Elem()
+}
+
+func (i *guaranteedPtrType) ToGuaranteedPtrOutput() GuaranteedPtrOutput {
+	return i.ToGuaranteedPtrOutputWithContext(context.Background())
+}
+
+func (i *guaranteedPtrType) ToGuaranteedPtrOutputWithContext(ctx context.Context) GuaranteedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuaranteedPtrOutput)
+}
+
+// Guaranteed tier definition.
+type GuaranteedOutput struct{ *pulumi.OutputState }
+
+func (GuaranteedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Guaranteed)(nil)).Elem()
+}
+
+func (o GuaranteedOutput) ToGuaranteedOutput() GuaranteedOutput {
+	return o
+}
+
+func (o GuaranteedOutput) ToGuaranteedOutputWithContext(ctx context.Context) GuaranteedOutput {
+	return o
+}
+
+func (o GuaranteedOutput) ToGuaranteedPtrOutput() GuaranteedPtrOutput {
+	return o.ToGuaranteedPtrOutputWithContext(context.Background())
+}
+
+func (o GuaranteedOutput) ToGuaranteedPtrOutputWithContext(ctx context.Context) GuaranteedPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Guaranteed) *Guaranteed {
+		return &v
+	}).(GuaranteedPtrOutput)
+}
+
+// Optional. Defines the minimum duration of the guarantee. If specified, the requested resources will only be provisioned if they can be allocated for at least the given duration.
+func (o GuaranteedOutput) MinDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Guaranteed) *string { return v.MinDuration }).(pulumi.StringPtrOutput)
+}
+
+type GuaranteedPtrOutput struct{ *pulumi.OutputState }
+
+func (GuaranteedPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Guaranteed)(nil)).Elem()
+}
+
+func (o GuaranteedPtrOutput) ToGuaranteedPtrOutput() GuaranteedPtrOutput {
+	return o
+}
+
+func (o GuaranteedPtrOutput) ToGuaranteedPtrOutputWithContext(ctx context.Context) GuaranteedPtrOutput {
+	return o
+}
+
+func (o GuaranteedPtrOutput) Elem() GuaranteedOutput {
+	return o.ApplyT(func(v *Guaranteed) Guaranteed {
+		if v != nil {
+			return *v
+		}
+		var ret Guaranteed
+		return ret
+	}).(GuaranteedOutput)
+}
+
+// Optional. Defines the minimum duration of the guarantee. If specified, the requested resources will only be provisioned if they can be allocated for at least the given duration.
+func (o GuaranteedPtrOutput) MinDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Guaranteed) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Guaranteed tier definition.
+type GuaranteedResponse struct {
+	// Optional. Defines the minimum duration of the guarantee. If specified, the requested resources will only be provisioned if they can be allocated for at least the given duration.
+	MinDuration string `pulumi:"minDuration"`
+}
+
+// Guaranteed tier definition.
+type GuaranteedResponseOutput struct{ *pulumi.OutputState }
+
+func (GuaranteedResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuaranteedResponse)(nil)).Elem()
+}
+
+func (o GuaranteedResponseOutput) ToGuaranteedResponseOutput() GuaranteedResponseOutput {
+	return o
+}
+
+func (o GuaranteedResponseOutput) ToGuaranteedResponseOutputWithContext(ctx context.Context) GuaranteedResponseOutput {
+	return o
+}
+
+// Optional. Defines the minimum duration of the guarantee. If specified, the requested resources will only be provisioned if they can be allocated for at least the given duration.
+func (o GuaranteedResponseOutput) MinDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GuaranteedResponse) string { return v.MinDuration }).(pulumi.StringOutput)
+}
+
+// Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time.
+type Interval struct {
+	// Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end.
+	EndTime *string `pulumi:"endTime"`
+	// Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start.
+	StartTime *string `pulumi:"startTime"`
+}
+
+// IntervalInput is an input type that accepts IntervalArgs and IntervalOutput values.
+// You can construct a concrete instance of `IntervalInput` via:
+//
+//	IntervalArgs{...}
+type IntervalInput interface {
+	pulumi.Input
+
+	ToIntervalOutput() IntervalOutput
+	ToIntervalOutputWithContext(context.Context) IntervalOutput
+}
+
+// Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time.
+type IntervalArgs struct {
+	// Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (IntervalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Interval)(nil)).Elem()
+}
+
+func (i IntervalArgs) ToIntervalOutput() IntervalOutput {
+	return i.ToIntervalOutputWithContext(context.Background())
+}
+
+func (i IntervalArgs) ToIntervalOutputWithContext(ctx context.Context) IntervalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntervalOutput)
+}
+
+func (i IntervalArgs) ToIntervalPtrOutput() IntervalPtrOutput {
+	return i.ToIntervalPtrOutputWithContext(context.Background())
+}
+
+func (i IntervalArgs) ToIntervalPtrOutputWithContext(ctx context.Context) IntervalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntervalOutput).ToIntervalPtrOutputWithContext(ctx)
+}
+
+// IntervalPtrInput is an input type that accepts IntervalArgs, IntervalPtr and IntervalPtrOutput values.
+// You can construct a concrete instance of `IntervalPtrInput` via:
+//
+//	        IntervalArgs{...}
+//
+//	or:
+//
+//	        nil
+type IntervalPtrInput interface {
+	pulumi.Input
+
+	ToIntervalPtrOutput() IntervalPtrOutput
+	ToIntervalPtrOutputWithContext(context.Context) IntervalPtrOutput
+}
+
+type intervalPtrType IntervalArgs
+
+func IntervalPtr(v *IntervalArgs) IntervalPtrInput {
+	return (*intervalPtrType)(v)
+}
+
+func (*intervalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Interval)(nil)).Elem()
+}
+
+func (i *intervalPtrType) ToIntervalPtrOutput() IntervalPtrOutput {
+	return i.ToIntervalPtrOutputWithContext(context.Background())
+}
+
+func (i *intervalPtrType) ToIntervalPtrOutputWithContext(ctx context.Context) IntervalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntervalPtrOutput)
+}
+
+// Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time.
+type IntervalOutput struct{ *pulumi.OutputState }
+
+func (IntervalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Interval)(nil)).Elem()
+}
+
+func (o IntervalOutput) ToIntervalOutput() IntervalOutput {
+	return o
+}
+
+func (o IntervalOutput) ToIntervalOutputWithContext(ctx context.Context) IntervalOutput {
+	return o
+}
+
+func (o IntervalOutput) ToIntervalPtrOutput() IntervalPtrOutput {
+	return o.ToIntervalPtrOutputWithContext(context.Background())
+}
+
+func (o IntervalOutput) ToIntervalPtrOutputWithContext(ctx context.Context) IntervalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Interval) *Interval {
+		return &v
+	}).(IntervalPtrOutput)
+}
+
+// Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end.
+func (o IntervalOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Interval) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start.
+func (o IntervalOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Interval) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+type IntervalPtrOutput struct{ *pulumi.OutputState }
+
+func (IntervalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Interval)(nil)).Elem()
+}
+
+func (o IntervalPtrOutput) ToIntervalPtrOutput() IntervalPtrOutput {
+	return o
+}
+
+func (o IntervalPtrOutput) ToIntervalPtrOutputWithContext(ctx context.Context) IntervalPtrOutput {
+	return o
+}
+
+func (o IntervalPtrOutput) Elem() IntervalOutput {
+	return o.ApplyT(func(v *Interval) Interval {
+		if v != nil {
+			return *v
+		}
+		var ret Interval
+		return ret
+	}).(IntervalOutput)
+}
+
+// Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end.
+func (o IntervalPtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Interval) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start.
+func (o IntervalPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Interval) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time.
+type IntervalResponse struct {
+	// Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end.
+	EndTime string `pulumi:"endTime"`
+	// Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start.
+	StartTime string `pulumi:"startTime"`
+}
+
+// Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time.
+type IntervalResponseOutput struct{ *pulumi.OutputState }
+
+func (IntervalResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntervalResponse)(nil)).Elem()
+}
+
+func (o IntervalResponseOutput) ToIntervalResponseOutput() IntervalResponseOutput {
+	return o
+}
+
+func (o IntervalResponseOutput) ToIntervalResponseOutputWithContext(ctx context.Context) IntervalResponseOutput {
+	return o
+}
+
+// Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end.
+func (o IntervalResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v IntervalResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start.
+func (o IntervalResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v IntervalResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// Parameters to specify for multislice QueuedResource requests. This message must be populated in case of multislice requests instead of node_id.
+type MultisliceParams struct {
+	// Number of nodes with this spec. The system will attempt to provison "node_count" nodes as part of the request. This needs to be > 1.
+	NodeCount int `pulumi:"nodeCount"`
+	// Optional. Prefix of node_ids in case of multislice request. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. If node_count = 3 and node_id_prefix = "np", node ids of nodes created will be "np-0", "np-1", "np-2". If this field is not provided we use queued_resource_id as the node_id_prefix.
+	NodeIdPrefix *string `pulumi:"nodeIdPrefix"`
+}
+
+// MultisliceParamsInput is an input type that accepts MultisliceParamsArgs and MultisliceParamsOutput values.
+// You can construct a concrete instance of `MultisliceParamsInput` via:
+//
+//	MultisliceParamsArgs{...}
+type MultisliceParamsInput interface {
+	pulumi.Input
+
+	ToMultisliceParamsOutput() MultisliceParamsOutput
+	ToMultisliceParamsOutputWithContext(context.Context) MultisliceParamsOutput
+}
+
+// Parameters to specify for multislice QueuedResource requests. This message must be populated in case of multislice requests instead of node_id.
+type MultisliceParamsArgs struct {
+	// Number of nodes with this spec. The system will attempt to provison "node_count" nodes as part of the request. This needs to be > 1.
+	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
+	// Optional. Prefix of node_ids in case of multislice request. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. If node_count = 3 and node_id_prefix = "np", node ids of nodes created will be "np-0", "np-1", "np-2". If this field is not provided we use queued_resource_id as the node_id_prefix.
+	NodeIdPrefix pulumi.StringPtrInput `pulumi:"nodeIdPrefix"`
+}
+
+func (MultisliceParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultisliceParams)(nil)).Elem()
+}
+
+func (i MultisliceParamsArgs) ToMultisliceParamsOutput() MultisliceParamsOutput {
+	return i.ToMultisliceParamsOutputWithContext(context.Background())
+}
+
+func (i MultisliceParamsArgs) ToMultisliceParamsOutputWithContext(ctx context.Context) MultisliceParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultisliceParamsOutput)
+}
+
+func (i MultisliceParamsArgs) ToMultisliceParamsPtrOutput() MultisliceParamsPtrOutput {
+	return i.ToMultisliceParamsPtrOutputWithContext(context.Background())
+}
+
+func (i MultisliceParamsArgs) ToMultisliceParamsPtrOutputWithContext(ctx context.Context) MultisliceParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultisliceParamsOutput).ToMultisliceParamsPtrOutputWithContext(ctx)
+}
+
+// MultisliceParamsPtrInput is an input type that accepts MultisliceParamsArgs, MultisliceParamsPtr and MultisliceParamsPtrOutput values.
+// You can construct a concrete instance of `MultisliceParamsPtrInput` via:
+//
+//	        MultisliceParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type MultisliceParamsPtrInput interface {
+	pulumi.Input
+
+	ToMultisliceParamsPtrOutput() MultisliceParamsPtrOutput
+	ToMultisliceParamsPtrOutputWithContext(context.Context) MultisliceParamsPtrOutput
+}
+
+type multisliceParamsPtrType MultisliceParamsArgs
+
+func MultisliceParamsPtr(v *MultisliceParamsArgs) MultisliceParamsPtrInput {
+	return (*multisliceParamsPtrType)(v)
+}
+
+func (*multisliceParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultisliceParams)(nil)).Elem()
+}
+
+func (i *multisliceParamsPtrType) ToMultisliceParamsPtrOutput() MultisliceParamsPtrOutput {
+	return i.ToMultisliceParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *multisliceParamsPtrType) ToMultisliceParamsPtrOutputWithContext(ctx context.Context) MultisliceParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultisliceParamsPtrOutput)
+}
+
+// Parameters to specify for multislice QueuedResource requests. This message must be populated in case of multislice requests instead of node_id.
+type MultisliceParamsOutput struct{ *pulumi.OutputState }
+
+func (MultisliceParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultisliceParams)(nil)).Elem()
+}
+
+func (o MultisliceParamsOutput) ToMultisliceParamsOutput() MultisliceParamsOutput {
+	return o
+}
+
+func (o MultisliceParamsOutput) ToMultisliceParamsOutputWithContext(ctx context.Context) MultisliceParamsOutput {
+	return o
+}
+
+func (o MultisliceParamsOutput) ToMultisliceParamsPtrOutput() MultisliceParamsPtrOutput {
+	return o.ToMultisliceParamsPtrOutputWithContext(context.Background())
+}
+
+func (o MultisliceParamsOutput) ToMultisliceParamsPtrOutputWithContext(ctx context.Context) MultisliceParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MultisliceParams) *MultisliceParams {
+		return &v
+	}).(MultisliceParamsPtrOutput)
+}
+
+// Number of nodes with this spec. The system will attempt to provison "node_count" nodes as part of the request. This needs to be > 1.
+func (o MultisliceParamsOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v MultisliceParams) int { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+// Optional. Prefix of node_ids in case of multislice request. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. If node_count = 3 and node_id_prefix = "np", node ids of nodes created will be "np-0", "np-1", "np-2". If this field is not provided we use queued_resource_id as the node_id_prefix.
+func (o MultisliceParamsOutput) NodeIdPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MultisliceParams) *string { return v.NodeIdPrefix }).(pulumi.StringPtrOutput)
+}
+
+type MultisliceParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (MultisliceParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultisliceParams)(nil)).Elem()
+}
+
+func (o MultisliceParamsPtrOutput) ToMultisliceParamsPtrOutput() MultisliceParamsPtrOutput {
+	return o
+}
+
+func (o MultisliceParamsPtrOutput) ToMultisliceParamsPtrOutputWithContext(ctx context.Context) MultisliceParamsPtrOutput {
+	return o
+}
+
+func (o MultisliceParamsPtrOutput) Elem() MultisliceParamsOutput {
+	return o.ApplyT(func(v *MultisliceParams) MultisliceParams {
+		if v != nil {
+			return *v
+		}
+		var ret MultisliceParams
+		return ret
+	}).(MultisliceParamsOutput)
+}
+
+// Number of nodes with this spec. The system will attempt to provison "node_count" nodes as part of the request. This needs to be > 1.
+func (o MultisliceParamsPtrOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MultisliceParams) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.NodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Prefix of node_ids in case of multislice request. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. If node_count = 3 and node_id_prefix = "np", node ids of nodes created will be "np-0", "np-1", "np-2". If this field is not provided we use queued_resource_id as the node_id_prefix.
+func (o MultisliceParamsPtrOutput) NodeIdPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MultisliceParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeIdPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Parameters to specify for multislice QueuedResource requests. This message must be populated in case of multislice requests instead of node_id.
+type MultisliceParamsResponse struct {
+	// Number of nodes with this spec. The system will attempt to provison "node_count" nodes as part of the request. This needs to be > 1.
+	NodeCount int `pulumi:"nodeCount"`
+	// Optional. Prefix of node_ids in case of multislice request. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. If node_count = 3 and node_id_prefix = "np", node ids of nodes created will be "np-0", "np-1", "np-2". If this field is not provided we use queued_resource_id as the node_id_prefix.
+	NodeIdPrefix string `pulumi:"nodeIdPrefix"`
+}
+
+// Parameters to specify for multislice QueuedResource requests. This message must be populated in case of multislice requests instead of node_id.
+type MultisliceParamsResponseOutput struct{ *pulumi.OutputState }
+
+func (MultisliceParamsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultisliceParamsResponse)(nil)).Elem()
+}
+
+func (o MultisliceParamsResponseOutput) ToMultisliceParamsResponseOutput() MultisliceParamsResponseOutput {
+	return o
+}
+
+func (o MultisliceParamsResponseOutput) ToMultisliceParamsResponseOutputWithContext(ctx context.Context) MultisliceParamsResponseOutput {
+	return o
+}
+
+// Number of nodes with this spec. The system will attempt to provison "node_count" nodes as part of the request. This needs to be > 1.
+func (o MultisliceParamsResponseOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v MultisliceParamsResponse) int { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+// Optional. Prefix of node_ids in case of multislice request. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. If node_count = 3 and node_id_prefix = "np", node ids of nodes created will be "np-0", "np-1", "np-2". If this field is not provided we use queued_resource_id as the node_id_prefix.
+func (o MultisliceParamsResponseOutput) NodeIdPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v MultisliceParamsResponse) string { return v.NodeIdPrefix }).(pulumi.StringOutput)
+}
+
 // Network related configurations.
 type NetworkConfig struct {
 	// Allows the TPU node to send and receive packets with non-matching destination or source IPs. This is required if you plan to use the TPU workers to forward routes.
@@ -401,6 +1053,8 @@ type NetworkConfig struct {
 	EnableExternalIps *bool `pulumi:"enableExternalIps"`
 	// The name of the network for the TPU node. It must be a preexisting Google Compute Engine network. If none is provided, "default" will be used.
 	Network *string `pulumi:"network"`
+	// Optional. Specifies networking queue count for TPU VM instance's network interface.
+	QueueCount *int `pulumi:"queueCount"`
 	// The name of the subnetwork for the TPU node. It must be a preexisting Google Compute Engine subnetwork. If none is provided, "default" will be used.
 	Subnetwork *string `pulumi:"subnetwork"`
 }
@@ -424,6 +1078,8 @@ type NetworkConfigArgs struct {
 	EnableExternalIps pulumi.BoolPtrInput `pulumi:"enableExternalIps"`
 	// The name of the network for the TPU node. It must be a preexisting Google Compute Engine network. If none is provided, "default" will be used.
 	Network pulumi.StringPtrInput `pulumi:"network"`
+	// Optional. Specifies networking queue count for TPU VM instance's network interface.
+	QueueCount pulumi.IntPtrInput `pulumi:"queueCount"`
 	// The name of the subnetwork for the TPU node. It must be a preexisting Google Compute Engine subnetwork. If none is provided, "default" will be used.
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
 }
@@ -521,6 +1177,11 @@ func (o NetworkConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
+// Optional. Specifies networking queue count for TPU VM instance's network interface.
+func (o NetworkConfigOutput) QueueCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *int { return v.QueueCount }).(pulumi.IntPtrOutput)
+}
+
 // The name of the subnetwork for the TPU node. It must be a preexisting Google Compute Engine subnetwork. If none is provided, "default" will be used.
 func (o NetworkConfigOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
@@ -580,6 +1241,16 @@ func (o NetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. Specifies networking queue count for TPU VM instance's network interface.
+func (o NetworkConfigPtrOutput) QueueCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworkConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.QueueCount
+	}).(pulumi.IntPtrOutput)
+}
+
 // The name of the subnetwork for the TPU node. It must be a preexisting Google Compute Engine subnetwork. If none is provided, "default" will be used.
 func (o NetworkConfigPtrOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkConfig) *string {
@@ -598,6 +1269,8 @@ type NetworkConfigResponse struct {
 	EnableExternalIps bool `pulumi:"enableExternalIps"`
 	// The name of the network for the TPU node. It must be a preexisting Google Compute Engine network. If none is provided, "default" will be used.
 	Network string `pulumi:"network"`
+	// Optional. Specifies networking queue count for TPU VM instance's network interface.
+	QueueCount int `pulumi:"queueCount"`
 	// The name of the subnetwork for the TPU node. It must be a preexisting Google Compute Engine subnetwork. If none is provided, "default" will be used.
 	Subnetwork string `pulumi:"subnetwork"`
 }
@@ -630,6 +1303,11 @@ func (o NetworkConfigResponseOutput) EnableExternalIps() pulumi.BoolOutput {
 // The name of the network for the TPU node. It must be a preexisting Google Compute Engine network. If none is provided, "default" will be used.
 func (o NetworkConfigResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Optional. Specifies networking queue count for TPU VM instance's network interface.
+func (o NetworkConfigResponseOutput) QueueCount() pulumi.IntOutput {
+	return o.ApplyT(func(v NetworkConfigResponse) int { return v.QueueCount }).(pulumi.IntOutput)
 }
 
 // The name of the subnetwork for the TPU node. It must be a preexisting Google Compute Engine subnetwork. If none is provided, "default" will be used.
@@ -697,12 +1375,938 @@ func (o NetworkEndpointResponseArrayOutput) Index(i pulumi.IntInput) NetworkEndp
 	}).(NetworkEndpointResponseOutput)
 }
 
+// A TPU instance.
+type NodeType struct {
+	// The AccleratorConfig for the TPU Node.
+	AcceleratorConfig *AcceleratorConfig `pulumi:"acceleratorConfig"`
+	// Optional. The type of hardware accelerators associated with this node.
+	AcceleratorType *string `pulumi:"acceleratorType"`
+	// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
+	CidrBlock *string `pulumi:"cidrBlock"`
+	// The additional data disks for the Node.
+	DataDisks []AttachedDisk `pulumi:"dataDisks"`
+	// The user-supplied description of the TPU. Maximum of 512 characters.
+	Description *string `pulumi:"description"`
+	// The health status of the TPU node.
+	Health *NodeHealth `pulumi:"health"`
+	// Resource labels to represent user-provided metadata.
+	Labels map[string]string `pulumi:"labels"`
+	// Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
+	Metadata map[string]string `pulumi:"metadata"`
+	// Network configurations for the TPU node.
+	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
+	// The runtime version running in the Node.
+	RuntimeVersion string `pulumi:"runtimeVersion"`
+	// The scheduling options for this node.
+	SchedulingConfig *SchedulingConfig `pulumi:"schedulingConfig"`
+	// The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
+	ServiceAccount *ServiceAccount `pulumi:"serviceAccount"`
+	// Shielded Instance options.
+	ShieldedInstanceConfig *ShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
+	// Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
+	Tags []string `pulumi:"tags"`
+}
+
+// NodeTypeInput is an input type that accepts NodeTypeArgs and NodeTypeOutput values.
+// You can construct a concrete instance of `NodeTypeInput` via:
+//
+//	NodeTypeArgs{...}
+type NodeTypeInput interface {
+	pulumi.Input
+
+	ToNodeTypeOutput() NodeTypeOutput
+	ToNodeTypeOutputWithContext(context.Context) NodeTypeOutput
+}
+
+// A TPU instance.
+type NodeTypeArgs struct {
+	// The AccleratorConfig for the TPU Node.
+	AcceleratorConfig AcceleratorConfigPtrInput `pulumi:"acceleratorConfig"`
+	// Optional. The type of hardware accelerators associated with this node.
+	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
+	// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
+	CidrBlock pulumi.StringPtrInput `pulumi:"cidrBlock"`
+	// The additional data disks for the Node.
+	DataDisks AttachedDiskArrayInput `pulumi:"dataDisks"`
+	// The user-supplied description of the TPU. Maximum of 512 characters.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The health status of the TPU node.
+	Health NodeHealthPtrInput `pulumi:"health"`
+	// Resource labels to represent user-provided metadata.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// Network configurations for the TPU node.
+	NetworkConfig NetworkConfigPtrInput `pulumi:"networkConfig"`
+	// The runtime version running in the Node.
+	RuntimeVersion pulumi.StringInput `pulumi:"runtimeVersion"`
+	// The scheduling options for this node.
+	SchedulingConfig SchedulingConfigPtrInput `pulumi:"schedulingConfig"`
+	// The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
+	ServiceAccount ServiceAccountPtrInput `pulumi:"serviceAccount"`
+	// Shielded Instance options.
+	ShieldedInstanceConfig ShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
+	// Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (NodeTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeType)(nil)).Elem()
+}
+
+func (i NodeTypeArgs) ToNodeTypeOutput() NodeTypeOutput {
+	return i.ToNodeTypeOutputWithContext(context.Background())
+}
+
+func (i NodeTypeArgs) ToNodeTypeOutputWithContext(ctx context.Context) NodeTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeTypeOutput)
+}
+
+// A TPU instance.
+type NodeTypeOutput struct{ *pulumi.OutputState }
+
+func (NodeTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeType)(nil)).Elem()
+}
+
+func (o NodeTypeOutput) ToNodeTypeOutput() NodeTypeOutput {
+	return o
+}
+
+func (o NodeTypeOutput) ToNodeTypeOutputWithContext(ctx context.Context) NodeTypeOutput {
+	return o
+}
+
+// The AccleratorConfig for the TPU Node.
+func (o NodeTypeOutput) AcceleratorConfig() AcceleratorConfigPtrOutput {
+	return o.ApplyT(func(v NodeType) *AcceleratorConfig { return v.AcceleratorConfig }).(AcceleratorConfigPtrOutput)
+}
+
+// Optional. The type of hardware accelerators associated with this node.
+func (o NodeTypeOutput) AcceleratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeType) *string { return v.AcceleratorType }).(pulumi.StringPtrOutput)
+}
+
+// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
+func (o NodeTypeOutput) CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeType) *string { return v.CidrBlock }).(pulumi.StringPtrOutput)
+}
+
+// The additional data disks for the Node.
+func (o NodeTypeOutput) DataDisks() AttachedDiskArrayOutput {
+	return o.ApplyT(func(v NodeType) []AttachedDisk { return v.DataDisks }).(AttachedDiskArrayOutput)
+}
+
+// The user-supplied description of the TPU. Maximum of 512 characters.
+func (o NodeTypeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeType) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The health status of the TPU node.
+func (o NodeTypeOutput) Health() NodeHealthPtrOutput {
+	return o.ApplyT(func(v NodeType) *NodeHealth { return v.Health }).(NodeHealthPtrOutput)
+}
+
+// Resource labels to represent user-provided metadata.
+func (o NodeTypeOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NodeType) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
+func (o NodeTypeOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NodeType) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// Network configurations for the TPU node.
+func (o NodeTypeOutput) NetworkConfig() NetworkConfigPtrOutput {
+	return o.ApplyT(func(v NodeType) *NetworkConfig { return v.NetworkConfig }).(NetworkConfigPtrOutput)
+}
+
+// The runtime version running in the Node.
+func (o NodeTypeOutput) RuntimeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeType) string { return v.RuntimeVersion }).(pulumi.StringOutput)
+}
+
+// The scheduling options for this node.
+func (o NodeTypeOutput) SchedulingConfig() SchedulingConfigPtrOutput {
+	return o.ApplyT(func(v NodeType) *SchedulingConfig { return v.SchedulingConfig }).(SchedulingConfigPtrOutput)
+}
+
+// The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
+func (o NodeTypeOutput) ServiceAccount() ServiceAccountPtrOutput {
+	return o.ApplyT(func(v NodeType) *ServiceAccount { return v.ServiceAccount }).(ServiceAccountPtrOutput)
+}
+
+// Shielded Instance options.
+func (o NodeTypeOutput) ShieldedInstanceConfig() ShieldedInstanceConfigPtrOutput {
+	return o.ApplyT(func(v NodeType) *ShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(ShieldedInstanceConfigPtrOutput)
+}
+
+// Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
+func (o NodeTypeOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodeType) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// A TPU instance.
+type NodeResponse struct {
+	// The AccleratorConfig for the TPU Node.
+	AcceleratorConfig AcceleratorConfigResponse `pulumi:"acceleratorConfig"`
+	// Optional. The type of hardware accelerators associated with this node.
+	AcceleratorType string `pulumi:"acceleratorType"`
+	// The API version that created this Node.
+	ApiVersion string `pulumi:"apiVersion"`
+	// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
+	CidrBlock string `pulumi:"cidrBlock"`
+	// The time when the node was created.
+	CreateTime string `pulumi:"createTime"`
+	// The additional data disks for the Node.
+	DataDisks []AttachedDiskResponse `pulumi:"dataDisks"`
+	// The user-supplied description of the TPU. Maximum of 512 characters.
+	Description string `pulumi:"description"`
+	// The health status of the TPU node.
+	Health string `pulumi:"health"`
+	// If this field is populated, it contains a description of why the TPU Node is unhealthy.
+	HealthDescription string `pulumi:"healthDescription"`
+	// Resource labels to represent user-provided metadata.
+	Labels map[string]string `pulumi:"labels"`
+	// Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
+	Metadata map[string]string `pulumi:"metadata"`
+	// Whether the Node belongs to a Multislice group.
+	MultisliceNode bool `pulumi:"multisliceNode"`
+	// Immutable. The name of the TPU.
+	Name string `pulumi:"name"`
+	// Network configurations for the TPU node.
+	NetworkConfig NetworkConfigResponse `pulumi:"networkConfig"`
+	// The network endpoints where TPU workers can be accessed and sent work. It is recommended that runtime clients of the node reach out to the 0th entry in this map first.
+	NetworkEndpoints []NetworkEndpointResponse `pulumi:"networkEndpoints"`
+	// The qualified name of the QueuedResource that requested this Node.
+	QueuedResource string `pulumi:"queuedResource"`
+	// The runtime version running in the Node.
+	RuntimeVersion string `pulumi:"runtimeVersion"`
+	// The scheduling options for this node.
+	SchedulingConfig SchedulingConfigResponse `pulumi:"schedulingConfig"`
+	// The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
+	ServiceAccount ServiceAccountResponse `pulumi:"serviceAccount"`
+	// Shielded Instance options.
+	ShieldedInstanceConfig ShieldedInstanceConfigResponse `pulumi:"shieldedInstanceConfig"`
+	// The current state for the TPU Node.
+	State string `pulumi:"state"`
+	// The Symptoms that have occurred to the TPU Node.
+	Symptoms []SymptomResponse `pulumi:"symptoms"`
+	// Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
+	Tags []string `pulumi:"tags"`
+}
+
+// A TPU instance.
+type NodeResponseOutput struct{ *pulumi.OutputState }
+
+func (NodeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeResponse)(nil)).Elem()
+}
+
+func (o NodeResponseOutput) ToNodeResponseOutput() NodeResponseOutput {
+	return o
+}
+
+func (o NodeResponseOutput) ToNodeResponseOutputWithContext(ctx context.Context) NodeResponseOutput {
+	return o
+}
+
+// The AccleratorConfig for the TPU Node.
+func (o NodeResponseOutput) AcceleratorConfig() AcceleratorConfigResponseOutput {
+	return o.ApplyT(func(v NodeResponse) AcceleratorConfigResponse { return v.AcceleratorConfig }).(AcceleratorConfigResponseOutput)
+}
+
+// Optional. The type of hardware accelerators associated with this node.
+func (o NodeResponseOutput) AcceleratorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeResponse) string { return v.AcceleratorType }).(pulumi.StringOutput)
+}
+
+// The API version that created this Node.
+func (o NodeResponseOutput) ApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeResponse) string { return v.ApiVersion }).(pulumi.StringOutput)
+}
+
+// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
+func (o NodeResponseOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeResponse) string { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+// The time when the node was created.
+func (o NodeResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The additional data disks for the Node.
+func (o NodeResponseOutput) DataDisks() AttachedDiskResponseArrayOutput {
+	return o.ApplyT(func(v NodeResponse) []AttachedDiskResponse { return v.DataDisks }).(AttachedDiskResponseArrayOutput)
+}
+
+// The user-supplied description of the TPU. Maximum of 512 characters.
+func (o NodeResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The health status of the TPU node.
+func (o NodeResponseOutput) Health() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeResponse) string { return v.Health }).(pulumi.StringOutput)
+}
+
+// If this field is populated, it contains a description of why the TPU Node is unhealthy.
+func (o NodeResponseOutput) HealthDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeResponse) string { return v.HealthDescription }).(pulumi.StringOutput)
+}
+
+// Resource labels to represent user-provided metadata.
+func (o NodeResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NodeResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
+func (o NodeResponseOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NodeResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// Whether the Node belongs to a Multislice group.
+func (o NodeResponseOutput) MultisliceNode() pulumi.BoolOutput {
+	return o.ApplyT(func(v NodeResponse) bool { return v.MultisliceNode }).(pulumi.BoolOutput)
+}
+
+// Immutable. The name of the TPU.
+func (o NodeResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Network configurations for the TPU node.
+func (o NodeResponseOutput) NetworkConfig() NetworkConfigResponseOutput {
+	return o.ApplyT(func(v NodeResponse) NetworkConfigResponse { return v.NetworkConfig }).(NetworkConfigResponseOutput)
+}
+
+// The network endpoints where TPU workers can be accessed and sent work. It is recommended that runtime clients of the node reach out to the 0th entry in this map first.
+func (o NodeResponseOutput) NetworkEndpoints() NetworkEndpointResponseArrayOutput {
+	return o.ApplyT(func(v NodeResponse) []NetworkEndpointResponse { return v.NetworkEndpoints }).(NetworkEndpointResponseArrayOutput)
+}
+
+// The qualified name of the QueuedResource that requested this Node.
+func (o NodeResponseOutput) QueuedResource() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeResponse) string { return v.QueuedResource }).(pulumi.StringOutput)
+}
+
+// The runtime version running in the Node.
+func (o NodeResponseOutput) RuntimeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeResponse) string { return v.RuntimeVersion }).(pulumi.StringOutput)
+}
+
+// The scheduling options for this node.
+func (o NodeResponseOutput) SchedulingConfig() SchedulingConfigResponseOutput {
+	return o.ApplyT(func(v NodeResponse) SchedulingConfigResponse { return v.SchedulingConfig }).(SchedulingConfigResponseOutput)
+}
+
+// The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
+func (o NodeResponseOutput) ServiceAccount() ServiceAccountResponseOutput {
+	return o.ApplyT(func(v NodeResponse) ServiceAccountResponse { return v.ServiceAccount }).(ServiceAccountResponseOutput)
+}
+
+// Shielded Instance options.
+func (o NodeResponseOutput) ShieldedInstanceConfig() ShieldedInstanceConfigResponseOutput {
+	return o.ApplyT(func(v NodeResponse) ShieldedInstanceConfigResponse { return v.ShieldedInstanceConfig }).(ShieldedInstanceConfigResponseOutput)
+}
+
+// The current state for the TPU Node.
+func (o NodeResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The Symptoms that have occurred to the TPU Node.
+func (o NodeResponseOutput) Symptoms() SymptomResponseArrayOutput {
+	return o.ApplyT(func(v NodeResponse) []SymptomResponse { return v.Symptoms }).(SymptomResponseArrayOutput)
+}
+
+// Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
+func (o NodeResponseOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodeResponse) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Details of the TPU node(s) being requested. Users can request either a single node or multiple nodes. NodeSpec provides the specification for node(s) to be created.
+type NodeSpec struct {
+	// Optional. Fields to specify in case of multislice request.
+	MultisliceParams *MultisliceParams `pulumi:"multisliceParams"`
+	// The node.
+	Node NodeType `pulumi:"node"`
+	// Optional. The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. This is only specified when requesting a single node. In case of multislice requests, multislice_params must be populated instead.
+	NodeId *string `pulumi:"nodeId"`
+	// The parent resource name.
+	Parent string `pulumi:"parent"`
+}
+
+// NodeSpecInput is an input type that accepts NodeSpecArgs and NodeSpecOutput values.
+// You can construct a concrete instance of `NodeSpecInput` via:
+//
+//	NodeSpecArgs{...}
+type NodeSpecInput interface {
+	pulumi.Input
+
+	ToNodeSpecOutput() NodeSpecOutput
+	ToNodeSpecOutputWithContext(context.Context) NodeSpecOutput
+}
+
+// Details of the TPU node(s) being requested. Users can request either a single node or multiple nodes. NodeSpec provides the specification for node(s) to be created.
+type NodeSpecArgs struct {
+	// Optional. Fields to specify in case of multislice request.
+	MultisliceParams MultisliceParamsPtrInput `pulumi:"multisliceParams"`
+	// The node.
+	Node NodeTypeInput `pulumi:"node"`
+	// Optional. The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. This is only specified when requesting a single node. In case of multislice requests, multislice_params must be populated instead.
+	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
+	// The parent resource name.
+	Parent pulumi.StringInput `pulumi:"parent"`
+}
+
+func (NodeSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeSpec)(nil)).Elem()
+}
+
+func (i NodeSpecArgs) ToNodeSpecOutput() NodeSpecOutput {
+	return i.ToNodeSpecOutputWithContext(context.Background())
+}
+
+func (i NodeSpecArgs) ToNodeSpecOutputWithContext(ctx context.Context) NodeSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeSpecOutput)
+}
+
+// NodeSpecArrayInput is an input type that accepts NodeSpecArray and NodeSpecArrayOutput values.
+// You can construct a concrete instance of `NodeSpecArrayInput` via:
+//
+//	NodeSpecArray{ NodeSpecArgs{...} }
+type NodeSpecArrayInput interface {
+	pulumi.Input
+
+	ToNodeSpecArrayOutput() NodeSpecArrayOutput
+	ToNodeSpecArrayOutputWithContext(context.Context) NodeSpecArrayOutput
+}
+
+type NodeSpecArray []NodeSpecInput
+
+func (NodeSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeSpec)(nil)).Elem()
+}
+
+func (i NodeSpecArray) ToNodeSpecArrayOutput() NodeSpecArrayOutput {
+	return i.ToNodeSpecArrayOutputWithContext(context.Background())
+}
+
+func (i NodeSpecArray) ToNodeSpecArrayOutputWithContext(ctx context.Context) NodeSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeSpecArrayOutput)
+}
+
+// Details of the TPU node(s) being requested. Users can request either a single node or multiple nodes. NodeSpec provides the specification for node(s) to be created.
+type NodeSpecOutput struct{ *pulumi.OutputState }
+
+func (NodeSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeSpec)(nil)).Elem()
+}
+
+func (o NodeSpecOutput) ToNodeSpecOutput() NodeSpecOutput {
+	return o
+}
+
+func (o NodeSpecOutput) ToNodeSpecOutputWithContext(ctx context.Context) NodeSpecOutput {
+	return o
+}
+
+// Optional. Fields to specify in case of multislice request.
+func (o NodeSpecOutput) MultisliceParams() MultisliceParamsPtrOutput {
+	return o.ApplyT(func(v NodeSpec) *MultisliceParams { return v.MultisliceParams }).(MultisliceParamsPtrOutput)
+}
+
+// The node.
+func (o NodeSpecOutput) Node() NodeTypeOutput {
+	return o.ApplyT(func(v NodeSpec) NodeType { return v.Node }).(NodeTypeOutput)
+}
+
+// Optional. The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. This is only specified when requesting a single node. In case of multislice requests, multislice_params must be populated instead.
+func (o NodeSpecOutput) NodeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeSpec) *string { return v.NodeId }).(pulumi.StringPtrOutput)
+}
+
+// The parent resource name.
+func (o NodeSpecOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeSpec) string { return v.Parent }).(pulumi.StringOutput)
+}
+
+type NodeSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeSpec)(nil)).Elem()
+}
+
+func (o NodeSpecArrayOutput) ToNodeSpecArrayOutput() NodeSpecArrayOutput {
+	return o
+}
+
+func (o NodeSpecArrayOutput) ToNodeSpecArrayOutputWithContext(ctx context.Context) NodeSpecArrayOutput {
+	return o
+}
+
+func (o NodeSpecArrayOutput) Index(i pulumi.IntInput) NodeSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeSpec {
+		return vs[0].([]NodeSpec)[vs[1].(int)]
+	}).(NodeSpecOutput)
+}
+
+// Details of the TPU node(s) being requested. Users can request either a single node or multiple nodes. NodeSpec provides the specification for node(s) to be created.
+type NodeSpecResponse struct {
+	// Optional. Fields to specify in case of multislice request.
+	MultisliceParams MultisliceParamsResponse `pulumi:"multisliceParams"`
+	// The node.
+	Node NodeResponse `pulumi:"node"`
+	// Optional. The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. This is only specified when requesting a single node. In case of multislice requests, multislice_params must be populated instead.
+	NodeId string `pulumi:"nodeId"`
+	// The parent resource name.
+	Parent string `pulumi:"parent"`
+}
+
+// Details of the TPU node(s) being requested. Users can request either a single node or multiple nodes. NodeSpec provides the specification for node(s) to be created.
+type NodeSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (NodeSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeSpecResponse)(nil)).Elem()
+}
+
+func (o NodeSpecResponseOutput) ToNodeSpecResponseOutput() NodeSpecResponseOutput {
+	return o
+}
+
+func (o NodeSpecResponseOutput) ToNodeSpecResponseOutputWithContext(ctx context.Context) NodeSpecResponseOutput {
+	return o
+}
+
+// Optional. Fields to specify in case of multislice request.
+func (o NodeSpecResponseOutput) MultisliceParams() MultisliceParamsResponseOutput {
+	return o.ApplyT(func(v NodeSpecResponse) MultisliceParamsResponse { return v.MultisliceParams }).(MultisliceParamsResponseOutput)
+}
+
+// The node.
+func (o NodeSpecResponseOutput) Node() NodeResponseOutput {
+	return o.ApplyT(func(v NodeSpecResponse) NodeResponse { return v.Node }).(NodeResponseOutput)
+}
+
+// Optional. The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. This is only specified when requesting a single node. In case of multislice requests, multislice_params must be populated instead.
+func (o NodeSpecResponseOutput) NodeId() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeSpecResponse) string { return v.NodeId }).(pulumi.StringOutput)
+}
+
+// The parent resource name.
+func (o NodeSpecResponseOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeSpecResponse) string { return v.Parent }).(pulumi.StringOutput)
+}
+
+type NodeSpecResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeSpecResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeSpecResponse)(nil)).Elem()
+}
+
+func (o NodeSpecResponseArrayOutput) ToNodeSpecResponseArrayOutput() NodeSpecResponseArrayOutput {
+	return o
+}
+
+func (o NodeSpecResponseArrayOutput) ToNodeSpecResponseArrayOutputWithContext(ctx context.Context) NodeSpecResponseArrayOutput {
+	return o
+}
+
+func (o NodeSpecResponseArrayOutput) Index(i pulumi.IntInput) NodeSpecResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeSpecResponse {
+		return vs[0].([]NodeSpecResponse)[vs[1].(int)]
+	}).(NodeSpecResponseOutput)
+}
+
+// Further data for the provisioning state.
+type ProvisioningDataResponse struct {
+}
+
+// Further data for the provisioning state.
+type ProvisioningDataResponseOutput struct{ *pulumi.OutputState }
+
+func (ProvisioningDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProvisioningDataResponse)(nil)).Elem()
+}
+
+func (o ProvisioningDataResponseOutput) ToProvisioningDataResponseOutput() ProvisioningDataResponseOutput {
+	return o
+}
+
+func (o ProvisioningDataResponseOutput) ToProvisioningDataResponseOutputWithContext(ctx context.Context) ProvisioningDataResponseOutput {
+	return o
+}
+
+// QueuedResourceState defines the details of the QueuedResource request.
+type QueuedResourceStateResponse struct {
+	// Further data for the accepted state.
+	AcceptedData AcceptedDataResponse `pulumi:"acceptedData"`
+	// Further data for the active state.
+	ActiveData ActiveDataResponse `pulumi:"activeData"`
+	// Further data for the creating state.
+	CreatingData CreatingDataResponse `pulumi:"creatingData"`
+	// Further data for the deleting state.
+	DeletingData DeletingDataResponse `pulumi:"deletingData"`
+	// Further data for the failed state.
+	FailedData FailedDataResponse `pulumi:"failedData"`
+	// Further data for the provisioning state.
+	ProvisioningData ProvisioningDataResponse `pulumi:"provisioningData"`
+	// State of the QueuedResource request.
+	State string `pulumi:"state"`
+	// The initiator of the QueuedResources's current state. Used to indicate whether the SUSPENDING/SUSPENDED state was initiated by the user or the service.
+	StateInitiator string `pulumi:"stateInitiator"`
+	// Further data for the suspended state.
+	SuspendedData SuspendedDataResponse `pulumi:"suspendedData"`
+	// Further data for the suspending state.
+	SuspendingData SuspendingDataResponse `pulumi:"suspendingData"`
+}
+
+// QueuedResourceState defines the details of the QueuedResource request.
+type QueuedResourceStateResponseOutput struct{ *pulumi.OutputState }
+
+func (QueuedResourceStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueuedResourceStateResponse)(nil)).Elem()
+}
+
+func (o QueuedResourceStateResponseOutput) ToQueuedResourceStateResponseOutput() QueuedResourceStateResponseOutput {
+	return o
+}
+
+func (o QueuedResourceStateResponseOutput) ToQueuedResourceStateResponseOutputWithContext(ctx context.Context) QueuedResourceStateResponseOutput {
+	return o
+}
+
+// Further data for the accepted state.
+func (o QueuedResourceStateResponseOutput) AcceptedData() AcceptedDataResponseOutput {
+	return o.ApplyT(func(v QueuedResourceStateResponse) AcceptedDataResponse { return v.AcceptedData }).(AcceptedDataResponseOutput)
+}
+
+// Further data for the active state.
+func (o QueuedResourceStateResponseOutput) ActiveData() ActiveDataResponseOutput {
+	return o.ApplyT(func(v QueuedResourceStateResponse) ActiveDataResponse { return v.ActiveData }).(ActiveDataResponseOutput)
+}
+
+// Further data for the creating state.
+func (o QueuedResourceStateResponseOutput) CreatingData() CreatingDataResponseOutput {
+	return o.ApplyT(func(v QueuedResourceStateResponse) CreatingDataResponse { return v.CreatingData }).(CreatingDataResponseOutput)
+}
+
+// Further data for the deleting state.
+func (o QueuedResourceStateResponseOutput) DeletingData() DeletingDataResponseOutput {
+	return o.ApplyT(func(v QueuedResourceStateResponse) DeletingDataResponse { return v.DeletingData }).(DeletingDataResponseOutput)
+}
+
+// Further data for the failed state.
+func (o QueuedResourceStateResponseOutput) FailedData() FailedDataResponseOutput {
+	return o.ApplyT(func(v QueuedResourceStateResponse) FailedDataResponse { return v.FailedData }).(FailedDataResponseOutput)
+}
+
+// Further data for the provisioning state.
+func (o QueuedResourceStateResponseOutput) ProvisioningData() ProvisioningDataResponseOutput {
+	return o.ApplyT(func(v QueuedResourceStateResponse) ProvisioningDataResponse { return v.ProvisioningData }).(ProvisioningDataResponseOutput)
+}
+
+// State of the QueuedResource request.
+func (o QueuedResourceStateResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v QueuedResourceStateResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The initiator of the QueuedResources's current state. Used to indicate whether the SUSPENDING/SUSPENDED state was initiated by the user or the service.
+func (o QueuedResourceStateResponseOutput) StateInitiator() pulumi.StringOutput {
+	return o.ApplyT(func(v QueuedResourceStateResponse) string { return v.StateInitiator }).(pulumi.StringOutput)
+}
+
+// Further data for the suspended state.
+func (o QueuedResourceStateResponseOutput) SuspendedData() SuspendedDataResponseOutput {
+	return o.ApplyT(func(v QueuedResourceStateResponse) SuspendedDataResponse { return v.SuspendedData }).(SuspendedDataResponseOutput)
+}
+
+// Further data for the suspending state.
+func (o QueuedResourceStateResponseOutput) SuspendingData() SuspendingDataResponseOutput {
+	return o.ApplyT(func(v QueuedResourceStateResponse) SuspendingDataResponse { return v.SuspendingData }).(SuspendingDataResponseOutput)
+}
+
+// Defines the policy of the QueuedRequest.
+type QueueingPolicy struct {
+	// Optional. A relative time after which resources may be created.
+	ValidAfterDuration *string `pulumi:"validAfterDuration"`
+	// Optional. An absolute time after which resources may be created.
+	ValidAfterTime *string `pulumi:"validAfterTime"`
+	// Optional. An absolute time interval within which resources may be created.
+	ValidInterval *Interval `pulumi:"validInterval"`
+	// Optional. A relative time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
+	ValidUntilDuration *string `pulumi:"validUntilDuration"`
+	// Optional. An absolute time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
+	ValidUntilTime *string `pulumi:"validUntilTime"`
+}
+
+// QueueingPolicyInput is an input type that accepts QueueingPolicyArgs and QueueingPolicyOutput values.
+// You can construct a concrete instance of `QueueingPolicyInput` via:
+//
+//	QueueingPolicyArgs{...}
+type QueueingPolicyInput interface {
+	pulumi.Input
+
+	ToQueueingPolicyOutput() QueueingPolicyOutput
+	ToQueueingPolicyOutputWithContext(context.Context) QueueingPolicyOutput
+}
+
+// Defines the policy of the QueuedRequest.
+type QueueingPolicyArgs struct {
+	// Optional. A relative time after which resources may be created.
+	ValidAfterDuration pulumi.StringPtrInput `pulumi:"validAfterDuration"`
+	// Optional. An absolute time after which resources may be created.
+	ValidAfterTime pulumi.StringPtrInput `pulumi:"validAfterTime"`
+	// Optional. An absolute time interval within which resources may be created.
+	ValidInterval IntervalPtrInput `pulumi:"validInterval"`
+	// Optional. A relative time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
+	ValidUntilDuration pulumi.StringPtrInput `pulumi:"validUntilDuration"`
+	// Optional. An absolute time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
+	ValidUntilTime pulumi.StringPtrInput `pulumi:"validUntilTime"`
+}
+
+func (QueueingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueingPolicy)(nil)).Elem()
+}
+
+func (i QueueingPolicyArgs) ToQueueingPolicyOutput() QueueingPolicyOutput {
+	return i.ToQueueingPolicyOutputWithContext(context.Background())
+}
+
+func (i QueueingPolicyArgs) ToQueueingPolicyOutputWithContext(ctx context.Context) QueueingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueingPolicyOutput)
+}
+
+func (i QueueingPolicyArgs) ToQueueingPolicyPtrOutput() QueueingPolicyPtrOutput {
+	return i.ToQueueingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i QueueingPolicyArgs) ToQueueingPolicyPtrOutputWithContext(ctx context.Context) QueueingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueingPolicyOutput).ToQueueingPolicyPtrOutputWithContext(ctx)
+}
+
+// QueueingPolicyPtrInput is an input type that accepts QueueingPolicyArgs, QueueingPolicyPtr and QueueingPolicyPtrOutput values.
+// You can construct a concrete instance of `QueueingPolicyPtrInput` via:
+//
+//	        QueueingPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type QueueingPolicyPtrInput interface {
+	pulumi.Input
+
+	ToQueueingPolicyPtrOutput() QueueingPolicyPtrOutput
+	ToQueueingPolicyPtrOutputWithContext(context.Context) QueueingPolicyPtrOutput
+}
+
+type queueingPolicyPtrType QueueingPolicyArgs
+
+func QueueingPolicyPtr(v *QueueingPolicyArgs) QueueingPolicyPtrInput {
+	return (*queueingPolicyPtrType)(v)
+}
+
+func (*queueingPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueingPolicy)(nil)).Elem()
+}
+
+func (i *queueingPolicyPtrType) ToQueueingPolicyPtrOutput() QueueingPolicyPtrOutput {
+	return i.ToQueueingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *queueingPolicyPtrType) ToQueueingPolicyPtrOutputWithContext(ctx context.Context) QueueingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueingPolicyPtrOutput)
+}
+
+// Defines the policy of the QueuedRequest.
+type QueueingPolicyOutput struct{ *pulumi.OutputState }
+
+func (QueueingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueingPolicy)(nil)).Elem()
+}
+
+func (o QueueingPolicyOutput) ToQueueingPolicyOutput() QueueingPolicyOutput {
+	return o
+}
+
+func (o QueueingPolicyOutput) ToQueueingPolicyOutputWithContext(ctx context.Context) QueueingPolicyOutput {
+	return o
+}
+
+func (o QueueingPolicyOutput) ToQueueingPolicyPtrOutput() QueueingPolicyPtrOutput {
+	return o.ToQueueingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o QueueingPolicyOutput) ToQueueingPolicyPtrOutputWithContext(ctx context.Context) QueueingPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueueingPolicy) *QueueingPolicy {
+		return &v
+	}).(QueueingPolicyPtrOutput)
+}
+
+// Optional. A relative time after which resources may be created.
+func (o QueueingPolicyOutput) ValidAfterDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueueingPolicy) *string { return v.ValidAfterDuration }).(pulumi.StringPtrOutput)
+}
+
+// Optional. An absolute time after which resources may be created.
+func (o QueueingPolicyOutput) ValidAfterTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueueingPolicy) *string { return v.ValidAfterTime }).(pulumi.StringPtrOutput)
+}
+
+// Optional. An absolute time interval within which resources may be created.
+func (o QueueingPolicyOutput) ValidInterval() IntervalPtrOutput {
+	return o.ApplyT(func(v QueueingPolicy) *Interval { return v.ValidInterval }).(IntervalPtrOutput)
+}
+
+// Optional. A relative time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
+func (o QueueingPolicyOutput) ValidUntilDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueueingPolicy) *string { return v.ValidUntilDuration }).(pulumi.StringPtrOutput)
+}
+
+// Optional. An absolute time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
+func (o QueueingPolicyOutput) ValidUntilTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueueingPolicy) *string { return v.ValidUntilTime }).(pulumi.StringPtrOutput)
+}
+
+type QueueingPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (QueueingPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueingPolicy)(nil)).Elem()
+}
+
+func (o QueueingPolicyPtrOutput) ToQueueingPolicyPtrOutput() QueueingPolicyPtrOutput {
+	return o
+}
+
+func (o QueueingPolicyPtrOutput) ToQueueingPolicyPtrOutputWithContext(ctx context.Context) QueueingPolicyPtrOutput {
+	return o
+}
+
+func (o QueueingPolicyPtrOutput) Elem() QueueingPolicyOutput {
+	return o.ApplyT(func(v *QueueingPolicy) QueueingPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret QueueingPolicy
+		return ret
+	}).(QueueingPolicyOutput)
+}
+
+// Optional. A relative time after which resources may be created.
+func (o QueueingPolicyPtrOutput) ValidAfterDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueingPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ValidAfterDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. An absolute time after which resources may be created.
+func (o QueueingPolicyPtrOutput) ValidAfterTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueingPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ValidAfterTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. An absolute time interval within which resources may be created.
+func (o QueueingPolicyPtrOutput) ValidInterval() IntervalPtrOutput {
+	return o.ApplyT(func(v *QueueingPolicy) *Interval {
+		if v == nil {
+			return nil
+		}
+		return v.ValidInterval
+	}).(IntervalPtrOutput)
+}
+
+// Optional. A relative time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
+func (o QueueingPolicyPtrOutput) ValidUntilDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueingPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ValidUntilDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. An absolute time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
+func (o QueueingPolicyPtrOutput) ValidUntilTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueingPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ValidUntilTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the policy of the QueuedRequest.
+type QueueingPolicyResponse struct {
+	// Optional. A relative time after which resources may be created.
+	ValidAfterDuration string `pulumi:"validAfterDuration"`
+	// Optional. An absolute time after which resources may be created.
+	ValidAfterTime string `pulumi:"validAfterTime"`
+	// Optional. An absolute time interval within which resources may be created.
+	ValidInterval IntervalResponse `pulumi:"validInterval"`
+	// Optional. A relative time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
+	ValidUntilDuration string `pulumi:"validUntilDuration"`
+	// Optional. An absolute time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
+	ValidUntilTime string `pulumi:"validUntilTime"`
+}
+
+// Defines the policy of the QueuedRequest.
+type QueueingPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (QueueingPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueingPolicyResponse)(nil)).Elem()
+}
+
+func (o QueueingPolicyResponseOutput) ToQueueingPolicyResponseOutput() QueueingPolicyResponseOutput {
+	return o
+}
+
+func (o QueueingPolicyResponseOutput) ToQueueingPolicyResponseOutputWithContext(ctx context.Context) QueueingPolicyResponseOutput {
+	return o
+}
+
+// Optional. A relative time after which resources may be created.
+func (o QueueingPolicyResponseOutput) ValidAfterDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v QueueingPolicyResponse) string { return v.ValidAfterDuration }).(pulumi.StringOutput)
+}
+
+// Optional. An absolute time after which resources may be created.
+func (o QueueingPolicyResponseOutput) ValidAfterTime() pulumi.StringOutput {
+	return o.ApplyT(func(v QueueingPolicyResponse) string { return v.ValidAfterTime }).(pulumi.StringOutput)
+}
+
+// Optional. An absolute time interval within which resources may be created.
+func (o QueueingPolicyResponseOutput) ValidInterval() IntervalResponseOutput {
+	return o.ApplyT(func(v QueueingPolicyResponse) IntervalResponse { return v.ValidInterval }).(IntervalResponseOutput)
+}
+
+// Optional. A relative time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
+func (o QueueingPolicyResponseOutput) ValidUntilDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v QueueingPolicyResponse) string { return v.ValidUntilDuration }).(pulumi.StringOutput)
+}
+
+// Optional. An absolute time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
+func (o QueueingPolicyResponseOutput) ValidUntilTime() pulumi.StringOutput {
+	return o.ApplyT(func(v QueueingPolicyResponse) string { return v.ValidUntilTime }).(pulumi.StringOutput)
+}
+
 // Sets the scheduling options for this node.
 type SchedulingConfig struct {
 	// Defines whether the node is preemptible.
 	Preemptible *bool `pulumi:"preemptible"`
 	// Whether the node is created under a reservation.
 	Reserved *bool `pulumi:"reserved"`
+	// Optional. Defines whether the node is Spot VM.
+	Spot *bool `pulumi:"spot"`
 }
 
 // SchedulingConfigInput is an input type that accepts SchedulingConfigArgs and SchedulingConfigOutput values.
@@ -722,6 +2326,8 @@ type SchedulingConfigArgs struct {
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
 	// Whether the node is created under a reservation.
 	Reserved pulumi.BoolPtrInput `pulumi:"reserved"`
+	// Optional. Defines whether the node is Spot VM.
+	Spot pulumi.BoolPtrInput `pulumi:"spot"`
 }
 
 func (SchedulingConfigArgs) ElementType() reflect.Type {
@@ -812,6 +2418,11 @@ func (o SchedulingConfigOutput) Reserved() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SchedulingConfig) *bool { return v.Reserved }).(pulumi.BoolPtrOutput)
 }
 
+// Optional. Defines whether the node is Spot VM.
+func (o SchedulingConfigOutput) Spot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SchedulingConfig) *bool { return v.Spot }).(pulumi.BoolPtrOutput)
+}
+
 type SchedulingConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (SchedulingConfigPtrOutput) ElementType() reflect.Type {
@@ -856,12 +2467,24 @@ func (o SchedulingConfigPtrOutput) Reserved() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Optional. Defines whether the node is Spot VM.
+func (o SchedulingConfigPtrOutput) Spot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SchedulingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Spot
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Sets the scheduling options for this node.
 type SchedulingConfigResponse struct {
 	// Defines whether the node is preemptible.
 	Preemptible bool `pulumi:"preemptible"`
 	// Whether the node is created under a reservation.
 	Reserved bool `pulumi:"reserved"`
+	// Optional. Defines whether the node is Spot VM.
+	Spot bool `pulumi:"spot"`
 }
 
 // Sets the scheduling options for this node.
@@ -887,6 +2510,11 @@ func (o SchedulingConfigResponseOutput) Preemptible() pulumi.BoolOutput {
 // Whether the node is created under a reservation.
 func (o SchedulingConfigResponseOutput) Reserved() pulumi.BoolOutput {
 	return o.ApplyT(func(v SchedulingConfigResponse) bool { return v.Reserved }).(pulumi.BoolOutput)
+}
+
+// Optional. Defines whether the node is Spot VM.
+func (o SchedulingConfigResponseOutput) Spot() pulumi.BoolOutput {
+	return o.ApplyT(func(v SchedulingConfigResponse) bool { return v.Spot }).(pulumi.BoolOutput)
 }
 
 // A service account.
@@ -1247,6 +2875,224 @@ func (o ShieldedInstanceConfigResponseOutput) EnableSecureBoot() pulumi.BoolOutp
 	return o.ApplyT(func(v ShieldedInstanceConfigResponse) bool { return v.EnableSecureBoot }).(pulumi.BoolOutput)
 }
 
+// Spot tier definition.
+type Spot struct {
+}
+
+// SpotInput is an input type that accepts SpotArgs and SpotOutput values.
+// You can construct a concrete instance of `SpotInput` via:
+//
+//	SpotArgs{...}
+type SpotInput interface {
+	pulumi.Input
+
+	ToSpotOutput() SpotOutput
+	ToSpotOutputWithContext(context.Context) SpotOutput
+}
+
+// Spot tier definition.
+type SpotArgs struct {
+}
+
+func (SpotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Spot)(nil)).Elem()
+}
+
+func (i SpotArgs) ToSpotOutput() SpotOutput {
+	return i.ToSpotOutputWithContext(context.Background())
+}
+
+func (i SpotArgs) ToSpotOutputWithContext(ctx context.Context) SpotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpotOutput)
+}
+
+func (i SpotArgs) ToSpotPtrOutput() SpotPtrOutput {
+	return i.ToSpotPtrOutputWithContext(context.Background())
+}
+
+func (i SpotArgs) ToSpotPtrOutputWithContext(ctx context.Context) SpotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpotOutput).ToSpotPtrOutputWithContext(ctx)
+}
+
+// SpotPtrInput is an input type that accepts SpotArgs, SpotPtr and SpotPtrOutput values.
+// You can construct a concrete instance of `SpotPtrInput` via:
+//
+//	        SpotArgs{...}
+//
+//	or:
+//
+//	        nil
+type SpotPtrInput interface {
+	pulumi.Input
+
+	ToSpotPtrOutput() SpotPtrOutput
+	ToSpotPtrOutputWithContext(context.Context) SpotPtrOutput
+}
+
+type spotPtrType SpotArgs
+
+func SpotPtr(v *SpotArgs) SpotPtrInput {
+	return (*spotPtrType)(v)
+}
+
+func (*spotPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Spot)(nil)).Elem()
+}
+
+func (i *spotPtrType) ToSpotPtrOutput() SpotPtrOutput {
+	return i.ToSpotPtrOutputWithContext(context.Background())
+}
+
+func (i *spotPtrType) ToSpotPtrOutputWithContext(ctx context.Context) SpotPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpotPtrOutput)
+}
+
+// Spot tier definition.
+type SpotOutput struct{ *pulumi.OutputState }
+
+func (SpotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Spot)(nil)).Elem()
+}
+
+func (o SpotOutput) ToSpotOutput() SpotOutput {
+	return o
+}
+
+func (o SpotOutput) ToSpotOutputWithContext(ctx context.Context) SpotOutput {
+	return o
+}
+
+func (o SpotOutput) ToSpotPtrOutput() SpotPtrOutput {
+	return o.ToSpotPtrOutputWithContext(context.Background())
+}
+
+func (o SpotOutput) ToSpotPtrOutputWithContext(ctx context.Context) SpotPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Spot) *Spot {
+		return &v
+	}).(SpotPtrOutput)
+}
+
+type SpotPtrOutput struct{ *pulumi.OutputState }
+
+func (SpotPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Spot)(nil)).Elem()
+}
+
+func (o SpotPtrOutput) ToSpotPtrOutput() SpotPtrOutput {
+	return o
+}
+
+func (o SpotPtrOutput) ToSpotPtrOutputWithContext(ctx context.Context) SpotPtrOutput {
+	return o
+}
+
+func (o SpotPtrOutput) Elem() SpotOutput {
+	return o.ApplyT(func(v *Spot) Spot {
+		if v != nil {
+			return *v
+		}
+		var ret Spot
+		return ret
+	}).(SpotOutput)
+}
+
+// Spot tier definition.
+type SpotResponse struct {
+}
+
+// Spot tier definition.
+type SpotResponseOutput struct{ *pulumi.OutputState }
+
+func (SpotResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpotResponse)(nil)).Elem()
+}
+
+func (o SpotResponseOutput) ToSpotResponseOutput() SpotResponseOutput {
+	return o
+}
+
+func (o SpotResponseOutput) ToSpotResponseOutputWithContext(ctx context.Context) SpotResponseOutput {
+	return o
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type StatusResponse struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code int `pulumi:"code"`
+	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+	Details []map[string]string `pulumi:"details"`
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message string `pulumi:"message"`
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type StatusResponseOutput struct{ *pulumi.OutputState }
+
+func (StatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
+}
+
+func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
+	return o
+}
+
+func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
+	return o
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o StatusResponseOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
+}
+
+// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v StatusResponse) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+}
+
+// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+func (o StatusResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Further data for the suspended state.
+type SuspendedDataResponse struct {
+}
+
+// Further data for the suspended state.
+type SuspendedDataResponseOutput struct{ *pulumi.OutputState }
+
+func (SuspendedDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SuspendedDataResponse)(nil)).Elem()
+}
+
+func (o SuspendedDataResponseOutput) ToSuspendedDataResponseOutput() SuspendedDataResponseOutput {
+	return o
+}
+
+func (o SuspendedDataResponseOutput) ToSuspendedDataResponseOutputWithContext(ctx context.Context) SuspendedDataResponseOutput {
+	return o
+}
+
+// Further data for the suspending state.
+type SuspendingDataResponse struct {
+}
+
+// Further data for the suspending state.
+type SuspendingDataResponseOutput struct{ *pulumi.OutputState }
+
+func (SuspendingDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SuspendingDataResponse)(nil)).Elem()
+}
+
+func (o SuspendingDataResponseOutput) ToSuspendingDataResponseOutput() SuspendingDataResponseOutput {
+	return o
+}
+
+func (o SuspendingDataResponseOutput) ToSuspendingDataResponseOutputWithContext(ctx context.Context) SuspendingDataResponseOutput {
+	return o
+}
+
 // A Symptom instance.
 type SymptomResponse struct {
 	// Timestamp when the Symptom is created.
@@ -1314,32 +3160,238 @@ func (o SymptomResponseArrayOutput) Index(i pulumi.IntInput) SymptomResponseOutp
 	}).(SymptomResponseOutput)
 }
 
+// Details of the TPU resource(s) being requested.
+type Tpu struct {
+	// Optional. The TPU node(s) being requested.
+	NodeSpec []NodeSpec `pulumi:"nodeSpec"`
+}
+
+// TpuInput is an input type that accepts TpuArgs and TpuOutput values.
+// You can construct a concrete instance of `TpuInput` via:
+//
+//	TpuArgs{...}
+type TpuInput interface {
+	pulumi.Input
+
+	ToTpuOutput() TpuOutput
+	ToTpuOutputWithContext(context.Context) TpuOutput
+}
+
+// Details of the TPU resource(s) being requested.
+type TpuArgs struct {
+	// Optional. The TPU node(s) being requested.
+	NodeSpec NodeSpecArrayInput `pulumi:"nodeSpec"`
+}
+
+func (TpuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Tpu)(nil)).Elem()
+}
+
+func (i TpuArgs) ToTpuOutput() TpuOutput {
+	return i.ToTpuOutputWithContext(context.Background())
+}
+
+func (i TpuArgs) ToTpuOutputWithContext(ctx context.Context) TpuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TpuOutput)
+}
+
+func (i TpuArgs) ToTpuPtrOutput() TpuPtrOutput {
+	return i.ToTpuPtrOutputWithContext(context.Background())
+}
+
+func (i TpuArgs) ToTpuPtrOutputWithContext(ctx context.Context) TpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TpuOutput).ToTpuPtrOutputWithContext(ctx)
+}
+
+// TpuPtrInput is an input type that accepts TpuArgs, TpuPtr and TpuPtrOutput values.
+// You can construct a concrete instance of `TpuPtrInput` via:
+//
+//	        TpuArgs{...}
+//
+//	or:
+//
+//	        nil
+type TpuPtrInput interface {
+	pulumi.Input
+
+	ToTpuPtrOutput() TpuPtrOutput
+	ToTpuPtrOutputWithContext(context.Context) TpuPtrOutput
+}
+
+type tpuPtrType TpuArgs
+
+func TpuPtr(v *TpuArgs) TpuPtrInput {
+	return (*tpuPtrType)(v)
+}
+
+func (*tpuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Tpu)(nil)).Elem()
+}
+
+func (i *tpuPtrType) ToTpuPtrOutput() TpuPtrOutput {
+	return i.ToTpuPtrOutputWithContext(context.Background())
+}
+
+func (i *tpuPtrType) ToTpuPtrOutputWithContext(ctx context.Context) TpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TpuPtrOutput)
+}
+
+// Details of the TPU resource(s) being requested.
+type TpuOutput struct{ *pulumi.OutputState }
+
+func (TpuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Tpu)(nil)).Elem()
+}
+
+func (o TpuOutput) ToTpuOutput() TpuOutput {
+	return o
+}
+
+func (o TpuOutput) ToTpuOutputWithContext(ctx context.Context) TpuOutput {
+	return o
+}
+
+func (o TpuOutput) ToTpuPtrOutput() TpuPtrOutput {
+	return o.ToTpuPtrOutputWithContext(context.Background())
+}
+
+func (o TpuOutput) ToTpuPtrOutputWithContext(ctx context.Context) TpuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Tpu) *Tpu {
+		return &v
+	}).(TpuPtrOutput)
+}
+
+// Optional. The TPU node(s) being requested.
+func (o TpuOutput) NodeSpec() NodeSpecArrayOutput {
+	return o.ApplyT(func(v Tpu) []NodeSpec { return v.NodeSpec }).(NodeSpecArrayOutput)
+}
+
+type TpuPtrOutput struct{ *pulumi.OutputState }
+
+func (TpuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Tpu)(nil)).Elem()
+}
+
+func (o TpuPtrOutput) ToTpuPtrOutput() TpuPtrOutput {
+	return o
+}
+
+func (o TpuPtrOutput) ToTpuPtrOutputWithContext(ctx context.Context) TpuPtrOutput {
+	return o
+}
+
+func (o TpuPtrOutput) Elem() TpuOutput {
+	return o.ApplyT(func(v *Tpu) Tpu {
+		if v != nil {
+			return *v
+		}
+		var ret Tpu
+		return ret
+	}).(TpuOutput)
+}
+
+// Optional. The TPU node(s) being requested.
+func (o TpuPtrOutput) NodeSpec() NodeSpecArrayOutput {
+	return o.ApplyT(func(v *Tpu) []NodeSpec {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSpec
+	}).(NodeSpecArrayOutput)
+}
+
+// Details of the TPU resource(s) being requested.
+type TpuResponse struct {
+	// Optional. The TPU node(s) being requested.
+	NodeSpec []NodeSpecResponse `pulumi:"nodeSpec"`
+}
+
+// Details of the TPU resource(s) being requested.
+type TpuResponseOutput struct{ *pulumi.OutputState }
+
+func (TpuResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TpuResponse)(nil)).Elem()
+}
+
+func (o TpuResponseOutput) ToTpuResponseOutput() TpuResponseOutput {
+	return o
+}
+
+func (o TpuResponseOutput) ToTpuResponseOutputWithContext(ctx context.Context) TpuResponseOutput {
+	return o
+}
+
+// Optional. The TPU node(s) being requested.
+func (o TpuResponseOutput) NodeSpec() NodeSpecResponseArrayOutput {
+	return o.ApplyT(func(v TpuResponse) []NodeSpecResponse { return v.NodeSpec }).(NodeSpecResponseArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigInput)(nil)).Elem(), AcceleratorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigPtrInput)(nil)).Elem(), AcceleratorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskInput)(nil)).Elem(), AttachedDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskArrayInput)(nil)).Elem(), AttachedDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuaranteedInput)(nil)).Elem(), GuaranteedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GuaranteedPtrInput)(nil)).Elem(), GuaranteedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntervalInput)(nil)).Elem(), IntervalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntervalPtrInput)(nil)).Elem(), IntervalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultisliceParamsInput)(nil)).Elem(), MultisliceParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultisliceParamsPtrInput)(nil)).Elem(), MultisliceParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInput)(nil)).Elem(), NetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigPtrInput)(nil)).Elem(), NetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeTypeInput)(nil)).Elem(), NodeTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeSpecInput)(nil)).Elem(), NodeSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeSpecArrayInput)(nil)).Elem(), NodeSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueingPolicyInput)(nil)).Elem(), QueueingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueingPolicyPtrInput)(nil)).Elem(), QueueingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingConfigInput)(nil)).Elem(), SchedulingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingConfigPtrInput)(nil)).Elem(), SchedulingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAccountInput)(nil)).Elem(), ServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAccountPtrInput)(nil)).Elem(), ServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigInput)(nil)).Elem(), ShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigPtrInput)(nil)).Elem(), ShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpotInput)(nil)).Elem(), SpotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpotPtrInput)(nil)).Elem(), SpotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TpuInput)(nil)).Elem(), TpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TpuPtrInput)(nil)).Elem(), TpuArgs{})
 	pulumi.RegisterOutputType(AcceleratorConfigOutput{})
 	pulumi.RegisterOutputType(AcceleratorConfigPtrOutput{})
 	pulumi.RegisterOutputType(AcceleratorConfigResponseOutput{})
+	pulumi.RegisterOutputType(AcceptedDataResponseOutput{})
 	pulumi.RegisterOutputType(AccessConfigResponseOutput{})
+	pulumi.RegisterOutputType(ActiveDataResponseOutput{})
 	pulumi.RegisterOutputType(AttachedDiskOutput{})
 	pulumi.RegisterOutputType(AttachedDiskArrayOutput{})
 	pulumi.RegisterOutputType(AttachedDiskResponseOutput{})
 	pulumi.RegisterOutputType(AttachedDiskResponseArrayOutput{})
+	pulumi.RegisterOutputType(CreatingDataResponseOutput{})
+	pulumi.RegisterOutputType(DeletingDataResponseOutput{})
+	pulumi.RegisterOutputType(FailedDataResponseOutput{})
+	pulumi.RegisterOutputType(GuaranteedOutput{})
+	pulumi.RegisterOutputType(GuaranteedPtrOutput{})
+	pulumi.RegisterOutputType(GuaranteedResponseOutput{})
+	pulumi.RegisterOutputType(IntervalOutput{})
+	pulumi.RegisterOutputType(IntervalPtrOutput{})
+	pulumi.RegisterOutputType(IntervalResponseOutput{})
+	pulumi.RegisterOutputType(MultisliceParamsOutput{})
+	pulumi.RegisterOutputType(MultisliceParamsPtrOutput{})
+	pulumi.RegisterOutputType(MultisliceParamsResponseOutput{})
 	pulumi.RegisterOutputType(NetworkConfigOutput{})
 	pulumi.RegisterOutputType(NetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigResponseOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointResponseOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointResponseArrayOutput{})
+	pulumi.RegisterOutputType(NodeTypeOutput{})
+	pulumi.RegisterOutputType(NodeResponseOutput{})
+	pulumi.RegisterOutputType(NodeSpecOutput{})
+	pulumi.RegisterOutputType(NodeSpecArrayOutput{})
+	pulumi.RegisterOutputType(NodeSpecResponseOutput{})
+	pulumi.RegisterOutputType(NodeSpecResponseArrayOutput{})
+	pulumi.RegisterOutputType(ProvisioningDataResponseOutput{})
+	pulumi.RegisterOutputType(QueuedResourceStateResponseOutput{})
+	pulumi.RegisterOutputType(QueueingPolicyOutput{})
+	pulumi.RegisterOutputType(QueueingPolicyPtrOutput{})
+	pulumi.RegisterOutputType(QueueingPolicyResponseOutput{})
 	pulumi.RegisterOutputType(SchedulingConfigOutput{})
 	pulumi.RegisterOutputType(SchedulingConfigPtrOutput{})
 	pulumi.RegisterOutputType(SchedulingConfigResponseOutput{})
@@ -1349,6 +3401,15 @@ func init() {
 	pulumi.RegisterOutputType(ShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(ShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ShieldedInstanceConfigResponseOutput{})
+	pulumi.RegisterOutputType(SpotOutput{})
+	pulumi.RegisterOutputType(SpotPtrOutput{})
+	pulumi.RegisterOutputType(SpotResponseOutput{})
+	pulumi.RegisterOutputType(StatusResponseOutput{})
+	pulumi.RegisterOutputType(SuspendedDataResponseOutput{})
+	pulumi.RegisterOutputType(SuspendingDataResponseOutput{})
 	pulumi.RegisterOutputType(SymptomResponseOutput{})
 	pulumi.RegisterOutputType(SymptomResponseArrayOutput{})
+	pulumi.RegisterOutputType(TpuOutput{})
+	pulumi.RegisterOutputType(TpuPtrOutput{})
+	pulumi.RegisterOutputType(TpuResponseOutput{})
 }

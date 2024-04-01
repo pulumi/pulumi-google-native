@@ -75,6 +75,12 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
         [Input("schedulerCount")]
         public Input<int>? SchedulerCount { get; set; }
 
+        /// <summary>
+        /// Optional. Whether or not the web server uses custom plugins. If unspecified, the field defaults to `PLUGINS_ENABLED`. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Input("webServerPluginsMode")]
+        public Input<Pulumi.GoogleNative.Composer.V1Beta1.SoftwareConfigWebServerPluginsMode>? WebServerPluginsMode { get; set; }
+
         public SoftwareConfigArgs()
         {
         }

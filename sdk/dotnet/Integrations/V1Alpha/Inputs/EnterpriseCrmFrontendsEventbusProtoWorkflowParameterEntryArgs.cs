@@ -31,6 +31,12 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
         }
 
         /// <summary>
+        /// Indicates whether this variable contains large data and need to be uploaded to Cloud Storage.
+        /// </summary>
+        [Input("containsLargeData")]
+        public Input<bool>? ContainsLargeData { get; set; }
+
+        /// <summary>
         /// The data type of the parameter.
         /// </summary>
         [Input("dataType")]

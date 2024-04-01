@@ -76,7 +76,7 @@ export interface GetServiceResult {
      */
     readonly meshIstio: outputs.monitoring.v3.MeshIstioResponse;
     /**
-     * Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
+     * Identifier. Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
      */
     readonly name: string;
     /**

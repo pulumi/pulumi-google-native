@@ -132,6 +132,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly ImmutableArray<Outputs.NamedPortResponse> NamedPorts;
         /// <summary>
+        /// Input only. Additional params passed with the request, but not persisted as part of resource payload.
+        /// </summary>
+        public readonly Outputs.InstanceGroupManagerParamsResponse Params;
+        /// <summary>
         /// The URL of the region where the managed instance group resides (for regional resources).
         /// </summary>
         public readonly string Region;
@@ -220,6 +224,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             ImmutableArray<Outputs.NamedPortResponse> namedPorts,
 
+            Outputs.InstanceGroupManagerParamsResponse @params,
+
             string region,
 
             string selfLink,
@@ -263,6 +269,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             ListManagedInstancesResults = listManagedInstancesResults;
             Name = name;
             NamedPorts = namedPorts;
+            Params = @params;
             Region = region;
             SelfLink = selfLink;
             ServiceAccount = serviceAccount;

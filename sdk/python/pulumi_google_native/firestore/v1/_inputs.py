@@ -11,6 +11,7 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'GoogleFirestoreAdminV1CmekConfigArgs',
     'GoogleFirestoreAdminV1DailyRecurrenceArgs',
     'GoogleFirestoreAdminV1FlatIndexArgs',
     'GoogleFirestoreAdminV1IndexFieldArgs',
@@ -19,10 +20,33 @@ __all__ = [
 ]
 
 @pulumi.input_type
+class GoogleFirestoreAdminV1CmekConfigArgs:
+    def __init__(__self__, *,
+                 kms_key_name: pulumi.Input[str]):
+        """
+        The CMEK (Customer Managed Encryption Key) configuration for a Firestore database. If not present, the database is secured by the default Google encryption key.
+        :param pulumi.Input[str] kms_key_name: Only keys in the same location as this database are allowed to be used for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations. The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Input[str]:
+        """
+        Only keys in the same location as this database are allowed to be used for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations. The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "kms_key_name", value)
+
+
+@pulumi.input_type
 class GoogleFirestoreAdminV1DailyRecurrenceArgs:
     def __init__(__self__):
         """
-        Represent a recurring schedule that runs at a specific time every day. The time zone is UTC.
+        Represents a recurring schedule that runs at a specific time every day. The time zone is UTC.
         """
         pass
 

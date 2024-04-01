@@ -47,6 +47,10 @@ export class Secret extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Optional. The customer-managed encryption configuration of the Regionalised Secrets. If no configuration is provided, Google-managed default encryption is used. Updates to the Secret encryption configuration only apply to SecretVersions added afterwards. They do not apply retroactively to existing SecretVersions.
+     */
+    public readonly customerManagedEncryption!: pulumi.Output<outputs.secretmanager.v1.CustomerManagedEncryptionResponse>;
+    /**
      * Optional. Etag of the currently stored Secret.
      */
     public readonly etag!: pulumi.Output<string>;
@@ -58,13 +62,14 @@ export class Secret extends pulumi.CustomResource {
      * The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the Secret in the format `projects/*&#47;secrets/*`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
+     * Optional. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
      */
     public readonly replication!: pulumi.Output<outputs.secretmanager.v1.ReplicationResponse>;
     /**
@@ -84,9 +89,13 @@ export class Secret extends pulumi.CustomResource {
      */
     public readonly ttl!: pulumi.Output<string>;
     /**
-     * Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. At launch Access by Allias will only be supported on GetSecretVersion and AccessSecretVersion.
+     * Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. Access by alias is only be supported on GetSecretVersion and AccessSecretVersion.
      */
     public readonly versionAliases!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Optional. Secret Version TTL after destruction request This is a part of the Delayed secret version destroy feature. For secret with TTL>0, version destruction doesn't happen immediately on calling destroy instead the version goes to a disabled state and destruction happens after the TTL expires.
+     */
+    public readonly versionDestroyTtl!: pulumi.Output<string>;
 
     /**
      * Create a Secret resource with the given unique name, arguments, and options.
@@ -99,16 +108,15 @@ export class Secret extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.replication === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'replication'");
-            }
             if ((!args || args.secretId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secretId'");
             }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["customerManagedEncryption"] = args ? args.customerManagedEncryption : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["expireTime"] = args ? args.expireTime : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["replication"] = args ? args.replication : undefined;
             resourceInputs["rotation"] = args ? args.rotation : undefined;
@@ -116,14 +124,17 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["topics"] = args ? args.topics : undefined;
             resourceInputs["ttl"] = args ? args.ttl : undefined;
             resourceInputs["versionAliases"] = args ? args.versionAliases : undefined;
+            resourceInputs["versionDestroyTtl"] = args ? args.versionDestroyTtl : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         } else {
             resourceInputs["annotations"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["customerManagedEncryption"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["replication"] = undefined /*out*/;
@@ -132,9 +143,10 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["topics"] = undefined /*out*/;
             resourceInputs["ttl"] = undefined /*out*/;
             resourceInputs["versionAliases"] = undefined /*out*/;
+            resourceInputs["versionDestroyTtl"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["project", "secretId"] };
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "secretId"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Secret.__pulumiType, name, resourceInputs, opts);
     }
@@ -149,6 +161,10 @@ export interface SecretArgs {
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Optional. The customer-managed encryption configuration of the Regionalised Secrets. If no configuration is provided, Google-managed default encryption is used. Updates to the Secret encryption configuration only apply to SecretVersions added afterwards. They do not apply retroactively to existing SecretVersions.
+     */
+    customerManagedEncryption?: pulumi.Input<inputs.secretmanager.v1.CustomerManagedEncryptionArgs>;
+    /**
      * Optional. Etag of the currently stored Secret.
      */
     etag?: pulumi.Input<string>;
@@ -160,11 +176,12 @@ export interface SecretArgs {
      * The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
+     * Optional. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
      */
-    replication: pulumi.Input<inputs.secretmanager.v1.ReplicationArgs>;
+    replication?: pulumi.Input<inputs.secretmanager.v1.ReplicationArgs>;
     /**
      * Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
      */
@@ -182,7 +199,11 @@ export interface SecretArgs {
      */
     ttl?: pulumi.Input<string>;
     /**
-     * Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. At launch Access by Allias will only be supported on GetSecretVersion and AccessSecretVersion.
+     * Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. Access by alias is only be supported on GetSecretVersion and AccessSecretVersion.
      */
     versionAliases?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Optional. Secret Version TTL after destruction request This is a part of the Delayed secret version destroy feature. For secret with TTL>0, version destruction doesn't happen immediately on calling destroy instead the version goes to a disabled state and destruction happens after the TTL expires.
+     */
+    versionDestroyTtl?: pulumi.Input<string>;
 }

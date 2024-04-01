@@ -32,6 +32,9 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         /// Hybrid inspection options.
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2HybridOptionsResponse HybridOptions;
+        /// <summary>
+        /// Configuration of the timespan of the items to include in scanning.
+        /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2TimespanConfigResponse TimespanConfig;
 
         [OutputConstructor]

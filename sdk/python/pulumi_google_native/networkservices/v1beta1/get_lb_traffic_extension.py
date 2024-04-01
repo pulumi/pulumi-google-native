@@ -81,7 +81,7 @@ class GetLbTrafficExtensionResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        Optional. Set of labels associated with the `LbTrafficExtension` resource. The format must comply with [the following requirements](/compute/docs/labeling-resources#requirements).
+        Optional. Set of labels associated with the `LbTrafficExtension` resource. The format must comply with [the requirements for labels](https://cloud.google.com/compute/docs/labeling-resources#requirements) for Google Cloud resources.
         """
         return pulumi.get(self, "labels")
 
@@ -97,7 +97,7 @@ class GetLbTrafficExtensionResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the `LbTrafficExtension` resource in the following format: `projects/{project}/locations/{location}/lbTrafficExtensions/{lb_traffic_extension}`.
+        Identifier. Name of the `LbTrafficExtension` resource in the following format: `projects/{project}/locations/{location}/lbTrafficExtensions/{lb_traffic_extension}`.
         """
         return pulumi.get(self, "name")
 

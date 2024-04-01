@@ -16,6 +16,8 @@ import (
 type Topic struct {
 	pulumi.CustomResourceState
 
+	// Optional. Settings for ingestion from a data source into this topic.
+	IngestionDataSourceSettings IngestionDataSourceSettingsResponseOutput `pulumi:"ingestionDataSourceSettings"`
 	// Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
 	// Optional. See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
@@ -31,7 +33,9 @@ type Topic struct {
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// Optional. Settings for validating messages published against a schema.
 	SchemaSettings SchemaSettingsResponseOutput `pulumi:"schemaSettings"`
-	TopicId        pulumi.StringOutput          `pulumi:"topicId"`
+	// An output-only field indicating the state of the topic.
+	State   pulumi.StringOutput `pulumi:"state"`
+	TopicId pulumi.StringOutput `pulumi:"topicId"`
 }
 
 // NewTopic registers a new resource with the given unique name, arguments, and options.
@@ -82,6 +86,8 @@ func (TopicState) ElementType() reflect.Type {
 }
 
 type topicArgs struct {
+	// Optional. Settings for ingestion from a data source into this topic.
+	IngestionDataSourceSettings *IngestionDataSourceSettings `pulumi:"ingestionDataSourceSettings"`
 	// Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// Optional. See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
@@ -102,6 +108,8 @@ type topicArgs struct {
 
 // The set of arguments for constructing a Topic resource.
 type TopicArgs struct {
+	// Optional. Settings for ingestion from a data source into this topic.
+	IngestionDataSourceSettings IngestionDataSourceSettingsPtrInput
 	// Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	KmsKeyName pulumi.StringPtrInput
 	// Optional. See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
@@ -157,6 +165,11 @@ func (o TopicOutput) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 	return o
 }
 
+// Optional. Settings for ingestion from a data source into this topic.
+func (o TopicOutput) IngestionDataSourceSettings() IngestionDataSourceSettingsResponseOutput {
+	return o.ApplyT(func(v *Topic) IngestionDataSourceSettingsResponseOutput { return v.IngestionDataSourceSettings }).(IngestionDataSourceSettingsResponseOutput)
+}
+
 // Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 func (o TopicOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.KmsKeyName }).(pulumi.StringOutput)
@@ -194,6 +207,11 @@ func (o TopicOutput) SatisfiesPzs() pulumi.BoolOutput {
 // Optional. Settings for validating messages published against a schema.
 func (o TopicOutput) SchemaSettings() SchemaSettingsResponseOutput {
 	return o.ApplyT(func(v *Topic) SchemaSettingsResponseOutput { return v.SchemaSettings }).(SchemaSettingsResponseOutput)
+}
+
+// An output-only field indicating the state of the topic.
+func (o TopicOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 func (o TopicOutput) TopicId() pulumi.StringOutput {

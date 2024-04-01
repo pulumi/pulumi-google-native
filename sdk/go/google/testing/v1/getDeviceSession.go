@@ -46,7 +46,7 @@ type LookupDeviceSessionResult struct {
 	State string `pulumi:"state"`
 	// The historical state transitions of the session_state message including the current session state.
 	StateHistories []SessionStateEventResponse `pulumi:"stateHistories"`
-	// Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 30 minutes.
+	// Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 15 minutes.
 	Ttl string `pulumi:"ttl"`
 }
 
@@ -131,7 +131,7 @@ func (o LookupDeviceSessionResultOutput) StateHistories() SessionStateEventRespo
 	return o.ApplyT(func(v LookupDeviceSessionResult) []SessionStateEventResponse { return v.StateHistories }).(SessionStateEventResponseArrayOutput)
 }
 
-// Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 30 minutes.
+// Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 15 minutes.
 func (o LookupDeviceSessionResultOutput) Ttl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceSessionResult) string { return v.Ttl }).(pulumi.StringOutput)
 }

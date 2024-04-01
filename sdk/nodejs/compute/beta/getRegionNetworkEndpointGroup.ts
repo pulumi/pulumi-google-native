@@ -32,15 +32,19 @@ export interface GetRegionNetworkEndpointGroupResult {
      */
     readonly annotations: {[key: string]: string};
     /**
-     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+     * Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
      */
     readonly appEngine: outputs.compute.beta.NetworkEndpointGroupAppEngineResponse;
     /**
-     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+     * Only valid when networkEndpointType is GCE_VM_IP_PORT and the NEG is regional.
+     */
+    readonly clientPortMappingMode: string;
+    /**
+     * Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
      */
     readonly cloudFunction: outputs.compute.beta.NetworkEndpointGroupCloudFunctionResponse;
     /**
-     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+     * Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
      */
     readonly cloudRun: outputs.compute.beta.NetworkEndpointGroupCloudRunResponse;
     /**
@@ -48,7 +52,7 @@ export interface GetRegionNetworkEndpointGroupResult {
      */
     readonly creationTimestamp: string;
     /**
-     * The default port used if the port number is not specified in the network endpoint.
+     * The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified.
      */
     readonly defaultPort: number;
     /**
@@ -70,7 +74,7 @@ export interface GetRegionNetworkEndpointGroupResult {
      */
     readonly name: string;
     /**
-     * The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+     * The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified.
      */
     readonly network: string;
     /**
@@ -79,7 +83,7 @@ export interface GetRegionNetworkEndpointGroupResult {
     readonly networkEndpointType: string;
     readonly pscData: outputs.compute.beta.NetworkEndpointGroupPscDataResponse;
     /**
-     * The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+     * The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: asia-northeast3-cloudkms.googleapis.com
      */
     readonly pscTargetService: string;
     /**
@@ -91,7 +95,7 @@ export interface GetRegionNetworkEndpointGroupResult {
      */
     readonly selfLink: string;
     /**
-     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+     * Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
      */
     readonly serverlessDeployment: outputs.compute.beta.NetworkEndpointGroupServerlessDeploymentResponse;
     /**

@@ -61,6 +61,8 @@ type LookupBackupResult struct {
 	Name string `pulumi:"name"`
 	// Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling bool `pulumi:"reconciling"`
+	// Reserved for future use.
+	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// The size of the backup in bytes.
 	SizeBytes string `pulumi:"sizeBytes"`
 	// The current state of the backup.
@@ -188,6 +190,11 @@ func (o LookupBackupResultOutput) Name() pulumi.StringOutput {
 // Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
 func (o LookupBackupResultOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBackupResult) bool { return v.Reconciling }).(pulumi.BoolOutput)
+}
+
+// Reserved for future use.
+func (o LookupBackupResultOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupBackupResult) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
 }
 
 // The size of the backup in bytes.

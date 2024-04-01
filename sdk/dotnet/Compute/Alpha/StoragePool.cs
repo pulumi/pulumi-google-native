@@ -63,17 +63,35 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Output("performanceProvisioningType")]
         public Output<string> PerformanceProvisioningType { get; private set; } = null!;
 
+        /// <summary>
+        /// Size, in GiB, of the storage pool.
+        /// </summary>
+        [Output("poolProvisionedCapacityGb")]
+        public Output<string> PoolProvisionedCapacityGb { get; private set; } = null!;
+
+        /// <summary>
+        /// Provisioned IOPS of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced.
+        /// </summary>
+        [Output("poolProvisionedIops")]
+        public Output<string> PoolProvisionedIops { get; private set; } = null!;
+
+        /// <summary>
+        /// Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        /// </summary>
+        [Output("poolProvisionedThroughput")]
+        public Output<string> PoolProvisionedThroughput { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Provsioned IOPS of the storage pool.
+        /// DEPRECATED -- use "pool provisioned IOPS".
         /// </summary>
         [Output("provisionedIops")]
         public Output<string> ProvisionedIops { get; private set; } = null!;
 
         /// <summary>
-        /// Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        /// DEPRECATED -- use "pool provisioned throughput".
         /// </summary>
         [Output("provisionedThroughput")]
         public Output<string> ProvisionedThroughput { get; private set; } = null!;
@@ -103,7 +121,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> SelfLinkWithId { get; private set; } = null!;
 
         /// <summary>
-        /// Size, in GiB, of the storage pool.
+        /// DEPRECATED -- use "pool provisioned capacity gb".
         /// </summary>
         [Output("sizeGb")]
         public Output<string> SizeGb { get; private set; } = null!;
@@ -215,17 +233,35 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("performanceProvisioningType")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.StoragePoolPerformanceProvisioningType>? PerformanceProvisioningType { get; set; }
 
+        /// <summary>
+        /// Size, in GiB, of the storage pool.
+        /// </summary>
+        [Input("poolProvisionedCapacityGb")]
+        public Input<string>? PoolProvisionedCapacityGb { get; set; }
+
+        /// <summary>
+        /// Provisioned IOPS of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced.
+        /// </summary>
+        [Input("poolProvisionedIops")]
+        public Input<string>? PoolProvisionedIops { get; set; }
+
+        /// <summary>
+        /// Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        /// </summary>
+        [Input("poolProvisionedThroughput")]
+        public Input<string>? PoolProvisionedThroughput { get; set; }
+
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Provsioned IOPS of the storage pool.
+        /// DEPRECATED -- use "pool provisioned IOPS".
         /// </summary>
         [Input("provisionedIops")]
         public Input<string>? ProvisionedIops { get; set; }
 
         /// <summary>
-        /// Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        /// DEPRECATED -- use "pool provisioned throughput".
         /// </summary>
         [Input("provisionedThroughput")]
         public Input<string>? ProvisionedThroughput { get; set; }
@@ -237,7 +273,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// Size, in GiB, of the storage pool.
+        /// DEPRECATED -- use "pool provisioned capacity gb".
         /// </summary>
         [Input("sizeGb")]
         public Input<string>? SizeGb { get; set; }

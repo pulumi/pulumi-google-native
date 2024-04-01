@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1.Inputs
         private InputList<Inputs.DynamicGroupQueryArgs>? _queries;
 
         /// <summary>
-        /// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+        /// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 500 dynamic groups.
         /// </summary>
         public InputList<Inputs.DynamicGroupQueryArgs> Queries
         {

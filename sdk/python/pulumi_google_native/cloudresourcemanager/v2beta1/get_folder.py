@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetFolderResult:
-    def __init__(__self__, create_time=None, display_name=None, lifecycle_state=None, name=None, parent=None):
+    def __init__(__self__, create_time=None, display_name=None, lifecycle_state=None, name=None, parent=None, tags=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -34,6 +34,9 @@ class GetFolderResult:
         if parent and not isinstance(parent, str):
             raise TypeError("Expected argument 'parent' to be a str")
         pulumi.set(__self__, "parent", parent)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="createTime")
@@ -75,6 +78,14 @@ class GetFolderResult:
         """
         return pulumi.get(self, "parent")
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, str]:
+        """
+        Optional. Input only. Immutable. Tag keys/values directly bound to this folder. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+        """
+        return pulumi.get(self, "tags")
+
 
 class AwaitableGetFolderResult(GetFolderResult):
     # pylint: disable=using-constant-test
@@ -86,7 +97,8 @@ class AwaitableGetFolderResult(GetFolderResult):
             display_name=self.display_name,
             lifecycle_state=self.lifecycle_state,
             name=self.name,
-            parent=self.parent)
+            parent=self.parent,
+            tags=self.tags)
 
 
 def get_folder(folder_id: Optional[str] = None,
@@ -104,7 +116,8 @@ def get_folder(folder_id: Optional[str] = None,
         display_name=pulumi.get(__ret__, 'display_name'),
         lifecycle_state=pulumi.get(__ret__, 'lifecycle_state'),
         name=pulumi.get(__ret__, 'name'),
-        parent=pulumi.get(__ret__, 'parent'))
+        parent=pulumi.get(__ret__, 'parent'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_folder)

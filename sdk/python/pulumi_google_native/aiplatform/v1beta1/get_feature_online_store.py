@@ -79,8 +79,11 @@ class GetFeatureOnlineStoreResult:
     @pulumi.getter(name="embeddingManagement")
     def embedding_management(self) -> 'outputs.GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse':
         """
-        Optional. The settings for embedding management in FeatureOnlineStore.
+        Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.
         """
+        warnings.warn("""Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.""", DeprecationWarning)
+        pulumi.log.warn("""embedding_management is deprecated: Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.""")
+
         return pulumi.get(self, "embedding_management")
 
     @property
@@ -103,7 +106,7 @@ class GetFeatureOnlineStoreResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+        Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
         """
         return pulumi.get(self, "name")
 

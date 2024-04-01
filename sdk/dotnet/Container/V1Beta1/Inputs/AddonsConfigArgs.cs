@@ -93,6 +93,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         [Input("networkPolicyConfig")]
         public Input<Inputs.NetworkPolicyConfigArgs>? NetworkPolicyConfig { get; set; }
 
+        /// <summary>
+        /// Optional. Configuration for the StatefulHA add-on.
+        /// </summary>
+        [Input("statefulHaConfig")]
+        public Input<Inputs.StatefulHAConfigArgs>? StatefulHaConfig { get; set; }
+
         public AddonsConfigArgs()
         {
         }

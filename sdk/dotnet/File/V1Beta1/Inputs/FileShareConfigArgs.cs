@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1.Inputs
         public Input<string>? CapacityGb { get; set; }
 
         /// <summary>
-        /// The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores [a-z0-9_]. Must start with a letter. Immutable.
+        /// The name of the file share. Must use 1-16 characters for the basic service tier and 1-63 characters for all other service tiers. Must use lowercase letters, numbers, or underscores `[a-z0-9_]`. Must start with a letter. Immutable.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

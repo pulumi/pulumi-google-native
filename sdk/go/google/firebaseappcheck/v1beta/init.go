@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:firebaseappcheck/v1beta:DebugToken":
 		r = &DebugToken{}
+	case "google-native:firebaseappcheck/v1beta:ResourcePolicy":
+		r = &ResourcePolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

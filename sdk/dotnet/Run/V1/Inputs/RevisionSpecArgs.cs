@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         [Input("containerConcurrency")]
         public Input<int>? ContainerConcurrency { get; set; }
 
-        [Input("containers")]
+        [Input("containers", required: true)]
         private InputList<Inputs.ContainerArgs>? _containers;
 
         /// <summary>

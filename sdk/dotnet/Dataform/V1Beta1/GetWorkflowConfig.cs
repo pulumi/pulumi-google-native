@@ -78,7 +78,7 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         /// </summary>
         public readonly Outputs.InvocationConfigResponse InvocationConfig;
         /// <summary>
-        /// The workflow config's name.
+        /// Identifier. The workflow config's name.
         /// </summary>
         public readonly string Name;
         /// <summary>

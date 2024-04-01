@@ -92,6 +92,10 @@ namespace Pulumi.GoogleNative.Workstations.V1
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
+        /// Optional. Configuration options for a custom domain.
+        /// </summary>
+        public readonly Outputs.DomainConfigResponse DomainConfig;
+        /// <summary>
         /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         /// </summary>
         public readonly string Etag;
@@ -144,6 +148,8 @@ namespace Pulumi.GoogleNative.Workstations.V1
 
             string displayName,
 
+            Outputs.DomainConfigResponse domainConfig,
+
             string etag,
 
             ImmutableDictionary<string, string> labels,
@@ -169,6 +175,7 @@ namespace Pulumi.GoogleNative.Workstations.V1
             Degraded = degraded;
             DeleteTime = deleteTime;
             DisplayName = displayName;
+            DomainConfig = domainConfig;
             Etag = etag;
             Labels = labels;
             Name = name;

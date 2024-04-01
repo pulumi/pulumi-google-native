@@ -11,7 +11,6 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
 {
     /// <summary>
     /// Creates a new FeatureOnlineStore in a given project and location.
-    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:aiplatform/v1:FeatureOnlineStore")]
     public partial class FeatureOnlineStore : global::Pulumi.CustomResource
@@ -27,6 +26,12 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The dedicated serving endpoint for this FeatureOnlineStore, which is different from common Vertex service endpoint.
+        /// </summary>
+        [Output("dedicatedServingEndpoint")]
+        public Output<Outputs.GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpointResponse> DedicatedServingEndpoint { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
@@ -50,10 +55,16 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+        /// Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.
+        /// </summary>
+        [Output("optimized")]
+        public Output<Outputs.GoogleCloudAiplatformV1FeatureOnlineStoreOptimizedResponse> Optimized { get; private set; } = null!;
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -128,6 +139,12 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
         public Input<Inputs.GoogleCloudAiplatformV1FeatureOnlineStoreBigtableArgs>? Bigtable { get; set; }
 
         /// <summary>
+        /// Optional. The dedicated serving endpoint for this FeatureOnlineStore, which is different from common Vertex service endpoint.
+        /// </summary>
+        [Input("dedicatedServingEndpoint")]
+        public Input<Inputs.GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpointArgs>? DedicatedServingEndpoint { get; set; }
+
+        /// <summary>
         /// Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         /// </summary>
         [Input("etag")]
@@ -153,6 +170,18 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
 
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.
+        /// </summary>
+        [Input("optimized")]
+        public Input<Inputs.GoogleCloudAiplatformV1FeatureOnlineStoreOptimizedArgs>? Optimized { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

@@ -108,6 +108,10 @@ namespace Pulumi.GoogleNative.Notebooks.V2
         /// </summary>
         public readonly string State;
         /// <summary>
+        /// The workforce pools proxy endpoint that is used to access the Jupyter notebook.
+        /// </summary>
+        public readonly string ThirdPartyProxyUrl;
+        /// <summary>
         /// Instance update time.
         /// </summary>
         public readonly string UpdateTime;
@@ -140,6 +144,8 @@ namespace Pulumi.GoogleNative.Notebooks.V2
 
             string state,
 
+            string thirdPartyProxyUrl,
+
             string updateTime,
 
             ImmutableArray<Outputs.UpgradeHistoryEntryResponse> upgradeHistory)
@@ -155,6 +161,7 @@ namespace Pulumi.GoogleNative.Notebooks.V2
             Name = name;
             ProxyUri = proxyUri;
             State = state;
+            ThirdPartyProxyUrl = thirdPartyProxyUrl;
             UpdateTime = updateTime;
             UpgradeHistory = upgradeHistory;
         }

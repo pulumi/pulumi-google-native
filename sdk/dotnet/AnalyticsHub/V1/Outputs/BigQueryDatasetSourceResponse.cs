@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1.Outputs
         /// Resource name of the dataset source for this listing. e.g. `projects/myproject/datasets/123`
         /// </summary>
         public readonly string Dataset;
+        /// <summary>
+        /// Optional. Resources in this dataset that are selectively shared. If this field is empty, then the entire dataset (all resources) are shared. This field is only valid for data clean room exchanges.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.SelectedResourceResponse> SelectedResources;
 
         [OutputConstructor]
-        private BigQueryDatasetSourceResponse(string dataset)
+        private BigQueryDatasetSourceResponse(
+            string dataset,
+
+            ImmutableArray<Outputs.SelectedResourceResponse> selectedResources)
         {
             Dataset = dataset;
+            SelectedResources = selectedResources;
         }
     }
 }

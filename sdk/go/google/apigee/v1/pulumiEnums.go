@@ -734,9 +734,9 @@ type EnvironmentType string
 const (
 	// Environment type not specified.
 	EnvironmentTypeEnvironmentTypeUnspecified = EnvironmentType("ENVIRONMENT_TYPE_UNSPECIFIED")
-	// Base environment has limited capacity and capabilities and are usually used when you are getting started with Apigee or while experimenting. Refer to Apigee's public documentation for more details.
+	// This is the default type. Base environment has limited capacity and capabilities and are usually used when you are getting started with Apigee or while experimenting. Refer to Apigee's public documentation for more details.
 	EnvironmentTypeBase = EnvironmentType("BASE")
-	// This is the default type and it supports API management features and higher capacity than Base environment. Refer to Apigee's public documentation for more details.
+	// Intermediate environment supports API management features and higher capacity than Base environment. Refer to Apigee's public documentation for more details.
 	EnvironmentTypeIntermediate = EnvironmentType("INTERMEDIATE")
 	// Comprehensive environment supports advanced capabilites and even higher capacity than Intermediate environment. Refer to Apigee's public documentation for more details.
 	EnvironmentTypeComprehensive = EnvironmentType("COMPREHENSIVE")

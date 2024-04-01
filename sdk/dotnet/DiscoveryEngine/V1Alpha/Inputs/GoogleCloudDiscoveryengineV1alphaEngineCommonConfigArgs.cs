@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha.Inputs
     public sealed class GoogleCloudDiscoveryengineV1alphaEngineCommonConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
+        /// Immutable. The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
         /// </summary>
         [Input("companyName")]
         public Input<string>? CompanyName { get; set; }

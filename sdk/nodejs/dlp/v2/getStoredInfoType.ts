@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+ * Gets a stored infoType. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
  */
 export function getStoredInfoType(args: GetStoredInfoTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetStoredInfoTypeResult> {
 
@@ -41,7 +41,7 @@ export interface GetStoredInfoTypeResult {
     readonly pendingVersions: outputs.dlp.v2.GooglePrivacyDlpV2StoredInfoTypeVersionResponse[];
 }
 /**
- * Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+ * Gets a stored infoType. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
  */
 export function getStoredInfoTypeOutput(args: GetStoredInfoTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStoredInfoTypeResult> {
     return pulumi.output(args).apply((a: any) => getStoredInfoType(a, opts))

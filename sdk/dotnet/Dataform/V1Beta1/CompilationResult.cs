@@ -55,7 +55,7 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The name of the release config to compile. The release config's 'current_compilation_result' field will be updated to this compilation result. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
+        /// Immutable. The name of the release config to compile. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
         /// </summary>
         [Output("releaseConfig")]
         public Output<string> ReleaseConfig { get; private set; } = null!;
@@ -145,7 +145,7 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Immutable. The name of the release config to compile. The release config's 'current_compilation_result' field will be updated to this compilation result. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
+        /// Immutable. The name of the release config to compile. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
         /// </summary>
         [Input("releaseConfig")]
         public Input<string>? ReleaseConfig { get; set; }

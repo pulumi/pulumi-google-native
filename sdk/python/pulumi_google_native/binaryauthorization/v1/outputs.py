@@ -25,6 +25,10 @@ __all__ = [
     'PkixPublicKeyResponse',
     'PkixPublicKeySetResponse',
     'ScopeResponse',
+    'SigstoreAuthorityResponse',
+    'SigstorePublicKeyResponse',
+    'SigstorePublicKeySetResponse',
+    'SigstoreSignatureCheckResponse',
     'SimpleSigningAttestationCheckResponse',
     'SlsaCheckResponse',
     'TrustedDirectoryCheckResponse',
@@ -111,7 +115,7 @@ class AttestationSourceResponse(dict):
                  container_analysis_attestation_projects: Sequence[str]):
         """
         Specifies the locations for fetching the provenance attestations.
-        :param Sequence[str] container_analysis_attestation_projects: The IDs of the GCP projects storing the SLSA attestations as Container Analysis Occurrences.
+        :param Sequence[str] container_analysis_attestation_projects: The IDs of the Google Cloud projects that store the SLSA attestations as Container Analysis Occurrences, in the format `projects/[PROJECT_ID]`. Maximum number of `container_analysis_attestation_projects` allowed in each `AttestationSource` is 10.
         """
         pulumi.set(__self__, "container_analysis_attestation_projects", container_analysis_attestation_projects)
 
@@ -119,7 +123,7 @@ class AttestationSourceResponse(dict):
     @pulumi.getter(name="containerAnalysisAttestationProjects")
     def container_analysis_attestation_projects(self) -> Sequence[str]:
         """
-        The IDs of the GCP projects storing the SLSA attestations as Container Analysis Occurrences.
+        The IDs of the Google Cloud projects that store the SLSA attestations as Container Analysis Occurrences, in the format `projects/[PROJECT_ID]`. Maximum number of `container_analysis_attestation_projects` allowed in each `AttestationSource` is 10.
         """
         return pulumi.get(self, "container_analysis_attestation_projects")
 
@@ -199,8 +203,8 @@ class BindingResponse(dict):
         """
         Associates `members`, or principals, with a `role`.
         :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "members", members)
@@ -218,7 +222,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         """
         return pulumi.get(self, "members")
 
@@ -226,7 +230,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         return pulumi.get(self, "role")
 
@@ -247,6 +251,8 @@ class CheckResponse(dict):
             suggest = "image_allowlist"
         elif key == "imageFreshnessCheck":
             suggest = "image_freshness_check"
+        elif key == "sigstoreSignatureCheck":
+            suggest = "sigstore_signature_check"
         elif key == "simpleSigningAttestationCheck":
             suggest = "simple_signing_attestation_check"
         elif key == "slsaCheck":
@@ -272,6 +278,7 @@ class CheckResponse(dict):
                  display_name: str,
                  image_allowlist: 'outputs.ImageAllowlistResponse',
                  image_freshness_check: 'outputs.ImageFreshnessCheckResponse',
+                 sigstore_signature_check: 'outputs.SigstoreSignatureCheckResponse',
                  simple_signing_attestation_check: 'outputs.SimpleSigningAttestationCheckResponse',
                  slsa_check: 'outputs.SlsaCheckResponse',
                  trusted_directory_check: 'outputs.TrustedDirectoryCheckResponse',
@@ -282,6 +289,7 @@ class CheckResponse(dict):
         :param str display_name: Optional. A user-provided name for this check. This field has no effect on the policy evaluation behavior except to improve readability of messages in evaluation results.
         :param 'ImageAllowlistResponse' image_allowlist: Optional. Images exempted from this check. If any of the patterns match the image url, the check will not be evaluated.
         :param 'ImageFreshnessCheckResponse' image_freshness_check: Optional. Require that an image is no older than a configured expiration time. Image age is determined by its upload time.
+        :param 'SigstoreSignatureCheckResponse' sigstore_signature_check: Optional. Require that an image was signed by Cosign with a trusted key. This check requires that both the image and signature are stored in Artifact Registry.
         :param 'SimpleSigningAttestationCheckResponse' simple_signing_attestation_check: Optional. Require a SimpleSigning-type attestation for every image in the deployment.
         :param 'SlsaCheckResponse' slsa_check: Optional. Require that an image was built by a trusted builder (such as Google Cloud Build), meets requirements for Supply chain Levels for Software Artifacts (SLSA), and was built from a trusted source code repostitory.
         :param 'TrustedDirectoryCheckResponse' trusted_directory_check: Optional. Require that an image lives in a trusted directory.
@@ -291,6 +299,7 @@ class CheckResponse(dict):
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "image_allowlist", image_allowlist)
         pulumi.set(__self__, "image_freshness_check", image_freshness_check)
+        pulumi.set(__self__, "sigstore_signature_check", sigstore_signature_check)
         pulumi.set(__self__, "simple_signing_attestation_check", simple_signing_attestation_check)
         pulumi.set(__self__, "slsa_check", slsa_check)
         pulumi.set(__self__, "trusted_directory_check", trusted_directory_check)
@@ -327,6 +336,14 @@ class CheckResponse(dict):
         Optional. Require that an image is no older than a configured expiration time. Image age is determined by its upload time.
         """
         return pulumi.get(self, "image_freshness_check")
+
+    @property
+    @pulumi.getter(name="sigstoreSignatureCheck")
+    def sigstore_signature_check(self) -> 'outputs.SigstoreSignatureCheckResponse':
+        """
+        Optional. Require that an image was signed by Cosign with a trusted key. This check requires that both the image and signature are stored in Artifact Registry.
+        """
+        return pulumi.get(self, "sigstore_signature_check")
 
     @property
     @pulumi.getter(name="simpleSigningAttestationCheck")
@@ -777,6 +794,175 @@ class ScopeResponse(dict):
 
 
 @pulumi.output_type
+class SigstoreAuthorityResponse(dict):
+    """
+    A Sigstore authority, used to verify signatures that are created by Sigstore. An authority is analogous to an attestation authenticator, verifying that a signature is valid or invalid.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "publicKeySet":
+            suggest = "public_key_set"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SigstoreAuthorityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SigstoreAuthorityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SigstoreAuthorityResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: str,
+                 public_key_set: 'outputs.SigstorePublicKeySetResponse'):
+        """
+        A Sigstore authority, used to verify signatures that are created by Sigstore. An authority is analogous to an attestation authenticator, verifying that a signature is valid or invalid.
+        :param str display_name: Optional. A user-provided name for this `SigstoreAuthority`. This field has no effect on the policy evaluation behavior except to improve readability of messages in evaluation results.
+        :param 'SigstorePublicKeySetResponse' public_key_set: A simple set of public keys. A signature is considered valid if any keys in the set validate the signature.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "public_key_set", public_key_set)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Optional. A user-provided name for this `SigstoreAuthority`. This field has no effect on the policy evaluation behavior except to improve readability of messages in evaluation results.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="publicKeySet")
+    def public_key_set(self) -> 'outputs.SigstorePublicKeySetResponse':
+        """
+        A simple set of public keys. A signature is considered valid if any keys in the set validate the signature.
+        """
+        return pulumi.get(self, "public_key_set")
+
+
+@pulumi.output_type
+class SigstorePublicKeyResponse(dict):
+    """
+    A Sigstore public key. `SigstorePublicKey` is the public key material used to authenticate Sigstore signatures.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicKeyPem":
+            suggest = "public_key_pem"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SigstorePublicKeyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SigstorePublicKeyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SigstorePublicKeyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 public_key_pem: str):
+        """
+        A Sigstore public key. `SigstorePublicKey` is the public key material used to authenticate Sigstore signatures.
+        :param str public_key_pem: The public key material in PEM format.
+        """
+        pulumi.set(__self__, "public_key_pem", public_key_pem)
+
+    @property
+    @pulumi.getter(name="publicKeyPem")
+    def public_key_pem(self) -> str:
+        """
+        The public key material in PEM format.
+        """
+        return pulumi.get(self, "public_key_pem")
+
+
+@pulumi.output_type
+class SigstorePublicKeySetResponse(dict):
+    """
+    A bundle of Sigstore public keys, used to verify Sigstore signatures. A signature is authenticated by a `SigstorePublicKeySet` if any of the keys verify it.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicKeys":
+            suggest = "public_keys"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SigstorePublicKeySetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SigstorePublicKeySetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SigstorePublicKeySetResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 public_keys: Sequence['outputs.SigstorePublicKeyResponse']):
+        """
+        A bundle of Sigstore public keys, used to verify Sigstore signatures. A signature is authenticated by a `SigstorePublicKeySet` if any of the keys verify it.
+        :param Sequence['SigstorePublicKeyResponse'] public_keys: `public_keys` must have at least one entry.
+        """
+        pulumi.set(__self__, "public_keys", public_keys)
+
+    @property
+    @pulumi.getter(name="publicKeys")
+    def public_keys(self) -> Sequence['outputs.SigstorePublicKeyResponse']:
+        """
+        `public_keys` must have at least one entry.
+        """
+        return pulumi.get(self, "public_keys")
+
+
+@pulumi.output_type
+class SigstoreSignatureCheckResponse(dict):
+    """
+    A Sigstore signature check, which verifies the Sigstore signature associated with an image.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sigstoreAuthorities":
+            suggest = "sigstore_authorities"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SigstoreSignatureCheckResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SigstoreSignatureCheckResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SigstoreSignatureCheckResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 sigstore_authorities: Sequence['outputs.SigstoreAuthorityResponse']):
+        """
+        A Sigstore signature check, which verifies the Sigstore signature associated with an image.
+        :param Sequence['SigstoreAuthorityResponse'] sigstore_authorities: The authorities required by this check to verify the signature. A signature only needs to be verified by one authority to pass the check.
+        """
+        pulumi.set(__self__, "sigstore_authorities", sigstore_authorities)
+
+    @property
+    @pulumi.getter(name="sigstoreAuthorities")
+    def sigstore_authorities(self) -> Sequence['outputs.SigstoreAuthorityResponse']:
+        """
+        The authorities required by this check to verify the signature. A signature only needs to be verified by one authority to pass the check.
+        """
+        return pulumi.get(self, "sigstore_authorities")
+
+
+@pulumi.output_type
 class SimpleSigningAttestationCheckResponse(dict):
     """
     Require a signed [DSSE](https://github.com/secure-systems-lab/dsse) attestation with type SimpleSigning.
@@ -806,7 +992,7 @@ class SimpleSigningAttestationCheckResponse(dict):
         """
         Require a signed [DSSE](https://github.com/secure-systems-lab/dsse) attestation with type SimpleSigning.
         :param Sequence['AttestationAuthenticatorResponse'] attestation_authenticators: The authenticators required by this check to verify an attestation. Typically this is one or more PKIX public keys for signature verification. Only one authenticator needs to consider an attestation verified in order for an attestation to be considered fully authenticated. In otherwords, this list of authenticators is an "OR" of the authenticator results. At least one authenticator is required.
-        :param Sequence[str] container_analysis_attestation_projects: Optional. The projects where attestations are stored as Container Analysis Occurrences. Only one attestation needs to successfully verify an image for this check to pass, so a single verified attestation found in any of `container_analysis_attestation_projects` is sufficient for the check to pass. When fetching Occurrences from Container Analysis, only 'AttestationOccurrence' kinds are considered. In the future, additional Occurrence kinds may be added to the query.
+        :param Sequence[str] container_analysis_attestation_projects: Optional. The projects where attestations are stored as Container Analysis Occurrences, in the format `projects/[PROJECT_ID]`. Only one attestation needs to successfully verify an image for this check to pass, so a single verified attestation found in any of `container_analysis_attestation_projects` is sufficient for the check to pass. When fetching Occurrences from Container Analysis, only `AttestationOccurrence` kinds are considered. In the future, additional Occurrence kinds may be added to the query. Maximum number of `container_analysis_attestation_projects` allowed in each `SimpleSigningAttestationCheck` is 10.
         """
         pulumi.set(__self__, "attestation_authenticators", attestation_authenticators)
         pulumi.set(__self__, "container_analysis_attestation_projects", container_analysis_attestation_projects)
@@ -823,7 +1009,7 @@ class SimpleSigningAttestationCheckResponse(dict):
     @pulumi.getter(name="containerAnalysisAttestationProjects")
     def container_analysis_attestation_projects(self) -> Sequence[str]:
         """
-        Optional. The projects where attestations are stored as Container Analysis Occurrences. Only one attestation needs to successfully verify an image for this check to pass, so a single verified attestation found in any of `container_analysis_attestation_projects` is sufficient for the check to pass. When fetching Occurrences from Container Analysis, only 'AttestationOccurrence' kinds are considered. In the future, additional Occurrence kinds may be added to the query.
+        Optional. The projects where attestations are stored as Container Analysis Occurrences, in the format `projects/[PROJECT_ID]`. Only one attestation needs to successfully verify an image for this check to pass, so a single verified attestation found in any of `container_analysis_attestation_projects` is sufficient for the check to pass. When fetching Occurrences from Container Analysis, only `AttestationOccurrence` kinds are considered. In the future, additional Occurrence kinds may be added to the query. Maximum number of `container_analysis_attestation_projects` allowed in each `SimpleSigningAttestationCheck` is 10.
         """
         return pulumi.get(self, "container_analysis_attestation_projects")
 
@@ -1072,7 +1258,7 @@ class VulnerabilityCheckResponse(dict):
         An image vulnerability check, which rejects images that violate the configured vulnerability rules.
         :param Sequence[str] allowed_cves: Optional. A list of specific CVEs to ignore even if the vulnerability level violates `maximumUnfixableSeverity` or `maximumFixableSeverity`. CVEs are listed in the format of Container Analysis note id. For example: - CVE-2021-20305 - CVE-2020-10543 The CVEs are applicable regardless of note provider project, e.g., an entry of `CVE-2021-20305` will allow vulnerabilities with a note name of either `projects/goog-vulnz/notes/CVE-2021-20305` or `projects/CUSTOM-PROJECT/notes/CVE-2021-20305`.
         :param Sequence[str] blocked_cves: Optional. A list of specific CVEs to always raise warnings about even if the vulnerability level meets `maximumUnfixableSeverity` or `maximumFixableSeverity`. CVEs are listed in the format of Container Analysis note id. For example: - CVE-2021-20305 - CVE-2020-10543 The CVEs are applicable regardless of note provider project, e.g., an entry of `CVE-2021-20305` will block vulnerabilities with a note name of either `projects/goog-vulnz/notes/CVE-2021-20305` or `projects/CUSTOM-PROJECT/notes/CVE-2021-20305`.
-        :param Sequence[str] container_analysis_vulnerability_projects: Optional. The projects where vulnerabilities are stored as Container Analysis Occurrences. Each project is expressed in the resource format of `projects/[PROJECT_ID]`, e.g., `projects/my-gcp-project`. An attempt will be made for each project to fetch vulnerabilities, and all valid vulnerabilities will be used to check against the vulnerability policy. If no valid scan is found in all projects configured here, an error will be returned for the check.
+        :param Sequence[str] container_analysis_vulnerability_projects: Optional. The projects where vulnerabilities are stored as Container Analysis Occurrences. Each project is expressed in the resource format of `projects/[PROJECT_ID]`, e.g., `projects/my-gcp-project`. An attempt will be made for each project to fetch vulnerabilities, and all valid vulnerabilities will be used to check against the vulnerability policy. If no valid scan is found in all projects configured here, an error will be returned for the check. Maximum number of `container_analysis_vulnerability_projects` allowed in each `VulnerabilityCheck` is 10.
         :param str maximum_fixable_severity: The threshold for severity for which a fix is currently available. This field is required and must be set.
         :param str maximum_unfixable_severity: The threshold for severity for which a fix isn't currently available. This field is required and must be set.
         """
@@ -1102,7 +1288,7 @@ class VulnerabilityCheckResponse(dict):
     @pulumi.getter(name="containerAnalysisVulnerabilityProjects")
     def container_analysis_vulnerability_projects(self) -> Sequence[str]:
         """
-        Optional. The projects where vulnerabilities are stored as Container Analysis Occurrences. Each project is expressed in the resource format of `projects/[PROJECT_ID]`, e.g., `projects/my-gcp-project`. An attempt will be made for each project to fetch vulnerabilities, and all valid vulnerabilities will be used to check against the vulnerability policy. If no valid scan is found in all projects configured here, an error will be returned for the check.
+        Optional. The projects where vulnerabilities are stored as Container Analysis Occurrences. Each project is expressed in the resource format of `projects/[PROJECT_ID]`, e.g., `projects/my-gcp-project`. An attempt will be made for each project to fetch vulnerabilities, and all valid vulnerabilities will be used to check against the vulnerability policy. If no valid scan is found in all projects configured here, an error will be returned for the check. Maximum number of `container_analysis_vulnerability_projects` allowed in each `VulnerabilityCheck` is 10.
         """
         return pulumi.get(self, "container_analysis_vulnerability_projects")
 

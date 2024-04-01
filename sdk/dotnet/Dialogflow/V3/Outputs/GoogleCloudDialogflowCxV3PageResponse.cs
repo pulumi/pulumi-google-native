@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowCxV3AdvancedSettingsResponse AdvancedSettings;
         /// <summary>
+        /// The description of the page. The maximum length is 500 characters.
+        /// </summary>
+        public readonly string Description;
+        /// <summary>
         /// The human-readable name of the page, unique within the flow.
         /// </summary>
         public readonly string DisplayName;
@@ -57,6 +61,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
         private GoogleCloudDialogflowCxV3PageResponse(
             Outputs.GoogleCloudDialogflowCxV3AdvancedSettingsResponse advancedSettings,
 
+            string description,
+
             string displayName,
 
             Outputs.GoogleCloudDialogflowCxV3FulfillmentResponse entryFulfillment,
@@ -74,6 +80,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
             ImmutableArray<Outputs.GoogleCloudDialogflowCxV3TransitionRouteResponse> transitionRoutes)
         {
             AdvancedSettings = advancedSettings;
+            Description = description;
             DisplayName = displayName;
             EntryFulfillment = entryFulfillment;
             EventHandlers = eventHandlers;

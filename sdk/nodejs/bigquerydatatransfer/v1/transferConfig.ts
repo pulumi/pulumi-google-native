@@ -59,7 +59,7 @@ export class TransferConfig extends pulumi.CustomResource {
      */
     public readonly destinationDatasetId!: pulumi.Output<string>;
     /**
-     * Is this config disabled. When set to true, no runs are scheduled for a given transfer.
+     * Is this config disabled. When set to true, no runs will be scheduled for this transfer config.
      */
     public readonly disabled!: pulumi.Output<boolean>;
     /**
@@ -76,7 +76,7 @@ export class TransferConfig extends pulumi.CustomResource {
     public readonly encryptionConfiguration!: pulumi.Output<outputs.bigquerydatatransfer.v1.EncryptionConfigurationResponse>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+     * Identifier. The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -84,7 +84,7 @@ export class TransferConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly nextRunTime!: pulumi.Output<string>;
     /**
-     * Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
+     * Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project_id}/topics/{topic_id}`
      */
     public readonly notificationPubsubTopic!: pulumi.Output<string>;
     /**
@@ -214,7 +214,7 @@ export interface TransferConfigArgs {
      */
     destinationDatasetId?: pulumi.Input<string>;
     /**
-     * Is this config disabled. When set to true, no runs are scheduled for a given transfer.
+     * Is this config disabled. When set to true, no runs will be scheduled for this transfer config.
      */
     disabled?: pulumi.Input<boolean>;
     /**
@@ -231,11 +231,11 @@ export interface TransferConfigArgs {
     encryptionConfiguration?: pulumi.Input<inputs.bigquerydatatransfer.v1.EncryptionConfigurationArgs>;
     location?: pulumi.Input<string>;
     /**
-     * The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+     * Identifier. The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
      */
     name?: pulumi.Input<string>;
     /**
-     * Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
+     * Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project_id}/topics/{topic_id}`
      */
     notificationPubsubTopic?: pulumi.Input<string>;
     /**

@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     public sealed class BlueGreenSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Autoscaled policy for cluster autoscaler enabled blue-green upgrade.
+        /// </summary>
+        [Input("autoscaledRolloutPolicy")]
+        public Input<Inputs.AutoscaledRolloutPolicyArgs>? AutoscaledRolloutPolicy { get; set; }
+
+        /// <summary>
         /// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
         /// </summary>
         [Input("nodePoolSoakDuration")]

@@ -38,7 +38,7 @@ export interface GetWorkflowConfigResult {
      */
     readonly invocationConfig: outputs.dataform.v1beta1.InvocationConfigResponse;
     /**
-     * The workflow config's name.
+     * Identifier. The workflow config's name.
      */
     readonly name: string;
     /**

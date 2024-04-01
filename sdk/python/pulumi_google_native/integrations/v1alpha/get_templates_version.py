@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTemplatesVersionResult:
-    def __init__(__self__, create_time=None, database_persistence_policy=None, description=None, error_catcher_configs=None, last_modifier_email=None, name=None, parent_integration_version_id=None, snapshot_number=None, status=None, task_configs=None, teardown=None, template_parameters=None, trigger_configs=None, update_time=None, user_label=None):
+    def __init__(__self__, create_time=None, database_persistence_policy=None, description=None, enable_variable_masking=None, error_catcher_configs=None, last_modifier_email=None, name=None, parent_integration_version_id=None, snapshot_number=None, status=None, task_configs=None, teardown=None, template_parameters=None, trigger_configs=None, update_time=None, user_label=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -29,6 +29,9 @@ class GetTemplatesVersionResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if enable_variable_masking and not isinstance(enable_variable_masking, bool):
+            raise TypeError("Expected argument 'enable_variable_masking' to be a bool")
+        pulumi.set(__self__, "enable_variable_masking", enable_variable_masking)
         if error_catcher_configs and not isinstance(error_catcher_configs, list):
             raise TypeError("Expected argument 'error_catcher_configs' to be a list")
         pulumi.set(__self__, "error_catcher_configs", error_catcher_configs)
@@ -89,6 +92,14 @@ class GetTemplatesVersionResult:
         Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enableVariableMasking")
+    def enable_variable_masking(self) -> bool:
+        """
+        Optional. True if variable masking feature should be turned on for generated workflows
+        """
+        return pulumi.get(self, "enable_variable_masking")
 
     @property
     @pulumi.getter(name="errorCatcherConfigs")
@@ -196,6 +207,7 @@ class AwaitableGetTemplatesVersionResult(GetTemplatesVersionResult):
             create_time=self.create_time,
             database_persistence_policy=self.database_persistence_policy,
             description=self.description,
+            enable_variable_masking=self.enable_variable_masking,
             error_catcher_configs=self.error_catcher_configs,
             last_modifier_email=self.last_modifier_email,
             name=self.name,
@@ -232,6 +244,7 @@ def get_templates_version(integrationtemplate_id: Optional[str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         database_persistence_policy=pulumi.get(__ret__, 'database_persistence_policy'),
         description=pulumi.get(__ret__, 'description'),
+        enable_variable_masking=pulumi.get(__ret__, 'enable_variable_masking'),
         error_catcher_configs=pulumi.get(__ret__, 'error_catcher_configs'),
         last_modifier_email=pulumi.get(__ret__, 'last_modifier_email'),
         name=pulumi.get(__ret__, 'name'),

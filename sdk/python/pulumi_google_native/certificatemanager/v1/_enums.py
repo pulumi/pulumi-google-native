@@ -8,6 +8,7 @@ __all__ = [
     'CertificateIssuanceConfigKeyAlgorithm',
     'CertificateMapEntryMatcher',
     'CertificateScope',
+    'DnsAuthorizationType',
 ]
 
 
@@ -58,4 +59,22 @@ class CertificateScope(str, Enum):
     ALL_REGIONS = "ALL_REGIONS"
     """
     Certificates with ALL_REGIONS scope are served from all Google Cloud regions. See https://cloud.google.com/compute/docs/regions-zones.
+    """
+
+
+class DnsAuthorizationType(str, Enum):
+    """
+    Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: - in location global: FIXED_RECORD.
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """
+    Type is unspecified.
+    """
+    FIXED_RECORD = "FIXED_RECORD"
+    """
+    FIXED_RECORD DNS authorization uses DNS-01 validation method.
+    """
+    PER_PROJECT_RECORD = "PER_PROJECT_RECORD"
+    """
+    PER_PROJECT_RECORD DNS authorization allows for independent management of Google-managed certificates with DNS authorization across multiple projects.
     """

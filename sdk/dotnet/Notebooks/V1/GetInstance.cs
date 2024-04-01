@@ -136,7 +136,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         public readonly string MachineType;
         /// <summary>
-        /// Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
+        /// Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=BUCKET"`.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Metadata;
         /// <summary>

@@ -17,19 +17,19 @@ namespace Pulumi.GoogleNative.BigQuery.V2
     public partial class Table : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// [Optional] Specifies the configuration of a BigLake managed table.
+        /// Optional. Specifies the configuration of a BigLake managed table.
         /// </summary>
         [Output("biglakeConfiguration")]
         public Output<Outputs.BigLakeConfigurationResponse> BiglakeConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// Clone definition.
+        /// Contains information about the clone. This value is set via the clone operation.
         /// </summary>
         [Output("cloneDefinition")]
         public Output<Outputs.CloneDefinitionResponse> CloneDefinition { get; private set; } = null!;
 
         /// <summary>
-        /// [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
+        /// Clustering specification for the table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
         /// </summary>
         [Output("clustering")]
         public Output<Outputs.ClusteringResponse> Clustering { get; private set; } = null!;
@@ -44,19 +44,19 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<string> DatasetId { get; private set; } = null!;
 
         /// <summary>
-        /// The default collation of the table.
+        /// Optional. Defines the default collation specification of new STRING fields in the table. During table creation or update, if a STRING field is added to this table without explicit collation specified, then the table inherits the table default collation. A change to this field affects only fields added afterwards, and does not alter the existing fields. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * '': empty string. Default to case-sensitive behavior.
         /// </summary>
         [Output("defaultCollation")]
         public Output<string> DefaultCollation { get; private set; } = null!;
 
         /// <summary>
-        /// The default rounding mode of the table.
+        /// Optional. Defines the default rounding mode specification of new decimal fields (NUMERIC OR BIGNUMERIC) in the table. During table creation or update, if a decimal field is added to this table without an explicit rounding mode specified, then the field inherits the table default rounding mode. Changing this field doesn't affect existing fields.
         /// </summary>
         [Output("defaultRoundingMode")]
         public Output<string> DefaultRoundingMode { get; private set; } = null!;
 
         /// <summary>
-        /// [Optional] A user-friendly description of this table.
+        /// Optional. A user-friendly description of this table.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -68,31 +68,31 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<Outputs.EncryptionConfigurationResponse> EncryptionConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// A hash of the table metadata. Used to ensure there were no concurrent modifications to the resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
+        /// A hash of this resource.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// [Optional] The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
+        /// Optional. The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
         /// </summary>
         [Output("expirationTime")]
         public Output<string> ExpirationTime { get; private set; } = null!;
 
         /// <summary>
-        /// [Optional] Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
+        /// Optional. Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
         /// </summary>
         [Output("externalDataConfiguration")]
         public Output<Outputs.ExternalDataConfigurationResponse> ExternalDataConfiguration { get; private set; } = null!;
 
         /// <summary>
-        /// [Optional] A descriptive name for this table.
+        /// Optional. A descriptive name for this table.
         /// </summary>
         [Output("friendlyName")]
         public Output<string> FriendlyName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the resource.
+        /// The type of resource ID.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -116,19 +116,25 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// [Optional] Materialized view definition.
+        /// Optional. The materialized view definition.
         /// </summary>
         [Output("materializedView")]
         public Output<Outputs.MaterializedViewDefinitionResponse> MaterializedView { get; private set; } = null!;
 
         /// <summary>
-        /// [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
+        /// The materialized view status.
+        /// </summary>
+        [Output("materializedViewStatus")]
+        public Output<Outputs.MaterializedViewStatusResponse> MaterializedViewStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
         /// </summary>
         [Output("maxStaleness")]
         public Output<string> MaxStaleness { get; private set; } = null!;
 
         /// <summary>
-        /// [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
+        /// Deprecated.
         /// </summary>
         [Output("model")]
         public Output<Outputs.ModelDefinitionResponse> Model { get; private set; } = null!;
@@ -146,13 +152,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<string> NumActivePhysicalBytes { get; private set; } = null!;
 
         /// <summary>
-        /// The size of this table in bytes, excluding any data in the streaming buffer.
+        /// The size of this table in logical bytes, excluding any data in the streaming buffer.
         /// </summary>
         [Output("numBytes")]
         public Output<string> NumBytes { get; private set; } = null!;
 
         /// <summary>
-        /// The number of bytes in the table that are considered "long-term storage".
+        /// The number of logical bytes in the table that are considered "long-term storage".
         /// </summary>
         [Output("numLongTermBytes")]
         public Output<string> NumLongTermBytes { get; private set; } = null!;
@@ -176,7 +182,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<string> NumPartitions { get; private set; } = null!;
 
         /// <summary>
-        /// [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
+        /// The physical size of this table in bytes. This includes storage used for time travel.
         /// </summary>
         [Output("numPhysicalBytes")]
         public Output<string> NumPhysicalBytes { get; private set; } = null!;
@@ -205,17 +211,29 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Output("numTotalPhysicalBytes")]
         public Output<string> NumTotalPhysicalBytes { get; private set; } = null!;
 
+        /// <summary>
+        /// The partition information for all table formats, including managed partitioned tables, hive partitioned tables, and iceberg partitioned tables.
+        /// </summary>
+        [Output("partitionDefinition")]
+        public Output<Outputs.PartitioningDefinitionResponse> PartitionDefinition { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+        /// If specified, configures range partitioning for this table.
         /// </summary>
         [Output("rangePartitioning")]
         public Output<Outputs.RangePartitioningResponse> RangePartitioning { get; private set; } = null!;
 
         /// <summary>
-        /// [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
+        /// Optional. Output only. Table references of all replicas currently active on the table.
+        /// </summary>
+        [Output("replicas")]
+        public Output<ImmutableArray<Outputs.TableReferenceResponse>> Replicas { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
         /// </summary>
         [Output("requirePartitionFilter")]
         public Output<bool> RequirePartitionFilter { get; private set; } = null!;
@@ -227,7 +245,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<ImmutableDictionary<string, string>> ResourceTags { get; private set; } = null!;
 
         /// <summary>
-        /// [Optional] Describes the schema of this table.
+        /// Optional. Describes the schema of this table.
         /// </summary>
         [Output("schema")]
         public Output<Outputs.TableSchemaResponse> Schema { get; private set; } = null!;
@@ -239,7 +257,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// Snapshot definition.
+        /// Contains information about the snapshot. This value is set via snapshot creation.
         /// </summary>
         [Output("snapshotDefinition")]
         public Output<Outputs.SnapshotDefinitionResponse> SnapshotDefinition { get; private set; } = null!;
@@ -251,31 +269,37 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<Outputs.StreamingbufferResponse> StreamingBuffer { get; private set; } = null!;
 
         /// <summary>
-        /// [Optional] The table constraints on the table.
+        /// Optional. Tables Primary Key and Foreign Key information
         /// </summary>
         [Output("tableConstraints")]
         public Output<Outputs.TableConstraintsResponse> TableConstraints { get; private set; } = null!;
 
         /// <summary>
-        /// [Required] Reference describing the ID of this table.
+        /// Reference describing the ID of this table.
         /// </summary>
         [Output("tableReference")]
         public Output<Outputs.TableReferenceResponse> TableReference { get; private set; } = null!;
 
         /// <summary>
-        /// Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+        /// Optional. Table replication info for table created `AS REPLICA` DDL like: `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`
+        /// </summary>
+        [Output("tableReplicationInfo")]
+        public Output<Outputs.TableReplicationInfoResponse> TableReplicationInfo { get; private set; } = null!;
+
+        /// <summary>
+        /// If specified, configures time-based partitioning for this table.
         /// </summary>
         [Output("timePartitioning")]
         public Output<Outputs.TimePartitioningResponse> TimePartitioning { get; private set; } = null!;
 
         /// <summary>
-        /// Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
+        /// Describes the table type. The following values are supported: * `TABLE`: A normal BigQuery table. * `VIEW`: A virtual table defined by a SQL query. * `EXTERNAL`: A table that references data stored in an external storage system, such as Google Cloud Storage. * `MATERIALIZED_VIEW`: A precomputed view defined by a SQL query. * `SNAPSHOT`: An immutable BigQuery table that preserves the contents of a base table at a particular time. See additional information on [table snapshots](/bigquery/docs/table-snapshots-intro). The default value is `TABLE`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// [Optional] The view definition.
+        /// Optional. The view definition.
         /// </summary>
         [Output("view")]
         public Output<Outputs.ViewDefinitionResponse> View { get; private set; } = null!;
@@ -331,13 +355,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2
     public sealed class TableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Optional] Specifies the configuration of a BigLake managed table.
+        /// Optional. Specifies the configuration of a BigLake managed table.
         /// </summary>
         [Input("biglakeConfiguration")]
         public Input<Inputs.BigLakeConfigurationArgs>? BiglakeConfiguration { get; set; }
 
         /// <summary>
-        /// [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
+        /// Clustering specification for the table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
         /// </summary>
         [Input("clustering")]
         public Input<Inputs.ClusteringArgs>? Clustering { get; set; }
@@ -346,7 +370,19 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Input<string> DatasetId { get; set; } = null!;
 
         /// <summary>
-        /// [Optional] A user-friendly description of this table.
+        /// Optional. Defines the default collation specification of new STRING fields in the table. During table creation or update, if a STRING field is added to this table without explicit collation specified, then the table inherits the table default collation. A change to this field affects only fields added afterwards, and does not alter the existing fields. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * '': empty string. Default to case-sensitive behavior.
+        /// </summary>
+        [Input("defaultCollation")]
+        public Input<string>? DefaultCollation { get; set; }
+
+        /// <summary>
+        /// Optional. Defines the default rounding mode specification of new decimal fields (NUMERIC OR BIGNUMERIC) in the table. During table creation or update, if a decimal field is added to this table without an explicit rounding mode specified, then the field inherits the table default rounding mode. Changing this field doesn't affect existing fields.
+        /// </summary>
+        [Input("defaultRoundingMode")]
+        public Input<Pulumi.GoogleNative.BigQuery.V2.TableDefaultRoundingMode>? DefaultRoundingMode { get; set; }
+
+        /// <summary>
+        /// Optional. A user-friendly description of this table.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -358,22 +394,28 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Input<Inputs.EncryptionConfigurationArgs>? EncryptionConfiguration { get; set; }
 
         /// <summary>
-        /// [Optional] The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
+        /// Optional. The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
         /// </summary>
         [Input("expirationTime")]
         public Input<string>? ExpirationTime { get; set; }
 
         /// <summary>
-        /// [Optional] Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
+        /// Optional. Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
         /// </summary>
         [Input("externalDataConfiguration")]
         public Input<Inputs.ExternalDataConfigurationArgs>? ExternalDataConfiguration { get; set; }
 
         /// <summary>
-        /// [Optional] A descriptive name for this table.
+        /// Optional. A descriptive name for this table.
         /// </summary>
         [Input("friendlyName")]
         public Input<string>? FriendlyName { get; set; }
+
+        /// <summary>
+        /// The type of resource ID.
+        /// </summary>
+        [Input("kind")]
+        public Input<string>? Kind { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -388,19 +430,19 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         }
 
         /// <summary>
-        /// [Optional] Materialized view definition.
+        /// Optional. The materialized view definition.
         /// </summary>
         [Input("materializedView")]
         public Input<Inputs.MaterializedViewDefinitionArgs>? MaterializedView { get; set; }
 
         /// <summary>
-        /// [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
+        /// Optional. The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
         /// </summary>
         [Input("maxStaleness")]
         public Input<string>? MaxStaleness { get; set; }
 
         /// <summary>
-        /// [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
+        /// Deprecated.
         /// </summary>
         [Input("model")]
         public Input<Inputs.ModelDefinitionArgs>? Model { get; set; }
@@ -409,13 +451,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+        /// If specified, configures range partitioning for this table.
         /// </summary>
         [Input("rangePartitioning")]
         public Input<Inputs.RangePartitioningArgs>? RangePartitioning { get; set; }
 
         /// <summary>
-        /// [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
+        /// Optional. If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
         /// </summary>
         [Input("requirePartitionFilter")]
         public Input<bool>? RequirePartitionFilter { get; set; }
@@ -433,31 +475,37 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         }
 
         /// <summary>
-        /// [Optional] Describes the schema of this table.
+        /// Optional. Describes the schema of this table.
         /// </summary>
         [Input("schema")]
         public Input<Inputs.TableSchemaArgs>? Schema { get; set; }
 
         /// <summary>
-        /// [Optional] The table constraints on the table.
+        /// Optional. Tables Primary Key and Foreign Key information
         /// </summary>
         [Input("tableConstraints")]
         public Input<Inputs.TableConstraintsArgs>? TableConstraints { get; set; }
 
         /// <summary>
-        /// [Required] Reference describing the ID of this table.
+        /// Reference describing the ID of this table.
         /// </summary>
-        [Input("tableReference")]
-        public Input<Inputs.TableReferenceArgs>? TableReference { get; set; }
+        [Input("tableReference", required: true)]
+        public Input<Inputs.TableReferenceArgs> TableReference { get; set; } = null!;
 
         /// <summary>
-        /// Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+        /// Optional. Table replication info for table created `AS REPLICA` DDL like: `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`
+        /// </summary>
+        [Input("tableReplicationInfo")]
+        public Input<Inputs.TableReplicationInfoArgs>? TableReplicationInfo { get; set; }
+
+        /// <summary>
+        /// If specified, configures time-based partitioning for this table.
         /// </summary>
         [Input("timePartitioning")]
         public Input<Inputs.TimePartitioningArgs>? TimePartitioning { get; set; }
 
         /// <summary>
-        /// [Optional] The view definition.
+        /// Optional. The view definition.
         /// </summary>
         [Input("view")]
         public Input<Inputs.ViewDefinitionArgs>? View { get; set; }

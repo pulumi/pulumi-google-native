@@ -76,6 +76,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly gceZone!: pulumi.Output<string>;
     /**
+     * Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+     */
+    public readonly geminiConfig!: pulumi.Output<outputs.alloydb.v1beta.GeminiInstanceConfigResponse>;
+    /**
      * Required. ID of the requesting object.
      */
     public readonly instanceId!: pulumi.Output<string>;
@@ -101,10 +105,26 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
+     * Optional. Instance level network configuration.
+     */
+    public readonly networkConfig!: pulumi.Output<outputs.alloydb.v1beta.InstanceNetworkConfigResponse>;
+    /**
      * List of available read-only VMs in this instance, including the standby for a PRIMARY instance.
      */
     public /*out*/ readonly nodes!: pulumi.Output<outputs.alloydb.v1beta.NodeResponse[]>;
+    /**
+     * Configuration for observability.
+     */
+    public readonly observabilityConfig!: pulumi.Output<outputs.alloydb.v1beta.ObservabilityInstanceConfigResponse>;
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Optional. The configuration for Private Service Connect (PSC) for the instance.
+     */
+    public readonly pscInstanceConfig!: pulumi.Output<outputs.alloydb.v1beta.PscInstanceConfigResponse>;
+    /**
+     * The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set. This is the connection endpoint for an end-user application.
+     */
+    public /*out*/ readonly publicIpAddress!: pulumi.Output<string>;
     /**
      * Configuration for query insights.
      */
@@ -121,6 +141,10 @@ export class Instance extends pulumi.CustomResource {
      * Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
+    /**
+     * Reserved for future use.
+     */
+    public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
     /**
      * The current serving state of the instance.
      */
@@ -170,12 +194,16 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["gceZone"] = args ? args.gceZone : undefined;
+            resourceInputs["geminiConfig"] = args ? args.geminiConfig : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["instanceType"] = args ? args.instanceType : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["machineConfig"] = args ? args.machineConfig : undefined;
+            resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
+            resourceInputs["observabilityConfig"] = args ? args.observabilityConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["pscInstanceConfig"] = args ? args.pscInstanceConfig : undefined;
             resourceInputs["queryInsightsConfig"] = args ? args.queryInsightsConfig : undefined;
             resourceInputs["readPoolConfig"] = args ? args.readPoolConfig : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
@@ -185,7 +213,9 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["ipAddress"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nodes"] = undefined /*out*/;
+            resourceInputs["publicIpAddress"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -201,6 +231,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["gceZone"] = undefined /*out*/;
+            resourceInputs["geminiConfig"] = undefined /*out*/;
             resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["instanceType"] = undefined /*out*/;
             resourceInputs["ipAddress"] = undefined /*out*/;
@@ -208,12 +239,17 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["machineConfig"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["networkConfig"] = undefined /*out*/;
             resourceInputs["nodes"] = undefined /*out*/;
+            resourceInputs["observabilityConfig"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["pscInstanceConfig"] = undefined /*out*/;
+            resourceInputs["publicIpAddress"] = undefined /*out*/;
             resourceInputs["queryInsightsConfig"] = undefined /*out*/;
             resourceInputs["readPoolConfig"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updatePolicy"] = undefined /*out*/;
@@ -261,6 +297,10 @@ export interface InstanceArgs {
      */
     gceZone?: pulumi.Input<string>;
     /**
+     * Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+     */
+    geminiConfig?: pulumi.Input<inputs.alloydb.v1beta.GeminiInstanceConfigArgs>;
+    /**
      * Required. ID of the requesting object.
      */
     instanceId: pulumi.Input<string>;
@@ -277,7 +317,19 @@ export interface InstanceArgs {
      * Configurations for the machines that host the underlying database engine.
      */
     machineConfig?: pulumi.Input<inputs.alloydb.v1beta.MachineConfigArgs>;
+    /**
+     * Optional. Instance level network configuration.
+     */
+    networkConfig?: pulumi.Input<inputs.alloydb.v1beta.InstanceNetworkConfigArgs>;
+    /**
+     * Configuration for observability.
+     */
+    observabilityConfig?: pulumi.Input<inputs.alloydb.v1beta.ObservabilityInstanceConfigArgs>;
     project?: pulumi.Input<string>;
+    /**
+     * Optional. The configuration for Private Service Connect (PSC) for the instance.
+     */
+    pscInstanceConfig?: pulumi.Input<inputs.alloydb.v1beta.PscInstanceConfigArgs>;
     /**
      * Configuration for query insights.
      */

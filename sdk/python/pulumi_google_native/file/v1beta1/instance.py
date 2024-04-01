@@ -37,7 +37,7 @@ class InstanceArgs:
         :param pulumi.Input[str] instance_id: Required. The ID of the instance to create. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
         :param pulumi.Input[str] capacity_gb: The storage capacity of the instance in gigabytes (GB = 1024^3 bytes). This capacity can be increased up to `max_capacity_gb` GB in multipliers of `capacity_step_size_gb` GB.
         :param pulumi.Input[str] description: The description of the instance (2048 characters or less).
-        :param pulumi.Input['DirectoryServicesConfigArgs'] directory_services: Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
+        :param pulumi.Input['DirectoryServicesConfigArgs'] directory_services: Optional. Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
         :param pulumi.Input[str] etag: Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
         :param pulumi.Input[Sequence[pulumi.Input['FileShareConfigArgs']]] file_shares: File system shares on the instance. For this version, only a single file share is supported.
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
@@ -118,7 +118,7 @@ class InstanceArgs:
     @pulumi.getter(name="directoryServices")
     def directory_services(self) -> Optional[pulumi.Input['DirectoryServicesConfigArgs']]:
         """
-        Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
+        Optional. Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
         """
         return pulumi.get(self, "directory_services")
 
@@ -282,7 +282,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] capacity_gb: The storage capacity of the instance in gigabytes (GB = 1024^3 bytes). This capacity can be increased up to `max_capacity_gb` GB in multipliers of `capacity_step_size_gb` GB.
         :param pulumi.Input[str] description: The description of the instance (2048 characters or less).
-        :param pulumi.Input[pulumi.InputType['DirectoryServicesConfigArgs']] directory_services: Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
+        :param pulumi.Input[pulumi.InputType['DirectoryServicesConfigArgs']] directory_services: Optional. Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
         :param pulumi.Input[str] etag: Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FileShareConfigArgs']]]] file_shares: File system shares on the instance. For this version, only a single file share is supported.
         :param pulumi.Input[str] instance_id: Required. The ID of the instance to create. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
@@ -455,7 +455,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="directoryServices")
     def directory_services(self) -> pulumi.Output['outputs.DirectoryServicesConfigResponse']:
         """
-        Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
+        Optional. Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
         """
         return pulumi.get(self, "directory_services")
 

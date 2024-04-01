@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Starts a new asynchronous job. Requires the Can View project role.
+ * Starts a new asynchronous job. This API has two different kinds of endpoint URIs, as this method supports a variety of use cases. * The *Metadata* URI is used for most interactions, as it accepts the job configuration directly. * The *Upload* URI is ONLY for the case when you're sending both a load job configuration and a data stream together. In this case, the Upload URI accepts the job configuration and the data as two distinct multipart MIME parts.
  * Auto-naming is currently not supported for this resource.
  */
 export class Job extends pulumi.CustomResource {
@@ -39,7 +39,7 @@ export class Job extends pulumi.CustomResource {
     }
 
     /**
-     * [Required] Describes the job configuration.
+     * Describes the job configuration.
      */
     public readonly configuration!: pulumi.Output<outputs.bigquery.v2.JobConfigurationResponse>;
     /**
@@ -49,18 +49,22 @@ export class Job extends pulumi.CustomResource {
     /**
      * If set, it provides the reason why a Job was created. If not set, it should be treated as the default: REQUESTED. This feature is not yet available. Jobs will always be created.
      */
-    public /*out*/ readonly jobCreationReason!: pulumi.Output<any>;
+    public /*out*/ readonly jobCreationReason!: pulumi.Output<outputs.bigquery.v2.JobCreationReasonResponse>;
     /**
-     * [Optional] Reference describing the unique-per-user name of the job.
+     * Optional. Reference describing the unique-per-user name of the job.
      */
     public readonly jobReference!: pulumi.Output<outputs.bigquery.v2.JobReferenceResponse>;
     /**
      * The type of the resource.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
+    /**
+     * [Full-projection-only] String representation of identity of requesting party. Populated for both first- and third-party identities. Only present for APIs that support third-party identities.
+     */
+    public /*out*/ readonly principalSubject!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * A URL that can be used to access this resource again.
+     * A URL that can be used to access the resource again.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
@@ -83,10 +87,13 @@ export class Job extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: JobArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: JobArgs, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.configuration === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'configuration'");
+            }
             resourceInputs["configuration"] = args ? args.configuration : undefined;
             resourceInputs["jobReference"] = args ? args.jobReference : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -94,6 +101,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["jobCreationReason"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["principalSubject"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["statistics"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -104,6 +112,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["jobCreationReason"] = undefined /*out*/;
             resourceInputs["jobReference"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["principalSubject"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["statistics"] = undefined /*out*/;
@@ -122,11 +131,11 @@ export class Job extends pulumi.CustomResource {
  */
 export interface JobArgs {
     /**
-     * [Required] Describes the job configuration.
+     * Describes the job configuration.
      */
-    configuration?: pulumi.Input<inputs.bigquery.v2.JobConfigurationArgs>;
+    configuration: pulumi.Input<inputs.bigquery.v2.JobConfigurationArgs>;
     /**
-     * [Optional] Reference describing the unique-per-user name of the job.
+     * Optional. Reference describing the unique-per-user name of the job.
      */
     jobReference?: pulumi.Input<inputs.bigquery.v2.JobReferenceArgs>;
     project?: pulumi.Input<string>;

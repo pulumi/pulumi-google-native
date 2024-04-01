@@ -120,6 +120,11 @@ export const getApicategory: typeof import("./getApicategory").getApicategory = 
 export const getApicategoryOutput: typeof import("./getApicategory").getApicategoryOutput = null as any;
 utilities.lazyLoad(exports, ["getApicategory","getApicategoryOutput"], () => require("./getApicategory"));
 
+export { GetApidocArgs, GetApidocResult, GetApidocOutputArgs } from "./getApidoc";
+export const getApidoc: typeof import("./getApidoc").getApidoc = null as any;
+export const getApidocOutput: typeof import("./getApidoc").getApidocOutput = null as any;
+utilities.lazyLoad(exports, ["getApidoc","getApidocOutput"], () => require("./getApidoc"));
+
 export { GetAppGroupAppArgs, GetAppGroupAppResult, GetAppGroupAppOutputArgs } from "./getAppGroupApp";
 export const getAppGroupApp: typeof import("./getAppGroupApp").getAppGroupApp = null as any;
 export const getAppGroupAppOutput: typeof import("./getAppGroupApp").getAppGroupAppOutput = null as any;

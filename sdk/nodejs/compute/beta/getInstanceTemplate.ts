@@ -16,12 +16,14 @@ export function getInstanceTemplate(args: GetInstanceTemplateArgs, opts?: pulumi
     return pulumi.runtime.invoke("google-native:compute/beta:getInstanceTemplate", {
         "instanceTemplate": args.instanceTemplate,
         "project": args.project,
+        "view": args.view,
     }, opts);
 }
 
 export interface GetInstanceTemplateArgs {
     instanceTemplate: string;
     project?: string;
+    view?: string;
 }
 
 export interface GetInstanceTemplateResult {
@@ -72,4 +74,5 @@ export function getInstanceTemplateOutput(args: GetInstanceTemplateOutputArgs, o
 export interface GetInstanceTemplateOutputArgs {
     instanceTemplate: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    view?: pulumi.Input<string>;
 }

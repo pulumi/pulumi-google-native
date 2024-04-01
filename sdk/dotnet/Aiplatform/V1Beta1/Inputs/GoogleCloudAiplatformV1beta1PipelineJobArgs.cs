@@ -57,6 +57,12 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Inputs
             set => _pipelineSpec = value;
         }
 
+        /// <summary>
+        /// Optional. Whether to do component level validations before job creation.
+        /// </summary>
+        [Input("preflightValidations")]
+        public Input<bool>? PreflightValidations { get; set; }
+
         [Input("reservedIpRanges")]
         private InputList<string>? _reservedIpRanges;
 

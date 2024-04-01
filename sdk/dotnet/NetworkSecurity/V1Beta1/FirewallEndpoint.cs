@@ -11,7 +11,6 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
 {
     /// <summary>
     /// Creates a new FirewallEndpoint in a given project and location.
-    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:networksecurity/v1beta1:FirewallEndpoint")]
     public partial class FirewallEndpoint : global::Pulumi.CustomResource
@@ -23,7 +22,13 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         public Output<ImmutableArray<string>> AssociatedNetworks { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Project to bill on endpoint uptime usage.
+        /// List of FirewallEndpointAssociations that are associated to this endpoint. An association will only appear in this list after traffic routing is fully configured.
+        /// </summary>
+        [Output("associations")]
+        public Output<ImmutableArray<Outputs.FirewallEndpointAssociationReferenceResponse>> Associations { get; private set; } = null!;
+
+        /// <summary>
+        /// Project to bill on endpoint uptime usage.
         /// </summary>
         [Output("billingProjectId")]
         public Output<string> BillingProjectId { get; private set; } = null!;
@@ -56,7 +61,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// name of resource
+        /// Immutable. Identifier. name of resource
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -140,10 +145,10 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
     public sealed class FirewallEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Project to bill on endpoint uptime usage.
+        /// Project to bill on endpoint uptime usage.
         /// </summary>
-        [Input("billingProjectId")]
-        public Input<string>? BillingProjectId { get; set; }
+        [Input("billingProjectId", required: true)]
+        public Input<string> BillingProjectId { get; set; } = null!;
 
         /// <summary>
         /// Optional. Description of the firewall endpoint. Max length 2048 characters.
@@ -171,6 +176,12 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
 
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Immutable. Identifier. name of resource
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;

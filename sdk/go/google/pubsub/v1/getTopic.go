@@ -28,6 +28,8 @@ type LookupTopicArgs struct {
 }
 
 type LookupTopicResult struct {
+	// Optional. Settings for ingestion from a data source into this topic.
+	IngestionDataSourceSettings IngestionDataSourceSettingsResponse `pulumi:"ingestionDataSourceSettings"`
 	// Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	KmsKeyName string `pulumi:"kmsKeyName"`
 	// Optional. See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
@@ -42,6 +44,8 @@ type LookupTopicResult struct {
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Optional. Settings for validating messages published against a schema.
 	SchemaSettings SchemaSettingsResponse `pulumi:"schemaSettings"`
+	// An output-only field indicating the state of the topic.
+	State string `pulumi:"state"`
 }
 
 func LookupTopicOutput(ctx *pulumi.Context, args LookupTopicOutputArgs, opts ...pulumi.InvokeOption) LookupTopicResultOutput {
@@ -80,6 +84,11 @@ func (o LookupTopicResultOutput) ToLookupTopicResultOutputWithContext(ctx contex
 	return o
 }
 
+// Optional. Settings for ingestion from a data source into this topic.
+func (o LookupTopicResultOutput) IngestionDataSourceSettings() IngestionDataSourceSettingsResponseOutput {
+	return o.ApplyT(func(v LookupTopicResult) IngestionDataSourceSettingsResponse { return v.IngestionDataSourceSettings }).(IngestionDataSourceSettingsResponseOutput)
+}
+
 // Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 func (o LookupTopicResultOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTopicResult) string { return v.KmsKeyName }).(pulumi.StringOutput)
@@ -113,6 +122,11 @@ func (o LookupTopicResultOutput) SatisfiesPzs() pulumi.BoolOutput {
 // Optional. Settings for validating messages published against a schema.
 func (o LookupTopicResultOutput) SchemaSettings() SchemaSettingsResponseOutput {
 	return o.ApplyT(func(v LookupTopicResult) SchemaSettingsResponse { return v.SchemaSettings }).(SchemaSettingsResponseOutput)
+}
+
+// An output-only field indicating the state of the topic.
+func (o LookupTopicResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicResult) string { return v.State }).(pulumi.StringOutput)
 }
 
 func init() {

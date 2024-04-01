@@ -31,11 +31,13 @@ type LookupFirewallEndpointAssociationArgs struct {
 type LookupFirewallEndpointAssociationResult struct {
 	// Create time stamp
 	CreateTime string `pulumi:"createTime"`
+	// Optional. Whether the association is disabled. True indicates that traffic won't be intercepted
+	Disabled bool `pulumi:"disabled"`
 	// The URL of the FirewallEndpoint that is being associated.
 	FirewallEndpoint string `pulumi:"firewallEndpoint"`
 	// Optional. Labels as key value pairs
 	Labels map[string]string `pulumi:"labels"`
-	// name of resource
+	// Immutable. Identifier. name of resource
 	Name string `pulumi:"name"`
 	// The URL of the network that is being associated.
 	Network string `pulumi:"network"`
@@ -91,6 +93,11 @@ func (o LookupFirewallEndpointAssociationResultOutput) CreateTime() pulumi.Strin
 	return o.ApplyT(func(v LookupFirewallEndpointAssociationResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Optional. Whether the association is disabled. True indicates that traffic won't be intercepted
+func (o LookupFirewallEndpointAssociationResultOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupFirewallEndpointAssociationResult) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
 // The URL of the FirewallEndpoint that is being associated.
 func (o LookupFirewallEndpointAssociationResultOutput) FirewallEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallEndpointAssociationResult) string { return v.FirewallEndpoint }).(pulumi.StringOutput)
@@ -101,7 +108,7 @@ func (o LookupFirewallEndpointAssociationResultOutput) Labels() pulumi.StringMap
 	return o.ApplyT(func(v LookupFirewallEndpointAssociationResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// name of resource
+// Immutable. Identifier. name of resource
 func (o LookupFirewallEndpointAssociationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallEndpointAssociationResult) string { return v.Name }).(pulumi.StringOutput)
 }

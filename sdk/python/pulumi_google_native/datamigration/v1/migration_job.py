@@ -36,6 +36,7 @@ class MigrationJobArgs:
                  request_id: Optional[pulumi.Input[str]] = None,
                  reverse_ssh_connectivity: Optional[pulumi.Input['ReverseSshConnectivityArgs']] = None,
                  source_database: Optional[pulumi.Input['DatabaseTypeArgs']] = None,
+                 sqlserver_homogeneous_migration_job_config: Optional[pulumi.Input['SqlServerHomogeneousMigrationJobConfigArgs']] = None,
                  state: Optional[pulumi.Input['MigrationJobState']] = None,
                  static_ip_connectivity: Optional[pulumi.Input['StaticIpConnectivityArgs']] = None,
                  vpc_peering_connectivity: Optional[pulumi.Input['VpcPeeringConnectivityArgs']] = None):
@@ -58,6 +59,7 @@ class MigrationJobArgs:
         :param pulumi.Input[str] request_id: Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         :param pulumi.Input['ReverseSshConnectivityArgs'] reverse_ssh_connectivity: The details needed to communicate to the source over Reverse SSH tunnel connectivity.
         :param pulumi.Input['DatabaseTypeArgs'] source_database: The database engine type and provider of the source.
+        :param pulumi.Input['SqlServerHomogeneousMigrationJobConfigArgs'] sqlserver_homogeneous_migration_job_config: Optional. Configuration for SQL Server homogeneous migration.
         :param pulumi.Input['MigrationJobState'] state: The current migration job state.
         :param pulumi.Input['StaticIpConnectivityArgs'] static_ip_connectivity: static ip connectivity data (default, no additional details needed).
         :param pulumi.Input['VpcPeeringConnectivityArgs'] vpc_peering_connectivity: The details of the VPC network that the source database is located in.
@@ -96,6 +98,8 @@ class MigrationJobArgs:
             pulumi.set(__self__, "reverse_ssh_connectivity", reverse_ssh_connectivity)
         if source_database is not None:
             pulumi.set(__self__, "source_database", source_database)
+        if sqlserver_homogeneous_migration_job_config is not None:
+            pulumi.set(__self__, "sqlserver_homogeneous_migration_job_config", sqlserver_homogeneous_migration_job_config)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if static_ip_connectivity is not None:
@@ -326,6 +330,18 @@ class MigrationJobArgs:
         pulumi.set(self, "source_database", value)
 
     @property
+    @pulumi.getter(name="sqlserverHomogeneousMigrationJobConfig")
+    def sqlserver_homogeneous_migration_job_config(self) -> Optional[pulumi.Input['SqlServerHomogeneousMigrationJobConfigArgs']]:
+        """
+        Optional. Configuration for SQL Server homogeneous migration.
+        """
+        return pulumi.get(self, "sqlserver_homogeneous_migration_job_config")
+
+    @sqlserver_homogeneous_migration_job_config.setter
+    def sqlserver_homogeneous_migration_job_config(self, value: Optional[pulumi.Input['SqlServerHomogeneousMigrationJobConfigArgs']]):
+        pulumi.set(self, "sqlserver_homogeneous_migration_job_config", value)
+
+    @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input['MigrationJobState']]:
         """
@@ -385,6 +401,7 @@ class MigrationJob(pulumi.CustomResource):
                  reverse_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ReverseSshConnectivityArgs']]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  source_database: Optional[pulumi.Input[pulumi.InputType['DatabaseTypeArgs']]] = None,
+                 sqlserver_homogeneous_migration_job_config: Optional[pulumi.Input[pulumi.InputType['SqlServerHomogeneousMigrationJobConfigArgs']]] = None,
                  state: Optional[pulumi.Input['MigrationJobState']] = None,
                  static_ip_connectivity: Optional[pulumi.Input[pulumi.InputType['StaticIpConnectivityArgs']]] = None,
                  type: Optional[pulumi.Input['MigrationJobType']] = None,
@@ -411,6 +428,7 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ReverseSshConnectivityArgs']] reverse_ssh_connectivity: The details needed to communicate to the source over Reverse SSH tunnel connectivity.
         :param pulumi.Input[str] source: The resource name (URI) of the source connection profile.
         :param pulumi.Input[pulumi.InputType['DatabaseTypeArgs']] source_database: The database engine type and provider of the source.
+        :param pulumi.Input[pulumi.InputType['SqlServerHomogeneousMigrationJobConfigArgs']] sqlserver_homogeneous_migration_job_config: Optional. Configuration for SQL Server homogeneous migration.
         :param pulumi.Input['MigrationJobState'] state: The current migration job state.
         :param pulumi.Input[pulumi.InputType['StaticIpConnectivityArgs']] static_ip_connectivity: static ip connectivity data (default, no additional details needed).
         :param pulumi.Input['MigrationJobType'] type: The migration job type.
@@ -458,6 +476,7 @@ class MigrationJob(pulumi.CustomResource):
                  reverse_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ReverseSshConnectivityArgs']]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  source_database: Optional[pulumi.Input[pulumi.InputType['DatabaseTypeArgs']]] = None,
+                 sqlserver_homogeneous_migration_job_config: Optional[pulumi.Input[pulumi.InputType['SqlServerHomogeneousMigrationJobConfigArgs']]] = None,
                  state: Optional[pulumi.Input['MigrationJobState']] = None,
                  static_ip_connectivity: Optional[pulumi.Input[pulumi.InputType['StaticIpConnectivityArgs']]] = None,
                  type: Optional[pulumi.Input['MigrationJobType']] = None,
@@ -495,6 +514,7 @@ class MigrationJob(pulumi.CustomResource):
                 raise TypeError("Missing required property 'source'")
             __props__.__dict__["source"] = source
             __props__.__dict__["source_database"] = source_database
+            __props__.__dict__["sqlserver_homogeneous_migration_job_config"] = sqlserver_homogeneous_migration_job_config
             __props__.__dict__["state"] = state
             __props__.__dict__["static_ip_connectivity"] = static_ip_connectivity
             if type is None and not opts.urn:
@@ -554,6 +574,7 @@ class MigrationJob(pulumi.CustomResource):
         __props__.__dict__["reverse_ssh_connectivity"] = None
         __props__.__dict__["source"] = None
         __props__.__dict__["source_database"] = None
+        __props__.__dict__["sqlserver_homogeneous_migration_job_config"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["static_ip_connectivity"] = None
         __props__.__dict__["type"] = None
@@ -738,6 +759,14 @@ class MigrationJob(pulumi.CustomResource):
         The database engine type and provider of the source.
         """
         return pulumi.get(self, "source_database")
+
+    @property
+    @pulumi.getter(name="sqlserverHomogeneousMigrationJobConfig")
+    def sqlserver_homogeneous_migration_job_config(self) -> pulumi.Output['outputs.SqlServerHomogeneousMigrationJobConfigResponse']:
+        """
+        Optional. Configuration for SQL Server homogeneous migration.
+        """
+        return pulumi.get(self, "sqlserver_homogeneous_migration_job_config")
 
     @property
     @pulumi.getter

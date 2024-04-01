@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
         public Input<int>? MaxConcurrentCdcTasks { get; set; }
 
         /// <summary>
-        /// Stream large object values. NOTE: This feature is currently experimental.
+        /// Stream large object values.
         /// </summary>
         [Input("streamLargeObjects")]
         public Input<Inputs.StreamLargeObjectsArgs>? StreamLargeObjects { get; set; }

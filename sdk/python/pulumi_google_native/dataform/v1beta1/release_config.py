@@ -21,7 +21,9 @@ class ReleaseConfigArgs:
                  repository_id: pulumi.Input[str],
                  code_compilation_config: Optional[pulumi.Input['CodeCompilationConfigArgs']] = None,
                  cron_schedule: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_compilation_result: Optional[pulumi.Input[str]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None):
@@ -31,7 +33,9 @@ class ReleaseConfigArgs:
         :param pulumi.Input[str] release_config_id: Required. The ID to use for the release config, which will become the final component of the release config's resource name.
         :param pulumi.Input['CodeCompilationConfigArgs'] code_compilation_config: Optional. If set, fields of `code_compilation_config` override the default compilation settings that are specified in dataform.json.
         :param pulumi.Input[str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
-        :param pulumi.Input[str] release_compilation_result: Optional. The name of the currently released compilation result for this release config. This value is updated when a compilation result is created from this release config, or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation result must have been created using this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+        :param pulumi.Input[bool] disabled: Optional. Disables automatic creation of compilation results.
+        :param pulumi.Input[str] name: Identifier. The release config's name.
+        :param pulumi.Input[str] release_compilation_result: Optional. The name of the currently released compilation result for this release config. This value is updated when a compilation result is automatically created from this release config (using cron_schedule), or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation result must have been created using this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
         :param pulumi.Input[str] time_zone: Optional. Specifies the time zone to be used when interpreting cron_schedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
         """
         pulumi.set(__self__, "git_commitish", git_commitish)
@@ -41,8 +45,12 @@ class ReleaseConfigArgs:
             pulumi.set(__self__, "code_compilation_config", code_compilation_config)
         if cron_schedule is not None:
             pulumi.set(__self__, "cron_schedule", cron_schedule)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if release_compilation_result is not None:
@@ -109,12 +117,36 @@ class ReleaseConfigArgs:
 
     @property
     @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Disables automatic creation of compilation results.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "location")
 
     @location.setter
     def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier. The release config's name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -129,7 +161,7 @@ class ReleaseConfigArgs:
     @pulumi.getter(name="releaseCompilationResult")
     def release_compilation_result(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The name of the currently released compilation result for this release config. This value is updated when a compilation result is created from this release config, or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation result must have been created using this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+        Optional. The name of the currently released compilation result for this release config. This value is updated when a compilation result is automatically created from this release config (using cron_schedule), or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation result must have been created using this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
         """
         return pulumi.get(self, "release_compilation_result")
 
@@ -157,8 +189,10 @@ class ReleaseConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  code_compilation_config: Optional[pulumi.Input[pulumi.InputType['CodeCompilationConfigArgs']]] = None,
                  cron_schedule: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
                  git_commitish: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_compilation_result: Optional[pulumi.Input[str]] = None,
                  release_config_id: Optional[pulumi.Input[str]] = None,
@@ -167,14 +201,15 @@ class ReleaseConfig(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a new ReleaseConfig in a given Repository.
-        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['CodeCompilationConfigArgs']] code_compilation_config: Optional. If set, fields of `code_compilation_config` override the default compilation settings that are specified in dataform.json.
         :param pulumi.Input[str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
+        :param pulumi.Input[bool] disabled: Optional. Disables automatic creation of compilation results.
         :param pulumi.Input[str] git_commitish: Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository. Examples: - a commit SHA: `12ade345` - a tag: `tag1` - a branch name: `branch1`
-        :param pulumi.Input[str] release_compilation_result: Optional. The name of the currently released compilation result for this release config. This value is updated when a compilation result is created from this release config, or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation result must have been created using this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+        :param pulumi.Input[str] name: Identifier. The release config's name.
+        :param pulumi.Input[str] release_compilation_result: Optional. The name of the currently released compilation result for this release config. This value is updated when a compilation result is automatically created from this release config (using cron_schedule), or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation result must have been created using this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
         :param pulumi.Input[str] release_config_id: Required. The ID to use for the release config, which will become the final component of the release config's resource name.
         :param pulumi.Input[str] time_zone: Optional. Specifies the time zone to be used when interpreting cron_schedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
         """
@@ -186,7 +221,6 @@ class ReleaseConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new ReleaseConfig in a given Repository.
-        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param ReleaseConfigArgs args: The arguments to use to populate this resource's properties.
@@ -205,8 +239,10 @@ class ReleaseConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  code_compilation_config: Optional[pulumi.Input[pulumi.InputType['CodeCompilationConfigArgs']]] = None,
                  cron_schedule: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
                  git_commitish: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_compilation_result: Optional[pulumi.Input[str]] = None,
                  release_config_id: Optional[pulumi.Input[str]] = None,
@@ -223,10 +259,12 @@ class ReleaseConfig(pulumi.CustomResource):
 
             __props__.__dict__["code_compilation_config"] = code_compilation_config
             __props__.__dict__["cron_schedule"] = cron_schedule
+            __props__.__dict__["disabled"] = disabled
             if git_commitish is None and not opts.urn:
                 raise TypeError("Missing required property 'git_commitish'")
             __props__.__dict__["git_commitish"] = git_commitish
             __props__.__dict__["location"] = location
+            __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["release_compilation_result"] = release_compilation_result
             if release_config_id is None and not opts.urn:
@@ -236,7 +274,6 @@ class ReleaseConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'repository_id'")
             __props__.__dict__["repository_id"] = repository_id
             __props__.__dict__["time_zone"] = time_zone
-            __props__.__dict__["name"] = None
             __props__.__dict__["recent_scheduled_release_records"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "release_config_id", "repository_id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -264,6 +301,7 @@ class ReleaseConfig(pulumi.CustomResource):
 
         __props__.__dict__["code_compilation_config"] = None
         __props__.__dict__["cron_schedule"] = None
+        __props__.__dict__["disabled"] = None
         __props__.__dict__["git_commitish"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
@@ -292,6 +330,14 @@ class ReleaseConfig(pulumi.CustomResource):
         return pulumi.get(self, "cron_schedule")
 
     @property
+    @pulumi.getter
+    def disabled(self) -> pulumi.Output[bool]:
+        """
+        Optional. Disables automatic creation of compilation results.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
     @pulumi.getter(name="gitCommitish")
     def git_commitish(self) -> pulumi.Output[str]:
         """
@@ -308,7 +354,7 @@ class ReleaseConfig(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The release config's name.
+        Identifier. The release config's name.
         """
         return pulumi.get(self, "name")
 
@@ -329,7 +375,7 @@ class ReleaseConfig(pulumi.CustomResource):
     @pulumi.getter(name="releaseCompilationResult")
     def release_compilation_result(self) -> pulumi.Output[str]:
         """
-        Optional. The name of the currently released compilation result for this release config. This value is updated when a compilation result is created from this release config, or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation result must have been created using this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+        Optional. The name of the currently released compilation result for this release config. This value is updated when a compilation result is automatically created from this release config (using cron_schedule), or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation result must have been created using this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
         """
         return pulumi.get(self, "release_compilation_result")
 

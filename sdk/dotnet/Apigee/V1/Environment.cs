@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+        /// Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied. To remove a forward proxy setting, update the field to an empty value. Note: At this time, PUT operations to add forwardProxyUri to an existing environment fail if the environment has nodeConfig set up. To successfully add the forwardProxyUri setting in this case, include the NodeConfig details with the request.
         /// </summary>
         [Output("forwardProxyUri")]
         public Output<string> ForwardProxyUri { get; private set; } = null!;
@@ -167,7 +167,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
+        /// Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied. To remove a forward proxy setting, update the field to an empty value. Note: At this time, PUT operations to add forwardProxyUri to an existing environment fail if the environment has nodeConfig set up. To successfully add the forwardProxyUri setting in this case, include the NodeConfig details with the request.
         /// </summary>
         [Input("forwardProxyUri")]
         public Input<string>? ForwardProxyUri { get; set; }

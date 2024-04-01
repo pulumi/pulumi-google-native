@@ -235,6 +235,11 @@ export const getInstanceGroupManager: typeof import("./getInstanceGroupManager")
 export const getInstanceGroupManagerOutput: typeof import("./getInstanceGroupManager").getInstanceGroupManagerOutput = null as any;
 utilities.lazyLoad(exports, ["getInstanceGroupManager","getInstanceGroupManagerOutput"], () => require("./getInstanceGroupManager"));
 
+export { GetInstanceGroupManagerResizeRequestArgs, GetInstanceGroupManagerResizeRequestResult, GetInstanceGroupManagerResizeRequestOutputArgs } from "./getInstanceGroupManagerResizeRequest";
+export const getInstanceGroupManagerResizeRequest: typeof import("./getInstanceGroupManagerResizeRequest").getInstanceGroupManagerResizeRequest = null as any;
+export const getInstanceGroupManagerResizeRequestOutput: typeof import("./getInstanceGroupManagerResizeRequest").getInstanceGroupManagerResizeRequestOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceGroupManagerResizeRequest","getInstanceGroupManagerResizeRequestOutput"], () => require("./getInstanceGroupManagerResizeRequest"));
+
 export { GetInstanceIamPolicyArgs, GetInstanceIamPolicyResult, GetInstanceIamPolicyOutputArgs } from "./getInstanceIamPolicy";
 export const getInstanceIamPolicy: typeof import("./getInstanceIamPolicy").getInstanceIamPolicy = null as any;
 export const getInstanceIamPolicyOutput: typeof import("./getInstanceIamPolicy").getInstanceIamPolicyOutput = null as any;
@@ -249,6 +254,16 @@ export { GetInstanceTemplateIamPolicyArgs, GetInstanceTemplateIamPolicyResult, G
 export const getInstanceTemplateIamPolicy: typeof import("./getInstanceTemplateIamPolicy").getInstanceTemplateIamPolicy = null as any;
 export const getInstanceTemplateIamPolicyOutput: typeof import("./getInstanceTemplateIamPolicy").getInstanceTemplateIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getInstanceTemplateIamPolicy","getInstanceTemplateIamPolicyOutput"], () => require("./getInstanceTemplateIamPolicy"));
+
+export { GetInstantSnapshotArgs, GetInstantSnapshotResult, GetInstantSnapshotOutputArgs } from "./getInstantSnapshot";
+export const getInstantSnapshot: typeof import("./getInstantSnapshot").getInstantSnapshot = null as any;
+export const getInstantSnapshotOutput: typeof import("./getInstantSnapshot").getInstantSnapshotOutput = null as any;
+utilities.lazyLoad(exports, ["getInstantSnapshot","getInstantSnapshotOutput"], () => require("./getInstantSnapshot"));
+
+export { GetInstantSnapshotIamPolicyArgs, GetInstantSnapshotIamPolicyResult, GetInstantSnapshotIamPolicyOutputArgs } from "./getInstantSnapshotIamPolicy";
+export const getInstantSnapshotIamPolicy: typeof import("./getInstantSnapshotIamPolicy").getInstantSnapshotIamPolicy = null as any;
+export const getInstantSnapshotIamPolicyOutput: typeof import("./getInstantSnapshotIamPolicy").getInstantSnapshotIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getInstantSnapshotIamPolicy","getInstantSnapshotIamPolicyOutput"], () => require("./getInstantSnapshotIamPolicy"));
 
 export { GetInterconnectArgs, GetInterconnectResult, GetInterconnectOutputArgs } from "./getInterconnect";
 export const getInterconnect: typeof import("./getInterconnect").getInterconnect = null as any;
@@ -400,6 +415,16 @@ export const getRegionInstanceTemplate: typeof import("./getRegionInstanceTempla
 export const getRegionInstanceTemplateOutput: typeof import("./getRegionInstanceTemplate").getRegionInstanceTemplateOutput = null as any;
 utilities.lazyLoad(exports, ["getRegionInstanceTemplate","getRegionInstanceTemplateOutput"], () => require("./getRegionInstanceTemplate"));
 
+export { GetRegionInstantSnapshotArgs, GetRegionInstantSnapshotResult, GetRegionInstantSnapshotOutputArgs } from "./getRegionInstantSnapshot";
+export const getRegionInstantSnapshot: typeof import("./getRegionInstantSnapshot").getRegionInstantSnapshot = null as any;
+export const getRegionInstantSnapshotOutput: typeof import("./getRegionInstantSnapshot").getRegionInstantSnapshotOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionInstantSnapshot","getRegionInstantSnapshotOutput"], () => require("./getRegionInstantSnapshot"));
+
+export { GetRegionInstantSnapshotIamPolicyArgs, GetRegionInstantSnapshotIamPolicyResult, GetRegionInstantSnapshotIamPolicyOutputArgs } from "./getRegionInstantSnapshotIamPolicy";
+export const getRegionInstantSnapshotIamPolicy: typeof import("./getRegionInstantSnapshotIamPolicy").getRegionInstantSnapshotIamPolicy = null as any;
+export const getRegionInstantSnapshotIamPolicyOutput: typeof import("./getRegionInstantSnapshotIamPolicy").getRegionInstantSnapshotIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionInstantSnapshotIamPolicy","getRegionInstantSnapshotIamPolicyOutput"], () => require("./getRegionInstantSnapshotIamPolicy"));
+
 export { GetRegionNetworkEndpointGroupArgs, GetRegionNetworkEndpointGroupResult, GetRegionNetworkEndpointGroupOutputArgs } from "./getRegionNetworkEndpointGroup";
 export const getRegionNetworkEndpointGroup: typeof import("./getRegionNetworkEndpointGroup").getRegionNetworkEndpointGroup = null as any;
 export const getRegionNetworkEndpointGroupOutput: typeof import("./getRegionNetworkEndpointGroup").getRegionNetworkEndpointGroupOutput = null as any;
@@ -519,6 +544,16 @@ export { GetSslPolicyArgs, GetSslPolicyResult, GetSslPolicyOutputArgs } from "./
 export const getSslPolicy: typeof import("./getSslPolicy").getSslPolicy = null as any;
 export const getSslPolicyOutput: typeof import("./getSslPolicy").getSslPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getSslPolicy","getSslPolicyOutput"], () => require("./getSslPolicy"));
+
+export { GetStoragePoolArgs, GetStoragePoolResult, GetStoragePoolOutputArgs } from "./getStoragePool";
+export const getStoragePool: typeof import("./getStoragePool").getStoragePool = null as any;
+export const getStoragePoolOutput: typeof import("./getStoragePool").getStoragePoolOutput = null as any;
+utilities.lazyLoad(exports, ["getStoragePool","getStoragePoolOutput"], () => require("./getStoragePool"));
+
+export { GetStoragePoolIamPolicyArgs, GetStoragePoolIamPolicyResult, GetStoragePoolIamPolicyOutputArgs } from "./getStoragePoolIamPolicy";
+export const getStoragePoolIamPolicy: typeof import("./getStoragePoolIamPolicy").getStoragePoolIamPolicy = null as any;
+export const getStoragePoolIamPolicyOutput: typeof import("./getStoragePoolIamPolicy").getStoragePoolIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getStoragePoolIamPolicy","getStoragePoolIamPolicyOutput"], () => require("./getStoragePoolIamPolicy"));
 
 export { GetSubnetworkArgs, GetSubnetworkResult, GetSubnetworkOutputArgs } from "./getSubnetwork";
 export const getSubnetwork: typeof import("./getSubnetwork").getSubnetwork = null as any;
@@ -655,6 +690,11 @@ export type InstanceGroupManager = import("./instanceGroupManager").InstanceGrou
 export const InstanceGroupManager: typeof import("./instanceGroupManager").InstanceGroupManager = null as any;
 utilities.lazyLoad(exports, ["InstanceGroupManager"], () => require("./instanceGroupManager"));
 
+export { InstanceGroupManagerResizeRequestArgs } from "./instanceGroupManagerResizeRequest";
+export type InstanceGroupManagerResizeRequest = import("./instanceGroupManagerResizeRequest").InstanceGroupManagerResizeRequest;
+export const InstanceGroupManagerResizeRequest: typeof import("./instanceGroupManagerResizeRequest").InstanceGroupManagerResizeRequest = null as any;
+utilities.lazyLoad(exports, ["InstanceGroupManagerResizeRequest"], () => require("./instanceGroupManagerResizeRequest"));
+
 export { InstanceIamBindingArgs } from "./instanceIamBinding";
 export type InstanceIamBinding = import("./instanceIamBinding").InstanceIamBinding;
 export const InstanceIamBinding: typeof import("./instanceIamBinding").InstanceIamBinding = null as any;
@@ -689,6 +729,26 @@ export { InstanceTemplateIamPolicyArgs } from "./instanceTemplateIamPolicy";
 export type InstanceTemplateIamPolicy = import("./instanceTemplateIamPolicy").InstanceTemplateIamPolicy;
 export const InstanceTemplateIamPolicy: typeof import("./instanceTemplateIamPolicy").InstanceTemplateIamPolicy = null as any;
 utilities.lazyLoad(exports, ["InstanceTemplateIamPolicy"], () => require("./instanceTemplateIamPolicy"));
+
+export { InstantSnapshotArgs } from "./instantSnapshot";
+export type InstantSnapshot = import("./instantSnapshot").InstantSnapshot;
+export const InstantSnapshot: typeof import("./instantSnapshot").InstantSnapshot = null as any;
+utilities.lazyLoad(exports, ["InstantSnapshot"], () => require("./instantSnapshot"));
+
+export { InstantSnapshotIamBindingArgs } from "./instantSnapshotIamBinding";
+export type InstantSnapshotIamBinding = import("./instantSnapshotIamBinding").InstantSnapshotIamBinding;
+export const InstantSnapshotIamBinding: typeof import("./instantSnapshotIamBinding").InstantSnapshotIamBinding = null as any;
+utilities.lazyLoad(exports, ["InstantSnapshotIamBinding"], () => require("./instantSnapshotIamBinding"));
+
+export { InstantSnapshotIamMemberArgs } from "./instantSnapshotIamMember";
+export type InstantSnapshotIamMember = import("./instantSnapshotIamMember").InstantSnapshotIamMember;
+export const InstantSnapshotIamMember: typeof import("./instantSnapshotIamMember").InstantSnapshotIamMember = null as any;
+utilities.lazyLoad(exports, ["InstantSnapshotIamMember"], () => require("./instantSnapshotIamMember"));
+
+export { InstantSnapshotIamPolicyArgs } from "./instantSnapshotIamPolicy";
+export type InstantSnapshotIamPolicy = import("./instantSnapshotIamPolicy").InstantSnapshotIamPolicy;
+export const InstantSnapshotIamPolicy: typeof import("./instantSnapshotIamPolicy").InstantSnapshotIamPolicy = null as any;
+utilities.lazyLoad(exports, ["InstantSnapshotIamPolicy"], () => require("./instantSnapshotIamPolicy"));
 
 export { InterconnectArgs } from "./interconnect";
 export type Interconnect = import("./interconnect").Interconnect;
@@ -920,6 +980,26 @@ export type RegionInstanceTemplate = import("./regionInstanceTemplate").RegionIn
 export const RegionInstanceTemplate: typeof import("./regionInstanceTemplate").RegionInstanceTemplate = null as any;
 utilities.lazyLoad(exports, ["RegionInstanceTemplate"], () => require("./regionInstanceTemplate"));
 
+export { RegionInstantSnapshotArgs } from "./regionInstantSnapshot";
+export type RegionInstantSnapshot = import("./regionInstantSnapshot").RegionInstantSnapshot;
+export const RegionInstantSnapshot: typeof import("./regionInstantSnapshot").RegionInstantSnapshot = null as any;
+utilities.lazyLoad(exports, ["RegionInstantSnapshot"], () => require("./regionInstantSnapshot"));
+
+export { RegionInstantSnapshotIamBindingArgs } from "./regionInstantSnapshotIamBinding";
+export type RegionInstantSnapshotIamBinding = import("./regionInstantSnapshotIamBinding").RegionInstantSnapshotIamBinding;
+export const RegionInstantSnapshotIamBinding: typeof import("./regionInstantSnapshotIamBinding").RegionInstantSnapshotIamBinding = null as any;
+utilities.lazyLoad(exports, ["RegionInstantSnapshotIamBinding"], () => require("./regionInstantSnapshotIamBinding"));
+
+export { RegionInstantSnapshotIamMemberArgs } from "./regionInstantSnapshotIamMember";
+export type RegionInstantSnapshotIamMember = import("./regionInstantSnapshotIamMember").RegionInstantSnapshotIamMember;
+export const RegionInstantSnapshotIamMember: typeof import("./regionInstantSnapshotIamMember").RegionInstantSnapshotIamMember = null as any;
+utilities.lazyLoad(exports, ["RegionInstantSnapshotIamMember"], () => require("./regionInstantSnapshotIamMember"));
+
+export { RegionInstantSnapshotIamPolicyArgs } from "./regionInstantSnapshotIamPolicy";
+export type RegionInstantSnapshotIamPolicy = import("./regionInstantSnapshotIamPolicy").RegionInstantSnapshotIamPolicy;
+export const RegionInstantSnapshotIamPolicy: typeof import("./regionInstantSnapshotIamPolicy").RegionInstantSnapshotIamPolicy = null as any;
+utilities.lazyLoad(exports, ["RegionInstantSnapshotIamPolicy"], () => require("./regionInstantSnapshotIamPolicy"));
+
 export { RegionNetworkEndpointGroupArgs } from "./regionNetworkEndpointGroup";
 export type RegionNetworkEndpointGroup = import("./regionNetworkEndpointGroup").RegionNetworkEndpointGroup;
 export const RegionNetworkEndpointGroup: typeof import("./regionNetworkEndpointGroup").RegionNetworkEndpointGroup = null as any;
@@ -1090,6 +1170,26 @@ export type SslPolicy = import("./sslPolicy").SslPolicy;
 export const SslPolicy: typeof import("./sslPolicy").SslPolicy = null as any;
 utilities.lazyLoad(exports, ["SslPolicy"], () => require("./sslPolicy"));
 
+export { StoragePoolArgs } from "./storagePool";
+export type StoragePool = import("./storagePool").StoragePool;
+export const StoragePool: typeof import("./storagePool").StoragePool = null as any;
+utilities.lazyLoad(exports, ["StoragePool"], () => require("./storagePool"));
+
+export { StoragePoolIamBindingArgs } from "./storagePoolIamBinding";
+export type StoragePoolIamBinding = import("./storagePoolIamBinding").StoragePoolIamBinding;
+export const StoragePoolIamBinding: typeof import("./storagePoolIamBinding").StoragePoolIamBinding = null as any;
+utilities.lazyLoad(exports, ["StoragePoolIamBinding"], () => require("./storagePoolIamBinding"));
+
+export { StoragePoolIamMemberArgs } from "./storagePoolIamMember";
+export type StoragePoolIamMember = import("./storagePoolIamMember").StoragePoolIamMember;
+export const StoragePoolIamMember: typeof import("./storagePoolIamMember").StoragePoolIamMember = null as any;
+utilities.lazyLoad(exports, ["StoragePoolIamMember"], () => require("./storagePoolIamMember"));
+
+export { StoragePoolIamPolicyArgs } from "./storagePoolIamPolicy";
+export type StoragePoolIamPolicy = import("./storagePoolIamPolicy").StoragePoolIamPolicy;
+export const StoragePoolIamPolicy: typeof import("./storagePoolIamPolicy").StoragePoolIamPolicy = null as any;
+utilities.lazyLoad(exports, ["StoragePoolIamPolicy"], () => require("./storagePoolIamPolicy"));
+
 export { SubnetworkArgs } from "./subnetwork";
 export type Subnetwork = import("./subnetwork").Subnetwork;
 export const Subnetwork: typeof import("./subnetwork").Subnetwork = null as any;
@@ -1243,6 +1343,8 @@ const _module = {
                 return new InstanceGroup(name, <any>undefined, { urn })
             case "google-native:compute/v1:InstanceGroupManager":
                 return new InstanceGroupManager(name, <any>undefined, { urn })
+            case "google-native:compute/v1:InstanceGroupManagerResizeRequest":
+                return new InstanceGroupManagerResizeRequest(name, <any>undefined, { urn })
             case "google-native:compute/v1:InstanceIamBinding":
                 return new InstanceIamBinding(name, <any>undefined, { urn })
             case "google-native:compute/v1:InstanceIamMember":
@@ -1257,6 +1359,14 @@ const _module = {
                 return new InstanceTemplateIamMember(name, <any>undefined, { urn })
             case "google-native:compute/v1:InstanceTemplateIamPolicy":
                 return new InstanceTemplateIamPolicy(name, <any>undefined, { urn })
+            case "google-native:compute/v1:InstantSnapshot":
+                return new InstantSnapshot(name, <any>undefined, { urn })
+            case "google-native:compute/v1:InstantSnapshotIamBinding":
+                return new InstantSnapshotIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/v1:InstantSnapshotIamMember":
+                return new InstantSnapshotIamMember(name, <any>undefined, { urn })
+            case "google-native:compute/v1:InstantSnapshotIamPolicy":
+                return new InstantSnapshotIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:Interconnect":
                 return new Interconnect(name, <any>undefined, { urn })
             case "google-native:compute/v1:InterconnectAttachment":
@@ -1349,6 +1459,14 @@ const _module = {
                 return new RegionInstanceGroupManager(name, <any>undefined, { urn })
             case "google-native:compute/v1:RegionInstanceTemplate":
                 return new RegionInstanceTemplate(name, <any>undefined, { urn })
+            case "google-native:compute/v1:RegionInstantSnapshot":
+                return new RegionInstantSnapshot(name, <any>undefined, { urn })
+            case "google-native:compute/v1:RegionInstantSnapshotIamBinding":
+                return new RegionInstantSnapshotIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/v1:RegionInstantSnapshotIamMember":
+                return new RegionInstantSnapshotIamMember(name, <any>undefined, { urn })
+            case "google-native:compute/v1:RegionInstantSnapshotIamPolicy":
+                return new RegionInstantSnapshotIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:RegionNetworkEndpointGroup":
                 return new RegionNetworkEndpointGroup(name, <any>undefined, { urn })
             case "google-native:compute/v1:RegionNetworkFirewallPolicy":
@@ -1417,6 +1535,14 @@ const _module = {
                 return new SslCertificate(name, <any>undefined, { urn })
             case "google-native:compute/v1:SslPolicy":
                 return new SslPolicy(name, <any>undefined, { urn })
+            case "google-native:compute/v1:StoragePool":
+                return new StoragePool(name, <any>undefined, { urn })
+            case "google-native:compute/v1:StoragePoolIamBinding":
+                return new StoragePoolIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/v1:StoragePoolIamMember":
+                return new StoragePoolIamMember(name, <any>undefined, { urn })
+            case "google-native:compute/v1:StoragePoolIamPolicy":
+                return new StoragePoolIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:Subnetwork":
                 return new Subnetwork(name, <any>undefined, { urn })
             case "google-native:compute/v1:SubnetworkIamBinding":

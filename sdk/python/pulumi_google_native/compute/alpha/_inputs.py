@@ -44,6 +44,9 @@ __all__ = [
     'BackendServiceCdnPolicyArgs',
     'BackendServiceConnectionTrackingPolicyArgs',
     'BackendServiceFailoverPolicyArgs',
+    'BackendServiceHAPolicyLeaderNetworkEndpointArgs',
+    'BackendServiceHAPolicyLeaderArgs',
+    'BackendServiceHAPolicyArgs',
     'BackendServiceIAPOAuth2ClientInfoArgs',
     'BackendServiceIAPArgs',
     'BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs',
@@ -92,6 +95,7 @@ __all__ = [
     'FutureReservationSpecificSKUPropertiesArgs',
     'FutureReservationTimeWindowArgs',
     'GRPCHealthCheckArgs',
+    'GRPCTLSHealthCheckArgs',
     'GrpcServiceConfigArgs',
     'GuestOsFeatureArgs',
     'HTTP2HealthCheckArgs',
@@ -117,9 +121,11 @@ __all__ = [
     'InstanceGroupManagerAllInstancesConfigArgs',
     'InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersArgs',
     'InstanceGroupManagerAutoHealingPolicyArgs',
+    'InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMixArgs',
     'InstanceGroupManagerInstanceFlexibilityPolicyArgs',
     'InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalArgs',
     'InstanceGroupManagerInstanceLifecyclePolicyArgs',
+    'InstanceGroupManagerParamsArgs',
     'InstanceGroupManagerStandbyPolicyArgs',
     'InstanceGroupManagerUpdatePolicyArgs',
     'InstanceGroupManagerVersionArgs',
@@ -216,9 +222,11 @@ __all__ = [
     'SavedDiskArgs',
     'SchedulingGracefulShutdownArgs',
     'SchedulingNodeAffinityArgs',
+    'SchedulingOnInstanceStopActionArgs',
     'SchedulingArgs',
     'SdsConfigArgs',
     'SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs',
+    'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs',
     'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs',
     'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs',
     'SecurityPolicyAdaptiveProtectionConfigArgs',
@@ -551,6 +559,7 @@ class AdvancedMachineFeaturesArgs:
     def __init__(__self__, *,
                  enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
                  enable_uefi_networking: Optional[pulumi.Input[bool]] = None,
+                 enable_watchdog_timer: Optional[pulumi.Input[bool]] = None,
                  numa_node_count: Optional[pulumi.Input[int]] = None,
                  performance_monitoring_unit: Optional[pulumi.Input['AdvancedMachineFeaturesPerformanceMonitoringUnit']] = None,
                  threads_per_core: Optional[pulumi.Input[int]] = None,
@@ -559,6 +568,7 @@ class AdvancedMachineFeaturesArgs:
         Specifies options for controlling advanced machine features. Options that would traditionally be configured in a BIOS belong here. Features that require operating system support may have corresponding entries in the GuestOsFeatures of an Image (e.g., whether or not the OS in the Image supports nested virtualization being enabled or disabled).
         :param pulumi.Input[bool] enable_nested_virtualization: Whether to enable nested virtualization or not (default is false).
         :param pulumi.Input[bool] enable_uefi_networking: Whether to enable UEFI networking for instance creation.
+        :param pulumi.Input[bool] enable_watchdog_timer: Whether to enable the watchdog timer.
         :param pulumi.Input[int] numa_node_count: The number of vNUMA nodes.
         :param pulumi.Input['AdvancedMachineFeaturesPerformanceMonitoringUnit'] performance_monitoring_unit: Type of Performance Monitoring Unit requested on instance.
         :param pulumi.Input[int] threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
@@ -568,6 +578,8 @@ class AdvancedMachineFeaturesArgs:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         if enable_uefi_networking is not None:
             pulumi.set(__self__, "enable_uefi_networking", enable_uefi_networking)
+        if enable_watchdog_timer is not None:
+            pulumi.set(__self__, "enable_watchdog_timer", enable_watchdog_timer)
         if numa_node_count is not None:
             pulumi.set(__self__, "numa_node_count", numa_node_count)
         if performance_monitoring_unit is not None:
@@ -600,6 +612,18 @@ class AdvancedMachineFeaturesArgs:
     @enable_uefi_networking.setter
     def enable_uefi_networking(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_uefi_networking", value)
+
+    @property
+    @pulumi.getter(name="enableWatchdogTimer")
+    def enable_watchdog_timer(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable the watchdog timer.
+        """
+        return pulumi.get(self, "enable_watchdog_timer")
+
+    @enable_watchdog_timer.setter
+    def enable_watchdog_timer(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_watchdog_timer", value)
 
     @property
     @pulumi.getter(name="numaNodeCount")
@@ -1066,7 +1090,7 @@ class AttachedDiskInitializeParamsArgs:
         :param pulumi.Input[bool] multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
         :param pulumi.Input['AttachedDiskInitializeParamsOnUpdateAction'] on_update_action: Specifies which action to take on instance update with this disk. Default is to use the existing disk.
         :param pulumi.Input[str] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
-        :param pulumi.Input[str] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        :param pulumi.Input[str] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must greater than or equal to 1.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
@@ -1304,7 +1328,7 @@ class AttachedDiskInitializeParamsArgs:
     @pulumi.getter(name="provisionedThroughput")
     def provisioned_throughput(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must greater than or equal to 1.
         """
         return pulumi.get(self, "provisioned_throughput")
 
@@ -2807,8 +2831,8 @@ class BackendServiceConnectionTrackingPolicyArgs:
         """
         Connection Tracking configuration for this BackendService.
         :param pulumi.Input['BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends'] connection_persistence_on_unhealthy_backends: Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default. For more details, see [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence) and [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence).
-        :param pulumi.Input[bool] enable_strong_affinity: Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
-        :param pulumi.Input[int] idle_timeout_sec: Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For Network Load Balancer the default is 60 seconds. This option is not available publicly.
+        :param pulumi.Input[bool] enable_strong_affinity: Enable Strong Session Affinity for external passthrough Network Load Balancers. This option is not available publicly.
+        :param pulumi.Input[int] idle_timeout_sec: Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For internal passthrough Network Load Balancers: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For external passthrough Network Load Balancers the default is 60 seconds. This option is not available publicly.
         :param pulumi.Input['BackendServiceConnectionTrackingPolicyTrackingMode'] tracking_mode: Specifies the key used for connection tracking. There are two options: - PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. - PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity. For more details, see [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#tracking-mode) and [Tracking Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#tracking-mode).
         """
         if connection_persistence_on_unhealthy_backends is not None:
@@ -2836,7 +2860,7 @@ class BackendServiceConnectionTrackingPolicyArgs:
     @pulumi.getter(name="enableStrongAffinity")
     def enable_strong_affinity(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+        Enable Strong Session Affinity for external passthrough Network Load Balancers. This option is not available publicly.
         """
         return pulumi.get(self, "enable_strong_affinity")
 
@@ -2848,7 +2872,7 @@ class BackendServiceConnectionTrackingPolicyArgs:
     @pulumi.getter(name="idleTimeoutSec")
     def idle_timeout_sec(self) -> Optional[pulumi.Input[int]]:
         """
-        Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For Network Load Balancer the default is 60 seconds. This option is not available publicly.
+        Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For internal passthrough Network Load Balancers: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For external passthrough Network Load Balancers the default is 60 seconds. This option is not available publicly.
         """
         return pulumi.get(self, "idle_timeout_sec")
 
@@ -2876,9 +2900,9 @@ class BackendServiceFailoverPolicyArgs:
                  drop_traffic_if_unhealthy: Optional[pulumi.Input[bool]] = None,
                  failover_ratio: Optional[pulumi.Input[float]] = None):
         """
-        For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
+        For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
         :param pulumi.Input[bool] disable_connection_drain_on_failover: This can be set to true only if the protocol is TCP. The default is false.
-        :param pulumi.Input[bool] drop_traffic_if_unhealthy: If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
+        :param pulumi.Input[bool] drop_traffic_if_unhealthy: If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
         :param pulumi.Input[float] failover_ratio: The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
         """
         if disable_connection_drain_on_failover is not None:
@@ -2904,7 +2928,7 @@ class BackendServiceFailoverPolicyArgs:
     @pulumi.getter(name="dropTrafficIfUnhealthy")
     def drop_traffic_if_unhealthy(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
+        If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
         """
         return pulumi.get(self, "drop_traffic_if_unhealthy")
 
@@ -2923,6 +2947,107 @@ class BackendServiceFailoverPolicyArgs:
     @failover_ratio.setter
     def failover_ratio(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "failover_ratio", value)
+
+
+@pulumi.input_type
+class BackendServiceHAPolicyLeaderNetworkEndpointArgs:
+    def __init__(__self__, *,
+                 instance: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] instance: Specifying the instance name of a leader is not supported.
+        """
+        if instance is not None:
+            pulumi.set(__self__, "instance", instance)
+
+    @property
+    @pulumi.getter
+    def instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifying the instance name of a leader is not supported.
+        """
+        return pulumi.get(self, "instance")
+
+    @instance.setter
+    def instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance", value)
+
+
+@pulumi.input_type
+class BackendServiceHAPolicyLeaderArgs:
+    def __init__(__self__, *,
+                 backend_group: Optional[pulumi.Input[str]] = None,
+                 network_endpoint: Optional[pulumi.Input['BackendServiceHAPolicyLeaderNetworkEndpointArgs']] = None):
+        """
+        :param pulumi.Input[str] backend_group: Setting backendGroup is not supported.
+        :param pulumi.Input['BackendServiceHAPolicyLeaderNetworkEndpointArgs'] network_endpoint: Setting a network endpoint as leader is not supported.
+        """
+        if backend_group is not None:
+            pulumi.set(__self__, "backend_group", backend_group)
+        if network_endpoint is not None:
+            pulumi.set(__self__, "network_endpoint", network_endpoint)
+
+    @property
+    @pulumi.getter(name="backendGroup")
+    def backend_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        Setting backendGroup is not supported.
+        """
+        return pulumi.get(self, "backend_group")
+
+    @backend_group.setter
+    def backend_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backend_group", value)
+
+    @property
+    @pulumi.getter(name="networkEndpoint")
+    def network_endpoint(self) -> Optional[pulumi.Input['BackendServiceHAPolicyLeaderNetworkEndpointArgs']]:
+        """
+        Setting a network endpoint as leader is not supported.
+        """
+        return pulumi.get(self, "network_endpoint")
+
+    @network_endpoint.setter
+    def network_endpoint(self, value: Optional[pulumi.Input['BackendServiceHAPolicyLeaderNetworkEndpointArgs']]):
+        pulumi.set(self, "network_endpoint", value)
+
+
+@pulumi.input_type
+class BackendServiceHAPolicyArgs:
+    def __init__(__self__, *,
+                 fast_ip_move: Optional[pulumi.Input['BackendServiceHAPolicyFastIPMove']] = None,
+                 leader: Optional[pulumi.Input['BackendServiceHAPolicyLeaderArgs']] = None):
+        """
+        :param pulumi.Input['BackendServiceHAPolicyFastIPMove'] fast_ip_move: Enabling fastIPMove is not supported.
+        :param pulumi.Input['BackendServiceHAPolicyLeaderArgs'] leader: Setting a leader is not supported.
+        """
+        if fast_ip_move is not None:
+            pulumi.set(__self__, "fast_ip_move", fast_ip_move)
+        if leader is not None:
+            pulumi.set(__self__, "leader", leader)
+
+    @property
+    @pulumi.getter(name="fastIPMove")
+    def fast_ip_move(self) -> Optional[pulumi.Input['BackendServiceHAPolicyFastIPMove']]:
+        """
+        Enabling fastIPMove is not supported.
+        """
+        return pulumi.get(self, "fast_ip_move")
+
+    @fast_ip_move.setter
+    def fast_ip_move(self, value: Optional[pulumi.Input['BackendServiceHAPolicyFastIPMove']]):
+        pulumi.set(self, "fast_ip_move", value)
+
+    @property
+    @pulumi.getter
+    def leader(self) -> Optional[pulumi.Input['BackendServiceHAPolicyLeaderArgs']]:
+        """
+        Setting a leader is not supported.
+        """
+        return pulumi.get(self, "leader")
+
+    @leader.setter
+    def leader(self, value: Optional[pulumi.Input['BackendServiceHAPolicyLeaderArgs']]):
+        pulumi.set(self, "leader", value)
 
 
 @pulumi.input_type
@@ -3486,8 +3611,8 @@ class BindingArgs:
         Associates `members`, or principals, with a `role`.
         :param pulumi.Input[str] binding_id: This is deprecated and has no effect. Do not use.
         :param pulumi.Input['ExprArgs'] condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-        :param pulumi.Input[str] role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+        :param pulumi.Input[str] role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         if binding_id is not None:
             pulumi.set(__self__, "binding_id", binding_id)
@@ -3526,7 +3651,7 @@ class BindingArgs:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         """
         return pulumi.get(self, "members")
 
@@ -3538,7 +3663,7 @@ class BindingArgs:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
-        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         return pulumi.get(self, "role")
 
@@ -4323,9 +4448,9 @@ class CorsPolicyArgs:
         :param pulumi.Input[bool] allow_credentials: In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header. Default is false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: Specifies the content for the Access-Control-Allow-Headers header.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: Specifies the content for the Access-Control-Allow-Methods header.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origin_regexes: Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origin_regexes: Specifies a regular expression that matches allowed origins. For more information, see regular expression syntax . An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origins: Specifies the list of origins that is allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
-        :param pulumi.Input[bool] disabled: If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+        :param pulumi.Input[bool] disabled: If true, disables the CORS policy. The default value is false, which indicates that the CORS policy is in effect.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] expose_headers: Specifies the content for the Access-Control-Expose-Headers header.
         :param pulumi.Input[int] max_age: Specifies how long results of a preflight request can be cached in seconds. This field translates to the Access-Control-Max-Age header.
         """
@@ -4386,7 +4511,7 @@ class CorsPolicyArgs:
     @pulumi.getter(name="allowOriginRegexes")
     def allow_origin_regexes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+        Specifies a regular expression that matches allowed origins. For more information, see regular expression syntax . An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
         """
         return pulumi.get(self, "allow_origin_regexes")
 
@@ -4410,7 +4535,7 @@ class CorsPolicyArgs:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+        If true, disables the CORS policy. The default value is false, which indicates that the CORS policy is in effect.
         """
         return pulumi.get(self, "disabled")
 
@@ -5824,10 +5949,10 @@ class ForwardingRuleServiceDirectoryRegistrationArgs:
                  service: Optional[pulumi.Input[str]] = None,
                  service_directory_region: Optional[pulumi.Input[str]] = None):
         """
-        Describes the auto-registration of the Forwarding Rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this Forwarding Rule.
+        Describes the auto-registration of the forwarding rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this forwarding rule.
         :param pulumi.Input[str] namespace: Service Directory namespace to register the forwarding rule under.
         :param pulumi.Input[str] service: Service Directory service to register the forwarding rule under.
-        :param pulumi.Input[str] service_directory_region: [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs Forwarding Rules on the same network should use the same Service Directory region.
+        :param pulumi.Input[str] service_directory_region: [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs forwarding rules on the same network should use the same Service Directory region.
         """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
@@ -5864,7 +5989,7 @@ class ForwardingRuleServiceDirectoryRegistrationArgs:
     @pulumi.getter(name="serviceDirectoryRegion")
     def service_directory_region(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs Forwarding Rules on the same network should use the same Service Directory region.
+        [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs forwarding rules on the same network should use the same Service Directory region.
         """
         return pulumi.get(self, "service_directory_region")
 
@@ -5986,7 +6111,7 @@ class GRPCHealthCheckArgs:
         :param pulumi.Input[str] grpc_service_name: The gRPC service name for the health check. This field is optional. The value of grpc_service_name has the following meanings by convention: - Empty service_name means the overall status of all services at the backend. - Non-empty service_name means the health of that gRPC service, as defined by the owner of the service. The grpc_service_name can only be ASCII.
         :param pulumi.Input[int] port: The TCP port number to which the health check prober sends packets. Valid values are 1 through 65535.
         :param pulumi.Input[str] port_name: Not supported.
-        :param pulumi.Input['GRPCHealthCheckPortSpecification'] port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        :param pulumi.Input['GRPCHealthCheckPortSpecification'] port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         """
         if grpc_service_name is not None:
             pulumi.set(__self__, "grpc_service_name", grpc_service_name)
@@ -6037,12 +6162,67 @@ class GRPCHealthCheckArgs:
     @pulumi.getter(name="portSpecification")
     def port_specification(self) -> Optional[pulumi.Input['GRPCHealthCheckPortSpecification']]:
         """
-        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         """
         return pulumi.get(self, "port_specification")
 
     @port_specification.setter
     def port_specification(self, value: Optional[pulumi.Input['GRPCHealthCheckPortSpecification']]):
+        pulumi.set(self, "port_specification", value)
+
+
+@pulumi.input_type
+class GRPCTLSHealthCheckArgs:
+    def __init__(__self__, *,
+                 grpc_service_name: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 port_specification: Optional[pulumi.Input['GRPCTLSHealthCheckPortSpecification']] = None):
+        """
+        :param pulumi.Input[str] grpc_service_name: The gRPC service name for the health check. This field is optional. The value of grpc_service_name has the following meanings by convention: - Empty service_name means the overall status of all services at the backend. - Non-empty service_name means the health of that gRPC service, as defined by the owner of the service. The grpc_service_name can only be ASCII.
+        :param pulumi.Input[int] port: The TCP port number to which the health check prober sends packets. Valid values are 1 through 65535.
+        :param pulumi.Input['GRPCTLSHealthCheckPortSpecification'] port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        """
+        if grpc_service_name is not None:
+            pulumi.set(__self__, "grpc_service_name", grpc_service_name)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if port_specification is not None:
+            pulumi.set(__self__, "port_specification", port_specification)
+
+    @property
+    @pulumi.getter(name="grpcServiceName")
+    def grpc_service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The gRPC service name for the health check. This field is optional. The value of grpc_service_name has the following meanings by convention: - Empty service_name means the overall status of all services at the backend. - Non-empty service_name means the health of that gRPC service, as defined by the owner of the service. The grpc_service_name can only be ASCII.
+        """
+        return pulumi.get(self, "grpc_service_name")
+
+    @grpc_service_name.setter
+    def grpc_service_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "grpc_service_name", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The TCP port number to which the health check prober sends packets. Valid values are 1 through 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="portSpecification")
+    def port_specification(self) -> Optional[pulumi.Input['GRPCTLSHealthCheckPortSpecification']]:
+        """
+        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        """
+        return pulumi.get(self, "port_specification")
+
+    @port_specification.setter
+    def port_specification(self, value: Optional[pulumi.Input['GRPCTLSHealthCheckPortSpecification']]):
         pulumi.set(self, "port_specification", value)
 
 
@@ -6108,7 +6288,7 @@ class GuestOsFeatureArgs:
                  type: Optional[pulumi.Input['GuestOsFeatureType']] = None):
         """
         Guest OS features.
-        :param pulumi.Input['GuestOsFeatureType'] type: The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+        :param pulumi.Input['GuestOsFeatureType'] type: The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE_V2 - SEV_SNP_CAPABLE - TDX_CAPABLE - IDPF For more information, see Enabling guest operating system features.
         """
         if type is not None:
             pulumi.set(__self__, "type", type)
@@ -6117,7 +6297,7 @@ class GuestOsFeatureArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input['GuestOsFeatureType']]:
         """
-        The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+        The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE_V2 - SEV_SNP_CAPABLE - TDX_CAPABLE - IDPF For more information, see Enabling guest operating system features.
         """
         return pulumi.get(self, "type")
 
@@ -6141,7 +6321,7 @@ class HTTP2HealthCheckArgs:
         :param pulumi.Input[str] host: The value of the host header in the HTTP/2 health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
         :param pulumi.Input[int] port: The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
         :param pulumi.Input[str] port_name: Not supported.
-        :param pulumi.Input['HTTP2HealthCheckPortSpecification'] port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        :param pulumi.Input['HTTP2HealthCheckPortSpecification'] port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         :param pulumi.Input['HTTP2HealthCheckProxyHeader'] proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         :param pulumi.Input[str] request_path: The request path of the HTTP/2 health check request. The default value is /.
         :param pulumi.Input[str] response: Creates a content-based HTTP/2 health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
@@ -6204,7 +6384,7 @@ class HTTP2HealthCheckArgs:
     @pulumi.getter(name="portSpecification")
     def port_specification(self) -> Optional[pulumi.Input['HTTP2HealthCheckPortSpecification']]:
         """
-        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         """
         return pulumi.get(self, "port_specification")
 
@@ -6276,7 +6456,7 @@ class HTTPHealthCheckArgs:
         :param pulumi.Input[str] host: The value of the host header in the HTTP health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
         :param pulumi.Input[int] port: The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
         :param pulumi.Input[str] port_name: Not supported.
-        :param pulumi.Input['HTTPHealthCheckPortSpecification'] port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        :param pulumi.Input['HTTPHealthCheckPortSpecification'] port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         :param pulumi.Input['HTTPHealthCheckProxyHeader'] proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         :param pulumi.Input[str] request_path: The request path of the HTTP health check request. The default value is /.
         :param pulumi.Input[str] response: Creates a content-based HTTP health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
@@ -6339,7 +6519,7 @@ class HTTPHealthCheckArgs:
     @pulumi.getter(name="portSpecification")
     def port_specification(self) -> Optional[pulumi.Input['HTTPHealthCheckPortSpecification']]:
         """
-        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         """
         return pulumi.get(self, "port_specification")
 
@@ -6411,7 +6591,7 @@ class HTTPSHealthCheckArgs:
         :param pulumi.Input[str] host: The value of the host header in the HTTPS health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
         :param pulumi.Input[int] port: The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
         :param pulumi.Input[str] port_name: Not supported.
-        :param pulumi.Input['HTTPSHealthCheckPortSpecification'] port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        :param pulumi.Input['HTTPSHealthCheckPortSpecification'] port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         :param pulumi.Input['HTTPSHealthCheckProxyHeader'] proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         :param pulumi.Input[str] request_path: The request path of the HTTPS health check request. The default value is /.
         :param pulumi.Input[str] response: Creates a content-based HTTPS health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
@@ -6474,7 +6654,7 @@ class HTTPSHealthCheckArgs:
     @pulumi.getter(name="portSpecification")
     def port_specification(self) -> Optional[pulumi.Input['HTTPSHealthCheckPortSpecification']]:
         """
-        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         """
         return pulumi.get(self, "port_specification")
 
@@ -7974,18 +8154,61 @@ class InstanceGroupManagerAutoHealingPolicyArgs:
 
 
 @pulumi.input_type
+class InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMixArgs:
+    def __init__(__self__, *,
+                 standard_capacity_base: Optional[pulumi.Input[int]] = None,
+                 standard_capacity_percent_above_base: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] standard_capacity_base: The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity user needs. MIG will create only Standard VMs until it reaches standard_capacity_base and only then will start using standard_capacity_percent_above_base to mix Spot with Standard VMs.
+        :param pulumi.Input[int] standard_capacity_percent_above_base: The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs. The percentage applies only to the capacity above standard_capacity_base.
+        """
+        if standard_capacity_base is not None:
+            pulumi.set(__self__, "standard_capacity_base", standard_capacity_base)
+        if standard_capacity_percent_above_base is not None:
+            pulumi.set(__self__, "standard_capacity_percent_above_base", standard_capacity_percent_above_base)
+
+    @property
+    @pulumi.getter(name="standardCapacityBase")
+    def standard_capacity_base(self) -> Optional[pulumi.Input[int]]:
+        """
+        The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity user needs. MIG will create only Standard VMs until it reaches standard_capacity_base and only then will start using standard_capacity_percent_above_base to mix Spot with Standard VMs.
+        """
+        return pulumi.get(self, "standard_capacity_base")
+
+    @standard_capacity_base.setter
+    def standard_capacity_base(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "standard_capacity_base", value)
+
+    @property
+    @pulumi.getter(name="standardCapacityPercentAboveBase")
+    def standard_capacity_percent_above_base(self) -> Optional[pulumi.Input[int]]:
+        """
+        The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs. The percentage applies only to the capacity above standard_capacity_base.
+        """
+        return pulumi.get(self, "standard_capacity_percent_above_base")
+
+    @standard_capacity_percent_above_base.setter
+    def standard_capacity_percent_above_base(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "standard_capacity_percent_above_base", value)
+
+
+@pulumi.input_type
 class InstanceGroupManagerInstanceFlexibilityPolicyArgs:
     def __init__(__self__, *,
                  instance_selection_lists: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 instance_selections: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 instance_selections: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 provisioning_model_mix: Optional[pulumi.Input['InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMixArgs']] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] instance_selection_lists: Named instance selections configuring properties that the group will use when creating new VMs.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] instance_selections: Named instance selections configuring properties that the group will use when creating new VMs.
+        :param pulumi.Input['InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMixArgs'] provisioning_model_mix: Provisioning model configuration used by this managed instance group to create instances.
         """
         if instance_selection_lists is not None:
             pulumi.set(__self__, "instance_selection_lists", instance_selection_lists)
         if instance_selections is not None:
             pulumi.set(__self__, "instance_selections", instance_selections)
+        if provisioning_model_mix is not None:
+            pulumi.set(__self__, "provisioning_model_mix", provisioning_model_mix)
 
     @property
     @pulumi.getter(name="instanceSelectionLists")
@@ -8010,6 +8233,18 @@ class InstanceGroupManagerInstanceFlexibilityPolicyArgs:
     @instance_selections.setter
     def instance_selections(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "instance_selections", value)
+
+    @property
+    @pulumi.getter(name="provisioningModelMix")
+    def provisioning_model_mix(self) -> Optional[pulumi.Input['InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMixArgs']]:
+        """
+        Provisioning model configuration used by this managed instance group to create instances.
+        """
+        return pulumi.get(self, "provisioning_model_mix")
+
+    @provisioning_model_mix.setter
+    def provisioning_model_mix(self, value: Optional[pulumi.Input['InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMixArgs']]):
+        pulumi.set(self, "provisioning_model_mix", value)
 
 
 @pulumi.input_type
@@ -8091,12 +8326,37 @@ class InstanceGroupManagerInstanceLifecyclePolicyArgs:
 
 
 @pulumi.input_type
+class InstanceGroupManagerParamsArgs:
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        Input only additional params for instance group manager creation.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see Manage tags for resources.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see Manage tags for resources.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_manager_tags", value)
+
+
+@pulumi.input_type
 class InstanceGroupManagerStandbyPolicyArgs:
     def __init__(__self__, *,
                  initial_delay_sec: Optional[pulumi.Input[int]] = None,
                  mode: Optional[pulumi.Input['InstanceGroupManagerStandbyPolicyMode']] = None):
         """
-        :param pulumi.Input['InstanceGroupManagerStandbyPolicyMode'] mode: Defines behaviour of using instances from standby pool to resize MIG.
+        :param pulumi.Input[int] initial_delay_sec: Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+        :param pulumi.Input['InstanceGroupManagerStandbyPolicyMode'] mode: Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is `MANUAL`.
         """
         if initial_delay_sec is not None:
             pulumi.set(__self__, "initial_delay_sec", initial_delay_sec)
@@ -8106,6 +8366,9 @@ class InstanceGroupManagerStandbyPolicyArgs:
     @property
     @pulumi.getter(name="initialDelaySec")
     def initial_delay_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+        """
         return pulumi.get(self, "initial_delay_sec")
 
     @initial_delay_sec.setter
@@ -8116,7 +8379,7 @@ class InstanceGroupManagerStandbyPolicyArgs:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input['InstanceGroupManagerStandbyPolicyMode']]:
         """
-        Defines behaviour of using instances from standby pool to resize MIG.
+        Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is `MANUAL`.
         """
         return pulumi.get(self, "mode")
 
@@ -9804,9 +10067,9 @@ class NetworkEndpointGroupAppEngineArgs:
                  version: Optional[pulumi.Input[str]] = None):
         """
         Configuration for an App Engine network endpoint group (NEG). The service is optional, may be provided explicitly or in the URL mask. The version is optional and can only be provided explicitly or in the URL mask when service is present. Note: App Engine service must be in the same project and located in the same region as the Serverless NEG.
-        :param pulumi.Input[str] service: Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: "default", "my-service".
-        :param pulumi.Input[str] url_mask: A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "<service>-dot-appname.appspot.com/<version>". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
-        :param pulumi.Input[str] version: Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: "v1", "v2".
+        :param pulumi.Input[str] service: Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: default, my-service.
+        :param pulumi.Input[str] url_mask: An URL mask is one of the main components of the Cloud Function. A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs foo1-dot-appname.appspot.com/v1 and foo1-dot-appname.appspot.com/v2 can be backed by the same Serverless NEG with URL mask <service>-dot-appname.appspot.com/<version>. The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+        :param pulumi.Input[str] version: Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: v1, v2.
         """
         if service is not None:
             pulumi.set(__self__, "service", service)
@@ -9819,7 +10082,7 @@ class NetworkEndpointGroupAppEngineArgs:
     @pulumi.getter
     def service(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: "default", "my-service".
+        Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: default, my-service.
         """
         return pulumi.get(self, "service")
 
@@ -9831,7 +10094,7 @@ class NetworkEndpointGroupAppEngineArgs:
     @pulumi.getter(name="urlMask")
     def url_mask(self) -> Optional[pulumi.Input[str]]:
         """
-        A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "<service>-dot-appname.appspot.com/<version>". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+        An URL mask is one of the main components of the Cloud Function. A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs foo1-dot-appname.appspot.com/v1 and foo1-dot-appname.appspot.com/v2 can be backed by the same Serverless NEG with URL mask <service>-dot-appname.appspot.com/<version>. The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
         """
         return pulumi.get(self, "url_mask")
 
@@ -9843,7 +10106,7 @@ class NetworkEndpointGroupAppEngineArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: "v1", "v2".
+        Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: v1, v2.
         """
         return pulumi.get(self, "version")
 
@@ -9859,8 +10122,8 @@ class NetworkEndpointGroupCloudFunctionArgs:
                  url_mask: Optional[pulumi.Input[str]] = None):
         """
         Configuration for a Cloud Function network endpoint group (NEG). The function must be provided explicitly or in the URL mask. Note: Cloud Function must be in the same project and located in the same region as the Serverless NEG.
-        :param pulumi.Input[str] function: A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: "func1".
-        :param pulumi.Input[str] url_mask: A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/<function>". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
+        :param pulumi.Input[str] function: A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: func1.
+        :param pulumi.Input[str] url_mask: An URL mask is one of the main components of the Cloud Function. A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs mydomain.com/function1 and mydomain.com/function2 can be backed by the same Serverless NEG with URL mask /<function>. The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
         """
         if function is not None:
             pulumi.set(__self__, "function", function)
@@ -9871,7 +10134,7 @@ class NetworkEndpointGroupCloudFunctionArgs:
     @pulumi.getter
     def function(self) -> Optional[pulumi.Input[str]]:
         """
-        A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: "func1".
+        A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: func1.
         """
         return pulumi.get(self, "function")
 
@@ -9883,7 +10146,7 @@ class NetworkEndpointGroupCloudFunctionArgs:
     @pulumi.getter(name="urlMask")
     def url_mask(self) -> Optional[pulumi.Input[str]]:
         """
-        A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/<function>". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
+        An URL mask is one of the main components of the Cloud Function. A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs mydomain.com/function1 and mydomain.com/function2 can be backed by the same Serverless NEG with URL mask /<function>. The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
         """
         return pulumi.get(self, "url_mask")
 
@@ -9902,7 +10165,7 @@ class NetworkEndpointGroupCloudRunArgs:
         Configuration for a Cloud Run network endpoint group (NEG). The service must be provided explicitly or in the URL mask. The tag is optional, may be provided explicitly or in the URL mask. Note: Cloud Run service must be in the same project and located in the same region as the Serverless NEG.
         :param pulumi.Input[str] service: Cloud Run service is the main resource of Cloud Run. The service must be 1-63 characters long, and comply with RFC1035. Example value: "run-service".
         :param pulumi.Input[str] tag: Optional Cloud Run tag represents the "named-revision" to provide additional fine-grained traffic routing information. The tag must be 1-63 characters long, and comply with RFC1035. Example value: "revision-0010".
-        :param pulumi.Input[str] url_mask: A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<service>". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
+        :param pulumi.Input[str] url_mask: An URL mask is one of the main components of the Cloud Function. A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs foo1.domain.com/bar1 and foo1.domain.com/bar2 can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask <tag>.domain.com/<service>. The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
         """
         if service is not None:
             pulumi.set(__self__, "service", service)
@@ -9939,7 +10202,7 @@ class NetworkEndpointGroupCloudRunArgs:
     @pulumi.getter(name="urlMask")
     def url_mask(self) -> Optional[pulumi.Input[str]]:
         """
-        A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<service>". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
+        An URL mask is one of the main components of the Cloud Function. A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs foo1.domain.com/bar1 and foo1.domain.com/bar2 can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask <tag>.domain.com/<service>. The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
         """
         return pulumi.get(self, "url_mask")
 
@@ -9956,18 +10219,18 @@ class NetworkEndpointGroupLbNetworkEndpointGroupArgs:
                  subnetwork: Optional[pulumi.Input[str]] = None):
         """
         Load balancing specific fields for network endpoint group.
-        :param pulumi.Input[int] default_port: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
-        :param pulumi.Input[str] network: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+        :param pulumi.Input[int] default_port: The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified. [Deprecated] This field is deprecated.
+        :param pulumi.Input[str] network: The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified. [Deprecated] This field is deprecated.
         :param pulumi.Input[str] subnetwork: Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
         """
         if default_port is not None:
-            warnings.warn("""The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""default_port is deprecated: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.""")
+            warnings.warn("""The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified. [Deprecated] This field is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""default_port is deprecated: The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified. [Deprecated] This field is deprecated.""")
         if default_port is not None:
             pulumi.set(__self__, "default_port", default_port)
         if network is not None:
-            warnings.warn("""The URL of the network to which all network endpoints in the NEG belong. Uses \"default\" project network if unspecified. [Deprecated] This field is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""network is deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses \"default\" project network if unspecified. [Deprecated] This field is deprecated.""")
+            warnings.warn("""The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified. [Deprecated] This field is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""network is deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified. [Deprecated] This field is deprecated.""")
         if network is not None:
             pulumi.set(__self__, "network", network)
         if subnetwork is not None:
@@ -9980,10 +10243,10 @@ class NetworkEndpointGroupLbNetworkEndpointGroupArgs:
     @pulumi.getter(name="defaultPort")
     def default_port(self) -> Optional[pulumi.Input[int]]:
         """
-        The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+        The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified. [Deprecated] This field is deprecated.
         """
-        warnings.warn("""The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""default_port is deprecated: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.""")
+        warnings.warn("""The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified. [Deprecated] This field is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""default_port is deprecated: The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified. [Deprecated] This field is deprecated.""")
 
         return pulumi.get(self, "default_port")
 
@@ -9995,10 +10258,10 @@ class NetworkEndpointGroupLbNetworkEndpointGroupArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+        The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified. [Deprecated] This field is deprecated.
         """
-        warnings.warn("""The URL of the network to which all network endpoints in the NEG belong. Uses \"default\" project network if unspecified. [Deprecated] This field is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""network is deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses \"default\" project network if unspecified. [Deprecated] This field is deprecated.""")
+        warnings.warn("""The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified. [Deprecated] This field is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""network is deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified. [Deprecated] This field is deprecated.""")
 
         return pulumi.get(self, "network")
 
@@ -10024,11 +10287,26 @@ class NetworkEndpointGroupLbNetworkEndpointGroupArgs:
 
 @pulumi.input_type
 class NetworkEndpointGroupPscDataArgs:
-    def __init__(__self__):
+    def __init__(__self__, *,
+                 producer_port: Optional[pulumi.Input[int]] = None):
         """
         All data that is specifically relevant to only network endpoint groups of type PRIVATE_SERVICE_CONNECT.
+        :param pulumi.Input[int] producer_port: The psc producer port is used to connect PSC NEG with specific port on the PSC Producer side; should only be used for the PRIVATE_SERVICE_CONNECT NEG type
         """
-        pass
+        if producer_port is not None:
+            pulumi.set(__self__, "producer_port", producer_port)
+
+    @property
+    @pulumi.getter(name="producerPort")
+    def producer_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The psc producer port is used to connect PSC NEG with specific port on the PSC Producer side; should only be used for the PRIVATE_SERVICE_CONNECT NEG type
+        """
+        return pulumi.get(self, "producer_port")
+
+    @producer_port.setter
+    def producer_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "producer_port", value)
 
 
 @pulumi.input_type
@@ -10042,7 +10320,7 @@ class NetworkEndpointGroupServerlessDeploymentArgs:
         Configuration for a serverless network endpoint group (NEG). The platform must be provided. Note: The target backend service must be in the same project and located in the same region as the Serverless NEG.
         :param pulumi.Input[str] platform: The platform of the backend target(s) of this NEG. The only supported value is API Gateway: apigateway.googleapis.com.
         :param pulumi.Input[str] resource: The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name 
-        :param pulumi.Input[str] url_mask: A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag 
+        :param pulumi.Input[str] url_mask: An URL mask is one of the main components of the Cloud Function. A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag 
         :param pulumi.Input[str] version: The optional resource version. The version identified by this value is platform-specific and is follows: 1. API Gateway: Unused 2. App Engine: The service version 3. Cloud Functions: Unused 4. Cloud Run: The service tag 
         """
         if platform is not None:
@@ -10082,7 +10360,7 @@ class NetworkEndpointGroupServerlessDeploymentArgs:
     @pulumi.getter(name="urlMask")
     def url_mask(self) -> Optional[pulumi.Input[str]]:
         """
-        A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag 
+        An URL mask is one of the main components of the Cloud Function. A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag 
         """
         return pulumi.get(self, "url_mask")
 
@@ -10175,6 +10453,7 @@ class NetworkInterfaceArgs:
     def __init__(__self__, *,
                  access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigArgs']]]] = None,
                  alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['AliasIpRangeArgs']]]] = None,
+                 igmp_query: Optional[pulumi.Input['NetworkInterfaceIgmpQuery']] = None,
                  internal_ipv6_prefix_length: Optional[pulumi.Input[int]] = None,
                  ipv6_access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigArgs']]]] = None,
                  ipv6_address: Optional[pulumi.Input[str]] = None,
@@ -10192,6 +10471,7 @@ class NetworkInterfaceArgs:
         A network interface resource attached to an instance.
         :param pulumi.Input[Sequence[pulumi.Input['AccessConfigArgs']]] access_configs: An array of configurations for this interface. Currently, only one access config, ONE_TO_ONE_NAT, is supported. If there are no accessConfigs specified, then this instance will have no external internet access.
         :param pulumi.Input[Sequence[pulumi.Input['AliasIpRangeArgs']]] alias_ip_ranges: An array of alias IP ranges for this network interface. You can only specify this field for network interfaces in VPC networks.
+        :param pulumi.Input['NetworkInterfaceIgmpQuery'] igmp_query: Indicate whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
         :param pulumi.Input[int] internal_ipv6_prefix_length: The prefix length of the primary internal IPv6 range.
         :param pulumi.Input[Sequence[pulumi.Input['AccessConfigArgs']]] ipv6_access_configs: An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
         :param pulumi.Input[str] ipv6_address: An IPv6 internal network address for this network interface. To use a static internal IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
@@ -10210,6 +10490,8 @@ class NetworkInterfaceArgs:
             pulumi.set(__self__, "access_configs", access_configs)
         if alias_ip_ranges is not None:
             pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        if igmp_query is not None:
+            pulumi.set(__self__, "igmp_query", igmp_query)
         if internal_ipv6_prefix_length is not None:
             pulumi.set(__self__, "internal_ipv6_prefix_length", internal_ipv6_prefix_length)
         if ipv6_access_configs is not None:
@@ -10260,6 +10542,18 @@ class NetworkInterfaceArgs:
     @alias_ip_ranges.setter
     def alias_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AliasIpRangeArgs']]]]):
         pulumi.set(self, "alias_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="igmpQuery")
+    def igmp_query(self) -> Optional[pulumi.Input['NetworkInterfaceIgmpQuery']]:
+        """
+        Indicate whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+        """
+        return pulumi.get(self, "igmp_query")
+
+    @igmp_query.setter
+    def igmp_query(self, value: Optional[pulumi.Input['NetworkInterfaceIgmpQuery']]):
+        pulumi.set(self, "igmp_query", value)
 
     @property
     @pulumi.getter(name="internalIpv6PrefixLength")
@@ -10938,9 +11232,9 @@ class PacketMirroringFilterArgs:
                  direction: Optional[pulumi.Input['PacketMirroringFilterDirection']] = None,
                  ip_protocols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] cidr_ranges: IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cidr_ranges: One or more IPv4 or IPv6 CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. If no ranges are specified, all IPv4 traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored. To mirror all IPv4 and IPv6 traffic, use "0.0.0.0/0,::/0". Note: Support for IPv6 traffic is in preview.
         :param pulumi.Input['PacketMirroringFilterDirection'] direction: Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_protocols: Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_protocols: Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored.
         """
         if cidr_ranges is not None:
             pulumi.set(__self__, "cidr_ranges", cidr_ranges)
@@ -10953,7 +11247,7 @@ class PacketMirroringFilterArgs:
     @pulumi.getter(name="cidrRanges")
     def cidr_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+        One or more IPv4 or IPv6 CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. If no ranges are specified, all IPv4 traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored. To mirror all IPv4 and IPv6 traffic, use "0.0.0.0/0,::/0". Note: Support for IPv6 traffic is in preview.
         """
         return pulumi.get(self, "cidr_ranges")
 
@@ -10977,7 +11271,7 @@ class PacketMirroringFilterArgs:
     @pulumi.getter(name="ipProtocols")
     def ip_protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+        Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored.
         """
         return pulumi.get(self, "ip_protocols")
 
@@ -12068,8 +12362,8 @@ class ReservationArgs:
         """
         Represents a reservation resource. A reservation ensures that capacity is held in a specific zone even if the reserved VMs are not running. For more information, read Reserving zonal resources.
         :param pulumi.Input['AllocationAggregateReservationArgs'] aggregate_reservation: Reservation for aggregated resources, providing shape flexibility.
-        :param pulumi.Input['DurationArgs'] delete_after_duration: Duration time relative to reservation creation when GCE will automatically delete this resource.
-        :param pulumi.Input[str] delete_at_time: Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+        :param pulumi.Input['DurationArgs'] delete_after_duration: Duration time relative to reservation creation when Compute Engine will automatically delete this resource.
+        :param pulumi.Input[str] delete_at_time: Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_policies: Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
@@ -12115,7 +12409,7 @@ class ReservationArgs:
     @pulumi.getter(name="deleteAfterDuration")
     def delete_after_duration(self) -> Optional[pulumi.Input['DurationArgs']]:
         """
-        Duration time relative to reservation creation when GCE will automatically delete this resource.
+        Duration time relative to reservation creation when Compute Engine will automatically delete this resource.
         """
         return pulumi.get(self, "delete_after_duration")
 
@@ -12127,7 +12421,7 @@ class ReservationArgs:
     @pulumi.getter(name="deleteAtTime")
     def delete_at_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+        Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
         """
         return pulumi.get(self, "delete_at_time")
 
@@ -14559,7 +14853,7 @@ class SSLHealthCheckArgs:
         """
         :param pulumi.Input[int] port: The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
         :param pulumi.Input[str] port_name: Not supported.
-        :param pulumi.Input['SSLHealthCheckPortSpecification'] port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        :param pulumi.Input['SSLHealthCheckPortSpecification'] port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         :param pulumi.Input['SSLHealthCheckProxyHeader'] proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         :param pulumi.Input[str] request: Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection and SSL handshake.
         :param pulumi.Input[str] response: Creates a content-based SSL health check. In addition to establishing a TCP connection and the TLS handshake, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
@@ -14605,7 +14899,7 @@ class SSLHealthCheckArgs:
     @pulumi.getter(name="portSpecification")
     def port_specification(self) -> Optional[pulumi.Input['SSLHealthCheckPortSpecification']]:
         """
-        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         """
         return pulumi.get(self, "port_specification")
 
@@ -14771,6 +15065,30 @@ class SchedulingNodeAffinityArgs:
 
 
 @pulumi.input_type
+class SchedulingOnInstanceStopActionArgs:
+    def __init__(__self__, *,
+                 discard_local_ssd: Optional[pulumi.Input[bool]] = None):
+        """
+        Defines the behaviour for instances with the instance_termination_action STOP.
+        :param pulumi.Input[bool] discard_local_ssd: If true, the contents of any attached Local SSD disks will be discarded else, the Local SSD data will be preserved when the instance is stopped at the end of the run duration/termination time.
+        """
+        if discard_local_ssd is not None:
+            pulumi.set(__self__, "discard_local_ssd", discard_local_ssd)
+
+    @property
+    @pulumi.getter(name="discardLocalSsd")
+    def discard_local_ssd(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the contents of any attached Local SSD disks will be discarded else, the Local SSD data will be preserved when the instance is stopped at the end of the run duration/termination time.
+        """
+        return pulumi.get(self, "discard_local_ssd")
+
+    @discard_local_ssd.setter
+    def discard_local_ssd(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "discard_local_ssd", value)
+
+
+@pulumi.input_type
 class SchedulingArgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
@@ -14789,6 +15107,7 @@ class SchedulingArgs:
                  min_node_cpus: Optional[pulumi.Input[int]] = None,
                  node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['SchedulingNodeAffinityArgs']]]] = None,
                  on_host_maintenance: Optional[pulumi.Input['SchedulingOnHostMaintenance']] = None,
+                 on_instance_stop_action: Optional[pulumi.Input['SchedulingOnInstanceStopActionArgs']] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
                  provisioning_model: Optional[pulumi.Input['SchedulingProvisioningModel']] = None,
                  termination_time: Optional[pulumi.Input[str]] = None):
@@ -14845,6 +15164,8 @@ class SchedulingArgs:
             pulumi.set(__self__, "node_affinities", node_affinities)
         if on_host_maintenance is not None:
             pulumi.set(__self__, "on_host_maintenance", on_host_maintenance)
+        if on_instance_stop_action is not None:
+            pulumi.set(__self__, "on_instance_stop_action", on_instance_stop_action)
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
         if provisioning_model is not None:
@@ -15042,6 +15363,15 @@ class SchedulingArgs:
         pulumi.set(self, "on_host_maintenance", value)
 
     @property
+    @pulumi.getter(name="onInstanceStopAction")
+    def on_instance_stop_action(self) -> Optional[pulumi.Input['SchedulingOnInstanceStopActionArgs']]:
+        return pulumi.get(self, "on_instance_stop_action")
+
+    @on_instance_stop_action.setter
+    def on_instance_stop_action(self, value: Optional[pulumi.Input['SchedulingOnInstanceStopActionArgs']]):
+        pulumi.set(self, "on_instance_stop_action", value)
+
+    @property
     @pulumi.getter
     def preemptible(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -15159,15 +15489,76 @@ class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs:
 
 
 @pulumi.input_type
+class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs:
+    def __init__(__self__, *,
+                 enable_each_unique_value: Optional[pulumi.Input[bool]] = None,
+                 type: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType']] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        Configurations to specifc granular traffic units processed by Adaptive Protection.
+        :param pulumi.Input[bool] enable_each_unique_value: If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if `value` is empty.
+        :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType'] type: Type of this configuration.
+        :param pulumi.Input[str] value: Requests that match this value constitute a granular traffic unit.
+        """
+        if enable_each_unique_value is not None:
+            pulumi.set(__self__, "enable_each_unique_value", enable_each_unique_value)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="enableEachUniqueValue")
+    def enable_each_unique_value(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if `value` is empty.
+        """
+        return pulumi.get(self, "enable_each_unique_value")
+
+    @enable_each_unique_value.setter
+    def enable_each_unique_value(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_each_unique_value", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType']]:
+        """
+        Type of this configuration.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType']]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Requests that match this value constitute a granular traffic unit.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
 class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs:
     def __init__(__self__, *,
                  auto_deploy_confidence_threshold: Optional[pulumi.Input[float]] = None,
                  auto_deploy_expiration_sec: Optional[pulumi.Input[int]] = None,
                  auto_deploy_impacted_baseline_threshold: Optional[pulumi.Input[float]] = None,
                  auto_deploy_load_threshold: Optional[pulumi.Input[float]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 detection_absolute_qps: Optional[pulumi.Input[float]] = None,
+                 detection_load_threshold: Optional[pulumi.Input[float]] = None,
+                 detection_relative_to_baseline_qps: Optional[pulumi.Input[float]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 traffic_granularity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs']]]] = None):
         """
         :param pulumi.Input[str] name: The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs']]] traffic_granularity_configs: Configuration options for enabling Adaptive Protection to operate on specified granular traffic units.
         """
         if auto_deploy_confidence_threshold is not None:
             pulumi.set(__self__, "auto_deploy_confidence_threshold", auto_deploy_confidence_threshold)
@@ -15177,8 +15568,16 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConf
             pulumi.set(__self__, "auto_deploy_impacted_baseline_threshold", auto_deploy_impacted_baseline_threshold)
         if auto_deploy_load_threshold is not None:
             pulumi.set(__self__, "auto_deploy_load_threshold", auto_deploy_load_threshold)
+        if detection_absolute_qps is not None:
+            pulumi.set(__self__, "detection_absolute_qps", detection_absolute_qps)
+        if detection_load_threshold is not None:
+            pulumi.set(__self__, "detection_load_threshold", detection_load_threshold)
+        if detection_relative_to_baseline_qps is not None:
+            pulumi.set(__self__, "detection_relative_to_baseline_qps", detection_relative_to_baseline_qps)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if traffic_granularity_configs is not None:
+            pulumi.set(__self__, "traffic_granularity_configs", traffic_granularity_configs)
 
     @property
     @pulumi.getter(name="autoDeployConfidenceThreshold")
@@ -15217,6 +15616,33 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConf
         pulumi.set(self, "auto_deploy_load_threshold", value)
 
     @property
+    @pulumi.getter(name="detectionAbsoluteQps")
+    def detection_absolute_qps(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "detection_absolute_qps")
+
+    @detection_absolute_qps.setter
+    def detection_absolute_qps(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "detection_absolute_qps", value)
+
+    @property
+    @pulumi.getter(name="detectionLoadThreshold")
+    def detection_load_threshold(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "detection_load_threshold")
+
+    @detection_load_threshold.setter
+    def detection_load_threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "detection_load_threshold", value)
+
+    @property
+    @pulumi.getter(name="detectionRelativeToBaselineQps")
+    def detection_relative_to_baseline_qps(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "detection_relative_to_baseline_qps")
+
+    @detection_relative_to_baseline_qps.setter
+    def detection_relative_to_baseline_qps(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "detection_relative_to_baseline_qps", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -15227,6 +15653,18 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConf
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="trafficGranularityConfigs")
+    def traffic_granularity_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs']]]]:
+        """
+        Configuration options for enabling Adaptive Protection to operate on specified granular traffic units.
+        """
+        return pulumi.get(self, "traffic_granularity_configs")
+
+    @traffic_granularity_configs.setter
+    def traffic_granularity_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs']]]]):
+        pulumi.set(self, "traffic_granularity_configs", value)
 
 
 @pulumi.input_type
@@ -15765,7 +16203,7 @@ class SecurityPolicyRuleMatcherExprOptionsArgs:
     def __init__(__self__, *,
                  recaptcha_options: Optional[pulumi.Input['SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs']] = None):
         """
-        :param pulumi.Input['SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs'] recaptcha_options: reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+        :param pulumi.Input['SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs'] recaptcha_options: reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
         """
         if recaptcha_options is not None:
             pulumi.set(__self__, "recaptcha_options", recaptcha_options)
@@ -15774,7 +16212,7 @@ class SecurityPolicyRuleMatcherExprOptionsArgs:
     @pulumi.getter(name="recaptchaOptions")
     def recaptcha_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs']]:
         """
-        reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+        reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
         """
         return pulumi.get(self, "recaptcha_options")
 
@@ -16202,7 +16640,7 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs:
                  enforce_on_key_type: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType']] = None):
         """
         :param pulumi.Input[str] enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType'] enforce_on_key_type: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType'] enforce_on_key_type: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. 
         """
         if enforce_on_key_name is not None:
             pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
@@ -16225,7 +16663,7 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs:
     @pulumi.getter(name="enforceOnKeyType")
     def enforce_on_key_type(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType']]:
         """
-        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. 
         """
         return pulumi.get(self, "enforce_on_key_type")
 
@@ -16330,7 +16768,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
         :param pulumi.Input[int] ban_duration_sec: Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
         :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsThresholdArgs'] ban_threshold: Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
         :param pulumi.Input[str] conform_action: Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
-        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKey'] enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKey'] enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. 
         :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs']]] enforce_on_key_configs: If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
         :param pulumi.Input[str] enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
         :param pulumi.Input[str] exceed_action: Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
@@ -16399,7 +16837,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     @pulumi.getter(name="enforceOnKey")
     def enforce_on_key(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKey']]:
         """
-        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. 
         """
         return pulumi.get(self, "enforce_on_key")
 
@@ -17862,7 +18300,7 @@ class TCPHealthCheckArgs:
         """
         :param pulumi.Input[int] port: The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
         :param pulumi.Input[str] port_name: Not supported.
-        :param pulumi.Input['TCPHealthCheckPortSpecification'] port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        :param pulumi.Input['TCPHealthCheckPortSpecification'] port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         :param pulumi.Input['TCPHealthCheckProxyHeader'] proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         :param pulumi.Input[str] request: Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
         :param pulumi.Input[str] response: Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
@@ -17908,7 +18346,7 @@ class TCPHealthCheckArgs:
     @pulumi.getter(name="portSpecification")
     def port_specification(self) -> Optional[pulumi.Input['TCPHealthCheckPortSpecification']]:
         """
-        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         """
         return pulumi.get(self, "port_specification")
 

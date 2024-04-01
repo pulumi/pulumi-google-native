@@ -8,7 +8,9 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 from ._enums import *
+from ._inputs import *
 
 __all__ = ['DatabaseArgs', 'Database']
 
@@ -17,6 +19,7 @@ class DatabaseArgs:
     def __init__(__self__, *,
                  database_id: pulumi.Input[str],
                  app_engine_integration_mode: Optional[pulumi.Input['DatabaseAppEngineIntegrationMode']] = None,
+                 cmek_config: Optional[pulumi.Input['GoogleFirestoreAdminV1CmekConfigArgs']] = None,
                  concurrency_mode: Optional[pulumi.Input['DatabaseConcurrencyMode']] = None,
                  delete_protection_state: Optional[pulumi.Input['DatabaseDeleteProtectionState']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -29,6 +32,7 @@ class DatabaseArgs:
         The set of arguments for constructing a Database resource.
         :param pulumi.Input[str] database_id: Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
         :param pulumi.Input['DatabaseAppEngineIntegrationMode'] app_engine_integration_mode: The App Engine integration mode to use for this database.
+        :param pulumi.Input['GoogleFirestoreAdminV1CmekConfigArgs'] cmek_config: Optional. Presence indicates CMEK is enabled for this database.
         :param pulumi.Input['DatabaseConcurrencyMode'] concurrency_mode: The concurrency control mode to use for this database.
         :param pulumi.Input['DatabaseDeleteProtectionState'] delete_protection_state: State of delete protection for the database.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -40,6 +44,8 @@ class DatabaseArgs:
         pulumi.set(__self__, "database_id", database_id)
         if app_engine_integration_mode is not None:
             pulumi.set(__self__, "app_engine_integration_mode", app_engine_integration_mode)
+        if cmek_config is not None:
+            pulumi.set(__self__, "cmek_config", cmek_config)
         if concurrency_mode is not None:
             pulumi.set(__self__, "concurrency_mode", concurrency_mode)
         if delete_protection_state is not None:
@@ -80,6 +86,18 @@ class DatabaseArgs:
     @app_engine_integration_mode.setter
     def app_engine_integration_mode(self, value: Optional[pulumi.Input['DatabaseAppEngineIntegrationMode']]):
         pulumi.set(self, "app_engine_integration_mode", value)
+
+    @property
+    @pulumi.getter(name="cmekConfig")
+    def cmek_config(self) -> Optional[pulumi.Input['GoogleFirestoreAdminV1CmekConfigArgs']]:
+        """
+        Optional. Presence indicates CMEK is enabled for this database.
+        """
+        return pulumi.get(self, "cmek_config")
+
+    @cmek_config.setter
+    def cmek_config(self, value: Optional[pulumi.Input['GoogleFirestoreAdminV1CmekConfigArgs']]):
+        pulumi.set(self, "cmek_config", value)
 
     @property
     @pulumi.getter(name="concurrencyMode")
@@ -181,6 +199,7 @@ class Database(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_integration_mode: Optional[pulumi.Input['DatabaseAppEngineIntegrationMode']] = None,
+                 cmek_config: Optional[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1CmekConfigArgs']]] = None,
                  concurrency_mode: Optional[pulumi.Input['DatabaseConcurrencyMode']] = None,
                  database_id: Optional[pulumi.Input[str]] = None,
                  delete_protection_state: Optional[pulumi.Input['DatabaseDeleteProtectionState']] = None,
@@ -197,6 +216,7 @@ class Database(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input['DatabaseAppEngineIntegrationMode'] app_engine_integration_mode: The App Engine integration mode to use for this database.
+        :param pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1CmekConfigArgs']] cmek_config: Optional. Presence indicates CMEK is enabled for this database.
         :param pulumi.Input['DatabaseConcurrencyMode'] concurrency_mode: The concurrency control mode to use for this database.
         :param pulumi.Input[str] database_id: Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
         :param pulumi.Input['DatabaseDeleteProtectionState'] delete_protection_state: State of delete protection for the database.
@@ -231,6 +251,7 @@ class Database(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_integration_mode: Optional[pulumi.Input['DatabaseAppEngineIntegrationMode']] = None,
+                 cmek_config: Optional[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1CmekConfigArgs']]] = None,
                  concurrency_mode: Optional[pulumi.Input['DatabaseConcurrencyMode']] = None,
                  database_id: Optional[pulumi.Input[str]] = None,
                  delete_protection_state: Optional[pulumi.Input['DatabaseDeleteProtectionState']] = None,
@@ -250,6 +271,7 @@ class Database(pulumi.CustomResource):
             __props__ = DatabaseArgs.__new__(DatabaseArgs)
 
             __props__.__dict__["app_engine_integration_mode"] = app_engine_integration_mode
+            __props__.__dict__["cmek_config"] = cmek_config
             __props__.__dict__["concurrency_mode"] = concurrency_mode
             if database_id is None and not opts.urn:
                 raise TypeError("Missing required property 'database_id'")
@@ -292,6 +314,7 @@ class Database(pulumi.CustomResource):
         __props__ = DatabaseArgs.__new__(DatabaseArgs)
 
         __props__.__dict__["app_engine_integration_mode"] = None
+        __props__.__dict__["cmek_config"] = None
         __props__.__dict__["concurrency_mode"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["database_id"] = None
@@ -316,6 +339,14 @@ class Database(pulumi.CustomResource):
         The App Engine integration mode to use for this database.
         """
         return pulumi.get(self, "app_engine_integration_mode")
+
+    @property
+    @pulumi.getter(name="cmekConfig")
+    def cmek_config(self) -> pulumi.Output['outputs.GoogleFirestoreAdminV1CmekConfigResponse']:
+        """
+        Optional. Presence indicates CMEK is enabled for this database.
+        """
+        return pulumi.get(self, "cmek_config")
 
     @property
     @pulumi.getter(name="concurrencyMode")

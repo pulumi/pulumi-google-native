@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2
         public Output<Outputs.BuildConfigResponse> BuildConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The create timestamp of a Cloud Function. This is only applicable to 2nd Gen functions.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
         /// User-provided description of a function.
         /// </summary>
         [Output("description")]
@@ -98,6 +104,12 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// UpgradeInfo for this Cloud Function
+        /// </summary>
+        [Output("upgradeInfo")]
+        public Output<Outputs.UpgradeInfoResponse> UpgradeInfo { get; private set; } = null!;
 
         /// <summary>
         /// The deployed url for the function.

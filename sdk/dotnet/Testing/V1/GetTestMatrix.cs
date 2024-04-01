@@ -66,6 +66,10 @@ namespace Pulumi.GoogleNative.Testing.V1
         /// </summary>
         public readonly Outputs.EnvironmentMatrixResponse EnvironmentMatrix;
         /// <summary>
+        /// Details about why a matrix was deemed invalid. If multiple checks can be safely performed, they will be reported but no assumptions should be made about the length of this list.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.MatrixErrorDetailResponse> ExtendedInvalidMatrixDetails;
+        /// <summary>
         /// If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
         /// </summary>
         public readonly bool FailFast;
@@ -116,6 +120,8 @@ namespace Pulumi.GoogleNative.Testing.V1
 
             Outputs.EnvironmentMatrixResponse environmentMatrix,
 
+            ImmutableArray<Outputs.MatrixErrorDetailResponse> extendedInvalidMatrixDetails,
+
             bool failFast,
 
             int flakyTestAttempts,
@@ -140,6 +146,7 @@ namespace Pulumi.GoogleNative.Testing.V1
         {
             ClientInfo = clientInfo;
             EnvironmentMatrix = environmentMatrix;
+            ExtendedInvalidMatrixDetails = extendedInvalidMatrixDetails;
             FailFast = failFast;
             FlakyTestAttempts = flakyTestAttempts;
             InvalidMatrixDetails = invalidMatrixDetails;

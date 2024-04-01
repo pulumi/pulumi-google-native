@@ -58,6 +58,10 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
     public sealed class GetRulesetResult
     {
         /// <summary>
+        /// Immutable. Intended resource to which this Ruleset should be released. May be left blank to signify the resource associated with the default release. Expected format: firestore.googleapis.com/projects//databases/
+        /// </summary>
+        public readonly string AttachmentPoint;
+        /// <summary>
         /// Time the `Ruleset` was created.
         /// </summary>
         public readonly string CreateTime;
@@ -76,6 +80,8 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
 
         [OutputConstructor]
         private GetRulesetResult(
+            string attachmentPoint,
+
             string createTime,
 
             Outputs.MetadataResponse metadata,
@@ -84,6 +90,7 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
 
             Outputs.SourceResponse source)
         {
+            AttachmentPoint = attachmentPoint;
             CreateTime = createTime;
             Metadata = metadata;
             Name = name;

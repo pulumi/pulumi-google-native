@@ -40,11 +40,11 @@ export const BinaryAuthorizationEvaluationMode = {
      */
     ProjectSingletonPolicyEnforce: "PROJECT_SINGLETON_POLICY_ENFORCE",
     /**
-     * Use Binary Authorization with the policies specified in policy_bindings.
+     * Use Binary Authorization Continuous Validation with the policies specified in policy_bindings.
      */
     PolicyBindings: "POLICY_BINDINGS",
     /**
-     * Use Binary Authorization with the policies specified in policy_bindings, and also with the project's singleton policy in enforcement mode.
+     * Use Binary Authorization Continuous Validation with the policies specified in policy_bindings and enforce Kubernetes admission requests with Binary Authorization using the project's singleton policy.
      */
     PolicyBindingsAndProjectSingletonPolicyEnforce: "POLICY_BINDINGS_AND_PROJECT_SINGLETON_POLICY_ENFORCE",
 } as const;
@@ -860,6 +860,22 @@ export const SandboxConfigType = {
  * Type of the sandbox to use for the node.
  */
 export type SandboxConfigType = (typeof SandboxConfigType)[keyof typeof SandboxConfigType];
+
+export const SecondaryBootDiskMode = {
+    /**
+     * MODE_UNSPECIFIED is when mode is not set.
+     */
+    ModeUnspecified: "MODE_UNSPECIFIED",
+    /**
+     * CONTAINER_IMAGE_CACHE is for using the secondary boot disk as a container image cache.
+     */
+    ContainerImageCache: "CONTAINER_IMAGE_CACHE",
+} as const;
+
+/**
+ * Disk mode (container image cache, etc.)
+ */
+export type SecondaryBootDiskMode = (typeof SecondaryBootDiskMode)[keyof typeof SecondaryBootDiskMode];
 
 export const SecurityPostureConfigMode = {
     /**

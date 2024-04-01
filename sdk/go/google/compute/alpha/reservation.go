@@ -21,9 +21,9 @@ type Reservation struct {
 	Commitment pulumi.StringOutput `pulumi:"commitment"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
-	// Duration time relative to reservation creation when GCE will automatically delete this resource.
+	// Duration time relative to reservation creation when Compute Engine will automatically delete this resource.
 	DeleteAfterDuration DurationResponseOutput `pulumi:"deleteAfterDuration"`
-	// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+	// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
 	DeleteAtTime pulumi.StringOutput `pulumi:"deleteAtTime"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -102,9 +102,9 @@ func (ReservationState) ElementType() reflect.Type {
 type reservationArgs struct {
 	// Reservation for aggregated resources, providing shape flexibility.
 	AggregateReservation *AllocationAggregateReservation `pulumi:"aggregateReservation"`
-	// Duration time relative to reservation creation when GCE will automatically delete this resource.
+	// Duration time relative to reservation creation when Compute Engine will automatically delete this resource.
 	DeleteAfterDuration *Duration `pulumi:"deleteAfterDuration"`
-	// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+	// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
 	DeleteAtTime *string `pulumi:"deleteAtTime"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -129,9 +129,9 @@ type reservationArgs struct {
 type ReservationArgs struct {
 	// Reservation for aggregated resources, providing shape flexibility.
 	AggregateReservation AllocationAggregateReservationPtrInput
-	// Duration time relative to reservation creation when GCE will automatically delete this resource.
+	// Duration time relative to reservation creation when Compute Engine will automatically delete this resource.
 	DeleteAfterDuration DurationPtrInput
-	// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+	// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
 	DeleteAtTime pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
@@ -204,12 +204,12 @@ func (o ReservationOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
-// Duration time relative to reservation creation when GCE will automatically delete this resource.
+// Duration time relative to reservation creation when Compute Engine will automatically delete this resource.
 func (o ReservationOutput) DeleteAfterDuration() DurationResponseOutput {
 	return o.ApplyT(func(v *Reservation) DurationResponseOutput { return v.DeleteAfterDuration }).(DurationResponseOutput)
 }
 
-// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
 func (o ReservationOutput) DeleteAtTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.DeleteAtTime }).(pulumi.StringOutput)
 }

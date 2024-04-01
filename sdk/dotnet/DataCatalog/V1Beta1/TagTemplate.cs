@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
     public partial class TagTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Transfer status of the TagTemplate
+        /// </summary>
+        [Output("dataplexTransferStatus")]
+        public Output<string> DataplexTransferStatus { get; private set; } = null!;
+
+        /// <summary>
         /// The display name for this template. Defaults to an empty string.
         /// </summary>
         [Output("displayName")]
@@ -31,7 +37,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
+        /// Identifier. The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -118,7 +124,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
+        /// Identifier. The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

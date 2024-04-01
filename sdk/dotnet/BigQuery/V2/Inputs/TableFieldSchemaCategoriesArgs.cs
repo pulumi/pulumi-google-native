@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
     /// <summary>
-    /// [Optional] The categories attached to this field, used for field-level access control.
+    /// Deprecated.
     /// </summary>
     public sealed class TableFieldSchemaCategoriesArgs : global::Pulumi.ResourceArgs
     {
@@ -19,8 +19,9 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         private InputList<string>? _names;
 
         /// <summary>
-        /// A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
+        /// Deprecated.
         /// </summary>
+        [Obsolete(@"Deprecated.")]
         public InputList<string> Names
         {
             get => _names ?? (_names = new InputList<string>());

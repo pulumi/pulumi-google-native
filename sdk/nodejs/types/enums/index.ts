@@ -9,6 +9,7 @@ import * as analyticshub from "./analyticshub";
 import * as apigateway from "./apigateway";
 import * as apigee from "./apigee";
 import * as appengine from "./appengine";
+import * as apphub from "./apphub";
 import * as artifactregistry from "./artifactregistry";
 import * as assuredworkloads from "./assuredworkloads";
 import * as backupdr from "./backupdr";
@@ -67,6 +68,7 @@ import * as domains from "./domains";
 import * as essentialcontacts from "./essentialcontacts";
 import * as eventarc from "./eventarc";
 import * as file from "./file";
+import * as firebaseappcheck from "./firebaseappcheck";
 import * as firebasedatabase from "./firebasedatabase";
 import * as firebasehosting from "./firebasehosting";
 import * as firestore from "./firestore";
@@ -132,6 +134,7 @@ export {
     apigateway,
     apigee,
     appengine,
+    apphub,
     artifactregistry,
     assuredworkloads,
     backupdr,
@@ -190,6 +193,7 @@ export {
     essentialcontacts,
     eventarc,
     file,
+    firebaseappcheck,
     firebasedatabase,
     firebasehosting,
     firestore,

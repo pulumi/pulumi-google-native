@@ -16,16 +16,17 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Outputs
     [OutputType]
     public sealed class BuildConfigResponse
     {
+        public readonly Outputs.AutomaticUpdatePolicyResponse AutomaticUpdatePolicy;
         /// <summary>
         /// The Cloud Build name of the latest successful deployment of the function.
         /// </summary>
         public readonly string Build;
         /// <summary>
-        /// Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+        /// Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
         /// </summary>
         public readonly string DockerRegistry;
         /// <summary>
-        /// User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+        /// Repository in Artifact Registry to which the function docker image will be pushed after it is built by Cloud Build. If specified by user, it is created and managed by user with a customer managed encryption key. Otherwise, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
         /// </summary>
         public readonly string DockerRepository;
         /// <summary>
@@ -36,10 +37,15 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Outputs
         /// User-provided build-time environment variables for the function
         /// </summary>
         public readonly ImmutableDictionary<string, string> EnvironmentVariables;
+        public readonly Outputs.OnDeployUpdatePolicyResponse OnDeployUpdatePolicy;
         /// <summary>
         /// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
         /// </summary>
         public readonly string Runtime;
+        /// <summary>
+        /// [Preview] Service account to be used for building the container
+        /// </summary>
+        public readonly string ServiceAccount;
         /// <summary>
         /// The location of the function source code.
         /// </summary>
@@ -59,6 +65,8 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Outputs
 
         [OutputConstructor]
         private BuildConfigResponse(
+            Outputs.AutomaticUpdatePolicyResponse automaticUpdatePolicy,
+
             string build,
 
             string dockerRegistry,
@@ -69,7 +77,11 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Outputs
 
             ImmutableDictionary<string, string> environmentVariables,
 
+            Outputs.OnDeployUpdatePolicyResponse onDeployUpdatePolicy,
+
             string runtime,
+
+            string serviceAccount,
 
             Outputs.SourceResponse source,
 
@@ -79,12 +91,15 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Outputs
 
             string workerPool)
         {
+            AutomaticUpdatePolicy = automaticUpdatePolicy;
             Build = build;
             DockerRegistry = dockerRegistry;
             DockerRepository = dockerRepository;
             EntryPoint = entryPoint;
             EnvironmentVariables = environmentVariables;
+            OnDeployUpdatePolicy = onDeployUpdatePolicy;
             Runtime = runtime;
+            ServiceAccount = serviceAccount;
             Source = source;
             SourceProvenance = sourceProvenance;
             SourceToken = sourceToken;

@@ -30,7 +30,9 @@ export interface GetInstanceGroupManagerResizeRequestArgs {
 
 export interface GetInstanceGroupManagerResizeRequestResult {
     /**
-     * The count of instances to create as part of this resize request.
+     * This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
+     *
+     * @deprecated This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
      */
     readonly count: number;
     /**
@@ -50,7 +52,9 @@ export interface GetInstanceGroupManagerResizeRequestResult {
      */
     readonly name: string;
     /**
-     * When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
+     * This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
+     *
+     * @deprecated This field is deprecated, ResizeRequests would not be provisioned immediately and would stay in the queue until explicitly cancelled. When set, defines queing parameters for the requested deferred capacity. When unset, the request starts provisioning immediately, or fails if immediate provisioning is not possible.
      */
     readonly queuingPolicy: outputs.compute.alpha.QueuingPolicyResponse;
     /**

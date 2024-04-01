@@ -54,6 +54,10 @@ export interface GetVmwareClusterResult {
      */
     readonly autoRepairConfig: outputs.gkeonprem.v1.VmwareAutoRepairConfigResponse;
     /**
+     * Binary Authorization related configurations.
+     */
+    readonly binaryAuthorization: outputs.gkeonprem.v1.BinaryAuthorizationResponse;
+    /**
      * VMware user cluster control plane nodes must have either 1 or 3 replicas.
      */
     readonly controlPlaneNode: outputs.gkeonprem.v1.VmwareControlPlaneNodeConfigResponse;

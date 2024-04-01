@@ -19,13 +19,19 @@ __all__ = [
 
 @pulumi.output_type
 class GetDocumentResult:
-    def __init__(__self__, content=None, derived_struct_data=None, json_data=None, name=None, parent_document_id=None, schema_id=None, struct_data=None):
+    def __init__(__self__, acl_info=None, content=None, derived_struct_data=None, index_time=None, json_data=None, name=None, parent_document_id=None, schema_id=None, struct_data=None):
+        if acl_info and not isinstance(acl_info, dict):
+            raise TypeError("Expected argument 'acl_info' to be a dict")
+        pulumi.set(__self__, "acl_info", acl_info)
         if content and not isinstance(content, dict):
             raise TypeError("Expected argument 'content' to be a dict")
         pulumi.set(__self__, "content", content)
         if derived_struct_data and not isinstance(derived_struct_data, dict):
             raise TypeError("Expected argument 'derived_struct_data' to be a dict")
         pulumi.set(__self__, "derived_struct_data", derived_struct_data)
+        if index_time and not isinstance(index_time, str):
+            raise TypeError("Expected argument 'index_time' to be a str")
+        pulumi.set(__self__, "index_time", index_time)
         if json_data and not isinstance(json_data, str):
             raise TypeError("Expected argument 'json_data' to be a str")
         pulumi.set(__self__, "json_data", json_data)
@@ -43,6 +49,14 @@ class GetDocumentResult:
         pulumi.set(__self__, "struct_data", struct_data)
 
     @property
+    @pulumi.getter(name="aclInfo")
+    def acl_info(self) -> 'outputs.GoogleCloudDiscoveryengineV1alphaDocumentAclInfoResponse':
+        """
+        Access control information for the document.
+        """
+        return pulumi.get(self, "acl_info")
+
+    @property
     @pulumi.getter
     def content(self) -> 'outputs.GoogleCloudDiscoveryengineV1alphaDocumentContentResponse':
         """
@@ -57,6 +71,14 @@ class GetDocumentResult:
         This field is OUTPUT_ONLY. It contains derived data that are not in the original input document.
         """
         return pulumi.get(self, "derived_struct_data")
+
+    @property
+    @pulumi.getter(name="indexTime")
+    def index_time(self) -> str:
+        """
+        The last time the document was indexed. If this field is set, the document could be returned in search results. This field is OUTPUT_ONLY. If this field is not populated, it means the document has never been indexed.
+        """
+        return pulumi.get(self, "index_time")
 
     @property
     @pulumi.getter(name="jsonData")
@@ -105,8 +127,10 @@ class AwaitableGetDocumentResult(GetDocumentResult):
         if False:
             yield self
         return GetDocumentResult(
+            acl_info=self.acl_info,
             content=self.content,
             derived_struct_data=self.derived_struct_data,
+            index_time=self.index_time,
             json_data=self.json_data,
             name=self.name,
             parent_document_id=self.parent_document_id,
@@ -135,8 +159,10 @@ def get_document(branch_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:discoveryengine/v1alpha:getDocument', __args__, opts=opts, typ=GetDocumentResult).value
 
     return AwaitableGetDocumentResult(
+        acl_info=pulumi.get(__ret__, 'acl_info'),
         content=pulumi.get(__ret__, 'content'),
         derived_struct_data=pulumi.get(__ret__, 'derived_struct_data'),
+        index_time=pulumi.get(__ret__, 'index_time'),
         json_data=pulumi.get(__ret__, 'json_data'),
         name=pulumi.get(__ret__, 'name'),
         parent_document_id=pulumi.get(__ret__, 'parent_document_id'),

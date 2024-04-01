@@ -2,6 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../../types/input";
+import * as outputs from "../../types/output";
+import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
@@ -29,7 +32,11 @@ export interface GetFirewallEndpointResult {
      */
     readonly associatedNetworks: string[];
     /**
-     * Optional. Project to bill on endpoint uptime usage.
+     * List of FirewallEndpointAssociations that are associated to this endpoint. An association will only appear in this list after traffic routing is fully configured.
+     */
+    readonly associations: outputs.networksecurity.v1beta1.FirewallEndpointAssociationReferenceResponse[];
+    /**
+     * Project to bill on endpoint uptime usage.
      */
     readonly billingProjectId: string;
     /**
@@ -45,7 +52,7 @@ export interface GetFirewallEndpointResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * name of resource
+     * Immutable. Identifier. name of resource
      */
     readonly name: string;
     /**

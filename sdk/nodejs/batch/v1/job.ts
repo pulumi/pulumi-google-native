@@ -85,7 +85,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly taskGroups!: pulumi.Output<outputs.batch.v1.TaskGroupResponse[]>;
     /**
-     * A system generated unique ID (in UUID4 format) for the Job.
+     * A system generated unique ID for the Job.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public partial class FutureReservation : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt"&gt;RFC3339 value.
+        /// Future timestamp when the FR auto-created reservations will be deleted by Compute Engine. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt"&gt;RFC3339 value.
         /// </summary>
         [Output("autoCreatedReservationsDeleteTime")]
         public Output<string> AutoCreatedReservationsDeleteTime { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+        /// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
         /// </summary>
         [Output("autoCreatedReservationsDuration")]
         public Output<Outputs.DurationResponse> AutoCreatedReservationsDuration { get; private set; } = null!;
@@ -168,13 +168,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public sealed class FutureReservationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt"&gt;RFC3339 value.
+        /// Future timestamp when the FR auto-created reservations will be deleted by Compute Engine. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt"&gt;RFC3339 value.
         /// </summary>
         [Input("autoCreatedReservationsDeleteTime")]
         public Input<string>? AutoCreatedReservationsDeleteTime { get; set; }
 
         /// <summary>
-        /// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+        /// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
         /// </summary>
         [Input("autoCreatedReservationsDuration")]
         public Input<Inputs.DurationArgs>? AutoCreatedReservationsDuration { get; set; }

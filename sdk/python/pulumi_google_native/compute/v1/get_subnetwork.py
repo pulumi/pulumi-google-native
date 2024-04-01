@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSubnetworkResult:
-    def __init__(__self__, creation_timestamp=None, description=None, enable_flow_logs=None, external_ipv6_prefix=None, fingerprint=None, gateway_address=None, internal_ipv6_prefix=None, ip_cidr_range=None, ipv6_access_type=None, ipv6_cidr_range=None, kind=None, log_config=None, name=None, network=None, private_ip_google_access=None, private_ipv6_google_access=None, purpose=None, region=None, role=None, secondary_ip_ranges=None, self_link=None, stack_type=None, state=None):
+    def __init__(__self__, creation_timestamp=None, description=None, enable_flow_logs=None, external_ipv6_prefix=None, fingerprint=None, gateway_address=None, internal_ipv6_prefix=None, ip_cidr_range=None, ipv6_access_type=None, ipv6_cidr_range=None, kind=None, log_config=None, name=None, network=None, private_ip_google_access=None, private_ipv6_google_access=None, purpose=None, region=None, reserved_internal_range=None, role=None, secondary_ip_ranges=None, self_link=None, stack_type=None, state=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -74,6 +74,9 @@ class GetSubnetworkResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+        if reserved_internal_range and not isinstance(reserved_internal_range, str):
+            raise TypeError("Expected argument 'reserved_internal_range' to be a str")
+        pulumi.set(__self__, "reserved_internal_range", reserved_internal_range)
         if role and not isinstance(role, str):
             raise TypeError("Expected argument 'role' to be a str")
         pulumi.set(__self__, "role", role)
@@ -222,7 +225,7 @@ class GetSubnetworkResult:
     @pulumi.getter
     def purpose(self) -> str:
         """
-        The purpose of the resource. This field can be either PRIVATE, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or INTERNAL_HTTPS_LOAD_BALANCER. PRIVATE is the default purpose for user-created subnets or subnets that are automatically created in auto mode networks. A subnet with purpose set to REGIONAL_MANAGED_PROXY is a user-created subnetwork that is reserved for regional Envoy-based load balancers. A subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using Private Service Connect. A subnet with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a proxy-only subnet that can be used only by regional internal HTTP(S) load balancers. Note that REGIONAL_MANAGED_PROXY is the preferred setting for all regional Envoy load balancers. If unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+        The purpose of the resource. This field can be either PRIVATE, GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or PRIVATE is the default purpose for user-created subnets or subnets that are automatically created in auto mode networks. Subnets with purpose set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are user-created subnetworks that are reserved for Envoy-based load balancers. A subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using Private Service Connect. If unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported if the subnet purpose field is set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY.
         """
         return pulumi.get(self, "purpose")
 
@@ -235,10 +238,18 @@ class GetSubnetworkResult:
         return pulumi.get(self, "region")
 
     @property
+    @pulumi.getter(name="reservedInternalRange")
+    def reserved_internal_range(self) -> str:
+        """
+        The URL of the reserved internal range.
+        """
+        return pulumi.get(self, "reserved_internal_range")
+
+    @property
     @pulumi.getter
     def role(self) -> str:
         """
-        The role of subnetwork. Currently, this field is only used when purpose = REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Envoy-based load balancers in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
+        The role of subnetwork. Currently, this field is only used when purpose is set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Envoy-based load balancers in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
         """
         return pulumi.get(self, "role")
 
@@ -299,6 +310,7 @@ class AwaitableGetSubnetworkResult(GetSubnetworkResult):
             private_ipv6_google_access=self.private_ipv6_google_access,
             purpose=self.purpose,
             region=self.region,
+            reserved_internal_range=self.reserved_internal_range,
             role=self.role,
             secondary_ip_ranges=self.secondary_ip_ranges,
             self_link=self.self_link,
@@ -339,6 +351,7 @@ def get_subnetwork(project: Optional[str] = None,
         private_ipv6_google_access=pulumi.get(__ret__, 'private_ipv6_google_access'),
         purpose=pulumi.get(__ret__, 'purpose'),
         region=pulumi.get(__ret__, 'region'),
+        reserved_internal_range=pulumi.get(__ret__, 'reserved_internal_range'),
         role=pulumi.get(__ret__, 'role'),
         secondary_ip_ranges=pulumi.get(__ret__, 'secondary_ip_ranges'),
         self_link=pulumi.get(__ret__, 'self_link'),

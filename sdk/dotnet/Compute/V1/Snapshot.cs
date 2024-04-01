@@ -64,6 +64,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> DownloadBytes { get; private set; } = null!;
 
         /// <summary>
+        /// Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+        /// </summary>
+        [Output("enableConfidentialCompute")]
+        public Output<bool> EnableConfidentialCompute { get; private set; } = null!;
+
+        /// <summary>
         /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
         /// </summary>
         [Output("guestOsFeatures")]
@@ -123,6 +129,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// <summary>
         /// Reserved for future use.
         /// </summary>
+        [Output("satisfiesPzi")]
+        public Output<bool> SatisfiesPzi { get; private set; } = null!;
+
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
         [Output("satisfiesPzs")]
         public Output<bool> SatisfiesPzs { get; private set; } = null!;
 
@@ -167,6 +179,24 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Output("sourceDiskId")]
         public Output<string> SourceDiskId { get; private set; } = null!;
+
+        /// <summary>
+        /// The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+        /// </summary>
+        [Output("sourceInstantSnapshot")]
+        public Output<string> SourceInstantSnapshot { get; private set; } = null!;
+
+        /// <summary>
+        /// Customer provided encryption key when creating Snapshot from Instant Snapshot.
+        /// </summary>
+        [Output("sourceInstantSnapshotEncryptionKey")]
+        public Output<Outputs.CustomerEncryptionKeyResponse> SourceInstantSnapshotEncryptionKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.
+        /// </summary>
+        [Output("sourceInstantSnapshotId")]
+        public Output<string> SourceInstantSnapshotId { get; private set; } = null!;
 
         /// <summary>
         /// URL of the resource policy which created this scheduled snapshot.
@@ -265,6 +295,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+        /// </summary>
+        [Input("enableConfidentialCompute")]
+        public Input<bool>? EnableConfidentialCompute { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -327,6 +363,18 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Input("sourceDiskForRecoveryCheckpoint")]
         public Input<string>? SourceDiskForRecoveryCheckpoint { get; set; }
+
+        /// <summary>
+        /// The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+        /// </summary>
+        [Input("sourceInstantSnapshot")]
+        public Input<string>? SourceInstantSnapshot { get; set; }
+
+        /// <summary>
+        /// Customer provided encryption key when creating Snapshot from Instant Snapshot.
+        /// </summary>
+        [Input("sourceInstantSnapshotEncryptionKey")]
+        public Input<Inputs.CustomerEncryptionKeyArgs>? SourceInstantSnapshotEncryptionKey { get; set; }
 
         [Input("storageLocations")]
         private InputList<string>? _storageLocations;

@@ -32,6 +32,12 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
         public Output<string> DatasetId { get; private set; } = null!;
 
         /// <summary>
+        /// The user-defined name of the DatasetVersion. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
         /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         /// </summary>
         [Output("etag")]
@@ -39,6 +45,12 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
 
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// Additional information about the DatasetVersion.
+        /// </summary>
+        [Output("metadata")]
+        public Output<object> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// The resource name of the DatasetVersion.
@@ -108,6 +120,12 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
     {
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
+
+        /// <summary>
+        /// The user-defined name of the DatasetVersion. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
 
         /// <summary>
         /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceConfigResult:
-    def __init__(__self__, base_config=None, config_type=None, display_name=None, etag=None, free_instance_availability=None, labels=None, leader_options=None, name=None, optional_replicas=None, reconciling=None, replicas=None, state=None):
+    def __init__(__self__, base_config=None, config_type=None, display_name=None, etag=None, free_instance_availability=None, labels=None, leader_options=None, name=None, optional_replicas=None, reconciling=None, replicas=None, state=None, storage_limit_per_processing_unit=None):
         if base_config and not isinstance(base_config, str):
             raise TypeError("Expected argument 'base_config' to be a str")
         pulumi.set(__self__, "base_config", base_config)
@@ -56,6 +56,9 @@ class GetInstanceConfigResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if storage_limit_per_processing_unit and not isinstance(storage_limit_per_processing_unit, str):
+            raise TypeError("Expected argument 'storage_limit_per_processing_unit' to be a str")
+        pulumi.set(__self__, "storage_limit_per_processing_unit", storage_limit_per_processing_unit)
 
     @property
     @pulumi.getter(name="baseConfig")
@@ -153,6 +156,14 @@ class GetInstanceConfigResult:
         """
         return pulumi.get(self, "state")
 
+    @property
+    @pulumi.getter(name="storageLimitPerProcessingUnit")
+    def storage_limit_per_processing_unit(self) -> str:
+        """
+        The storage limit in bytes per processing unit.
+        """
+        return pulumi.get(self, "storage_limit_per_processing_unit")
+
 
 class AwaitableGetInstanceConfigResult(GetInstanceConfigResult):
     # pylint: disable=using-constant-test
@@ -171,7 +182,8 @@ class AwaitableGetInstanceConfigResult(GetInstanceConfigResult):
             optional_replicas=self.optional_replicas,
             reconciling=self.reconciling,
             replicas=self.replicas,
-            state=self.state)
+            state=self.state,
+            storage_limit_per_processing_unit=self.storage_limit_per_processing_unit)
 
 
 def get_instance_config(instance_config_id: Optional[str] = None,
@@ -198,7 +210,8 @@ def get_instance_config(instance_config_id: Optional[str] = None,
         optional_replicas=pulumi.get(__ret__, 'optional_replicas'),
         reconciling=pulumi.get(__ret__, 'reconciling'),
         replicas=pulumi.get(__ret__, 'replicas'),
-        state=pulumi.get(__ret__, 'state'))
+        state=pulumi.get(__ret__, 'state'),
+        storage_limit_per_processing_unit=pulumi.get(__ret__, 'storage_limit_per_processing_unit'))
 
 
 @_utilities.lift_output_func(get_instance_config)

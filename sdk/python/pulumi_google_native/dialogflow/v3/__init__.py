@@ -11,11 +11,13 @@ from .entity_type import *
 from .environment import *
 from .experiment import *
 from .flow import *
+from .generator import *
 from .get_agent import *
 from .get_entity_type import *
 from .get_environment import *
 from .get_experiment import *
 from .get_flow import *
+from .get_generator import *
 from .get_intent import *
 from .get_page import *
 from .get_security_setting import *

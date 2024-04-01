@@ -95,6 +95,36 @@ export type FeatureOnlineStore = import("./featureOnlineStore").FeatureOnlineSto
 export const FeatureOnlineStore: typeof import("./featureOnlineStore").FeatureOnlineStore = null as any;
 utilities.lazyLoad(exports, ["FeatureOnlineStore"], () => require("./featureOnlineStore"));
 
+export { FeatureOnlineStoreFeatureViewIamBindingArgs } from "./featureOnlineStoreFeatureViewIamBinding";
+export type FeatureOnlineStoreFeatureViewIamBinding = import("./featureOnlineStoreFeatureViewIamBinding").FeatureOnlineStoreFeatureViewIamBinding;
+export const FeatureOnlineStoreFeatureViewIamBinding: typeof import("./featureOnlineStoreFeatureViewIamBinding").FeatureOnlineStoreFeatureViewIamBinding = null as any;
+utilities.lazyLoad(exports, ["FeatureOnlineStoreFeatureViewIamBinding"], () => require("./featureOnlineStoreFeatureViewIamBinding"));
+
+export { FeatureOnlineStoreFeatureViewIamMemberArgs } from "./featureOnlineStoreFeatureViewIamMember";
+export type FeatureOnlineStoreFeatureViewIamMember = import("./featureOnlineStoreFeatureViewIamMember").FeatureOnlineStoreFeatureViewIamMember;
+export const FeatureOnlineStoreFeatureViewIamMember: typeof import("./featureOnlineStoreFeatureViewIamMember").FeatureOnlineStoreFeatureViewIamMember = null as any;
+utilities.lazyLoad(exports, ["FeatureOnlineStoreFeatureViewIamMember"], () => require("./featureOnlineStoreFeatureViewIamMember"));
+
+export { FeatureOnlineStoreFeatureViewIamPolicyArgs } from "./featureOnlineStoreFeatureViewIamPolicy";
+export type FeatureOnlineStoreFeatureViewIamPolicy = import("./featureOnlineStoreFeatureViewIamPolicy").FeatureOnlineStoreFeatureViewIamPolicy;
+export const FeatureOnlineStoreFeatureViewIamPolicy: typeof import("./featureOnlineStoreFeatureViewIamPolicy").FeatureOnlineStoreFeatureViewIamPolicy = null as any;
+utilities.lazyLoad(exports, ["FeatureOnlineStoreFeatureViewIamPolicy"], () => require("./featureOnlineStoreFeatureViewIamPolicy"));
+
+export { FeatureOnlineStoreIamBindingArgs } from "./featureOnlineStoreIamBinding";
+export type FeatureOnlineStoreIamBinding = import("./featureOnlineStoreIamBinding").FeatureOnlineStoreIamBinding;
+export const FeatureOnlineStoreIamBinding: typeof import("./featureOnlineStoreIamBinding").FeatureOnlineStoreIamBinding = null as any;
+utilities.lazyLoad(exports, ["FeatureOnlineStoreIamBinding"], () => require("./featureOnlineStoreIamBinding"));
+
+export { FeatureOnlineStoreIamMemberArgs } from "./featureOnlineStoreIamMember";
+export type FeatureOnlineStoreIamMember = import("./featureOnlineStoreIamMember").FeatureOnlineStoreIamMember;
+export const FeatureOnlineStoreIamMember: typeof import("./featureOnlineStoreIamMember").FeatureOnlineStoreIamMember = null as any;
+utilities.lazyLoad(exports, ["FeatureOnlineStoreIamMember"], () => require("./featureOnlineStoreIamMember"));
+
+export { FeatureOnlineStoreIamPolicyArgs } from "./featureOnlineStoreIamPolicy";
+export type FeatureOnlineStoreIamPolicy = import("./featureOnlineStoreIamPolicy").FeatureOnlineStoreIamPolicy;
+export const FeatureOnlineStoreIamPolicy: typeof import("./featureOnlineStoreIamPolicy").FeatureOnlineStoreIamPolicy = null as any;
+utilities.lazyLoad(exports, ["FeatureOnlineStoreIamPolicy"], () => require("./featureOnlineStoreIamPolicy"));
+
 export { FeatureStoreFeatureArgs } from "./featureStoreFeature";
 export type FeatureStoreFeature = import("./featureStoreFeature").FeatureStoreFeature;
 export const FeatureStoreFeature: typeof import("./featureStoreFeature").FeatureStoreFeature = null as any;
@@ -220,6 +250,16 @@ export const getFeatureOnlineStore: typeof import("./getFeatureOnlineStore").get
 export const getFeatureOnlineStoreOutput: typeof import("./getFeatureOnlineStore").getFeatureOnlineStoreOutput = null as any;
 utilities.lazyLoad(exports, ["getFeatureOnlineStore","getFeatureOnlineStoreOutput"], () => require("./getFeatureOnlineStore"));
 
+export { GetFeatureOnlineStoreFeatureViewIamPolicyArgs, GetFeatureOnlineStoreFeatureViewIamPolicyResult, GetFeatureOnlineStoreFeatureViewIamPolicyOutputArgs } from "./getFeatureOnlineStoreFeatureViewIamPolicy";
+export const getFeatureOnlineStoreFeatureViewIamPolicy: typeof import("./getFeatureOnlineStoreFeatureViewIamPolicy").getFeatureOnlineStoreFeatureViewIamPolicy = null as any;
+export const getFeatureOnlineStoreFeatureViewIamPolicyOutput: typeof import("./getFeatureOnlineStoreFeatureViewIamPolicy").getFeatureOnlineStoreFeatureViewIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getFeatureOnlineStoreFeatureViewIamPolicy","getFeatureOnlineStoreFeatureViewIamPolicyOutput"], () => require("./getFeatureOnlineStoreFeatureViewIamPolicy"));
+
+export { GetFeatureOnlineStoreIamPolicyArgs, GetFeatureOnlineStoreIamPolicyResult, GetFeatureOnlineStoreIamPolicyOutputArgs } from "./getFeatureOnlineStoreIamPolicy";
+export const getFeatureOnlineStoreIamPolicy: typeof import("./getFeatureOnlineStoreIamPolicy").getFeatureOnlineStoreIamPolicy = null as any;
+export const getFeatureOnlineStoreIamPolicyOutput: typeof import("./getFeatureOnlineStoreIamPolicy").getFeatureOnlineStoreIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getFeatureOnlineStoreIamPolicy","getFeatureOnlineStoreIamPolicyOutput"], () => require("./getFeatureOnlineStoreIamPolicy"));
+
 export { GetFeatureStoreFeatureArgs, GetFeatureStoreFeatureResult, GetFeatureStoreFeatureOutputArgs } from "./getFeatureStoreFeature";
 export const getFeatureStoreFeature: typeof import("./getFeatureStoreFeature").getFeatureStoreFeature = null as any;
 export const getFeatureStoreFeatureOutput: typeof import("./getFeatureStoreFeature").getFeatureStoreFeatureOutput = null as any;
@@ -270,6 +310,11 @@ export const getMetadataStore: typeof import("./getMetadataStore").getMetadataSt
 export const getMetadataStoreOutput: typeof import("./getMetadataStore").getMetadataStoreOutput = null as any;
 utilities.lazyLoad(exports, ["getMetadataStore","getMetadataStoreOutput"], () => require("./getMetadataStore"));
 
+export { GetModelArgs, GetModelResult, GetModelOutputArgs } from "./getModel";
+export const getModel: typeof import("./getModel").getModel = null as any;
+export const getModelOutput: typeof import("./getModel").getModelOutput = null as any;
+utilities.lazyLoad(exports, ["getModel","getModelOutput"], () => require("./getModel"));
+
 export { GetModelDeploymentMonitoringJobArgs, GetModelDeploymentMonitoringJobResult, GetModelDeploymentMonitoringJobOutputArgs } from "./getModelDeploymentMonitoringJob";
 export const getModelDeploymentMonitoringJob: typeof import("./getModelDeploymentMonitoringJob").getModelDeploymentMonitoringJob = null as any;
 export const getModelDeploymentMonitoringJobOutput: typeof import("./getModelDeploymentMonitoringJob").getModelDeploymentMonitoringJobOutput = null as any;
@@ -304,6 +349,16 @@ export { GetPipelineJobArgs, GetPipelineJobResult, GetPipelineJobOutputArgs } fr
 export const getPipelineJob: typeof import("./getPipelineJob").getPipelineJob = null as any;
 export const getPipelineJobOutput: typeof import("./getPipelineJob").getPipelineJobOutput = null as any;
 utilities.lazyLoad(exports, ["getPipelineJob","getPipelineJobOutput"], () => require("./getPipelineJob"));
+
+export { GetRagCorporaArgs, GetRagCorporaResult, GetRagCorporaOutputArgs } from "./getRagCorpora";
+export const getRagCorpora: typeof import("./getRagCorpora").getRagCorpora = null as any;
+export const getRagCorporaOutput: typeof import("./getRagCorpora").getRagCorporaOutput = null as any;
+utilities.lazyLoad(exports, ["getRagCorpora","getRagCorporaOutput"], () => require("./getRagCorpora"));
+
+export { GetReasoningEngineArgs, GetReasoningEngineResult, GetReasoningEngineOutputArgs } from "./getReasoningEngine";
+export const getReasoningEngine: typeof import("./getReasoningEngine").getReasoningEngine = null as any;
+export const getReasoningEngineOutput: typeof import("./getReasoningEngine").getReasoningEngineOutput = null as any;
+utilities.lazyLoad(exports, ["getReasoningEngine","getReasoningEngineOutput"], () => require("./getReasoningEngine"));
 
 export { GetRunArgs, GetRunResult, GetRunOutputArgs } from "./getRun";
 export const getRun: typeof import("./getRun").getRun = null as any;
@@ -370,6 +425,11 @@ export type MetadataStore = import("./metadataStore").MetadataStore;
 export const MetadataStore: typeof import("./metadataStore").MetadataStore = null as any;
 utilities.lazyLoad(exports, ["MetadataStore"], () => require("./metadataStore"));
 
+export { ModelArgs } from "./model";
+export type Model = import("./model").Model;
+export const Model: typeof import("./model").Model = null as any;
+utilities.lazyLoad(exports, ["Model"], () => require("./model"));
+
 export { ModelDeploymentMonitoringJobArgs } from "./modelDeploymentMonitoringJob";
 export type ModelDeploymentMonitoringJob = import("./modelDeploymentMonitoringJob").ModelDeploymentMonitoringJob;
 export const ModelDeploymentMonitoringJob: typeof import("./modelDeploymentMonitoringJob").ModelDeploymentMonitoringJob = null as any;
@@ -424,6 +484,16 @@ export { PipelineJobArgs } from "./pipelineJob";
 export type PipelineJob = import("./pipelineJob").PipelineJob;
 export const PipelineJob: typeof import("./pipelineJob").PipelineJob = null as any;
 utilities.lazyLoad(exports, ["PipelineJob"], () => require("./pipelineJob"));
+
+export { RagCorporaArgs } from "./ragCorpora";
+export type RagCorpora = import("./ragCorpora").RagCorpora;
+export const RagCorpora: typeof import("./ragCorpora").RagCorpora = null as any;
+utilities.lazyLoad(exports, ["RagCorpora"], () => require("./ragCorpora"));
+
+export { ReasoningEngineArgs } from "./reasoningEngine";
+export type ReasoningEngine = import("./reasoningEngine").ReasoningEngine;
+export const ReasoningEngine: typeof import("./reasoningEngine").ReasoningEngine = null as any;
+utilities.lazyLoad(exports, ["ReasoningEngine"], () => require("./reasoningEngine"));
 
 export { RunArgs } from "./run";
 export type Run = import("./run").Run;
@@ -509,6 +579,18 @@ const _module = {
                 return new FeatureGroupFeature(name, <any>undefined, { urn })
             case "google-native:aiplatform/v1beta1:FeatureOnlineStore":
                 return new FeatureOnlineStore(name, <any>undefined, { urn })
+            case "google-native:aiplatform/v1beta1:FeatureOnlineStoreFeatureViewIamBinding":
+                return new FeatureOnlineStoreFeatureViewIamBinding(name, <any>undefined, { urn })
+            case "google-native:aiplatform/v1beta1:FeatureOnlineStoreFeatureViewIamMember":
+                return new FeatureOnlineStoreFeatureViewIamMember(name, <any>undefined, { urn })
+            case "google-native:aiplatform/v1beta1:FeatureOnlineStoreFeatureViewIamPolicy":
+                return new FeatureOnlineStoreFeatureViewIamPolicy(name, <any>undefined, { urn })
+            case "google-native:aiplatform/v1beta1:FeatureOnlineStoreIamBinding":
+                return new FeatureOnlineStoreIamBinding(name, <any>undefined, { urn })
+            case "google-native:aiplatform/v1beta1:FeatureOnlineStoreIamMember":
+                return new FeatureOnlineStoreIamMember(name, <any>undefined, { urn })
+            case "google-native:aiplatform/v1beta1:FeatureOnlineStoreIamPolicy":
+                return new FeatureOnlineStoreIamPolicy(name, <any>undefined, { urn })
             case "google-native:aiplatform/v1beta1:FeatureStoreFeature":
                 return new FeatureStoreFeature(name, <any>undefined, { urn })
             case "google-native:aiplatform/v1beta1:FeatureView":
@@ -537,6 +619,8 @@ const _module = {
                 return new MetadataSchema(name, <any>undefined, { urn })
             case "google-native:aiplatform/v1beta1:MetadataStore":
                 return new MetadataStore(name, <any>undefined, { urn })
+            case "google-native:aiplatform/v1beta1:Model":
+                return new Model(name, <any>undefined, { urn })
             case "google-native:aiplatform/v1beta1:ModelDeploymentMonitoringJob":
                 return new ModelDeploymentMonitoringJob(name, <any>undefined, { urn })
             case "google-native:aiplatform/v1beta1:ModelIamBinding":
@@ -559,6 +643,10 @@ const _module = {
                 return new PersistentResource(name, <any>undefined, { urn })
             case "google-native:aiplatform/v1beta1:PipelineJob":
                 return new PipelineJob(name, <any>undefined, { urn })
+            case "google-native:aiplatform/v1beta1:RagCorpora":
+                return new RagCorpora(name, <any>undefined, { urn })
+            case "google-native:aiplatform/v1beta1:ReasoningEngine":
+                return new ReasoningEngine(name, <any>undefined, { urn })
             case "google-native:aiplatform/v1beta1:Run":
                 return new Run(name, <any>undefined, { urn })
             case "google-native:aiplatform/v1beta1:Schedule":

@@ -18,6 +18,8 @@ type Database struct {
 
 	// The App Engine integration mode to use for this database.
 	AppEngineIntegrationMode pulumi.StringOutput `pulumi:"appEngineIntegrationMode"`
+	// Optional. Presence indicates CMEK is enabled for this database.
+	CmekConfig GoogleFirestoreAdminV1CmekConfigResponseOutput `pulumi:"cmekConfig"`
 	// The concurrency control mode to use for this database.
 	ConcurrencyMode pulumi.StringOutput `pulumi:"concurrencyMode"`
 	// The timestamp at which this database was created. Databases created before 2016 do not populate create_time.
@@ -99,6 +101,8 @@ func (DatabaseState) ElementType() reflect.Type {
 type databaseArgs struct {
 	// The App Engine integration mode to use for this database.
 	AppEngineIntegrationMode *DatabaseAppEngineIntegrationMode `pulumi:"appEngineIntegrationMode"`
+	// Optional. Presence indicates CMEK is enabled for this database.
+	CmekConfig *GoogleFirestoreAdminV1CmekConfig `pulumi:"cmekConfig"`
 	// The concurrency control mode to use for this database.
 	ConcurrencyMode *DatabaseConcurrencyMode `pulumi:"concurrencyMode"`
 	// Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
@@ -122,6 +126,8 @@ type databaseArgs struct {
 type DatabaseArgs struct {
 	// The App Engine integration mode to use for this database.
 	AppEngineIntegrationMode DatabaseAppEngineIntegrationModePtrInput
+	// Optional. Presence indicates CMEK is enabled for this database.
+	CmekConfig GoogleFirestoreAdminV1CmekConfigPtrInput
 	// The concurrency control mode to use for this database.
 	ConcurrencyMode DatabaseConcurrencyModePtrInput
 	// Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
@@ -181,6 +187,11 @@ func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) Databas
 // The App Engine integration mode to use for this database.
 func (o DatabaseOutput) AppEngineIntegrationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.AppEngineIntegrationMode }).(pulumi.StringOutput)
+}
+
+// Optional. Presence indicates CMEK is enabled for this database.
+func (o DatabaseOutput) CmekConfig() GoogleFirestoreAdminV1CmekConfigResponseOutput {
+	return o.ApplyT(func(v *Database) GoogleFirestoreAdminV1CmekConfigResponseOutput { return v.CmekConfig }).(GoogleFirestoreAdminV1CmekConfigResponseOutput)
 }
 
 // The concurrency control mode to use for this database.

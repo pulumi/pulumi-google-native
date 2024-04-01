@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Inputs
     public sealed class ServiceAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Email address of the service account. If not specified, the default Compute Engine service account for the project will be used. If instance template is being used, the service account has to be specified in the instance template and it has to match the email field here.
+        /// Email address of the service account.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Inputs
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// List of scopes to be enabled for this service account on the VM, in addition to the cloud-platform API scope that will be added by default.
+        /// List of scopes to be enabled for this service account.
         /// </summary>
         public InputList<string> Scopes
         {

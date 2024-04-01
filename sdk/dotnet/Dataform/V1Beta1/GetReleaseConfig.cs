@@ -78,11 +78,15 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         /// </summary>
         public readonly string CronSchedule;
         /// <summary>
+        /// Optional. Disables automatic creation of compilation results.
+        /// </summary>
+        public readonly bool Disabled;
+        /// <summary>
         /// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository. Examples: - a commit SHA: `12ade345` - a tag: `tag1` - a branch name: `branch1`
         /// </summary>
         public readonly string GitCommitish;
         /// <summary>
-        /// The release config's name.
+        /// Identifier. The release config's name.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -90,7 +94,7 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         /// </summary>
         public readonly ImmutableArray<Outputs.ScheduledReleaseRecordResponse> RecentScheduledReleaseRecords;
         /// <summary>
-        /// Optional. The name of the currently released compilation result for this release config. This value is updated when a compilation result is created from this release config, or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation result must have been created using this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+        /// Optional. The name of the currently released compilation result for this release config. This value is updated when a compilation result is automatically created from this release config (using cron_schedule), or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation result must have been created using this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
         /// </summary>
         public readonly string ReleaseCompilationResult;
         /// <summary>
@@ -104,6 +108,8 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
 
             string cronSchedule,
 
+            bool disabled,
+
             string gitCommitish,
 
             string name,
@@ -116,6 +122,7 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         {
             CodeCompilationConfig = codeCompilationConfig;
             CronSchedule = cronSchedule;
+            Disabled = disabled;
             GitCommitish = gitCommitish;
             Name = name;
             RecentScheduledReleaseRecords = recentScheduledReleaseRecords;

@@ -76,13 +76,25 @@ export interface GetNotebookRuntimeTemplateResult {
      */
     readonly networkSpec: outputs.aiplatform.v1.GoogleCloudAiplatformV1NetworkSpecResponse;
     /**
+     * Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
+     */
+    readonly networkTags: string[];
+    /**
      * Optional. Immutable. The type of the notebook runtime template.
      */
     readonly notebookRuntimeType: string;
     /**
+     * Optional. Reservation Affinity of the notebook runtime template.
+     */
+    readonly reservationAffinity: outputs.aiplatform.v1.GoogleCloudAiplatformV1NotebookReservationAffinityResponse;
+    /**
      * The service account that the runtime workload runs as. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
      */
     readonly serviceAccount: string;
+    /**
+     * Optional. Immutable. Runtime Shielded VM spec.
+     */
+    readonly shieldedVmConfig: outputs.aiplatform.v1.GoogleCloudAiplatformV1ShieldedVmConfigResponse;
     /**
      * Timestamp when this NotebookRuntimeTemplate was most recently updated.
      */

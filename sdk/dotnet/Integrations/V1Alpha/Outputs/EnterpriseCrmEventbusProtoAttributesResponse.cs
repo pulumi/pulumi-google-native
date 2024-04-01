@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
         /// </summary>
         public readonly Outputs.EnterpriseCrmEventbusProtoLogSettingsResponse LogSettings;
         /// <summary>
+        /// True if this workflow parameter should be masked in the logs
+        /// </summary>
+        public readonly bool Masked;
+        /// <summary>
         /// Used to indicate if the ParameterEntry is a read only field or not.
         /// </summary>
         public readonly bool ReadOnly;
@@ -58,6 +62,8 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
 
             Outputs.EnterpriseCrmEventbusProtoLogSettingsResponse logSettings,
 
+            bool masked,
+
             bool readOnly,
 
             string searchable,
@@ -69,6 +75,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
             IsRequired = isRequired;
             IsSearchable = isSearchable;
             LogSettings = logSettings;
+            Masked = masked;
             ReadOnly = readOnly;
             Searchable = searchable;
             TaskVisibility = taskVisibility;

@@ -19,6 +19,10 @@ export const AcceleratorConfigType = {
      * TPU v4.
      */
     V4: "V4",
+    /**
+     * TPU v5p
+     */
+    V5p: "V5P",
 } as const;
 
 /**

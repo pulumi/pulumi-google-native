@@ -52,7 +52,7 @@ export interface GetProxyConfigResult {
      */
     readonly routingInfo: outputs.beyondcorp.v1alpha.GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse;
     /**
-     * Transport layer information to verify for the proxy server.
+     * Optional. Transport layer information to verify for the proxy server.
      */
     readonly transportInfo: outputs.beyondcorp.v1alpha.GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse;
     /**

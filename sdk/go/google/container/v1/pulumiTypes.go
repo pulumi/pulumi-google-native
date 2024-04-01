@@ -628,6 +628,8 @@ type AddonsConfig struct {
 	KubernetesDashboard *KubernetesDashboard `pulumi:"kubernetesDashboard"`
 	// Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does not track whether network policy is enabled for the nodes.
 	NetworkPolicyConfig *NetworkPolicyConfig `pulumi:"networkPolicyConfig"`
+	// Optional. Configuration for the StatefulHA add-on.
+	StatefulHaConfig *StatefulHAConfig `pulumi:"statefulHaConfig"`
 }
 
 // AddonsConfigInput is an input type that accepts AddonsConfigArgs and AddonsConfigOutput values.
@@ -665,6 +667,8 @@ type AddonsConfigArgs struct {
 	KubernetesDashboard KubernetesDashboardPtrInput `pulumi:"kubernetesDashboard"`
 	// Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does not track whether network policy is enabled for the nodes.
 	NetworkPolicyConfig NetworkPolicyConfigPtrInput `pulumi:"networkPolicyConfig"`
+	// Optional. Configuration for the StatefulHA add-on.
+	StatefulHaConfig StatefulHAConfigPtrInput `pulumi:"statefulHaConfig"`
 }
 
 func (AddonsConfigArgs) ElementType() reflect.Type {
@@ -798,6 +802,11 @@ func (o AddonsConfigOutput) KubernetesDashboard() KubernetesDashboardPtrOutput {
 // Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does not track whether network policy is enabled for the nodes.
 func (o AddonsConfigOutput) NetworkPolicyConfig() NetworkPolicyConfigPtrOutput {
 	return o.ApplyT(func(v AddonsConfig) *NetworkPolicyConfig { return v.NetworkPolicyConfig }).(NetworkPolicyConfigPtrOutput)
+}
+
+// Optional. Configuration for the StatefulHA add-on.
+func (o AddonsConfigOutput) StatefulHaConfig() StatefulHAConfigPtrOutput {
+	return o.ApplyT(func(v AddonsConfig) *StatefulHAConfig { return v.StatefulHaConfig }).(StatefulHAConfigPtrOutput)
 }
 
 type AddonsConfigPtrOutput struct{ *pulumi.OutputState }
@@ -934,6 +943,16 @@ func (o AddonsConfigPtrOutput) NetworkPolicyConfig() NetworkPolicyConfigPtrOutpu
 	}).(NetworkPolicyConfigPtrOutput)
 }
 
+// Optional. Configuration for the StatefulHA add-on.
+func (o AddonsConfigPtrOutput) StatefulHaConfig() StatefulHAConfigPtrOutput {
+	return o.ApplyT(func(v *AddonsConfig) *StatefulHAConfig {
+		if v == nil {
+			return nil
+		}
+		return v.StatefulHaConfig
+	}).(StatefulHAConfigPtrOutput)
+}
+
 // Configuration for the addons that can be automatically spun up in the cluster, enabling additional functionality.
 type AddonsConfigResponse struct {
 	// Configuration for the Cloud Run addon, which allows the user to use a managed Knative service.
@@ -958,6 +977,8 @@ type AddonsConfigResponse struct {
 	KubernetesDashboard KubernetesDashboardResponse `pulumi:"kubernetesDashboard"`
 	// Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does not track whether network policy is enabled for the nodes.
 	NetworkPolicyConfig NetworkPolicyConfigResponse `pulumi:"networkPolicyConfig"`
+	// Optional. Configuration for the StatefulHA add-on.
+	StatefulHaConfig StatefulHAConfigResponse `pulumi:"statefulHaConfig"`
 }
 
 // Configuration for the addons that can be automatically spun up in the cluster, enabling additional functionality.
@@ -1032,10 +1053,17 @@ func (o AddonsConfigResponseOutput) NetworkPolicyConfig() NetworkPolicyConfigRes
 	return o.ApplyT(func(v AddonsConfigResponse) NetworkPolicyConfigResponse { return v.NetworkPolicyConfig }).(NetworkPolicyConfigResponseOutput)
 }
 
+// Optional. Configuration for the StatefulHA add-on.
+func (o AddonsConfigResponseOutput) StatefulHaConfig() StatefulHAConfigResponseOutput {
+	return o.ApplyT(func(v AddonsConfigResponse) StatefulHAConfigResponse { return v.StatefulHaConfig }).(StatefulHAConfigResponseOutput)
+}
+
 // AdvancedDatapathObservabilityConfig specifies configuration of observability features of advanced datapath.
 type AdvancedDatapathObservabilityConfig struct {
 	// Expose flow metrics on nodes
 	EnableMetrics *bool `pulumi:"enableMetrics"`
+	// Enable Relay component
+	EnableRelay *bool `pulumi:"enableRelay"`
 	// Method used to make Relay available
 	RelayMode *AdvancedDatapathObservabilityConfigRelayMode `pulumi:"relayMode"`
 }
@@ -1055,6 +1083,8 @@ type AdvancedDatapathObservabilityConfigInput interface {
 type AdvancedDatapathObservabilityConfigArgs struct {
 	// Expose flow metrics on nodes
 	EnableMetrics pulumi.BoolPtrInput `pulumi:"enableMetrics"`
+	// Enable Relay component
+	EnableRelay pulumi.BoolPtrInput `pulumi:"enableRelay"`
 	// Method used to make Relay available
 	RelayMode AdvancedDatapathObservabilityConfigRelayModePtrInput `pulumi:"relayMode"`
 }
@@ -1142,6 +1172,11 @@ func (o AdvancedDatapathObservabilityConfigOutput) EnableMetrics() pulumi.BoolPt
 	return o.ApplyT(func(v AdvancedDatapathObservabilityConfig) *bool { return v.EnableMetrics }).(pulumi.BoolPtrOutput)
 }
 
+// Enable Relay component
+func (o AdvancedDatapathObservabilityConfigOutput) EnableRelay() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AdvancedDatapathObservabilityConfig) *bool { return v.EnableRelay }).(pulumi.BoolPtrOutput)
+}
+
 // Method used to make Relay available
 func (o AdvancedDatapathObservabilityConfigOutput) RelayMode() AdvancedDatapathObservabilityConfigRelayModePtrOutput {
 	return o.ApplyT(func(v AdvancedDatapathObservabilityConfig) *AdvancedDatapathObservabilityConfigRelayMode {
@@ -1183,6 +1218,16 @@ func (o AdvancedDatapathObservabilityConfigPtrOutput) EnableMetrics() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Enable Relay component
+func (o AdvancedDatapathObservabilityConfigPtrOutput) EnableRelay() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AdvancedDatapathObservabilityConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableRelay
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Method used to make Relay available
 func (o AdvancedDatapathObservabilityConfigPtrOutput) RelayMode() AdvancedDatapathObservabilityConfigRelayModePtrOutput {
 	return o.ApplyT(func(v *AdvancedDatapathObservabilityConfig) *AdvancedDatapathObservabilityConfigRelayMode {
@@ -1197,6 +1242,8 @@ func (o AdvancedDatapathObservabilityConfigPtrOutput) RelayMode() AdvancedDatapa
 type AdvancedDatapathObservabilityConfigResponse struct {
 	// Expose flow metrics on nodes
 	EnableMetrics bool `pulumi:"enableMetrics"`
+	// Enable Relay component
+	EnableRelay bool `pulumi:"enableRelay"`
 	// Method used to make Relay available
 	RelayMode string `pulumi:"relayMode"`
 }
@@ -1219,6 +1266,11 @@ func (o AdvancedDatapathObservabilityConfigResponseOutput) ToAdvancedDatapathObs
 // Expose flow metrics on nodes
 func (o AdvancedDatapathObservabilityConfigResponseOutput) EnableMetrics() pulumi.BoolOutput {
 	return o.ApplyT(func(v AdvancedDatapathObservabilityConfigResponse) bool { return v.EnableMetrics }).(pulumi.BoolOutput)
+}
+
+// Enable Relay component
+func (o AdvancedDatapathObservabilityConfigResponseOutput) EnableRelay() pulumi.BoolOutput {
+	return o.ApplyT(func(v AdvancedDatapathObservabilityConfigResponse) bool { return v.EnableRelay }).(pulumi.BoolOutput)
 }
 
 // Method used to make Relay available
@@ -4164,8 +4216,12 @@ type ClusterUpdate struct {
 	DesiredDefaultSnatStatus *DefaultSnatStatus `pulumi:"desiredDefaultSnatStatus"`
 	// DNSConfig contains clusterDNS config for this cluster.
 	DesiredDnsConfig *DNSConfig `pulumi:"desiredDnsConfig"`
+	// Enable/Disable Cilium Clusterwide Network Policy for the cluster.
+	DesiredEnableCiliumClusterwideNetworkPolicy *bool `pulumi:"desiredEnableCiliumClusterwideNetworkPolicy"`
 	// Enable/Disable FQDN Network Policy for the cluster.
 	DesiredEnableFqdnNetworkPolicy *bool `pulumi:"desiredEnableFqdnNetworkPolicy"`
+	// Enable/Disable Multi-Networking for the cluster
+	DesiredEnableMultiNetworking *bool `pulumi:"desiredEnableMultiNetworking"`
 	// Enable/Disable private endpoint for the cluster's master.
 	DesiredEnablePrivateEndpoint *bool `pulumi:"desiredEnablePrivateEndpoint"`
 	// The desired fleet configuration for the cluster.
@@ -4178,6 +4234,8 @@ type ClusterUpdate struct {
 	DesiredIdentityServiceConfig *IdentityServiceConfig `pulumi:"desiredIdentityServiceConfig"`
 	// The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as well.
 	DesiredImageType *string `pulumi:"desiredImageType"`
+	// Specify the details of in-transit encryption.
+	DesiredInTransitEncryptionConfig *ClusterUpdateDesiredInTransitEncryptionConfig `pulumi:"desiredInTransitEncryptionConfig"`
 	// The desired config of Intra-node visibility.
 	DesiredIntraNodeVisibilityConfig *IntraNodeVisibilityConfig `pulumi:"desiredIntraNodeVisibilityConfig"`
 	// Desired Beta APIs to be enabled for cluster.
@@ -5462,8 +5520,14 @@ func (o DatabaseEncryptionPtrOutput) State() DatabaseEncryptionStatePtrOutput {
 
 // Configuration of etcd encryption.
 type DatabaseEncryptionResponse struct {
+	// The current state of etcd encryption.
+	CurrentState string `pulumi:"currentState"`
+	// Keys in use by the cluster for decrypting existing objects, in addition to the key in `key_name`. Each item is a CloudKMS key resource.
+	DecryptionKeys []string `pulumi:"decryptionKeys"`
 	// Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
 	KeyName string `pulumi:"keyName"`
+	// Records errors seen during DatabaseEncryption update operations.
+	LastOperationErrors []OperationErrorResponse `pulumi:"lastOperationErrors"`
 	// The desired state of etcd encryption.
 	State string `pulumi:"state"`
 }
@@ -5483,9 +5547,24 @@ func (o DatabaseEncryptionResponseOutput) ToDatabaseEncryptionResponseOutputWith
 	return o
 }
 
+// The current state of etcd encryption.
+func (o DatabaseEncryptionResponseOutput) CurrentState() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseEncryptionResponse) string { return v.CurrentState }).(pulumi.StringOutput)
+}
+
+// Keys in use by the cluster for decrypting existing objects, in addition to the key in `key_name`. Each item is a CloudKMS key resource.
+func (o DatabaseEncryptionResponseOutput) DecryptionKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatabaseEncryptionResponse) []string { return v.DecryptionKeys }).(pulumi.StringArrayOutput)
+}
+
 // Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
 func (o DatabaseEncryptionResponseOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseEncryptionResponse) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
+// Records errors seen during DatabaseEncryption update operations.
+func (o DatabaseEncryptionResponseOutput) LastOperationErrors() OperationErrorResponseArrayOutput {
+	return o.ApplyT(func(v DatabaseEncryptionResponse) []OperationErrorResponse { return v.LastOperationErrors }).(OperationErrorResponseArrayOutput)
 }
 
 // The desired state of etcd encryption.
@@ -12423,6 +12502,8 @@ type NetworkConfig struct {
 	DefaultSnatStatus *DefaultSnatStatus `pulumi:"defaultSnatStatus"`
 	// DNSConfig contains clusterDNS config for this cluster.
 	DnsConfig *DNSConfig `pulumi:"dnsConfig"`
+	// Whether CiliumClusterwideNetworkPolicy is enabled on this cluster.
+	EnableCiliumClusterwideNetworkPolicy *bool `pulumi:"enableCiliumClusterwideNetworkPolicy"`
 	// Whether FQDN Network Policy is enabled on this cluster.
 	EnableFqdnNetworkPolicy *bool `pulumi:"enableFqdnNetworkPolicy"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -12433,6 +12514,8 @@ type NetworkConfig struct {
 	EnableMultiNetworking *bool `pulumi:"enableMultiNetworking"`
 	// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
 	GatewayApiConfig *GatewayAPIConfig `pulumi:"gatewayApiConfig"`
+	// Specify the details of in-transit encryption.
+	InTransitEncryptionConfig *NetworkConfigInTransitEncryptionConfig `pulumi:"inTransitEncryptionConfig"`
 	// Network bandwidth tier configuration.
 	NetworkPerformanceConfig *ClusterNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
@@ -12460,6 +12543,8 @@ type NetworkConfigArgs struct {
 	DefaultSnatStatus DefaultSnatStatusPtrInput `pulumi:"defaultSnatStatus"`
 	// DNSConfig contains clusterDNS config for this cluster.
 	DnsConfig DNSConfigPtrInput `pulumi:"dnsConfig"`
+	// Whether CiliumClusterwideNetworkPolicy is enabled on this cluster.
+	EnableCiliumClusterwideNetworkPolicy pulumi.BoolPtrInput `pulumi:"enableCiliumClusterwideNetworkPolicy"`
 	// Whether FQDN Network Policy is enabled on this cluster.
 	EnableFqdnNetworkPolicy pulumi.BoolPtrInput `pulumi:"enableFqdnNetworkPolicy"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -12470,6 +12555,8 @@ type NetworkConfigArgs struct {
 	EnableMultiNetworking pulumi.BoolPtrInput `pulumi:"enableMultiNetworking"`
 	// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
 	GatewayApiConfig GatewayAPIConfigPtrInput `pulumi:"gatewayApiConfig"`
+	// Specify the details of in-transit encryption.
+	InTransitEncryptionConfig NetworkConfigInTransitEncryptionConfigPtrInput `pulumi:"inTransitEncryptionConfig"`
 	// Network bandwidth tier configuration.
 	NetworkPerformanceConfig ClusterNetworkPerformanceConfigPtrInput `pulumi:"networkPerformanceConfig"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
@@ -12571,6 +12658,11 @@ func (o NetworkConfigOutput) DnsConfig() DNSConfigPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *DNSConfig { return v.DnsConfig }).(DNSConfigPtrOutput)
 }
 
+// Whether CiliumClusterwideNetworkPolicy is enabled on this cluster.
+func (o NetworkConfigOutput) EnableCiliumClusterwideNetworkPolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *bool { return v.EnableCiliumClusterwideNetworkPolicy }).(pulumi.BoolPtrOutput)
+}
+
 // Whether FQDN Network Policy is enabled on this cluster.
 func (o NetworkConfigOutput) EnableFqdnNetworkPolicy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *bool { return v.EnableFqdnNetworkPolicy }).(pulumi.BoolPtrOutput)
@@ -12594,6 +12686,11 @@ func (o NetworkConfigOutput) EnableMultiNetworking() pulumi.BoolPtrOutput {
 // GatewayAPIConfig contains the desired config of Gateway API on this cluster.
 func (o NetworkConfigOutput) GatewayApiConfig() GatewayAPIConfigPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *GatewayAPIConfig { return v.GatewayApiConfig }).(GatewayAPIConfigPtrOutput)
+}
+
+// Specify the details of in-transit encryption.
+func (o NetworkConfigOutput) InTransitEncryptionConfig() NetworkConfigInTransitEncryptionConfigPtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *NetworkConfigInTransitEncryptionConfig { return v.InTransitEncryptionConfig }).(NetworkConfigInTransitEncryptionConfigPtrOutput)
 }
 
 // Network bandwidth tier configuration.
@@ -12665,6 +12762,16 @@ func (o NetworkConfigPtrOutput) DnsConfig() DNSConfigPtrOutput {
 	}).(DNSConfigPtrOutput)
 }
 
+// Whether CiliumClusterwideNetworkPolicy is enabled on this cluster.
+func (o NetworkConfigPtrOutput) EnableCiliumClusterwideNetworkPolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableCiliumClusterwideNetworkPolicy
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Whether FQDN Network Policy is enabled on this cluster.
 func (o NetworkConfigPtrOutput) EnableFqdnNetworkPolicy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NetworkConfig) *bool {
@@ -12715,6 +12822,16 @@ func (o NetworkConfigPtrOutput) GatewayApiConfig() GatewayAPIConfigPtrOutput {
 	}).(GatewayAPIConfigPtrOutput)
 }
 
+// Specify the details of in-transit encryption.
+func (o NetworkConfigPtrOutput) InTransitEncryptionConfig() NetworkConfigInTransitEncryptionConfigPtrOutput {
+	return o.ApplyT(func(v *NetworkConfig) *NetworkConfigInTransitEncryptionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.InTransitEncryptionConfig
+	}).(NetworkConfigInTransitEncryptionConfigPtrOutput)
+}
+
 // Network bandwidth tier configuration.
 func (o NetworkConfigPtrOutput) NetworkPerformanceConfig() ClusterNetworkPerformanceConfigPtrOutput {
 	return o.ApplyT(func(v *NetworkConfig) *ClusterNetworkPerformanceConfig {
@@ -12753,6 +12870,8 @@ type NetworkConfigResponse struct {
 	DefaultSnatStatus DefaultSnatStatusResponse `pulumi:"defaultSnatStatus"`
 	// DNSConfig contains clusterDNS config for this cluster.
 	DnsConfig DNSConfigResponse `pulumi:"dnsConfig"`
+	// Whether CiliumClusterwideNetworkPolicy is enabled on this cluster.
+	EnableCiliumClusterwideNetworkPolicy bool `pulumi:"enableCiliumClusterwideNetworkPolicy"`
 	// Whether FQDN Network Policy is enabled on this cluster.
 	EnableFqdnNetworkPolicy bool `pulumi:"enableFqdnNetworkPolicy"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -12763,6 +12882,8 @@ type NetworkConfigResponse struct {
 	EnableMultiNetworking bool `pulumi:"enableMultiNetworking"`
 	// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
 	GatewayApiConfig GatewayAPIConfigResponse `pulumi:"gatewayApiConfig"`
+	// Specify the details of in-transit encryption.
+	InTransitEncryptionConfig string `pulumi:"inTransitEncryptionConfig"`
 	// The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
 	Network string `pulumi:"network"`
 	// Network bandwidth tier configuration.
@@ -12805,6 +12926,11 @@ func (o NetworkConfigResponseOutput) DnsConfig() DNSConfigResponseOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) DNSConfigResponse { return v.DnsConfig }).(DNSConfigResponseOutput)
 }
 
+// Whether CiliumClusterwideNetworkPolicy is enabled on this cluster.
+func (o NetworkConfigResponseOutput) EnableCiliumClusterwideNetworkPolicy() pulumi.BoolOutput {
+	return o.ApplyT(func(v NetworkConfigResponse) bool { return v.EnableCiliumClusterwideNetworkPolicy }).(pulumi.BoolOutput)
+}
+
 // Whether FQDN Network Policy is enabled on this cluster.
 func (o NetworkConfigResponseOutput) EnableFqdnNetworkPolicy() pulumi.BoolOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) bool { return v.EnableFqdnNetworkPolicy }).(pulumi.BoolOutput)
@@ -12828,6 +12954,11 @@ func (o NetworkConfigResponseOutput) EnableMultiNetworking() pulumi.BoolOutput {
 // GatewayAPIConfig contains the desired config of Gateway API on this cluster.
 func (o NetworkConfigResponseOutput) GatewayApiConfig() GatewayAPIConfigResponseOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) GatewayAPIConfigResponse { return v.GatewayApiConfig }).(GatewayAPIConfigResponseOutput)
+}
+
+// Specify the details of in-transit encryption.
+func (o NetworkConfigResponseOutput) InTransitEncryptionConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkConfigResponse) string { return v.InTransitEncryptionConfig }).(pulumi.StringOutput)
 }
 
 // The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
@@ -13741,6 +13872,8 @@ type NodeConfig struct {
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
 	DiskType *string `pulumi:"diskType"`
+	// Optional. Reserved for future use.
+	EnableConfidentialStorage *bool `pulumi:"enableConfidentialStorage"`
 	// Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by the boot disk.
 	EphemeralStorageLocalSsdConfig *EphemeralStorageLocalSsdConfig `pulumi:"ephemeralStorageLocalSsdConfig"`
 	// Enable or disable NCCL fast socket for the node pool.
@@ -13783,6 +13916,10 @@ type NodeConfig struct {
 	ResourceManagerTags *ResourceManagerTags `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfig *SandboxConfig `pulumi:"sandboxConfig"`
+	// Secondary boot disk update strategy.
+	SecondaryBootDiskUpdateStrategy *SecondaryBootDiskUpdateStrategy `pulumi:"secondaryBootDiskUpdateStrategy"`
+	// List of secondary boot disks attached to the nodes.
+	SecondaryBootDisks []SecondaryBootDisk `pulumi:"secondaryBootDisks"`
 	// The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Shielded Instance options.
@@ -13826,6 +13963,8 @@ type NodeConfigArgs struct {
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Optional. Reserved for future use.
+	EnableConfidentialStorage pulumi.BoolPtrInput `pulumi:"enableConfidentialStorage"`
 	// Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by the boot disk.
 	EphemeralStorageLocalSsdConfig EphemeralStorageLocalSsdConfigPtrInput `pulumi:"ephemeralStorageLocalSsdConfig"`
 	// Enable or disable NCCL fast socket for the node pool.
@@ -13868,6 +14007,10 @@ type NodeConfigArgs struct {
 	ResourceManagerTags ResourceManagerTagsPtrInput `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfig SandboxConfigPtrInput `pulumi:"sandboxConfig"`
+	// Secondary boot disk update strategy.
+	SecondaryBootDiskUpdateStrategy SecondaryBootDiskUpdateStrategyPtrInput `pulumi:"secondaryBootDiskUpdateStrategy"`
+	// List of secondary boot disks attached to the nodes.
+	SecondaryBootDisks SecondaryBootDiskArrayInput `pulumi:"secondaryBootDisks"`
 	// The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Shielded Instance options.
@@ -13994,6 +14137,11 @@ func (o NodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
+// Optional. Reserved for future use.
+func (o NodeConfigOutput) EnableConfidentialStorage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodeConfig) *bool { return v.EnableConfidentialStorage }).(pulumi.BoolPtrOutput)
+}
+
 // Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by the boot disk.
 func (o NodeConfigOutput) EphemeralStorageLocalSsdConfig() EphemeralStorageLocalSsdConfigPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *EphemeralStorageLocalSsdConfig { return v.EphemeralStorageLocalSsdConfig }).(EphemeralStorageLocalSsdConfigPtrOutput)
@@ -14097,6 +14245,16 @@ func (o NodeConfigOutput) ResourceManagerTags() ResourceManagerTagsPtrOutput {
 // Sandbox configuration for this node.
 func (o NodeConfigOutput) SandboxConfig() SandboxConfigPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *SandboxConfig { return v.SandboxConfig }).(SandboxConfigPtrOutput)
+}
+
+// Secondary boot disk update strategy.
+func (o NodeConfigOutput) SecondaryBootDiskUpdateStrategy() SecondaryBootDiskUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v NodeConfig) *SecondaryBootDiskUpdateStrategy { return v.SecondaryBootDiskUpdateStrategy }).(SecondaryBootDiskUpdateStrategyPtrOutput)
+}
+
+// List of secondary boot disks attached to the nodes.
+func (o NodeConfigOutput) SecondaryBootDisks() SecondaryBootDiskArrayOutput {
+	return o.ApplyT(func(v NodeConfig) []SecondaryBootDisk { return v.SecondaryBootDisks }).(SecondaryBootDiskArrayOutput)
 }
 
 // The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
@@ -14221,6 +14379,16 @@ func (o NodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
 		}
 		return v.DiskType
 	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Reserved for future use.
+func (o NodeConfigPtrOutput) EnableConfidentialStorage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableConfidentialStorage
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by the boot disk.
@@ -14431,6 +14599,26 @@ func (o NodeConfigPtrOutput) SandboxConfig() SandboxConfigPtrOutput {
 		}
 		return v.SandboxConfig
 	}).(SandboxConfigPtrOutput)
+}
+
+// Secondary boot disk update strategy.
+func (o NodeConfigPtrOutput) SecondaryBootDiskUpdateStrategy() SecondaryBootDiskUpdateStrategyPtrOutput {
+	return o.ApplyT(func(v *NodeConfig) *SecondaryBootDiskUpdateStrategy {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryBootDiskUpdateStrategy
+	}).(SecondaryBootDiskUpdateStrategyPtrOutput)
+}
+
+// List of secondary boot disks attached to the nodes.
+func (o NodeConfigPtrOutput) SecondaryBootDisks() SecondaryBootDiskArrayOutput {
+	return o.ApplyT(func(v *NodeConfig) []SecondaryBootDisk {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryBootDisks
+	}).(SecondaryBootDiskArrayOutput)
 }
 
 // The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
@@ -14719,6 +14907,8 @@ type NodeConfigResponse struct {
 	DiskSizeGb int `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
 	DiskType string `pulumi:"diskType"`
+	// Optional. Reserved for future use.
+	EnableConfidentialStorage bool `pulumi:"enableConfidentialStorage"`
 	// Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by the boot disk.
 	EphemeralStorageLocalSsdConfig EphemeralStorageLocalSsdConfigResponse `pulumi:"ephemeralStorageLocalSsdConfig"`
 	// Enable or disable NCCL fast socket for the node pool.
@@ -14761,6 +14951,10 @@ type NodeConfigResponse struct {
 	ResourceManagerTags ResourceManagerTagsResponse `pulumi:"resourceManagerTags"`
 	// Sandbox configuration for this node.
 	SandboxConfig SandboxConfigResponse `pulumi:"sandboxConfig"`
+	// Secondary boot disk update strategy.
+	SecondaryBootDiskUpdateStrategy SecondaryBootDiskUpdateStrategyResponse `pulumi:"secondaryBootDiskUpdateStrategy"`
+	// List of secondary boot disks attached to the nodes.
+	SecondaryBootDisks []SecondaryBootDiskResponse `pulumi:"secondaryBootDisks"`
 	// The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
 	ServiceAccount string `pulumi:"serviceAccount"`
 	// Shielded Instance options.
@@ -14822,6 +15016,11 @@ func (o NodeConfigResponseOutput) DiskSizeGb() pulumi.IntOutput {
 // Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
 func (o NodeConfigResponseOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeConfigResponse) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// Optional. Reserved for future use.
+func (o NodeConfigResponseOutput) EnableConfidentialStorage() pulumi.BoolOutput {
+	return o.ApplyT(func(v NodeConfigResponse) bool { return v.EnableConfidentialStorage }).(pulumi.BoolOutput)
 }
 
 // Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by the boot disk.
@@ -14929,6 +15128,18 @@ func (o NodeConfigResponseOutput) ResourceManagerTags() ResourceManagerTagsRespo
 // Sandbox configuration for this node.
 func (o NodeConfigResponseOutput) SandboxConfig() SandboxConfigResponseOutput {
 	return o.ApplyT(func(v NodeConfigResponse) SandboxConfigResponse { return v.SandboxConfig }).(SandboxConfigResponseOutput)
+}
+
+// Secondary boot disk update strategy.
+func (o NodeConfigResponseOutput) SecondaryBootDiskUpdateStrategy() SecondaryBootDiskUpdateStrategyResponseOutput {
+	return o.ApplyT(func(v NodeConfigResponse) SecondaryBootDiskUpdateStrategyResponse {
+		return v.SecondaryBootDiskUpdateStrategy
+	}).(SecondaryBootDiskUpdateStrategyResponseOutput)
+}
+
+// List of secondary boot disks attached to the nodes.
+func (o NodeConfigResponseOutput) SecondaryBootDisks() SecondaryBootDiskResponseArrayOutput {
+	return o.ApplyT(func(v NodeConfigResponse) []SecondaryBootDiskResponse { return v.SecondaryBootDisks }).(SecondaryBootDiskResponseArrayOutput)
 }
 
 // The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
@@ -17436,6 +17647,66 @@ func (o NotificationConfigResponseOutput) ToNotificationConfigResponseOutputWith
 // Notification config for Pub/Sub.
 func (o NotificationConfigResponseOutput) Pubsub() PubSubResponseOutput {
 	return o.ApplyT(func(v NotificationConfigResponse) PubSubResponse { return v.Pubsub }).(PubSubResponseOutput)
+}
+
+// OperationError records errors seen from CloudKMS keys encountered during updates to DatabaseEncryption configuration.
+type OperationErrorResponse struct {
+	// Description of the error seen during the operation.
+	ErrorMessage string `pulumi:"errorMessage"`
+	// CloudKMS key resource that had the error.
+	KeyName string `pulumi:"keyName"`
+	// Time when the CloudKMS error was seen.
+	Timestamp string `pulumi:"timestamp"`
+}
+
+// OperationError records errors seen from CloudKMS keys encountered during updates to DatabaseEncryption configuration.
+type OperationErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (OperationErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OperationErrorResponse)(nil)).Elem()
+}
+
+func (o OperationErrorResponseOutput) ToOperationErrorResponseOutput() OperationErrorResponseOutput {
+	return o
+}
+
+func (o OperationErrorResponseOutput) ToOperationErrorResponseOutputWithContext(ctx context.Context) OperationErrorResponseOutput {
+	return o
+}
+
+// Description of the error seen during the operation.
+func (o OperationErrorResponseOutput) ErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v OperationErrorResponse) string { return v.ErrorMessage }).(pulumi.StringOutput)
+}
+
+// CloudKMS key resource that had the error.
+func (o OperationErrorResponseOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v OperationErrorResponse) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
+// Time when the CloudKMS error was seen.
+func (o OperationErrorResponseOutput) Timestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v OperationErrorResponse) string { return v.Timestamp }).(pulumi.StringOutput)
+}
+
+type OperationErrorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (OperationErrorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OperationErrorResponse)(nil)).Elem()
+}
+
+func (o OperationErrorResponseArrayOutput) ToOperationErrorResponseArrayOutput() OperationErrorResponseArrayOutput {
+	return o
+}
+
+func (o OperationErrorResponseArrayOutput) ToOperationErrorResponseArrayOutputWithContext(ctx context.Context) OperationErrorResponseArrayOutput {
+	return o
+}
+
+func (o OperationErrorResponseArrayOutput) Index(i pulumi.IntInput) OperationErrorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OperationErrorResponse {
+		return vs[0].([]OperationErrorResponse)[vs[1].(int)]
+	}).(OperationErrorResponseOutput)
 }
 
 // ParentProductConfig is the configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of a GKE cluster and take the ownership of the cluster.
@@ -20286,6 +20557,308 @@ func (o SandboxConfigResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SandboxConfigResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// SecondaryBootDisk represents a persistent disk attached to a node with special configurations based on its mode.
+type SecondaryBootDisk struct {
+	// Fully-qualified resource ID for an existing disk image.
+	DiskImage *string `pulumi:"diskImage"`
+	// Disk mode (container image cache, etc.)
+	Mode *SecondaryBootDiskMode `pulumi:"mode"`
+}
+
+// SecondaryBootDiskInput is an input type that accepts SecondaryBootDiskArgs and SecondaryBootDiskOutput values.
+// You can construct a concrete instance of `SecondaryBootDiskInput` via:
+//
+//	SecondaryBootDiskArgs{...}
+type SecondaryBootDiskInput interface {
+	pulumi.Input
+
+	ToSecondaryBootDiskOutput() SecondaryBootDiskOutput
+	ToSecondaryBootDiskOutputWithContext(context.Context) SecondaryBootDiskOutput
+}
+
+// SecondaryBootDisk represents a persistent disk attached to a node with special configurations based on its mode.
+type SecondaryBootDiskArgs struct {
+	// Fully-qualified resource ID for an existing disk image.
+	DiskImage pulumi.StringPtrInput `pulumi:"diskImage"`
+	// Disk mode (container image cache, etc.)
+	Mode SecondaryBootDiskModePtrInput `pulumi:"mode"`
+}
+
+func (SecondaryBootDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecondaryBootDisk)(nil)).Elem()
+}
+
+func (i SecondaryBootDiskArgs) ToSecondaryBootDiskOutput() SecondaryBootDiskOutput {
+	return i.ToSecondaryBootDiskOutputWithContext(context.Background())
+}
+
+func (i SecondaryBootDiskArgs) ToSecondaryBootDiskOutputWithContext(ctx context.Context) SecondaryBootDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecondaryBootDiskOutput)
+}
+
+// SecondaryBootDiskArrayInput is an input type that accepts SecondaryBootDiskArray and SecondaryBootDiskArrayOutput values.
+// You can construct a concrete instance of `SecondaryBootDiskArrayInput` via:
+//
+//	SecondaryBootDiskArray{ SecondaryBootDiskArgs{...} }
+type SecondaryBootDiskArrayInput interface {
+	pulumi.Input
+
+	ToSecondaryBootDiskArrayOutput() SecondaryBootDiskArrayOutput
+	ToSecondaryBootDiskArrayOutputWithContext(context.Context) SecondaryBootDiskArrayOutput
+}
+
+type SecondaryBootDiskArray []SecondaryBootDiskInput
+
+func (SecondaryBootDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecondaryBootDisk)(nil)).Elem()
+}
+
+func (i SecondaryBootDiskArray) ToSecondaryBootDiskArrayOutput() SecondaryBootDiskArrayOutput {
+	return i.ToSecondaryBootDiskArrayOutputWithContext(context.Background())
+}
+
+func (i SecondaryBootDiskArray) ToSecondaryBootDiskArrayOutputWithContext(ctx context.Context) SecondaryBootDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecondaryBootDiskArrayOutput)
+}
+
+// SecondaryBootDisk represents a persistent disk attached to a node with special configurations based on its mode.
+type SecondaryBootDiskOutput struct{ *pulumi.OutputState }
+
+func (SecondaryBootDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecondaryBootDisk)(nil)).Elem()
+}
+
+func (o SecondaryBootDiskOutput) ToSecondaryBootDiskOutput() SecondaryBootDiskOutput {
+	return o
+}
+
+func (o SecondaryBootDiskOutput) ToSecondaryBootDiskOutputWithContext(ctx context.Context) SecondaryBootDiskOutput {
+	return o
+}
+
+// Fully-qualified resource ID for an existing disk image.
+func (o SecondaryBootDiskOutput) DiskImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecondaryBootDisk) *string { return v.DiskImage }).(pulumi.StringPtrOutput)
+}
+
+// Disk mode (container image cache, etc.)
+func (o SecondaryBootDiskOutput) Mode() SecondaryBootDiskModePtrOutput {
+	return o.ApplyT(func(v SecondaryBootDisk) *SecondaryBootDiskMode { return v.Mode }).(SecondaryBootDiskModePtrOutput)
+}
+
+type SecondaryBootDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (SecondaryBootDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecondaryBootDisk)(nil)).Elem()
+}
+
+func (o SecondaryBootDiskArrayOutput) ToSecondaryBootDiskArrayOutput() SecondaryBootDiskArrayOutput {
+	return o
+}
+
+func (o SecondaryBootDiskArrayOutput) ToSecondaryBootDiskArrayOutputWithContext(ctx context.Context) SecondaryBootDiskArrayOutput {
+	return o
+}
+
+func (o SecondaryBootDiskArrayOutput) Index(i pulumi.IntInput) SecondaryBootDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecondaryBootDisk {
+		return vs[0].([]SecondaryBootDisk)[vs[1].(int)]
+	}).(SecondaryBootDiskOutput)
+}
+
+// SecondaryBootDisk represents a persistent disk attached to a node with special configurations based on its mode.
+type SecondaryBootDiskResponse struct {
+	// Fully-qualified resource ID for an existing disk image.
+	DiskImage string `pulumi:"diskImage"`
+	// Disk mode (container image cache, etc.)
+	Mode string `pulumi:"mode"`
+}
+
+// SecondaryBootDisk represents a persistent disk attached to a node with special configurations based on its mode.
+type SecondaryBootDiskResponseOutput struct{ *pulumi.OutputState }
+
+func (SecondaryBootDiskResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecondaryBootDiskResponse)(nil)).Elem()
+}
+
+func (o SecondaryBootDiskResponseOutput) ToSecondaryBootDiskResponseOutput() SecondaryBootDiskResponseOutput {
+	return o
+}
+
+func (o SecondaryBootDiskResponseOutput) ToSecondaryBootDiskResponseOutputWithContext(ctx context.Context) SecondaryBootDiskResponseOutput {
+	return o
+}
+
+// Fully-qualified resource ID for an existing disk image.
+func (o SecondaryBootDiskResponseOutput) DiskImage() pulumi.StringOutput {
+	return o.ApplyT(func(v SecondaryBootDiskResponse) string { return v.DiskImage }).(pulumi.StringOutput)
+}
+
+// Disk mode (container image cache, etc.)
+func (o SecondaryBootDiskResponseOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v SecondaryBootDiskResponse) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type SecondaryBootDiskResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecondaryBootDiskResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecondaryBootDiskResponse)(nil)).Elem()
+}
+
+func (o SecondaryBootDiskResponseArrayOutput) ToSecondaryBootDiskResponseArrayOutput() SecondaryBootDiskResponseArrayOutput {
+	return o
+}
+
+func (o SecondaryBootDiskResponseArrayOutput) ToSecondaryBootDiskResponseArrayOutputWithContext(ctx context.Context) SecondaryBootDiskResponseArrayOutput {
+	return o
+}
+
+func (o SecondaryBootDiskResponseArrayOutput) Index(i pulumi.IntInput) SecondaryBootDiskResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecondaryBootDiskResponse {
+		return vs[0].([]SecondaryBootDiskResponse)[vs[1].(int)]
+	}).(SecondaryBootDiskResponseOutput)
+}
+
+// SecondaryBootDiskUpdateStrategy is a placeholder which will be extended in the future to define different options for updating secondary boot disks.
+type SecondaryBootDiskUpdateStrategy struct {
+}
+
+// SecondaryBootDiskUpdateStrategyInput is an input type that accepts SecondaryBootDiskUpdateStrategyArgs and SecondaryBootDiskUpdateStrategyOutput values.
+// You can construct a concrete instance of `SecondaryBootDiskUpdateStrategyInput` via:
+//
+//	SecondaryBootDiskUpdateStrategyArgs{...}
+type SecondaryBootDiskUpdateStrategyInput interface {
+	pulumi.Input
+
+	ToSecondaryBootDiskUpdateStrategyOutput() SecondaryBootDiskUpdateStrategyOutput
+	ToSecondaryBootDiskUpdateStrategyOutputWithContext(context.Context) SecondaryBootDiskUpdateStrategyOutput
+}
+
+// SecondaryBootDiskUpdateStrategy is a placeholder which will be extended in the future to define different options for updating secondary boot disks.
+type SecondaryBootDiskUpdateStrategyArgs struct {
+}
+
+func (SecondaryBootDiskUpdateStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecondaryBootDiskUpdateStrategy)(nil)).Elem()
+}
+
+func (i SecondaryBootDiskUpdateStrategyArgs) ToSecondaryBootDiskUpdateStrategyOutput() SecondaryBootDiskUpdateStrategyOutput {
+	return i.ToSecondaryBootDiskUpdateStrategyOutputWithContext(context.Background())
+}
+
+func (i SecondaryBootDiskUpdateStrategyArgs) ToSecondaryBootDiskUpdateStrategyOutputWithContext(ctx context.Context) SecondaryBootDiskUpdateStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecondaryBootDiskUpdateStrategyOutput)
+}
+
+func (i SecondaryBootDiskUpdateStrategyArgs) ToSecondaryBootDiskUpdateStrategyPtrOutput() SecondaryBootDiskUpdateStrategyPtrOutput {
+	return i.ToSecondaryBootDiskUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i SecondaryBootDiskUpdateStrategyArgs) ToSecondaryBootDiskUpdateStrategyPtrOutputWithContext(ctx context.Context) SecondaryBootDiskUpdateStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecondaryBootDiskUpdateStrategyOutput).ToSecondaryBootDiskUpdateStrategyPtrOutputWithContext(ctx)
+}
+
+// SecondaryBootDiskUpdateStrategyPtrInput is an input type that accepts SecondaryBootDiskUpdateStrategyArgs, SecondaryBootDiskUpdateStrategyPtr and SecondaryBootDiskUpdateStrategyPtrOutput values.
+// You can construct a concrete instance of `SecondaryBootDiskUpdateStrategyPtrInput` via:
+//
+//	        SecondaryBootDiskUpdateStrategyArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecondaryBootDiskUpdateStrategyPtrInput interface {
+	pulumi.Input
+
+	ToSecondaryBootDiskUpdateStrategyPtrOutput() SecondaryBootDiskUpdateStrategyPtrOutput
+	ToSecondaryBootDiskUpdateStrategyPtrOutputWithContext(context.Context) SecondaryBootDiskUpdateStrategyPtrOutput
+}
+
+type secondaryBootDiskUpdateStrategyPtrType SecondaryBootDiskUpdateStrategyArgs
+
+func SecondaryBootDiskUpdateStrategyPtr(v *SecondaryBootDiskUpdateStrategyArgs) SecondaryBootDiskUpdateStrategyPtrInput {
+	return (*secondaryBootDiskUpdateStrategyPtrType)(v)
+}
+
+func (*secondaryBootDiskUpdateStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecondaryBootDiskUpdateStrategy)(nil)).Elem()
+}
+
+func (i *secondaryBootDiskUpdateStrategyPtrType) ToSecondaryBootDiskUpdateStrategyPtrOutput() SecondaryBootDiskUpdateStrategyPtrOutput {
+	return i.ToSecondaryBootDiskUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *secondaryBootDiskUpdateStrategyPtrType) ToSecondaryBootDiskUpdateStrategyPtrOutputWithContext(ctx context.Context) SecondaryBootDiskUpdateStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecondaryBootDiskUpdateStrategyPtrOutput)
+}
+
+// SecondaryBootDiskUpdateStrategy is a placeholder which will be extended in the future to define different options for updating secondary boot disks.
+type SecondaryBootDiskUpdateStrategyOutput struct{ *pulumi.OutputState }
+
+func (SecondaryBootDiskUpdateStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecondaryBootDiskUpdateStrategy)(nil)).Elem()
+}
+
+func (o SecondaryBootDiskUpdateStrategyOutput) ToSecondaryBootDiskUpdateStrategyOutput() SecondaryBootDiskUpdateStrategyOutput {
+	return o
+}
+
+func (o SecondaryBootDiskUpdateStrategyOutput) ToSecondaryBootDiskUpdateStrategyOutputWithContext(ctx context.Context) SecondaryBootDiskUpdateStrategyOutput {
+	return o
+}
+
+func (o SecondaryBootDiskUpdateStrategyOutput) ToSecondaryBootDiskUpdateStrategyPtrOutput() SecondaryBootDiskUpdateStrategyPtrOutput {
+	return o.ToSecondaryBootDiskUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o SecondaryBootDiskUpdateStrategyOutput) ToSecondaryBootDiskUpdateStrategyPtrOutputWithContext(ctx context.Context) SecondaryBootDiskUpdateStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecondaryBootDiskUpdateStrategy) *SecondaryBootDiskUpdateStrategy {
+		return &v
+	}).(SecondaryBootDiskUpdateStrategyPtrOutput)
+}
+
+type SecondaryBootDiskUpdateStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (SecondaryBootDiskUpdateStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecondaryBootDiskUpdateStrategy)(nil)).Elem()
+}
+
+func (o SecondaryBootDiskUpdateStrategyPtrOutput) ToSecondaryBootDiskUpdateStrategyPtrOutput() SecondaryBootDiskUpdateStrategyPtrOutput {
+	return o
+}
+
+func (o SecondaryBootDiskUpdateStrategyPtrOutput) ToSecondaryBootDiskUpdateStrategyPtrOutputWithContext(ctx context.Context) SecondaryBootDiskUpdateStrategyPtrOutput {
+	return o
+}
+
+func (o SecondaryBootDiskUpdateStrategyPtrOutput) Elem() SecondaryBootDiskUpdateStrategyOutput {
+	return o.ApplyT(func(v *SecondaryBootDiskUpdateStrategy) SecondaryBootDiskUpdateStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret SecondaryBootDiskUpdateStrategy
+		return ret
+	}).(SecondaryBootDiskUpdateStrategyOutput)
+}
+
+// SecondaryBootDiskUpdateStrategy is a placeholder which will be extended in the future to define different options for updating secondary boot disks.
+type SecondaryBootDiskUpdateStrategyResponse struct {
+}
+
+// SecondaryBootDiskUpdateStrategy is a placeholder which will be extended in the future to define different options for updating secondary boot disks.
+type SecondaryBootDiskUpdateStrategyResponseOutput struct{ *pulumi.OutputState }
+
+func (SecondaryBootDiskUpdateStrategyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecondaryBootDiskUpdateStrategyResponse)(nil)).Elem()
+}
+
+func (o SecondaryBootDiskUpdateStrategyResponseOutput) ToSecondaryBootDiskUpdateStrategyResponseOutput() SecondaryBootDiskUpdateStrategyResponseOutput {
+	return o
+}
+
+func (o SecondaryBootDiskUpdateStrategyResponseOutput) ToSecondaryBootDiskUpdateStrategyResponseOutputWithContext(ctx context.Context) SecondaryBootDiskUpdateStrategyResponseOutput {
+	return o
+}
+
 // SecurityPostureConfig defines the flags needed to enable/disable features for the Security Posture API.
 type SecurityPostureConfig struct {
 	// Sets which mode to use for Security Posture features.
@@ -21384,6 +21957,172 @@ func (o StandardRolloutPolicyResponseOutput) BatchPercentage() pulumi.Float64Out
 // Soak time after each batch gets drained. Default to zero.
 func (o StandardRolloutPolicyResponseOutput) BatchSoakDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v StandardRolloutPolicyResponse) string { return v.BatchSoakDuration }).(pulumi.StringOutput)
+}
+
+// Configuration for the Stateful HA add-on.
+type StatefulHAConfig struct {
+	// Whether the Stateful HA add-on is enabled for this cluster.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// StatefulHAConfigInput is an input type that accepts StatefulHAConfigArgs and StatefulHAConfigOutput values.
+// You can construct a concrete instance of `StatefulHAConfigInput` via:
+//
+//	StatefulHAConfigArgs{...}
+type StatefulHAConfigInput interface {
+	pulumi.Input
+
+	ToStatefulHAConfigOutput() StatefulHAConfigOutput
+	ToStatefulHAConfigOutputWithContext(context.Context) StatefulHAConfigOutput
+}
+
+// Configuration for the Stateful HA add-on.
+type StatefulHAConfigArgs struct {
+	// Whether the Stateful HA add-on is enabled for this cluster.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (StatefulHAConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulHAConfig)(nil)).Elem()
+}
+
+func (i StatefulHAConfigArgs) ToStatefulHAConfigOutput() StatefulHAConfigOutput {
+	return i.ToStatefulHAConfigOutputWithContext(context.Background())
+}
+
+func (i StatefulHAConfigArgs) ToStatefulHAConfigOutputWithContext(ctx context.Context) StatefulHAConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulHAConfigOutput)
+}
+
+func (i StatefulHAConfigArgs) ToStatefulHAConfigPtrOutput() StatefulHAConfigPtrOutput {
+	return i.ToStatefulHAConfigPtrOutputWithContext(context.Background())
+}
+
+func (i StatefulHAConfigArgs) ToStatefulHAConfigPtrOutputWithContext(ctx context.Context) StatefulHAConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulHAConfigOutput).ToStatefulHAConfigPtrOutputWithContext(ctx)
+}
+
+// StatefulHAConfigPtrInput is an input type that accepts StatefulHAConfigArgs, StatefulHAConfigPtr and StatefulHAConfigPtrOutput values.
+// You can construct a concrete instance of `StatefulHAConfigPtrInput` via:
+//
+//	        StatefulHAConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type StatefulHAConfigPtrInput interface {
+	pulumi.Input
+
+	ToStatefulHAConfigPtrOutput() StatefulHAConfigPtrOutput
+	ToStatefulHAConfigPtrOutputWithContext(context.Context) StatefulHAConfigPtrOutput
+}
+
+type statefulHAConfigPtrType StatefulHAConfigArgs
+
+func StatefulHAConfigPtr(v *StatefulHAConfigArgs) StatefulHAConfigPtrInput {
+	return (*statefulHAConfigPtrType)(v)
+}
+
+func (*statefulHAConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulHAConfig)(nil)).Elem()
+}
+
+func (i *statefulHAConfigPtrType) ToStatefulHAConfigPtrOutput() StatefulHAConfigPtrOutput {
+	return i.ToStatefulHAConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *statefulHAConfigPtrType) ToStatefulHAConfigPtrOutputWithContext(ctx context.Context) StatefulHAConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulHAConfigPtrOutput)
+}
+
+// Configuration for the Stateful HA add-on.
+type StatefulHAConfigOutput struct{ *pulumi.OutputState }
+
+func (StatefulHAConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulHAConfig)(nil)).Elem()
+}
+
+func (o StatefulHAConfigOutput) ToStatefulHAConfigOutput() StatefulHAConfigOutput {
+	return o
+}
+
+func (o StatefulHAConfigOutput) ToStatefulHAConfigOutputWithContext(ctx context.Context) StatefulHAConfigOutput {
+	return o
+}
+
+func (o StatefulHAConfigOutput) ToStatefulHAConfigPtrOutput() StatefulHAConfigPtrOutput {
+	return o.ToStatefulHAConfigPtrOutputWithContext(context.Background())
+}
+
+func (o StatefulHAConfigOutput) ToStatefulHAConfigPtrOutputWithContext(ctx context.Context) StatefulHAConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatefulHAConfig) *StatefulHAConfig {
+		return &v
+	}).(StatefulHAConfigPtrOutput)
+}
+
+// Whether the Stateful HA add-on is enabled for this cluster.
+func (o StatefulHAConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StatefulHAConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type StatefulHAConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (StatefulHAConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulHAConfig)(nil)).Elem()
+}
+
+func (o StatefulHAConfigPtrOutput) ToStatefulHAConfigPtrOutput() StatefulHAConfigPtrOutput {
+	return o
+}
+
+func (o StatefulHAConfigPtrOutput) ToStatefulHAConfigPtrOutputWithContext(ctx context.Context) StatefulHAConfigPtrOutput {
+	return o
+}
+
+func (o StatefulHAConfigPtrOutput) Elem() StatefulHAConfigOutput {
+	return o.ApplyT(func(v *StatefulHAConfig) StatefulHAConfig {
+		if v != nil {
+			return *v
+		}
+		var ret StatefulHAConfig
+		return ret
+	}).(StatefulHAConfigOutput)
+}
+
+// Whether the Stateful HA add-on is enabled for this cluster.
+func (o StatefulHAConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StatefulHAConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for the Stateful HA add-on.
+type StatefulHAConfigResponse struct {
+	// Whether the Stateful HA add-on is enabled for this cluster.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// Configuration for the Stateful HA add-on.
+type StatefulHAConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (StatefulHAConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulHAConfigResponse)(nil)).Elem()
+}
+
+func (o StatefulHAConfigResponseOutput) ToStatefulHAConfigResponseOutput() StatefulHAConfigResponseOutput {
+	return o
+}
+
+func (o StatefulHAConfigResponseOutput) ToStatefulHAConfigResponseOutputWithContext(ctx context.Context) StatefulHAConfigResponseOutput {
+	return o
+}
+
+// Whether the Stateful HA add-on is enabled for this cluster.
+func (o StatefulHAConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v StatefulHAConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
@@ -23249,6 +23988,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceUsageExportConfigPtrInput)(nil)).Elem(), ResourceUsageExportConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SandboxConfigInput)(nil)).Elem(), SandboxConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SandboxConfigPtrInput)(nil)).Elem(), SandboxConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecondaryBootDiskInput)(nil)).Elem(), SecondaryBootDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecondaryBootDiskArrayInput)(nil)).Elem(), SecondaryBootDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecondaryBootDiskUpdateStrategyInput)(nil)).Elem(), SecondaryBootDiskUpdateStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecondaryBootDiskUpdateStrategyPtrInput)(nil)).Elem(), SecondaryBootDiskUpdateStrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPostureConfigInput)(nil)).Elem(), SecurityPostureConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPostureConfigPtrInput)(nil)).Elem(), SecurityPostureConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceExternalIPsConfigInput)(nil)).Elem(), ServiceExternalIPsConfigArgs{})
@@ -23261,6 +24004,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SoleTenantConfigPtrInput)(nil)).Elem(), SoleTenantConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardRolloutPolicyInput)(nil)).Elem(), StandardRolloutPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardRolloutPolicyPtrInput)(nil)).Elem(), StandardRolloutPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulHAConfigInput)(nil)).Elem(), StatefulHAConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatefulHAConfigPtrInput)(nil)).Elem(), StatefulHAConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusConditionInput)(nil)).Elem(), StatusConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusConditionArrayInput)(nil)).Elem(), StatusConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeWindowInput)(nil)).Elem(), TimeWindowArgs{})
@@ -23531,6 +24276,8 @@ func init() {
 	pulumi.RegisterOutputType(NotificationConfigOutput{})
 	pulumi.RegisterOutputType(NotificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(NotificationConfigResponseOutput{})
+	pulumi.RegisterOutputType(OperationErrorResponseOutput{})
+	pulumi.RegisterOutputType(OperationErrorResponseArrayOutput{})
 	pulumi.RegisterOutputType(ParentProductConfigOutput{})
 	pulumi.RegisterOutputType(ParentProductConfigPtrOutput{})
 	pulumi.RegisterOutputType(ParentProductConfigResponseOutput{})
@@ -23578,6 +24325,13 @@ func init() {
 	pulumi.RegisterOutputType(SandboxConfigOutput{})
 	pulumi.RegisterOutputType(SandboxConfigPtrOutput{})
 	pulumi.RegisterOutputType(SandboxConfigResponseOutput{})
+	pulumi.RegisterOutputType(SecondaryBootDiskOutput{})
+	pulumi.RegisterOutputType(SecondaryBootDiskArrayOutput{})
+	pulumi.RegisterOutputType(SecondaryBootDiskResponseOutput{})
+	pulumi.RegisterOutputType(SecondaryBootDiskResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecondaryBootDiskUpdateStrategyOutput{})
+	pulumi.RegisterOutputType(SecondaryBootDiskUpdateStrategyPtrOutput{})
+	pulumi.RegisterOutputType(SecondaryBootDiskUpdateStrategyResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPostureConfigOutput{})
 	pulumi.RegisterOutputType(SecurityPostureConfigPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPostureConfigResponseOutput{})
@@ -23596,6 +24350,9 @@ func init() {
 	pulumi.RegisterOutputType(StandardRolloutPolicyOutput{})
 	pulumi.RegisterOutputType(StandardRolloutPolicyPtrOutput{})
 	pulumi.RegisterOutputType(StandardRolloutPolicyResponseOutput{})
+	pulumi.RegisterOutputType(StatefulHAConfigOutput{})
+	pulumi.RegisterOutputType(StatefulHAConfigPtrOutput{})
+	pulumi.RegisterOutputType(StatefulHAConfigResponseOutput{})
 	pulumi.RegisterOutputType(StatusConditionOutput{})
 	pulumi.RegisterOutputType(StatusConditionArrayOutput{})
 	pulumi.RegisterOutputType(StatusConditionResponseOutput{})

@@ -16,7 +16,9 @@ import (
 type InstanceGroupManagerResizeRequest struct {
 	pulumi.CustomResourceState
 
-	// The count of instances to create as part of this resize request.
+	// This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
+	//
+	// Deprecated: This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
 	Count pulumi.IntOutput `pulumi:"count"`
 	// The creation timestamp for this resize request in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -94,7 +96,9 @@ func (InstanceGroupManagerResizeRequestState) ElementType() reflect.Type {
 }
 
 type instanceGroupManagerResizeRequestArgs struct {
-	// The count of instances to create as part of this resize request.
+	// This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
+	//
+	// Deprecated: This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
 	Count *int `pulumi:"count"`
 	// An optional description of this resource.
 	Description          *string `pulumi:"description"`
@@ -113,7 +117,9 @@ type instanceGroupManagerResizeRequestArgs struct {
 
 // The set of arguments for constructing a InstanceGroupManagerResizeRequest resource.
 type InstanceGroupManagerResizeRequestArgs struct {
-	// The count of instances to create as part of this resize request.
+	// This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
+	//
+	// Deprecated: This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
 	Count pulumi.IntPtrInput
 	// An optional description of this resource.
 	Description          pulumi.StringPtrInput
@@ -167,7 +173,9 @@ func (o InstanceGroupManagerResizeRequestOutput) ToInstanceGroupManagerResizeReq
 	return o
 }
 
-// The count of instances to create as part of this resize request.
+// This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
+//
+// Deprecated: This field is deprecated, please use resize_by instead. The count of instances to create as part of this resize request.
 func (o InstanceGroupManagerResizeRequestOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerResizeRequest) pulumi.IntOutput { return v.Count }).(pulumi.IntOutput)
 }

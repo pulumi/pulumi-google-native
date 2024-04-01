@@ -41,6 +41,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly string DiskType;
         /// <summary>
+        /// Optional. Reserved for future use.
+        /// </summary>
+        public readonly bool EnableConfidentialStorage;
+        /// <summary>
         /// Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by the boot disk.
         /// </summary>
         public readonly Outputs.EphemeralStorageLocalSsdConfigResponse EphemeralStorageLocalSsdConfig;
@@ -125,6 +129,14 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly Outputs.SandboxConfigResponse SandboxConfig;
         /// <summary>
+        /// Secondary boot disk update strategy.
+        /// </summary>
+        public readonly Outputs.SecondaryBootDiskUpdateStrategyResponse SecondaryBootDiskUpdateStrategy;
+        /// <summary>
+        /// List of secondary boot disks attached to the nodes.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.SecondaryBootDiskResponse> SecondaryBootDisks;
+        /// <summary>
         /// The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
         /// </summary>
         public readonly string ServiceAccount;
@@ -171,6 +183,8 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             string diskType,
 
+            bool enableConfidentialStorage,
+
             Outputs.EphemeralStorageLocalSsdConfigResponse ephemeralStorageLocalSsdConfig,
 
             Outputs.FastSocketResponse fastSocket,
@@ -213,6 +227,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             Outputs.SandboxConfigResponse sandboxConfig,
 
+            Outputs.SecondaryBootDiskUpdateStrategyResponse secondaryBootDiskUpdateStrategy,
+
+            ImmutableArray<Outputs.SecondaryBootDiskResponse> secondaryBootDisks,
+
             string serviceAccount,
 
             Outputs.ShieldedInstanceConfigResponse shieldedInstanceConfig,
@@ -235,6 +253,7 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
             ConfidentialNodes = confidentialNodes;
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
+            EnableConfidentialStorage = enableConfidentialStorage;
             EphemeralStorageLocalSsdConfig = ephemeralStorageLocalSsdConfig;
             FastSocket = fastSocket;
             GcfsConfig = gcfsConfig;
@@ -256,6 +275,8 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
             ResourceLabels = resourceLabels;
             ResourceManagerTags = resourceManagerTags;
             SandboxConfig = sandboxConfig;
+            SecondaryBootDiskUpdateStrategy = secondaryBootDiskUpdateStrategy;
+            SecondaryBootDisks = secondaryBootDisks;
             ServiceAccount = serviceAccount;
             ShieldedInstanceConfig = shieldedInstanceConfig;
             SoleTenantConfig = soleTenantConfig;

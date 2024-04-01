@@ -29,6 +29,7 @@ export interface GetFunctionArgs {
 }
 
 export interface GetFunctionResult {
+    readonly automaticUpdatePolicy: outputs.cloudfunctions.v1.AutomaticUpdatePolicyResponse;
     /**
      * The amount of memory in MB available for a function. Defaults to 256MB.
      */
@@ -46,6 +47,10 @@ export interface GetFunctionResult {
      */
     readonly buildName: string;
     /**
+     * Optional. A service account the user provides for use with Cloud Build.
+     */
+    readonly buildServiceAccount: string;
+    /**
      * Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
      */
     readonly buildWorkerPool: string;
@@ -54,7 +59,7 @@ export interface GetFunctionResult {
      */
     readonly description: string;
     /**
-     * Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+     * Docker Registry to use for this deployment. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
      */
     readonly dockerRegistry: string;
     /**
@@ -107,6 +112,7 @@ export interface GetFunctionResult {
      * @deprecated Deprecated: use vpc_connector
      */
     readonly network: string;
+    readonly onDeployUpdatePolicy: outputs.cloudfunctions.v1.OnDeployUpdatePolicyResponse;
     /**
      * The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
      */

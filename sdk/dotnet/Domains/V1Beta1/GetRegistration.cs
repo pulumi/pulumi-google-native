@@ -116,7 +116,7 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1
         /// </summary>
         public readonly ImmutableArray<string> SupportedPrivacy;
         /// <summary>
-        /// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+        /// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
         /// </summary>
         public readonly string TransferFailureReason;
 

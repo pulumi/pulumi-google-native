@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetWorkstationConfigResult:
-    def __init__(__self__, annotations=None, conditions=None, container=None, create_time=None, degraded=None, delete_time=None, display_name=None, encryption_key=None, etag=None, host=None, idle_timeout=None, labels=None, name=None, persistent_directories=None, readiness_checks=None, reconciling=None, replica_zones=None, running_timeout=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, conditions=None, container=None, create_time=None, degraded=None, delete_time=None, disable_tcp_connections=None, display_name=None, enable_audit_agent=None, encryption_key=None, ephemeral_directories=None, etag=None, host=None, idle_timeout=None, labels=None, name=None, persistent_directories=None, readiness_checks=None, reconciling=None, replica_zones=None, running_timeout=None, uid=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -38,12 +38,21 @@ class GetWorkstationConfigResult:
         if delete_time and not isinstance(delete_time, str):
             raise TypeError("Expected argument 'delete_time' to be a str")
         pulumi.set(__self__, "delete_time", delete_time)
+        if disable_tcp_connections and not isinstance(disable_tcp_connections, bool):
+            raise TypeError("Expected argument 'disable_tcp_connections' to be a bool")
+        pulumi.set(__self__, "disable_tcp_connections", disable_tcp_connections)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if enable_audit_agent and not isinstance(enable_audit_agent, bool):
+            raise TypeError("Expected argument 'enable_audit_agent' to be a bool")
+        pulumi.set(__self__, "enable_audit_agent", enable_audit_agent)
         if encryption_key and not isinstance(encryption_key, dict):
             raise TypeError("Expected argument 'encryption_key' to be a dict")
         pulumi.set(__self__, "encryption_key", encryption_key)
+        if ephemeral_directories and not isinstance(ephemeral_directories, list):
+            raise TypeError("Expected argument 'ephemeral_directories' to be a list")
+        pulumi.set(__self__, "ephemeral_directories", ephemeral_directories)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
@@ -130,6 +139,14 @@ class GetWorkstationConfigResult:
         return pulumi.get(self, "delete_time")
 
     @property
+    @pulumi.getter(name="disableTcpConnections")
+    def disable_tcp_connections(self) -> bool:
+        """
+        Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections through a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain TCP connections, such as SSH. When enabled, all communication must occur over HTTPS or WSS.
+        """
+        return pulumi.get(self, "disable_tcp_connections")
+
+    @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
@@ -138,12 +155,28 @@ class GetWorkstationConfigResult:
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="enableAuditAgent")
+    def enable_audit_agent(self) -> bool:
+        """
+        Optional. Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+        """
+        return pulumi.get(self, "enable_audit_agent")
+
+    @property
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> 'outputs.CustomerEncryptionKeyResponse':
         """
         Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key (CMEK). If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk might be lost. If the encryption key is revoked, the workstation session automatically stops within 7 hours. Immutable after the workstation configuration is created.
         """
         return pulumi.get(self, "encryption_key")
+
+    @property
+    @pulumi.getter(name="ephemeralDirectories")
+    def ephemeral_directories(self) -> Sequence['outputs.EphemeralDirectoryResponse']:
+        """
+        Optional. Ephemeral directories which won't persist across workstation sessions.
+        """
+        return pulumi.get(self, "ephemeral_directories")
 
     @property
     @pulumi.getter
@@ -254,8 +287,11 @@ class AwaitableGetWorkstationConfigResult(GetWorkstationConfigResult):
             create_time=self.create_time,
             degraded=self.degraded,
             delete_time=self.delete_time,
+            disable_tcp_connections=self.disable_tcp_connections,
             display_name=self.display_name,
+            enable_audit_agent=self.enable_audit_agent,
             encryption_key=self.encryption_key,
+            ephemeral_directories=self.ephemeral_directories,
             etag=self.etag,
             host=self.host,
             idle_timeout=self.idle_timeout,
@@ -293,8 +329,11 @@ def get_workstation_config(location: Optional[str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         degraded=pulumi.get(__ret__, 'degraded'),
         delete_time=pulumi.get(__ret__, 'delete_time'),
+        disable_tcp_connections=pulumi.get(__ret__, 'disable_tcp_connections'),
         display_name=pulumi.get(__ret__, 'display_name'),
+        enable_audit_agent=pulumi.get(__ret__, 'enable_audit_agent'),
         encryption_key=pulumi.get(__ret__, 'encryption_key'),
+        ephemeral_directories=pulumi.get(__ret__, 'ephemeral_directories'),
         etag=pulumi.get(__ret__, 'etag'),
         host=pulumi.get(__ret__, 'host'),
         idle_timeout=pulumi.get(__ret__, 'idle_timeout'),

@@ -68,6 +68,10 @@ export interface GetBucketResult {
      */
     readonly etag: string;
     /**
+     * The bucket's hierarchical namespace configuration.
+     */
+    readonly hierarchicalNamespace: outputs.storage.v1.BucketHierarchicalNamespaceResponse;
+    /**
      * The bucket's IAM configuration.
      */
     readonly iamConfiguration: outputs.storage.v1.BucketIamConfigurationResponse;

@@ -29,6 +29,7 @@ __all__ = [
     'GaugeViewArgs',
     'GridLayoutArgs',
     'IncidentListArgs',
+    'IntervalArgs',
     'LogsPanelArgs',
     'MeasureArgs',
     'MonitoredResourceArgs',
@@ -42,6 +43,8 @@ __all__ = [
     'RowLayoutArgs',
     'RowArgs',
     'ScorecardArgs',
+    'SectionHeaderArgs',
+    'SingleViewGroupArgs',
     'SparkChartViewArgs',
     'StatisticalTimeSeriesFilterArgs',
     'TableDataSetArgs',
@@ -684,7 +687,7 @@ class DimensionArgs:
                  sort_order: Optional[pulumi.Input['DimensionSortOrder']] = None,
                  time_bin_size: Optional[pulumi.Input[str]] = None):
         """
-        Preview: A chart dimension for an SQL query. This is applied over the x-axis. This is a preview feature and may be subject to change before final release.
+        A chart dimension. Dimensions are a structured label, class, or category for a set of measurements in your data.
         :param pulumi.Input[str] column: The name of the column in the source SQL query that is used to chart the dimension.
         :param pulumi.Input[str] column_type: Optional. The type of the dimension column. This is relevant only if one of the bin_size fields is set. If it is empty, the type TIMESTAMP or INT64 will be assumed based on which bin_size field is set. If populated, this should be set to one of the following types: DATE, TIME, DATETIME, TIMESTAMP, BIGNUMERIC, INT64, NUMERIC, FLOAT64.
         :param pulumi.Input[float] float_bin_size: Optional. float_bin_size is used when the column type used for a dimension is a floating point numeric column.
@@ -993,6 +996,46 @@ class IncidentListArgs:
 
 
 @pulumi.input_type
+class IntervalArgs:
+    def __init__(__self__, *,
+                 end_time: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None):
+        """
+        Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive).The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time.
+        :param pulumi.Input[str] end_time: Optional. Exclusive end of the interval.If specified, a Timestamp matching this interval will have to be before the end.
+        :param pulumi.Input[str] start_time: Optional. Inclusive start of the interval.If specified, a Timestamp matching this interval will have to be the same or after the start.
+        """
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Exclusive end of the interval.If specified, a Timestamp matching this interval will have to be before the end.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Inclusive start of the interval.If specified, a Timestamp matching this interval will have to be the same or after the start.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
+
+
+@pulumi.input_type
 class LogsPanelArgs:
     def __init__(__self__, *,
                  filter: Optional[pulumi.Input[str]] = None,
@@ -1038,7 +1081,7 @@ class MeasureArgs:
                  aggregation_function: pulumi.Input['AggregationFunctionArgs'],
                  column: pulumi.Input[str]):
         """
-        Preview: A chart measure for an SQL query. This is applied over the y-axis. This is a preview feature and may be subject to change before final release.
+        A chart measure. Measures represent a measured property in your chart data such as rainfall in inches, number of units sold, revenue gained, etc.
         :param pulumi.Input['AggregationFunctionArgs'] aggregation_function: The aggregation function applied to the input column. This must not be set to "none" unless binning is disabled on the dimension. The aggregation function is used to group points on the dimension bins.
         :param pulumi.Input[str] column: The column name within in the dataset used for the measure.
         """
@@ -1216,16 +1259,20 @@ class ParameterArgs:
 class PickTimeSeriesFilterArgs:
     def __init__(__self__, *,
                  direction: Optional[pulumi.Input['PickTimeSeriesFilterDirection']] = None,
+                 interval: Optional[pulumi.Input['IntervalArgs']] = None,
                  num_time_series: Optional[pulumi.Input[int]] = None,
                  ranking_method: Optional[pulumi.Input['PickTimeSeriesFilterRankingMethod']] = None):
         """
         Describes a ranking-based time series filter. Each input time series is ranked with an aligner. The filter will allow up to num_time_series time series to pass through it, selecting them based on the relative ranking.For example, if ranking_method is METHOD_MEAN,direction is BOTTOM, and num_time_series is 3, then the 3 times series with the lowest mean values will pass through the filter.
         :param pulumi.Input['PickTimeSeriesFilterDirection'] direction: How to use the ranking to select time series that pass through the filter.
+        :param pulumi.Input['IntervalArgs'] interval: Select the top N streams/time series within this time interval
         :param pulumi.Input[int] num_time_series: How many time series to allow to pass through the filter.
         :param pulumi.Input['PickTimeSeriesFilterRankingMethod'] ranking_method: ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
         """
         if direction is not None:
             pulumi.set(__self__, "direction", direction)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
         if num_time_series is not None:
             pulumi.set(__self__, "num_time_series", num_time_series)
         if ranking_method is not None:
@@ -1242,6 +1289,18 @@ class PickTimeSeriesFilterArgs:
     @direction.setter
     def direction(self, value: Optional[pulumi.Input['PickTimeSeriesFilterDirection']]):
         pulumi.set(self, "direction", value)
+
+    @property
+    @pulumi.getter
+    def interval(self) -> Optional[pulumi.Input['IntervalArgs']]:
+        """
+        Select the top N streams/time series within this time interval
+        """
+        return pulumi.get(self, "interval")
+
+    @interval.setter
+    def interval(self, value: Optional[pulumi.Input['IntervalArgs']]):
+        pulumi.set(self, "interval", value)
 
     @property
     @pulumi.getter(name="numTimeSeries")
@@ -1272,15 +1331,23 @@ class PickTimeSeriesFilterArgs:
 class PieChartDataSetArgs:
     def __init__(__self__, *,
                  time_series_query: pulumi.Input['TimeSeriesQueryArgs'],
+                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['DimensionArgs']]]] = None,
+                 measures: Optional[pulumi.Input[Sequence[pulumi.Input['MeasureArgs']]]] = None,
                  min_alignment_period: Optional[pulumi.Input[str]] = None,
                  slice_name_template: Optional[pulumi.Input[str]] = None):
         """
         Groups a time series query definition.
         :param pulumi.Input['TimeSeriesQueryArgs'] time_series_query: The query for the PieChart. See, google.monitoring.dashboard.v1.TimeSeriesQuery.
+        :param pulumi.Input[Sequence[pulumi.Input['DimensionArgs']]] dimensions: A dimension is a structured label, class, or category for a set of measurements in your data.
+        :param pulumi.Input[Sequence[pulumi.Input['MeasureArgs']]] measures: A measure is a measured value of a property in your data. For example, rainfall in inches, number of units sold, revenue gained, etc.
         :param pulumi.Input[str] min_alignment_period: Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
         :param pulumi.Input[str] slice_name_template: Optional. A template for the name of the slice. This name will be displayed in the legend and the tooltip of the pie chart. It replaces the auto-generated names for the slices. For example, if the template is set to ${resource.labels.zone}, the zone's value will be used for the name instead of the default name.
         """
         pulumi.set(__self__, "time_series_query", time_series_query)
+        if dimensions is not None:
+            pulumi.set(__self__, "dimensions", dimensions)
+        if measures is not None:
+            pulumi.set(__self__, "measures", measures)
         if min_alignment_period is not None:
             pulumi.set(__self__, "min_alignment_period", min_alignment_period)
         if slice_name_template is not None:
@@ -1297,6 +1364,30 @@ class PieChartDataSetArgs:
     @time_series_query.setter
     def time_series_query(self, value: pulumi.Input['TimeSeriesQueryArgs']):
         pulumi.set(self, "time_series_query", value)
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DimensionArgs']]]]:
+        """
+        A dimension is a structured label, class, or category for a set of measurements in your data.
+        """
+        return pulumi.get(self, "dimensions")
+
+    @dimensions.setter
+    def dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DimensionArgs']]]]):
+        pulumi.set(self, "dimensions", value)
+
+    @property
+    @pulumi.getter
+    def measures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MeasureArgs']]]]:
+        """
+        A measure is a measured value of a property in your data. For example, rainfall in inches, number of units sold, revenue gained, etc.
+        """
+        return pulumi.get(self, "measures")
+
+    @measures.setter
+    def measures(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MeasureArgs']]]]):
+        pulumi.set(self, "measures", value)
 
     @property
     @pulumi.getter(name="minAlignmentPeriod")
@@ -1565,6 +1656,55 @@ class ScorecardArgs:
     @thresholds.setter
     def thresholds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ThresholdArgs']]]]):
         pulumi.set(self, "thresholds", value)
+
+
+@pulumi.input_type
+class SectionHeaderArgs:
+    def __init__(__self__, *,
+                 divider_below: Optional[pulumi.Input[bool]] = None,
+                 subtitle: Optional[pulumi.Input[str]] = None):
+        """
+        A widget that defines a new section header. Sections populate a table of contents and allow easier navigation of long-form content.
+        :param pulumi.Input[bool] divider_below: Whether to insert a divider below the section in the table of contents
+        :param pulumi.Input[str] subtitle: The subtitle of the section
+        """
+        if divider_below is not None:
+            pulumi.set(__self__, "divider_below", divider_below)
+        if subtitle is not None:
+            pulumi.set(__self__, "subtitle", subtitle)
+
+    @property
+    @pulumi.getter(name="dividerBelow")
+    def divider_below(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to insert a divider below the section in the table of contents
+        """
+        return pulumi.get(self, "divider_below")
+
+    @divider_below.setter
+    def divider_below(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "divider_below", value)
+
+    @property
+    @pulumi.getter
+    def subtitle(self) -> Optional[pulumi.Input[str]]:
+        """
+        The subtitle of the section
+        """
+        return pulumi.get(self, "subtitle")
+
+    @subtitle.setter
+    def subtitle(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subtitle", value)
+
+
+@pulumi.input_type
+class SingleViewGroupArgs:
+    def __init__(__self__):
+        """
+        A widget that groups the other widgets by using a dropdown menu. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+        """
+        pass
 
 
 @pulumi.input_type
@@ -2467,6 +2607,8 @@ class WidgetArgs:
                  logs_panel: Optional[pulumi.Input['LogsPanelArgs']] = None,
                  pie_chart: Optional[pulumi.Input['PieChartArgs']] = None,
                  scorecard: Optional[pulumi.Input['ScorecardArgs']] = None,
+                 section_header: Optional[pulumi.Input['SectionHeaderArgs']] = None,
+                 single_view_group: Optional[pulumi.Input['SingleViewGroupArgs']] = None,
                  text: Optional[pulumi.Input['TextArgs']] = None,
                  time_series_table: Optional[pulumi.Input['TimeSeriesTableArgs']] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -2482,6 +2624,8 @@ class WidgetArgs:
         :param pulumi.Input['LogsPanelArgs'] logs_panel: A widget that shows a stream of logs.
         :param pulumi.Input['PieChartArgs'] pie_chart: A widget that displays timeseries data as a pie chart.
         :param pulumi.Input['ScorecardArgs'] scorecard: A scorecard summarizing time series data.
+        :param pulumi.Input['SectionHeaderArgs'] section_header: A widget that defines a section header for easier navigation of the dashboard.
+        :param pulumi.Input['SingleViewGroupArgs'] single_view_group: A widget that groups the other widgets by using a dropdown menu.
         :param pulumi.Input['TextArgs'] text: A raw string or markdown displaying textual content.
         :param pulumi.Input['TimeSeriesTableArgs'] time_series_table: A widget that displays time series data in a tabular format.
         :param pulumi.Input[str] title: Optional. The title of the widget.
@@ -2505,6 +2649,10 @@ class WidgetArgs:
             pulumi.set(__self__, "pie_chart", pie_chart)
         if scorecard is not None:
             pulumi.set(__self__, "scorecard", scorecard)
+        if section_header is not None:
+            pulumi.set(__self__, "section_header", section_header)
+        if single_view_group is not None:
+            pulumi.set(__self__, "single_view_group", single_view_group)
         if text is not None:
             pulumi.set(__self__, "text", text)
         if time_series_table is not None:
@@ -2621,6 +2769,30 @@ class WidgetArgs:
     @scorecard.setter
     def scorecard(self, value: Optional[pulumi.Input['ScorecardArgs']]):
         pulumi.set(self, "scorecard", value)
+
+    @property
+    @pulumi.getter(name="sectionHeader")
+    def section_header(self) -> Optional[pulumi.Input['SectionHeaderArgs']]:
+        """
+        A widget that defines a section header for easier navigation of the dashboard.
+        """
+        return pulumi.get(self, "section_header")
+
+    @section_header.setter
+    def section_header(self, value: Optional[pulumi.Input['SectionHeaderArgs']]):
+        pulumi.set(self, "section_header", value)
+
+    @property
+    @pulumi.getter(name="singleViewGroup")
+    def single_view_group(self) -> Optional[pulumi.Input['SingleViewGroupArgs']]:
+        """
+        A widget that groups the other widgets by using a dropdown menu.
+        """
+        return pulumi.get(self, "single_view_group")
+
+    @single_view_group.setter
+    def single_view_group(self, value: Optional[pulumi.Input['SingleViewGroupArgs']]):
+        pulumi.set(self, "single_view_group", value)
 
     @property
     @pulumi.getter

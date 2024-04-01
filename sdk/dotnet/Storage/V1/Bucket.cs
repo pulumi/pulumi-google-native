@@ -76,6 +76,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
+        /// The bucket's hierarchical namespace configuration.
+        /// </summary>
+        [Output("hierarchicalNamespace")]
+        public Output<Outputs.BucketHierarchicalNamespaceResponse> HierarchicalNamespace { get; private set; } = null!;
+
+        /// <summary>
         /// The bucket's IAM configuration.
         /// </summary>
         [Output("iamConfiguration")]
@@ -363,6 +369,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
+
+        /// <summary>
+        /// The bucket's hierarchical namespace configuration.
+        /// </summary>
+        [Input("hierarchicalNamespace")]
+        public Input<Inputs.BucketHierarchicalNamespaceArgs>? HierarchicalNamespace { get; set; }
 
         /// <summary>
         /// The bucket's IAM configuration.

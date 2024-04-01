@@ -11,6 +11,7 @@ __all__ = [
     'ClusterAutoscalingAutoscalingProfile',
     'ClusterNetworkPerformanceConfigTotalEgressBandwidthTier',
     'ClusterUpdateDesiredDatapathProvider',
+    'ClusterUpdateDesiredInTransitEncryptionConfig',
     'ClusterUpdateDesiredPrivateIpv6GoogleAccess',
     'ClusterUpdateDesiredStackType',
     'DNSConfigClusterDns',
@@ -28,6 +29,7 @@ __all__ = [
     'MaintenanceExclusionOptionsScope',
     'MonitoringComponentConfigEnableComponentsItem',
     'NetworkConfigDatapathProvider',
+    'NetworkConfigInTransitEncryptionConfig',
     'NetworkConfigPrivateIpv6GoogleAccess',
     'NetworkPerformanceConfigTotalEgressBandwidthTier',
     'NetworkPolicyProvider',
@@ -38,6 +40,7 @@ __all__ = [
     'ReleaseChannelChannel',
     'ReservationAffinityConsumeReservationType',
     'SandboxConfigType',
+    'SecondaryBootDiskMode',
     'SecurityPostureConfigMode',
     'SecurityPostureConfigVulnerabilityMode',
     'StatusConditionCanonicalCode',
@@ -153,6 +156,24 @@ class ClusterUpdateDesiredDatapathProvider(str, Enum):
     ADVANCED_DATAPATH = "ADVANCED_DATAPATH"
     """
     Use the eBPF based GKE Dataplane V2 with additional features. See the [GKE Dataplane V2 documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/dataplane-v2) for more.
+    """
+
+
+class ClusterUpdateDesiredInTransitEncryptionConfig(str, Enum):
+    """
+    Specify the details of in-transit encryption.
+    """
+    IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED = "IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED"
+    """
+    Unspecified, will be inferred as default - IN_TRANSIT_ENCRYPTION_UNSPECIFIED.
+    """
+    IN_TRANSIT_ENCRYPTION_DISABLED = "IN_TRANSIT_ENCRYPTION_DISABLED"
+    """
+    In-transit encryption is disabled.
+    """
+    IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT = "IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT"
+    """
+    Data in-transit is encrypted using inter-node transparent encryption.
     """
 
 
@@ -513,6 +534,24 @@ class NetworkConfigDatapathProvider(str, Enum):
     """
 
 
+class NetworkConfigInTransitEncryptionConfig(str, Enum):
+    """
+    Specify the details of in-transit encryption.
+    """
+    IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED = "IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED"
+    """
+    Unspecified, will be inferred as default - IN_TRANSIT_ENCRYPTION_UNSPECIFIED.
+    """
+    IN_TRANSIT_ENCRYPTION_DISABLED = "IN_TRANSIT_ENCRYPTION_DISABLED"
+    """
+    In-transit encryption is disabled.
+    """
+    IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT = "IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT"
+    """
+    Data in-transit is encrypted using inter-node transparent encryption.
+    """
+
+
 class NetworkConfigPrivateIpv6GoogleAccess(str, Enum):
     """
     The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
@@ -693,6 +732,20 @@ class SandboxConfigType(str, Enum):
     """
 
 
+class SecondaryBootDiskMode(str, Enum):
+    """
+    Disk mode (container image cache, etc.)
+    """
+    MODE_UNSPECIFIED = "MODE_UNSPECIFIED"
+    """
+    MODE_UNSPECIFIED is when mode is not set.
+    """
+    CONTAINER_IMAGE_CACHE = "CONTAINER_IMAGE_CACHE"
+    """
+    CONTAINER_IMAGE_CACHE is for using the secondary boot disk as a container image cache.
+    """
+
+
 class SecurityPostureConfigMode(str, Enum):
     """
     Sets which mode to use for Security Posture features.
@@ -726,6 +779,10 @@ class SecurityPostureConfigVulnerabilityMode(str, Enum):
     VULNERABILITY_BASIC = "VULNERABILITY_BASIC"
     """
     Applies basic vulnerability scanning on the cluster.
+    """
+    VULNERABILITY_ENTERPRISE = "VULNERABILITY_ENTERPRISE"
+    """
+    Applies the Security Posture's vulnerability on cluster Enterprise level features.
     """
 
 

@@ -92,6 +92,12 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         public Output<Outputs.GoogleCloudAiplatformV1beta1NetworkSpecResponse> NetworkSpec { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
+        /// </summary>
+        [Output("networkTags")]
+        public Output<ImmutableArray<string>> NetworkTags { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. User specified ID for the notebook runtime template.
         /// </summary>
         [Output("notebookRuntimeTemplateId")]
@@ -107,10 +113,22 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Reservation Affinity of the notebook runtime template.
+        /// </summary>
+        [Output("reservationAffinity")]
+        public Output<Outputs.GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponse> ReservationAffinity { get; private set; } = null!;
+
+        /// <summary>
         /// The service account that the runtime workload runs as. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
         /// </summary>
         [Output("serviceAccount")]
         public Output<string> ServiceAccount { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Immutable. Runtime Shielded VM spec.
+        /// </summary>
+        [Output("shieldedVmConfig")]
+        public Output<Outputs.GoogleCloudAiplatformV1beta1ShieldedVmConfigResponse> ShieldedVmConfig { get; private set; } = null!;
 
         /// <summary>
         /// Timestamp when this NotebookRuntimeTemplate was most recently updated.
@@ -231,6 +249,18 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         [Input("networkSpec")]
         public Input<Inputs.GoogleCloudAiplatformV1beta1NetworkSpecArgs>? NetworkSpec { get; set; }
 
+        [Input("networkTags")]
+        private InputList<string>? _networkTags;
+
+        /// <summary>
+        /// Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
+        /// </summary>
+        public InputList<string> NetworkTags
+        {
+            get => _networkTags ?? (_networkTags = new InputList<string>());
+            set => _networkTags = value;
+        }
+
         /// <summary>
         /// Optional. User specified ID for the notebook runtime template.
         /// </summary>
@@ -247,10 +277,22 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Optional. Reservation Affinity of the notebook runtime template.
+        /// </summary>
+        [Input("reservationAffinity")]
+        public Input<Inputs.GoogleCloudAiplatformV1beta1NotebookReservationAffinityArgs>? ReservationAffinity { get; set; }
+
+        /// <summary>
         /// The service account that the runtime workload runs as. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. Runtime Shielded VM spec.
+        /// </summary>
+        [Input("shieldedVmConfig")]
+        public Input<Inputs.GoogleCloudAiplatformV1beta1ShieldedVmConfigArgs>? ShieldedVmConfig { get; set; }
 
         public NotebookRuntimeTemplateArgs()
         {

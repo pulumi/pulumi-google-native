@@ -107,6 +107,14 @@ export const WorkloadComplianceRegime = {
      * Assured Workloads for Japan Regions
      */
     JpRegionsAndSupport: "JP_REGIONS_AND_SUPPORT",
+    /**
+     * KSA R5 Controls.
+     */
+    KsaRegionsAndSupportWithSovereigntyControls: "KSA_REGIONS_AND_SUPPORT_WITH_SOVEREIGNTY_CONTROLS",
+    /**
+     * Assured Workloads Free Regions
+     */
+    FreeRegions: "FREE_REGIONS",
 } as const;
 
 /**

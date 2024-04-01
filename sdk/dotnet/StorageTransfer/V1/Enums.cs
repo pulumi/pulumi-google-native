@@ -391,7 +391,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
     }
 
     /// <summary>
-    /// Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+    /// Specifies how each object's `timeCreated` metadata is preserved for transfers. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
     /// </summary>
     [EnumType]
     public readonly struct MetadataOptionsTimeCreated : IEquatable<MetadataOptionsTimeCreated>
@@ -412,7 +412,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         /// </summary>
         public static MetadataOptionsTimeCreated TimeCreatedSkip { get; } = new MetadataOptionsTimeCreated("TIME_CREATED_SKIP");
         /// <summary>
-        /// Preserves the source object's `timeCreated` metadata in the `customTime` field in the destination object. Note that any value stored in the source object's `customTime` field will not be propagated to the destination object.
+        /// Preserves the source object's `timeCreated` or `lastModified` metadata in the `customTime` field in the destination object. Note that any value stored in the source object's `customTime` field will not be propagated to the destination object.
         /// </summary>
         public static MetadataOptionsTimeCreated TimeCreatedPreserveAsCustomTime { get; } = new MetadataOptionsTimeCreated("TIME_CREATED_PRESERVE_AS_CUSTOM_TIME");
 

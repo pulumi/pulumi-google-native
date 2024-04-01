@@ -84,6 +84,18 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// A Looker Look. For more information, see [Looker Look API] (https://developers.looker.com/api/explorer/4.0/methods/Look).
         /// </summary>
         public static EntryType Look { get; } = new EntryType("LOOK");
+        /// <summary>
+        /// Feature Online Store resource in Vertex AI Feature Store.
+        /// </summary>
+        public static EntryType FeatureOnlineStore { get; } = new EntryType("FEATURE_ONLINE_STORE");
+        /// <summary>
+        /// Feature View resource in Vertex AI Feature Store.
+        /// </summary>
+        public static EntryType FeatureView { get; } = new EntryType("FEATURE_VIEW");
+        /// <summary>
+        /// Feature Group resource in Vertex AI Feature Store.
+        /// </summary>
+        public static EntryType FeatureGroup { get; } = new EntryType("FEATURE_GROUP");
 
         public static bool operator ==(EntryType left, EntryType right) => left.Equals(right);
         public static bool operator !=(EntryType left, EntryType right) => !left.Equals(right);
@@ -493,6 +505,43 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType other && Equals(other);
         public bool Equals(GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Transfer status of the TagTemplate
+    /// </summary>
+    [EnumType]
+    public readonly struct TagTemplateDataplexTransferStatus : IEquatable<TagTemplateDataplexTransferStatus>
+    {
+        private readonly string _value;
+
+        private TagTemplateDataplexTransferStatus(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value. TagTemplate and its tags are only visible and editable in DataCatalog.
+        /// </summary>
+        public static TagTemplateDataplexTransferStatus DataplexTransferStatusUnspecified { get; } = new TagTemplateDataplexTransferStatus("DATAPLEX_TRANSFER_STATUS_UNSPECIFIED");
+        /// <summary>
+        /// TagTemplate and its tags are auto-copied to Dataplex service. Visible in both services. Editable in DataCatalog, read-only in Dataplex.
+        /// </summary>
+        public static TagTemplateDataplexTransferStatus Migrated { get; } = new TagTemplateDataplexTransferStatus("MIGRATED");
+
+        public static bool operator ==(TagTemplateDataplexTransferStatus left, TagTemplateDataplexTransferStatus right) => left.Equals(right);
+        public static bool operator !=(TagTemplateDataplexTransferStatus left, TagTemplateDataplexTransferStatus right) => !left.Equals(right);
+
+        public static explicit operator string(TagTemplateDataplexTransferStatus value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TagTemplateDataplexTransferStatus other && Equals(other);
+        public bool Equals(TagTemplateDataplexTransferStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

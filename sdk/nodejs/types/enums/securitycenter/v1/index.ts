@@ -26,6 +26,30 @@ export const AuditLogConfigLogType = {
  */
 export type AuditLogConfigLogType = (typeof AuditLogConfigLogType)[keyof typeof AuditLogConfigLogType];
 
+export const FolderEventThreatDetectionSettingCustomModuleEnablementState = {
+    /**
+     * Unspecified enablement state.
+     */
+    EnablementStateUnspecified: "ENABLEMENT_STATE_UNSPECIFIED",
+    /**
+     * The module is enabled at the given level.
+     */
+    Enabled: "ENABLED",
+    /**
+     * The module is disabled at the given level.
+     */
+    Disabled: "DISABLED",
+    /**
+     * When the enablement state is inherited.
+     */
+    Inherited: "INHERITED",
+} as const;
+
+/**
+ * The state of enablement for the module at the given level of the hierarchy.
+ */
+export type FolderEventThreatDetectionSettingCustomModuleEnablementState = (typeof FolderEventThreatDetectionSettingCustomModuleEnablementState)[keyof typeof FolderEventThreatDetectionSettingCustomModuleEnablementState];
+
 export const FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState = {
     /**
      * Unspecified enablement state.
@@ -91,6 +115,10 @@ export const OrganizationEventThreatDetectionSettingCustomModuleEnablementState 
      * The module is disabled at the given level.
      */
     Disabled: "DISABLED",
+    /**
+     * When the enablement state is inherited.
+     */
+    Inherited: "INHERITED",
 } as const;
 
 /**
@@ -121,6 +149,30 @@ export const OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementSta
  * The enablement state of the custom module.
  */
 export type OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState = (typeof OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState)[keyof typeof OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState];
+
+export const ProjectEventThreatDetectionSettingCustomModuleEnablementState = {
+    /**
+     * Unspecified enablement state.
+     */
+    EnablementStateUnspecified: "ENABLEMENT_STATE_UNSPECIFIED",
+    /**
+     * The module is enabled at the given level.
+     */
+    Enabled: "ENABLED",
+    /**
+     * The module is disabled at the given level.
+     */
+    Disabled: "DISABLED",
+    /**
+     * When the enablement state is inherited.
+     */
+    Inherited: "INHERITED",
+} as const;
+
+/**
+ * The state of enablement for the module at the given level of the hierarchy.
+ */
+export type ProjectEventThreatDetectionSettingCustomModuleEnablementState = (typeof ProjectEventThreatDetectionSettingCustomModuleEnablementState)[keyof typeof ProjectEventThreatDetectionSettingCustomModuleEnablementState];
 
 export const ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState = {
     /**

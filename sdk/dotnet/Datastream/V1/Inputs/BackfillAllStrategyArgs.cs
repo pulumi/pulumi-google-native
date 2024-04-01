@@ -33,6 +33,12 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
         [Input("postgresqlExcludedObjects")]
         public Input<Inputs.PostgresqlRdbmsArgs>? PostgresqlExcludedObjects { get; set; }
 
+        /// <summary>
+        /// SQLServer data source objects to avoid backfilling
+        /// </summary>
+        [Input("sqlServerExcludedObjects")]
+        public Input<Inputs.SqlServerRdbmsArgs>? SqlServerExcludedObjects { get; set; }
+
         public BackfillAllStrategyArgs()
         {
         }

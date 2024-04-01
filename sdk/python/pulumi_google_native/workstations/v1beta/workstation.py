@@ -270,6 +270,7 @@ class Workstation(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None
             __props__.__dict__["host"] = None
+            __props__.__dict__["kms_key"] = None
             __props__.__dict__["reconciling"] = None
             __props__.__dict__["start_time"] = None
             __props__.__dict__["state"] = None
@@ -306,6 +307,7 @@ class Workstation(pulumi.CustomResource):
         __props__.__dict__["env"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["host"] = None
+        __props__.__dict__["kms_key"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
@@ -375,6 +377,14 @@ class Workstation(pulumi.CustomResource):
         Host to which clients can send HTTPS traffic that will be received by the workstation. Authorized traffic will be received to the workstation as HTTP on port 80. To send traffic to a different port, clients may prefix the host with the destination port in the format `{port}-{host}`.
         """
         return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> pulumi.Output[str]:
+        """
+        The name of the Google Cloud KMS encryption key used to encrypt this workstation. The KMS key can only be configured in the WorkstationConfig. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        """
+        return pulumi.get(self, "kms_key")
 
     @property
     @pulumi.getter

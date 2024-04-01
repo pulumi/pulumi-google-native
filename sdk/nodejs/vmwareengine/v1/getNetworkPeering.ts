@@ -5,18 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Retrieves a `NetworkPeering` resource by its resource name. The resource contains details of the network peering, such as peered networks, import and export custom route configurations, and peering state.
+ * Retrieves a `NetworkPeering` resource by its resource name. The resource contains details of the network peering, such as peered networks, import and export custom route configurations, and peering state. NetworkPeering is a global resource and location can only be global.
  */
 export function getNetworkPeering(args: GetNetworkPeeringArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkPeeringResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:vmwareengine/v1:getNetworkPeering", {
+        "location": args.location,
         "networkPeeringId": args.networkPeeringId,
         "project": args.project,
     }, opts);
 }
 
 export interface GetNetworkPeeringArgs {
+    location: string;
     networkPeeringId: string;
     project?: string;
 }
@@ -51,7 +53,7 @@ export interface GetNetworkPeeringResult {
      */
     readonly importCustomRoutesWithPublicIp: boolean;
     /**
-     * The resource name of the network peering. Resource names are scheme-less URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/networkPeerings/my-peering`
+     * The resource name of the network peering. NetworkPeering is a global resource and location can only be global. Resource names are scheme-less URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/networkPeerings/my-peering`
      */
     readonly name: string;
     /**
@@ -88,13 +90,14 @@ export interface GetNetworkPeeringResult {
     readonly vmwareEngineNetwork: string;
 }
 /**
- * Retrieves a `NetworkPeering` resource by its resource name. The resource contains details of the network peering, such as peered networks, import and export custom route configurations, and peering state.
+ * Retrieves a `NetworkPeering` resource by its resource name. The resource contains details of the network peering, such as peered networks, import and export custom route configurations, and peering state. NetworkPeering is a global resource and location can only be global.
  */
 export function getNetworkPeeringOutput(args: GetNetworkPeeringOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkPeeringResult> {
     return pulumi.output(args).apply((a: any) => getNetworkPeering(a, opts))
 }
 
 export interface GetNetworkPeeringOutputArgs {
+    location: pulumi.Input<string>;
     networkPeeringId: pulumi.Input<string>;
     project?: pulumi.Input<string>;
 }

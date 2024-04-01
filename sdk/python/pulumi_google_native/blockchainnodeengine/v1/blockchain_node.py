@@ -31,7 +31,7 @@ class BlockchainNodeArgs:
         :param pulumi.Input['BlockchainNodeBlockchainType'] blockchain_type: Immutable. The blockchain type of the node.
         :param pulumi.Input['EthereumDetailsArgs'] ethereum_details: Ethereum-specific blockchain node details.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-provided key-value pairs.
-        :param pulumi.Input[bool] private_service_connect_enabled: Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are exposed. Otherwise, the node is only accessible via public endpoints. See https://cloud.google.com/vpc/docs/private-service-connect.
+        :param pulumi.Input[bool] private_service_connect_enabled: Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are exposed. Otherwise, the node is only accessible via public endpoints. Warning: Private Service Connect enabled nodes may require a manual migration effort to remain compatible with future versions of the product. If this feature is enabled, you will be notified of these changes along with any required action to avoid disruption. See https://cloud.google.com/vpc/docs/private-service-connect.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         pulumi.set(__self__, "blockchain_node_id", blockchain_node_id)
@@ -111,7 +111,7 @@ class BlockchainNodeArgs:
     @pulumi.getter(name="privateServiceConnectEnabled")
     def private_service_connect_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are exposed. Otherwise, the node is only accessible via public endpoints. See https://cloud.google.com/vpc/docs/private-service-connect.
+        Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are exposed. Otherwise, the node is only accessible via public endpoints. Warning: Private Service Connect enabled nodes may require a manual migration effort to remain compatible with future versions of the product. If this feature is enabled, you will be notified of these changes along with any required action to avoid disruption. See https://cloud.google.com/vpc/docs/private-service-connect.
         """
         return pulumi.get(self, "private_service_connect_enabled")
 
@@ -165,7 +165,7 @@ class BlockchainNode(pulumi.CustomResource):
         :param pulumi.Input['BlockchainNodeBlockchainType'] blockchain_type: Immutable. The blockchain type of the node.
         :param pulumi.Input[pulumi.InputType['EthereumDetailsArgs']] ethereum_details: Ethereum-specific blockchain node details.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-provided key-value pairs.
-        :param pulumi.Input[bool] private_service_connect_enabled: Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are exposed. Otherwise, the node is only accessible via public endpoints. See https://cloud.google.com/vpc/docs/private-service-connect.
+        :param pulumi.Input[bool] private_service_connect_enabled: Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are exposed. Otherwise, the node is only accessible via public endpoints. Warning: Private Service Connect enabled nodes may require a manual migration effort to remain compatible with future versions of the product. If this feature is enabled, you will be notified of these changes along with any required action to avoid disruption. See https://cloud.google.com/vpc/docs/private-service-connect.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         ...
@@ -329,7 +329,7 @@ class BlockchainNode(pulumi.CustomResource):
     @pulumi.getter(name="privateServiceConnectEnabled")
     def private_service_connect_enabled(self) -> pulumi.Output[bool]:
         """
-        Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are exposed. Otherwise, the node is only accessible via public endpoints. See https://cloud.google.com/vpc/docs/private-service-connect.
+        Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are exposed. Otherwise, the node is only accessible via public endpoints. Warning: Private Service Connect enabled nodes may require a manual migration effort to remain compatible with future versions of the product. If this feature is enabled, you will be notified of these changes along with any required action to avoid disruption. See https://cloud.google.com/vpc/docs/private-service-connect.
         """
         return pulumi.get(self, "private_service_connect_enabled")
 

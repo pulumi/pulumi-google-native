@@ -59,14 +59,20 @@ type LookupInstanceResult struct {
 	MachineConfig MachineConfigResponse `pulumi:"machineConfig"`
 	// The name of the instance resource with the format: * projects/{project}/locations/{region}/clusters/{cluster_id}/instances/{instance_id} where the cluster and instance ID segments should satisfy the regex expression `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`, e.g. 1-63 characters of lowercase letters, numbers, and dashes, starting with a letter, and ending with a letter or number. For more details see https://google.aip.dev/122. The prefix of the instance resource name is the name of the parent resource: * projects/{project}/locations/{region}/clusters/{cluster_id}
 	Name string `pulumi:"name"`
+	// Optional. Instance level network configuration.
+	NetworkConfig InstanceNetworkConfigResponse `pulumi:"networkConfig"`
 	// List of available read-only VMs in this instance, including the standby for a PRIMARY instance.
 	Nodes []NodeResponse `pulumi:"nodes"`
+	// The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set. This is the connection endpoint for an end-user application.
+	PublicIpAddress string `pulumi:"publicIpAddress"`
 	// Configuration for query insights.
 	QueryInsightsConfig QueryInsightsInstanceConfigResponse `pulumi:"queryInsightsConfig"`
 	// Read pool instance configuration. This is required if the value of instanceType is READ_POOL.
 	ReadPoolConfig ReadPoolConfigResponse `pulumi:"readPoolConfig"`
 	// Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling bool `pulumi:"reconciling"`
+	// Reserved for future use.
+	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// The current serving state of the instance.
 	State string `pulumi:"state"`
 	// The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
@@ -186,9 +192,19 @@ func (o LookupInstanceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Optional. Instance level network configuration.
+func (o LookupInstanceResultOutput) NetworkConfig() InstanceNetworkConfigResponseOutput {
+	return o.ApplyT(func(v LookupInstanceResult) InstanceNetworkConfigResponse { return v.NetworkConfig }).(InstanceNetworkConfigResponseOutput)
+}
+
 // List of available read-only VMs in this instance, including the standby for a PRIMARY instance.
 func (o LookupInstanceResultOutput) Nodes() NodeResponseArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []NodeResponse { return v.Nodes }).(NodeResponseArrayOutput)
+}
+
+// The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set. This is the connection endpoint for an end-user application.
+func (o LookupInstanceResultOutput) PublicIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.PublicIpAddress }).(pulumi.StringOutput)
 }
 
 // Configuration for query insights.
@@ -204,6 +220,11 @@ func (o LookupInstanceResultOutput) ReadPoolConfig() ReadPoolConfigResponseOutpu
 // Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
 func (o LookupInstanceResultOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupInstanceResult) bool { return v.Reconciling }).(pulumi.BoolOutput)
+}
+
+// Reserved for future use.
+func (o LookupInstanceResultOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceResult) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
 }
 
 // The current serving state of the instance.

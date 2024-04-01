@@ -10,9 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Information about a single iteration of the training run.
+    /// </summary>
     [OutputType]
     public sealed class IterationResultResponse
     {
+        /// <summary>
+        /// Arima result.
+        /// </summary>
+        public readonly Outputs.ArimaResultResponse ArimaResult;
+        /// <summary>
+        /// Information about top clusters for clustering models.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ClusterInfoResponse> ClusterInfos;
         /// <summary>
         /// Time taken to run the iteration in milliseconds.
         /// </summary>
@@ -30,12 +41,20 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly double LearnRate;
         /// <summary>
+        /// The information of the principal components.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.PrincipalComponentInfoResponse> PrincipalComponentInfos;
+        /// <summary>
         /// Loss computed on the training data at the end of iteration.
         /// </summary>
         public readonly double TrainingLoss;
 
         [OutputConstructor]
         private IterationResultResponse(
+            Outputs.ArimaResultResponse arimaResult,
+
+            ImmutableArray<Outputs.ClusterInfoResponse> clusterInfos,
+
             string durationMs,
 
             double evalLoss,
@@ -44,12 +63,17 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             double learnRate,
 
+            ImmutableArray<Outputs.PrincipalComponentInfoResponse> principalComponentInfos,
+
             double trainingLoss)
         {
+            ArimaResult = arimaResult;
+            ClusterInfos = clusterInfos;
             DurationMs = durationMs;
             EvalLoss = evalLoss;
             Index = index;
             LearnRate = learnRate;
+            PrincipalComponentInfos = principalComponentInfos;
             TrainingLoss = trainingLoss;
         }
     }

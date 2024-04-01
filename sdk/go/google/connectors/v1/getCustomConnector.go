@@ -28,6 +28,8 @@ type LookupCustomConnectorArgs struct {
 }
 
 type LookupCustomConnectorResult struct {
+	// Optional. Active connector versions.
+	ActiveConnectorVersions []string `pulumi:"activeConnectorVersions"`
 	// Created time.
 	CreateTime string `pulumi:"createTime"`
 	// Type of the custom connector.
@@ -80,6 +82,11 @@ func (o LookupCustomConnectorResultOutput) ToLookupCustomConnectorResultOutput()
 
 func (o LookupCustomConnectorResultOutput) ToLookupCustomConnectorResultOutputWithContext(ctx context.Context) LookupCustomConnectorResultOutput {
 	return o
+}
+
+// Optional. Active connector versions.
+func (o LookupCustomConnectorResultOutput) ActiveConnectorVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupCustomConnectorResult) []string { return v.ActiveConnectorVersions }).(pulumi.StringArrayOutput)
 }
 
 // Created time.

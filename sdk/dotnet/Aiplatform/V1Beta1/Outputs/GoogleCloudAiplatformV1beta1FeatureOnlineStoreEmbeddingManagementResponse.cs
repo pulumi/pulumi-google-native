@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Outputs
 {
 
     /// <summary>
-    /// Contains settings for embedding management.
+    /// Deprecated: This sub message is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type. Contains settings for embedding management.
     /// </summary>
     [OutputType]
     public sealed class GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse

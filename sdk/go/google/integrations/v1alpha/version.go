@@ -12,24 +12,26 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Create a integration with a draft version in the specified project.
+// Uploads an integration. The content can be a previously downloaded integration. Performs the same function as CreateDraftIntegrationVersion, but accepts input in a string format, which holds the complete representation of the IntegrationVersion content.
 // Auto-naming is currently not supported for this resource.
 type Version struct {
 	pulumi.CustomResourceState
 
 	// Optional. Cloud Logging details for the integration version
 	CloudLoggingDetails GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponseOutput `pulumi:"cloudLoggingDetails"`
-	// Optional. Optional. Indicates if sample workflow should be created.
-	CreateSampleIntegrations pulumi.BoolPtrOutput `pulumi:"createSampleIntegrations"`
 	// Auto-generated.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
 	DatabasePersistencePolicy pulumi.StringOutput `pulumi:"databasePersistencePolicy"`
 	// Optional. The integration description.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Optional. True if variable masking feature should be turned on for this version
+	EnableVariableMasking pulumi.BoolOutput `pulumi:"enableVariableMasking"`
 	// Optional. Error Catch Task configuration for the integration. It's optional.
 	ErrorCatcherConfigs GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput `pulumi:"errorCatcherConfigs"`
-	IntegrationId       pulumi.StringOutput                                                 `pulumi:"integrationId"`
+	// Optional. Config Parameters that are expected to be passed to the integration when an integration is published. This consists of all the parameters that are expected to provide configuration in the integration execution. This gives the user the ability to provide default values, value, add information like connection url, project based configuration value and also provide data types of each parameter.
+	IntegrationConfigParameters GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseArrayOutput `pulumi:"integrationConfigParameters"`
+	IntegrationId               pulumi.StringOutput                                                         `pulumi:"integrationId"`
 	// Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
 	IntegrationParameters GoogleCloudIntegrationsV1alphaIntegrationParameterResponseArrayOutput `pulumi:"integrationParameters"`
 	// Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
@@ -41,8 +43,6 @@ type Version struct {
 	LockHolder pulumi.StringOutput `pulumi:"lockHolder"`
 	// Auto-generated primary key.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Set this flag to true, if draft version is to be created for a brand new integration. False, if the request is for an existing integration. For backward compatibility reasons, even if this flag is set to `false` and no existing integration is found, a new draft integration will still be created.
-	NewIntegration pulumi.BoolPtrOutput `pulumi:"newIntegration"`
 	// Optional. The origin that indicates where this integration is coming from.
 	Origin pulumi.StringOutput `pulumi:"origin"`
 	// Optional. The id of the template which was used to create this integration_version.
@@ -126,98 +126,26 @@ func (VersionState) ElementType() reflect.Type {
 }
 
 type versionArgs struct {
-	// Optional. Cloud Logging details for the integration version
-	CloudLoggingDetails *GoogleCloudIntegrationsV1alphaCloudLoggingDetails `pulumi:"cloudLoggingDetails"`
-	// Optional. Optional. Indicates if sample workflow should be created.
-	CreateSampleIntegrations *bool `pulumi:"createSampleIntegrations"`
-	// Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
-	DatabasePersistencePolicy *VersionDatabasePersistencePolicy `pulumi:"databasePersistencePolicy"`
-	// Optional. The integration description.
-	Description *string `pulumi:"description"`
-	// Optional. Error Catch Task configuration for the integration. It's optional.
-	ErrorCatcherConfigs []GoogleCloudIntegrationsV1alphaErrorCatcherConfig `pulumi:"errorCatcherConfigs"`
-	IntegrationId       string                                             `pulumi:"integrationId"`
-	// Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
-	IntegrationParameters []GoogleCloudIntegrationsV1alphaIntegrationParameter `pulumi:"integrationParameters"`
-	// Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
-	IntegrationParametersInternal *EnterpriseCrmFrontendsEventbusProtoWorkflowParameters `pulumi:"integrationParametersInternal"`
-	// Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
-	LastModifierEmail *string `pulumi:"lastModifierEmail"`
-	Location          *string `pulumi:"location"`
-	// Optional. The edit lock holder's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
-	LockHolder *string `pulumi:"lockHolder"`
-	// Set this flag to true, if draft version is to be created for a brand new integration. False, if the request is for an existing integration. For backward compatibility reasons, even if this flag is set to `false` and no existing integration is found, a new draft integration will still be created.
-	NewIntegration *bool `pulumi:"newIntegration"`
-	// Optional. The origin that indicates where this integration is coming from.
-	Origin *VersionOrigin `pulumi:"origin"`
-	// Optional. The id of the template which was used to create this integration_version.
-	ParentTemplateId *string `pulumi:"parentTemplateId"`
-	ProductId        string  `pulumi:"productId"`
-	Project          *string `pulumi:"project"`
-	// Optional. The run-as service account email, if set and auth config is not configured, that will be used to generate auth token to be used in Connector task, Rest caller task and Cloud function task.
-	RunAsServiceAccount *string `pulumi:"runAsServiceAccount"`
-	// Optional. An increasing sequence that is set when a new snapshot is created. The last created snapshot can be identified by [workflow_name, org_id latest(snapshot_number)]. However, last created snapshot need not be same as the HEAD. So users should always use "HEAD" tag to identify the head.
-	SnapshotNumber *string `pulumi:"snapshotNumber"`
-	// Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs.
-	TaskConfigs []GoogleCloudIntegrationsV1alphaTaskConfig `pulumi:"taskConfigs"`
-	// Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs.
-	TaskConfigsInternal []EnterpriseCrmFrontendsEventbusProtoTaskConfig `pulumi:"taskConfigsInternal"`
-	// Optional. Contains a graph of tasks that will be executed before putting the event in a terminal state (SUCCEEDED/FAILED/FATAL), regardless of success or failure, similar to "finally" in code.
-	Teardown *EnterpriseCrmEventbusProtoTeardown `pulumi:"teardown"`
-	// Optional. Trigger configurations.
-	TriggerConfigs []GoogleCloudIntegrationsV1alphaTriggerConfig `pulumi:"triggerConfigs"`
-	// Optional. Trigger configurations.
-	TriggerConfigsInternal []EnterpriseCrmFrontendsEventbusProtoTriggerConfig `pulumi:"triggerConfigsInternal"`
-	// Optional. A user-defined label that annotates an integration version. Typically, this is only set when the integration version is created.
-	UserLabel *string `pulumi:"userLabel"`
+	// The textproto of the integration_version.
+	Content *string `pulumi:"content"`
+	// File format for upload request.
+	FileFormat    *VersionFileFormat `pulumi:"fileFormat"`
+	IntegrationId string             `pulumi:"integrationId"`
+	Location      *string            `pulumi:"location"`
+	ProductId     string             `pulumi:"productId"`
+	Project       *string            `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Version resource.
 type VersionArgs struct {
-	// Optional. Cloud Logging details for the integration version
-	CloudLoggingDetails GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrInput
-	// Optional. Optional. Indicates if sample workflow should be created.
-	CreateSampleIntegrations pulumi.BoolPtrInput
-	// Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
-	DatabasePersistencePolicy VersionDatabasePersistencePolicyPtrInput
-	// Optional. The integration description.
-	Description pulumi.StringPtrInput
-	// Optional. Error Catch Task configuration for the integration. It's optional.
-	ErrorCatcherConfigs GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayInput
-	IntegrationId       pulumi.StringInput
-	// Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
-	IntegrationParameters GoogleCloudIntegrationsV1alphaIntegrationParameterArrayInput
-	// Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
-	IntegrationParametersInternal EnterpriseCrmFrontendsEventbusProtoWorkflowParametersPtrInput
-	// Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
-	LastModifierEmail pulumi.StringPtrInput
-	Location          pulumi.StringPtrInput
-	// Optional. The edit lock holder's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
-	LockHolder pulumi.StringPtrInput
-	// Set this flag to true, if draft version is to be created for a brand new integration. False, if the request is for an existing integration. For backward compatibility reasons, even if this flag is set to `false` and no existing integration is found, a new draft integration will still be created.
-	NewIntegration pulumi.BoolPtrInput
-	// Optional. The origin that indicates where this integration is coming from.
-	Origin VersionOriginPtrInput
-	// Optional. The id of the template which was used to create this integration_version.
-	ParentTemplateId pulumi.StringPtrInput
-	ProductId        pulumi.StringInput
-	Project          pulumi.StringPtrInput
-	// Optional. The run-as service account email, if set and auth config is not configured, that will be used to generate auth token to be used in Connector task, Rest caller task and Cloud function task.
-	RunAsServiceAccount pulumi.StringPtrInput
-	// Optional. An increasing sequence that is set when a new snapshot is created. The last created snapshot can be identified by [workflow_name, org_id latest(snapshot_number)]. However, last created snapshot need not be same as the HEAD. So users should always use "HEAD" tag to identify the head.
-	SnapshotNumber pulumi.StringPtrInput
-	// Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs.
-	TaskConfigs GoogleCloudIntegrationsV1alphaTaskConfigArrayInput
-	// Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs.
-	TaskConfigsInternal EnterpriseCrmFrontendsEventbusProtoTaskConfigArrayInput
-	// Optional. Contains a graph of tasks that will be executed before putting the event in a terminal state (SUCCEEDED/FAILED/FATAL), regardless of success or failure, similar to "finally" in code.
-	Teardown EnterpriseCrmEventbusProtoTeardownPtrInput
-	// Optional. Trigger configurations.
-	TriggerConfigs GoogleCloudIntegrationsV1alphaTriggerConfigArrayInput
-	// Optional. Trigger configurations.
-	TriggerConfigsInternal EnterpriseCrmFrontendsEventbusProtoTriggerConfigArrayInput
-	// Optional. A user-defined label that annotates an integration version. Typically, this is only set when the integration version is created.
-	UserLabel pulumi.StringPtrInput
+	// The textproto of the integration_version.
+	Content pulumi.StringPtrInput
+	// File format for upload request.
+	FileFormat    VersionFileFormatPtrInput
+	IntegrationId pulumi.StringInput
+	Location      pulumi.StringPtrInput
+	ProductId     pulumi.StringInput
+	Project       pulumi.StringPtrInput
 }
 
 func (VersionArgs) ElementType() reflect.Type {
@@ -264,11 +192,6 @@ func (o VersionOutput) CloudLoggingDetails() GoogleCloudIntegrationsV1alphaCloud
 	}).(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponseOutput)
 }
 
-// Optional. Optional. Indicates if sample workflow should be created.
-func (o VersionOutput) CreateSampleIntegrations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Version) pulumi.BoolPtrOutput { return v.CreateSampleIntegrations }).(pulumi.BoolPtrOutput)
-}
-
 // Auto-generated.
 func (o VersionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -284,11 +207,23 @@ func (o VersionOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// Optional. True if variable masking feature should be turned on for this version
+func (o VersionOutput) EnableVariableMasking() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Version) pulumi.BoolOutput { return v.EnableVariableMasking }).(pulumi.BoolOutput)
+}
+
 // Optional. Error Catch Task configuration for the integration. It's optional.
 func (o VersionOutput) ErrorCatcherConfigs() GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput {
 	return o.ApplyT(func(v *Version) GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput {
 		return v.ErrorCatcherConfigs
 	}).(GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput)
+}
+
+// Optional. Config Parameters that are expected to be passed to the integration when an integration is published. This consists of all the parameters that are expected to provide configuration in the integration execution. This gives the user the ability to provide default values, value, add information like connection url, project based configuration value and also provide data types of each parameter.
+func (o VersionOutput) IntegrationConfigParameters() GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseArrayOutput {
+	return o.ApplyT(func(v *Version) GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseArrayOutput {
+		return v.IntegrationConfigParameters
+	}).(GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseArrayOutput)
 }
 
 func (o VersionOutput) IntegrationId() pulumi.StringOutput {
@@ -326,11 +261,6 @@ func (o VersionOutput) LockHolder() pulumi.StringOutput {
 // Auto-generated primary key.
 func (o VersionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// Set this flag to true, if draft version is to be created for a brand new integration. False, if the request is for an existing integration. For backward compatibility reasons, even if this flag is set to `false` and no existing integration is found, a new draft integration will still be created.
-func (o VersionOutput) NewIntegration() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Version) pulumi.BoolPtrOutput { return v.NewIntegration }).(pulumi.BoolPtrOutput)
 }
 
 // Optional. The origin that indicates where this integration is coming from.

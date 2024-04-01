@@ -31,6 +31,7 @@ __all__ = [
     'ConfigManagementOciConfigArgs',
     'ConfigManagementPolicyControllerMonitoringArgs',
     'ConfigManagementPolicyControllerArgs',
+    'DataplaneV2FeatureSpecArgs',
     'DefaultClusterConfigArgs',
     'EdgeClusterArgs',
     'ExprArgs',
@@ -41,8 +42,15 @@ __all__ = [
     'IdentityServiceAuthMethodArgs',
     'IdentityServiceAzureADConfigArgs',
     'IdentityServiceGoogleConfigArgs',
+    'IdentityServiceGroupConfigArgs',
+    'IdentityServiceLdapConfigArgs',
     'IdentityServiceMembershipSpecArgs',
     'IdentityServiceOidcConfigArgs',
+    'IdentityServiceSamlConfigArgs',
+    'IdentityServiceServerConfigArgs',
+    'IdentityServiceServiceAccountConfigArgs',
+    'IdentityServiceSimpleBindCredentialsArgs',
+    'IdentityServiceUserConfigArgs',
     'KubernetesResourceArgs',
     'MembershipEndpointArgs',
     'MonitoringConfigArgs',
@@ -263,8 +271,8 @@ class BindingArgs:
         """
         Associates `members`, or principals, with a `role`.
         :param pulumi.Input['ExprArgs'] condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-        :param pulumi.Input[str] role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+        :param pulumi.Input[str] role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -289,7 +297,7 @@ class BindingArgs:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         """
         return pulumi.get(self, "members")
 
@@ -301,7 +309,7 @@ class BindingArgs:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
-        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         return pulumi.get(self, "role")
 
@@ -471,12 +479,14 @@ class CommonFeatureSpecArgs:
     def __init__(__self__, *,
                  appdevexperience: Optional[pulumi.Input['AppDevExperienceFeatureSpecArgs']] = None,
                  clusterupgrade: Optional[pulumi.Input['ClusterUpgradeFleetSpecArgs']] = None,
+                 dataplanev2: Optional[pulumi.Input['DataplaneV2FeatureSpecArgs']] = None,
                  fleetobservability: Optional[pulumi.Input['FleetObservabilityFeatureSpecArgs']] = None,
                  multiclusteringress: Optional[pulumi.Input['MultiClusterIngressFeatureSpecArgs']] = None):
         """
         CommonFeatureSpec contains Hub-wide configuration information
         :param pulumi.Input['AppDevExperienceFeatureSpecArgs'] appdevexperience: Appdevexperience specific spec.
         :param pulumi.Input['ClusterUpgradeFleetSpecArgs'] clusterupgrade: ClusterUpgrade (fleet-based) feature spec.
+        :param pulumi.Input['DataplaneV2FeatureSpecArgs'] dataplanev2: DataplaneV2 feature spec.
         :param pulumi.Input['FleetObservabilityFeatureSpecArgs'] fleetobservability: FleetObservability feature spec.
         :param pulumi.Input['MultiClusterIngressFeatureSpecArgs'] multiclusteringress: Multicluster Ingress-specific spec.
         """
@@ -484,6 +494,8 @@ class CommonFeatureSpecArgs:
             pulumi.set(__self__, "appdevexperience", appdevexperience)
         if clusterupgrade is not None:
             pulumi.set(__self__, "clusterupgrade", clusterupgrade)
+        if dataplanev2 is not None:
+            pulumi.set(__self__, "dataplanev2", dataplanev2)
         if fleetobservability is not None:
             pulumi.set(__self__, "fleetobservability", fleetobservability)
         if multiclusteringress is not None:
@@ -512,6 +524,18 @@ class CommonFeatureSpecArgs:
     @clusterupgrade.setter
     def clusterupgrade(self, value: Optional[pulumi.Input['ClusterUpgradeFleetSpecArgs']]):
         pulumi.set(self, "clusterupgrade", value)
+
+    @property
+    @pulumi.getter
+    def dataplanev2(self) -> Optional[pulumi.Input['DataplaneV2FeatureSpecArgs']]:
+        """
+        DataplaneV2 feature spec.
+        """
+        return pulumi.get(self, "dataplanev2")
+
+    @dataplanev2.setter
+    def dataplanev2(self, value: Optional[pulumi.Input['DataplaneV2FeatureSpecArgs']]):
+        pulumi.set(self, "dataplanev2", value)
 
     @property
     @pulumi.getter
@@ -625,7 +649,7 @@ class ConfigManagementConfigSyncArgs:
         :param pulumi.Input[bool] allow_vertical_scale: Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling. This field is deprecated.
         :param pulumi.Input[bool] enabled: Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
         :param pulumi.Input['ConfigManagementGitConfigArgs'] git: Git repo configuration for the cluster.
-        :param pulumi.Input[str] metrics_gcp_service_account_email: The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA. This field is required when automatic Feature management is enabled.
+        :param pulumi.Input[str] metrics_gcp_service_account_email: The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
         :param pulumi.Input['ConfigManagementOciConfigArgs'] oci: OCI repo configuration for the cluster
         :param pulumi.Input[bool] prevent_drift: Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
         :param pulumi.Input[str] source_format: Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
@@ -691,7 +715,7 @@ class ConfigManagementConfigSyncArgs:
     @pulumi.getter(name="metricsGcpServiceAccountEmail")
     def metrics_gcp_service_account_email(self) -> Optional[pulumi.Input[str]]:
         """
-        The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA. This field is required when automatic Feature management is enabled.
+        The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
         """
         return pulumi.get(self, "metrics_gcp_service_account_email")
 
@@ -934,6 +958,7 @@ class ConfigManagementMembershipSpecArgs:
                  cluster: Optional[pulumi.Input[str]] = None,
                  config_sync: Optional[pulumi.Input['ConfigManagementConfigSyncArgs']] = None,
                  hierarchy_controller: Optional[pulumi.Input['ConfigManagementHierarchyControllerConfigArgs']] = None,
+                 management: Optional[pulumi.Input['ConfigManagementMembershipSpecManagement']] = None,
                  policy_controller: Optional[pulumi.Input['ConfigManagementPolicyControllerArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
@@ -941,6 +966,7 @@ class ConfigManagementMembershipSpecArgs:
         :param pulumi.Input[str] cluster: The user-specified cluster name used by Config Sync cluster-name-selector annotation or ClusterSelector, for applying configs to only a subset of clusters. Omit this field if the cluster's fleet membership name is used by Config Sync cluster-name-selector annotation or ClusterSelector. Set this field if a name different from the cluster's fleet membership name is used by Config Sync cluster-name-selector annotation or ClusterSelector.
         :param pulumi.Input['ConfigManagementConfigSyncArgs'] config_sync: Config Sync configuration for the cluster.
         :param pulumi.Input['ConfigManagementHierarchyControllerConfigArgs'] hierarchy_controller: Hierarchy Controller configuration for the cluster.
+        :param pulumi.Input['ConfigManagementMembershipSpecManagement'] management: Enables automatic Feature management.
         :param pulumi.Input['ConfigManagementPolicyControllerArgs'] policy_controller: Policy Controller configuration for the cluster.
         :param pulumi.Input[str] version: Version of ACM installed.
         """
@@ -950,6 +976,8 @@ class ConfigManagementMembershipSpecArgs:
             pulumi.set(__self__, "config_sync", config_sync)
         if hierarchy_controller is not None:
             pulumi.set(__self__, "hierarchy_controller", hierarchy_controller)
+        if management is not None:
+            pulumi.set(__self__, "management", management)
         if policy_controller is not None:
             pulumi.set(__self__, "policy_controller", policy_controller)
         if version is not None:
@@ -990,6 +1018,18 @@ class ConfigManagementMembershipSpecArgs:
     @hierarchy_controller.setter
     def hierarchy_controller(self, value: Optional[pulumi.Input['ConfigManagementHierarchyControllerConfigArgs']]):
         pulumi.set(self, "hierarchy_controller", value)
+
+    @property
+    @pulumi.getter
+    def management(self) -> Optional[pulumi.Input['ConfigManagementMembershipSpecManagement']]:
+        """
+        Enables automatic Feature management.
+        """
+        return pulumi.get(self, "management")
+
+    @management.setter
+    def management(self, value: Optional[pulumi.Input['ConfigManagementMembershipSpecManagement']]):
+        pulumi.set(self, "management", value)
 
     @property
     @pulumi.getter(name="policyController")
@@ -1265,6 +1305,30 @@ class ConfigManagementPolicyControllerArgs:
 
 
 @pulumi.input_type
+class DataplaneV2FeatureSpecArgs:
+    def __init__(__self__, *,
+                 enable_encryption: Optional[pulumi.Input[bool]] = None):
+        """
+        **Dataplane V2**: Spec
+        :param pulumi.Input[bool] enable_encryption: Enable dataplane-v2 based encryption for multiple clusters.
+        """
+        if enable_encryption is not None:
+            pulumi.set(__self__, "enable_encryption", enable_encryption)
+
+    @property
+    @pulumi.getter(name="enableEncryption")
+    def enable_encryption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable dataplane-v2 based encryption for multiple clusters.
+        """
+        return pulumi.get(self, "enable_encryption")
+
+    @enable_encryption.setter
+    def enable_encryption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_encryption", value)
+
+
+@pulumi.input_type
 class DefaultClusterConfigArgs:
     def __init__(__self__, *,
                  binary_authorization_config: Optional[pulumi.Input['BinaryAuthorizationConfigArgs']] = None,
@@ -1517,27 +1581,35 @@ class IdentityServiceAuthMethodArgs:
     def __init__(__self__, *,
                  azuread_config: Optional[pulumi.Input['IdentityServiceAzureADConfigArgs']] = None,
                  google_config: Optional[pulumi.Input['IdentityServiceGoogleConfigArgs']] = None,
+                 ldap_config: Optional[pulumi.Input['IdentityServiceLdapConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  oidc_config: Optional[pulumi.Input['IdentityServiceOidcConfigArgs']] = None,
-                 proxy: Optional[pulumi.Input[str]] = None):
+                 proxy: Optional[pulumi.Input[str]] = None,
+                 saml_config: Optional[pulumi.Input['IdentityServiceSamlConfigArgs']] = None):
         """
         Configuration of an auth method for a member/cluster. Only one authentication method (e.g., OIDC and LDAP) can be set per AuthMethod.
         :param pulumi.Input['IdentityServiceAzureADConfigArgs'] azuread_config: AzureAD specific Configuration.
         :param pulumi.Input['IdentityServiceGoogleConfigArgs'] google_config: GoogleConfig specific configuration.
+        :param pulumi.Input['IdentityServiceLdapConfigArgs'] ldap_config: LDAP specific configuration.
         :param pulumi.Input[str] name: Identifier for auth config.
         :param pulumi.Input['IdentityServiceOidcConfigArgs'] oidc_config: OIDC specific configuration.
         :param pulumi.Input[str] proxy: Proxy server address to use for auth method.
+        :param pulumi.Input['IdentityServiceSamlConfigArgs'] saml_config: SAML specific configuration.
         """
         if azuread_config is not None:
             pulumi.set(__self__, "azuread_config", azuread_config)
         if google_config is not None:
             pulumi.set(__self__, "google_config", google_config)
+        if ldap_config is not None:
+            pulumi.set(__self__, "ldap_config", ldap_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if oidc_config is not None:
             pulumi.set(__self__, "oidc_config", oidc_config)
         if proxy is not None:
             pulumi.set(__self__, "proxy", proxy)
+        if saml_config is not None:
+            pulumi.set(__self__, "saml_config", saml_config)
 
     @property
     @pulumi.getter(name="azureadConfig")
@@ -1562,6 +1634,18 @@ class IdentityServiceAuthMethodArgs:
     @google_config.setter
     def google_config(self, value: Optional[pulumi.Input['IdentityServiceGoogleConfigArgs']]):
         pulumi.set(self, "google_config", value)
+
+    @property
+    @pulumi.getter(name="ldapConfig")
+    def ldap_config(self) -> Optional[pulumi.Input['IdentityServiceLdapConfigArgs']]:
+        """
+        LDAP specific configuration.
+        """
+        return pulumi.get(self, "ldap_config")
+
+    @ldap_config.setter
+    def ldap_config(self, value: Optional[pulumi.Input['IdentityServiceLdapConfigArgs']]):
+        pulumi.set(self, "ldap_config", value)
 
     @property
     @pulumi.getter
@@ -1599,29 +1683,49 @@ class IdentityServiceAuthMethodArgs:
     def proxy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "proxy", value)
 
+    @property
+    @pulumi.getter(name="samlConfig")
+    def saml_config(self) -> Optional[pulumi.Input['IdentityServiceSamlConfigArgs']]:
+        """
+        SAML specific configuration.
+        """
+        return pulumi.get(self, "saml_config")
+
+    @saml_config.setter
+    def saml_config(self, value: Optional[pulumi.Input['IdentityServiceSamlConfigArgs']]):
+        pulumi.set(self, "saml_config", value)
+
 
 @pulumi.input_type
 class IdentityServiceAzureADConfigArgs:
     def __init__(__self__, *,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
+                 group_format: Optional[pulumi.Input[str]] = None,
                  kubectl_redirect_uri: Optional[pulumi.Input[str]] = None,
-                 tenant: Optional[pulumi.Input[str]] = None):
+                 tenant: Optional[pulumi.Input[str]] = None,
+                 user_claim: Optional[pulumi.Input[str]] = None):
         """
         Configuration for the AzureAD Auth flow.
         :param pulumi.Input[str] client_id: ID for the registered client application that makes authentication requests to the Azure AD identity provider.
         :param pulumi.Input[str] client_secret: Input only. Unencrypted AzureAD client secret will be passed to the GKE Hub CLH.
+        :param pulumi.Input[str] group_format: Optional. Format of the AzureAD groups that the client wants for auth.
         :param pulumi.Input[str] kubectl_redirect_uri: The redirect URL that kubectl uses for authorization.
         :param pulumi.Input[str] tenant: Kind of Azure AD account to be authenticated. Supported values are or for accounts belonging to a specific tenant.
+        :param pulumi.Input[str] user_claim: Optional. Claim in the AzureAD ID Token that holds the user details.
         """
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
             pulumi.set(__self__, "client_secret", client_secret)
+        if group_format is not None:
+            pulumi.set(__self__, "group_format", group_format)
         if kubectl_redirect_uri is not None:
             pulumi.set(__self__, "kubectl_redirect_uri", kubectl_redirect_uri)
         if tenant is not None:
             pulumi.set(__self__, "tenant", tenant)
+        if user_claim is not None:
+            pulumi.set(__self__, "user_claim", user_claim)
 
     @property
     @pulumi.getter(name="clientId")
@@ -1648,6 +1752,18 @@ class IdentityServiceAzureADConfigArgs:
         pulumi.set(self, "client_secret", value)
 
     @property
+    @pulumi.getter(name="groupFormat")
+    def group_format(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Format of the AzureAD groups that the client wants for auth.
+        """
+        return pulumi.get(self, "group_format")
+
+    @group_format.setter
+    def group_format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_format", value)
+
+    @property
     @pulumi.getter(name="kubectlRedirectUri")
     def kubectl_redirect_uri(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1670,6 +1786,18 @@ class IdentityServiceAzureADConfigArgs:
     @tenant.setter
     def tenant(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tenant", value)
+
+    @property
+    @pulumi.getter(name="userClaim")
+    def user_claim(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Claim in the AzureAD ID Token that holds the user details.
+        """
+        return pulumi.get(self, "user_claim")
+
+    @user_claim.setter
+    def user_claim(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_claim", value)
 
 
 @pulumi.input_type
@@ -1694,6 +1822,130 @@ class IdentityServiceGoogleConfigArgs:
     @disable.setter
     def disable(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disable", value)
+
+
+@pulumi.input_type
+class IdentityServiceGroupConfigArgs:
+    def __init__(__self__, *,
+                 base_dn: pulumi.Input[str],
+                 filter: Optional[pulumi.Input[str]] = None,
+                 id_attribute: Optional[pulumi.Input[str]] = None):
+        """
+        Contains the properties for locating and authenticating groups in the directory.
+        :param pulumi.Input[str] base_dn: The location of the subtree in the LDAP directory to search for group entries.
+        :param pulumi.Input[str] filter: Optional. Optional filter to be used when searching for groups a user belongs to. This can be used to explicitly match only certain groups in order to reduce the amount of groups returned for each user. This defaults to "(objectClass=Group)".
+        :param pulumi.Input[str] id_attribute: Optional. The identifying name of each group a user belongs to. For example, if this is set to "distinguishedName" then RBACs and other group expectations should be written as full DNs. This defaults to "distinguishedName".
+        """
+        pulumi.set(__self__, "base_dn", base_dn)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if id_attribute is not None:
+            pulumi.set(__self__, "id_attribute", id_attribute)
+
+    @property
+    @pulumi.getter(name="baseDn")
+    def base_dn(self) -> pulumi.Input[str]:
+        """
+        The location of the subtree in the LDAP directory to search for group entries.
+        """
+        return pulumi.get(self, "base_dn")
+
+    @base_dn.setter
+    def base_dn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "base_dn", value)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Optional filter to be used when searching for groups a user belongs to. This can be used to explicitly match only certain groups in order to reduce the amount of groups returned for each user. This defaults to "(objectClass=Group)".
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter(name="idAttribute")
+    def id_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The identifying name of each group a user belongs to. For example, if this is set to "distinguishedName" then RBACs and other group expectations should be written as full DNs. This defaults to "distinguishedName".
+        """
+        return pulumi.get(self, "id_attribute")
+
+    @id_attribute.setter
+    def id_attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id_attribute", value)
+
+
+@pulumi.input_type
+class IdentityServiceLdapConfigArgs:
+    def __init__(__self__, *,
+                 server: pulumi.Input['IdentityServiceServerConfigArgs'],
+                 service_account: pulumi.Input['IdentityServiceServiceAccountConfigArgs'],
+                 user: pulumi.Input['IdentityServiceUserConfigArgs'],
+                 group: Optional[pulumi.Input['IdentityServiceGroupConfigArgs']] = None):
+        """
+        Configuration for the LDAP Auth flow.
+        :param pulumi.Input['IdentityServiceServerConfigArgs'] server: Server settings for the external LDAP server.
+        :param pulumi.Input['IdentityServiceServiceAccountConfigArgs'] service_account: Contains the credentials of the service account which is authorized to perform the LDAP search in the directory. The credentials can be supplied by the combination of the DN and password or the client certificate.
+        :param pulumi.Input['IdentityServiceUserConfigArgs'] user: Defines where users exist in the LDAP directory.
+        :param pulumi.Input['IdentityServiceGroupConfigArgs'] group: Optional. Contains the properties for locating and authenticating groups in the directory.
+        """
+        pulumi.set(__self__, "server", server)
+        pulumi.set(__self__, "service_account", service_account)
+        pulumi.set(__self__, "user", user)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+
+    @property
+    @pulumi.getter
+    def server(self) -> pulumi.Input['IdentityServiceServerConfigArgs']:
+        """
+        Server settings for the external LDAP server.
+        """
+        return pulumi.get(self, "server")
+
+    @server.setter
+    def server(self, value: pulumi.Input['IdentityServiceServerConfigArgs']):
+        pulumi.set(self, "server", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Input['IdentityServiceServiceAccountConfigArgs']:
+        """
+        Contains the credentials of the service account which is authorized to perform the LDAP search in the directory. The credentials can be supplied by the combination of the DN and password or the client certificate.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: pulumi.Input['IdentityServiceServiceAccountConfigArgs']):
+        pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter
+    def user(self) -> pulumi.Input['IdentityServiceUserConfigArgs']:
+        """
+        Defines where users exist in the LDAP directory.
+        """
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: pulumi.Input['IdentityServiceUserConfigArgs']):
+        pulumi.set(self, "user", value)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input['IdentityServiceGroupConfigArgs']]:
+        """
+        Optional. Contains the properties for locating and authenticating groups in the directory.
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input['IdentityServiceGroupConfigArgs']]):
+        pulumi.set(self, "group", value)
 
 
 @pulumi.input_type
@@ -1934,6 +2186,327 @@ class IdentityServiceOidcConfigArgs:
     @user_prefix.setter
     def user_prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_prefix", value)
+
+
+@pulumi.input_type
+class IdentityServiceSamlConfigArgs:
+    def __init__(__self__, *,
+                 identity_provider_certificates: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 identity_provider_id: pulumi.Input[str],
+                 identity_provider_sso_uri: pulumi.Input[str],
+                 attribute_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 group_prefix: Optional[pulumi.Input[str]] = None,
+                 groups_attribute: Optional[pulumi.Input[str]] = None,
+                 user_attribute: Optional[pulumi.Input[str]] = None,
+                 user_prefix: Optional[pulumi.Input[str]] = None):
+        """
+        Configuration for the SAML Auth flow.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identity_provider_certificates: The list of IdP certificates to validate the SAML response against.
+        :param pulumi.Input[str] identity_provider_id: The entity ID of the SAML IdP.
+        :param pulumi.Input[str] identity_provider_sso_uri: The URI where the SAML IdP exposes the SSO service.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] attribute_mapping: Optional. The mapping of additional user attributes like nickname, birthday and address etc.. `key` is the name of this additional attribute. `value` is a string presenting as CEL(common expression language, go/cel) used for getting the value from the resources. Take nickname as an example, in this case, `key` is "attribute.nickname" and `value` is "assertion.nickname".
+        :param pulumi.Input[str] group_prefix: Optional. Prefix to prepend to group name.
+        :param pulumi.Input[str] groups_attribute: Optional. The SAML attribute to read groups from. This value is expected to be a string and will be passed along as-is (with the option of being prefixed by the `group_prefix`).
+        :param pulumi.Input[str] user_attribute: Optional. The SAML attribute to read username from. If unspecified, the username will be read from the NameID element of the assertion in SAML response. This value is expected to be a string and will be passed along as-is (with the option of being prefixed by the `user_prefix`).
+        :param pulumi.Input[str] user_prefix: Optional. Prefix to prepend to user name.
+        """
+        pulumi.set(__self__, "identity_provider_certificates", identity_provider_certificates)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+        pulumi.set(__self__, "identity_provider_sso_uri", identity_provider_sso_uri)
+        if attribute_mapping is not None:
+            pulumi.set(__self__, "attribute_mapping", attribute_mapping)
+        if group_prefix is not None:
+            pulumi.set(__self__, "group_prefix", group_prefix)
+        if groups_attribute is not None:
+            pulumi.set(__self__, "groups_attribute", groups_attribute)
+        if user_attribute is not None:
+            pulumi.set(__self__, "user_attribute", user_attribute)
+        if user_prefix is not None:
+            pulumi.set(__self__, "user_prefix", user_prefix)
+
+    @property
+    @pulumi.getter(name="identityProviderCertificates")
+    def identity_provider_certificates(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The list of IdP certificates to validate the SAML response against.
+        """
+        return pulumi.get(self, "identity_provider_certificates")
+
+    @identity_provider_certificates.setter
+    def identity_provider_certificates(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "identity_provider_certificates", value)
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[str]:
+        """
+        The entity ID of the SAML IdP.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_id", value)
+
+    @property
+    @pulumi.getter(name="identityProviderSsoUri")
+    def identity_provider_sso_uri(self) -> pulumi.Input[str]:
+        """
+        The URI where the SAML IdP exposes the SSO service.
+        """
+        return pulumi.get(self, "identity_provider_sso_uri")
+
+    @identity_provider_sso_uri.setter
+    def identity_provider_sso_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_provider_sso_uri", value)
+
+    @property
+    @pulumi.getter(name="attributeMapping")
+    def attribute_mapping(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. The mapping of additional user attributes like nickname, birthday and address etc.. `key` is the name of this additional attribute. `value` is a string presenting as CEL(common expression language, go/cel) used for getting the value from the resources. Take nickname as an example, in this case, `key` is "attribute.nickname" and `value` is "assertion.nickname".
+        """
+        return pulumi.get(self, "attribute_mapping")
+
+    @attribute_mapping.setter
+    def attribute_mapping(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "attribute_mapping", value)
+
+    @property
+    @pulumi.getter(name="groupPrefix")
+    def group_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Prefix to prepend to group name.
+        """
+        return pulumi.get(self, "group_prefix")
+
+    @group_prefix.setter
+    def group_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_prefix", value)
+
+    @property
+    @pulumi.getter(name="groupsAttribute")
+    def groups_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The SAML attribute to read groups from. This value is expected to be a string and will be passed along as-is (with the option of being prefixed by the `group_prefix`).
+        """
+        return pulumi.get(self, "groups_attribute")
+
+    @groups_attribute.setter
+    def groups_attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "groups_attribute", value)
+
+    @property
+    @pulumi.getter(name="userAttribute")
+    def user_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The SAML attribute to read username from. If unspecified, the username will be read from the NameID element of the assertion in SAML response. This value is expected to be a string and will be passed along as-is (with the option of being prefixed by the `user_prefix`).
+        """
+        return pulumi.get(self, "user_attribute")
+
+    @user_attribute.setter
+    def user_attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_attribute", value)
+
+    @property
+    @pulumi.getter(name="userPrefix")
+    def user_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Prefix to prepend to user name.
+        """
+        return pulumi.get(self, "user_prefix")
+
+    @user_prefix.setter
+    def user_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_prefix", value)
+
+
+@pulumi.input_type
+class IdentityServiceServerConfigArgs:
+    def __init__(__self__, *,
+                 host: pulumi.Input[str],
+                 certificate_authority_data: Optional[pulumi.Input[str]] = None,
+                 connection_type: Optional[pulumi.Input[str]] = None):
+        """
+        Server settings for the external LDAP server.
+        :param pulumi.Input[str] host: Defines the hostname or IP of the LDAP server. Port is optional and will default to 389, if unspecified. For example, "ldap.server.example" or "10.10.10.10:389".
+        :param pulumi.Input[str] certificate_authority_data: Optional. Contains a Base64 encoded, PEM formatted certificate authority certificate for the LDAP server. This must be provided for the "ldaps" and "startTLS" connections.
+        :param pulumi.Input[str] connection_type: Optional. Defines the connection type to communicate with the LDAP server. If `starttls` or `ldaps` is specified, the certificate_authority_data should not be empty.
+        """
+        pulumi.set(__self__, "host", host)
+        if certificate_authority_data is not None:
+            pulumi.set(__self__, "certificate_authority_data", certificate_authority_data)
+        if connection_type is not None:
+            pulumi.set(__self__, "connection_type", connection_type)
+
+    @property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[str]:
+        """
+        Defines the hostname or IP of the LDAP server. Port is optional and will default to 389, if unspecified. For example, "ldap.server.example" or "10.10.10.10:389".
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[str]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter(name="certificateAuthorityData")
+    def certificate_authority_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Contains a Base64 encoded, PEM formatted certificate authority certificate for the LDAP server. This must be provided for the "ldaps" and "startTLS" connections.
+        """
+        return pulumi.get(self, "certificate_authority_data")
+
+    @certificate_authority_data.setter
+    def certificate_authority_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_authority_data", value)
+
+    @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Defines the connection type to communicate with the LDAP server. If `starttls` or `ldaps` is specified, the certificate_authority_data should not be empty.
+        """
+        return pulumi.get(self, "connection_type")
+
+    @connection_type.setter
+    def connection_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_type", value)
+
+
+@pulumi.input_type
+class IdentityServiceServiceAccountConfigArgs:
+    def __init__(__self__, *,
+                 simple_bind_credentials: Optional[pulumi.Input['IdentityServiceSimpleBindCredentialsArgs']] = None):
+        """
+        Contains the credentials of the service account which is authorized to perform the LDAP search in the directory. The credentials can be supplied by the combination of the DN and password or the client certificate.
+        :param pulumi.Input['IdentityServiceSimpleBindCredentialsArgs'] simple_bind_credentials: Credentials for basic auth.
+        """
+        if simple_bind_credentials is not None:
+            pulumi.set(__self__, "simple_bind_credentials", simple_bind_credentials)
+
+    @property
+    @pulumi.getter(name="simpleBindCredentials")
+    def simple_bind_credentials(self) -> Optional[pulumi.Input['IdentityServiceSimpleBindCredentialsArgs']]:
+        """
+        Credentials for basic auth.
+        """
+        return pulumi.get(self, "simple_bind_credentials")
+
+    @simple_bind_credentials.setter
+    def simple_bind_credentials(self, value: Optional[pulumi.Input['IdentityServiceSimpleBindCredentialsArgs']]):
+        pulumi.set(self, "simple_bind_credentials", value)
+
+
+@pulumi.input_type
+class IdentityServiceSimpleBindCredentialsArgs:
+    def __init__(__self__, *,
+                 dn: pulumi.Input[str],
+                 password: pulumi.Input[str]):
+        """
+        The structure holds the LDAP simple binding credential.
+        :param pulumi.Input[str] dn: The distinguished name(DN) of the service account object/user.
+        :param pulumi.Input[str] password: Input only. The password of the service account object/user.
+        """
+        pulumi.set(__self__, "dn", dn)
+        pulumi.set(__self__, "password", password)
+
+    @property
+    @pulumi.getter
+    def dn(self) -> pulumi.Input[str]:
+        """
+        The distinguished name(DN) of the service account object/user.
+        """
+        return pulumi.get(self, "dn")
+
+    @dn.setter
+    def dn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dn", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Input[str]:
+        """
+        Input only. The password of the service account object/user.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password", value)
+
+
+@pulumi.input_type
+class IdentityServiceUserConfigArgs:
+    def __init__(__self__, *,
+                 base_dn: pulumi.Input[str],
+                 filter: Optional[pulumi.Input[str]] = None,
+                 id_attribute: Optional[pulumi.Input[str]] = None,
+                 login_attribute: Optional[pulumi.Input[str]] = None):
+        """
+        Defines where users exist in the LDAP directory.
+        :param pulumi.Input[str] base_dn: The location of the subtree in the LDAP directory to search for user entries.
+        :param pulumi.Input[str] filter: Optional. Filter to apply when searching for the user. This can be used to further restrict the user accounts which are allowed to login. This defaults to "(objectClass=User)".
+        :param pulumi.Input[str] id_attribute: Optional. Determines which attribute to use as the user's identity after they are authenticated. This is distinct from the loginAttribute field to allow users to login with a username, but then have their actual identifier be an email address or full Distinguished Name (DN). For example, setting loginAttribute to "sAMAccountName" and identifierAttribute to "userPrincipalName" would allow a user to login as "bsmith", but actual RBAC policies for the user would be written as "bsmith@example.com". Using "userPrincipalName" is recommended since this will be unique for each user. This defaults to "userPrincipalName".
+        :param pulumi.Input[str] login_attribute: Optional. The name of the attribute which matches against the input username. This is used to find the user in the LDAP database e.g. "(=)" and is combined with the optional filter field. This defaults to "userPrincipalName".
+        """
+        pulumi.set(__self__, "base_dn", base_dn)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if id_attribute is not None:
+            pulumi.set(__self__, "id_attribute", id_attribute)
+        if login_attribute is not None:
+            pulumi.set(__self__, "login_attribute", login_attribute)
+
+    @property
+    @pulumi.getter(name="baseDn")
+    def base_dn(self) -> pulumi.Input[str]:
+        """
+        The location of the subtree in the LDAP directory to search for user entries.
+        """
+        return pulumi.get(self, "base_dn")
+
+    @base_dn.setter
+    def base_dn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "base_dn", value)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Filter to apply when searching for the user. This can be used to further restrict the user accounts which are allowed to login. This defaults to "(objectClass=User)".
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter(name="idAttribute")
+    def id_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Determines which attribute to use as the user's identity after they are authenticated. This is distinct from the loginAttribute field to allow users to login with a username, but then have their actual identifier be an email address or full Distinguished Name (DN). For example, setting loginAttribute to "sAMAccountName" and identifierAttribute to "userPrincipalName" would allow a user to login as "bsmith", but actual RBAC policies for the user would be written as "bsmith@example.com". Using "userPrincipalName" is recommended since this will be unique for each user. This defaults to "userPrincipalName".
+        """
+        return pulumi.get(self, "id_attribute")
+
+    @id_attribute.setter
+    def id_attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id_attribute", value)
+
+    @property
+    @pulumi.getter(name="loginAttribute")
+    def login_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The name of the attribute which matches against the input username. This is used to find the user in the LDAP database e.g. "(=)" and is combined with the optional filter field. This defaults to "userPrincipalName".
+        """
+        return pulumi.get(self, "login_attribute")
+
+    @login_attribute.setter
+    def login_attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "login_attribute", value)
 
 
 @pulumi.input_type

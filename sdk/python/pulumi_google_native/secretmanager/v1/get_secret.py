@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetSecretResult:
-    def __init__(__self__, annotations=None, create_time=None, etag=None, expire_time=None, labels=None, name=None, replication=None, rotation=None, topics=None, ttl=None, version_aliases=None):
+    def __init__(__self__, annotations=None, create_time=None, customer_managed_encryption=None, etag=None, expire_time=None, labels=None, name=None, replication=None, rotation=None, topics=None, ttl=None, version_aliases=None, version_destroy_ttl=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if customer_managed_encryption and not isinstance(customer_managed_encryption, dict):
+            raise TypeError("Expected argument 'customer_managed_encryption' to be a dict")
+        pulumi.set(__self__, "customer_managed_encryption", customer_managed_encryption)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
@@ -53,6 +56,9 @@ class GetSecretResult:
         if version_aliases and not isinstance(version_aliases, dict):
             raise TypeError("Expected argument 'version_aliases' to be a dict")
         pulumi.set(__self__, "version_aliases", version_aliases)
+        if version_destroy_ttl and not isinstance(version_destroy_ttl, str):
+            raise TypeError("Expected argument 'version_destroy_ttl' to be a str")
+        pulumi.set(__self__, "version_destroy_ttl", version_destroy_ttl)
 
     @property
     @pulumi.getter
@@ -69,6 +75,14 @@ class GetSecretResult:
         The time at which the Secret was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="customerManagedEncryption")
+    def customer_managed_encryption(self) -> 'outputs.CustomerManagedEncryptionResponse':
+        """
+        Optional. The customer-managed encryption configuration of the Regionalised Secrets. If no configuration is provided, Google-managed default encryption is used. Updates to the Secret encryption configuration only apply to SecretVersions added afterwards. They do not apply retroactively to existing SecretVersions.
+        """
+        return pulumi.get(self, "customer_managed_encryption")
 
     @property
     @pulumi.getter
@@ -106,7 +120,7 @@ class GetSecretResult:
     @pulumi.getter
     def replication(self) -> 'outputs.ReplicationResponse':
         """
-        Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
+        Optional. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
         """
         return pulumi.get(self, "replication")
 
@@ -138,9 +152,17 @@ class GetSecretResult:
     @pulumi.getter(name="versionAliases")
     def version_aliases(self) -> Mapping[str, str]:
         """
-        Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. At launch Access by Allias will only be supported on GetSecretVersion and AccessSecretVersion.
+        Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. Access by alias is only be supported on GetSecretVersion and AccessSecretVersion.
         """
         return pulumi.get(self, "version_aliases")
+
+    @property
+    @pulumi.getter(name="versionDestroyTtl")
+    def version_destroy_ttl(self) -> str:
+        """
+        Optional. Secret Version TTL after destruction request This is a part of the Delayed secret version destroy feature. For secret with TTL>0, version destruction doesn't happen immediately on calling destroy instead the version goes to a disabled state and destruction happens after the TTL expires.
+        """
+        return pulumi.get(self, "version_destroy_ttl")
 
 
 class AwaitableGetSecretResult(GetSecretResult):
@@ -151,6 +173,7 @@ class AwaitableGetSecretResult(GetSecretResult):
         return GetSecretResult(
             annotations=self.annotations,
             create_time=self.create_time,
+            customer_managed_encryption=self.customer_managed_encryption,
             etag=self.etag,
             expire_time=self.expire_time,
             labels=self.labels,
@@ -159,16 +182,19 @@ class AwaitableGetSecretResult(GetSecretResult):
             rotation=self.rotation,
             topics=self.topics,
             ttl=self.ttl,
-            version_aliases=self.version_aliases)
+            version_aliases=self.version_aliases,
+            version_destroy_ttl=self.version_destroy_ttl)
 
 
-def get_secret(project: Optional[str] = None,
+def get_secret(location: Optional[str] = None,
+               project: Optional[str] = None,
                secret_id: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretResult:
     """
     Gets metadata for a given Secret.
     """
     __args__ = dict()
+    __args__['location'] = location
     __args__['project'] = project
     __args__['secretId'] = secret_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -177,6 +203,7 @@ def get_secret(project: Optional[str] = None,
     return AwaitableGetSecretResult(
         annotations=pulumi.get(__ret__, 'annotations'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        customer_managed_encryption=pulumi.get(__ret__, 'customer_managed_encryption'),
         etag=pulumi.get(__ret__, 'etag'),
         expire_time=pulumi.get(__ret__, 'expire_time'),
         labels=pulumi.get(__ret__, 'labels'),
@@ -185,11 +212,13 @@ def get_secret(project: Optional[str] = None,
         rotation=pulumi.get(__ret__, 'rotation'),
         topics=pulumi.get(__ret__, 'topics'),
         ttl=pulumi.get(__ret__, 'ttl'),
-        version_aliases=pulumi.get(__ret__, 'version_aliases'))
+        version_aliases=pulumi.get(__ret__, 'version_aliases'),
+        version_destroy_ttl=pulumi.get(__ret__, 'version_destroy_ttl'))
 
 
 @_utilities.lift_output_func(get_secret)
-def get_secret_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+def get_secret_output(location: Optional[pulumi.Input[str]] = None,
+                      project: Optional[pulumi.Input[Optional[str]]] = None,
                       secret_id: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretResult]:
     """

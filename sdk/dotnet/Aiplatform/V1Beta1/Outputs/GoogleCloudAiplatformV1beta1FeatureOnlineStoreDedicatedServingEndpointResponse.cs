@@ -11,13 +11,13 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Outputs
 {
 
     /// <summary>
-    /// The dedicated serving endpoint for this FeatureOnlineStore. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+    /// The dedicated serving endpoint for this FeatureOnlineStore. Only need to set when you choose Optimized storage type. Public endpoint is provisioned by default.
     /// </summary>
     [OutputType]
     public sealed class GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse
     {
         /// <summary>
-        /// Optional. Private service connect config. If PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
+        /// Optional. Private service connect config. The private service connection is available only for Optimized storage type, not for embedding management now. If PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
         /// </summary>
         public readonly Outputs.GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponse PrivateServiceConnectConfig;
         /// <summary>

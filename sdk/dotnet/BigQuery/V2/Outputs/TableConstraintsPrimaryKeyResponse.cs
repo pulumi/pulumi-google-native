@@ -11,11 +11,14 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
     /// <summary>
-    /// [Optional] The primary key of the table.
+    /// Represents the primary key constraint on a table's columns.
     /// </summary>
     [OutputType]
     public sealed class TableConstraintsPrimaryKeyResponse
     {
+        /// <summary>
+        /// The columns that are composed of the primary key constraint.
+        /// </summary>
         public readonly ImmutableArray<string> Columns;
 
         [OutputConstructor]

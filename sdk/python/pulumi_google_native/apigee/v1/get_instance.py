@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 
 __all__ = [
     'GetInstanceResult',
@@ -18,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, consumer_accept_list=None, created_at=None, description=None, disk_encryption_key_name=None, display_name=None, host=None, ip_range=None, last_modified_at=None, location=None, name=None, peering_cidr_range=None, port=None, runtime_version=None, service_attachment=None, state=None):
+    def __init__(__self__, access_logging_config=None, consumer_accept_list=None, created_at=None, description=None, disk_encryption_key_name=None, display_name=None, host=None, ip_range=None, last_modified_at=None, location=None, name=None, peering_cidr_range=None, port=None, runtime_version=None, service_attachment=None, state=None):
+        if access_logging_config and not isinstance(access_logging_config, dict):
+            raise TypeError("Expected argument 'access_logging_config' to be a dict")
+        pulumi.set(__self__, "access_logging_config", access_logging_config)
         if consumer_accept_list and not isinstance(consumer_accept_list, list):
             raise TypeError("Expected argument 'consumer_accept_list' to be a list")
         pulumi.set(__self__, "consumer_accept_list", consumer_accept_list)
@@ -64,6 +68,14 @@ class GetInstanceResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="accessLoggingConfig")
+    def access_logging_config(self) -> 'outputs.GoogleCloudApigeeV1AccessLoggingConfigResponse':
+        """
+        Optional. Access logging configuration enables the access logging feature at the instance. Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+        """
+        return pulumi.get(self, "access_logging_config")
 
     @property
     @pulumi.getter(name="consumerAcceptList")
@@ -192,6 +204,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
         if False:
             yield self
         return GetInstanceResult(
+            access_logging_config=self.access_logging_config,
             consumer_accept_list=self.consumer_accept_list,
             created_at=self.created_at,
             description=self.description,
@@ -222,6 +235,7 @@ def get_instance(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
+        access_logging_config=pulumi.get(__ret__, 'access_logging_config'),
         consumer_accept_list=pulumi.get(__ret__, 'consumer_accept_list'),
         created_at=pulumi.get(__ret__, 'created_at'),
         description=pulumi.get(__ret__, 'description'),

@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1.Outputs
         /// </summary>
         public readonly bool DataplaneV2Enabled;
         /// <summary>
+        /// Configure ForwardMode for Dataplane v2.
+        /// </summary>
+        public readonly string ForwardMode;
+        /// <summary>
         /// Enable Dataplane V2 for clusters with Windows nodes.
         /// </summary>
         public readonly bool WindowsDataplaneV2Enabled;
@@ -35,10 +39,13 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1.Outputs
 
             bool dataplaneV2Enabled,
 
+            string forwardMode,
+
             bool windowsDataplaneV2Enabled)
         {
             AdvancedNetworking = advancedNetworking;
             DataplaneV2Enabled = dataplaneV2Enabled;
+            ForwardMode = forwardMode;
             WindowsDataplaneV2Enabled = windowsDataplaneV2Enabled;
         }
     }

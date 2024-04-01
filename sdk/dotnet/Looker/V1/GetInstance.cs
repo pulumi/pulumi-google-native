@@ -101,6 +101,10 @@ namespace Pulumi.GoogleNative.Looker.V1
         /// </summary>
         public readonly Outputs.DenyMaintenancePeriodResponse LastDenyMaintenancePeriod;
         /// <summary>
+        /// Optional. Linked Google Cloud Project Number for Looker Studio Pro.
+        /// </summary>
+        public readonly string LinkedLspProjectNumber;
+        /// <summary>
         /// Looker instance URI which can be used to access the Looker Instance UI.
         /// </summary>
         public readonly string LookerUri;
@@ -175,6 +179,8 @@ namespace Pulumi.GoogleNative.Looker.V1
 
             Outputs.DenyMaintenancePeriodResponse lastDenyMaintenancePeriod,
 
+            string linkedLspProjectNumber,
+
             string lookerUri,
 
             string lookerVersion,
@@ -211,6 +217,7 @@ namespace Pulumi.GoogleNative.Looker.V1
             IngressPrivateIp = ingressPrivateIp;
             IngressPublicIp = ingressPublicIp;
             LastDenyMaintenancePeriod = lastDenyMaintenancePeriod;
+            LinkedLspProjectNumber = linkedLspProjectNumber;
             LookerUri = lookerUri;
             LookerVersion = lookerVersion;
             MaintenanceSchedule = maintenanceSchedule;

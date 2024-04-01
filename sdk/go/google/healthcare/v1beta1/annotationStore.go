@@ -16,13 +16,13 @@ import (
 type AnnotationStore struct {
 	pulumi.CustomResourceState
 
-	// The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
-	AnnotationStoreId pulumi.StringPtrOutput `pulumi:"annotationStoreId"`
-	DatasetId         pulumi.StringOutput    `pulumi:"datasetId"`
+	// Required. The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+	AnnotationStoreId pulumi.StringOutput `pulumi:"annotationStoreId"`
+	DatasetId         pulumi.StringOutput `pulumi:"datasetId"`
 	// Optional. User-supplied key-value pairs used to organize Annotation stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	// Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
+	// Identifier. Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 }
@@ -34,10 +34,14 @@ func NewAnnotationStore(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AnnotationStoreId == nil {
+		return nil, errors.New("invalid value for required argument 'AnnotationStoreId'")
+	}
 	if args.DatasetId == nil {
 		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
+		"annotationStoreId",
 		"datasetId",
 		"location",
 		"project",
@@ -76,26 +80,26 @@ func (AnnotationStoreState) ElementType() reflect.Type {
 }
 
 type annotationStoreArgs struct {
-	// The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
-	AnnotationStoreId *string `pulumi:"annotationStoreId"`
-	DatasetId         string  `pulumi:"datasetId"`
+	// Required. The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+	AnnotationStoreId string `pulumi:"annotationStoreId"`
+	DatasetId         string `pulumi:"datasetId"`
 	// Optional. User-supplied key-value pairs used to organize Annotation stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	// Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
+	// Identifier. Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a AnnotationStore resource.
 type AnnotationStoreArgs struct {
-	// The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
-	AnnotationStoreId pulumi.StringPtrInput
+	// Required. The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+	AnnotationStoreId pulumi.StringInput
 	DatasetId         pulumi.StringInput
 	// Optional. User-supplied key-value pairs used to organize Annotation stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	// Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
+	// Identifier. Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 }
@@ -137,9 +141,9 @@ func (o AnnotationStoreOutput) ToAnnotationStoreOutputWithContext(ctx context.Co
 	return o
 }
 
-// The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
-func (o AnnotationStoreOutput) AnnotationStoreId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AnnotationStore) pulumi.StringPtrOutput { return v.AnnotationStoreId }).(pulumi.StringPtrOutput)
+// Required. The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+func (o AnnotationStoreOutput) AnnotationStoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AnnotationStore) pulumi.StringOutput { return v.AnnotationStoreId }).(pulumi.StringOutput)
 }
 
 func (o AnnotationStoreOutput) DatasetId() pulumi.StringOutput {
@@ -155,7 +159,7 @@ func (o AnnotationStoreOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *AnnotationStore) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
+// Identifier. Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
 func (o AnnotationStoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AnnotationStore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

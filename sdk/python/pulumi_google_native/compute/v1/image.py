@@ -22,6 +22,7 @@ class ImageArgs:
                  deprecated: Optional[pulumi.Input['DeprecationStatusArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[str]] = None,
+                 enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  family: Optional[pulumi.Input[str]] = None,
                  force_create: Optional[pulumi.Input[bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['GuestOsFeatureArgs']]]] = None,
@@ -49,6 +50,7 @@ class ImageArgs:
         :param pulumi.Input['DeprecationStatusArgs'] deprecated: The deprecation status associated with this image.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] disk_size_gb: Size of the image when restored onto a persistent disk (in GB).
+        :param pulumi.Input[bool] enable_confidential_compute: Whether this image is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
         :param pulumi.Input[str] family: The name of the image family to which this image belongs. The image family name can be from a publicly managed image family provided by Compute Engine, or from a custom image family you create. For example, centos-stream-9 is a publicly available image family. For more information, see Image family best practices. When creating disks, you can specify an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
         :param pulumi.Input[bool] force_create: Force image creation if true.
         :param pulumi.Input[Sequence[pulumi.Input['GuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
@@ -79,6 +81,8 @@ class ImageArgs:
             pulumi.set(__self__, "description", description)
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if enable_confidential_compute is not None:
+            pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         if family is not None:
             pulumi.set(__self__, "family", family)
         if force_create is not None:
@@ -179,6 +183,18 @@ class ImageArgs:
     @disk_size_gb.setter
     def disk_size_gb(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_size_gb", value)
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this image is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
+
+    @enable_confidential_compute.setter
+    def enable_confidential_compute(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_confidential_compute", value)
 
     @property
     @pulumi.getter
@@ -428,6 +444,7 @@ class Image(pulumi.CustomResource):
                  deprecated: Optional[pulumi.Input[pulumi.InputType['DeprecationStatusArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[str]] = None,
+                 enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  family: Optional[pulumi.Input[str]] = None,
                  force_create: Optional[pulumi.Input[bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]]] = None,
@@ -459,6 +476,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DeprecationStatusArgs']] deprecated: The deprecation status associated with this image.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] disk_size_gb: Size of the image when restored onto a persistent disk (in GB).
+        :param pulumi.Input[bool] enable_confidential_compute: Whether this image is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
         :param pulumi.Input[str] family: The name of the image family to which this image belongs. The image family name can be from a publicly managed image family provided by Compute Engine, or from a custom image family you create. For example, centos-stream-9 is a publicly available image family. For more information, see Image family best practices. When creating disks, you can specify an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
         :param pulumi.Input[bool] force_create: Force image creation if true.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
@@ -508,6 +526,7 @@ class Image(pulumi.CustomResource):
                  deprecated: Optional[pulumi.Input[pulumi.InputType['DeprecationStatusArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[str]] = None,
+                 enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  family: Optional[pulumi.Input[str]] = None,
                  force_create: Optional[pulumi.Input[bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]]] = None,
@@ -542,6 +561,7 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["deprecated"] = deprecated
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_size_gb"] = disk_size_gb
+            __props__.__dict__["enable_confidential_compute"] = enable_confidential_compute
             __props__.__dict__["family"] = family
             __props__.__dict__["force_create"] = force_create
             __props__.__dict__["guest_os_features"] = guest_os_features
@@ -565,6 +585,7 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
+            __props__.__dict__["satisfies_pzi"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["source_disk_id"] = None
@@ -601,6 +622,7 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["deprecated"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["disk_size_gb"] = None
+        __props__.__dict__["enable_confidential_compute"] = None
         __props__.__dict__["family"] = None
         __props__.__dict__["force_create"] = None
         __props__.__dict__["guest_os_features"] = None
@@ -614,6 +636,7 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["raw_disk"] = None
         __props__.__dict__["request_id"] = None
+        __props__.__dict__["satisfies_pzi"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["shielded_instance_initial_state"] = None
@@ -678,6 +701,14 @@ class Image(pulumi.CustomResource):
         Size of the image when restored onto a persistent disk (in GB).
         """
         return pulumi.get(self, "disk_size_gb")
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> pulumi.Output[bool]:
+        """
+        Whether this image is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
 
     @property
     @pulumi.getter
@@ -779,6 +810,14 @@ class Image(pulumi.CustomResource):
         An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         """
         return pulumi.get(self, "request_id")
+
+    @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> pulumi.Output[bool]:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzi")
 
     @property
     @pulumi.getter(name="satisfiesPzs")

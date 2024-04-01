@@ -107,6 +107,30 @@ export const GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforc
  */
 export type GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState = (typeof GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState)[keyof typeof GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState];
 
+export const GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyType = {
+    /**
+     * Client type is not specified.
+     */
+    ClientTypeUnspecified: "CLIENT_TYPE_UNSPECIFIED",
+    /**
+     * Client type is web.
+     */
+    Web: "WEB",
+    /**
+     * Client type is iOS.
+     */
+    Ios: "IOS",
+    /**
+     * Client type is Android.
+     */
+    Android: "ANDROID",
+} as const;
+
+/**
+ * The client's platform type.
+ */
+export type GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyType = (typeof GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyType)[keyof typeof GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyType];
+
 export const GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction = {
     /**
      * The reCAPTCHA action is not specified.

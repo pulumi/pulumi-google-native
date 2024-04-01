@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetContactCenterResult:
-    def __init__(__self__, admin_user=None, ccaip_managed_users=None, create_time=None, customer_domain_prefix=None, display_name=None, instance_config=None, kms_key=None, labels=None, name=None, saml_params=None, state=None, update_time=None, uris=None, user_email=None):
+    def __init__(__self__, admin_user=None, ccaip_managed_users=None, create_time=None, customer_domain_prefix=None, display_name=None, instance_config=None, kms_key=None, labels=None, name=None, private_components=None, saml_params=None, state=None, update_time=None, uris=None, user_email=None):
         if admin_user and not isinstance(admin_user, dict):
             raise TypeError("Expected argument 'admin_user' to be a dict")
         pulumi.set(__self__, "admin_user", admin_user)
@@ -47,6 +47,9 @@ class GetContactCenterResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if private_components and not isinstance(private_components, list):
+            raise TypeError("Expected argument 'private_components' to be a list")
+        pulumi.set(__self__, "private_components", private_components)
         if saml_params and not isinstance(saml_params, dict):
             raise TypeError("Expected argument 'saml_params' to be a dict")
         pulumi.set(__self__, "saml_params", saml_params)
@@ -136,6 +139,14 @@ class GetContactCenterResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="privateComponents")
+    def private_components(self) -> Sequence[str]:
+        """
+        A list of UJET components that should be privately accessed. This field is set by reading settings from the data plane. For more information about the format of the component please refer to go/ccaip-vpc-sc-org-policy. This field is must be fully populated only for Create/Update resource operations. The main use case for this field is OrgPolicy checks via CPE.
+        """
+        return pulumi.get(self, "private_components")
+
+    @property
     @pulumi.getter(name="samlParams")
     def saml_params(self) -> 'outputs.SAMLParamsResponse':
         """
@@ -191,6 +202,7 @@ class AwaitableGetContactCenterResult(GetContactCenterResult):
             kms_key=self.kms_key,
             labels=self.labels,
             name=self.name,
+            private_components=self.private_components,
             saml_params=self.saml_params,
             state=self.state,
             update_time=self.update_time,
@@ -222,6 +234,7 @@ def get_contact_center(contact_center_id: Optional[str] = None,
         kms_key=pulumi.get(__ret__, 'kms_key'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
+        private_components=pulumi.get(__ret__, 'private_components'),
         saml_params=pulumi.get(__ret__, 'saml_params'),
         state=pulumi.get(__ret__, 'state'),
         update_time=pulumi.get(__ret__, 'update_time'),

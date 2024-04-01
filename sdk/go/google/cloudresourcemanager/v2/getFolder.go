@@ -37,6 +37,8 @@ type LookupFolderResult struct {
 	Name string `pulumi:"name"`
 	// The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
 	Parent string `pulumi:"parent"`
+	// Optional. Input only. Immutable. Tag keys/values directly bound to this folder. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func LookupFolderOutput(ctx *pulumi.Context, args LookupFolderOutputArgs, opts ...pulumi.InvokeOption) LookupFolderResultOutput {
@@ -97,6 +99,11 @@ func (o LookupFolderResultOutput) Name() pulumi.StringOutput {
 // The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
 func (o LookupFolderResultOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFolderResult) string { return v.Parent }).(pulumi.StringOutput)
+}
+
+// Optional. Input only. Immutable. Tag keys/values directly bound to this folder. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+func (o LookupFolderResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupFolderResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

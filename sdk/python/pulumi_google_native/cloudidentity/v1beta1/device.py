@@ -425,7 +425,7 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="endpointVerificationSpecificAttributes")
     def endpoint_verification_specific_attributes(self) -> pulumi.Output['outputs.EndpointVerificationSpecificAttributesResponse']:
         """
-        Attributes specific to Endpoint Verification devices.
+        Attributes specific to [Endpoint Verification](https://cloud.google.com/endpoint-verification/docs/overview) devices.
         """
         return pulumi.get(self, "endpoint_verification_specific_attributes")
 

@@ -40,6 +40,10 @@ export interface GetTargetResult {
      */
     readonly createTime: string;
     /**
+     * Optional. Information specifying a Custom Target.
+     */
+    readonly customTarget: outputs.clouddeploy.v1.CustomTargetResponse;
+    /**
      * Optional. The deploy parameters to use for this target.
      */
     readonly deployParameters: {[key: string]: string};

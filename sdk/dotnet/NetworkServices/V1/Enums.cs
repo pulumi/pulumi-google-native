@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
     }
 
     /// <summary>
-    /// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+    /// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), pick up the one with older creation time.
     /// </summary>
     [EnumType]
     public readonly struct EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria : IEquatable<EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria>
@@ -127,6 +127,142 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is EndpointPolicyType other && Equals(other);
         public bool Equals(EndpointPolicyType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct ExtensionChainExtensionSupportedEventsItem : IEquatable<ExtensionChainExtensionSupportedEventsItem>
+    {
+        private readonly string _value;
+
+        private ExtensionChainExtensionSupportedEventsItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified value. Do not use.
+        /// </summary>
+        public static ExtensionChainExtensionSupportedEventsItem EventTypeUnspecified { get; } = new ExtensionChainExtensionSupportedEventsItem("EVENT_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// If included in `supported_events`, the extension is called when the HTTP request headers arrive.
+        /// </summary>
+        public static ExtensionChainExtensionSupportedEventsItem RequestHeaders { get; } = new ExtensionChainExtensionSupportedEventsItem("REQUEST_HEADERS");
+        /// <summary>
+        /// If included in `supported_events`, the extension is called when the HTTP request body arrives.
+        /// </summary>
+        public static ExtensionChainExtensionSupportedEventsItem RequestBody { get; } = new ExtensionChainExtensionSupportedEventsItem("REQUEST_BODY");
+        /// <summary>
+        /// If included in `supported_events`, the extension is called when the HTTP response headers arrive.
+        /// </summary>
+        public static ExtensionChainExtensionSupportedEventsItem ResponseHeaders { get; } = new ExtensionChainExtensionSupportedEventsItem("RESPONSE_HEADERS");
+        /// <summary>
+        /// If included in `supported_events`, the extension is called when the HTTP response body arrives.
+        /// </summary>
+        public static ExtensionChainExtensionSupportedEventsItem ResponseBody { get; } = new ExtensionChainExtensionSupportedEventsItem("RESPONSE_BODY");
+        /// <summary>
+        /// If included in `supported_events`, the extension is called when the HTTP request trailers arrives.
+        /// </summary>
+        public static ExtensionChainExtensionSupportedEventsItem RequestTrailers { get; } = new ExtensionChainExtensionSupportedEventsItem("REQUEST_TRAILERS");
+        /// <summary>
+        /// If included in `supported_events`, the extension is called when the HTTP response trailers arrives.
+        /// </summary>
+        public static ExtensionChainExtensionSupportedEventsItem ResponseTrailers { get; } = new ExtensionChainExtensionSupportedEventsItem("RESPONSE_TRAILERS");
+
+        public static bool operator ==(ExtensionChainExtensionSupportedEventsItem left, ExtensionChainExtensionSupportedEventsItem right) => left.Equals(right);
+        public static bool operator !=(ExtensionChainExtensionSupportedEventsItem left, ExtensionChainExtensionSupportedEventsItem right) => !left.Equals(right);
+
+        public static explicit operator string(ExtensionChainExtensionSupportedEventsItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ExtensionChainExtensionSupportedEventsItem other && Equals(other);
+        public bool Equals(ExtensionChainExtensionSupportedEventsItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+    /// </summary>
+    [EnumType]
+    public readonly struct GatewayEnvoyHeaders : IEquatable<GatewayEnvoyHeaders>
+    {
+        private readonly string _value;
+
+        private GatewayEnvoyHeaders(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Defaults to NONE.
+        /// </summary>
+        public static GatewayEnvoyHeaders EnvoyHeadersUnspecified { get; } = new GatewayEnvoyHeaders("ENVOY_HEADERS_UNSPECIFIED");
+        /// <summary>
+        /// Suppress envoy debug headers.
+        /// </summary>
+        public static GatewayEnvoyHeaders None { get; } = new GatewayEnvoyHeaders("NONE");
+        /// <summary>
+        /// Envoy will insert default internal debug headers into upstream requests: x-envoy-attempt-count x-envoy-is-timeout-retry x-envoy-expected-rq-timeout-ms x-envoy-original-path x-envoy-upstream-stream-duration-ms
+        /// </summary>
+        public static GatewayEnvoyHeaders DebugHeaders { get; } = new GatewayEnvoyHeaders("DEBUG_HEADERS");
+
+        public static bool operator ==(GatewayEnvoyHeaders left, GatewayEnvoyHeaders right) => left.Equals(right);
+        public static bool operator !=(GatewayEnvoyHeaders left, GatewayEnvoyHeaders right) => !left.Equals(right);
+
+        public static explicit operator string(GatewayEnvoyHeaders value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GatewayEnvoyHeaders other && Equals(other);
+        public bool Equals(GatewayEnvoyHeaders other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+    /// </summary>
+    [EnumType]
+    public readonly struct GatewayIpVersion : IEquatable<GatewayIpVersion>
+    {
+        private readonly string _value;
+
+        private GatewayIpVersion(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The type when IP version is not specified. Defaults to IPV4.
+        /// </summary>
+        public static GatewayIpVersion IpVersionUnspecified { get; } = new GatewayIpVersion("IP_VERSION_UNSPECIFIED");
+        /// <summary>
+        /// The type for IP version 4.
+        /// </summary>
+        public static GatewayIpVersion Ipv4 { get; } = new GatewayIpVersion("IPV4");
+        /// <summary>
+        /// The type for IP version 6.
+        /// </summary>
+        public static GatewayIpVersion Ipv6 { get; } = new GatewayIpVersion("IPV6");
+
+        public static bool operator ==(GatewayIpVersion left, GatewayIpVersion right) => left.Equals(right);
+        public static bool operator !=(GatewayIpVersion left, GatewayIpVersion right) => !left.Equals(right);
+
+        public static explicit operator string(GatewayIpVersion value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GatewayIpVersion other && Equals(other);
+        public bool Equals(GatewayIpVersion other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -303,6 +439,178 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is HttpRouteRedirectResponseCode other && Equals(other);
         public bool Equals(HttpRouteRedirectResponseCode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Required. All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
+    /// </summary>
+    [EnumType]
+    public readonly struct LbRouteExtensionLoadBalancingScheme : IEquatable<LbRouteExtensionLoadBalancingScheme>
+    {
+        private readonly string _value;
+
+        private LbRouteExtensionLoadBalancingScheme(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value. Do not use.
+        /// </summary>
+        public static LbRouteExtensionLoadBalancingScheme LoadBalancingSchemeUnspecified { get; } = new LbRouteExtensionLoadBalancingScheme("LOAD_BALANCING_SCHEME_UNSPECIFIED");
+        /// <summary>
+        /// Signifies that this is used for Internal HTTP(S) Load Balancing.
+        /// </summary>
+        public static LbRouteExtensionLoadBalancingScheme InternalManaged { get; } = new LbRouteExtensionLoadBalancingScheme("INTERNAL_MANAGED");
+        /// <summary>
+        /// Signifies that this is used for External Managed HTTP(S) Load Balancing.
+        /// </summary>
+        public static LbRouteExtensionLoadBalancingScheme ExternalManaged { get; } = new LbRouteExtensionLoadBalancingScheme("EXTERNAL_MANAGED");
+
+        public static bool operator ==(LbRouteExtensionLoadBalancingScheme left, LbRouteExtensionLoadBalancingScheme right) => left.Equals(right);
+        public static bool operator !=(LbRouteExtensionLoadBalancingScheme left, LbRouteExtensionLoadBalancingScheme right) => !left.Equals(right);
+
+        public static explicit operator string(LbRouteExtensionLoadBalancingScheme value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is LbRouteExtensionLoadBalancingScheme other && Equals(other);
+        public bool Equals(LbRouteExtensionLoadBalancingScheme other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Required. All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
+    /// </summary>
+    [EnumType]
+    public readonly struct LbTrafficExtensionLoadBalancingScheme : IEquatable<LbTrafficExtensionLoadBalancingScheme>
+    {
+        private readonly string _value;
+
+        private LbTrafficExtensionLoadBalancingScheme(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value. Do not use.
+        /// </summary>
+        public static LbTrafficExtensionLoadBalancingScheme LoadBalancingSchemeUnspecified { get; } = new LbTrafficExtensionLoadBalancingScheme("LOAD_BALANCING_SCHEME_UNSPECIFIED");
+        /// <summary>
+        /// Signifies that this is used for Internal HTTP(S) Load Balancing.
+        /// </summary>
+        public static LbTrafficExtensionLoadBalancingScheme InternalManaged { get; } = new LbTrafficExtensionLoadBalancingScheme("INTERNAL_MANAGED");
+        /// <summary>
+        /// Signifies that this is used for External Managed HTTP(S) Load Balancing.
+        /// </summary>
+        public static LbTrafficExtensionLoadBalancingScheme ExternalManaged { get; } = new LbTrafficExtensionLoadBalancingScheme("EXTERNAL_MANAGED");
+
+        public static bool operator ==(LbTrafficExtensionLoadBalancingScheme left, LbTrafficExtensionLoadBalancingScheme right) => left.Equals(right);
+        public static bool operator !=(LbTrafficExtensionLoadBalancingScheme left, LbTrafficExtensionLoadBalancingScheme right) => !left.Equals(right);
+
+        public static explicit operator string(LbTrafficExtensionLoadBalancingScheme value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is LbTrafficExtensionLoadBalancingScheme other && Equals(other);
+        public bool Equals(LbTrafficExtensionLoadBalancingScheme other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+    /// </summary>
+    [EnumType]
+    public readonly struct MeshEnvoyHeaders : IEquatable<MeshEnvoyHeaders>
+    {
+        private readonly string _value;
+
+        private MeshEnvoyHeaders(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Defaults to NONE.
+        /// </summary>
+        public static MeshEnvoyHeaders EnvoyHeadersUnspecified { get; } = new MeshEnvoyHeaders("ENVOY_HEADERS_UNSPECIFIED");
+        /// <summary>
+        /// Suppress envoy debug headers.
+        /// </summary>
+        public static MeshEnvoyHeaders None { get; } = new MeshEnvoyHeaders("NONE");
+        /// <summary>
+        /// Envoy will insert default internal debug headers into upstream requests: x-envoy-attempt-count x-envoy-is-timeout-retry x-envoy-expected-rq-timeout-ms x-envoy-original-path x-envoy-upstream-stream-duration-ms
+        /// </summary>
+        public static MeshEnvoyHeaders DebugHeaders { get; } = new MeshEnvoyHeaders("DEBUG_HEADERS");
+
+        public static bool operator ==(MeshEnvoyHeaders left, MeshEnvoyHeaders right) => left.Equals(right);
+        public static bool operator !=(MeshEnvoyHeaders left, MeshEnvoyHeaders right) => !left.Equals(right);
+
+        public static explicit operator string(MeshEnvoyHeaders value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MeshEnvoyHeaders other && Equals(other);
+        public bool Equals(MeshEnvoyHeaders other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. The type of load balancing algorithm to be used. The default behavior is WATERFALL_BY_REGION.
+    /// </summary>
+    [EnumType]
+    public readonly struct ServiceLbPolicyLoadBalancingAlgorithm : IEquatable<ServiceLbPolicyLoadBalancingAlgorithm>
+    {
+        private readonly string _value;
+
+        private ServiceLbPolicyLoadBalancingAlgorithm(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The type of the loadbalancing algorithm is unspecified.
+        /// </summary>
+        public static ServiceLbPolicyLoadBalancingAlgorithm LoadBalancingAlgorithmUnspecified { get; } = new ServiceLbPolicyLoadBalancingAlgorithm("LOAD_BALANCING_ALGORITHM_UNSPECIFIED");
+        /// <summary>
+        /// Balance traffic across all backends across the world proportionally based on capacity.
+        /// </summary>
+        public static ServiceLbPolicyLoadBalancingAlgorithm SprayToWorld { get; } = new ServiceLbPolicyLoadBalancingAlgorithm("SPRAY_TO_WORLD");
+        /// <summary>
+        /// Direct traffic to the nearest region with endpoints and capacity before spilling over to other regions and spread the traffic from each client to all the MIGs/NEGs in a region.
+        /// </summary>
+        public static ServiceLbPolicyLoadBalancingAlgorithm SprayToRegion { get; } = new ServiceLbPolicyLoadBalancingAlgorithm("SPRAY_TO_REGION");
+        /// <summary>
+        /// Direct traffic to the nearest region with endpoints and capacity before spilling over to other regions. All MIGs/NEGs within a region are evenly loaded but each client might not spread the traffic to all the MIGs/NEGs in the region.
+        /// </summary>
+        public static ServiceLbPolicyLoadBalancingAlgorithm WaterfallByRegion { get; } = new ServiceLbPolicyLoadBalancingAlgorithm("WATERFALL_BY_REGION");
+        /// <summary>
+        /// Attempt to keep traffic in a single zone closest to the client, before spilling over to other zones.
+        /// </summary>
+        public static ServiceLbPolicyLoadBalancingAlgorithm WaterfallByZone { get; } = new ServiceLbPolicyLoadBalancingAlgorithm("WATERFALL_BY_ZONE");
+
+        public static bool operator ==(ServiceLbPolicyLoadBalancingAlgorithm left, ServiceLbPolicyLoadBalancingAlgorithm right) => left.Equals(right);
+        public static bool operator !=(ServiceLbPolicyLoadBalancingAlgorithm left, ServiceLbPolicyLoadBalancingAlgorithm right) => !left.Equals(right);
+
+        public static explicit operator string(ServiceLbPolicyLoadBalancingAlgorithm value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ServiceLbPolicyLoadBalancingAlgorithm other && Equals(other);
+        public bool Equals(ServiceLbPolicyLoadBalancingAlgorithm other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

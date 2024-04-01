@@ -54,7 +54,7 @@ export class LbRouteExtension extends pulumi.CustomResource {
      */
     public readonly forwardingRules!: pulumi.Output<string[]>;
     /**
-     * Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the following requirements](/compute/docs/labeling-resources#requirements).
+     * Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the requirements for labels](https://cloud.google.com/compute/docs/labeling-resources#requirements) for Google Cloud resources.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -67,7 +67,7 @@ export class LbRouteExtension extends pulumi.CustomResource {
     public readonly loadBalancingScheme!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
+     * Identifier. Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -153,7 +153,7 @@ export interface LbRouteExtensionArgs {
      */
     forwardingRules: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the following requirements](/compute/docs/labeling-resources#requirements).
+     * Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the requirements for labels](https://cloud.google.com/compute/docs/labeling-resources#requirements) for Google Cloud resources.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -166,7 +166,7 @@ export interface LbRouteExtensionArgs {
     loadBalancingScheme: pulumi.Input<enums.networkservices.v1beta1.LbRouteExtensionLoadBalancingScheme>;
     location?: pulumi.Input<string>;
     /**
-     * Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
+     * Identifier. Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

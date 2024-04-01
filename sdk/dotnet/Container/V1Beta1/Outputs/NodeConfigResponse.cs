@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly string DiskType;
         /// <summary>
-        /// Optional. Enable confidential storage on Hyperdisk. boot_disk_kms_key is required when enable_confidential_storage is true. This is only available for private preview.
+        /// Optional. Reserved for future use.
         /// </summary>
         public readonly bool EnableConfidentialStorage;
         /// <summary>
@@ -137,6 +137,14 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly Outputs.SandboxConfigResponse SandboxConfig;
         /// <summary>
+        /// Secondary boot disk update strategy.
+        /// </summary>
+        public readonly Outputs.SecondaryBootDiskUpdateStrategyResponse SecondaryBootDiskUpdateStrategy;
+        /// <summary>
+        /// List of secondary boot disks attached to the nodes.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.SecondaryBootDiskResponse> SecondaryBootDisks;
+        /// <summary>
         /// The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
         /// </summary>
         public readonly string ServiceAccount;
@@ -231,6 +239,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 
             Outputs.SandboxConfigResponse sandboxConfig,
 
+            Outputs.SecondaryBootDiskUpdateStrategyResponse secondaryBootDiskUpdateStrategy,
+
+            ImmutableArray<Outputs.SecondaryBootDiskResponse> secondaryBootDisks,
+
             string serviceAccount,
 
             Outputs.ShieldedInstanceConfigResponse shieldedInstanceConfig,
@@ -277,6 +289,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
             ResourceLabels = resourceLabels;
             ResourceManagerTags = resourceManagerTags;
             SandboxConfig = sandboxConfig;
+            SecondaryBootDiskUpdateStrategy = secondaryBootDiskUpdateStrategy;
+            SecondaryBootDisks = secondaryBootDisks;
             ServiceAccount = serviceAccount;
             ShieldedInstanceConfig = shieldedInstanceConfig;
             SoleTenantConfig = soleTenantConfig;

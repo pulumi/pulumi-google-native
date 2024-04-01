@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
     public sealed class GetRepositoryResult
     {
         /// <summary>
+        /// The timestamp of when the repository was created.
+        /// </summary>
+        public readonly string CreateTime;
+        /// <summary>
         /// Optional. The repository's user-friendly name.
         /// </summary>
         public readonly string DisplayName;
@@ -76,7 +80,7 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// The repository's name.
+        /// Identifier. The repository's name.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -98,6 +102,8 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
 
         [OutputConstructor]
         private GetRepositoryResult(
+            string createTime,
+
             string displayName,
 
             Outputs.GitRemoteSettingsResponse gitRemoteSettings,
@@ -114,6 +120,7 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
 
             Outputs.WorkspaceCompilationOverridesResponse workspaceCompilationOverrides)
         {
+            CreateTime = createTime;
             DisplayName = displayName;
             GitRemoteSettings = gitRemoteSettings;
             Labels = labels;

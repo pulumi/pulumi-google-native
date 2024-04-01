@@ -33,6 +33,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("project")]
         public string? Project { get; set; }
 
+        [Input("view")]
+        public string? View { get; set; }
+
         [Input("zone", required: true)]
         public string Zone { get; set; } = null!;
 
@@ -49,6 +52,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("view")]
+        public Input<string>? View { get; set; }
 
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -170,6 +176,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly Outputs.InstanceParamsResponse Params;
         /// <summary>
+        /// Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> PartnerMetadata;
+        /// <summary>
         /// PostKeyRevocationActionType of the instance.
         /// </summary>
         public readonly string PostKeyRevocationActionType;
@@ -189,6 +199,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
         /// </summary>
         public readonly Outputs.ResourceStatusResponse ResourceStatus;
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        public readonly bool SatisfiesPzi;
         /// <summary>
         /// Reserved for future use.
         /// </summary>
@@ -302,6 +316,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             Outputs.InstanceParamsResponse @params,
 
+            ImmutableDictionary<string, string> partnerMetadata,
+
             string postKeyRevocationActionType,
 
             string privateIpv6GoogleAccess,
@@ -311,6 +327,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
             ImmutableArray<string> resourcePolicies,
 
             Outputs.ResourceStatusResponse resourceStatus,
+
+            bool satisfiesPzi,
 
             bool satisfiesPzs,
 
@@ -370,11 +388,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
             NetworkInterfaces = networkInterfaces;
             NetworkPerformanceConfig = networkPerformanceConfig;
             Params = @params;
+            PartnerMetadata = partnerMetadata;
             PostKeyRevocationActionType = postKeyRevocationActionType;
             PrivateIpv6GoogleAccess = privateIpv6GoogleAccess;
             ReservationAffinity = reservationAffinity;
             ResourcePolicies = resourcePolicies;
             ResourceStatus = resourceStatus;
+            SatisfiesPzi = satisfiesPzi;
             SatisfiesPzs = satisfiesPzs;
             Scheduling = scheduling;
             SelfLink = selfLink;

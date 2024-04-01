@@ -116,6 +116,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string ProducerForwardingRule;
         /// <summary>
+        /// The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center. This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer. If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list. If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint. If unspecified, the default propagated connection limit is 250.
+        /// </summary>
+        public readonly int PropagatedConnectionLimit;
+        /// <summary>
         /// An 128-bit global unique ID of the PSC service attachment.
         /// </summary>
         public readonly Outputs.Uint128Response PscServiceAttachmentId;
@@ -168,6 +172,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string producerForwardingRule,
 
+            int propagatedConnectionLimit,
+
             Outputs.Uint128Response pscServiceAttachmentId,
 
             bool reconcileConnections,
@@ -193,6 +199,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             Name = name;
             NatSubnets = natSubnets;
             ProducerForwardingRule = producerForwardingRule;
+            PropagatedConnectionLimit = propagatedConnectionLimit;
             PscServiceAttachmentId = pscServiceAttachmentId;
             ReconcileConnections = reconcileConnections;
             Region = region;

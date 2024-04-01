@@ -92,6 +92,10 @@ export interface GetServiceResult {
      */
     readonly scalingConfig: outputs.metastore.v1.ScalingConfigResponse;
     /**
+     * Optional. The configuration of scheduled backup for the metastore service.
+     */
+    readonly scheduledBackup: outputs.metastore.v1.ScheduledBackupResponse;
+    /**
      * The current state of the metastore service.
      */
     readonly state: string;

@@ -29,7 +29,7 @@ type LookupRegionBackendServiceArgs struct {
 }
 
 type LookupRegionBackendServiceResult struct {
-	// Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+	// Lifetime of cookies in seconds. This setting is applicable to Application Load Balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	AffinityCookieTtlSec int `pulumi:"affinityCookieTtlSec"`
 	// The list of backends that serve this BackendService.
 	Backends []BackendResponse `pulumi:"backends"`
@@ -39,7 +39,7 @@ type LookupRegionBackendServiceResult struct {
 	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
 	CompressionMode    string                     `pulumi:"compressionMode"`
 	ConnectionDraining ConnectionDrainingResponse `pulumi:"connectionDraining"`
-	// Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for Network Load Balancing and Internal TCP/UDP Load Balancing.
+	// Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for external passthrough Network Load Balancers and internal passthrough Network Load Balancers.
 	ConnectionTrackingPolicy BackendServiceConnectionTrackingPolicyResponse `pulumi:"connectionTrackingPolicy"`
 	// Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable when localityLbPolicy is set to MAGLEV or RING_HASH. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
 	ConsistentHash ConsistentHashLoadBalancerSettingsResponse `pulumi:"consistentHash"`
@@ -53,15 +53,15 @@ type LookupRegionBackendServiceResult struct {
 	Description string `pulumi:"description"`
 	// The resource URL for the edge security policy associated with this backend service.
 	EdgeSecurityPolicy string `pulumi:"edgeSecurityPolicy"`
-	// If true, enables Cloud CDN for the backend service of an external HTTP(S) load balancer.
+	// If true, enables Cloud CDN for the backend service of a global external Application Load Balancer.
 	EnableCDN bool `pulumi:"enableCDN"`
-	// Requires at least one backend instance group to be defined as a backup (failover) backend. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
+	// Requires at least one backend instance group to be defined as a backup (failover) backend. For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
 	FailoverPolicy BackendServiceFailoverPolicyResponse `pulumi:"failoverPolicy"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a BackendService. An up-to-date fingerprint must be provided in order to update the BackendService, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a BackendService.
 	Fingerprint string `pulumi:"fingerprint"`
 	// The list of URLs to the healthChecks, httpHealthChecks (legacy), or httpsHealthChecks (legacy) resource for health checking this backend service. Not all backend services support legacy health checks. See Load balancer guide. Currently, at most one health check can be specified for each backend service. Backend services with instance group or zonal NEG backends must have a health check. Backend services with internet or serverless NEG backends must not have a health check.
 	HealthChecks []string `pulumi:"healthChecks"`
-	// The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
+	// The configurations for Identity-Aware Proxy on this resource. Not available for internal passthrough Network Load Balancers and external passthrough Network Load Balancers.
 	Iap BackendServiceIAPResponse `pulumi:"iap"`
 	// Type of resource. Always compute#backendService for backend services.
 	Kind string `pulumi:"kind"`
@@ -83,11 +83,11 @@ type LookupRegionBackendServiceResult struct {
 	Network string `pulumi:"network"`
 	// Settings controlling the ejection of unhealthy backend endpoints from the load balancing pool of each individual proxy instance that processes the traffic for the given backend service. If not set, this feature is considered disabled. Results of the outlier detection algorithm (ejection of endpoints from the load balancing pool and returning them back to the pool) are executed independently by each proxy instance of the load balancer. In most cases, more than one proxy instance handles the traffic received by a backend service. Thus, it is possible that an unhealthy endpoint is detected and ejected by only some of the proxies, and while this happens, other proxies may continue to send requests to the same unhealthy endpoint until they detect and eject the unhealthy endpoint. Applicable backend endpoints can be: - VM instances in an Instance Group - Endpoints in a Zonal NEG (GCE_VM_IP, GCE_VM_IP_PORT) - Endpoints in a Hybrid Connectivity NEG (NON_GCP_PRIVATE_IP_PORT) - Serverless NEGs, that resolve to Cloud Run, App Engine, or Cloud Functions Services - Private Service Connect NEGs, that resolve to Google-managed regional API endpoints or managed services published using Private Service Connect Applicable backend service types can be: - A global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED. - A regional backend service with the serviceProtocol set to HTTP, HTTPS, or HTTP2, and loadBalancingScheme set to INTERNAL_MANAGED or EXTERNAL_MANAGED. Not supported for Serverless NEGs. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 	OutlierDetection OutlierDetectionResponse `pulumi:"outlierDetection"`
-	// Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.
+	// Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For internal passthrough Network Load Balancers and external passthrough Network Load Balancers, omit port.
 	//
-	// Deprecated: Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.
+	// Deprecated: Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For internal passthrough Network Load Balancers and external passthrough Network Load Balancers, omit port.
 	Port int `pulumi:"port"`
-	// A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port_name.
+	// A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For internal passthrough Network Load Balancers and external passthrough Network Load Balancers, omit port_name.
 	PortName string `pulumi:"portName"`
 	// The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
 	Protocol string `pulumi:"protocol"`
@@ -101,6 +101,8 @@ type LookupRegionBackendServiceResult struct {
 	SelfLink string `pulumi:"selfLink"`
 	// URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
 	ServiceBindings []string `pulumi:"serviceBindings"`
+	// URL to networkservices.ServiceLbPolicy resource. Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+	ServiceLbPolicy string `pulumi:"serviceLbPolicy"`
 	// Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
 	SessionAffinity string             `pulumi:"sessionAffinity"`
 	Subsetting      SubsettingResponse `pulumi:"subsetting"`
@@ -146,7 +148,7 @@ func (o LookupRegionBackendServiceResultOutput) ToLookupRegionBackendServiceResu
 	return o
 }
 
-// Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+// Lifetime of cookies in seconds. This setting is applicable to Application Load Balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o LookupRegionBackendServiceResultOutput) AffinityCookieTtlSec() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) int { return v.AffinityCookieTtlSec }).(pulumi.IntOutput)
 }
@@ -174,7 +176,7 @@ func (o LookupRegionBackendServiceResultOutput) ConnectionDraining() ConnectionD
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) ConnectionDrainingResponse { return v.ConnectionDraining }).(ConnectionDrainingResponseOutput)
 }
 
-// Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for Network Load Balancing and Internal TCP/UDP Load Balancing.
+// Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for external passthrough Network Load Balancers and internal passthrough Network Load Balancers.
 func (o LookupRegionBackendServiceResultOutput) ConnectionTrackingPolicy() BackendServiceConnectionTrackingPolicyResponseOutput {
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) BackendServiceConnectionTrackingPolicyResponse {
 		return v.ConnectionTrackingPolicy
@@ -213,12 +215,12 @@ func (o LookupRegionBackendServiceResultOutput) EdgeSecurityPolicy() pulumi.Stri
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) string { return v.EdgeSecurityPolicy }).(pulumi.StringOutput)
 }
 
-// If true, enables Cloud CDN for the backend service of an external HTTP(S) load balancer.
+// If true, enables Cloud CDN for the backend service of a global external Application Load Balancer.
 func (o LookupRegionBackendServiceResultOutput) EnableCDN() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) bool { return v.EnableCDN }).(pulumi.BoolOutput)
 }
 
-// Requires at least one backend instance group to be defined as a backup (failover) backend. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
+// Requires at least one backend instance group to be defined as a backup (failover) backend. For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
 func (o LookupRegionBackendServiceResultOutput) FailoverPolicy() BackendServiceFailoverPolicyResponseOutput {
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) BackendServiceFailoverPolicyResponse { return v.FailoverPolicy }).(BackendServiceFailoverPolicyResponseOutput)
 }
@@ -233,7 +235,7 @@ func (o LookupRegionBackendServiceResultOutput) HealthChecks() pulumi.StringArra
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) []string { return v.HealthChecks }).(pulumi.StringArrayOutput)
 }
 
-// The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
+// The configurations for Identity-Aware Proxy on this resource. Not available for internal passthrough Network Load Balancers and external passthrough Network Load Balancers.
 func (o LookupRegionBackendServiceResultOutput) Iap() BackendServiceIAPResponseOutput {
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) BackendServiceIAPResponse { return v.Iap }).(BackendServiceIAPResponseOutput)
 }
@@ -290,14 +292,14 @@ func (o LookupRegionBackendServiceResultOutput) OutlierDetection() OutlierDetect
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) OutlierDetectionResponse { return v.OutlierDetection }).(OutlierDetectionResponseOutput)
 }
 
-// Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.
+// Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For internal passthrough Network Load Balancers and external passthrough Network Load Balancers, omit port.
 //
-// Deprecated: Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.
+// Deprecated: Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For internal passthrough Network Load Balancers and external passthrough Network Load Balancers, omit port.
 func (o LookupRegionBackendServiceResultOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port_name.
+// A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For internal passthrough Network Load Balancers and external passthrough Network Load Balancers, omit port_name.
 func (o LookupRegionBackendServiceResultOutput) PortName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) string { return v.PortName }).(pulumi.StringOutput)
 }
@@ -330,6 +332,11 @@ func (o LookupRegionBackendServiceResultOutput) SelfLink() pulumi.StringOutput {
 // URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
 func (o LookupRegionBackendServiceResultOutput) ServiceBindings() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) []string { return v.ServiceBindings }).(pulumi.StringArrayOutput)
+}
+
+// URL to networkservices.ServiceLbPolicy resource. Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+func (o LookupRegionBackendServiceResultOutput) ServiceLbPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionBackendServiceResult) string { return v.ServiceLbPolicy }).(pulumi.StringOutput)
 }
 
 // Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).

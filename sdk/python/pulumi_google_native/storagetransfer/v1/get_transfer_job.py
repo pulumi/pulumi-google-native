@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTransferJobResult:
-    def __init__(__self__, creation_time=None, deletion_time=None, description=None, event_stream=None, last_modification_time=None, latest_operation_name=None, logging_config=None, name=None, notification_config=None, project=None, schedule=None, status=None, transfer_spec=None):
+    def __init__(__self__, creation_time=None, deletion_time=None, description=None, event_stream=None, last_modification_time=None, latest_operation_name=None, logging_config=None, name=None, notification_config=None, project=None, replication_spec=None, schedule=None, status=None, transfer_spec=None):
         if creation_time and not isinstance(creation_time, str):
             raise TypeError("Expected argument 'creation_time' to be a str")
         pulumi.set(__self__, "creation_time", creation_time)
@@ -50,6 +50,9 @@ class GetTransferJobResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if replication_spec and not isinstance(replication_spec, dict):
+            raise TypeError("Expected argument 'replication_spec' to be a dict")
+        pulumi.set(__self__, "replication_spec", replication_spec)
         if schedule and not isinstance(schedule, dict):
             raise TypeError("Expected argument 'schedule' to be a dict")
         pulumi.set(__self__, "schedule", schedule)
@@ -141,6 +144,14 @@ class GetTransferJobResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="replicationSpec")
+    def replication_spec(self) -> 'outputs.ReplicationSpecResponse':
+        """
+        Replication specification.
+        """
+        return pulumi.get(self, "replication_spec")
+
+    @property
     @pulumi.getter
     def schedule(self) -> 'outputs.ScheduleResponse':
         """
@@ -181,6 +192,7 @@ class AwaitableGetTransferJobResult(GetTransferJobResult):
             name=self.name,
             notification_config=self.notification_config,
             project=self.project,
+            replication_spec=self.replication_spec,
             schedule=self.schedule,
             status=self.status,
             transfer_spec=self.transfer_spec)
@@ -209,6 +221,7 @@ def get_transfer_job(project_id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         notification_config=pulumi.get(__ret__, 'notification_config'),
         project=pulumi.get(__ret__, 'project'),
+        replication_spec=pulumi.get(__ret__, 'replication_spec'),
         schedule=pulumi.get(__ret__, 'schedule'),
         status=pulumi.get(__ret__, 'status'),
         transfer_spec=pulumi.get(__ret__, 'transfer_spec'))

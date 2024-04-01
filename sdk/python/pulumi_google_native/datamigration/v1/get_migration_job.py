@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetMigrationJobResult:
-    def __init__(__self__, cmek_key_name=None, conversion_workspace=None, create_time=None, destination=None, destination_database=None, display_name=None, dump_flags=None, dump_path=None, duration=None, end_time=None, error=None, filter=None, labels=None, name=None, performance_config=None, phase=None, reverse_ssh_connectivity=None, source=None, source_database=None, state=None, static_ip_connectivity=None, type=None, update_time=None, vpc_peering_connectivity=None):
+    def __init__(__self__, cmek_key_name=None, conversion_workspace=None, create_time=None, destination=None, destination_database=None, display_name=None, dump_flags=None, dump_path=None, duration=None, end_time=None, error=None, filter=None, labels=None, name=None, performance_config=None, phase=None, reverse_ssh_connectivity=None, source=None, source_database=None, sqlserver_homogeneous_migration_job_config=None, state=None, static_ip_connectivity=None, type=None, update_time=None, vpc_peering_connectivity=None):
         if cmek_key_name and not isinstance(cmek_key_name, str):
             raise TypeError("Expected argument 'cmek_key_name' to be a str")
         pulumi.set(__self__, "cmek_key_name", cmek_key_name)
@@ -77,6 +77,9 @@ class GetMigrationJobResult:
         if source_database and not isinstance(source_database, dict):
             raise TypeError("Expected argument 'source_database' to be a dict")
         pulumi.set(__self__, "source_database", source_database)
+        if sqlserver_homogeneous_migration_job_config and not isinstance(sqlserver_homogeneous_migration_job_config, dict):
+            raise TypeError("Expected argument 'sqlserver_homogeneous_migration_job_config' to be a dict")
+        pulumi.set(__self__, "sqlserver_homogeneous_migration_job_config", sqlserver_homogeneous_migration_job_config)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -246,6 +249,14 @@ class GetMigrationJobResult:
         return pulumi.get(self, "source_database")
 
     @property
+    @pulumi.getter(name="sqlserverHomogeneousMigrationJobConfig")
+    def sqlserver_homogeneous_migration_job_config(self) -> 'outputs.SqlServerHomogeneousMigrationJobConfigResponse':
+        """
+        Optional. Configuration for SQL Server homogeneous migration.
+        """
+        return pulumi.get(self, "sqlserver_homogeneous_migration_job_config")
+
+    @property
     @pulumi.getter
     def state(self) -> str:
         """
@@ -311,6 +322,7 @@ class AwaitableGetMigrationJobResult(GetMigrationJobResult):
             reverse_ssh_connectivity=self.reverse_ssh_connectivity,
             source=self.source,
             source_database=self.source_database,
+            sqlserver_homogeneous_migration_job_config=self.sqlserver_homogeneous_migration_job_config,
             state=self.state,
             static_ip_connectivity=self.static_ip_connectivity,
             type=self.type,
@@ -352,6 +364,7 @@ def get_migration_job(location: Optional[str] = None,
         reverse_ssh_connectivity=pulumi.get(__ret__, 'reverse_ssh_connectivity'),
         source=pulumi.get(__ret__, 'source'),
         source_database=pulumi.get(__ret__, 'source_database'),
+        sqlserver_homogeneous_migration_job_config=pulumi.get(__ret__, 'sqlserver_homogeneous_migration_job_config'),
         state=pulumi.get(__ret__, 'state'),
         static_ip_connectivity=pulumi.get(__ret__, 'static_ip_connectivity'),
         type=pulumi.get(__ret__, 'type'),

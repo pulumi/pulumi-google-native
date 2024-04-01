@@ -10,9 +10,50 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 
 __all__ = [
+    'BigQueryDestinationArgs',
     'GceInstanceFilterArgs',
     'ResourceFilterArgs',
 ]
+
+@pulumi.input_type
+class BigQueryDestinationArgs:
+    def __init__(__self__, *,
+                 create_new_results_table: Optional[pulumi.Input[bool]] = None,
+                 destination_dataset: Optional[pulumi.Input[str]] = None):
+        """
+        Message describing big query destination
+        :param pulumi.Input[bool] create_new_results_table: Optional. determine if results will be saved in a new table
+        :param pulumi.Input[str] destination_dataset: Optional. destination dataset to save evaluation results
+        """
+        if create_new_results_table is not None:
+            pulumi.set(__self__, "create_new_results_table", create_new_results_table)
+        if destination_dataset is not None:
+            pulumi.set(__self__, "destination_dataset", destination_dataset)
+
+    @property
+    @pulumi.getter(name="createNewResultsTable")
+    def create_new_results_table(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. determine if results will be saved in a new table
+        """
+        return pulumi.get(self, "create_new_results_table")
+
+    @create_new_results_table.setter
+    def create_new_results_table(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_new_results_table", value)
+
+    @property
+    @pulumi.getter(name="destinationDataset")
+    def destination_dataset(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. destination dataset to save evaluation results
+        """
+        return pulumi.get(self, "destination_dataset")
+
+    @destination_dataset.setter
+    def destination_dataset(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_dataset", value)
+
 
 @pulumi.input_type
 class GceInstanceFilterArgs:

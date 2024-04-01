@@ -16,16 +16,28 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Inputs
     public sealed class GoogleCloudAiplatformV1ModelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not present for AutoML Models or Large Models.
+        /// Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not required for AutoML Models.
         /// </summary>
         [Input("artifactUri")]
         public Input<string>? ArtifactUri { get; set; }
 
         /// <summary>
-        /// Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not present for AutoML Models or Large Models.
+        /// Optional. User input field to specify the base model source. Currently it only supports specifing the Model Garden models and Genie models.
+        /// </summary>
+        [Input("baseModelSource")]
+        public Input<Inputs.GoogleCloudAiplatformV1ModelBaseModelSourceArgs>? BaseModelSource { get; set; }
+
+        /// <summary>
+        /// Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not required for AutoML Models.
         /// </summary>
         [Input("containerSpec")]
         public Input<Inputs.GoogleCloudAiplatformV1ModelContainerSpecArgs>? ContainerSpec { get; set; }
+
+        /// <summary>
+        /// Stats of data used for training or evaluating the Model. Only populated when the Model is trained by a TrainingPipeline with data_input_config.
+        /// </summary>
+        [Input("dataStats")]
+        public Input<Inputs.GoogleCloudAiplatformV1ModelDataStatsArgs>? DataStats { get; set; }
 
         /// <summary>
         /// The description of the Model.

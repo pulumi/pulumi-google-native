@@ -157,7 +157,7 @@ class GooglePrivacyDlpV2ActionArgs:
                  publish_to_stackdriver: Optional[pulumi.Input['GooglePrivacyDlpV2PublishToStackdriverArgs']] = None,
                  save_findings: Optional[pulumi.Input['GooglePrivacyDlpV2SaveFindingsArgs']] = None):
         """
-        A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
+        A task to execute on the completion of a job. See https://cloud.google.com/sensitive-data-protection/docs/concepts-actions to learn more.
         :param pulumi.Input['GooglePrivacyDlpV2DeidentifyArgs'] deidentify: Create a de-identified copy of the input data.
         :param pulumi.Input['GooglePrivacyDlpV2JobNotificationEmailsArgs'] job_notification_emails: Sends an email when the job completes. The email goes to IAM project owners and technical [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
         :param pulumi.Input['GooglePrivacyDlpV2PublishToPubSubArgs'] pub_sub: Publish a notification to a Pub/Sub topic.
@@ -473,7 +473,8 @@ class GooglePrivacyDlpV2BigQueryOptionsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]] identifying_fields: Table fields that may uniquely identify a row within the table. When `actions.saveFindings.outputConfig.table` is specified, the values of columns specified here are available in the output table under `location.content_locations.record_location.record_key.id_values`. Nested fields such as `person.birthdate.year` are allowed.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]] included_fields: Limit scanning only to these fields. When inspecting a table, we recommend that you inspect all columns. Otherwise, findings might be affected because hints from excluded columns will not be used.
         :param pulumi.Input[str] rows_limit: Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
-        :param pulumi.Input[int] rows_limit_percent: Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
+        :param pulumi.Input[int] rows_limit_percent: Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
+        :param pulumi.Input['GooglePrivacyDlpV2BigQueryOptionsSampleMethod'] sample_method: How to sample the data.
         :param pulumi.Input['GooglePrivacyDlpV2BigQueryTableArgs'] table_reference: Complete BigQuery table reference.
         """
         if excluded_fields is not None:
@@ -543,7 +544,7 @@ class GooglePrivacyDlpV2BigQueryOptionsArgs:
     @pulumi.getter(name="rowsLimitPercent")
     def rows_limit_percent(self) -> Optional[pulumi.Input[int]]:
         """
-        Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
+        Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
         """
         return pulumi.get(self, "rows_limit_percent")
 
@@ -554,6 +555,9 @@ class GooglePrivacyDlpV2BigQueryOptionsArgs:
     @property
     @pulumi.getter(name="sampleMethod")
     def sample_method(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2BigQueryOptionsSampleMethod']]:
+        """
+        How to sample the data.
+        """
         return pulumi.get(self, "sample_method")
 
     @sample_method.setter
@@ -762,7 +766,7 @@ class GooglePrivacyDlpV2BucketingConfigArgs:
     def __init__(__self__, *,
                  buckets: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2BucketArgs']]]] = None):
         """
-        Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH This can be used on data of type: number, long, string, timestamp. If the bound `Value` type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+        Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH This can be used on data of type: number, long, string, timestamp. If the bound `Value` type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/sensitive-data-protection/docs/concepts-bucketing to learn more.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2BucketArgs']]] buckets: Set of buckets. Ranges must be non-overlapping.
         """
         if buckets is not None:
@@ -1007,11 +1011,12 @@ class GooglePrivacyDlpV2CloudStorageOptionsArgs:
                  sample_method: Optional[pulumi.Input['GooglePrivacyDlpV2CloudStorageOptionsSampleMethod']] = None):
         """
         Options defining a file or a set of files within a Cloud Storage bucket.
-        :param pulumi.Input[str] bytes_limit_per_file: Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
-        :param pulumi.Input[int] bytes_limit_per_file_percent: Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
+        :param pulumi.Input[str] bytes_limit_per_file: Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/sensitive-data-protection/docs/supported-file-types#max-byte-size-per-file).
+        :param pulumi.Input[int] bytes_limit_per_file_percent: Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/sensitive-data-protection/docs/supported-file-types#max-byte-size-per-file).
         :param pulumi.Input['GooglePrivacyDlpV2FileSetArgs'] file_set: The set of one or more files to scan.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem']]] file_types: List of file type groups to include in the scan. If empty, all files are scanned and available data format processors are applied. In addition, the binary content of the selected files is always scanned as well. Images are scanned only as binary if the specified region does not support image inspection and no file_types were specified. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
         :param pulumi.Input[int] files_limit_percent: Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0.
+        :param pulumi.Input['GooglePrivacyDlpV2CloudStorageOptionsSampleMethod'] sample_method: How to sample the data.
         """
         if bytes_limit_per_file is not None:
             pulumi.set(__self__, "bytes_limit_per_file", bytes_limit_per_file)
@@ -1030,7 +1035,7 @@ class GooglePrivacyDlpV2CloudStorageOptionsArgs:
     @pulumi.getter(name="bytesLimitPerFile")
     def bytes_limit_per_file(self) -> Optional[pulumi.Input[str]]:
         """
-        Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
+        Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/sensitive-data-protection/docs/supported-file-types#max-byte-size-per-file).
         """
         return pulumi.get(self, "bytes_limit_per_file")
 
@@ -1042,7 +1047,7 @@ class GooglePrivacyDlpV2CloudStorageOptionsArgs:
     @pulumi.getter(name="bytesLimitPerFilePercent")
     def bytes_limit_per_file_percent(self) -> Optional[pulumi.Input[int]]:
         """
-        Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
+        Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/sensitive-data-protection/docs/supported-file-types#max-byte-size-per-file).
         """
         return pulumi.get(self, "bytes_limit_per_file_percent")
 
@@ -1089,6 +1094,9 @@ class GooglePrivacyDlpV2CloudStorageOptionsArgs:
     @property
     @pulumi.getter(name="sampleMethod")
     def sample_method(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2CloudStorageOptionsSampleMethod']]:
+        """
+        How to sample the data.
+        """
         return pulumi.get(self, "sample_method")
 
     @sample_method.setter
@@ -1102,7 +1110,7 @@ class GooglePrivacyDlpV2CloudStoragePathArgs:
                  path: Optional[pulumi.Input[str]] = None):
         """
         Message representing a single file or path in Cloud Storage.
-        :param pulumi.Input[str] path: A url representing a file or path (no wildcards) in Cloud Storage. Example: gs://[BUCKET_NAME]/dictionary.txt
+        :param pulumi.Input[str] path: A URL representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
         """
         if path is not None:
             pulumi.set(__self__, "path", path)
@@ -1111,7 +1119,7 @@ class GooglePrivacyDlpV2CloudStoragePathArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        A url representing a file or path (no wildcards) in Cloud Storage. Example: gs://[BUCKET_NAME]/dictionary.txt
+        A URL representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
         """
         return pulumi.get(self, "path")
 
@@ -1371,7 +1379,7 @@ class GooglePrivacyDlpV2CryptoHashConfigArgs:
     def __init__(__self__, *,
                  crypto_key: Optional[pulumi.Input['GooglePrivacyDlpV2CryptoKeyArgs']] = None):
         """
-        Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes. Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=). Currently, only string and integer values can be hashed. See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+        Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes. Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=). Currently, only string and integer values can be hashed. See https://cloud.google.com/sensitive-data-protection/docs/pseudonymization to learn more.
         :param pulumi.Input['GooglePrivacyDlpV2CryptoKeyArgs'] crypto_key: The key used by the hash function.
         """
         if crypto_key is not None:
@@ -1456,13 +1464,13 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigArgs:
                  radix: Optional[pulumi.Input[int]] = None,
                  surrogate_info_type: Optional[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']] = None):
         """
-        Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `ReidentifyContent` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See https://cloud.google.com/dlp/docs/pseudonymization to learn more. Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
+        Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `ReidentifyContent` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See https://cloud.google.com/sensitive-data-protection/docs/pseudonymization to learn more. Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
         :param pulumi.Input['GooglePrivacyDlpV2CryptoKeyArgs'] crypto_key: The key used by the encryption algorithm.
         :param pulumi.Input['GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet'] common_alphabet: Common alphabets.
         :param pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'] context: The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and unstructured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
         :param pulumi.Input[str] custom_alphabet: This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range [2, 95]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is: 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|\\:;"'<,>.?/
         :param pulumi.Input[int] radix: The native way to select the alphabet. Must be in the range [2, 95].
-        :param pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs'] surrogate_info_type: The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE
+        :param pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs'] surrogate_info_type: The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE
         """
         pulumi.set(__self__, "crypto_key", crypto_key)
         if common_alphabet is not None:
@@ -1540,7 +1548,7 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigArgs:
     @pulumi.getter(name="surrogateInfoType")
     def surrogate_info_type(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']]:
         """
-        The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE
+        The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE
         """
         return pulumi.get(self, "surrogate_info_type")
 
@@ -1813,7 +1821,7 @@ class GooglePrivacyDlpV2DateShiftConfigArgs:
                  context: Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']] = None,
                  crypto_key: Optional[pulumi.Input['GooglePrivacyDlpV2CryptoKeyArgs']] = None):
         """
-        Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+        Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/sensitive-data-protection/docs/concepts-date-shifting to learn more.
         :param pulumi.Input[int] lower_bound_days: For example, -5 means shift date to at most 5 days back in the past.
         :param pulumi.Input[int] upper_bound_days: Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
         :param pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'] context: Points to the field that contains the context, for example, an entity id. If set, must also set cryptoKey. If set, shift will be consistent for the given context.
@@ -2103,7 +2111,7 @@ class GooglePrivacyDlpV2DictionaryArgs:
                  cloud_storage_path: Optional[pulumi.Input['GooglePrivacyDlpV2CloudStoragePathArgs']] = None,
                  word_list: Optional[pulumi.Input['GooglePrivacyDlpV2WordListArgs']] = None):
         """
-        Custom information type based on a dictionary of words or phrases. This can be used to match sensitive information specific to the data, such as a list of employee IDs or job titles. Dictionary words are case-insensitive and all characters other than letters and digits in the unicode [Basic Multilingual Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#Basic_Multilingual_Plane) will be replaced with whitespace when scanning for matches, so the dictionary phrase "Sam Johnson" will match all three phrases "sam johnson", "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters surrounding any match must be of a different type than the adjacent characters within the word, so letters must be next to non-letters and digits next to non-digits. For example, the dictionary word "jen" will match the first three letters of the text "jen123" but will return no matches for "jennifer". Dictionary words containing a large number of characters that are not letters or digits may result in unexpected findings because such characters are treated as whitespace. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries. For dictionaries that do not fit within these constraints, consider using `LargeCustomDictionaryConfig` in the `StoredInfoType` API.
+        Custom information type based on a dictionary of words or phrases. This can be used to match sensitive information specific to the data, such as a list of employee IDs or job titles. Dictionary words are case-insensitive and all characters other than letters and digits in the unicode [Basic Multilingual Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#Basic_Multilingual_Plane) will be replaced with whitespace when scanning for matches, so the dictionary phrase "Sam Johnson" will match all three phrases "sam johnson", "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters surrounding any match must be of a different type than the adjacent characters within the word, so letters must be next to non-letters and digits next to non-digits. For example, the dictionary word "jen" will match the first three letters of the text "jen123" but will return no matches for "jennifer". Dictionary words containing a large number of characters that are not letters or digits may result in unexpected findings because such characters are treated as whitespace. The [limits](https://cloud.google.com/sensitive-data-protection/limits) page contains details about the size limits of dictionaries. For dictionaries that do not fit within these constraints, consider using `LargeCustomDictionaryConfig` in the `StoredInfoType` API.
         :param pulumi.Input['GooglePrivacyDlpV2CloudStoragePathArgs'] cloud_storage_path: Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
         :param pulumi.Input['GooglePrivacyDlpV2WordListArgs'] word_list: List of words or phrases to search for.
         """
@@ -2880,7 +2888,7 @@ class GooglePrivacyDlpV2FixedSizeBucketingConfigArgs:
                  lower_bound: pulumi.Input['GooglePrivacyDlpV2ValueArgs'],
                  upper_bound: pulumi.Input['GooglePrivacyDlpV2ValueArgs']):
         """
-        Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+        Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/sensitive-data-protection/docs/concepts-bucketing to learn more.
         :param pulumi.Input[float] bucket_size: Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
         :param pulumi.Input['GooglePrivacyDlpV2ValueArgs'] lower_bound: Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
         :param pulumi.Input['GooglePrivacyDlpV2ValueArgs'] upper_bound: Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
@@ -2936,7 +2944,7 @@ class GooglePrivacyDlpV2HotwordRuleArgs:
         The rule that adjusts the likelihood of findings within a certain proximity of hotwords.
         :param pulumi.Input['GooglePrivacyDlpV2RegexArgs'] hotword_regex: Regular expression pattern defining what qualifies as a hotword.
         :param pulumi.Input['GooglePrivacyDlpV2LikelihoodAdjustmentArgs'] likelihood_adjustment: Likelihood adjustment to apply to all matching findings.
-        :param pulumi.Input['GooglePrivacyDlpV2ProximityArgs'] proximity: Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\\(\\d{3}\\) \\d{3}-\\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\\(xxx\\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
+        :param pulumi.Input['GooglePrivacyDlpV2ProximityArgs'] proximity: Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\\(\\d{3}\\) \\d{3}-\\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\\(xxx\\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes-likelihood#match-column-values).
         """
         if hotword_regex is not None:
             pulumi.set(__self__, "hotword_regex", hotword_regex)
@@ -2973,7 +2981,7 @@ class GooglePrivacyDlpV2HotwordRuleArgs:
     @pulumi.getter
     def proximity(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2ProximityArgs']]:
         """
-        Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\\(\\d{3}\\) \\d{3}-\\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\\(xxx\\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
+        Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\\(\\d{3}\\) \\d{3}-\\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\\(xxx\\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes-likelihood#match-column-values).
         """
         return pulumi.get(self, "proximity")
 
@@ -3060,6 +3068,7 @@ class GooglePrivacyDlpV2ImageTransformationsArgs:
                  transforms: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2ImageTransformationArgs']]]] = None):
         """
         A type of transformation that is applied over images.
+        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2ImageTransformationArgs']]] transforms: List of transforms to make.
         """
         if transforms is not None:
             pulumi.set(__self__, "transforms", transforms)
@@ -3067,6 +3076,9 @@ class GooglePrivacyDlpV2ImageTransformationsArgs:
     @property
     @pulumi.getter
     def transforms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2ImageTransformationArgs']]]]:
+        """
+        List of transforms to make.
+        """
         return pulumi.get(self, "transforms")
 
     @transforms.setter
@@ -3296,7 +3308,7 @@ class GooglePrivacyDlpV2InfoTypeArgs:
                  version: Optional[pulumi.Input[str]] = None):
         """
         Type of information detected by the API.
-        :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
+        :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
         :param pulumi.Input['GooglePrivacyDlpV2SensitivityScoreArgs'] sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
         :param pulumi.Input[str] version: Optional version name for this InfoType.
         """
@@ -3311,7 +3323,7 @@ class GooglePrivacyDlpV2InfoTypeArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
         """
         return pulumi.get(self, "name")
 
@@ -3359,12 +3371,12 @@ class GooglePrivacyDlpV2InspectConfigArgs:
         """
         Configuration description of the scanning process. When used with redactContent only info_types and min_likelihood are currently used.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InspectConfigContentOptionsItem']]] content_options: Deprecated and unused.
-        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2CustomInfoTypeArgs']]] custom_info_types: CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2CustomInfoTypeArgs']]] custom_info_types: CustomInfoTypes provided by the user. See https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes to learn more.
         :param pulumi.Input[bool] exclude_info_types: When true, excludes type information of the findings. This is not used for data profiling.
         :param pulumi.Input[bool] include_quote: When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling.
-        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']]] info_types: Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
+        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']]] info_types: Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
         :param pulumi.Input['GooglePrivacyDlpV2FindingLimitsArgs'] limits: Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error. When set within an InspectJobConfig, the specified maximum values aren't hard limits. If an inspection job reaches these limits, the job ends gradually, not abruptly. Therefore, the actual number of findings that Cloud DLP returns can be multiple times higher than these maximum values.
-        :param pulumi.Input['GooglePrivacyDlpV2InspectConfigMinLikelihood'] min_likelihood: Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
+        :param pulumi.Input['GooglePrivacyDlpV2InspectConfigMinLikelihood'] min_likelihood: Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/sensitive-data-protection/docs/likelihood).
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeLikelihoodArgs']]] min_likelihood_per_info_type: Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood. The system only returns a finding if its likelihood is above this threshold. If this field is not set, the system uses the InspectConfig min_likelihood.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InspectionRuleSetArgs']]] rule_set: Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end, other rules are executed in the order they are specified for each info type.
         """
@@ -3409,7 +3421,7 @@ class GooglePrivacyDlpV2InspectConfigArgs:
     @pulumi.getter(name="customInfoTypes")
     def custom_info_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2CustomInfoTypeArgs']]]]:
         """
-        CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+        CustomInfoTypes provided by the user. See https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes to learn more.
         """
         return pulumi.get(self, "custom_info_types")
 
@@ -3445,7 +3457,7 @@ class GooglePrivacyDlpV2InspectConfigArgs:
     @pulumi.getter(name="infoTypes")
     def info_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']]]]:
         """
-        Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
+        Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
         """
         return pulumi.get(self, "info_types")
 
@@ -3469,7 +3481,7 @@ class GooglePrivacyDlpV2InspectConfigArgs:
     @pulumi.getter(name="minLikelihood")
     def min_likelihood(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2InspectConfigMinLikelihood']]:
         """
-        Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
+        Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/sensitive-data-protection/docs/likelihood).
         """
         return pulumi.get(self, "min_likelihood")
 
@@ -3788,7 +3800,7 @@ class GooglePrivacyDlpV2KmsWrappedCryptoKeyArgs:
                  crypto_key_name: pulumi.Input[str],
                  wrapped_key: pulumi.Input[str]):
         """
-        Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
+        Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/sensitive-data-protection/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
         :param pulumi.Input[str] crypto_key_name: The resource name of the KMS CryptoKey to use for unwrapping.
         :param pulumi.Input[str] wrapped_key: The wrapped data crypto key.
         """
@@ -3867,7 +3879,7 @@ class GooglePrivacyDlpV2LargeCustomDictionaryConfigArgs:
                  cloud_storage_file_set: Optional[pulumi.Input['GooglePrivacyDlpV2CloudStorageFileSetArgs']] = None,
                  output_path: Optional[pulumi.Input['GooglePrivacyDlpV2CloudStoragePathArgs']] = None):
         """
-        Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
+        Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/sensitive-data-protection/limits) page. The artifacts of dictionary creation are stored in the specified Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
         :param pulumi.Input['GooglePrivacyDlpV2BigQueryFieldArgs'] big_query_field: Field in a BigQuery table where each cell represents a dictionary phrase.
         :param pulumi.Input['GooglePrivacyDlpV2CloudStorageFileSetArgs'] cloud_storage_file_set: Set of files containing newline-delimited lists of dictionary phrases.
         :param pulumi.Input['GooglePrivacyDlpV2CloudStoragePathArgs'] output_path: Location to store dictionary artifacts in Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
@@ -4470,7 +4482,7 @@ class GooglePrivacyDlpV2ProximityArgs:
         """
         Message for specifying a window around a finding to apply a detection rule.
         :param pulumi.Input[int] window_after: Number of characters after the finding to consider.
-        :param pulumi.Input[int] window_before: Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
+        :param pulumi.Input[int] window_before: Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes-likelihood#match-column-values).
         """
         if window_after is not None:
             pulumi.set(__self__, "window_after", window_after)
@@ -4493,7 +4505,7 @@ class GooglePrivacyDlpV2ProximityArgs:
     @pulumi.getter(name="windowBefore")
     def window_before(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
+        Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes-likelihood#match-column-values).
         """
         return pulumi.get(self, "window_before")
 
@@ -4677,7 +4689,7 @@ class GooglePrivacyDlpV2PublishToPubSubArgs:
     def __init__(__self__, *,
                  topic: Optional[pulumi.Input[str]] = None):
         """
-        Publish a message into a given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
+        Publish a message into a given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
         :param pulumi.Input[str] topic: Cloud Pub/Sub topic to send notifications to. The topic must have given publishing access rights to the DLP API service account executing the long running DlpJob sending the notifications. Format is projects/{project}/topics/{topic}.
         """
         if topic is not None:
@@ -4999,7 +5011,7 @@ class GooglePrivacyDlpV2ReplaceDictionaryConfigArgs:
                  word_list: Optional[pulumi.Input['GooglePrivacyDlpV2WordListArgs']] = None):
         """
         Replace each input value with a value randomly selected from the dictionary.
-        :param pulumi.Input['GooglePrivacyDlpV2WordListArgs'] word_list: A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+        :param pulumi.Input['GooglePrivacyDlpV2WordListArgs'] word_list: A list of words to select from for random replacement. The [limits](https://cloud.google.com/sensitive-data-protection/limits) page contains details about the size limits of dictionaries.
         """
         if word_list is not None:
             pulumi.set(__self__, "word_list", word_list)
@@ -5008,7 +5020,7 @@ class GooglePrivacyDlpV2ReplaceDictionaryConfigArgs:
     @pulumi.getter(name="wordList")
     def word_list(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2WordListArgs']]:
         """
-        A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+        A list of words to select from for random replacement. The [limits](https://cloud.google.com/sensitive-data-protection/limits) page contains details about the size limits of dictionaries.
         """
         return pulumi.get(self, "word_list")
 
@@ -5057,7 +5069,7 @@ class GooglePrivacyDlpV2RiskAnalysisJobConfigArgs:
                  privacy_metric: Optional[pulumi.Input['GooglePrivacyDlpV2PrivacyMetricArgs']] = None,
                  source_table: Optional[pulumi.Input['GooglePrivacyDlpV2BigQueryTableArgs']] = None):
         """
-        Configuration for a risk analysis job. See https://cloud.google.com/dlp/docs/concepts-risk-analysis to learn more.
+        Configuration for a risk analysis job. See https://cloud.google.com/sensitive-data-protection/docs/concepts-risk-analysis to learn more.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2ActionArgs']]] actions: Actions to execute at the completion of the job. Are executed in the order provided.
         :param pulumi.Input['GooglePrivacyDlpV2PrivacyMetricArgs'] privacy_metric: Privacy metric to compute.
         :param pulumi.Input['GooglePrivacyDlpV2BigQueryTableArgs'] source_table: Input dataset to compute metrics over.
@@ -5268,6 +5280,7 @@ class GooglePrivacyDlpV2StorageConfigArgs:
         :param pulumi.Input['GooglePrivacyDlpV2CloudStorageOptionsArgs'] cloud_storage_options: Cloud Storage options.
         :param pulumi.Input['GooglePrivacyDlpV2DatastoreOptionsArgs'] datastore_options: Google Cloud Datastore options.
         :param pulumi.Input['GooglePrivacyDlpV2HybridOptionsArgs'] hybrid_options: Hybrid inspection options.
+        :param pulumi.Input['GooglePrivacyDlpV2TimespanConfigArgs'] timespan_config: Configuration of the timespan of the items to include in scanning.
         """
         if big_query_options is not None:
             pulumi.set(__self__, "big_query_options", big_query_options)
@@ -5331,6 +5344,9 @@ class GooglePrivacyDlpV2StorageConfigArgs:
     @property
     @pulumi.getter(name="timespanConfig")
     def timespan_config(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2TimespanConfigArgs']]:
+        """
+        Configuration of the timespan of the items to include in scanning.
+        """
         return pulumi.get(self, "timespan_config")
 
     @timespan_config.setter
@@ -5347,7 +5363,7 @@ class GooglePrivacyDlpV2StoredInfoTypeConfigArgs:
                  large_custom_dictionary: Optional[pulumi.Input['GooglePrivacyDlpV2LargeCustomDictionaryConfigArgs']] = None,
                  regex: Optional[pulumi.Input['GooglePrivacyDlpV2RegexArgs']] = None):
         """
-        Configuration for stored infoTypes. All fields and subfield are provided by the user. For more information, see https://cloud.google.com/dlp/docs/creating-custom-infotypes.
+        Configuration for stored infoTypes. All fields and subfield are provided by the user. For more information, see https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes.
         :param pulumi.Input[str] description: Description of the StoredInfoType (max 256 characters).
         :param pulumi.Input['GooglePrivacyDlpV2DictionaryArgs'] dictionary: Store dictionary-based CustomInfoType.
         :param pulumi.Input[str] display_name: Display name of the StoredInfoType (max 256 characters).
@@ -5470,7 +5486,7 @@ class GooglePrivacyDlpV2StoredTypeArgs:
 class GooglePrivacyDlpV2SurrogateTypeArgs:
     def __init__(__self__):
         """
-        Message for detecting output from deidentification transformations such as [`CryptoReplaceFfxFpeConfig`](https://cloud.google.com/dlp/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig). These types of transformations are those that perform pseudonymization, thereby producing a "surrogate" as output. This should be used in conjunction with a field on the transformation such as `surrogate_info_type`. This CustomInfoType does not support the use of `detection_rules`.
+        Message for detecting output from deidentification transformations such as [`CryptoReplaceFfxFpeConfig`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig). These types of transformations are those that perform pseudonymization, thereby producing a "surrogate" as output. This should be used in conjunction with a field on the transformation such as `surrogate_info_type`. This CustomInfoType does not support the use of `detection_rules`.
         """
         pass
 
@@ -5615,7 +5631,7 @@ class GooglePrivacyDlpV2TimespanConfigArgs:
         :param pulumi.Input[bool] enable_auto_population_of_timespan_config: When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger or the timespan end_time used in the last run of the JobTrigger.
         :param pulumi.Input[str] end_time: Exclude files, tables, or rows newer than this value. If not set, no upper time limit is applied.
         :param pulumi.Input[str] start_time: Exclude files, tables, or rows older than this value. If not set, no lower time limit is applied.
-        :param pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'] timestamp_field: Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-timespan) related to this operation.
+        :param pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'] timestamp_field: Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-timespan) related to this operation.
         """
         if enable_auto_population_of_timespan_config is not None:
             pulumi.set(__self__, "enable_auto_population_of_timespan_config", enable_auto_population_of_timespan_config)
@@ -5666,7 +5682,7 @@ class GooglePrivacyDlpV2TimespanConfigArgs:
     @pulumi.getter(name="timestampField")
     def timestamp_field(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]:
         """
-        Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-timespan) related to this operation.
+        Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-timespan) related to this operation.
         """
         return pulumi.get(self, "timestamp_field")
 

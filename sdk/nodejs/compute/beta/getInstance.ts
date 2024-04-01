@@ -16,6 +16,7 @@ export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions):
     return pulumi.runtime.invoke("google-native:compute/beta:getInstance", {
         "instance": args.instance,
         "project": args.project,
+        "view": args.view,
         "zone": args.zone,
     }, opts);
 }
@@ -23,6 +24,7 @@ export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions):
 export interface GetInstanceArgs {
     instance: string;
     project?: string;
+    view?: string;
     zone: string;
 }
 
@@ -134,6 +136,10 @@ export interface GetInstanceResult {
      */
     readonly params: outputs.compute.beta.InstanceParamsResponse;
     /**
+     * Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+     */
+    readonly partnerMetadata: {[key: string]: string};
+    /**
      * PostKeyRevocationActionType of the instance.
      */
     readonly postKeyRevocationActionType: string;
@@ -153,6 +159,10 @@ export interface GetInstanceResult {
      * Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
      */
     readonly resourceStatus: outputs.compute.beta.ResourceStatusResponse;
+    /**
+     * Reserved for future use.
+     */
+    readonly satisfiesPzi: boolean;
     /**
      * Reserved for future use.
      */
@@ -218,5 +228,6 @@ export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.Inv
 export interface GetInstanceOutputArgs {
     instance: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    view?: pulumi.Input<string>;
     zone: pulumi.Input<string>;
 }

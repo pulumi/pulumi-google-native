@@ -11,11 +11,16 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
 {
     /// <summary>
     /// Creates a new Repository in a given project and location.
-    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataform/v1beta1:Repository")]
     public partial class Repository : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The timestamp of when the repository was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
         /// <summary>
         /// Optional. The repository's user-friendly name.
         /// </summary>
@@ -38,7 +43,7 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The repository's name.
+        /// Identifier. The repository's name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -153,6 +158,12 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
 
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Identifier. The repository's name.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.

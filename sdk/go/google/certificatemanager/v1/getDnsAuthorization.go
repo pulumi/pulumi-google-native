@@ -41,6 +41,8 @@ type LookupDnsAuthorizationResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
 	Name string `pulumi:"name"`
+	// Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: - in location global: FIXED_RECORD.
+	Type string `pulumi:"type"`
 	// The last update timestamp of a DnsAuthorization.
 	UpdateTime string `pulumi:"updateTime"`
 }
@@ -110,6 +112,11 @@ func (o LookupDnsAuthorizationResultOutput) Labels() pulumi.StringMapOutput {
 // A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
 func (o LookupDnsAuthorizationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsAuthorizationResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: - in location global: FIXED_RECORD.
+func (o LookupDnsAuthorizationResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDnsAuthorizationResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // The last update timestamp of a DnsAuthorization.

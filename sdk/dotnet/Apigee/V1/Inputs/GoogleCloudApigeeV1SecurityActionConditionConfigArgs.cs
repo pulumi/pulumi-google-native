@@ -11,20 +11,80 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
 {
 
     /// <summary>
-    /// The following are a list of conditions. A valid SecurityAction must contain at least one condition. Within a condition, each element is ORed. Across conditions elements are ANDed. For example if a SecurityAction has the following: api_keys: ["key1", "key2"] and developers: ["dev1", "dev2"] then this is interpreted as: enforce the action if the incoming request has ((api_key = "key1" OR api_key="key") AND (developer="dev1" OR developer="dev2"))
+    /// The following are a list of conditions. A valid SecurityAction must contain at least one condition. Within a condition, each element is ORed. Across conditions elements are ANDed. For example if a SecurityAction has the following: ip_address_ranges: ["ip1", "ip2"] and bot_reasons: ["Flooder", "Robot Abuser"] then this is interpreted as: enforce the action if the incoming request has ((ip_address_ranges = "ip1" OR ip_address_ranges = "ip2") AND (bot_reasons="Flooder" OR bot_reasons="Robot Abuser")). Conditions other than ip_address_ranges and bot_reasons cannot be ANDed.
     /// </summary>
     public sealed class GoogleCloudApigeeV1SecurityActionConditionConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accessTokens")]
+        private InputList<string>? _accessTokens;
+
+        /// <summary>
+        /// Optional. A list of access_tokens. Limit 1000 per action.
+        /// </summary>
+        public InputList<string> AccessTokens
+        {
+            get => _accessTokens ?? (_accessTokens = new InputList<string>());
+            set => _accessTokens = value;
+        }
+
+        [Input("apiKeys")]
+        private InputList<string>? _apiKeys;
+
+        /// <summary>
+        /// Optional. A list of API keys. Limit 1000 per action.
+        /// </summary>
+        public InputList<string> ApiKeys
+        {
+            get => _apiKeys ?? (_apiKeys = new InputList<string>());
+            set => _apiKeys = value;
+        }
+
+        [Input("apiProducts")]
+        private InputList<string>? _apiProducts;
+
+        /// <summary>
+        /// Optional. A list of API Products. Limit 1000 per action.
+        /// </summary>
+        public InputList<string> ApiProducts
+        {
+            get => _apiProducts ?? (_apiProducts = new InputList<string>());
+            set => _apiProducts = value;
+        }
+
         [Input("botReasons")]
         private InputList<string>? _botReasons;
 
         /// <summary>
-        /// Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection and Advanced API Scraper.
+        /// Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection, Advanced API Scraper, Search Engine Crawlers, Public Clouds, Public Cloud AWS, Public Cloud Azure, and Public Cloud Google.
         /// </summary>
         public InputList<string> BotReasons
         {
             get => _botReasons ?? (_botReasons = new InputList<string>());
             set => _botReasons = value;
+        }
+
+        [Input("developerApps")]
+        private InputList<string>? _developerApps;
+
+        /// <summary>
+        /// Optional. A list of developer apps. Limit 1000 per action.
+        /// </summary>
+        public InputList<string> DeveloperApps
+        {
+            get => _developerApps ?? (_developerApps = new InputList<string>());
+            set => _developerApps = value;
+        }
+
+        [Input("developers")]
+        private InputList<string>? _developers;
+
+        /// <summary>
+        /// Optional. A list of developers. Limit 1000 per action.
+        /// </summary>
+        public InputList<string> Developers
+        {
+            get => _developers ?? (_developers = new InputList<string>());
+            set => _developers = value;
         }
 
         [Input("ipAddressRanges")]
@@ -37,6 +97,18 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         {
             get => _ipAddressRanges ?? (_ipAddressRanges = new InputList<string>());
             set => _ipAddressRanges = value;
+        }
+
+        [Input("userAgents")]
+        private InputList<string>? _userAgents;
+
+        /// <summary>
+        /// Optional. A list of user agents to deny. We look for exact matches. Limit 50 per action.
+        /// </summary>
+        public InputList<string> UserAgents
+        {
+            get => _userAgents ?? (_userAgents = new InputList<string>());
+            set => _userAgents = value;
         }
 
         public GoogleCloudApigeeV1SecurityActionConditionConfigArgs()

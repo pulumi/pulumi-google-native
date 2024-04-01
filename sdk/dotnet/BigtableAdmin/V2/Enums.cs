@@ -130,6 +130,43 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
     }
 
     /// <summary>
+    /// The Compute Billing Owner for this Data Boost App Profile.
+    /// </summary>
+    [EnumType]
+    public readonly struct DataBoostIsolationReadOnlyComputeBillingOwner : IEquatable<DataBoostIsolationReadOnlyComputeBillingOwner>
+    {
+        private readonly string _value;
+
+        private DataBoostIsolationReadOnlyComputeBillingOwner(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified value.
+        /// </summary>
+        public static DataBoostIsolationReadOnlyComputeBillingOwner ComputeBillingOwnerUnspecified { get; } = new DataBoostIsolationReadOnlyComputeBillingOwner("COMPUTE_BILLING_OWNER_UNSPECIFIED");
+        /// <summary>
+        /// The host Cloud Project containing the targeted Bigtable Instance / Table pays for compute.
+        /// </summary>
+        public static DataBoostIsolationReadOnlyComputeBillingOwner HostPays { get; } = new DataBoostIsolationReadOnlyComputeBillingOwner("HOST_PAYS");
+
+        public static bool operator ==(DataBoostIsolationReadOnlyComputeBillingOwner left, DataBoostIsolationReadOnlyComputeBillingOwner right) => left.Equals(right);
+        public static bool operator !=(DataBoostIsolationReadOnlyComputeBillingOwner left, DataBoostIsolationReadOnlyComputeBillingOwner right) => !left.Equals(right);
+
+        public static explicit operator string(DataBoostIsolationReadOnlyComputeBillingOwner value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DataBoostIsolationReadOnlyComputeBillingOwner other && Equals(other);
+        public bool Equals(DataBoostIsolationReadOnlyComputeBillingOwner other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The type of the instance. Defaults to `PRODUCTION`.
     /// </summary>
     [EnumType]

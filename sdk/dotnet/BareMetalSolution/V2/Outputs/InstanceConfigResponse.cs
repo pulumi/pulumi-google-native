@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// </summary>
         public readonly string InstanceType;
         /// <summary>
+        /// Name of the KMS crypto key version used to encrypt the initial passwords. The key has to have ASYMMETRIC_DECRYPT purpose.
+        /// </summary>
+        public readonly string KmsKeyVersion;
+        /// <summary>
         /// List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse> LogicalInterfaces;
@@ -75,6 +79,8 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
 
             string instanceType,
 
+            string kmsKeyVersion,
+
             ImmutableArray<Outputs.GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse> logicalInterfaces,
 
             string name,
@@ -95,6 +101,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
             ClientNetwork = clientNetwork;
             Hyperthreading = hyperthreading;
             InstanceType = instanceType;
+            KmsKeyVersion = kmsKeyVersion;
             LogicalInterfaces = logicalInterfaces;
             Name = name;
             NetworkConfig = networkConfig;

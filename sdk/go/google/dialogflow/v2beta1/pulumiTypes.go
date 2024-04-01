@@ -17,7 +17,7 @@ var _ = internal.GetEnvOrDefault
 type GoogleCloudDialogflowV2beta1AutomatedAgentConfig struct {
 	// ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. - For ES agents, use format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2beta1#google.cloud.dialogflow.v2beta1.DetectIntentRequest) for more details. - For CX agents, use format `projects//locations//agents//environments/`. If environment is not specified, the default `draft` environment is used.
 	Agent string `pulumi:"agent"`
-	// Optional. Sets Dialogflow CX session life time. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.
+	// Optional. Configure lifetime of the Dialogflow session. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.
 	SessionTtl *string `pulumi:"sessionTtl"`
 }
 
@@ -36,7 +36,7 @@ type GoogleCloudDialogflowV2beta1AutomatedAgentConfigInput interface {
 type GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs struct {
 	// ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. - For ES agents, use format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2beta1#google.cloud.dialogflow.v2beta1.DetectIntentRequest) for more details. - For CX agents, use format `projects//locations//agents//environments/`. If environment is not specified, the default `draft` environment is used.
 	Agent pulumi.StringInput `pulumi:"agent"`
-	// Optional. Sets Dialogflow CX session life time. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.
+	// Optional. Configure lifetime of the Dialogflow session. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.
 	SessionTtl pulumi.StringPtrInput `pulumi:"sessionTtl"`
 }
 
@@ -123,7 +123,7 @@ func (o GoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput) Agent() pulumi.S
 	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1AutomatedAgentConfig) string { return v.Agent }).(pulumi.StringOutput)
 }
 
-// Optional. Sets Dialogflow CX session life time. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.
+// Optional. Configure lifetime of the Dialogflow session. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.
 func (o GoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput) SessionTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1AutomatedAgentConfig) *string { return v.SessionTtl }).(pulumi.StringPtrOutput)
 }
@@ -162,7 +162,7 @@ func (o GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput) Agent() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. Sets Dialogflow CX session life time. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.
+// Optional. Configure lifetime of the Dialogflow session. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.
 func (o GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput) SessionTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1AutomatedAgentConfig) *string {
 		if v == nil {
@@ -176,7 +176,7 @@ func (o GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput) SessionTtl() 
 type GoogleCloudDialogflowV2beta1AutomatedAgentConfigResponse struct {
 	// ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. - For ES agents, use format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2beta1#google.cloud.dialogflow.v2beta1.DetectIntentRequest) for more details. - For CX agents, use format `projects//locations//agents//environments/`. If environment is not specified, the default `draft` environment is used.
 	Agent string `pulumi:"agent"`
-	// Optional. Sets Dialogflow CX session life time. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.
+	// Optional. Configure lifetime of the Dialogflow session. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.
 	SessionTtl string `pulumi:"sessionTtl"`
 }
 
@@ -200,7 +200,7 @@ func (o GoogleCloudDialogflowV2beta1AutomatedAgentConfigResponseOutput) Agent() 
 	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1AutomatedAgentConfigResponse) string { return v.Agent }).(pulumi.StringOutput)
 }
 
-// Optional. Sets Dialogflow CX session life time. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.
+// Optional. Configure lifetime of the Dialogflow session. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.
 func (o GoogleCloudDialogflowV2beta1AutomatedAgentConfigResponseOutput) SessionTtl() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1AutomatedAgentConfigResponse) string { return v.SessionTtl }).(pulumi.StringOutput)
 }
@@ -2346,6 +2346,8 @@ type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfi
 	ConversationProcessConfig *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfig `pulumi:"conversationProcessConfig"`
 	// Optional. Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records. Supported features: KNOWLEDGE_SEARCH.
 	DisableAgentQueryLogging *bool `pulumi:"disableAgentQueryLogging"`
+	// Optional. Enable including conversation context during query answer generation. Supported features: KNOWLEDGE_SEARCH.
+	EnableConversationAugmentedQuery *bool `pulumi:"enableConversationAugmentedQuery"`
 	// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, ENTITY_EXTRACTION, KNOWLEDGE_ASSIST.
 	EnableEventBasedSuggestion *bool `pulumi:"enableEventBasedSuggestion"`
 	// Configs of query.
@@ -2375,6 +2377,8 @@ type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfi
 	ConversationProcessConfig GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigPtrInput `pulumi:"conversationProcessConfig"`
 	// Optional. Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records. Supported features: KNOWLEDGE_SEARCH.
 	DisableAgentQueryLogging pulumi.BoolPtrInput `pulumi:"disableAgentQueryLogging"`
+	// Optional. Enable including conversation context during query answer generation. Supported features: KNOWLEDGE_SEARCH.
+	EnableConversationAugmentedQuery pulumi.BoolPtrInput `pulumi:"enableConversationAugmentedQuery"`
 	// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, ENTITY_EXTRACTION, KNOWLEDGE_ASSIST.
 	EnableEventBasedSuggestion pulumi.BoolPtrInput `pulumi:"enableEventBasedSuggestion"`
 	// Configs of query.
@@ -2458,6 +2462,13 @@ func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureCo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Optional. Enable including conversation context during query answer generation. Supported features: KNOWLEDGE_SEARCH.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput) EnableConversationAugmentedQuery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig) *bool {
+		return v.EnableConversationAugmentedQuery
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, ENTITY_EXTRACTION, KNOWLEDGE_ASSIST.
 func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput) EnableEventBasedSuggestion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfig) *bool {
@@ -2514,6 +2525,8 @@ type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfi
 	ConversationProcessConfig GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigResponse `pulumi:"conversationProcessConfig"`
 	// Optional. Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records. Supported features: KNOWLEDGE_SEARCH.
 	DisableAgentQueryLogging bool `pulumi:"disableAgentQueryLogging"`
+	// Optional. Enable including conversation context during query answer generation. Supported features: KNOWLEDGE_SEARCH.
+	EnableConversationAugmentedQuery bool `pulumi:"enableConversationAugmentedQuery"`
 	// Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, ENTITY_EXTRACTION, KNOWLEDGE_ASSIST.
 	EnableEventBasedSuggestion bool `pulumi:"enableEventBasedSuggestion"`
 	// Configs of query.
@@ -2557,6 +2570,13 @@ func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureCo
 func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigResponseOutput) DisableAgentQueryLogging() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigResponse) bool {
 		return v.DisableAgentQueryLogging
+	}).(pulumi.BoolOutput)
+}
+
+// Optional. Enable including conversation context during query answer generation. Supported features: KNOWLEDGE_SEARCH.
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigResponseOutput) EnableConversationAugmentedQuery() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigResponse) bool {
+		return v.EnableConversationAugmentedQuery
 	}).(pulumi.BoolOutput)
 }
 
@@ -14320,7 +14340,7 @@ func (o GoogleCloudDialogflowV2beta1NotificationConfigResponseOutput) Topic() pu
 
 // Configures speech transcription for ConversationProfile.
 type GoogleCloudDialogflowV2beta1SpeechToTextConfig struct {
-	// Which Speech model to select. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then a default model is used. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
+	// Which Speech model to select. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then Dialogflow auto-selects a model based on other parameters in the SpeechToTextConfig and Agent settings. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search Leave this field unspecified to use [Agent Speech settings](https://cloud.google.com/dialogflow/cx/docs/concept/agent#settings-speech) for model selection.
 	Model *string `pulumi:"model"`
 	// The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
 	SpeechModelVariant *GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariant `pulumi:"speechModelVariant"`
@@ -14341,7 +14361,7 @@ type GoogleCloudDialogflowV2beta1SpeechToTextConfigInput interface {
 
 // Configures speech transcription for ConversationProfile.
 type GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs struct {
-	// Which Speech model to select. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then a default model is used. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
+	// Which Speech model to select. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then Dialogflow auto-selects a model based on other parameters in the SpeechToTextConfig and Agent settings. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search Leave this field unspecified to use [Agent Speech settings](https://cloud.google.com/dialogflow/cx/docs/concept/agent#settings-speech) for model selection.
 	Model pulumi.StringPtrInput `pulumi:"model"`
 	// The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
 	SpeechModelVariant GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrInput `pulumi:"speechModelVariant"`
@@ -14427,7 +14447,7 @@ func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigOutput) ToGoogleCloudDialo
 	}).(GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput)
 }
 
-// Which Speech model to select. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then a default model is used. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
+// Which Speech model to select. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then Dialogflow auto-selects a model based on other parameters in the SpeechToTextConfig and Agent settings. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search Leave this field unspecified to use [Agent Speech settings](https://cloud.google.com/dialogflow/cx/docs/concept/agent#settings-speech) for model selection.
 func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigOutput) Model() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1SpeechToTextConfig) *string { return v.Model }).(pulumi.StringPtrOutput)
 }
@@ -14468,7 +14488,7 @@ func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput) Elem() GoogleCl
 	}).(GoogleCloudDialogflowV2beta1SpeechToTextConfigOutput)
 }
 
-// Which Speech model to select. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then a default model is used. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
+// Which Speech model to select. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then Dialogflow auto-selects a model based on other parameters in the SpeechToTextConfig and Agent settings. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search Leave this field unspecified to use [Agent Speech settings](https://cloud.google.com/dialogflow/cx/docs/concept/agent#settings-speech) for model selection.
 func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput) Model() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1SpeechToTextConfig) *string {
 		if v == nil {
@@ -14500,7 +14520,7 @@ func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput) UseTimeoutBased
 
 // Configures speech transcription for ConversationProfile.
 type GoogleCloudDialogflowV2beta1SpeechToTextConfigResponse struct {
-	// Which Speech model to select. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then a default model is used. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
+	// Which Speech model to select. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then Dialogflow auto-selects a model based on other parameters in the SpeechToTextConfig and Agent settings. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search Leave this field unspecified to use [Agent Speech settings](https://cloud.google.com/dialogflow/cx/docs/concept/agent#settings-speech) for model selection.
 	Model string `pulumi:"model"`
 	// The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
 	SpeechModelVariant string `pulumi:"speechModelVariant"`
@@ -14523,7 +14543,7 @@ func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigResponseOutput) ToGoogleCl
 	return o
 }
 
-// Which Speech model to select. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then a default model is used. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
+// Which Speech model to select. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then Dialogflow auto-selects a model based on other parameters in the SpeechToTextConfig and Agent settings. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search Leave this field unspecified to use [Agent Speech settings](https://cloud.google.com/dialogflow/cx/docs/concept/agent#settings-speech) for model selection.
 func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigResponseOutput) Model() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1SpeechToTextConfigResponse) string { return v.Model }).(pulumi.StringOutput)
 }

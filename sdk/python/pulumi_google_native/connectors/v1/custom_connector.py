@@ -17,6 +17,7 @@ class CustomConnectorArgs:
     def __init__(__self__, *,
                  custom_connector_id: pulumi.Input[str],
                  custom_connector_type: pulumi.Input['CustomConnectorCustomConnectorType'],
+                 active_connector_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -27,6 +28,7 @@ class CustomConnectorArgs:
         The set of arguments for constructing a CustomConnector resource.
         :param pulumi.Input[str] custom_connector_id: Required. Identifier to assign to the CreateCustomConnector. Must be unique within scope of the parent resource.
         :param pulumi.Input['CustomConnectorCustomConnectorType'] custom_connector_type: Type of the custom connector.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] active_connector_versions: Optional. Active connector versions.
         :param pulumi.Input[str] description: Optional. Description of the resource.
         :param pulumi.Input[str] display_name: Optional. Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
@@ -35,6 +37,8 @@ class CustomConnectorArgs:
         """
         pulumi.set(__self__, "custom_connector_id", custom_connector_id)
         pulumi.set(__self__, "custom_connector_type", custom_connector_type)
+        if active_connector_versions is not None:
+            pulumi.set(__self__, "active_connector_versions", active_connector_versions)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -71,6 +75,18 @@ class CustomConnectorArgs:
     @custom_connector_type.setter
     def custom_connector_type(self, value: pulumi.Input['CustomConnectorCustomConnectorType']):
         pulumi.set(self, "custom_connector_type", value)
+
+    @property
+    @pulumi.getter(name="activeConnectorVersions")
+    def active_connector_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. Active connector versions.
+        """
+        return pulumi.get(self, "active_connector_versions")
+
+    @active_connector_versions.setter
+    def active_connector_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "active_connector_versions", value)
 
     @property
     @pulumi.getter
@@ -147,6 +163,7 @@ class CustomConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 active_connector_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_connector_id: Optional[pulumi.Input[str]] = None,
                  custom_connector_type: Optional[pulumi.Input['CustomConnectorCustomConnectorType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -162,6 +179,7 @@ class CustomConnector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] active_connector_versions: Optional. Active connector versions.
         :param pulumi.Input[str] custom_connector_id: Required. Identifier to assign to the CreateCustomConnector. Must be unique within scope of the parent resource.
         :param pulumi.Input['CustomConnectorCustomConnectorType'] custom_connector_type: Type of the custom connector.
         :param pulumi.Input[str] description: Optional. Description of the resource.
@@ -195,6 +213,7 @@ class CustomConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 active_connector_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_connector_id: Optional[pulumi.Input[str]] = None,
                  custom_connector_type: Optional[pulumi.Input['CustomConnectorCustomConnectorType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -212,6 +231,7 @@ class CustomConnector(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CustomConnectorArgs.__new__(CustomConnectorArgs)
 
+            __props__.__dict__["active_connector_versions"] = active_connector_versions
             if custom_connector_id is None and not opts.urn:
                 raise TypeError("Missing required property 'custom_connector_id'")
             __props__.__dict__["custom_connector_id"] = custom_connector_id
@@ -250,6 +270,7 @@ class CustomConnector(pulumi.CustomResource):
 
         __props__ = CustomConnectorArgs.__new__(CustomConnectorArgs)
 
+        __props__.__dict__["active_connector_versions"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["custom_connector_id"] = None
         __props__.__dict__["custom_connector_type"] = None
@@ -261,6 +282,14 @@ class CustomConnector(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["update_time"] = None
         return CustomConnector(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="activeConnectorVersions")
+    def active_connector_versions(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Optional. Active connector versions.
+        """
+        return pulumi.get(self, "active_connector_versions")
 
     @property
     @pulumi.getter(name="createTime")

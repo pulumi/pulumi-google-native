@@ -36,6 +36,9 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta
         [Input("project")]
         public string? Project { get; set; }
 
+        [Input("revision")]
+        public string? Revision { get; set; }
+
         public GetFunctionArgs()
         {
         }
@@ -53,6 +56,9 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("revision")]
+        public Input<string>? Revision { get; set; }
+
         public GetFunctionInvokeArgs()
         {
         }
@@ -67,6 +73,10 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta
         /// Describes the Build step of the function that builds a container from the given source.
         /// </summary>
         public readonly Outputs.BuildConfigResponse BuildConfig;
+        /// <summary>
+        /// The create timestamp of a Cloud Function. This is only applicable to 2nd Gen functions.
+        /// </summary>
+        public readonly string CreateTime;
         /// <summary>
         /// User-provided description of a function.
         /// </summary>
@@ -112,6 +122,10 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta
         /// </summary>
         public readonly string UpdateTime;
         /// <summary>
+        /// UpgradeInfo for this Cloud Function
+        /// </summary>
+        public readonly Outputs.UpgradeInfoResponse UpgradeInfo;
+        /// <summary>
         /// The deployed url for the function.
         /// </summary>
         public readonly string Url;
@@ -119,6 +133,8 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta
         [OutputConstructor]
         private GetFunctionResult(
             Outputs.BuildConfigResponse buildConfig,
+
+            string createTime,
 
             string description,
 
@@ -142,9 +158,12 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta
 
             string updateTime,
 
+            Outputs.UpgradeInfoResponse upgradeInfo,
+
             string url)
         {
             BuildConfig = buildConfig;
+            CreateTime = createTime;
             Description = description;
             Environment = environment;
             EventTrigger = eventTrigger;
@@ -156,6 +175,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta
             State = state;
             StateMessages = stateMessages;
             UpdateTime = updateTime;
+            UpgradeInfo = upgradeInfo;
             Url = url;
         }
     }

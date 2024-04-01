@@ -170,6 +170,30 @@ export const GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat = {
  */
 export type GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat = (typeof GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat)[keyof typeof GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormat];
 
+export const GoogleCloudAiplatformV1FeatureViewIndexConfigDistanceMeasureType = {
+    /**
+     * Should not be set.
+     */
+    DistanceMeasureTypeUnspecified: "DISTANCE_MEASURE_TYPE_UNSPECIFIED",
+    /**
+     * Euclidean (L_2) Distance.
+     */
+    SquaredL2Distance: "SQUARED_L2_DISTANCE",
+    /**
+     * Cosine Distance. Defined as 1 - cosine similarity. We strongly suggest using DOT_PRODUCT_DISTANCE + UNIT_L2_NORM instead of COSINE distance. Our algorithms have been more optimized for DOT_PRODUCT distance which, when combined with UNIT_L2_NORM, is mathematically equivalent to COSINE distance and results in the same ranking.
+     */
+    CosineDistance: "COSINE_DISTANCE",
+    /**
+     * Dot Product Distance. Defined as a negative of the dot product.
+     */
+    DotProductDistance: "DOT_PRODUCT_DISTANCE",
+} as const;
+
+/**
+ * Optional. The distance measure used in nearest neighbor search.
+ */
+export type GoogleCloudAiplatformV1FeatureViewIndexConfigDistanceMeasureType = (typeof GoogleCloudAiplatformV1FeatureViewIndexConfigDistanceMeasureType)[keyof typeof GoogleCloudAiplatformV1FeatureViewIndexConfigDistanceMeasureType];
+
 export const GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaseline = {
     /**
      * Should not be used.
@@ -256,6 +280,10 @@ export const GoogleCloudAiplatformV1MachineSpecAcceleratorType = {
      */
     NvidiaL4: "NVIDIA_L4",
     /**
+     * Nvidia H100 80Gb GPU.
+     */
+    NvidiaH10080gb: "NVIDIA_H100_80GB",
+    /**
      * TPU v2.
      */
     TpuV2: "TPU_V2",
@@ -333,6 +361,30 @@ export const GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialA
  * The multi-trial Neural Architecture Search (NAS) algorithm type. Defaults to `REINFORCEMENT_LEARNING`.
  */
 export type GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm = (typeof GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm)[keyof typeof GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm];
+
+export const GoogleCloudAiplatformV1NotebookReservationAffinityConsumeReservationType = {
+    /**
+     * Default type.
+     */
+    ReservationAffinityTypeUnspecified: "RESERVATION_AFFINITY_TYPE_UNSPECIFIED",
+    /**
+     * Do not consume from any allocated capacity.
+     */
+    ReservationNone: "RESERVATION_NONE",
+    /**
+     * Consume any reservation available.
+     */
+    ReservationAny: "RESERVATION_ANY",
+    /**
+     * Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
+     */
+    ReservationSpecific: "RESERVATION_SPECIFIC",
+} as const;
+
+/**
+ * Required. Specifies the type of reservation from which this instance can consume resources: RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE. See Consuming reserved instances for examples.
+ */
+export type GoogleCloudAiplatformV1NotebookReservationAffinityConsumeReservationType = (typeof GoogleCloudAiplatformV1NotebookReservationAffinityConsumeReservationType)[keyof typeof GoogleCloudAiplatformV1NotebookReservationAffinityConsumeReservationType];
 
 export const GoogleCloudAiplatformV1PipelineJobRuntimeConfigFailurePolicy = {
     /**

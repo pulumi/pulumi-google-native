@@ -49,7 +49,7 @@ type LookupSecuritySettingResult struct {
 	RedactionStrategy string `pulumi:"redactionStrategy"`
 	// Specifies the retention behavior defined by SecuritySettings.RetentionStrategy.
 	RetentionStrategy string `pulumi:"retentionStrategy"`
-	// Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
+	// Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL. When data retention configuration is changed, it only applies to the data created after the change; the TTL of existing data created before the change stays intact.
 	RetentionWindowDays int `pulumi:"retentionWindowDays"`
 }
 
@@ -144,7 +144,7 @@ func (o LookupSecuritySettingResultOutput) RetentionStrategy() pulumi.StringOutp
 	return o.ApplyT(func(v LookupSecuritySettingResult) string { return v.RetentionStrategy }).(pulumi.StringOutput)
 }
 
-// Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
+// Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL. When data retention configuration is changed, it only applies to the data created after the change; the TTL of existing data created before the change stays intact.
 func (o LookupSecuritySettingResultOutput) RetentionWindowDays() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupSecuritySettingResult) int { return v.RetentionWindowDays }).(pulumi.IntOutput)
 }

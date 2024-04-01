@@ -685,6 +685,8 @@ type BackupConfigurationResponse struct {
 	StartTime string `pulumi:"startTime"`
 	// The number of days of transaction logs we retain for point in time restore, from 1-7.
 	TransactionLogRetentionDays int `pulumi:"transactionLogRetentionDays"`
+	// This value contains the storage location of transactional logs for the database for point-in-time recovery.
+	TransactionalLogStorageState string `pulumi:"transactionalLogStorageState"`
 }
 
 // Database instance backup configuration.
@@ -745,6 +747,11 @@ func (o BackupConfigurationResponseOutput) StartTime() pulumi.StringOutput {
 // The number of days of transaction logs we retain for point in time restore, from 1-7.
 func (o BackupConfigurationResponseOutput) TransactionLogRetentionDays() pulumi.IntOutput {
 	return o.ApplyT(func(v BackupConfigurationResponse) int { return v.TransactionLogRetentionDays }).(pulumi.IntOutput)
+}
+
+// This value contains the storage location of transactional logs for the database for point-in-time recovery.
+func (o BackupConfigurationResponseOutput) TransactionalLogStorageState() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupConfigurationResponse) string { return v.TransactionalLogStorageState }).(pulumi.StringOutput)
 }
 
 // We currently only support backup retention by specifying the number of backups we will retain.
@@ -1829,6 +1836,188 @@ func (o DiskEncryptionStatusResponseOutput) KmsKeyVersionName() pulumi.StringOut
 	return o.ApplyT(func(v DiskEncryptionStatusResponse) string { return v.KmsKeyVersionName }).(pulumi.StringOutput)
 }
 
+// Gemini configuration.
+type GeminiInstanceConfig struct {
+}
+
+// GeminiInstanceConfigInput is an input type that accepts GeminiInstanceConfigArgs and GeminiInstanceConfigOutput values.
+// You can construct a concrete instance of `GeminiInstanceConfigInput` via:
+//
+//	GeminiInstanceConfigArgs{...}
+type GeminiInstanceConfigInput interface {
+	pulumi.Input
+
+	ToGeminiInstanceConfigOutput() GeminiInstanceConfigOutput
+	ToGeminiInstanceConfigOutputWithContext(context.Context) GeminiInstanceConfigOutput
+}
+
+// Gemini configuration.
+type GeminiInstanceConfigArgs struct {
+}
+
+func (GeminiInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeminiInstanceConfig)(nil)).Elem()
+}
+
+func (i GeminiInstanceConfigArgs) ToGeminiInstanceConfigOutput() GeminiInstanceConfigOutput {
+	return i.ToGeminiInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i GeminiInstanceConfigArgs) ToGeminiInstanceConfigOutputWithContext(ctx context.Context) GeminiInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeminiInstanceConfigOutput)
+}
+
+func (i GeminiInstanceConfigArgs) ToGeminiInstanceConfigPtrOutput() GeminiInstanceConfigPtrOutput {
+	return i.ToGeminiInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GeminiInstanceConfigArgs) ToGeminiInstanceConfigPtrOutputWithContext(ctx context.Context) GeminiInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeminiInstanceConfigOutput).ToGeminiInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// GeminiInstanceConfigPtrInput is an input type that accepts GeminiInstanceConfigArgs, GeminiInstanceConfigPtr and GeminiInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `GeminiInstanceConfigPtrInput` via:
+//
+//	        GeminiInstanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GeminiInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToGeminiInstanceConfigPtrOutput() GeminiInstanceConfigPtrOutput
+	ToGeminiInstanceConfigPtrOutputWithContext(context.Context) GeminiInstanceConfigPtrOutput
+}
+
+type geminiInstanceConfigPtrType GeminiInstanceConfigArgs
+
+func GeminiInstanceConfigPtr(v *GeminiInstanceConfigArgs) GeminiInstanceConfigPtrInput {
+	return (*geminiInstanceConfigPtrType)(v)
+}
+
+func (*geminiInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeminiInstanceConfig)(nil)).Elem()
+}
+
+func (i *geminiInstanceConfigPtrType) ToGeminiInstanceConfigPtrOutput() GeminiInstanceConfigPtrOutput {
+	return i.ToGeminiInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *geminiInstanceConfigPtrType) ToGeminiInstanceConfigPtrOutputWithContext(ctx context.Context) GeminiInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeminiInstanceConfigPtrOutput)
+}
+
+// Gemini configuration.
+type GeminiInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (GeminiInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeminiInstanceConfig)(nil)).Elem()
+}
+
+func (o GeminiInstanceConfigOutput) ToGeminiInstanceConfigOutput() GeminiInstanceConfigOutput {
+	return o
+}
+
+func (o GeminiInstanceConfigOutput) ToGeminiInstanceConfigOutputWithContext(ctx context.Context) GeminiInstanceConfigOutput {
+	return o
+}
+
+func (o GeminiInstanceConfigOutput) ToGeminiInstanceConfigPtrOutput() GeminiInstanceConfigPtrOutput {
+	return o.ToGeminiInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GeminiInstanceConfigOutput) ToGeminiInstanceConfigPtrOutputWithContext(ctx context.Context) GeminiInstanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GeminiInstanceConfig) *GeminiInstanceConfig {
+		return &v
+	}).(GeminiInstanceConfigPtrOutput)
+}
+
+type GeminiInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GeminiInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeminiInstanceConfig)(nil)).Elem()
+}
+
+func (o GeminiInstanceConfigPtrOutput) ToGeminiInstanceConfigPtrOutput() GeminiInstanceConfigPtrOutput {
+	return o
+}
+
+func (o GeminiInstanceConfigPtrOutput) ToGeminiInstanceConfigPtrOutputWithContext(ctx context.Context) GeminiInstanceConfigPtrOutput {
+	return o
+}
+
+func (o GeminiInstanceConfigPtrOutput) Elem() GeminiInstanceConfigOutput {
+	return o.ApplyT(func(v *GeminiInstanceConfig) GeminiInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GeminiInstanceConfig
+		return ret
+	}).(GeminiInstanceConfigOutput)
+}
+
+// Gemini configuration.
+type GeminiInstanceConfigResponse struct {
+	// Whether active query is enabled.
+	ActiveQueryEnabled bool `pulumi:"activeQueryEnabled"`
+	// Whether Gemini is enabled.
+	Entitled bool `pulumi:"entitled"`
+	// Whether flag recommender is enabled.
+	FlagRecommenderEnabled bool `pulumi:"flagRecommenderEnabled"`
+	// Whether vacuum management is enabled.
+	GoogleVacuumMgmtEnabled bool `pulumi:"googleVacuumMgmtEnabled"`
+	// Whether index advisor is enabled.
+	IndexAdvisorEnabled bool `pulumi:"indexAdvisorEnabled"`
+	// Whether oom session cancel is enabled.
+	OomSessionCancelEnabled bool `pulumi:"oomSessionCancelEnabled"`
+}
+
+// Gemini configuration.
+type GeminiInstanceConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GeminiInstanceConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeminiInstanceConfigResponse)(nil)).Elem()
+}
+
+func (o GeminiInstanceConfigResponseOutput) ToGeminiInstanceConfigResponseOutput() GeminiInstanceConfigResponseOutput {
+	return o
+}
+
+func (o GeminiInstanceConfigResponseOutput) ToGeminiInstanceConfigResponseOutputWithContext(ctx context.Context) GeminiInstanceConfigResponseOutput {
+	return o
+}
+
+// Whether active query is enabled.
+func (o GeminiInstanceConfigResponseOutput) ActiveQueryEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GeminiInstanceConfigResponse) bool { return v.ActiveQueryEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether Gemini is enabled.
+func (o GeminiInstanceConfigResponseOutput) Entitled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GeminiInstanceConfigResponse) bool { return v.Entitled }).(pulumi.BoolOutput)
+}
+
+// Whether flag recommender is enabled.
+func (o GeminiInstanceConfigResponseOutput) FlagRecommenderEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GeminiInstanceConfigResponse) bool { return v.FlagRecommenderEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether vacuum management is enabled.
+func (o GeminiInstanceConfigResponseOutput) GoogleVacuumMgmtEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GeminiInstanceConfigResponse) bool { return v.GoogleVacuumMgmtEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether index advisor is enabled.
+func (o GeminiInstanceConfigResponseOutput) IndexAdvisorEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GeminiInstanceConfigResponse) bool { return v.IndexAdvisorEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether oom session cancel is enabled.
+func (o GeminiInstanceConfigResponseOutput) OomSessionCancelEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GeminiInstanceConfigResponse) bool { return v.OomSessionCancelEnabled }).(pulumi.BoolOutput)
+}
+
 // Insights configuration. This specifies when Cloud SQL Insights feature is enabled and optional configuration.
 type InsightsConfig struct {
 	// Whether Query Insights feature is enabled.
@@ -2523,9 +2712,9 @@ type IpConfiguration struct {
 	PrivateNetwork *string `pulumi:"privateNetwork"`
 	// PSC settings for this instance.
 	PscConfig *PscConfig `pulumi:"pscConfig"`
-	// Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
+	// Use `ssl_mode` instead. Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
 	RequireSsl *bool `pulumi:"requireSsl"`
-	// Specify how SSL/TLS is enforced in database connections. This flag is supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict between those flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the value of `ssl_mode` gets priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database respects `ssl_mode` in this case and only accepts SSL connections.
+	// Specify how SSL/TLS is enforced in database connections. If you must use the `require_ssl` flag for backward compatibility, then only the following value pairs are valid: For PostgreSQL and MySQL: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` For SQL Server: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=true` The value of `ssl_mode` gets priority over the value of `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means only accept SSL connections, while the `require_ssl=false` means accept both non-SSL and SSL connections. MySQL and PostgreSQL databases respect `ssl_mode` in this case and accept only SSL connections.
 	SslMode *IpConfigurationSslMode `pulumi:"sslMode"`
 }
 
@@ -2554,9 +2743,9 @@ type IpConfigurationArgs struct {
 	PrivateNetwork pulumi.StringPtrInput `pulumi:"privateNetwork"`
 	// PSC settings for this instance.
 	PscConfig PscConfigPtrInput `pulumi:"pscConfig"`
-	// Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
+	// Use `ssl_mode` instead. Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
 	RequireSsl pulumi.BoolPtrInput `pulumi:"requireSsl"`
-	// Specify how SSL/TLS is enforced in database connections. This flag is supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict between those flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the value of `ssl_mode` gets priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database respects `ssl_mode` in this case and only accepts SSL connections.
+	// Specify how SSL/TLS is enforced in database connections. If you must use the `require_ssl` flag for backward compatibility, then only the following value pairs are valid: For PostgreSQL and MySQL: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` For SQL Server: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=true` The value of `ssl_mode` gets priority over the value of `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means only accept SSL connections, while the `require_ssl=false` means accept both non-SSL and SSL connections. MySQL and PostgreSQL databases respect `ssl_mode` in this case and accept only SSL connections.
 	SslMode IpConfigurationSslModePtrInput `pulumi:"sslMode"`
 }
 
@@ -2668,12 +2857,12 @@ func (o IpConfigurationOutput) PscConfig() PscConfigPtrOutput {
 	return o.ApplyT(func(v IpConfiguration) *PscConfig { return v.PscConfig }).(PscConfigPtrOutput)
 }
 
-// Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
+// Use `ssl_mode` instead. Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
 func (o IpConfigurationOutput) RequireSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v IpConfiguration) *bool { return v.RequireSsl }).(pulumi.BoolPtrOutput)
 }
 
-// Specify how SSL/TLS is enforced in database connections. This flag is supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict between those flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the value of `ssl_mode` gets priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database respects `ssl_mode` in this case and only accepts SSL connections.
+// Specify how SSL/TLS is enforced in database connections. If you must use the `require_ssl` flag for backward compatibility, then only the following value pairs are valid: For PostgreSQL and MySQL: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` For SQL Server: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=true` The value of `ssl_mode` gets priority over the value of `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means only accept SSL connections, while the `require_ssl=false` means accept both non-SSL and SSL connections. MySQL and PostgreSQL databases respect `ssl_mode` in this case and accept only SSL connections.
 func (o IpConfigurationOutput) SslMode() IpConfigurationSslModePtrOutput {
 	return o.ApplyT(func(v IpConfiguration) *IpConfigurationSslMode { return v.SslMode }).(IpConfigurationSslModePtrOutput)
 }
@@ -2762,7 +2951,7 @@ func (o IpConfigurationPtrOutput) PscConfig() PscConfigPtrOutput {
 	}).(PscConfigPtrOutput)
 }
 
-// Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
+// Use `ssl_mode` instead. Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
 func (o IpConfigurationPtrOutput) RequireSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *IpConfiguration) *bool {
 		if v == nil {
@@ -2772,7 +2961,7 @@ func (o IpConfigurationPtrOutput) RequireSsl() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specify how SSL/TLS is enforced in database connections. This flag is supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict between those flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the value of `ssl_mode` gets priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database respects `ssl_mode` in this case and only accepts SSL connections.
+// Specify how SSL/TLS is enforced in database connections. If you must use the `require_ssl` flag for backward compatibility, then only the following value pairs are valid: For PostgreSQL and MySQL: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` For SQL Server: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=true` The value of `ssl_mode` gets priority over the value of `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means only accept SSL connections, while the `require_ssl=false` means accept both non-SSL and SSL connections. MySQL and PostgreSQL databases respect `ssl_mode` in this case and accept only SSL connections.
 func (o IpConfigurationPtrOutput) SslMode() IpConfigurationSslModePtrOutput {
 	return o.ApplyT(func(v *IpConfiguration) *IpConfigurationSslMode {
 		if v == nil {
@@ -2796,9 +2985,9 @@ type IpConfigurationResponse struct {
 	PrivateNetwork string `pulumi:"privateNetwork"`
 	// PSC settings for this instance.
 	PscConfig PscConfigResponse `pulumi:"pscConfig"`
-	// Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
+	// Use `ssl_mode` instead. Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
 	RequireSsl bool `pulumi:"requireSsl"`
-	// Specify how SSL/TLS is enforced in database connections. This flag is supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict between those flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the value of `ssl_mode` gets priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database respects `ssl_mode` in this case and only accepts SSL connections.
+	// Specify how SSL/TLS is enforced in database connections. If you must use the `require_ssl` flag for backward compatibility, then only the following value pairs are valid: For PostgreSQL and MySQL: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` For SQL Server: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=true` The value of `ssl_mode` gets priority over the value of `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means only accept SSL connections, while the `require_ssl=false` means accept both non-SSL and SSL connections. MySQL and PostgreSQL databases respect `ssl_mode` in this case and accept only SSL connections.
 	SslMode string `pulumi:"sslMode"`
 }
 
@@ -2847,12 +3036,12 @@ func (o IpConfigurationResponseOutput) PscConfig() PscConfigResponseOutput {
 	return o.ApplyT(func(v IpConfigurationResponse) PscConfigResponse { return v.PscConfig }).(PscConfigResponseOutput)
 }
 
-// Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
+// Use `ssl_mode` instead. Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag.
 func (o IpConfigurationResponseOutput) RequireSsl() pulumi.BoolOutput {
 	return o.ApplyT(func(v IpConfigurationResponse) bool { return v.RequireSsl }).(pulumi.BoolOutput)
 }
 
-// Specify how SSL/TLS is enforced in database connections. This flag is supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict between those flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the value of `ssl_mode` gets priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database respects `ssl_mode` in this case and only accepts SSL connections.
+// Specify how SSL/TLS is enforced in database connections. If you must use the `require_ssl` flag for backward compatibility, then only the following value pairs are valid: For PostgreSQL and MySQL: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` For SQL Server: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=true` The value of `ssl_mode` gets priority over the value of `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means only accept SSL connections, while the `require_ssl=false` means accept both non-SSL and SSL connections. MySQL and PostgreSQL databases respect `ssl_mode` in this case and accept only SSL connections.
 func (o IpConfigurationResponseOutput) SslMode() pulumi.StringOutput {
 	return o.ApplyT(func(v IpConfigurationResponse) string { return v.SslMode }).(pulumi.StringOutput)
 }
@@ -4578,7 +4767,9 @@ func (o PasswordStatusResponseOutput) PasswordExpirationTime() pulumi.StringOutp
 type PasswordValidationPolicy struct {
 	// The complexity of the password.
 	Complexity *PasswordValidationPolicyComplexity `pulumi:"complexity"`
-	// Disallow credentials that have been previously compromised by a public data breach.
+	// This field is deprecated and will be removed in a future version of the API.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future version of the API.
 	DisallowCompromisedCredentials *bool `pulumi:"disallowCompromisedCredentials"`
 	// Disallow username as a part of the password.
 	DisallowUsernameSubstring *bool `pulumi:"disallowUsernameSubstring"`
@@ -4607,7 +4798,9 @@ type PasswordValidationPolicyInput interface {
 type PasswordValidationPolicyArgs struct {
 	// The complexity of the password.
 	Complexity PasswordValidationPolicyComplexityPtrInput `pulumi:"complexity"`
-	// Disallow credentials that have been previously compromised by a public data breach.
+	// This field is deprecated and will be removed in a future version of the API.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future version of the API.
 	DisallowCompromisedCredentials pulumi.BoolPtrInput `pulumi:"disallowCompromisedCredentials"`
 	// Disallow username as a part of the password.
 	DisallowUsernameSubstring pulumi.BoolPtrInput `pulumi:"disallowUsernameSubstring"`
@@ -4704,7 +4897,9 @@ func (o PasswordValidationPolicyOutput) Complexity() PasswordValidationPolicyCom
 	return o.ApplyT(func(v PasswordValidationPolicy) *PasswordValidationPolicyComplexity { return v.Complexity }).(PasswordValidationPolicyComplexityPtrOutput)
 }
 
-// Disallow credentials that have been previously compromised by a public data breach.
+// This field is deprecated and will be removed in a future version of the API.
+//
+// Deprecated: This field is deprecated and will be removed in a future version of the API.
 func (o PasswordValidationPolicyOutput) DisallowCompromisedCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PasswordValidationPolicy) *bool { return v.DisallowCompromisedCredentials }).(pulumi.BoolPtrOutput)
 }
@@ -4768,7 +4963,9 @@ func (o PasswordValidationPolicyPtrOutput) Complexity() PasswordValidationPolicy
 	}).(PasswordValidationPolicyComplexityPtrOutput)
 }
 
-// Disallow credentials that have been previously compromised by a public data breach.
+// This field is deprecated and will be removed in a future version of the API.
+//
+// Deprecated: This field is deprecated and will be removed in a future version of the API.
 func (o PasswordValidationPolicyPtrOutput) DisallowCompromisedCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PasswordValidationPolicy) *bool {
 		if v == nil {
@@ -4832,7 +5029,9 @@ func (o PasswordValidationPolicyPtrOutput) ReuseInterval() pulumi.IntPtrOutput {
 type PasswordValidationPolicyResponse struct {
 	// The complexity of the password.
 	Complexity string `pulumi:"complexity"`
-	// Disallow credentials that have been previously compromised by a public data breach.
+	// This field is deprecated and will be removed in a future version of the API.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future version of the API.
 	DisallowCompromisedCredentials bool `pulumi:"disallowCompromisedCredentials"`
 	// Disallow username as a part of the password.
 	DisallowUsernameSubstring bool `pulumi:"disallowUsernameSubstring"`
@@ -4866,7 +5065,9 @@ func (o PasswordValidationPolicyResponseOutput) Complexity() pulumi.StringOutput
 	return o.ApplyT(func(v PasswordValidationPolicyResponse) string { return v.Complexity }).(pulumi.StringOutput)
 }
 
-// Disallow credentials that have been previously compromised by a public data breach.
+// This field is deprecated and will be removed in a future version of the API.
+//
+// Deprecated: This field is deprecated and will be removed in a future version of the API.
 func (o PasswordValidationPolicyResponseOutput) DisallowCompromisedCredentials() pulumi.BoolOutput {
 	return o.ApplyT(func(v PasswordValidationPolicyResponse) bool { return v.DisallowCompromisedCredentials }).(pulumi.BoolOutput)
 }
@@ -5334,6 +5535,179 @@ func (o ReplicaConfigurationResponseOutput) MysqlReplicaConfiguration() MySqlRep
 	}).(MySqlReplicaConfigurationResponseOutput)
 }
 
+// Primary-DR replica pair
+type ReplicationCluster struct {
+	// Optional. If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. A DR replica is an optional configuration for Enterprise Plus edition instances. If the instance is a read replica, then the field is not set. Users can set this field to set a designated DR replica for a primary. Removing this field removes the DR replica.
+	FailoverDrReplicaName *string `pulumi:"failoverDrReplicaName"`
+}
+
+// ReplicationClusterInput is an input type that accepts ReplicationClusterArgs and ReplicationClusterOutput values.
+// You can construct a concrete instance of `ReplicationClusterInput` via:
+//
+//	ReplicationClusterArgs{...}
+type ReplicationClusterInput interface {
+	pulumi.Input
+
+	ToReplicationClusterOutput() ReplicationClusterOutput
+	ToReplicationClusterOutputWithContext(context.Context) ReplicationClusterOutput
+}
+
+// Primary-DR replica pair
+type ReplicationClusterArgs struct {
+	// Optional. If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. A DR replica is an optional configuration for Enterprise Plus edition instances. If the instance is a read replica, then the field is not set. Users can set this field to set a designated DR replica for a primary. Removing this field removes the DR replica.
+	FailoverDrReplicaName pulumi.StringPtrInput `pulumi:"failoverDrReplicaName"`
+}
+
+func (ReplicationClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationCluster)(nil)).Elem()
+}
+
+func (i ReplicationClusterArgs) ToReplicationClusterOutput() ReplicationClusterOutput {
+	return i.ToReplicationClusterOutputWithContext(context.Background())
+}
+
+func (i ReplicationClusterArgs) ToReplicationClusterOutputWithContext(ctx context.Context) ReplicationClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicationClusterOutput)
+}
+
+func (i ReplicationClusterArgs) ToReplicationClusterPtrOutput() ReplicationClusterPtrOutput {
+	return i.ToReplicationClusterPtrOutputWithContext(context.Background())
+}
+
+func (i ReplicationClusterArgs) ToReplicationClusterPtrOutputWithContext(ctx context.Context) ReplicationClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicationClusterOutput).ToReplicationClusterPtrOutputWithContext(ctx)
+}
+
+// ReplicationClusterPtrInput is an input type that accepts ReplicationClusterArgs, ReplicationClusterPtr and ReplicationClusterPtrOutput values.
+// You can construct a concrete instance of `ReplicationClusterPtrInput` via:
+//
+//	        ReplicationClusterArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReplicationClusterPtrInput interface {
+	pulumi.Input
+
+	ToReplicationClusterPtrOutput() ReplicationClusterPtrOutput
+	ToReplicationClusterPtrOutputWithContext(context.Context) ReplicationClusterPtrOutput
+}
+
+type replicationClusterPtrType ReplicationClusterArgs
+
+func ReplicationClusterPtr(v *ReplicationClusterArgs) ReplicationClusterPtrInput {
+	return (*replicationClusterPtrType)(v)
+}
+
+func (*replicationClusterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReplicationCluster)(nil)).Elem()
+}
+
+func (i *replicationClusterPtrType) ToReplicationClusterPtrOutput() ReplicationClusterPtrOutput {
+	return i.ToReplicationClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *replicationClusterPtrType) ToReplicationClusterPtrOutputWithContext(ctx context.Context) ReplicationClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicationClusterPtrOutput)
+}
+
+// Primary-DR replica pair
+type ReplicationClusterOutput struct{ *pulumi.OutputState }
+
+func (ReplicationClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationCluster)(nil)).Elem()
+}
+
+func (o ReplicationClusterOutput) ToReplicationClusterOutput() ReplicationClusterOutput {
+	return o
+}
+
+func (o ReplicationClusterOutput) ToReplicationClusterOutputWithContext(ctx context.Context) ReplicationClusterOutput {
+	return o
+}
+
+func (o ReplicationClusterOutput) ToReplicationClusterPtrOutput() ReplicationClusterPtrOutput {
+	return o.ToReplicationClusterPtrOutputWithContext(context.Background())
+}
+
+func (o ReplicationClusterOutput) ToReplicationClusterPtrOutputWithContext(ctx context.Context) ReplicationClusterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReplicationCluster) *ReplicationCluster {
+		return &v
+	}).(ReplicationClusterPtrOutput)
+}
+
+// Optional. If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. A DR replica is an optional configuration for Enterprise Plus edition instances. If the instance is a read replica, then the field is not set. Users can set this field to set a designated DR replica for a primary. Removing this field removes the DR replica.
+func (o ReplicationClusterOutput) FailoverDrReplicaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationCluster) *string { return v.FailoverDrReplicaName }).(pulumi.StringPtrOutput)
+}
+
+type ReplicationClusterPtrOutput struct{ *pulumi.OutputState }
+
+func (ReplicationClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReplicationCluster)(nil)).Elem()
+}
+
+func (o ReplicationClusterPtrOutput) ToReplicationClusterPtrOutput() ReplicationClusterPtrOutput {
+	return o
+}
+
+func (o ReplicationClusterPtrOutput) ToReplicationClusterPtrOutputWithContext(ctx context.Context) ReplicationClusterPtrOutput {
+	return o
+}
+
+func (o ReplicationClusterPtrOutput) Elem() ReplicationClusterOutput {
+	return o.ApplyT(func(v *ReplicationCluster) ReplicationCluster {
+		if v != nil {
+			return *v
+		}
+		var ret ReplicationCluster
+		return ret
+	}).(ReplicationClusterOutput)
+}
+
+// Optional. If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. A DR replica is an optional configuration for Enterprise Plus edition instances. If the instance is a read replica, then the field is not set. Users can set this field to set a designated DR replica for a primary. Removing this field removes the DR replica.
+func (o ReplicationClusterPtrOutput) FailoverDrReplicaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FailoverDrReplicaName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Primary-DR replica pair
+type ReplicationClusterResponse struct {
+	// read-only field that indicates if the replica is a dr_replica; not set for a primary.
+	DrReplica bool `pulumi:"drReplica"`
+	// Optional. If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. A DR replica is an optional configuration for Enterprise Plus edition instances. If the instance is a read replica, then the field is not set. Users can set this field to set a designated DR replica for a primary. Removing this field removes the DR replica.
+	FailoverDrReplicaName string `pulumi:"failoverDrReplicaName"`
+}
+
+// Primary-DR replica pair
+type ReplicationClusterResponseOutput struct{ *pulumi.OutputState }
+
+func (ReplicationClusterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationClusterResponse)(nil)).Elem()
+}
+
+func (o ReplicationClusterResponseOutput) ToReplicationClusterResponseOutput() ReplicationClusterResponseOutput {
+	return o
+}
+
+func (o ReplicationClusterResponseOutput) ToReplicationClusterResponseOutputWithContext(ctx context.Context) ReplicationClusterResponseOutput {
+	return o
+}
+
+// read-only field that indicates if the replica is a dr_replica; not set for a primary.
+func (o ReplicationClusterResponseOutput) DrReplica() pulumi.BoolOutput {
+	return o.ApplyT(func(v ReplicationClusterResponse) bool { return v.DrReplica }).(pulumi.BoolOutput)
+}
+
+// Optional. If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. A DR replica is an optional configuration for Enterprise Plus edition instances. If the instance is a read replica, then the field is not set. Users can set this field to set a designated DR replica for a primary. Removing this field removes the DR replica.
+func (o ReplicationClusterResponseOutput) FailoverDrReplicaName() pulumi.StringOutput {
+	return o.ApplyT(func(v ReplicationClusterResponse) string { return v.FailoverDrReplicaName }).(pulumi.StringOutput)
+}
+
 // Database instance settings.
 type Settings struct {
 	// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * `ALWAYS`: The instance is on, and remains so even in the absence of connection requests. * `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
@@ -5372,6 +5746,8 @@ type Settings struct {
 	DenyMaintenancePeriods []DenyMaintenancePeriod `pulumi:"denyMaintenancePeriods"`
 	// Optional. The edition of the instance.
 	Edition *SettingsEdition `pulumi:"edition"`
+	// Optional. When this parameter is set to true, Cloud SQL instances can connect to Vertex AI to pass requests for real-time predictions and insights to the AI. The default value is false. This applies only to Cloud SQL for PostgreSQL instances.
+	EnableGoogleMlIntegration *bool `pulumi:"enableGoogleMlIntegration"`
 	// Insights configuration, for now relevant only for Postgres.
 	InsightsConfig *InsightsConfig `pulumi:"insightsConfig"`
 	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
@@ -5455,6 +5831,8 @@ type SettingsArgs struct {
 	DenyMaintenancePeriods DenyMaintenancePeriodArrayInput `pulumi:"denyMaintenancePeriods"`
 	// Optional. The edition of the instance.
 	Edition SettingsEditionPtrInput `pulumi:"edition"`
+	// Optional. When this parameter is set to true, Cloud SQL instances can connect to Vertex AI to pass requests for real-time predictions and insights to the AI. The default value is false. This applies only to Cloud SQL for PostgreSQL instances.
+	EnableGoogleMlIntegration pulumi.BoolPtrInput `pulumi:"enableGoogleMlIntegration"`
 	// Insights configuration, for now relevant only for Postgres.
 	InsightsConfig InsightsConfigPtrInput `pulumi:"insightsConfig"`
 	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
@@ -5652,6 +6030,11 @@ func (o SettingsOutput) DenyMaintenancePeriods() DenyMaintenancePeriodArrayOutpu
 // Optional. The edition of the instance.
 func (o SettingsOutput) Edition() SettingsEditionPtrOutput {
 	return o.ApplyT(func(v Settings) *SettingsEdition { return v.Edition }).(SettingsEditionPtrOutput)
+}
+
+// Optional. When this parameter is set to true, Cloud SQL instances can connect to Vertex AI to pass requests for real-time predictions and insights to the AI. The default value is false. This applies only to Cloud SQL for PostgreSQL instances.
+func (o SettingsOutput) EnableGoogleMlIntegration() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Settings) *bool { return v.EnableGoogleMlIntegration }).(pulumi.BoolPtrOutput)
 }
 
 // Insights configuration, for now relevant only for Postgres.
@@ -5927,6 +6310,16 @@ func (o SettingsPtrOutput) Edition() SettingsEditionPtrOutput {
 	}).(SettingsEditionPtrOutput)
 }
 
+// Optional. When this parameter is set to true, Cloud SQL instances can connect to Vertex AI to pass requests for real-time predictions and insights to the AI. The default value is false. This applies only to Cloud SQL for PostgreSQL instances.
+func (o SettingsPtrOutput) EnableGoogleMlIntegration() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Settings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableGoogleMlIntegration
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Insights configuration, for now relevant only for Postgres.
 func (o SettingsPtrOutput) InsightsConfig() InsightsConfigPtrOutput {
 	return o.ApplyT(func(v *Settings) *InsightsConfig {
@@ -6117,6 +6510,8 @@ type SettingsResponse struct {
 	DenyMaintenancePeriods []DenyMaintenancePeriodResponse `pulumi:"denyMaintenancePeriods"`
 	// Optional. The edition of the instance.
 	Edition string `pulumi:"edition"`
+	// Optional. When this parameter is set to true, Cloud SQL instances can connect to Vertex AI to pass requests for real-time predictions and insights to the AI. The default value is false. This applies only to Cloud SQL for PostgreSQL instances.
+	EnableGoogleMlIntegration bool `pulumi:"enableGoogleMlIntegration"`
 	// Insights configuration, for now relevant only for Postgres.
 	InsightsConfig InsightsConfigResponse `pulumi:"insightsConfig"`
 	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
@@ -6251,6 +6646,11 @@ func (o SettingsResponseOutput) DenyMaintenancePeriods() DenyMaintenancePeriodRe
 // Optional. The edition of the instance.
 func (o SettingsResponseOutput) Edition() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingsResponse) string { return v.Edition }).(pulumi.StringOutput)
+}
+
+// Optional. When this parameter is set to true, Cloud SQL instances can connect to Vertex AI to pass requests for real-time predictions and insights to the AI. The default value is false. This applies only to Cloud SQL for PostgreSQL instances.
+func (o SettingsResponseOutput) EnableGoogleMlIntegration() pulumi.BoolOutput {
+	return o.ApplyT(func(v SettingsResponse) bool { return v.EnableGoogleMlIntegration }).(pulumi.BoolOutput)
 }
 
 // Insights configuration, for now relevant only for Postgres.
@@ -8224,6 +8624,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskEncryptionConfigurationPtrInput)(nil)).Elem(), DiskEncryptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskEncryptionStatusInput)(nil)).Elem(), DiskEncryptionStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskEncryptionStatusPtrInput)(nil)).Elem(), DiskEncryptionStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeminiInstanceConfigInput)(nil)).Elem(), GeminiInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeminiInstanceConfigPtrInput)(nil)).Elem(), GeminiInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigInput)(nil)).Elem(), InsightsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InsightsConfigPtrInput)(nil)).Elem(), InsightsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFailoverReplicaInput)(nil)).Elem(), InstanceFailoverReplicaArgs{})
@@ -8250,6 +8652,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PscConfigPtrInput)(nil)).Elem(), PscConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaConfigurationInput)(nil)).Elem(), ReplicaConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplicaConfigurationPtrInput)(nil)).Elem(), ReplicaConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReplicationClusterInput)(nil)).Elem(), ReplicationClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReplicationClusterPtrInput)(nil)).Elem(), ReplicationClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsInput)(nil)).Elem(), SettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsPtrInput)(nil)).Elem(), SettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlActiveDirectoryConfigInput)(nil)).Elem(), SqlActiveDirectoryConfigArgs{})
@@ -8298,6 +8702,9 @@ func init() {
 	pulumi.RegisterOutputType(DiskEncryptionStatusOutput{})
 	pulumi.RegisterOutputType(DiskEncryptionStatusPtrOutput{})
 	pulumi.RegisterOutputType(DiskEncryptionStatusResponseOutput{})
+	pulumi.RegisterOutputType(GeminiInstanceConfigOutput{})
+	pulumi.RegisterOutputType(GeminiInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(GeminiInstanceConfigResponseOutput{})
 	pulumi.RegisterOutputType(InsightsConfigOutput{})
 	pulumi.RegisterOutputType(InsightsConfigPtrOutput{})
 	pulumi.RegisterOutputType(InsightsConfigResponseOutput{})
@@ -8339,6 +8746,9 @@ func init() {
 	pulumi.RegisterOutputType(ReplicaConfigurationOutput{})
 	pulumi.RegisterOutputType(ReplicaConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ReplicaConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(ReplicationClusterOutput{})
+	pulumi.RegisterOutputType(ReplicationClusterPtrOutput{})
+	pulumi.RegisterOutputType(ReplicationClusterResponseOutput{})
 	pulumi.RegisterOutputType(SettingsOutput{})
 	pulumi.RegisterOutputType(SettingsPtrOutput{})
 	pulumi.RegisterOutputType(SettingsResponseOutput{})

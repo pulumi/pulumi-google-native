@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Outputs
         /// </summary>
         public readonly string DeployedIndexId;
         /// <summary>
+        /// The display name of the DeployedIndex.
+        /// </summary>
+        public readonly string DisplayName;
+        /// <summary>
         /// Immutable. A resource name of the IndexEndpoint.
         /// </summary>
         public readonly string IndexEndpoint;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Outputs
         private GoogleCloudAiplatformV1beta1DeployedIndexRefResponse(
             string deployedIndexId,
 
+            string displayName,
+
             string indexEndpoint)
         {
             DeployedIndexId = deployedIndexId;
+            DisplayName = displayName;
             IndexEndpoint = indexEndpoint;
         }
     }

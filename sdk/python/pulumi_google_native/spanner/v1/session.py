@@ -18,11 +18,13 @@ class SessionArgs:
                  instance_id: pulumi.Input[str],
                  creator_role: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 multiplexed: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Session resource.
         :param pulumi.Input[str] creator_role: The database role which created this session.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
+        :param pulumi.Input[bool] multiplexed: Optional. If true, specifies a multiplexed session. A multiplexed session may be used for multiple, concurrent read-only operations but can not be used for read-write transactions, partitioned reads, or partitioned queries. Multiplexed sessions can be created via CreateSession but not via BatchCreateSessions. Multiplexed sessions may not be deleted nor listed.
         """
         pulumi.set(__self__, "database_id", database_id)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -30,6 +32,8 @@ class SessionArgs:
             pulumi.set(__self__, "creator_role", creator_role)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if multiplexed is not None:
+            pulumi.set(__self__, "multiplexed", multiplexed)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -77,6 +81,18 @@ class SessionArgs:
 
     @property
     @pulumi.getter
+    def multiplexed(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. If true, specifies a multiplexed session. A multiplexed session may be used for multiple, concurrent read-only operations but can not be used for read-write transactions, partitioned reads, or partitioned queries. Multiplexed sessions can be created via CreateSession but not via BatchCreateSessions. Multiplexed sessions may not be deleted nor listed.
+        """
+        return pulumi.get(self, "multiplexed")
+
+    @multiplexed.setter
+    def multiplexed(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "multiplexed", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
 
@@ -94,6 +110,7 @@ class Session(pulumi.CustomResource):
                  database_id: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 multiplexed: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -104,6 +121,7 @@ class Session(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] creator_role: The database role which created this session.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
+        :param pulumi.Input[bool] multiplexed: Optional. If true, specifies a multiplexed session. A multiplexed session may be used for multiple, concurrent read-only operations but can not be used for read-write transactions, partitioned reads, or partitioned queries. Multiplexed sessions can be created via CreateSession but not via BatchCreateSessions. Multiplexed sessions may not be deleted nor listed.
         """
         ...
     @overload
@@ -134,6 +152,7 @@ class Session(pulumi.CustomResource):
                  database_id: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 multiplexed: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -152,6 +171,7 @@ class Session(pulumi.CustomResource):
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["multiplexed"] = multiplexed
             __props__.__dict__["project"] = project
             __props__.__dict__["approximate_last_use_time"] = None
             __props__.__dict__["create_time"] = None
@@ -186,6 +206,7 @@ class Session(pulumi.CustomResource):
         __props__.__dict__["database_id"] = None
         __props__.__dict__["instance_id"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["multiplexed"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         return Session(resource_name, opts=opts, __props__=__props__)
@@ -231,6 +252,14 @@ class Session(pulumi.CustomResource):
         The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def multiplexed(self) -> pulumi.Output[bool]:
+        """
+        Optional. If true, specifies a multiplexed session. A multiplexed session may be used for multiple, concurrent read-only operations but can not be used for read-write transactions, partitioned reads, or partitioned queries. Multiplexed sessions can be created via CreateSession but not via BatchCreateSessions. Multiplexed sessions may not be deleted nor listed.
+        """
+        return pulumi.get(self, "multiplexed")
 
     @property
     @pulumi.getter

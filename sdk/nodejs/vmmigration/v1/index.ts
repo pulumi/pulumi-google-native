@@ -40,6 +40,11 @@ export const getGroup: typeof import("./getGroup").getGroup = null as any;
 export const getGroupOutput: typeof import("./getGroup").getGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getGroup","getGroupOutput"], () => require("./getGroup"));
 
+export { GetImageImportArgs, GetImageImportResult, GetImageImportOutputArgs } from "./getImageImport";
+export const getImageImport: typeof import("./getImageImport").getImageImport = null as any;
+export const getImageImportOutput: typeof import("./getImageImport").getImageImportOutput = null as any;
+utilities.lazyLoad(exports, ["getImageImport","getImageImportOutput"], () => require("./getImageImport"));
+
 export { GetMigratingVmArgs, GetMigratingVmResult, GetMigratingVmOutputArgs } from "./getMigratingVm";
 export const getMigratingVm: typeof import("./getMigratingVm").getMigratingVm = null as any;
 export const getMigratingVmOutput: typeof import("./getMigratingVm").getMigratingVmOutput = null as any;
@@ -64,6 +69,11 @@ export { GroupArgs } from "./group";
 export type Group = import("./group").Group;
 export const Group: typeof import("./group").Group = null as any;
 utilities.lazyLoad(exports, ["Group"], () => require("./group"));
+
+export { ImageImportArgs } from "./imageImport";
+export type ImageImport = import("./imageImport").ImageImport;
+export const ImageImport: typeof import("./imageImport").ImageImport = null as any;
+utilities.lazyLoad(exports, ["ImageImport"], () => require("./imageImport"));
 
 export { MigratingVmArgs } from "./migratingVm";
 export type MigratingVm = import("./migratingVm").MigratingVm;
@@ -101,6 +111,8 @@ const _module = {
                 return new DatacenterConnector(name, <any>undefined, { urn })
             case "google-native:vmmigration/v1:Group":
                 return new Group(name, <any>undefined, { urn })
+            case "google-native:vmmigration/v1:ImageImport":
+                return new ImageImport(name, <any>undefined, { urn })
             case "google-native:vmmigration/v1:MigratingVm":
                 return new MigratingVm(name, <any>undefined, { urn })
             case "google-native:vmmigration/v1:Source":

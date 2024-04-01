@@ -94,6 +94,10 @@ export interface GetBackupResult {
     /**
      * Reserved for future use.
      */
+    readonly satisfiesPzi: boolean;
+    /**
+     * Reserved for future use.
+     */
     readonly satisfiesPzs: boolean;
     /**
      * The size of the backup in bytes.

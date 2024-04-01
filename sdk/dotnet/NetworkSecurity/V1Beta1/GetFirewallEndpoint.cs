@@ -68,7 +68,11 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         /// </summary>
         public readonly ImmutableArray<string> AssociatedNetworks;
         /// <summary>
-        /// Optional. Project to bill on endpoint uptime usage.
+        /// List of FirewallEndpointAssociations that are associated to this endpoint. An association will only appear in this list after traffic routing is fully configured.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.FirewallEndpointAssociationReferenceResponse> Associations;
+        /// <summary>
+        /// Project to bill on endpoint uptime usage.
         /// </summary>
         public readonly string BillingProjectId;
         /// <summary>
@@ -84,7 +88,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// name of resource
+        /// Immutable. Identifier. name of resource
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -104,6 +108,8 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         private GetFirewallEndpointResult(
             ImmutableArray<string> associatedNetworks,
 
+            ImmutableArray<Outputs.FirewallEndpointAssociationReferenceResponse> associations,
+
             string billingProjectId,
 
             string createTime,
@@ -121,6 +127,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
             string updateTime)
         {
             AssociatedNetworks = associatedNetworks;
+            Associations = associations;
             BillingProjectId = billingProjectId;
             CreateTime = createTime;
             Description = description;

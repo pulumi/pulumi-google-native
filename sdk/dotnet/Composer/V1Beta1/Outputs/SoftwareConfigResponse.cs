@@ -44,6 +44,10 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
         /// Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
         /// </summary>
         public readonly int SchedulerCount;
+        /// <summary>
+        /// Optional. Whether or not the web server uses custom plugins. If unspecified, the field defaults to `PLUGINS_ENABLED`. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        public readonly string WebServerPluginsMode;
 
         [OutputConstructor]
         private SoftwareConfigResponse(
@@ -59,7 +63,9 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
 
             string pythonVersion,
 
-            int schedulerCount)
+            int schedulerCount,
+
+            string webServerPluginsMode)
         {
             AirflowConfigOverrides = airflowConfigOverrides;
             CloudDataLineageIntegration = cloudDataLineageIntegration;
@@ -68,6 +74,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
             PypiPackages = pypiPackages;
             PythonVersion = pythonVersion;
             SchedulerCount = schedulerCount;
+            WebServerPluginsMode = webServerPluginsMode;
         }
     }
 }

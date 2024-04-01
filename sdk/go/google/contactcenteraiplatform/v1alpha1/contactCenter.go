@@ -36,8 +36,10 @@ type ContactCenter struct {
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// name of resource
-	Name    pulumi.StringOutput `pulumi:"name"`
-	Project pulumi.StringOutput `pulumi:"project"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// A list of UJET components that should be privately accessed. This field is set by reading settings from the data plane. For more information about the format of the component please refer to go/ccaip-vpc-sc-org-policy. This field is must be fully populated only for Create/Update resource operations. The main use case for this field is OrgPolicy checks via CPE.
+	PrivateComponents pulumi.StringArrayOutput `pulumi:"privateComponents"`
+	Project           pulumi.StringOutput      `pulumi:"project"`
 	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Optional. Params that sets up Google as IdP.
@@ -254,6 +256,11 @@ func (o ContactCenterOutput) Location() pulumi.StringOutput {
 // name of resource
 func (o ContactCenterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContactCenter) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of UJET components that should be privately accessed. This field is set by reading settings from the data plane. For more information about the format of the component please refer to go/ccaip-vpc-sc-org-policy. This field is must be fully populated only for Create/Update resource operations. The main use case for this field is OrgPolicy checks via CPE.
+func (o ContactCenterOutput) PrivateComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ContactCenter) pulumi.StringArrayOutput { return v.PrivateComponents }).(pulumi.StringArrayOutput)
 }
 
 func (o ContactCenterOutput) Project() pulumi.StringOutput {

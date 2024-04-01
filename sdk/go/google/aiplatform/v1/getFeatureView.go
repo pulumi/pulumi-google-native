@@ -38,9 +38,11 @@ type LookupFeatureViewResult struct {
 	Etag string `pulumi:"etag"`
 	// Optional. Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
 	FeatureRegistrySource GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceResponse `pulumi:"featureRegistrySource"`
+	// Optional. Configuration for index preparation for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+	IndexConfig GoogleCloudAiplatformV1FeatureViewIndexConfigResponse `pulumi:"indexConfig"`
 	// Optional. The labels with user-defined metadata to organize your FeatureViews. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
 	Labels map[string]string `pulumi:"labels"`
-	// Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+	// Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
 	Name string `pulumi:"name"`
 	// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
 	SyncConfig GoogleCloudAiplatformV1FeatureViewSyncConfigResponse `pulumi:"syncConfig"`
@@ -110,12 +112,19 @@ func (o LookupFeatureViewResultOutput) FeatureRegistrySource() GoogleCloudAiplat
 	}).(GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceResponseOutput)
 }
 
+// Optional. Configuration for index preparation for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+func (o LookupFeatureViewResultOutput) IndexConfig() GoogleCloudAiplatformV1FeatureViewIndexConfigResponseOutput {
+	return o.ApplyT(func(v LookupFeatureViewResult) GoogleCloudAiplatformV1FeatureViewIndexConfigResponse {
+		return v.IndexConfig
+	}).(GoogleCloudAiplatformV1FeatureViewIndexConfigResponseOutput)
+}
+
 // Optional. The labels with user-defined metadata to organize your FeatureViews. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
 func (o LookupFeatureViewResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupFeatureViewResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+// Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
 func (o LookupFeatureViewResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureViewResult) string { return v.Name }).(pulumi.StringOutput)
 }

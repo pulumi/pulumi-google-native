@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a conversation.
+ * Create a longrunning conversation upload operation. This method differs from CreateConversation by allowing audio transcription and optional DLP redaction.
  */
 export class Conversation extends pulumi.CustomResource {
     /**
@@ -45,10 +45,6 @@ export class Conversation extends pulumi.CustomResource {
      * Call-specific metadata.
      */
     public readonly callMetadata!: pulumi.Output<outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse>;
-    /**
-     * A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
-     */
-    public readonly conversationId!: pulumi.Output<string | undefined>;
     /**
      * The time at which the conversation was created.
      */
@@ -100,6 +96,10 @@ export class Conversation extends pulumi.CustomResource {
     public readonly obfuscatedUserId!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * Conversation metadata related to quality management.
+     */
+    public readonly qualityMetadata!: pulumi.Output<outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponse>;
+    /**
      * The annotations that were generated during the customer and agent interaction.
      */
     public /*out*/ readonly runtimeAnnotations!: pulumi.Output<outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse[]>;
@@ -131,10 +131,13 @@ export class Conversation extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ConversationArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: ConversationArgs, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'parent'");
+            }
             resourceInputs["agentId"] = args ? args.agentId : undefined;
             resourceInputs["callMetadata"] = args ? args.callMetadata : undefined;
             resourceInputs["conversationId"] = args ? args.conversationId : undefined;
@@ -146,7 +149,11 @@ export class Conversation extends pulumi.CustomResource {
             resourceInputs["medium"] = args ? args.medium : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["obfuscatedUserId"] = args ? args.obfuscatedUserId : undefined;
+            resourceInputs["parent"] = args ? args.parent : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["qualityMetadata"] = args ? args.qualityMetadata : undefined;
+            resourceInputs["redactionConfig"] = args ? args.redactionConfig : undefined;
+            resourceInputs["speechConfig"] = args ? args.speechConfig : undefined;
             resourceInputs["startTime"] = args ? args.startTime : undefined;
             resourceInputs["ttl"] = args ? args.ttl : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -161,7 +168,6 @@ export class Conversation extends pulumi.CustomResource {
         } else {
             resourceInputs["agentId"] = undefined /*out*/;
             resourceInputs["callMetadata"] = undefined /*out*/;
-            resourceInputs["conversationId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dataSource"] = undefined /*out*/;
             resourceInputs["dialogflowIntents"] = undefined /*out*/;
@@ -176,6 +182,7 @@ export class Conversation extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["obfuscatedUserId"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["qualityMetadata"] = undefined /*out*/;
             resourceInputs["runtimeAnnotations"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["transcript"] = undefined /*out*/;
@@ -203,7 +210,7 @@ export interface ConversationArgs {
      */
     callMetadata?: pulumi.Input<inputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs>;
     /**
-     * A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
+     * Optional. A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
      */
     conversationId?: pulumi.Input<string>;
     /**
@@ -235,7 +242,23 @@ export interface ConversationArgs {
      * Obfuscated user ID which the customer sent to us.
      */
     obfuscatedUserId?: pulumi.Input<string>;
+    /**
+     * The parent resource of the conversation.
+     */
+    parent: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * Conversation metadata related to quality management.
+     */
+    qualityMetadata?: pulumi.Input<inputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs>;
+    /**
+     * Optional. DLP settings for transcript redaction. Will default to the config specified in Settings.
+     */
+    redactionConfig?: pulumi.Input<inputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1RedactionConfigArgs>;
+    /**
+     * Optional. Speech-to-Text configuration. Will default to the config specified in Settings.
+     */
+    speechConfig?: pulumi.Input<inputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1SpeechConfigArgs>;
     /**
      * The time at which the conversation started.
      */

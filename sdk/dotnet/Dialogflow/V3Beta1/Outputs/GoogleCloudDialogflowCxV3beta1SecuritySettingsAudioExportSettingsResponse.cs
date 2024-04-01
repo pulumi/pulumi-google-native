@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
         /// </summary>
         public readonly string AudioFormat;
         /// <summary>
-        /// Enable audio redaction if it is true.
+        /// Enable audio redaction if it is true. Note that this only redacts end-user audio data; Synthesised audio from the virtual agent is not redacted.
         /// </summary>
         public readonly bool EnableAudioRedaction;
         /// <summary>

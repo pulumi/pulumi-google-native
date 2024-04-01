@@ -154,6 +154,26 @@ export const FeatureStoreFeatureValueType = {
  */
 export type FeatureStoreFeatureValueType = (typeof FeatureStoreFeatureValueType)[keyof typeof FeatureStoreFeatureValueType];
 
+export const FeatureViewServiceAgentType = {
+    /**
+     * By default, the project-level Vertex AI Service Agent is enabled.
+     */
+    ServiceAgentTypeUnspecified: "SERVICE_AGENT_TYPE_UNSPECIFIED",
+    /**
+     * Indicates the project-level Vertex AI Service Agent (https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents) will be used during sync jobs.
+     */
+    ServiceAgentTypeProject: "SERVICE_AGENT_TYPE_PROJECT",
+    /**
+     * Enable a FeatureView service account to be created by Vertex AI and output in the field `service_account_email`. This service account will be used to read from the source BigQuery table during sync.
+     */
+    ServiceAgentTypeFeatureView: "SERVICE_AGENT_TYPE_FEATURE_VIEW",
+} as const;
+
+/**
+ * Optional. Service agent type used during data sync. By default, the Vertex AI Service Agent is used. When using an IAM Policy to isolate this FeatureView within a project, a separate service account should be provisioned by setting this field to `SERVICE_AGENT_TYPE_FEATURE_VIEW`. This will generate a separate service account to access the BigQuery source table.
+ */
+export type FeatureViewServiceAgentType = (typeof FeatureViewServiceAgentType)[keyof typeof FeatureViewServiceAgentType];
+
 export const GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat = {
     /**
      * Format unspecified, used when unset.
@@ -169,6 +189,30 @@ export const GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat = {
  * The format in which instances are given, if not specified, assume it's JSONL format. Currently only JSONL format is supported.
  */
 export type GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat = (typeof GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat)[keyof typeof GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat];
+
+export const GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType = {
+    /**
+     * Should not be set.
+     */
+    DistanceMeasureTypeUnspecified: "DISTANCE_MEASURE_TYPE_UNSPECIFIED",
+    /**
+     * Euclidean (L_2) Distance.
+     */
+    SquaredL2Distance: "SQUARED_L2_DISTANCE",
+    /**
+     * Cosine Distance. Defined as 1 - cosine similarity. We strongly suggest using DOT_PRODUCT_DISTANCE + UNIT_L2_NORM instead of COSINE distance. Our algorithms have been more optimized for DOT_PRODUCT distance which, when combined with UNIT_L2_NORM, is mathematically equivalent to COSINE distance and results in the same ranking.
+     */
+    CosineDistance: "COSINE_DISTANCE",
+    /**
+     * Dot Product Distance. Defined as a negative of the dot product.
+     */
+    DotProductDistance: "DOT_PRODUCT_DISTANCE",
+} as const;
+
+/**
+ * Optional. The distance measure used in nearest neighbor search.
+ */
+export type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType = (typeof GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType)[keyof typeof GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType];
 
 export const GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureType = {
     /**
@@ -393,6 +437,30 @@ export const GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiT
  * The multi-trial Neural Architecture Search (NAS) algorithm type. Defaults to `REINFORCEMENT_LEARNING`.
  */
 export type GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm = (typeof GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm)[keyof typeof GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm];
+
+export const GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType = {
+    /**
+     * Default type.
+     */
+    ReservationAffinityTypeUnspecified: "RESERVATION_AFFINITY_TYPE_UNSPECIFIED",
+    /**
+     * Do not consume from any allocated capacity.
+     */
+    ReservationNone: "RESERVATION_NONE",
+    /**
+     * Consume any reservation available.
+     */
+    ReservationAny: "RESERVATION_ANY",
+    /**
+     * Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
+     */
+    ReservationSpecific: "RESERVATION_SPECIFIC",
+} as const;
+
+/**
+ * Required. Specifies the type of reservation from which this instance can consume resources: RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE. See Consuming reserved instances for examples.
+ */
+export type GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType = (typeof GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType)[keyof typeof GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType];
 
 export const GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicy = {
     /**

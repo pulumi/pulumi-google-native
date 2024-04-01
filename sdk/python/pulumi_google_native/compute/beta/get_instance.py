@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_config=None, cpu_platform=None, creation_timestamp=None, deletion_protection=None, description=None, disks=None, display_device=None, erase_windows_vss_signature=None, fingerprint=None, guest_accelerators=None, hostname=None, instance_encryption_key=None, key_revocation_action_type=None, kind=None, label_fingerprint=None, labels=None, last_start_timestamp=None, last_stop_timestamp=None, last_suspended_timestamp=None, machine_type=None, metadata=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_config=None, params=None, post_key_revocation_action_type=None, private_ipv6_google_access=None, reservation_affinity=None, resource_policies=None, resource_status=None, satisfies_pzs=None, scheduling=None, self_link=None, service_accounts=None, shielded_instance_config=None, shielded_instance_integrity_policy=None, shielded_vm_config=None, shielded_vm_integrity_policy=None, source_machine_image=None, source_machine_image_encryption_key=None, start_restricted=None, status=None, status_message=None, tags=None, zone=None):
+    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_config=None, cpu_platform=None, creation_timestamp=None, deletion_protection=None, description=None, disks=None, display_device=None, erase_windows_vss_signature=None, fingerprint=None, guest_accelerators=None, hostname=None, instance_encryption_key=None, key_revocation_action_type=None, kind=None, label_fingerprint=None, labels=None, last_start_timestamp=None, last_stop_timestamp=None, last_suspended_timestamp=None, machine_type=None, metadata=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_config=None, params=None, partner_metadata=None, post_key_revocation_action_type=None, private_ipv6_google_access=None, reservation_affinity=None, resource_policies=None, resource_status=None, satisfies_pzi=None, satisfies_pzs=None, scheduling=None, self_link=None, service_accounts=None, shielded_instance_config=None, shielded_instance_integrity_policy=None, shielded_vm_config=None, shielded_vm_integrity_policy=None, source_machine_image=None, source_machine_image_encryption_key=None, start_restricted=None, status=None, status_message=None, tags=None, zone=None):
         if advanced_machine_features and not isinstance(advanced_machine_features, dict):
             raise TypeError("Expected argument 'advanced_machine_features' to be a dict")
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -104,6 +104,9 @@ class GetInstanceResult:
         if params and not isinstance(params, dict):
             raise TypeError("Expected argument 'params' to be a dict")
         pulumi.set(__self__, "params", params)
+        if partner_metadata and not isinstance(partner_metadata, dict):
+            raise TypeError("Expected argument 'partner_metadata' to be a dict")
+        pulumi.set(__self__, "partner_metadata", partner_metadata)
         if post_key_revocation_action_type and not isinstance(post_key_revocation_action_type, str):
             raise TypeError("Expected argument 'post_key_revocation_action_type' to be a str")
         pulumi.set(__self__, "post_key_revocation_action_type", post_key_revocation_action_type)
@@ -119,6 +122,9 @@ class GetInstanceResult:
         if resource_status and not isinstance(resource_status, dict):
             raise TypeError("Expected argument 'resource_status' to be a dict")
         pulumi.set(__self__, "resource_status", resource_status)
+        if satisfies_pzi and not isinstance(satisfies_pzi, bool):
+            raise TypeError("Expected argument 'satisfies_pzi' to be a bool")
+        pulumi.set(__self__, "satisfies_pzi", satisfies_pzi)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -384,6 +390,14 @@ class GetInstanceResult:
         return pulumi.get(self, "params")
 
     @property
+    @pulumi.getter(name="partnerMetadata")
+    def partner_metadata(self) -> Mapping[str, str]:
+        """
+        Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+        """
+        return pulumi.get(self, "partner_metadata")
+
+    @property
     @pulumi.getter(name="postKeyRevocationActionType")
     def post_key_revocation_action_type(self) -> str:
         """
@@ -422,6 +436,14 @@ class GetInstanceResult:
         Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
         """
         return pulumi.get(self, "resource_status")
+
+    @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> bool:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzi")
 
     @property
     @pulumi.getter(name="satisfiesPzs")
@@ -572,11 +594,13 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             network_interfaces=self.network_interfaces,
             network_performance_config=self.network_performance_config,
             params=self.params,
+            partner_metadata=self.partner_metadata,
             post_key_revocation_action_type=self.post_key_revocation_action_type,
             private_ipv6_google_access=self.private_ipv6_google_access,
             reservation_affinity=self.reservation_affinity,
             resource_policies=self.resource_policies,
             resource_status=self.resource_status,
+            satisfies_pzi=self.satisfies_pzi,
             satisfies_pzs=self.satisfies_pzs,
             scheduling=self.scheduling,
             self_link=self.self_link,
@@ -596,6 +620,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
 
 def get_instance(instance: Optional[str] = None,
                  project: Optional[str] = None,
+                 view: Optional[str] = None,
                  zone: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceResult:
     """
@@ -604,6 +629,7 @@ def get_instance(instance: Optional[str] = None,
     __args__ = dict()
     __args__['instance'] = instance
     __args__['project'] = project
+    __args__['view'] = view
     __args__['zone'] = zone
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:compute/beta:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
@@ -637,11 +663,13 @@ def get_instance(instance: Optional[str] = None,
         network_interfaces=pulumi.get(__ret__, 'network_interfaces'),
         network_performance_config=pulumi.get(__ret__, 'network_performance_config'),
         params=pulumi.get(__ret__, 'params'),
+        partner_metadata=pulumi.get(__ret__, 'partner_metadata'),
         post_key_revocation_action_type=pulumi.get(__ret__, 'post_key_revocation_action_type'),
         private_ipv6_google_access=pulumi.get(__ret__, 'private_ipv6_google_access'),
         reservation_affinity=pulumi.get(__ret__, 'reservation_affinity'),
         resource_policies=pulumi.get(__ret__, 'resource_policies'),
         resource_status=pulumi.get(__ret__, 'resource_status'),
+        satisfies_pzi=pulumi.get(__ret__, 'satisfies_pzi'),
         satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         scheduling=pulumi.get(__ret__, 'scheduling'),
         self_link=pulumi.get(__ret__, 'self_link'),
@@ -662,6 +690,7 @@ def get_instance(instance: Optional[str] = None,
 @_utilities.lift_output_func(get_instance)
 def get_instance_output(instance: Optional[pulumi.Input[str]] = None,
                         project: Optional[pulumi.Input[Optional[str]]] = None,
+                        view: Optional[pulumi.Input[Optional[str]]] = None,
                         zone: Optional[pulumi.Input[str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceResult]:
     """

@@ -155,7 +155,7 @@ def get_job_trigger(job_trigger_id: Optional[str] = None,
                     project: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetJobTriggerResult:
     """
-    Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+    Gets a job trigger. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
     """
     __args__ = dict()
     __args__['jobTriggerId'] = job_trigger_id
@@ -183,6 +183,6 @@ def get_job_trigger_output(job_trigger_id: Optional[pulumi.Input[str]] = None,
                            project: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetJobTriggerResult]:
     """
-    Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+    Gets a job trigger. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
     """
     ...

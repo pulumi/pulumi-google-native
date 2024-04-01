@@ -2701,7 +2701,7 @@ type AttachedDiskInitializeParams struct {
 	OnUpdateAction *AttachedDiskInitializeParamsOnUpdateAction `pulumi:"onUpdateAction"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 	ProvisionedIops *string `pulumi:"provisionedIops"`
-	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must greater than or equal to 1.
 	ProvisionedThroughput *string `pulumi:"provisionedThroughput"`
 	// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
 	ReplicaZones []string `pulumi:"replicaZones"`
@@ -2719,6 +2719,8 @@ type AttachedDiskInitializeParams struct {
 	SourceSnapshot *string `pulumi:"sourceSnapshot"`
 	// The customer-supplied encryption key of the source snapshot.
 	SourceSnapshotEncryptionKey *CustomerEncryptionKey `pulumi:"sourceSnapshotEncryptionKey"`
+	// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool
+	StoragePool *string `pulumi:"storagePool"`
 }
 
 // AttachedDiskInitializeParamsInput is an input type that accepts AttachedDiskInitializeParamsArgs and AttachedDiskInitializeParamsOutput values.
@@ -2758,7 +2760,7 @@ type AttachedDiskInitializeParamsArgs struct {
 	OnUpdateAction AttachedDiskInitializeParamsOnUpdateActionPtrInput `pulumi:"onUpdateAction"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 	ProvisionedIops pulumi.StringPtrInput `pulumi:"provisionedIops"`
-	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must greater than or equal to 1.
 	ProvisionedThroughput pulumi.StringPtrInput `pulumi:"provisionedThroughput"`
 	// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
 	ReplicaZones pulumi.StringArrayInput `pulumi:"replicaZones"`
@@ -2776,6 +2778,8 @@ type AttachedDiskInitializeParamsArgs struct {
 	SourceSnapshot pulumi.StringPtrInput `pulumi:"sourceSnapshot"`
 	// The customer-supplied encryption key of the source snapshot.
 	SourceSnapshotEncryptionKey CustomerEncryptionKeyPtrInput `pulumi:"sourceSnapshotEncryptionKey"`
+	// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool
+	StoragePool pulumi.StringPtrInput `pulumi:"storagePool"`
 }
 
 func (AttachedDiskInitializeParamsArgs) ElementType() reflect.Type {
@@ -2918,7 +2922,7 @@ func (o AttachedDiskInitializeParamsOutput) ProvisionedIops() pulumi.StringPtrOu
 	return o.ApplyT(func(v AttachedDiskInitializeParams) *string { return v.ProvisionedIops }).(pulumi.StringPtrOutput)
 }
 
-// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must greater than or equal to 1.
 func (o AttachedDiskInitializeParamsOutput) ProvisionedThroughput() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParams) *string { return v.ProvisionedThroughput }).(pulumi.StringPtrOutput)
 }
@@ -2961,6 +2965,11 @@ func (o AttachedDiskInitializeParamsOutput) SourceSnapshot() pulumi.StringPtrOut
 // The customer-supplied encryption key of the source snapshot.
 func (o AttachedDiskInitializeParamsOutput) SourceSnapshotEncryptionKey() CustomerEncryptionKeyPtrOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParams) *CustomerEncryptionKey { return v.SourceSnapshotEncryptionKey }).(CustomerEncryptionKeyPtrOutput)
+}
+
+// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool
+func (o AttachedDiskInitializeParamsOutput) StoragePool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParams) *string { return v.StoragePool }).(pulumi.StringPtrOutput)
 }
 
 type AttachedDiskInitializeParamsPtrOutput struct{ *pulumi.OutputState }
@@ -3107,7 +3116,7 @@ func (o AttachedDiskInitializeParamsPtrOutput) ProvisionedIops() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must greater than or equal to 1.
 func (o AttachedDiskInitializeParamsPtrOutput) ProvisionedThroughput() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AttachedDiskInitializeParams) *string {
 		if v == nil {
@@ -3197,6 +3206,16 @@ func (o AttachedDiskInitializeParamsPtrOutput) SourceSnapshotEncryptionKey() Cus
 	}).(CustomerEncryptionKeyPtrOutput)
 }
 
+// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool
+func (o AttachedDiskInitializeParamsPtrOutput) StoragePool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttachedDiskInitializeParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StoragePool
+	}).(pulumi.StringPtrOutput)
+}
+
 // [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This field is persisted and returned for instanceTemplate and not returned in the context of instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 type AttachedDiskInitializeParamsResponse struct {
 	// The architecture of the attached disk. Valid values are arm64 or x86_64.
@@ -3223,7 +3242,7 @@ type AttachedDiskInitializeParamsResponse struct {
 	OnUpdateAction string `pulumi:"onUpdateAction"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 	ProvisionedIops string `pulumi:"provisionedIops"`
-	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must greater than or equal to 1.
 	ProvisionedThroughput string `pulumi:"provisionedThroughput"`
 	// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
 	ReplicaZones []string `pulumi:"replicaZones"`
@@ -3241,6 +3260,8 @@ type AttachedDiskInitializeParamsResponse struct {
 	SourceSnapshot string `pulumi:"sourceSnapshot"`
 	// The customer-supplied encryption key of the source snapshot.
 	SourceSnapshotEncryptionKey CustomerEncryptionKeyResponse `pulumi:"sourceSnapshotEncryptionKey"`
+	// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool
+	StoragePool string `pulumi:"storagePool"`
 }
 
 // [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This field is persisted and returned for instanceTemplate and not returned in the context of instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
@@ -3318,7 +3339,7 @@ func (o AttachedDiskInitializeParamsResponseOutput) ProvisionedIops() pulumi.Str
 	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) string { return v.ProvisionedIops }).(pulumi.StringOutput)
 }
 
-// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must greater than or equal to 1.
 func (o AttachedDiskInitializeParamsResponseOutput) ProvisionedThroughput() pulumi.StringOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) string { return v.ProvisionedThroughput }).(pulumi.StringOutput)
 }
@@ -3365,6 +3386,11 @@ func (o AttachedDiskInitializeParamsResponseOutput) SourceSnapshotEncryptionKey(
 	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) CustomerEncryptionKeyResponse {
 		return v.SourceSnapshotEncryptionKey
 	}).(CustomerEncryptionKeyResponseOutput)
+}
+
+// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool
+func (o AttachedDiskInitializeParamsResponseOutput) StoragePool() pulumi.StringOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) string { return v.StoragePool }).(pulumi.StringOutput)
 }
 
 // An instance-attached disk resource.
@@ -7509,9 +7535,9 @@ func (o BackendServiceCdnPolicyResponseOutput) SignedUrlKeyNames() pulumi.String
 type BackendServiceConnectionTrackingPolicy struct {
 	// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default. For more details, see [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence) and [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence).
 	ConnectionPersistenceOnUnhealthyBackends *BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends `pulumi:"connectionPersistenceOnUnhealthyBackends"`
-	// Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+	// Enable Strong Session Affinity for external passthrough Network Load Balancers. This option is not available publicly.
 	EnableStrongAffinity *bool `pulumi:"enableStrongAffinity"`
-	// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For Network Load Balancer the default is 60 seconds. This option is not available publicly.
+	// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For internal passthrough Network Load Balancers: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For external passthrough Network Load Balancers the default is 60 seconds. This option is not available publicly.
 	IdleTimeoutSec *int `pulumi:"idleTimeoutSec"`
 	// Specifies the key used for connection tracking. There are two options: - PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. - PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity. For more details, see [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#tracking-mode) and [Tracking Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#tracking-mode).
 	TrackingMode *BackendServiceConnectionTrackingPolicyTrackingMode `pulumi:"trackingMode"`
@@ -7532,9 +7558,9 @@ type BackendServiceConnectionTrackingPolicyInput interface {
 type BackendServiceConnectionTrackingPolicyArgs struct {
 	// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default. For more details, see [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence) and [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence).
 	ConnectionPersistenceOnUnhealthyBackends BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtrInput `pulumi:"connectionPersistenceOnUnhealthyBackends"`
-	// Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+	// Enable Strong Session Affinity for external passthrough Network Load Balancers. This option is not available publicly.
 	EnableStrongAffinity pulumi.BoolPtrInput `pulumi:"enableStrongAffinity"`
-	// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For Network Load Balancer the default is 60 seconds. This option is not available publicly.
+	// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For internal passthrough Network Load Balancers: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For external passthrough Network Load Balancers the default is 60 seconds. This option is not available publicly.
 	IdleTimeoutSec pulumi.IntPtrInput `pulumi:"idleTimeoutSec"`
 	// Specifies the key used for connection tracking. There are two options: - PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. - PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity. For more details, see [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#tracking-mode) and [Tracking Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#tracking-mode).
 	TrackingMode BackendServiceConnectionTrackingPolicyTrackingModePtrInput `pulumi:"trackingMode"`
@@ -7625,12 +7651,12 @@ func (o BackendServiceConnectionTrackingPolicyOutput) ConnectionPersistenceOnUnh
 	}).(BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtrOutput)
 }
 
-// Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+// Enable Strong Session Affinity for external passthrough Network Load Balancers. This option is not available publicly.
 func (o BackendServiceConnectionTrackingPolicyOutput) EnableStrongAffinity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BackendServiceConnectionTrackingPolicy) *bool { return v.EnableStrongAffinity }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For Network Load Balancer the default is 60 seconds. This option is not available publicly.
+// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For internal passthrough Network Load Balancers: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For external passthrough Network Load Balancers the default is 60 seconds. This option is not available publicly.
 func (o BackendServiceConnectionTrackingPolicyOutput) IdleTimeoutSec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackendServiceConnectionTrackingPolicy) *int { return v.IdleTimeoutSec }).(pulumi.IntPtrOutput)
 }
@@ -7676,7 +7702,7 @@ func (o BackendServiceConnectionTrackingPolicyPtrOutput) ConnectionPersistenceOn
 	}).(BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtrOutput)
 }
 
-// Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+// Enable Strong Session Affinity for external passthrough Network Load Balancers. This option is not available publicly.
 func (o BackendServiceConnectionTrackingPolicyPtrOutput) EnableStrongAffinity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BackendServiceConnectionTrackingPolicy) *bool {
 		if v == nil {
@@ -7686,7 +7712,7 @@ func (o BackendServiceConnectionTrackingPolicyPtrOutput) EnableStrongAffinity() 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For Network Load Balancer the default is 60 seconds. This option is not available publicly.
+// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For internal passthrough Network Load Balancers: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For external passthrough Network Load Balancers the default is 60 seconds. This option is not available publicly.
 func (o BackendServiceConnectionTrackingPolicyPtrOutput) IdleTimeoutSec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BackendServiceConnectionTrackingPolicy) *int {
 		if v == nil {
@@ -7710,9 +7736,9 @@ func (o BackendServiceConnectionTrackingPolicyPtrOutput) TrackingMode() BackendS
 type BackendServiceConnectionTrackingPolicyResponse struct {
 	// Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default. For more details, see [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence) and [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence).
 	ConnectionPersistenceOnUnhealthyBackends string `pulumi:"connectionPersistenceOnUnhealthyBackends"`
-	// Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+	// Enable Strong Session Affinity for external passthrough Network Load Balancers. This option is not available publicly.
 	EnableStrongAffinity bool `pulumi:"enableStrongAffinity"`
-	// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For Network Load Balancer the default is 60 seconds. This option is not available publicly.
+	// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For internal passthrough Network Load Balancers: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For external passthrough Network Load Balancers the default is 60 seconds. This option is not available publicly.
 	IdleTimeoutSec int `pulumi:"idleTimeoutSec"`
 	// Specifies the key used for connection tracking. There are two options: - PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. - PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity. For more details, see [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#tracking-mode) and [Tracking Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#tracking-mode).
 	TrackingMode string `pulumi:"trackingMode"`
@@ -7740,12 +7766,12 @@ func (o BackendServiceConnectionTrackingPolicyResponseOutput) ConnectionPersiste
 	}).(pulumi.StringOutput)
 }
 
-// Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+// Enable Strong Session Affinity for external passthrough Network Load Balancers. This option is not available publicly.
 func (o BackendServiceConnectionTrackingPolicyResponseOutput) EnableStrongAffinity() pulumi.BoolOutput {
 	return o.ApplyT(func(v BackendServiceConnectionTrackingPolicyResponse) bool { return v.EnableStrongAffinity }).(pulumi.BoolOutput)
 }
 
-// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For Network Load Balancer the default is 60 seconds. This option is not available publicly.
+// Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For internal passthrough Network Load Balancers: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For external passthrough Network Load Balancers the default is 60 seconds. This option is not available publicly.
 func (o BackendServiceConnectionTrackingPolicyResponseOutput) IdleTimeoutSec() pulumi.IntOutput {
 	return o.ApplyT(func(v BackendServiceConnectionTrackingPolicyResponse) int { return v.IdleTimeoutSec }).(pulumi.IntOutput)
 }
@@ -7755,11 +7781,11 @@ func (o BackendServiceConnectionTrackingPolicyResponseOutput) TrackingMode() pul
 	return o.ApplyT(func(v BackendServiceConnectionTrackingPolicyResponse) string { return v.TrackingMode }).(pulumi.StringOutput)
 }
 
-// For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
+// For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
 type BackendServiceFailoverPolicy struct {
 	// This can be set to true only if the protocol is TCP. The default is false.
 	DisableConnectionDrainOnFailover *bool `pulumi:"disableConnectionDrainOnFailover"`
-	// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
+	// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
 	DropTrafficIfUnhealthy *bool `pulumi:"dropTrafficIfUnhealthy"`
 	// The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
 	FailoverRatio *float64 `pulumi:"failoverRatio"`
@@ -7776,11 +7802,11 @@ type BackendServiceFailoverPolicyInput interface {
 	ToBackendServiceFailoverPolicyOutputWithContext(context.Context) BackendServiceFailoverPolicyOutput
 }
 
-// For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
+// For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
 type BackendServiceFailoverPolicyArgs struct {
 	// This can be set to true only if the protocol is TCP. The default is false.
 	DisableConnectionDrainOnFailover pulumi.BoolPtrInput `pulumi:"disableConnectionDrainOnFailover"`
-	// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
+	// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
 	DropTrafficIfUnhealthy pulumi.BoolPtrInput `pulumi:"dropTrafficIfUnhealthy"`
 	// The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
 	FailoverRatio pulumi.Float64PtrInput `pulumi:"failoverRatio"`
@@ -7839,7 +7865,7 @@ func (i *backendServiceFailoverPolicyPtrType) ToBackendServiceFailoverPolicyPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceFailoverPolicyPtrOutput)
 }
 
-// For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
+// For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
 type BackendServiceFailoverPolicyOutput struct{ *pulumi.OutputState }
 
 func (BackendServiceFailoverPolicyOutput) ElementType() reflect.Type {
@@ -7869,7 +7895,7 @@ func (o BackendServiceFailoverPolicyOutput) DisableConnectionDrainOnFailover() p
 	return o.ApplyT(func(v BackendServiceFailoverPolicy) *bool { return v.DisableConnectionDrainOnFailover }).(pulumi.BoolPtrOutput)
 }
 
-// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
+// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
 func (o BackendServiceFailoverPolicyOutput) DropTrafficIfUnhealthy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BackendServiceFailoverPolicy) *bool { return v.DropTrafficIfUnhealthy }).(pulumi.BoolPtrOutput)
 }
@@ -7913,7 +7939,7 @@ func (o BackendServiceFailoverPolicyPtrOutput) DisableConnectionDrainOnFailover(
 	}).(pulumi.BoolPtrOutput)
 }
 
-// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
+// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
 func (o BackendServiceFailoverPolicyPtrOutput) DropTrafficIfUnhealthy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BackendServiceFailoverPolicy) *bool {
 		if v == nil {
@@ -7933,17 +7959,17 @@ func (o BackendServiceFailoverPolicyPtrOutput) FailoverRatio() pulumi.Float64Ptr
 	}).(pulumi.Float64PtrOutput)
 }
 
-// For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
+// For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
 type BackendServiceFailoverPolicyResponse struct {
 	// This can be set to true only if the protocol is TCP. The default is false.
 	DisableConnectionDrainOnFailover bool `pulumi:"disableConnectionDrainOnFailover"`
-	// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
+	// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
 	DropTrafficIfUnhealthy bool `pulumi:"dropTrafficIfUnhealthy"`
 	// The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
 	FailoverRatio float64 `pulumi:"failoverRatio"`
 }
 
-// For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
+// For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
 type BackendServiceFailoverPolicyResponseOutput struct{ *pulumi.OutputState }
 
 func (BackendServiceFailoverPolicyResponseOutput) ElementType() reflect.Type {
@@ -7963,7 +7989,7 @@ func (o BackendServiceFailoverPolicyResponseOutput) DisableConnectionDrainOnFail
 	return o.ApplyT(func(v BackendServiceFailoverPolicyResponse) bool { return v.DisableConnectionDrainOnFailover }).(pulumi.BoolOutput)
 }
 
-// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
+// If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
 func (o BackendServiceFailoverPolicyResponseOutput) DropTrafficIfUnhealthy() pulumi.BoolOutput {
 	return o.ApplyT(func(v BackendServiceFailoverPolicyResponse) bool { return v.DropTrafficIfUnhealthy }).(pulumi.BoolOutput)
 }
@@ -9104,9 +9130,9 @@ type Binding struct {
 	BindingId *string `pulumi:"bindingId"`
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role *string `pulumi:"role"`
 }
 
@@ -9127,9 +9153,9 @@ type BindingArgs struct {
 	BindingId pulumi.StringPtrInput `pulumi:"bindingId"`
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -9195,12 +9221,12 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -9231,9 +9257,9 @@ type BindingResponse struct {
 	BindingId string `pulumi:"bindingId"`
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role string `pulumi:"role"`
 }
 
@@ -9262,12 +9288,12 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -10928,11 +10954,11 @@ type CorsPolicy struct {
 	AllowHeaders []string `pulumi:"allowHeaders"`
 	// Specifies the content for the Access-Control-Allow-Methods header.
 	AllowMethods []string `pulumi:"allowMethods"`
-	// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+	// Specifies a regular expression that matches allowed origins. For more information, see regular expression syntax . An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	AllowOriginRegexes []string `pulumi:"allowOriginRegexes"`
 	// Specifies the list of origins that is allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 	AllowOrigins []string `pulumi:"allowOrigins"`
-	// If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+	// If true, disables the CORS policy. The default value is false, which indicates that the CORS policy is in effect.
 	Disabled *bool `pulumi:"disabled"`
 	// Specifies the content for the Access-Control-Expose-Headers header.
 	ExposeHeaders []string `pulumi:"exposeHeaders"`
@@ -10959,11 +10985,11 @@ type CorsPolicyArgs struct {
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
 	// Specifies the content for the Access-Control-Allow-Methods header.
 	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
-	// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+	// Specifies a regular expression that matches allowed origins. For more information, see regular expression syntax . An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	AllowOriginRegexes pulumi.StringArrayInput `pulumi:"allowOriginRegexes"`
 	// Specifies the list of origins that is allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 	AllowOrigins pulumi.StringArrayInput `pulumi:"allowOrigins"`
-	// If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+	// If true, disables the CORS policy. The default value is false, which indicates that the CORS policy is in effect.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// Specifies the content for the Access-Control-Expose-Headers header.
 	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
@@ -11064,7 +11090,7 @@ func (o CorsPolicyOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicy) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
-// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+// Specifies a regular expression that matches allowed origins. For more information, see regular expression syntax . An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 func (o CorsPolicyOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicy) []string { return v.AllowOriginRegexes }).(pulumi.StringArrayOutput)
 }
@@ -11074,7 +11100,7 @@ func (o CorsPolicyOutput) AllowOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicy) []string { return v.AllowOrigins }).(pulumi.StringArrayOutput)
 }
 
-// If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+// If true, disables the CORS policy. The default value is false, which indicates that the CORS policy is in effect.
 func (o CorsPolicyOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CorsPolicy) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
@@ -11143,7 +11169,7 @@ func (o CorsPolicyPtrOutput) AllowMethods() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+// Specifies a regular expression that matches allowed origins. For more information, see regular expression syntax . An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 func (o CorsPolicyPtrOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CorsPolicy) []string {
 		if v == nil {
@@ -11163,7 +11189,7 @@ func (o CorsPolicyPtrOutput) AllowOrigins() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+// If true, disables the CORS policy. The default value is false, which indicates that the CORS policy is in effect.
 func (o CorsPolicyPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CorsPolicy) *bool {
 		if v == nil {
@@ -11201,11 +11227,11 @@ type CorsPolicyResponse struct {
 	AllowHeaders []string `pulumi:"allowHeaders"`
 	// Specifies the content for the Access-Control-Allow-Methods header.
 	AllowMethods []string `pulumi:"allowMethods"`
-	// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+	// Specifies a regular expression that matches allowed origins. For more information, see regular expression syntax . An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 	AllowOriginRegexes []string `pulumi:"allowOriginRegexes"`
 	// Specifies the list of origins that is allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 	AllowOrigins []string `pulumi:"allowOrigins"`
-	// If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+	// If true, disables the CORS policy. The default value is false, which indicates that the CORS policy is in effect.
 	Disabled bool `pulumi:"disabled"`
 	// Specifies the content for the Access-Control-Expose-Headers header.
 	ExposeHeaders []string `pulumi:"exposeHeaders"`
@@ -11243,7 +11269,7 @@ func (o CorsPolicyResponseOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicyResponse) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
-// Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+// Specifies a regular expression that matches allowed origins. For more information, see regular expression syntax . An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
 func (o CorsPolicyResponseOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicyResponse) []string { return v.AllowOriginRegexes }).(pulumi.StringArrayOutput)
 }
@@ -11253,7 +11279,7 @@ func (o CorsPolicyResponseOutput) AllowOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CorsPolicyResponse) []string { return v.AllowOrigins }).(pulumi.StringArrayOutput)
 }
 
-// If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+// If true, disables the CORS policy. The default value is false, which indicates that the CORS policy is in effect.
 func (o CorsPolicyResponseOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v CorsPolicyResponse) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
@@ -13469,7 +13495,7 @@ func (o DurationResponseOutput) Seconds() pulumi.StringOutput {
 type ErrorInfoResponse struct {
 	// The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
 	Domain string `pulumi:"domain"`
-	// Additional structured details about this error. Keys should match /[a-zA-Z0-9-_]/ and be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
+	// Additional structured details about this error. Keys must match /a-z+/ but should ideally be lowerCamelCase. Also they must be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
 	Metadatas map[string]string `pulumi:"metadatas"`
 	// The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match a regular expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.
 	Reason string `pulumi:"reason"`
@@ -13495,7 +13521,7 @@ func (o ErrorInfoResponseOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v ErrorInfoResponse) string { return v.Domain }).(pulumi.StringOutput)
 }
 
-// Additional structured details about this error. Keys should match /[a-zA-Z0-9-_]/ and be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
+// Additional structured details about this error. Keys must match /a-z+/ but should ideally be lowerCamelCase. Also they must be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
 func (o ErrorInfoResponseOutput) Metadatas() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ErrorInfoResponse) map[string]string { return v.Metadatas }).(pulumi.StringMapOutput)
 }
@@ -16168,13 +16194,13 @@ func (o FixedOrPercentResponseOutput) Percent() pulumi.IntOutput {
 	return o.ApplyT(func(v FixedOrPercentResponse) int { return v.Percent }).(pulumi.IntOutput)
 }
 
-// Describes the auto-registration of the Forwarding Rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this Forwarding Rule.
+// Describes the auto-registration of the forwarding rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this forwarding rule.
 type ForwardingRuleServiceDirectoryRegistration struct {
 	// Service Directory namespace to register the forwarding rule under.
 	Namespace *string `pulumi:"namespace"`
 	// Service Directory service to register the forwarding rule under.
 	Service *string `pulumi:"service"`
-	// [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs Forwarding Rules on the same network should use the same Service Directory region.
+	// [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs forwarding rules on the same network should use the same Service Directory region.
 	ServiceDirectoryRegion *string `pulumi:"serviceDirectoryRegion"`
 }
 
@@ -16189,13 +16215,13 @@ type ForwardingRuleServiceDirectoryRegistrationInput interface {
 	ToForwardingRuleServiceDirectoryRegistrationOutputWithContext(context.Context) ForwardingRuleServiceDirectoryRegistrationOutput
 }
 
-// Describes the auto-registration of the Forwarding Rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this Forwarding Rule.
+// Describes the auto-registration of the forwarding rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this forwarding rule.
 type ForwardingRuleServiceDirectoryRegistrationArgs struct {
 	// Service Directory namespace to register the forwarding rule under.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	// Service Directory service to register the forwarding rule under.
 	Service pulumi.StringPtrInput `pulumi:"service"`
-	// [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs Forwarding Rules on the same network should use the same Service Directory region.
+	// [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs forwarding rules on the same network should use the same Service Directory region.
 	ServiceDirectoryRegion pulumi.StringPtrInput `pulumi:"serviceDirectoryRegion"`
 }
 
@@ -16236,7 +16262,7 @@ func (i ForwardingRuleServiceDirectoryRegistrationArray) ToForwardingRuleService
 	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleServiceDirectoryRegistrationArrayOutput)
 }
 
-// Describes the auto-registration of the Forwarding Rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this Forwarding Rule.
+// Describes the auto-registration of the forwarding rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this forwarding rule.
 type ForwardingRuleServiceDirectoryRegistrationOutput struct{ *pulumi.OutputState }
 
 func (ForwardingRuleServiceDirectoryRegistrationOutput) ElementType() reflect.Type {
@@ -16261,7 +16287,7 @@ func (o ForwardingRuleServiceDirectoryRegistrationOutput) Service() pulumi.Strin
 	return o.ApplyT(func(v ForwardingRuleServiceDirectoryRegistration) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
 
-// [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs Forwarding Rules on the same network should use the same Service Directory region.
+// [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs forwarding rules on the same network should use the same Service Directory region.
 func (o ForwardingRuleServiceDirectoryRegistrationOutput) ServiceDirectoryRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ForwardingRuleServiceDirectoryRegistration) *string { return v.ServiceDirectoryRegion }).(pulumi.StringPtrOutput)
 }
@@ -16286,17 +16312,17 @@ func (o ForwardingRuleServiceDirectoryRegistrationArrayOutput) Index(i pulumi.In
 	}).(ForwardingRuleServiceDirectoryRegistrationOutput)
 }
 
-// Describes the auto-registration of the Forwarding Rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this Forwarding Rule.
+// Describes the auto-registration of the forwarding rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this forwarding rule.
 type ForwardingRuleServiceDirectoryRegistrationResponse struct {
 	// Service Directory namespace to register the forwarding rule under.
 	Namespace string `pulumi:"namespace"`
 	// Service Directory service to register the forwarding rule under.
 	Service string `pulumi:"service"`
-	// [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs Forwarding Rules on the same network should use the same Service Directory region.
+	// [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs forwarding rules on the same network should use the same Service Directory region.
 	ServiceDirectoryRegion string `pulumi:"serviceDirectoryRegion"`
 }
 
-// Describes the auto-registration of the Forwarding Rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this Forwarding Rule.
+// Describes the auto-registration of the forwarding rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this forwarding rule.
 type ForwardingRuleServiceDirectoryRegistrationResponseOutput struct{ *pulumi.OutputState }
 
 func (ForwardingRuleServiceDirectoryRegistrationResponseOutput) ElementType() reflect.Type {
@@ -16321,7 +16347,7 @@ func (o ForwardingRuleServiceDirectoryRegistrationResponseOutput) Service() pulu
 	return o.ApplyT(func(v ForwardingRuleServiceDirectoryRegistrationResponse) string { return v.Service }).(pulumi.StringOutput)
 }
 
-// [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs Forwarding Rules on the same network should use the same Service Directory region.
+// [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs forwarding rules on the same network should use the same Service Directory region.
 func (o ForwardingRuleServiceDirectoryRegistrationResponseOutput) ServiceDirectoryRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v ForwardingRuleServiceDirectoryRegistrationResponse) string { return v.ServiceDirectoryRegion }).(pulumi.StringOutput)
 }
@@ -16967,7 +16993,7 @@ type GRPCHealthCheck struct {
 	Port *int `pulumi:"port"`
 	// Not supported.
 	PortName *string `pulumi:"portName"`
-	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification *GRPCHealthCheckPortSpecification `pulumi:"portSpecification"`
 }
 
@@ -16989,7 +17015,7 @@ type GRPCHealthCheckArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Not supported.
 	PortName pulumi.StringPtrInput `pulumi:"portName"`
-	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification GRPCHealthCheckPortSpecificationPtrInput `pulumi:"portSpecification"`
 }
 
@@ -17085,7 +17111,7 @@ func (o GRPCHealthCheckOutput) PortName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GRPCHealthCheck) *string { return v.PortName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o GRPCHealthCheckOutput) PortSpecification() GRPCHealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v GRPCHealthCheck) *GRPCHealthCheckPortSpecification { return v.PortSpecification }).(GRPCHealthCheckPortSpecificationPtrOutput)
 }
@@ -17144,7 +17170,7 @@ func (o GRPCHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o GRPCHealthCheckPtrOutput) PortSpecification() GRPCHealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v *GRPCHealthCheck) *GRPCHealthCheckPortSpecification {
 		if v == nil {
@@ -17161,7 +17187,7 @@ type GRPCHealthCheckResponse struct {
 	Port int `pulumi:"port"`
 	// Not supported.
 	PortName string `pulumi:"portName"`
-	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification string `pulumi:"portSpecification"`
 }
 
@@ -17194,14 +17220,14 @@ func (o GRPCHealthCheckResponseOutput) PortName() pulumi.StringOutput {
 	return o.ApplyT(func(v GRPCHealthCheckResponse) string { return v.PortName }).(pulumi.StringOutput)
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o GRPCHealthCheckResponseOutput) PortSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v GRPCHealthCheckResponse) string { return v.PortSpecification }).(pulumi.StringOutput)
 }
 
 // Guest OS features.
 type GuestOsFeature struct {
-	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE_V2 - SEV_SNP_CAPABLE - TDX_CAPABLE - IDPF For more information, see Enabling guest operating system features.
 	Type *GuestOsFeatureType `pulumi:"type"`
 }
 
@@ -17218,7 +17244,7 @@ type GuestOsFeatureInput interface {
 
 // Guest OS features.
 type GuestOsFeatureArgs struct {
-	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE_V2 - SEV_SNP_CAPABLE - TDX_CAPABLE - IDPF For more information, see Enabling guest operating system features.
 	Type GuestOsFeatureTypePtrInput `pulumi:"type"`
 }
 
@@ -17274,7 +17300,7 @@ func (o GuestOsFeatureOutput) ToGuestOsFeatureOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE_V2 - SEV_SNP_CAPABLE - TDX_CAPABLE - IDPF For more information, see Enabling guest operating system features.
 func (o GuestOsFeatureOutput) Type() GuestOsFeatureTypePtrOutput {
 	return o.ApplyT(func(v GuestOsFeature) *GuestOsFeatureType { return v.Type }).(GuestOsFeatureTypePtrOutput)
 }
@@ -17301,7 +17327,7 @@ func (o GuestOsFeatureArrayOutput) Index(i pulumi.IntInput) GuestOsFeatureOutput
 
 // Guest OS features.
 type GuestOsFeatureResponse struct {
-	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE_V2 - SEV_SNP_CAPABLE - TDX_CAPABLE - IDPF For more information, see Enabling guest operating system features.
 	Type string `pulumi:"type"`
 }
 
@@ -17320,7 +17346,7 @@ func (o GuestOsFeatureResponseOutput) ToGuestOsFeatureResponseOutputWithContext(
 	return o
 }
 
-// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE_V2 - SEV_SNP_CAPABLE - TDX_CAPABLE - IDPF For more information, see Enabling guest operating system features.
 func (o GuestOsFeatureResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestOsFeatureResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -17352,7 +17378,7 @@ type HTTP2HealthCheck struct {
 	Port *int `pulumi:"port"`
 	// Not supported.
 	PortName *string `pulumi:"portName"`
-	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification *HTTP2HealthCheckPortSpecification `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader *HTTP2HealthCheckProxyHeader `pulumi:"proxyHeader"`
@@ -17380,7 +17406,7 @@ type HTTP2HealthCheckArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Not supported.
 	PortName pulumi.StringPtrInput `pulumi:"portName"`
-	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification HTTP2HealthCheckPortSpecificationPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader HTTP2HealthCheckProxyHeaderPtrInput `pulumi:"proxyHeader"`
@@ -17482,7 +17508,7 @@ func (o HTTP2HealthCheckOutput) PortName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTP2HealthCheck) *string { return v.PortName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o HTTP2HealthCheckOutput) PortSpecification() HTTP2HealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v HTTP2HealthCheck) *HTTP2HealthCheckPortSpecification { return v.PortSpecification }).(HTTP2HealthCheckPortSpecificationPtrOutput)
 }
@@ -17556,7 +17582,7 @@ func (o HTTP2HealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o HTTP2HealthCheckPtrOutput) PortSpecification() HTTP2HealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v *HTTP2HealthCheck) *HTTP2HealthCheckPortSpecification {
 		if v == nil {
@@ -17603,7 +17629,7 @@ type HTTP2HealthCheckResponse struct {
 	Port int `pulumi:"port"`
 	// Not supported.
 	PortName string `pulumi:"portName"`
-	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader string `pulumi:"proxyHeader"`
@@ -17642,7 +17668,7 @@ func (o HTTP2HealthCheckResponseOutput) PortName() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTP2HealthCheckResponse) string { return v.PortName }).(pulumi.StringOutput)
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o HTTP2HealthCheckResponseOutput) PortSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTP2HealthCheckResponse) string { return v.PortSpecification }).(pulumi.StringOutput)
 }
@@ -17669,7 +17695,7 @@ type HTTPHealthCheckType struct {
 	Port *int `pulumi:"port"`
 	// Not supported.
 	PortName *string `pulumi:"portName"`
-	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification *HTTPHealthCheckPortSpecification `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader *HTTPHealthCheckProxyHeader `pulumi:"proxyHeader"`
@@ -17697,7 +17723,7 @@ type HTTPHealthCheckTypeArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Not supported.
 	PortName pulumi.StringPtrInput `pulumi:"portName"`
-	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification HTTPHealthCheckPortSpecificationPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader HTTPHealthCheckProxyHeaderPtrInput `pulumi:"proxyHeader"`
@@ -17799,7 +17825,7 @@ func (o HTTPHealthCheckTypeOutput) PortName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTPHealthCheckType) *string { return v.PortName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o HTTPHealthCheckTypeOutput) PortSpecification() HTTPHealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v HTTPHealthCheckType) *HTTPHealthCheckPortSpecification { return v.PortSpecification }).(HTTPHealthCheckPortSpecificationPtrOutput)
 }
@@ -17873,7 +17899,7 @@ func (o HTTPHealthCheckTypePtrOutput) PortName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o HTTPHealthCheckTypePtrOutput) PortSpecification() HTTPHealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v *HTTPHealthCheckType) *HTTPHealthCheckPortSpecification {
 		if v == nil {
@@ -17920,7 +17946,7 @@ type HTTPHealthCheckResponse struct {
 	Port int `pulumi:"port"`
 	// Not supported.
 	PortName string `pulumi:"portName"`
-	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader string `pulumi:"proxyHeader"`
@@ -17959,7 +17985,7 @@ func (o HTTPHealthCheckResponseOutput) PortName() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPHealthCheckResponse) string { return v.PortName }).(pulumi.StringOutput)
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o HTTPHealthCheckResponseOutput) PortSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPHealthCheckResponse) string { return v.PortSpecification }).(pulumi.StringOutput)
 }
@@ -17986,7 +18012,7 @@ type HTTPSHealthCheckType struct {
 	Port *int `pulumi:"port"`
 	// Not supported.
 	PortName *string `pulumi:"portName"`
-	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification *HTTPSHealthCheckPortSpecification `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader *HTTPSHealthCheckProxyHeader `pulumi:"proxyHeader"`
@@ -18014,7 +18040,7 @@ type HTTPSHealthCheckTypeArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Not supported.
 	PortName pulumi.StringPtrInput `pulumi:"portName"`
-	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification HTTPSHealthCheckPortSpecificationPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader HTTPSHealthCheckProxyHeaderPtrInput `pulumi:"proxyHeader"`
@@ -18116,7 +18142,7 @@ func (o HTTPSHealthCheckTypeOutput) PortName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTPSHealthCheckType) *string { return v.PortName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o HTTPSHealthCheckTypeOutput) PortSpecification() HTTPSHealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v HTTPSHealthCheckType) *HTTPSHealthCheckPortSpecification { return v.PortSpecification }).(HTTPSHealthCheckPortSpecificationPtrOutput)
 }
@@ -18190,7 +18216,7 @@ func (o HTTPSHealthCheckTypePtrOutput) PortName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o HTTPSHealthCheckTypePtrOutput) PortSpecification() HTTPSHealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v *HTTPSHealthCheckType) *HTTPSHealthCheckPortSpecification {
 		if v == nil {
@@ -18237,7 +18263,7 @@ type HTTPSHealthCheckResponse struct {
 	Port int `pulumi:"port"`
 	// Not supported.
 	PortName string `pulumi:"portName"`
-	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader string `pulumi:"proxyHeader"`
@@ -18276,7 +18302,7 @@ func (o HTTPSHealthCheckResponseOutput) PortName() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPSHealthCheckResponse) string { return v.PortName }).(pulumi.StringOutput)
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o HTTPSHealthCheckResponseOutput) PortSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPSHealthCheckResponse) string { return v.PortSpecification }).(pulumi.StringOutput)
 }
@@ -22657,6 +22683,8 @@ func (o InstanceGroupManagerAutoHealingPolicyResponseArrayOutput) Index(i pulumi
 type InstanceGroupManagerInstanceFlexibilityPolicy struct {
 	// Named instance selections configuring properties that the group will use when creating new VMs.
 	InstanceSelectionLists map[string]string `pulumi:"instanceSelectionLists"`
+	// Named instance selections configuring properties that the group will use when creating new VMs.
+	InstanceSelections map[string]string `pulumi:"instanceSelections"`
 }
 
 // InstanceGroupManagerInstanceFlexibilityPolicyInput is an input type that accepts InstanceGroupManagerInstanceFlexibilityPolicyArgs and InstanceGroupManagerInstanceFlexibilityPolicyOutput values.
@@ -22673,6 +22701,8 @@ type InstanceGroupManagerInstanceFlexibilityPolicyInput interface {
 type InstanceGroupManagerInstanceFlexibilityPolicyArgs struct {
 	// Named instance selections configuring properties that the group will use when creating new VMs.
 	InstanceSelectionLists pulumi.StringMapInput `pulumi:"instanceSelectionLists"`
+	// Named instance selections configuring properties that the group will use when creating new VMs.
+	InstanceSelections pulumi.StringMapInput `pulumi:"instanceSelections"`
 }
 
 func (InstanceGroupManagerInstanceFlexibilityPolicyArgs) ElementType() reflect.Type {
@@ -22759,6 +22789,11 @@ func (o InstanceGroupManagerInstanceFlexibilityPolicyOutput) InstanceSelectionLi
 	}).(pulumi.StringMapOutput)
 }
 
+// Named instance selections configuring properties that the group will use when creating new VMs.
+func (o InstanceGroupManagerInstanceFlexibilityPolicyOutput) InstanceSelections() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicy) map[string]string { return v.InstanceSelections }).(pulumi.StringMapOutput)
+}
+
 type InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput) ElementType() reflect.Type {
@@ -22793,9 +22828,21 @@ func (o InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput) InstanceSelectio
 	}).(pulumi.StringMapOutput)
 }
 
+// Named instance selections configuring properties that the group will use when creating new VMs.
+func (o InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput) InstanceSelections() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerInstanceFlexibilityPolicy) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSelections
+	}).(pulumi.StringMapOutput)
+}
+
 type InstanceGroupManagerInstanceFlexibilityPolicyResponse struct {
 	// Named instance selections configuring properties that the group will use when creating new VMs.
 	InstanceSelectionLists map[string]string `pulumi:"instanceSelectionLists"`
+	// Named instance selections configuring properties that the group will use when creating new VMs.
+	InstanceSelections map[string]string `pulumi:"instanceSelections"`
 }
 
 type InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput struct{ *pulumi.OutputState }
@@ -22816,6 +22863,13 @@ func (o InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput) ToInstanceG
 func (o InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput) InstanceSelectionLists() pulumi.StringMapOutput {
 	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicyResponse) map[string]string {
 		return v.InstanceSelectionLists
+	}).(pulumi.StringMapOutput)
+}
+
+// Named instance selections configuring properties that the group will use when creating new VMs.
+func (o InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput) InstanceSelections() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicyResponse) map[string]string {
+		return v.InstanceSelections
 	}).(pulumi.StringMapOutput)
 }
 
@@ -23010,6 +23064,172 @@ func (o InstanceGroupManagerInstanceLifecyclePolicyResponseOutput) ForceUpdateOn
 	return o.ApplyT(func(v InstanceGroupManagerInstanceLifecyclePolicyResponse) string { return v.ForceUpdateOnRepair }).(pulumi.StringOutput)
 }
 
+// Input only additional params for instance group manager creation.
+type InstanceGroupManagerParams struct {
+	// Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see Manage tags for resources.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+}
+
+// InstanceGroupManagerParamsInput is an input type that accepts InstanceGroupManagerParamsArgs and InstanceGroupManagerParamsOutput values.
+// You can construct a concrete instance of `InstanceGroupManagerParamsInput` via:
+//
+//	InstanceGroupManagerParamsArgs{...}
+type InstanceGroupManagerParamsInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerParamsOutput() InstanceGroupManagerParamsOutput
+	ToInstanceGroupManagerParamsOutputWithContext(context.Context) InstanceGroupManagerParamsOutput
+}
+
+// Input only additional params for instance group manager creation.
+type InstanceGroupManagerParamsArgs struct {
+	// Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see Manage tags for resources.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
+}
+
+func (InstanceGroupManagerParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerParams)(nil)).Elem()
+}
+
+func (i InstanceGroupManagerParamsArgs) ToInstanceGroupManagerParamsOutput() InstanceGroupManagerParamsOutput {
+	return i.ToInstanceGroupManagerParamsOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupManagerParamsArgs) ToInstanceGroupManagerParamsOutputWithContext(ctx context.Context) InstanceGroupManagerParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerParamsOutput)
+}
+
+func (i InstanceGroupManagerParamsArgs) ToInstanceGroupManagerParamsPtrOutput() InstanceGroupManagerParamsPtrOutput {
+	return i.ToInstanceGroupManagerParamsPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupManagerParamsArgs) ToInstanceGroupManagerParamsPtrOutputWithContext(ctx context.Context) InstanceGroupManagerParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerParamsOutput).ToInstanceGroupManagerParamsPtrOutputWithContext(ctx)
+}
+
+// InstanceGroupManagerParamsPtrInput is an input type that accepts InstanceGroupManagerParamsArgs, InstanceGroupManagerParamsPtr and InstanceGroupManagerParamsPtrOutput values.
+// You can construct a concrete instance of `InstanceGroupManagerParamsPtrInput` via:
+//
+//	        InstanceGroupManagerParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceGroupManagerParamsPtrInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerParamsPtrOutput() InstanceGroupManagerParamsPtrOutput
+	ToInstanceGroupManagerParamsPtrOutputWithContext(context.Context) InstanceGroupManagerParamsPtrOutput
+}
+
+type instanceGroupManagerParamsPtrType InstanceGroupManagerParamsArgs
+
+func InstanceGroupManagerParamsPtr(v *InstanceGroupManagerParamsArgs) InstanceGroupManagerParamsPtrInput {
+	return (*instanceGroupManagerParamsPtrType)(v)
+}
+
+func (*instanceGroupManagerParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGroupManagerParams)(nil)).Elem()
+}
+
+func (i *instanceGroupManagerParamsPtrType) ToInstanceGroupManagerParamsPtrOutput() InstanceGroupManagerParamsPtrOutput {
+	return i.ToInstanceGroupManagerParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceGroupManagerParamsPtrType) ToInstanceGroupManagerParamsPtrOutputWithContext(ctx context.Context) InstanceGroupManagerParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerParamsPtrOutput)
+}
+
+// Input only additional params for instance group manager creation.
+type InstanceGroupManagerParamsOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerParams)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerParamsOutput) ToInstanceGroupManagerParamsOutput() InstanceGroupManagerParamsOutput {
+	return o
+}
+
+func (o InstanceGroupManagerParamsOutput) ToInstanceGroupManagerParamsOutputWithContext(ctx context.Context) InstanceGroupManagerParamsOutput {
+	return o
+}
+
+func (o InstanceGroupManagerParamsOutput) ToInstanceGroupManagerParamsPtrOutput() InstanceGroupManagerParamsPtrOutput {
+	return o.ToInstanceGroupManagerParamsPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupManagerParamsOutput) ToInstanceGroupManagerParamsPtrOutputWithContext(ctx context.Context) InstanceGroupManagerParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGroupManagerParams) *InstanceGroupManagerParams {
+		return &v
+	}).(InstanceGroupManagerParamsPtrOutput)
+}
+
+// Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see Manage tags for resources.
+func (o InstanceGroupManagerParamsOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstanceGroupManagerParams) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+type InstanceGroupManagerParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGroupManagerParams)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerParamsPtrOutput) ToInstanceGroupManagerParamsPtrOutput() InstanceGroupManagerParamsPtrOutput {
+	return o
+}
+
+func (o InstanceGroupManagerParamsPtrOutput) ToInstanceGroupManagerParamsPtrOutputWithContext(ctx context.Context) InstanceGroupManagerParamsPtrOutput {
+	return o
+}
+
+func (o InstanceGroupManagerParamsPtrOutput) Elem() InstanceGroupManagerParamsOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerParams) InstanceGroupManagerParams {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceGroupManagerParams
+		return ret
+	}).(InstanceGroupManagerParamsOutput)
+}
+
+// Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see Manage tags for resources.
+func (o InstanceGroupManagerParamsPtrOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceManagerTags
+	}).(pulumi.StringMapOutput)
+}
+
+// Input only additional params for instance group manager creation.
+type InstanceGroupManagerParamsResponse struct {
+	// Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see Manage tags for resources.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+}
+
+// Input only additional params for instance group manager creation.
+type InstanceGroupManagerParamsResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerParamsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerParamsResponse)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerParamsResponseOutput) ToInstanceGroupManagerParamsResponseOutput() InstanceGroupManagerParamsResponseOutput {
+	return o
+}
+
+func (o InstanceGroupManagerParamsResponseOutput) ToInstanceGroupManagerParamsResponseOutputWithContext(ctx context.Context) InstanceGroupManagerParamsResponseOutput {
+	return o
+}
+
+// Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see Manage tags for resources.
+func (o InstanceGroupManagerParamsResponseOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstanceGroupManagerParamsResponse) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
 type InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse struct {
 	ErrorInfo        ErrorInfoResponse         `pulumi:"errorInfo"`
 	Help             HelpResponse              `pulumi:"help"`
@@ -23142,13 +23362,13 @@ func (o InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponseArrayOutpu
 	}).(InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponseOutput)
 }
 
-// Errors encountered during the queueing or provisioning phases of the ResizeRequest.
+// [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the last_attempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
 type InstanceGroupManagerResizeRequestStatusErrorResponse struct {
 	// The array of errors encountered while processing this operation.
 	Errors []InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse `pulumi:"errors"`
 }
 
-// Errors encountered during the queueing or provisioning phases of the ResizeRequest.
+// [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the last_attempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
 type InstanceGroupManagerResizeRequestStatusErrorResponseOutput struct{ *pulumi.OutputState }
 
 func (InstanceGroupManagerResizeRequestStatusErrorResponseOutput) ElementType() reflect.Type {
@@ -23170,9 +23390,203 @@ func (o InstanceGroupManagerResizeRequestStatusErrorResponseOutput) Errors() Ins
 	}).(InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponseArrayOutput)
 }
 
+type InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponse struct {
+	ErrorInfo        ErrorInfoResponse         `pulumi:"errorInfo"`
+	Help             HelpResponse              `pulumi:"help"`
+	LocalizedMessage LocalizedMessageResponse  `pulumi:"localizedMessage"`
+	QuotaInfo        QuotaExceededInfoResponse `pulumi:"quotaInfo"`
+}
+
+type InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponse)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseOutput) ToInstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseOutput() InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseOutput {
+	return o
+}
+
+func (o InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseOutput) ToInstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseOutputWithContext(ctx context.Context) InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseOutput {
+	return o
+}
+
+func (o InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseOutput) ErrorInfo() ErrorInfoResponseOutput {
+	return o.ApplyT(func(v InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponse) ErrorInfoResponse {
+		return v.ErrorInfo
+	}).(ErrorInfoResponseOutput)
+}
+
+func (o InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseOutput) Help() HelpResponseOutput {
+	return o.ApplyT(func(v InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponse) HelpResponse {
+		return v.Help
+	}).(HelpResponseOutput)
+}
+
+func (o InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseOutput) LocalizedMessage() LocalizedMessageResponseOutput {
+	return o.ApplyT(func(v InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponse) LocalizedMessageResponse {
+		return v.LocalizedMessage
+	}).(LocalizedMessageResponseOutput)
+}
+
+func (o InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseOutput) QuotaInfo() QuotaExceededInfoResponseOutput {
+	return o.ApplyT(func(v InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponse) QuotaExceededInfoResponse {
+		return v.QuotaInfo
+	}).(QuotaExceededInfoResponseOutput)
+}
+
+type InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponse)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseArrayOutput) ToInstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseArrayOutput() InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseArrayOutput {
+	return o
+}
+
+func (o InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseArrayOutput) ToInstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseArrayOutputWithContext(ctx context.Context) InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseArrayOutput {
+	return o
+}
+
+func (o InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseArrayOutput) Index(i pulumi.IntInput) InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponse {
+		return vs[0].([]InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponse)[vs[1].(int)]
+	}).(InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseOutput)
+}
+
+type InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponse struct {
+	// The error type identifier for this error.
+	Code string `pulumi:"code"`
+	// An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+	ErrorDetails []InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponse `pulumi:"errorDetails"`
+	// Indicates the field in the request that caused the error. This property is optional.
+	Location string `pulumi:"location"`
+	// An optional, human-readable error message.
+	Message string `pulumi:"message"`
+}
+
+type InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponse)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseOutput) ToInstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseOutput() InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseOutput {
+	return o
+}
+
+func (o InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseOutput) ToInstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseOutputWithContext(ctx context.Context) InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseOutput {
+	return o
+}
+
+// The error type identifier for this error.
+func (o InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponse) string {
+		return v.Code
+	}).(pulumi.StringOutput)
+}
+
+// An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+func (o InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseOutput) ErrorDetails() InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseArrayOutput {
+	return o.ApplyT(func(v InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponse) []InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponse {
+		return v.ErrorDetails
+	}).(InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseArrayOutput)
+}
+
+// Indicates the field in the request that caused the error. This property is optional.
+func (o InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponse) string {
+		return v.Location
+	}).(pulumi.StringOutput)
+}
+
+// An optional, human-readable error message.
+func (o InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponse) string {
+		return v.Message
+	}).(pulumi.StringOutput)
+}
+
+type InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponse)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseArrayOutput) ToInstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseArrayOutput() InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseArrayOutput {
+	return o
+}
+
+func (o InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseArrayOutput) ToInstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseArrayOutputWithContext(ctx context.Context) InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseArrayOutput {
+	return o
+}
+
+func (o InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseArrayOutput) Index(i pulumi.IntInput) InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponse {
+		return vs[0].([]InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponse)[vs[1].(int)]
+	}).(InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseOutput)
+}
+
+// Errors that prevented the ResizeRequest to be fulfilled.
+type InstanceGroupManagerResizeRequestStatusLastAttemptErrorResponse struct {
+	// The array of errors encountered while processing this operation.
+	Errors []InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponse `pulumi:"errors"`
+}
+
+// Errors that prevented the ResizeRequest to be fulfilled.
+type InstanceGroupManagerResizeRequestStatusLastAttemptErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerResizeRequestStatusLastAttemptErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerResizeRequestStatusLastAttemptErrorResponse)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerResizeRequestStatusLastAttemptErrorResponseOutput) ToInstanceGroupManagerResizeRequestStatusLastAttemptErrorResponseOutput() InstanceGroupManagerResizeRequestStatusLastAttemptErrorResponseOutput {
+	return o
+}
+
+func (o InstanceGroupManagerResizeRequestStatusLastAttemptErrorResponseOutput) ToInstanceGroupManagerResizeRequestStatusLastAttemptErrorResponseOutputWithContext(ctx context.Context) InstanceGroupManagerResizeRequestStatusLastAttemptErrorResponseOutput {
+	return o
+}
+
+// The array of errors encountered while processing this operation.
+func (o InstanceGroupManagerResizeRequestStatusLastAttemptErrorResponseOutput) Errors() InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseArrayOutput {
+	return o.ApplyT(func(v InstanceGroupManagerResizeRequestStatusLastAttemptErrorResponse) []InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponse {
+		return v.Errors
+	}).(InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseArrayOutput)
+}
+
+type InstanceGroupManagerResizeRequestStatusLastAttemptResponse struct {
+	// Errors that prevented the ResizeRequest to be fulfilled.
+	Error InstanceGroupManagerResizeRequestStatusLastAttemptErrorResponse `pulumi:"error"`
+}
+
+type InstanceGroupManagerResizeRequestStatusLastAttemptResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerResizeRequestStatusLastAttemptResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerResizeRequestStatusLastAttemptResponse)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerResizeRequestStatusLastAttemptResponseOutput) ToInstanceGroupManagerResizeRequestStatusLastAttemptResponseOutput() InstanceGroupManagerResizeRequestStatusLastAttemptResponseOutput {
+	return o
+}
+
+func (o InstanceGroupManagerResizeRequestStatusLastAttemptResponseOutput) ToInstanceGroupManagerResizeRequestStatusLastAttemptResponseOutputWithContext(ctx context.Context) InstanceGroupManagerResizeRequestStatusLastAttemptResponseOutput {
+	return o
+}
+
+// Errors that prevented the ResizeRequest to be fulfilled.
+func (o InstanceGroupManagerResizeRequestStatusLastAttemptResponseOutput) Error() InstanceGroupManagerResizeRequestStatusLastAttemptErrorResponseOutput {
+	return o.ApplyT(func(v InstanceGroupManagerResizeRequestStatusLastAttemptResponse) InstanceGroupManagerResizeRequestStatusLastAttemptErrorResponse {
+		return v.Error
+	}).(InstanceGroupManagerResizeRequestStatusLastAttemptErrorResponseOutput)
+}
+
 type InstanceGroupManagerResizeRequestStatusResponse struct {
-	// Errors encountered during the queueing or provisioning phases of the ResizeRequest.
+	// [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the last_attempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
 	Error InstanceGroupManagerResizeRequestStatusErrorResponse `pulumi:"error"`
+	// [Output only] Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it's still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the "error" field only.
+	LastAttempt InstanceGroupManagerResizeRequestStatusLastAttemptResponse `pulumi:"lastAttempt"`
 }
 
 type InstanceGroupManagerResizeRequestStatusResponseOutput struct{ *pulumi.OutputState }
@@ -23189,16 +23603,24 @@ func (o InstanceGroupManagerResizeRequestStatusResponseOutput) ToInstanceGroupMa
 	return o
 }
 
-// Errors encountered during the queueing or provisioning phases of the ResizeRequest.
+// [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the last_attempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
 func (o InstanceGroupManagerResizeRequestStatusResponseOutput) Error() InstanceGroupManagerResizeRequestStatusErrorResponseOutput {
 	return o.ApplyT(func(v InstanceGroupManagerResizeRequestStatusResponse) InstanceGroupManagerResizeRequestStatusErrorResponse {
 		return v.Error
 	}).(InstanceGroupManagerResizeRequestStatusErrorResponseOutput)
 }
 
+// [Output only] Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it's still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the "error" field only.
+func (o InstanceGroupManagerResizeRequestStatusResponseOutput) LastAttempt() InstanceGroupManagerResizeRequestStatusLastAttemptResponseOutput {
+	return o.ApplyT(func(v InstanceGroupManagerResizeRequestStatusResponse) InstanceGroupManagerResizeRequestStatusLastAttemptResponse {
+		return v.LastAttempt
+	}).(InstanceGroupManagerResizeRequestStatusLastAttemptResponseOutput)
+}
+
 type InstanceGroupManagerStandbyPolicy struct {
+	// Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
 	InitialDelaySec *int `pulumi:"initialDelaySec"`
-	// Defines behaviour of using instances from standby pool to resize MIG.
+	// Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is `MANUAL`.
 	Mode *InstanceGroupManagerStandbyPolicyMode `pulumi:"mode"`
 }
 
@@ -23214,8 +23636,9 @@ type InstanceGroupManagerStandbyPolicyInput interface {
 }
 
 type InstanceGroupManagerStandbyPolicyArgs struct {
+	// Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
 	InitialDelaySec pulumi.IntPtrInput `pulumi:"initialDelaySec"`
-	// Defines behaviour of using instances from standby pool to resize MIG.
+	// Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is `MANUAL`.
 	Mode InstanceGroupManagerStandbyPolicyModePtrInput `pulumi:"mode"`
 }
 
@@ -23296,11 +23719,12 @@ func (o InstanceGroupManagerStandbyPolicyOutput) ToInstanceGroupManagerStandbyPo
 	}).(InstanceGroupManagerStandbyPolicyPtrOutput)
 }
 
+// Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
 func (o InstanceGroupManagerStandbyPolicyOutput) InitialDelaySec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStandbyPolicy) *int { return v.InitialDelaySec }).(pulumi.IntPtrOutput)
 }
 
-// Defines behaviour of using instances from standby pool to resize MIG.
+// Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is `MANUAL`.
 func (o InstanceGroupManagerStandbyPolicyOutput) Mode() InstanceGroupManagerStandbyPolicyModePtrOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStandbyPolicy) *InstanceGroupManagerStandbyPolicyMode { return v.Mode }).(InstanceGroupManagerStandbyPolicyModePtrOutput)
 }
@@ -23329,6 +23753,7 @@ func (o InstanceGroupManagerStandbyPolicyPtrOutput) Elem() InstanceGroupManagerS
 	}).(InstanceGroupManagerStandbyPolicyOutput)
 }
 
+// Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
 func (o InstanceGroupManagerStandbyPolicyPtrOutput) InitialDelaySec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerStandbyPolicy) *int {
 		if v == nil {
@@ -23338,7 +23763,7 @@ func (o InstanceGroupManagerStandbyPolicyPtrOutput) InitialDelaySec() pulumi.Int
 	}).(pulumi.IntPtrOutput)
 }
 
-// Defines behaviour of using instances from standby pool to resize MIG.
+// Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is `MANUAL`.
 func (o InstanceGroupManagerStandbyPolicyPtrOutput) Mode() InstanceGroupManagerStandbyPolicyModePtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerStandbyPolicy) *InstanceGroupManagerStandbyPolicyMode {
 		if v == nil {
@@ -23349,8 +23774,9 @@ func (o InstanceGroupManagerStandbyPolicyPtrOutput) Mode() InstanceGroupManagerS
 }
 
 type InstanceGroupManagerStandbyPolicyResponse struct {
+	// Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
 	InitialDelaySec int `pulumi:"initialDelaySec"`
-	// Defines behaviour of using instances from standby pool to resize MIG.
+	// Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is `MANUAL`.
 	Mode string `pulumi:"mode"`
 }
 
@@ -23368,11 +23794,12 @@ func (o InstanceGroupManagerStandbyPolicyResponseOutput) ToInstanceGroupManagerS
 	return o
 }
 
+// Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
 func (o InstanceGroupManagerStandbyPolicyResponseOutput) InitialDelaySec() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStandbyPolicyResponse) int { return v.InitialDelaySec }).(pulumi.IntOutput)
 }
 
-// Defines behaviour of using instances from standby pool to resize MIG.
+// Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is `MANUAL`.
 func (o InstanceGroupManagerStandbyPolicyResponseOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStandbyPolicyResponse) string { return v.Mode }).(pulumi.StringOutput)
 }
@@ -23497,7 +23924,7 @@ type InstanceGroupManagerStatusStatefulResponse struct {
 	//
 	// Deprecated: [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
 	IsStateful bool `pulumi:"isStateful"`
-	// Status of per-instance configurations on the instance.
+	// Status of per-instance configurations on the instances.
 	PerInstanceConfigs InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse `pulumi:"perInstanceConfigs"`
 }
 
@@ -23527,7 +23954,7 @@ func (o InstanceGroupManagerStatusStatefulResponseOutput) IsStateful() pulumi.Bo
 	return o.ApplyT(func(v InstanceGroupManagerStatusStatefulResponse) bool { return v.IsStateful }).(pulumi.BoolOutput)
 }
 
-// Status of per-instance configurations on the instance.
+// Status of per-instance configurations on the instances.
 func (o InstanceGroupManagerStatusStatefulResponseOutput) PerInstanceConfigs() InstanceGroupManagerStatusStatefulPerInstanceConfigsResponseOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStatusStatefulResponse) InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse {
 		return v.PerInstanceConfigs
@@ -24277,6 +24704,8 @@ type InstanceProperties struct {
 	NetworkInterfaces []NetworkInterface `pulumi:"networkInterfaces"`
 	// Note that for MachineImage, this is not supported yet.
 	NetworkPerformanceConfig *NetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
+	// Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
+	PartnerMetadata map[string]string `pulumi:"partnerMetadata"`
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType *InstancePropertiesPostKeyRevocationActionType `pulumi:"postKeyRevocationActionType"`
 	// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
@@ -24339,6 +24768,8 @@ type InstancePropertiesArgs struct {
 	NetworkInterfaces NetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
 	// Note that for MachineImage, this is not supported yet.
 	NetworkPerformanceConfig NetworkPerformanceConfigPtrInput `pulumi:"networkPerformanceConfig"`
+	// Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
+	PartnerMetadata pulumi.StringMapInput `pulumi:"partnerMetadata"`
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType InstancePropertiesPostKeyRevocationActionTypePtrInput `pulumi:"postKeyRevocationActionType"`
 	// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
@@ -24508,6 +24939,11 @@ func (o InstancePropertiesOutput) NetworkInterfaces() NetworkInterfaceArrayOutpu
 // Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesOutput) NetworkPerformanceConfig() NetworkPerformanceConfigPtrOutput {
 	return o.ApplyT(func(v InstanceProperties) *NetworkPerformanceConfig { return v.NetworkPerformanceConfig }).(NetworkPerformanceConfigPtrOutput)
+}
+
+// Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
+func (o InstancePropertiesOutput) PartnerMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstanceProperties) map[string]string { return v.PartnerMetadata }).(pulumi.StringMapOutput)
 }
 
 // PostKeyRevocationActionType of the instance.
@@ -24726,6 +25162,16 @@ func (o InstancePropertiesPtrOutput) NetworkPerformanceConfig() NetworkPerforman
 		}
 		return v.NetworkPerformanceConfig
 	}).(NetworkPerformanceConfigPtrOutput)
+}
+
+// Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
+func (o InstancePropertiesPtrOutput) PartnerMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstanceProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.PartnerMetadata
+	}).(pulumi.StringMapOutput)
 }
 
 // PostKeyRevocationActionType of the instance.
@@ -25049,6 +25495,8 @@ type InstancePropertiesResponse struct {
 	NetworkInterfaces []NetworkInterfaceResponse `pulumi:"networkInterfaces"`
 	// Note that for MachineImage, this is not supported yet.
 	NetworkPerformanceConfig NetworkPerformanceConfigResponse `pulumi:"networkPerformanceConfig"`
+	// Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
+	PartnerMetadata map[string]string `pulumi:"partnerMetadata"`
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType string `pulumi:"postKeyRevocationActionType"`
 	// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
@@ -25155,6 +25603,11 @@ func (o InstancePropertiesResponseOutput) NetworkInterfaces() NetworkInterfaceRe
 // Note that for MachineImage, this is not supported yet.
 func (o InstancePropertiesResponseOutput) NetworkPerformanceConfig() NetworkPerformanceConfigResponseOutput {
 	return o.ApplyT(func(v InstancePropertiesResponse) NetworkPerformanceConfigResponse { return v.NetworkPerformanceConfig }).(NetworkPerformanceConfigResponseOutput)
+}
+
+// Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
+func (o InstancePropertiesResponseOutput) PartnerMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstancePropertiesResponse) map[string]string { return v.PartnerMetadata }).(pulumi.StringMapOutput)
 }
 
 // PostKeyRevocationActionType of the instance.
@@ -28705,11 +29158,11 @@ func (o NetworkAttachmentConnectedEndpointResponseArrayOutput) Index(i pulumi.In
 
 // Configuration for an App Engine network endpoint group (NEG). The service is optional, may be provided explicitly or in the URL mask. The version is optional and can only be provided explicitly or in the URL mask when service is present. Note: App Engine service must be in the same project and located in the same region as the Serverless NEG.
 type NetworkEndpointGroupAppEngine struct {
-	// Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: "default", "my-service".
+	// Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: default, my-service.
 	Service *string `pulumi:"service"`
-	// A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "<service>-dot-appname.appspot.com/<version>". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+	// An URL mask is one of the main components of the Cloud Function. A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs foo1-dot-appname.appspot.com/v1 and foo1-dot-appname.appspot.com/v2 can be backed by the same Serverless NEG with URL mask <service>-dot-appname.appspot.com/<version>. The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
 	UrlMask *string `pulumi:"urlMask"`
-	// Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: "v1", "v2".
+	// Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: v1, v2.
 	Version *string `pulumi:"version"`
 }
 
@@ -28726,11 +29179,11 @@ type NetworkEndpointGroupAppEngineInput interface {
 
 // Configuration for an App Engine network endpoint group (NEG). The service is optional, may be provided explicitly or in the URL mask. The version is optional and can only be provided explicitly or in the URL mask when service is present. Note: App Engine service must be in the same project and located in the same region as the Serverless NEG.
 type NetworkEndpointGroupAppEngineArgs struct {
-	// Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: "default", "my-service".
+	// Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: default, my-service.
 	Service pulumi.StringPtrInput `pulumi:"service"`
-	// A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "<service>-dot-appname.appspot.com/<version>". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+	// An URL mask is one of the main components of the Cloud Function. A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs foo1-dot-appname.appspot.com/v1 and foo1-dot-appname.appspot.com/v2 can be backed by the same Serverless NEG with URL mask <service>-dot-appname.appspot.com/<version>. The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
 	UrlMask pulumi.StringPtrInput `pulumi:"urlMask"`
-	// Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: "v1", "v2".
+	// Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: v1, v2.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -28812,17 +29265,17 @@ func (o NetworkEndpointGroupAppEngineOutput) ToNetworkEndpointGroupAppEnginePtrO
 	}).(NetworkEndpointGroupAppEnginePtrOutput)
 }
 
-// Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: "default", "my-service".
+// Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: default, my-service.
 func (o NetworkEndpointGroupAppEngineOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupAppEngine) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
 
-// A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "<service>-dot-appname.appspot.com/<version>". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+// An URL mask is one of the main components of the Cloud Function. A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs foo1-dot-appname.appspot.com/v1 and foo1-dot-appname.appspot.com/v2 can be backed by the same Serverless NEG with URL mask <service>-dot-appname.appspot.com/<version>. The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
 func (o NetworkEndpointGroupAppEngineOutput) UrlMask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupAppEngine) *string { return v.UrlMask }).(pulumi.StringPtrOutput)
 }
 
-// Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: "v1", "v2".
+// Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: v1, v2.
 func (o NetworkEndpointGroupAppEngineOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupAppEngine) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -28851,7 +29304,7 @@ func (o NetworkEndpointGroupAppEnginePtrOutput) Elem() NetworkEndpointGroupAppEn
 	}).(NetworkEndpointGroupAppEngineOutput)
 }
 
-// Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: "default", "my-service".
+// Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: default, my-service.
 func (o NetworkEndpointGroupAppEnginePtrOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroupAppEngine) *string {
 		if v == nil {
@@ -28861,7 +29314,7 @@ func (o NetworkEndpointGroupAppEnginePtrOutput) Service() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "<service>-dot-appname.appspot.com/<version>". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+// An URL mask is one of the main components of the Cloud Function. A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs foo1-dot-appname.appspot.com/v1 and foo1-dot-appname.appspot.com/v2 can be backed by the same Serverless NEG with URL mask <service>-dot-appname.appspot.com/<version>. The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
 func (o NetworkEndpointGroupAppEnginePtrOutput) UrlMask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroupAppEngine) *string {
 		if v == nil {
@@ -28871,7 +29324,7 @@ func (o NetworkEndpointGroupAppEnginePtrOutput) UrlMask() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: "v1", "v2".
+// Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: v1, v2.
 func (o NetworkEndpointGroupAppEnginePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroupAppEngine) *string {
 		if v == nil {
@@ -28883,11 +29336,11 @@ func (o NetworkEndpointGroupAppEnginePtrOutput) Version() pulumi.StringPtrOutput
 
 // Configuration for an App Engine network endpoint group (NEG). The service is optional, may be provided explicitly or in the URL mask. The version is optional and can only be provided explicitly or in the URL mask when service is present. Note: App Engine service must be in the same project and located in the same region as the Serverless NEG.
 type NetworkEndpointGroupAppEngineResponse struct {
-	// Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: "default", "my-service".
+	// Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: default, my-service.
 	Service string `pulumi:"service"`
-	// A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "<service>-dot-appname.appspot.com/<version>". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+	// An URL mask is one of the main components of the Cloud Function. A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs foo1-dot-appname.appspot.com/v1 and foo1-dot-appname.appspot.com/v2 can be backed by the same Serverless NEG with URL mask <service>-dot-appname.appspot.com/<version>. The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
 	UrlMask string `pulumi:"urlMask"`
-	// Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: "v1", "v2".
+	// Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: v1, v2.
 	Version string `pulumi:"version"`
 }
 
@@ -28906,26 +29359,26 @@ func (o NetworkEndpointGroupAppEngineResponseOutput) ToNetworkEndpointGroupAppEn
 	return o
 }
 
-// Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: "default", "my-service".
+// Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: default, my-service.
 func (o NetworkEndpointGroupAppEngineResponseOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupAppEngineResponse) string { return v.Service }).(pulumi.StringOutput)
 }
 
-// A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "<service>-dot-appname.appspot.com/<version>". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+// An URL mask is one of the main components of the Cloud Function. A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs foo1-dot-appname.appspot.com/v1 and foo1-dot-appname.appspot.com/v2 can be backed by the same Serverless NEG with URL mask <service>-dot-appname.appspot.com/<version>. The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
 func (o NetworkEndpointGroupAppEngineResponseOutput) UrlMask() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupAppEngineResponse) string { return v.UrlMask }).(pulumi.StringOutput)
 }
 
-// Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: "v1", "v2".
+// Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: v1, v2.
 func (o NetworkEndpointGroupAppEngineResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupAppEngineResponse) string { return v.Version }).(pulumi.StringOutput)
 }
 
 // Configuration for a Cloud Function network endpoint group (NEG). The function must be provided explicitly or in the URL mask. Note: Cloud Function must be in the same project and located in the same region as the Serverless NEG.
 type NetworkEndpointGroupCloudFunction struct {
-	// A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: "func1".
+	// A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: func1.
 	Function *string `pulumi:"function"`
-	// A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/<function>". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
+	// An URL mask is one of the main components of the Cloud Function. A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs mydomain.com/function1 and mydomain.com/function2 can be backed by the same Serverless NEG with URL mask /<function>. The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
 	UrlMask *string `pulumi:"urlMask"`
 }
 
@@ -28942,9 +29395,9 @@ type NetworkEndpointGroupCloudFunctionInput interface {
 
 // Configuration for a Cloud Function network endpoint group (NEG). The function must be provided explicitly or in the URL mask. Note: Cloud Function must be in the same project and located in the same region as the Serverless NEG.
 type NetworkEndpointGroupCloudFunctionArgs struct {
-	// A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: "func1".
+	// A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: func1.
 	Function pulumi.StringPtrInput `pulumi:"function"`
-	// A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/<function>". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
+	// An URL mask is one of the main components of the Cloud Function. A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs mydomain.com/function1 and mydomain.com/function2 can be backed by the same Serverless NEG with URL mask /<function>. The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
 	UrlMask pulumi.StringPtrInput `pulumi:"urlMask"`
 }
 
@@ -29026,12 +29479,12 @@ func (o NetworkEndpointGroupCloudFunctionOutput) ToNetworkEndpointGroupCloudFunc
 	}).(NetworkEndpointGroupCloudFunctionPtrOutput)
 }
 
-// A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: "func1".
+// A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: func1.
 func (o NetworkEndpointGroupCloudFunctionOutput) Function() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupCloudFunction) *string { return v.Function }).(pulumi.StringPtrOutput)
 }
 
-// A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/<function>". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
+// An URL mask is one of the main components of the Cloud Function. A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs mydomain.com/function1 and mydomain.com/function2 can be backed by the same Serverless NEG with URL mask /<function>. The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
 func (o NetworkEndpointGroupCloudFunctionOutput) UrlMask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupCloudFunction) *string { return v.UrlMask }).(pulumi.StringPtrOutput)
 }
@@ -29060,7 +29513,7 @@ func (o NetworkEndpointGroupCloudFunctionPtrOutput) Elem() NetworkEndpointGroupC
 	}).(NetworkEndpointGroupCloudFunctionOutput)
 }
 
-// A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: "func1".
+// A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: func1.
 func (o NetworkEndpointGroupCloudFunctionPtrOutput) Function() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroupCloudFunction) *string {
 		if v == nil {
@@ -29070,7 +29523,7 @@ func (o NetworkEndpointGroupCloudFunctionPtrOutput) Function() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/<function>". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
+// An URL mask is one of the main components of the Cloud Function. A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs mydomain.com/function1 and mydomain.com/function2 can be backed by the same Serverless NEG with URL mask /<function>. The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
 func (o NetworkEndpointGroupCloudFunctionPtrOutput) UrlMask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroupCloudFunction) *string {
 		if v == nil {
@@ -29082,9 +29535,9 @@ func (o NetworkEndpointGroupCloudFunctionPtrOutput) UrlMask() pulumi.StringPtrOu
 
 // Configuration for a Cloud Function network endpoint group (NEG). The function must be provided explicitly or in the URL mask. Note: Cloud Function must be in the same project and located in the same region as the Serverless NEG.
 type NetworkEndpointGroupCloudFunctionResponse struct {
-	// A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: "func1".
+	// A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: func1.
 	Function string `pulumi:"function"`
-	// A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/<function>". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
+	// An URL mask is one of the main components of the Cloud Function. A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs mydomain.com/function1 and mydomain.com/function2 can be backed by the same Serverless NEG with URL mask /<function>. The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
 	UrlMask string `pulumi:"urlMask"`
 }
 
@@ -29103,12 +29556,12 @@ func (o NetworkEndpointGroupCloudFunctionResponseOutput) ToNetworkEndpointGroupC
 	return o
 }
 
-// A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: "func1".
+// A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: func1.
 func (o NetworkEndpointGroupCloudFunctionResponseOutput) Function() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupCloudFunctionResponse) string { return v.Function }).(pulumi.StringOutput)
 }
 
-// A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/<function>". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
+// An URL mask is one of the main components of the Cloud Function. A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs mydomain.com/function1 and mydomain.com/function2 can be backed by the same Serverless NEG with URL mask /<function>. The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
 func (o NetworkEndpointGroupCloudFunctionResponseOutput) UrlMask() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupCloudFunctionResponse) string { return v.UrlMask }).(pulumi.StringOutput)
 }
@@ -29119,7 +29572,7 @@ type NetworkEndpointGroupCloudRun struct {
 	Service *string `pulumi:"service"`
 	// Optional Cloud Run tag represents the "named-revision" to provide additional fine-grained traffic routing information. The tag must be 1-63 characters long, and comply with RFC1035. Example value: "revision-0010".
 	Tag *string `pulumi:"tag"`
-	// A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<service>". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
+	// An URL mask is one of the main components of the Cloud Function. A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs foo1.domain.com/bar1 and foo1.domain.com/bar2 can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask <tag>.domain.com/<service>. The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
 	UrlMask *string `pulumi:"urlMask"`
 }
 
@@ -29140,7 +29593,7 @@ type NetworkEndpointGroupCloudRunArgs struct {
 	Service pulumi.StringPtrInput `pulumi:"service"`
 	// Optional Cloud Run tag represents the "named-revision" to provide additional fine-grained traffic routing information. The tag must be 1-63 characters long, and comply with RFC1035. Example value: "revision-0010".
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
-	// A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<service>". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
+	// An URL mask is one of the main components of the Cloud Function. A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs foo1.domain.com/bar1 and foo1.domain.com/bar2 can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask <tag>.domain.com/<service>. The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
 	UrlMask pulumi.StringPtrInput `pulumi:"urlMask"`
 }
 
@@ -29232,7 +29685,7 @@ func (o NetworkEndpointGroupCloudRunOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupCloudRun) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }
 
-// A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<service>". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
+// An URL mask is one of the main components of the Cloud Function. A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs foo1.domain.com/bar1 and foo1.domain.com/bar2 can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask <tag>.domain.com/<service>. The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
 func (o NetworkEndpointGroupCloudRunOutput) UrlMask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupCloudRun) *string { return v.UrlMask }).(pulumi.StringPtrOutput)
 }
@@ -29281,7 +29734,7 @@ func (o NetworkEndpointGroupCloudRunPtrOutput) Tag() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<service>". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
+// An URL mask is one of the main components of the Cloud Function. A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs foo1.domain.com/bar1 and foo1.domain.com/bar2 can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask <tag>.domain.com/<service>. The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
 func (o NetworkEndpointGroupCloudRunPtrOutput) UrlMask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroupCloudRun) *string {
 		if v == nil {
@@ -29297,7 +29750,7 @@ type NetworkEndpointGroupCloudRunResponse struct {
 	Service string `pulumi:"service"`
 	// Optional Cloud Run tag represents the "named-revision" to provide additional fine-grained traffic routing information. The tag must be 1-63 characters long, and comply with RFC1035. Example value: "revision-0010".
 	Tag string `pulumi:"tag"`
-	// A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<service>". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
+	// An URL mask is one of the main components of the Cloud Function. A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs foo1.domain.com/bar1 and foo1.domain.com/bar2 can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask <tag>.domain.com/<service>. The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
 	UrlMask string `pulumi:"urlMask"`
 }
 
@@ -29326,20 +29779,20 @@ func (o NetworkEndpointGroupCloudRunResponseOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupCloudRunResponse) string { return v.Tag }).(pulumi.StringOutput)
 }
 
-// A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<service>". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
+// An URL mask is one of the main components of the Cloud Function. A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs foo1.domain.com/bar1 and foo1.domain.com/bar2 can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask <tag>.domain.com/<service>. The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
 func (o NetworkEndpointGroupCloudRunResponseOutput) UrlMask() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupCloudRunResponse) string { return v.UrlMask }).(pulumi.StringOutput)
 }
 
 // Load balancing specific fields for network endpoint group.
 type NetworkEndpointGroupLbNetworkEndpointGroup struct {
-	// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+	// The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified. [Deprecated] This field is deprecated.
 	//
-	// Deprecated: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+	// Deprecated: The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified. [Deprecated] This field is deprecated.
 	DefaultPort *int `pulumi:"defaultPort"`
-	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+	// The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified. [Deprecated] This field is deprecated.
 	//
-	// Deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+	// Deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified. [Deprecated] This field is deprecated.
 	Network *string `pulumi:"network"`
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
 	//
@@ -29360,13 +29813,13 @@ type NetworkEndpointGroupLbNetworkEndpointGroupInput interface {
 
 // Load balancing specific fields for network endpoint group.
 type NetworkEndpointGroupLbNetworkEndpointGroupArgs struct {
-	// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+	// The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified. [Deprecated] This field is deprecated.
 	//
-	// Deprecated: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+	// Deprecated: The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified. [Deprecated] This field is deprecated.
 	DefaultPort pulumi.IntPtrInput `pulumi:"defaultPort"`
-	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+	// The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified. [Deprecated] This field is deprecated.
 	//
-	// Deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+	// Deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified. [Deprecated] This field is deprecated.
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
 	//
@@ -29452,16 +29905,16 @@ func (o NetworkEndpointGroupLbNetworkEndpointGroupOutput) ToNetworkEndpointGroup
 	}).(NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput)
 }
 
-// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+// The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified. [Deprecated] This field is deprecated.
 //
-// Deprecated: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+// Deprecated: The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified. [Deprecated] This field is deprecated.
 func (o NetworkEndpointGroupLbNetworkEndpointGroupOutput) DefaultPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupLbNetworkEndpointGroup) *int { return v.DefaultPort }).(pulumi.IntPtrOutput)
 }
 
-// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+// The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified. [Deprecated] This field is deprecated.
 //
-// Deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+// Deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified. [Deprecated] This field is deprecated.
 func (o NetworkEndpointGroupLbNetworkEndpointGroupOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupLbNetworkEndpointGroup) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
@@ -29497,9 +29950,9 @@ func (o NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput) Elem() NetworkEndpo
 	}).(NetworkEndpointGroupLbNetworkEndpointGroupOutput)
 }
 
-// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+// The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified. [Deprecated] This field is deprecated.
 //
-// Deprecated: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+// Deprecated: The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified. [Deprecated] This field is deprecated.
 func (o NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput) DefaultPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroupLbNetworkEndpointGroup) *int {
 		if v == nil {
@@ -29509,9 +29962,9 @@ func (o NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput) DefaultPort() pulum
 	}).(pulumi.IntPtrOutput)
 }
 
-// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+// The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified. [Deprecated] This field is deprecated.
 //
-// Deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+// Deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified. [Deprecated] This field is deprecated.
 func (o NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroupLbNetworkEndpointGroup) *string {
 		if v == nil {
@@ -29535,13 +29988,13 @@ func (o NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput) Subnetwork() pulumi
 
 // Load balancing specific fields for network endpoint group.
 type NetworkEndpointGroupLbNetworkEndpointGroupResponse struct {
-	// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+	// The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified. [Deprecated] This field is deprecated.
 	//
-	// Deprecated: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+	// Deprecated: The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified. [Deprecated] This field is deprecated.
 	DefaultPort int `pulumi:"defaultPort"`
-	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+	// The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified. [Deprecated] This field is deprecated.
 	//
-	// Deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+	// Deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified. [Deprecated] This field is deprecated.
 	Network string `pulumi:"network"`
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
 	//
@@ -29568,16 +30021,16 @@ func (o NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput) ToNetworkEndpo
 	return o
 }
 
-// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+// The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified. [Deprecated] This field is deprecated.
 //
-// Deprecated: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+// Deprecated: The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified. [Deprecated] This field is deprecated.
 func (o NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput) DefaultPort() pulumi.IntOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupLbNetworkEndpointGroupResponse) int { return v.DefaultPort }).(pulumi.IntOutput)
 }
 
-// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+// The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified. [Deprecated] This field is deprecated.
 //
-// Deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+// Deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified. [Deprecated] This field is deprecated.
 func (o NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupLbNetworkEndpointGroupResponse) string { return v.Network }).(pulumi.StringOutput)
 }
@@ -29763,7 +30216,7 @@ type NetworkEndpointGroupServerlessDeployment struct {
 	Platform *string `pulumi:"platform"`
 	// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name
 	Resource *string `pulumi:"resource"`
-	// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag
+	// An URL mask is one of the main components of the Cloud Function. A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag
 	UrlMask *string `pulumi:"urlMask"`
 	// The optional resource version. The version identified by this value is platform-specific and is follows: 1. API Gateway: Unused 2. App Engine: The service version 3. Cloud Functions: Unused 4. Cloud Run: The service tag
 	Version *string `pulumi:"version"`
@@ -29786,7 +30239,7 @@ type NetworkEndpointGroupServerlessDeploymentArgs struct {
 	Platform pulumi.StringPtrInput `pulumi:"platform"`
 	// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name
 	Resource pulumi.StringPtrInput `pulumi:"resource"`
-	// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag
+	// An URL mask is one of the main components of the Cloud Function. A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag
 	UrlMask pulumi.StringPtrInput `pulumi:"urlMask"`
 	// The optional resource version. The version identified by this value is platform-specific and is follows: 1. API Gateway: Unused 2. App Engine: The service version 3. Cloud Functions: Unused 4. Cloud Run: The service tag
 	Version pulumi.StringPtrInput `pulumi:"version"`
@@ -29880,7 +30333,7 @@ func (o NetworkEndpointGroupServerlessDeploymentOutput) Resource() pulumi.String
 	return o.ApplyT(func(v NetworkEndpointGroupServerlessDeployment) *string { return v.Resource }).(pulumi.StringPtrOutput)
 }
 
-// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag
+// An URL mask is one of the main components of the Cloud Function. A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag
 func (o NetworkEndpointGroupServerlessDeploymentOutput) UrlMask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupServerlessDeployment) *string { return v.UrlMask }).(pulumi.StringPtrOutput)
 }
@@ -29934,7 +30387,7 @@ func (o NetworkEndpointGroupServerlessDeploymentPtrOutput) Resource() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag
+// An URL mask is one of the main components of the Cloud Function. A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag
 func (o NetworkEndpointGroupServerlessDeploymentPtrOutput) UrlMask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroupServerlessDeployment) *string {
 		if v == nil {
@@ -29960,7 +30413,7 @@ type NetworkEndpointGroupServerlessDeploymentResponse struct {
 	Platform string `pulumi:"platform"`
 	// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name
 	Resource string `pulumi:"resource"`
-	// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag
+	// An URL mask is one of the main components of the Cloud Function. A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag
 	UrlMask string `pulumi:"urlMask"`
 	// The optional resource version. The version identified by this value is platform-specific and is follows: 1. API Gateway: Unused 2. App Engine: The service version 3. Cloud Functions: Unused 4. Cloud Run: The service tag
 	Version string `pulumi:"version"`
@@ -29991,7 +30444,7 @@ func (o NetworkEndpointGroupServerlessDeploymentResponseOutput) Resource() pulum
 	return o.ApplyT(func(v NetworkEndpointGroupServerlessDeploymentResponse) string { return v.Resource }).(pulumi.StringOutput)
 }
 
-// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag
+// An URL mask is one of the main components of the Cloud Function. A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag
 func (o NetworkEndpointGroupServerlessDeploymentResponseOutput) UrlMask() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupServerlessDeploymentResponse) string { return v.UrlMask }).(pulumi.StringOutput)
 }
@@ -32075,11 +32528,11 @@ func (o OutlierDetectionResponseOutput) SuccessRateStdevFactor() pulumi.IntOutpu
 }
 
 type PacketMirroringFilter struct {
-	// IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+	// One or more IPv4 or IPv6 CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. If no ranges are specified, all IPv4 traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored. To mirror all IPv4 and IPv6 traffic, use "0.0.0.0/0,::/0". Note: Support for IPv6 traffic is in preview.
 	CidrRanges []string `pulumi:"cidrRanges"`
 	// Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
 	Direction *PacketMirroringFilterDirection `pulumi:"direction"`
-	// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+	// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored.
 	IpProtocols []string `pulumi:"ipProtocols"`
 }
 
@@ -32095,11 +32548,11 @@ type PacketMirroringFilterInput interface {
 }
 
 type PacketMirroringFilterArgs struct {
-	// IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+	// One or more IPv4 or IPv6 CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. If no ranges are specified, all IPv4 traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored. To mirror all IPv4 and IPv6 traffic, use "0.0.0.0/0,::/0". Note: Support for IPv6 traffic is in preview.
 	CidrRanges pulumi.StringArrayInput `pulumi:"cidrRanges"`
 	// Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
 	Direction PacketMirroringFilterDirectionPtrInput `pulumi:"direction"`
-	// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+	// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored.
 	IpProtocols pulumi.StringArrayInput `pulumi:"ipProtocols"`
 }
 
@@ -32180,7 +32633,7 @@ func (o PacketMirroringFilterOutput) ToPacketMirroringFilterPtrOutputWithContext
 	}).(PacketMirroringFilterPtrOutput)
 }
 
-// IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+// One or more IPv4 or IPv6 CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. If no ranges are specified, all IPv4 traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored. To mirror all IPv4 and IPv6 traffic, use "0.0.0.0/0,::/0". Note: Support for IPv6 traffic is in preview.
 func (o PacketMirroringFilterOutput) CidrRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PacketMirroringFilter) []string { return v.CidrRanges }).(pulumi.StringArrayOutput)
 }
@@ -32190,7 +32643,7 @@ func (o PacketMirroringFilterOutput) Direction() PacketMirroringFilterDirectionP
 	return o.ApplyT(func(v PacketMirroringFilter) *PacketMirroringFilterDirection { return v.Direction }).(PacketMirroringFilterDirectionPtrOutput)
 }
 
-// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored.
 func (o PacketMirroringFilterOutput) IpProtocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PacketMirroringFilter) []string { return v.IpProtocols }).(pulumi.StringArrayOutput)
 }
@@ -32219,7 +32672,7 @@ func (o PacketMirroringFilterPtrOutput) Elem() PacketMirroringFilterOutput {
 	}).(PacketMirroringFilterOutput)
 }
 
-// IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+// One or more IPv4 or IPv6 CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. If no ranges are specified, all IPv4 traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored. To mirror all IPv4 and IPv6 traffic, use "0.0.0.0/0,::/0". Note: Support for IPv6 traffic is in preview.
 func (o PacketMirroringFilterPtrOutput) CidrRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PacketMirroringFilter) []string {
 		if v == nil {
@@ -32239,7 +32692,7 @@ func (o PacketMirroringFilterPtrOutput) Direction() PacketMirroringFilterDirecti
 	}).(PacketMirroringFilterDirectionPtrOutput)
 }
 
-// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored.
 func (o PacketMirroringFilterPtrOutput) IpProtocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PacketMirroringFilter) []string {
 		if v == nil {
@@ -32250,11 +32703,11 @@ func (o PacketMirroringFilterPtrOutput) IpProtocols() pulumi.StringArrayOutput {
 }
 
 type PacketMirroringFilterResponse struct {
-	// IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+	// One or more IPv4 or IPv6 CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. If no ranges are specified, all IPv4 traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored. To mirror all IPv4 and IPv6 traffic, use "0.0.0.0/0,::/0". Note: Support for IPv6 traffic is in preview.
 	CidrRanges []string `pulumi:"cidrRanges"`
 	// Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
 	Direction string `pulumi:"direction"`
-	// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+	// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored.
 	IpProtocols []string `pulumi:"ipProtocols"`
 }
 
@@ -32272,7 +32725,7 @@ func (o PacketMirroringFilterResponseOutput) ToPacketMirroringFilterResponseOutp
 	return o
 }
 
-// IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+// One or more IPv4 or IPv6 CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. If no ranges are specified, all IPv4 traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored. To mirror all IPv4 and IPv6 traffic, use "0.0.0.0/0,::/0". Note: Support for IPv6 traffic is in preview.
 func (o PacketMirroringFilterResponseOutput) CidrRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PacketMirroringFilterResponse) []string { return v.CidrRanges }).(pulumi.StringArrayOutput)
 }
@@ -32282,7 +32735,7 @@ func (o PacketMirroringFilterResponseOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v PacketMirroringFilterResponse) string { return v.Direction }).(pulumi.StringOutput)
 }
 
-// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored.
 func (o PacketMirroringFilterResponseOutput) IpProtocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PacketMirroringFilterResponse) []string { return v.IpProtocols }).(pulumi.StringArrayOutput)
 }
@@ -34266,9 +34719,9 @@ func (o RequestMirrorPolicyResponseOutput) BackendService() pulumi.StringOutput 
 type ReservationType struct {
 	// Reservation for aggregated resources, providing shape flexibility.
 	AggregateReservation *AllocationAggregateReservation `pulumi:"aggregateReservation"`
-	// Duration time relative to reservation creation when GCE will automatically delete this resource.
+	// Duration time relative to reservation creation when Compute Engine will automatically delete this resource.
 	DeleteAfterDuration *Duration `pulumi:"deleteAfterDuration"`
-	// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+	// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
 	DeleteAtTime *string `pulumi:"deleteAtTime"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -34301,9 +34754,9 @@ type ReservationTypeInput interface {
 type ReservationTypeArgs struct {
 	// Reservation for aggregated resources, providing shape flexibility.
 	AggregateReservation AllocationAggregateReservationPtrInput `pulumi:"aggregateReservation"`
-	// Duration time relative to reservation creation when GCE will automatically delete this resource.
+	// Duration time relative to reservation creation when Compute Engine will automatically delete this resource.
 	DeleteAfterDuration DurationPtrInput `pulumi:"deleteAfterDuration"`
-	// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+	// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
 	DeleteAtTime pulumi.StringPtrInput `pulumi:"deleteAtTime"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -34378,12 +34831,12 @@ func (o ReservationTypeOutput) AggregateReservation() AllocationAggregateReserva
 	return o.ApplyT(func(v ReservationType) *AllocationAggregateReservation { return v.AggregateReservation }).(AllocationAggregateReservationPtrOutput)
 }
 
-// Duration time relative to reservation creation when GCE will automatically delete this resource.
+// Duration time relative to reservation creation when Compute Engine will automatically delete this resource.
 func (o ReservationTypeOutput) DeleteAfterDuration() DurationPtrOutput {
 	return o.ApplyT(func(v ReservationType) *Duration { return v.DeleteAfterDuration }).(DurationPtrOutput)
 }
 
-// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
 func (o ReservationTypeOutput) DeleteAtTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReservationType) *string { return v.DeleteAtTime }).(pulumi.StringPtrOutput)
 }
@@ -34671,9 +35124,9 @@ type ReservationResponse struct {
 	Commitment string `pulumi:"commitment"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
-	// Duration time relative to reservation creation when GCE will automatically delete this resource.
+	// Duration time relative to reservation creation when Compute Engine will automatically delete this resource.
 	DeleteAfterDuration DurationResponse `pulumi:"deleteAfterDuration"`
-	// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+	// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
 	DeleteAtTime string `pulumi:"deleteAtTime"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
@@ -34731,12 +35184,12 @@ func (o ReservationResponseOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v ReservationResponse) string { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
-// Duration time relative to reservation creation when GCE will automatically delete this resource.
+// Duration time relative to reservation creation when Compute Engine will automatically delete this resource.
 func (o ReservationResponseOutput) DeleteAfterDuration() DurationResponseOutput {
 	return o.ApplyT(func(v ReservationResponse) DurationResponse { return v.DeleteAfterDuration }).(DurationResponseOutput)
 }
 
-// Absolute time in future when the reservation will be auto-deleted by GCE. Timestamp is represented in RFC3339 text format.
+// Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
 func (o ReservationResponseOutput) DeleteAtTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ReservationResponse) string { return v.DeleteAtTime }).(pulumi.StringOutput)
 }
@@ -38385,6 +38838,10 @@ type RouterBgpPeer struct {
 	EnableIpv4 *bool `pulumi:"enableIpv4"`
 	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
+	// List of export policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+	ExportPolicies []string `pulumi:"exportPolicies"`
+	// List of import policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+	ImportPolicies []string `pulumi:"importPolicies"`
 	// Name of the interface the BGP peer is associated with.
 	InterfaceName *string `pulumi:"interfaceName"`
 	// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
@@ -38441,6 +38898,10 @@ type RouterBgpPeerArgs struct {
 	EnableIpv4 pulumi.BoolPtrInput `pulumi:"enableIpv4"`
 	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
 	EnableIpv6 pulumi.BoolPtrInput `pulumi:"enableIpv6"`
+	// List of export policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+	ExportPolicies pulumi.StringArrayInput `pulumi:"exportPolicies"`
+	// List of import policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+	ImportPolicies pulumi.StringArrayInput `pulumi:"importPolicies"`
 	// Name of the interface the BGP peer is associated with.
 	InterfaceName pulumi.StringPtrInput `pulumi:"interfaceName"`
 	// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
@@ -38564,6 +39025,16 @@ func (o RouterBgpPeerOutput) EnableIpv4() pulumi.BoolPtrOutput {
 // Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
 func (o RouterBgpPeerOutput) EnableIpv6() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RouterBgpPeer) *bool { return v.EnableIpv6 }).(pulumi.BoolPtrOutput)
+}
+
+// List of export policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+func (o RouterBgpPeerOutput) ExportPolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouterBgpPeer) []string { return v.ExportPolicies }).(pulumi.StringArrayOutput)
+}
+
+// List of import policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+func (o RouterBgpPeerOutput) ImportPolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouterBgpPeer) []string { return v.ImportPolicies }).(pulumi.StringArrayOutput)
 }
 
 // Name of the interface the BGP peer is associated with.
@@ -39044,6 +39515,10 @@ type RouterBgpPeerResponse struct {
 	EnableIpv4 bool `pulumi:"enableIpv4"`
 	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
 	EnableIpv6 bool `pulumi:"enableIpv6"`
+	// List of export policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+	ExportPolicies []string `pulumi:"exportPolicies"`
+	// List of import policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+	ImportPolicies []string `pulumi:"importPolicies"`
 	// Name of the interface the BGP peer is associated with.
 	InterfaceName string `pulumi:"interfaceName"`
 	// IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
@@ -39134,6 +39609,16 @@ func (o RouterBgpPeerResponseOutput) EnableIpv4() pulumi.BoolOutput {
 // Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
 func (o RouterBgpPeerResponseOutput) EnableIpv6() pulumi.BoolOutput {
 	return o.ApplyT(func(v RouterBgpPeerResponse) bool { return v.EnableIpv6 }).(pulumi.BoolOutput)
+}
+
+// List of export policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+func (o RouterBgpPeerResponseOutput) ExportPolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouterBgpPeerResponse) []string { return v.ExportPolicies }).(pulumi.StringArrayOutput)
+}
+
+// List of import policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+func (o RouterBgpPeerResponseOutput) ImportPolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RouterBgpPeerResponse) []string { return v.ImportPolicies }).(pulumi.StringArrayOutput)
 }
 
 // Name of the interface the BGP peer is associated with.
@@ -41184,7 +41669,7 @@ type SSLHealthCheck struct {
 	Port *int `pulumi:"port"`
 	// Not supported.
 	PortName *string `pulumi:"portName"`
-	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification *SSLHealthCheckPortSpecification `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader *SSLHealthCheckProxyHeader `pulumi:"proxyHeader"`
@@ -41210,7 +41695,7 @@ type SSLHealthCheckArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Not supported.
 	PortName pulumi.StringPtrInput `pulumi:"portName"`
-	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification SSLHealthCheckPortSpecificationPtrInput `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader SSLHealthCheckProxyHeaderPtrInput `pulumi:"proxyHeader"`
@@ -41307,7 +41792,7 @@ func (o SSLHealthCheckOutput) PortName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SSLHealthCheck) *string { return v.PortName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o SSLHealthCheckOutput) PortSpecification() SSLHealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v SSLHealthCheck) *SSLHealthCheckPortSpecification { return v.PortSpecification }).(SSLHealthCheckPortSpecificationPtrOutput)
 }
@@ -41371,7 +41856,7 @@ func (o SSLHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o SSLHealthCheckPtrOutput) PortSpecification() SSLHealthCheckPortSpecificationPtrOutput {
 	return o.ApplyT(func(v *SSLHealthCheck) *SSLHealthCheckPortSpecification {
 		if v == nil {
@@ -41416,7 +41901,7 @@ type SSLHealthCheckResponse struct {
 	Port int `pulumi:"port"`
 	// Not supported.
 	PortName string `pulumi:"portName"`
-	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 	PortSpecification string `pulumi:"portSpecification"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader string `pulumi:"proxyHeader"`
@@ -41450,7 +41935,7 @@ func (o SSLHealthCheckResponseOutput) PortName() pulumi.StringOutput {
 	return o.ApplyT(func(v SSLHealthCheckResponse) string { return v.PortName }).(pulumi.StringOutput)
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 func (o SSLHealthCheckResponseOutput) PortSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v SSLHealthCheckResponse) string { return v.PortSpecification }).(pulumi.StringOutput)
 }
@@ -41818,7 +42303,8 @@ type Scheduling struct {
 	// A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
 	NodeAffinities []SchedulingNodeAffinity `pulumi:"nodeAffinities"`
 	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
-	OnHostMaintenance *SchedulingOnHostMaintenance `pulumi:"onHostMaintenance"`
+	OnHostMaintenance    *SchedulingOnHostMaintenance    `pulumi:"onHostMaintenance"`
+	OnInstanceStopAction *SchedulingOnInstanceStopAction `pulumi:"onInstanceStopAction"`
 	// Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
 	Preemptible *bool `pulumi:"preemptible"`
 	// Specifies the provisioning model of the instance.
@@ -41861,7 +42347,8 @@ type SchedulingArgs struct {
 	// A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
 	NodeAffinities SchedulingNodeAffinityArrayInput `pulumi:"nodeAffinities"`
 	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
-	OnHostMaintenance SchedulingOnHostMaintenancePtrInput `pulumi:"onHostMaintenance"`
+	OnHostMaintenance    SchedulingOnHostMaintenancePtrInput    `pulumi:"onHostMaintenance"`
+	OnInstanceStopAction SchedulingOnInstanceStopActionPtrInput `pulumi:"onInstanceStopAction"`
 	// Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
 	// Specifies the provisioning model of the instance.
@@ -42001,6 +42488,10 @@ func (o SchedulingOutput) NodeAffinities() SchedulingNodeAffinityArrayOutput {
 // Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
 func (o SchedulingOutput) OnHostMaintenance() SchedulingOnHostMaintenancePtrOutput {
 	return o.ApplyT(func(v Scheduling) *SchedulingOnHostMaintenance { return v.OnHostMaintenance }).(SchedulingOnHostMaintenancePtrOutput)
+}
+
+func (o SchedulingOutput) OnInstanceStopAction() SchedulingOnInstanceStopActionPtrOutput {
+	return o.ApplyT(func(v Scheduling) *SchedulingOnInstanceStopAction { return v.OnInstanceStopAction }).(SchedulingOnInstanceStopActionPtrOutput)
 }
 
 // Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
@@ -42150,6 +42641,15 @@ func (o SchedulingPtrOutput) OnHostMaintenance() SchedulingOnHostMaintenancePtrO
 		}
 		return v.OnHostMaintenance
 	}).(SchedulingOnHostMaintenancePtrOutput)
+}
+
+func (o SchedulingPtrOutput) OnInstanceStopAction() SchedulingOnInstanceStopActionPtrOutput {
+	return o.ApplyT(func(v *Scheduling) *SchedulingOnInstanceStopAction {
+		if v == nil {
+			return nil
+		}
+		return v.OnInstanceStopAction
+	}).(SchedulingOnInstanceStopActionPtrOutput)
 }
 
 // Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
@@ -42360,6 +42860,172 @@ func (o SchedulingNodeAffinityResponseArrayOutput) Index(i pulumi.IntInput) Sche
 	}).(SchedulingNodeAffinityResponseOutput)
 }
 
+// Defines the behaviour for instances with the instance_termination_action STOP.
+type SchedulingOnInstanceStopAction struct {
+	// If true, the contents of any attached Local SSD disks will be discarded else, the Local SSD data will be preserved when the instance is stopped at the end of the run duration/termination time.
+	DiscardLocalSsd *bool `pulumi:"discardLocalSsd"`
+}
+
+// SchedulingOnInstanceStopActionInput is an input type that accepts SchedulingOnInstanceStopActionArgs and SchedulingOnInstanceStopActionOutput values.
+// You can construct a concrete instance of `SchedulingOnInstanceStopActionInput` via:
+//
+//	SchedulingOnInstanceStopActionArgs{...}
+type SchedulingOnInstanceStopActionInput interface {
+	pulumi.Input
+
+	ToSchedulingOnInstanceStopActionOutput() SchedulingOnInstanceStopActionOutput
+	ToSchedulingOnInstanceStopActionOutputWithContext(context.Context) SchedulingOnInstanceStopActionOutput
+}
+
+// Defines the behaviour for instances with the instance_termination_action STOP.
+type SchedulingOnInstanceStopActionArgs struct {
+	// If true, the contents of any attached Local SSD disks will be discarded else, the Local SSD data will be preserved when the instance is stopped at the end of the run duration/termination time.
+	DiscardLocalSsd pulumi.BoolPtrInput `pulumi:"discardLocalSsd"`
+}
+
+func (SchedulingOnInstanceStopActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulingOnInstanceStopAction)(nil)).Elem()
+}
+
+func (i SchedulingOnInstanceStopActionArgs) ToSchedulingOnInstanceStopActionOutput() SchedulingOnInstanceStopActionOutput {
+	return i.ToSchedulingOnInstanceStopActionOutputWithContext(context.Background())
+}
+
+func (i SchedulingOnInstanceStopActionArgs) ToSchedulingOnInstanceStopActionOutputWithContext(ctx context.Context) SchedulingOnInstanceStopActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchedulingOnInstanceStopActionOutput)
+}
+
+func (i SchedulingOnInstanceStopActionArgs) ToSchedulingOnInstanceStopActionPtrOutput() SchedulingOnInstanceStopActionPtrOutput {
+	return i.ToSchedulingOnInstanceStopActionPtrOutputWithContext(context.Background())
+}
+
+func (i SchedulingOnInstanceStopActionArgs) ToSchedulingOnInstanceStopActionPtrOutputWithContext(ctx context.Context) SchedulingOnInstanceStopActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchedulingOnInstanceStopActionOutput).ToSchedulingOnInstanceStopActionPtrOutputWithContext(ctx)
+}
+
+// SchedulingOnInstanceStopActionPtrInput is an input type that accepts SchedulingOnInstanceStopActionArgs, SchedulingOnInstanceStopActionPtr and SchedulingOnInstanceStopActionPtrOutput values.
+// You can construct a concrete instance of `SchedulingOnInstanceStopActionPtrInput` via:
+//
+//	        SchedulingOnInstanceStopActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SchedulingOnInstanceStopActionPtrInput interface {
+	pulumi.Input
+
+	ToSchedulingOnInstanceStopActionPtrOutput() SchedulingOnInstanceStopActionPtrOutput
+	ToSchedulingOnInstanceStopActionPtrOutputWithContext(context.Context) SchedulingOnInstanceStopActionPtrOutput
+}
+
+type schedulingOnInstanceStopActionPtrType SchedulingOnInstanceStopActionArgs
+
+func SchedulingOnInstanceStopActionPtr(v *SchedulingOnInstanceStopActionArgs) SchedulingOnInstanceStopActionPtrInput {
+	return (*schedulingOnInstanceStopActionPtrType)(v)
+}
+
+func (*schedulingOnInstanceStopActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchedulingOnInstanceStopAction)(nil)).Elem()
+}
+
+func (i *schedulingOnInstanceStopActionPtrType) ToSchedulingOnInstanceStopActionPtrOutput() SchedulingOnInstanceStopActionPtrOutput {
+	return i.ToSchedulingOnInstanceStopActionPtrOutputWithContext(context.Background())
+}
+
+func (i *schedulingOnInstanceStopActionPtrType) ToSchedulingOnInstanceStopActionPtrOutputWithContext(ctx context.Context) SchedulingOnInstanceStopActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchedulingOnInstanceStopActionPtrOutput)
+}
+
+// Defines the behaviour for instances with the instance_termination_action STOP.
+type SchedulingOnInstanceStopActionOutput struct{ *pulumi.OutputState }
+
+func (SchedulingOnInstanceStopActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulingOnInstanceStopAction)(nil)).Elem()
+}
+
+func (o SchedulingOnInstanceStopActionOutput) ToSchedulingOnInstanceStopActionOutput() SchedulingOnInstanceStopActionOutput {
+	return o
+}
+
+func (o SchedulingOnInstanceStopActionOutput) ToSchedulingOnInstanceStopActionOutputWithContext(ctx context.Context) SchedulingOnInstanceStopActionOutput {
+	return o
+}
+
+func (o SchedulingOnInstanceStopActionOutput) ToSchedulingOnInstanceStopActionPtrOutput() SchedulingOnInstanceStopActionPtrOutput {
+	return o.ToSchedulingOnInstanceStopActionPtrOutputWithContext(context.Background())
+}
+
+func (o SchedulingOnInstanceStopActionOutput) ToSchedulingOnInstanceStopActionPtrOutputWithContext(ctx context.Context) SchedulingOnInstanceStopActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchedulingOnInstanceStopAction) *SchedulingOnInstanceStopAction {
+		return &v
+	}).(SchedulingOnInstanceStopActionPtrOutput)
+}
+
+// If true, the contents of any attached Local SSD disks will be discarded else, the Local SSD data will be preserved when the instance is stopped at the end of the run duration/termination time.
+func (o SchedulingOnInstanceStopActionOutput) DiscardLocalSsd() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SchedulingOnInstanceStopAction) *bool { return v.DiscardLocalSsd }).(pulumi.BoolPtrOutput)
+}
+
+type SchedulingOnInstanceStopActionPtrOutput struct{ *pulumi.OutputState }
+
+func (SchedulingOnInstanceStopActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchedulingOnInstanceStopAction)(nil)).Elem()
+}
+
+func (o SchedulingOnInstanceStopActionPtrOutput) ToSchedulingOnInstanceStopActionPtrOutput() SchedulingOnInstanceStopActionPtrOutput {
+	return o
+}
+
+func (o SchedulingOnInstanceStopActionPtrOutput) ToSchedulingOnInstanceStopActionPtrOutputWithContext(ctx context.Context) SchedulingOnInstanceStopActionPtrOutput {
+	return o
+}
+
+func (o SchedulingOnInstanceStopActionPtrOutput) Elem() SchedulingOnInstanceStopActionOutput {
+	return o.ApplyT(func(v *SchedulingOnInstanceStopAction) SchedulingOnInstanceStopAction {
+		if v != nil {
+			return *v
+		}
+		var ret SchedulingOnInstanceStopAction
+		return ret
+	}).(SchedulingOnInstanceStopActionOutput)
+}
+
+// If true, the contents of any attached Local SSD disks will be discarded else, the Local SSD data will be preserved when the instance is stopped at the end of the run duration/termination time.
+func (o SchedulingOnInstanceStopActionPtrOutput) DiscardLocalSsd() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SchedulingOnInstanceStopAction) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DiscardLocalSsd
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines the behaviour for instances with the instance_termination_action STOP.
+type SchedulingOnInstanceStopActionResponse struct {
+	// If true, the contents of any attached Local SSD disks will be discarded else, the Local SSD data will be preserved when the instance is stopped at the end of the run duration/termination time.
+	DiscardLocalSsd bool `pulumi:"discardLocalSsd"`
+}
+
+// Defines the behaviour for instances with the instance_termination_action STOP.
+type SchedulingOnInstanceStopActionResponseOutput struct{ *pulumi.OutputState }
+
+func (SchedulingOnInstanceStopActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulingOnInstanceStopActionResponse)(nil)).Elem()
+}
+
+func (o SchedulingOnInstanceStopActionResponseOutput) ToSchedulingOnInstanceStopActionResponseOutput() SchedulingOnInstanceStopActionResponseOutput {
+	return o
+}
+
+func (o SchedulingOnInstanceStopActionResponseOutput) ToSchedulingOnInstanceStopActionResponseOutputWithContext(ctx context.Context) SchedulingOnInstanceStopActionResponseOutput {
+	return o
+}
+
+// If true, the contents of any attached Local SSD disks will be discarded else, the Local SSD data will be preserved when the instance is stopped at the end of the run duration/termination time.
+func (o SchedulingOnInstanceStopActionResponseOutput) DiscardLocalSsd() pulumi.BoolOutput {
+	return o.ApplyT(func(v SchedulingOnInstanceStopActionResponse) bool { return v.DiscardLocalSsd }).(pulumi.BoolOutput)
+}
+
 // Sets the scheduling options for an Instance.
 type SchedulingResponse struct {
 	// Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
@@ -42383,7 +43049,8 @@ type SchedulingResponse struct {
 	// A set of node affinity and anti-affinity configurations. Refer to Configuring node affinity for more information. Overrides reservationAffinity.
 	NodeAffinities []SchedulingNodeAffinityResponse `pulumi:"nodeAffinities"`
 	// Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
-	OnHostMaintenance string `pulumi:"onHostMaintenance"`
+	OnHostMaintenance    string                                 `pulumi:"onHostMaintenance"`
+	OnInstanceStopAction SchedulingOnInstanceStopActionResponse `pulumi:"onInstanceStopAction"`
 	// Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
 	Preemptible bool `pulumi:"preemptible"`
 	// Specifies the provisioning model of the instance.
@@ -42460,6 +43127,10 @@ func (o SchedulingResponseOutput) NodeAffinities() SchedulingNodeAffinityRespons
 // Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
 func (o SchedulingResponseOutput) OnHostMaintenance() pulumi.StringOutput {
 	return o.ApplyT(func(v SchedulingResponse) string { return v.OnHostMaintenance }).(pulumi.StringOutput)
+}
+
+func (o SchedulingResponseOutput) OnInstanceStopAction() SchedulingOnInstanceStopActionResponseOutput {
+	return o.ApplyT(func(v SchedulingResponse) SchedulingOnInstanceStopActionResponse { return v.OnInstanceStopAction }).(SchedulingOnInstanceStopActionResponseOutput)
 }
 
 // Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
@@ -43093,8 +43764,13 @@ type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfi
 	AutoDeployExpirationSec             *int     `pulumi:"autoDeployExpirationSec"`
 	AutoDeployImpactedBaselineThreshold *float64 `pulumi:"autoDeployImpactedBaselineThreshold"`
 	AutoDeployLoadThreshold             *float64 `pulumi:"autoDeployLoadThreshold"`
+	DetectionAbsoluteQps                *float64 `pulumi:"detectionAbsoluteQps"`
+	DetectionLoadThreshold              *float64 `pulumi:"detectionLoadThreshold"`
+	DetectionRelativeToBaselineQps      *float64 `pulumi:"detectionRelativeToBaselineQps"`
 	// The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.
 	Name *string `pulumi:"name"`
+	// Configuration options for enabling Adaptive Protection to operate on specified granular traffic units.
+	TrafficGranularityConfigs []SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig `pulumi:"trafficGranularityConfigs"`
 }
 
 // SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigInput is an input type that accepts SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs and SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput values.
@@ -43113,8 +43789,13 @@ type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfi
 	AutoDeployExpirationSec             pulumi.IntPtrInput     `pulumi:"autoDeployExpirationSec"`
 	AutoDeployImpactedBaselineThreshold pulumi.Float64PtrInput `pulumi:"autoDeployImpactedBaselineThreshold"`
 	AutoDeployLoadThreshold             pulumi.Float64PtrInput `pulumi:"autoDeployLoadThreshold"`
+	DetectionAbsoluteQps                pulumi.Float64PtrInput `pulumi:"detectionAbsoluteQps"`
+	DetectionLoadThreshold              pulumi.Float64PtrInput `pulumi:"detectionLoadThreshold"`
+	DetectionRelativeToBaselineQps      pulumi.Float64PtrInput `pulumi:"detectionRelativeToBaselineQps"`
 	// The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Configuration options for enabling Adaptive Protection to operate on specified granular traffic units.
+	TrafficGranularityConfigs SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayInput `pulumi:"trafficGranularityConfigs"`
 }
 
 func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs) ElementType() reflect.Type {
@@ -43192,11 +43873,36 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdCo
 	}).(pulumi.Float64PtrOutput)
 }
 
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) DetectionAbsoluteQps() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) *float64 {
+		return v.DetectionAbsoluteQps
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) DetectionLoadThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) *float64 {
+		return v.DetectionLoadThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) DetectionRelativeToBaselineQps() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) *float64 {
+		return v.DetectionRelativeToBaselineQps
+	}).(pulumi.Float64PtrOutput)
+}
+
 // The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) *string {
 		return v.Name
 	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration options for enabling Adaptive Protection to operate on specified granular traffic units.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) TrafficGranularityConfigs() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) []SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig {
+		return v.TrafficGranularityConfigs
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput)
 }
 
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput struct{ *pulumi.OutputState }
@@ -43224,8 +43930,13 @@ type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfi
 	AutoDeployExpirationSec             int     `pulumi:"autoDeployExpirationSec"`
 	AutoDeployImpactedBaselineThreshold float64 `pulumi:"autoDeployImpactedBaselineThreshold"`
 	AutoDeployLoadThreshold             float64 `pulumi:"autoDeployLoadThreshold"`
+	DetectionAbsoluteQps                float64 `pulumi:"detectionAbsoluteQps"`
+	DetectionLoadThreshold              float64 `pulumi:"detectionLoadThreshold"`
+	DetectionRelativeToBaselineQps      float64 `pulumi:"detectionRelativeToBaselineQps"`
 	// The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.
 	Name string `pulumi:"name"`
+	// Configuration options for enabling Adaptive Protection to operate on specified granular traffic units.
+	TrafficGranularityConfigs []SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponse `pulumi:"trafficGranularityConfigs"`
 }
 
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutput struct{ *pulumi.OutputState }
@@ -43266,11 +43977,36 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdCo
 	}).(pulumi.Float64Output)
 }
 
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutput) DetectionAbsoluteQps() pulumi.Float64Output {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse) float64 {
+		return v.DetectionAbsoluteQps
+	}).(pulumi.Float64Output)
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutput) DetectionLoadThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse) float64 {
+		return v.DetectionLoadThreshold
+	}).(pulumi.Float64Output)
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutput) DetectionRelativeToBaselineQps() pulumi.Float64Output {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse) float64 {
+		return v.DetectionRelativeToBaselineQps
+	}).(pulumi.Float64Output)
+}
+
 // The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse) string {
 		return v.Name
 	}).(pulumi.StringOutput)
+}
+
+// Configuration options for enabling Adaptive Protection to operate on specified granular traffic units.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutput) TrafficGranularityConfigs() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse) []SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponse {
+		return v.TrafficGranularityConfigs
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseArrayOutput)
 }
 
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseArrayOutput struct{ *pulumi.OutputState }
@@ -43291,6 +44027,196 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdCo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse {
 		return vs[0].([]SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse)[vs[1].(int)]
 	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutput)
+}
+
+// Configurations to specifc granular traffic units processed by Adaptive Protection.
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig struct {
+	// If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if `value` is empty.
+	EnableEachUniqueValue *bool `pulumi:"enableEachUniqueValue"`
+	// Type of this configuration.
+	Type *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType `pulumi:"type"`
+	// Requests that match this value constitute a granular traffic unit.
+	Value *string `pulumi:"value"`
+}
+
+// SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigInput is an input type that accepts SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs and SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigInput` via:
+//
+//	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs{...}
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput
+}
+
+// Configurations to specifc granular traffic units processed by Adaptive Protection.
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs struct {
+	// If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if `value` is empty.
+	EnableEachUniqueValue pulumi.BoolPtrInput `pulumi:"enableEachUniqueValue"`
+	// Type of this configuration.
+	Type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrInput `pulumi:"type"`
+	// Requests that match this value constitute a granular traffic unit.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput)
+}
+
+// SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayInput is an input type that accepts SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray and SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayInput` via:
+//
+//	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray{ SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs{...} }
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray []SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigInput
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput)
+}
+
+// Configurations to specifc granular traffic units processed by Adaptive Protection.
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput {
+	return o
+}
+
+// If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if `value` is empty.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput) EnableEachUniqueValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig) *bool {
+		return v.EnableEachUniqueValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Type of this configuration.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput) Type() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig) *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType {
+		return v.Type
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput)
+}
+
+// Requests that match this value constitute a granular traffic unit.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig) *string {
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput) Index(i pulumi.IntInput) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig {
+		return vs[0].([]SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig)[vs[1].(int)]
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput)
+}
+
+// Configurations to specifc granular traffic units processed by Adaptive Protection.
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponse struct {
+	// If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if `value` is empty.
+	EnableEachUniqueValue bool `pulumi:"enableEachUniqueValue"`
+	// Type of this configuration.
+	Type string `pulumi:"type"`
+	// Requests that match this value constitute a granular traffic unit.
+	Value string `pulumi:"value"`
+}
+
+// Configurations to specifc granular traffic units processed by Adaptive Protection.
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseOutput {
+	return o
+}
+
+// If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if `value` is empty.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseOutput) EnableEachUniqueValue() pulumi.BoolOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponse) bool {
+		return v.EnableEachUniqueValue
+	}).(pulumi.BoolOutput)
+}
+
+// Type of this configuration.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponse) string {
+		return v.Type
+	}).(pulumi.StringOutput)
+}
+
+// Requests that match this value constitute a granular traffic unit.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponse) string {
+		return v.Value
+	}).(pulumi.StringOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseArrayOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseArrayOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseArrayOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponse {
+		return vs[0].([]SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponse)[vs[1].(int)]
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseOutput)
 }
 
 // Configuration options for Cloud Armor Adaptive Protection (CAAP).
@@ -45333,7 +46259,7 @@ func (o SecurityPolicyRuleMatcherConfigResponseOutput) SrcIpRanges() pulumi.Stri
 }
 
 type SecurityPolicyRuleMatcherExprOptions struct {
-	// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+	// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
 	RecaptchaOptions *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions `pulumi:"recaptchaOptions"`
 }
 
@@ -45349,7 +46275,7 @@ type SecurityPolicyRuleMatcherExprOptionsInput interface {
 }
 
 type SecurityPolicyRuleMatcherExprOptionsArgs struct {
-	// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+	// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
 	RecaptchaOptions SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrInput `pulumi:"recaptchaOptions"`
 }
 
@@ -45430,7 +46356,7 @@ func (o SecurityPolicyRuleMatcherExprOptionsOutput) ToSecurityPolicyRuleMatcherE
 	}).(SecurityPolicyRuleMatcherExprOptionsPtrOutput)
 }
 
-// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
 func (o SecurityPolicyRuleMatcherExprOptionsOutput) RecaptchaOptions() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleMatcherExprOptions) *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions {
 		return v.RecaptchaOptions
@@ -45461,7 +46387,7 @@ func (o SecurityPolicyRuleMatcherExprOptionsPtrOutput) Elem() SecurityPolicyRule
 	}).(SecurityPolicyRuleMatcherExprOptionsOutput)
 }
 
-// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
 func (o SecurityPolicyRuleMatcherExprOptionsPtrOutput) RecaptchaOptions() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleMatcherExprOptions) *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions {
 		if v == nil {
@@ -45663,7 +46589,7 @@ func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput) Sess
 }
 
 type SecurityPolicyRuleMatcherExprOptionsResponse struct {
-	// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+	// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
 	RecaptchaOptions SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse `pulumi:"recaptchaOptions"`
 }
 
@@ -45681,7 +46607,7 @@ func (o SecurityPolicyRuleMatcherExprOptionsResponseOutput) ToSecurityPolicyRule
 	return o
 }
 
-// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
 func (o SecurityPolicyRuleMatcherExprOptionsResponseOutput) RecaptchaOptions() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleMatcherExprOptionsResponse) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse {
 		return v.RecaptchaOptions
@@ -46814,7 +47740,7 @@ type SecurityPolicyRuleRateLimitOptions struct {
 	BanThreshold *SecurityPolicyRuleRateLimitOptionsThreshold `pulumi:"banThreshold"`
 	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
 	ConformAction *string `pulumi:"conformAction"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 	EnforceOnKey *SecurityPolicyRuleRateLimitOptionsEnforceOnKey `pulumi:"enforceOnKey"`
 	// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
 	EnforceOnKeyConfigs []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig `pulumi:"enforceOnKeyConfigs"`
@@ -46846,7 +47772,7 @@ type SecurityPolicyRuleRateLimitOptionsArgs struct {
 	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdPtrInput `pulumi:"banThreshold"`
 	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
 	ConformAction pulumi.StringPtrInput `pulumi:"conformAction"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 	EnforceOnKey SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrInput `pulumi:"enforceOnKey"`
 	// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
 	EnforceOnKeyConfigs SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayInput `pulumi:"enforceOnKeyConfigs"`
@@ -46954,7 +47880,7 @@ func (o SecurityPolicyRuleRateLimitOptionsOutput) ConformAction() pulumi.StringP
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.ConformAction }).(pulumi.StringPtrOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 func (o SecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKey() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsEnforceOnKey {
 		return v.EnforceOnKey
@@ -47046,7 +47972,7 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ConformAction() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKey() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsEnforceOnKey {
 		if v == nil {
@@ -47109,7 +48035,7 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) RateLimitThreshold() Securi
 type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig struct {
 	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName *string `pulumi:"enforceOnKeyName"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 	EnforceOnKeyType *SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType `pulumi:"enforceOnKeyType"`
 }
 
@@ -47127,7 +48053,7 @@ type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigInput interface {
 type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs struct {
 	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName pulumi.StringPtrInput `pulumi:"enforceOnKeyName"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 	EnforceOnKeyType SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrInput `pulumi:"enforceOnKeyType"`
 }
 
@@ -47187,7 +48113,7 @@ func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput) EnforceOnKey
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig) *string { return v.EnforceOnKeyName }).(pulumi.StringPtrOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput) EnforceOnKeyType() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig) *SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType {
 		return v.EnforceOnKeyType
@@ -47217,7 +48143,7 @@ func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput) Index(i
 type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse struct {
 	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 	EnforceOnKeyType string `pulumi:"enforceOnKeyType"`
 }
 
@@ -47240,7 +48166,7 @@ func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) Enfo
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse) string { return v.EnforceOnKeyName }).(pulumi.StringOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) EnforceOnKeyType() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse) string { return v.EnforceOnKeyType }).(pulumi.StringOutput)
 }
@@ -47272,7 +48198,7 @@ type SecurityPolicyRuleRateLimitOptionsResponse struct {
 	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponse `pulumi:"banThreshold"`
 	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
 	ConformAction string `pulumi:"conformAction"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 	EnforceOnKey string `pulumi:"enforceOnKey"`
 	// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
 	EnforceOnKeyConfigs []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse `pulumi:"enforceOnKeyConfigs"`
@@ -47317,7 +48243,7 @@ func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ConformAction() pulumi
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ConformAction }).(pulumi.StringOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKey() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKey }).(pulumi.StringOutput)
 }
@@ -48673,6 +49599,8 @@ type ServiceAttachmentConnectedEndpointResponse struct {
 	ConsumerNetwork string `pulumi:"consumerNetwork"`
 	// The url of a connected endpoint.
 	Endpoint string `pulumi:"endpoint"`
+	// The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+	PropagatedConnectionCount int `pulumi:"propagatedConnectionCount"`
 	// The PSC connection id of the connected endpoint.
 	PscConnectionId string `pulumi:"pscConnectionId"`
 	// The status of a connected endpoint to this service attachment.
@@ -48702,6 +49630,11 @@ func (o ServiceAttachmentConnectedEndpointResponseOutput) ConsumerNetwork() pulu
 // The url of a connected endpoint.
 func (o ServiceAttachmentConnectedEndpointResponseOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceAttachmentConnectedEndpointResponse) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+func (o ServiceAttachmentConnectedEndpointResponseOutput) PropagatedConnectionCount() pulumi.IntOutput {
+	return o.ApplyT(func(v ServiceAttachmentConnectedEndpointResponse) int { return v.PropagatedConnectionCount }).(pulumi.IntOutput)
 }
 
 // The PSC connection id of the connected endpoint.
@@ -51368,1119 +52301,6 @@ func (o StatefulPolicyPreservedStateResponseOutput) InternalIPs() pulumi.StringM
 	return o.ApplyT(func(v StatefulPolicyPreservedStateResponse) map[string]string { return v.InternalIPs }).(pulumi.StringMapOutput)
 }
 
-type StatefulPolicyResponse struct {
-	PreservedState StatefulPolicyPreservedStateResponse `pulumi:"preservedState"`
-}
-
-type StatefulPolicyResponseOutput struct{ *pulumi.OutputState }
-
-func (StatefulPolicyResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StatefulPolicyResponse)(nil)).Elem()
-}
-
-func (o StatefulPolicyResponseOutput) ToStatefulPolicyResponseOutput() StatefulPolicyResponseOutput {
-	return o
-}
-
-func (o StatefulPolicyResponseOutput) ToStatefulPolicyResponseOutputWithContext(ctx context.Context) StatefulPolicyResponseOutput {
-	return o
-}
-
-func (o StatefulPolicyResponseOutput) PreservedState() StatefulPolicyPreservedStateResponseOutput {
-	return o.ApplyT(func(v StatefulPolicyResponse) StatefulPolicyPreservedStateResponse { return v.PreservedState }).(StatefulPolicyPreservedStateResponseOutput)
-}
-
-// The available logging options for this subnetwork.
-type SubnetworkLogConfig struct {
-	// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
-	AggregationInterval *SubnetworkLogConfigAggregationInterval `pulumi:"aggregationInterval"`
-	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
-	Enable *bool `pulumi:"enable"`
-	// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
-	FilterExpr *string `pulumi:"filterExpr"`
-	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
-	FlowSampling *float64 `pulumi:"flowSampling"`
-	// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
-	Metadata *SubnetworkLogConfigMetadata `pulumi:"metadata"`
-	// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" was set to CUSTOM_METADATA.
-	MetadataFields []string `pulumi:"metadataFields"`
-}
-
-// SubnetworkLogConfigInput is an input type that accepts SubnetworkLogConfigArgs and SubnetworkLogConfigOutput values.
-// You can construct a concrete instance of `SubnetworkLogConfigInput` via:
-//
-//	SubnetworkLogConfigArgs{...}
-type SubnetworkLogConfigInput interface {
-	pulumi.Input
-
-	ToSubnetworkLogConfigOutput() SubnetworkLogConfigOutput
-	ToSubnetworkLogConfigOutputWithContext(context.Context) SubnetworkLogConfigOutput
-}
-
-// The available logging options for this subnetwork.
-type SubnetworkLogConfigArgs struct {
-	// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
-	AggregationInterval SubnetworkLogConfigAggregationIntervalPtrInput `pulumi:"aggregationInterval"`
-	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
-	Enable pulumi.BoolPtrInput `pulumi:"enable"`
-	// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
-	FilterExpr pulumi.StringPtrInput `pulumi:"filterExpr"`
-	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
-	FlowSampling pulumi.Float64PtrInput `pulumi:"flowSampling"`
-	// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
-	Metadata SubnetworkLogConfigMetadataPtrInput `pulumi:"metadata"`
-	// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" was set to CUSTOM_METADATA.
-	MetadataFields pulumi.StringArrayInput `pulumi:"metadataFields"`
-}
-
-func (SubnetworkLogConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubnetworkLogConfig)(nil)).Elem()
-}
-
-func (i SubnetworkLogConfigArgs) ToSubnetworkLogConfigOutput() SubnetworkLogConfigOutput {
-	return i.ToSubnetworkLogConfigOutputWithContext(context.Background())
-}
-
-func (i SubnetworkLogConfigArgs) ToSubnetworkLogConfigOutputWithContext(ctx context.Context) SubnetworkLogConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkLogConfigOutput)
-}
-
-func (i SubnetworkLogConfigArgs) ToSubnetworkLogConfigPtrOutput() SubnetworkLogConfigPtrOutput {
-	return i.ToSubnetworkLogConfigPtrOutputWithContext(context.Background())
-}
-
-func (i SubnetworkLogConfigArgs) ToSubnetworkLogConfigPtrOutputWithContext(ctx context.Context) SubnetworkLogConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkLogConfigOutput).ToSubnetworkLogConfigPtrOutputWithContext(ctx)
-}
-
-// SubnetworkLogConfigPtrInput is an input type that accepts SubnetworkLogConfigArgs, SubnetworkLogConfigPtr and SubnetworkLogConfigPtrOutput values.
-// You can construct a concrete instance of `SubnetworkLogConfigPtrInput` via:
-//
-//	        SubnetworkLogConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type SubnetworkLogConfigPtrInput interface {
-	pulumi.Input
-
-	ToSubnetworkLogConfigPtrOutput() SubnetworkLogConfigPtrOutput
-	ToSubnetworkLogConfigPtrOutputWithContext(context.Context) SubnetworkLogConfigPtrOutput
-}
-
-type subnetworkLogConfigPtrType SubnetworkLogConfigArgs
-
-func SubnetworkLogConfigPtr(v *SubnetworkLogConfigArgs) SubnetworkLogConfigPtrInput {
-	return (*subnetworkLogConfigPtrType)(v)
-}
-
-func (*subnetworkLogConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubnetworkLogConfig)(nil)).Elem()
-}
-
-func (i *subnetworkLogConfigPtrType) ToSubnetworkLogConfigPtrOutput() SubnetworkLogConfigPtrOutput {
-	return i.ToSubnetworkLogConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *subnetworkLogConfigPtrType) ToSubnetworkLogConfigPtrOutputWithContext(ctx context.Context) SubnetworkLogConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkLogConfigPtrOutput)
-}
-
-// The available logging options for this subnetwork.
-type SubnetworkLogConfigOutput struct{ *pulumi.OutputState }
-
-func (SubnetworkLogConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubnetworkLogConfig)(nil)).Elem()
-}
-
-func (o SubnetworkLogConfigOutput) ToSubnetworkLogConfigOutput() SubnetworkLogConfigOutput {
-	return o
-}
-
-func (o SubnetworkLogConfigOutput) ToSubnetworkLogConfigOutputWithContext(ctx context.Context) SubnetworkLogConfigOutput {
-	return o
-}
-
-func (o SubnetworkLogConfigOutput) ToSubnetworkLogConfigPtrOutput() SubnetworkLogConfigPtrOutput {
-	return o.ToSubnetworkLogConfigPtrOutputWithContext(context.Background())
-}
-
-func (o SubnetworkLogConfigOutput) ToSubnetworkLogConfigPtrOutputWithContext(ctx context.Context) SubnetworkLogConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubnetworkLogConfig) *SubnetworkLogConfig {
-		return &v
-	}).(SubnetworkLogConfigPtrOutput)
-}
-
-// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
-func (o SubnetworkLogConfigOutput) AggregationInterval() SubnetworkLogConfigAggregationIntervalPtrOutput {
-	return o.ApplyT(func(v SubnetworkLogConfig) *SubnetworkLogConfigAggregationInterval { return v.AggregationInterval }).(SubnetworkLogConfigAggregationIntervalPtrOutput)
-}
-
-// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
-func (o SubnetworkLogConfigOutput) Enable() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SubnetworkLogConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
-}
-
-// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
-func (o SubnetworkLogConfigOutput) FilterExpr() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SubnetworkLogConfig) *string { return v.FilterExpr }).(pulumi.StringPtrOutput)
-}
-
-// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
-func (o SubnetworkLogConfigOutput) FlowSampling() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v SubnetworkLogConfig) *float64 { return v.FlowSampling }).(pulumi.Float64PtrOutput)
-}
-
-// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
-func (o SubnetworkLogConfigOutput) Metadata() SubnetworkLogConfigMetadataPtrOutput {
-	return o.ApplyT(func(v SubnetworkLogConfig) *SubnetworkLogConfigMetadata { return v.Metadata }).(SubnetworkLogConfigMetadataPtrOutput)
-}
-
-// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" was set to CUSTOM_METADATA.
-func (o SubnetworkLogConfigOutput) MetadataFields() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SubnetworkLogConfig) []string { return v.MetadataFields }).(pulumi.StringArrayOutput)
-}
-
-type SubnetworkLogConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (SubnetworkLogConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubnetworkLogConfig)(nil)).Elem()
-}
-
-func (o SubnetworkLogConfigPtrOutput) ToSubnetworkLogConfigPtrOutput() SubnetworkLogConfigPtrOutput {
-	return o
-}
-
-func (o SubnetworkLogConfigPtrOutput) ToSubnetworkLogConfigPtrOutputWithContext(ctx context.Context) SubnetworkLogConfigPtrOutput {
-	return o
-}
-
-func (o SubnetworkLogConfigPtrOutput) Elem() SubnetworkLogConfigOutput {
-	return o.ApplyT(func(v *SubnetworkLogConfig) SubnetworkLogConfig {
-		if v != nil {
-			return *v
-		}
-		var ret SubnetworkLogConfig
-		return ret
-	}).(SubnetworkLogConfigOutput)
-}
-
-// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
-func (o SubnetworkLogConfigPtrOutput) AggregationInterval() SubnetworkLogConfigAggregationIntervalPtrOutput {
-	return o.ApplyT(func(v *SubnetworkLogConfig) *SubnetworkLogConfigAggregationInterval {
-		if v == nil {
-			return nil
-		}
-		return v.AggregationInterval
-	}).(SubnetworkLogConfigAggregationIntervalPtrOutput)
-}
-
-// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
-func (o SubnetworkLogConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SubnetworkLogConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enable
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
-func (o SubnetworkLogConfigPtrOutput) FilterExpr() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubnetworkLogConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.FilterExpr
-	}).(pulumi.StringPtrOutput)
-}
-
-// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
-func (o SubnetworkLogConfigPtrOutput) FlowSampling() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *SubnetworkLogConfig) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.FlowSampling
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
-func (o SubnetworkLogConfigPtrOutput) Metadata() SubnetworkLogConfigMetadataPtrOutput {
-	return o.ApplyT(func(v *SubnetworkLogConfig) *SubnetworkLogConfigMetadata {
-		if v == nil {
-			return nil
-		}
-		return v.Metadata
-	}).(SubnetworkLogConfigMetadataPtrOutput)
-}
-
-// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" was set to CUSTOM_METADATA.
-func (o SubnetworkLogConfigPtrOutput) MetadataFields() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SubnetworkLogConfig) []string {
-		if v == nil {
-			return nil
-		}
-		return v.MetadataFields
-	}).(pulumi.StringArrayOutput)
-}
-
-// The available logging options for this subnetwork.
-type SubnetworkLogConfigResponse struct {
-	// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
-	AggregationInterval string `pulumi:"aggregationInterval"`
-	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
-	Enable bool `pulumi:"enable"`
-	// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
-	FilterExpr string `pulumi:"filterExpr"`
-	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
-	FlowSampling float64 `pulumi:"flowSampling"`
-	// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
-	Metadata string `pulumi:"metadata"`
-	// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" was set to CUSTOM_METADATA.
-	MetadataFields []string `pulumi:"metadataFields"`
-}
-
-// The available logging options for this subnetwork.
-type SubnetworkLogConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (SubnetworkLogConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubnetworkLogConfigResponse)(nil)).Elem()
-}
-
-func (o SubnetworkLogConfigResponseOutput) ToSubnetworkLogConfigResponseOutput() SubnetworkLogConfigResponseOutput {
-	return o
-}
-
-func (o SubnetworkLogConfigResponseOutput) ToSubnetworkLogConfigResponseOutputWithContext(ctx context.Context) SubnetworkLogConfigResponseOutput {
-	return o
-}
-
-// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
-func (o SubnetworkLogConfigResponseOutput) AggregationInterval() pulumi.StringOutput {
-	return o.ApplyT(func(v SubnetworkLogConfigResponse) string { return v.AggregationInterval }).(pulumi.StringOutput)
-}
-
-// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
-func (o SubnetworkLogConfigResponseOutput) Enable() pulumi.BoolOutput {
-	return o.ApplyT(func(v SubnetworkLogConfigResponse) bool { return v.Enable }).(pulumi.BoolOutput)
-}
-
-// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
-func (o SubnetworkLogConfigResponseOutput) FilterExpr() pulumi.StringOutput {
-	return o.ApplyT(func(v SubnetworkLogConfigResponse) string { return v.FilterExpr }).(pulumi.StringOutput)
-}
-
-// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
-func (o SubnetworkLogConfigResponseOutput) FlowSampling() pulumi.Float64Output {
-	return o.ApplyT(func(v SubnetworkLogConfigResponse) float64 { return v.FlowSampling }).(pulumi.Float64Output)
-}
-
-// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
-func (o SubnetworkLogConfigResponseOutput) Metadata() pulumi.StringOutput {
-	return o.ApplyT(func(v SubnetworkLogConfigResponse) string { return v.Metadata }).(pulumi.StringOutput)
-}
-
-// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" was set to CUSTOM_METADATA.
-func (o SubnetworkLogConfigResponseOutput) MetadataFields() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SubnetworkLogConfigResponse) []string { return v.MetadataFields }).(pulumi.StringArrayOutput)
-}
-
-// Represents a secondary IP range of a subnetwork.
-type SubnetworkSecondaryRange struct {
-	// The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. The range can be any range listed in the Valid ranges list.
-	IpCidrRange *string `pulumi:"ipCidrRange"`
-	// The name associated with this subnetwork secondary range, used when adding an alias IP range to a VM instance. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the subnetwork.
-	RangeName *string `pulumi:"rangeName"`
-	// The URL of the reserved internal range.
-	ReservedInternalRange *string `pulumi:"reservedInternalRange"`
-}
-
-// SubnetworkSecondaryRangeInput is an input type that accepts SubnetworkSecondaryRangeArgs and SubnetworkSecondaryRangeOutput values.
-// You can construct a concrete instance of `SubnetworkSecondaryRangeInput` via:
-//
-//	SubnetworkSecondaryRangeArgs{...}
-type SubnetworkSecondaryRangeInput interface {
-	pulumi.Input
-
-	ToSubnetworkSecondaryRangeOutput() SubnetworkSecondaryRangeOutput
-	ToSubnetworkSecondaryRangeOutputWithContext(context.Context) SubnetworkSecondaryRangeOutput
-}
-
-// Represents a secondary IP range of a subnetwork.
-type SubnetworkSecondaryRangeArgs struct {
-	// The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. The range can be any range listed in the Valid ranges list.
-	IpCidrRange pulumi.StringPtrInput `pulumi:"ipCidrRange"`
-	// The name associated with this subnetwork secondary range, used when adding an alias IP range to a VM instance. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the subnetwork.
-	RangeName pulumi.StringPtrInput `pulumi:"rangeName"`
-	// The URL of the reserved internal range.
-	ReservedInternalRange pulumi.StringPtrInput `pulumi:"reservedInternalRange"`
-}
-
-func (SubnetworkSecondaryRangeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubnetworkSecondaryRange)(nil)).Elem()
-}
-
-func (i SubnetworkSecondaryRangeArgs) ToSubnetworkSecondaryRangeOutput() SubnetworkSecondaryRangeOutput {
-	return i.ToSubnetworkSecondaryRangeOutputWithContext(context.Background())
-}
-
-func (i SubnetworkSecondaryRangeArgs) ToSubnetworkSecondaryRangeOutputWithContext(ctx context.Context) SubnetworkSecondaryRangeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkSecondaryRangeOutput)
-}
-
-// SubnetworkSecondaryRangeArrayInput is an input type that accepts SubnetworkSecondaryRangeArray and SubnetworkSecondaryRangeArrayOutput values.
-// You can construct a concrete instance of `SubnetworkSecondaryRangeArrayInput` via:
-//
-//	SubnetworkSecondaryRangeArray{ SubnetworkSecondaryRangeArgs{...} }
-type SubnetworkSecondaryRangeArrayInput interface {
-	pulumi.Input
-
-	ToSubnetworkSecondaryRangeArrayOutput() SubnetworkSecondaryRangeArrayOutput
-	ToSubnetworkSecondaryRangeArrayOutputWithContext(context.Context) SubnetworkSecondaryRangeArrayOutput
-}
-
-type SubnetworkSecondaryRangeArray []SubnetworkSecondaryRangeInput
-
-func (SubnetworkSecondaryRangeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SubnetworkSecondaryRange)(nil)).Elem()
-}
-
-func (i SubnetworkSecondaryRangeArray) ToSubnetworkSecondaryRangeArrayOutput() SubnetworkSecondaryRangeArrayOutput {
-	return i.ToSubnetworkSecondaryRangeArrayOutputWithContext(context.Background())
-}
-
-func (i SubnetworkSecondaryRangeArray) ToSubnetworkSecondaryRangeArrayOutputWithContext(ctx context.Context) SubnetworkSecondaryRangeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkSecondaryRangeArrayOutput)
-}
-
-// Represents a secondary IP range of a subnetwork.
-type SubnetworkSecondaryRangeOutput struct{ *pulumi.OutputState }
-
-func (SubnetworkSecondaryRangeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubnetworkSecondaryRange)(nil)).Elem()
-}
-
-func (o SubnetworkSecondaryRangeOutput) ToSubnetworkSecondaryRangeOutput() SubnetworkSecondaryRangeOutput {
-	return o
-}
-
-func (o SubnetworkSecondaryRangeOutput) ToSubnetworkSecondaryRangeOutputWithContext(ctx context.Context) SubnetworkSecondaryRangeOutput {
-	return o
-}
-
-// The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. The range can be any range listed in the Valid ranges list.
-func (o SubnetworkSecondaryRangeOutput) IpCidrRange() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SubnetworkSecondaryRange) *string { return v.IpCidrRange }).(pulumi.StringPtrOutput)
-}
-
-// The name associated with this subnetwork secondary range, used when adding an alias IP range to a VM instance. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the subnetwork.
-func (o SubnetworkSecondaryRangeOutput) RangeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SubnetworkSecondaryRange) *string { return v.RangeName }).(pulumi.StringPtrOutput)
-}
-
-// The URL of the reserved internal range.
-func (o SubnetworkSecondaryRangeOutput) ReservedInternalRange() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SubnetworkSecondaryRange) *string { return v.ReservedInternalRange }).(pulumi.StringPtrOutput)
-}
-
-type SubnetworkSecondaryRangeArrayOutput struct{ *pulumi.OutputState }
-
-func (SubnetworkSecondaryRangeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SubnetworkSecondaryRange)(nil)).Elem()
-}
-
-func (o SubnetworkSecondaryRangeArrayOutput) ToSubnetworkSecondaryRangeArrayOutput() SubnetworkSecondaryRangeArrayOutput {
-	return o
-}
-
-func (o SubnetworkSecondaryRangeArrayOutput) ToSubnetworkSecondaryRangeArrayOutputWithContext(ctx context.Context) SubnetworkSecondaryRangeArrayOutput {
-	return o
-}
-
-func (o SubnetworkSecondaryRangeArrayOutput) Index(i pulumi.IntInput) SubnetworkSecondaryRangeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetworkSecondaryRange {
-		return vs[0].([]SubnetworkSecondaryRange)[vs[1].(int)]
-	}).(SubnetworkSecondaryRangeOutput)
-}
-
-// Represents a secondary IP range of a subnetwork.
-type SubnetworkSecondaryRangeResponse struct {
-	// The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. The range can be any range listed in the Valid ranges list.
-	IpCidrRange string `pulumi:"ipCidrRange"`
-	// The name associated with this subnetwork secondary range, used when adding an alias IP range to a VM instance. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the subnetwork.
-	RangeName string `pulumi:"rangeName"`
-	// The URL of the reserved internal range.
-	ReservedInternalRange string `pulumi:"reservedInternalRange"`
-}
-
-// Represents a secondary IP range of a subnetwork.
-type SubnetworkSecondaryRangeResponseOutput struct{ *pulumi.OutputState }
-
-func (SubnetworkSecondaryRangeResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubnetworkSecondaryRangeResponse)(nil)).Elem()
-}
-
-func (o SubnetworkSecondaryRangeResponseOutput) ToSubnetworkSecondaryRangeResponseOutput() SubnetworkSecondaryRangeResponseOutput {
-	return o
-}
-
-func (o SubnetworkSecondaryRangeResponseOutput) ToSubnetworkSecondaryRangeResponseOutputWithContext(ctx context.Context) SubnetworkSecondaryRangeResponseOutput {
-	return o
-}
-
-// The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. The range can be any range listed in the Valid ranges list.
-func (o SubnetworkSecondaryRangeResponseOutput) IpCidrRange() pulumi.StringOutput {
-	return o.ApplyT(func(v SubnetworkSecondaryRangeResponse) string { return v.IpCidrRange }).(pulumi.StringOutput)
-}
-
-// The name associated with this subnetwork secondary range, used when adding an alias IP range to a VM instance. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the subnetwork.
-func (o SubnetworkSecondaryRangeResponseOutput) RangeName() pulumi.StringOutput {
-	return o.ApplyT(func(v SubnetworkSecondaryRangeResponse) string { return v.RangeName }).(pulumi.StringOutput)
-}
-
-// The URL of the reserved internal range.
-func (o SubnetworkSecondaryRangeResponseOutput) ReservedInternalRange() pulumi.StringOutput {
-	return o.ApplyT(func(v SubnetworkSecondaryRangeResponse) string { return v.ReservedInternalRange }).(pulumi.StringOutput)
-}
-
-type SubnetworkSecondaryRangeResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SubnetworkSecondaryRangeResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SubnetworkSecondaryRangeResponse)(nil)).Elem()
-}
-
-func (o SubnetworkSecondaryRangeResponseArrayOutput) ToSubnetworkSecondaryRangeResponseArrayOutput() SubnetworkSecondaryRangeResponseArrayOutput {
-	return o
-}
-
-func (o SubnetworkSecondaryRangeResponseArrayOutput) ToSubnetworkSecondaryRangeResponseArrayOutputWithContext(ctx context.Context) SubnetworkSecondaryRangeResponseArrayOutput {
-	return o
-}
-
-func (o SubnetworkSecondaryRangeResponseArrayOutput) Index(i pulumi.IntInput) SubnetworkSecondaryRangeResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetworkSecondaryRangeResponse {
-		return vs[0].([]SubnetworkSecondaryRangeResponse)[vs[1].(int)]
-	}).(SubnetworkSecondaryRangeResponseOutput)
-}
-
-// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
-type Subsetting struct {
-	Policy *SubsettingPolicy `pulumi:"policy"`
-	// The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
-	SubsetSize *int `pulumi:"subsetSize"`
-}
-
-// SubsettingInput is an input type that accepts SubsettingArgs and SubsettingOutput values.
-// You can construct a concrete instance of `SubsettingInput` via:
-//
-//	SubsettingArgs{...}
-type SubsettingInput interface {
-	pulumi.Input
-
-	ToSubsettingOutput() SubsettingOutput
-	ToSubsettingOutputWithContext(context.Context) SubsettingOutput
-}
-
-// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
-type SubsettingArgs struct {
-	Policy SubsettingPolicyPtrInput `pulumi:"policy"`
-	// The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
-	SubsetSize pulumi.IntPtrInput `pulumi:"subsetSize"`
-}
-
-func (SubsettingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Subsetting)(nil)).Elem()
-}
-
-func (i SubsettingArgs) ToSubsettingOutput() SubsettingOutput {
-	return i.ToSubsettingOutputWithContext(context.Background())
-}
-
-func (i SubsettingArgs) ToSubsettingOutputWithContext(ctx context.Context) SubsettingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubsettingOutput)
-}
-
-func (i SubsettingArgs) ToSubsettingPtrOutput() SubsettingPtrOutput {
-	return i.ToSubsettingPtrOutputWithContext(context.Background())
-}
-
-func (i SubsettingArgs) ToSubsettingPtrOutputWithContext(ctx context.Context) SubsettingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubsettingOutput).ToSubsettingPtrOutputWithContext(ctx)
-}
-
-// SubsettingPtrInput is an input type that accepts SubsettingArgs, SubsettingPtr and SubsettingPtrOutput values.
-// You can construct a concrete instance of `SubsettingPtrInput` via:
-//
-//	        SubsettingArgs{...}
-//
-//	or:
-//
-//	        nil
-type SubsettingPtrInput interface {
-	pulumi.Input
-
-	ToSubsettingPtrOutput() SubsettingPtrOutput
-	ToSubsettingPtrOutputWithContext(context.Context) SubsettingPtrOutput
-}
-
-type subsettingPtrType SubsettingArgs
-
-func SubsettingPtr(v *SubsettingArgs) SubsettingPtrInput {
-	return (*subsettingPtrType)(v)
-}
-
-func (*subsettingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Subsetting)(nil)).Elem()
-}
-
-func (i *subsettingPtrType) ToSubsettingPtrOutput() SubsettingPtrOutput {
-	return i.ToSubsettingPtrOutputWithContext(context.Background())
-}
-
-func (i *subsettingPtrType) ToSubsettingPtrOutputWithContext(ctx context.Context) SubsettingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubsettingPtrOutput)
-}
-
-// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
-type SubsettingOutput struct{ *pulumi.OutputState }
-
-func (SubsettingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Subsetting)(nil)).Elem()
-}
-
-func (o SubsettingOutput) ToSubsettingOutput() SubsettingOutput {
-	return o
-}
-
-func (o SubsettingOutput) ToSubsettingOutputWithContext(ctx context.Context) SubsettingOutput {
-	return o
-}
-
-func (o SubsettingOutput) ToSubsettingPtrOutput() SubsettingPtrOutput {
-	return o.ToSubsettingPtrOutputWithContext(context.Background())
-}
-
-func (o SubsettingOutput) ToSubsettingPtrOutputWithContext(ctx context.Context) SubsettingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Subsetting) *Subsetting {
-		return &v
-	}).(SubsettingPtrOutput)
-}
-
-func (o SubsettingOutput) Policy() SubsettingPolicyPtrOutput {
-	return o.ApplyT(func(v Subsetting) *SubsettingPolicy { return v.Policy }).(SubsettingPolicyPtrOutput)
-}
-
-// The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
-func (o SubsettingOutput) SubsetSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Subsetting) *int { return v.SubsetSize }).(pulumi.IntPtrOutput)
-}
-
-type SubsettingPtrOutput struct{ *pulumi.OutputState }
-
-func (SubsettingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Subsetting)(nil)).Elem()
-}
-
-func (o SubsettingPtrOutput) ToSubsettingPtrOutput() SubsettingPtrOutput {
-	return o
-}
-
-func (o SubsettingPtrOutput) ToSubsettingPtrOutputWithContext(ctx context.Context) SubsettingPtrOutput {
-	return o
-}
-
-func (o SubsettingPtrOutput) Elem() SubsettingOutput {
-	return o.ApplyT(func(v *Subsetting) Subsetting {
-		if v != nil {
-			return *v
-		}
-		var ret Subsetting
-		return ret
-	}).(SubsettingOutput)
-}
-
-func (o SubsettingPtrOutput) Policy() SubsettingPolicyPtrOutput {
-	return o.ApplyT(func(v *Subsetting) *SubsettingPolicy {
-		if v == nil {
-			return nil
-		}
-		return v.Policy
-	}).(SubsettingPolicyPtrOutput)
-}
-
-// The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
-func (o SubsettingPtrOutput) SubsetSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Subsetting) *int {
-		if v == nil {
-			return nil
-		}
-		return v.SubsetSize
-	}).(pulumi.IntPtrOutput)
-}
-
-// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
-type SubsettingResponse struct {
-	Policy string `pulumi:"policy"`
-	// The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
-	SubsetSize int `pulumi:"subsetSize"`
-}
-
-// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
-type SubsettingResponseOutput struct{ *pulumi.OutputState }
-
-func (SubsettingResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubsettingResponse)(nil)).Elem()
-}
-
-func (o SubsettingResponseOutput) ToSubsettingResponseOutput() SubsettingResponseOutput {
-	return o
-}
-
-func (o SubsettingResponseOutput) ToSubsettingResponseOutputWithContext(ctx context.Context) SubsettingResponseOutput {
-	return o
-}
-
-func (o SubsettingResponseOutput) Policy() pulumi.StringOutput {
-	return o.ApplyT(func(v SubsettingResponse) string { return v.Policy }).(pulumi.StringOutput)
-}
-
-// The number of backends per backend group assigned to each proxy instance or each service mesh client. An input parameter to the `CONSISTENT_HASH_SUBSETTING` algorithm. Can only be set if `policy` is set to `CONSISTENT_HASH_SUBSETTING`. Can only be set if load balancing scheme is `INTERNAL_MANAGED` or `INTERNAL_SELF_MANAGED`. `subset_size` is optional for Internal HTTP(S) load balancing and required for Traffic Director. If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number of proxies/clients visible to each backend and vice versa. Must be greater than 0. If `subset_size` is larger than the number of backends/endpoints, then subsetting is disabled.
-func (o SubsettingResponseOutput) SubsetSize() pulumi.IntOutput {
-	return o.ApplyT(func(v SubsettingResponse) int { return v.SubsetSize }).(pulumi.IntOutput)
-}
-
-type TCPHealthCheck struct {
-	// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
-	Port *int `pulumi:"port"`
-	// Not supported.
-	PortName *string `pulumi:"portName"`
-	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
-	PortSpecification *TCPHealthCheckPortSpecification `pulumi:"portSpecification"`
-	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-	ProxyHeader *TCPHealthCheckProxyHeader `pulumi:"proxyHeader"`
-	// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
-	Request *string `pulumi:"request"`
-	// Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
-	Response *string `pulumi:"response"`
-}
-
-// TCPHealthCheckInput is an input type that accepts TCPHealthCheckArgs and TCPHealthCheckOutput values.
-// You can construct a concrete instance of `TCPHealthCheckInput` via:
-//
-//	TCPHealthCheckArgs{...}
-type TCPHealthCheckInput interface {
-	pulumi.Input
-
-	ToTCPHealthCheckOutput() TCPHealthCheckOutput
-	ToTCPHealthCheckOutputWithContext(context.Context) TCPHealthCheckOutput
-}
-
-type TCPHealthCheckArgs struct {
-	// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
-	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Not supported.
-	PortName pulumi.StringPtrInput `pulumi:"portName"`
-	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
-	PortSpecification TCPHealthCheckPortSpecificationPtrInput `pulumi:"portSpecification"`
-	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-	ProxyHeader TCPHealthCheckProxyHeaderPtrInput `pulumi:"proxyHeader"`
-	// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
-	Request pulumi.StringPtrInput `pulumi:"request"`
-	// Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
-	Response pulumi.StringPtrInput `pulumi:"response"`
-}
-
-func (TCPHealthCheckArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TCPHealthCheck)(nil)).Elem()
-}
-
-func (i TCPHealthCheckArgs) ToTCPHealthCheckOutput() TCPHealthCheckOutput {
-	return i.ToTCPHealthCheckOutputWithContext(context.Background())
-}
-
-func (i TCPHealthCheckArgs) ToTCPHealthCheckOutputWithContext(ctx context.Context) TCPHealthCheckOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TCPHealthCheckOutput)
-}
-
-func (i TCPHealthCheckArgs) ToTCPHealthCheckPtrOutput() TCPHealthCheckPtrOutput {
-	return i.ToTCPHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (i TCPHealthCheckArgs) ToTCPHealthCheckPtrOutputWithContext(ctx context.Context) TCPHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TCPHealthCheckOutput).ToTCPHealthCheckPtrOutputWithContext(ctx)
-}
-
-// TCPHealthCheckPtrInput is an input type that accepts TCPHealthCheckArgs, TCPHealthCheckPtr and TCPHealthCheckPtrOutput values.
-// You can construct a concrete instance of `TCPHealthCheckPtrInput` via:
-//
-//	        TCPHealthCheckArgs{...}
-//
-//	or:
-//
-//	        nil
-type TCPHealthCheckPtrInput interface {
-	pulumi.Input
-
-	ToTCPHealthCheckPtrOutput() TCPHealthCheckPtrOutput
-	ToTCPHealthCheckPtrOutputWithContext(context.Context) TCPHealthCheckPtrOutput
-}
-
-type tcphealthCheckPtrType TCPHealthCheckArgs
-
-func TCPHealthCheckPtr(v *TCPHealthCheckArgs) TCPHealthCheckPtrInput {
-	return (*tcphealthCheckPtrType)(v)
-}
-
-func (*tcphealthCheckPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TCPHealthCheck)(nil)).Elem()
-}
-
-func (i *tcphealthCheckPtrType) ToTCPHealthCheckPtrOutput() TCPHealthCheckPtrOutput {
-	return i.ToTCPHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (i *tcphealthCheckPtrType) ToTCPHealthCheckPtrOutputWithContext(ctx context.Context) TCPHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TCPHealthCheckPtrOutput)
-}
-
-type TCPHealthCheckOutput struct{ *pulumi.OutputState }
-
-func (TCPHealthCheckOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TCPHealthCheck)(nil)).Elem()
-}
-
-func (o TCPHealthCheckOutput) ToTCPHealthCheckOutput() TCPHealthCheckOutput {
-	return o
-}
-
-func (o TCPHealthCheckOutput) ToTCPHealthCheckOutputWithContext(ctx context.Context) TCPHealthCheckOutput {
-	return o
-}
-
-func (o TCPHealthCheckOutput) ToTCPHealthCheckPtrOutput() TCPHealthCheckPtrOutput {
-	return o.ToTCPHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (o TCPHealthCheckOutput) ToTCPHealthCheckPtrOutputWithContext(ctx context.Context) TCPHealthCheckPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TCPHealthCheck) *TCPHealthCheck {
-		return &v
-	}).(TCPHealthCheckPtrOutput)
-}
-
-// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
-func (o TCPHealthCheckOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TCPHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
-}
-
-// Not supported.
-func (o TCPHealthCheckOutput) PortName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TCPHealthCheck) *string { return v.PortName }).(pulumi.StringPtrOutput)
-}
-
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
-func (o TCPHealthCheckOutput) PortSpecification() TCPHealthCheckPortSpecificationPtrOutput {
-	return o.ApplyT(func(v TCPHealthCheck) *TCPHealthCheckPortSpecification { return v.PortSpecification }).(TCPHealthCheckPortSpecificationPtrOutput)
-}
-
-// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-func (o TCPHealthCheckOutput) ProxyHeader() TCPHealthCheckProxyHeaderPtrOutput {
-	return o.ApplyT(func(v TCPHealthCheck) *TCPHealthCheckProxyHeader { return v.ProxyHeader }).(TCPHealthCheckProxyHeaderPtrOutput)
-}
-
-// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
-func (o TCPHealthCheckOutput) Request() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TCPHealthCheck) *string { return v.Request }).(pulumi.StringPtrOutput)
-}
-
-// Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
-func (o TCPHealthCheckOutput) Response() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TCPHealthCheck) *string { return v.Response }).(pulumi.StringPtrOutput)
-}
-
-type TCPHealthCheckPtrOutput struct{ *pulumi.OutputState }
-
-func (TCPHealthCheckPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TCPHealthCheck)(nil)).Elem()
-}
-
-func (o TCPHealthCheckPtrOutput) ToTCPHealthCheckPtrOutput() TCPHealthCheckPtrOutput {
-	return o
-}
-
-func (o TCPHealthCheckPtrOutput) ToTCPHealthCheckPtrOutputWithContext(ctx context.Context) TCPHealthCheckPtrOutput {
-	return o
-}
-
-func (o TCPHealthCheckPtrOutput) Elem() TCPHealthCheckOutput {
-	return o.ApplyT(func(v *TCPHealthCheck) TCPHealthCheck {
-		if v != nil {
-			return *v
-		}
-		var ret TCPHealthCheck
-		return ret
-	}).(TCPHealthCheckOutput)
-}
-
-// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
-func (o TCPHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TCPHealthCheck) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Port
-	}).(pulumi.IntPtrOutput)
-}
-
-// Not supported.
-func (o TCPHealthCheckPtrOutput) PortName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TCPHealthCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PortName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
-func (o TCPHealthCheckPtrOutput) PortSpecification() TCPHealthCheckPortSpecificationPtrOutput {
-	return o.ApplyT(func(v *TCPHealthCheck) *TCPHealthCheckPortSpecification {
-		if v == nil {
-			return nil
-		}
-		return v.PortSpecification
-	}).(TCPHealthCheckPortSpecificationPtrOutput)
-}
-
-// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-func (o TCPHealthCheckPtrOutput) ProxyHeader() TCPHealthCheckProxyHeaderPtrOutput {
-	return o.ApplyT(func(v *TCPHealthCheck) *TCPHealthCheckProxyHeader {
-		if v == nil {
-			return nil
-		}
-		return v.ProxyHeader
-	}).(TCPHealthCheckProxyHeaderPtrOutput)
-}
-
-// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
-func (o TCPHealthCheckPtrOutput) Request() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TCPHealthCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Request
-	}).(pulumi.StringPtrOutput)
-}
-
-// Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
-func (o TCPHealthCheckPtrOutput) Response() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TCPHealthCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Response
-	}).(pulumi.StringPtrOutput)
-}
-
-type TCPHealthCheckResponse struct {
-	// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
-	Port int `pulumi:"port"`
-	// Not supported.
-	PortName string `pulumi:"portName"`
-	// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
-	PortSpecification string `pulumi:"portSpecification"`
-	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-	ProxyHeader string `pulumi:"proxyHeader"`
-	// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
-	Request string `pulumi:"request"`
-	// Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
-	Response string `pulumi:"response"`
-}
-
-type TCPHealthCheckResponseOutput struct{ *pulumi.OutputState }
-
-func (TCPHealthCheckResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TCPHealthCheckResponse)(nil)).Elem()
-}
-
-func (o TCPHealthCheckResponseOutput) ToTCPHealthCheckResponseOutput() TCPHealthCheckResponseOutput {
-	return o
-}
-
-func (o TCPHealthCheckResponseOutput) ToTCPHealthCheckResponseOutputWithContext(ctx context.Context) TCPHealthCheckResponseOutput {
-	return o
-}
-
-// The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
-func (o TCPHealthCheckResponseOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v TCPHealthCheckResponse) int { return v.Port }).(pulumi.IntOutput)
-}
-
-// Not supported.
-func (o TCPHealthCheckResponseOutput) PortName() pulumi.StringOutput {
-	return o.ApplyT(func(v TCPHealthCheckResponse) string { return v.PortName }).(pulumi.StringOutput)
-}
-
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
-func (o TCPHealthCheckResponseOutput) PortSpecification() pulumi.StringOutput {
-	return o.ApplyT(func(v TCPHealthCheckResponse) string { return v.PortSpecification }).(pulumi.StringOutput)
-}
-
-// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-func (o TCPHealthCheckResponseOutput) ProxyHeader() pulumi.StringOutput {
-	return o.ApplyT(func(v TCPHealthCheckResponse) string { return v.ProxyHeader }).(pulumi.StringOutput)
-}
-
-// Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
-func (o TCPHealthCheckResponseOutput) Request() pulumi.StringOutput {
-	return o.ApplyT(func(v TCPHealthCheckResponse) string { return v.Request }).(pulumi.StringOutput)
-}
-
-// Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
-func (o TCPHealthCheckResponseOutput) Response() pulumi.StringOutput {
-	return o.ApplyT(func(v TCPHealthCheckResponse) string { return v.Response }).(pulumi.StringOutput)
-}
-
-// A set of instance tags.
-type Tags struct {
-	// An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035.
-	Items []string `pulumi:"items"`
-}
-
-// TagsInput is an input type that accepts TagsArgs and TagsOutput values.
-// You can construct a concrete instance of `TagsInput` via:
-//
-//	TagsArgs{...}
-type TagsInput interface {
-	pulumi.Input
-
-	ToTagsOutput() TagsOutput
-	ToTagsOutputWithContext(context.Context) TagsOutput
-}
-
-// A set of instance tags.
-type TagsArgs struct {
-	// An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035.
-	Items pulumi.StringArrayInput `pulumi:"items"`
-}
-
-func (TagsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Tags)(nil)).Elem()
-}
-
-func (i TagsArgs) ToTagsOutput() TagsOutput {
-	return i.ToTagsOutputWithContext(context.Background())
-}
-
-func (i TagsArgs) ToTagsOutputWithContext(ctx context.Context) TagsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TagsOutput)
-}
-
-func (i TagsArgs) ToTagsPtrOutput() TagsPtrOutput {
-	return i.ToTagsPtrOutputWithContext(context.Background())
-}
-
-func (i TagsArgs) ToTagsPtrOutputWithContext(ctx context.Context) TagsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TagsOutput).ToTagsPtrOutputWithContext(ctx)
-}
-
-// TagsPtrInput is an input type that accepts TagsArgs, TagsPtr and TagsPtrOutput values.
-// You can construct a concrete instance of `TagsPtrInput` via:
-//
-//	        TagsArgs{...}
-//
-//	or:
-//
-//	        nil
-type TagsPtrInput interface {
-	pulumi.Input
-
-	ToTagsPtrOutput() TagsPtrOutput
-	ToTagsPtrOutputWithContext(context.Context) TagsPtrOutput
-}
-
-type tagsPtrType TagsArgs
-
-func TagsPtr(v *TagsArgs) TagsPtrInput {
-	return (*tagsPtrType)(v)
-}
-
-func (*tagsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Tags)(nil)).Elem()
-}
-
-func (i *tagsPtrType) ToTagsPtrOutput() TagsPtrOutput {
-	return i.ToTagsPtrOutputWithContext(context.Background())
-}
-
-func (i *tagsPtrType) ToTagsPtrOutputWithContext(ctx context.Context) TagsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TagsPtrOutput)
-}
-
-// A set of instance tags.
-type TagsOutput struct{ *pulumi.OutputState }
-
-func (TagsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Tags)(nil)).Elem()
-}
-
-func (o TagsOutput) ToTagsOutput() TagsOutput {
-	return o
-}
-
-func (o TagsOutput) ToTagsOutputWithContext(ctx context.Context) TagsOutput {
-	return o
-}
-
-func (o TagsOutput) ToTagsPtrOutput() TagsPtrOutput {
-	return o.ToTagsPtrOutputWithContext(context.Background())
-}
-
-func (o TagsOutput) ToTagsPtrOutputWithContext(ctx context.Context) TagsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Tags) *Tags {
-		return &v
-	}).(TagsPtrOutput)
-}
-
-// An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035.
-func (o TagsOutput) Items() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v Tags) []string { return v.Items }).(pulumi.StringArrayOutput)
-}
-
-type TagsPtrOutput struct{ *pulumi.OutputState }
-
-func (TagsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Tags)(nil)).Elem()
-}
-
-func (o TagsPtrOutput) ToTagsPtrOutput() TagsPtrOutput {
-	return o
-}
-
-func (o TagsPtrOutput) ToTagsPtrOutputWithContext(ctx context.Context) TagsPtrOutput {
-	return o
-}
-
-func (o TagsPtrOutput) Elem() TagsOutput {
-	return o.ApplyT(func(v *Tags) Tags {
-		if v != nil {
-			return *v
-		}
-		var ret Tags
-		return ret
-	}).(TagsOutput)
-}
-
-// An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035.
-func (o TagsPtrOutput) Items() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Tags) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Items
-	}).(pulumi.StringArrayOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AWSV4SignatureInput)(nil)).Elem(), AWSV4SignatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AWSV4SignaturePtrInput)(nil)).Elem(), AWSV4SignatureArgs{})
@@ -52681,6 +52501,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceFlexibilityPolicyPtrInput)(nil)).Elem(), InstanceGroupManagerInstanceFlexibilityPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyInput)(nil)).Elem(), InstanceGroupManagerInstanceLifecyclePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyPtrInput)(nil)).Elem(), InstanceGroupManagerInstanceLifecyclePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerParamsInput)(nil)).Elem(), InstanceGroupManagerParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerParamsPtrInput)(nil)).Elem(), InstanceGroupManagerParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerStandbyPolicyInput)(nil)).Elem(), InstanceGroupManagerStandbyPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerStandbyPolicyPtrInput)(nil)).Elem(), InstanceGroupManagerStandbyPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerUpdatePolicyInput)(nil)).Elem(), InstanceGroupManagerUpdatePolicyArgs{})
@@ -52841,6 +52663,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingPtrInput)(nil)).Elem(), SchedulingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityInput)(nil)).Elem(), SchedulingNodeAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityArrayInput)(nil)).Elem(), SchedulingNodeAffinityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingOnInstanceStopActionInput)(nil)).Elem(), SchedulingOnInstanceStopActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingOnInstanceStopActionPtrInput)(nil)).Elem(), SchedulingOnInstanceStopActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigPtrInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs{})
@@ -52849,6 +52673,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigPtrInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{})
@@ -52927,16 +52753,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPtrInput)(nil)).Elem(), StatefulPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPreservedStateInput)(nil)).Elem(), StatefulPolicyPreservedStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatefulPolicyPreservedStatePtrInput)(nil)).Elem(), StatefulPolicyPreservedStateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkLogConfigInput)(nil)).Elem(), SubnetworkLogConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkLogConfigPtrInput)(nil)).Elem(), SubnetworkLogConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkSecondaryRangeInput)(nil)).Elem(), SubnetworkSecondaryRangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkSecondaryRangeArrayInput)(nil)).Elem(), SubnetworkSecondaryRangeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubsettingInput)(nil)).Elem(), SubsettingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubsettingPtrInput)(nil)).Elem(), SubsettingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TCPHealthCheckInput)(nil)).Elem(), TCPHealthCheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TCPHealthCheckPtrInput)(nil)).Elem(), TCPHealthCheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TagsInput)(nil)).Elem(), TagsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TagsPtrInput)(nil)).Elem(), TagsArgs{})
 	pulumi.RegisterOutputType(AWSV4SignatureOutput{})
 	pulumi.RegisterOutputType(AWSV4SignaturePtrOutput{})
 	pulumi.RegisterOutputType(AWSV4SignatureResponseOutput{})
@@ -53289,11 +53105,20 @@ func init() {
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceLifecyclePolicyOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceLifecyclePolicyPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceLifecyclePolicyResponseOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerParamsOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerParamsPtrOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerParamsResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerResizeRequestStatusErrorResponseOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerResizeRequestStatusLastAttemptErrorResponseOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerResizeRequestStatusLastAttemptResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerResizeRequestStatusResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerStandbyPolicyOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerStandbyPolicyPtrOutput{})
@@ -53601,6 +53426,9 @@ func init() {
 	pulumi.RegisterOutputType(SchedulingNodeAffinityArrayOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityResponseOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityResponseArrayOutput{})
+	pulumi.RegisterOutputType(SchedulingOnInstanceStopActionOutput{})
+	pulumi.RegisterOutputType(SchedulingOnInstanceStopActionPtrOutput{})
+	pulumi.RegisterOutputType(SchedulingOnInstanceStopActionResponseOutput{})
 	pulumi.RegisterOutputType(SchedulingResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigPtrOutput{})
@@ -53614,6 +53442,10 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigPtrOutput{})
@@ -53750,20 +53582,4 @@ func init() {
 	pulumi.RegisterOutputType(StatefulPolicyPreservedStateOutput{})
 	pulumi.RegisterOutputType(StatefulPolicyPreservedStatePtrOutput{})
 	pulumi.RegisterOutputType(StatefulPolicyPreservedStateResponseOutput{})
-	pulumi.RegisterOutputType(StatefulPolicyResponseOutput{})
-	pulumi.RegisterOutputType(SubnetworkLogConfigOutput{})
-	pulumi.RegisterOutputType(SubnetworkLogConfigPtrOutput{})
-	pulumi.RegisterOutputType(SubnetworkLogConfigResponseOutput{})
-	pulumi.RegisterOutputType(SubnetworkSecondaryRangeOutput{})
-	pulumi.RegisterOutputType(SubnetworkSecondaryRangeArrayOutput{})
-	pulumi.RegisterOutputType(SubnetworkSecondaryRangeResponseOutput{})
-	pulumi.RegisterOutputType(SubnetworkSecondaryRangeResponseArrayOutput{})
-	pulumi.RegisterOutputType(SubsettingOutput{})
-	pulumi.RegisterOutputType(SubsettingPtrOutput{})
-	pulumi.RegisterOutputType(SubsettingResponseOutput{})
-	pulumi.RegisterOutputType(TCPHealthCheckOutput{})
-	pulumi.RegisterOutputType(TCPHealthCheckPtrOutput{})
-	pulumi.RegisterOutputType(TCPHealthCheckResponseOutput{})
-	pulumi.RegisterOutputType(TagsOutput{})
-	pulumi.RegisterOutputType(TagsPtrOutput{})
 }

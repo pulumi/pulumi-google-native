@@ -130,7 +130,7 @@ class GetJobResult:
     @pulumi.getter
     def uid(self) -> str:
         """
-        A system generated unique ID (in UUID4 format) for the Job.
+        A system generated unique ID for the Job.
         """
         return pulumi.get(self, "uid")
 

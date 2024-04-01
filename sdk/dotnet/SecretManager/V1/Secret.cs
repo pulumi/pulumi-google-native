@@ -29,6 +29,12 @@ namespace Pulumi.GoogleNative.SecretManager.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The customer-managed encryption configuration of the Regionalised Secrets. If no configuration is provided, Google-managed default encryption is used. Updates to the Secret encryption configuration only apply to SecretVersions added afterwards. They do not apply retroactively to existing SecretVersions.
+        /// </summary>
+        [Output("customerManagedEncryption")]
+        public Output<Outputs.CustomerManagedEncryptionResponse> CustomerManagedEncryption { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Etag of the currently stored Secret.
         /// </summary>
         [Output("etag")]
@@ -46,6 +52,9 @@ namespace Pulumi.GoogleNative.SecretManager.V1
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
         /// <summary>
         /// The resource name of the Secret in the format `projects/*/secrets/*`.
         /// </summary>
@@ -56,7 +65,7 @@ namespace Pulumi.GoogleNative.SecretManager.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
+        /// Optional. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
         /// </summary>
         [Output("replication")]
         public Output<Outputs.ReplicationResponse> Replication { get; private set; } = null!;
@@ -86,10 +95,16 @@ namespace Pulumi.GoogleNative.SecretManager.V1
         public Output<string> Ttl { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. At launch Access by Allias will only be supported on GetSecretVersion and AccessSecretVersion.
+        /// Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. Access by alias is only be supported on GetSecretVersion and AccessSecretVersion.
         /// </summary>
         [Output("versionAliases")]
         public Output<ImmutableDictionary<string, string>> VersionAliases { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Secret Version TTL after destruction request This is a part of the Delayed secret version destroy feature. For secret with TTL&gt;0, version destruction doesn't happen immediately on calling destroy instead the version goes to a disabled state and destruction happens after the TTL expires.
+        /// </summary>
+        [Output("versionDestroyTtl")]
+        public Output<string> VersionDestroyTtl { get; private set; } = null!;
 
 
         /// <summary>
@@ -116,6 +131,7 @@ namespace Pulumi.GoogleNative.SecretManager.V1
                 Version = Utilities.Version,
                 ReplaceOnChanges =
                 {
+                    "location",
                     "project",
                     "secretId",
                 },
@@ -154,6 +170,12 @@ namespace Pulumi.GoogleNative.SecretManager.V1
         }
 
         /// <summary>
+        /// Optional. The customer-managed encryption configuration of the Regionalised Secrets. If no configuration is provided, Google-managed default encryption is used. Updates to the Secret encryption configuration only apply to SecretVersions added afterwards. They do not apply retroactively to existing SecretVersions.
+        /// </summary>
+        [Input("customerManagedEncryption")]
+        public Input<Inputs.CustomerManagedEncryptionArgs>? CustomerManagedEncryption { get; set; }
+
+        /// <summary>
         /// Optional. Etag of the currently stored Secret.
         /// </summary>
         [Input("etag")]
@@ -177,14 +199,17 @@ namespace Pulumi.GoogleNative.SecretManager.V1
             set => _labels = value;
         }
 
+        [Input("location")]
+        public Input<string>? Location { get; set; }
+
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
+        /// Optional. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
         /// </summary>
-        [Input("replication", required: true)]
-        public Input<Inputs.ReplicationArgs> Replication { get; set; } = null!;
+        [Input("replication")]
+        public Input<Inputs.ReplicationArgs>? Replication { get; set; }
 
         /// <summary>
         /// Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
@@ -220,13 +245,19 @@ namespace Pulumi.GoogleNative.SecretManager.V1
         private InputMap<string>? _versionAliases;
 
         /// <summary>
-        /// Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. At launch Access by Allias will only be supported on GetSecretVersion and AccessSecretVersion.
+        /// Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. Access by alias is only be supported on GetSecretVersion and AccessSecretVersion.
         /// </summary>
         public InputMap<string> VersionAliases
         {
             get => _versionAliases ?? (_versionAliases = new InputMap<string>());
             set => _versionAliases = value;
         }
+
+        /// <summary>
+        /// Optional. Secret Version TTL after destruction request This is a part of the Delayed secret version destroy feature. For secret with TTL&gt;0, version destruction doesn't happen immediately on calling destroy instead the version goes to a disabled state and destruction happens after the TTL expires.
+        /// </summary>
+        [Input("versionDestroyTtl")]
+        public Input<string>? VersionDestroyTtl { get; set; }
 
         public SecretArgs()
         {

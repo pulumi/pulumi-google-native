@@ -191,7 +191,7 @@ func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
-// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+// Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), pick up the one with older creation time.
 type EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria string
 
 const (
@@ -542,6 +542,593 @@ func (in *endpointPolicyTypePtr) ToEndpointPolicyTypePtrOutputWithContext(ctx co
 func (in *endpointPolicyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EndpointPolicyType] {
 	return pulumix.Output[*EndpointPolicyType]{
 		OutputState: in.ToEndpointPolicyTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ExtensionChainExtensionSupportedEventsItem string
+
+const (
+	// Unspecified value. Do not use.
+	ExtensionChainExtensionSupportedEventsItemEventTypeUnspecified = ExtensionChainExtensionSupportedEventsItem("EVENT_TYPE_UNSPECIFIED")
+	// If included in `supported_events`, the extension is called when the HTTP request headers arrive.
+	ExtensionChainExtensionSupportedEventsItemRequestHeaders = ExtensionChainExtensionSupportedEventsItem("REQUEST_HEADERS")
+	// If included in `supported_events`, the extension is called when the HTTP request body arrives.
+	ExtensionChainExtensionSupportedEventsItemRequestBody = ExtensionChainExtensionSupportedEventsItem("REQUEST_BODY")
+	// If included in `supported_events`, the extension is called when the HTTP response headers arrive.
+	ExtensionChainExtensionSupportedEventsItemResponseHeaders = ExtensionChainExtensionSupportedEventsItem("RESPONSE_HEADERS")
+	// If included in `supported_events`, the extension is called when the HTTP response body arrives.
+	ExtensionChainExtensionSupportedEventsItemResponseBody = ExtensionChainExtensionSupportedEventsItem("RESPONSE_BODY")
+	// If included in `supported_events`, the extension is called when the HTTP request trailers arrives.
+	ExtensionChainExtensionSupportedEventsItemRequestTrailers = ExtensionChainExtensionSupportedEventsItem("REQUEST_TRAILERS")
+	// If included in `supported_events`, the extension is called when the HTTP response trailers arrives.
+	ExtensionChainExtensionSupportedEventsItemResponseTrailers = ExtensionChainExtensionSupportedEventsItem("RESPONSE_TRAILERS")
+)
+
+func (ExtensionChainExtensionSupportedEventsItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtensionChainExtensionSupportedEventsItem)(nil)).Elem()
+}
+
+func (e ExtensionChainExtensionSupportedEventsItem) ToExtensionChainExtensionSupportedEventsItemOutput() ExtensionChainExtensionSupportedEventsItemOutput {
+	return pulumi.ToOutput(e).(ExtensionChainExtensionSupportedEventsItemOutput)
+}
+
+func (e ExtensionChainExtensionSupportedEventsItem) ToExtensionChainExtensionSupportedEventsItemOutputWithContext(ctx context.Context) ExtensionChainExtensionSupportedEventsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ExtensionChainExtensionSupportedEventsItemOutput)
+}
+
+func (e ExtensionChainExtensionSupportedEventsItem) ToExtensionChainExtensionSupportedEventsItemPtrOutput() ExtensionChainExtensionSupportedEventsItemPtrOutput {
+	return e.ToExtensionChainExtensionSupportedEventsItemPtrOutputWithContext(context.Background())
+}
+
+func (e ExtensionChainExtensionSupportedEventsItem) ToExtensionChainExtensionSupportedEventsItemPtrOutputWithContext(ctx context.Context) ExtensionChainExtensionSupportedEventsItemPtrOutput {
+	return ExtensionChainExtensionSupportedEventsItem(e).ToExtensionChainExtensionSupportedEventsItemOutputWithContext(ctx).ToExtensionChainExtensionSupportedEventsItemPtrOutputWithContext(ctx)
+}
+
+func (e ExtensionChainExtensionSupportedEventsItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExtensionChainExtensionSupportedEventsItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExtensionChainExtensionSupportedEventsItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ExtensionChainExtensionSupportedEventsItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ExtensionChainExtensionSupportedEventsItemOutput struct{ *pulumi.OutputState }
+
+func (ExtensionChainExtensionSupportedEventsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtensionChainExtensionSupportedEventsItem)(nil)).Elem()
+}
+
+func (o ExtensionChainExtensionSupportedEventsItemOutput) ToExtensionChainExtensionSupportedEventsItemOutput() ExtensionChainExtensionSupportedEventsItemOutput {
+	return o
+}
+
+func (o ExtensionChainExtensionSupportedEventsItemOutput) ToExtensionChainExtensionSupportedEventsItemOutputWithContext(ctx context.Context) ExtensionChainExtensionSupportedEventsItemOutput {
+	return o
+}
+
+func (o ExtensionChainExtensionSupportedEventsItemOutput) ToExtensionChainExtensionSupportedEventsItemPtrOutput() ExtensionChainExtensionSupportedEventsItemPtrOutput {
+	return o.ToExtensionChainExtensionSupportedEventsItemPtrOutputWithContext(context.Background())
+}
+
+func (o ExtensionChainExtensionSupportedEventsItemOutput) ToExtensionChainExtensionSupportedEventsItemPtrOutputWithContext(ctx context.Context) ExtensionChainExtensionSupportedEventsItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExtensionChainExtensionSupportedEventsItem) *ExtensionChainExtensionSupportedEventsItem {
+		return &v
+	}).(ExtensionChainExtensionSupportedEventsItemPtrOutput)
+}
+
+func (o ExtensionChainExtensionSupportedEventsItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ExtensionChainExtensionSupportedEventsItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExtensionChainExtensionSupportedEventsItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ExtensionChainExtensionSupportedEventsItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExtensionChainExtensionSupportedEventsItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExtensionChainExtensionSupportedEventsItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ExtensionChainExtensionSupportedEventsItemPtrOutput struct{ *pulumi.OutputState }
+
+func (ExtensionChainExtensionSupportedEventsItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtensionChainExtensionSupportedEventsItem)(nil)).Elem()
+}
+
+func (o ExtensionChainExtensionSupportedEventsItemPtrOutput) ToExtensionChainExtensionSupportedEventsItemPtrOutput() ExtensionChainExtensionSupportedEventsItemPtrOutput {
+	return o
+}
+
+func (o ExtensionChainExtensionSupportedEventsItemPtrOutput) ToExtensionChainExtensionSupportedEventsItemPtrOutputWithContext(ctx context.Context) ExtensionChainExtensionSupportedEventsItemPtrOutput {
+	return o
+}
+
+func (o ExtensionChainExtensionSupportedEventsItemPtrOutput) Elem() ExtensionChainExtensionSupportedEventsItemOutput {
+	return o.ApplyT(func(v *ExtensionChainExtensionSupportedEventsItem) ExtensionChainExtensionSupportedEventsItem {
+		if v != nil {
+			return *v
+		}
+		var ret ExtensionChainExtensionSupportedEventsItem
+		return ret
+	}).(ExtensionChainExtensionSupportedEventsItemOutput)
+}
+
+func (o ExtensionChainExtensionSupportedEventsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExtensionChainExtensionSupportedEventsItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ExtensionChainExtensionSupportedEventsItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ExtensionChainExtensionSupportedEventsItemInput is an input type that accepts values of the ExtensionChainExtensionSupportedEventsItem enum
+// A concrete instance of `ExtensionChainExtensionSupportedEventsItemInput` can be one of the following:
+//
+//	ExtensionChainExtensionSupportedEventsItemEventTypeUnspecified
+//	ExtensionChainExtensionSupportedEventsItemRequestHeaders
+//	ExtensionChainExtensionSupportedEventsItemRequestBody
+//	ExtensionChainExtensionSupportedEventsItemResponseHeaders
+//	ExtensionChainExtensionSupportedEventsItemResponseBody
+//	ExtensionChainExtensionSupportedEventsItemRequestTrailers
+//	ExtensionChainExtensionSupportedEventsItemResponseTrailers
+type ExtensionChainExtensionSupportedEventsItemInput interface {
+	pulumi.Input
+
+	ToExtensionChainExtensionSupportedEventsItemOutput() ExtensionChainExtensionSupportedEventsItemOutput
+	ToExtensionChainExtensionSupportedEventsItemOutputWithContext(context.Context) ExtensionChainExtensionSupportedEventsItemOutput
+}
+
+var extensionChainExtensionSupportedEventsItemPtrType = reflect.TypeOf((**ExtensionChainExtensionSupportedEventsItem)(nil)).Elem()
+
+type ExtensionChainExtensionSupportedEventsItemPtrInput interface {
+	pulumi.Input
+
+	ToExtensionChainExtensionSupportedEventsItemPtrOutput() ExtensionChainExtensionSupportedEventsItemPtrOutput
+	ToExtensionChainExtensionSupportedEventsItemPtrOutputWithContext(context.Context) ExtensionChainExtensionSupportedEventsItemPtrOutput
+}
+
+type extensionChainExtensionSupportedEventsItemPtr string
+
+func ExtensionChainExtensionSupportedEventsItemPtr(v string) ExtensionChainExtensionSupportedEventsItemPtrInput {
+	return (*extensionChainExtensionSupportedEventsItemPtr)(&v)
+}
+
+func (*extensionChainExtensionSupportedEventsItemPtr) ElementType() reflect.Type {
+	return extensionChainExtensionSupportedEventsItemPtrType
+}
+
+func (in *extensionChainExtensionSupportedEventsItemPtr) ToExtensionChainExtensionSupportedEventsItemPtrOutput() ExtensionChainExtensionSupportedEventsItemPtrOutput {
+	return pulumi.ToOutput(in).(ExtensionChainExtensionSupportedEventsItemPtrOutput)
+}
+
+func (in *extensionChainExtensionSupportedEventsItemPtr) ToExtensionChainExtensionSupportedEventsItemPtrOutputWithContext(ctx context.Context) ExtensionChainExtensionSupportedEventsItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ExtensionChainExtensionSupportedEventsItemPtrOutput)
+}
+
+func (in *extensionChainExtensionSupportedEventsItemPtr) ToOutput(ctx context.Context) pulumix.Output[*ExtensionChainExtensionSupportedEventsItem] {
+	return pulumix.Output[*ExtensionChainExtensionSupportedEventsItem]{
+		OutputState: in.ToExtensionChainExtensionSupportedEventsItemPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ExtensionChainExtensionSupportedEventsItemArrayInput is an input type that accepts ExtensionChainExtensionSupportedEventsItemArray and ExtensionChainExtensionSupportedEventsItemArrayOutput values.
+// You can construct a concrete instance of `ExtensionChainExtensionSupportedEventsItemArrayInput` via:
+//
+//	ExtensionChainExtensionSupportedEventsItemArray{ ExtensionChainExtensionSupportedEventsItemArgs{...} }
+type ExtensionChainExtensionSupportedEventsItemArrayInput interface {
+	pulumi.Input
+
+	ToExtensionChainExtensionSupportedEventsItemArrayOutput() ExtensionChainExtensionSupportedEventsItemArrayOutput
+	ToExtensionChainExtensionSupportedEventsItemArrayOutputWithContext(context.Context) ExtensionChainExtensionSupportedEventsItemArrayOutput
+}
+
+type ExtensionChainExtensionSupportedEventsItemArray []ExtensionChainExtensionSupportedEventsItem
+
+func (ExtensionChainExtensionSupportedEventsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExtensionChainExtensionSupportedEventsItem)(nil)).Elem()
+}
+
+func (i ExtensionChainExtensionSupportedEventsItemArray) ToExtensionChainExtensionSupportedEventsItemArrayOutput() ExtensionChainExtensionSupportedEventsItemArrayOutput {
+	return i.ToExtensionChainExtensionSupportedEventsItemArrayOutputWithContext(context.Background())
+}
+
+func (i ExtensionChainExtensionSupportedEventsItemArray) ToExtensionChainExtensionSupportedEventsItemArrayOutputWithContext(ctx context.Context) ExtensionChainExtensionSupportedEventsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtensionChainExtensionSupportedEventsItemArrayOutput)
+}
+
+type ExtensionChainExtensionSupportedEventsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (ExtensionChainExtensionSupportedEventsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExtensionChainExtensionSupportedEventsItem)(nil)).Elem()
+}
+
+func (o ExtensionChainExtensionSupportedEventsItemArrayOutput) ToExtensionChainExtensionSupportedEventsItemArrayOutput() ExtensionChainExtensionSupportedEventsItemArrayOutput {
+	return o
+}
+
+func (o ExtensionChainExtensionSupportedEventsItemArrayOutput) ToExtensionChainExtensionSupportedEventsItemArrayOutputWithContext(ctx context.Context) ExtensionChainExtensionSupportedEventsItemArrayOutput {
+	return o
+}
+
+func (o ExtensionChainExtensionSupportedEventsItemArrayOutput) Index(i pulumi.IntInput) ExtensionChainExtensionSupportedEventsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExtensionChainExtensionSupportedEventsItem {
+		return vs[0].([]ExtensionChainExtensionSupportedEventsItem)[vs[1].(int)]
+	}).(ExtensionChainExtensionSupportedEventsItemOutput)
+}
+
+// Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+type GatewayEnvoyHeaders string
+
+const (
+	// Defaults to NONE.
+	GatewayEnvoyHeadersEnvoyHeadersUnspecified = GatewayEnvoyHeaders("ENVOY_HEADERS_UNSPECIFIED")
+	// Suppress envoy debug headers.
+	GatewayEnvoyHeadersNone = GatewayEnvoyHeaders("NONE")
+	// Envoy will insert default internal debug headers into upstream requests: x-envoy-attempt-count x-envoy-is-timeout-retry x-envoy-expected-rq-timeout-ms x-envoy-original-path x-envoy-upstream-stream-duration-ms
+	GatewayEnvoyHeadersDebugHeaders = GatewayEnvoyHeaders("DEBUG_HEADERS")
+)
+
+func (GatewayEnvoyHeaders) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayEnvoyHeaders)(nil)).Elem()
+}
+
+func (e GatewayEnvoyHeaders) ToGatewayEnvoyHeadersOutput() GatewayEnvoyHeadersOutput {
+	return pulumi.ToOutput(e).(GatewayEnvoyHeadersOutput)
+}
+
+func (e GatewayEnvoyHeaders) ToGatewayEnvoyHeadersOutputWithContext(ctx context.Context) GatewayEnvoyHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GatewayEnvoyHeadersOutput)
+}
+
+func (e GatewayEnvoyHeaders) ToGatewayEnvoyHeadersPtrOutput() GatewayEnvoyHeadersPtrOutput {
+	return e.ToGatewayEnvoyHeadersPtrOutputWithContext(context.Background())
+}
+
+func (e GatewayEnvoyHeaders) ToGatewayEnvoyHeadersPtrOutputWithContext(ctx context.Context) GatewayEnvoyHeadersPtrOutput {
+	return GatewayEnvoyHeaders(e).ToGatewayEnvoyHeadersOutputWithContext(ctx).ToGatewayEnvoyHeadersPtrOutputWithContext(ctx)
+}
+
+func (e GatewayEnvoyHeaders) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GatewayEnvoyHeaders) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GatewayEnvoyHeaders) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GatewayEnvoyHeaders) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GatewayEnvoyHeadersOutput struct{ *pulumi.OutputState }
+
+func (GatewayEnvoyHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayEnvoyHeaders)(nil)).Elem()
+}
+
+func (o GatewayEnvoyHeadersOutput) ToGatewayEnvoyHeadersOutput() GatewayEnvoyHeadersOutput {
+	return o
+}
+
+func (o GatewayEnvoyHeadersOutput) ToGatewayEnvoyHeadersOutputWithContext(ctx context.Context) GatewayEnvoyHeadersOutput {
+	return o
+}
+
+func (o GatewayEnvoyHeadersOutput) ToGatewayEnvoyHeadersPtrOutput() GatewayEnvoyHeadersPtrOutput {
+	return o.ToGatewayEnvoyHeadersPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayEnvoyHeadersOutput) ToGatewayEnvoyHeadersPtrOutputWithContext(ctx context.Context) GatewayEnvoyHeadersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayEnvoyHeaders) *GatewayEnvoyHeaders {
+		return &v
+	}).(GatewayEnvoyHeadersPtrOutput)
+}
+
+func (o GatewayEnvoyHeadersOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GatewayEnvoyHeadersOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GatewayEnvoyHeaders) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GatewayEnvoyHeadersOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayEnvoyHeadersOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GatewayEnvoyHeaders) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GatewayEnvoyHeadersPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayEnvoyHeadersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayEnvoyHeaders)(nil)).Elem()
+}
+
+func (o GatewayEnvoyHeadersPtrOutput) ToGatewayEnvoyHeadersPtrOutput() GatewayEnvoyHeadersPtrOutput {
+	return o
+}
+
+func (o GatewayEnvoyHeadersPtrOutput) ToGatewayEnvoyHeadersPtrOutputWithContext(ctx context.Context) GatewayEnvoyHeadersPtrOutput {
+	return o
+}
+
+func (o GatewayEnvoyHeadersPtrOutput) Elem() GatewayEnvoyHeadersOutput {
+	return o.ApplyT(func(v *GatewayEnvoyHeaders) GatewayEnvoyHeaders {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayEnvoyHeaders
+		return ret
+	}).(GatewayEnvoyHeadersOutput)
+}
+
+func (o GatewayEnvoyHeadersPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayEnvoyHeadersPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GatewayEnvoyHeaders) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GatewayEnvoyHeadersInput is an input type that accepts values of the GatewayEnvoyHeaders enum
+// A concrete instance of `GatewayEnvoyHeadersInput` can be one of the following:
+//
+//	GatewayEnvoyHeadersEnvoyHeadersUnspecified
+//	GatewayEnvoyHeadersNone
+//	GatewayEnvoyHeadersDebugHeaders
+type GatewayEnvoyHeadersInput interface {
+	pulumi.Input
+
+	ToGatewayEnvoyHeadersOutput() GatewayEnvoyHeadersOutput
+	ToGatewayEnvoyHeadersOutputWithContext(context.Context) GatewayEnvoyHeadersOutput
+}
+
+var gatewayEnvoyHeadersPtrType = reflect.TypeOf((**GatewayEnvoyHeaders)(nil)).Elem()
+
+type GatewayEnvoyHeadersPtrInput interface {
+	pulumi.Input
+
+	ToGatewayEnvoyHeadersPtrOutput() GatewayEnvoyHeadersPtrOutput
+	ToGatewayEnvoyHeadersPtrOutputWithContext(context.Context) GatewayEnvoyHeadersPtrOutput
+}
+
+type gatewayEnvoyHeadersPtr string
+
+func GatewayEnvoyHeadersPtr(v string) GatewayEnvoyHeadersPtrInput {
+	return (*gatewayEnvoyHeadersPtr)(&v)
+}
+
+func (*gatewayEnvoyHeadersPtr) ElementType() reflect.Type {
+	return gatewayEnvoyHeadersPtrType
+}
+
+func (in *gatewayEnvoyHeadersPtr) ToGatewayEnvoyHeadersPtrOutput() GatewayEnvoyHeadersPtrOutput {
+	return pulumi.ToOutput(in).(GatewayEnvoyHeadersPtrOutput)
+}
+
+func (in *gatewayEnvoyHeadersPtr) ToGatewayEnvoyHeadersPtrOutputWithContext(ctx context.Context) GatewayEnvoyHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GatewayEnvoyHeadersPtrOutput)
+}
+
+func (in *gatewayEnvoyHeadersPtr) ToOutput(ctx context.Context) pulumix.Output[*GatewayEnvoyHeaders] {
+	return pulumix.Output[*GatewayEnvoyHeaders]{
+		OutputState: in.ToGatewayEnvoyHeadersPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+type GatewayIpVersion string
+
+const (
+	// The type when IP version is not specified. Defaults to IPV4.
+	GatewayIpVersionIpVersionUnspecified = GatewayIpVersion("IP_VERSION_UNSPECIFIED")
+	// The type for IP version 4.
+	GatewayIpVersionIpv4 = GatewayIpVersion("IPV4")
+	// The type for IP version 6.
+	GatewayIpVersionIpv6 = GatewayIpVersion("IPV6")
+)
+
+func (GatewayIpVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayIpVersion)(nil)).Elem()
+}
+
+func (e GatewayIpVersion) ToGatewayIpVersionOutput() GatewayIpVersionOutput {
+	return pulumi.ToOutput(e).(GatewayIpVersionOutput)
+}
+
+func (e GatewayIpVersion) ToGatewayIpVersionOutputWithContext(ctx context.Context) GatewayIpVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GatewayIpVersionOutput)
+}
+
+func (e GatewayIpVersion) ToGatewayIpVersionPtrOutput() GatewayIpVersionPtrOutput {
+	return e.ToGatewayIpVersionPtrOutputWithContext(context.Background())
+}
+
+func (e GatewayIpVersion) ToGatewayIpVersionPtrOutputWithContext(ctx context.Context) GatewayIpVersionPtrOutput {
+	return GatewayIpVersion(e).ToGatewayIpVersionOutputWithContext(ctx).ToGatewayIpVersionPtrOutputWithContext(ctx)
+}
+
+func (e GatewayIpVersion) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GatewayIpVersion) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GatewayIpVersion) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GatewayIpVersion) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GatewayIpVersionOutput struct{ *pulumi.OutputState }
+
+func (GatewayIpVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayIpVersion)(nil)).Elem()
+}
+
+func (o GatewayIpVersionOutput) ToGatewayIpVersionOutput() GatewayIpVersionOutput {
+	return o
+}
+
+func (o GatewayIpVersionOutput) ToGatewayIpVersionOutputWithContext(ctx context.Context) GatewayIpVersionOutput {
+	return o
+}
+
+func (o GatewayIpVersionOutput) ToGatewayIpVersionPtrOutput() GatewayIpVersionPtrOutput {
+	return o.ToGatewayIpVersionPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayIpVersionOutput) ToGatewayIpVersionPtrOutputWithContext(ctx context.Context) GatewayIpVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayIpVersion) *GatewayIpVersion {
+		return &v
+	}).(GatewayIpVersionPtrOutput)
+}
+
+func (o GatewayIpVersionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GatewayIpVersionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GatewayIpVersion) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GatewayIpVersionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayIpVersionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GatewayIpVersion) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GatewayIpVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayIpVersionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayIpVersion)(nil)).Elem()
+}
+
+func (o GatewayIpVersionPtrOutput) ToGatewayIpVersionPtrOutput() GatewayIpVersionPtrOutput {
+	return o
+}
+
+func (o GatewayIpVersionPtrOutput) ToGatewayIpVersionPtrOutputWithContext(ctx context.Context) GatewayIpVersionPtrOutput {
+	return o
+}
+
+func (o GatewayIpVersionPtrOutput) Elem() GatewayIpVersionOutput {
+	return o.ApplyT(func(v *GatewayIpVersion) GatewayIpVersion {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayIpVersion
+		return ret
+	}).(GatewayIpVersionOutput)
+}
+
+func (o GatewayIpVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayIpVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GatewayIpVersion) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GatewayIpVersionInput is an input type that accepts values of the GatewayIpVersion enum
+// A concrete instance of `GatewayIpVersionInput` can be one of the following:
+//
+//	GatewayIpVersionIpVersionUnspecified
+//	GatewayIpVersionIpv4
+//	GatewayIpVersionIpv6
+type GatewayIpVersionInput interface {
+	pulumi.Input
+
+	ToGatewayIpVersionOutput() GatewayIpVersionOutput
+	ToGatewayIpVersionOutputWithContext(context.Context) GatewayIpVersionOutput
+}
+
+var gatewayIpVersionPtrType = reflect.TypeOf((**GatewayIpVersion)(nil)).Elem()
+
+type GatewayIpVersionPtrInput interface {
+	pulumi.Input
+
+	ToGatewayIpVersionPtrOutput() GatewayIpVersionPtrOutput
+	ToGatewayIpVersionPtrOutputWithContext(context.Context) GatewayIpVersionPtrOutput
+}
+
+type gatewayIpVersionPtr string
+
+func GatewayIpVersionPtr(v string) GatewayIpVersionPtrInput {
+	return (*gatewayIpVersionPtr)(&v)
+}
+
+func (*gatewayIpVersionPtr) ElementType() reflect.Type {
+	return gatewayIpVersionPtrType
+}
+
+func (in *gatewayIpVersionPtr) ToGatewayIpVersionPtrOutput() GatewayIpVersionPtrOutput {
+	return pulumi.ToOutput(in).(GatewayIpVersionPtrOutput)
+}
+
+func (in *gatewayIpVersionPtr) ToGatewayIpVersionPtrOutputWithContext(ctx context.Context) GatewayIpVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GatewayIpVersionPtrOutput)
+}
+
+func (in *gatewayIpVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*GatewayIpVersion] {
+	return pulumix.Output[*GatewayIpVersion]{
+		OutputState: in.ToGatewayIpVersionPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -1262,6 +1849,720 @@ func (in *httpRouteRedirectResponseCodePtr) ToOutput(ctx context.Context) pulumi
 	}
 }
 
+// Required. All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
+type LbRouteExtensionLoadBalancingScheme string
+
+const (
+	// Default value. Do not use.
+	LbRouteExtensionLoadBalancingSchemeLoadBalancingSchemeUnspecified = LbRouteExtensionLoadBalancingScheme("LOAD_BALANCING_SCHEME_UNSPECIFIED")
+	// Signifies that this is used for Internal HTTP(S) Load Balancing.
+	LbRouteExtensionLoadBalancingSchemeInternalManaged = LbRouteExtensionLoadBalancingScheme("INTERNAL_MANAGED")
+	// Signifies that this is used for External Managed HTTP(S) Load Balancing.
+	LbRouteExtensionLoadBalancingSchemeExternalManaged = LbRouteExtensionLoadBalancingScheme("EXTERNAL_MANAGED")
+)
+
+func (LbRouteExtensionLoadBalancingScheme) ElementType() reflect.Type {
+	return reflect.TypeOf((*LbRouteExtensionLoadBalancingScheme)(nil)).Elem()
+}
+
+func (e LbRouteExtensionLoadBalancingScheme) ToLbRouteExtensionLoadBalancingSchemeOutput() LbRouteExtensionLoadBalancingSchemeOutput {
+	return pulumi.ToOutput(e).(LbRouteExtensionLoadBalancingSchemeOutput)
+}
+
+func (e LbRouteExtensionLoadBalancingScheme) ToLbRouteExtensionLoadBalancingSchemeOutputWithContext(ctx context.Context) LbRouteExtensionLoadBalancingSchemeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LbRouteExtensionLoadBalancingSchemeOutput)
+}
+
+func (e LbRouteExtensionLoadBalancingScheme) ToLbRouteExtensionLoadBalancingSchemePtrOutput() LbRouteExtensionLoadBalancingSchemePtrOutput {
+	return e.ToLbRouteExtensionLoadBalancingSchemePtrOutputWithContext(context.Background())
+}
+
+func (e LbRouteExtensionLoadBalancingScheme) ToLbRouteExtensionLoadBalancingSchemePtrOutputWithContext(ctx context.Context) LbRouteExtensionLoadBalancingSchemePtrOutput {
+	return LbRouteExtensionLoadBalancingScheme(e).ToLbRouteExtensionLoadBalancingSchemeOutputWithContext(ctx).ToLbRouteExtensionLoadBalancingSchemePtrOutputWithContext(ctx)
+}
+
+func (e LbRouteExtensionLoadBalancingScheme) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LbRouteExtensionLoadBalancingScheme) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LbRouteExtensionLoadBalancingScheme) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LbRouteExtensionLoadBalancingScheme) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LbRouteExtensionLoadBalancingSchemeOutput struct{ *pulumi.OutputState }
+
+func (LbRouteExtensionLoadBalancingSchemeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LbRouteExtensionLoadBalancingScheme)(nil)).Elem()
+}
+
+func (o LbRouteExtensionLoadBalancingSchemeOutput) ToLbRouteExtensionLoadBalancingSchemeOutput() LbRouteExtensionLoadBalancingSchemeOutput {
+	return o
+}
+
+func (o LbRouteExtensionLoadBalancingSchemeOutput) ToLbRouteExtensionLoadBalancingSchemeOutputWithContext(ctx context.Context) LbRouteExtensionLoadBalancingSchemeOutput {
+	return o
+}
+
+func (o LbRouteExtensionLoadBalancingSchemeOutput) ToLbRouteExtensionLoadBalancingSchemePtrOutput() LbRouteExtensionLoadBalancingSchemePtrOutput {
+	return o.ToLbRouteExtensionLoadBalancingSchemePtrOutputWithContext(context.Background())
+}
+
+func (o LbRouteExtensionLoadBalancingSchemeOutput) ToLbRouteExtensionLoadBalancingSchemePtrOutputWithContext(ctx context.Context) LbRouteExtensionLoadBalancingSchemePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LbRouteExtensionLoadBalancingScheme) *LbRouteExtensionLoadBalancingScheme {
+		return &v
+	}).(LbRouteExtensionLoadBalancingSchemePtrOutput)
+}
+
+func (o LbRouteExtensionLoadBalancingSchemeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LbRouteExtensionLoadBalancingSchemeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LbRouteExtensionLoadBalancingScheme) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LbRouteExtensionLoadBalancingSchemeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LbRouteExtensionLoadBalancingSchemeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LbRouteExtensionLoadBalancingScheme) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LbRouteExtensionLoadBalancingSchemePtrOutput struct{ *pulumi.OutputState }
+
+func (LbRouteExtensionLoadBalancingSchemePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LbRouteExtensionLoadBalancingScheme)(nil)).Elem()
+}
+
+func (o LbRouteExtensionLoadBalancingSchemePtrOutput) ToLbRouteExtensionLoadBalancingSchemePtrOutput() LbRouteExtensionLoadBalancingSchemePtrOutput {
+	return o
+}
+
+func (o LbRouteExtensionLoadBalancingSchemePtrOutput) ToLbRouteExtensionLoadBalancingSchemePtrOutputWithContext(ctx context.Context) LbRouteExtensionLoadBalancingSchemePtrOutput {
+	return o
+}
+
+func (o LbRouteExtensionLoadBalancingSchemePtrOutput) Elem() LbRouteExtensionLoadBalancingSchemeOutput {
+	return o.ApplyT(func(v *LbRouteExtensionLoadBalancingScheme) LbRouteExtensionLoadBalancingScheme {
+		if v != nil {
+			return *v
+		}
+		var ret LbRouteExtensionLoadBalancingScheme
+		return ret
+	}).(LbRouteExtensionLoadBalancingSchemeOutput)
+}
+
+func (o LbRouteExtensionLoadBalancingSchemePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LbRouteExtensionLoadBalancingSchemePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LbRouteExtensionLoadBalancingScheme) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LbRouteExtensionLoadBalancingSchemeInput is an input type that accepts values of the LbRouteExtensionLoadBalancingScheme enum
+// A concrete instance of `LbRouteExtensionLoadBalancingSchemeInput` can be one of the following:
+//
+//	LbRouteExtensionLoadBalancingSchemeLoadBalancingSchemeUnspecified
+//	LbRouteExtensionLoadBalancingSchemeInternalManaged
+//	LbRouteExtensionLoadBalancingSchemeExternalManaged
+type LbRouteExtensionLoadBalancingSchemeInput interface {
+	pulumi.Input
+
+	ToLbRouteExtensionLoadBalancingSchemeOutput() LbRouteExtensionLoadBalancingSchemeOutput
+	ToLbRouteExtensionLoadBalancingSchemeOutputWithContext(context.Context) LbRouteExtensionLoadBalancingSchemeOutput
+}
+
+var lbRouteExtensionLoadBalancingSchemePtrType = reflect.TypeOf((**LbRouteExtensionLoadBalancingScheme)(nil)).Elem()
+
+type LbRouteExtensionLoadBalancingSchemePtrInput interface {
+	pulumi.Input
+
+	ToLbRouteExtensionLoadBalancingSchemePtrOutput() LbRouteExtensionLoadBalancingSchemePtrOutput
+	ToLbRouteExtensionLoadBalancingSchemePtrOutputWithContext(context.Context) LbRouteExtensionLoadBalancingSchemePtrOutput
+}
+
+type lbRouteExtensionLoadBalancingSchemePtr string
+
+func LbRouteExtensionLoadBalancingSchemePtr(v string) LbRouteExtensionLoadBalancingSchemePtrInput {
+	return (*lbRouteExtensionLoadBalancingSchemePtr)(&v)
+}
+
+func (*lbRouteExtensionLoadBalancingSchemePtr) ElementType() reflect.Type {
+	return lbRouteExtensionLoadBalancingSchemePtrType
+}
+
+func (in *lbRouteExtensionLoadBalancingSchemePtr) ToLbRouteExtensionLoadBalancingSchemePtrOutput() LbRouteExtensionLoadBalancingSchemePtrOutput {
+	return pulumi.ToOutput(in).(LbRouteExtensionLoadBalancingSchemePtrOutput)
+}
+
+func (in *lbRouteExtensionLoadBalancingSchemePtr) ToLbRouteExtensionLoadBalancingSchemePtrOutputWithContext(ctx context.Context) LbRouteExtensionLoadBalancingSchemePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LbRouteExtensionLoadBalancingSchemePtrOutput)
+}
+
+func (in *lbRouteExtensionLoadBalancingSchemePtr) ToOutput(ctx context.Context) pulumix.Output[*LbRouteExtensionLoadBalancingScheme] {
+	return pulumix.Output[*LbRouteExtensionLoadBalancingScheme]{
+		OutputState: in.ToLbRouteExtensionLoadBalancingSchemePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Required. All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
+type LbTrafficExtensionLoadBalancingScheme string
+
+const (
+	// Default value. Do not use.
+	LbTrafficExtensionLoadBalancingSchemeLoadBalancingSchemeUnspecified = LbTrafficExtensionLoadBalancingScheme("LOAD_BALANCING_SCHEME_UNSPECIFIED")
+	// Signifies that this is used for Internal HTTP(S) Load Balancing.
+	LbTrafficExtensionLoadBalancingSchemeInternalManaged = LbTrafficExtensionLoadBalancingScheme("INTERNAL_MANAGED")
+	// Signifies that this is used for External Managed HTTP(S) Load Balancing.
+	LbTrafficExtensionLoadBalancingSchemeExternalManaged = LbTrafficExtensionLoadBalancingScheme("EXTERNAL_MANAGED")
+)
+
+func (LbTrafficExtensionLoadBalancingScheme) ElementType() reflect.Type {
+	return reflect.TypeOf((*LbTrafficExtensionLoadBalancingScheme)(nil)).Elem()
+}
+
+func (e LbTrafficExtensionLoadBalancingScheme) ToLbTrafficExtensionLoadBalancingSchemeOutput() LbTrafficExtensionLoadBalancingSchemeOutput {
+	return pulumi.ToOutput(e).(LbTrafficExtensionLoadBalancingSchemeOutput)
+}
+
+func (e LbTrafficExtensionLoadBalancingScheme) ToLbTrafficExtensionLoadBalancingSchemeOutputWithContext(ctx context.Context) LbTrafficExtensionLoadBalancingSchemeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LbTrafficExtensionLoadBalancingSchemeOutput)
+}
+
+func (e LbTrafficExtensionLoadBalancingScheme) ToLbTrafficExtensionLoadBalancingSchemePtrOutput() LbTrafficExtensionLoadBalancingSchemePtrOutput {
+	return e.ToLbTrafficExtensionLoadBalancingSchemePtrOutputWithContext(context.Background())
+}
+
+func (e LbTrafficExtensionLoadBalancingScheme) ToLbTrafficExtensionLoadBalancingSchemePtrOutputWithContext(ctx context.Context) LbTrafficExtensionLoadBalancingSchemePtrOutput {
+	return LbTrafficExtensionLoadBalancingScheme(e).ToLbTrafficExtensionLoadBalancingSchemeOutputWithContext(ctx).ToLbTrafficExtensionLoadBalancingSchemePtrOutputWithContext(ctx)
+}
+
+func (e LbTrafficExtensionLoadBalancingScheme) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LbTrafficExtensionLoadBalancingScheme) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LbTrafficExtensionLoadBalancingScheme) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LbTrafficExtensionLoadBalancingScheme) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LbTrafficExtensionLoadBalancingSchemeOutput struct{ *pulumi.OutputState }
+
+func (LbTrafficExtensionLoadBalancingSchemeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LbTrafficExtensionLoadBalancingScheme)(nil)).Elem()
+}
+
+func (o LbTrafficExtensionLoadBalancingSchemeOutput) ToLbTrafficExtensionLoadBalancingSchemeOutput() LbTrafficExtensionLoadBalancingSchemeOutput {
+	return o
+}
+
+func (o LbTrafficExtensionLoadBalancingSchemeOutput) ToLbTrafficExtensionLoadBalancingSchemeOutputWithContext(ctx context.Context) LbTrafficExtensionLoadBalancingSchemeOutput {
+	return o
+}
+
+func (o LbTrafficExtensionLoadBalancingSchemeOutput) ToLbTrafficExtensionLoadBalancingSchemePtrOutput() LbTrafficExtensionLoadBalancingSchemePtrOutput {
+	return o.ToLbTrafficExtensionLoadBalancingSchemePtrOutputWithContext(context.Background())
+}
+
+func (o LbTrafficExtensionLoadBalancingSchemeOutput) ToLbTrafficExtensionLoadBalancingSchemePtrOutputWithContext(ctx context.Context) LbTrafficExtensionLoadBalancingSchemePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LbTrafficExtensionLoadBalancingScheme) *LbTrafficExtensionLoadBalancingScheme {
+		return &v
+	}).(LbTrafficExtensionLoadBalancingSchemePtrOutput)
+}
+
+func (o LbTrafficExtensionLoadBalancingSchemeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LbTrafficExtensionLoadBalancingSchemeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LbTrafficExtensionLoadBalancingScheme) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LbTrafficExtensionLoadBalancingSchemeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LbTrafficExtensionLoadBalancingSchemeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LbTrafficExtensionLoadBalancingScheme) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LbTrafficExtensionLoadBalancingSchemePtrOutput struct{ *pulumi.OutputState }
+
+func (LbTrafficExtensionLoadBalancingSchemePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LbTrafficExtensionLoadBalancingScheme)(nil)).Elem()
+}
+
+func (o LbTrafficExtensionLoadBalancingSchemePtrOutput) ToLbTrafficExtensionLoadBalancingSchemePtrOutput() LbTrafficExtensionLoadBalancingSchemePtrOutput {
+	return o
+}
+
+func (o LbTrafficExtensionLoadBalancingSchemePtrOutput) ToLbTrafficExtensionLoadBalancingSchemePtrOutputWithContext(ctx context.Context) LbTrafficExtensionLoadBalancingSchemePtrOutput {
+	return o
+}
+
+func (o LbTrafficExtensionLoadBalancingSchemePtrOutput) Elem() LbTrafficExtensionLoadBalancingSchemeOutput {
+	return o.ApplyT(func(v *LbTrafficExtensionLoadBalancingScheme) LbTrafficExtensionLoadBalancingScheme {
+		if v != nil {
+			return *v
+		}
+		var ret LbTrafficExtensionLoadBalancingScheme
+		return ret
+	}).(LbTrafficExtensionLoadBalancingSchemeOutput)
+}
+
+func (o LbTrafficExtensionLoadBalancingSchemePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LbTrafficExtensionLoadBalancingSchemePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LbTrafficExtensionLoadBalancingScheme) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LbTrafficExtensionLoadBalancingSchemeInput is an input type that accepts values of the LbTrafficExtensionLoadBalancingScheme enum
+// A concrete instance of `LbTrafficExtensionLoadBalancingSchemeInput` can be one of the following:
+//
+//	LbTrafficExtensionLoadBalancingSchemeLoadBalancingSchemeUnspecified
+//	LbTrafficExtensionLoadBalancingSchemeInternalManaged
+//	LbTrafficExtensionLoadBalancingSchemeExternalManaged
+type LbTrafficExtensionLoadBalancingSchemeInput interface {
+	pulumi.Input
+
+	ToLbTrafficExtensionLoadBalancingSchemeOutput() LbTrafficExtensionLoadBalancingSchemeOutput
+	ToLbTrafficExtensionLoadBalancingSchemeOutputWithContext(context.Context) LbTrafficExtensionLoadBalancingSchemeOutput
+}
+
+var lbTrafficExtensionLoadBalancingSchemePtrType = reflect.TypeOf((**LbTrafficExtensionLoadBalancingScheme)(nil)).Elem()
+
+type LbTrafficExtensionLoadBalancingSchemePtrInput interface {
+	pulumi.Input
+
+	ToLbTrafficExtensionLoadBalancingSchemePtrOutput() LbTrafficExtensionLoadBalancingSchemePtrOutput
+	ToLbTrafficExtensionLoadBalancingSchemePtrOutputWithContext(context.Context) LbTrafficExtensionLoadBalancingSchemePtrOutput
+}
+
+type lbTrafficExtensionLoadBalancingSchemePtr string
+
+func LbTrafficExtensionLoadBalancingSchemePtr(v string) LbTrafficExtensionLoadBalancingSchemePtrInput {
+	return (*lbTrafficExtensionLoadBalancingSchemePtr)(&v)
+}
+
+func (*lbTrafficExtensionLoadBalancingSchemePtr) ElementType() reflect.Type {
+	return lbTrafficExtensionLoadBalancingSchemePtrType
+}
+
+func (in *lbTrafficExtensionLoadBalancingSchemePtr) ToLbTrafficExtensionLoadBalancingSchemePtrOutput() LbTrafficExtensionLoadBalancingSchemePtrOutput {
+	return pulumi.ToOutput(in).(LbTrafficExtensionLoadBalancingSchemePtrOutput)
+}
+
+func (in *lbTrafficExtensionLoadBalancingSchemePtr) ToLbTrafficExtensionLoadBalancingSchemePtrOutputWithContext(ctx context.Context) LbTrafficExtensionLoadBalancingSchemePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LbTrafficExtensionLoadBalancingSchemePtrOutput)
+}
+
+func (in *lbTrafficExtensionLoadBalancingSchemePtr) ToOutput(ctx context.Context) pulumix.Output[*LbTrafficExtensionLoadBalancingScheme] {
+	return pulumix.Output[*LbTrafficExtensionLoadBalancingScheme]{
+		OutputState: in.ToLbTrafficExtensionLoadBalancingSchemePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+type MeshEnvoyHeaders string
+
+const (
+	// Defaults to NONE.
+	MeshEnvoyHeadersEnvoyHeadersUnspecified = MeshEnvoyHeaders("ENVOY_HEADERS_UNSPECIFIED")
+	// Suppress envoy debug headers.
+	MeshEnvoyHeadersNone = MeshEnvoyHeaders("NONE")
+	// Envoy will insert default internal debug headers into upstream requests: x-envoy-attempt-count x-envoy-is-timeout-retry x-envoy-expected-rq-timeout-ms x-envoy-original-path x-envoy-upstream-stream-duration-ms
+	MeshEnvoyHeadersDebugHeaders = MeshEnvoyHeaders("DEBUG_HEADERS")
+)
+
+func (MeshEnvoyHeaders) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshEnvoyHeaders)(nil)).Elem()
+}
+
+func (e MeshEnvoyHeaders) ToMeshEnvoyHeadersOutput() MeshEnvoyHeadersOutput {
+	return pulumi.ToOutput(e).(MeshEnvoyHeadersOutput)
+}
+
+func (e MeshEnvoyHeaders) ToMeshEnvoyHeadersOutputWithContext(ctx context.Context) MeshEnvoyHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MeshEnvoyHeadersOutput)
+}
+
+func (e MeshEnvoyHeaders) ToMeshEnvoyHeadersPtrOutput() MeshEnvoyHeadersPtrOutput {
+	return e.ToMeshEnvoyHeadersPtrOutputWithContext(context.Background())
+}
+
+func (e MeshEnvoyHeaders) ToMeshEnvoyHeadersPtrOutputWithContext(ctx context.Context) MeshEnvoyHeadersPtrOutput {
+	return MeshEnvoyHeaders(e).ToMeshEnvoyHeadersOutputWithContext(ctx).ToMeshEnvoyHeadersPtrOutputWithContext(ctx)
+}
+
+func (e MeshEnvoyHeaders) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MeshEnvoyHeaders) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MeshEnvoyHeaders) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MeshEnvoyHeaders) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MeshEnvoyHeadersOutput struct{ *pulumi.OutputState }
+
+func (MeshEnvoyHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshEnvoyHeaders)(nil)).Elem()
+}
+
+func (o MeshEnvoyHeadersOutput) ToMeshEnvoyHeadersOutput() MeshEnvoyHeadersOutput {
+	return o
+}
+
+func (o MeshEnvoyHeadersOutput) ToMeshEnvoyHeadersOutputWithContext(ctx context.Context) MeshEnvoyHeadersOutput {
+	return o
+}
+
+func (o MeshEnvoyHeadersOutput) ToMeshEnvoyHeadersPtrOutput() MeshEnvoyHeadersPtrOutput {
+	return o.ToMeshEnvoyHeadersPtrOutputWithContext(context.Background())
+}
+
+func (o MeshEnvoyHeadersOutput) ToMeshEnvoyHeadersPtrOutputWithContext(ctx context.Context) MeshEnvoyHeadersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MeshEnvoyHeaders) *MeshEnvoyHeaders {
+		return &v
+	}).(MeshEnvoyHeadersPtrOutput)
+}
+
+func (o MeshEnvoyHeadersOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MeshEnvoyHeadersOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MeshEnvoyHeaders) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MeshEnvoyHeadersOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MeshEnvoyHeadersOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MeshEnvoyHeaders) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MeshEnvoyHeadersPtrOutput struct{ *pulumi.OutputState }
+
+func (MeshEnvoyHeadersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MeshEnvoyHeaders)(nil)).Elem()
+}
+
+func (o MeshEnvoyHeadersPtrOutput) ToMeshEnvoyHeadersPtrOutput() MeshEnvoyHeadersPtrOutput {
+	return o
+}
+
+func (o MeshEnvoyHeadersPtrOutput) ToMeshEnvoyHeadersPtrOutputWithContext(ctx context.Context) MeshEnvoyHeadersPtrOutput {
+	return o
+}
+
+func (o MeshEnvoyHeadersPtrOutput) Elem() MeshEnvoyHeadersOutput {
+	return o.ApplyT(func(v *MeshEnvoyHeaders) MeshEnvoyHeaders {
+		if v != nil {
+			return *v
+		}
+		var ret MeshEnvoyHeaders
+		return ret
+	}).(MeshEnvoyHeadersOutput)
+}
+
+func (o MeshEnvoyHeadersPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MeshEnvoyHeadersPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MeshEnvoyHeaders) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MeshEnvoyHeadersInput is an input type that accepts values of the MeshEnvoyHeaders enum
+// A concrete instance of `MeshEnvoyHeadersInput` can be one of the following:
+//
+//	MeshEnvoyHeadersEnvoyHeadersUnspecified
+//	MeshEnvoyHeadersNone
+//	MeshEnvoyHeadersDebugHeaders
+type MeshEnvoyHeadersInput interface {
+	pulumi.Input
+
+	ToMeshEnvoyHeadersOutput() MeshEnvoyHeadersOutput
+	ToMeshEnvoyHeadersOutputWithContext(context.Context) MeshEnvoyHeadersOutput
+}
+
+var meshEnvoyHeadersPtrType = reflect.TypeOf((**MeshEnvoyHeaders)(nil)).Elem()
+
+type MeshEnvoyHeadersPtrInput interface {
+	pulumi.Input
+
+	ToMeshEnvoyHeadersPtrOutput() MeshEnvoyHeadersPtrOutput
+	ToMeshEnvoyHeadersPtrOutputWithContext(context.Context) MeshEnvoyHeadersPtrOutput
+}
+
+type meshEnvoyHeadersPtr string
+
+func MeshEnvoyHeadersPtr(v string) MeshEnvoyHeadersPtrInput {
+	return (*meshEnvoyHeadersPtr)(&v)
+}
+
+func (*meshEnvoyHeadersPtr) ElementType() reflect.Type {
+	return meshEnvoyHeadersPtrType
+}
+
+func (in *meshEnvoyHeadersPtr) ToMeshEnvoyHeadersPtrOutput() MeshEnvoyHeadersPtrOutput {
+	return pulumi.ToOutput(in).(MeshEnvoyHeadersPtrOutput)
+}
+
+func (in *meshEnvoyHeadersPtr) ToMeshEnvoyHeadersPtrOutputWithContext(ctx context.Context) MeshEnvoyHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MeshEnvoyHeadersPtrOutput)
+}
+
+func (in *meshEnvoyHeadersPtr) ToOutput(ctx context.Context) pulumix.Output[*MeshEnvoyHeaders] {
+	return pulumix.Output[*MeshEnvoyHeaders]{
+		OutputState: in.ToMeshEnvoyHeadersPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. The type of load balancing algorithm to be used. The default behavior is WATERFALL_BY_REGION.
+type ServiceLbPolicyLoadBalancingAlgorithm string
+
+const (
+	// The type of the loadbalancing algorithm is unspecified.
+	ServiceLbPolicyLoadBalancingAlgorithmLoadBalancingAlgorithmUnspecified = ServiceLbPolicyLoadBalancingAlgorithm("LOAD_BALANCING_ALGORITHM_UNSPECIFIED")
+	// Balance traffic across all backends across the world proportionally based on capacity.
+	ServiceLbPolicyLoadBalancingAlgorithmSprayToWorld = ServiceLbPolicyLoadBalancingAlgorithm("SPRAY_TO_WORLD")
+	// Direct traffic to the nearest region with endpoints and capacity before spilling over to other regions and spread the traffic from each client to all the MIGs/NEGs in a region.
+	ServiceLbPolicyLoadBalancingAlgorithmSprayToRegion = ServiceLbPolicyLoadBalancingAlgorithm("SPRAY_TO_REGION")
+	// Direct traffic to the nearest region with endpoints and capacity before spilling over to other regions. All MIGs/NEGs within a region are evenly loaded but each client might not spread the traffic to all the MIGs/NEGs in the region.
+	ServiceLbPolicyLoadBalancingAlgorithmWaterfallByRegion = ServiceLbPolicyLoadBalancingAlgorithm("WATERFALL_BY_REGION")
+	// Attempt to keep traffic in a single zone closest to the client, before spilling over to other zones.
+	ServiceLbPolicyLoadBalancingAlgorithmWaterfallByZone = ServiceLbPolicyLoadBalancingAlgorithm("WATERFALL_BY_ZONE")
+)
+
+func (ServiceLbPolicyLoadBalancingAlgorithm) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLbPolicyLoadBalancingAlgorithm)(nil)).Elem()
+}
+
+func (e ServiceLbPolicyLoadBalancingAlgorithm) ToServiceLbPolicyLoadBalancingAlgorithmOutput() ServiceLbPolicyLoadBalancingAlgorithmOutput {
+	return pulumi.ToOutput(e).(ServiceLbPolicyLoadBalancingAlgorithmOutput)
+}
+
+func (e ServiceLbPolicyLoadBalancingAlgorithm) ToServiceLbPolicyLoadBalancingAlgorithmOutputWithContext(ctx context.Context) ServiceLbPolicyLoadBalancingAlgorithmOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ServiceLbPolicyLoadBalancingAlgorithmOutput)
+}
+
+func (e ServiceLbPolicyLoadBalancingAlgorithm) ToServiceLbPolicyLoadBalancingAlgorithmPtrOutput() ServiceLbPolicyLoadBalancingAlgorithmPtrOutput {
+	return e.ToServiceLbPolicyLoadBalancingAlgorithmPtrOutputWithContext(context.Background())
+}
+
+func (e ServiceLbPolicyLoadBalancingAlgorithm) ToServiceLbPolicyLoadBalancingAlgorithmPtrOutputWithContext(ctx context.Context) ServiceLbPolicyLoadBalancingAlgorithmPtrOutput {
+	return ServiceLbPolicyLoadBalancingAlgorithm(e).ToServiceLbPolicyLoadBalancingAlgorithmOutputWithContext(ctx).ToServiceLbPolicyLoadBalancingAlgorithmPtrOutputWithContext(ctx)
+}
+
+func (e ServiceLbPolicyLoadBalancingAlgorithm) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ServiceLbPolicyLoadBalancingAlgorithm) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ServiceLbPolicyLoadBalancingAlgorithm) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ServiceLbPolicyLoadBalancingAlgorithm) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ServiceLbPolicyLoadBalancingAlgorithmOutput struct{ *pulumi.OutputState }
+
+func (ServiceLbPolicyLoadBalancingAlgorithmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLbPolicyLoadBalancingAlgorithm)(nil)).Elem()
+}
+
+func (o ServiceLbPolicyLoadBalancingAlgorithmOutput) ToServiceLbPolicyLoadBalancingAlgorithmOutput() ServiceLbPolicyLoadBalancingAlgorithmOutput {
+	return o
+}
+
+func (o ServiceLbPolicyLoadBalancingAlgorithmOutput) ToServiceLbPolicyLoadBalancingAlgorithmOutputWithContext(ctx context.Context) ServiceLbPolicyLoadBalancingAlgorithmOutput {
+	return o
+}
+
+func (o ServiceLbPolicyLoadBalancingAlgorithmOutput) ToServiceLbPolicyLoadBalancingAlgorithmPtrOutput() ServiceLbPolicyLoadBalancingAlgorithmPtrOutput {
+	return o.ToServiceLbPolicyLoadBalancingAlgorithmPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceLbPolicyLoadBalancingAlgorithmOutput) ToServiceLbPolicyLoadBalancingAlgorithmPtrOutputWithContext(ctx context.Context) ServiceLbPolicyLoadBalancingAlgorithmPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceLbPolicyLoadBalancingAlgorithm) *ServiceLbPolicyLoadBalancingAlgorithm {
+		return &v
+	}).(ServiceLbPolicyLoadBalancingAlgorithmPtrOutput)
+}
+
+func (o ServiceLbPolicyLoadBalancingAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ServiceLbPolicyLoadBalancingAlgorithmOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServiceLbPolicyLoadBalancingAlgorithm) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ServiceLbPolicyLoadBalancingAlgorithmOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceLbPolicyLoadBalancingAlgorithmOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServiceLbPolicyLoadBalancingAlgorithm) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceLbPolicyLoadBalancingAlgorithmPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceLbPolicyLoadBalancingAlgorithmPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceLbPolicyLoadBalancingAlgorithm)(nil)).Elem()
+}
+
+func (o ServiceLbPolicyLoadBalancingAlgorithmPtrOutput) ToServiceLbPolicyLoadBalancingAlgorithmPtrOutput() ServiceLbPolicyLoadBalancingAlgorithmPtrOutput {
+	return o
+}
+
+func (o ServiceLbPolicyLoadBalancingAlgorithmPtrOutput) ToServiceLbPolicyLoadBalancingAlgorithmPtrOutputWithContext(ctx context.Context) ServiceLbPolicyLoadBalancingAlgorithmPtrOutput {
+	return o
+}
+
+func (o ServiceLbPolicyLoadBalancingAlgorithmPtrOutput) Elem() ServiceLbPolicyLoadBalancingAlgorithmOutput {
+	return o.ApplyT(func(v *ServiceLbPolicyLoadBalancingAlgorithm) ServiceLbPolicyLoadBalancingAlgorithm {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceLbPolicyLoadBalancingAlgorithm
+		return ret
+	}).(ServiceLbPolicyLoadBalancingAlgorithmOutput)
+}
+
+func (o ServiceLbPolicyLoadBalancingAlgorithmPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceLbPolicyLoadBalancingAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ServiceLbPolicyLoadBalancingAlgorithm) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ServiceLbPolicyLoadBalancingAlgorithmInput is an input type that accepts values of the ServiceLbPolicyLoadBalancingAlgorithm enum
+// A concrete instance of `ServiceLbPolicyLoadBalancingAlgorithmInput` can be one of the following:
+//
+//	ServiceLbPolicyLoadBalancingAlgorithmLoadBalancingAlgorithmUnspecified
+//	ServiceLbPolicyLoadBalancingAlgorithmSprayToWorld
+//	ServiceLbPolicyLoadBalancingAlgorithmSprayToRegion
+//	ServiceLbPolicyLoadBalancingAlgorithmWaterfallByRegion
+//	ServiceLbPolicyLoadBalancingAlgorithmWaterfallByZone
+type ServiceLbPolicyLoadBalancingAlgorithmInput interface {
+	pulumi.Input
+
+	ToServiceLbPolicyLoadBalancingAlgorithmOutput() ServiceLbPolicyLoadBalancingAlgorithmOutput
+	ToServiceLbPolicyLoadBalancingAlgorithmOutputWithContext(context.Context) ServiceLbPolicyLoadBalancingAlgorithmOutput
+}
+
+var serviceLbPolicyLoadBalancingAlgorithmPtrType = reflect.TypeOf((**ServiceLbPolicyLoadBalancingAlgorithm)(nil)).Elem()
+
+type ServiceLbPolicyLoadBalancingAlgorithmPtrInput interface {
+	pulumi.Input
+
+	ToServiceLbPolicyLoadBalancingAlgorithmPtrOutput() ServiceLbPolicyLoadBalancingAlgorithmPtrOutput
+	ToServiceLbPolicyLoadBalancingAlgorithmPtrOutputWithContext(context.Context) ServiceLbPolicyLoadBalancingAlgorithmPtrOutput
+}
+
+type serviceLbPolicyLoadBalancingAlgorithmPtr string
+
+func ServiceLbPolicyLoadBalancingAlgorithmPtr(v string) ServiceLbPolicyLoadBalancingAlgorithmPtrInput {
+	return (*serviceLbPolicyLoadBalancingAlgorithmPtr)(&v)
+}
+
+func (*serviceLbPolicyLoadBalancingAlgorithmPtr) ElementType() reflect.Type {
+	return serviceLbPolicyLoadBalancingAlgorithmPtrType
+}
+
+func (in *serviceLbPolicyLoadBalancingAlgorithmPtr) ToServiceLbPolicyLoadBalancingAlgorithmPtrOutput() ServiceLbPolicyLoadBalancingAlgorithmPtrOutput {
+	return pulumi.ToOutput(in).(ServiceLbPolicyLoadBalancingAlgorithmPtrOutput)
+}
+
+func (in *serviceLbPolicyLoadBalancingAlgorithmPtr) ToServiceLbPolicyLoadBalancingAlgorithmPtrOutputWithContext(ctx context.Context) ServiceLbPolicyLoadBalancingAlgorithmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ServiceLbPolicyLoadBalancingAlgorithmPtrOutput)
+}
+
+func (in *serviceLbPolicyLoadBalancingAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceLbPolicyLoadBalancingAlgorithm] {
+	return pulumix.Output[*ServiceLbPolicyLoadBalancingAlgorithm]{
+		OutputState: in.ToServiceLbPolicyLoadBalancingAlgorithmPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
@@ -1269,6 +2570,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtrInput)(nil)).Elem(), EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria("METADATA_LABEL_MATCH_CRITERIA_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointPolicyTypeInput)(nil)).Elem(), EndpointPolicyType("ENDPOINT_POLICY_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointPolicyTypePtrInput)(nil)).Elem(), EndpointPolicyType("ENDPOINT_POLICY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionChainExtensionSupportedEventsItemInput)(nil)).Elem(), ExtensionChainExtensionSupportedEventsItem("EVENT_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionChainExtensionSupportedEventsItemPtrInput)(nil)).Elem(), ExtensionChainExtensionSupportedEventsItem("EVENT_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionChainExtensionSupportedEventsItemArrayInput)(nil)).Elem(), ExtensionChainExtensionSupportedEventsItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayEnvoyHeadersInput)(nil)).Elem(), GatewayEnvoyHeaders("ENVOY_HEADERS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayEnvoyHeadersPtrInput)(nil)).Elem(), GatewayEnvoyHeaders("ENVOY_HEADERS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayIpVersionInput)(nil)).Elem(), GatewayIpVersion("IP_VERSION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayIpVersionPtrInput)(nil)).Elem(), GatewayIpVersion("IP_VERSION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTypeInput)(nil)).Elem(), GatewayType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayTypePtrInput)(nil)).Elem(), GatewayType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteHeaderMatchTypeInput)(nil)).Elem(), GrpcRouteHeaderMatchType("TYPE_UNSPECIFIED"))
@@ -1277,12 +2585,27 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteMethodMatchTypePtrInput)(nil)).Elem(), GrpcRouteMethodMatchType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRedirectResponseCodeInput)(nil)).Elem(), HttpRouteRedirectResponseCode("RESPONSE_CODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRedirectResponseCodePtrInput)(nil)).Elem(), HttpRouteRedirectResponseCode("RESPONSE_CODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*LbRouteExtensionLoadBalancingSchemeInput)(nil)).Elem(), LbRouteExtensionLoadBalancingScheme("LOAD_BALANCING_SCHEME_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*LbRouteExtensionLoadBalancingSchemePtrInput)(nil)).Elem(), LbRouteExtensionLoadBalancingScheme("LOAD_BALANCING_SCHEME_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*LbTrafficExtensionLoadBalancingSchemeInput)(nil)).Elem(), LbTrafficExtensionLoadBalancingScheme("LOAD_BALANCING_SCHEME_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*LbTrafficExtensionLoadBalancingSchemePtrInput)(nil)).Elem(), LbTrafficExtensionLoadBalancingScheme("LOAD_BALANCING_SCHEME_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MeshEnvoyHeadersInput)(nil)).Elem(), MeshEnvoyHeaders("ENVOY_HEADERS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MeshEnvoyHeadersPtrInput)(nil)).Elem(), MeshEnvoyHeaders("ENVOY_HEADERS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLbPolicyLoadBalancingAlgorithmInput)(nil)).Elem(), ServiceLbPolicyLoadBalancingAlgorithm("LOAD_BALANCING_ALGORITHM_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLbPolicyLoadBalancingAlgorithmPtrInput)(nil)).Elem(), ServiceLbPolicyLoadBalancingAlgorithm("LOAD_BALANCING_ALGORITHM_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaOutput{})
 	pulumi.RegisterOutputType(EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput{})
 	pulumi.RegisterOutputType(EndpointPolicyTypeOutput{})
 	pulumi.RegisterOutputType(EndpointPolicyTypePtrOutput{})
+	pulumi.RegisterOutputType(ExtensionChainExtensionSupportedEventsItemOutput{})
+	pulumi.RegisterOutputType(ExtensionChainExtensionSupportedEventsItemPtrOutput{})
+	pulumi.RegisterOutputType(ExtensionChainExtensionSupportedEventsItemArrayOutput{})
+	pulumi.RegisterOutputType(GatewayEnvoyHeadersOutput{})
+	pulumi.RegisterOutputType(GatewayEnvoyHeadersPtrOutput{})
+	pulumi.RegisterOutputType(GatewayIpVersionOutput{})
+	pulumi.RegisterOutputType(GatewayIpVersionPtrOutput{})
 	pulumi.RegisterOutputType(GatewayTypeOutput{})
 	pulumi.RegisterOutputType(GatewayTypePtrOutput{})
 	pulumi.RegisterOutputType(GrpcRouteHeaderMatchTypeOutput{})
@@ -1291,4 +2614,12 @@ func init() {
 	pulumi.RegisterOutputType(GrpcRouteMethodMatchTypePtrOutput{})
 	pulumi.RegisterOutputType(HttpRouteRedirectResponseCodeOutput{})
 	pulumi.RegisterOutputType(HttpRouteRedirectResponseCodePtrOutput{})
+	pulumi.RegisterOutputType(LbRouteExtensionLoadBalancingSchemeOutput{})
+	pulumi.RegisterOutputType(LbRouteExtensionLoadBalancingSchemePtrOutput{})
+	pulumi.RegisterOutputType(LbTrafficExtensionLoadBalancingSchemeOutput{})
+	pulumi.RegisterOutputType(LbTrafficExtensionLoadBalancingSchemePtrOutput{})
+	pulumi.RegisterOutputType(MeshEnvoyHeadersOutput{})
+	pulumi.RegisterOutputType(MeshEnvoyHeadersPtrOutput{})
+	pulumi.RegisterOutputType(ServiceLbPolicyLoadBalancingAlgorithmOutput{})
+	pulumi.RegisterOutputType(ServiceLbPolicyLoadBalancingAlgorithmPtrOutput{})
 }

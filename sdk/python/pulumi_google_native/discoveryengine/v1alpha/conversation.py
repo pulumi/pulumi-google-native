@@ -17,7 +17,6 @@ __all__ = ['ConversationArgs', 'Conversation']
 @pulumi.input_type
 class ConversationArgs:
     def __init__(__self__, *,
-                 collection_id: pulumi.Input[str],
                  data_store_id: pulumi.Input[str],
                  location: Optional[pulumi.Input[str]] = None,
                  messages: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDiscoveryengineV1alphaConversationMessageArgs']]]] = None,
@@ -28,11 +27,10 @@ class ConversationArgs:
         """
         The set of arguments for constructing a Conversation resource.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDiscoveryengineV1alphaConversationMessageArgs']]] messages: Conversation messages.
-        :param pulumi.Input[str] name: Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*`
+        :param pulumi.Input[str] name: Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*` or `project/*/locations/global/collections/{collection}/engines/*/conversations/*`.
         :param pulumi.Input['ConversationState'] state: The state of the Conversation.
         :param pulumi.Input[str] user_pseudo_id: A unique identifier for tracking users.
         """
-        pulumi.set(__self__, "collection_id", collection_id)
         pulumi.set(__self__, "data_store_id", data_store_id)
         if location is not None:
             pulumi.set(__self__, "location", location)
@@ -46,15 +44,6 @@ class ConversationArgs:
             pulumi.set(__self__, "state", state)
         if user_pseudo_id is not None:
             pulumi.set(__self__, "user_pseudo_id", user_pseudo_id)
-
-    @property
-    @pulumi.getter(name="collectionId")
-    def collection_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "collection_id")
-
-    @collection_id.setter
-    def collection_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "collection_id", value)
 
     @property
     @pulumi.getter(name="dataStoreId")
@@ -90,7 +79,7 @@ class ConversationArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*`
+        Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*` or `project/*/locations/global/collections/{collection}/engines/*/conversations/*`.
         """
         return pulumi.get(self, "name")
 
@@ -137,7 +126,6 @@ class Conversation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 collection_id: Optional[pulumi.Input[str]] = None,
                  data_store_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaConversationMessageArgs']]]]] = None,
@@ -153,7 +141,7 @@ class Conversation(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaConversationMessageArgs']]]] messages: Conversation messages.
-        :param pulumi.Input[str] name: Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*`
+        :param pulumi.Input[str] name: Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*` or `project/*/locations/global/collections/{collection}/engines/*/conversations/*`.
         :param pulumi.Input['ConversationState'] state: The state of the Conversation.
         :param pulumi.Input[str] user_pseudo_id: A unique identifier for tracking users.
         """
@@ -182,7 +170,6 @@ class Conversation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 collection_id: Optional[pulumi.Input[str]] = None,
                  data_store_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaConversationMessageArgs']]]]] = None,
@@ -199,9 +186,6 @@ class Conversation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConversationArgs.__new__(ConversationArgs)
 
-            if collection_id is None and not opts.urn:
-                raise TypeError("Missing required property 'collection_id'")
-            __props__.__dict__["collection_id"] = collection_id
             if data_store_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_store_id'")
             __props__.__dict__["data_store_id"] = data_store_id
@@ -213,7 +197,7 @@ class Conversation(pulumi.CustomResource):
             __props__.__dict__["user_pseudo_id"] = user_pseudo_id
             __props__.__dict__["end_time"] = None
             __props__.__dict__["start_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["collection_id", "data_store_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["data_store_id", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Conversation, __self__).__init__(
             'google-native:discoveryengine/v1alpha:Conversation',
@@ -237,7 +221,6 @@ class Conversation(pulumi.CustomResource):
 
         __props__ = ConversationArgs.__new__(ConversationArgs)
 
-        __props__.__dict__["collection_id"] = None
         __props__.__dict__["data_store_id"] = None
         __props__.__dict__["end_time"] = None
         __props__.__dict__["location"] = None
@@ -248,11 +231,6 @@ class Conversation(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["user_pseudo_id"] = None
         return Conversation(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter(name="collectionId")
-    def collection_id(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "collection_id")
 
     @property
     @pulumi.getter(name="dataStoreId")
@@ -284,7 +262,7 @@ class Conversation(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*`
+        Immutable. Fully qualified name `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*` or `project/*/locations/global/collections/{collection}/engines/*/conversations/*`.
         """
         return pulumi.get(self, "name")
 

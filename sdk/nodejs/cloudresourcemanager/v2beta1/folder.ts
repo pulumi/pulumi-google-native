@@ -55,6 +55,10 @@ export class Folder extends pulumi.CustomResource {
      * Required. The resource name of the new Folder's parent. Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
      */
     public readonly parent!: pulumi.Output<string>;
+    /**
+     * Optional. Input only. Immutable. Tag keys/values directly bound to this folder. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Folder resource with the given unique name, arguments, and options.
@@ -72,6 +76,7 @@ export class Folder extends pulumi.CustomResource {
             }
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["lifecycleState"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -81,6 +86,7 @@ export class Folder extends pulumi.CustomResource {
             resourceInputs["lifecycleState"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;
+            resourceInputs["tags"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["parent"] };
@@ -101,4 +107,8 @@ export interface FolderArgs {
      * The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
      */
     parent: pulumi.Input<string>;
+    /**
+     * Optional. Input only. Immutable. Tag keys/values directly bound to this folder. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

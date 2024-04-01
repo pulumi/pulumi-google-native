@@ -11,7 +11,6 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
 {
     /// <summary>
     /// Creates a new FeatureOnlineStore in a given project and location.
-    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:aiplatform/v1beta1:FeatureOnlineStore")]
     public partial class FeatureOnlineStore : global::Pulumi.CustomResource
@@ -35,7 +34,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         public Output<Outputs.GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse> DedicatedServingEndpoint { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The settings for embedding management in FeatureOnlineStore.
+        /// Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.
         /// </summary>
         [Output("embeddingManagement")]
         public Output<Outputs.GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse> EmbeddingManagement { get; private set; } = null!;
@@ -62,7 +61,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+        /// Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -152,7 +151,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         public Input<Inputs.GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointArgs>? DedicatedServingEndpoint { get; set; }
 
         /// <summary>
-        /// Optional. The settings for embedding management in FeatureOnlineStore.
+        /// Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.
         /// </summary>
         [Input("embeddingManagement")]
         public Input<Inputs.GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementArgs>? EmbeddingManagement { get; set; }
@@ -183,6 +182,12 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
 
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.

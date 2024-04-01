@@ -461,6 +461,8 @@ type GoogleCloudRecaptchaenterpriseV1FirewallAction struct {
 	Allow *GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction `pulumi:"allow"`
 	// This action will deny access to a given page. The user will get an HTTP error code.
 	Block *GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction `pulumi:"block"`
+	// This action will inject reCAPTCHA JavaScript code into the HTML page returned by the site backend.
+	IncludeRecaptchaScript *GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction `pulumi:"includeRecaptchaScript"`
 	// This action will redirect the request to a ReCaptcha interstitial to attach a token.
 	Redirect *GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction `pulumi:"redirect"`
 	// This action will set a custom header but allow the request to continue to the customer backend.
@@ -486,6 +488,8 @@ type GoogleCloudRecaptchaenterpriseV1FirewallActionArgs struct {
 	Allow GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrInput `pulumi:"allow"`
 	// This action will deny access to a given page. The user will get an HTTP error code.
 	Block GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrInput `pulumi:"block"`
+	// This action will inject reCAPTCHA JavaScript code into the HTML page returned by the site backend.
+	IncludeRecaptchaScript GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrInput `pulumi:"includeRecaptchaScript"`
 	// This action will redirect the request to a ReCaptcha interstitial to attach a token.
 	Redirect GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrInput `pulumi:"redirect"`
 	// This action will set a custom header but allow the request to continue to the customer backend.
@@ -558,6 +562,13 @@ func (o GoogleCloudRecaptchaenterpriseV1FirewallActionOutput) Block() GoogleClou
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1FirewallAction) *GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction {
 		return v.Block
 	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput)
+}
+
+// This action will inject reCAPTCHA JavaScript code into the HTML page returned by the site backend.
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionOutput) IncludeRecaptchaScript() GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1FirewallAction) *GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction {
+		return v.IncludeRecaptchaScript
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput)
 }
 
 // This action will redirect the request to a ReCaptcha interstitial to attach a token.
@@ -881,6 +892,146 @@ func (o GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponseOutput)
 	return o
 }
 
+// An include reCAPTCHA script action involves injecting reCAPTCHA JavaScript code into the HTML returned by the site backend. This reCAPTCHA script is tasked with collecting user signals on the requested web page, issuing tokens as a cookie within the site domain, and enabling their utilization in subsequent page requests.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction struct {
+}
+
+// GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionArgs and GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutput values.
+// You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionInput` via:
+//
+//	GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionArgs{...}
+type GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutput
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutputWithContext(context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutput
+}
+
+// An include reCAPTCHA script action involves injecting reCAPTCHA JavaScript code into the HTML returned by the site backend. This reCAPTCHA script is tasked with collecting user signals on the requested web page, issuing tokens as a cookie within the site domain, and enabling their utilization in subsequent page requests.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionArgs struct {
+}
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction)(nil)).Elem()
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutput)
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutput).ToGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionArgs, GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtr and GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrInput` via:
+//
+//	        GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutputWithContext(context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput
+}
+
+type googleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrType GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionArgs
+
+func GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtr(v *GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionArgs) GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrInput {
+	return (*googleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrType)(v)
+}
+
+func (*googleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction)(nil)).Elem()
+}
+
+func (i *googleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrType) ToGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrType) ToGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput)
+}
+
+// An include reCAPTCHA script action involves injecting reCAPTCHA JavaScript code into the HTML returned by the site backend. This reCAPTCHA script is tasked with collecting user signals on the requested web page, issuing tokens as a cookie within the site domain, and enabling their utilization in subsequent page requests.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput {
+	return o.ToGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction) *GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction {
+		return &v
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput)
+}
+
+type GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction) GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction
+		return ret
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutput)
+}
+
+// An include reCAPTCHA script action involves injecting reCAPTCHA JavaScript code into the HTML returned by the site backend. This reCAPTCHA script is tasked with collecting user signals on the requested web page, issuing tokens as a cookie within the site domain, and enabling their utilization in subsequent page requests.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionResponse struct {
+}
+
+// An include reCAPTCHA script action involves injecting reCAPTCHA JavaScript code into the HTML returned by the site backend. This reCAPTCHA script is tasked with collecting user signals on the requested web page, issuing tokens as a cookie within the site domain, and enabling their utilization in subsequent page requests.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionResponseOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionResponseOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionResponseOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionResponseOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionResponseOutput {
+	return o
+}
+
 // A redirect action returns a 307 (temporary redirect) response, pointing the user to a ReCaptcha interstitial page to attach a token.
 type GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction struct {
 }
@@ -1027,6 +1178,8 @@ type GoogleCloudRecaptchaenterpriseV1FirewallActionResponse struct {
 	Allow GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponse `pulumi:"allow"`
 	// This action will deny access to a given page. The user will get an HTTP error code.
 	Block GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponse `pulumi:"block"`
+	// This action will inject reCAPTCHA JavaScript code into the HTML page returned by the site backend.
+	IncludeRecaptchaScript GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionResponse `pulumi:"includeRecaptchaScript"`
 	// This action will redirect the request to a ReCaptcha interstitial to attach a token.
 	Redirect GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponse `pulumi:"redirect"`
 	// This action will set a custom header but allow the request to continue to the customer backend.
@@ -1062,6 +1215,13 @@ func (o GoogleCloudRecaptchaenterpriseV1FirewallActionResponseOutput) Block() Go
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1FirewallActionResponse) GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponse {
 		return v.Block
 	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponseOutput)
+}
+
+// This action will inject reCAPTCHA JavaScript code into the HTML page returned by the site backend.
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionResponseOutput) IncludeRecaptchaScript() GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1FirewallActionResponse) GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionResponse {
+		return v.IncludeRecaptchaScript
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionResponseOutput)
 }
 
 // This action will redirect the request to a ReCaptcha interstitial to attach a token.
@@ -2362,6 +2522,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs{})
@@ -2390,6 +2552,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptActionResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponseOutput{})

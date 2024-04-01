@@ -86,6 +86,10 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
+        /// Optional. If true, specifies a multiplexed session. A multiplexed session may be used for multiple, concurrent read-only operations but can not be used for read-write transactions, partitioned reads, or partitioned queries. Multiplexed sessions can be created via CreateSession but not via BatchCreateSessions. Multiplexed sessions may not be deleted nor listed.
+        /// </summary>
+        public readonly bool Multiplexed;
+        /// <summary>
         /// The name of the session. This is always system-assigned.
         /// </summary>
         public readonly string Name;
@@ -100,12 +104,15 @@ namespace Pulumi.GoogleNative.Spanner.V1
 
             ImmutableDictionary<string, string> labels,
 
+            bool multiplexed,
+
             string name)
         {
             ApproximateLastUseTime = approximateLastUseTime;
             CreateTime = createTime;
             CreatorRole = creatorRole;
             Labels = labels;
+            Multiplexed = multiplexed;
             Name = name;
         }
     }

@@ -71,7 +71,7 @@ class GetWorkflowTemplateResult:
     @pulumi.getter(name="encryptionConfig")
     def encryption_config(self) -> 'outputs.GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse':
         """
-        Optional. Encryption settings for the encrypting customer core content.
+        Optional. Encryption settings for encrypting workflow template job arguments.
         """
         return pulumi.get(self, "encryption_config")
 

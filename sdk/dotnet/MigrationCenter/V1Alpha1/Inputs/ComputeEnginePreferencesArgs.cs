@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1.Inputs
     public sealed class ComputeEnginePreferencesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
+        /// Overridden by os_pricing_preferences if specified. License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
         /// </summary>
         [Input("licenseType")]
         public Input<Pulumi.GoogleNative.MigrationCenter.V1Alpha1.ComputeEnginePreferencesLicenseType>? LicenseType { get; set; }

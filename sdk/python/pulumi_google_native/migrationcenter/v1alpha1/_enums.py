@@ -25,7 +25,7 @@ __all__ = [
 
 class ComputeEnginePreferencesLicenseType(str, Enum):
     """
-    License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
+    Overridden by os_pricing_preferences if specified. License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
     """
     LICENSE_TYPE_UNSPECIFIED = "LICENSE_TYPE_UNSPECIFIED"
     """
@@ -85,15 +85,15 @@ class GCSPayloadInfoFormat(str, Enum):
     """
     IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV = "IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV"
     """
-    CSV format exported from AWS using the AWS collection script.
+    CSV format exported from AWS using the [AWS collection script](https://github.com/GoogleCloudPlatform/aws-to-stratozone-export).
     """
     IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV = "IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV"
     """
-    CSV format exported from Azure using the Azure collection script.
+    CSV format exported from Azure using the [Azure collection script](https://github.com/GoogleCloudPlatform/azure-to-stratozone-export).
     """
     IMPORT_JOB_FORMAT_MANUAL_CSV = "IMPORT_JOB_FORMAT_MANUAL_CSV"
     """
-    CSV format created manually. For more information, see Manually create and upload data tables.
+    CSV format created manually. For more information, see [Manually create and upload data tables](https://cloud.google.com/migrate/stratozone/docs/import-data-portal).
     """
 
 
@@ -119,15 +119,15 @@ class ImportDataFileFormat(str, Enum):
     """
     IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV = "IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV"
     """
-    CSV format exported from AWS using the AWS collection script.
+    CSV format exported from AWS using the [AWS collection script](https://github.com/GoogleCloudPlatform/aws-to-stratozone-export).
     """
     IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV = "IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV"
     """
-    CSV format exported from Azure using the Azure collection script.
+    CSV format exported from Azure using the [Azure collection script](https://github.com/GoogleCloudPlatform/azure-to-stratozone-export).
     """
     IMPORT_JOB_FORMAT_MANUAL_CSV = "IMPORT_JOB_FORMAT_MANUAL_CSV"
     """
-    CSV format created manually. For more information, see Manually create and upload data tables.
+    CSV format created manually. For more information, see [Manually create and upload data tables](https://cloud.google.com/migrate/stratozone/docs/import-data-portal).
     """
 
 
@@ -153,15 +153,15 @@ class InlinePayloadInfoFormat(str, Enum):
     """
     IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV = "IMPORT_JOB_FORMAT_EXPORTED_AWS_CSV"
     """
-    CSV format exported from AWS using the AWS collection script.
+    CSV format exported from AWS using the [AWS collection script](https://github.com/GoogleCloudPlatform/aws-to-stratozone-export).
     """
     IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV = "IMPORT_JOB_FORMAT_EXPORTED_AZURE_CSV"
     """
-    CSV format exported from Azure using the Azure collection script.
+    CSV format exported from Azure using the [Azure collection script](https://github.com/GoogleCloudPlatform/azure-to-stratozone-export).
     """
     IMPORT_JOB_FORMAT_MANUAL_CSV = "IMPORT_JOB_FORMAT_MANUAL_CSV"
     """
-    CSV format created manually. For more information, see Manually create and upload data tables.
+    CSV format created manually. For more information, see [Manually create and upload data tables](https://cloud.google.com/migrate/stratozone/docs/import-data-portal).
     """
 
 
@@ -193,11 +193,11 @@ class ReportType(str, Enum):
     """
     TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
     """
-    Default Report type.
+    Default report type.
     """
     TOTAL_COST_OF_OWNERSHIP = "TOTAL_COST_OF_OWNERSHIP"
     """
-    Total cost of ownership Report type.
+    Total cost of ownership report type.
     """
 
 
@@ -215,11 +215,11 @@ class SoleTenancyPreferencesCommitmentPlan(str, Enum):
     """
     COMMITMENT1_YEAR = "COMMITMENT_1_YEAR"
     """
-    1 year commitment.
+    1-year regular committed use discount.
     """
     COMMITMENT3_YEAR = "COMMITMENT_3_YEAR"
     """
-    3 years commitment.
+    3-year regular committed use discount.
     """
 
 
@@ -269,6 +269,10 @@ class SourceType(str, Enum):
     """
     Third-party owned sources.
     """
+    SOURCE_TYPE_DISCOVERY_CLIENT = "SOURCE_TYPE_DISCOVERY_CLIENT"
+    """
+    Discovery clients
+    """
 
 
 class VirtualMachinePreferencesCommitmentPlan(str, Enum):
@@ -285,11 +289,11 @@ class VirtualMachinePreferencesCommitmentPlan(str, Enum):
     """
     COMMITMENT_PLAN_ONE_YEAR = "COMMITMENT_PLAN_ONE_YEAR"
     """
-    1 year commitment.
+    1-year regular committed use discount.
     """
     COMMITMENT_PLAN_THREE_YEARS = "COMMITMENT_PLAN_THREE_YEARS"
     """
-    3 years commitment.
+    3-year regular committed use discount.
     """
 
 

@@ -16,6 +16,8 @@ import (
 type Table struct {
 	pulumi.CustomResourceState
 
+	// If specified, automated backups are enabled for this table. Otherwise, automated backups are disabled.
+	AutomatedBackupPolicy AutomatedBackupPolicyResponseOutput `pulumi:"automatedBackupPolicy"`
 	// If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
 	ChangeStreamConfig ChangeStreamConfigResponseOutput `pulumi:"changeStreamConfig"`
 	// Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
@@ -87,6 +89,8 @@ func (TableState) ElementType() reflect.Type {
 }
 
 type tableArgs struct {
+	// If specified, automated backups are enabled for this table. Otherwise, automated backups are disabled.
+	AutomatedBackupPolicy *AutomatedBackupPolicy `pulumi:"automatedBackupPolicy"`
 	// If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
 	ChangeStreamConfig *ChangeStreamConfig `pulumi:"changeStreamConfig"`
 	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
@@ -107,6 +111,8 @@ type tableArgs struct {
 
 // The set of arguments for constructing a Table resource.
 type TableArgs struct {
+	// If specified, automated backups are enabled for this table. Otherwise, automated backups are disabled.
+	AutomatedBackupPolicy AutomatedBackupPolicyPtrInput
 	// If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
 	ChangeStreamConfig ChangeStreamConfigPtrInput
 	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
@@ -160,6 +166,11 @@ func (o TableOutput) ToTableOutput() TableOutput {
 
 func (o TableOutput) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return o
+}
+
+// If specified, automated backups are enabled for this table. Otherwise, automated backups are disabled.
+func (o TableOutput) AutomatedBackupPolicy() AutomatedBackupPolicyResponseOutput {
+	return o.ApplyT(func(v *Table) AutomatedBackupPolicyResponseOutput { return v.AutomatedBackupPolicy }).(AutomatedBackupPolicyResponseOutput)
 }
 
 // If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.

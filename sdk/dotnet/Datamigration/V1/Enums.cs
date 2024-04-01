@@ -282,6 +282,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         public static CloudSqlSettingsDatabaseVersion Mysql8034 { get; } = new CloudSqlSettingsDatabaseVersion("MYSQL_8_0_34");
         /// <summary>
+        /// The database major version is MySQL 8.0 and the minor version is 35.
+        /// </summary>
+        public static CloudSqlSettingsDatabaseVersion Mysql8035 { get; } = new CloudSqlSettingsDatabaseVersion("MYSQL_8_0_35");
+        /// <summary>
         /// PostgreSQL 9.6.
         /// </summary>
         public static CloudSqlSettingsDatabaseVersion Postgres96 { get; } = new CloudSqlSettingsDatabaseVersion("POSTGRES_9_6");
@@ -380,23 +384,23 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         }
 
         /// <summary>
-        /// The database provider is unknown.
+        /// Use this value for on-premise source database instances.
         /// </summary>
         public static ConnectionProfileProvider DatabaseProviderUnspecified { get; } = new ConnectionProfileProvider("DATABASE_PROVIDER_UNSPECIFIED");
         /// <summary>
-        /// CloudSQL runs the database.
+        /// Cloud SQL is the source instance provider.
         /// </summary>
         public static ConnectionProfileProvider Cloudsql { get; } = new ConnectionProfileProvider("CLOUDSQL");
         /// <summary>
-        /// RDS runs the database.
+        /// Amazon RDS is the source instance provider.
         /// </summary>
         public static ConnectionProfileProvider Rds { get; } = new ConnectionProfileProvider("RDS");
         /// <summary>
-        /// Amazon Aurora.
+        /// Amazon Aurora is the source instance provider.
         /// </summary>
         public static ConnectionProfileProvider Aurora { get; } = new ConnectionProfileProvider("AURORA");
         /// <summary>
-        /// AlloyDB.
+        /// AlloyDB for PostgreSQL is the source instance provider.
         /// </summary>
         public static ConnectionProfileProvider Alloydb { get; } = new ConnectionProfileProvider("ALLOYDB");
 
@@ -502,6 +506,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         public static DatabaseEngineInfoEngine Postgresql { get; } = new DatabaseEngineInfoEngine("POSTGRESQL");
         /// <summary>
+        /// The source engine is SQL Server.
+        /// </summary>
+        public static DatabaseEngineInfoEngine Sqlserver { get; } = new DatabaseEngineInfoEngine("SQLSERVER");
+        /// <summary>
         /// The source engine is Oracle.
         /// </summary>
         public static DatabaseEngineInfoEngine Oracle { get; } = new DatabaseEngineInfoEngine("ORACLE");
@@ -547,6 +555,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         public static DatabaseTypeEngine Postgresql { get; } = new DatabaseTypeEngine("POSTGRESQL");
         /// <summary>
+        /// The source engine is SQL Server.
+        /// </summary>
+        public static DatabaseTypeEngine Sqlserver { get; } = new DatabaseTypeEngine("SQLSERVER");
+        /// <summary>
         /// The source engine is Oracle.
         /// </summary>
         public static DatabaseTypeEngine Oracle { get; } = new DatabaseTypeEngine("ORACLE");
@@ -580,23 +592,23 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         }
 
         /// <summary>
-        /// The database provider is unknown.
+        /// Use this value for on-premise source database instances.
         /// </summary>
         public static DatabaseTypeProvider DatabaseProviderUnspecified { get; } = new DatabaseTypeProvider("DATABASE_PROVIDER_UNSPECIFIED");
         /// <summary>
-        /// CloudSQL runs the database.
+        /// Cloud SQL is the source instance provider.
         /// </summary>
         public static DatabaseTypeProvider Cloudsql { get; } = new DatabaseTypeProvider("CLOUDSQL");
         /// <summary>
-        /// RDS runs the database.
+        /// Amazon RDS is the source instance provider.
         /// </summary>
         public static DatabaseTypeProvider Rds { get; } = new DatabaseTypeProvider("RDS");
         /// <summary>
-        /// Amazon Aurora.
+        /// Amazon Aurora is the source instance provider.
         /// </summary>
         public static DatabaseTypeProvider Aurora { get; } = new DatabaseTypeProvider("AURORA");
         /// <summary>
-        /// AlloyDB.
+        /// AlloyDB for PostgreSQL is the source instance provider.
         /// </summary>
         public static DatabaseTypeProvider Alloydb { get; } = new DatabaseTypeProvider("ALLOYDB");
 

@@ -35,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BucketObject{}
 	case "google-native:storage/v1:DefaultObjectAccessControl":
 		r = &DefaultObjectAccessControl{}
+	case "google-native:storage/v1:Folder":
+		r = &Folder{}
 	case "google-native:storage/v1:HmacKey":
 		r = &HmacKey{}
 	case "google-native:storage/v1:ManagedFolder":

@@ -11,13 +11,24 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'AuthorizedNetworkArgs',
     'AutomatedBackupPolicyArgs',
     'ClientConnectionConfigArgs',
     'ContinuousBackupConfigArgs',
+    'DenyMaintenancePeriodArgs',
     'EncryptionConfigArgs',
+    'GeminiClusterConfigArgs',
+    'GeminiInstanceConfigArgs',
+    'GoogleTypeDateArgs',
     'GoogleTypeTimeOfDayArgs',
+    'InstanceNetworkConfigArgs',
     'MachineConfigArgs',
+    'MaintenanceUpdatePolicyArgs',
+    'MaintenanceWindowArgs',
     'NetworkConfigArgs',
+    'ObservabilityInstanceConfigArgs',
+    'PscConfigArgs',
+    'PscInstanceConfigArgs',
     'QuantityBasedRetentionArgs',
     'QueryInsightsInstanceConfigArgs',
     'ReadPoolConfigArgs',
@@ -28,6 +39,30 @@ __all__ = [
     'UserPasswordArgs',
     'WeeklyScheduleArgs',
 ]
+
+@pulumi.input_type
+class AuthorizedNetworkArgs:
+    def __init__(__self__, *,
+                 cidr_range: Optional[pulumi.Input[str]] = None):
+        """
+        AuthorizedNetwork contains metadata for an authorized network.
+        :param pulumi.Input[str] cidr_range: CIDR range for one authorzied network of the instance.
+        """
+        if cidr_range is not None:
+            pulumi.set(__self__, "cidr_range", cidr_range)
+
+    @property
+    @pulumi.getter(name="cidrRange")
+    def cidr_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        CIDR range for one authorzied network of the instance.
+        """
+        return pulumi.get(self, "cidr_range")
+
+    @cidr_range.setter
+    def cidr_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cidr_range", value)
+
 
 @pulumi.input_type
 class AutomatedBackupPolicyArgs:
@@ -262,6 +297,62 @@ class ContinuousBackupConfigArgs:
 
 
 @pulumi.input_type
+class DenyMaintenancePeriodArgs:
+    def __init__(__self__, *,
+                 end_date: Optional[pulumi.Input['GoogleTypeDateArgs']] = None,
+                 start_date: Optional[pulumi.Input['GoogleTypeDateArgs']] = None,
+                 time: Optional[pulumi.Input['GoogleTypeTimeOfDayArgs']] = None):
+        """
+        DenyMaintenancePeriod definition. Excepting emergencies, maintenance will not be scheduled to start within this deny period. The start_date must be less than the end_date.
+        :param pulumi.Input['GoogleTypeDateArgs'] end_date: Deny period end date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year for recurring. Date matching this period will have to be before the end.
+        :param pulumi.Input['GoogleTypeDateArgs'] start_date: Deny period start date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year for recurring. Date matching this period will have to be the same or after the start.
+        :param pulumi.Input['GoogleTypeTimeOfDayArgs'] time: Time in UTC when the deny period starts on start_date and ends on end_date. This can be: * Full time. * All zeros for 00:00:00 UTC
+        """
+        if end_date is not None:
+            pulumi.set(__self__, "end_date", end_date)
+        if start_date is not None:
+            pulumi.set(__self__, "start_date", start_date)
+        if time is not None:
+            pulumi.set(__self__, "time", time)
+
+    @property
+    @pulumi.getter(name="endDate")
+    def end_date(self) -> Optional[pulumi.Input['GoogleTypeDateArgs']]:
+        """
+        Deny period end date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year for recurring. Date matching this period will have to be before the end.
+        """
+        return pulumi.get(self, "end_date")
+
+    @end_date.setter
+    def end_date(self, value: Optional[pulumi.Input['GoogleTypeDateArgs']]):
+        pulumi.set(self, "end_date", value)
+
+    @property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> Optional[pulumi.Input['GoogleTypeDateArgs']]:
+        """
+        Deny period start date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year for recurring. Date matching this period will have to be the same or after the start.
+        """
+        return pulumi.get(self, "start_date")
+
+    @start_date.setter
+    def start_date(self, value: Optional[pulumi.Input['GoogleTypeDateArgs']]):
+        pulumi.set(self, "start_date", value)
+
+    @property
+    @pulumi.getter
+    def time(self) -> Optional[pulumi.Input['GoogleTypeTimeOfDayArgs']]:
+        """
+        Time in UTC when the deny period starts on start_date and ends on end_date. This can be: * Full time. * All zeros for 00:00:00 UTC
+        """
+        return pulumi.get(self, "time")
+
+    @time.setter
+    def time(self, value: Optional[pulumi.Input['GoogleTypeTimeOfDayArgs']]):
+        pulumi.set(self, "time", value)
+
+
+@pulumi.input_type
 class EncryptionConfigArgs:
     def __init__(__self__, *,
                  kms_key_name: Optional[pulumi.Input[str]] = None):
@@ -283,6 +374,80 @@ class EncryptionConfigArgs:
     @kms_key_name.setter
     def kms_key_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kms_key_name", value)
+
+
+@pulumi.input_type
+class GeminiClusterConfigArgs:
+    def __init__(__self__):
+        """
+        Cluster level configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+        """
+        pass
+
+
+@pulumi.input_type
+class GeminiInstanceConfigArgs:
+    def __init__(__self__):
+        """
+        Instance level configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+        """
+        pass
+
+
+@pulumi.input_type
+class GoogleTypeDateArgs:
+    def __init__(__self__, *,
+                 day: Optional[pulumi.Input[int]] = None,
+                 month: Optional[pulumi.Input[int]] = None,
+                 year: Optional[pulumi.Input[int]] = None):
+        """
+        Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        :param pulumi.Input[int] day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+        if month is not None:
+            pulumi.set(__self__, "month", month)
+        if year is not None:
+            pulumi.set(__self__, "year", year)
+
+    @property
+    @pulumi.getter
+    def day(self) -> Optional[pulumi.Input[int]]:
+        """
+        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        """
+        return pulumi.get(self, "day")
+
+    @day.setter
+    def day(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "day", value)
+
+    @property
+    @pulumi.getter
+    def month(self) -> Optional[pulumi.Input[int]]:
+        """
+        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        """
+        return pulumi.get(self, "month")
+
+    @month.setter
+    def month(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "month", value)
+
+    @property
+    @pulumi.getter
+    def year(self) -> Optional[pulumi.Input[int]]:
+        """
+        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        return pulumi.get(self, "year")
+
+    @year.setter
+    def year(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "year", value)
 
 
 @pulumi.input_type
@@ -358,6 +523,46 @@ class GoogleTypeTimeOfDayArgs:
 
 
 @pulumi.input_type
+class InstanceNetworkConfigArgs:
+    def __init__(__self__, *,
+                 authorized_external_networks: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizedNetworkArgs']]]] = None,
+                 enable_public_ip: Optional[pulumi.Input[bool]] = None):
+        """
+        Metadata related to instance level network configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['AuthorizedNetworkArgs']]] authorized_external_networks: Optional. A list of external network authorized to access this instance.
+        :param pulumi.Input[bool] enable_public_ip: Optional. Enabling public ip for the instance.
+        """
+        if authorized_external_networks is not None:
+            pulumi.set(__self__, "authorized_external_networks", authorized_external_networks)
+        if enable_public_ip is not None:
+            pulumi.set(__self__, "enable_public_ip", enable_public_ip)
+
+    @property
+    @pulumi.getter(name="authorizedExternalNetworks")
+    def authorized_external_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizedNetworkArgs']]]]:
+        """
+        Optional. A list of external network authorized to access this instance.
+        """
+        return pulumi.get(self, "authorized_external_networks")
+
+    @authorized_external_networks.setter
+    def authorized_external_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizedNetworkArgs']]]]):
+        pulumi.set(self, "authorized_external_networks", value)
+
+    @property
+    @pulumi.getter(name="enablePublicIp")
+    def enable_public_ip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Enabling public ip for the instance.
+        """
+        return pulumi.get(self, "enable_public_ip")
+
+    @enable_public_ip.setter
+    def enable_public_ip(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_public_ip", value)
+
+
+@pulumi.input_type
 class MachineConfigArgs:
     def __init__(__self__, *,
                  cpu_count: Optional[pulumi.Input[int]] = None):
@@ -382,6 +587,86 @@ class MachineConfigArgs:
 
 
 @pulumi.input_type
+class MaintenanceUpdatePolicyArgs:
+    def __init__(__self__, *,
+                 deny_maintenance_periods: Optional[pulumi.Input[Sequence[pulumi.Input['DenyMaintenancePeriodArgs']]]] = None,
+                 maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input['MaintenanceWindowArgs']]]] = None):
+        """
+        MaintenanceUpdatePolicy defines the policy for system updates.
+        :param pulumi.Input[Sequence[pulumi.Input['DenyMaintenancePeriodArgs']]] deny_maintenance_periods: Periods to deny maintenance. Currently limited to 1.
+        :param pulumi.Input[Sequence[pulumi.Input['MaintenanceWindowArgs']]] maintenance_windows: Preferred windows to perform maintenance. Currently limited to 1.
+        """
+        if deny_maintenance_periods is not None:
+            pulumi.set(__self__, "deny_maintenance_periods", deny_maintenance_periods)
+        if maintenance_windows is not None:
+            pulumi.set(__self__, "maintenance_windows", maintenance_windows)
+
+    @property
+    @pulumi.getter(name="denyMaintenancePeriods")
+    def deny_maintenance_periods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DenyMaintenancePeriodArgs']]]]:
+        """
+        Periods to deny maintenance. Currently limited to 1.
+        """
+        return pulumi.get(self, "deny_maintenance_periods")
+
+    @deny_maintenance_periods.setter
+    def deny_maintenance_periods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DenyMaintenancePeriodArgs']]]]):
+        pulumi.set(self, "deny_maintenance_periods", value)
+
+    @property
+    @pulumi.getter(name="maintenanceWindows")
+    def maintenance_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MaintenanceWindowArgs']]]]:
+        """
+        Preferred windows to perform maintenance. Currently limited to 1.
+        """
+        return pulumi.get(self, "maintenance_windows")
+
+    @maintenance_windows.setter
+    def maintenance_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MaintenanceWindowArgs']]]]):
+        pulumi.set(self, "maintenance_windows", value)
+
+
+@pulumi.input_type
+class MaintenanceWindowArgs:
+    def __init__(__self__, *,
+                 day: Optional[pulumi.Input['MaintenanceWindowDay']] = None,
+                 start_time: Optional[pulumi.Input['GoogleTypeTimeOfDayArgs']] = None):
+        """
+        MaintenanceWindow specifies a preferred day and time for maintenance.
+        :param pulumi.Input['MaintenanceWindowDay'] day: Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+        :param pulumi.Input['GoogleTypeTimeOfDayArgs'] start_time: Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.
+        """
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter
+    def day(self) -> Optional[pulumi.Input['MaintenanceWindowDay']]:
+        """
+        Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+        """
+        return pulumi.get(self, "day")
+
+    @day.setter
+    def day(self, value: Optional[pulumi.Input['MaintenanceWindowDay']]):
+        pulumi.set(self, "day", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input['GoogleTypeTimeOfDayArgs']]:
+        """
+        Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input['GoogleTypeTimeOfDayArgs']]):
+        pulumi.set(self, "start_time", value)
+
+
+@pulumi.input_type
 class NetworkConfigArgs:
     def __init__(__self__, *,
                  allocated_ip_range: Optional[pulumi.Input[str]] = None,
@@ -389,7 +674,7 @@ class NetworkConfigArgs:
         """
         Metadata related to network configuration.
         :param pulumi.Input[str] allocated_ip_range: Optional. Name of the allocated IP range for the private IP AlloyDB cluster, for example: "google-managed-services-default". If set, the instance IPs for this cluster will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. Field name is intended to be consistent with Cloud SQL.
-        :param pulumi.Input[str] network: Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+        :param pulumi.Input[str] network: Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project_number}/global/networks/{network_id}`. This is required to create a cluster.
         """
         if allocated_ip_range is not None:
             pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
@@ -412,13 +697,181 @@ class NetworkConfigArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+        Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project_number}/global/networks/{network_id}`. This is required to create a cluster.
         """
         return pulumi.get(self, "network")
 
     @network.setter
     def network(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network", value)
+
+
+@pulumi.input_type
+class ObservabilityInstanceConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 max_query_string_length: Optional[pulumi.Input[int]] = None,
+                 preserve_comments: Optional[pulumi.Input[bool]] = None,
+                 query_plans_per_minute: Optional[pulumi.Input[int]] = None,
+                 record_application_tags: Optional[pulumi.Input[bool]] = None,
+                 track_active_queries: Optional[pulumi.Input[bool]] = None,
+                 track_wait_events: Optional[pulumi.Input[bool]] = None):
+        """
+        Observability Instance specific configuration.
+        :param pulumi.Input[bool] enabled: Observability feature status for an instance. This is a read-only flag and modifiable only by producer API. This flag is turned "off" by default.
+        :param pulumi.Input[int] max_query_string_length: Query string length. The default value is 10k.
+        :param pulumi.Input[bool] preserve_comments: Preserve comments in query string for an instance. This flag is turned "off" by default.
+        :param pulumi.Input[int] query_plans_per_minute: Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 to 20 is considered valid.
+        :param pulumi.Input[bool] record_application_tags: Record application tags for an instance. This flag is turned "off" by default.
+        :param pulumi.Input[bool] track_active_queries: Track actively running queries on the instance. If not set, this flag is "off" by default.
+        :param pulumi.Input[bool] track_wait_events: Track wait events during query execution for an instance. This flag is turned "on" by default but tracking is enabled only after observability enabled flag is also turned on.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if max_query_string_length is not None:
+            pulumi.set(__self__, "max_query_string_length", max_query_string_length)
+        if preserve_comments is not None:
+            pulumi.set(__self__, "preserve_comments", preserve_comments)
+        if query_plans_per_minute is not None:
+            pulumi.set(__self__, "query_plans_per_minute", query_plans_per_minute)
+        if record_application_tags is not None:
+            pulumi.set(__self__, "record_application_tags", record_application_tags)
+        if track_active_queries is not None:
+            pulumi.set(__self__, "track_active_queries", track_active_queries)
+        if track_wait_events is not None:
+            pulumi.set(__self__, "track_wait_events", track_wait_events)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Observability feature status for an instance. This is a read-only flag and modifiable only by producer API. This flag is turned "off" by default.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="maxQueryStringLength")
+    def max_query_string_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Query string length. The default value is 10k.
+        """
+        return pulumi.get(self, "max_query_string_length")
+
+    @max_query_string_length.setter
+    def max_query_string_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_query_string_length", value)
+
+    @property
+    @pulumi.getter(name="preserveComments")
+    def preserve_comments(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Preserve comments in query string for an instance. This flag is turned "off" by default.
+        """
+        return pulumi.get(self, "preserve_comments")
+
+    @preserve_comments.setter
+    def preserve_comments(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "preserve_comments", value)
+
+    @property
+    @pulumi.getter(name="queryPlansPerMinute")
+    def query_plans_per_minute(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 to 20 is considered valid.
+        """
+        return pulumi.get(self, "query_plans_per_minute")
+
+    @query_plans_per_minute.setter
+    def query_plans_per_minute(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "query_plans_per_minute", value)
+
+    @property
+    @pulumi.getter(name="recordApplicationTags")
+    def record_application_tags(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Record application tags for an instance. This flag is turned "off" by default.
+        """
+        return pulumi.get(self, "record_application_tags")
+
+    @record_application_tags.setter
+    def record_application_tags(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "record_application_tags", value)
+
+    @property
+    @pulumi.getter(name="trackActiveQueries")
+    def track_active_queries(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Track actively running queries on the instance. If not set, this flag is "off" by default.
+        """
+        return pulumi.get(self, "track_active_queries")
+
+    @track_active_queries.setter
+    def track_active_queries(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "track_active_queries", value)
+
+    @property
+    @pulumi.getter(name="trackWaitEvents")
+    def track_wait_events(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Track wait events during query execution for an instance. This flag is turned "on" by default but tracking is enabled only after observability enabled flag is also turned on.
+        """
+        return pulumi.get(self, "track_wait_events")
+
+    @track_wait_events.setter
+    def track_wait_events(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "track_wait_events", value)
+
+
+@pulumi.input_type
+class PscConfigArgs:
+    def __init__(__self__, *,
+                 psc_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        PscConfig contains PSC related configuration at a cluster level.
+        :param pulumi.Input[bool] psc_enabled: Optional. Create an instance that allows connections from Private Service Connect endpoints to the instance.
+        """
+        if psc_enabled is not None:
+            pulumi.set(__self__, "psc_enabled", psc_enabled)
+
+    @property
+    @pulumi.getter(name="pscEnabled")
+    def psc_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Create an instance that allows connections from Private Service Connect endpoints to the instance.
+        """
+        return pulumi.get(self, "psc_enabled")
+
+    @psc_enabled.setter
+    def psc_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "psc_enabled", value)
+
+
+@pulumi.input_type
+class PscInstanceConfigArgs:
+    def __init__(__self__, *,
+                 allowed_consumer_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        PscInstanceConfig contains PSC related configuration at an instance level.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_consumer_projects: Optional. List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
+        """
+        if allowed_consumer_projects is not None:
+            pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
+
+    @property
+    @pulumi.getter(name="allowedConsumerProjects")
+    def allowed_consumer_projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
+        """
+        return pulumi.get(self, "allowed_consumer_projects")
+
+    @allowed_consumer_projects.setter
+    def allowed_consumer_projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_consumer_projects", value)
 
 
 @pulumi.input_type

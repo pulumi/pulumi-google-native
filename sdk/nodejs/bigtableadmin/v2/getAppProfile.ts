@@ -28,6 +28,10 @@ export interface GetAppProfileArgs {
 
 export interface GetAppProfileResult {
     /**
+     * Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+     */
+    readonly dataBoostIsolationReadOnly: outputs.bigtableadmin.v2.DataBoostIsolationReadOnlyResponse;
+    /**
      * Long form description of the use case for this AppProfile.
      */
     readonly description: string;

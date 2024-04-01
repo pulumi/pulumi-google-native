@@ -25,7 +25,7 @@ type Consent struct {
 	Location   pulumi.StringOutput `pulumi:"location"`
 	// Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
-	// Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
+	// Identifier. Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
 	Policies GoogleCloudHealthcareV1ConsentPolicyResponseArrayOutput `pulumi:"policies"`
@@ -113,7 +113,7 @@ type consentArgs struct {
 	Location   *string `pulumi:"location"`
 	// Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
 	Metadata map[string]string `pulumi:"metadata"`
-	// Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
+	// Identifier. Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
 	Name *string `pulumi:"name"`
 	// Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
 	Policies []GoogleCloudHealthcareV1ConsentPolicy `pulumi:"policies"`
@@ -137,7 +137,7 @@ type ConsentArgs struct {
 	Location   pulumi.StringPtrInput
 	// Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
 	Metadata pulumi.StringMapInput
-	// Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
+	// Identifier. Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
 	Name pulumi.StringPtrInput
 	// Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
 	Policies GoogleCloudHealthcareV1ConsentPolicyArrayInput
@@ -214,7 +214,7 @@ func (o ConsentOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Consent) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
-// Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
+// Identifier. Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
 func (o ConsentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Consent) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

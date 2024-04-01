@@ -42,6 +42,10 @@ export class AppProfile extends pulumi.CustomResource {
      */
     public readonly appProfileId!: pulumi.Output<string>;
     /**
+     * Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+     */
+    public readonly dataBoostIsolationReadOnly!: pulumi.Output<outputs.bigtableadmin.v2.DataBoostIsolationReadOnlyResponse>;
+    /**
      * Long form description of the use case for this AppProfile.
      */
     public readonly description!: pulumi.Output<string>;
@@ -94,6 +98,7 @@ export class AppProfile extends pulumi.CustomResource {
                 throw new Error("Missing required property 'instanceId'");
             }
             resourceInputs["appProfileId"] = args ? args.appProfileId : undefined;
+            resourceInputs["dataBoostIsolationReadOnly"] = args ? args.dataBoostIsolationReadOnly : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["ignoreWarnings"] = args ? args.ignoreWarnings : undefined;
@@ -106,6 +111,7 @@ export class AppProfile extends pulumi.CustomResource {
             resourceInputs["standardIsolation"] = args ? args.standardIsolation : undefined;
         } else {
             resourceInputs["appProfileId"] = undefined /*out*/;
+            resourceInputs["dataBoostIsolationReadOnly"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["ignoreWarnings"] = undefined /*out*/;
@@ -132,6 +138,10 @@ export interface AppProfileArgs {
      * Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`.
      */
     appProfileId: pulumi.Input<string>;
+    /**
+     * Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+     */
+    dataBoostIsolationReadOnly?: pulumi.Input<inputs.bigtableadmin.v2.DataBoostIsolationReadOnlyArgs>;
     /**
      * Long form description of the use case for this AppProfile.
      */

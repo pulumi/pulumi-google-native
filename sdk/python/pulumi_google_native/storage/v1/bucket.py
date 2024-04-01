@@ -26,6 +26,7 @@ class BucketArgs:
                  enable_object_retention: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input['BucketEncryptionArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 hierarchical_namespace: Optional[pulumi.Input['BucketHierarchicalNamespaceArgs']] = None,
                  iam_configuration: Optional[pulumi.Input['BucketIamConfigurationArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -66,6 +67,7 @@ class BucketArgs:
         :param pulumi.Input[bool] enable_object_retention: When set to true, object retention is enabled for this bucket.
         :param pulumi.Input['BucketEncryptionArgs'] encryption: Encryption configuration for a bucket.
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for the bucket.
+        :param pulumi.Input['BucketHierarchicalNamespaceArgs'] hierarchical_namespace: The bucket's hierarchical namespace configuration.
         :param pulumi.Input['BucketIamConfigurationArgs'] iam_configuration: The bucket's IAM configuration.
         :param pulumi.Input[str] id: The ID of the bucket. For buckets, the id and name properties are the same.
         :param pulumi.Input[str] kind: The kind of item this is. For buckets, this is always storage#bucket.
@@ -115,6 +117,8 @@ class BucketArgs:
             pulumi.set(__self__, "encryption", encryption)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if hierarchical_namespace is not None:
+            pulumi.set(__self__, "hierarchical_namespace", hierarchical_namespace)
         if iam_configuration is not None:
             pulumi.set(__self__, "iam_configuration", iam_configuration)
         if id is not None:
@@ -291,6 +295,18 @@ class BucketArgs:
     @etag.setter
     def etag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter(name="hierarchicalNamespace")
+    def hierarchical_namespace(self) -> Optional[pulumi.Input['BucketHierarchicalNamespaceArgs']]:
+        """
+        The bucket's hierarchical namespace configuration.
+        """
+        return pulumi.get(self, "hierarchical_namespace")
+
+    @hierarchical_namespace.setter
+    def hierarchical_namespace(self, value: Optional[pulumi.Input['BucketHierarchicalNamespaceArgs']]):
+        pulumi.set(self, "hierarchical_namespace", value)
 
     @property
     @pulumi.getter(name="iamConfiguration")
@@ -644,6 +660,7 @@ class Bucket(pulumi.CustomResource):
                  enable_object_retention: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input[pulumi.InputType['BucketEncryptionArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 hierarchical_namespace: Optional[pulumi.Input[pulumi.InputType['BucketHierarchicalNamespaceArgs']]] = None,
                  iam_configuration: Optional[pulumi.Input[pulumi.InputType['BucketIamConfigurationArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -688,6 +705,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_object_retention: When set to true, object retention is enabled for this bucket.
         :param pulumi.Input[pulumi.InputType['BucketEncryptionArgs']] encryption: Encryption configuration for a bucket.
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for the bucket.
+        :param pulumi.Input[pulumi.InputType['BucketHierarchicalNamespaceArgs']] hierarchical_namespace: The bucket's hierarchical namespace configuration.
         :param pulumi.Input[pulumi.InputType['BucketIamConfigurationArgs']] iam_configuration: The bucket's IAM configuration.
         :param pulumi.Input[str] id: The ID of the bucket. For buckets, the id and name properties are the same.
         :param pulumi.Input[str] kind: The kind of item this is. For buckets, this is always storage#bucket.
@@ -751,6 +769,7 @@ class Bucket(pulumi.CustomResource):
                  enable_object_retention: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input[pulumi.InputType['BucketEncryptionArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 hierarchical_namespace: Optional[pulumi.Input[pulumi.InputType['BucketHierarchicalNamespaceArgs']]] = None,
                  iam_configuration: Optional[pulumi.Input[pulumi.InputType['BucketIamConfigurationArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -798,6 +817,7 @@ class Bucket(pulumi.CustomResource):
             __props__.__dict__["enable_object_retention"] = enable_object_retention
             __props__.__dict__["encryption"] = encryption
             __props__.__dict__["etag"] = etag
+            __props__.__dict__["hierarchical_namespace"] = hierarchical_namespace
             __props__.__dict__["iam_configuration"] = iam_configuration
             __props__.__dict__["id"] = id
             __props__.__dict__["kind"] = kind
@@ -860,6 +880,7 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["enable_object_retention"] = None
         __props__.__dict__["encryption"] = None
         __props__.__dict__["etag"] = None
+        __props__.__dict__["hierarchical_namespace"] = None
         __props__.__dict__["iam_configuration"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["labels"] = None
@@ -968,6 +989,14 @@ class Bucket(pulumi.CustomResource):
         HTTP 1.1 Entity tag for the bucket.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="hierarchicalNamespace")
+    def hierarchical_namespace(self) -> pulumi.Output['outputs.BucketHierarchicalNamespaceResponse']:
+        """
+        The bucket's hierarchical namespace configuration.
+        """
+        return pulumi.get(self, "hierarchical_namespace")
 
     @property
     @pulumi.getter(name="iamConfiguration")

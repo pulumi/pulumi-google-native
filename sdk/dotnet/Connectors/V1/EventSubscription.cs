@@ -79,6 +79,12 @@ namespace Pulumi.GoogleNative.Connectors.V1
         public Output<string> SubscriberLink { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Configuration for configuring the trigger
+        /// </summary>
+        [Output("triggerConfigVariables")]
+        public Output<ImmutableArray<Outputs.ConfigVariableResponse>> TriggerConfigVariables { get; private set; } = null!;
+
+        /// <summary>
         /// Updated time.
         /// </summary>
         [Output("updateTime")]
@@ -186,6 +192,18 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         [Input("subscriberLink")]
         public Input<string>? SubscriberLink { get; set; }
+
+        [Input("triggerConfigVariables")]
+        private InputList<Inputs.ConfigVariableArgs>? _triggerConfigVariables;
+
+        /// <summary>
+        /// Optional. Configuration for configuring the trigger
+        /// </summary>
+        public InputList<Inputs.ConfigVariableArgs> TriggerConfigVariables
+        {
+            get => _triggerConfigVariables ?? (_triggerConfigVariables = new InputList<Inputs.ConfigVariableArgs>());
+            set => _triggerConfigVariables = value;
+        }
 
         public EventSubscriptionArgs()
         {

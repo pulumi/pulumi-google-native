@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.DLP.V2
     public static class GetOrganizationsDeidentifyTemplate
     {
         /// <summary>
-        /// Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+        /// Gets a DeidentifyTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
         /// </summary>
         public static Task<GetOrganizationsDeidentifyTemplateResult> InvokeAsync(GetOrganizationsDeidentifyTemplateArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationsDeidentifyTemplateResult>("google-native:dlp/v2:getOrganizationsDeidentifyTemplate", args ?? new GetOrganizationsDeidentifyTemplateArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+        /// Gets a DeidentifyTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
         /// </summary>
         public static Output<GetOrganizationsDeidentifyTemplateResult> Invoke(GetOrganizationsDeidentifyTemplateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationsDeidentifyTemplateResult>("google-native:dlp/v2:getOrganizationsDeidentifyTemplate", args ?? new GetOrganizationsDeidentifyTemplateInvokeArgs(), options.WithDefaults());

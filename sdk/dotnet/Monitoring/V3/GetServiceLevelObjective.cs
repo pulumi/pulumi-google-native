@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// </summary>
         public readonly double Goal;
         /// <summary>
-        /// Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
+        /// Identifier. Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
         /// </summary>
         public readonly string Name;
         /// <summary>

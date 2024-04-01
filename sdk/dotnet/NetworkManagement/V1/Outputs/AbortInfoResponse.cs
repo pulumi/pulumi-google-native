@@ -21,7 +21,11 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
         /// </summary>
         public readonly string Cause;
         /// <summary>
-        /// List of project IDs that the user has specified in the request but does not have permission to access network configs. Analysis is aborted in this case with the PERMISSION_DENIED cause.
+        /// IP address that caused the abort.
+        /// </summary>
+        public readonly string IpAddress;
+        /// <summary>
+        /// List of project IDs the user specified in the request but lacks access to. In this case, analysis is aborted with the PERMISSION_DENIED cause.
         /// </summary>
         public readonly ImmutableArray<string> ProjectsMissingPermission;
         /// <summary>
@@ -33,11 +37,14 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
         private AbortInfoResponse(
             string cause,
 
+            string ipAddress,
+
             ImmutableArray<string> projectsMissingPermission,
 
             string resourceUri)
         {
             Cause = cause;
+            IpAddress = ipAddress;
             ProjectsMissingPermission = projectsMissingPermission;
             ResourceUri = resourceUri;
         }

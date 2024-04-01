@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetFunctionResult:
-    def __init__(__self__, build_config=None, description=None, environment=None, event_trigger=None, kms_key_name=None, labels=None, name=None, satisfies_pzs=None, service_config=None, state=None, state_messages=None, update_time=None, url=None):
+    def __init__(__self__, build_config=None, create_time=None, description=None, environment=None, event_trigger=None, kms_key_name=None, labels=None, name=None, satisfies_pzs=None, service_config=None, state=None, state_messages=None, update_time=None, upgrade_info=None, url=None):
         if build_config and not isinstance(build_config, dict):
             raise TypeError("Expected argument 'build_config' to be a dict")
         pulumi.set(__self__, "build_config", build_config)
+        if create_time and not isinstance(create_time, str):
+            raise TypeError("Expected argument 'create_time' to be a str")
+        pulumi.set(__self__, "create_time", create_time)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -56,6 +59,9 @@ class GetFunctionResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+        if upgrade_info and not isinstance(upgrade_info, dict):
+            raise TypeError("Expected argument 'upgrade_info' to be a dict")
+        pulumi.set(__self__, "upgrade_info", upgrade_info)
         if url and not isinstance(url, str):
             raise TypeError("Expected argument 'url' to be a str")
         pulumi.set(__self__, "url", url)
@@ -67,6 +73,14 @@ class GetFunctionResult:
         Describes the Build step of the function that builds a container from the given source.
         """
         return pulumi.get(self, "build_config")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The create timestamp of a Cloud Function. This is only applicable to 2nd Gen functions.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
@@ -157,6 +171,14 @@ class GetFunctionResult:
         return pulumi.get(self, "update_time")
 
     @property
+    @pulumi.getter(name="upgradeInfo")
+    def upgrade_info(self) -> 'outputs.UpgradeInfoResponse':
+        """
+        UpgradeInfo for this Cloud Function
+        """
+        return pulumi.get(self, "upgrade_info")
+
+    @property
     @pulumi.getter
     def url(self) -> str:
         """
@@ -172,6 +194,7 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             yield self
         return GetFunctionResult(
             build_config=self.build_config,
+            create_time=self.create_time,
             description=self.description,
             environment=self.environment,
             event_trigger=self.event_trigger,
@@ -183,12 +206,14 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             state=self.state,
             state_messages=self.state_messages,
             update_time=self.update_time,
+            upgrade_info=self.upgrade_info,
             url=self.url)
 
 
 def get_function(function_id: Optional[str] = None,
                  location: Optional[str] = None,
                  project: Optional[str] = None,
+                 revision: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFunctionResult:
     """
     Returns a function with the given name from the requested project.
@@ -197,11 +222,13 @@ def get_function(function_id: Optional[str] = None,
     __args__['functionId'] = function_id
     __args__['location'] = location
     __args__['project'] = project
+    __args__['revision'] = revision
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:cloudfunctions/v2alpha:getFunction', __args__, opts=opts, typ=GetFunctionResult).value
 
     return AwaitableGetFunctionResult(
         build_config=pulumi.get(__ret__, 'build_config'),
+        create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
         environment=pulumi.get(__ret__, 'environment'),
         event_trigger=pulumi.get(__ret__, 'event_trigger'),
@@ -213,6 +240,7 @@ def get_function(function_id: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'),
         state_messages=pulumi.get(__ret__, 'state_messages'),
         update_time=pulumi.get(__ret__, 'update_time'),
+        upgrade_info=pulumi.get(__ret__, 'upgrade_info'),
         url=pulumi.get(__ret__, 'url'))
 
 
@@ -220,6 +248,7 @@ def get_function(function_id: Optional[str] = None,
 def get_function_output(function_id: Optional[pulumi.Input[str]] = None,
                         location: Optional[pulumi.Input[str]] = None,
                         project: Optional[pulumi.Input[Optional[str]]] = None,
+                        revision: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFunctionResult]:
     """
     Returns a function with the given name from the requested project.

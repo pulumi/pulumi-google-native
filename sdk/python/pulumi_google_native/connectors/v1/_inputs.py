@@ -14,24 +14,32 @@ __all__ = [
     'AuditConfigArgs',
     'AuditLogConfigArgs',
     'AuthConfigArgs',
+    'AuthorizationCodeLinkArgs',
     'BindingArgs',
+    'ConfigVariableTemplateArgs',
     'ConfigVariableArgs',
     'ConnectorsLogConfigArgs',
+    'DeadLetterConfigArgs',
     'DestinationConfigArgs',
     'DestinationArgs',
     'EncryptionKeyArgs',
     'EndPointArgs',
+    'EnumOptionArgs',
     'EventSubscriptionDestinationArgs',
     'EventingConfigArgs',
     'ExprArgs',
+    'FieldComparisonArgs',
     'HeaderArgs',
     'JMSArgs',
     'JwtClaimsArgs',
     'LockConfigArgs',
+    'LogicalExpressionArgs',
     'NodeConfigArgs',
     'Oauth2AuthCodeFlowArgs',
     'Oauth2ClientCredentialsArgs',
     'Oauth2JwtBearerArgs',
+    'ResourceArgs',
+    'RoleGrantArgs',
     'SecretArgs',
     'SshPublicKeyArgs',
     'SslConfigArgs',
@@ -255,6 +263,78 @@ class AuthConfigArgs:
 
 
 @pulumi.input_type
+class AuthorizationCodeLinkArgs:
+    def __init__(__self__, *,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 enable_pkce: Optional[pulumi.Input[bool]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 uri: Optional[pulumi.Input[str]] = None):
+        """
+        This configuration captures the details required to render an authorization link for the OAuth Authorization Code Flow.
+        :param pulumi.Input[str] client_id: The client ID assigned to the Google Cloud Connectors OAuth app for the connector data source.
+        :param pulumi.Input[bool] enable_pkce: Whether to enable PKCE for the auth code flow.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The scopes for which the user will authorize Google Cloud Connectors on the connector data source.
+        :param pulumi.Input[str] uri: The base URI the user must click to trigger the authorization code login flow.
+        """
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if enable_pkce is not None:
+            pulumi.set(__self__, "enable_pkce", enable_pkce)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The client ID assigned to the Google Cloud Connectors OAuth app for the connector data source.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="enablePkce")
+    def enable_pkce(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable PKCE for the auth code flow.
+        """
+        return pulumi.get(self, "enable_pkce")
+
+    @enable_pkce.setter
+    def enable_pkce(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_pkce", value)
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The scopes for which the user will authorize Google Cloud Connectors on the connector data source.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "scopes", value)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The base URI the user must click to trigger the authorization code login flow.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uri", value)
+
+
+@pulumi.input_type
 class BindingArgs:
     def __init__(__self__, *,
                  condition: Optional[pulumi.Input['ExprArgs']] = None,
@@ -263,8 +343,8 @@ class BindingArgs:
         """
         Associates `members`, or principals, with a `role`.
         :param pulumi.Input['ExprArgs'] condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-        :param pulumi.Input[str] role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+        :param pulumi.Input[str] role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -289,7 +369,7 @@ class BindingArgs:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         """
         return pulumi.get(self, "members")
 
@@ -301,13 +381,245 @@ class BindingArgs:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
-        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         return pulumi.get(self, "role")
 
     @role.setter
     def role(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role", value)
+
+
+@pulumi.input_type
+class ConfigVariableTemplateArgs:
+    def __init__(__self__, *,
+                 authorization_code_link: Optional[pulumi.Input['AuthorizationCodeLinkArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 enum_options: Optional[pulumi.Input[Sequence[pulumi.Input['EnumOptionArgs']]]] = None,
+                 enum_source: Optional[pulumi.Input['ConfigVariableTemplateEnumSource']] = None,
+                 is_advanced: Optional[pulumi.Input[bool]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 location_type: Optional[pulumi.Input['ConfigVariableTemplateLocationType']] = None,
+                 required: Optional[pulumi.Input[bool]] = None,
+                 required_condition: Optional[pulumi.Input['LogicalExpressionArgs']] = None,
+                 role_grant: Optional[pulumi.Input['RoleGrantArgs']] = None,
+                 state: Optional[pulumi.Input['ConfigVariableTemplateState']] = None,
+                 validation_regex: Optional[pulumi.Input[str]] = None,
+                 value_type: Optional[pulumi.Input['ConfigVariableTemplateValueType']] = None):
+        """
+        ConfigVariableTemplate provides metadata about a `ConfigVariable` that is used in a Connection.
+        :param pulumi.Input['AuthorizationCodeLinkArgs'] authorization_code_link: Authorization code link options. To be populated if `ValueType` is `AUTHORIZATION_CODE`
+        :param pulumi.Input[str] description: Description.
+        :param pulumi.Input[str] display_name: Display name of the parameter.
+        :param pulumi.Input[Sequence[pulumi.Input['EnumOptionArgs']]] enum_options: Enum options. To be populated if `ValueType` is `ENUM`
+        :param pulumi.Input['ConfigVariableTemplateEnumSource'] enum_source: Optional. enum source denotes the source of api to fill the enum options
+        :param pulumi.Input[bool] is_advanced: Indicates if current template is part of advanced settings
+        :param pulumi.Input[str] key: Key of the config variable.
+        :param pulumi.Input['ConfigVariableTemplateLocationType'] location_type: Optional. Location Tyep denotes where this value should be sent in BYOC connections.
+        :param pulumi.Input[bool] required: Flag represents that this `ConfigVariable` must be provided for a connection.
+        :param pulumi.Input['LogicalExpressionArgs'] required_condition: Condition under which a field would be required. The condition can be represented in the form of a logical expression.
+        :param pulumi.Input['RoleGrantArgs'] role_grant: Role grant configuration for the config variable.
+        :param pulumi.Input['ConfigVariableTemplateState'] state: State of the config variable.
+        :param pulumi.Input[str] validation_regex: Regular expression in RE2 syntax used for validating the `value` of a `ConfigVariable`.
+        :param pulumi.Input['ConfigVariableTemplateValueType'] value_type: Type of the parameter: string, int, bool etc. consider custom type for the benefit for the validation.
+        """
+        if authorization_code_link is not None:
+            pulumi.set(__self__, "authorization_code_link", authorization_code_link)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if enum_options is not None:
+            pulumi.set(__self__, "enum_options", enum_options)
+        if enum_source is not None:
+            pulumi.set(__self__, "enum_source", enum_source)
+        if is_advanced is not None:
+            pulumi.set(__self__, "is_advanced", is_advanced)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if location_type is not None:
+            pulumi.set(__self__, "location_type", location_type)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if required_condition is not None:
+            pulumi.set(__self__, "required_condition", required_condition)
+        if role_grant is not None:
+            pulumi.set(__self__, "role_grant", role_grant)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if validation_regex is not None:
+            pulumi.set(__self__, "validation_regex", validation_regex)
+        if value_type is not None:
+            pulumi.set(__self__, "value_type", value_type)
+
+    @property
+    @pulumi.getter(name="authorizationCodeLink")
+    def authorization_code_link(self) -> Optional[pulumi.Input['AuthorizationCodeLinkArgs']]:
+        """
+        Authorization code link options. To be populated if `ValueType` is `AUTHORIZATION_CODE`
+        """
+        return pulumi.get(self, "authorization_code_link")
+
+    @authorization_code_link.setter
+    def authorization_code_link(self, value: Optional[pulumi.Input['AuthorizationCodeLinkArgs']]):
+        pulumi.set(self, "authorization_code_link", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Display name of the parameter.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="enumOptions")
+    def enum_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EnumOptionArgs']]]]:
+        """
+        Enum options. To be populated if `ValueType` is `ENUM`
+        """
+        return pulumi.get(self, "enum_options")
+
+    @enum_options.setter
+    def enum_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EnumOptionArgs']]]]):
+        pulumi.set(self, "enum_options", value)
+
+    @property
+    @pulumi.getter(name="enumSource")
+    def enum_source(self) -> Optional[pulumi.Input['ConfigVariableTemplateEnumSource']]:
+        """
+        Optional. enum source denotes the source of api to fill the enum options
+        """
+        return pulumi.get(self, "enum_source")
+
+    @enum_source.setter
+    def enum_source(self, value: Optional[pulumi.Input['ConfigVariableTemplateEnumSource']]):
+        pulumi.set(self, "enum_source", value)
+
+    @property
+    @pulumi.getter(name="isAdvanced")
+    def is_advanced(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates if current template is part of advanced settings
+        """
+        return pulumi.get(self, "is_advanced")
+
+    @is_advanced.setter
+    def is_advanced(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_advanced", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Key of the config variable.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter(name="locationType")
+    def location_type(self) -> Optional[pulumi.Input['ConfigVariableTemplateLocationType']]:
+        """
+        Optional. Location Tyep denotes where this value should be sent in BYOC connections.
+        """
+        return pulumi.get(self, "location_type")
+
+    @location_type.setter
+    def location_type(self, value: Optional[pulumi.Input['ConfigVariableTemplateLocationType']]):
+        pulumi.set(self, "location_type", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag represents that this `ConfigVariable` must be provided for a connection.
+        """
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required", value)
+
+    @property
+    @pulumi.getter(name="requiredCondition")
+    def required_condition(self) -> Optional[pulumi.Input['LogicalExpressionArgs']]:
+        """
+        Condition under which a field would be required. The condition can be represented in the form of a logical expression.
+        """
+        return pulumi.get(self, "required_condition")
+
+    @required_condition.setter
+    def required_condition(self, value: Optional[pulumi.Input['LogicalExpressionArgs']]):
+        pulumi.set(self, "required_condition", value)
+
+    @property
+    @pulumi.getter(name="roleGrant")
+    def role_grant(self) -> Optional[pulumi.Input['RoleGrantArgs']]:
+        """
+        Role grant configuration for the config variable.
+        """
+        return pulumi.get(self, "role_grant")
+
+    @role_grant.setter
+    def role_grant(self, value: Optional[pulumi.Input['RoleGrantArgs']]):
+        pulumi.set(self, "role_grant", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input['ConfigVariableTemplateState']]:
+        """
+        State of the config variable.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input['ConfigVariableTemplateState']]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="validationRegex")
+    def validation_regex(self) -> Optional[pulumi.Input[str]]:
+        """
+        Regular expression in RE2 syntax used for validating the `value` of a `ConfigVariable`.
+        """
+        return pulumi.get(self, "validation_regex")
+
+    @validation_regex.setter
+    def validation_regex(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validation_regex", value)
+
+    @property
+    @pulumi.getter(name="valueType")
+    def value_type(self) -> Optional[pulumi.Input['ConfigVariableTemplateValueType']]:
+        """
+        Type of the parameter: string, int, bool etc. consider custom type for the benefit for the validation.
+        """
+        return pulumi.get(self, "value_type")
+
+    @value_type.setter
+    def value_type(self, value: Optional[pulumi.Input['ConfigVariableTemplateValueType']]):
+        pulumi.set(self, "value_type", value)
 
 
 @pulumi.input_type
@@ -436,6 +748,46 @@ class ConnectorsLogConfigArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class DeadLetterConfigArgs:
+    def __init__(__self__, *,
+                 project: Optional[pulumi.Input[str]] = None,
+                 topic: Optional[pulumi.Input[str]] = None):
+        """
+        Dead Letter configuration details provided by the user.
+        :param pulumi.Input[str] project: Optional. Project which has the topic given.
+        :param pulumi.Input[str] topic: Optional. Topic to push events which couldn't be processed.
+        """
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if topic is not None:
+            pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Project which has the topic given.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Topic to push events which couldn't be processed.
+        """
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "topic", value)
 
 
 @pulumi.input_type
@@ -614,6 +966,46 @@ class EndPointArgs:
 
 
 @pulumi.input_type
+class EnumOptionArgs:
+    def __init__(__self__, *,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None):
+        """
+        EnumOption definition
+        :param pulumi.Input[str] display_name: Display name of the option.
+        :param pulumi.Input[str] id: Id of the option.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Display name of the option.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Id of the option.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
 class EventSubscriptionDestinationArgs:
     def __init__(__self__, *,
                  endpoint: Optional[pulumi.Input['EndPointArgs']] = None,
@@ -674,25 +1066,31 @@ class EventingConfigArgs:
     def __init__(__self__, *,
                  additional_variables: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]]] = None,
                  auth_config: Optional[pulumi.Input['AuthConfigArgs']] = None,
+                 dead_letter_config: Optional[pulumi.Input['DeadLetterConfigArgs']] = None,
                  enrichment_enabled: Optional[pulumi.Input[bool]] = None,
                  events_listener_ingress_endpoint: Optional[pulumi.Input[str]] = None,
                  listener_auth_config: Optional[pulumi.Input['AuthConfigArgs']] = None,
                  private_connectivity_enabled: Optional[pulumi.Input[bool]] = None,
+                 proxy_destination_config: Optional[pulumi.Input['DestinationConfigArgs']] = None,
                  registration_destination_config: Optional[pulumi.Input['DestinationConfigArgs']] = None):
         """
         Eventing Configuration of a connection
         :param pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]] additional_variables: Additional eventing related field values
         :param pulumi.Input['AuthConfigArgs'] auth_config: Auth details for the webhook adapter.
+        :param pulumi.Input['DeadLetterConfigArgs'] dead_letter_config: Optional. Dead letter configuration for eventing of a connection.
         :param pulumi.Input[bool] enrichment_enabled: Enrichment Enabled.
         :param pulumi.Input[str] events_listener_ingress_endpoint: Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
         :param pulumi.Input['AuthConfigArgs'] listener_auth_config: Optional. Auth details for the event listener.
         :param pulumi.Input[bool] private_connectivity_enabled: Optional. Private Connectivity Enabled.
+        :param pulumi.Input['DestinationConfigArgs'] proxy_destination_config: Optional. Proxy for Eventing auto-registration.
         :param pulumi.Input['DestinationConfigArgs'] registration_destination_config: Registration endpoint for auto registration.
         """
         if additional_variables is not None:
             pulumi.set(__self__, "additional_variables", additional_variables)
         if auth_config is not None:
             pulumi.set(__self__, "auth_config", auth_config)
+        if dead_letter_config is not None:
+            pulumi.set(__self__, "dead_letter_config", dead_letter_config)
         if enrichment_enabled is not None:
             pulumi.set(__self__, "enrichment_enabled", enrichment_enabled)
         if events_listener_ingress_endpoint is not None:
@@ -701,6 +1099,8 @@ class EventingConfigArgs:
             pulumi.set(__self__, "listener_auth_config", listener_auth_config)
         if private_connectivity_enabled is not None:
             pulumi.set(__self__, "private_connectivity_enabled", private_connectivity_enabled)
+        if proxy_destination_config is not None:
+            pulumi.set(__self__, "proxy_destination_config", proxy_destination_config)
         if registration_destination_config is not None:
             pulumi.set(__self__, "registration_destination_config", registration_destination_config)
 
@@ -727,6 +1127,18 @@ class EventingConfigArgs:
     @auth_config.setter
     def auth_config(self, value: Optional[pulumi.Input['AuthConfigArgs']]):
         pulumi.set(self, "auth_config", value)
+
+    @property
+    @pulumi.getter(name="deadLetterConfig")
+    def dead_letter_config(self) -> Optional[pulumi.Input['DeadLetterConfigArgs']]:
+        """
+        Optional. Dead letter configuration for eventing of a connection.
+        """
+        return pulumi.get(self, "dead_letter_config")
+
+    @dead_letter_config.setter
+    def dead_letter_config(self, value: Optional[pulumi.Input['DeadLetterConfigArgs']]):
+        pulumi.set(self, "dead_letter_config", value)
 
     @property
     @pulumi.getter(name="enrichmentEnabled")
@@ -775,6 +1187,18 @@ class EventingConfigArgs:
     @private_connectivity_enabled.setter
     def private_connectivity_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "private_connectivity_enabled", value)
+
+    @property
+    @pulumi.getter(name="proxyDestinationConfig")
+    def proxy_destination_config(self) -> Optional[pulumi.Input['DestinationConfigArgs']]:
+        """
+        Optional. Proxy for Eventing auto-registration.
+        """
+        return pulumi.get(self, "proxy_destination_config")
+
+    @proxy_destination_config.setter
+    def proxy_destination_config(self, value: Optional[pulumi.Input['DestinationConfigArgs']]):
+        pulumi.set(self, "proxy_destination_config", value)
 
     @property
     @pulumi.getter(name="registrationDestinationConfig")
@@ -859,6 +1283,94 @@ class ExprArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class FieldComparisonArgs:
+    def __init__(__self__, *,
+                 bool_value: Optional[pulumi.Input[bool]] = None,
+                 comparator: Optional[pulumi.Input['FieldComparisonComparator']] = None,
+                 int_value: Optional[pulumi.Input[str]] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 string_value: Optional[pulumi.Input[str]] = None):
+        """
+        Field that needs to be compared.
+        :param pulumi.Input[bool] bool_value: Boolean value
+        :param pulumi.Input['FieldComparisonComparator'] comparator: Comparator to use for comparing the field value.
+        :param pulumi.Input[str] int_value: Integer value
+        :param pulumi.Input[str] key: Key of the field.
+        :param pulumi.Input[str] string_value: String value
+        """
+        if bool_value is not None:
+            pulumi.set(__self__, "bool_value", bool_value)
+        if comparator is not None:
+            pulumi.set(__self__, "comparator", comparator)
+        if int_value is not None:
+            pulumi.set(__self__, "int_value", int_value)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if string_value is not None:
+            pulumi.set(__self__, "string_value", string_value)
+
+    @property
+    @pulumi.getter(name="boolValue")
+    def bool_value(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean value
+        """
+        return pulumi.get(self, "bool_value")
+
+    @bool_value.setter
+    def bool_value(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "bool_value", value)
+
+    @property
+    @pulumi.getter
+    def comparator(self) -> Optional[pulumi.Input['FieldComparisonComparator']]:
+        """
+        Comparator to use for comparing the field value.
+        """
+        return pulumi.get(self, "comparator")
+
+    @comparator.setter
+    def comparator(self, value: Optional[pulumi.Input['FieldComparisonComparator']]):
+        pulumi.set(self, "comparator", value)
+
+    @property
+    @pulumi.getter(name="intValue")
+    def int_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Integer value
+        """
+        return pulumi.get(self, "int_value")
+
+    @int_value.setter
+    def int_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "int_value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Key of the field.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        String value
+        """
+        return pulumi.get(self, "string_value")
+
+    @string_value.setter
+    def string_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "string_value", value)
 
 
 @pulumi.input_type
@@ -1035,6 +1547,62 @@ class LockConfigArgs:
     @reason.setter
     def reason(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "reason", value)
+
+
+@pulumi.input_type
+class LogicalExpressionArgs:
+    def __init__(__self__, *,
+                 field_comparisons: Optional[pulumi.Input[Sequence[pulumi.Input['FieldComparisonArgs']]]] = None,
+                 logical_expressions: Optional[pulumi.Input[Sequence[pulumi.Input['LogicalExpressionArgs']]]] = None,
+                 logical_operator: Optional[pulumi.Input['LogicalExpressionLogicalOperator']] = None):
+        """
+        Struct for representing boolean expressions.
+        :param pulumi.Input[Sequence[pulumi.Input['FieldComparisonArgs']]] field_comparisons: A list of fields to be compared.
+        :param pulumi.Input[Sequence[pulumi.Input['LogicalExpressionArgs']]] logical_expressions: A list of nested conditions to be compared.
+        :param pulumi.Input['LogicalExpressionLogicalOperator'] logical_operator: The logical operator to use between the fields and conditions.
+        """
+        if field_comparisons is not None:
+            pulumi.set(__self__, "field_comparisons", field_comparisons)
+        if logical_expressions is not None:
+            pulumi.set(__self__, "logical_expressions", logical_expressions)
+        if logical_operator is not None:
+            pulumi.set(__self__, "logical_operator", logical_operator)
+
+    @property
+    @pulumi.getter(name="fieldComparisons")
+    def field_comparisons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FieldComparisonArgs']]]]:
+        """
+        A list of fields to be compared.
+        """
+        return pulumi.get(self, "field_comparisons")
+
+    @field_comparisons.setter
+    def field_comparisons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FieldComparisonArgs']]]]):
+        pulumi.set(self, "field_comparisons", value)
+
+    @property
+    @pulumi.getter(name="logicalExpressions")
+    def logical_expressions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LogicalExpressionArgs']]]]:
+        """
+        A list of nested conditions to be compared.
+        """
+        return pulumi.get(self, "logical_expressions")
+
+    @logical_expressions.setter
+    def logical_expressions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LogicalExpressionArgs']]]]):
+        pulumi.set(self, "logical_expressions", value)
+
+    @property
+    @pulumi.getter(name="logicalOperator")
+    def logical_operator(self) -> Optional[pulumi.Input['LogicalExpressionLogicalOperator']]:
+        """
+        The logical operator to use between the fields and conditions.
+        """
+        return pulumi.get(self, "logical_operator")
+
+    @logical_operator.setter
+    def logical_operator(self, value: Optional[pulumi.Input['LogicalExpressionLogicalOperator']]):
+        pulumi.set(self, "logical_operator", value)
 
 
 @pulumi.input_type
@@ -1291,6 +1859,118 @@ class Oauth2JwtBearerArgs:
     @jwt_claims.setter
     def jwt_claims(self, value: Optional[pulumi.Input['JwtClaimsArgs']]):
         pulumi.set(self, "jwt_claims", value)
+
+
+@pulumi.input_type
+class ResourceArgs:
+    def __init__(__self__, *,
+                 path_template: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['ResourceType']] = None):
+        """
+        Resource definition
+        :param pulumi.Input[str] path_template: Template to uniquely represent a Google Cloud resource in a format IAM expects This is a template that can have references to other values provided in the config variable template.
+        :param pulumi.Input['ResourceType'] type: Different types of resource supported.
+        """
+        if path_template is not None:
+            pulumi.set(__self__, "path_template", path_template)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="pathTemplate")
+    def path_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        Template to uniquely represent a Google Cloud resource in a format IAM expects This is a template that can have references to other values provided in the config variable template.
+        """
+        return pulumi.get(self, "path_template")
+
+    @path_template.setter
+    def path_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path_template", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input['ResourceType']]:
+        """
+        Different types of resource supported.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input['ResourceType']]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class RoleGrantArgs:
+    def __init__(__self__, *,
+                 helper_text_template: Optional[pulumi.Input[str]] = None,
+                 principal: Optional[pulumi.Input['RoleGrantPrincipal']] = None,
+                 resource: Optional[pulumi.Input['ResourceArgs']] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        This configuration defines all the Cloud IAM roles that needs to be granted to a particular Google Cloud resource for the selected principal like service account. These configurations will let UI display to customers what IAM roles need to be granted by them. Or these configurations can be used by the UI to render a 'grant' button to do the same on behalf of the user.
+        :param pulumi.Input[str] helper_text_template: Template that UI can use to provide helper text to customers.
+        :param pulumi.Input['RoleGrantPrincipal'] principal: Prinicipal/Identity for whom the role need to assigned.
+        :param pulumi.Input['ResourceArgs'] resource: Resource on which the roles needs to be granted for the principal.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: List of roles that need to be granted.
+        """
+        if helper_text_template is not None:
+            pulumi.set(__self__, "helper_text_template", helper_text_template)
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+
+    @property
+    @pulumi.getter(name="helperTextTemplate")
+    def helper_text_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        Template that UI can use to provide helper text to customers.
+        """
+        return pulumi.get(self, "helper_text_template")
+
+    @helper_text_template.setter
+    def helper_text_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "helper_text_template", value)
+
+    @property
+    @pulumi.getter
+    def principal(self) -> Optional[pulumi.Input['RoleGrantPrincipal']]:
+        """
+        Prinicipal/Identity for whom the role need to assigned.
+        """
+        return pulumi.get(self, "principal")
+
+    @principal.setter
+    def principal(self, value: Optional[pulumi.Input['RoleGrantPrincipal']]):
+        pulumi.set(self, "principal", value)
+
+    @property
+    @pulumi.getter
+    def resource(self) -> Optional[pulumi.Input['ResourceArgs']]:
+        """
+        Resource on which the roles needs to be granted for the principal.
+        """
+        return pulumi.get(self, "resource")
+
+    @resource.setter
+    def resource(self, value: Optional[pulumi.Input['ResourceArgs']]):
+        pulumi.set(self, "resource", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of roles that need to be granted.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
 
 
 @pulumi.input_type

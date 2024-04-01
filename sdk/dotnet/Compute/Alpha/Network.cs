@@ -88,6 +88,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> NetworkFirewallPolicyEnforcementOrder { get; private set; } = null!;
 
         /// <summary>
+        /// A full or partial URL of the network placement to apply to this network. This field can be set only at resource creation time. For example, the following are valid URLs: - https://www.googleapis.com/compute/alpha/projects/{project_id}/global/networkPlacements/{network_placement_name} - projects/{project_id}/global/networkPlacements/{network_placement_name} 
+        /// </summary>
+        [Output("networkPlacement")]
+        public Output<string> NetworkPlacement { get; private set; } = null!;
+
+        /// <summary>
         /// A list of network peerings for the resource.
         /// </summary>
         [Output("peerings")]
@@ -228,6 +234,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("networkFirewallPolicyEnforcementOrder")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.NetworkNetworkFirewallPolicyEnforcementOrder>? NetworkFirewallPolicyEnforcementOrder { get; set; }
+
+        /// <summary>
+        /// A full or partial URL of the network placement to apply to this network. This field can be set only at resource creation time. For example, the following are valid URLs: - https://www.googleapis.com/compute/alpha/projects/{project_id}/global/networkPlacements/{network_placement_name} - projects/{project_id}/global/networkPlacements/{network_placement_name} 
+        /// </summary>
+        [Input("networkPlacement")]
+        public Input<string>? NetworkPlacement { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

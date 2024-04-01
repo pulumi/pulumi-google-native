@@ -24,6 +24,7 @@ class PipelineJobArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  pipeline_job_id: Optional[pulumi.Input[str]] = None,
                  pipeline_spec: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 preflight_validations: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reserved_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  runtime_config: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigArgs']] = None,
@@ -37,6 +38,7 @@ class PipelineJobArgs:
         :param pulumi.Input[str] network: The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Pipeline Job's workload should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. Pipeline job will apply the network configuration to the Google Cloud resources being launched, if applied, such as Vertex AI Training or Dataflow job. If left unspecified, the workload is not peered with any network.
         :param pulumi.Input[str] pipeline_job_id: The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not provided, an ID will be automatically generated. This value should be less than 128 characters, and valid characters are `/a-z-/`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pipeline_spec: The spec of the pipeline.
+        :param pulumi.Input[bool] preflight_validations: Optional. Whether to do component level validations before job creation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] reserved_ip_ranges: A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
         :param pulumi.Input['GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigArgs'] runtime_config: Runtime config of the pipeline.
         :param pulumi.Input[str] service_account: The service account that the pipeline workload runs as. If not specified, the Compute Engine default service account in the project will be used. See https://cloud.google.com/compute/docs/access/service-accounts#default_service_account Users starting the pipeline must have the `iam.serviceAccounts.actAs` permission on this service account.
@@ -56,6 +58,8 @@ class PipelineJobArgs:
             pulumi.set(__self__, "pipeline_job_id", pipeline_job_id)
         if pipeline_spec is not None:
             pulumi.set(__self__, "pipeline_spec", pipeline_spec)
+        if preflight_validations is not None:
+            pulumi.set(__self__, "preflight_validations", preflight_validations)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if reserved_ip_ranges is not None:
@@ -149,6 +153,18 @@ class PipelineJobArgs:
         pulumi.set(self, "pipeline_spec", value)
 
     @property
+    @pulumi.getter(name="preflightValidations")
+    def preflight_validations(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Whether to do component level validations before job creation.
+        """
+        return pulumi.get(self, "preflight_validations")
+
+    @preflight_validations.setter
+    def preflight_validations(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "preflight_validations", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -218,6 +234,7 @@ class PipelineJob(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  pipeline_job_id: Optional[pulumi.Input[str]] = None,
                  pipeline_spec: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 preflight_validations: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reserved_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  runtime_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigArgs']]] = None,
@@ -236,6 +253,7 @@ class PipelineJob(pulumi.CustomResource):
         :param pulumi.Input[str] network: The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Pipeline Job's workload should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. Pipeline job will apply the network configuration to the Google Cloud resources being launched, if applied, such as Vertex AI Training or Dataflow job. If left unspecified, the workload is not peered with any network.
         :param pulumi.Input[str] pipeline_job_id: The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not provided, an ID will be automatically generated. This value should be less than 128 characters, and valid characters are `/a-z-/`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pipeline_spec: The spec of the pipeline.
+        :param pulumi.Input[bool] preflight_validations: Optional. Whether to do component level validations before job creation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] reserved_ip_ranges: A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
         :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigArgs']] runtime_config: Runtime config of the pipeline.
         :param pulumi.Input[str] service_account: The service account that the pipeline workload runs as. If not specified, the Compute Engine default service account in the project will be used. See https://cloud.google.com/compute/docs/access/service-accounts#default_service_account Users starting the pipeline must have the `iam.serviceAccounts.actAs` permission on this service account.
@@ -273,6 +291,7 @@ class PipelineJob(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  pipeline_job_id: Optional[pulumi.Input[str]] = None,
                  pipeline_spec: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 preflight_validations: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reserved_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  runtime_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigArgs']]] = None,
@@ -294,6 +313,7 @@ class PipelineJob(pulumi.CustomResource):
             __props__.__dict__["network"] = network
             __props__.__dict__["pipeline_job_id"] = pipeline_job_id
             __props__.__dict__["pipeline_spec"] = pipeline_spec
+            __props__.__dict__["preflight_validations"] = preflight_validations
             __props__.__dict__["project"] = project
             __props__.__dict__["reserved_ip_ranges"] = reserved_ip_ranges
             __props__.__dict__["runtime_config"] = runtime_config
@@ -345,6 +365,7 @@ class PipelineJob(pulumi.CustomResource):
         __props__.__dict__["network"] = None
         __props__.__dict__["pipeline_job_id"] = None
         __props__.__dict__["pipeline_spec"] = None
+        __props__.__dict__["preflight_validations"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["reserved_ip_ranges"] = None
         __props__.__dict__["runtime_config"] = None
@@ -449,6 +470,14 @@ class PipelineJob(pulumi.CustomResource):
         The spec of the pipeline.
         """
         return pulumi.get(self, "pipeline_spec")
+
+    @property
+    @pulumi.getter(name="preflightValidations")
+    def preflight_validations(self) -> pulumi.Output[bool]:
+        """
+        Optional. Whether to do component level validations before job creation.
+        """
+        return pulumi.get(self, "preflight_validations")
 
     @property
     @pulumi.getter

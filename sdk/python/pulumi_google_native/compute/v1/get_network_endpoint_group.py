@@ -87,7 +87,7 @@ class GetNetworkEndpointGroupResult:
     @pulumi.getter(name="appEngine")
     def app_engine(self) -> 'outputs.NetworkEndpointGroupAppEngineResponse':
         """
-        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
         """
         return pulumi.get(self, "app_engine")
 
@@ -95,7 +95,7 @@ class GetNetworkEndpointGroupResult:
     @pulumi.getter(name="cloudFunction")
     def cloud_function(self) -> 'outputs.NetworkEndpointGroupCloudFunctionResponse':
         """
-        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
         """
         return pulumi.get(self, "cloud_function")
 
@@ -103,7 +103,7 @@ class GetNetworkEndpointGroupResult:
     @pulumi.getter(name="cloudRun")
     def cloud_run(self) -> 'outputs.NetworkEndpointGroupCloudRunResponse':
         """
-        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
         """
         return pulumi.get(self, "cloud_run")
 
@@ -119,7 +119,7 @@ class GetNetworkEndpointGroupResult:
     @pulumi.getter(name="defaultPort")
     def default_port(self) -> int:
         """
-        The default port used if the port number is not specified in the network endpoint.
+        The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified.
         """
         return pulumi.get(self, "default_port")
 
@@ -151,7 +151,7 @@ class GetNetworkEndpointGroupResult:
     @pulumi.getter
     def network(self) -> str:
         """
-        The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+        The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified.
         """
         return pulumi.get(self, "network")
 
@@ -172,7 +172,7 @@ class GetNetworkEndpointGroupResult:
     @pulumi.getter(name="pscTargetService")
     def psc_target_service(self) -> str:
         """
-        The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: asia-northeast3-cloudkms.googleapis.com
         """
         return pulumi.get(self, "psc_target_service")
 

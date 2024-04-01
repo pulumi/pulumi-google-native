@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Outputs
         /// </summary>
         public readonly string RetryPolicy;
         /// <summary>
+        /// Optional. The hostname of the service that 1st Gen function should be observed. If no string is provided, the default service implementing the API will be used. For example, `storage.googleapis.com` is the default for all event types in the `google.storage` namespace. The field is only applicable to 1st Gen functions.
+        /// </summary>
+        public readonly string Service;
+        /// <summary>
         /// Optional. The email of the trigger's service account. The service account must have permission to invoke Cloud Run services, the permission is `run.routes.invoke`. If empty, defaults to the Compute Engine default service account: `{project_number}-compute@developer.gserviceaccount.com`.
         /// </summary>
         public readonly string ServiceAccountEmail;
@@ -61,6 +65,8 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Outputs
 
             string retryPolicy,
 
+            string service,
+
             string serviceAccountEmail,
 
             string trigger,
@@ -72,6 +78,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Outputs
             EventType = eventType;
             PubsubTopic = pubsubTopic;
             RetryPolicy = retryPolicy;
+            Service = service;
             ServiceAccountEmail = serviceAccountEmail;
             Trigger = trigger;
             TriggerRegion = triggerRegion;

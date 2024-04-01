@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Spanner.V1.Inputs
         public Input<bool>? DefaultLeaderLocation { get; set; }
 
         /// <summary>
-        /// The location of the serving resources, e.g. "us-central1".
+        /// The location of the serving resources, e.g., "us-central1".
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

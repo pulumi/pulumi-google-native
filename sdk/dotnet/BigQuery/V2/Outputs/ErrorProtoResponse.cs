@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Error details.
+    /// </summary>
     [OutputType]
     public sealed class ErrorProtoResponse
     {

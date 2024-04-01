@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetReservationResult:
-    def __init__(__self__, autoscale=None, concurrency=None, creation_time=None, edition=None, ignore_idle_slots=None, multi_region_auxiliary=None, name=None, slot_capacity=None, update_time=None):
+    def __init__(__self__, autoscale=None, concurrency=None, creation_time=None, edition=None, ignore_idle_slots=None, multi_region_auxiliary=None, name=None, original_primary_location=None, primary_location=None, secondary_location=None, slot_capacity=None, update_time=None):
         if autoscale and not isinstance(autoscale, dict):
             raise TypeError("Expected argument 'autoscale' to be a dict")
         pulumi.set(__self__, "autoscale", autoscale)
@@ -41,6 +41,15 @@ class GetReservationResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if original_primary_location and not isinstance(original_primary_location, str):
+            raise TypeError("Expected argument 'original_primary_location' to be a str")
+        pulumi.set(__self__, "original_primary_location", original_primary_location)
+        if primary_location and not isinstance(primary_location, str):
+            raise TypeError("Expected argument 'primary_location' to be a str")
+        pulumi.set(__self__, "primary_location", primary_location)
+        if secondary_location and not isinstance(secondary_location, str):
+            raise TypeError("Expected argument 'secondary_location' to be a str")
+        pulumi.set(__self__, "secondary_location", secondary_location)
         if slot_capacity and not isinstance(slot_capacity, str):
             raise TypeError("Expected argument 'slot_capacity' to be a str")
         pulumi.set(__self__, "slot_capacity", slot_capacity)
@@ -60,7 +69,7 @@ class GetReservationResult:
     @pulumi.getter
     def concurrency(self) -> str:
         """
-        Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
+        Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as target job concurrency in the Information Schema, DDL and BQ CLI.
         """
         return pulumi.get(self, "concurrency")
 
@@ -105,6 +114,30 @@ class GetReservationResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="originalPrimaryLocation")
+    def original_primary_location(self) -> str:
+        """
+        Optional. The original primary location of the reservation which is set only during its creation and remains unchanged afterwards. It can be used by the customer to answer questions about disaster recovery billing. The field is output only for customers and should not be specified, however, the google.api.field_behavior is not set to OUTPUT_ONLY since these fields are set in rerouted requests sent across regions.
+        """
+        return pulumi.get(self, "original_primary_location")
+
+    @property
+    @pulumi.getter(name="primaryLocation")
+    def primary_location(self) -> str:
+        """
+        Optional. The primary location of the reservation. The field is only meaningful for reservation used for cross region disaster recovery. The field is output only for customers and should not be specified, however, the google.api.field_behavior is not set to OUTPUT_ONLY since these fields are set in rerouted requests sent across regions.
+        """
+        return pulumi.get(self, "primary_location")
+
+    @property
+    @pulumi.getter(name="secondaryLocation")
+    def secondary_location(self) -> str:
+        """
+        Optional. The secondary location of the reservation which is used for cross region disaster recovery purposes. Customer can set this in create/update reservation calls to create a failover reservation or convert a non-failover reservation to a failover reservation.
+        """
+        return pulumi.get(self, "secondary_location")
+
+    @property
     @pulumi.getter(name="slotCapacity")
     def slot_capacity(self) -> str:
         """
@@ -134,6 +167,9 @@ class AwaitableGetReservationResult(GetReservationResult):
             ignore_idle_slots=self.ignore_idle_slots,
             multi_region_auxiliary=self.multi_region_auxiliary,
             name=self.name,
+            original_primary_location=self.original_primary_location,
+            primary_location=self.primary_location,
+            secondary_location=self.secondary_location,
             slot_capacity=self.slot_capacity,
             update_time=self.update_time)
 
@@ -160,6 +196,9 @@ def get_reservation(location: Optional[str] = None,
         ignore_idle_slots=pulumi.get(__ret__, 'ignore_idle_slots'),
         multi_region_auxiliary=pulumi.get(__ret__, 'multi_region_auxiliary'),
         name=pulumi.get(__ret__, 'name'),
+        original_primary_location=pulumi.get(__ret__, 'original_primary_location'),
+        primary_location=pulumi.get(__ret__, 'primary_location'),
+        secondary_location=pulumi.get(__ret__, 'secondary_location'),
         slot_capacity=pulumi.get(__ret__, 'slot_capacity'),
         update_time=pulumi.get(__ret__, 'update_time'))
 

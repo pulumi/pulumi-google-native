@@ -9,6 +9,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Asynchronously creates a linked dataset in BigQuery which makes it possible to use BigQuery to read the logs stored in the log bucket. A log bucket may currently only contain one link.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Link extends pulumi.CustomResource {
     /**
@@ -38,7 +39,7 @@ export class Link extends pulumi.CustomResource {
     }
 
     /**
-     * The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
+     * Optional. The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
      */
     public readonly bigqueryDataset!: pulumi.Output<outputs.logging.v2.BigQueryDatasetResponse>;
     public readonly bucketId!: pulumi.Output<string>;
@@ -47,7 +48,7 @@ export class Link extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Describes this link.The maximum length of the description is 8000 characters.
+     * Optional. Describes this link.The maximum length of the description is 8000 characters.
      */
     public readonly description!: pulumi.Output<string>;
     /**
@@ -62,7 +63,7 @@ export class Link extends pulumi.CustomResource {
     /**
      * The resource name of the link. The name can have up to 100 characters. A valid link id (at the end of the link name) must only have alphanumeric characters and underscores within it. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" For example:`projects/my-project/locations/global/buckets/my-bucket/links/my_link
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
 
     /**
@@ -87,10 +88,10 @@ export class Link extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["linkId"] = args ? args.linkId : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["lifecycleState"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         } else {
             resourceInputs["bigqueryDataset"] = undefined /*out*/;
             resourceInputs["bucketId"] = undefined /*out*/;
@@ -114,12 +115,12 @@ export class Link extends pulumi.CustomResource {
  */
 export interface LinkArgs {
     /**
-     * The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
+     * Optional. The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
      */
     bigqueryDataset?: pulumi.Input<inputs.logging.v2.BigQueryDatasetArgs>;
     bucketId: pulumi.Input<string>;
     /**
-     * Describes this link.The maximum length of the description is 8000 characters.
+     * Optional. Describes this link.The maximum length of the description is 8000 characters.
      */
     description?: pulumi.Input<string>;
     /**
@@ -127,9 +128,5 @@ export interface LinkArgs {
      */
     linkId: pulumi.Input<string>;
     location?: pulumi.Input<string>;
-    /**
-     * The resource name of the link. The name can have up to 100 characters. A valid link id (at the end of the link name) must only have alphanumeric characters and underscores within it. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" For example:`projects/my-project/locations/global/buckets/my-bucket/links/my_link
-     */
-    name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
 }

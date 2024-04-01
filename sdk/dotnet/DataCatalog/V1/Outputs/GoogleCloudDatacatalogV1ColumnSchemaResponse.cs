@@ -49,6 +49,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
         /// </summary>
         public readonly int OrdinalPosition;
         /// <summary>
+        /// Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: * DATE * DATETIME * TIMESTAMP
+        /// </summary>
+        public readonly Outputs.GoogleCloudDatacatalogV1ColumnSchemaFieldElementTypeResponse RangeElementType;
+        /// <summary>
         /// Optional. Schema of sub-columns. A column can have zero or more sub-columns.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDatacatalogV1ColumnSchemaResponse> Subcolumns;
@@ -75,6 +79,8 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
 
             int ordinalPosition,
 
+            Outputs.GoogleCloudDatacatalogV1ColumnSchemaFieldElementTypeResponse rangeElementType,
+
             ImmutableArray<Outputs.GoogleCloudDatacatalogV1ColumnSchemaResponse> subcolumns,
 
             string type)
@@ -87,6 +93,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
             LookerColumnSpec = lookerColumnSpec;
             Mode = mode;
             OrdinalPosition = ordinalPosition;
+            RangeElementType = rangeElementType;
             Subcolumns = subcolumns;
             Type = type;
         }

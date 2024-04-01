@@ -113,6 +113,10 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// The state of the provider.
         /// </summary>
         public readonly string State;
+        /// <summary>
+        /// An X.509-type identity provider.
+        /// </summary>
+        public readonly Outputs.X509Response X509;
 
         [OutputConstructor]
         private GetProviderResult(
@@ -136,7 +140,9 @@ namespace Pulumi.GoogleNative.IAM.V1
 
             Outputs.SamlResponse saml,
 
-            string state)
+            string state,
+
+            Outputs.X509Response x509)
         {
             AttributeCondition = attributeCondition;
             AttributeMapping = attributeMapping;
@@ -149,6 +155,7 @@ namespace Pulumi.GoogleNative.IAM.V1
             Oidc = oidc;
             Saml = saml;
             State = state;
+            X509 = x509;
         }
     }
 }

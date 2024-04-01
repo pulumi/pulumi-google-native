@@ -88,6 +88,10 @@ export class NotebookRuntimeTemplate extends pulumi.CustomResource {
      */
     public readonly networkSpec!: pulumi.Output<outputs.aiplatform.v1beta1.GoogleCloudAiplatformV1beta1NetworkSpecResponse>;
     /**
+     * Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
+     */
+    public readonly networkTags!: pulumi.Output<string[]>;
+    /**
      * Optional. User specified ID for the notebook runtime template.
      */
     public readonly notebookRuntimeTemplateId!: pulumi.Output<string | undefined>;
@@ -97,9 +101,17 @@ export class NotebookRuntimeTemplate extends pulumi.CustomResource {
     public readonly notebookRuntimeType!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * Optional. Reservation Affinity of the notebook runtime template.
+     */
+    public readonly reservationAffinity!: pulumi.Output<outputs.aiplatform.v1beta1.GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponse>;
+    /**
      * The service account that the runtime workload runs as. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
      */
     public readonly serviceAccount!: pulumi.Output<string>;
+    /**
+     * Optional. Immutable. Runtime Shielded VM spec.
+     */
+    public readonly shieldedVmConfig!: pulumi.Output<outputs.aiplatform.v1beta1.GoogleCloudAiplatformV1beta1ShieldedVmConfigResponse>;
     /**
      * Timestamp when this NotebookRuntimeTemplate was most recently updated.
      */
@@ -129,10 +141,13 @@ export class NotebookRuntimeTemplate extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["machineSpec"] = args ? args.machineSpec : undefined;
             resourceInputs["networkSpec"] = args ? args.networkSpec : undefined;
+            resourceInputs["networkTags"] = args ? args.networkTags : undefined;
             resourceInputs["notebookRuntimeTemplateId"] = args ? args.notebookRuntimeTemplateId : undefined;
             resourceInputs["notebookRuntimeType"] = args ? args.notebookRuntimeType : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["shieldedVmConfig"] = args ? args.shieldedVmConfig : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["isDefault"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -151,10 +166,13 @@ export class NotebookRuntimeTemplate extends pulumi.CustomResource {
             resourceInputs["machineSpec"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networkSpec"] = undefined /*out*/;
+            resourceInputs["networkTags"] = undefined /*out*/;
             resourceInputs["notebookRuntimeTemplateId"] = undefined /*out*/;
             resourceInputs["notebookRuntimeType"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["reservationAffinity"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
+            resourceInputs["shieldedVmConfig"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -206,6 +224,10 @@ export interface NotebookRuntimeTemplateArgs {
      */
     networkSpec?: pulumi.Input<inputs.aiplatform.v1beta1.GoogleCloudAiplatformV1beta1NetworkSpecArgs>;
     /**
+     * Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
+     */
+    networkTags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Optional. User specified ID for the notebook runtime template.
      */
     notebookRuntimeTemplateId?: pulumi.Input<string>;
@@ -215,7 +237,15 @@ export interface NotebookRuntimeTemplateArgs {
     notebookRuntimeType?: pulumi.Input<enums.aiplatform.v1beta1.NotebookRuntimeTemplateNotebookRuntimeType>;
     project?: pulumi.Input<string>;
     /**
+     * Optional. Reservation Affinity of the notebook runtime template.
+     */
+    reservationAffinity?: pulumi.Input<inputs.aiplatform.v1beta1.GoogleCloudAiplatformV1beta1NotebookReservationAffinityArgs>;
+    /**
      * The service account that the runtime workload runs as. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
      */
     serviceAccount?: pulumi.Input<string>;
+    /**
+     * Optional. Immutable. Runtime Shielded VM spec.
+     */
+    shieldedVmConfig?: pulumi.Input<inputs.aiplatform.v1beta1.GoogleCloudAiplatformV1beta1ShieldedVmConfigArgs>;
 }

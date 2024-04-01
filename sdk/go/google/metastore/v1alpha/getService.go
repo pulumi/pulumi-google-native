@@ -61,6 +61,8 @@ type LookupServiceResult struct {
 	ReleaseChannel string `pulumi:"releaseChannel"`
 	// Scaling configuration of the metastore service.
 	ScalingConfig ScalingConfigResponse `pulumi:"scalingConfig"`
+	// Optional. The configuration of scheduled backup for the metastore service.
+	ScheduledBackup ScheduledBackupResponse `pulumi:"scheduledBackup"`
 	// The current state of the metastore service.
 	State string `pulumi:"state"`
 	// Additional information about the current state of the metastore service, if available.
@@ -190,6 +192,11 @@ func (o LookupServiceResultOutput) ReleaseChannel() pulumi.StringOutput {
 // Scaling configuration of the metastore service.
 func (o LookupServiceResultOutput) ScalingConfig() ScalingConfigResponseOutput {
 	return o.ApplyT(func(v LookupServiceResult) ScalingConfigResponse { return v.ScalingConfig }).(ScalingConfigResponseOutput)
+}
+
+// Optional. The configuration of scheduled backup for the metastore service.
+func (o LookupServiceResultOutput) ScheduledBackup() ScheduledBackupResponseOutput {
+	return o.ApplyT(func(v LookupServiceResult) ScheduledBackupResponse { return v.ScheduledBackup }).(ScheduledBackupResponseOutput)
 }
 
 // The current state of the metastore service.

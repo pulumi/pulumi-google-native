@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     {
         [Input("transforms")]
         private InputList<Inputs.GooglePrivacyDlpV2ImageTransformationArgs>? _transforms;
+
+        /// <summary>
+        /// List of transforms to make.
+        /// </summary>
         public InputList<Inputs.GooglePrivacyDlpV2ImageTransformationArgs> Transforms
         {
             get => _transforms ?? (_transforms = new InputList<Inputs.GooglePrivacyDlpV2ImageTransformationArgs>());

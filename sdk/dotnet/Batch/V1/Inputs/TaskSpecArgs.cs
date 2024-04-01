@@ -59,7 +59,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Inputs
         public Input<int>? MaxRetryCount { get; set; }
 
         /// <summary>
-        /// Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit.
+        /// Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit. The valid value range for max_run_duration in seconds is [0, 315576000000.999999999],
         /// </summary>
         [Input("maxRunDuration")]
         public Input<string>? MaxRunDuration { get; set; }

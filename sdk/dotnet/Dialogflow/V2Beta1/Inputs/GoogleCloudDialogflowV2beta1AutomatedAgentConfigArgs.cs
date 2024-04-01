@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public Input<string> Agent { get; set; } = null!;
 
         /// <summary>
-        /// Optional. Sets Dialogflow CX session life time. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.
+        /// Optional. Configure lifetime of the Dialogflow session. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.
         /// </summary>
         [Input("sessionTtl")]
         public Input<string>? SessionTtl { get; set; }

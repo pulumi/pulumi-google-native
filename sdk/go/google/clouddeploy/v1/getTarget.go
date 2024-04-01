@@ -35,6 +35,8 @@ type LookupTargetResult struct {
 	AnthosCluster AnthosClusterResponse `pulumi:"anthosCluster"`
 	// Time at which the `Target` was created.
 	CreateTime string `pulumi:"createTime"`
+	// Optional. Information specifying a Custom Target.
+	CustomTarget CustomTargetResponse `pulumi:"customTarget"`
 	// Optional. The deploy parameters to use for this target.
 	DeployParameters map[string]string `pulumi:"deployParameters"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
@@ -113,6 +115,11 @@ func (o LookupTargetResultOutput) AnthosCluster() AnthosClusterResponseOutput {
 // Time at which the `Target` was created.
 func (o LookupTargetResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTargetResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Information specifying a Custom Target.
+func (o LookupTargetResultOutput) CustomTarget() CustomTargetResponseOutput {
+	return o.ApplyT(func(v LookupTargetResult) CustomTargetResponse { return v.CustomTarget }).(CustomTargetResponseOutput)
 }
 
 // Optional. The deploy parameters to use for this target.

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetVersionResult:
-    def __init__(__self__, cloud_logging_details=None, create_time=None, database_persistence_policy=None, description=None, error_catcher_configs=None, integration_parameters=None, integration_parameters_internal=None, last_modifier_email=None, lock_holder=None, name=None, origin=None, parent_template_id=None, run_as_service_account=None, snapshot_number=None, state=None, status=None, task_configs=None, task_configs_internal=None, teardown=None, trigger_configs=None, trigger_configs_internal=None, update_time=None, user_label=None):
+    def __init__(__self__, cloud_logging_details=None, create_time=None, database_persistence_policy=None, description=None, enable_variable_masking=None, error_catcher_configs=None, integration_config_parameters=None, integration_parameters=None, integration_parameters_internal=None, last_modifier_email=None, lock_holder=None, name=None, origin=None, parent_template_id=None, run_as_service_account=None, snapshot_number=None, state=None, status=None, task_configs=None, task_configs_internal=None, teardown=None, trigger_configs=None, trigger_configs_internal=None, update_time=None, user_label=None):
         if cloud_logging_details and not isinstance(cloud_logging_details, dict):
             raise TypeError("Expected argument 'cloud_logging_details' to be a dict")
         pulumi.set(__self__, "cloud_logging_details", cloud_logging_details)
@@ -32,9 +32,15 @@ class GetVersionResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if enable_variable_masking and not isinstance(enable_variable_masking, bool):
+            raise TypeError("Expected argument 'enable_variable_masking' to be a bool")
+        pulumi.set(__self__, "enable_variable_masking", enable_variable_masking)
         if error_catcher_configs and not isinstance(error_catcher_configs, list):
             raise TypeError("Expected argument 'error_catcher_configs' to be a list")
         pulumi.set(__self__, "error_catcher_configs", error_catcher_configs)
+        if integration_config_parameters and not isinstance(integration_config_parameters, list):
+            raise TypeError("Expected argument 'integration_config_parameters' to be a list")
+        pulumi.set(__self__, "integration_config_parameters", integration_config_parameters)
         if integration_parameters and not isinstance(integration_parameters, list):
             raise TypeError("Expected argument 'integration_parameters' to be a list")
         pulumi.set(__self__, "integration_parameters", integration_parameters)
@@ -123,12 +129,28 @@ class GetVersionResult:
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="enableVariableMasking")
+    def enable_variable_masking(self) -> bool:
+        """
+        Optional. True if variable masking feature should be turned on for this version
+        """
+        return pulumi.get(self, "enable_variable_masking")
+
+    @property
     @pulumi.getter(name="errorCatcherConfigs")
     def error_catcher_configs(self) -> Sequence['outputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse']:
         """
         Optional. Error Catch Task configuration for the integration. It's optional.
         """
         return pulumi.get(self, "error_catcher_configs")
+
+    @property
+    @pulumi.getter(name="integrationConfigParameters")
+    def integration_config_parameters(self) -> Sequence['outputs.GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponse']:
+        """
+        Optional. Config Parameters that are expected to be passed to the integration when an integration is published. This consists of all the parameters that are expected to provide configuration in the integration execution. This gives the user the ability to provide default values, value, add information like connection url, project based configuration value and also provide data types of each parameter.
+        """
+        return pulumi.get(self, "integration_config_parameters")
 
     @property
     @pulumi.getter(name="integrationParameters")
@@ -285,7 +307,9 @@ class AwaitableGetVersionResult(GetVersionResult):
             create_time=self.create_time,
             database_persistence_policy=self.database_persistence_policy,
             description=self.description,
+            enable_variable_masking=self.enable_variable_masking,
             error_catcher_configs=self.error_catcher_configs,
+            integration_config_parameters=self.integration_config_parameters,
             integration_parameters=self.integration_parameters,
             integration_parameters_internal=self.integration_parameters_internal,
             last_modifier_email=self.last_modifier_email,
@@ -329,7 +353,9 @@ def get_version(integration_id: Optional[str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         database_persistence_policy=pulumi.get(__ret__, 'database_persistence_policy'),
         description=pulumi.get(__ret__, 'description'),
+        enable_variable_masking=pulumi.get(__ret__, 'enable_variable_masking'),
         error_catcher_configs=pulumi.get(__ret__, 'error_catcher_configs'),
+        integration_config_parameters=pulumi.get(__ret__, 'integration_config_parameters'),
         integration_parameters=pulumi.get(__ret__, 'integration_parameters'),
         integration_parameters_internal=pulumi.get(__ret__, 'integration_parameters_internal'),
         last_modifier_email=pulumi.get(__ret__, 'last_modifier_email'),

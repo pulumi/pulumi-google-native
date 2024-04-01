@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1.Inputs
         [Input("machinePreferences")]
         public Input<Inputs.MachinePreferencesArgs>? MachinePreferences { get; set; }
 
+        /// <summary>
+        /// Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+        /// </summary>
+        [Input("persistentDiskType")]
+        public Input<Pulumi.GoogleNative.MigrationCenter.V1.ComputeEnginePreferencesPersistentDiskType>? PersistentDiskType { get; set; }
+
         public ComputeEnginePreferencesArgs()
         {
         }

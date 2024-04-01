@@ -11,7 +11,6 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
 {
     /// <summary>
     /// Creates a new FeatureGroup in a given project and location.
-    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:aiplatform/v1beta1:FeatureGroup")]
     public partial class FeatureGroup : global::Pulumi.CustomResource
@@ -56,7 +55,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the FeatureGroup. Format: `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
+        /// Identifier. Name of the FeatureGroup. Format: `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -159,6 +158,12 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
 
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Identifier. Name of the FeatureGroup. Format: `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

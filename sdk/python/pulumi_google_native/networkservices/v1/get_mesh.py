@@ -18,13 +18,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetMeshResult:
-    def __init__(__self__, create_time=None, description=None, interception_port=None, labels=None, name=None, self_link=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, envoy_headers=None, interception_port=None, labels=None, name=None, self_link=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if envoy_headers and not isinstance(envoy_headers, str):
+            raise TypeError("Expected argument 'envoy_headers' to be a str")
+        pulumi.set(__self__, "envoy_headers", envoy_headers)
         if interception_port and not isinstance(interception_port, int):
             raise TypeError("Expected argument 'interception_port' to be a int")
         pulumi.set(__self__, "interception_port", interception_port)
@@ -56,6 +59,14 @@ class GetMeshResult:
         Optional. A free-text description of the resource. Max length 1024 characters.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="envoyHeaders")
+    def envoy_headers(self) -> str:
+        """
+        Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+        """
+        return pulumi.get(self, "envoy_headers")
 
     @property
     @pulumi.getter(name="interceptionPort")
@@ -106,6 +117,7 @@ class AwaitableGetMeshResult(GetMeshResult):
         return GetMeshResult(
             create_time=self.create_time,
             description=self.description,
+            envoy_headers=self.envoy_headers,
             interception_port=self.interception_port,
             labels=self.labels,
             name=self.name,
@@ -130,6 +142,7 @@ def get_mesh(location: Optional[str] = None,
     return AwaitableGetMeshResult(
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
+        envoy_headers=pulumi.get(__ret__, 'envoy_headers'),
         interception_port=pulumi.get(__ret__, 'interception_port'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),

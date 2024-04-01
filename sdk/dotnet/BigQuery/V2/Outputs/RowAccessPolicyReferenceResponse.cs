@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Id path of a row access policy.
+    /// </summary>
     [OutputType]
     public sealed class RowAccessPolicyReferenceResponse
     {

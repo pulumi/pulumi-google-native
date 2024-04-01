@@ -79,8 +79,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MetadataSchema{}
 	case "google-native:aiplatform/v1:MetadataStore":
 		r = &MetadataStore{}
+	case "google-native:aiplatform/v1:Model":
+		r = &Model{}
 	case "google-native:aiplatform/v1:ModelDeploymentMonitoringJob":
 		r = &ModelDeploymentMonitoringJob{}
+	case "google-native:aiplatform/v1:ModelIamBinding":
+		r = &ModelIamBinding{}
+	case "google-native:aiplatform/v1:ModelIamMember":
+		r = &ModelIamMember{}
+	case "google-native:aiplatform/v1:ModelIamPolicy":
+		r = &ModelIamPolicy{}
 	case "google-native:aiplatform/v1:NasJob":
 		r = &NasJob{}
 	case "google-native:aiplatform/v1:NotebookRuntimeTemplate":
@@ -91,6 +99,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NotebookRuntimeTemplateIamMember{}
 	case "google-native:aiplatform/v1:NotebookRuntimeTemplateIamPolicy":
 		r = &NotebookRuntimeTemplateIamPolicy{}
+	case "google-native:aiplatform/v1:PersistentResource":
+		r = &PersistentResource{}
 	case "google-native:aiplatform/v1:PipelineJob":
 		r = &PipelineJob{}
 	case "google-native:aiplatform/v1:Run":

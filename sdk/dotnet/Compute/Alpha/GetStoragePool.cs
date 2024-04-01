@@ -96,11 +96,23 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string PerformanceProvisioningType;
         /// <summary>
-        /// Provsioned IOPS of the storage pool.
+        /// Size, in GiB, of the storage pool.
+        /// </summary>
+        public readonly string PoolProvisionedCapacityGb;
+        /// <summary>
+        /// Provisioned IOPS of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced.
+        /// </summary>
+        public readonly string PoolProvisionedIops;
+        /// <summary>
+        /// Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        /// </summary>
+        public readonly string PoolProvisionedThroughput;
+        /// <summary>
+        /// DEPRECATED -- use "pool provisioned IOPS".
         /// </summary>
         public readonly string ProvisionedIops;
         /// <summary>
-        /// Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        /// DEPRECATED -- use "pool provisioned throughput".
         /// </summary>
         public readonly string ProvisionedThroughput;
         /// <summary>
@@ -116,7 +128,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string SelfLinkWithId;
         /// <summary>
-        /// Size, in GiB, of the storage pool.
+        /// DEPRECATED -- use "pool provisioned capacity gb".
         /// </summary>
         public readonly string SizeGb;
         /// <summary>
@@ -154,6 +166,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string performanceProvisioningType,
 
+            string poolProvisionedCapacityGb,
+
+            string poolProvisionedIops,
+
+            string poolProvisionedThroughput,
+
             string provisionedIops,
 
             string provisionedThroughput,
@@ -182,6 +200,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Labels = labels;
             Name = name;
             PerformanceProvisioningType = performanceProvisioningType;
+            PoolProvisionedCapacityGb = poolProvisionedCapacityGb;
+            PoolProvisionedIops = poolProvisionedIops;
+            PoolProvisionedThroughput = poolProvisionedThroughput;
             ProvisionedIops = provisionedIops;
             ProvisionedThroughput = provisionedThroughput;
             ResourceStatus = resourceStatus;

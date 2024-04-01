@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.Workflows.V1
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        /// Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
         /// </summary>
         [Output("userEnvVars")]
         public Output<ImmutableDictionary<string, string>> UserEnvVars { get; private set; } = null!;
@@ -220,7 +220,7 @@ namespace Pulumi.GoogleNative.Workflows.V1
         private InputMap<string>? _userEnvVars;
 
         /// <summary>
-        /// Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        /// Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
         /// </summary>
         public InputMap<string> UserEnvVars
         {

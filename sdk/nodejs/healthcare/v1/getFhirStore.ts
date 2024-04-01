@@ -54,7 +54,7 @@ export interface GetFhirStoreResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+     * Identifier. Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
      */
     readonly name: string;
     /**

@@ -49,6 +49,12 @@ __all__ = [
     'SingleTargetDatasetResponse',
     'SourceConfigResponse',
     'SourceHierarchyDatasetsResponse',
+    'SqlServerColumnResponse',
+    'SqlServerProfileResponse',
+    'SqlServerRdbmsResponse',
+    'SqlServerSchemaResponse',
+    'SqlServerSourceConfigResponse',
+    'SqlServerTableResponse',
     'StaticServiceIpConnectivityResponse',
     'StreamLargeObjectsResponse',
     'VpcPeeringConfigResponse',
@@ -80,6 +86,8 @@ class BackfillAllStrategyResponse(dict):
             suggest = "oracle_excluded_objects"
         elif key == "postgresqlExcludedObjects":
             suggest = "postgresql_excluded_objects"
+        elif key == "sqlServerExcludedObjects":
+            suggest = "sql_server_excluded_objects"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in BackfillAllStrategyResponse. Access the value via the '{suggest}' property getter instead.")
@@ -95,16 +103,19 @@ class BackfillAllStrategyResponse(dict):
     def __init__(__self__, *,
                  mysql_excluded_objects: 'outputs.MysqlRdbmsResponse',
                  oracle_excluded_objects: 'outputs.OracleRdbmsResponse',
-                 postgresql_excluded_objects: 'outputs.PostgresqlRdbmsResponse'):
+                 postgresql_excluded_objects: 'outputs.PostgresqlRdbmsResponse',
+                 sql_server_excluded_objects: 'outputs.SqlServerRdbmsResponse'):
         """
         Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
         :param 'MysqlRdbmsResponse' mysql_excluded_objects: MySQL data source objects to avoid backfilling.
         :param 'OracleRdbmsResponse' oracle_excluded_objects: Oracle data source objects to avoid backfilling.
         :param 'PostgresqlRdbmsResponse' postgresql_excluded_objects: PostgreSQL data source objects to avoid backfilling.
+        :param 'SqlServerRdbmsResponse' sql_server_excluded_objects: SQLServer data source objects to avoid backfilling
         """
         pulumi.set(__self__, "mysql_excluded_objects", mysql_excluded_objects)
         pulumi.set(__self__, "oracle_excluded_objects", oracle_excluded_objects)
         pulumi.set(__self__, "postgresql_excluded_objects", postgresql_excluded_objects)
+        pulumi.set(__self__, "sql_server_excluded_objects", sql_server_excluded_objects)
 
     @property
     @pulumi.getter(name="mysqlExcludedObjects")
@@ -129,6 +140,14 @@ class BackfillAllStrategyResponse(dict):
         PostgreSQL data source objects to avoid backfilling.
         """
         return pulumi.get(self, "postgresql_excluded_objects")
+
+    @property
+    @pulumi.getter(name="sqlServerExcludedObjects")
+    def sql_server_excluded_objects(self) -> 'outputs.SqlServerRdbmsResponse':
+        """
+        SQLServer data source objects to avoid backfilling
+        """
+        return pulumi.get(self, "sql_server_excluded_objects")
 
 
 @pulumi.output_type
@@ -1627,7 +1646,7 @@ class OracleSourceConfigResponse(dict):
         :param 'OracleRdbmsResponse' include_objects: Oracle objects to include in the stream.
         :param int max_concurrent_backfill_tasks: Maximum number of concurrent backfill tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
         :param int max_concurrent_cdc_tasks: Maximum number of concurrent CDC tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
-        :param 'StreamLargeObjectsResponse' stream_large_objects: Stream large object values. NOTE: This feature is currently experimental.
+        :param 'StreamLargeObjectsResponse' stream_large_objects: Stream large object values.
         """
         pulumi.set(__self__, "drop_large_objects", drop_large_objects)
         pulumi.set(__self__, "exclude_objects", exclude_objects)
@@ -1680,7 +1699,7 @@ class OracleSourceConfigResponse(dict):
     @pulumi.getter(name="streamLargeObjects")
     def stream_large_objects(self) -> 'outputs.StreamLargeObjectsResponse':
         """
-        Stream large object values. NOTE: This feature is currently experimental.
+        Stream large object values.
         """
         return pulumi.get(self, "stream_large_objects")
 
@@ -2295,6 +2314,8 @@ class SourceConfigResponse(dict):
             suggest = "postgresql_source_config"
         elif key == "sourceConnectionProfile":
             suggest = "source_connection_profile"
+        elif key == "sqlServerSourceConfig":
+            suggest = "sql_server_source_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SourceConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -2311,18 +2332,21 @@ class SourceConfigResponse(dict):
                  mysql_source_config: 'outputs.MysqlSourceConfigResponse',
                  oracle_source_config: 'outputs.OracleSourceConfigResponse',
                  postgresql_source_config: 'outputs.PostgresqlSourceConfigResponse',
-                 source_connection_profile: str):
+                 source_connection_profile: str,
+                 sql_server_source_config: 'outputs.SqlServerSourceConfigResponse'):
         """
         The configuration of the stream source.
         :param 'MysqlSourceConfigResponse' mysql_source_config: MySQL data source configuration.
         :param 'OracleSourceConfigResponse' oracle_source_config: Oracle data source configuration.
         :param 'PostgresqlSourceConfigResponse' postgresql_source_config: PostgreSQL data source configuration.
         :param str source_connection_profile: Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
+        :param 'SqlServerSourceConfigResponse' sql_server_source_config: SQLServer data source configuration.
         """
         pulumi.set(__self__, "mysql_source_config", mysql_source_config)
         pulumi.set(__self__, "oracle_source_config", oracle_source_config)
         pulumi.set(__self__, "postgresql_source_config", postgresql_source_config)
         pulumi.set(__self__, "source_connection_profile", source_connection_profile)
+        pulumi.set(__self__, "sql_server_source_config", sql_server_source_config)
 
     @property
     @pulumi.getter(name="mysqlSourceConfig")
@@ -2355,6 +2379,14 @@ class SourceConfigResponse(dict):
         Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
         """
         return pulumi.get(self, "source_connection_profile")
+
+    @property
+    @pulumi.getter(name="sqlServerSourceConfig")
+    def sql_server_source_config(self) -> 'outputs.SqlServerSourceConfigResponse':
+        """
+        SQLServer data source configuration.
+        """
+        return pulumi.get(self, "sql_server_source_config")
 
 
 @pulumi.output_type
@@ -2394,6 +2426,358 @@ class SourceHierarchyDatasetsResponse(dict):
         The dataset template to use for dynamic dataset creation.
         """
         return pulumi.get(self, "dataset_template")
+
+
+@pulumi.output_type
+class SqlServerColumnResponse(dict):
+    """
+    SQLServer Column.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataType":
+            suggest = "data_type"
+        elif key == "ordinalPosition":
+            suggest = "ordinal_position"
+        elif key == "primaryKey":
+            suggest = "primary_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlServerColumnResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlServerColumnResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlServerColumnResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column: str,
+                 data_type: str,
+                 length: int,
+                 nullable: bool,
+                 ordinal_position: int,
+                 precision: int,
+                 primary_key: bool,
+                 scale: int):
+        """
+        SQLServer Column.
+        :param str column: Column name.
+        :param str data_type: The SQLServer data type.
+        :param int length: Column length.
+        :param bool nullable: Whether or not the column can accept a null value.
+        :param int ordinal_position: The ordinal position of the column in the table.
+        :param int precision: Column precision.
+        :param bool primary_key: Whether or not the column represents a primary key.
+        :param int scale: Column scale.
+        """
+        pulumi.set(__self__, "column", column)
+        pulumi.set(__self__, "data_type", data_type)
+        pulumi.set(__self__, "length", length)
+        pulumi.set(__self__, "nullable", nullable)
+        pulumi.set(__self__, "ordinal_position", ordinal_position)
+        pulumi.set(__self__, "precision", precision)
+        pulumi.set(__self__, "primary_key", primary_key)
+        pulumi.set(__self__, "scale", scale)
+
+    @property
+    @pulumi.getter
+    def column(self) -> str:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> str:
+        """
+        The SQLServer data type.
+        """
+        return pulumi.get(self, "data_type")
+
+    @property
+    @pulumi.getter
+    def length(self) -> int:
+        """
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> bool:
+        """
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> int:
+        """
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @property
+    @pulumi.getter
+    def precision(self) -> int:
+        """
+        Column precision.
+        """
+        return pulumi.get(self, "precision")
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> bool:
+        """
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
+
+    @property
+    @pulumi.getter
+    def scale(self) -> int:
+        """
+        Column scale.
+        """
+        return pulumi.get(self, "scale")
+
+
+@pulumi.output_type
+class SqlServerProfileResponse(dict):
+    """
+    SQLServer database profile
+    """
+    def __init__(__self__, *,
+                 database: str,
+                 hostname: str,
+                 password: str,
+                 port: int,
+                 username: str):
+        """
+        SQLServer database profile
+        :param str database: Database for the SQLServer connection.
+        :param str hostname: Hostname for the SQLServer connection.
+        :param str password: Password for the SQLServer connection.
+        :param int port: Port for the SQLServer connection, default value is 1433.
+        :param str username: Username for the SQLServer connection.
+        """
+        pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def database(self) -> str:
+        """
+        Database for the SQLServer connection.
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        Hostname for the SQLServer connection.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Password for the SQLServer connection.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Port for the SQLServer connection, default value is 1433.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        Username for the SQLServer connection.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class SqlServerRdbmsResponse(dict):
+    """
+    SQLServer database structure.
+    """
+    def __init__(__self__, *,
+                 schemas: Sequence['outputs.SqlServerSchemaResponse']):
+        """
+        SQLServer database structure.
+        :param Sequence['SqlServerSchemaResponse'] schemas: SQLServer schemas in the database server.
+        """
+        pulumi.set(__self__, "schemas", schemas)
+
+    @property
+    @pulumi.getter
+    def schemas(self) -> Sequence['outputs.SqlServerSchemaResponse']:
+        """
+        SQLServer schemas in the database server.
+        """
+        return pulumi.get(self, "schemas")
+
+
+@pulumi.output_type
+class SqlServerSchemaResponse(dict):
+    """
+    SQLServer schema.
+    """
+    def __init__(__self__, *,
+                 schema: str,
+                 tables: Sequence['outputs.SqlServerTableResponse']):
+        """
+        SQLServer schema.
+        :param str schema: Schema name.
+        :param Sequence['SqlServerTableResponse'] tables: Tables in the schema.
+        """
+        pulumi.set(__self__, "schema", schema)
+        pulumi.set(__self__, "tables", tables)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> str:
+        """
+        Schema name.
+        """
+        return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter
+    def tables(self) -> Sequence['outputs.SqlServerTableResponse']:
+        """
+        Tables in the schema.
+        """
+        return pulumi.get(self, "tables")
+
+
+@pulumi.output_type
+class SqlServerSourceConfigResponse(dict):
+    """
+    SQLServer data source configuration
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludeObjects":
+            suggest = "exclude_objects"
+        elif key == "includeObjects":
+            suggest = "include_objects"
+        elif key == "maxConcurrentBackfillTasks":
+            suggest = "max_concurrent_backfill_tasks"
+        elif key == "maxConcurrentCdcTasks":
+            suggest = "max_concurrent_cdc_tasks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlServerSourceConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlServerSourceConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlServerSourceConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 exclude_objects: 'outputs.SqlServerRdbmsResponse',
+                 include_objects: 'outputs.SqlServerRdbmsResponse',
+                 max_concurrent_backfill_tasks: int,
+                 max_concurrent_cdc_tasks: int):
+        """
+        SQLServer data source configuration
+        :param 'SqlServerRdbmsResponse' exclude_objects: SQLServer objects to exclude from the stream.
+        :param 'SqlServerRdbmsResponse' include_objects: SQLServer objects to include in the stream.
+        :param int max_concurrent_backfill_tasks: Max concurrent backfill tasks.
+        :param int max_concurrent_cdc_tasks: Max concurrent CDC tasks.
+        """
+        pulumi.set(__self__, "exclude_objects", exclude_objects)
+        pulumi.set(__self__, "include_objects", include_objects)
+        pulumi.set(__self__, "max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
+        pulumi.set(__self__, "max_concurrent_cdc_tasks", max_concurrent_cdc_tasks)
+
+    @property
+    @pulumi.getter(name="excludeObjects")
+    def exclude_objects(self) -> 'outputs.SqlServerRdbmsResponse':
+        """
+        SQLServer objects to exclude from the stream.
+        """
+        return pulumi.get(self, "exclude_objects")
+
+    @property
+    @pulumi.getter(name="includeObjects")
+    def include_objects(self) -> 'outputs.SqlServerRdbmsResponse':
+        """
+        SQLServer objects to include in the stream.
+        """
+        return pulumi.get(self, "include_objects")
+
+    @property
+    @pulumi.getter(name="maxConcurrentBackfillTasks")
+    def max_concurrent_backfill_tasks(self) -> int:
+        """
+        Max concurrent backfill tasks.
+        """
+        return pulumi.get(self, "max_concurrent_backfill_tasks")
+
+    @property
+    @pulumi.getter(name="maxConcurrentCdcTasks")
+    def max_concurrent_cdc_tasks(self) -> int:
+        """
+        Max concurrent CDC tasks.
+        """
+        return pulumi.get(self, "max_concurrent_cdc_tasks")
+
+
+@pulumi.output_type
+class SqlServerTableResponse(dict):
+    """
+    SQLServer table.
+    """
+    def __init__(__self__, *,
+                 columns: Sequence['outputs.SqlServerColumnResponse'],
+                 table: str):
+        """
+        SQLServer table.
+        :param Sequence['SqlServerColumnResponse'] columns: SQLServer columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param str table: Table name.
+        """
+        pulumi.set(__self__, "columns", columns)
+        pulumi.set(__self__, "table", table)
+
+    @property
+    @pulumi.getter
+    def columns(self) -> Sequence['outputs.SqlServerColumnResponse']:
+        """
+        SQLServer columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        """
+        return pulumi.get(self, "columns")
+
+    @property
+    @pulumi.getter
+    def table(self) -> str:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
 
 
 @pulumi.output_type

@@ -45,6 +45,18 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Inputs
         [Input("experimentRun")]
         public Input<string>? ExperimentRun { get; set; }
 
+        [Input("models")]
+        private InputList<string>? _models;
+
+        /// <summary>
+        /// Optional. The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs. Format: `projects/{project}/locations/{location}/models/{model}` In order to retrieve a specific version of the model, also provide the version ID or version alias. Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden` If no version ID or alias is specified, the "default" version will be returned. The "default" version alias is created for the first version of the model, and can be moved to other versions later on. There will be exactly one default version.
+        /// </summary>
+        public InputList<string> Models
+        {
+            get => _models ?? (_models = new InputList<string>());
+            set => _models = value;
+        }
+
         /// <summary>
         /// Optional. The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. To specify this field, you must have already [configured VPC Network Peering for Vertex AI](https://cloud.google.com/vertex-ai/docs/general/vpc-peering). If this field is left unspecified, the job is not peered with any network.
         /// </summary>

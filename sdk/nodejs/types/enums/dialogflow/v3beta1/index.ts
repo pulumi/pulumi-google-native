@@ -196,7 +196,7 @@ export const GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant = {
      */
     SpeechModelVariantUnspecified: "SPEECH_MODEL_VARIANT_UNSPECIFIED",
     /**
-     * Use the best available variant of the Speech model that the caller is eligible for. Please see the [Dialogflow docs](https://cloud.google.com/dialogflow/docs/data-logging) for how to make your project eligible for enhanced models.
+     * Use the best available variant of the Speech model that the caller is eligible for.
      */
     UseBestAvailable: "USE_BEST_AVAILABLE",
     /**
@@ -204,7 +204,7 @@ export const GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant = {
      */
     UseStandard: "USE_STANDARD",
     /**
-     * Use an enhanced model variant: * If an enhanced variant does not exist for the given model and request language, Dialogflow falls back to the standard variant. The [Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models) describes which models have enhanced variants. * If the API caller isn't eligible for enhanced models, Dialogflow returns an error. Please see the [Dialogflow docs](https://cloud.google.com/dialogflow/docs/data-logging) for how to make your project eligible.
+     * Use an enhanced model variant: * If an enhanced variant does not exist for the given model and request language, Dialogflow falls back to the standard variant. The [Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models) describes which models have enhanced variants.
      */
     UseEnhanced: "USE_ENHANCED",
 } as const;
@@ -337,6 +337,30 @@ export const GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod = 
  * Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.
  */
 export type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod = (typeof GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod)[keyof typeof GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod];
+
+export const GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth = {
+    /**
+     * Service agent auth type unspecified. Default to ID_TOKEN.
+     */
+    ServiceAgentAuthUnspecified: "SERVICE_AGENT_AUTH_UNSPECIFIED",
+    /**
+     * No token used.
+     */
+    None: "NONE",
+    /**
+     * Use [ID token](https://cloud.google.com/docs/authentication/token-types#id) generated from service agent. This can be used to access Cloud Function and Cloud Run after you grant Invoker role to `service-@gcp-sa-dialogflow.iam.gserviceaccount.com`.
+     */
+    IdToken: "ID_TOKEN",
+    /**
+     * Use [access token](https://cloud.google.com/docs/authentication/token-types#access) generated from service agent. This can be used to access other Google Cloud APIs after you grant required roles to `service-@gcp-sa-dialogflow.iam.gserviceaccount.com`.
+     */
+    AccessToken: "ACCESS_TOKEN",
+} as const;
+
+/**
+ * Optional. Indicate the auth token type generated from the [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent). The generated token is sent in the Authorization header.
+ */
+export type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth = (typeof GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth)[keyof typeof GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth];
 
 export const GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType = {
     /**

@@ -104,6 +104,10 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
         /// </summary>
         public readonly ImmutableDictionary<string, string> PipelineSpec;
         /// <summary>
+        /// Optional. Whether to do component level validations before job creation.
+        /// </summary>
+        public readonly bool PreflightValidations;
+        /// <summary>
         /// A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
         /// </summary>
         public readonly ImmutableArray<string> ReservedIpRanges;
@@ -162,6 +166,8 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
 
             ImmutableDictionary<string, string> pipelineSpec,
 
+            bool preflightValidations,
+
             ImmutableArray<string> reservedIpRanges,
 
             Outputs.GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigResponse runtimeConfig,
@@ -190,6 +196,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1
             Name = name;
             Network = network;
             PipelineSpec = pipelineSpec;
+            PreflightValidations = preflightValidations;
             ReservedIpRanges = reservedIpRanges;
             RuntimeConfig = runtimeConfig;
             ScheduleName = scheduleName;

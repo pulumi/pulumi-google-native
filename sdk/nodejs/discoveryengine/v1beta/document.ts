@@ -53,6 +53,10 @@ export class Document extends pulumi.CustomResource {
      */
     public readonly documentId!: pulumi.Output<string>;
     /**
+     * The last time the document was indexed. If this field is set, the document could be returned in search results. This field is OUTPUT_ONLY. If this field is not populated, it means the document has never been indexed.
+     */
+    public /*out*/ readonly indexTime!: pulumi.Output<string>;
+    /**
      * The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
      */
     public readonly jsonData!: pulumi.Output<string>;
@@ -112,6 +116,7 @@ export class Document extends pulumi.CustomResource {
             resourceInputs["schemaId"] = args ? args.schemaId : undefined;
             resourceInputs["structData"] = args ? args.structData : undefined;
             resourceInputs["derivedStructData"] = undefined /*out*/;
+            resourceInputs["indexTime"] = undefined /*out*/;
         } else {
             resourceInputs["branchId"] = undefined /*out*/;
             resourceInputs["collectionId"] = undefined /*out*/;
@@ -119,6 +124,7 @@ export class Document extends pulumi.CustomResource {
             resourceInputs["dataStoreId"] = undefined /*out*/;
             resourceInputs["derivedStructData"] = undefined /*out*/;
             resourceInputs["documentId"] = undefined /*out*/;
+            resourceInputs["indexTime"] = undefined /*out*/;
             resourceInputs["jsonData"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

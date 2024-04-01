@@ -105,6 +105,10 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      * Named ports configured for the Instance Groups complementary to this Instance Group Manager.
      */
     public readonly namedPorts!: pulumi.Output<outputs.compute.beta.NamedPortResponse[]>;
+    /**
+     * Input only. Additional params passed with the request, but not persisted as part of resource payload.
+     */
+    public readonly params!: pulumi.Output<outputs.compute.beta.InstanceGroupManagerParamsResponse>;
     public readonly project!: pulumi.Output<string>;
     /**
      * The URL of the region where the managed instance group resides (for regional resources).
@@ -183,6 +187,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["listManagedInstancesResults"] = args ? args.listManagedInstancesResults : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namedPorts"] = args ? args.namedPorts : undefined;
+            resourceInputs["params"] = args ? args.params : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
@@ -221,6 +226,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["listManagedInstancesResults"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["namedPorts"] = undefined /*out*/;
+            resourceInputs["params"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
@@ -296,6 +302,10 @@ export interface InstanceGroupManagerArgs {
      * Named ports configured for the Instance Groups complementary to this Instance Group Manager.
      */
     namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.beta.NamedPortArgs>[]>;
+    /**
+     * Input only. Additional params passed with the request, but not persisted as part of resource payload.
+     */
+    params?: pulumi.Input<inputs.compute.beta.InstanceGroupManagerParamsArgs>;
     project?: pulumi.Input<string>;
     /**
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).

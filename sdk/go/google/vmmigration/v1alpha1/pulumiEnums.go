@@ -1079,6 +1079,183 @@ func (in *groupMigrationTargetTypePtr) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
+// Optional. Choose which type of license to apply to the imported image.
+type ImageImportOsAdaptationParametersLicenseType string
+
+const (
+	// The license type is the default for the OS.
+	ImageImportOsAdaptationParametersLicenseTypeComputeEngineLicenseTypeDefault = ImageImportOsAdaptationParametersLicenseType("COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT")
+	// The license type is Pay As You Go license type.
+	ImageImportOsAdaptationParametersLicenseTypeComputeEngineLicenseTypePayg = ImageImportOsAdaptationParametersLicenseType("COMPUTE_ENGINE_LICENSE_TYPE_PAYG")
+	// The license type is Bring Your Own License type.
+	ImageImportOsAdaptationParametersLicenseTypeComputeEngineLicenseTypeByol = ImageImportOsAdaptationParametersLicenseType("COMPUTE_ENGINE_LICENSE_TYPE_BYOL")
+)
+
+func (ImageImportOsAdaptationParametersLicenseType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageImportOsAdaptationParametersLicenseType)(nil)).Elem()
+}
+
+func (e ImageImportOsAdaptationParametersLicenseType) ToImageImportOsAdaptationParametersLicenseTypeOutput() ImageImportOsAdaptationParametersLicenseTypeOutput {
+	return pulumi.ToOutput(e).(ImageImportOsAdaptationParametersLicenseTypeOutput)
+}
+
+func (e ImageImportOsAdaptationParametersLicenseType) ToImageImportOsAdaptationParametersLicenseTypeOutputWithContext(ctx context.Context) ImageImportOsAdaptationParametersLicenseTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ImageImportOsAdaptationParametersLicenseTypeOutput)
+}
+
+func (e ImageImportOsAdaptationParametersLicenseType) ToImageImportOsAdaptationParametersLicenseTypePtrOutput() ImageImportOsAdaptationParametersLicenseTypePtrOutput {
+	return e.ToImageImportOsAdaptationParametersLicenseTypePtrOutputWithContext(context.Background())
+}
+
+func (e ImageImportOsAdaptationParametersLicenseType) ToImageImportOsAdaptationParametersLicenseTypePtrOutputWithContext(ctx context.Context) ImageImportOsAdaptationParametersLicenseTypePtrOutput {
+	return ImageImportOsAdaptationParametersLicenseType(e).ToImageImportOsAdaptationParametersLicenseTypeOutputWithContext(ctx).ToImageImportOsAdaptationParametersLicenseTypePtrOutputWithContext(ctx)
+}
+
+func (e ImageImportOsAdaptationParametersLicenseType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ImageImportOsAdaptationParametersLicenseType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ImageImportOsAdaptationParametersLicenseType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ImageImportOsAdaptationParametersLicenseType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ImageImportOsAdaptationParametersLicenseTypeOutput struct{ *pulumi.OutputState }
+
+func (ImageImportOsAdaptationParametersLicenseTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageImportOsAdaptationParametersLicenseType)(nil)).Elem()
+}
+
+func (o ImageImportOsAdaptationParametersLicenseTypeOutput) ToImageImportOsAdaptationParametersLicenseTypeOutput() ImageImportOsAdaptationParametersLicenseTypeOutput {
+	return o
+}
+
+func (o ImageImportOsAdaptationParametersLicenseTypeOutput) ToImageImportOsAdaptationParametersLicenseTypeOutputWithContext(ctx context.Context) ImageImportOsAdaptationParametersLicenseTypeOutput {
+	return o
+}
+
+func (o ImageImportOsAdaptationParametersLicenseTypeOutput) ToImageImportOsAdaptationParametersLicenseTypePtrOutput() ImageImportOsAdaptationParametersLicenseTypePtrOutput {
+	return o.ToImageImportOsAdaptationParametersLicenseTypePtrOutputWithContext(context.Background())
+}
+
+func (o ImageImportOsAdaptationParametersLicenseTypeOutput) ToImageImportOsAdaptationParametersLicenseTypePtrOutputWithContext(ctx context.Context) ImageImportOsAdaptationParametersLicenseTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageImportOsAdaptationParametersLicenseType) *ImageImportOsAdaptationParametersLicenseType {
+		return &v
+	}).(ImageImportOsAdaptationParametersLicenseTypePtrOutput)
+}
+
+func (o ImageImportOsAdaptationParametersLicenseTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ImageImportOsAdaptationParametersLicenseTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ImageImportOsAdaptationParametersLicenseType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ImageImportOsAdaptationParametersLicenseTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ImageImportOsAdaptationParametersLicenseTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ImageImportOsAdaptationParametersLicenseType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ImageImportOsAdaptationParametersLicenseTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ImageImportOsAdaptationParametersLicenseTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageImportOsAdaptationParametersLicenseType)(nil)).Elem()
+}
+
+func (o ImageImportOsAdaptationParametersLicenseTypePtrOutput) ToImageImportOsAdaptationParametersLicenseTypePtrOutput() ImageImportOsAdaptationParametersLicenseTypePtrOutput {
+	return o
+}
+
+func (o ImageImportOsAdaptationParametersLicenseTypePtrOutput) ToImageImportOsAdaptationParametersLicenseTypePtrOutputWithContext(ctx context.Context) ImageImportOsAdaptationParametersLicenseTypePtrOutput {
+	return o
+}
+
+func (o ImageImportOsAdaptationParametersLicenseTypePtrOutput) Elem() ImageImportOsAdaptationParametersLicenseTypeOutput {
+	return o.ApplyT(func(v *ImageImportOsAdaptationParametersLicenseType) ImageImportOsAdaptationParametersLicenseType {
+		if v != nil {
+			return *v
+		}
+		var ret ImageImportOsAdaptationParametersLicenseType
+		return ret
+	}).(ImageImportOsAdaptationParametersLicenseTypeOutput)
+}
+
+func (o ImageImportOsAdaptationParametersLicenseTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ImageImportOsAdaptationParametersLicenseTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ImageImportOsAdaptationParametersLicenseType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ImageImportOsAdaptationParametersLicenseTypeInput is an input type that accepts values of the ImageImportOsAdaptationParametersLicenseType enum
+// A concrete instance of `ImageImportOsAdaptationParametersLicenseTypeInput` can be one of the following:
+//
+//	ImageImportOsAdaptationParametersLicenseTypeComputeEngineLicenseTypeDefault
+//	ImageImportOsAdaptationParametersLicenseTypeComputeEngineLicenseTypePayg
+//	ImageImportOsAdaptationParametersLicenseTypeComputeEngineLicenseTypeByol
+type ImageImportOsAdaptationParametersLicenseTypeInput interface {
+	pulumi.Input
+
+	ToImageImportOsAdaptationParametersLicenseTypeOutput() ImageImportOsAdaptationParametersLicenseTypeOutput
+	ToImageImportOsAdaptationParametersLicenseTypeOutputWithContext(context.Context) ImageImportOsAdaptationParametersLicenseTypeOutput
+}
+
+var imageImportOsAdaptationParametersLicenseTypePtrType = reflect.TypeOf((**ImageImportOsAdaptationParametersLicenseType)(nil)).Elem()
+
+type ImageImportOsAdaptationParametersLicenseTypePtrInput interface {
+	pulumi.Input
+
+	ToImageImportOsAdaptationParametersLicenseTypePtrOutput() ImageImportOsAdaptationParametersLicenseTypePtrOutput
+	ToImageImportOsAdaptationParametersLicenseTypePtrOutputWithContext(context.Context) ImageImportOsAdaptationParametersLicenseTypePtrOutput
+}
+
+type imageImportOsAdaptationParametersLicenseTypePtr string
+
+func ImageImportOsAdaptationParametersLicenseTypePtr(v string) ImageImportOsAdaptationParametersLicenseTypePtrInput {
+	return (*imageImportOsAdaptationParametersLicenseTypePtr)(&v)
+}
+
+func (*imageImportOsAdaptationParametersLicenseTypePtr) ElementType() reflect.Type {
+	return imageImportOsAdaptationParametersLicenseTypePtrType
+}
+
+func (in *imageImportOsAdaptationParametersLicenseTypePtr) ToImageImportOsAdaptationParametersLicenseTypePtrOutput() ImageImportOsAdaptationParametersLicenseTypePtrOutput {
+	return pulumi.ToOutput(in).(ImageImportOsAdaptationParametersLicenseTypePtrOutput)
+}
+
+func (in *imageImportOsAdaptationParametersLicenseTypePtr) ToImageImportOsAdaptationParametersLicenseTypePtrOutputWithContext(ctx context.Context) ImageImportOsAdaptationParametersLicenseTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ImageImportOsAdaptationParametersLicenseTypePtrOutput)
+}
+
+func (in *imageImportOsAdaptationParametersLicenseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ImageImportOsAdaptationParametersLicenseType] {
+	return pulumix.Output[*ImageImportOsAdaptationParametersLicenseType]{
+		OutputState: in.ToImageImportOsAdaptationParametersLicenseTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The disk type to use.
 type PersistentDiskDefaultsDiskType string
 
@@ -2166,6 +2343,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeSchedulingRestartTypePtrInput)(nil)).Elem(), ComputeSchedulingRestartType("RESTART_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMigrationTargetTypeInput)(nil)).Elem(), GroupMigrationTargetType("MIGRATION_TARGET_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMigrationTargetTypePtrInput)(nil)).Elem(), GroupMigrationTargetType("MIGRATION_TARGET_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageImportOsAdaptationParametersLicenseTypeInput)(nil)).Elem(), ImageImportOsAdaptationParametersLicenseType("COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageImportOsAdaptationParametersLicenseTypePtrInput)(nil)).Elem(), ImageImportOsAdaptationParametersLicenseType("COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PersistentDiskDefaultsDiskTypeInput)(nil)).Elem(), PersistentDiskDefaultsDiskType("COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PersistentDiskDefaultsDiskTypePtrInput)(nil)).Elem(), PersistentDiskDefaultsDiskType("COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityOperatorInput)(nil)).Elem(), SchedulingNodeAffinityOperator("OPERATOR_UNSPECIFIED"))
@@ -2190,6 +2369,8 @@ func init() {
 	pulumi.RegisterOutputType(ComputeSchedulingRestartTypePtrOutput{})
 	pulumi.RegisterOutputType(GroupMigrationTargetTypeOutput{})
 	pulumi.RegisterOutputType(GroupMigrationTargetTypePtrOutput{})
+	pulumi.RegisterOutputType(ImageImportOsAdaptationParametersLicenseTypeOutput{})
+	pulumi.RegisterOutputType(ImageImportOsAdaptationParametersLicenseTypePtrOutput{})
 	pulumi.RegisterOutputType(PersistentDiskDefaultsDiskTypeOutput{})
 	pulumi.RegisterOutputType(PersistentDiskDefaultsDiskTypePtrOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityOperatorOutput{})

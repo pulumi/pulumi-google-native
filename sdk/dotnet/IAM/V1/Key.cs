@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.IAM.V1
 {
     /// <summary>
-    /// Creates a ServiceAccountKey.
+    /// Uploads the public key portion of a key pair that you manage, and associates the public key with a ServiceAccount. After you upload the public key, you can use the private key from the key pair as a service account key.
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:iam/v1:Key")]
@@ -132,20 +132,14 @@ namespace Pulumi.GoogleNative.IAM.V1
 
     public sealed class KeyArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
-        /// </summary>
-        [Input("keyAlgorithm")]
-        public Input<Pulumi.GoogleNative.IAM.V1.KeyKeyAlgorithm>? KeyAlgorithm { get; set; }
-
-        /// <summary>
-        /// The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
-        /// </summary>
-        [Input("privateKeyType")]
-        public Input<Pulumi.GoogleNative.IAM.V1.KeyPrivateKeyType>? PrivateKeyType { get; set; }
-
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The public key to associate with the service account. Must be an RSA public key that is wrapped in an X.509 v3 certificate. Include the first line, `-----BEGIN CERTIFICATE-----`, and the last line, `-----END CERTIFICATE-----`.
+        /// </summary>
+        [Input("publicKeyData")]
+        public Input<string>? PublicKeyData { get; set; }
 
         [Input("serviceAccountId", required: true)]
         public Input<string> ServiceAccountId { get; set; } = null!;

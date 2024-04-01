@@ -25,6 +25,10 @@ export interface GetTagTemplateArgs {
 
 export interface GetTagTemplateResult {
     /**
+     * Transfer status of the TagTemplate
+     */
+    readonly dataplexTransferStatus: string;
+    /**
      * The display name for this template. Defaults to an empty string.
      */
     readonly displayName: string;
@@ -33,7 +37,7 @@ export interface GetTagTemplateResult {
      */
     readonly fields: {[key: string]: string};
     /**
-     * The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
+     * Identifier. The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
      */
     readonly name: string;
 }

@@ -20,6 +20,7 @@ class DocumentArgs:
                  collection_id: pulumi.Input[str],
                  data_store_id: pulumi.Input[str],
                  document_id: pulumi.Input[str],
+                 acl_info: Optional[pulumi.Input['GoogleCloudDiscoveryengineV1alphaDocumentAclInfoArgs']] = None,
                  content: Optional[pulumi.Input['GoogleCloudDiscoveryengineV1alphaDocumentContentArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  json_data: Optional[pulumi.Input[str]] = None,
@@ -32,6 +33,7 @@ class DocumentArgs:
         """
         The set of arguments for constructing a Document resource.
         :param pulumi.Input[str] document_id: Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
+        :param pulumi.Input['GoogleCloudDiscoveryengineV1alphaDocumentAclInfoArgs'] acl_info: Access control information for the document.
         :param pulumi.Input['GoogleCloudDiscoveryengineV1alphaDocumentContentArgs'] content: The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
         :param pulumi.Input[str] id: Immutable. The identifier of the document. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
         :param pulumi.Input[str] json_data: The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
@@ -44,6 +46,8 @@ class DocumentArgs:
         pulumi.set(__self__, "collection_id", collection_id)
         pulumi.set(__self__, "data_store_id", data_store_id)
         pulumi.set(__self__, "document_id", document_id)
+        if acl_info is not None:
+            pulumi.set(__self__, "acl_info", acl_info)
         if content is not None:
             pulumi.set(__self__, "content", content)
         if id is not None:
@@ -101,6 +105,18 @@ class DocumentArgs:
     @document_id.setter
     def document_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "document_id", value)
+
+    @property
+    @pulumi.getter(name="aclInfo")
+    def acl_info(self) -> Optional[pulumi.Input['GoogleCloudDiscoveryengineV1alphaDocumentAclInfoArgs']]:
+        """
+        Access control information for the document.
+        """
+        return pulumi.get(self, "acl_info")
+
+    @acl_info.setter
+    def acl_info(self, value: Optional[pulumi.Input['GoogleCloudDiscoveryengineV1alphaDocumentAclInfoArgs']]):
+        pulumi.set(self, "acl_info", value)
 
     @property
     @pulumi.getter
@@ -210,6 +226,7 @@ class Document(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acl_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaDocumentAclInfoArgs']]] = None,
                  branch_id: Optional[pulumi.Input[str]] = None,
                  collection_id: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaDocumentContentArgs']]] = None,
@@ -229,6 +246,7 @@ class Document(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaDocumentAclInfoArgs']] acl_info: Access control information for the document.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaDocumentContentArgs']] content: The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
         :param pulumi.Input[str] document_id: Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
         :param pulumi.Input[str] id: Immutable. The identifier of the document. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
@@ -262,6 +280,7 @@ class Document(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acl_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaDocumentAclInfoArgs']]] = None,
                  branch_id: Optional[pulumi.Input[str]] = None,
                  collection_id: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDiscoveryengineV1alphaDocumentContentArgs']]] = None,
@@ -284,6 +303,7 @@ class Document(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DocumentArgs.__new__(DocumentArgs)
 
+            __props__.__dict__["acl_info"] = acl_info
             if branch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'branch_id'")
             __props__.__dict__["branch_id"] = branch_id
@@ -306,6 +326,7 @@ class Document(pulumi.CustomResource):
             __props__.__dict__["schema_id"] = schema_id
             __props__.__dict__["struct_data"] = struct_data
             __props__.__dict__["derived_struct_data"] = None
+            __props__.__dict__["index_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["branch_id", "collection_id", "data_store_id", "document_id", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Document, __self__).__init__(
@@ -330,12 +351,14 @@ class Document(pulumi.CustomResource):
 
         __props__ = DocumentArgs.__new__(DocumentArgs)
 
+        __props__.__dict__["acl_info"] = None
         __props__.__dict__["branch_id"] = None
         __props__.__dict__["collection_id"] = None
         __props__.__dict__["content"] = None
         __props__.__dict__["data_store_id"] = None
         __props__.__dict__["derived_struct_data"] = None
         __props__.__dict__["document_id"] = None
+        __props__.__dict__["index_time"] = None
         __props__.__dict__["json_data"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
@@ -344,6 +367,14 @@ class Document(pulumi.CustomResource):
         __props__.__dict__["schema_id"] = None
         __props__.__dict__["struct_data"] = None
         return Document(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="aclInfo")
+    def acl_info(self) -> pulumi.Output['outputs.GoogleCloudDiscoveryengineV1alphaDocumentAclInfoResponse']:
+        """
+        Access control information for the document.
+        """
+        return pulumi.get(self, "acl_info")
 
     @property
     @pulumi.getter(name="branchId")
@@ -383,6 +414,14 @@ class Document(pulumi.CustomResource):
         Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
         """
         return pulumi.get(self, "document_id")
+
+    @property
+    @pulumi.getter(name="indexTime")
+    def index_time(self) -> pulumi.Output[str]:
+        """
+        The last time the document was indexed. If this field is set, the document could be returned in search results. This field is OUTPUT_ONLY. If this field is not populated, it means the document has never been indexed.
+        """
+        return pulumi.get(self, "index_time")
 
     @property
     @pulumi.getter(name="jsonData")

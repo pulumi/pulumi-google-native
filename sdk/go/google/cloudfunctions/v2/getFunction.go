@@ -26,11 +26,14 @@ type LookupFunctionArgs struct {
 	FunctionId string  `pulumi:"functionId"`
 	Location   string  `pulumi:"location"`
 	Project    *string `pulumi:"project"`
+	Revision   *string `pulumi:"revision"`
 }
 
 type LookupFunctionResult struct {
 	// Describes the Build step of the function that builds a container from the given source.
 	BuildConfig BuildConfigResponse `pulumi:"buildConfig"`
+	// The create timestamp of a Cloud Function. This is only applicable to 2nd Gen functions.
+	CreateTime string `pulumi:"createTime"`
 	// User-provided description of a function.
 	Description string `pulumi:"description"`
 	// Describe whether the function is 1st Gen or 2nd Gen.
@@ -53,6 +56,8 @@ type LookupFunctionResult struct {
 	StateMessages []GoogleCloudFunctionsV2StateMessageResponse `pulumi:"stateMessages"`
 	// The last update timestamp of a Cloud Function.
 	UpdateTime string `pulumi:"updateTime"`
+	// UpgradeInfo for this Cloud Function
+	UpgradeInfo UpgradeInfoResponse `pulumi:"upgradeInfo"`
 	// The deployed url for the function.
 	Url string `pulumi:"url"`
 }
@@ -74,6 +79,7 @@ type LookupFunctionOutputArgs struct {
 	FunctionId pulumi.StringInput    `pulumi:"functionId"`
 	Location   pulumi.StringInput    `pulumi:"location"`
 	Project    pulumi.StringPtrInput `pulumi:"project"`
+	Revision   pulumi.StringPtrInput `pulumi:"revision"`
 }
 
 func (LookupFunctionOutputArgs) ElementType() reflect.Type {
@@ -97,6 +103,11 @@ func (o LookupFunctionResultOutput) ToLookupFunctionResultOutputWithContext(ctx 
 // Describes the Build step of the function that builds a container from the given source.
 func (o LookupFunctionResultOutput) BuildConfig() BuildConfigResponseOutput {
 	return o.ApplyT(func(v LookupFunctionResult) BuildConfigResponse { return v.BuildConfig }).(BuildConfigResponseOutput)
+}
+
+// The create timestamp of a Cloud Function. This is only applicable to 2nd Gen functions.
+func (o LookupFunctionResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // User-provided description of a function.
@@ -152,6 +163,11 @@ func (o LookupFunctionResultOutput) StateMessages() GoogleCloudFunctionsV2StateM
 // The last update timestamp of a Cloud Function.
 func (o LookupFunctionResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// UpgradeInfo for this Cloud Function
+func (o LookupFunctionResultOutput) UpgradeInfo() UpgradeInfoResponseOutput {
+	return o.ApplyT(func(v LookupFunctionResult) UpgradeInfoResponse { return v.UpgradeInfo }).(UpgradeInfoResponseOutput)
 }
 
 // The deployed url for the function.

@@ -17,6 +17,8 @@ var _ = internal.GetEnvOrDefault
 type GoogleCloudRunV2BinaryAuthorization struct {
 	// If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 	BreakglassJustification *string `pulumi:"breakglassJustification"`
+	// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+	Policy *string `pulumi:"policy"`
 	// If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
 	UseDefault *bool `pulumi:"useDefault"`
 }
@@ -36,6 +38,8 @@ type GoogleCloudRunV2BinaryAuthorizationInput interface {
 type GoogleCloudRunV2BinaryAuthorizationArgs struct {
 	// If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 	BreakglassJustification pulumi.StringPtrInput `pulumi:"breakglassJustification"`
+	// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
 	// If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
 	UseDefault pulumi.BoolPtrInput `pulumi:"useDefault"`
 }
@@ -123,6 +127,11 @@ func (o GoogleCloudRunV2BinaryAuthorizationOutput) BreakglassJustification() pul
 	return o.ApplyT(func(v GoogleCloudRunV2BinaryAuthorization) *string { return v.BreakglassJustification }).(pulumi.StringPtrOutput)
 }
 
+// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+func (o GoogleCloudRunV2BinaryAuthorizationOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2BinaryAuthorization) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
 // If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
 func (o GoogleCloudRunV2BinaryAuthorizationOutput) UseDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2BinaryAuthorization) *bool { return v.UseDefault }).(pulumi.BoolPtrOutput)
@@ -162,6 +171,16 @@ func (o GoogleCloudRunV2BinaryAuthorizationPtrOutput) BreakglassJustification() 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+func (o GoogleCloudRunV2BinaryAuthorizationPtrOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2BinaryAuthorization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Policy
+	}).(pulumi.StringPtrOutput)
+}
+
 // If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
 func (o GoogleCloudRunV2BinaryAuthorizationPtrOutput) UseDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2BinaryAuthorization) *bool {
@@ -176,6 +195,8 @@ func (o GoogleCloudRunV2BinaryAuthorizationPtrOutput) UseDefault() pulumi.BoolPt
 type GoogleCloudRunV2BinaryAuthorizationResponse struct {
 	// If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 	BreakglassJustification string `pulumi:"breakglassJustification"`
+	// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+	Policy string `pulumi:"policy"`
 	// If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
 	UseDefault bool `pulumi:"useDefault"`
 }
@@ -198,6 +219,11 @@ func (o GoogleCloudRunV2BinaryAuthorizationResponseOutput) ToGoogleCloudRunV2Bin
 // If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 func (o GoogleCloudRunV2BinaryAuthorizationResponseOutput) BreakglassJustification() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2BinaryAuthorizationResponse) string { return v.BreakglassJustification }).(pulumi.StringOutput)
+}
+
+// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+func (o GoogleCloudRunV2BinaryAuthorizationResponseOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2BinaryAuthorizationResponse) string { return v.Policy }).(pulumi.StringOutput)
 }
 
 // If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
@@ -1679,6 +1705,198 @@ func (o GoogleCloudRunV2ExecutionTemplateResponseOutput) Template() GoogleCloudR
 	}).(GoogleCloudRunV2TaskTemplateResponseOutput)
 }
 
+// Represents a volume backed by a Cloud Storage bucket using Cloud Storage FUSE.
+type GoogleCloudRunV2GCSVolumeSource struct {
+	// Cloud Storage Bucket name.
+	Bucket *string `pulumi:"bucket"`
+	// If true, the volume will be mounted as read only for all mounts.
+	ReadOnly *bool `pulumi:"readOnly"`
+}
+
+// GoogleCloudRunV2GCSVolumeSourceInput is an input type that accepts GoogleCloudRunV2GCSVolumeSourceArgs and GoogleCloudRunV2GCSVolumeSourceOutput values.
+// You can construct a concrete instance of `GoogleCloudRunV2GCSVolumeSourceInput` via:
+//
+//	GoogleCloudRunV2GCSVolumeSourceArgs{...}
+type GoogleCloudRunV2GCSVolumeSourceInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRunV2GCSVolumeSourceOutput() GoogleCloudRunV2GCSVolumeSourceOutput
+	ToGoogleCloudRunV2GCSVolumeSourceOutputWithContext(context.Context) GoogleCloudRunV2GCSVolumeSourceOutput
+}
+
+// Represents a volume backed by a Cloud Storage bucket using Cloud Storage FUSE.
+type GoogleCloudRunV2GCSVolumeSourceArgs struct {
+	// Cloud Storage Bucket name.
+	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
+	// If true, the volume will be mounted as read only for all mounts.
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+}
+
+func (GoogleCloudRunV2GCSVolumeSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2GCSVolumeSource)(nil)).Elem()
+}
+
+func (i GoogleCloudRunV2GCSVolumeSourceArgs) ToGoogleCloudRunV2GCSVolumeSourceOutput() GoogleCloudRunV2GCSVolumeSourceOutput {
+	return i.ToGoogleCloudRunV2GCSVolumeSourceOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRunV2GCSVolumeSourceArgs) ToGoogleCloudRunV2GCSVolumeSourceOutputWithContext(ctx context.Context) GoogleCloudRunV2GCSVolumeSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2GCSVolumeSourceOutput)
+}
+
+func (i GoogleCloudRunV2GCSVolumeSourceArgs) ToGoogleCloudRunV2GCSVolumeSourcePtrOutput() GoogleCloudRunV2GCSVolumeSourcePtrOutput {
+	return i.ToGoogleCloudRunV2GCSVolumeSourcePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRunV2GCSVolumeSourceArgs) ToGoogleCloudRunV2GCSVolumeSourcePtrOutputWithContext(ctx context.Context) GoogleCloudRunV2GCSVolumeSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2GCSVolumeSourceOutput).ToGoogleCloudRunV2GCSVolumeSourcePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRunV2GCSVolumeSourcePtrInput is an input type that accepts GoogleCloudRunV2GCSVolumeSourceArgs, GoogleCloudRunV2GCSVolumeSourcePtr and GoogleCloudRunV2GCSVolumeSourcePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRunV2GCSVolumeSourcePtrInput` via:
+//
+//	        GoogleCloudRunV2GCSVolumeSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudRunV2GCSVolumeSourcePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRunV2GCSVolumeSourcePtrOutput() GoogleCloudRunV2GCSVolumeSourcePtrOutput
+	ToGoogleCloudRunV2GCSVolumeSourcePtrOutputWithContext(context.Context) GoogleCloudRunV2GCSVolumeSourcePtrOutput
+}
+
+type googleCloudRunV2GCSVolumeSourcePtrType GoogleCloudRunV2GCSVolumeSourceArgs
+
+func GoogleCloudRunV2GCSVolumeSourcePtr(v *GoogleCloudRunV2GCSVolumeSourceArgs) GoogleCloudRunV2GCSVolumeSourcePtrInput {
+	return (*googleCloudRunV2GCSVolumeSourcePtrType)(v)
+}
+
+func (*googleCloudRunV2GCSVolumeSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRunV2GCSVolumeSource)(nil)).Elem()
+}
+
+func (i *googleCloudRunV2GCSVolumeSourcePtrType) ToGoogleCloudRunV2GCSVolumeSourcePtrOutput() GoogleCloudRunV2GCSVolumeSourcePtrOutput {
+	return i.ToGoogleCloudRunV2GCSVolumeSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRunV2GCSVolumeSourcePtrType) ToGoogleCloudRunV2GCSVolumeSourcePtrOutputWithContext(ctx context.Context) GoogleCloudRunV2GCSVolumeSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2GCSVolumeSourcePtrOutput)
+}
+
+// Represents a volume backed by a Cloud Storage bucket using Cloud Storage FUSE.
+type GoogleCloudRunV2GCSVolumeSourceOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2GCSVolumeSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2GCSVolumeSource)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2GCSVolumeSourceOutput) ToGoogleCloudRunV2GCSVolumeSourceOutput() GoogleCloudRunV2GCSVolumeSourceOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2GCSVolumeSourceOutput) ToGoogleCloudRunV2GCSVolumeSourceOutputWithContext(ctx context.Context) GoogleCloudRunV2GCSVolumeSourceOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2GCSVolumeSourceOutput) ToGoogleCloudRunV2GCSVolumeSourcePtrOutput() GoogleCloudRunV2GCSVolumeSourcePtrOutput {
+	return o.ToGoogleCloudRunV2GCSVolumeSourcePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRunV2GCSVolumeSourceOutput) ToGoogleCloudRunV2GCSVolumeSourcePtrOutputWithContext(ctx context.Context) GoogleCloudRunV2GCSVolumeSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunV2GCSVolumeSource) *GoogleCloudRunV2GCSVolumeSource {
+		return &v
+	}).(GoogleCloudRunV2GCSVolumeSourcePtrOutput)
+}
+
+// Cloud Storage Bucket name.
+func (o GoogleCloudRunV2GCSVolumeSourceOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2GCSVolumeSource) *string { return v.Bucket }).(pulumi.StringPtrOutput)
+}
+
+// If true, the volume will be mounted as read only for all mounts.
+func (o GoogleCloudRunV2GCSVolumeSourceOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2GCSVolumeSource) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudRunV2GCSVolumeSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2GCSVolumeSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRunV2GCSVolumeSource)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2GCSVolumeSourcePtrOutput) ToGoogleCloudRunV2GCSVolumeSourcePtrOutput() GoogleCloudRunV2GCSVolumeSourcePtrOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2GCSVolumeSourcePtrOutput) ToGoogleCloudRunV2GCSVolumeSourcePtrOutputWithContext(ctx context.Context) GoogleCloudRunV2GCSVolumeSourcePtrOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2GCSVolumeSourcePtrOutput) Elem() GoogleCloudRunV2GCSVolumeSourceOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2GCSVolumeSource) GoogleCloudRunV2GCSVolumeSource {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRunV2GCSVolumeSource
+		return ret
+	}).(GoogleCloudRunV2GCSVolumeSourceOutput)
+}
+
+// Cloud Storage Bucket name.
+func (o GoogleCloudRunV2GCSVolumeSourcePtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2GCSVolumeSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, the volume will be mounted as read only for all mounts.
+func (o GoogleCloudRunV2GCSVolumeSourcePtrOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2GCSVolumeSource) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents a volume backed by a Cloud Storage bucket using Cloud Storage FUSE.
+type GoogleCloudRunV2GCSVolumeSourceResponse struct {
+	// Cloud Storage Bucket name.
+	Bucket string `pulumi:"bucket"`
+	// If true, the volume will be mounted as read only for all mounts.
+	ReadOnly bool `pulumi:"readOnly"`
+}
+
+// Represents a volume backed by a Cloud Storage bucket using Cloud Storage FUSE.
+type GoogleCloudRunV2GCSVolumeSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2GCSVolumeSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2GCSVolumeSourceResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2GCSVolumeSourceResponseOutput) ToGoogleCloudRunV2GCSVolumeSourceResponseOutput() GoogleCloudRunV2GCSVolumeSourceResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2GCSVolumeSourceResponseOutput) ToGoogleCloudRunV2GCSVolumeSourceResponseOutputWithContext(ctx context.Context) GoogleCloudRunV2GCSVolumeSourceResponseOutput {
+	return o
+}
+
+// Cloud Storage Bucket name.
+func (o GoogleCloudRunV2GCSVolumeSourceResponseOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2GCSVolumeSourceResponse) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// If true, the volume will be mounted as read only for all mounts.
+func (o GoogleCloudRunV2GCSVolumeSourceResponseOutput) ReadOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2GCSVolumeSourceResponse) bool { return v.ReadOnly }).(pulumi.BoolOutput)
+}
+
 // GRPCAction describes an action involving a GRPC port.
 type GoogleCloudRunV2GRPCAction struct {
 	// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
@@ -2253,6 +2471,224 @@ func (o GoogleCloudRunV2HTTPHeaderResponseArrayOutput) Index(i pulumi.IntInput) 
 	}).(GoogleCloudRunV2HTTPHeaderResponseOutput)
 }
 
+// Represents an NFS mount.
+type GoogleCloudRunV2NFSVolumeSource struct {
+	// Path that is exported by the NFS server.
+	Path *string `pulumi:"path"`
+	// If true, the volume will be mounted as read only for all mounts.
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Hostname or IP address of the NFS server
+	Server *string `pulumi:"server"`
+}
+
+// GoogleCloudRunV2NFSVolumeSourceInput is an input type that accepts GoogleCloudRunV2NFSVolumeSourceArgs and GoogleCloudRunV2NFSVolumeSourceOutput values.
+// You can construct a concrete instance of `GoogleCloudRunV2NFSVolumeSourceInput` via:
+//
+//	GoogleCloudRunV2NFSVolumeSourceArgs{...}
+type GoogleCloudRunV2NFSVolumeSourceInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRunV2NFSVolumeSourceOutput() GoogleCloudRunV2NFSVolumeSourceOutput
+	ToGoogleCloudRunV2NFSVolumeSourceOutputWithContext(context.Context) GoogleCloudRunV2NFSVolumeSourceOutput
+}
+
+// Represents an NFS mount.
+type GoogleCloudRunV2NFSVolumeSourceArgs struct {
+	// Path that is exported by the NFS server.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// If true, the volume will be mounted as read only for all mounts.
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+	// Hostname or IP address of the NFS server
+	Server pulumi.StringPtrInput `pulumi:"server"`
+}
+
+func (GoogleCloudRunV2NFSVolumeSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2NFSVolumeSource)(nil)).Elem()
+}
+
+func (i GoogleCloudRunV2NFSVolumeSourceArgs) ToGoogleCloudRunV2NFSVolumeSourceOutput() GoogleCloudRunV2NFSVolumeSourceOutput {
+	return i.ToGoogleCloudRunV2NFSVolumeSourceOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRunV2NFSVolumeSourceArgs) ToGoogleCloudRunV2NFSVolumeSourceOutputWithContext(ctx context.Context) GoogleCloudRunV2NFSVolumeSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2NFSVolumeSourceOutput)
+}
+
+func (i GoogleCloudRunV2NFSVolumeSourceArgs) ToGoogleCloudRunV2NFSVolumeSourcePtrOutput() GoogleCloudRunV2NFSVolumeSourcePtrOutput {
+	return i.ToGoogleCloudRunV2NFSVolumeSourcePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRunV2NFSVolumeSourceArgs) ToGoogleCloudRunV2NFSVolumeSourcePtrOutputWithContext(ctx context.Context) GoogleCloudRunV2NFSVolumeSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2NFSVolumeSourceOutput).ToGoogleCloudRunV2NFSVolumeSourcePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRunV2NFSVolumeSourcePtrInput is an input type that accepts GoogleCloudRunV2NFSVolumeSourceArgs, GoogleCloudRunV2NFSVolumeSourcePtr and GoogleCloudRunV2NFSVolumeSourcePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRunV2NFSVolumeSourcePtrInput` via:
+//
+//	        GoogleCloudRunV2NFSVolumeSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudRunV2NFSVolumeSourcePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRunV2NFSVolumeSourcePtrOutput() GoogleCloudRunV2NFSVolumeSourcePtrOutput
+	ToGoogleCloudRunV2NFSVolumeSourcePtrOutputWithContext(context.Context) GoogleCloudRunV2NFSVolumeSourcePtrOutput
+}
+
+type googleCloudRunV2NFSVolumeSourcePtrType GoogleCloudRunV2NFSVolumeSourceArgs
+
+func GoogleCloudRunV2NFSVolumeSourcePtr(v *GoogleCloudRunV2NFSVolumeSourceArgs) GoogleCloudRunV2NFSVolumeSourcePtrInput {
+	return (*googleCloudRunV2NFSVolumeSourcePtrType)(v)
+}
+
+func (*googleCloudRunV2NFSVolumeSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRunV2NFSVolumeSource)(nil)).Elem()
+}
+
+func (i *googleCloudRunV2NFSVolumeSourcePtrType) ToGoogleCloudRunV2NFSVolumeSourcePtrOutput() GoogleCloudRunV2NFSVolumeSourcePtrOutput {
+	return i.ToGoogleCloudRunV2NFSVolumeSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRunV2NFSVolumeSourcePtrType) ToGoogleCloudRunV2NFSVolumeSourcePtrOutputWithContext(ctx context.Context) GoogleCloudRunV2NFSVolumeSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2NFSVolumeSourcePtrOutput)
+}
+
+// Represents an NFS mount.
+type GoogleCloudRunV2NFSVolumeSourceOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2NFSVolumeSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2NFSVolumeSource)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2NFSVolumeSourceOutput) ToGoogleCloudRunV2NFSVolumeSourceOutput() GoogleCloudRunV2NFSVolumeSourceOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2NFSVolumeSourceOutput) ToGoogleCloudRunV2NFSVolumeSourceOutputWithContext(ctx context.Context) GoogleCloudRunV2NFSVolumeSourceOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2NFSVolumeSourceOutput) ToGoogleCloudRunV2NFSVolumeSourcePtrOutput() GoogleCloudRunV2NFSVolumeSourcePtrOutput {
+	return o.ToGoogleCloudRunV2NFSVolumeSourcePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRunV2NFSVolumeSourceOutput) ToGoogleCloudRunV2NFSVolumeSourcePtrOutputWithContext(ctx context.Context) GoogleCloudRunV2NFSVolumeSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunV2NFSVolumeSource) *GoogleCloudRunV2NFSVolumeSource {
+		return &v
+	}).(GoogleCloudRunV2NFSVolumeSourcePtrOutput)
+}
+
+// Path that is exported by the NFS server.
+func (o GoogleCloudRunV2NFSVolumeSourceOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2NFSVolumeSource) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// If true, the volume will be mounted as read only for all mounts.
+func (o GoogleCloudRunV2NFSVolumeSourceOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2NFSVolumeSource) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Hostname or IP address of the NFS server
+func (o GoogleCloudRunV2NFSVolumeSourceOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2NFSVolumeSource) *string { return v.Server }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudRunV2NFSVolumeSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2NFSVolumeSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRunV2NFSVolumeSource)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2NFSVolumeSourcePtrOutput) ToGoogleCloudRunV2NFSVolumeSourcePtrOutput() GoogleCloudRunV2NFSVolumeSourcePtrOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2NFSVolumeSourcePtrOutput) ToGoogleCloudRunV2NFSVolumeSourcePtrOutputWithContext(ctx context.Context) GoogleCloudRunV2NFSVolumeSourcePtrOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2NFSVolumeSourcePtrOutput) Elem() GoogleCloudRunV2NFSVolumeSourceOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2NFSVolumeSource) GoogleCloudRunV2NFSVolumeSource {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRunV2NFSVolumeSource
+		return ret
+	}).(GoogleCloudRunV2NFSVolumeSourceOutput)
+}
+
+// Path that is exported by the NFS server.
+func (o GoogleCloudRunV2NFSVolumeSourcePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2NFSVolumeSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, the volume will be mounted as read only for all mounts.
+func (o GoogleCloudRunV2NFSVolumeSourcePtrOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2NFSVolumeSource) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Hostname or IP address of the NFS server
+func (o GoogleCloudRunV2NFSVolumeSourcePtrOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2NFSVolumeSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Server
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents an NFS mount.
+type GoogleCloudRunV2NFSVolumeSourceResponse struct {
+	// Path that is exported by the NFS server.
+	Path string `pulumi:"path"`
+	// If true, the volume will be mounted as read only for all mounts.
+	ReadOnly bool `pulumi:"readOnly"`
+	// Hostname or IP address of the NFS server
+	Server string `pulumi:"server"`
+}
+
+// Represents an NFS mount.
+type GoogleCloudRunV2NFSVolumeSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2NFSVolumeSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2NFSVolumeSourceResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2NFSVolumeSourceResponseOutput) ToGoogleCloudRunV2NFSVolumeSourceResponseOutput() GoogleCloudRunV2NFSVolumeSourceResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2NFSVolumeSourceResponseOutput) ToGoogleCloudRunV2NFSVolumeSourceResponseOutputWithContext(ctx context.Context) GoogleCloudRunV2NFSVolumeSourceResponseOutput {
+	return o
+}
+
+// Path that is exported by the NFS server.
+func (o GoogleCloudRunV2NFSVolumeSourceResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2NFSVolumeSourceResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// If true, the volume will be mounted as read only for all mounts.
+func (o GoogleCloudRunV2NFSVolumeSourceResponseOutput) ReadOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2NFSVolumeSourceResponse) bool { return v.ReadOnly }).(pulumi.BoolOutput)
+}
+
+// Hostname or IP address of the NFS server
+func (o GoogleCloudRunV2NFSVolumeSourceResponseOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2NFSVolumeSourceResponse) string { return v.Server }).(pulumi.StringOutput)
+}
+
 // Direct VPC egress settings.
 type GoogleCloudRunV2NetworkInterface struct {
 	// The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork.
@@ -2755,9 +3191,9 @@ func (o GoogleCloudRunV2ProbeResponseOutput) TimeoutSeconds() pulumi.IntOutput {
 
 // ResourceRequirements describes the compute resource requirements.
 type GoogleCloudRunV2ResourceRequirements struct {
-	// Determines whether CPU should be throttled or not outside of requests.
+	// Determines whether CPU is only allocated during requests (true by default). However, if ResourceRequirements is set, the caller must explicitly set this field to true to preserve the default behavior.
 	CpuIdle *bool `pulumi:"cpuIdle"`
-	// Only ´memory´ and 'cpu' are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
+	// Only `memory` and `cpu` keys in the map are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 	Limits map[string]string `pulumi:"limits"`
 	// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
 	StartupCpuBoost *bool `pulumi:"startupCpuBoost"`
@@ -2776,9 +3212,9 @@ type GoogleCloudRunV2ResourceRequirementsInput interface {
 
 // ResourceRequirements describes the compute resource requirements.
 type GoogleCloudRunV2ResourceRequirementsArgs struct {
-	// Determines whether CPU should be throttled or not outside of requests.
+	// Determines whether CPU is only allocated during requests (true by default). However, if ResourceRequirements is set, the caller must explicitly set this field to true to preserve the default behavior.
 	CpuIdle pulumi.BoolPtrInput `pulumi:"cpuIdle"`
-	// Only ´memory´ and 'cpu' are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
+	// Only `memory` and `cpu` keys in the map are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 	Limits pulumi.StringMapInput `pulumi:"limits"`
 	// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
 	StartupCpuBoost pulumi.BoolPtrInput `pulumi:"startupCpuBoost"`
@@ -2862,12 +3298,12 @@ func (o GoogleCloudRunV2ResourceRequirementsOutput) ToGoogleCloudRunV2ResourceRe
 	}).(GoogleCloudRunV2ResourceRequirementsPtrOutput)
 }
 
-// Determines whether CPU should be throttled or not outside of requests.
+// Determines whether CPU is only allocated during requests (true by default). However, if ResourceRequirements is set, the caller must explicitly set this field to true to preserve the default behavior.
 func (o GoogleCloudRunV2ResourceRequirementsOutput) CpuIdle() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ResourceRequirements) *bool { return v.CpuIdle }).(pulumi.BoolPtrOutput)
 }
 
-// Only ´memory´ and 'cpu' are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
+// Only `memory` and `cpu` keys in the map are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 func (o GoogleCloudRunV2ResourceRequirementsOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ResourceRequirements) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
@@ -2901,7 +3337,7 @@ func (o GoogleCloudRunV2ResourceRequirementsPtrOutput) Elem() GoogleCloudRunV2Re
 	}).(GoogleCloudRunV2ResourceRequirementsOutput)
 }
 
-// Determines whether CPU should be throttled or not outside of requests.
+// Determines whether CPU is only allocated during requests (true by default). However, if ResourceRequirements is set, the caller must explicitly set this field to true to preserve the default behavior.
 func (o GoogleCloudRunV2ResourceRequirementsPtrOutput) CpuIdle() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2ResourceRequirements) *bool {
 		if v == nil {
@@ -2911,7 +3347,7 @@ func (o GoogleCloudRunV2ResourceRequirementsPtrOutput) CpuIdle() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Only ´memory´ and 'cpu' are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
+// Only `memory` and `cpu` keys in the map are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 func (o GoogleCloudRunV2ResourceRequirementsPtrOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2ResourceRequirements) map[string]string {
 		if v == nil {
@@ -2933,9 +3369,9 @@ func (o GoogleCloudRunV2ResourceRequirementsPtrOutput) StartupCpuBoost() pulumi.
 
 // ResourceRequirements describes the compute resource requirements.
 type GoogleCloudRunV2ResourceRequirementsResponse struct {
-	// Determines whether CPU should be throttled or not outside of requests.
+	// Determines whether CPU is only allocated during requests (true by default). However, if ResourceRequirements is set, the caller must explicitly set this field to true to preserve the default behavior.
 	CpuIdle bool `pulumi:"cpuIdle"`
-	// Only ´memory´ and 'cpu' are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
+	// Only `memory` and `cpu` keys in the map are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 	Limits map[string]string `pulumi:"limits"`
 	// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
 	StartupCpuBoost bool `pulumi:"startupCpuBoost"`
@@ -2956,12 +3392,12 @@ func (o GoogleCloudRunV2ResourceRequirementsResponseOutput) ToGoogleCloudRunV2Re
 	return o
 }
 
-// Determines whether CPU should be throttled or not outside of requests.
+// Determines whether CPU is only allocated during requests (true by default). However, if ResourceRequirements is set, the caller must explicitly set this field to true to preserve the default behavior.
 func (o GoogleCloudRunV2ResourceRequirementsResponseOutput) CpuIdle() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ResourceRequirementsResponse) bool { return v.CpuIdle }).(pulumi.BoolOutput)
 }
 
-// Only ´memory´ and 'cpu' are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
+// Only `memory` and `cpu` keys in the map are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 func (o GoogleCloudRunV2ResourceRequirementsResponseOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ResourceRequirementsResponse) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
@@ -3173,6 +3609,8 @@ type GoogleCloudRunV2RevisionTemplate struct {
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// The sandbox environment to host this Revision.
 	ExecutionEnvironment *GoogleCloudRunV2RevisionTemplateExecutionEnvironment `pulumi:"executionEnvironment"`
+	// Optional. Disables health checking containers during deployment.
+	HealthCheckDisabled *bool `pulumi:"healthCheckDisabled"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 	Labels map[string]string `pulumi:"labels"`
 	// Sets the maximum number of requests that each serving instance can receive.
@@ -3183,7 +3621,7 @@ type GoogleCloudRunV2RevisionTemplate struct {
 	Scaling *GoogleCloudRunV2RevisionScaling `pulumi:"scaling"`
 	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 	ServiceAccount *string `pulumi:"serviceAccount"`
-	// Enable session affinity.
+	// Optional. Enable session affinity.
 	SessionAffinity *bool `pulumi:"sessionAffinity"`
 	// Max allowed time for an instance to respond to a request.
 	Timeout *string `pulumi:"timeout"`
@@ -3214,6 +3652,8 @@ type GoogleCloudRunV2RevisionTemplateArgs struct {
 	EncryptionKey pulumi.StringPtrInput `pulumi:"encryptionKey"`
 	// The sandbox environment to host this Revision.
 	ExecutionEnvironment GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrInput `pulumi:"executionEnvironment"`
+	// Optional. Disables health checking containers during deployment.
+	HealthCheckDisabled pulumi.BoolPtrInput `pulumi:"healthCheckDisabled"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Sets the maximum number of requests that each serving instance can receive.
@@ -3224,7 +3664,7 @@ type GoogleCloudRunV2RevisionTemplateArgs struct {
 	Scaling GoogleCloudRunV2RevisionScalingPtrInput `pulumi:"scaling"`
 	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
-	// Enable session affinity.
+	// Optional. Enable session affinity.
 	SessionAffinity pulumi.BoolPtrInput `pulumi:"sessionAffinity"`
 	// Max allowed time for an instance to respond to a request.
 	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
@@ -3283,6 +3723,11 @@ func (o GoogleCloudRunV2RevisionTemplateOutput) ExecutionEnvironment() GoogleClo
 	}).(GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput)
 }
 
+// Optional. Disables health checking containers during deployment.
+func (o GoogleCloudRunV2RevisionTemplateOutput) HealthCheckDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplate) *bool { return v.HealthCheckDisabled }).(pulumi.BoolPtrOutput)
+}
+
 // Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 func (o GoogleCloudRunV2RevisionTemplateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplate) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
@@ -3308,7 +3753,7 @@ func (o GoogleCloudRunV2RevisionTemplateOutput) ServiceAccount() pulumi.StringPt
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplate) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
-// Enable session affinity.
+// Optional. Enable session affinity.
 func (o GoogleCloudRunV2RevisionTemplateOutput) SessionAffinity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplate) *bool { return v.SessionAffinity }).(pulumi.BoolPtrOutput)
 }
@@ -3338,6 +3783,8 @@ type GoogleCloudRunV2RevisionTemplateResponse struct {
 	EncryptionKey string `pulumi:"encryptionKey"`
 	// The sandbox environment to host this Revision.
 	ExecutionEnvironment string `pulumi:"executionEnvironment"`
+	// Optional. Disables health checking containers during deployment.
+	HealthCheckDisabled bool `pulumi:"healthCheckDisabled"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 	Labels map[string]string `pulumi:"labels"`
 	// Sets the maximum number of requests that each serving instance can receive.
@@ -3348,7 +3795,7 @@ type GoogleCloudRunV2RevisionTemplateResponse struct {
 	Scaling GoogleCloudRunV2RevisionScalingResponse `pulumi:"scaling"`
 	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 	ServiceAccount string `pulumi:"serviceAccount"`
-	// Enable session affinity.
+	// Optional. Enable session affinity.
 	SessionAffinity bool `pulumi:"sessionAffinity"`
 	// Max allowed time for an instance to respond to a request.
 	Timeout string `pulumi:"timeout"`
@@ -3395,6 +3842,11 @@ func (o GoogleCloudRunV2RevisionTemplateResponseOutput) ExecutionEnvironment() p
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplateResponse) string { return v.ExecutionEnvironment }).(pulumi.StringOutput)
 }
 
+// Optional. Disables health checking containers during deployment.
+func (o GoogleCloudRunV2RevisionTemplateResponseOutput) HealthCheckDisabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplateResponse) bool { return v.HealthCheckDisabled }).(pulumi.BoolOutput)
+}
+
 // Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 func (o GoogleCloudRunV2RevisionTemplateResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplateResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
@@ -3422,7 +3874,7 @@ func (o GoogleCloudRunV2RevisionTemplateResponseOutput) ServiceAccount() pulumi.
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplateResponse) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
-// Enable session affinity.
+// Optional. Enable session affinity.
 func (o GoogleCloudRunV2RevisionTemplateResponseOutput) SessionAffinity() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplateResponse) bool { return v.SessionAffinity }).(pulumi.BoolOutput)
 }
@@ -3856,7 +4308,7 @@ func (o GoogleCloudRunV2SecretVolumeSourceResponseOutput) Secret() pulumi.String
 
 // Scaling settings applied at the service level rather than at the revision level.
 type GoogleCloudRunV2ServiceScaling struct {
-	// total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (ALPHA)
+	// total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (BETA)
 	MinInstanceCount *int `pulumi:"minInstanceCount"`
 }
 
@@ -3873,7 +4325,7 @@ type GoogleCloudRunV2ServiceScalingInput interface {
 
 // Scaling settings applied at the service level rather than at the revision level.
 type GoogleCloudRunV2ServiceScalingArgs struct {
-	// total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (ALPHA)
+	// total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (BETA)
 	MinInstanceCount pulumi.IntPtrInput `pulumi:"minInstanceCount"`
 }
 
@@ -3955,7 +4407,7 @@ func (o GoogleCloudRunV2ServiceScalingOutput) ToGoogleCloudRunV2ServiceScalingPt
 	}).(GoogleCloudRunV2ServiceScalingPtrOutput)
 }
 
-// total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (ALPHA)
+// total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (BETA)
 func (o GoogleCloudRunV2ServiceScalingOutput) MinInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ServiceScaling) *int { return v.MinInstanceCount }).(pulumi.IntPtrOutput)
 }
@@ -3984,7 +4436,7 @@ func (o GoogleCloudRunV2ServiceScalingPtrOutput) Elem() GoogleCloudRunV2ServiceS
 	}).(GoogleCloudRunV2ServiceScalingOutput)
 }
 
-// total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (ALPHA)
+// total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (BETA)
 func (o GoogleCloudRunV2ServiceScalingPtrOutput) MinInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2ServiceScaling) *int {
 		if v == nil {
@@ -3996,7 +4448,7 @@ func (o GoogleCloudRunV2ServiceScalingPtrOutput) MinInstanceCount() pulumi.IntPt
 
 // Scaling settings applied at the service level rather than at the revision level.
 type GoogleCloudRunV2ServiceScalingResponse struct {
-	// total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (ALPHA)
+	// total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (BETA)
 	MinInstanceCount int `pulumi:"minInstanceCount"`
 }
 
@@ -4015,7 +4467,7 @@ func (o GoogleCloudRunV2ServiceScalingResponseOutput) ToGoogleCloudRunV2ServiceS
 	return o
 }
 
-// total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (ALPHA)
+// total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (BETA)
 func (o GoogleCloudRunV2ServiceScalingResponseOutput) MinInstanceCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ServiceScalingResponse) int { return v.MinInstanceCount }).(pulumi.IntOutput)
 }
@@ -4833,8 +5285,12 @@ type GoogleCloudRunV2Volume struct {
 	CloudSqlInstance *GoogleCloudRunV2CloudSqlInstance `pulumi:"cloudSqlInstance"`
 	// Ephemeral storage used as a shared volume.
 	EmptyDir *GoogleCloudRunV2EmptyDirVolumeSource `pulumi:"emptyDir"`
+	// Persistent storage backed by a Google Cloud Storage bucket.
+	Gcs *GoogleCloudRunV2GCSVolumeSource `pulumi:"gcs"`
 	// Volume's name.
 	Name string `pulumi:"name"`
+	// For NFS Voumes, contains the path to the nfs Volume
+	Nfs *GoogleCloudRunV2NFSVolumeSource `pulumi:"nfs"`
 	// Secret represents a secret that should populate this volume.
 	Secret *GoogleCloudRunV2SecretVolumeSource `pulumi:"secret"`
 }
@@ -4856,8 +5312,12 @@ type GoogleCloudRunV2VolumeArgs struct {
 	CloudSqlInstance GoogleCloudRunV2CloudSqlInstancePtrInput `pulumi:"cloudSqlInstance"`
 	// Ephemeral storage used as a shared volume.
 	EmptyDir GoogleCloudRunV2EmptyDirVolumeSourcePtrInput `pulumi:"emptyDir"`
+	// Persistent storage backed by a Google Cloud Storage bucket.
+	Gcs GoogleCloudRunV2GCSVolumeSourcePtrInput `pulumi:"gcs"`
 	// Volume's name.
 	Name pulumi.StringInput `pulumi:"name"`
+	// For NFS Voumes, contains the path to the nfs Volume
+	Nfs GoogleCloudRunV2NFSVolumeSourcePtrInput `pulumi:"nfs"`
 	// Secret represents a secret that should populate this volume.
 	Secret GoogleCloudRunV2SecretVolumeSourcePtrInput `pulumi:"secret"`
 }
@@ -4924,9 +5384,19 @@ func (o GoogleCloudRunV2VolumeOutput) EmptyDir() GoogleCloudRunV2EmptyDirVolumeS
 	return o.ApplyT(func(v GoogleCloudRunV2Volume) *GoogleCloudRunV2EmptyDirVolumeSource { return v.EmptyDir }).(GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput)
 }
 
+// Persistent storage backed by a Google Cloud Storage bucket.
+func (o GoogleCloudRunV2VolumeOutput) Gcs() GoogleCloudRunV2GCSVolumeSourcePtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2Volume) *GoogleCloudRunV2GCSVolumeSource { return v.Gcs }).(GoogleCloudRunV2GCSVolumeSourcePtrOutput)
+}
+
 // Volume's name.
 func (o GoogleCloudRunV2VolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Volume) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// For NFS Voumes, contains the path to the nfs Volume
+func (o GoogleCloudRunV2VolumeOutput) Nfs() GoogleCloudRunV2NFSVolumeSourcePtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2Volume) *GoogleCloudRunV2NFSVolumeSource { return v.Nfs }).(GoogleCloudRunV2NFSVolumeSourcePtrOutput)
 }
 
 // Secret represents a secret that should populate this volume.
@@ -5122,8 +5592,12 @@ type GoogleCloudRunV2VolumeResponse struct {
 	CloudSqlInstance GoogleCloudRunV2CloudSqlInstanceResponse `pulumi:"cloudSqlInstance"`
 	// Ephemeral storage used as a shared volume.
 	EmptyDir GoogleCloudRunV2EmptyDirVolumeSourceResponse `pulumi:"emptyDir"`
+	// Persistent storage backed by a Google Cloud Storage bucket.
+	Gcs GoogleCloudRunV2GCSVolumeSourceResponse `pulumi:"gcs"`
 	// Volume's name.
 	Name string `pulumi:"name"`
+	// For NFS Voumes, contains the path to the nfs Volume
+	Nfs GoogleCloudRunV2NFSVolumeSourceResponse `pulumi:"nfs"`
 	// Secret represents a secret that should populate this volume.
 	Secret GoogleCloudRunV2SecretVolumeSourceResponse `pulumi:"secret"`
 }
@@ -5155,9 +5629,19 @@ func (o GoogleCloudRunV2VolumeResponseOutput) EmptyDir() GoogleCloudRunV2EmptyDi
 	return o.ApplyT(func(v GoogleCloudRunV2VolumeResponse) GoogleCloudRunV2EmptyDirVolumeSourceResponse { return v.EmptyDir }).(GoogleCloudRunV2EmptyDirVolumeSourceResponseOutput)
 }
 
+// Persistent storage backed by a Google Cloud Storage bucket.
+func (o GoogleCloudRunV2VolumeResponseOutput) Gcs() GoogleCloudRunV2GCSVolumeSourceResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2VolumeResponse) GoogleCloudRunV2GCSVolumeSourceResponse { return v.Gcs }).(GoogleCloudRunV2GCSVolumeSourceResponseOutput)
+}
+
 // Volume's name.
 func (o GoogleCloudRunV2VolumeResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2VolumeResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// For NFS Voumes, contains the path to the nfs Volume
+func (o GoogleCloudRunV2VolumeResponseOutput) Nfs() GoogleCloudRunV2NFSVolumeSourceResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2VolumeResponse) GoogleCloudRunV2NFSVolumeSourceResponse { return v.Nfs }).(GoogleCloudRunV2NFSVolumeSourceResponseOutput)
 }
 
 // Secret represents a secret that should populate this volume.
@@ -5733,9 +6217,9 @@ func (o GoogleIamV1AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) G
 type GoogleIamV1Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *GoogleTypeExpr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role *string `pulumi:"role"`
 }
 
@@ -5754,9 +6238,9 @@ type GoogleIamV1BindingInput interface {
 type GoogleIamV1BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition GoogleTypeExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -5817,12 +6301,12 @@ func (o GoogleIamV1BindingOutput) Condition() GoogleTypeExprPtrOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) *GoogleTypeExpr { return v.Condition }).(GoogleTypeExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o GoogleIamV1BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o GoogleIamV1BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -5851,9 +6335,9 @@ func (o GoogleIamV1BindingArrayOutput) Index(i pulumi.IntInput) GoogleIamV1Bindi
 type GoogleIamV1BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition GoogleTypeExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role string `pulumi:"role"`
 }
 
@@ -5877,12 +6361,12 @@ func (o GoogleIamV1BindingResponseOutput) Condition() GoogleTypeExprResponseOutp
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) GoogleTypeExprResponse { return v.Condition }).(GoogleTypeExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o GoogleIamV1BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o GoogleIamV1BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -6167,12 +6651,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2EnvVarSourceInput)(nil)).Elem(), GoogleCloudRunV2EnvVarSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2EnvVarSourcePtrInput)(nil)).Elem(), GoogleCloudRunV2EnvVarSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2ExecutionTemplateInput)(nil)).Elem(), GoogleCloudRunV2ExecutionTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2GCSVolumeSourceInput)(nil)).Elem(), GoogleCloudRunV2GCSVolumeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2GCSVolumeSourcePtrInput)(nil)).Elem(), GoogleCloudRunV2GCSVolumeSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2GRPCActionInput)(nil)).Elem(), GoogleCloudRunV2GRPCActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2GRPCActionPtrInput)(nil)).Elem(), GoogleCloudRunV2GRPCActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2HTTPGetActionInput)(nil)).Elem(), GoogleCloudRunV2HTTPGetActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2HTTPGetActionPtrInput)(nil)).Elem(), GoogleCloudRunV2HTTPGetActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2HTTPHeaderInput)(nil)).Elem(), GoogleCloudRunV2HTTPHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2HTTPHeaderArrayInput)(nil)).Elem(), GoogleCloudRunV2HTTPHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2NFSVolumeSourceInput)(nil)).Elem(), GoogleCloudRunV2NFSVolumeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2NFSVolumeSourcePtrInput)(nil)).Elem(), GoogleCloudRunV2NFSVolumeSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2NetworkInterfaceInput)(nil)).Elem(), GoogleCloudRunV2NetworkInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2NetworkInterfaceArrayInput)(nil)).Elem(), GoogleCloudRunV2NetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2ProbeInput)(nil)).Elem(), GoogleCloudRunV2ProbeArgs{})
@@ -6238,6 +6726,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRunV2ExecutionReferenceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2ExecutionTemplateOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2ExecutionTemplateResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2GCSVolumeSourceOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2GCSVolumeSourcePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2GCSVolumeSourceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2GRPCActionOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2GRPCActionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2GRPCActionResponseOutput{})
@@ -6248,6 +6739,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRunV2HTTPHeaderArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2HTTPHeaderResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2HTTPHeaderResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2NFSVolumeSourceOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2NFSVolumeSourcePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2NFSVolumeSourceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2NetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2NetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2NetworkInterfaceResponseOutput{})

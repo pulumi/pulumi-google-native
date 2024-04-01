@@ -45,18 +45,24 @@ type Cluster struct {
 	EncryptionInfo EncryptionInfoResponseOutput `pulumi:"encryptionInfo"`
 	// For Resource freshness validation (https://google.aip.dev/154)
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+	GeminiConfig GeminiClusterConfigResponseOutput `pulumi:"geminiConfig"`
 	// Input only. Initial user to setup during cluster creation. Required. If used in `RestoreCluster` this is ignored.
 	InitialUser UserPasswordResponseOutput `pulumi:"initialUser"`
 	// Labels as key value pairs
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
+	// The maintenance schedule for the cluster, generated for a specific rollout if a maintenance window is set.
+	MaintenanceSchedule MaintenanceScheduleResponseOutput `pulumi:"maintenanceSchedule"`
+	// Optional. The maintenance update policy determines when to allow or deny updates.
+	MaintenanceUpdatePolicy MaintenanceUpdatePolicyResponseOutput `pulumi:"maintenanceUpdatePolicy"`
 	// Cluster created via DMS migration.
 	MigrationSource MigrationSourceResponseOutput `pulumi:"migrationSource"`
 	// The name of the cluster resource with the format: * projects/{project}/locations/{region}/clusters/{cluster_id} where the cluster ID segment should satisfy the regex expression `[a-z0-9-]+`. For more details see https://google.aip.dev/122. The prefix of the cluster resource name is the name of the parent resource: * projects/{project}/locations/{region}
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+	// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
 	//
-	// Deprecated: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+	// Deprecated: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
 	Network       pulumi.StringOutput         `pulumi:"network"`
 	NetworkConfig NetworkConfigResponseOutput `pulumi:"networkConfig"`
 	// Cross Region replication config specific to PRIMARY cluster.
@@ -68,6 +74,8 @@ type Cluster struct {
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
+	// Reserved for future use.
+	SatisfiesPzi pulumi.BoolOutput `pulumi:"satisfiesPzi"`
 	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// Cross Region replication config specific to SECONDARY cluster.
@@ -150,14 +158,18 @@ type clusterArgs struct {
 	EncryptionConfig *EncryptionConfig `pulumi:"encryptionConfig"`
 	// For Resource freshness validation (https://google.aip.dev/154)
 	Etag *string `pulumi:"etag"`
+	// Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+	GeminiConfig *GeminiClusterConfig `pulumi:"geminiConfig"`
 	// Input only. Initial user to setup during cluster creation. Required. If used in `RestoreCluster` this is ignored.
 	InitialUser *UserPassword `pulumi:"initialUser"`
 	// Labels as key value pairs
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+	// Optional. The maintenance update policy determines when to allow or deny updates.
+	MaintenanceUpdatePolicy *MaintenanceUpdatePolicy `pulumi:"maintenanceUpdatePolicy"`
+	// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
 	//
-	// Deprecated: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+	// Deprecated: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
 	Network       string         `pulumi:"network"`
 	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
 	Project       *string        `pulumi:"project"`
@@ -189,14 +201,18 @@ type ClusterArgs struct {
 	EncryptionConfig EncryptionConfigPtrInput
 	// For Resource freshness validation (https://google.aip.dev/154)
 	Etag pulumi.StringPtrInput
+	// Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+	GeminiConfig GeminiClusterConfigPtrInput
 	// Input only. Initial user to setup during cluster creation. Required. If used in `RestoreCluster` this is ignored.
 	InitialUser UserPasswordPtrInput
 	// Labels as key value pairs
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+	// Optional. The maintenance update policy determines when to allow or deny updates.
+	MaintenanceUpdatePolicy MaintenanceUpdatePolicyPtrInput
+	// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
 	//
-	// Deprecated: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+	// Deprecated: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
 	Network       pulumi.StringInput
 	NetworkConfig NetworkConfigPtrInput
 	Project       pulumi.StringPtrInput
@@ -317,6 +333,11 @@ func (o ClusterOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+func (o ClusterOutput) GeminiConfig() GeminiClusterConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) GeminiClusterConfigResponseOutput { return v.GeminiConfig }).(GeminiClusterConfigResponseOutput)
+}
+
 // Input only. Initial user to setup during cluster creation. Required. If used in `RestoreCluster` this is ignored.
 func (o ClusterOutput) InitialUser() UserPasswordResponseOutput {
 	return o.ApplyT(func(v *Cluster) UserPasswordResponseOutput { return v.InitialUser }).(UserPasswordResponseOutput)
@@ -331,6 +352,16 @@ func (o ClusterOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
+// The maintenance schedule for the cluster, generated for a specific rollout if a maintenance window is set.
+func (o ClusterOutput) MaintenanceSchedule() MaintenanceScheduleResponseOutput {
+	return o.ApplyT(func(v *Cluster) MaintenanceScheduleResponseOutput { return v.MaintenanceSchedule }).(MaintenanceScheduleResponseOutput)
+}
+
+// Optional. The maintenance update policy determines when to allow or deny updates.
+func (o ClusterOutput) MaintenanceUpdatePolicy() MaintenanceUpdatePolicyResponseOutput {
+	return o.ApplyT(func(v *Cluster) MaintenanceUpdatePolicyResponseOutput { return v.MaintenanceUpdatePolicy }).(MaintenanceUpdatePolicyResponseOutput)
+}
+
 // Cluster created via DMS migration.
 func (o ClusterOutput) MigrationSource() MigrationSourceResponseOutput {
 	return o.ApplyT(func(v *Cluster) MigrationSourceResponseOutput { return v.MigrationSource }).(MigrationSourceResponseOutput)
@@ -341,9 +372,9 @@ func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
 //
-// Deprecated: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+// Deprecated: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
 func (o ClusterOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }
@@ -374,6 +405,11 @@ func (o ClusterOutput) Reconciling() pulumi.BoolOutput {
 // Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 func (o ClusterOutput) RequestId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
+}
+
+// Reserved for future use.
+func (o ClusterOutput) SatisfiesPzi() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.SatisfiesPzi }).(pulumi.BoolOutput)
 }
 
 // Reserved for future use.

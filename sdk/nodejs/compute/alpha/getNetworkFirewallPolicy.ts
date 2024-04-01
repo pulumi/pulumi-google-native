@@ -56,6 +56,10 @@ export interface GetNetworkFirewallPolicyResult {
      */
     readonly name: string;
     /**
+     * A list of packet mirroring rules that belong to this policy.
+     */
+    readonly packetMirroringRules: outputs.compute.alpha.FirewallPolicyRuleResponse[];
+    /**
      * The parent of the firewall policy. This field is not applicable to network firewall policies.
      */
     readonly parent: string;

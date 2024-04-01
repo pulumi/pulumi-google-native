@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
     public sealed class GetJobResult
     {
         /// <summary>
-        /// [Required] Describes the job configuration.
+        /// Describes the job configuration.
         /// </summary>
         public readonly Outputs.JobConfigurationResponse Configuration;
         /// <summary>
@@ -74,9 +74,9 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// <summary>
         /// If set, it provides the reason why a Job was created. If not set, it should be treated as the default: REQUESTED. This feature is not yet available. Jobs will always be created.
         /// </summary>
-        public readonly object JobCreationReason;
+        public readonly Outputs.JobCreationReasonResponse JobCreationReason;
         /// <summary>
-        /// [Optional] Reference describing the unique-per-user name of the job.
+        /// Optional. Reference describing the unique-per-user name of the job.
         /// </summary>
         public readonly Outputs.JobReferenceResponse JobReference;
         /// <summary>
@@ -84,7 +84,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// A URL that can be used to access this resource again.
+        /// [Full-projection-only] String representation of identity of requesting party. Populated for both first- and third-party identities. Only present for APIs that support third-party identities.
+        /// </summary>
+        public readonly string PrincipalSubject;
+        /// <summary>
+        /// A URL that can be used to access the resource again.
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
@@ -106,11 +110,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
             string etag,
 
-            object jobCreationReason,
+            Outputs.JobCreationReasonResponse jobCreationReason,
 
             Outputs.JobReferenceResponse jobReference,
 
             string kind,
+
+            string principalSubject,
 
             string selfLink,
 
@@ -125,6 +131,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             JobCreationReason = jobCreationReason;
             JobReference = jobReference;
             Kind = kind;
+            PrincipalSubject = principalSubject;
             SelfLink = selfLink;
             Statistics = statistics;
             Status = status;

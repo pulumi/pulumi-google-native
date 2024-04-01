@@ -66,6 +66,10 @@ export interface GetTransferJobResult {
      */
     readonly project: string;
     /**
+     * Replication specification.
+     */
+    readonly replicationSpec: outputs.storagetransfer.v1.ReplicationSpecResponse;
+    /**
      * Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job never executes a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
      */
     readonly schedule: outputs.storagetransfer.v1.ScheduleResponse;

@@ -52,6 +52,10 @@ export interface GetProjectResult {
      * The number uniquely identifying the project. Example: `415104041262` Read-only.
      */
     readonly projectNumber: string;
+    /**
+     * Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+     */
+    readonly tags: {[key: string]: string};
 }
 /**
  * Retrieves the Project identified by the specified `project_id` (for example, `my-project-123`). The caller must have read permissions for this Project.

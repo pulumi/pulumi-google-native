@@ -23,7 +23,10 @@ class ClusterArgs:
                  authorization_mode: Optional[pulumi.Input['ClusterAuthorizationMode']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 node_type: Optional[pulumi.Input['ClusterNodeType']] = None,
+                 persistence_config: Optional[pulumi.Input['ClusterPersistenceConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  replica_count: Optional[pulumi.Input[int]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  transit_encryption_mode: Optional[pulumi.Input['ClusterTransitEncryptionMode']] = None):
@@ -34,6 +37,9 @@ class ClusterArgs:
         :param pulumi.Input[int] shard_count: Number of shards for the Redis cluster.
         :param pulumi.Input['ClusterAuthorizationMode'] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
+        :param pulumi.Input['ClusterNodeType'] node_type: Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node.
+        :param pulumi.Input['ClusterPersistenceConfigArgs'] persistence_config: Optional. Persistence config (RDB, AOF) for the cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Optional. Key/Value pairs of customer overrides for mutable Redis Configs
         :param pulumi.Input[int] replica_count: Optional. The number of replica nodes per shard.
         :param pulumi.Input[str] request_id: Idempotent request UUID.
         :param pulumi.Input['ClusterTransitEncryptionMode'] transit_encryption_mode: Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
@@ -47,8 +53,14 @@ class ClusterArgs:
             pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if node_type is not None:
+            pulumi.set(__self__, "node_type", node_type)
+        if persistence_config is not None:
+            pulumi.set(__self__, "persistence_config", persistence_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if redis_configs is not None:
+            pulumi.set(__self__, "redis_configs", redis_configs)
         if replica_count is not None:
             pulumi.set(__self__, "replica_count", replica_count)
         if request_id is not None:
@@ -126,6 +138,30 @@ class ClusterArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> Optional[pulumi.Input['ClusterNodeType']]:
+        """
+        Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node.
+        """
+        return pulumi.get(self, "node_type")
+
+    @node_type.setter
+    def node_type(self, value: Optional[pulumi.Input['ClusterNodeType']]):
+        pulumi.set(self, "node_type", value)
+
+    @property
+    @pulumi.getter(name="persistenceConfig")
+    def persistence_config(self) -> Optional[pulumi.Input['ClusterPersistenceConfigArgs']]:
+        """
+        Optional. Persistence config (RDB, AOF) for the cluster.
+        """
+        return pulumi.get(self, "persistence_config")
+
+    @persistence_config.setter
+    def persistence_config(self, value: Optional[pulumi.Input['ClusterPersistenceConfigArgs']]):
+        pulumi.set(self, "persistence_config", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -133,6 +169,18 @@ class ClusterArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="redisConfigs")
+    def redis_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Key/Value pairs of customer overrides for mutable Redis Configs
+        """
+        return pulumi.get(self, "redis_configs")
+
+    @redis_configs.setter
+    def redis_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "redis_configs", value)
 
     @property
     @pulumi.getter(name="replicaCount")
@@ -180,8 +228,11 @@ class Cluster(pulumi.CustomResource):
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 node_type: Optional[pulumi.Input['ClusterNodeType']] = None,
+                 persistence_config: Optional[pulumi.Input[pulumi.InputType['ClusterPersistenceConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PscConfigArgs']]]]] = None,
+                 redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  replica_count: Optional[pulumi.Input[int]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
@@ -195,7 +246,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input['ClusterAuthorizationMode'] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
         :param pulumi.Input[str] cluster_id: Required. The logical name of the Redis cluster in the customer project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the customer project / location
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
+        :param pulumi.Input['ClusterNodeType'] node_type: Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node.
+        :param pulumi.Input[pulumi.InputType['ClusterPersistenceConfigArgs']] persistence_config: Optional. Persistence config (RDB, AOF) for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PscConfigArgs']]]] psc_configs: Each PscConfig configures the consumer network where IPs will be designated to the cluster for client access through Private Service Connect Automation. Currently, only one PscConfig is supported.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Optional. Key/Value pairs of customer overrides for mutable Redis Configs
         :param pulumi.Input[int] replica_count: Optional. The number of replica nodes per shard.
         :param pulumi.Input[str] request_id: Idempotent request UUID.
         :param pulumi.Input[int] shard_count: Number of shards for the Redis cluster.
@@ -229,8 +283,11 @@ class Cluster(pulumi.CustomResource):
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 node_type: Optional[pulumi.Input['ClusterNodeType']] = None,
+                 persistence_config: Optional[pulumi.Input[pulumi.InputType['ClusterPersistenceConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PscConfigArgs']]]]] = None,
+                 redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  replica_count: Optional[pulumi.Input[int]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
@@ -250,10 +307,13 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
+            __props__.__dict__["node_type"] = node_type
+            __props__.__dict__["persistence_config"] = persistence_config
             __props__.__dict__["project"] = project
             if psc_configs is None and not opts.urn:
                 raise TypeError("Missing required property 'psc_configs'")
             __props__.__dict__["psc_configs"] = psc_configs
+            __props__.__dict__["redis_configs"] = redis_configs
             __props__.__dict__["replica_count"] = replica_count
             __props__.__dict__["request_id"] = request_id
             if shard_count is None and not opts.urn:
@@ -262,6 +322,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["transit_encryption_mode"] = transit_encryption_mode
             __props__.__dict__["create_time"] = None
             __props__.__dict__["discovery_endpoints"] = None
+            __props__.__dict__["precise_size_gb"] = None
             __props__.__dict__["psc_connections"] = None
             __props__.__dict__["size_gb"] = None
             __props__.__dict__["state"] = None
@@ -297,9 +358,13 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["discovery_endpoints"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["node_type"] = None
+        __props__.__dict__["persistence_config"] = None
+        __props__.__dict__["precise_size_gb"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["psc_configs"] = None
         __props__.__dict__["psc_connections"] = None
+        __props__.__dict__["redis_configs"] = None
         __props__.__dict__["replica_count"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["shard_count"] = None
@@ -356,6 +421,30 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> pulumi.Output[str]:
+        """
+        Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node.
+        """
+        return pulumi.get(self, "node_type")
+
+    @property
+    @pulumi.getter(name="persistenceConfig")
+    def persistence_config(self) -> pulumi.Output['outputs.ClusterPersistenceConfigResponse']:
+        """
+        Optional. Persistence config (RDB, AOF) for the cluster.
+        """
+        return pulumi.get(self, "persistence_config")
+
+    @property
+    @pulumi.getter(name="preciseSizeGb")
+    def precise_size_gb(self) -> pulumi.Output[float]:
+        """
+        Precise value of redis memory size in GB for the entire cluster.
+        """
+        return pulumi.get(self, "precise_size_gb")
+
+    @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
@@ -375,6 +464,14 @@ class Cluster(pulumi.CustomResource):
         PSC connections for discovery of the cluster topology and accessing the cluster.
         """
         return pulumi.get(self, "psc_connections")
+
+    @property
+    @pulumi.getter(name="redisConfigs")
+    def redis_configs(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. Key/Value pairs of customer overrides for mutable Redis Configs
+        """
+        return pulumi.get(self, "redis_configs")
 
     @property
     @pulumi.getter(name="replicaCount")
@@ -404,7 +501,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="sizeGb")
     def size_gb(self) -> pulumi.Output[int]:
         """
-        Redis memory size in GB for the entire cluster.
+        Redis memory size in GB for the entire cluster rounded up to the next integer.
         """
         return pulumi.get(self, "size_gb")
 

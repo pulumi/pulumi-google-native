@@ -114,6 +114,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         [Input("onHostMaintenance")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.SchedulingOnHostMaintenance>? OnHostMaintenance { get; set; }
 
+        [Input("onInstanceStopAction")]
+        public Input<Inputs.SchedulingOnInstanceStopActionArgs>? OnInstanceStopAction { get; set; }
+
         /// <summary>
         /// Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
         /// </summary>

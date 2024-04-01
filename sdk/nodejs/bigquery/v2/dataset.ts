@@ -39,7 +39,7 @@ export class Dataset extends pulumi.CustomResource {
     }
 
     /**
-     * [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
+     * Optional. An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
      */
     public readonly access!: pulumi.Output<outputs.bigquery.v2.DatasetAccessItemResponse[]>;
     /**
@@ -47,28 +47,31 @@ export class Dataset extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTime!: pulumi.Output<string>;
     /**
-     * [Required] A reference that identifies the dataset.
+     * A reference that identifies the dataset.
      */
     public readonly datasetReference!: pulumi.Output<outputs.bigquery.v2.DatasetReferenceResponse>;
     /**
-     * The default collation of the dataset.
+     * Optional. Defines the default collation specification of future tables created in the dataset. If a table is created in this dataset without table-level default collation, then the table inherits the dataset default collation, which is applied to the string fields that do not have explicit collation specified. A change to this field affects only tables created afterwards, and does not alter the existing tables. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * '': empty string. Default to case-sensitive behavior.
      */
-    public /*out*/ readonly defaultCollation!: pulumi.Output<string>;
+    public readonly defaultCollation!: pulumi.Output<string>;
+    /**
+     * The default encryption key for all tables in the dataset. Once this property is set, all newly-created partitioned tables in the dataset will have encryption key set to this value, unless table creation request (or query) overrides the key.
+     */
     public readonly defaultEncryptionConfiguration!: pulumi.Output<outputs.bigquery.v2.EncryptionConfigurationResponse>;
     /**
-     * [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
+     * This default partition expiration, expressed in milliseconds. When new time-partitioned tables are created in a dataset where this property is set, the table will inherit this value, propagated as the `TimePartitioning.expirationMs` property on the new table. If you set `TimePartitioning.expirationMs` explicitly when creating a table, the `defaultPartitionExpirationMs` of the containing dataset is ignored. When creating a partitioned table, if `defaultPartitionExpirationMs` is set, the `defaultTableExpirationMs` value is ignored and the table will not be inherit a table expiration deadline.
      */
     public readonly defaultPartitionExpirationMs!: pulumi.Output<string>;
     /**
-     * The default rounding mode of the dataset.
+     * Optional. Defines the default rounding mode specification of new tables created within this dataset. During table creation, if this field is specified, the table within this dataset will inherit the default rounding mode of the dataset. Setting the default rounding mode on a table overrides this option. Existing tables in the dataset are unaffected. If columns are defined during that table creation, they will immediately inherit the table's default rounding mode, unless otherwise specified.
      */
-    public /*out*/ readonly defaultRoundingMode!: pulumi.Output<string>;
+    public readonly defaultRoundingMode!: pulumi.Output<string>;
     /**
-     * [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
+     * Optional. The default lifetime of all tables in the dataset, in milliseconds. The minimum lifetime value is 3600000 milliseconds (one hour). To clear an existing default expiration with a PATCH request, set to 0. Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
      */
     public readonly defaultTableExpirationMs!: pulumi.Output<string>;
     /**
-     * [Optional] A user-friendly description of the dataset.
+     * Optional. A user-friendly description of the dataset.
      */
     public readonly description!: pulumi.Output<string>;
     /**
@@ -76,15 +79,15 @@ export class Dataset extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
+     * Optional. Reference to a read-only external dataset defined in data catalogs outside of BigQuery. Filled out when the dataset type is EXTERNAL.
      */
     public readonly externalDatasetReference!: pulumi.Output<outputs.bigquery.v2.ExternalDatasetReferenceResponse>;
     /**
-     * [Optional] A descriptive name for the dataset.
+     * Optional. A descriptive name for the dataset.
      */
     public readonly friendlyName!: pulumi.Output<string>;
     /**
-     * [Optional] Indicates if table names are case insensitive in the dataset.
+     * Optional. TRUE if the dataset and its table names are case-insensitive, otherwise FALSE. By default, this is FALSE, which means the dataset and its table names are case-sensitive. This field does not affect routine references.
      */
     public readonly isCaseInsensitive!: pulumi.Output<boolean>;
     /**
@@ -96,18 +99,30 @@ export class Dataset extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+     * The date when this dataset was last modified, in milliseconds since the epoch.
      */
     public /*out*/ readonly lastModifiedTime!: pulumi.Output<string>;
     /**
-     * The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
+     * Metadata about the LinkedDataset. Filled out when the dataset type is LINKED.
+     */
+    public /*out*/ readonly linkedDatasetMetadata!: pulumi.Output<outputs.bigquery.v2.LinkedDatasetMetadataResponse>;
+    /**
+     * Optional. The source dataset reference when the dataset is of type LINKED. For all other dataset types it is not set. This field cannot be updated once it is set. Any attempt to update this field using Update and Patch API Operations will be ignored.
+     */
+    public readonly linkedDatasetSource!: pulumi.Output<outputs.bigquery.v2.LinkedDatasetSourceResponse>;
+    /**
+     * The geographic location where the dataset should reside. See https://cloud.google.com/bigquery/docs/locations for supported locations.
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * [Optional] Number of hours for the max time travel for all tables in the dataset.
+     * Optional. Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days). The default value is 168 hours if this is not set.
      */
     public readonly maxTimeTravelHours!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Reserved for future use.
+     */
+    public /*out*/ readonly satisfiesPzi!: pulumi.Output<boolean>;
     /**
      * Reserved for future use.
      */
@@ -117,13 +132,17 @@ export class Dataset extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
+     * Optional. Updates storage_billing_model for the dataset.
      */
     public readonly storageBillingModel!: pulumi.Output<string>;
     /**
-     * [Optional]The tags associated with this dataset. Tag keys are globally unique.
+     * Tags for the Dataset.
      */
-    public readonly tags!: pulumi.Output<outputs.bigquery.v2.DatasetTagsItemResponse[]>;
+    public /*out*/ readonly tags!: pulumi.Output<outputs.bigquery.v2.DatasetTagsItemResponse[]>;
+    /**
+     * Same as `type` in `ListFormatDataset`. The type of the dataset, one of: * DEFAULT - only accessible by owner and authorized accounts, * PUBLIC - accessible by everyone, * LINKED - linked dataset, * EXTERNAL - dataset with definition in external metadata catalog. -- *BIGLAKE_METASTORE - dataset that references a database created in BigLakeMetastore service. --
+     */
+    public /*out*/ readonly type!: pulumi.Output<string>;
 
     /**
      * Create a Dataset resource with the given unique name, arguments, and options.
@@ -132,33 +151,40 @@ export class Dataset extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: DatasetArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: DatasetArgs, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.datasetReference === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'datasetReference'");
+            }
             resourceInputs["access"] = args ? args.access : undefined;
             resourceInputs["datasetReference"] = args ? args.datasetReference : undefined;
+            resourceInputs["defaultCollation"] = args ? args.defaultCollation : undefined;
             resourceInputs["defaultEncryptionConfiguration"] = args ? args.defaultEncryptionConfiguration : undefined;
             resourceInputs["defaultPartitionExpirationMs"] = args ? args.defaultPartitionExpirationMs : undefined;
+            resourceInputs["defaultRoundingMode"] = args ? args.defaultRoundingMode : undefined;
             resourceInputs["defaultTableExpirationMs"] = args ? args.defaultTableExpirationMs : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["externalDatasetReference"] = args ? args.externalDatasetReference : undefined;
             resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
             resourceInputs["isCaseInsensitive"] = args ? args.isCaseInsensitive : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["linkedDatasetSource"] = args ? args.linkedDatasetSource : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["maxTimeTravelHours"] = args ? args.maxTimeTravelHours : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["storageBillingModel"] = args ? args.storageBillingModel : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["creationTime"] = undefined /*out*/;
-            resourceInputs["defaultCollation"] = undefined /*out*/;
-            resourceInputs["defaultRoundingMode"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
+            resourceInputs["linkedDatasetMetadata"] = undefined /*out*/;
+            resourceInputs["satisfiesPzi"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["tags"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["access"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
@@ -176,13 +202,17 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
+            resourceInputs["linkedDatasetMetadata"] = undefined /*out*/;
+            resourceInputs["linkedDatasetSource"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["maxTimeTravelHours"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["satisfiesPzi"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["storageBillingModel"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["project"] };
@@ -196,36 +226,47 @@ export class Dataset extends pulumi.CustomResource {
  */
 export interface DatasetArgs {
     /**
-     * [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
+     * Optional. An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
      */
     access?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.DatasetAccessItemArgs>[]>;
     /**
-     * [Required] A reference that identifies the dataset.
+     * A reference that identifies the dataset.
      */
-    datasetReference?: pulumi.Input<inputs.bigquery.v2.DatasetReferenceArgs>;
+    datasetReference: pulumi.Input<inputs.bigquery.v2.DatasetReferenceArgs>;
+    /**
+     * Optional. Defines the default collation specification of future tables created in the dataset. If a table is created in this dataset without table-level default collation, then the table inherits the dataset default collation, which is applied to the string fields that do not have explicit collation specified. A change to this field affects only tables created afterwards, and does not alter the existing tables. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * '': empty string. Default to case-sensitive behavior.
+     */
+    defaultCollation?: pulumi.Input<string>;
+    /**
+     * The default encryption key for all tables in the dataset. Once this property is set, all newly-created partitioned tables in the dataset will have encryption key set to this value, unless table creation request (or query) overrides the key.
+     */
     defaultEncryptionConfiguration?: pulumi.Input<inputs.bigquery.v2.EncryptionConfigurationArgs>;
     /**
-     * [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
+     * This default partition expiration, expressed in milliseconds. When new time-partitioned tables are created in a dataset where this property is set, the table will inherit this value, propagated as the `TimePartitioning.expirationMs` property on the new table. If you set `TimePartitioning.expirationMs` explicitly when creating a table, the `defaultPartitionExpirationMs` of the containing dataset is ignored. When creating a partitioned table, if `defaultPartitionExpirationMs` is set, the `defaultTableExpirationMs` value is ignored and the table will not be inherit a table expiration deadline.
      */
     defaultPartitionExpirationMs?: pulumi.Input<string>;
     /**
-     * [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
+     * Optional. Defines the default rounding mode specification of new tables created within this dataset. During table creation, if this field is specified, the table within this dataset will inherit the default rounding mode of the dataset. Setting the default rounding mode on a table overrides this option. Existing tables in the dataset are unaffected. If columns are defined during that table creation, they will immediately inherit the table's default rounding mode, unless otherwise specified.
+     */
+    defaultRoundingMode?: pulumi.Input<enums.bigquery.v2.DatasetDefaultRoundingMode>;
+    /**
+     * Optional. The default lifetime of all tables in the dataset, in milliseconds. The minimum lifetime value is 3600000 milliseconds (one hour). To clear an existing default expiration with a PATCH request, set to 0. Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
      */
     defaultTableExpirationMs?: pulumi.Input<string>;
     /**
-     * [Optional] A user-friendly description of the dataset.
+     * Optional. A user-friendly description of the dataset.
      */
     description?: pulumi.Input<string>;
     /**
-     * [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the dataset type is EXTERNAL.
+     * Optional. Reference to a read-only external dataset defined in data catalogs outside of BigQuery. Filled out when the dataset type is EXTERNAL.
      */
     externalDatasetReference?: pulumi.Input<inputs.bigquery.v2.ExternalDatasetReferenceArgs>;
     /**
-     * [Optional] A descriptive name for the dataset.
+     * Optional. A descriptive name for the dataset.
      */
     friendlyName?: pulumi.Input<string>;
     /**
-     * [Optional] Indicates if table names are case insensitive in the dataset.
+     * Optional. TRUE if the dataset and its table names are case-insensitive, otherwise FALSE. By default, this is FALSE, which means the dataset and its table names are case-sensitive. This field does not affect routine references.
      */
     isCaseInsensitive?: pulumi.Input<boolean>;
     /**
@@ -233,20 +274,20 @@ export interface DatasetArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
+     * Optional. The source dataset reference when the dataset is of type LINKED. For all other dataset types it is not set. This field cannot be updated once it is set. Any attempt to update this field using Update and Patch API Operations will be ignored.
+     */
+    linkedDatasetSource?: pulumi.Input<inputs.bigquery.v2.LinkedDatasetSourceArgs>;
+    /**
+     * The geographic location where the dataset should reside. See https://cloud.google.com/bigquery/docs/locations for supported locations.
      */
     location?: pulumi.Input<string>;
     /**
-     * [Optional] Number of hours for the max time travel for all tables in the dataset.
+     * Optional. Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days). The default value is 168 hours if this is not set.
      */
     maxTimeTravelHours?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
+     * Optional. Updates storage_billing_model for the dataset.
      */
-    storageBillingModel?: pulumi.Input<string>;
-    /**
-     * [Optional]The tags associated with this dataset. Tag keys are globally unique.
-     */
-    tags?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.DatasetTagsItemArgs>[]>;
+    storageBillingModel?: pulumi.Input<enums.bigquery.v2.DatasetStorageBillingModel>;
 }

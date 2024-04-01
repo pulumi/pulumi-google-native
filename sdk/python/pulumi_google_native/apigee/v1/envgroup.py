@@ -184,7 +184,7 @@ class Envgroup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        ID of the environment group. Overrides any ID in the environment_group resource.
+        Optional. ID of the environment group. Overrides any ID in the environment_group resource.
         """
         return pulumi.get(self, "name")
 

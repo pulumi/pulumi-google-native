@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceGroupManagerResult:
-    def __init__(__self__, all_instances_config=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, current_actions=None, description=None, distribution_policy=None, failover_action=None, fingerprint=None, instance_flexibility_policy=None, instance_group=None, instance_lifecycle_policy=None, instance_template=None, kind=None, list_managed_instances_results=None, name=None, named_ports=None, region=None, self_link=None, self_link_with_id=None, service_account=None, standby_policy=None, stateful_policy=None, status=None, target_pools=None, target_size=None, target_size_unit=None, target_stopped_size=None, target_suspended_size=None, update_policy=None, versions=None, zone=None):
+    def __init__(__self__, all_instances_config=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, current_actions=None, description=None, distribution_policy=None, failover_action=None, fingerprint=None, instance_flexibility_policy=None, instance_group=None, instance_lifecycle_policy=None, instance_template=None, kind=None, list_managed_instances_results=None, name=None, named_ports=None, params=None, region=None, self_link=None, self_link_with_id=None, service_account=None, standby_policy=None, stateful_policy=None, status=None, target_pools=None, target_size=None, target_size_unit=None, target_stopped_size=None, target_suspended_size=None, update_policy=None, versions=None, zone=None):
         if all_instances_config and not isinstance(all_instances_config, dict):
             raise TypeError("Expected argument 'all_instances_config' to be a dict")
         pulumi.set(__self__, "all_instances_config", all_instances_config)
@@ -71,6 +71,9 @@ class GetInstanceGroupManagerResult:
         if named_ports and not isinstance(named_ports, list):
             raise TypeError("Expected argument 'named_ports' to be a list")
         pulumi.set(__self__, "named_ports", named_ports)
+        if params and not isinstance(params, dict):
+            raise TypeError("Expected argument 'params' to be a dict")
+        pulumi.set(__self__, "params", params)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -255,6 +258,14 @@ class GetInstanceGroupManagerResult:
 
     @property
     @pulumi.getter
+    def params(self) -> 'outputs.InstanceGroupManagerParamsResponse':
+        """
+        Input only. Additional params passed with the request, but not persisted as part of resource payload.
+        """
+        return pulumi.get(self, "params")
+
+    @property
+    @pulumi.getter
     def region(self) -> str:
         """
         The URL of the region where the managed instance group resides (for regional resources).
@@ -397,6 +408,7 @@ class AwaitableGetInstanceGroupManagerResult(GetInstanceGroupManagerResult):
             list_managed_instances_results=self.list_managed_instances_results,
             name=self.name,
             named_ports=self.named_ports,
+            params=self.params,
             region=self.region,
             self_link=self.self_link,
             self_link_with_id=self.self_link_with_id,
@@ -446,6 +458,7 @@ def get_instance_group_manager(instance_group_manager: Optional[str] = None,
         list_managed_instances_results=pulumi.get(__ret__, 'list_managed_instances_results'),
         name=pulumi.get(__ret__, 'name'),
         named_ports=pulumi.get(__ret__, 'named_ports'),
+        params=pulumi.get(__ret__, 'params'),
         region=pulumi.get(__ret__, 'region'),
         self_link=pulumi.get(__ret__, 'self_link'),
         self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),

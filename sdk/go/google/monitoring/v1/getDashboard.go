@@ -42,7 +42,7 @@ type LookupDashboardResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
 	MosaicLayout MosaicLayoutResponse `pulumi:"mosaicLayout"`
-	// Immutable. The resource name of the dashboard.
+	// Identifier. The resource name of the dashboard.
 	Name string `pulumi:"name"`
 	// The content is divided into equally spaced rows and the widgets are arranged horizontally.
 	RowLayout RowLayoutResponse `pulumi:"rowLayout"`
@@ -119,7 +119,7 @@ func (o LookupDashboardResultOutput) MosaicLayout() MosaicLayoutResponseOutput {
 	return o.ApplyT(func(v LookupDashboardResult) MosaicLayoutResponse { return v.MosaicLayout }).(MosaicLayoutResponseOutput)
 }
 
-// Immutable. The resource name of the dashboard.
+// Identifier. The resource name of the dashboard.
 func (o LookupDashboardResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDashboardResult) string { return v.Name }).(pulumi.StringOutput)
 }

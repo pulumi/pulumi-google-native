@@ -125,4 +125,45 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: - in location global: FIXED_RECORD.
+    /// </summary>
+    [EnumType]
+    public readonly struct DnsAuthorizationType : IEquatable<DnsAuthorizationType>
+    {
+        private readonly string _value;
+
+        private DnsAuthorizationType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Type is unspecified.
+        /// </summary>
+        public static DnsAuthorizationType TypeUnspecified { get; } = new DnsAuthorizationType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// FIXED_RECORD DNS authorization uses DNS-01 validation method.
+        /// </summary>
+        public static DnsAuthorizationType FixedRecord { get; } = new DnsAuthorizationType("FIXED_RECORD");
+        /// <summary>
+        /// PER_PROJECT_RECORD DNS authorization allows for independent management of Google-managed certificates with DNS authorization across multiple projects.
+        /// </summary>
+        public static DnsAuthorizationType PerProjectRecord { get; } = new DnsAuthorizationType("PER_PROJECT_RECORD");
+
+        public static bool operator ==(DnsAuthorizationType left, DnsAuthorizationType right) => left.Equals(right);
+        public static bool operator !=(DnsAuthorizationType left, DnsAuthorizationType right) => !left.Equals(right);
+
+        public static explicit operator string(DnsAuthorizationType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DnsAuthorizationType other && Equals(other);
+        public bool Equals(DnsAuthorizationType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

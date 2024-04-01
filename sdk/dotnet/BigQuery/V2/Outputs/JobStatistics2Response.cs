@@ -10,131 +10,174 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Statistics for a query job.
+    /// </summary>
     [OutputType]
     public sealed class JobStatistics2Response
     {
         /// <summary>
-        /// BI Engine specific Statistics. [Output only] BI Engine specific Statistics.
+        /// BI Engine specific Statistics.
         /// </summary>
         public readonly Outputs.BiEngineStatisticsResponse BiEngineStatistics;
         /// <summary>
-        /// [Output only] Billing tier for the job.
+        /// Billing tier for the job. This is a BigQuery-specific concept which is not related to the Google Cloud notion of "free tier". The value here is a measure of the query's resource consumption relative to the amount of data scanned. For on-demand queries, the limit is 100, and all queries within this limit are billed at the standard on-demand rates. On-demand queries that exceed this limit will fail with a billingTierLimitExceeded error.
         /// </summary>
         public readonly int BillingTier;
         /// <summary>
-        /// [Output only] Whether the query result was fetched from the query cache.
+        /// Whether the query result was fetched from the query cache.
         /// </summary>
         public readonly bool CacheHit;
         /// <summary>
-        /// [Output only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
+        /// Referenced dataset for DCL statement.
+        /// </summary>
+        public readonly Outputs.DatasetReferenceResponse DclTargetDataset;
+        /// <summary>
+        /// Referenced table for DCL statement.
+        /// </summary>
+        public readonly Outputs.TableReferenceResponse DclTargetTable;
+        /// <summary>
+        /// Referenced view for DCL statement.
+        /// </summary>
+        public readonly Outputs.TableReferenceResponse DclTargetView;
+        /// <summary>
+        /// The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
         /// </summary>
         public readonly string DdlAffectedRowAccessPolicyCount;
         /// <summary>
-        /// [Output only] The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
+        /// The table after rename. Present only for ALTER TABLE RENAME TO query.
         /// </summary>
         public readonly Outputs.TableReferenceResponse DdlDestinationTable;
         /// <summary>
-        /// The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
+        /// The DDL operation performed, possibly dependent on the pre-existence of the DDL target.
         /// </summary>
         public readonly string DdlOperationPerformed;
         /// <summary>
-        /// [Output only] The DDL target dataset. Present only for CREATE/ALTER/DROP/UNDROP SCHEMA queries.
+        /// The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA(dataset) queries.
         /// </summary>
         public readonly Outputs.DatasetReferenceResponse DdlTargetDataset;
         /// <summary>
-        /// The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
+        /// [Beta] The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
         /// </summary>
         public readonly Outputs.RoutineReferenceResponse DdlTargetRoutine;
         /// <summary>
-        /// [Output only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
+        /// The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY queries.
         /// </summary>
         public readonly Outputs.RowAccessPolicyReferenceResponse DdlTargetRowAccessPolicy;
         /// <summary>
-        /// [Output only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
+        /// The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
         /// </summary>
         public readonly Outputs.TableReferenceResponse DdlTargetTable;
         /// <summary>
-        /// [Output only] Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
+        /// Detailed statistics for DML statements INSERT, UPDATE, DELETE, MERGE or TRUNCATE.
         /// </summary>
         public readonly Outputs.DmlStatisticsResponse DmlStats;
         /// <summary>
-        /// [Output only] The original estimate of bytes processed for the job.
+        /// The original estimate of bytes processed for the job.
         /// </summary>
         public readonly string EstimatedBytesProcessed;
         /// <summary>
-        /// [Output only] Statistics of a BigQuery ML training job.
+        /// Stats for EXPORT DATA statement.
+        /// </summary>
+        public readonly Outputs.ExportDataStatisticsResponse ExportDataStatistics;
+        /// <summary>
+        /// Job cost breakdown as bigquery internal cost and external service costs.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ExternalServiceCostResponse> ExternalServiceCosts;
+        /// <summary>
+        /// Statistics for a LOAD query.
+        /// </summary>
+        public readonly Outputs.LoadQueryStatisticsResponse LoadQueryStatistics;
+        /// <summary>
+        /// Statistics of materialized views of a query job.
+        /// </summary>
+        public readonly Outputs.MaterializedViewStatisticsResponse MaterializedViewStatistics;
+        /// <summary>
+        /// Statistics of metadata cache usage in a query for BigLake tables.
+        /// </summary>
+        public readonly Outputs.MetadataCacheStatisticsResponse MetadataCacheStatistics;
+        /// <summary>
+        /// Statistics of a BigQuery ML training job.
         /// </summary>
         public readonly Outputs.MlStatisticsResponse MlStatistics;
         /// <summary>
-        /// [Output only, Beta] Information about create model query job progress.
+        /// Deprecated.
         /// </summary>
         public readonly Outputs.BigQueryModelTrainingResponse ModelTraining;
         /// <summary>
-        /// [Output only, Beta] Deprecated; do not use.
+        /// Deprecated.
         /// </summary>
         public readonly int ModelTrainingCurrentIteration;
         /// <summary>
-        /// [Output only, Beta] Deprecated; do not use.
+        /// Deprecated.
         /// </summary>
         public readonly string ModelTrainingExpectedTotalIteration;
         /// <summary>
-        /// [Output only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
+        /// The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
         /// </summary>
         public readonly string NumDmlAffectedRows;
         /// <summary>
-        /// [Output only] Describes execution plan for the query.
+        /// Performance insights.
+        /// </summary>
+        public readonly Outputs.PerformanceInsightsResponse PerformanceInsights;
+        /// <summary>
+        /// Query optimization information for a QUERY job.
+        /// </summary>
+        public readonly Outputs.QueryInfoResponse QueryInfo;
+        /// <summary>
+        /// Describes execution plan for the query.
         /// </summary>
         public readonly ImmutableArray<Outputs.ExplainQueryStageResponse> QueryPlan;
         /// <summary>
-        /// [Output only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
+        /// Referenced routines for the job.
         /// </summary>
         public readonly ImmutableArray<Outputs.RoutineReferenceResponse> ReferencedRoutines;
         /// <summary>
-        /// [Output only] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
+        /// Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
         /// </summary>
         public readonly ImmutableArray<Outputs.TableReferenceResponse> ReferencedTables;
         /// <summary>
-        /// [Output only] Job resource usage breakdown by reservation.
+        /// Job resource usage breakdown by reservation. This field reported misleading information and will no longer be populated.
         /// </summary>
         public readonly ImmutableArray<Outputs.JobStatistics2ReservationUsageItemResponse> ReservationUsage;
         /// <summary>
-        /// [Output only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
+        /// The schema of the results. Present only for successful dry run of non-legacy SQL queries.
         /// </summary>
         public readonly Outputs.TableSchemaResponse Schema;
         /// <summary>
-        /// [Output only] Search query specific statistics.
+        /// Search query specific statistics.
         /// </summary>
         public readonly Outputs.SearchStatisticsResponse SearchStatistics;
         /// <summary>
-        /// [Output only] Statistics of a Spark procedure job.
+        /// Statistics of a Spark procedure job.
         /// </summary>
         public readonly Outputs.SparkStatisticsResponse SparkStatistics;
         /// <summary>
-        /// The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
+        /// The type of query statement, if valid. Possible values: * `SELECT`: [`SELECT`](/bigquery/docs/reference/standard-sql/query-syntax#select_list) statement. * `ASSERT`: [`ASSERT`](/bigquery/docs/reference/standard-sql/debugging-statements#assert) statement. * `INSERT`: [`INSERT`](/bigquery/docs/reference/standard-sql/dml-syntax#insert_statement) statement. * `UPDATE`: [`UPDATE`](/bigquery/docs/reference/standard-sql/query-syntax#update_statement) statement. * `DELETE`: [`DELETE`](/bigquery/docs/reference/standard-sql/data-manipulation-language) statement. * `MERGE`: [`MERGE`](/bigquery/docs/reference/standard-sql/data-manipulation-language) statement. * `CREATE_TABLE`: [`CREATE TABLE`](/bigquery/docs/reference/standard-sql/data-definition-language#create_table_statement) statement, without `AS SELECT`. * `CREATE_TABLE_AS_SELECT`: [`CREATE TABLE AS SELECT`](/bigquery/docs/reference/standard-sql/data-definition-language#query_statement) statement. * `CREATE_VIEW`: [`CREATE VIEW`](/bigquery/docs/reference/standard-sql/data-definition-language#create_view_statement) statement. * `CREATE_MODEL`: [`CREATE MODEL`](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create#create_model_statement) statement. * `CREATE_MATERIALIZED_VIEW`: [`CREATE MATERIALIZED VIEW`](/bigquery/docs/reference/standard-sql/data-definition-language#create_materialized_view_statement) statement. * `CREATE_FUNCTION`: [`CREATE FUNCTION`](/bigquery/docs/reference/standard-sql/data-definition-language#create_function_statement) statement. * `CREATE_TABLE_FUNCTION`: [`CREATE TABLE FUNCTION`](/bigquery/docs/reference/standard-sql/data-definition-language#create_table_function_statement) statement. * `CREATE_PROCEDURE`: [`CREATE PROCEDURE`](/bigquery/docs/reference/standard-sql/data-definition-language#create_procedure) statement. * `CREATE_ROW_ACCESS_POLICY`: [`CREATE ROW ACCESS POLICY`](/bigquery/docs/reference/standard-sql/data-definition-language#create_row_access_policy_statement) statement. * `CREATE_SCHEMA`: [`CREATE SCHEMA`](/bigquery/docs/reference/standard-sql/data-definition-language#create_schema_statement) statement. * `CREATE_SNAPSHOT_TABLE`: [`CREATE SNAPSHOT TABLE`](/bigquery/docs/reference/standard-sql/data-definition-language#create_snapshot_table_statement) statement. * `CREATE_SEARCH_INDEX`: [`CREATE SEARCH INDEX`](/bigquery/docs/reference/standard-sql/data-definition-language#create_search_index_statement) statement. * `DROP_TABLE`: [`DROP TABLE`](/bigquery/docs/reference/standard-sql/data-definition-language#drop_table_statement) statement. * `DROP_EXTERNAL_TABLE`: [`DROP EXTERNAL TABLE`](/bigquery/docs/reference/standard-sql/data-definition-language#drop_external_table_statement) statement. * `DROP_VIEW`: [`DROP VIEW`](/bigquery/docs/reference/standard-sql/data-definition-language#drop_view_statement) statement. * `DROP_MODEL`: [`DROP MODEL`](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-drop-model) statement. * `DROP_MATERIALIZED_VIEW`: [`DROP MATERIALIZED VIEW`](/bigquery/docs/reference/standard-sql/data-definition-language#drop_materialized_view_statement) statement. * `DROP_FUNCTION` : [`DROP FUNCTION`](/bigquery/docs/reference/standard-sql/data-definition-language#drop_function_statement) statement. * `DROP_TABLE_FUNCTION` : [`DROP TABLE FUNCTION`](/bigquery/docs/reference/standard-sql/data-definition-language#drop_table_function) statement. * `DROP_PROCEDURE`: [`DROP PROCEDURE`](/bigquery/docs/reference/standard-sql/data-definition-language#drop_procedure_statement) statement. * `DROP_SEARCH_INDEX`: [`DROP SEARCH INDEX`](/bigquery/docs/reference/standard-sql/data-definition-language#drop_search_index) statement. * `DROP_SCHEMA`: [`DROP SCHEMA`](/bigquery/docs/reference/standard-sql/data-definition-language#drop_schema_statement) statement. * `DROP_SNAPSHOT_TABLE`: [`DROP SNAPSHOT TABLE`](/bigquery/docs/reference/standard-sql/data-definition-language#drop_snapshot_table_statement) statement. * `DROP_ROW_ACCESS_POLICY`: [`DROP [ALL] ROW ACCESS POLICY|POLICIES`](/bigquery/docs/reference/standard-sql/data-definition-language#drop_row_access_policy_statement) statement. * `ALTER_TABLE`: [`ALTER TABLE`](/bigquery/docs/reference/standard-sql/data-definition-language#alter_table_set_options_statement) statement. * `ALTER_VIEW`: [`ALTER VIEW`](/bigquery/docs/reference/standard-sql/data-definition-language#alter_view_set_options_statement) statement. * `ALTER_MATERIALIZED_VIEW`: [`ALTER MATERIALIZED VIEW`](/bigquery/docs/reference/standard-sql/data-definition-language#alter_materialized_view_set_options_statement) statement. * `ALTER_SCHEMA`: [`ALTER SCHEMA`](/bigquery/docs/reference/standard-sql/data-definition-language#aalter_schema_set_options_statement) statement. * `SCRIPT`: [`SCRIPT`](/bigquery/docs/reference/standard-sql/procedural-language). * `TRUNCATE_TABLE`: [`TRUNCATE TABLE`](/bigquery/docs/reference/standard-sql/dml-syntax#truncate_table_statement) statement. * `CREATE_EXTERNAL_TABLE`: [`CREATE EXTERNAL TABLE`](/bigquery/docs/reference/standard-sql/data-definition-language#create_external_table_statement) statement. * `EXPORT_DATA`: [`EXPORT DATA`](/bigquery/docs/reference/standard-sql/other-statements#export_data_statement) statement. * `EXPORT_MODEL`: [`EXPORT MODEL`](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-export-model) statement. * `LOAD_DATA`: [`LOAD DATA`](/bigquery/docs/reference/standard-sql/other-statements#load_data_statement) statement. * `CALL`: [`CALL`](/bigquery/docs/reference/standard-sql/procedural-language#call) statement.
         /// </summary>
         public readonly string StatementType;
         /// <summary>
-        /// [Output only] [Beta] Describes a timeline of job execution.
+        /// Describes a timeline of job execution.
         /// </summary>
         public readonly ImmutableArray<Outputs.QueryTimelineSampleResponse> Timeline;
         /// <summary>
-        /// [Output only] Total bytes billed for the job.
+        /// If the project is configured to use on-demand pricing, then this field contains the total bytes billed for the job. If the project is configured to use flat-rate pricing, then you are not billed for bytes and this field is informational only.
         /// </summary>
         public readonly string TotalBytesBilled;
         /// <summary>
-        /// [Output only] Total bytes processed for the job.
+        /// Total bytes processed for the job.
         /// </summary>
         public readonly string TotalBytesProcessed;
         /// <summary>
-        /// [Output only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
+        /// For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
         /// </summary>
         public readonly string TotalBytesProcessedAccuracy;
         /// <summary>
-        /// [Output only] Total number of partitions processed from all partitioned tables referenced in the job.
+        /// Total number of partitions processed from all partitioned tables referenced in the job.
         /// </summary>
         public readonly string TotalPartitionsProcessed;
         /// <summary>
-        /// [Output only] Slot-milliseconds for the job.
+        /// Slot-milliseconds for the job.
         /// </summary>
         public readonly string TotalSlotMs;
         /// <summary>
@@ -142,9 +185,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string TransferredBytes;
         /// <summary>
-        /// Standard SQL only: list of undeclared query parameters detected during a dry run validation.
+        /// GoogleSQL only: list of undeclared query parameters detected during a dry run validation.
         /// </summary>
         public readonly ImmutableArray<Outputs.QueryParameterResponse> UndeclaredQueryParameters;
+        /// <summary>
+        /// Vector Search query specific statistics.
+        /// </summary>
+        public readonly Outputs.VectorSearchStatisticsResponse VectorSearchStatistics;
 
         [OutputConstructor]
         private JobStatistics2Response(
@@ -153,6 +200,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             int billingTier,
 
             bool cacheHit,
+
+            Outputs.DatasetReferenceResponse dclTargetDataset,
+
+            Outputs.TableReferenceResponse dclTargetTable,
+
+            Outputs.TableReferenceResponse dclTargetView,
 
             string ddlAffectedRowAccessPolicyCount,
 
@@ -172,6 +225,16 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             string estimatedBytesProcessed,
 
+            Outputs.ExportDataStatisticsResponse exportDataStatistics,
+
+            ImmutableArray<Outputs.ExternalServiceCostResponse> externalServiceCosts,
+
+            Outputs.LoadQueryStatisticsResponse loadQueryStatistics,
+
+            Outputs.MaterializedViewStatisticsResponse materializedViewStatistics,
+
+            Outputs.MetadataCacheStatisticsResponse metadataCacheStatistics,
+
             Outputs.MlStatisticsResponse mlStatistics,
 
             Outputs.BigQueryModelTrainingResponse modelTraining,
@@ -181,6 +244,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             string modelTrainingExpectedTotalIteration,
 
             string numDmlAffectedRows,
+
+            Outputs.PerformanceInsightsResponse performanceInsights,
+
+            Outputs.QueryInfoResponse queryInfo,
 
             ImmutableArray<Outputs.ExplainQueryStageResponse> queryPlan,
 
@@ -212,11 +279,16 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             string transferredBytes,
 
-            ImmutableArray<Outputs.QueryParameterResponse> undeclaredQueryParameters)
+            ImmutableArray<Outputs.QueryParameterResponse> undeclaredQueryParameters,
+
+            Outputs.VectorSearchStatisticsResponse vectorSearchStatistics)
         {
             BiEngineStatistics = biEngineStatistics;
             BillingTier = billingTier;
             CacheHit = cacheHit;
+            DclTargetDataset = dclTargetDataset;
+            DclTargetTable = dclTargetTable;
+            DclTargetView = dclTargetView;
             DdlAffectedRowAccessPolicyCount = ddlAffectedRowAccessPolicyCount;
             DdlDestinationTable = ddlDestinationTable;
             DdlOperationPerformed = ddlOperationPerformed;
@@ -226,11 +298,18 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             DdlTargetTable = ddlTargetTable;
             DmlStats = dmlStats;
             EstimatedBytesProcessed = estimatedBytesProcessed;
+            ExportDataStatistics = exportDataStatistics;
+            ExternalServiceCosts = externalServiceCosts;
+            LoadQueryStatistics = loadQueryStatistics;
+            MaterializedViewStatistics = materializedViewStatistics;
+            MetadataCacheStatistics = metadataCacheStatistics;
             MlStatistics = mlStatistics;
             ModelTraining = modelTraining;
             ModelTrainingCurrentIteration = modelTrainingCurrentIteration;
             ModelTrainingExpectedTotalIteration = modelTrainingExpectedTotalIteration;
             NumDmlAffectedRows = numDmlAffectedRows;
+            PerformanceInsights = performanceInsights;
+            QueryInfo = queryInfo;
             QueryPlan = queryPlan;
             ReferencedRoutines = referencedRoutines;
             ReferencedTables = referencedTables;
@@ -247,6 +326,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             TotalSlotMs = totalSlotMs;
             TransferredBytes = transferredBytes;
             UndeclaredQueryParameters = undeclaredQueryParameters;
+            VectorSearchStatistics = vectorSearchStatistics;
         }
     }
 }

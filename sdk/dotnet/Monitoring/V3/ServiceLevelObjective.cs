@@ -35,7 +35,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public Output<double> Goal { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
+        /// Identifier. Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -143,7 +143,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public Input<double>? Goal { get; set; }
 
         /// <summary>
-        /// Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
+        /// Identifier. Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         }
 
         /// <summary>
+        /// Indicate whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+        /// </summary>
+        [Input("igmpQuery")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.NetworkInterfaceIgmpQuery>? IgmpQuery { get; set; }
+
+        /// <summary>
         /// The prefix length of the primary internal IPv6 range.
         /// </summary>
         [Input("internalIpv6PrefixLength")]

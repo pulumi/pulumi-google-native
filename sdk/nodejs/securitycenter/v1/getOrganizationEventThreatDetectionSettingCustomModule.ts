@@ -23,6 +23,10 @@ export interface GetOrganizationEventThreatDetectionSettingCustomModuleArgs {
 
 export interface GetOrganizationEventThreatDetectionSettingCustomModuleResult {
     /**
+     * The closest ancestor module that this module inherits the enablement state from. The format is the same as the EventThreatDetectionCustomModule resource name.
+     */
+    readonly ancestorModule: string;
+    /**
      * Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
      */
     readonly config: {[key: string]: string};

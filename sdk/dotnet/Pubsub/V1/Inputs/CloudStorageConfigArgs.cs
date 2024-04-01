@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Inputs
         public Input<string> Bucket { get; set; } = null!;
 
         /// <summary>
+        /// Optional. User-provided format string specifying how to represent datetimes in Cloud Storage filenames. See the [datetime format guidance](https://cloud.google.com/pubsub/docs/create-cloudstorage-subscription#file_names).
+        /// </summary>
+        [Input("filenameDatetimeFormat")]
+        public Input<string>? FilenameDatetimeFormat { get; set; }
+
+        /// <summary>
         /// Optional. User-provided prefix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
         /// </summary>
         [Input("filenamePrefix")]
@@ -50,6 +56,12 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Inputs
         /// </summary>
         [Input("maxDuration")]
         public Input<string>? MaxDuration { get; set; }
+
+        /// <summary>
+        /// Optional. The service account to use to write to Cloud Storage. The subscription creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        /// </summary>
+        [Input("serviceAccountEmail")]
+        public Input<string>? ServiceAccountEmail { get; set; }
 
         /// <summary>
         /// Optional. If set, message data will be written to Cloud Storage in text format.

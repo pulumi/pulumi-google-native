@@ -511,7 +511,7 @@ class MetricThresholdComparison(str, Enum):
 
 class MetricThresholdEvaluationMissingData(str, Enum):
     """
-    A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+    A condition control that determines how metric-threshold conditions are evaluated when data stops arriving. To use this control, the value of the duration field must be greater than or equal to 60 seconds.
     """
     EVALUATION_MISSING_DATA_UNSPECIFIED = "EVALUATION_MISSING_DATA_UNSPECIFIED"
     """

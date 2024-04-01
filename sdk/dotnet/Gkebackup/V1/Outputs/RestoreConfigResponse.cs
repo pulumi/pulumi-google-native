@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Outputs
 {
 
     /// <summary>
-    /// Configuration of a restore. Next id: 13
+    /// Configuration of a restore.
     /// </summary>
     [OutputType]
     public sealed class RestoreConfigResponse

@@ -35,6 +35,10 @@ type LookupExecutionResult struct {
 	Argument string `pulumi:"argument"`
 	// The call logging level associated to this execution.
 	CallLogLevel string `pulumi:"callLogLevel"`
+	// Marks the creation of the execution.
+	CreateTime string `pulumi:"createTime"`
+	// Optional. If set to true, the execution will not be backlogged when the concurrency quota is exhausted. The backlog execution starts when the concurrency quota becomes available.
+	DisableConcurrencyQuotaOverflowBuffering bool `pulumi:"disableConcurrencyQuotaOverflowBuffering"`
 	// Measures the duration of the execution.
 	Duration string `pulumi:"duration"`
 	// Marks the end of execution, successful or not.
@@ -106,6 +110,16 @@ func (o LookupExecutionResultOutput) Argument() pulumi.StringOutput {
 // The call logging level associated to this execution.
 func (o LookupExecutionResultOutput) CallLogLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExecutionResult) string { return v.CallLogLevel }).(pulumi.StringOutput)
+}
+
+// Marks the creation of the execution.
+func (o LookupExecutionResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExecutionResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. If set to true, the execution will not be backlogged when the concurrency quota is exhausted. The backlog execution starts when the concurrency quota becomes available.
+func (o LookupExecutionResultOutput) DisableConcurrencyQuotaOverflowBuffering() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupExecutionResult) bool { return v.DisableConcurrencyQuotaOverflowBuffering }).(pulumi.BoolOutput)
 }
 
 // Measures the duration of the execution.

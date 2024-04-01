@@ -33,12 +33,16 @@ type LookupFeatureOnlineStoreResult struct {
 	Bigtable GoogleCloudAiplatformV1FeatureOnlineStoreBigtableResponse `pulumi:"bigtable"`
 	// Timestamp when this FeatureOnlineStore was created.
 	CreateTime string `pulumi:"createTime"`
+	// Optional. The dedicated serving endpoint for this FeatureOnlineStore, which is different from common Vertex service endpoint.
+	DedicatedServingEndpoint GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpointResponse `pulumi:"dedicatedServingEndpoint"`
 	// Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag string `pulumi:"etag"`
 	// Optional. The labels with user-defined metadata to organize your FeatureOnlineStore. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
 	Labels map[string]string `pulumi:"labels"`
-	// Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+	// Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
 	Name string `pulumi:"name"`
+	// Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.
+	Optimized GoogleCloudAiplatformV1FeatureOnlineStoreOptimizedResponse `pulumi:"optimized"`
 	// State of the featureOnlineStore.
 	State string `pulumi:"state"`
 	// Timestamp when this FeatureOnlineStore was last updated.
@@ -94,6 +98,13 @@ func (o LookupFeatureOnlineStoreResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureOnlineStoreResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Optional. The dedicated serving endpoint for this FeatureOnlineStore, which is different from common Vertex service endpoint.
+func (o LookupFeatureOnlineStoreResultOutput) DedicatedServingEndpoint() GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpointResponseOutput {
+	return o.ApplyT(func(v LookupFeatureOnlineStoreResult) GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpointResponse {
+		return v.DedicatedServingEndpoint
+	}).(GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpointResponseOutput)
+}
+
 // Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 func (o LookupFeatureOnlineStoreResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureOnlineStoreResult) string { return v.Etag }).(pulumi.StringOutput)
@@ -104,9 +115,16 @@ func (o LookupFeatureOnlineStoreResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupFeatureOnlineStoreResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+// Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
 func (o LookupFeatureOnlineStoreResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureOnlineStoreResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.
+func (o LookupFeatureOnlineStoreResultOutput) Optimized() GoogleCloudAiplatformV1FeatureOnlineStoreOptimizedResponseOutput {
+	return o.ApplyT(func(v LookupFeatureOnlineStoreResult) GoogleCloudAiplatformV1FeatureOnlineStoreOptimizedResponse {
+		return v.Optimized
+	}).(GoogleCloudAiplatformV1FeatureOnlineStoreOptimizedResponseOutput)
 }
 
 // State of the featureOnlineStore.

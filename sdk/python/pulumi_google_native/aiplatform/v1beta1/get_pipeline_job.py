@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetPipelineJobResult:
-    def __init__(__self__, create_time=None, display_name=None, encryption_spec=None, end_time=None, error=None, job_detail=None, labels=None, name=None, network=None, pipeline_spec=None, reserved_ip_ranges=None, runtime_config=None, schedule_name=None, service_account=None, start_time=None, state=None, template_metadata=None, template_uri=None, update_time=None):
+    def __init__(__self__, create_time=None, display_name=None, encryption_spec=None, end_time=None, error=None, job_detail=None, labels=None, name=None, network=None, pipeline_spec=None, preflight_validations=None, reserved_ip_ranges=None, runtime_config=None, schedule_name=None, service_account=None, start_time=None, state=None, template_metadata=None, template_uri=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -50,6 +50,9 @@ class GetPipelineJobResult:
         if pipeline_spec and not isinstance(pipeline_spec, dict):
             raise TypeError("Expected argument 'pipeline_spec' to be a dict")
         pulumi.set(__self__, "pipeline_spec", pipeline_spec)
+        if preflight_validations and not isinstance(preflight_validations, bool):
+            raise TypeError("Expected argument 'preflight_validations' to be a bool")
+        pulumi.set(__self__, "preflight_validations", preflight_validations)
         if reserved_ip_ranges and not isinstance(reserved_ip_ranges, list):
             raise TypeError("Expected argument 'reserved_ip_ranges' to be a list")
         pulumi.set(__self__, "reserved_ip_ranges", reserved_ip_ranges)
@@ -159,6 +162,14 @@ class GetPipelineJobResult:
         return pulumi.get(self, "pipeline_spec")
 
     @property
+    @pulumi.getter(name="preflightValidations")
+    def preflight_validations(self) -> bool:
+        """
+        Optional. Whether to do component level validations before job creation.
+        """
+        return pulumi.get(self, "preflight_validations")
+
+    @property
     @pulumi.getter(name="reservedIpRanges")
     def reserved_ip_ranges(self) -> Sequence[str]:
         """
@@ -247,6 +258,7 @@ class AwaitableGetPipelineJobResult(GetPipelineJobResult):
             name=self.name,
             network=self.network,
             pipeline_spec=self.pipeline_spec,
+            preflight_validations=self.preflight_validations,
             reserved_ip_ranges=self.reserved_ip_ranges,
             runtime_config=self.runtime_config,
             schedule_name=self.schedule_name,
@@ -283,6 +295,7 @@ def get_pipeline_job(location: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         network=pulumi.get(__ret__, 'network'),
         pipeline_spec=pulumi.get(__ret__, 'pipeline_spec'),
+        preflight_validations=pulumi.get(__ret__, 'preflight_validations'),
         reserved_ip_ranges=pulumi.get(__ret__, 'reserved_ip_ranges'),
         runtime_config=pulumi.get(__ret__, 'runtime_config'),
         schedule_name=pulumi.get(__ret__, 'schedule_name'),

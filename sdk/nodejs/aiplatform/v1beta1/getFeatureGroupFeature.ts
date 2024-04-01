@@ -68,6 +68,10 @@ export interface GetFeatureGroupFeatureResult {
      */
     readonly name: string;
     /**
+     * Entity responsible for maintaining this feature. Can be comma separated list of email addresses or URIs.
+     */
+    readonly pointOfContact: string;
+    /**
      * Only applicable for Vertex AI Feature Store (Legacy). Timestamp when this EntityType was most recently updated.
      */
     readonly updateTime: string;
@@ -76,7 +80,7 @@ export interface GetFeatureGroupFeatureResult {
      */
     readonly valueType: string;
     /**
-     * Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for this version. If no value is provided, will use feature_id.
+     * Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use feature_id.
      */
     readonly versionColumnName: string;
 }

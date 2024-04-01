@@ -10,7 +10,6 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
 from ._enums import *
-from ._inputs import *
 
 __all__ = ['VersionArgs', 'Version']
 
@@ -19,97 +18,25 @@ class VersionArgs:
     def __init__(__self__, *,
                  integration_id: pulumi.Input[str],
                  product_id: pulumi.Input[str],
-                 cloud_logging_details: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs']] = None,
-                 create_sample_integrations: Optional[pulumi.Input[bool]] = None,
-                 database_persistence_policy: Optional[pulumi.Input['VersionDatabasePersistencePolicy']] = None,
-                 description: Optional[pulumi.Input[str]] = None,
-                 error_catcher_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]] = None,
-                 integration_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaIntegrationParameterArgs']]]] = None,
-                 integration_parameters_internal: Optional[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs']] = None,
-                 last_modifier_email: Optional[pulumi.Input[str]] = None,
+                 content: Optional[pulumi.Input[str]] = None,
+                 file_format: Optional[pulumi.Input['VersionFileFormat']] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 lock_holder: Optional[pulumi.Input[str]] = None,
-                 new_integration: Optional[pulumi.Input[bool]] = None,
-                 origin: Optional[pulumi.Input['VersionOrigin']] = None,
-                 parent_template_id: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
-                 run_as_service_account: Optional[pulumi.Input[str]] = None,
-                 snapshot_number: Optional[pulumi.Input[str]] = None,
-                 task_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaTaskConfigArgs']]]] = None,
-                 task_configs_internal: Optional[pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs']]]] = None,
-                 teardown: Optional[pulumi.Input['EnterpriseCrmEventbusProtoTeardownArgs']] = None,
-                 trigger_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaTriggerConfigArgs']]]] = None,
-                 trigger_configs_internal: Optional[pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs']]]] = None,
-                 user_label: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Version resource.
-        :param pulumi.Input['GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs'] cloud_logging_details: Optional. Cloud Logging details for the integration version
-        :param pulumi.Input[bool] create_sample_integrations: Optional. Optional. Indicates if sample workflow should be created.
-        :param pulumi.Input['VersionDatabasePersistencePolicy'] database_persistence_policy: Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
-        :param pulumi.Input[str] description: Optional. The integration description.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]] error_catcher_configs: Optional. Error Catch Task configuration for the integration. It's optional.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaIntegrationParameterArgs']]] integration_parameters: Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
-        :param pulumi.Input['EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs'] integration_parameters_internal: Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
-        :param pulumi.Input[str] last_modifier_email: Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
-        :param pulumi.Input[str] lock_holder: Optional. The edit lock holder's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
-        :param pulumi.Input[bool] new_integration: Set this flag to true, if draft version is to be created for a brand new integration. False, if the request is for an existing integration. For backward compatibility reasons, even if this flag is set to `false` and no existing integration is found, a new draft integration will still be created.
-        :param pulumi.Input['VersionOrigin'] origin: Optional. The origin that indicates where this integration is coming from.
-        :param pulumi.Input[str] parent_template_id: Optional. The id of the template which was used to create this integration_version.
-        :param pulumi.Input[str] run_as_service_account: Optional. The run-as service account email, if set and auth config is not configured, that will be used to generate auth token to be used in Connector task, Rest caller task and Cloud function task.
-        :param pulumi.Input[str] snapshot_number: Optional. An increasing sequence that is set when a new snapshot is created. The last created snapshot can be identified by [workflow_name, org_id latest(snapshot_number)]. However, last created snapshot need not be same as the HEAD. So users should always use "HEAD" tag to identify the head.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaTaskConfigArgs']]] task_configs: Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs.
-        :param pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs']]] task_configs_internal: Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs.
-        :param pulumi.Input['EnterpriseCrmEventbusProtoTeardownArgs'] teardown: Optional. Contains a graph of tasks that will be executed before putting the event in a terminal state (SUCCEEDED/FAILED/FATAL), regardless of success or failure, similar to "finally" in code.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaTriggerConfigArgs']]] trigger_configs: Optional. Trigger configurations.
-        :param pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs']]] trigger_configs_internal: Optional. Trigger configurations.
-        :param pulumi.Input[str] user_label: Optional. A user-defined label that annotates an integration version. Typically, this is only set when the integration version is created.
+        :param pulumi.Input[str] content: The textproto of the integration_version.
+        :param pulumi.Input['VersionFileFormat'] file_format: File format for upload request.
         """
         pulumi.set(__self__, "integration_id", integration_id)
         pulumi.set(__self__, "product_id", product_id)
-        if cloud_logging_details is not None:
-            pulumi.set(__self__, "cloud_logging_details", cloud_logging_details)
-        if create_sample_integrations is not None:
-            pulumi.set(__self__, "create_sample_integrations", create_sample_integrations)
-        if database_persistence_policy is not None:
-            pulumi.set(__self__, "database_persistence_policy", database_persistence_policy)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if error_catcher_configs is not None:
-            pulumi.set(__self__, "error_catcher_configs", error_catcher_configs)
-        if integration_parameters is not None:
-            pulumi.set(__self__, "integration_parameters", integration_parameters)
-        if integration_parameters_internal is not None:
-            pulumi.set(__self__, "integration_parameters_internal", integration_parameters_internal)
-        if last_modifier_email is not None:
-            pulumi.set(__self__, "last_modifier_email", last_modifier_email)
+        if content is not None:
+            pulumi.set(__self__, "content", content)
+        if file_format is not None:
+            pulumi.set(__self__, "file_format", file_format)
         if location is not None:
             pulumi.set(__self__, "location", location)
-        if lock_holder is not None:
-            pulumi.set(__self__, "lock_holder", lock_holder)
-        if new_integration is not None:
-            pulumi.set(__self__, "new_integration", new_integration)
-        if origin is not None:
-            pulumi.set(__self__, "origin", origin)
-        if parent_template_id is not None:
-            pulumi.set(__self__, "parent_template_id", parent_template_id)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if run_as_service_account is not None:
-            pulumi.set(__self__, "run_as_service_account", run_as_service_account)
-        if snapshot_number is not None:
-            pulumi.set(__self__, "snapshot_number", snapshot_number)
-        if task_configs is not None:
-            pulumi.set(__self__, "task_configs", task_configs)
-        if task_configs_internal is not None:
-            pulumi.set(__self__, "task_configs_internal", task_configs_internal)
-        if teardown is not None:
-            pulumi.set(__self__, "teardown", teardown)
-        if trigger_configs is not None:
-            pulumi.set(__self__, "trigger_configs", trigger_configs)
-        if trigger_configs_internal is not None:
-            pulumi.set(__self__, "trigger_configs_internal", trigger_configs_internal)
-        if user_label is not None:
-            pulumi.set(__self__, "user_label", user_label)
 
     @property
     @pulumi.getter(name="integrationId")
@@ -130,100 +57,28 @@ class VersionArgs:
         pulumi.set(self, "product_id", value)
 
     @property
-    @pulumi.getter(name="cloudLoggingDetails")
-    def cloud_logging_details(self) -> Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs']]:
-        """
-        Optional. Cloud Logging details for the integration version
-        """
-        return pulumi.get(self, "cloud_logging_details")
-
-    @cloud_logging_details.setter
-    def cloud_logging_details(self, value: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs']]):
-        pulumi.set(self, "cloud_logging_details", value)
-
-    @property
-    @pulumi.getter(name="createSampleIntegrations")
-    def create_sample_integrations(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Optional. Optional. Indicates if sample workflow should be created.
-        """
-        return pulumi.get(self, "create_sample_integrations")
-
-    @create_sample_integrations.setter
-    def create_sample_integrations(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "create_sample_integrations", value)
-
-    @property
-    @pulumi.getter(name="databasePersistencePolicy")
-    def database_persistence_policy(self) -> Optional[pulumi.Input['VersionDatabasePersistencePolicy']]:
-        """
-        Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
-        """
-        return pulumi.get(self, "database_persistence_policy")
-
-    @database_persistence_policy.setter
-    def database_persistence_policy(self, value: Optional[pulumi.Input['VersionDatabasePersistencePolicy']]):
-        pulumi.set(self, "database_persistence_policy", value)
-
-    @property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
+    def content(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The integration description.
+        The textproto of the integration_version.
         """
-        return pulumi.get(self, "description")
+        return pulumi.get(self, "content")
 
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="errorCatcherConfigs")
-    def error_catcher_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]]:
-        """
-        Optional. Error Catch Task configuration for the integration. It's optional.
-        """
-        return pulumi.get(self, "error_catcher_configs")
-
-    @error_catcher_configs.setter
-    def error_catcher_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]]):
-        pulumi.set(self, "error_catcher_configs", value)
+    @content.setter
+    def content(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content", value)
 
     @property
-    @pulumi.getter(name="integrationParameters")
-    def integration_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaIntegrationParameterArgs']]]]:
+    @pulumi.getter(name="fileFormat")
+    def file_format(self) -> Optional[pulumi.Input['VersionFileFormat']]:
         """
-        Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
+        File format for upload request.
         """
-        return pulumi.get(self, "integration_parameters")
+        return pulumi.get(self, "file_format")
 
-    @integration_parameters.setter
-    def integration_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaIntegrationParameterArgs']]]]):
-        pulumi.set(self, "integration_parameters", value)
-
-    @property
-    @pulumi.getter(name="integrationParametersInternal")
-    def integration_parameters_internal(self) -> Optional[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs']]:
-        """
-        Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
-        """
-        return pulumi.get(self, "integration_parameters_internal")
-
-    @integration_parameters_internal.setter
-    def integration_parameters_internal(self, value: Optional[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs']]):
-        pulumi.set(self, "integration_parameters_internal", value)
-
-    @property
-    @pulumi.getter(name="lastModifierEmail")
-    def last_modifier_email(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
-        """
-        return pulumi.get(self, "last_modifier_email")
-
-    @last_modifier_email.setter
-    def last_modifier_email(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_modifier_email", value)
+    @file_format.setter
+    def file_format(self, value: Optional[pulumi.Input['VersionFileFormat']]):
+        pulumi.set(self, "file_format", value)
 
     @property
     @pulumi.getter
@@ -235,54 +90,6 @@ class VersionArgs:
         pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="lockHolder")
-    def lock_holder(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The edit lock holder's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
-        """
-        return pulumi.get(self, "lock_holder")
-
-    @lock_holder.setter
-    def lock_holder(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "lock_holder", value)
-
-    @property
-    @pulumi.getter(name="newIntegration")
-    def new_integration(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Set this flag to true, if draft version is to be created for a brand new integration. False, if the request is for an existing integration. For backward compatibility reasons, even if this flag is set to `false` and no existing integration is found, a new draft integration will still be created.
-        """
-        return pulumi.get(self, "new_integration")
-
-    @new_integration.setter
-    def new_integration(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "new_integration", value)
-
-    @property
-    @pulumi.getter
-    def origin(self) -> Optional[pulumi.Input['VersionOrigin']]:
-        """
-        Optional. The origin that indicates where this integration is coming from.
-        """
-        return pulumi.get(self, "origin")
-
-    @origin.setter
-    def origin(self, value: Optional[pulumi.Input['VersionOrigin']]):
-        pulumi.set(self, "origin", value)
-
-    @property
-    @pulumi.getter(name="parentTemplateId")
-    def parent_template_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The id of the template which was used to create this integration_version.
-        """
-        return pulumi.get(self, "parent_template_id")
-
-    @parent_template_id.setter
-    def parent_template_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "parent_template_id", value)
-
-    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -291,159 +98,27 @@ class VersionArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
-    @property
-    @pulumi.getter(name="runAsServiceAccount")
-    def run_as_service_account(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The run-as service account email, if set and auth config is not configured, that will be used to generate auth token to be used in Connector task, Rest caller task and Cloud function task.
-        """
-        return pulumi.get(self, "run_as_service_account")
-
-    @run_as_service_account.setter
-    def run_as_service_account(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "run_as_service_account", value)
-
-    @property
-    @pulumi.getter(name="snapshotNumber")
-    def snapshot_number(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. An increasing sequence that is set when a new snapshot is created. The last created snapshot can be identified by [workflow_name, org_id latest(snapshot_number)]. However, last created snapshot need not be same as the HEAD. So users should always use "HEAD" tag to identify the head.
-        """
-        return pulumi.get(self, "snapshot_number")
-
-    @snapshot_number.setter
-    def snapshot_number(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "snapshot_number", value)
-
-    @property
-    @pulumi.getter(name="taskConfigs")
-    def task_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaTaskConfigArgs']]]]:
-        """
-        Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs.
-        """
-        return pulumi.get(self, "task_configs")
-
-    @task_configs.setter
-    def task_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaTaskConfigArgs']]]]):
-        pulumi.set(self, "task_configs", value)
-
-    @property
-    @pulumi.getter(name="taskConfigsInternal")
-    def task_configs_internal(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs']]]]:
-        """
-        Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs.
-        """
-        return pulumi.get(self, "task_configs_internal")
-
-    @task_configs_internal.setter
-    def task_configs_internal(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs']]]]):
-        pulumi.set(self, "task_configs_internal", value)
-
-    @property
-    @pulumi.getter
-    def teardown(self) -> Optional[pulumi.Input['EnterpriseCrmEventbusProtoTeardownArgs']]:
-        """
-        Optional. Contains a graph of tasks that will be executed before putting the event in a terminal state (SUCCEEDED/FAILED/FATAL), regardless of success or failure, similar to "finally" in code.
-        """
-        return pulumi.get(self, "teardown")
-
-    @teardown.setter
-    def teardown(self, value: Optional[pulumi.Input['EnterpriseCrmEventbusProtoTeardownArgs']]):
-        pulumi.set(self, "teardown", value)
-
-    @property
-    @pulumi.getter(name="triggerConfigs")
-    def trigger_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaTriggerConfigArgs']]]]:
-        """
-        Optional. Trigger configurations.
-        """
-        return pulumi.get(self, "trigger_configs")
-
-    @trigger_configs.setter
-    def trigger_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaTriggerConfigArgs']]]]):
-        pulumi.set(self, "trigger_configs", value)
-
-    @property
-    @pulumi.getter(name="triggerConfigsInternal")
-    def trigger_configs_internal(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs']]]]:
-        """
-        Optional. Trigger configurations.
-        """
-        return pulumi.get(self, "trigger_configs_internal")
-
-    @trigger_configs_internal.setter
-    def trigger_configs_internal(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs']]]]):
-        pulumi.set(self, "trigger_configs_internal", value)
-
-    @property
-    @pulumi.getter(name="userLabel")
-    def user_label(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. A user-defined label that annotates an integration version. Typically, this is only set when the integration version is created.
-        """
-        return pulumi.get(self, "user_label")
-
-    @user_label.setter
-    def user_label(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "user_label", value)
-
 
 class Version(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_logging_details: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs']]] = None,
-                 create_sample_integrations: Optional[pulumi.Input[bool]] = None,
-                 database_persistence_policy: Optional[pulumi.Input['VersionDatabasePersistencePolicy']] = None,
-                 description: Optional[pulumi.Input[str]] = None,
-                 error_catcher_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]]] = None,
+                 content: Optional[pulumi.Input[str]] = None,
+                 file_format: Optional[pulumi.Input['VersionFileFormat']] = None,
                  integration_id: Optional[pulumi.Input[str]] = None,
-                 integration_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaIntegrationParameterArgs']]]]] = None,
-                 integration_parameters_internal: Optional[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs']]] = None,
-                 last_modifier_email: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 lock_holder: Optional[pulumi.Input[str]] = None,
-                 new_integration: Optional[pulumi.Input[bool]] = None,
-                 origin: Optional[pulumi.Input['VersionOrigin']] = None,
-                 parent_template_id: Optional[pulumi.Input[str]] = None,
                  product_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 run_as_service_account: Optional[pulumi.Input[str]] = None,
-                 snapshot_number: Optional[pulumi.Input[str]] = None,
-                 task_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaTaskConfigArgs']]]]] = None,
-                 task_configs_internal: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs']]]]] = None,
-                 teardown: Optional[pulumi.Input[pulumi.InputType['EnterpriseCrmEventbusProtoTeardownArgs']]] = None,
-                 trigger_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaTriggerConfigArgs']]]]] = None,
-                 trigger_configs_internal: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs']]]]] = None,
-                 user_label: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a integration with a draft version in the specified project.
+        Uploads an integration. The content can be a previously downloaded integration. Performs the same function as CreateDraftIntegrationVersion, but accepts input in a string format, which holds the complete representation of the IntegrationVersion content.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs']] cloud_logging_details: Optional. Cloud Logging details for the integration version
-        :param pulumi.Input[bool] create_sample_integrations: Optional. Optional. Indicates if sample workflow should be created.
-        :param pulumi.Input['VersionDatabasePersistencePolicy'] database_persistence_policy: Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
-        :param pulumi.Input[str] description: Optional. The integration description.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]] error_catcher_configs: Optional. Error Catch Task configuration for the integration. It's optional.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaIntegrationParameterArgs']]]] integration_parameters: Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
-        :param pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs']] integration_parameters_internal: Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
-        :param pulumi.Input[str] last_modifier_email: Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
-        :param pulumi.Input[str] lock_holder: Optional. The edit lock holder's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
-        :param pulumi.Input[bool] new_integration: Set this flag to true, if draft version is to be created for a brand new integration. False, if the request is for an existing integration. For backward compatibility reasons, even if this flag is set to `false` and no existing integration is found, a new draft integration will still be created.
-        :param pulumi.Input['VersionOrigin'] origin: Optional. The origin that indicates where this integration is coming from.
-        :param pulumi.Input[str] parent_template_id: Optional. The id of the template which was used to create this integration_version.
-        :param pulumi.Input[str] run_as_service_account: Optional. The run-as service account email, if set and auth config is not configured, that will be used to generate auth token to be used in Connector task, Rest caller task and Cloud function task.
-        :param pulumi.Input[str] snapshot_number: Optional. An increasing sequence that is set when a new snapshot is created. The last created snapshot can be identified by [workflow_name, org_id latest(snapshot_number)]. However, last created snapshot need not be same as the HEAD. So users should always use "HEAD" tag to identify the head.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaTaskConfigArgs']]]] task_configs: Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs']]]] task_configs_internal: Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs.
-        :param pulumi.Input[pulumi.InputType['EnterpriseCrmEventbusProtoTeardownArgs']] teardown: Optional. Contains a graph of tasks that will be executed before putting the event in a terminal state (SUCCEEDED/FAILED/FATAL), regardless of success or failure, similar to "finally" in code.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaTriggerConfigArgs']]]] trigger_configs: Optional. Trigger configurations.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs']]]] trigger_configs_internal: Optional. Trigger configurations.
-        :param pulumi.Input[str] user_label: Optional. A user-defined label that annotates an integration version. Typically, this is only set when the integration version is created.
+        :param pulumi.Input[str] content: The textproto of the integration_version.
+        :param pulumi.Input['VersionFileFormat'] file_format: File format for upload request.
         """
         ...
     @overload
@@ -452,7 +127,7 @@ class Version(pulumi.CustomResource):
                  args: VersionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a integration with a draft version in the specified project.
+        Uploads an integration. The content can be a previously downloaded integration. Performs the same function as CreateDraftIntegrationVersion, but accepts input in a string format, which holds the complete representation of the IntegrationVersion content.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
@@ -470,30 +145,12 @@ class Version(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_logging_details: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs']]] = None,
-                 create_sample_integrations: Optional[pulumi.Input[bool]] = None,
-                 database_persistence_policy: Optional[pulumi.Input['VersionDatabasePersistencePolicy']] = None,
-                 description: Optional[pulumi.Input[str]] = None,
-                 error_catcher_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]]] = None,
+                 content: Optional[pulumi.Input[str]] = None,
+                 file_format: Optional[pulumi.Input['VersionFileFormat']] = None,
                  integration_id: Optional[pulumi.Input[str]] = None,
-                 integration_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaIntegrationParameterArgs']]]]] = None,
-                 integration_parameters_internal: Optional[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoWorkflowParametersArgs']]] = None,
-                 last_modifier_email: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 lock_holder: Optional[pulumi.Input[str]] = None,
-                 new_integration: Optional[pulumi.Input[bool]] = None,
-                 origin: Optional[pulumi.Input['VersionOrigin']] = None,
-                 parent_template_id: Optional[pulumi.Input[str]] = None,
                  product_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 run_as_service_account: Optional[pulumi.Input[str]] = None,
-                 snapshot_number: Optional[pulumi.Input[str]] = None,
-                 task_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaTaskConfigArgs']]]]] = None,
-                 task_configs_internal: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs']]]]] = None,
-                 teardown: Optional[pulumi.Input[pulumi.InputType['EnterpriseCrmEventbusProtoTeardownArgs']]] = None,
-                 trigger_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaTriggerConfigArgs']]]]] = None,
-                 trigger_configs_internal: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs']]]]] = None,
-                 user_label: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -503,39 +160,41 @@ class Version(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = VersionArgs.__new__(VersionArgs)
 
-            __props__.__dict__["cloud_logging_details"] = cloud_logging_details
-            __props__.__dict__["create_sample_integrations"] = create_sample_integrations
-            __props__.__dict__["database_persistence_policy"] = database_persistence_policy
-            __props__.__dict__["description"] = description
-            __props__.__dict__["error_catcher_configs"] = error_catcher_configs
+            __props__.__dict__["content"] = content
+            __props__.__dict__["file_format"] = file_format
             if integration_id is None and not opts.urn:
                 raise TypeError("Missing required property 'integration_id'")
             __props__.__dict__["integration_id"] = integration_id
-            __props__.__dict__["integration_parameters"] = integration_parameters
-            __props__.__dict__["integration_parameters_internal"] = integration_parameters_internal
-            __props__.__dict__["last_modifier_email"] = last_modifier_email
             __props__.__dict__["location"] = location
-            __props__.__dict__["lock_holder"] = lock_holder
-            __props__.__dict__["new_integration"] = new_integration
-            __props__.__dict__["origin"] = origin
-            __props__.__dict__["parent_template_id"] = parent_template_id
             if product_id is None and not opts.urn:
                 raise TypeError("Missing required property 'product_id'")
             __props__.__dict__["product_id"] = product_id
             __props__.__dict__["project"] = project
-            __props__.__dict__["run_as_service_account"] = run_as_service_account
-            __props__.__dict__["snapshot_number"] = snapshot_number
-            __props__.__dict__["task_configs"] = task_configs
-            __props__.__dict__["task_configs_internal"] = task_configs_internal
-            __props__.__dict__["teardown"] = teardown
-            __props__.__dict__["trigger_configs"] = trigger_configs
-            __props__.__dict__["trigger_configs_internal"] = trigger_configs_internal
-            __props__.__dict__["user_label"] = user_label
+            __props__.__dict__["cloud_logging_details"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["database_persistence_policy"] = None
+            __props__.__dict__["description"] = None
+            __props__.__dict__["enable_variable_masking"] = None
+            __props__.__dict__["error_catcher_configs"] = None
+            __props__.__dict__["integration_config_parameters"] = None
+            __props__.__dict__["integration_parameters"] = None
+            __props__.__dict__["integration_parameters_internal"] = None
+            __props__.__dict__["last_modifier_email"] = None
+            __props__.__dict__["lock_holder"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["origin"] = None
+            __props__.__dict__["parent_template_id"] = None
+            __props__.__dict__["run_as_service_account"] = None
+            __props__.__dict__["snapshot_number"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["status"] = None
+            __props__.__dict__["task_configs"] = None
+            __props__.__dict__["task_configs_internal"] = None
+            __props__.__dict__["teardown"] = None
+            __props__.__dict__["trigger_configs"] = None
+            __props__.__dict__["trigger_configs_internal"] = None
             __props__.__dict__["update_time"] = None
+            __props__.__dict__["user_label"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["integration_id", "location", "product_id", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Version, __self__).__init__(
@@ -561,11 +220,12 @@ class Version(pulumi.CustomResource):
         __props__ = VersionArgs.__new__(VersionArgs)
 
         __props__.__dict__["cloud_logging_details"] = None
-        __props__.__dict__["create_sample_integrations"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["database_persistence_policy"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["enable_variable_masking"] = None
         __props__.__dict__["error_catcher_configs"] = None
+        __props__.__dict__["integration_config_parameters"] = None
         __props__.__dict__["integration_id"] = None
         __props__.__dict__["integration_parameters"] = None
         __props__.__dict__["integration_parameters_internal"] = None
@@ -573,7 +233,6 @@ class Version(pulumi.CustomResource):
         __props__.__dict__["location"] = None
         __props__.__dict__["lock_holder"] = None
         __props__.__dict__["name"] = None
-        __props__.__dict__["new_integration"] = None
         __props__.__dict__["origin"] = None
         __props__.__dict__["parent_template_id"] = None
         __props__.__dict__["product_id"] = None
@@ -600,14 +259,6 @@ class Version(pulumi.CustomResource):
         return pulumi.get(self, "cloud_logging_details")
 
     @property
-    @pulumi.getter(name="createSampleIntegrations")
-    def create_sample_integrations(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Optional. Optional. Indicates if sample workflow should be created.
-        """
-        return pulumi.get(self, "create_sample_integrations")
-
-    @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
@@ -632,12 +283,28 @@ class Version(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="enableVariableMasking")
+    def enable_variable_masking(self) -> pulumi.Output[bool]:
+        """
+        Optional. True if variable masking feature should be turned on for this version
+        """
+        return pulumi.get(self, "enable_variable_masking")
+
+    @property
     @pulumi.getter(name="errorCatcherConfigs")
     def error_catcher_configs(self) -> pulumi.Output[Sequence['outputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse']]:
         """
         Optional. Error Catch Task configuration for the integration. It's optional.
         """
         return pulumi.get(self, "error_catcher_configs")
+
+    @property
+    @pulumi.getter(name="integrationConfigParameters")
+    def integration_config_parameters(self) -> pulumi.Output[Sequence['outputs.GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponse']]:
+        """
+        Optional. Config Parameters that are expected to be passed to the integration when an integration is published. This consists of all the parameters that are expected to provide configuration in the integration execution. This gives the user the ability to provide default values, value, add information like connection url, project based configuration value and also provide data types of each parameter.
+        """
+        return pulumi.get(self, "integration_config_parameters")
 
     @property
     @pulumi.getter(name="integrationId")
@@ -688,14 +355,6 @@ class Version(pulumi.CustomResource):
         Auto-generated primary key.
         """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="newIntegration")
-    def new_integration(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Set this flag to true, if draft version is to be created for a brand new integration. False, if the request is for an existing integration. For backward compatibility reasons, even if this flag is set to `false` and no existing integration is found, a new draft integration will still be created.
-        """
-        return pulumi.get(self, "new_integration")
 
     @property
     @pulumi.getter

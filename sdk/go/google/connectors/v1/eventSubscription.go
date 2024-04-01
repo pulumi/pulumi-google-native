@@ -37,6 +37,8 @@ type EventSubscription struct {
 	Subscriber pulumi.StringOutput `pulumi:"subscriber"`
 	// Optional. Link for Subscriber of the current EventSubscription.
 	SubscriberLink pulumi.StringOutput `pulumi:"subscriberLink"`
+	// Optional. Configuration for configuring the trigger
+	TriggerConfigVariables ConfigVariableResponseArrayOutput `pulumi:"triggerConfigVariables"`
 	// Updated time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -111,6 +113,8 @@ type eventSubscriptionArgs struct {
 	Subscriber *string `pulumi:"subscriber"`
 	// Optional. Link for Subscriber of the current EventSubscription.
 	SubscriberLink *string `pulumi:"subscriberLink"`
+	// Optional. Configuration for configuring the trigger
+	TriggerConfigVariables []ConfigVariable `pulumi:"triggerConfigVariables"`
 }
 
 // The set of arguments for constructing a EventSubscription resource.
@@ -132,6 +136,8 @@ type EventSubscriptionArgs struct {
 	Subscriber pulumi.StringPtrInput
 	// Optional. Link for Subscriber of the current EventSubscription.
 	SubscriberLink pulumi.StringPtrInput
+	// Optional. Configuration for configuring the trigger
+	TriggerConfigVariables ConfigVariableArrayInput
 }
 
 func (EventSubscriptionArgs) ElementType() reflect.Type {
@@ -226,6 +232,11 @@ func (o EventSubscriptionOutput) Subscriber() pulumi.StringOutput {
 // Optional. Link for Subscriber of the current EventSubscription.
 func (o EventSubscriptionOutput) SubscriberLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *EventSubscription) pulumi.StringOutput { return v.SubscriberLink }).(pulumi.StringOutput)
+}
+
+// Optional. Configuration for configuring the trigger
+func (o EventSubscriptionOutput) TriggerConfigVariables() ConfigVariableResponseArrayOutput {
+	return o.ApplyT(func(v *EventSubscription) ConfigVariableResponseArrayOutput { return v.TriggerConfigVariables }).(ConfigVariableResponseArrayOutput)
 }
 
 // Updated time.

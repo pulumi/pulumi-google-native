@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.Aiplatform.V1.Outputs
     public sealed class GoogleCloudAiplatformV1BatchPredictionJobInstanceConfigResponse
     {
         /// <summary>
-        /// Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
+        /// Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord.
         /// </summary>
         public readonly ImmutableArray<string> ExcludedFields;
         /// <summary>
-        /// Fields that will be included in the prediction instance that is sent to the Model. If instance_type is `array`, the order of field names in included_fields also determines the order of the values in the array. When included_fields is populated, excluded_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
+        /// Fields that will be included in the prediction instance that is sent to the Model. If instance_type is `array`, the order of field names in included_fields also determines the order of the values in the array. When included_fields is populated, excluded_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord.
         /// </summary>
         public readonly ImmutableArray<string> IncludedFields;
         /// <summary>

@@ -27,6 +27,7 @@ class FeatureStoreFeatureArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  monitoring_config: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 point_of_contact: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  value_type: Optional[pulumi.Input['FeatureStoreFeatureValueType']] = None,
                  version_column_name: Optional[pulumi.Input[str]] = None):
@@ -39,8 +40,9 @@ class FeatureStoreFeatureArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels with user-defined metadata to organize your Features. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one Feature (System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
         :param pulumi.Input['GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigArgs'] monitoring_config: Optional. Only applicable for Vertex AI Feature Store (Legacy). Deprecated: The custom monitoring configuration for this Feature, if not set, use the monitoring_config defined for the EntityType this Feature belongs to. Only Features with type (Feature.ValueType) BOOL, STRING, DOUBLE or INT64 can enable monitoring. If this is populated with FeaturestoreMonitoringConfig.disabled = true, snapshot analysis monitoring is disabled; if FeaturestoreMonitoringConfig.monitoring_interval specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring config is same as the EntityType's this Feature belongs to.
         :param pulumi.Input[str] name: Immutable. Name of the Feature. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}` `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}` The last part feature is assigned by the client. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
+        :param pulumi.Input[str] point_of_contact: Entity responsible for maintaining this feature. Can be comma separated list of email addresses or URIs.
         :param pulumi.Input['FeatureStoreFeatureValueType'] value_type: Immutable. Only applicable for Vertex AI Feature Store (Legacy). Type of Feature value.
-        :param pulumi.Input[str] version_column_name: Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for this version. If no value is provided, will use feature_id.
+        :param pulumi.Input[str] version_column_name: Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use feature_id.
         """
         pulumi.set(__self__, "entity_type_id", entity_type_id)
         pulumi.set(__self__, "feature_id", feature_id)
@@ -62,6 +64,8 @@ class FeatureStoreFeatureArgs:
             pulumi.set(__self__, "monitoring_config", monitoring_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if point_of_contact is not None:
+            pulumi.set(__self__, "point_of_contact", point_of_contact)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if value_type is not None:
@@ -184,6 +188,18 @@ class FeatureStoreFeatureArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="pointOfContact")
+    def point_of_contact(self) -> Optional[pulumi.Input[str]]:
+        """
+        Entity responsible for maintaining this feature. Can be comma separated list of email addresses or URIs.
+        """
+        return pulumi.get(self, "point_of_contact")
+
+    @point_of_contact.setter
+    def point_of_contact(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "point_of_contact", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -208,7 +224,7 @@ class FeatureStoreFeatureArgs:
     @pulumi.getter(name="versionColumnName")
     def version_column_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for this version. If no value is provided, will use feature_id.
+        Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use feature_id.
         """
         return pulumi.get(self, "version_column_name")
 
@@ -232,6 +248,7 @@ class FeatureStoreFeature(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  monitoring_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 point_of_contact: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  value_type: Optional[pulumi.Input['FeatureStoreFeatureValueType']] = None,
                  version_column_name: Optional[pulumi.Input[str]] = None,
@@ -248,8 +265,9 @@ class FeatureStoreFeature(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels with user-defined metadata to organize your Features. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one Feature (System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
         :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigArgs']] monitoring_config: Optional. Only applicable for Vertex AI Feature Store (Legacy). Deprecated: The custom monitoring configuration for this Feature, if not set, use the monitoring_config defined for the EntityType this Feature belongs to. Only Features with type (Feature.ValueType) BOOL, STRING, DOUBLE or INT64 can enable monitoring. If this is populated with FeaturestoreMonitoringConfig.disabled = true, snapshot analysis monitoring is disabled; if FeaturestoreMonitoringConfig.monitoring_interval specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring config is same as the EntityType's this Feature belongs to.
         :param pulumi.Input[str] name: Immutable. Name of the Feature. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}` `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}` The last part feature is assigned by the client. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
+        :param pulumi.Input[str] point_of_contact: Entity responsible for maintaining this feature. Can be comma separated list of email addresses or URIs.
         :param pulumi.Input['FeatureStoreFeatureValueType'] value_type: Immutable. Only applicable for Vertex AI Feature Store (Legacy). Type of Feature value.
-        :param pulumi.Input[str] version_column_name: Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for this version. If no value is provided, will use feature_id.
+        :param pulumi.Input[str] version_column_name: Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use feature_id.
         """
         ...
     @overload
@@ -285,6 +303,7 @@ class FeatureStoreFeature(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  monitoring_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 point_of_contact: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  value_type: Optional[pulumi.Input['FeatureStoreFeatureValueType']] = None,
                  version_column_name: Optional[pulumi.Input[str]] = None,
@@ -313,6 +332,7 @@ class FeatureStoreFeature(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["monitoring_config"] = monitoring_config
             __props__.__dict__["name"] = name
+            __props__.__dict__["point_of_contact"] = point_of_contact
             __props__.__dict__["project"] = project
             __props__.__dict__["value_type"] = value_type
             __props__.__dict__["version_column_name"] = version_column_name
@@ -357,6 +377,7 @@ class FeatureStoreFeature(pulumi.CustomResource):
         __props__.__dict__["monitoring_stats"] = None
         __props__.__dict__["monitoring_stats_anomalies"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["point_of_contact"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["value_type"] = None
@@ -462,6 +483,14 @@ class FeatureStoreFeature(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="pointOfContact")
+    def point_of_contact(self) -> pulumi.Output[str]:
+        """
+        Entity responsible for maintaining this feature. Can be comma separated list of email addresses or URIs.
+        """
+        return pulumi.get(self, "point_of_contact")
+
+    @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
@@ -486,7 +515,7 @@ class FeatureStoreFeature(pulumi.CustomResource):
     @pulumi.getter(name="versionColumnName")
     def version_column_name(self) -> pulumi.Output[str]:
         """
-        Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for this version. If no value is provided, will use feature_id.
+        Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use feature_id.
         """
         return pulumi.get(self, "version_column_name")
 

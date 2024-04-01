@@ -7,6 +7,7 @@ from enum import Enum
 __all__ = [
     'AuditLogConfigLogType',
     'BinaryAuthorizationConfigEvaluationMode',
+    'ConfigManagementMembershipSpecManagement',
     'ConfigManagementPolicyControllerMonitoringBackendsItem',
     'FleetObservabilityRoutingConfigMode',
     'OnPremClusterClusterType',
@@ -58,6 +59,24 @@ class BinaryAuthorizationConfigEvaluationMode(str, Enum):
     POLICY_BINDINGS = "POLICY_BINDINGS"
     """
     Use Binary Authorization with the policies specified in policy_bindings.
+    """
+
+
+class ConfigManagementMembershipSpecManagement(str, Enum):
+    """
+    Enables automatic Feature management.
+    """
+    MANAGEMENT_UNSPECIFIED = "MANAGEMENT_UNSPECIFIED"
+    """
+    Unspecified
+    """
+    MANAGEMENT_AUTOMATIC = "MANAGEMENT_AUTOMATIC"
+    """
+    Google will manage the Feature for the cluster.
+    """
+    MANAGEMENT_MANUAL = "MANAGEMENT_MANUAL"
+    """
+    User will manually manage the Feature for the cluster.
     """
 
 

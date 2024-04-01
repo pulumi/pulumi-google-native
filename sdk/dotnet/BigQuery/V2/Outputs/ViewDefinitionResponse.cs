@@ -10,19 +10,26 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Describes the definition of a logical view.
+    /// </summary>
     [OutputType]
     public sealed class ViewDefinitionResponse
     {
         /// <summary>
-        /// [Required] A query that BigQuery executes when the view is referenced.
+        /// Optional. Specifices the privacy policy for the view.
+        /// </summary>
+        public readonly Outputs.PrivacyPolicyResponse PrivacyPolicy;
+        /// <summary>
+        /// A query that BigQuery executes when the view is referenced.
         /// </summary>
         public readonly string Query;
         /// <summary>
-        /// True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set using BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
+        /// True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set for GoogleSQL views.
         /// </summary>
         public readonly bool UseExplicitColumnNames;
         /// <summary>
-        /// Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value.
+        /// Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's GoogleSQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value. A wrapper is used here because the default value is True.
         /// </summary>
         public readonly bool UseLegacySql;
         /// <summary>
@@ -32,6 +39,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
         [OutputConstructor]
         private ViewDefinitionResponse(
+            Outputs.PrivacyPolicyResponse privacyPolicy,
+
             string query,
 
             bool useExplicitColumnNames,
@@ -40,6 +49,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             ImmutableArray<Outputs.UserDefinedFunctionResourceResponse> userDefinedFunctionResources)
         {
+            PrivacyPolicy = privacyPolicy;
             Query = query;
             UseExplicitColumnNames = useExplicitColumnNames;
             UseLegacySql = useLegacySql;

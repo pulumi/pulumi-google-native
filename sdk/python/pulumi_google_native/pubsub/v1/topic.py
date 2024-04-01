@@ -18,6 +18,7 @@ __all__ = ['TopicArgs', 'Topic']
 class TopicArgs:
     def __init__(__self__, *,
                  topic_id: pulumi.Input[str],
+                 ingestion_data_source_settings: Optional[pulumi.Input['IngestionDataSourceSettingsArgs']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
@@ -28,6 +29,7 @@ class TopicArgs:
                  schema_settings: Optional[pulumi.Input['SchemaSettingsArgs']] = None):
         """
         The set of arguments for constructing a Topic resource.
+        :param pulumi.Input['IngestionDataSourceSettingsArgs'] ingestion_data_source_settings: Optional. Settings for ingestion from a data source into this topic.
         :param pulumi.Input[str] kms_key_name: Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
         :param pulumi.Input[str] message_retention_duration: Optional. Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 31 days or less than 10 minutes.
@@ -37,6 +39,8 @@ class TopicArgs:
         :param pulumi.Input['SchemaSettingsArgs'] schema_settings: Optional. Settings for validating messages published against a schema.
         """
         pulumi.set(__self__, "topic_id", topic_id)
+        if ingestion_data_source_settings is not None:
+            pulumi.set(__self__, "ingestion_data_source_settings", ingestion_data_source_settings)
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels is not None:
@@ -62,6 +66,18 @@ class TopicArgs:
     @topic_id.setter
     def topic_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "topic_id", value)
+
+    @property
+    @pulumi.getter(name="ingestionDataSourceSettings")
+    def ingestion_data_source_settings(self) -> Optional[pulumi.Input['IngestionDataSourceSettingsArgs']]:
+        """
+        Optional. Settings for ingestion from a data source into this topic.
+        """
+        return pulumi.get(self, "ingestion_data_source_settings")
+
+    @ingestion_data_source_settings.setter
+    def ingestion_data_source_settings(self, value: Optional[pulumi.Input['IngestionDataSourceSettingsArgs']]):
+        pulumi.set(self, "ingestion_data_source_settings", value)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -162,6 +178,7 @@ class Topic(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ingestion_data_source_settings: Optional[pulumi.Input[pulumi.InputType['IngestionDataSourceSettingsArgs']]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
@@ -177,6 +194,7 @@ class Topic(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['IngestionDataSourceSettingsArgs']] ingestion_data_source_settings: Optional. Settings for ingestion from a data source into this topic.
         :param pulumi.Input[str] kms_key_name: Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
         :param pulumi.Input[str] message_retention_duration: Optional. Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last `message_retention_duration` are always available to subscribers. For instance, it allows any attached subscription to [seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) that is up to `message_retention_duration` in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 31 days or less than 10 minutes.
@@ -209,6 +227,7 @@ class Topic(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ingestion_data_source_settings: Optional[pulumi.Input[pulumi.InputType['IngestionDataSourceSettingsArgs']]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
@@ -227,6 +246,7 @@ class Topic(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TopicArgs.__new__(TopicArgs)
 
+            __props__.__dict__["ingestion_data_source_settings"] = ingestion_data_source_settings
             __props__.__dict__["kms_key_name"] = kms_key_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["message_retention_duration"] = message_retention_duration
@@ -238,6 +258,7 @@ class Topic(pulumi.CustomResource):
             if topic_id is None and not opts.urn:
                 raise TypeError("Missing required property 'topic_id'")
             __props__.__dict__["topic_id"] = topic_id
+            __props__.__dict__["state"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project", "topic_id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Topic, __self__).__init__(
@@ -262,6 +283,7 @@ class Topic(pulumi.CustomResource):
 
         __props__ = TopicArgs.__new__(TopicArgs)
 
+        __props__.__dict__["ingestion_data_source_settings"] = None
         __props__.__dict__["kms_key_name"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["message_retention_duration"] = None
@@ -270,8 +292,17 @@ class Topic(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["schema_settings"] = None
+        __props__.__dict__["state"] = None
         __props__.__dict__["topic_id"] = None
         return Topic(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="ingestionDataSourceSettings")
+    def ingestion_data_source_settings(self) -> pulumi.Output['outputs.IngestionDataSourceSettingsResponse']:
+        """
+        Optional. Settings for ingestion from a data source into this topic.
+        """
+        return pulumi.get(self, "ingestion_data_source_settings")
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -333,6 +364,14 @@ class Topic(pulumi.CustomResource):
         Optional. Settings for validating messages published against a schema.
         """
         return pulumi.get(self, "schema_settings")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        An output-only field indicating the state of the topic.
+        """
+        return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="topicId")

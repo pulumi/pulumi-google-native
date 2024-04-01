@@ -199,6 +199,10 @@ class VolumeConfigPerformanceTier(str, Enum):
     """
     High throughput aggregates.
     """
+    VOLUME_PERFORMANCE_TIER_QOS2_PERFORMANCE = "VOLUME_PERFORMANCE_TIER_QOS2_PERFORMANCE"
+    """
+    QoS 2.0 high performance storage.
+    """
 
 
 class VolumeConfigProtocol(str, Enum):

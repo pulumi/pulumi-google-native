@@ -104,7 +104,7 @@ class GetManagementServerResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The resource name.
+        Identifier. The resource name.
         """
         return pulumi.get(self, "name")
 
@@ -136,7 +136,7 @@ class GetManagementServerResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of the ManagementServer resource.
+        Optional. The type of the ManagementServer resource.
         """
         return pulumi.get(self, "type")
 

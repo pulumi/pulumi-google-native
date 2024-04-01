@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
     public sealed class WorkloadsConfigResponse
     {
         /// <summary>
+        /// Optional. Resources used by Airflow DAG processors. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        public readonly Outputs.DagProcessorResourceResponse DagProcessor;
+        /// <summary>
         /// Optional. Resources used by Airflow schedulers.
         /// </summary>
         public readonly Outputs.SchedulerResourceResponse Scheduler;
@@ -35,6 +39,8 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
 
         [OutputConstructor]
         private WorkloadsConfigResponse(
+            Outputs.DagProcessorResourceResponse dagProcessor,
+
             Outputs.SchedulerResourceResponse scheduler,
 
             Outputs.TriggererResourceResponse triggerer,
@@ -43,6 +49,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
 
             Outputs.WorkerResourceResponse worker)
         {
+            DagProcessor = dagProcessor;
             Scheduler = scheduler;
             Triggerer = triggerer;
             WebServer = webServer;

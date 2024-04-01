@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     public sealed class GetRegionBackendServiceResult
     {
         /// <summary>
-        /// Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        /// Lifetime of cookies in seconds. This setting is applicable to Application Load Balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         public readonly int AffinityCookieTtlSec;
         /// <summary>
@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public readonly string CompressionMode;
         public readonly Outputs.ConnectionDrainingResponse ConnectionDraining;
         /// <summary>
-        /// Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for Network Load Balancing and Internal TCP/UDP Load Balancing.
+        /// Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for external passthrough Network Load Balancers and internal passthrough Network Load Balancers.
         /// </summary>
         public readonly Outputs.BackendServiceConnectionTrackingPolicyResponse ConnectionTrackingPolicy;
         /// <summary>
@@ -110,11 +110,11 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string EdgeSecurityPolicy;
         /// <summary>
-        /// If true, enables Cloud CDN for the backend service of an external HTTP(S) load balancer.
+        /// If true, enables Cloud CDN for the backend service of a global external Application Load Balancer.
         /// </summary>
         public readonly bool EnableCDN;
         /// <summary>
-        /// Requires at least one backend instance group to be defined as a backup (failover) backend. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
+        /// Requires at least one backend instance group to be defined as a backup (failover) backend. For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
         /// </summary>
         public readonly Outputs.BackendServiceFailoverPolicyResponse FailoverPolicy;
         /// <summary>
@@ -126,7 +126,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly ImmutableArray<string> HealthChecks;
         /// <summary>
-        /// The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
+        /// The configurations for Identity-Aware Proxy on this resource. Not available for internal passthrough Network Load Balancers and external passthrough Network Load Balancers.
         /// </summary>
         public readonly Outputs.BackendServiceIAPResponse Iap;
         /// <summary>
@@ -170,11 +170,11 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly Outputs.OutlierDetectionResponse OutlierDetection;
         /// <summary>
-        /// Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.
+        /// Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For internal passthrough Network Load Balancers and external passthrough Network Load Balancers, omit port.
         /// </summary>
         public readonly int Port;
         /// <summary>
-        /// A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port_name.
+        /// A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For internal passthrough Network Load Balancers and external passthrough Network Load Balancers, omit port_name.
         /// </summary>
         public readonly string PortName;
         /// <summary>
@@ -201,6 +201,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
         /// </summary>
         public readonly ImmutableArray<string> ServiceBindings;
+        /// <summary>
+        /// URL to networkservices.ServiceLbPolicy resource. Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+        /// </summary>
+        public readonly string ServiceLbPolicy;
         /// <summary>
         /// Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
         /// </summary>
@@ -286,6 +290,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             ImmutableArray<string> serviceBindings,
 
+            string serviceLbPolicy,
+
             string sessionAffinity,
 
             Outputs.SubsettingResponse subsetting,
@@ -330,6 +336,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             SecuritySettings = securitySettings;
             SelfLink = selfLink;
             ServiceBindings = serviceBindings;
+            ServiceLbPolicy = serviceLbPolicy;
             SessionAffinity = sessionAffinity;
             Subsetting = subsetting;
             TimeoutSec = timeoutSec;

@@ -39,6 +39,7 @@ __all__ = [
     'HttpRouteHeaderMatchIntegerRangeResponse',
     'HttpRouteHeaderMatchResponse',
     'HttpRouteHeaderModifierResponse',
+    'HttpRouteHttpDirectResponseResponse',
     'HttpRouteQueryParameterMatchResponse',
     'HttpRouteRedirectResponse',
     'HttpRouteRequestMirrorPolicyResponse',
@@ -177,8 +178,8 @@ class BindingResponse(dict):
         """
         Associates `members`, or principals, with a `role`.
         :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "members", members)
@@ -196,7 +197,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         """
         return pulumi.get(self, "members")
 
@@ -204,7 +205,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         return pulumi.get(self, "role")
 
@@ -339,13 +340,13 @@ class ExtensionChainExtensionResponse(dict):
                  timeout: str):
         """
         A single extension in the chain to execute for the matching request.
-        :param str authority: The `:authority` header in the gRPC request sent from Envoy to the extension service.
-        :param bool fail_open: Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to `FALSE`: * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is reset. Default is `FALSE`.
+        :param str authority: Optional. The `:authority` header in the gRPC request sent from Envoy to the extension service. Required for Callout extensions.
+        :param bool fail_open: Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to `FALSE` or the default setting of `FALSE` is used, one of the following happens: * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
         :param Sequence[str] forward_headers: Optional. List of the HTTP headers to forward to the extension (from the client or backend). If omitted, all headers are sent. Each element is a string indicating the header name.
         :param str name: The name for this extension. The name is logged as part of the HTTP request logs. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number.
-        :param str service: The reference to the service that runs the extension. Must be a reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+        :param str service: The reference to the service that runs the extension. Currently only callout extensions are supported here. To configure a callout extension, `service` must be a fully-qualified reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format: `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}`.
         :param Sequence[str] supported_events: Optional. A set of events during request or response processing for which this extension is called. This field is required for the `LbTrafficExtension` resource. It's not relevant for the `LbRouteExtension` resource.
-        :param str timeout: Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+        :param str timeout: Optional. Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds. Required for Callout extensions.
         """
         pulumi.set(__self__, "authority", authority)
         pulumi.set(__self__, "fail_open", fail_open)
@@ -359,7 +360,7 @@ class ExtensionChainExtensionResponse(dict):
     @pulumi.getter
     def authority(self) -> str:
         """
-        The `:authority` header in the gRPC request sent from Envoy to the extension service.
+        Optional. The `:authority` header in the gRPC request sent from Envoy to the extension service. Required for Callout extensions.
         """
         return pulumi.get(self, "authority")
 
@@ -367,7 +368,7 @@ class ExtensionChainExtensionResponse(dict):
     @pulumi.getter(name="failOpen")
     def fail_open(self) -> bool:
         """
-        Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to `FALSE`: * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is reset. Default is `FALSE`.
+        Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to `FALSE` or the default setting of `FALSE` is used, one of the following happens: * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
         """
         return pulumi.get(self, "fail_open")
 
@@ -391,7 +392,7 @@ class ExtensionChainExtensionResponse(dict):
     @pulumi.getter
     def service(self) -> str:
         """
-        The reference to the service that runs the extension. Must be a reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+        The reference to the service that runs the extension. Currently only callout extensions are supported here. To configure a callout extension, `service` must be a fully-qualified reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format: `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}`.
         """
         return pulumi.get(self, "service")
 
@@ -407,7 +408,7 @@ class ExtensionChainExtensionResponse(dict):
     @pulumi.getter
     def timeout(self) -> str:
         """
-        Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
+        Optional. Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds. Required for Callout extensions.
         """
         return pulumi.get(self, "timeout")
 
@@ -438,7 +439,7 @@ class ExtensionChainMatchConditionResponse(dict):
                  cel_expression: str):
         """
         Conditions under which this chain is invoked for a request.
-        :param str cel_expression: A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+        :param str cel_expression: A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed. For more information, see [CEL matcher language reference](https://cloud.google.com/service-extensions/docs/cel-matcher-language-reference).
         """
         pulumi.set(__self__, "cel_expression", cel_expression)
 
@@ -446,7 +447,7 @@ class ExtensionChainMatchConditionResponse(dict):
     @pulumi.getter(name="celExpression")
     def cel_expression(self) -> str:
         """
-        A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+        A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed. For more information, see [CEL matcher language reference](https://cloud.google.com/service-extensions/docs/cel-matcher-language-reference).
         """
         return pulumi.get(self, "cel_expression")
 
@@ -877,6 +878,8 @@ class GrpcRouteRouteActionResponse(dict):
         suggest = None
         if key == "faultInjectionPolicy":
             suggest = "fault_injection_policy"
+        elif key == "idleTimeout":
+            suggest = "idle_timeout"
         elif key == "retryPolicy":
             suggest = "retry_policy"
         elif key == "statefulSessionAffinity":
@@ -896,6 +899,7 @@ class GrpcRouteRouteActionResponse(dict):
     def __init__(__self__, *,
                  destinations: Sequence['outputs.GrpcRouteDestinationResponse'],
                  fault_injection_policy: 'outputs.GrpcRouteFaultInjectionPolicyResponse',
+                 idle_timeout: str,
                  retry_policy: 'outputs.GrpcRouteRetryPolicyResponse',
                  stateful_session_affinity: 'outputs.GrpcRouteStatefulSessionAffinityPolicyResponse',
                  timeout: str):
@@ -903,12 +907,14 @@ class GrpcRouteRouteActionResponse(dict):
         Specifies how to route matched traffic.
         :param Sequence['GrpcRouteDestinationResponse'] destinations: Optional. The destination services to which traffic should be forwarded. If multiple destinations are specified, traffic will be split between Backend Service(s) according to the weight field of these destinations.
         :param 'GrpcRouteFaultInjectionPolicyResponse' fault_injection_policy: Optional. The specification for fault injection introduced into traffic to test the resiliency of clients to destination service failure. As part of fault injection, when clients send requests to a destination, delays can be introduced on a percentage of requests before sending those requests to the destination service. Similarly requests from clients can be aborted by for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
+        :param str idle_timeout: Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
         :param 'GrpcRouteRetryPolicyResponse' retry_policy: Optional. Specifies the retry policy associated with this route.
         :param 'GrpcRouteStatefulSessionAffinityPolicyResponse' stateful_session_affinity: Optional. Specifies cookie-based stateful session affinity.
         :param str timeout: Optional. Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
         """
         pulumi.set(__self__, "destinations", destinations)
         pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
+        pulumi.set(__self__, "idle_timeout", idle_timeout)
         pulumi.set(__self__, "retry_policy", retry_policy)
         pulumi.set(__self__, "stateful_session_affinity", stateful_session_affinity)
         pulumi.set(__self__, "timeout", timeout)
@@ -928,6 +934,14 @@ class GrpcRouteRouteActionResponse(dict):
         Optional. The specification for fault injection introduced into traffic to test the resiliency of clients to destination service failure. As part of fault injection, when clients send requests to a destination, delays can be introduced on a percentage of requests before sending those requests to the destination service. Similarly requests from clients can be aborted by for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
         """
         return pulumi.get(self, "fault_injection_policy")
+
+    @property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> str:
+        """
+        Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+        """
+        return pulumi.get(self, "idle_timeout")
 
     @property
     @pulumi.getter(name="retryPolicy")
@@ -1195,7 +1209,11 @@ class HttpRouteDestinationResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "serviceName":
+        if key == "requestHeaderModifier":
+            suggest = "request_header_modifier"
+        elif key == "responseHeaderModifier":
+            suggest = "response_header_modifier"
+        elif key == "serviceName":
             suggest = "service_name"
 
         if suggest:
@@ -1210,15 +1228,37 @@ class HttpRouteDestinationResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 request_header_modifier: 'outputs.HttpRouteHeaderModifierResponse',
+                 response_header_modifier: 'outputs.HttpRouteHeaderModifierResponse',
                  service_name: str,
                  weight: int):
         """
         Specifications of a destination to which the request should be routed to.
+        :param 'HttpRouteHeaderModifierResponse' request_header_modifier: Optional. The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
+        :param 'HttpRouteHeaderModifierResponse' response_header_modifier: Optional. The specification for modifying the headers of a response prior to sending the response back to the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
         :param str service_name: The URL of a BackendService to route traffic to.
         :param int weight: Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
         """
+        pulumi.set(__self__, "request_header_modifier", request_header_modifier)
+        pulumi.set(__self__, "response_header_modifier", response_header_modifier)
         pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="requestHeaderModifier")
+    def request_header_modifier(self) -> 'outputs.HttpRouteHeaderModifierResponse':
+        """
+        Optional. The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
+        """
+        return pulumi.get(self, "request_header_modifier")
+
+    @property
+    @pulumi.getter(name="responseHeaderModifier")
+    def response_header_modifier(self) -> 'outputs.HttpRouteHeaderModifierResponse':
+        """
+        Optional. The specification for modifying the headers of a response prior to sending the response back to the client. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
+        """
+        return pulumi.get(self, "response_header_modifier")
 
     @property
     @pulumi.getter(name="serviceName")
@@ -1576,6 +1616,69 @@ class HttpRouteHeaderModifierResponse(dict):
 
 
 @pulumi.output_type
+class HttpRouteHttpDirectResponseResponse(dict):
+    """
+    Static HTTP response object to be returned.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bytesBody":
+            suggest = "bytes_body"
+        elif key == "stringBody":
+            suggest = "string_body"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpRouteHttpDirectResponseResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpRouteHttpDirectResponseResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpRouteHttpDirectResponseResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bytes_body: str,
+                 status: int,
+                 string_body: str):
+        """
+        Static HTTP response object to be returned.
+        :param str bytes_body: Optional. Response body as bytes. Maximum body size is 4096B.
+        :param int status: Status to return as part of HTTP Response. Must be a positive integer.
+        :param str string_body: Optional. Response body as a string. Maximum body length is 1024 characters.
+        """
+        pulumi.set(__self__, "bytes_body", bytes_body)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "string_body", string_body)
+
+    @property
+    @pulumi.getter(name="bytesBody")
+    def bytes_body(self) -> str:
+        """
+        Optional. Response body as bytes. Maximum body size is 4096B.
+        """
+        return pulumi.get(self, "bytes_body")
+
+    @property
+    @pulumi.getter
+    def status(self) -> int:
+        """
+        Status to return as part of HTTP Response. Must be a positive integer.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="stringBody")
+    def string_body(self) -> str:
+        """
+        Optional. Response body as a string. Maximum body length is 1024 characters.
+        """
+        return pulumi.get(self, "string_body")
+
+
+@pulumi.output_type
 class HttpRouteQueryParameterMatchResponse(dict):
     """
     Specifications to match a query parameter in the request.
@@ -1775,13 +1878,33 @@ class HttpRouteRequestMirrorPolicyResponse(dict):
     """
     Specifies the policy on how requests are shadowed to a separate mirrored destination service. The proxy does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host/authority header is suffixed with -shadow.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mirrorPercent":
+            suggest = "mirror_percent"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpRouteRequestMirrorPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpRouteRequestMirrorPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpRouteRequestMirrorPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 destination: 'outputs.HttpRouteDestinationResponse'):
+                 destination: 'outputs.HttpRouteDestinationResponse',
+                 mirror_percent: float):
         """
         Specifies the policy on how requests are shadowed to a separate mirrored destination service. The proxy does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host/authority header is suffixed with -shadow.
         :param 'HttpRouteDestinationResponse' destination: The destination the requests will be mirrored to. The weight of the destination will be ignored.
+        :param float mirror_percent: Optional. The percentage of requests to get mirrored to the desired destination.
         """
         pulumi.set(__self__, "destination", destination)
+        pulumi.set(__self__, "mirror_percent", mirror_percent)
 
     @property
     @pulumi.getter
@@ -1790,6 +1913,14 @@ class HttpRouteRequestMirrorPolicyResponse(dict):
         The destination the requests will be mirrored to. The weight of the destination will be ignored.
         """
         return pulumi.get(self, "destination")
+
+    @property
+    @pulumi.getter(name="mirrorPercent")
+    def mirror_percent(self) -> float:
+        """
+        Optional. The percentage of requests to get mirrored to the desired destination.
+        """
+        return pulumi.get(self, "mirror_percent")
 
 
 @pulumi.output_type
@@ -1867,8 +1998,12 @@ class HttpRouteRouteActionResponse(dict):
         suggest = None
         if key == "corsPolicy":
             suggest = "cors_policy"
+        elif key == "directResponse":
+            suggest = "direct_response"
         elif key == "faultInjectionPolicy":
             suggest = "fault_injection_policy"
+        elif key == "idleTimeout":
+            suggest = "idle_timeout"
         elif key == "requestHeaderModifier":
             suggest = "request_header_modifier"
         elif key == "requestMirrorPolicy":
@@ -1896,7 +2031,9 @@ class HttpRouteRouteActionResponse(dict):
     def __init__(__self__, *,
                  cors_policy: 'outputs.HttpRouteCorsPolicyResponse',
                  destinations: Sequence['outputs.HttpRouteDestinationResponse'],
+                 direct_response: 'outputs.HttpRouteHttpDirectResponseResponse',
                  fault_injection_policy: 'outputs.HttpRouteFaultInjectionPolicyResponse',
+                 idle_timeout: str,
                  redirect: 'outputs.HttpRouteRedirectResponse',
                  request_header_modifier: 'outputs.HttpRouteHeaderModifierResponse',
                  request_mirror_policy: 'outputs.HttpRouteRequestMirrorPolicyResponse',
@@ -1909,7 +2046,9 @@ class HttpRouteRouteActionResponse(dict):
         The specifications for routing traffic and applying associated policies.
         :param 'HttpRouteCorsPolicyResponse' cors_policy: The specification for allowing client side cross-origin requests.
         :param Sequence['HttpRouteDestinationResponse'] destinations: The destination to which traffic should be forwarded.
+        :param 'HttpRouteHttpDirectResponseResponse' direct_response: Optional. Static HTTP Response object to be returned regardless of the request.
         :param 'HttpRouteFaultInjectionPolicyResponse' fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
+        :param str idle_timeout: Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
         :param 'HttpRouteRedirectResponse' redirect: If set, the request is directed as configured by this field.
         :param 'HttpRouteHeaderModifierResponse' request_header_modifier: The specification for modifying the headers of a matching request prior to delivery of the request to the destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts between the two will not be resolved on the configuration.
         :param 'HttpRouteRequestMirrorPolicyResponse' request_mirror_policy: Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination. Proxy will not wait for the shadow destination to respond before returning the response. Prior to sending traffic to the shadow service, the host/authority header is suffixed with -shadow.
@@ -1921,7 +2060,9 @@ class HttpRouteRouteActionResponse(dict):
         """
         pulumi.set(__self__, "cors_policy", cors_policy)
         pulumi.set(__self__, "destinations", destinations)
+        pulumi.set(__self__, "direct_response", direct_response)
         pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
+        pulumi.set(__self__, "idle_timeout", idle_timeout)
         pulumi.set(__self__, "redirect", redirect)
         pulumi.set(__self__, "request_header_modifier", request_header_modifier)
         pulumi.set(__self__, "request_mirror_policy", request_mirror_policy)
@@ -1948,12 +2089,28 @@ class HttpRouteRouteActionResponse(dict):
         return pulumi.get(self, "destinations")
 
     @property
+    @pulumi.getter(name="directResponse")
+    def direct_response(self) -> 'outputs.HttpRouteHttpDirectResponseResponse':
+        """
+        Optional. Static HTTP Response object to be returned regardless of the request.
+        """
+        return pulumi.get(self, "direct_response")
+
+    @property
     @pulumi.getter(name="faultInjectionPolicy")
     def fault_injection_policy(self) -> 'outputs.HttpRouteFaultInjectionPolicyResponse':
         """
         The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
         """
         return pulumi.get(self, "fault_injection_policy")
+
+    @property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> str:
+        """
+        Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+        """
+        return pulumi.get(self, "idle_timeout")
 
     @property
     @pulumi.getter
@@ -2275,7 +2432,7 @@ class MetadataLabelMatcherResponse(dict):
                  metadata_labels: Sequence['outputs.MetadataLabelsResponse']):
         """
         The matcher that is based on node metadata presented by xDS clients.
-        :param str metadata_label_match_criteria: Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+        :param str metadata_label_match_criteria: Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), pick up the one with older creation time.
         :param Sequence['MetadataLabelsResponse'] metadata_labels: The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list can have at most 64 entries. The list can be empty if the match criteria is MATCH_ANY, to specify a wildcard match (i.e this matches any client).
         """
         pulumi.set(__self__, "metadata_label_match_criteria", metadata_label_match_criteria)
@@ -2285,7 +2442,7 @@ class MetadataLabelMatcherResponse(dict):
     @pulumi.getter(name="metadataLabelMatchCriteria")
     def metadata_label_match_criteria(self) -> str:
         """
-        Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+        Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), pick up the one with older creation time.
         """
         return pulumi.get(self, "metadata_label_match_criteria")
 
@@ -2419,7 +2576,9 @@ class TcpRouteRouteActionResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "originalDestination":
+        if key == "idleTimeout":
+            suggest = "idle_timeout"
+        elif key == "originalDestination":
             suggest = "original_destination"
 
         if suggest:
@@ -2435,13 +2594,16 @@ class TcpRouteRouteActionResponse(dict):
 
     def __init__(__self__, *,
                  destinations: Sequence['outputs.TcpRouteRouteDestinationResponse'],
+                 idle_timeout: str,
                  original_destination: bool):
         """
         The specifications for routing traffic and applying associated policies.
         :param Sequence['TcpRouteRouteDestinationResponse'] destinations: Optional. The destination services to which traffic should be forwarded. At least one destination service is required. Only one of route destination or original destination can be set.
+        :param str idle_timeout: Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 30 seconds. If set to 0s, the timeout will be disabled.
         :param bool original_destination: Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false. Only one of route destinations or original destination can be set.
         """
         pulumi.set(__self__, "destinations", destinations)
+        pulumi.set(__self__, "idle_timeout", idle_timeout)
         pulumi.set(__self__, "original_destination", original_destination)
 
     @property
@@ -2451,6 +2613,14 @@ class TcpRouteRouteActionResponse(dict):
         Optional. The destination services to which traffic should be forwarded. At least one destination service is required. Only one of route destination or original destination can be set.
         """
         return pulumi.get(self, "destinations")
+
+    @property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> str:
+        """
+        Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 30 seconds. If set to 0s, the timeout will be disabled.
+        """
+        return pulumi.get(self, "idle_timeout")
 
     @property
     @pulumi.getter(name="originalDestination")
@@ -2582,13 +2752,33 @@ class TlsRouteRouteActionResponse(dict):
     """
     The specifications for routing traffic and applying associated policies.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "idleTimeout":
+            suggest = "idle_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TlsRouteRouteActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TlsRouteRouteActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TlsRouteRouteActionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 destinations: Sequence['outputs.TlsRouteRouteDestinationResponse']):
+                 destinations: Sequence['outputs.TlsRouteRouteDestinationResponse'],
+                 idle_timeout: str):
         """
         The specifications for routing traffic and applying associated policies.
         :param Sequence['TlsRouteRouteDestinationResponse'] destinations: The destination services to which traffic should be forwarded. At least one destination service is required.
+        :param str idle_timeout: Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
         """
         pulumi.set(__self__, "destinations", destinations)
+        pulumi.set(__self__, "idle_timeout", idle_timeout)
 
     @property
     @pulumi.getter
@@ -2597,6 +2787,14 @@ class TlsRouteRouteActionResponse(dict):
         The destination services to which traffic should be forwarded. At least one destination service is required.
         """
         return pulumi.get(self, "destinations")
+
+    @property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> str:
+        """
+        Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 1 hour. If set to 0s, the timeout will be disabled.
+        """
+        return pulumi.get(self, "idle_timeout")
 
 
 @pulumi.output_type

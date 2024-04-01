@@ -36,7 +36,7 @@ type LookupEntryGroupResult struct {
 	Description string `pulumi:"description"`
 	// A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
 	DisplayName string `pulumi:"displayName"`
-	// The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
+	// Identifier. The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
 	Name string `pulumi:"name"`
 }
 
@@ -95,7 +95,7 @@ func (o LookupEntryGroupResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntryGroupResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
+// Identifier. The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
 func (o LookupEntryGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntryGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }

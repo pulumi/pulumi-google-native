@@ -27,6 +27,9 @@ namespace Pulumi.GoogleNative.SecretManager.V1
 
     public sealed class GetSecretIamPolicyArgs : global::Pulumi.InvokeArgs
     {
+        [Input("location", required: true)]
+        public string Location { get; set; } = null!;
+
         [Input("optionsRequestedPolicyVersion")]
         public int? OptionsRequestedPolicyVersion { get; set; }
 
@@ -44,6 +47,9 @@ namespace Pulumi.GoogleNative.SecretManager.V1
 
     public sealed class GetSecretIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
         [Input("optionsRequestedPolicyVersion")]
         public Input<int>? OptionsRequestedPolicyVersion { get; set; }
 

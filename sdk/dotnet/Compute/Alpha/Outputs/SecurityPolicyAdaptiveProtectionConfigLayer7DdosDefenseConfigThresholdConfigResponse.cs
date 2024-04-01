@@ -17,10 +17,17 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         public readonly int AutoDeployExpirationSec;
         public readonly double AutoDeployImpactedBaselineThreshold;
         public readonly double AutoDeployLoadThreshold;
+        public readonly double DetectionAbsoluteQps;
+        public readonly double DetectionLoadThreshold;
+        public readonly double DetectionRelativeToBaselineQps;
         /// <summary>
         /// The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Configuration options for enabling Adaptive Protection to operate on specified granular traffic units.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponse> TrafficGranularityConfigs;
 
         [OutputConstructor]
         private SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigResponse(
@@ -32,13 +39,25 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             double autoDeployLoadThreshold,
 
-            string name)
+            double detectionAbsoluteQps,
+
+            double detectionLoadThreshold,
+
+            double detectionRelativeToBaselineQps,
+
+            string name,
+
+            ImmutableArray<Outputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigResponse> trafficGranularityConfigs)
         {
             AutoDeployConfidenceThreshold = autoDeployConfidenceThreshold;
             AutoDeployExpirationSec = autoDeployExpirationSec;
             AutoDeployImpactedBaselineThreshold = autoDeployImpactedBaselineThreshold;
             AutoDeployLoadThreshold = autoDeployLoadThreshold;
+            DetectionAbsoluteQps = detectionAbsoluteQps;
+            DetectionLoadThreshold = detectionLoadThreshold;
+            DetectionRelativeToBaselineQps = detectionRelativeToBaselineQps;
             Name = name;
+            TrafficGranularityConfigs = trafficGranularityConfigs;
         }
     }
 }

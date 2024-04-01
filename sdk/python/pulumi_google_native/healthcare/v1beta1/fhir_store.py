@@ -18,13 +18,15 @@ __all__ = ['FhirStoreArgs', 'FhirStore']
 class FhirStoreArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
+                 fhir_store_id: pulumi.Input[str],
+                 version: pulumi.Input['FhirStoreVersion'],
                  complex_data_type_reference_parsing: Optional[pulumi.Input['FhirStoreComplexDataTypeReferenceParsing']] = None,
                  consent_config: Optional[pulumi.Input['ConsentConfigArgs']] = None,
                  default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
+                 enable_history_modifications: Optional[pulumi.Input[bool]] = None,
                  enable_update_create: Optional[pulumi.Input[bool]] = None,
-                 fhir_store_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input['NotificationConfigArgs']] = None,
@@ -32,26 +34,28 @@ class FhirStoreArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  search_config: Optional[pulumi.Input['SearchConfigArgs']] = None,
                  stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['StreamConfigArgs']]]] = None,
-                 validation_config: Optional[pulumi.Input['ValidationConfigArgs']] = None,
-                 version: Optional[pulumi.Input['FhirStoreVersion']] = None):
+                 validation_config: Optional[pulumi.Input['ValidationConfigArgs']] = None):
         """
         The set of arguments for constructing a FhirStore resource.
+        :param pulumi.Input[str] fhir_store_id: Required. The ID of the FHIR store that is being created. The string must match the following regex: `[\\p{L}\\p{N}_\\-\\.]{1,256}`.
+        :param pulumi.Input['FhirStoreVersion'] version: Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
         :param pulumi.Input['FhirStoreComplexDataTypeReferenceParsing'] complex_data_type_reference_parsing: Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
         :param pulumi.Input['ConsentConfigArgs'] consent_config: Optional. Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources.
         :param pulumi.Input[bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
         :param pulumi.Input[bool] disable_referential_integrity: Immutable. Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store creation. The default value is false, meaning that the API enforces referential integrity and fails the requests that result in inconsistent state in the FHIR store. When this field is set to true, the API skips referential integrity checks. Consequently, operations that rely on references, such as GetPatientEverything, do not return all the results if broken references exist.
         :param pulumi.Input[bool] disable_resource_versioning: Immutable. Whether to disable resource versioning for this FHIR store. This field can not be changed after the creation of FHIR store. If set to false, which is the default behavior, all write operations cause historical versions to be recorded automatically. The historical versions can be fetched through the history APIs, but cannot be updated. If set to true, no historical versions are kept. The server sends errors for attempts to read the historical versions.
+        :param pulumi.Input[bool] enable_history_modifications: Optional. Whether to allow ExecuteBundle to accept history bundles, and directly insert and overwrite historical resource versions into the FHIR store. If set to false, using history bundles fails with an error.
         :param pulumi.Input[bool] enable_update_create: Whether this FHIR store has the [updateCreate capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate). This determines if the client can use an Update operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through the Create operation and attempts to update a non-existent resource return errors. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud audit logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources.
-        :param pulumi.Input[str] fhir_store_id: The ID of the FHIR store that is being created. The string must match the following regex: `[\\p{L}\\p{N}_\\-\\.]{1,256}`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \\p{Ll}\\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
         :param pulumi.Input['NotificationConfigArgs'] notification_config: Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
         :param pulumi.Input[Sequence[pulumi.Input['FhirNotificationConfigArgs']]] notification_configs: Specifies where and whether to send notifications upon changes to a Fhir store.
         :param pulumi.Input['SearchConfigArgs'] search_config: Configuration for how FHIR resources can be searched.
         :param pulumi.Input[Sequence[pulumi.Input['StreamConfigArgs']]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.
         :param pulumi.Input['ValidationConfigArgs'] validation_config: Configuration for how to validate incoming FHIR resources against configured profiles.
-        :param pulumi.Input['FhirStoreVersion'] version: Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "fhir_store_id", fhir_store_id)
+        pulumi.set(__self__, "version", version)
         if complex_data_type_reference_parsing is not None:
             pulumi.set(__self__, "complex_data_type_reference_parsing", complex_data_type_reference_parsing)
         if consent_config is not None:
@@ -62,10 +66,10 @@ class FhirStoreArgs:
             pulumi.set(__self__, "disable_referential_integrity", disable_referential_integrity)
         if disable_resource_versioning is not None:
             pulumi.set(__self__, "disable_resource_versioning", disable_resource_versioning)
+        if enable_history_modifications is not None:
+            pulumi.set(__self__, "enable_history_modifications", enable_history_modifications)
         if enable_update_create is not None:
             pulumi.set(__self__, "enable_update_create", enable_update_create)
-        if fhir_store_id is not None:
-            pulumi.set(__self__, "fhir_store_id", fhir_store_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -85,8 +89,6 @@ class FhirStoreArgs:
             pulumi.set(__self__, "stream_configs", stream_configs)
         if validation_config is not None:
             pulumi.set(__self__, "validation_config", validation_config)
-        if version is not None:
-            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -96,6 +98,30 @@ class FhirStoreArgs:
     @dataset_id.setter
     def dataset_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "dataset_id", value)
+
+    @property
+    @pulumi.getter(name="fhirStoreId")
+    def fhir_store_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID of the FHIR store that is being created. The string must match the following regex: `[\\p{L}\\p{N}_\\-\\.]{1,256}`.
+        """
+        return pulumi.get(self, "fhir_store_id")
+
+    @fhir_store_id.setter
+    def fhir_store_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "fhir_store_id", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> pulumi.Input['FhirStoreVersion']:
+        """
+        Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input['FhirStoreVersion']):
+        pulumi.set(self, "version", value)
 
     @property
     @pulumi.getter(name="complexDataTypeReferenceParsing")
@@ -158,6 +184,18 @@ class FhirStoreArgs:
         pulumi.set(self, "disable_resource_versioning", value)
 
     @property
+    @pulumi.getter(name="enableHistoryModifications")
+    def enable_history_modifications(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Whether to allow ExecuteBundle to accept history bundles, and directly insert and overwrite historical resource versions into the FHIR store. If set to false, using history bundles fails with an error.
+        """
+        return pulumi.get(self, "enable_history_modifications")
+
+    @enable_history_modifications.setter
+    def enable_history_modifications(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_history_modifications", value)
+
+    @property
     @pulumi.getter(name="enableUpdateCreate")
     def enable_update_create(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -168,18 +206,6 @@ class FhirStoreArgs:
     @enable_update_create.setter
     def enable_update_create(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_update_create", value)
-
-    @property
-    @pulumi.getter(name="fhirStoreId")
-    def fhir_store_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the FHIR store that is being created. The string must match the following regex: `[\\p{L}\\p{N}_\\-\\.]{1,256}`.
-        """
-        return pulumi.get(self, "fhir_store_id")
-
-    @fhir_store_id.setter
-    def fhir_store_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "fhir_store_id", value)
 
     @property
     @pulumi.getter
@@ -274,18 +300,6 @@ class FhirStoreArgs:
     def validation_config(self, value: Optional[pulumi.Input['ValidationConfigArgs']]):
         pulumi.set(self, "validation_config", value)
 
-    @property
-    @pulumi.getter
-    def version(self) -> Optional[pulumi.Input['FhirStoreVersion']]:
-        """
-        Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
-        """
-        return pulumi.get(self, "version")
-
-    @version.setter
-    def version(self, value: Optional[pulumi.Input['FhirStoreVersion']]):
-        pulumi.set(self, "version", value)
-
 
 class FhirStore(pulumi.CustomResource):
     @overload
@@ -298,6 +312,7 @@ class FhirStore(pulumi.CustomResource):
                  default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
+                 enable_history_modifications: Optional[pulumi.Input[bool]] = None,
                  enable_update_create: Optional[pulumi.Input[bool]] = None,
                  fhir_store_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -321,8 +336,9 @@ class FhirStore(pulumi.CustomResource):
         :param pulumi.Input[bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
         :param pulumi.Input[bool] disable_referential_integrity: Immutable. Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store creation. The default value is false, meaning that the API enforces referential integrity and fails the requests that result in inconsistent state in the FHIR store. When this field is set to true, the API skips referential integrity checks. Consequently, operations that rely on references, such as GetPatientEverything, do not return all the results if broken references exist.
         :param pulumi.Input[bool] disable_resource_versioning: Immutable. Whether to disable resource versioning for this FHIR store. This field can not be changed after the creation of FHIR store. If set to false, which is the default behavior, all write operations cause historical versions to be recorded automatically. The historical versions can be fetched through the history APIs, but cannot be updated. If set to true, no historical versions are kept. The server sends errors for attempts to read the historical versions.
+        :param pulumi.Input[bool] enable_history_modifications: Optional. Whether to allow ExecuteBundle to accept history bundles, and directly insert and overwrite historical resource versions into the FHIR store. If set to false, using history bundles fails with an error.
         :param pulumi.Input[bool] enable_update_create: Whether this FHIR store has the [updateCreate capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate). This determines if the client can use an Update operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through the Create operation and attempts to update a non-existent resource return errors. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud audit logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources.
-        :param pulumi.Input[str] fhir_store_id: The ID of the FHIR store that is being created. The string must match the following regex: `[\\p{L}\\p{N}_\\-\\.]{1,256}`.
+        :param pulumi.Input[str] fhir_store_id: Required. The ID of the FHIR store that is being created. The string must match the following regex: `[\\p{L}\\p{N}_\\-\\.]{1,256}`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \\p{Ll}\\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
         :param pulumi.Input[pulumi.InputType['NotificationConfigArgs']] notification_config: Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirNotificationConfigArgs']]]] notification_configs: Specifies where and whether to send notifications upon changes to a Fhir store.
@@ -362,6 +378,7 @@ class FhirStore(pulumi.CustomResource):
                  default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
+                 enable_history_modifications: Optional[pulumi.Input[bool]] = None,
                  enable_update_create: Optional[pulumi.Input[bool]] = None,
                  fhir_store_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -390,7 +407,10 @@ class FhirStore(pulumi.CustomResource):
             __props__.__dict__["default_search_handling_strict"] = default_search_handling_strict
             __props__.__dict__["disable_referential_integrity"] = disable_referential_integrity
             __props__.__dict__["disable_resource_versioning"] = disable_resource_versioning
+            __props__.__dict__["enable_history_modifications"] = enable_history_modifications
             __props__.__dict__["enable_update_create"] = enable_update_create
+            if fhir_store_id is None and not opts.urn:
+                raise TypeError("Missing required property 'fhir_store_id'")
             __props__.__dict__["fhir_store_id"] = fhir_store_id
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
@@ -400,9 +420,11 @@ class FhirStore(pulumi.CustomResource):
             __props__.__dict__["search_config"] = search_config
             __props__.__dict__["stream_configs"] = stream_configs
             __props__.__dict__["validation_config"] = validation_config
+            if version is None and not opts.urn:
+                raise TypeError("Missing required property 'version'")
             __props__.__dict__["version"] = version
             __props__.__dict__["name"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["dataset_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["dataset_id", "fhir_store_id", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(FhirStore, __self__).__init__(
             'google-native:healthcare/v1beta1:FhirStore',
@@ -432,6 +454,7 @@ class FhirStore(pulumi.CustomResource):
         __props__.__dict__["default_search_handling_strict"] = None
         __props__.__dict__["disable_referential_integrity"] = None
         __props__.__dict__["disable_resource_versioning"] = None
+        __props__.__dict__["enable_history_modifications"] = None
         __props__.__dict__["enable_update_create"] = None
         __props__.__dict__["fhir_store_id"] = None
         __props__.__dict__["labels"] = None
@@ -492,6 +515,14 @@ class FhirStore(pulumi.CustomResource):
         return pulumi.get(self, "disable_resource_versioning")
 
     @property
+    @pulumi.getter(name="enableHistoryModifications")
+    def enable_history_modifications(self) -> pulumi.Output[bool]:
+        """
+        Optional. Whether to allow ExecuteBundle to accept history bundles, and directly insert and overwrite historical resource versions into the FHIR store. If set to false, using history bundles fails with an error.
+        """
+        return pulumi.get(self, "enable_history_modifications")
+
+    @property
     @pulumi.getter(name="enableUpdateCreate")
     def enable_update_create(self) -> pulumi.Output[bool]:
         """
@@ -501,9 +532,9 @@ class FhirStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fhirStoreId")
-    def fhir_store_id(self) -> pulumi.Output[Optional[str]]:
+    def fhir_store_id(self) -> pulumi.Output[str]:
         """
-        The ID of the FHIR store that is being created. The string must match the following regex: `[\\p{L}\\p{N}_\\-\\.]{1,256}`.
+        Required. The ID of the FHIR store that is being created. The string must match the following regex: `[\\p{L}\\p{N}_\\-\\.]{1,256}`.
         """
         return pulumi.get(self, "fhir_store_id")
 
@@ -524,7 +555,7 @@ class FhirStore(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+        Identifier. Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
         """
         return pulumi.get(self, "name")
 

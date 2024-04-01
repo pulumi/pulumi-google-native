@@ -1100,57 +1100,13 @@ export const EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType = {
 
 export type EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType = (typeof EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType)[keyof typeof EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType];
 
-export const GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy = {
-    /**
-     * Unspecified Assertion strategy
-     */
-    AssertionStrategyUnspecified: "ASSERTION_STRATEGY_UNSPECIFIED",
-    /**
-     * Test a successful execution
-     */
-    AssertSuccessfulExecution: "ASSERT_SUCCESSFUL_EXECUTION",
-    /**
-     * Test a failed execution
-     */
-    AssertFailedExecution: "ASSERT_FAILED_EXECUTION",
-    /**
-     * Test that the task was never executed
-     */
-    AssertNoExecution: "ASSERT_NO_EXECUTION",
-    /**
-     * Test the parameter selected is equal to the expected value
-     */
-    AssertEquals: "ASSERT_EQUALS",
-    /**
-     * Test the parameter selected is not equal to the expected value
-     */
-    AssertNotEquals: "ASSERT_NOT_EQUALS",
-    /**
-     * Test the parameter selected contains the configured value
-     */
-    AssertContains: "ASSERT_CONTAINS",
-    /**
-     * Test a specific condition
-     */
-    AssertCondition: "ASSERT_CONDITION",
-} as const;
-
-/**
- * The type of assertion to perform.
- */
-export type GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy = (typeof GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy)[keyof typeof GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy];
-
 export const GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity = {
     /**
      * Unspecified
      */
     CloudLoggingSeverityUnspecified: "CLOUD_LOGGING_SEVERITY_UNSPECIFIED",
     /**
-     * If Severity selected is `DEFAULT`, then all the Integration Execution States will be sent to Cloud Logging.
-     */
-    Default: "DEFAULT",
-    /**
-     * If Severity selected is `INFO`, then only the following Integration Execution States (`IN_PROCESS`, `ON_HOLD`, `SUCCEEDED` and `SUSPENDED`) will be sent to Cloud Logging.
+     * If Severity selected is `INFO`, then all the Integration Execution States (`IN_PROCESS`, `ON_HOLD`, `SUCCEEDED`, `SUSPENDED`, `ERROR`, `CANCELLED`) will be sent to Cloud Logging.
      */
     Info: "INFO",
     /**
@@ -1158,7 +1114,7 @@ export const GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeveri
      */
     Error: "ERROR",
     /**
-     * If Severity selected is `WARNING`, then only the following Integration Execution States (`RETRY_ON_HOLD`) will be sent to Cloud Logging.
+     * If Severity selected is `WARNING`, then only the following Integration Execution States (`ERROR`, `CANCELLED`) will be sent to Cloud Logging.
      */
     Warning: "WARNING",
 } as const;
@@ -1415,34 +1371,6 @@ export const GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType =
  * Specifies the input/output type for the parameter.
  */
 export type GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType = (typeof GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType)[keyof typeof GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType];
-
-export const GoogleCloudIntegrationsV1alphaMockConfigMockStrategy = {
-    /**
-     * This should never be used to annotate a field
-     */
-    MockStrategyUnspecified: "MOCK_STRATEGY_UNSPECIFIED",
-    /**
-     * Execute actual task
-     */
-    NoMockStrategy: "NO_MOCK_STRATEGY",
-    /**
-     * Don't execute actual task, instead use the values specified by user for output of the task
-     */
-    SpecificMockStrategy: "SPECIFIC_MOCK_STRATEGY",
-    /**
-     * Don't execute actual task, instead return task failure
-     */
-    FailureMockStrategy: "FAILURE_MOCK_STRATEGY",
-    /**
-     * Don't execute actual task, instead mark it as successful
-     */
-    SkipMockStrategy: "SKIP_MOCK_STRATEGY",
-} as const;
-
-/**
- * Mockstrategy defines how the particular task should be mocked during test execution
- */
-export type GoogleCloudIntegrationsV1alphaMockConfigMockStrategy = (typeof GoogleCloudIntegrationsV1alphaMockConfigMockStrategy)[keyof typeof GoogleCloudIntegrationsV1alphaMockConfigMockStrategy];
 
 export const GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestType = {
     /**
@@ -1837,26 +1765,6 @@ export const TemplatesVersionStatus = {
  */
 export type TemplatesVersionStatus = (typeof TemplatesVersionStatus)[keyof typeof TemplatesVersionStatus];
 
-export const TestCaseDatabasePersistencePolicy = {
-    /**
-     * Enables persistence for all execution data.
-     */
-    DatabasePersistencePolicyUnspecified: "DATABASE_PERSISTENCE_POLICY_UNSPECIFIED",
-    /**
-     * Disables persistence for all execution data.
-     */
-    DatabasePersistenceDisabled: "DATABASE_PERSISTENCE_DISABLED",
-    /**
-     * Asynchronously persist all execution data.
-     */
-    DatabasePersistenceAsync: "DATABASE_PERSISTENCE_ASYNC",
-} as const;
-
-/**
- * Optional. Various policies for how to persist the test execution info including execution info, execution export info, execution metadata index and execution param index..
- */
-export type TestCaseDatabasePersistencePolicy = (typeof TestCaseDatabasePersistencePolicy)[keyof typeof TestCaseDatabasePersistencePolicy];
-
 export const VersionDatabasePersistencePolicy = {
     /**
      * Enables persistence for all execution data.
@@ -1876,6 +1784,26 @@ export const VersionDatabasePersistencePolicy = {
  * Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
  */
 export type VersionDatabasePersistencePolicy = (typeof VersionDatabasePersistencePolicy)[keyof typeof VersionDatabasePersistencePolicy];
+
+export const VersionFileFormat = {
+    /**
+     * Unspecified file format
+     */
+    FileFormatUnspecified: "FILE_FORMAT_UNSPECIFIED",
+    /**
+     * JSON File Format
+     */
+    Json: "JSON",
+    /**
+     * YAML File Format
+     */
+    Yaml: "YAML",
+} as const;
+
+/**
+ * File format for upload request.
+ */
+export type VersionFileFormat = (typeof VersionFileFormat)[keyof typeof VersionFileFormat];
 
 export const VersionOrigin = {
     Unspecified: "UNSPECIFIED",

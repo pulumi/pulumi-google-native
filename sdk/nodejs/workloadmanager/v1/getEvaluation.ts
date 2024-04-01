@@ -28,6 +28,10 @@ export interface GetEvaluationArgs {
 
 export interface GetEvaluationResult {
     /**
+     * Optional. BigQuery destination
+     */
+    readonly bigQueryDestination: outputs.workloadmanager.v1.BigQueryDestinationResponse;
+    /**
      * [Output only] Create time stamp
      */
     readonly createTime: string;

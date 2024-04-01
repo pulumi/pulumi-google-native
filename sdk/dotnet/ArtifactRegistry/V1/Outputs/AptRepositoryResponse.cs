@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1.Outputs
     public sealed class AptRepositoryResponse
     {
         /// <summary>
+        /// Customer-specified remote repository.
+        /// </summary>
+        public readonly Outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryResponse CustomRepository;
+        /// <summary>
         /// One of the publicly available Apt repositories supported by Artifact Registry.
         /// </summary>
         public readonly Outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse PublicRepository;
 
         [OutputConstructor]
-        private AptRepositoryResponse(Outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse publicRepository)
+        private AptRepositoryResponse(
+            Outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryResponse customRepository,
+
+            Outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse publicRepository)
         {
+            CustomRepository = customRepository;
             PublicRepository = publicRepository;
         }
     }

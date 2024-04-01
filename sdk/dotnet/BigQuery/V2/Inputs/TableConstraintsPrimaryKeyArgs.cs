@@ -11,12 +11,16 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
     /// <summary>
-    /// [Optional] The primary key of the table.
+    /// Represents the primary key constraint on a table's columns.
     /// </summary>
     public sealed class TableConstraintsPrimaryKeyArgs : global::Pulumi.ResourceArgs
     {
-        [Input("columns")]
+        [Input("columns", required: true)]
         private InputList<string>? _columns;
+
+        /// <summary>
+        /// The columns that are composed of the primary key constraint.
+        /// </summary>
         public InputList<string> Columns
         {
             get => _columns ?? (_columns = new InputList<string>());

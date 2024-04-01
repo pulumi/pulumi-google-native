@@ -78,6 +78,10 @@ export class TransferJob extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * Replication specification.
+     */
+    public readonly replicationSpec!: pulumi.Output<outputs.storagetransfer.v1.ReplicationSpecResponse>;
+    /**
      * Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job never executes a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
      */
     public readonly schedule!: pulumi.Output<outputs.storagetransfer.v1.ScheduleResponse>;
@@ -108,6 +112,7 @@ export class TransferJob extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["replicationSpec"] = args ? args.replicationSpec : undefined;
             resourceInputs["schedule"] = args ? args.schedule : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["transferSpec"] = args ? args.transferSpec : undefined;
@@ -125,6 +130,7 @@ export class TransferJob extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["notificationConfig"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["replicationSpec"] = undefined /*out*/;
             resourceInputs["schedule"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["transferSpec"] = undefined /*out*/;
@@ -166,6 +172,10 @@ export interface TransferJobArgs {
      * The ID of the Google Cloud project that owns the job.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Replication specification.
+     */
+    replicationSpec?: pulumi.Input<inputs.storagetransfer.v1.ReplicationSpecArgs>;
     /**
      * Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job never executes a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
      */

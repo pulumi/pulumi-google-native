@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from ._enums import *
 
 __all__ = ['TagTemplateArgs', 'TagTemplate']
 
@@ -16,6 +17,7 @@ class TagTemplateArgs:
     def __init__(__self__, *,
                  fields: pulumi.Input[Mapping[str, pulumi.Input[str]]],
                  tag_template_id: pulumi.Input[str],
+                 dataplex_transfer_status: Optional[pulumi.Input['TagTemplateDataplexTransferStatus']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  is_publicly_readable: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -25,12 +27,15 @@ class TagTemplateArgs:
         The set of arguments for constructing a TagTemplate resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. The map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. The IDs have the following limitations: * Can contain uppercase and lowercase letters, numbers (0-9) and underscores (_). * Must be at least 1 character and at most 64 characters long. * Must start with a letter or underscore.
         :param pulumi.Input[str] tag_template_id: Required. The ID of the tag template to create. The ID must contain only lowercase letters (a-z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8.
+        :param pulumi.Input['TagTemplateDataplexTransferStatus'] dataplex_transfer_status: Optional. Transfer status of the TagTemplate
         :param pulumi.Input[str] display_name: Display name for this template. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
         :param pulumi.Input[bool] is_publicly_readable: Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query in addition to using a ``tag:`` predicate.
-        :param pulumi.Input[str] name: The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
+        :param pulumi.Input[str] name: Identifier. The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
         """
         pulumi.set(__self__, "fields", fields)
         pulumi.set(__self__, "tag_template_id", tag_template_id)
+        if dataplex_transfer_status is not None:
+            pulumi.set(__self__, "dataplex_transfer_status", dataplex_transfer_status)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if is_publicly_readable is not None:
@@ -65,6 +70,18 @@ class TagTemplateArgs:
     @tag_template_id.setter
     def tag_template_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "tag_template_id", value)
+
+    @property
+    @pulumi.getter(name="dataplexTransferStatus")
+    def dataplex_transfer_status(self) -> Optional[pulumi.Input['TagTemplateDataplexTransferStatus']]:
+        """
+        Optional. Transfer status of the TagTemplate
+        """
+        return pulumi.get(self, "dataplex_transfer_status")
+
+    @dataplex_transfer_status.setter
+    def dataplex_transfer_status(self, value: Optional[pulumi.Input['TagTemplateDataplexTransferStatus']]):
+        pulumi.set(self, "dataplex_transfer_status", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -103,7 +120,7 @@ class TagTemplateArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
+        Identifier. The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
         """
         return pulumi.get(self, "name")
 
@@ -126,6 +143,7 @@ class TagTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 dataplex_transfer_status: Optional[pulumi.Input['TagTemplateDataplexTransferStatus']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  is_publicly_readable: Optional[pulumi.Input[bool]] = None,
@@ -139,10 +157,11 @@ class TagTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input['TagTemplateDataplexTransferStatus'] dataplex_transfer_status: Optional. Transfer status of the TagTemplate
         :param pulumi.Input[str] display_name: Display name for this template. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. The map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. The IDs have the following limitations: * Can contain uppercase and lowercase letters, numbers (0-9) and underscores (_). * Must be at least 1 character and at most 64 characters long. * Must start with a letter or underscore.
         :param pulumi.Input[bool] is_publicly_readable: Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query in addition to using a ``tag:`` predicate.
-        :param pulumi.Input[str] name: The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
+        :param pulumi.Input[str] name: Identifier. The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
         :param pulumi.Input[str] tag_template_id: Required. The ID of the tag template to create. The ID must contain only lowercase letters (a-z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8.
         """
         ...
@@ -169,6 +188,7 @@ class TagTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 dataplex_transfer_status: Optional[pulumi.Input['TagTemplateDataplexTransferStatus']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  is_publicly_readable: Optional[pulumi.Input[bool]] = None,
@@ -185,6 +205,7 @@ class TagTemplate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TagTemplateArgs.__new__(TagTemplateArgs)
 
+            __props__.__dict__["dataplex_transfer_status"] = dataplex_transfer_status
             __props__.__dict__["display_name"] = display_name
             if fields is None and not opts.urn:
                 raise TypeError("Missing required property 'fields'")
@@ -220,6 +241,7 @@ class TagTemplate(pulumi.CustomResource):
 
         __props__ = TagTemplateArgs.__new__(TagTemplateArgs)
 
+        __props__.__dict__["dataplex_transfer_status"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["fields"] = None
         __props__.__dict__["is_publicly_readable"] = None
@@ -228,6 +250,14 @@ class TagTemplate(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["tag_template_id"] = None
         return TagTemplate(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="dataplexTransferStatus")
+    def dataplex_transfer_status(self) -> pulumi.Output[str]:
+        """
+        Optional. Transfer status of the TagTemplate
+        """
+        return pulumi.get(self, "dataplex_transfer_status")
 
     @property
     @pulumi.getter(name="displayName")
@@ -262,7 +292,7 @@ class TagTemplate(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
+        Identifier. The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
         """
         return pulumi.get(self, "name")
 

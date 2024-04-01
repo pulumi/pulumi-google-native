@@ -457,6 +457,8 @@ type InstanceConfig struct {
 	Id *string `pulumi:"id"`
 	// Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
 	InstanceType *string `pulumi:"instanceType"`
+	// Name of the KMS crypto key version used to encrypt the initial passwords. The key has to have ASYMMETRIC_DECRYPT purpose.
+	KmsKeyVersion *string `pulumi:"kmsKeyVersion"`
 	// List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
 	LogicalInterfaces []GoogleCloudBaremetalsolutionV2LogicalInterface `pulumi:"logicalInterfaces"`
 	// The name of the instance config.
@@ -498,6 +500,8 @@ type InstanceConfigArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// Name of the KMS crypto key version used to encrypt the initial passwords. The key has to have ASYMMETRIC_DECRYPT purpose.
+	KmsKeyVersion pulumi.StringPtrInput `pulumi:"kmsKeyVersion"`
 	// List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
 	LogicalInterfaces GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayInput `pulumi:"logicalInterfaces"`
 	// The name of the instance config.
@@ -593,6 +597,11 @@ func (o InstanceConfigOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceConfig) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
 
+// Name of the KMS crypto key version used to encrypt the initial passwords. The key has to have ASYMMETRIC_DECRYPT purpose.
+func (o InstanceConfigOutput) KmsKeyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceConfig) *string { return v.KmsKeyVersion }).(pulumi.StringPtrOutput)
+}
+
 // List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
 func (o InstanceConfigOutput) LogicalInterfaces() GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput {
 	return o.ApplyT(func(v InstanceConfig) []GoogleCloudBaremetalsolutionV2LogicalInterface { return v.LogicalInterfaces }).(GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput)
@@ -663,6 +672,8 @@ type InstanceConfigResponse struct {
 	Hyperthreading bool `pulumi:"hyperthreading"`
 	// Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
 	InstanceType string `pulumi:"instanceType"`
+	// Name of the KMS crypto key version used to encrypt the initial passwords. The key has to have ASYMMETRIC_DECRYPT purpose.
+	KmsKeyVersion string `pulumi:"kmsKeyVersion"`
 	// List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.
 	LogicalInterfaces []GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse `pulumi:"logicalInterfaces"`
 	// The name of the instance config.
@@ -714,6 +725,11 @@ func (o InstanceConfigResponseOutput) Hyperthreading() pulumi.BoolOutput {
 // Instance type. [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
 func (o InstanceConfigResponseOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceConfigResponse) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Name of the KMS crypto key version used to encrypt the initial passwords. The key has to have ASYMMETRIC_DECRYPT purpose.
+func (o InstanceConfigResponseOutput) KmsKeyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceConfigResponse) string { return v.KmsKeyVersion }).(pulumi.StringOutput)
 }
 
 // List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true.

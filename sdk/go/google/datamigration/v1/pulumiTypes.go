@@ -1155,9 +1155,9 @@ func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConf
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role *string `pulumi:"role"`
 }
 
@@ -1176,9 +1176,9 @@ type BindingInput interface {
 type BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -1239,12 +1239,12 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -1273,9 +1273,9 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role string `pulumi:"role"`
 }
 
@@ -1299,12 +1299,12 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -10396,6 +10396,1211 @@ func (o SqlIpConfigResponseOutput) RequireSsl() pulumi.BoolOutput {
 	return o.ApplyT(func(v SqlIpConfigResponse) bool { return v.RequireSsl }).(pulumi.BoolOutput)
 }
 
+// Specifies the backup details in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.
+type SqlServerBackups struct {
+	// The Cloud Storage bucket that stores backups for all replicated databases.
+	GcsBucket string `pulumi:"gcsBucket"`
+	// Optional. Cloud Storage path inside the bucket that stores backups.
+	GcsPrefix *string `pulumi:"gcsPrefix"`
+}
+
+// SqlServerBackupsInput is an input type that accepts SqlServerBackupsArgs and SqlServerBackupsOutput values.
+// You can construct a concrete instance of `SqlServerBackupsInput` via:
+//
+//	SqlServerBackupsArgs{...}
+type SqlServerBackupsInput interface {
+	pulumi.Input
+
+	ToSqlServerBackupsOutput() SqlServerBackupsOutput
+	ToSqlServerBackupsOutputWithContext(context.Context) SqlServerBackupsOutput
+}
+
+// Specifies the backup details in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.
+type SqlServerBackupsArgs struct {
+	// The Cloud Storage bucket that stores backups for all replicated databases.
+	GcsBucket pulumi.StringInput `pulumi:"gcsBucket"`
+	// Optional. Cloud Storage path inside the bucket that stores backups.
+	GcsPrefix pulumi.StringPtrInput `pulumi:"gcsPrefix"`
+}
+
+func (SqlServerBackupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerBackups)(nil)).Elem()
+}
+
+func (i SqlServerBackupsArgs) ToSqlServerBackupsOutput() SqlServerBackupsOutput {
+	return i.ToSqlServerBackupsOutputWithContext(context.Background())
+}
+
+func (i SqlServerBackupsArgs) ToSqlServerBackupsOutputWithContext(ctx context.Context) SqlServerBackupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerBackupsOutput)
+}
+
+func (i SqlServerBackupsArgs) ToSqlServerBackupsPtrOutput() SqlServerBackupsPtrOutput {
+	return i.ToSqlServerBackupsPtrOutputWithContext(context.Background())
+}
+
+func (i SqlServerBackupsArgs) ToSqlServerBackupsPtrOutputWithContext(ctx context.Context) SqlServerBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerBackupsOutput).ToSqlServerBackupsPtrOutputWithContext(ctx)
+}
+
+// SqlServerBackupsPtrInput is an input type that accepts SqlServerBackupsArgs, SqlServerBackupsPtr and SqlServerBackupsPtrOutput values.
+// You can construct a concrete instance of `SqlServerBackupsPtrInput` via:
+//
+//	        SqlServerBackupsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlServerBackupsPtrInput interface {
+	pulumi.Input
+
+	ToSqlServerBackupsPtrOutput() SqlServerBackupsPtrOutput
+	ToSqlServerBackupsPtrOutputWithContext(context.Context) SqlServerBackupsPtrOutput
+}
+
+type sqlServerBackupsPtrType SqlServerBackupsArgs
+
+func SqlServerBackupsPtr(v *SqlServerBackupsArgs) SqlServerBackupsPtrInput {
+	return (*sqlServerBackupsPtrType)(v)
+}
+
+func (*sqlServerBackupsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerBackups)(nil)).Elem()
+}
+
+func (i *sqlServerBackupsPtrType) ToSqlServerBackupsPtrOutput() SqlServerBackupsPtrOutput {
+	return i.ToSqlServerBackupsPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlServerBackupsPtrType) ToSqlServerBackupsPtrOutputWithContext(ctx context.Context) SqlServerBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerBackupsPtrOutput)
+}
+
+// Specifies the backup details in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.
+type SqlServerBackupsOutput struct{ *pulumi.OutputState }
+
+func (SqlServerBackupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerBackups)(nil)).Elem()
+}
+
+func (o SqlServerBackupsOutput) ToSqlServerBackupsOutput() SqlServerBackupsOutput {
+	return o
+}
+
+func (o SqlServerBackupsOutput) ToSqlServerBackupsOutputWithContext(ctx context.Context) SqlServerBackupsOutput {
+	return o
+}
+
+func (o SqlServerBackupsOutput) ToSqlServerBackupsPtrOutput() SqlServerBackupsPtrOutput {
+	return o.ToSqlServerBackupsPtrOutputWithContext(context.Background())
+}
+
+func (o SqlServerBackupsOutput) ToSqlServerBackupsPtrOutputWithContext(ctx context.Context) SqlServerBackupsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlServerBackups) *SqlServerBackups {
+		return &v
+	}).(SqlServerBackupsPtrOutput)
+}
+
+// The Cloud Storage bucket that stores backups for all replicated databases.
+func (o SqlServerBackupsOutput) GcsBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerBackups) string { return v.GcsBucket }).(pulumi.StringOutput)
+}
+
+// Optional. Cloud Storage path inside the bucket that stores backups.
+func (o SqlServerBackupsOutput) GcsPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerBackups) *string { return v.GcsPrefix }).(pulumi.StringPtrOutput)
+}
+
+type SqlServerBackupsPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlServerBackupsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerBackups)(nil)).Elem()
+}
+
+func (o SqlServerBackupsPtrOutput) ToSqlServerBackupsPtrOutput() SqlServerBackupsPtrOutput {
+	return o
+}
+
+func (o SqlServerBackupsPtrOutput) ToSqlServerBackupsPtrOutputWithContext(ctx context.Context) SqlServerBackupsPtrOutput {
+	return o
+}
+
+func (o SqlServerBackupsPtrOutput) Elem() SqlServerBackupsOutput {
+	return o.ApplyT(func(v *SqlServerBackups) SqlServerBackups {
+		if v != nil {
+			return *v
+		}
+		var ret SqlServerBackups
+		return ret
+	}).(SqlServerBackupsOutput)
+}
+
+// The Cloud Storage bucket that stores backups for all replicated databases.
+func (o SqlServerBackupsPtrOutput) GcsBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerBackups) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GcsBucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Cloud Storage path inside the bucket that stores backups.
+func (o SqlServerBackupsPtrOutput) GcsPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerBackups) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GcsPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the backup details in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.
+type SqlServerBackupsResponse struct {
+	// The Cloud Storage bucket that stores backups for all replicated databases.
+	GcsBucket string `pulumi:"gcsBucket"`
+	// Optional. Cloud Storage path inside the bucket that stores backups.
+	GcsPrefix string `pulumi:"gcsPrefix"`
+}
+
+// Specifies the backup details in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.
+type SqlServerBackupsResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlServerBackupsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerBackupsResponse)(nil)).Elem()
+}
+
+func (o SqlServerBackupsResponseOutput) ToSqlServerBackupsResponseOutput() SqlServerBackupsResponseOutput {
+	return o
+}
+
+func (o SqlServerBackupsResponseOutput) ToSqlServerBackupsResponseOutputWithContext(ctx context.Context) SqlServerBackupsResponseOutput {
+	return o
+}
+
+// The Cloud Storage bucket that stores backups for all replicated databases.
+func (o SqlServerBackupsResponseOutput) GcsBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerBackupsResponse) string { return v.GcsBucket }).(pulumi.StringOutput)
+}
+
+// Optional. Cloud Storage path inside the bucket that stores backups.
+func (o SqlServerBackupsResponseOutput) GcsPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerBackupsResponse) string { return v.GcsPrefix }).(pulumi.StringOutput)
+}
+
+// Specifies connection parameters required specifically for SQL Server databases.
+type SqlServerConnectionProfile struct {
+	// The backup details in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.
+	Backups *SqlServerBackups `pulumi:"backups"`
+	// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+	CloudSqlId *string `pulumi:"cloudSqlId"`
+	// Forward SSH tunnel connectivity.
+	ForwardSshConnectivity *ForwardSshTunnelConnectivity `pulumi:"forwardSshConnectivity"`
+	// The IP or hostname of the source SQL Server database.
+	Host string `pulumi:"host"`
+	// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+	Password string `pulumi:"password"`
+	// The network port of the source SQL Server database.
+	Port int `pulumi:"port"`
+	// Private connectivity.
+	PrivateConnectivity *PrivateConnectivity `pulumi:"privateConnectivity"`
+	// Private Service Connect connectivity.
+	PrivateServiceConnectConnectivity *PrivateServiceConnectConnectivity `pulumi:"privateServiceConnectConnectivity"`
+	// SSL configuration for the destination to connect to the source database.
+	Ssl *SslConfig `pulumi:"ssl"`
+	// Static IP connectivity data (default, no additional details needed).
+	StaticIpConnectivity *StaticIpConnectivity `pulumi:"staticIpConnectivity"`
+	// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+	Username string `pulumi:"username"`
+}
+
+// SqlServerConnectionProfileInput is an input type that accepts SqlServerConnectionProfileArgs and SqlServerConnectionProfileOutput values.
+// You can construct a concrete instance of `SqlServerConnectionProfileInput` via:
+//
+//	SqlServerConnectionProfileArgs{...}
+type SqlServerConnectionProfileInput interface {
+	pulumi.Input
+
+	ToSqlServerConnectionProfileOutput() SqlServerConnectionProfileOutput
+	ToSqlServerConnectionProfileOutputWithContext(context.Context) SqlServerConnectionProfileOutput
+}
+
+// Specifies connection parameters required specifically for SQL Server databases.
+type SqlServerConnectionProfileArgs struct {
+	// The backup details in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.
+	Backups SqlServerBackupsPtrInput `pulumi:"backups"`
+	// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+	CloudSqlId pulumi.StringPtrInput `pulumi:"cloudSqlId"`
+	// Forward SSH tunnel connectivity.
+	ForwardSshConnectivity ForwardSshTunnelConnectivityPtrInput `pulumi:"forwardSshConnectivity"`
+	// The IP or hostname of the source SQL Server database.
+	Host pulumi.StringInput `pulumi:"host"`
+	// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+	Password pulumi.StringInput `pulumi:"password"`
+	// The network port of the source SQL Server database.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Private connectivity.
+	PrivateConnectivity PrivateConnectivityPtrInput `pulumi:"privateConnectivity"`
+	// Private Service Connect connectivity.
+	PrivateServiceConnectConnectivity PrivateServiceConnectConnectivityPtrInput `pulumi:"privateServiceConnectConnectivity"`
+	// SSL configuration for the destination to connect to the source database.
+	Ssl SslConfigPtrInput `pulumi:"ssl"`
+	// Static IP connectivity data (default, no additional details needed).
+	StaticIpConnectivity StaticIpConnectivityPtrInput `pulumi:"staticIpConnectivity"`
+	// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (SqlServerConnectionProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerConnectionProfile)(nil)).Elem()
+}
+
+func (i SqlServerConnectionProfileArgs) ToSqlServerConnectionProfileOutput() SqlServerConnectionProfileOutput {
+	return i.ToSqlServerConnectionProfileOutputWithContext(context.Background())
+}
+
+func (i SqlServerConnectionProfileArgs) ToSqlServerConnectionProfileOutputWithContext(ctx context.Context) SqlServerConnectionProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerConnectionProfileOutput)
+}
+
+func (i SqlServerConnectionProfileArgs) ToSqlServerConnectionProfilePtrOutput() SqlServerConnectionProfilePtrOutput {
+	return i.ToSqlServerConnectionProfilePtrOutputWithContext(context.Background())
+}
+
+func (i SqlServerConnectionProfileArgs) ToSqlServerConnectionProfilePtrOutputWithContext(ctx context.Context) SqlServerConnectionProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerConnectionProfileOutput).ToSqlServerConnectionProfilePtrOutputWithContext(ctx)
+}
+
+// SqlServerConnectionProfilePtrInput is an input type that accepts SqlServerConnectionProfileArgs, SqlServerConnectionProfilePtr and SqlServerConnectionProfilePtrOutput values.
+// You can construct a concrete instance of `SqlServerConnectionProfilePtrInput` via:
+//
+//	        SqlServerConnectionProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlServerConnectionProfilePtrInput interface {
+	pulumi.Input
+
+	ToSqlServerConnectionProfilePtrOutput() SqlServerConnectionProfilePtrOutput
+	ToSqlServerConnectionProfilePtrOutputWithContext(context.Context) SqlServerConnectionProfilePtrOutput
+}
+
+type sqlServerConnectionProfilePtrType SqlServerConnectionProfileArgs
+
+func SqlServerConnectionProfilePtr(v *SqlServerConnectionProfileArgs) SqlServerConnectionProfilePtrInput {
+	return (*sqlServerConnectionProfilePtrType)(v)
+}
+
+func (*sqlServerConnectionProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerConnectionProfile)(nil)).Elem()
+}
+
+func (i *sqlServerConnectionProfilePtrType) ToSqlServerConnectionProfilePtrOutput() SqlServerConnectionProfilePtrOutput {
+	return i.ToSqlServerConnectionProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *sqlServerConnectionProfilePtrType) ToSqlServerConnectionProfilePtrOutputWithContext(ctx context.Context) SqlServerConnectionProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerConnectionProfilePtrOutput)
+}
+
+// Specifies connection parameters required specifically for SQL Server databases.
+type SqlServerConnectionProfileOutput struct{ *pulumi.OutputState }
+
+func (SqlServerConnectionProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerConnectionProfile)(nil)).Elem()
+}
+
+func (o SqlServerConnectionProfileOutput) ToSqlServerConnectionProfileOutput() SqlServerConnectionProfileOutput {
+	return o
+}
+
+func (o SqlServerConnectionProfileOutput) ToSqlServerConnectionProfileOutputWithContext(ctx context.Context) SqlServerConnectionProfileOutput {
+	return o
+}
+
+func (o SqlServerConnectionProfileOutput) ToSqlServerConnectionProfilePtrOutput() SqlServerConnectionProfilePtrOutput {
+	return o.ToSqlServerConnectionProfilePtrOutputWithContext(context.Background())
+}
+
+func (o SqlServerConnectionProfileOutput) ToSqlServerConnectionProfilePtrOutputWithContext(ctx context.Context) SqlServerConnectionProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlServerConnectionProfile) *SqlServerConnectionProfile {
+		return &v
+	}).(SqlServerConnectionProfilePtrOutput)
+}
+
+// The backup details in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.
+func (o SqlServerConnectionProfileOutput) Backups() SqlServerBackupsPtrOutput {
+	return o.ApplyT(func(v SqlServerConnectionProfile) *SqlServerBackups { return v.Backups }).(SqlServerBackupsPtrOutput)
+}
+
+// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+func (o SqlServerConnectionProfileOutput) CloudSqlId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerConnectionProfile) *string { return v.CloudSqlId }).(pulumi.StringPtrOutput)
+}
+
+// Forward SSH tunnel connectivity.
+func (o SqlServerConnectionProfileOutput) ForwardSshConnectivity() ForwardSshTunnelConnectivityPtrOutput {
+	return o.ApplyT(func(v SqlServerConnectionProfile) *ForwardSshTunnelConnectivity { return v.ForwardSshConnectivity }).(ForwardSshTunnelConnectivityPtrOutput)
+}
+
+// The IP or hostname of the source SQL Server database.
+func (o SqlServerConnectionProfileOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerConnectionProfile) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+func (o SqlServerConnectionProfileOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerConnectionProfile) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The network port of the source SQL Server database.
+func (o SqlServerConnectionProfileOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v SqlServerConnectionProfile) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Private connectivity.
+func (o SqlServerConnectionProfileOutput) PrivateConnectivity() PrivateConnectivityPtrOutput {
+	return o.ApplyT(func(v SqlServerConnectionProfile) *PrivateConnectivity { return v.PrivateConnectivity }).(PrivateConnectivityPtrOutput)
+}
+
+// Private Service Connect connectivity.
+func (o SqlServerConnectionProfileOutput) PrivateServiceConnectConnectivity() PrivateServiceConnectConnectivityPtrOutput {
+	return o.ApplyT(func(v SqlServerConnectionProfile) *PrivateServiceConnectConnectivity {
+		return v.PrivateServiceConnectConnectivity
+	}).(PrivateServiceConnectConnectivityPtrOutput)
+}
+
+// SSL configuration for the destination to connect to the source database.
+func (o SqlServerConnectionProfileOutput) Ssl() SslConfigPtrOutput {
+	return o.ApplyT(func(v SqlServerConnectionProfile) *SslConfig { return v.Ssl }).(SslConfigPtrOutput)
+}
+
+// Static IP connectivity data (default, no additional details needed).
+func (o SqlServerConnectionProfileOutput) StaticIpConnectivity() StaticIpConnectivityPtrOutput {
+	return o.ApplyT(func(v SqlServerConnectionProfile) *StaticIpConnectivity { return v.StaticIpConnectivity }).(StaticIpConnectivityPtrOutput)
+}
+
+// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+func (o SqlServerConnectionProfileOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerConnectionProfile) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type SqlServerConnectionProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (SqlServerConnectionProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerConnectionProfile)(nil)).Elem()
+}
+
+func (o SqlServerConnectionProfilePtrOutput) ToSqlServerConnectionProfilePtrOutput() SqlServerConnectionProfilePtrOutput {
+	return o
+}
+
+func (o SqlServerConnectionProfilePtrOutput) ToSqlServerConnectionProfilePtrOutputWithContext(ctx context.Context) SqlServerConnectionProfilePtrOutput {
+	return o
+}
+
+func (o SqlServerConnectionProfilePtrOutput) Elem() SqlServerConnectionProfileOutput {
+	return o.ApplyT(func(v *SqlServerConnectionProfile) SqlServerConnectionProfile {
+		if v != nil {
+			return *v
+		}
+		var ret SqlServerConnectionProfile
+		return ret
+	}).(SqlServerConnectionProfileOutput)
+}
+
+// The backup details in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.
+func (o SqlServerConnectionProfilePtrOutput) Backups() SqlServerBackupsPtrOutput {
+	return o.ApplyT(func(v *SqlServerConnectionProfile) *SqlServerBackups {
+		if v == nil {
+			return nil
+		}
+		return v.Backups
+	}).(SqlServerBackupsPtrOutput)
+}
+
+// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+func (o SqlServerConnectionProfilePtrOutput) CloudSqlId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerConnectionProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudSqlId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Forward SSH tunnel connectivity.
+func (o SqlServerConnectionProfilePtrOutput) ForwardSshConnectivity() ForwardSshTunnelConnectivityPtrOutput {
+	return o.ApplyT(func(v *SqlServerConnectionProfile) *ForwardSshTunnelConnectivity {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardSshConnectivity
+	}).(ForwardSshTunnelConnectivityPtrOutput)
+}
+
+// The IP or hostname of the source SQL Server database.
+func (o SqlServerConnectionProfilePtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerConnectionProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+func (o SqlServerConnectionProfilePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerConnectionProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The network port of the source SQL Server database.
+func (o SqlServerConnectionProfilePtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SqlServerConnectionProfile) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Private connectivity.
+func (o SqlServerConnectionProfilePtrOutput) PrivateConnectivity() PrivateConnectivityPtrOutput {
+	return o.ApplyT(func(v *SqlServerConnectionProfile) *PrivateConnectivity {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateConnectivity
+	}).(PrivateConnectivityPtrOutput)
+}
+
+// Private Service Connect connectivity.
+func (o SqlServerConnectionProfilePtrOutput) PrivateServiceConnectConnectivity() PrivateServiceConnectConnectivityPtrOutput {
+	return o.ApplyT(func(v *SqlServerConnectionProfile) *PrivateServiceConnectConnectivity {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateServiceConnectConnectivity
+	}).(PrivateServiceConnectConnectivityPtrOutput)
+}
+
+// SSL configuration for the destination to connect to the source database.
+func (o SqlServerConnectionProfilePtrOutput) Ssl() SslConfigPtrOutput {
+	return o.ApplyT(func(v *SqlServerConnectionProfile) *SslConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Ssl
+	}).(SslConfigPtrOutput)
+}
+
+// Static IP connectivity data (default, no additional details needed).
+func (o SqlServerConnectionProfilePtrOutput) StaticIpConnectivity() StaticIpConnectivityPtrOutput {
+	return o.ApplyT(func(v *SqlServerConnectionProfile) *StaticIpConnectivity {
+		if v == nil {
+			return nil
+		}
+		return v.StaticIpConnectivity
+	}).(StaticIpConnectivityPtrOutput)
+}
+
+// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+func (o SqlServerConnectionProfilePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerConnectionProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies connection parameters required specifically for SQL Server databases.
+type SqlServerConnectionProfileResponse struct {
+	// The backup details in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.
+	Backups SqlServerBackupsResponse `pulumi:"backups"`
+	// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+	CloudSqlId string `pulumi:"cloudSqlId"`
+	// Forward SSH tunnel connectivity.
+	ForwardSshConnectivity ForwardSshTunnelConnectivityResponse `pulumi:"forwardSshConnectivity"`
+	// The IP or hostname of the source SQL Server database.
+	Host string `pulumi:"host"`
+	// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+	Password string `pulumi:"password"`
+	// Indicates whether a new password is included in the request.
+	PasswordSet bool `pulumi:"passwordSet"`
+	// The network port of the source SQL Server database.
+	Port int `pulumi:"port"`
+	// Private connectivity.
+	PrivateConnectivity PrivateConnectivityResponse `pulumi:"privateConnectivity"`
+	// Private Service Connect connectivity.
+	PrivateServiceConnectConnectivity PrivateServiceConnectConnectivityResponse `pulumi:"privateServiceConnectConnectivity"`
+	// SSL configuration for the destination to connect to the source database.
+	Ssl SslConfigResponse `pulumi:"ssl"`
+	// Static IP connectivity data (default, no additional details needed).
+	StaticIpConnectivity StaticIpConnectivityResponse `pulumi:"staticIpConnectivity"`
+	// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+	Username string `pulumi:"username"`
+}
+
+// Specifies connection parameters required specifically for SQL Server databases.
+type SqlServerConnectionProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlServerConnectionProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerConnectionProfileResponse)(nil)).Elem()
+}
+
+func (o SqlServerConnectionProfileResponseOutput) ToSqlServerConnectionProfileResponseOutput() SqlServerConnectionProfileResponseOutput {
+	return o
+}
+
+func (o SqlServerConnectionProfileResponseOutput) ToSqlServerConnectionProfileResponseOutputWithContext(ctx context.Context) SqlServerConnectionProfileResponseOutput {
+	return o
+}
+
+// The backup details in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.
+func (o SqlServerConnectionProfileResponseOutput) Backups() SqlServerBackupsResponseOutput {
+	return o.ApplyT(func(v SqlServerConnectionProfileResponse) SqlServerBackupsResponse { return v.Backups }).(SqlServerBackupsResponseOutput)
+}
+
+// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+func (o SqlServerConnectionProfileResponseOutput) CloudSqlId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerConnectionProfileResponse) string { return v.CloudSqlId }).(pulumi.StringOutput)
+}
+
+// Forward SSH tunnel connectivity.
+func (o SqlServerConnectionProfileResponseOutput) ForwardSshConnectivity() ForwardSshTunnelConnectivityResponseOutput {
+	return o.ApplyT(func(v SqlServerConnectionProfileResponse) ForwardSshTunnelConnectivityResponse {
+		return v.ForwardSshConnectivity
+	}).(ForwardSshTunnelConnectivityResponseOutput)
+}
+
+// The IP or hostname of the source SQL Server database.
+func (o SqlServerConnectionProfileResponseOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerConnectionProfileResponse) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+func (o SqlServerConnectionProfileResponseOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerConnectionProfileResponse) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Indicates whether a new password is included in the request.
+func (o SqlServerConnectionProfileResponseOutput) PasswordSet() pulumi.BoolOutput {
+	return o.ApplyT(func(v SqlServerConnectionProfileResponse) bool { return v.PasswordSet }).(pulumi.BoolOutput)
+}
+
+// The network port of the source SQL Server database.
+func (o SqlServerConnectionProfileResponseOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v SqlServerConnectionProfileResponse) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Private connectivity.
+func (o SqlServerConnectionProfileResponseOutput) PrivateConnectivity() PrivateConnectivityResponseOutput {
+	return o.ApplyT(func(v SqlServerConnectionProfileResponse) PrivateConnectivityResponse { return v.PrivateConnectivity }).(PrivateConnectivityResponseOutput)
+}
+
+// Private Service Connect connectivity.
+func (o SqlServerConnectionProfileResponseOutput) PrivateServiceConnectConnectivity() PrivateServiceConnectConnectivityResponseOutput {
+	return o.ApplyT(func(v SqlServerConnectionProfileResponse) PrivateServiceConnectConnectivityResponse {
+		return v.PrivateServiceConnectConnectivity
+	}).(PrivateServiceConnectConnectivityResponseOutput)
+}
+
+// SSL configuration for the destination to connect to the source database.
+func (o SqlServerConnectionProfileResponseOutput) Ssl() SslConfigResponseOutput {
+	return o.ApplyT(func(v SqlServerConnectionProfileResponse) SslConfigResponse { return v.Ssl }).(SslConfigResponseOutput)
+}
+
+// Static IP connectivity data (default, no additional details needed).
+func (o SqlServerConnectionProfileResponseOutput) StaticIpConnectivity() StaticIpConnectivityResponseOutput {
+	return o.ApplyT(func(v SqlServerConnectionProfileResponse) StaticIpConnectivityResponse { return v.StaticIpConnectivity }).(StaticIpConnectivityResponseOutput)
+}
+
+// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+func (o SqlServerConnectionProfileResponseOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerConnectionProfileResponse) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// Specifies the backup details for a single database in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.
+type SqlServerDatabaseBackup struct {
+	// Name of a SQL Server database for which to define backup configuration.
+	Database string `pulumi:"database"`
+	// Optional. Encryption settings for the database. Required if provided database backups are encrypted. Encryption settings include path to certificate, path to certificate private key, and key password.
+	EncryptionOptions *SqlServerEncryptionOptions `pulumi:"encryptionOptions"`
+}
+
+// SqlServerDatabaseBackupInput is an input type that accepts SqlServerDatabaseBackupArgs and SqlServerDatabaseBackupOutput values.
+// You can construct a concrete instance of `SqlServerDatabaseBackupInput` via:
+//
+//	SqlServerDatabaseBackupArgs{...}
+type SqlServerDatabaseBackupInput interface {
+	pulumi.Input
+
+	ToSqlServerDatabaseBackupOutput() SqlServerDatabaseBackupOutput
+	ToSqlServerDatabaseBackupOutputWithContext(context.Context) SqlServerDatabaseBackupOutput
+}
+
+// Specifies the backup details for a single database in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.
+type SqlServerDatabaseBackupArgs struct {
+	// Name of a SQL Server database for which to define backup configuration.
+	Database pulumi.StringInput `pulumi:"database"`
+	// Optional. Encryption settings for the database. Required if provided database backups are encrypted. Encryption settings include path to certificate, path to certificate private key, and key password.
+	EncryptionOptions SqlServerEncryptionOptionsPtrInput `pulumi:"encryptionOptions"`
+}
+
+func (SqlServerDatabaseBackupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerDatabaseBackup)(nil)).Elem()
+}
+
+func (i SqlServerDatabaseBackupArgs) ToSqlServerDatabaseBackupOutput() SqlServerDatabaseBackupOutput {
+	return i.ToSqlServerDatabaseBackupOutputWithContext(context.Background())
+}
+
+func (i SqlServerDatabaseBackupArgs) ToSqlServerDatabaseBackupOutputWithContext(ctx context.Context) SqlServerDatabaseBackupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerDatabaseBackupOutput)
+}
+
+// SqlServerDatabaseBackupArrayInput is an input type that accepts SqlServerDatabaseBackupArray and SqlServerDatabaseBackupArrayOutput values.
+// You can construct a concrete instance of `SqlServerDatabaseBackupArrayInput` via:
+//
+//	SqlServerDatabaseBackupArray{ SqlServerDatabaseBackupArgs{...} }
+type SqlServerDatabaseBackupArrayInput interface {
+	pulumi.Input
+
+	ToSqlServerDatabaseBackupArrayOutput() SqlServerDatabaseBackupArrayOutput
+	ToSqlServerDatabaseBackupArrayOutputWithContext(context.Context) SqlServerDatabaseBackupArrayOutput
+}
+
+type SqlServerDatabaseBackupArray []SqlServerDatabaseBackupInput
+
+func (SqlServerDatabaseBackupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlServerDatabaseBackup)(nil)).Elem()
+}
+
+func (i SqlServerDatabaseBackupArray) ToSqlServerDatabaseBackupArrayOutput() SqlServerDatabaseBackupArrayOutput {
+	return i.ToSqlServerDatabaseBackupArrayOutputWithContext(context.Background())
+}
+
+func (i SqlServerDatabaseBackupArray) ToSqlServerDatabaseBackupArrayOutputWithContext(ctx context.Context) SqlServerDatabaseBackupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerDatabaseBackupArrayOutput)
+}
+
+// Specifies the backup details for a single database in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.
+type SqlServerDatabaseBackupOutput struct{ *pulumi.OutputState }
+
+func (SqlServerDatabaseBackupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerDatabaseBackup)(nil)).Elem()
+}
+
+func (o SqlServerDatabaseBackupOutput) ToSqlServerDatabaseBackupOutput() SqlServerDatabaseBackupOutput {
+	return o
+}
+
+func (o SqlServerDatabaseBackupOutput) ToSqlServerDatabaseBackupOutputWithContext(ctx context.Context) SqlServerDatabaseBackupOutput {
+	return o
+}
+
+// Name of a SQL Server database for which to define backup configuration.
+func (o SqlServerDatabaseBackupOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerDatabaseBackup) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// Optional. Encryption settings for the database. Required if provided database backups are encrypted. Encryption settings include path to certificate, path to certificate private key, and key password.
+func (o SqlServerDatabaseBackupOutput) EncryptionOptions() SqlServerEncryptionOptionsPtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseBackup) *SqlServerEncryptionOptions { return v.EncryptionOptions }).(SqlServerEncryptionOptionsPtrOutput)
+}
+
+type SqlServerDatabaseBackupArrayOutput struct{ *pulumi.OutputState }
+
+func (SqlServerDatabaseBackupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlServerDatabaseBackup)(nil)).Elem()
+}
+
+func (o SqlServerDatabaseBackupArrayOutput) ToSqlServerDatabaseBackupArrayOutput() SqlServerDatabaseBackupArrayOutput {
+	return o
+}
+
+func (o SqlServerDatabaseBackupArrayOutput) ToSqlServerDatabaseBackupArrayOutputWithContext(ctx context.Context) SqlServerDatabaseBackupArrayOutput {
+	return o
+}
+
+func (o SqlServerDatabaseBackupArrayOutput) Index(i pulumi.IntInput) SqlServerDatabaseBackupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlServerDatabaseBackup {
+		return vs[0].([]SqlServerDatabaseBackup)[vs[1].(int)]
+	}).(SqlServerDatabaseBackupOutput)
+}
+
+// Specifies the backup details for a single database in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.
+type SqlServerDatabaseBackupResponse struct {
+	// Name of a SQL Server database for which to define backup configuration.
+	Database string `pulumi:"database"`
+	// Optional. Encryption settings for the database. Required if provided database backups are encrypted. Encryption settings include path to certificate, path to certificate private key, and key password.
+	EncryptionOptions SqlServerEncryptionOptionsResponse `pulumi:"encryptionOptions"`
+}
+
+// Specifies the backup details for a single database in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.
+type SqlServerDatabaseBackupResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlServerDatabaseBackupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerDatabaseBackupResponse)(nil)).Elem()
+}
+
+func (o SqlServerDatabaseBackupResponseOutput) ToSqlServerDatabaseBackupResponseOutput() SqlServerDatabaseBackupResponseOutput {
+	return o
+}
+
+func (o SqlServerDatabaseBackupResponseOutput) ToSqlServerDatabaseBackupResponseOutputWithContext(ctx context.Context) SqlServerDatabaseBackupResponseOutput {
+	return o
+}
+
+// Name of a SQL Server database for which to define backup configuration.
+func (o SqlServerDatabaseBackupResponseOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerDatabaseBackupResponse) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// Optional. Encryption settings for the database. Required if provided database backups are encrypted. Encryption settings include path to certificate, path to certificate private key, and key password.
+func (o SqlServerDatabaseBackupResponseOutput) EncryptionOptions() SqlServerEncryptionOptionsResponseOutput {
+	return o.ApplyT(func(v SqlServerDatabaseBackupResponse) SqlServerEncryptionOptionsResponse { return v.EncryptionOptions }).(SqlServerEncryptionOptionsResponseOutput)
+}
+
+type SqlServerDatabaseBackupResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SqlServerDatabaseBackupResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlServerDatabaseBackupResponse)(nil)).Elem()
+}
+
+func (o SqlServerDatabaseBackupResponseArrayOutput) ToSqlServerDatabaseBackupResponseArrayOutput() SqlServerDatabaseBackupResponseArrayOutput {
+	return o
+}
+
+func (o SqlServerDatabaseBackupResponseArrayOutput) ToSqlServerDatabaseBackupResponseArrayOutputWithContext(ctx context.Context) SqlServerDatabaseBackupResponseArrayOutput {
+	return o
+}
+
+func (o SqlServerDatabaseBackupResponseArrayOutput) Index(i pulumi.IntInput) SqlServerDatabaseBackupResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlServerDatabaseBackupResponse {
+		return vs[0].([]SqlServerDatabaseBackupResponse)[vs[1].(int)]
+	}).(SqlServerDatabaseBackupResponseOutput)
+}
+
+// Encryption settings for the SQL Server database.
+type SqlServerEncryptionOptions struct {
+	// Path to certificate.
+	CertPath string `pulumi:"certPath"`
+	// Input only. Private key password.
+	PvkPassword string `pulumi:"pvkPassword"`
+	// Path to certificate private key.
+	PvkPath string `pulumi:"pvkPath"`
+}
+
+// SqlServerEncryptionOptionsInput is an input type that accepts SqlServerEncryptionOptionsArgs and SqlServerEncryptionOptionsOutput values.
+// You can construct a concrete instance of `SqlServerEncryptionOptionsInput` via:
+//
+//	SqlServerEncryptionOptionsArgs{...}
+type SqlServerEncryptionOptionsInput interface {
+	pulumi.Input
+
+	ToSqlServerEncryptionOptionsOutput() SqlServerEncryptionOptionsOutput
+	ToSqlServerEncryptionOptionsOutputWithContext(context.Context) SqlServerEncryptionOptionsOutput
+}
+
+// Encryption settings for the SQL Server database.
+type SqlServerEncryptionOptionsArgs struct {
+	// Path to certificate.
+	CertPath pulumi.StringInput `pulumi:"certPath"`
+	// Input only. Private key password.
+	PvkPassword pulumi.StringInput `pulumi:"pvkPassword"`
+	// Path to certificate private key.
+	PvkPath pulumi.StringInput `pulumi:"pvkPath"`
+}
+
+func (SqlServerEncryptionOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerEncryptionOptions)(nil)).Elem()
+}
+
+func (i SqlServerEncryptionOptionsArgs) ToSqlServerEncryptionOptionsOutput() SqlServerEncryptionOptionsOutput {
+	return i.ToSqlServerEncryptionOptionsOutputWithContext(context.Background())
+}
+
+func (i SqlServerEncryptionOptionsArgs) ToSqlServerEncryptionOptionsOutputWithContext(ctx context.Context) SqlServerEncryptionOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerEncryptionOptionsOutput)
+}
+
+func (i SqlServerEncryptionOptionsArgs) ToSqlServerEncryptionOptionsPtrOutput() SqlServerEncryptionOptionsPtrOutput {
+	return i.ToSqlServerEncryptionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i SqlServerEncryptionOptionsArgs) ToSqlServerEncryptionOptionsPtrOutputWithContext(ctx context.Context) SqlServerEncryptionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerEncryptionOptionsOutput).ToSqlServerEncryptionOptionsPtrOutputWithContext(ctx)
+}
+
+// SqlServerEncryptionOptionsPtrInput is an input type that accepts SqlServerEncryptionOptionsArgs, SqlServerEncryptionOptionsPtr and SqlServerEncryptionOptionsPtrOutput values.
+// You can construct a concrete instance of `SqlServerEncryptionOptionsPtrInput` via:
+//
+//	        SqlServerEncryptionOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlServerEncryptionOptionsPtrInput interface {
+	pulumi.Input
+
+	ToSqlServerEncryptionOptionsPtrOutput() SqlServerEncryptionOptionsPtrOutput
+	ToSqlServerEncryptionOptionsPtrOutputWithContext(context.Context) SqlServerEncryptionOptionsPtrOutput
+}
+
+type sqlServerEncryptionOptionsPtrType SqlServerEncryptionOptionsArgs
+
+func SqlServerEncryptionOptionsPtr(v *SqlServerEncryptionOptionsArgs) SqlServerEncryptionOptionsPtrInput {
+	return (*sqlServerEncryptionOptionsPtrType)(v)
+}
+
+func (*sqlServerEncryptionOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerEncryptionOptions)(nil)).Elem()
+}
+
+func (i *sqlServerEncryptionOptionsPtrType) ToSqlServerEncryptionOptionsPtrOutput() SqlServerEncryptionOptionsPtrOutput {
+	return i.ToSqlServerEncryptionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlServerEncryptionOptionsPtrType) ToSqlServerEncryptionOptionsPtrOutputWithContext(ctx context.Context) SqlServerEncryptionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerEncryptionOptionsPtrOutput)
+}
+
+// Encryption settings for the SQL Server database.
+type SqlServerEncryptionOptionsOutput struct{ *pulumi.OutputState }
+
+func (SqlServerEncryptionOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerEncryptionOptions)(nil)).Elem()
+}
+
+func (o SqlServerEncryptionOptionsOutput) ToSqlServerEncryptionOptionsOutput() SqlServerEncryptionOptionsOutput {
+	return o
+}
+
+func (o SqlServerEncryptionOptionsOutput) ToSqlServerEncryptionOptionsOutputWithContext(ctx context.Context) SqlServerEncryptionOptionsOutput {
+	return o
+}
+
+func (o SqlServerEncryptionOptionsOutput) ToSqlServerEncryptionOptionsPtrOutput() SqlServerEncryptionOptionsPtrOutput {
+	return o.ToSqlServerEncryptionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o SqlServerEncryptionOptionsOutput) ToSqlServerEncryptionOptionsPtrOutputWithContext(ctx context.Context) SqlServerEncryptionOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlServerEncryptionOptions) *SqlServerEncryptionOptions {
+		return &v
+	}).(SqlServerEncryptionOptionsPtrOutput)
+}
+
+// Path to certificate.
+func (o SqlServerEncryptionOptionsOutput) CertPath() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerEncryptionOptions) string { return v.CertPath }).(pulumi.StringOutput)
+}
+
+// Input only. Private key password.
+func (o SqlServerEncryptionOptionsOutput) PvkPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerEncryptionOptions) string { return v.PvkPassword }).(pulumi.StringOutput)
+}
+
+// Path to certificate private key.
+func (o SqlServerEncryptionOptionsOutput) PvkPath() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerEncryptionOptions) string { return v.PvkPath }).(pulumi.StringOutput)
+}
+
+type SqlServerEncryptionOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlServerEncryptionOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerEncryptionOptions)(nil)).Elem()
+}
+
+func (o SqlServerEncryptionOptionsPtrOutput) ToSqlServerEncryptionOptionsPtrOutput() SqlServerEncryptionOptionsPtrOutput {
+	return o
+}
+
+func (o SqlServerEncryptionOptionsPtrOutput) ToSqlServerEncryptionOptionsPtrOutputWithContext(ctx context.Context) SqlServerEncryptionOptionsPtrOutput {
+	return o
+}
+
+func (o SqlServerEncryptionOptionsPtrOutput) Elem() SqlServerEncryptionOptionsOutput {
+	return o.ApplyT(func(v *SqlServerEncryptionOptions) SqlServerEncryptionOptions {
+		if v != nil {
+			return *v
+		}
+		var ret SqlServerEncryptionOptions
+		return ret
+	}).(SqlServerEncryptionOptionsOutput)
+}
+
+// Path to certificate.
+func (o SqlServerEncryptionOptionsPtrOutput) CertPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerEncryptionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CertPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. Private key password.
+func (o SqlServerEncryptionOptionsPtrOutput) PvkPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerEncryptionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PvkPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path to certificate private key.
+func (o SqlServerEncryptionOptionsPtrOutput) PvkPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerEncryptionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PvkPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Encryption settings for the SQL Server database.
+type SqlServerEncryptionOptionsResponse struct {
+	// Path to certificate.
+	CertPath string `pulumi:"certPath"`
+	// Input only. Private key password.
+	PvkPassword string `pulumi:"pvkPassword"`
+	// Path to certificate private key.
+	PvkPath string `pulumi:"pvkPath"`
+}
+
+// Encryption settings for the SQL Server database.
+type SqlServerEncryptionOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlServerEncryptionOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerEncryptionOptionsResponse)(nil)).Elem()
+}
+
+func (o SqlServerEncryptionOptionsResponseOutput) ToSqlServerEncryptionOptionsResponseOutput() SqlServerEncryptionOptionsResponseOutput {
+	return o
+}
+
+func (o SqlServerEncryptionOptionsResponseOutput) ToSqlServerEncryptionOptionsResponseOutputWithContext(ctx context.Context) SqlServerEncryptionOptionsResponseOutput {
+	return o
+}
+
+// Path to certificate.
+func (o SqlServerEncryptionOptionsResponseOutput) CertPath() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerEncryptionOptionsResponse) string { return v.CertPath }).(pulumi.StringOutput)
+}
+
+// Input only. Private key password.
+func (o SqlServerEncryptionOptionsResponseOutput) PvkPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerEncryptionOptionsResponse) string { return v.PvkPassword }).(pulumi.StringOutput)
+}
+
+// Path to certificate private key.
+func (o SqlServerEncryptionOptionsResponseOutput) PvkPath() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerEncryptionOptionsResponse) string { return v.PvkPath }).(pulumi.StringOutput)
+}
+
+// Configuration for homogeneous migration to Cloud SQL for SQL Server.
+type SqlServerHomogeneousMigrationJobConfig struct {
+	// Pattern that describes the default backup naming strategy. The specified pattern should ensure lexicographical order of backups. The pattern must define one of the following capture group sets: Capture group set #1 yy/yyyy - year, 2 or 4 digits mm - month number, 1-12 dd - day of month, 1-31 hh - hour of day, 00-23 mi - minutes, 00-59 ss - seconds, 00-59 Example: For backup file TestDB_20230802_155400.trn, use pattern: (?.*)_backup_(?\d{4})(?\d{2})(?\d{2})_(?\d{2})(?\d{2})(?\d{2}).trn Capture group set #2 timestamp - unix timestamp Example: For backup file TestDB.1691448254.trn, use pattern: (?.*)\.(?\d*).trn or (?.*)\.(?\d*).trn
+	BackupFilePattern string `pulumi:"backupFilePattern"`
+	// Backup details per database in Cloud Storage.
+	DatabaseBackups []SqlServerDatabaseBackup `pulumi:"databaseBackups"`
+}
+
+// SqlServerHomogeneousMigrationJobConfigInput is an input type that accepts SqlServerHomogeneousMigrationJobConfigArgs and SqlServerHomogeneousMigrationJobConfigOutput values.
+// You can construct a concrete instance of `SqlServerHomogeneousMigrationJobConfigInput` via:
+//
+//	SqlServerHomogeneousMigrationJobConfigArgs{...}
+type SqlServerHomogeneousMigrationJobConfigInput interface {
+	pulumi.Input
+
+	ToSqlServerHomogeneousMigrationJobConfigOutput() SqlServerHomogeneousMigrationJobConfigOutput
+	ToSqlServerHomogeneousMigrationJobConfigOutputWithContext(context.Context) SqlServerHomogeneousMigrationJobConfigOutput
+}
+
+// Configuration for homogeneous migration to Cloud SQL for SQL Server.
+type SqlServerHomogeneousMigrationJobConfigArgs struct {
+	// Pattern that describes the default backup naming strategy. The specified pattern should ensure lexicographical order of backups. The pattern must define one of the following capture group sets: Capture group set #1 yy/yyyy - year, 2 or 4 digits mm - month number, 1-12 dd - day of month, 1-31 hh - hour of day, 00-23 mi - minutes, 00-59 ss - seconds, 00-59 Example: For backup file TestDB_20230802_155400.trn, use pattern: (?.*)_backup_(?\d{4})(?\d{2})(?\d{2})_(?\d{2})(?\d{2})(?\d{2}).trn Capture group set #2 timestamp - unix timestamp Example: For backup file TestDB.1691448254.trn, use pattern: (?.*)\.(?\d*).trn or (?.*)\.(?\d*).trn
+	BackupFilePattern pulumi.StringInput `pulumi:"backupFilePattern"`
+	// Backup details per database in Cloud Storage.
+	DatabaseBackups SqlServerDatabaseBackupArrayInput `pulumi:"databaseBackups"`
+}
+
+func (SqlServerHomogeneousMigrationJobConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerHomogeneousMigrationJobConfig)(nil)).Elem()
+}
+
+func (i SqlServerHomogeneousMigrationJobConfigArgs) ToSqlServerHomogeneousMigrationJobConfigOutput() SqlServerHomogeneousMigrationJobConfigOutput {
+	return i.ToSqlServerHomogeneousMigrationJobConfigOutputWithContext(context.Background())
+}
+
+func (i SqlServerHomogeneousMigrationJobConfigArgs) ToSqlServerHomogeneousMigrationJobConfigOutputWithContext(ctx context.Context) SqlServerHomogeneousMigrationJobConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerHomogeneousMigrationJobConfigOutput)
+}
+
+func (i SqlServerHomogeneousMigrationJobConfigArgs) ToSqlServerHomogeneousMigrationJobConfigPtrOutput() SqlServerHomogeneousMigrationJobConfigPtrOutput {
+	return i.ToSqlServerHomogeneousMigrationJobConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SqlServerHomogeneousMigrationJobConfigArgs) ToSqlServerHomogeneousMigrationJobConfigPtrOutputWithContext(ctx context.Context) SqlServerHomogeneousMigrationJobConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerHomogeneousMigrationJobConfigOutput).ToSqlServerHomogeneousMigrationJobConfigPtrOutputWithContext(ctx)
+}
+
+// SqlServerHomogeneousMigrationJobConfigPtrInput is an input type that accepts SqlServerHomogeneousMigrationJobConfigArgs, SqlServerHomogeneousMigrationJobConfigPtr and SqlServerHomogeneousMigrationJobConfigPtrOutput values.
+// You can construct a concrete instance of `SqlServerHomogeneousMigrationJobConfigPtrInput` via:
+//
+//	        SqlServerHomogeneousMigrationJobConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlServerHomogeneousMigrationJobConfigPtrInput interface {
+	pulumi.Input
+
+	ToSqlServerHomogeneousMigrationJobConfigPtrOutput() SqlServerHomogeneousMigrationJobConfigPtrOutput
+	ToSqlServerHomogeneousMigrationJobConfigPtrOutputWithContext(context.Context) SqlServerHomogeneousMigrationJobConfigPtrOutput
+}
+
+type sqlServerHomogeneousMigrationJobConfigPtrType SqlServerHomogeneousMigrationJobConfigArgs
+
+func SqlServerHomogeneousMigrationJobConfigPtr(v *SqlServerHomogeneousMigrationJobConfigArgs) SqlServerHomogeneousMigrationJobConfigPtrInput {
+	return (*sqlServerHomogeneousMigrationJobConfigPtrType)(v)
+}
+
+func (*sqlServerHomogeneousMigrationJobConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerHomogeneousMigrationJobConfig)(nil)).Elem()
+}
+
+func (i *sqlServerHomogeneousMigrationJobConfigPtrType) ToSqlServerHomogeneousMigrationJobConfigPtrOutput() SqlServerHomogeneousMigrationJobConfigPtrOutput {
+	return i.ToSqlServerHomogeneousMigrationJobConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlServerHomogeneousMigrationJobConfigPtrType) ToSqlServerHomogeneousMigrationJobConfigPtrOutputWithContext(ctx context.Context) SqlServerHomogeneousMigrationJobConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerHomogeneousMigrationJobConfigPtrOutput)
+}
+
+// Configuration for homogeneous migration to Cloud SQL for SQL Server.
+type SqlServerHomogeneousMigrationJobConfigOutput struct{ *pulumi.OutputState }
+
+func (SqlServerHomogeneousMigrationJobConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerHomogeneousMigrationJobConfig)(nil)).Elem()
+}
+
+func (o SqlServerHomogeneousMigrationJobConfigOutput) ToSqlServerHomogeneousMigrationJobConfigOutput() SqlServerHomogeneousMigrationJobConfigOutput {
+	return o
+}
+
+func (o SqlServerHomogeneousMigrationJobConfigOutput) ToSqlServerHomogeneousMigrationJobConfigOutputWithContext(ctx context.Context) SqlServerHomogeneousMigrationJobConfigOutput {
+	return o
+}
+
+func (o SqlServerHomogeneousMigrationJobConfigOutput) ToSqlServerHomogeneousMigrationJobConfigPtrOutput() SqlServerHomogeneousMigrationJobConfigPtrOutput {
+	return o.ToSqlServerHomogeneousMigrationJobConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SqlServerHomogeneousMigrationJobConfigOutput) ToSqlServerHomogeneousMigrationJobConfigPtrOutputWithContext(ctx context.Context) SqlServerHomogeneousMigrationJobConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlServerHomogeneousMigrationJobConfig) *SqlServerHomogeneousMigrationJobConfig {
+		return &v
+	}).(SqlServerHomogeneousMigrationJobConfigPtrOutput)
+}
+
+// Pattern that describes the default backup naming strategy. The specified pattern should ensure lexicographical order of backups. The pattern must define one of the following capture group sets: Capture group set #1 yy/yyyy - year, 2 or 4 digits mm - month number, 1-12 dd - day of month, 1-31 hh - hour of day, 00-23 mi - minutes, 00-59 ss - seconds, 00-59 Example: For backup file TestDB_20230802_155400.trn, use pattern: (?.*)_backup_(?\d{4})(?\d{2})(?\d{2})_(?\d{2})(?\d{2})(?\d{2}).trn Capture group set #2 timestamp - unix timestamp Example: For backup file TestDB.1691448254.trn, use pattern: (?.*)\.(?\d*).trn or (?.*)\.(?\d*).trn
+func (o SqlServerHomogeneousMigrationJobConfigOutput) BackupFilePattern() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerHomogeneousMigrationJobConfig) string { return v.BackupFilePattern }).(pulumi.StringOutput)
+}
+
+// Backup details per database in Cloud Storage.
+func (o SqlServerHomogeneousMigrationJobConfigOutput) DatabaseBackups() SqlServerDatabaseBackupArrayOutput {
+	return o.ApplyT(func(v SqlServerHomogeneousMigrationJobConfig) []SqlServerDatabaseBackup { return v.DatabaseBackups }).(SqlServerDatabaseBackupArrayOutput)
+}
+
+type SqlServerHomogeneousMigrationJobConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlServerHomogeneousMigrationJobConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerHomogeneousMigrationJobConfig)(nil)).Elem()
+}
+
+func (o SqlServerHomogeneousMigrationJobConfigPtrOutput) ToSqlServerHomogeneousMigrationJobConfigPtrOutput() SqlServerHomogeneousMigrationJobConfigPtrOutput {
+	return o
+}
+
+func (o SqlServerHomogeneousMigrationJobConfigPtrOutput) ToSqlServerHomogeneousMigrationJobConfigPtrOutputWithContext(ctx context.Context) SqlServerHomogeneousMigrationJobConfigPtrOutput {
+	return o
+}
+
+func (o SqlServerHomogeneousMigrationJobConfigPtrOutput) Elem() SqlServerHomogeneousMigrationJobConfigOutput {
+	return o.ApplyT(func(v *SqlServerHomogeneousMigrationJobConfig) SqlServerHomogeneousMigrationJobConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SqlServerHomogeneousMigrationJobConfig
+		return ret
+	}).(SqlServerHomogeneousMigrationJobConfigOutput)
+}
+
+// Pattern that describes the default backup naming strategy. The specified pattern should ensure lexicographical order of backups. The pattern must define one of the following capture group sets: Capture group set #1 yy/yyyy - year, 2 or 4 digits mm - month number, 1-12 dd - day of month, 1-31 hh - hour of day, 00-23 mi - minutes, 00-59 ss - seconds, 00-59 Example: For backup file TestDB_20230802_155400.trn, use pattern: (?.*)_backup_(?\d{4})(?\d{2})(?\d{2})_(?\d{2})(?\d{2})(?\d{2}).trn Capture group set #2 timestamp - unix timestamp Example: For backup file TestDB.1691448254.trn, use pattern: (?.*)\.(?\d*).trn or (?.*)\.(?\d*).trn
+func (o SqlServerHomogeneousMigrationJobConfigPtrOutput) BackupFilePattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerHomogeneousMigrationJobConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BackupFilePattern
+	}).(pulumi.StringPtrOutput)
+}
+
+// Backup details per database in Cloud Storage.
+func (o SqlServerHomogeneousMigrationJobConfigPtrOutput) DatabaseBackups() SqlServerDatabaseBackupArrayOutput {
+	return o.ApplyT(func(v *SqlServerHomogeneousMigrationJobConfig) []SqlServerDatabaseBackup {
+		if v == nil {
+			return nil
+		}
+		return v.DatabaseBackups
+	}).(SqlServerDatabaseBackupArrayOutput)
+}
+
+// Configuration for homogeneous migration to Cloud SQL for SQL Server.
+type SqlServerHomogeneousMigrationJobConfigResponse struct {
+	// Pattern that describes the default backup naming strategy. The specified pattern should ensure lexicographical order of backups. The pattern must define one of the following capture group sets: Capture group set #1 yy/yyyy - year, 2 or 4 digits mm - month number, 1-12 dd - day of month, 1-31 hh - hour of day, 00-23 mi - minutes, 00-59 ss - seconds, 00-59 Example: For backup file TestDB_20230802_155400.trn, use pattern: (?.*)_backup_(?\d{4})(?\d{2})(?\d{2})_(?\d{2})(?\d{2})(?\d{2}).trn Capture group set #2 timestamp - unix timestamp Example: For backup file TestDB.1691448254.trn, use pattern: (?.*)\.(?\d*).trn or (?.*)\.(?\d*).trn
+	BackupFilePattern string `pulumi:"backupFilePattern"`
+	// Backup details per database in Cloud Storage.
+	DatabaseBackups []SqlServerDatabaseBackupResponse `pulumi:"databaseBackups"`
+}
+
+// Configuration for homogeneous migration to Cloud SQL for SQL Server.
+type SqlServerHomogeneousMigrationJobConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlServerHomogeneousMigrationJobConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerHomogeneousMigrationJobConfigResponse)(nil)).Elem()
+}
+
+func (o SqlServerHomogeneousMigrationJobConfigResponseOutput) ToSqlServerHomogeneousMigrationJobConfigResponseOutput() SqlServerHomogeneousMigrationJobConfigResponseOutput {
+	return o
+}
+
+func (o SqlServerHomogeneousMigrationJobConfigResponseOutput) ToSqlServerHomogeneousMigrationJobConfigResponseOutputWithContext(ctx context.Context) SqlServerHomogeneousMigrationJobConfigResponseOutput {
+	return o
+}
+
+// Pattern that describes the default backup naming strategy. The specified pattern should ensure lexicographical order of backups. The pattern must define one of the following capture group sets: Capture group set #1 yy/yyyy - year, 2 or 4 digits mm - month number, 1-12 dd - day of month, 1-31 hh - hour of day, 00-23 mi - minutes, 00-59 ss - seconds, 00-59 Example: For backup file TestDB_20230802_155400.trn, use pattern: (?.*)_backup_(?\d{4})(?\d{2})(?\d{2})_(?\d{2})(?\d{2})(?\d{2}).trn Capture group set #2 timestamp - unix timestamp Example: For backup file TestDB.1691448254.trn, use pattern: (?.*)\.(?\d*).trn or (?.*)\.(?\d*).trn
+func (o SqlServerHomogeneousMigrationJobConfigResponseOutput) BackupFilePattern() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerHomogeneousMigrationJobConfigResponse) string { return v.BackupFilePattern }).(pulumi.StringOutput)
+}
+
+// Backup details per database in Cloud Storage.
+func (o SqlServerHomogeneousMigrationJobConfigResponseOutput) DatabaseBackups() SqlServerDatabaseBackupResponseArrayOutput {
+	return o.ApplyT(func(v SqlServerHomogeneousMigrationJobConfigResponse) []SqlServerDatabaseBackupResponse {
+		return v.DatabaseBackups
+	}).(SqlServerDatabaseBackupResponseArrayOutput)
+}
+
 // SSL configuration information.
 type SslConfig struct {
 	// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
@@ -12209,6 +13414,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlAclEntryArrayInput)(nil)).Elem(), SqlAclEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlIpConfigInput)(nil)).Elem(), SqlIpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlIpConfigPtrInput)(nil)).Elem(), SqlIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerBackupsInput)(nil)).Elem(), SqlServerBackupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerBackupsPtrInput)(nil)).Elem(), SqlServerBackupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerConnectionProfileInput)(nil)).Elem(), SqlServerConnectionProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerConnectionProfilePtrInput)(nil)).Elem(), SqlServerConnectionProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerDatabaseBackupInput)(nil)).Elem(), SqlServerDatabaseBackupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerDatabaseBackupArrayInput)(nil)).Elem(), SqlServerDatabaseBackupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerEncryptionOptionsInput)(nil)).Elem(), SqlServerEncryptionOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerEncryptionOptionsPtrInput)(nil)).Elem(), SqlServerEncryptionOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerHomogeneousMigrationJobConfigInput)(nil)).Elem(), SqlServerHomogeneousMigrationJobConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlServerHomogeneousMigrationJobConfigPtrInput)(nil)).Elem(), SqlServerHomogeneousMigrationJobConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SslConfigInput)(nil)).Elem(), SslConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SslConfigPtrInput)(nil)).Elem(), SslConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StaticIpConnectivityInput)(nil)).Elem(), StaticIpConnectivityArgs{})
@@ -12369,6 +13584,22 @@ func init() {
 	pulumi.RegisterOutputType(SqlIpConfigOutput{})
 	pulumi.RegisterOutputType(SqlIpConfigPtrOutput{})
 	pulumi.RegisterOutputType(SqlIpConfigResponseOutput{})
+	pulumi.RegisterOutputType(SqlServerBackupsOutput{})
+	pulumi.RegisterOutputType(SqlServerBackupsPtrOutput{})
+	pulumi.RegisterOutputType(SqlServerBackupsResponseOutput{})
+	pulumi.RegisterOutputType(SqlServerConnectionProfileOutput{})
+	pulumi.RegisterOutputType(SqlServerConnectionProfilePtrOutput{})
+	pulumi.RegisterOutputType(SqlServerConnectionProfileResponseOutput{})
+	pulumi.RegisterOutputType(SqlServerDatabaseBackupOutput{})
+	pulumi.RegisterOutputType(SqlServerDatabaseBackupArrayOutput{})
+	pulumi.RegisterOutputType(SqlServerDatabaseBackupResponseOutput{})
+	pulumi.RegisterOutputType(SqlServerDatabaseBackupResponseArrayOutput{})
+	pulumi.RegisterOutputType(SqlServerEncryptionOptionsOutput{})
+	pulumi.RegisterOutputType(SqlServerEncryptionOptionsPtrOutput{})
+	pulumi.RegisterOutputType(SqlServerEncryptionOptionsResponseOutput{})
+	pulumi.RegisterOutputType(SqlServerHomogeneousMigrationJobConfigOutput{})
+	pulumi.RegisterOutputType(SqlServerHomogeneousMigrationJobConfigPtrOutput{})
+	pulumi.RegisterOutputType(SqlServerHomogeneousMigrationJobConfigResponseOutput{})
 	pulumi.RegisterOutputType(SslConfigOutput{})
 	pulumi.RegisterOutputType(SslConfigPtrOutput{})
 	pulumi.RegisterOutputType(SslConfigResponseOutput{})

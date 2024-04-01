@@ -73,6 +73,10 @@ export interface GetProviderResult {
      * The state of the provider.
      */
     readonly state: string;
+    /**
+     * An X.509-type identity provider.
+     */
+    readonly x509: outputs.iam.v1.X509Response;
 }
 /**
  * Gets an individual WorkloadIdentityPoolProvider.

@@ -23,13 +23,13 @@ namespace Pulumi.GoogleNative.Logging.V2
         public Output<bool> AnalyticsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
+        /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. Bucket identifiers must start with an alphanumeric character.
         /// </summary>
         [Output("bucketId")]
         public Output<string> BucketId { get; private set; } = null!;
 
         /// <summary>
-        /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
+        /// Optional. The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
         /// </summary>
         [Output("cmekSettings")]
         public Output<Outputs.CmekSettingsResponse> CmekSettings { get; private set; } = null!;
@@ -41,13 +41,13 @@ namespace Pulumi.GoogleNative.Logging.V2
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Describes this bucket.
+        /// Optional. Describes this bucket.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A list of indexed fields and related configuration data.
+        /// Optional. A list of indexed fields and related configuration data.
         /// </summary>
         [Output("indexConfigs")]
         public Output<ImmutableArray<Outputs.IndexConfigResponse>> IndexConfigs { get; private set; } = null!;
@@ -62,7 +62,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+        /// Optional. Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
         /// </summary>
         [Output("locked")]
         public Output<bool> Locked { get; private set; } = null!;
@@ -77,13 +77,13 @@ namespace Pulumi.GoogleNative.Logging.V2
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
+        /// Optional. Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
         /// </summary>
         [Output("restrictedFields")]
         public Output<ImmutableArray<string>> RestrictedFields { get; private set; } = null!;
 
         /// <summary>
-        /// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+        /// Optional. Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
         /// </summary>
         [Output("retentionDays")]
         public Output<int> RetentionDays { get; private set; } = null!;
@@ -152,19 +152,19 @@ namespace Pulumi.GoogleNative.Logging.V2
         public Input<bool>? AnalyticsEnabled { get; set; }
 
         /// <summary>
-        /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
+        /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. Bucket identifiers must start with an alphanumeric character.
         /// </summary>
         [Input("bucketId", required: true)]
         public Input<string> BucketId { get; set; } = null!;
 
         /// <summary>
-        /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
+        /// Optional. The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
         /// </summary>
         [Input("cmekSettings")]
         public Input<Inputs.CmekSettingsArgs>? CmekSettings { get; set; }
 
         /// <summary>
-        /// Describes this bucket.
+        /// Optional. Describes this bucket.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -173,7 +173,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         private InputList<Inputs.IndexConfigArgs>? _indexConfigs;
 
         /// <summary>
-        /// A list of indexed fields and related configuration data.
+        /// Optional. A list of indexed fields and related configuration data.
         /// </summary>
         public InputList<Inputs.IndexConfigArgs> IndexConfigs
         {
@@ -185,7 +185,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+        /// Optional. Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
         /// </summary>
         [Input("locked")]
         public Input<bool>? Locked { get; set; }
@@ -197,7 +197,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         private InputList<string>? _restrictedFields;
 
         /// <summary>
-        /// Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
+        /// Optional. Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
         /// </summary>
         public InputList<string> RestrictedFields
         {
@@ -206,7 +206,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         }
 
         /// <summary>
-        /// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+        /// Optional. Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
         /// </summary>
         [Input("retentionDays")]
         public Input<int>? RetentionDays { get; set; }

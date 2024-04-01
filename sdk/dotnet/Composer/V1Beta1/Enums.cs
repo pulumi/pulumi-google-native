@@ -8,6 +8,47 @@ using Pulumi;
 namespace Pulumi.GoogleNative.Composer.V1Beta1
 {
     /// <summary>
+    /// Optional. Retention can be either enabled or disabled.
+    /// </summary>
+    [EnumType]
+    public readonly struct AirflowMetadataRetentionPolicyConfigRetentionMode : IEquatable<AirflowMetadataRetentionPolicyConfigRetentionMode>
+    {
+        private readonly string _value;
+
+        private AirflowMetadataRetentionPolicyConfigRetentionMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default mode doesn't change environment parameters.
+        /// </summary>
+        public static AirflowMetadataRetentionPolicyConfigRetentionMode RetentionModeUnspecified { get; } = new AirflowMetadataRetentionPolicyConfigRetentionMode("RETENTION_MODE_UNSPECIFIED");
+        /// <summary>
+        /// Retention policy is enabled.
+        /// </summary>
+        public static AirflowMetadataRetentionPolicyConfigRetentionMode RetentionModeEnabled { get; } = new AirflowMetadataRetentionPolicyConfigRetentionMode("RETENTION_MODE_ENABLED");
+        /// <summary>
+        /// Retention policy is disabled.
+        /// </summary>
+        public static AirflowMetadataRetentionPolicyConfigRetentionMode RetentionModeDisabled { get; } = new AirflowMetadataRetentionPolicyConfigRetentionMode("RETENTION_MODE_DISABLED");
+
+        public static bool operator ==(AirflowMetadataRetentionPolicyConfigRetentionMode left, AirflowMetadataRetentionPolicyConfigRetentionMode right) => left.Equals(right);
+        public static bool operator !=(AirflowMetadataRetentionPolicyConfigRetentionMode left, AirflowMetadataRetentionPolicyConfigRetentionMode right) => !left.Equals(right);
+
+        public static explicit operator string(AirflowMetadataRetentionPolicyConfigRetentionMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AirflowMetadataRetentionPolicyConfigRetentionMode other && Equals(other);
+        public bool Equals(AirflowMetadataRetentionPolicyConfigRetentionMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
     /// </summary>
     [EnumType]
@@ -176,6 +217,88 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is NetworkingConfigConnectionType other && Equals(other);
         public bool Equals(NetworkingConfigConnectionType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Whether or not the web server uses custom plugins. If unspecified, the field defaults to `PLUGINS_ENABLED`. This field is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+    /// </summary>
+    [EnumType]
+    public readonly struct SoftwareConfigWebServerPluginsMode : IEquatable<SoftwareConfigWebServerPluginsMode>
+    {
+        private readonly string _value;
+
+        private SoftwareConfigWebServerPluginsMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default mode.
+        /// </summary>
+        public static SoftwareConfigWebServerPluginsMode WebServerPluginsModeUnspecified { get; } = new SoftwareConfigWebServerPluginsMode("WEB_SERVER_PLUGINS_MODE_UNSPECIFIED");
+        /// <summary>
+        /// Web server plugins are not supported.
+        /// </summary>
+        public static SoftwareConfigWebServerPluginsMode PluginsDisabled { get; } = new SoftwareConfigWebServerPluginsMode("PLUGINS_DISABLED");
+        /// <summary>
+        /// Web server plugins are supported.
+        /// </summary>
+        public static SoftwareConfigWebServerPluginsMode PluginsEnabled { get; } = new SoftwareConfigWebServerPluginsMode("PLUGINS_ENABLED");
+
+        public static bool operator ==(SoftwareConfigWebServerPluginsMode left, SoftwareConfigWebServerPluginsMode right) => left.Equals(right);
+        public static bool operator !=(SoftwareConfigWebServerPluginsMode left, SoftwareConfigWebServerPluginsMode right) => !left.Equals(right);
+
+        public static explicit operator string(SoftwareConfigWebServerPluginsMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SoftwareConfigWebServerPluginsMode other && Equals(other);
+        public bool Equals(SoftwareConfigWebServerPluginsMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. The mode of storage for Airflow workers task logs.
+    /// </summary>
+    [EnumType]
+    public readonly struct TaskLogsRetentionConfigStorageMode : IEquatable<TaskLogsRetentionConfigStorageMode>
+    {
+        private readonly string _value;
+
+        private TaskLogsRetentionConfigStorageMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// This configuration is not specified by the user.
+        /// </summary>
+        public static TaskLogsRetentionConfigStorageMode TaskLogsStorageModeUnspecified { get; } = new TaskLogsRetentionConfigStorageMode("TASK_LOGS_STORAGE_MODE_UNSPECIFIED");
+        /// <summary>
+        /// Store task logs in Cloud Logging and in the environment's Cloud Storage bucket.
+        /// </summary>
+        public static TaskLogsRetentionConfigStorageMode CloudLoggingAndCloudStorage { get; } = new TaskLogsRetentionConfigStorageMode("CLOUD_LOGGING_AND_CLOUD_STORAGE");
+        /// <summary>
+        /// Store task logs in Cloud Logging only.
+        /// </summary>
+        public static TaskLogsRetentionConfigStorageMode CloudLoggingOnly { get; } = new TaskLogsRetentionConfigStorageMode("CLOUD_LOGGING_ONLY");
+
+        public static bool operator ==(TaskLogsRetentionConfigStorageMode left, TaskLogsRetentionConfigStorageMode right) => left.Equals(right);
+        public static bool operator !=(TaskLogsRetentionConfigStorageMode left, TaskLogsRetentionConfigStorageMode right) => !left.Equals(right);
+
+        public static explicit operator string(TaskLogsRetentionConfigStorageMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TaskLogsRetentionConfigStorageMode other && Equals(other);
+        public bool Equals(TaskLogsRetentionConfigStorageMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

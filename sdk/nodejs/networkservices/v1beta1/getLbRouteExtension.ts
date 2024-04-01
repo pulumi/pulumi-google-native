@@ -44,7 +44,7 @@ export interface GetLbRouteExtensionResult {
      */
     readonly forwardingRules: string[];
     /**
-     * Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the following requirements](/compute/docs/labeling-resources#requirements).
+     * Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the requirements for labels](https://cloud.google.com/compute/docs/labeling-resources#requirements) for Google Cloud resources.
      */
     readonly labels: {[key: string]: string};
     /**
@@ -52,7 +52,7 @@ export interface GetLbRouteExtensionResult {
      */
     readonly loadBalancingScheme: string;
     /**
-     * Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
+     * Identifier. Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
      */
     readonly name: string;
     /**

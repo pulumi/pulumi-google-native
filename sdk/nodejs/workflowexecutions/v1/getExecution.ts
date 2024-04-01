@@ -40,6 +40,14 @@ export interface GetExecutionResult {
      */
     readonly callLogLevel: string;
     /**
+     * Marks the creation of the execution.
+     */
+    readonly createTime: string;
+    /**
+     * Optional. If set to true, the execution will not be backlogged when the concurrency quota is exhausted. The backlog execution starts when the concurrency quota becomes available.
+     */
+    readonly disableConcurrencyQuotaOverflowBuffering: boolean;
+    /**
      * Measures the duration of the execution.
      */
     readonly duration: string;

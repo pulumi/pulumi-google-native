@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
     public sealed class RangePartitioningResponse
     {
         /// <summary>
-        /// [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
+        /// [Experimental] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
         /// </summary>
         public readonly string Field;
         /// <summary>
-        /// [TrustedTester] [Required] Defines the ranges for range partitioning.
+        /// [Experimental] Defines the ranges for range partitioning.
         /// </summary>
         public readonly Outputs.RangePartitioningRangeResponse Range;
 

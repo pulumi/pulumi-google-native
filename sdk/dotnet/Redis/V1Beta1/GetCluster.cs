@@ -80,6 +80,18 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node.
+        /// </summary>
+        public readonly string NodeType;
+        /// <summary>
+        /// Optional. Persistence config (RDB, AOF) for the cluster.
+        /// </summary>
+        public readonly Outputs.ClusterPersistenceConfigResponse PersistenceConfig;
+        /// <summary>
+        /// Precise value of redis memory size in GB for the entire cluster.
+        /// </summary>
+        public readonly double PreciseSizeGb;
+        /// <summary>
         /// Each PscConfig configures the consumer network where IPs will be designated to the cluster for client access through Private Service Connect Automation. Currently, only one PscConfig is supported.
         /// </summary>
         public readonly ImmutableArray<Outputs.PscConfigResponse> PscConfigs;
@@ -87,6 +99,10 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         /// PSC connections for discovery of the cluster topology and accessing the cluster.
         /// </summary>
         public readonly ImmutableArray<Outputs.PscConnectionResponse> PscConnections;
+        /// <summary>
+        /// Optional. Key/Value pairs of customer overrides for mutable Redis Configs
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> RedisConfigs;
         /// <summary>
         /// Optional. The number of replica nodes per shard.
         /// </summary>
@@ -96,7 +112,7 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         /// </summary>
         public readonly int ShardCount;
         /// <summary>
-        /// Redis memory size in GB for the entire cluster.
+        /// Redis memory size in GB for the entire cluster rounded up to the next integer.
         /// </summary>
         public readonly int SizeGb;
         /// <summary>
@@ -126,9 +142,17 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
 
             string name,
 
+            string nodeType,
+
+            Outputs.ClusterPersistenceConfigResponse persistenceConfig,
+
+            double preciseSizeGb,
+
             ImmutableArray<Outputs.PscConfigResponse> pscConfigs,
 
             ImmutableArray<Outputs.PscConnectionResponse> pscConnections,
+
+            ImmutableDictionary<string, string> redisConfigs,
 
             int replicaCount,
 
@@ -148,8 +172,12 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
             CreateTime = createTime;
             DiscoveryEndpoints = discoveryEndpoints;
             Name = name;
+            NodeType = nodeType;
+            PersistenceConfig = persistenceConfig;
+            PreciseSizeGb = preciseSizeGb;
             PscConfigs = pscConfigs;
             PscConnections = pscConnections;
+            RedisConfigs = redisConfigs;
             ReplicaCount = replicaCount;
             ShardCount = shardCount;
             SizeGb = sizeGb;

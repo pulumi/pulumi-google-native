@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetRepositoryResult:
-    def __init__(__self__, display_name=None, git_remote_settings=None, labels=None, name=None, npmrc_environment_variables_secret_version=None, service_account=None, set_authenticated_user_admin=None, workspace_compilation_overrides=None):
+    def __init__(__self__, create_time=None, display_name=None, git_remote_settings=None, labels=None, name=None, npmrc_environment_variables_secret_version=None, service_account=None, set_authenticated_user_admin=None, workspace_compilation_overrides=None):
+        if create_time and not isinstance(create_time, str):
+            raise TypeError("Expected argument 'create_time' to be a str")
+        pulumi.set(__self__, "create_time", create_time)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -44,6 +47,14 @@ class GetRepositoryResult:
         if workspace_compilation_overrides and not isinstance(workspace_compilation_overrides, dict):
             raise TypeError("Expected argument 'workspace_compilation_overrides' to be a dict")
         pulumi.set(__self__, "workspace_compilation_overrides", workspace_compilation_overrides)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The timestamp of when the repository was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="displayName")
@@ -73,7 +84,7 @@ class GetRepositoryResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The repository's name.
+        Identifier. The repository's name.
         """
         return pulumi.get(self, "name")
 
@@ -116,6 +127,7 @@ class AwaitableGetRepositoryResult(GetRepositoryResult):
         if False:
             yield self
         return GetRepositoryResult(
+            create_time=self.create_time,
             display_name=self.display_name,
             git_remote_settings=self.git_remote_settings,
             labels=self.labels,
@@ -141,6 +153,7 @@ def get_repository(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dataform/v1beta1:getRepository', __args__, opts=opts, typ=GetRepositoryResult).value
 
     return AwaitableGetRepositoryResult(
+        create_time=pulumi.get(__ret__, 'create_time'),
         display_name=pulumi.get(__ret__, 'display_name'),
         git_remote_settings=pulumi.get(__ret__, 'git_remote_settings'),
         labels=pulumi.get(__ret__, 'labels'),

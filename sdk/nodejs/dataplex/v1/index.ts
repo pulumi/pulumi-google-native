@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export { AspectTypeArgs } from "./aspectType";
+export type AspectType = import("./aspectType").AspectType;
+export const AspectType: typeof import("./aspectType").AspectType = null as any;
+utilities.lazyLoad(exports, ["AspectType"], () => require("./aspectType"));
+
 export { AspectTypeIamBindingArgs } from "./aspectTypeIamBinding";
 export type AspectTypeIamBinding = import("./aspectTypeIamBinding").AspectTypeIamBinding;
 export const AspectTypeIamBinding: typeof import("./aspectTypeIamBinding").AspectTypeIamBinding = null as any;
@@ -120,6 +125,16 @@ export type Entity = import("./entity").Entity;
 export const Entity: typeof import("./entity").Entity = null as any;
 utilities.lazyLoad(exports, ["Entity"], () => require("./entity"));
 
+export { EntryArgs } from "./entry";
+export type Entry = import("./entry").Entry;
+export const Entry: typeof import("./entry").Entry = null as any;
+utilities.lazyLoad(exports, ["Entry"], () => require("./entry"));
+
+export { EntryGroupArgs } from "./entryGroup";
+export type EntryGroup = import("./entryGroup").EntryGroup;
+export const EntryGroup: typeof import("./entryGroup").EntryGroup = null as any;
+utilities.lazyLoad(exports, ["EntryGroup"], () => require("./entryGroup"));
+
 export { EntryGroupIamBindingArgs } from "./entryGroupIamBinding";
 export type EntryGroupIamBinding = import("./entryGroupIamBinding").EntryGroupIamBinding;
 export const EntryGroupIamBinding: typeof import("./entryGroupIamBinding").EntryGroupIamBinding = null as any;
@@ -134,6 +149,11 @@ export { EntryGroupIamPolicyArgs } from "./entryGroupIamPolicy";
 export type EntryGroupIamPolicy = import("./entryGroupIamPolicy").EntryGroupIamPolicy;
 export const EntryGroupIamPolicy: typeof import("./entryGroupIamPolicy").EntryGroupIamPolicy = null as any;
 utilities.lazyLoad(exports, ["EntryGroupIamPolicy"], () => require("./entryGroupIamPolicy"));
+
+export { EntryTypeArgs } from "./entryType";
+export type EntryType = import("./entryType").EntryType;
+export const EntryType: typeof import("./entryType").EntryType = null as any;
+utilities.lazyLoad(exports, ["EntryType"], () => require("./entryType"));
 
 export { EntryTypeIamBindingArgs } from "./entryTypeIamBinding";
 export type EntryTypeIamBinding = import("./entryTypeIamBinding").EntryTypeIamBinding;
@@ -154,6 +174,11 @@ export { EnvironmentArgs } from "./environment";
 export type Environment = import("./environment").Environment;
 export const Environment: typeof import("./environment").Environment = null as any;
 utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
+
+export { GetAspectTypeArgs, GetAspectTypeResult, GetAspectTypeOutputArgs } from "./getAspectType";
+export const getAspectType: typeof import("./getAspectType").getAspectType = null as any;
+export const getAspectTypeOutput: typeof import("./getAspectType").getAspectTypeOutput = null as any;
+utilities.lazyLoad(exports, ["getAspectType","getAspectTypeOutput"], () => require("./getAspectType"));
 
 export { GetAspectTypeIamPolicyArgs, GetAspectTypeIamPolicyResult, GetAspectTypeIamPolicyOutputArgs } from "./getAspectTypeIamPolicy";
 export const getAspectTypeIamPolicy: typeof import("./getAspectTypeIamPolicy").getAspectTypeIamPolicy = null as any;
@@ -220,10 +245,25 @@ export const getEntity: typeof import("./getEntity").getEntity = null as any;
 export const getEntityOutput: typeof import("./getEntity").getEntityOutput = null as any;
 utilities.lazyLoad(exports, ["getEntity","getEntityOutput"], () => require("./getEntity"));
 
+export { GetEntryArgs, GetEntryResult, GetEntryOutputArgs } from "./getEntry";
+export const getEntry: typeof import("./getEntry").getEntry = null as any;
+export const getEntryOutput: typeof import("./getEntry").getEntryOutput = null as any;
+utilities.lazyLoad(exports, ["getEntry","getEntryOutput"], () => require("./getEntry"));
+
+export { GetEntryGroupArgs, GetEntryGroupResult, GetEntryGroupOutputArgs } from "./getEntryGroup";
+export const getEntryGroup: typeof import("./getEntryGroup").getEntryGroup = null as any;
+export const getEntryGroupOutput: typeof import("./getEntryGroup").getEntryGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getEntryGroup","getEntryGroupOutput"], () => require("./getEntryGroup"));
+
 export { GetEntryGroupIamPolicyArgs, GetEntryGroupIamPolicyResult, GetEntryGroupIamPolicyOutputArgs } from "./getEntryGroupIamPolicy";
 export const getEntryGroupIamPolicy: typeof import("./getEntryGroupIamPolicy").getEntryGroupIamPolicy = null as any;
 export const getEntryGroupIamPolicyOutput: typeof import("./getEntryGroupIamPolicy").getEntryGroupIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getEntryGroupIamPolicy","getEntryGroupIamPolicyOutput"], () => require("./getEntryGroupIamPolicy"));
+
+export { GetEntryTypeArgs, GetEntryTypeResult, GetEntryTypeOutputArgs } from "./getEntryType";
+export const getEntryType: typeof import("./getEntryType").getEntryType = null as any;
+export const getEntryTypeOutput: typeof import("./getEntryType").getEntryTypeOutput = null as any;
+utilities.lazyLoad(exports, ["getEntryType","getEntryTypeOutput"], () => require("./getEntryType"));
 
 export { GetEntryTypeIamPolicyArgs, GetEntryTypeIamPolicyResult, GetEntryTypeIamPolicyOutputArgs } from "./getEntryTypeIamPolicy";
 export const getEntryTypeIamPolicy: typeof import("./getEntryTypeIamPolicy").getEntryTypeIamPolicy = null as any;
@@ -443,6 +483,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:dataplex/v1:AspectType":
+                return new AspectType(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:AspectTypeIamBinding":
                 return new AspectTypeIamBinding(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:AspectTypeIamMember":
@@ -489,12 +531,18 @@ const _module = {
                 return new DataTaxonomyIamPolicy(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:Entity":
                 return new Entity(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:Entry":
+                return new Entry(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:EntryGroup":
+                return new EntryGroup(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:EntryGroupIamBinding":
                 return new EntryGroupIamBinding(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:EntryGroupIamMember":
                 return new EntryGroupIamMember(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:EntryGroupIamPolicy":
                 return new EntryGroupIamPolicy(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:EntryType":
+                return new EntryType(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:EntryTypeIamBinding":
                 return new EntryTypeIamBinding(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:EntryTypeIamMember":

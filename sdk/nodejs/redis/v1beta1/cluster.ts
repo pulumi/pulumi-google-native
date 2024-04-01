@@ -58,6 +58,18 @@ export class Cluster extends pulumi.CustomResource {
      * Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node.
+     */
+    public readonly nodeType!: pulumi.Output<string>;
+    /**
+     * Optional. Persistence config (RDB, AOF) for the cluster.
+     */
+    public readonly persistenceConfig!: pulumi.Output<outputs.redis.v1beta1.ClusterPersistenceConfigResponse>;
+    /**
+     * Precise value of redis memory size in GB for the entire cluster.
+     */
+    public /*out*/ readonly preciseSizeGb!: pulumi.Output<number>;
     public readonly project!: pulumi.Output<string>;
     /**
      * Each PscConfig configures the consumer network where IPs will be designated to the cluster for client access through Private Service Connect Automation. Currently, only one PscConfig is supported.
@@ -67,6 +79,10 @@ export class Cluster extends pulumi.CustomResource {
      * PSC connections for discovery of the cluster topology and accessing the cluster.
      */
     public /*out*/ readonly pscConnections!: pulumi.Output<outputs.redis.v1beta1.PscConnectionResponse[]>;
+    /**
+     * Optional. Key/Value pairs of customer overrides for mutable Redis Configs
+     */
+    public readonly redisConfigs!: pulumi.Output<{[key: string]: string}>;
     /**
      * Optional. The number of replica nodes per shard.
      */
@@ -80,7 +96,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly shardCount!: pulumi.Output<number>;
     /**
-     * Redis memory size in GB for the entire cluster.
+     * Redis memory size in GB for the entire cluster rounded up to the next integer.
      */
     public /*out*/ readonly sizeGb!: pulumi.Output<number>;
     /**
@@ -124,14 +140,18 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nodeType"] = args ? args.nodeType : undefined;
+            resourceInputs["persistenceConfig"] = args ? args.persistenceConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["pscConfigs"] = args ? args.pscConfigs : undefined;
+            resourceInputs["redisConfigs"] = args ? args.redisConfigs : undefined;
             resourceInputs["replicaCount"] = args ? args.replicaCount : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["shardCount"] = args ? args.shardCount : undefined;
             resourceInputs["transitEncryptionMode"] = args ? args.transitEncryptionMode : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["discoveryEndpoints"] = undefined /*out*/;
+            resourceInputs["preciseSizeGb"] = undefined /*out*/;
             resourceInputs["pscConnections"] = undefined /*out*/;
             resourceInputs["sizeGb"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -144,9 +164,13 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["discoveryEndpoints"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["nodeType"] = undefined /*out*/;
+            resourceInputs["persistenceConfig"] = undefined /*out*/;
+            resourceInputs["preciseSizeGb"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["pscConfigs"] = undefined /*out*/;
             resourceInputs["pscConnections"] = undefined /*out*/;
+            resourceInputs["redisConfigs"] = undefined /*out*/;
             resourceInputs["replicaCount"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["shardCount"] = undefined /*out*/;
@@ -180,11 +204,23 @@ export interface ClusterArgs {
      * Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
      */
     name?: pulumi.Input<string>;
+    /**
+     * Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node.
+     */
+    nodeType?: pulumi.Input<enums.redis.v1beta1.ClusterNodeType>;
+    /**
+     * Optional. Persistence config (RDB, AOF) for the cluster.
+     */
+    persistenceConfig?: pulumi.Input<inputs.redis.v1beta1.ClusterPersistenceConfigArgs>;
     project?: pulumi.Input<string>;
     /**
      * Each PscConfig configures the consumer network where IPs will be designated to the cluster for client access through Private Service Connect Automation. Currently, only one PscConfig is supported.
      */
     pscConfigs: pulumi.Input<pulumi.Input<inputs.redis.v1beta1.PscConfigArgs>[]>;
+    /**
+     * Optional. Key/Value pairs of customer overrides for mutable Redis Configs
+     */
+    redisConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Optional. The number of replica nodes per shard.
      */

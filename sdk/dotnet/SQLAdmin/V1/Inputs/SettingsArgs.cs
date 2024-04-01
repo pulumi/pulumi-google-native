@@ -137,6 +137,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public Input<Pulumi.GoogleNative.SQLAdmin.V1.SettingsEdition>? Edition { get; set; }
 
         /// <summary>
+        /// Optional. When this parameter is set to true, Cloud SQL instances can connect to Vertex AI to pass requests for real-time predictions and insights to the AI. The default value is false. This applies only to Cloud SQL for PostgreSQL instances.
+        /// </summary>
+        [Input("enableGoogleMlIntegration")]
+        public Input<bool>? EnableGoogleMlIntegration { get; set; }
+
+        /// <summary>
         /// Insights configuration, for now relevant only for Postgres.
         /// </summary>
         [Input("insightsConfig")]

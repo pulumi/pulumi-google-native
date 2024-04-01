@@ -40,6 +40,10 @@ export interface GetFolderResult {
      * The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
      */
     readonly parent: string;
+    /**
+     * Optional. Input only. Immutable. Tag keys/values directly bound to this folder. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+     */
+    readonly tags: {[key: string]: string};
 }
 /**
  * Retrieves a Folder identified by the supplied resource name. Valid Folder resource names have the format `folders/{folder_id}` (for example, `folders/1234`). The caller must have `resourcemanager.folders.get` permission on the identified folder.

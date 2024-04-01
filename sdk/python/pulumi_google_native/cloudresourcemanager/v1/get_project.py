@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetProjectResult:
-    def __init__(__self__, create_time=None, labels=None, lifecycle_state=None, name=None, parent=None, project_id=None, project_number=None):
+    def __init__(__self__, create_time=None, labels=None, lifecycle_state=None, name=None, parent=None, project_id=None, project_number=None, tags=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -41,6 +41,9 @@ class GetProjectResult:
         if project_number and not isinstance(project_number, str):
             raise TypeError("Expected argument 'project_number' to be a str")
         pulumi.set(__self__, "project_number", project_number)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="createTime")
@@ -98,6 +101,14 @@ class GetProjectResult:
         """
         return pulumi.get(self, "project_number")
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, str]:
+        """
+        Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+        """
+        return pulumi.get(self, "tags")
+
 
 class AwaitableGetProjectResult(GetProjectResult):
     # pylint: disable=using-constant-test
@@ -111,7 +122,8 @@ class AwaitableGetProjectResult(GetProjectResult):
             name=self.name,
             parent=self.parent,
             project_id=self.project_id,
-            project_number=self.project_number)
+            project_number=self.project_number,
+            tags=self.tags)
 
 
 def get_project(project: Optional[str] = None,
@@ -131,7 +143,8 @@ def get_project(project: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         parent=pulumi.get(__ret__, 'parent'),
         project_id=pulumi.get(__ret__, 'project_id'),
-        project_number=pulumi.get(__ret__, 'project_number'))
+        project_number=pulumi.get(__ret__, 'project_number'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_project)

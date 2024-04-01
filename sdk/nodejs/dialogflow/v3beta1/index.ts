@@ -30,6 +30,11 @@ export type Flow = import("./flow").Flow;
 export const Flow: typeof import("./flow").Flow = null as any;
 utilities.lazyLoad(exports, ["Flow"], () => require("./flow"));
 
+export { GeneratorArgs } from "./generator";
+export type Generator = import("./generator").Generator;
+export const Generator: typeof import("./generator").Generator = null as any;
+utilities.lazyLoad(exports, ["Generator"], () => require("./generator"));
+
 export { GetAgentArgs, GetAgentResult, GetAgentOutputArgs } from "./getAgent";
 export const getAgent: typeof import("./getAgent").getAgent = null as any;
 export const getAgentOutput: typeof import("./getAgent").getAgentOutput = null as any;
@@ -54,6 +59,11 @@ export { GetFlowArgs, GetFlowResult, GetFlowOutputArgs } from "./getFlow";
 export const getFlow: typeof import("./getFlow").getFlow = null as any;
 export const getFlowOutput: typeof import("./getFlow").getFlowOutput = null as any;
 utilities.lazyLoad(exports, ["getFlow","getFlowOutput"], () => require("./getFlow"));
+
+export { GetGeneratorArgs, GetGeneratorResult, GetGeneratorOutputArgs } from "./getGenerator";
+export const getGenerator: typeof import("./getGenerator").getGenerator = null as any;
+export const getGeneratorOutput: typeof import("./getGenerator").getGeneratorOutput = null as any;
+utilities.lazyLoad(exports, ["getGenerator","getGeneratorOutput"], () => require("./getGenerator"));
 
 export { GetIntentArgs, GetIntentResult, GetIntentOutputArgs } from "./getIntent";
 export const getIntent: typeof import("./getIntent").getIntent = null as any;
@@ -153,6 +163,8 @@ const _module = {
                 return new Experiment(name, <any>undefined, { urn })
             case "google-native:dialogflow/v3beta1:Flow":
                 return new Flow(name, <any>undefined, { urn })
+            case "google-native:dialogflow/v3beta1:Generator":
+                return new Generator(name, <any>undefined, { urn })
             case "google-native:dialogflow/v3beta1:Intent":
                 return new Intent(name, <any>undefined, { urn })
             case "google-native:dialogflow/v3beta1:Page":

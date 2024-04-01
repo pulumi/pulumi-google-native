@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Logging.V2
     public sealed class GetBillingAccountBucketLinkResult
     {
         /// <summary>
-        /// The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
+        /// Optional. The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views corresponding to the LogViews in the bucket.
         /// </summary>
         public readonly Outputs.BigQueryDatasetResponse BigqueryDataset;
         /// <summary>
@@ -78,7 +78,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Describes this link.The maximum length of the description is 8000 characters.
+        /// Optional. Describes this link.The maximum length of the description is 8000 characters.
         /// </summary>
         public readonly string Description;
         /// <summary>

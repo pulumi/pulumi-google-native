@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
     public sealed class GoogleCloudIntegrationsV1alphaIntegrationParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Indicates whether this variable contains large data and need to be uploaded to Cloud Storage.
+        /// </summary>
+        [Input("containsLargeData")]
+        public Input<bool>? ContainsLargeData { get; set; }
+
+        /// <summary>
         /// Type of the parameter.
         /// </summary>
         [Input("dataType")]
@@ -56,6 +62,12 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
+
+        /// <summary>
+        /// True if this parameter should be masked in the logs
+        /// </summary>
+        [Input("masked")]
+        public Input<bool>? Masked { get; set; }
 
         /// <summary>
         /// The identifier of the node (TaskConfig/TriggerConfig) this parameter was produced by, if it is a transient param or a copy of an input param.

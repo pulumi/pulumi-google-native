@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha.Inputs
         public Input<string> DefaultLanguageCode { get; set; } = null!;
 
         /// <summary>
+        /// Agent location for Agent creation, supported values: global/us/eu. If not provided, us Engine will create Agent using us-central-1 by default; eu Engine will create Agent using eu-west-1 by default.
+        /// </summary>
+        [Input("location")]
+        public Input<string>? Location { get; set; }
+
+        /// <summary>
         /// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
         /// </summary>
         [Input("timeZone", required: true)]

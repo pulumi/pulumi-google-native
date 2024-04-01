@@ -28,6 +28,8 @@ type RegionCommitment struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Commitment end time in RFC3339 text format.
 	EndTimestamp pulumi.StringOutput `pulumi:"endTimestamp"`
+	// Specifies the already existing reservations to attach to the Commitment. This field is optional, and it can be a full or partial URL. For example, the following are valid URLs to an reservation: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /reservations/reservation - projects/project/zones/zone/reservations/reservation
+	ExistingReservations pulumi.StringArrayOutput `pulumi:"existingReservations"`
 	// Type of the resource. Always compute#commitment for commitments.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The license specification required as part of a license commitment.
@@ -42,7 +44,7 @@ type RegionCommitment struct {
 	Region  pulumi.StringOutput `pulumi:"region"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
-	// List of create-on-create reseravtions for this commitment.
+	// List of create-on-create reservations for this commitment.
 	Reservations ReservationResponseArrayOutput `pulumi:"reservations"`
 	// A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
 	Resources ResourceCommitmentResponseArrayOutput `pulumi:"resources"`
@@ -114,6 +116,8 @@ type regionCommitmentArgs struct {
 	Category *RegionCommitmentCategory `pulumi:"category"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
+	// Specifies the already existing reservations to attach to the Commitment. This field is optional, and it can be a full or partial URL. For example, the following are valid URLs to an reservation: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /reservations/reservation - projects/project/zones/zone/reservations/reservation
+	ExistingReservations []string `pulumi:"existingReservations"`
 	// The license specification required as part of a license commitment.
 	LicenseResource *LicenseResourceCommitment `pulumi:"licenseResource"`
 	// List of source commitments to be merged into a new commitment.
@@ -126,7 +130,7 @@ type regionCommitmentArgs struct {
 	Region  string                `pulumi:"region"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
-	// List of create-on-create reseravtions for this commitment.
+	// List of create-on-create reservations for this commitment.
 	Reservations []ReservationType `pulumi:"reservations"`
 	// A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
 	Resources []ResourceCommitment `pulumi:"resources"`
@@ -144,6 +148,8 @@ type RegionCommitmentArgs struct {
 	Category RegionCommitmentCategoryPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
+	// Specifies the already existing reservations to attach to the Commitment. This field is optional, and it can be a full or partial URL. For example, the following are valid URLs to an reservation: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /reservations/reservation - projects/project/zones/zone/reservations/reservation
+	ExistingReservations pulumi.StringArrayInput
 	// The license specification required as part of a license commitment.
 	LicenseResource LicenseResourceCommitmentPtrInput
 	// List of source commitments to be merged into a new commitment.
@@ -156,7 +162,7 @@ type RegionCommitmentArgs struct {
 	Region  pulumi.StringInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
-	// List of create-on-create reseravtions for this commitment.
+	// List of create-on-create reservations for this commitment.
 	Reservations ReservationTypeArrayInput
 	// A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
 	Resources ResourceCommitmentArrayInput
@@ -228,6 +234,11 @@ func (o RegionCommitmentOutput) EndTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.EndTimestamp }).(pulumi.StringOutput)
 }
 
+// Specifies the already existing reservations to attach to the Commitment. This field is optional, and it can be a full or partial URL. For example, the following are valid URLs to an reservation: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /reservations/reservation - projects/project/zones/zone/reservations/reservation
+func (o RegionCommitmentOutput) ExistingReservations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RegionCommitment) pulumi.StringArrayOutput { return v.ExistingReservations }).(pulumi.StringArrayOutput)
+}
+
 // Type of the resource. Always compute#commitment for commitments.
 func (o RegionCommitmentOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
@@ -266,7 +277,7 @@ func (o RegionCommitmentOutput) RequestId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionCommitment) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
-// List of create-on-create reseravtions for this commitment.
+// List of create-on-create reservations for this commitment.
 func (o RegionCommitmentOutput) Reservations() ReservationResponseArrayOutput {
 	return o.ApplyT(func(v *RegionCommitment) ReservationResponseArrayOutput { return v.Reservations }).(ReservationResponseArrayOutput)
 }

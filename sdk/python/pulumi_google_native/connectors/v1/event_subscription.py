@@ -26,7 +26,8 @@ class EventSubscriptionArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  subscriber: Optional[pulumi.Input[str]] = None,
-                 subscriber_link: Optional[pulumi.Input[str]] = None):
+                 subscriber_link: Optional[pulumi.Input[str]] = None,
+                 trigger_config_variables: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]]] = None):
         """
         The set of arguments for constructing a EventSubscription resource.
         :param pulumi.Input[str] event_subscription_id: Required. Identifier to assign to the Event Subscription. Must be unique within scope of the parent resource.
@@ -36,6 +37,7 @@ class EventSubscriptionArgs:
         :param pulumi.Input[str] name: Resource name of the EventSubscription. Format: projects/{project}/locations/{location}/connections/{connection}/eventSubscriptions/{event_subscription}
         :param pulumi.Input[str] subscriber: Optional. name of the Subscriber for the current EventSubscription.
         :param pulumi.Input[str] subscriber_link: Optional. Link for Subscriber of the current EventSubscription.
+        :param pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]] trigger_config_variables: Optional. Configuration for configuring the trigger
         """
         pulumi.set(__self__, "connection_id", connection_id)
         pulumi.set(__self__, "event_subscription_id", event_subscription_id)
@@ -55,6 +57,8 @@ class EventSubscriptionArgs:
             pulumi.set(__self__, "subscriber", subscriber)
         if subscriber_link is not None:
             pulumi.set(__self__, "subscriber_link", subscriber_link)
+        if trigger_config_variables is not None:
+            pulumi.set(__self__, "trigger_config_variables", trigger_config_variables)
 
     @property
     @pulumi.getter(name="connectionId")
@@ -167,6 +171,18 @@ class EventSubscriptionArgs:
     def subscriber_link(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subscriber_link", value)
 
+    @property
+    @pulumi.getter(name="triggerConfigVariables")
+    def trigger_config_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]]]:
+        """
+        Optional. Configuration for configuring the trigger
+        """
+        return pulumi.get(self, "trigger_config_variables")
+
+    @trigger_config_variables.setter
+    def trigger_config_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]]]):
+        pulumi.set(self, "trigger_config_variables", value)
+
 
 class EventSubscription(pulumi.CustomResource):
     @overload
@@ -183,6 +199,7 @@ class EventSubscription(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  subscriber: Optional[pulumi.Input[str]] = None,
                  subscriber_link: Optional[pulumi.Input[str]] = None,
+                 trigger_config_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigVariableArgs']]]]] = None,
                  __props__=None):
         """
         Creates a new EventSubscription in a given project,location and connection.
@@ -196,6 +213,7 @@ class EventSubscription(pulumi.CustomResource):
         :param pulumi.Input[str] name: Resource name of the EventSubscription. Format: projects/{project}/locations/{location}/connections/{connection}/eventSubscriptions/{event_subscription}
         :param pulumi.Input[str] subscriber: Optional. name of the Subscriber for the current EventSubscription.
         :param pulumi.Input[str] subscriber_link: Optional. Link for Subscriber of the current EventSubscription.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigVariableArgs']]]] trigger_config_variables: Optional. Configuration for configuring the trigger
         """
         ...
     @overload
@@ -231,6 +249,7 @@ class EventSubscription(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  subscriber: Optional[pulumi.Input[str]] = None,
                  subscriber_link: Optional[pulumi.Input[str]] = None,
+                 trigger_config_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigVariableArgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -254,6 +273,7 @@ class EventSubscription(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["subscriber"] = subscriber
             __props__.__dict__["subscriber_link"] = subscriber_link
+            __props__.__dict__["trigger_config_variables"] = trigger_config_variables
             __props__.__dict__["create_time"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["update_time"] = None
@@ -293,6 +313,7 @@ class EventSubscription(pulumi.CustomResource):
         __props__.__dict__["status"] = None
         __props__.__dict__["subscriber"] = None
         __props__.__dict__["subscriber_link"] = None
+        __props__.__dict__["trigger_config_variables"] = None
         __props__.__dict__["update_time"] = None
         return EventSubscription(resource_name, opts=opts, __props__=__props__)
 
@@ -382,6 +403,14 @@ class EventSubscription(pulumi.CustomResource):
         Optional. Link for Subscriber of the current EventSubscription.
         """
         return pulumi.get(self, "subscriber_link")
+
+    @property
+    @pulumi.getter(name="triggerConfigVariables")
+    def trigger_config_variables(self) -> pulumi.Output[Sequence['outputs.ConfigVariableResponse']]:
+        """
+        Optional. Configuration for configuring the trigger
+        """
+        return pulumi.get(self, "trigger_config_variables")
 
     @property
     @pulumi.getter(name="updateTime")

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetStoragePoolResult:
-    def __init__(__self__, capacity_provisioning_type=None, creation_timestamp=None, description=None, kind=None, label_fingerprint=None, labels=None, name=None, performance_provisioning_type=None, provisioned_iops=None, provisioned_throughput=None, resource_status=None, self_link=None, self_link_with_id=None, size_gb=None, state=None, status=None, storage_pool_type=None, zone=None):
+    def __init__(__self__, capacity_provisioning_type=None, creation_timestamp=None, description=None, kind=None, label_fingerprint=None, labels=None, name=None, performance_provisioning_type=None, pool_provisioned_capacity_gb=None, pool_provisioned_iops=None, pool_provisioned_throughput=None, provisioned_iops=None, provisioned_throughput=None, resource_status=None, self_link=None, self_link_with_id=None, size_gb=None, state=None, status=None, storage_pool_type=None, zone=None):
         if capacity_provisioning_type and not isinstance(capacity_provisioning_type, str):
             raise TypeError("Expected argument 'capacity_provisioning_type' to be a str")
         pulumi.set(__self__, "capacity_provisioning_type", capacity_provisioning_type)
@@ -44,6 +44,15 @@ class GetStoragePoolResult:
         if performance_provisioning_type and not isinstance(performance_provisioning_type, str):
             raise TypeError("Expected argument 'performance_provisioning_type' to be a str")
         pulumi.set(__self__, "performance_provisioning_type", performance_provisioning_type)
+        if pool_provisioned_capacity_gb and not isinstance(pool_provisioned_capacity_gb, str):
+            raise TypeError("Expected argument 'pool_provisioned_capacity_gb' to be a str")
+        pulumi.set(__self__, "pool_provisioned_capacity_gb", pool_provisioned_capacity_gb)
+        if pool_provisioned_iops and not isinstance(pool_provisioned_iops, str):
+            raise TypeError("Expected argument 'pool_provisioned_iops' to be a str")
+        pulumi.set(__self__, "pool_provisioned_iops", pool_provisioned_iops)
+        if pool_provisioned_throughput and not isinstance(pool_provisioned_throughput, str):
+            raise TypeError("Expected argument 'pool_provisioned_throughput' to be a str")
+        pulumi.set(__self__, "pool_provisioned_throughput", pool_provisioned_throughput)
         if provisioned_iops and not isinstance(provisioned_iops, str):
             raise TypeError("Expected argument 'provisioned_iops' to be a str")
         pulumi.set(__self__, "provisioned_iops", provisioned_iops)
@@ -140,19 +149,49 @@ class GetStoragePoolResult:
         return pulumi.get(self, "performance_provisioning_type")
 
     @property
+    @pulumi.getter(name="poolProvisionedCapacityGb")
+    def pool_provisioned_capacity_gb(self) -> str:
+        """
+        Size, in GiB, of the storage pool.
+        """
+        return pulumi.get(self, "pool_provisioned_capacity_gb")
+
+    @property
+    @pulumi.getter(name="poolProvisionedIops")
+    def pool_provisioned_iops(self) -> str:
+        """
+        Provisioned IOPS of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced.
+        """
+        return pulumi.get(self, "pool_provisioned_iops")
+
+    @property
+    @pulumi.getter(name="poolProvisionedThroughput")
+    def pool_provisioned_throughput(self) -> str:
+        """
+        Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        """
+        return pulumi.get(self, "pool_provisioned_throughput")
+
+    @property
     @pulumi.getter(name="provisionedIops")
     def provisioned_iops(self) -> str:
         """
-        Provsioned IOPS of the storage pool.
+        DEPRECATED -- use "pool provisioned IOPS".
         """
+        warnings.warn("""DEPRECATED -- use \"pool provisioned IOPS\".""", DeprecationWarning)
+        pulumi.log.warn("""provisioned_iops is deprecated: DEPRECATED -- use \"pool provisioned IOPS\".""")
+
         return pulumi.get(self, "provisioned_iops")
 
     @property
     @pulumi.getter(name="provisionedThroughput")
     def provisioned_throughput(self) -> str:
         """
-        Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        DEPRECATED -- use "pool provisioned throughput".
         """
+        warnings.warn("""DEPRECATED -- use \"pool provisioned throughput\".""", DeprecationWarning)
+        pulumi.log.warn("""provisioned_throughput is deprecated: DEPRECATED -- use \"pool provisioned throughput\".""")
+
         return pulumi.get(self, "provisioned_throughput")
 
     @property
@@ -183,8 +222,11 @@ class GetStoragePoolResult:
     @pulumi.getter(name="sizeGb")
     def size_gb(self) -> str:
         """
-        Size, in GiB, of the storage pool.
+        DEPRECATED -- use "pool provisioned capacity gb".
         """
+        warnings.warn("""DEPRECATED -- use \"pool provisioned capacity gb\".""", DeprecationWarning)
+        pulumi.log.warn("""size_gb is deprecated: DEPRECATED -- use \"pool provisioned capacity gb\".""")
+
         return pulumi.get(self, "size_gb")
 
     @property
@@ -234,6 +276,9 @@ class AwaitableGetStoragePoolResult(GetStoragePoolResult):
             labels=self.labels,
             name=self.name,
             performance_provisioning_type=self.performance_provisioning_type,
+            pool_provisioned_capacity_gb=self.pool_provisioned_capacity_gb,
+            pool_provisioned_iops=self.pool_provisioned_iops,
+            pool_provisioned_throughput=self.pool_provisioned_throughput,
             provisioned_iops=self.provisioned_iops,
             provisioned_throughput=self.provisioned_throughput,
             resource_status=self.resource_status,
@@ -269,6 +314,9 @@ def get_storage_pool(project: Optional[str] = None,
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         performance_provisioning_type=pulumi.get(__ret__, 'performance_provisioning_type'),
+        pool_provisioned_capacity_gb=pulumi.get(__ret__, 'pool_provisioned_capacity_gb'),
+        pool_provisioned_iops=pulumi.get(__ret__, 'pool_provisioned_iops'),
+        pool_provisioned_throughput=pulumi.get(__ret__, 'pool_provisioned_throughput'),
         provisioned_iops=pulumi.get(__ret__, 'provisioned_iops'),
         provisioned_throughput=pulumi.get(__ret__, 'provisioned_throughput'),
         resource_status=pulumi.get(__ret__, 'resource_status'),

@@ -26,7 +26,7 @@ class DeviceSessionArgs:
         :param pulumi.Input['AndroidDeviceArgs'] android_device: The requested device
         :param pulumi.Input[str] expire_time: Optional. If the device is still in use at this time, any connections will be ended and the SessionState will transition from ACTIVE to FINISHED.
         :param pulumi.Input[str] name: Optional. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}"
-        :param pulumi.Input[str] ttl: Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 30 minutes.
+        :param pulumi.Input[str] ttl: Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 15 minutes.
         """
         pulumi.set(__self__, "android_device", android_device)
         if expire_time is not None:
@@ -87,7 +87,7 @@ class DeviceSessionArgs:
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 30 minutes.
+        Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 15 minutes.
         """
         return pulumi.get(self, "ttl")
 
@@ -117,7 +117,7 @@ class DeviceSession(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AndroidDeviceArgs']] android_device: The requested device
         :param pulumi.Input[str] expire_time: Optional. If the device is still in use at this time, any connections will be ended and the SessionState will transition from ACTIVE to FINISHED.
         :param pulumi.Input[str] name: Optional. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}"
-        :param pulumi.Input[str] ttl: Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 30 minutes.
+        :param pulumi.Input[str] ttl: Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 15 minutes.
         """
         ...
     @overload
@@ -290,7 +290,7 @@ class DeviceSession(pulumi.CustomResource):
     @pulumi.getter
     def ttl(self) -> pulumi.Output[str]:
         """
-        Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 30 minutes.
+        Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 15 minutes.
         """
         return pulumi.get(self, "ttl")
 

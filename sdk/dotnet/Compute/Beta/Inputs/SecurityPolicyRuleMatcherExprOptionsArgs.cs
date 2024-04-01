@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     public sealed class SecurityPolicyRuleMatcherExprOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+        /// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
         /// </summary>
         [Input("recaptchaOptions")]
         public Input<Inputs.SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs>? RecaptchaOptions { get; set; }

@@ -28,12 +28,12 @@ type FhirStore struct {
 	DisableResourceVersioning pulumi.BoolOutput `pulumi:"disableResourceVersioning"`
 	// Whether this FHIR store has the [updateCreate capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate). This determines if the client can use an Update operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through the Create operation and attempts to update a non-existent resource return errors. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud audit logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources.
 	EnableUpdateCreate pulumi.BoolOutput `pulumi:"enableUpdateCreate"`
-	// The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
-	FhirStoreId pulumi.StringPtrOutput `pulumi:"fhirStoreId"`
+	// Required. The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+	FhirStoreId pulumi.StringOutput `pulumi:"fhirStoreId"`
 	// User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	// Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+	// Identifier. Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
 	//
@@ -60,8 +60,15 @@ func NewFhirStore(ctx *pulumi.Context,
 	if args.DatasetId == nil {
 		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
+	if args.FhirStoreId == nil {
+		return nil, errors.New("invalid value for required argument 'FhirStoreId'")
+	}
+	if args.Version == nil {
+		return nil, errors.New("invalid value for required argument 'Version'")
+	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"datasetId",
+		"fhirStoreId",
 		"location",
 		"project",
 	})
@@ -110,8 +117,8 @@ type fhirStoreArgs struct {
 	DisableResourceVersioning *bool `pulumi:"disableResourceVersioning"`
 	// Whether this FHIR store has the [updateCreate capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate). This determines if the client can use an Update operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through the Create operation and attempts to update a non-existent resource return errors. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud audit logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources.
 	EnableUpdateCreate *bool `pulumi:"enableUpdateCreate"`
-	// The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
-	FhirStoreId *string `pulumi:"fhirStoreId"`
+	// Required. The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+	FhirStoreId string `pulumi:"fhirStoreId"`
 	// User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -127,7 +134,7 @@ type fhirStoreArgs struct {
 	// Configuration for how to validate incoming FHIR resources against configured profiles.
 	ValidationConfig *ValidationConfig `pulumi:"validationConfig"`
 	// Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
-	Version *FhirStoreVersion `pulumi:"version"`
+	Version FhirStoreVersion `pulumi:"version"`
 }
 
 // The set of arguments for constructing a FhirStore resource.
@@ -143,8 +150,8 @@ type FhirStoreArgs struct {
 	DisableResourceVersioning pulumi.BoolPtrInput
 	// Whether this FHIR store has the [updateCreate capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate). This determines if the client can use an Update operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through the Create operation and attempts to update a non-existent resource return errors. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud audit logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources.
 	EnableUpdateCreate pulumi.BoolPtrInput
-	// The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
-	FhirStoreId pulumi.StringPtrInput
+	// Required. The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+	FhirStoreId pulumi.StringInput
 	// User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
@@ -160,7 +167,7 @@ type FhirStoreArgs struct {
 	// Configuration for how to validate incoming FHIR resources against configured profiles.
 	ValidationConfig ValidationConfigPtrInput
 	// Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
-	Version FhirStoreVersionPtrInput
+	Version FhirStoreVersionInput
 }
 
 func (FhirStoreArgs) ElementType() reflect.Type {
@@ -229,9 +236,9 @@ func (o FhirStoreOutput) EnableUpdateCreate() pulumi.BoolOutput {
 	return o.ApplyT(func(v *FhirStore) pulumi.BoolOutput { return v.EnableUpdateCreate }).(pulumi.BoolOutput)
 }
 
-// The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
-func (o FhirStoreOutput) FhirStoreId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FhirStore) pulumi.StringPtrOutput { return v.FhirStoreId }).(pulumi.StringPtrOutput)
+// Required. The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+func (o FhirStoreOutput) FhirStoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FhirStore) pulumi.StringOutput { return v.FhirStoreId }).(pulumi.StringOutput)
 }
 
 // User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
@@ -243,7 +250,7 @@ func (o FhirStoreOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *FhirStore) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+// Identifier. Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
 func (o FhirStoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FhirStore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -81,6 +81,10 @@ export class Registration extends pulumi.CustomResource {
     public /*out*/ readonly pendingContactSettings!: pulumi.Output<outputs.domains.v1alpha2.ContactSettingsResponse>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * Current domain management provider.
+     */
+    public /*out*/ readonly provider!: pulumi.Output<string>;
+    /**
      * The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
      */
     public /*out*/ readonly registerFailureReason!: pulumi.Output<string>;
@@ -93,9 +97,9 @@ export class Registration extends pulumi.CustomResource {
      */
     public /*out*/ readonly supportedPrivacy!: pulumi.Output<string[]>;
     /**
-     * Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+     * Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
      *
-     * @deprecated Output only. Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
+     * @deprecated Output only. Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). The reason the domain transfer failed. Only set for domains in TRANSFER_FAILED state.
      */
     public /*out*/ readonly transferFailureReason!: pulumi.Output<string>;
 
@@ -135,6 +139,7 @@ export class Registration extends pulumi.CustomResource {
             resourceInputs["issues"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pendingContactSettings"] = undefined /*out*/;
+            resourceInputs["provider"] = undefined /*out*/;
             resourceInputs["registerFailureReason"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["supportedPrivacy"] = undefined /*out*/;
@@ -152,6 +157,7 @@ export class Registration extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pendingContactSettings"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["provider"] = undefined /*out*/;
             resourceInputs["registerFailureReason"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["supportedPrivacy"] = undefined /*out*/;

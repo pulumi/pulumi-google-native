@@ -67,6 +67,8 @@ type LookupMigrationJobResult struct {
 	Source string `pulumi:"source"`
 	// The database engine type and provider of the source.
 	SourceDatabase DatabaseTypeResponse `pulumi:"sourceDatabase"`
+	// Optional. Configuration for SQL Server homogeneous migration.
+	SqlserverHomogeneousMigrationJobConfig SqlServerHomogeneousMigrationJobConfigResponse `pulumi:"sqlserverHomogeneousMigrationJobConfig"`
 	// The current migration job state.
 	State string `pulumi:"state"`
 	// static ip connectivity data (default, no additional details needed).
@@ -209,6 +211,13 @@ func (o LookupMigrationJobResultOutput) Source() pulumi.StringOutput {
 // The database engine type and provider of the source.
 func (o LookupMigrationJobResultOutput) SourceDatabase() DatabaseTypeResponseOutput {
 	return o.ApplyT(func(v LookupMigrationJobResult) DatabaseTypeResponse { return v.SourceDatabase }).(DatabaseTypeResponseOutput)
+}
+
+// Optional. Configuration for SQL Server homogeneous migration.
+func (o LookupMigrationJobResultOutput) SqlserverHomogeneousMigrationJobConfig() SqlServerHomogeneousMigrationJobConfigResponseOutput {
+	return o.ApplyT(func(v LookupMigrationJobResult) SqlServerHomogeneousMigrationJobConfigResponse {
+		return v.SqlserverHomogeneousMigrationJobConfig
+	}).(SqlServerHomogeneousMigrationJobConfigResponseOutput)
 }
 
 // The current migration job state.

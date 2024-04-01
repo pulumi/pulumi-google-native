@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBucketResult:
-    def __init__(__self__, acl=None, autoclass=None, billing=None, cors=None, custom_placement_config=None, default_event_based_hold=None, default_object_acl=None, encryption=None, etag=None, iam_configuration=None, kind=None, labels=None, lifecycle=None, location=None, location_type=None, logging=None, metageneration=None, name=None, object_retention=None, owner=None, project_number=None, retention_policy=None, rpo=None, satisfies_pzs=None, self_link=None, soft_delete_policy=None, storage_class=None, time_created=None, updated=None, versioning=None, website=None):
+    def __init__(__self__, acl=None, autoclass=None, billing=None, cors=None, custom_placement_config=None, default_event_based_hold=None, default_object_acl=None, encryption=None, etag=None, hierarchical_namespace=None, iam_configuration=None, kind=None, labels=None, lifecycle=None, location=None, location_type=None, logging=None, metageneration=None, name=None, object_retention=None, owner=None, project_number=None, retention_policy=None, rpo=None, satisfies_pzs=None, self_link=None, soft_delete_policy=None, storage_class=None, time_created=None, updated=None, versioning=None, website=None):
         if acl and not isinstance(acl, list):
             raise TypeError("Expected argument 'acl' to be a list")
         pulumi.set(__self__, "acl", acl)
@@ -47,6 +47,9 @@ class GetBucketResult:
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
+        if hierarchical_namespace and not isinstance(hierarchical_namespace, dict):
+            raise TypeError("Expected argument 'hierarchical_namespace' to be a dict")
+        pulumi.set(__self__, "hierarchical_namespace", hierarchical_namespace)
         if iam_configuration and not isinstance(iam_configuration, dict):
             raise TypeError("Expected argument 'iam_configuration' to be a dict")
         pulumi.set(__self__, "iam_configuration", iam_configuration)
@@ -185,6 +188,14 @@ class GetBucketResult:
         HTTP 1.1 Entity tag for the bucket.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="hierarchicalNamespace")
+    def hierarchical_namespace(self) -> 'outputs.BucketHierarchicalNamespaceResponse':
+        """
+        The bucket's hierarchical namespace configuration.
+        """
+        return pulumi.get(self, "hierarchical_namespace")
 
     @property
     @pulumi.getter(name="iamConfiguration")
@@ -378,6 +389,7 @@ class AwaitableGetBucketResult(GetBucketResult):
             default_object_acl=self.default_object_acl,
             encryption=self.encryption,
             etag=self.etag,
+            hierarchical_namespace=self.hierarchical_namespace,
             iam_configuration=self.iam_configuration,
             kind=self.kind,
             labels=self.labels,
@@ -430,6 +442,7 @@ def get_bucket(bucket: Optional[str] = None,
         default_object_acl=pulumi.get(__ret__, 'default_object_acl'),
         encryption=pulumi.get(__ret__, 'encryption'),
         etag=pulumi.get(__ret__, 'etag'),
+        hierarchical_namespace=pulumi.get(__ret__, 'hierarchical_namespace'),
         iam_configuration=pulumi.get(__ret__, 'iam_configuration'),
         kind=pulumi.get(__ret__, 'kind'),
         labels=pulumi.get(__ret__, 'labels'),

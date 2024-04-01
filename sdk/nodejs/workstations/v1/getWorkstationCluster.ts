@@ -56,6 +56,10 @@ export interface GetWorkstationClusterResult {
      */
     readonly displayName: string;
     /**
+     * Optional. Configuration options for a custom domain.
+     */
+    readonly domainConfig: outputs.workstations.v1.DomainConfigResponse;
+    /**
      * Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
      */
     readonly etag: string;

@@ -17,7 +17,13 @@ __all__ = [
     'DockerRepositoryConfigResponse',
     'DockerRepositoryResponse',
     'ExprResponse',
+    'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryResponse',
     'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse',
+    'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryResponse',
+    'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryResponse',
+    'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryResponse',
+    'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryResponse',
+    'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryResponse',
     'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse',
     'MavenRepositoryConfigResponse',
     'MavenRepositoryResponse',
@@ -39,7 +45,9 @@ class AptRepositoryResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "publicRepository":
+        if key == "customRepository":
+            suggest = "custom_repository"
+        elif key == "publicRepository":
             suggest = "public_repository"
 
         if suggest:
@@ -54,12 +62,23 @@ class AptRepositoryResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 custom_repository: 'outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryResponse',
                  public_repository: 'outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse'):
         """
         Configuration for an Apt remote repository.
+        :param 'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryResponse' custom_repository: Customer-specified remote repository.
         :param 'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse' public_repository: One of the publicly available Apt repositories supported by Artifact Registry.
         """
+        pulumi.set(__self__, "custom_repository", custom_repository)
         pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="customRepository")
+    def custom_repository(self) -> 'outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryResponse':
+        """
+        Customer-specified remote repository.
+        """
+        return pulumi.get(self, "custom_repository")
 
     @property
     @pulumi.getter(name="publicRepository")
@@ -82,8 +101,8 @@ class BindingResponse(dict):
         """
         Associates `members`, or principals, with a `role`.
         :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "members", members)
@@ -101,7 +120,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         """
         return pulumi.get(self, "members")
 
@@ -109,7 +128,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         return pulumi.get(self, "role")
 
@@ -161,7 +180,9 @@ class DockerRepositoryResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "publicRepository":
+        if key == "customRepository":
+            suggest = "custom_repository"
+        elif key == "publicRepository":
             suggest = "public_repository"
 
         if suggest:
@@ -176,12 +197,23 @@ class DockerRepositoryResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 custom_repository: 'outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryResponse',
                  public_repository: str):
         """
         Configuration for a Docker remote repository.
+        :param 'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryResponse' custom_repository: Customer-specified remote repository.
         :param str public_repository: One of the publicly available Docker repositories supported by Artifact Registry.
         """
+        pulumi.set(__self__, "custom_repository", custom_repository)
         pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="customRepository")
+    def custom_repository(self) -> 'outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryResponse':
+        """
+        Customer-specified remote repository.
+        """
+        return pulumi.get(self, "custom_repository")
 
     @property
     @pulumi.getter(name="publicRepository")
@@ -248,6 +280,28 @@ class ExprResponse(dict):
 
 
 @pulumi.output_type
+class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepositoryResponse(dict):
+    """
+    Customer-specified publicly available remote repository.
+    """
+    def __init__(__self__, *,
+                 uri: str):
+        """
+        Customer-specified publicly available remote repository.
+        :param str uri: An http/https uri reference to the upstream remote repository, for ex: "https://my.apt.registry/".
+        """
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        An http/https uri reference to the upstream remote repository, for ex: "https://my.apt.registry/".
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
 class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse(dict):
     """
     Publicly available Apt repositories constructed from a common repository base and a custom repository path.
@@ -297,6 +351,116 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicR
         A custom field to define a path to a specific repository from the base.
         """
         return pulumi.get(self, "repository_path")
+
+
+@pulumi.output_type
+class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepositoryResponse(dict):
+    """
+    Customer-specified publicly available remote repository.
+    """
+    def __init__(__self__, *,
+                 uri: str):
+        """
+        Customer-specified publicly available remote repository.
+        :param str uri: An http/https uri reference to the custom remote repository, for ex: "https://registry-1.docker.io".
+        """
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        An http/https uri reference to the custom remote repository, for ex: "https://registry-1.docker.io".
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryResponse(dict):
+    """
+    Customer-specified publicly available remote repository.
+    """
+    def __init__(__self__, *,
+                 uri: str):
+        """
+        Customer-specified publicly available remote repository.
+        :param str uri: An http/https uri reference to the upstream remote repository, for ex: "https://my.maven.registry/".
+        """
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        An http/https uri reference to the upstream remote repository, for ex: "https://my.maven.registry/".
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryResponse(dict):
+    """
+    Customer-specified publicly available remote repository.
+    """
+    def __init__(__self__, *,
+                 uri: str):
+        """
+        Customer-specified publicly available remote repository.
+        :param str uri: An http/https uri reference to the upstream remote repository, for ex: "https://my.npm.registry/".
+        """
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        An http/https uri reference to the upstream remote repository, for ex: "https://my.npm.registry/".
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryResponse(dict):
+    """
+    Customer-specified publicly available remote repository.
+    """
+    def __init__(__self__, *,
+                 uri: str):
+        """
+        Customer-specified publicly available remote repository.
+        :param str uri: An http/https uri reference to the upstream remote repository, for ex: "https://my.python.registry/".
+        """
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        An http/https uri reference to the upstream remote repository, for ex: "https://my.python.registry/".
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryResponse(dict):
+    """
+    Customer-specified publicly available remote repository.
+    """
+    def __init__(__self__, *,
+                 uri: str):
+        """
+        Customer-specified publicly available remote repository.
+        :param str uri: An http/https uri reference to the upstream remote repository, for ex: "https://my.yum.registry/".
+        """
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        An http/https uri reference to the upstream remote repository, for ex: "https://my.yum.registry/".
+        """
+        return pulumi.get(self, "uri")
 
 
 @pulumi.output_type
@@ -411,7 +575,9 @@ class MavenRepositoryResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "publicRepository":
+        if key == "customRepository":
+            suggest = "custom_repository"
+        elif key == "publicRepository":
             suggest = "public_repository"
 
         if suggest:
@@ -426,12 +592,23 @@ class MavenRepositoryResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 custom_repository: 'outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryResponse',
                  public_repository: str):
         """
         Configuration for a Maven remote repository.
+        :param 'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryResponse' custom_repository: Customer-specified remote repository.
         :param str public_repository: One of the publicly available Maven repositories supported by Artifact Registry.
         """
+        pulumi.set(__self__, "custom_repository", custom_repository)
         pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="customRepository")
+    def custom_repository(self) -> 'outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepositoryResponse':
+        """
+        Customer-specified remote repository.
+        """
+        return pulumi.get(self, "custom_repository")
 
     @property
     @pulumi.getter(name="publicRepository")
@@ -450,7 +627,9 @@ class NpmRepositoryResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "publicRepository":
+        if key == "customRepository":
+            suggest = "custom_repository"
+        elif key == "publicRepository":
             suggest = "public_repository"
 
         if suggest:
@@ -465,12 +644,23 @@ class NpmRepositoryResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 custom_repository: 'outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryResponse',
                  public_repository: str):
         """
         Configuration for a Npm remote repository.
+        :param 'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryResponse' custom_repository: Customer-specified remote repository.
         :param str public_repository: One of the publicly available Npm repositories supported by Artifact Registry.
         """
+        pulumi.set(__self__, "custom_repository", custom_repository)
         pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="customRepository")
+    def custom_repository(self) -> 'outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepositoryResponse':
+        """
+        Customer-specified remote repository.
+        """
+        return pulumi.get(self, "custom_repository")
 
     @property
     @pulumi.getter(name="publicRepository")
@@ -489,7 +679,9 @@ class PythonRepositoryResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "publicRepository":
+        if key == "customRepository":
+            suggest = "custom_repository"
+        elif key == "publicRepository":
             suggest = "public_repository"
 
         if suggest:
@@ -504,12 +696,23 @@ class PythonRepositoryResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 custom_repository: 'outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryResponse',
                  public_repository: str):
         """
         Configuration for a Python remote repository.
+        :param 'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryResponse' custom_repository: Customer-specified remote repository.
         :param str public_repository: One of the publicly available Python repositories supported by Artifact Registry.
         """
+        pulumi.set(__self__, "custom_repository", custom_repository)
         pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="customRepository")
+    def custom_repository(self) -> 'outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepositoryResponse':
+        """
+        Customer-specified remote repository.
+        """
+        return pulumi.get(self, "custom_repository")
 
     @property
     @pulumi.getter(name="publicRepository")
@@ -530,6 +733,8 @@ class RemoteRepositoryConfigResponse(dict):
         suggest = None
         if key == "aptRepository":
             suggest = "apt_repository"
+        elif key == "disableUpstreamValidation":
+            suggest = "disable_upstream_validation"
         elif key == "dockerRepository":
             suggest = "docker_repository"
         elif key == "mavenRepository":
@@ -557,6 +762,7 @@ class RemoteRepositoryConfigResponse(dict):
     def __init__(__self__, *,
                  apt_repository: 'outputs.AptRepositoryResponse',
                  description: str,
+                 disable_upstream_validation: bool,
                  docker_repository: 'outputs.DockerRepositoryResponse',
                  maven_repository: 'outputs.MavenRepositoryResponse',
                  npm_repository: 'outputs.NpmRepositoryResponse',
@@ -567,6 +773,7 @@ class RemoteRepositoryConfigResponse(dict):
         Remote repository configuration.
         :param 'AptRepositoryResponse' apt_repository: Specific settings for an Apt remote repository.
         :param str description: The description of the remote source.
+        :param bool disable_upstream_validation: Input only. A create/update remote repo option to avoid making a HEAD/GET request to validate a remote repo and any supplied upstream credentials.
         :param 'DockerRepositoryResponse' docker_repository: Specific settings for a Docker remote repository.
         :param 'MavenRepositoryResponse' maven_repository: Specific settings for a Maven remote repository.
         :param 'NpmRepositoryResponse' npm_repository: Specific settings for an Npm remote repository.
@@ -576,6 +783,7 @@ class RemoteRepositoryConfigResponse(dict):
         """
         pulumi.set(__self__, "apt_repository", apt_repository)
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disable_upstream_validation", disable_upstream_validation)
         pulumi.set(__self__, "docker_repository", docker_repository)
         pulumi.set(__self__, "maven_repository", maven_repository)
         pulumi.set(__self__, "npm_repository", npm_repository)
@@ -598,6 +806,14 @@ class RemoteRepositoryConfigResponse(dict):
         The description of the remote source.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="disableUpstreamValidation")
+    def disable_upstream_validation(self) -> bool:
+        """
+        Input only. A create/update remote repo option to avoid making a HEAD/GET request to validate a remote repo and any supplied upstream credentials.
+        """
+        return pulumi.get(self, "disable_upstream_validation")
 
     @property
     @pulumi.getter(name="dockerRepository")
@@ -817,7 +1033,9 @@ class YumRepositoryResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "publicRepository":
+        if key == "customRepository":
+            suggest = "custom_repository"
+        elif key == "publicRepository":
             suggest = "public_repository"
 
         if suggest:
@@ -832,12 +1050,23 @@ class YumRepositoryResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 custom_repository: 'outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryResponse',
                  public_repository: 'outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse'):
         """
         Configuration for a Yum remote repository.
+        :param 'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryResponse' custom_repository: Customer-specified remote repository.
         :param 'GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse' public_repository: One of the publicly available Yum repositories supported by Artifact Registry.
         """
+        pulumi.set(__self__, "custom_repository", custom_repository)
         pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="customRepository")
+    def custom_repository(self) -> 'outputs.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepositoryResponse':
+        """
+        Customer-specified remote repository.
+        """
+        return pulumi.get(self, "custom_repository")
 
     @property
     @pulumi.getter(name="publicRepository")

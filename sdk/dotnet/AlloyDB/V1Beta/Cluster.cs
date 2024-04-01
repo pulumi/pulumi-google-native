@@ -101,6 +101,12 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+        /// </summary>
+        [Output("geminiConfig")]
+        public Output<Outputs.GeminiClusterConfigResponse> GeminiConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Input only. Initial user to setup during cluster creation. Required. If used in `RestoreCluster` this is ignored.
         /// </summary>
         [Output("initialUser")]
@@ -116,6 +122,18 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// The maintenance schedule for the cluster, generated for a specific rollout if a maintenance window is set.
+        /// </summary>
+        [Output("maintenanceSchedule")]
+        public Output<Outputs.MaintenanceScheduleResponse> MaintenanceSchedule { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The maintenance update policy determines when to allow or deny updates.
+        /// </summary>
+        [Output("maintenanceUpdatePolicy")]
+        public Output<Outputs.MaintenanceUpdatePolicyResponse> MaintenanceUpdatePolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Cluster created via DMS migration.
         /// </summary>
         [Output("migrationSource")]
@@ -128,7 +146,7 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+        /// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -146,6 +164,12 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The configuration for Private Service Connect (PSC) for the cluster.
+        /// </summary>
+        [Output("pscConfig")]
+        public Output<Outputs.PscConfigResponse> PscConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
         /// </summary>
         [Output("reconciling")]
@@ -156,6 +180,12 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
         /// </summary>
         [Output("requestId")]
         public Output<string?> RequestId { get; private set; } = null!;
+
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        [Output("satisfiesPzs")]
+        public Output<bool> SatisfiesPzs { get; private set; } = null!;
 
         /// <summary>
         /// Cross Region replication config specific to SECONDARY cluster.
@@ -293,6 +323,12 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
         public Input<string>? Etag { get; set; }
 
         /// <summary>
+        /// Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+        /// </summary>
+        [Input("geminiConfig")]
+        public Input<Inputs.GeminiClusterConfigArgs>? GeminiConfig { get; set; }
+
+        /// <summary>
         /// Input only. Initial user to setup during cluster creation. Required. If used in `RestoreCluster` this is ignored.
         /// </summary>
         [Input("initialUser")]
@@ -314,7 +350,13 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+        /// Optional. The maintenance update policy determines when to allow or deny updates.
+        /// </summary>
+        [Input("maintenanceUpdatePolicy")]
+        public Input<Inputs.MaintenanceUpdatePolicyArgs>? MaintenanceUpdatePolicy { get; set; }
+
+        /// <summary>
+        /// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
@@ -324,6 +366,12 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Optional. The configuration for Private Service Connect (PSC) for the cluster.
+        /// </summary>
+        [Input("pscConfig")]
+        public Input<Inputs.PscConfigArgs>? PscConfig { get; set; }
 
         /// <summary>
         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).

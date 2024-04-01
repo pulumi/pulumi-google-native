@@ -179,6 +179,10 @@ export const ServiceIngress = {
      * Both internal and Google Cloud Load Balancer traffic is allowed.
      */
     IngressTrafficInternalLoadBalancer: "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER",
+    /**
+     * No ingress traffic is allowed.
+     */
+    IngressTrafficNone: "INGRESS_TRAFFIC_NONE",
 } as const;
 
 /**

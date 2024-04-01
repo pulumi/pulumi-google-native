@@ -29,9 +29,9 @@ type LookupFutureReservationArgs struct {
 }
 
 type LookupFutureReservationResult struct {
-	// Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+	// Future timestamp when the FR auto-created reservations will be deleted by Compute Engine. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
 	AutoCreatedReservationsDeleteTime string `pulumi:"autoCreatedReservationsDeleteTime"`
-	// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+	// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
 	AutoCreatedReservationsDuration DurationResponse `pulumi:"autoCreatedReservationsDuration"`
 	// Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [auto_created_reservations_delete_time, auto_created_reservations_duration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
 	AutoDeleteAutoCreatedReservations bool `pulumi:"autoDeleteAutoCreatedReservations"`
@@ -100,12 +100,12 @@ func (o LookupFutureReservationResultOutput) ToLookupFutureReservationResultOutp
 	return o
 }
 
-// Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+// Future timestamp when the FR auto-created reservations will be deleted by Compute Engine. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
 func (o LookupFutureReservationResultOutput) AutoCreatedReservationsDeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFutureReservationResult) string { return v.AutoCreatedReservationsDeleteTime }).(pulumi.StringOutput)
 }
 
-// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
 func (o LookupFutureReservationResultOutput) AutoCreatedReservationsDuration() DurationResponseOutput {
 	return o.ApplyT(func(v LookupFutureReservationResult) DurationResponse { return v.AutoCreatedReservationsDuration }).(DurationResponseOutput)
 }

@@ -90,6 +90,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// Snapshot of the custom target types referenced by the targets taken at release creation time.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.CustomTargetTypeResponse> CustomTargetTypeSnapshots;
+        /// <summary>
         /// Snapshot of the parent pipeline taken at release creation time.
         /// </summary>
         public readonly Outputs.DeliveryPipelineResponse DeliveryPipelineSnapshot;
@@ -166,6 +170,8 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
 
             string createTime,
 
+            ImmutableArray<Outputs.CustomTargetTypeResponse> customTargetTypeSnapshots,
+
             Outputs.DeliveryPipelineResponse deliveryPipelineSnapshot,
 
             ImmutableDictionary<string, string> deployParameters,
@@ -203,6 +209,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
             BuildArtifacts = buildArtifacts;
             Condition = condition;
             CreateTime = createTime;
+            CustomTargetTypeSnapshots = customTargetTypeSnapshots;
             DeliveryPipelineSnapshot = deliveryPipelineSnapshot;
             DeployParameters = deployParameters;
             Description = description;

@@ -43,6 +43,8 @@ type LookupWorkstationClusterResult struct {
 	DeleteTime string `pulumi:"deleteTime"`
 	// Optional. Human-readable name for this workstation cluster.
 	DisplayName string `pulumi:"displayName"`
+	// Optional. Configuration options for a custom domain.
+	DomainConfig DomainConfigResponse `pulumi:"domainConfig"`
 	// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag string `pulumi:"etag"`
 	// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
@@ -133,6 +135,11 @@ func (o LookupWorkstationClusterResultOutput) DeleteTime() pulumi.StringOutput {
 // Optional. Human-readable name for this workstation cluster.
 func (o LookupWorkstationClusterResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkstationClusterResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. Configuration options for a custom domain.
+func (o LookupWorkstationClusterResultOutput) DomainConfig() DomainConfigResponseOutput {
+	return o.ApplyT(func(v LookupWorkstationClusterResult) DomainConfigResponse { return v.DomainConfig }).(DomainConfigResponseOutput)
 }
 
 // Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.

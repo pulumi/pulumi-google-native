@@ -27,13 +27,14 @@ class FutureReservationArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  share_settings: Optional[pulumi.Input['ShareSettingsArgs']] = None,
+                 specific_reservation_required: Optional[pulumi.Input[bool]] = None,
                  specific_sku_properties: Optional[pulumi.Input['FutureReservationSpecificSKUPropertiesArgs']] = None,
                  time_window: Optional[pulumi.Input['FutureReservationTimeWindowArgs']] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a FutureReservation resource.
-        :param pulumi.Input[str] auto_created_reservations_delete_time: Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
-        :param pulumi.Input['DurationArgs'] auto_created_reservations_duration: Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+        :param pulumi.Input[str] auto_created_reservations_delete_time: Future timestamp when the FR auto-created reservations will be deleted by Compute Engine. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+        :param pulumi.Input['DurationArgs'] auto_created_reservations_duration: Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
         :param pulumi.Input[bool] auto_delete_auto_created_reservations: Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [auto_created_reservations_delete_time, auto_created_reservations_duration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the future reservation.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -41,6 +42,7 @@ class FutureReservationArgs:
         :param pulumi.Input['FutureReservationPlanningStatus'] planning_status: Planning state before being submitted for evaluation
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['ShareSettingsArgs'] share_settings: List of Projects/Folders to share with.
+        :param pulumi.Input[bool] specific_reservation_required: Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation. If set to true,the delivered resevervation will have the same name as the future reservation.
         :param pulumi.Input['FutureReservationSpecificSKUPropertiesArgs'] specific_sku_properties: Future Reservation configuration to indicate instance properties and total count.
         :param pulumi.Input['FutureReservationTimeWindowArgs'] time_window: Time window for this Future Reservation.
         """
@@ -64,6 +66,8 @@ class FutureReservationArgs:
             pulumi.set(__self__, "request_id", request_id)
         if share_settings is not None:
             pulumi.set(__self__, "share_settings", share_settings)
+        if specific_reservation_required is not None:
+            pulumi.set(__self__, "specific_reservation_required", specific_reservation_required)
         if specific_sku_properties is not None:
             pulumi.set(__self__, "specific_sku_properties", specific_sku_properties)
         if time_window is not None:
@@ -75,7 +79,7 @@ class FutureReservationArgs:
     @pulumi.getter(name="autoCreatedReservationsDeleteTime")
     def auto_created_reservations_delete_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+        Future timestamp when the FR auto-created reservations will be deleted by Compute Engine. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
         """
         return pulumi.get(self, "auto_created_reservations_delete_time")
 
@@ -87,7 +91,7 @@ class FutureReservationArgs:
     @pulumi.getter(name="autoCreatedReservationsDuration")
     def auto_created_reservations_duration(self) -> Optional[pulumi.Input['DurationArgs']]:
         """
-        Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+        Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
         """
         return pulumi.get(self, "auto_created_reservations_duration")
 
@@ -189,6 +193,18 @@ class FutureReservationArgs:
         pulumi.set(self, "share_settings", value)
 
     @property
+    @pulumi.getter(name="specificReservationRequired")
+    def specific_reservation_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation. If set to true,the delivered resevervation will have the same name as the future reservation.
+        """
+        return pulumi.get(self, "specific_reservation_required")
+
+    @specific_reservation_required.setter
+    def specific_reservation_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "specific_reservation_required", value)
+
+    @property
     @pulumi.getter(name="specificSkuProperties")
     def specific_sku_properties(self) -> Optional[pulumi.Input['FutureReservationSpecificSKUPropertiesArgs']]:
         """
@@ -237,6 +253,7 @@ class FutureReservation(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  share_settings: Optional[pulumi.Input[pulumi.InputType['ShareSettingsArgs']]] = None,
+                 specific_reservation_required: Optional[pulumi.Input[bool]] = None,
                  specific_sku_properties: Optional[pulumi.Input[pulumi.InputType['FutureReservationSpecificSKUPropertiesArgs']]] = None,
                  time_window: Optional[pulumi.Input[pulumi.InputType['FutureReservationTimeWindowArgs']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -246,8 +263,8 @@ class FutureReservation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] auto_created_reservations_delete_time: Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
-        :param pulumi.Input[pulumi.InputType['DurationArgs']] auto_created_reservations_duration: Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+        :param pulumi.Input[str] auto_created_reservations_delete_time: Future timestamp when the FR auto-created reservations will be deleted by Compute Engine. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+        :param pulumi.Input[pulumi.InputType['DurationArgs']] auto_created_reservations_duration: Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
         :param pulumi.Input[bool] auto_delete_auto_created_reservations: Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [auto_created_reservations_delete_time, auto_created_reservations_duration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the future reservation.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -255,6 +272,7 @@ class FutureReservation(pulumi.CustomResource):
         :param pulumi.Input['FutureReservationPlanningStatus'] planning_status: Planning state before being submitted for evaluation
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['ShareSettingsArgs']] share_settings: List of Projects/Folders to share with.
+        :param pulumi.Input[bool] specific_reservation_required: Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation. If set to true,the delivered resevervation will have the same name as the future reservation.
         :param pulumi.Input[pulumi.InputType['FutureReservationSpecificSKUPropertiesArgs']] specific_sku_properties: Future Reservation configuration to indicate instance properties and total count.
         :param pulumi.Input[pulumi.InputType['FutureReservationTimeWindowArgs']] time_window: Time window for this Future Reservation.
         """
@@ -292,6 +310,7 @@ class FutureReservation(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  share_settings: Optional[pulumi.Input[pulumi.InputType['ShareSettingsArgs']]] = None,
+                 specific_reservation_required: Optional[pulumi.Input[bool]] = None,
                  specific_sku_properties: Optional[pulumi.Input[pulumi.InputType['FutureReservationSpecificSKUPropertiesArgs']]] = None,
                  time_window: Optional[pulumi.Input[pulumi.InputType['FutureReservationTimeWindowArgs']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -314,6 +333,7 @@ class FutureReservation(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["share_settings"] = share_settings
+            __props__.__dict__["specific_reservation_required"] = specific_reservation_required
             __props__.__dict__["specific_sku_properties"] = specific_sku_properties
             __props__.__dict__["time_window"] = time_window
             __props__.__dict__["zone"] = zone
@@ -360,6 +380,7 @@ class FutureReservation(pulumi.CustomResource):
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
         __props__.__dict__["share_settings"] = None
+        __props__.__dict__["specific_reservation_required"] = None
         __props__.__dict__["specific_sku_properties"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["time_window"] = None
@@ -370,7 +391,7 @@ class FutureReservation(pulumi.CustomResource):
     @pulumi.getter(name="autoCreatedReservationsDeleteTime")
     def auto_created_reservations_delete_time(self) -> pulumi.Output[str]:
         """
-        Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+        Future timestamp when the FR auto-created reservations will be deleted by Compute Engine. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
         """
         return pulumi.get(self, "auto_created_reservations_delete_time")
 
@@ -378,7 +399,7 @@ class FutureReservation(pulumi.CustomResource):
     @pulumi.getter(name="autoCreatedReservationsDuration")
     def auto_created_reservations_duration(self) -> pulumi.Output['outputs.DurationResponse']:
         """
-        Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+        Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
         """
         return pulumi.get(self, "auto_created_reservations_duration")
 
@@ -474,6 +495,14 @@ class FutureReservation(pulumi.CustomResource):
         List of Projects/Folders to share with.
         """
         return pulumi.get(self, "share_settings")
+
+    @property
+    @pulumi.getter(name="specificReservationRequired")
+    def specific_reservation_required(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation. If set to true,the delivered resevervation will have the same name as the future reservation.
+        """
+        return pulumi.get(self, "specific_reservation_required")
 
     @property
     @pulumi.getter(name="specificSkuProperties")

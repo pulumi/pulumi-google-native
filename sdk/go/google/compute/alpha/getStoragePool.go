@@ -45,9 +45,19 @@ type LookupStoragePoolResult struct {
 	Name string `pulumi:"name"`
 	// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
 	PerformanceProvisioningType string `pulumi:"performanceProvisioningType"`
-	// Provsioned IOPS of the storage pool.
-	ProvisionedIops string `pulumi:"provisionedIops"`
+	// Size, in GiB, of the storage pool.
+	PoolProvisionedCapacityGb string `pulumi:"poolProvisionedCapacityGb"`
+	// Provisioned IOPS of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced.
+	PoolProvisionedIops string `pulumi:"poolProvisionedIops"`
 	// Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+	PoolProvisionedThroughput string `pulumi:"poolProvisionedThroughput"`
+	// DEPRECATED -- use "pool provisioned IOPS".
+	//
+	// Deprecated: DEPRECATED -- use "pool provisioned IOPS".
+	ProvisionedIops string `pulumi:"provisionedIops"`
+	// DEPRECATED -- use "pool provisioned throughput".
+	//
+	// Deprecated: DEPRECATED -- use "pool provisioned throughput".
 	ProvisionedThroughput string `pulumi:"provisionedThroughput"`
 	// Status information for the storage pool resource.
 	ResourceStatus StoragePoolResourceStatusResponse `pulumi:"resourceStatus"`
@@ -55,7 +65,9 @@ type LookupStoragePoolResult struct {
 	SelfLink string `pulumi:"selfLink"`
 	// Server-defined URL for this resource's resource id.
 	SelfLinkWithId string `pulumi:"selfLinkWithId"`
-	// Size, in GiB, of the storage pool.
+	// DEPRECATED -- use "pool provisioned capacity gb".
+	//
+	// Deprecated: DEPRECATED -- use "pool provisioned capacity gb".
 	SizeGb string `pulumi:"sizeGb"`
 	// The status of storage pool creation. - CREATING: Storage pool is provisioning. storagePool. - FAILED: Storage pool creation failed. - READY: Storage pool is ready for use. - DELETING: Storage pool is deleting.
 	State string `pulumi:"state"`
@@ -144,12 +156,31 @@ func (o LookupStoragePoolResultOutput) PerformanceProvisioningType() pulumi.Stri
 	return o.ApplyT(func(v LookupStoragePoolResult) string { return v.PerformanceProvisioningType }).(pulumi.StringOutput)
 }
 
-// Provsioned IOPS of the storage pool.
+// Size, in GiB, of the storage pool.
+func (o LookupStoragePoolResultOutput) PoolProvisionedCapacityGb() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStoragePoolResult) string { return v.PoolProvisionedCapacityGb }).(pulumi.StringOutput)
+}
+
+// Provisioned IOPS of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced.
+func (o LookupStoragePoolResultOutput) PoolProvisionedIops() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStoragePoolResult) string { return v.PoolProvisionedIops }).(pulumi.StringOutput)
+}
+
+// Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+func (o LookupStoragePoolResultOutput) PoolProvisionedThroughput() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStoragePoolResult) string { return v.PoolProvisionedThroughput }).(pulumi.StringOutput)
+}
+
+// DEPRECATED -- use "pool provisioned IOPS".
+//
+// Deprecated: DEPRECATED -- use "pool provisioned IOPS".
 func (o LookupStoragePoolResultOutput) ProvisionedIops() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStoragePoolResult) string { return v.ProvisionedIops }).(pulumi.StringOutput)
 }
 
-// Provisioned throughput of the storage pool. Only relevant if the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+// DEPRECATED -- use "pool provisioned throughput".
+//
+// Deprecated: DEPRECATED -- use "pool provisioned throughput".
 func (o LookupStoragePoolResultOutput) ProvisionedThroughput() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStoragePoolResult) string { return v.ProvisionedThroughput }).(pulumi.StringOutput)
 }
@@ -169,7 +200,9 @@ func (o LookupStoragePoolResultOutput) SelfLinkWithId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStoragePoolResult) string { return v.SelfLinkWithId }).(pulumi.StringOutput)
 }
 
-// Size, in GiB, of the storage pool.
+// DEPRECATED -- use "pool provisioned capacity gb".
+//
+// Deprecated: DEPRECATED -- use "pool provisioned capacity gb".
 func (o LookupStoragePoolResultOutput) SizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStoragePoolResult) string { return v.SizeGb }).(pulumi.StringOutput)
 }

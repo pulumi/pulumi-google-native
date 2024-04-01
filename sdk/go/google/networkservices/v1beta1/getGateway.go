@@ -37,8 +37,12 @@ type LookupGatewayResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// Optional. A free-text description of the resource. Max length 1024 characters.
 	Description string `pulumi:"description"`
+	// Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+	EnvoyHeaders string `pulumi:"envoyHeaders"`
 	// Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections. For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
 	GatewaySecurityPolicy string `pulumi:"gatewaySecurityPolicy"`
+	// Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+	IpVersion string `pulumi:"ipVersion"`
 	// Optional. Set of label tags associated with the Gateway resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
@@ -118,9 +122,19 @@ func (o LookupGatewayResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+func (o LookupGatewayResultOutput) EnvoyHeaders() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGatewayResult) string { return v.EnvoyHeaders }).(pulumi.StringOutput)
+}
+
 // Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections. For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
 func (o LookupGatewayResultOutput) GatewaySecurityPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayResult) string { return v.GatewaySecurityPolicy }).(pulumi.StringOutput)
+}
+
+// Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+func (o LookupGatewayResultOutput) IpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGatewayResult) string { return v.IpVersion }).(pulumi.StringOutput)
 }
 
 // Optional. Set of label tags associated with the Gateway resource.

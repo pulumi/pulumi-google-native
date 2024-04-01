@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public Input<Pulumi.GoogleNative.SQLAdmin.V1Beta4.PasswordValidationPolicyComplexity>? Complexity { get; set; }
 
         /// <summary>
-        /// Disallow credentials that have been previously compromised by a public data breach.
+        /// This field is deprecated and will be removed in a future version of the API.
         /// </summary>
         [Input("disallowCompromisedCredentials")]
         public Input<bool>? DisallowCompromisedCredentials { get; set; }

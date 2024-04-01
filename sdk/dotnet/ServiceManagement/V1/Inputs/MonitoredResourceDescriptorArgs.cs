@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
+        /// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL. For a list of types, see [Monitored resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

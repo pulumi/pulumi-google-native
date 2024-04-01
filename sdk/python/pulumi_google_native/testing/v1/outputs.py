@@ -39,6 +39,7 @@ __all__ = [
     'IosXcTestResponse',
     'LauncherActivityIntentResponse',
     'ManualShardingResponse',
+    'MatrixErrorDetailResponse',
     'NoActivityIntentResponse',
     'ObbFileResponse',
     'RegularFileResponse',
@@ -1660,6 +1661,39 @@ class ManualShardingResponse(dict):
         Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500.
         """
         return pulumi.get(self, "test_targets_for_shard")
+
+
+@pulumi.output_type
+class MatrixErrorDetailResponse(dict):
+    """
+    Describes a single error or issue with a matrix.
+    """
+    def __init__(__self__, *,
+                 message: str,
+                 reason: str):
+        """
+        Describes a single error or issue with a matrix.
+        :param str message: A human-readable message about how the error in the TestMatrix. Expands on the `reason` field with additional details and possible options to fix the issue.
+        :param str reason: The reason for the error. This is a constant value in UPPER_SNAKE_CASE that identifies the cause of the error.
+        """
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "reason", reason)
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        A human-readable message about how the error in the TestMatrix. Expands on the `reason` field with additional details and possible options to fix the issue.
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def reason(self) -> str:
+        """
+        The reason for the error. This is a constant value in UPPER_SNAKE_CASE that identifies the cause of the error.
+        """
+        return pulumi.get(self, "reason")
 
 
 @pulumi.output_type

@@ -69,6 +69,10 @@ type LookupRegionSnapshotResult struct {
 	Name string `pulumi:"name"`
 	// URL of the region where the snapshot resides. Only applicable for regional snapshots.
 	Region string `pulumi:"region"`
+	// [Output only] ResourceStatus of the Snapshot resource
+	ResourceStatus SnapshotResourceStatusResponse `pulumi:"resourceStatus"`
+	// Reserved for future use.
+	SatisfiesPzi bool `pulumi:"satisfiesPzi"`
 	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Server-defined URL for the resource.
@@ -244,6 +248,16 @@ func (o LookupRegionSnapshotResultOutput) Name() pulumi.StringOutput {
 // URL of the region where the snapshot resides. Only applicable for regional snapshots.
 func (o LookupRegionSnapshotResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionSnapshotResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// [Output only] ResourceStatus of the Snapshot resource
+func (o LookupRegionSnapshotResultOutput) ResourceStatus() SnapshotResourceStatusResponseOutput {
+	return o.ApplyT(func(v LookupRegionSnapshotResult) SnapshotResourceStatusResponse { return v.ResourceStatus }).(SnapshotResourceStatusResponseOutput)
+}
+
+// Reserved for future use.
+func (o LookupRegionSnapshotResultOutput) SatisfiesPzi() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRegionSnapshotResult) bool { return v.SatisfiesPzi }).(pulumi.BoolOutput)
 }
 
 // Reserved for future use.

@@ -95,7 +95,7 @@ export class Device extends pulumi.CustomResource {
      */
     public /*out*/ readonly encryptionState!: pulumi.Output<string>;
     /**
-     * Attributes specific to Endpoint Verification devices.
+     * Attributes specific to [Endpoint Verification](https://cloud.google.com/endpoint-verification/docs/overview) devices.
      */
     public /*out*/ readonly endpointVerificationSpecificAttributes!: pulumi.Output<outputs.cloudidentity.v1beta1.EndpointVerificationSpecificAttributesResponse>;
     /**

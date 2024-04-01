@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
         /// </summary>
         public readonly string HttpMethod;
         /// <summary>
+        /// Optional. The OAuth configuration of the webhook. If specified, Dialogflow will initiate the OAuth client credential flow to exchange an access token from the 3rd party platform and put it in the auth header.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfigResponse OauthConfig;
+        /// <summary>
         /// Optional. Maps the values extracted from specific fields of the flexible webhook response into session parameters. - Key: session parameter name - Value: field path in the webhook response
         /// </summary>
         public readonly ImmutableDictionary<string, string> ParameterMapping;
@@ -40,6 +44,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
         /// The HTTP request headers to send together with webhook requests.
         /// </summary>
         public readonly ImmutableDictionary<string, string> RequestHeaders;
+        /// <summary>
+        /// Optional. Indicate the auth token type generated from the [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent). The generated token is sent in the Authorization header.
+        /// </summary>
+        public readonly string ServiceAgentAuth;
         /// <summary>
         /// The webhook URI for receiving POST requests. It must use https protocol.
         /// </summary>
@@ -59,6 +67,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 
             string httpMethod,
 
+            Outputs.GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfigResponse oauthConfig,
+
             ImmutableDictionary<string, string> parameterMapping,
 
             string password,
@@ -66,6 +76,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
             string requestBody,
 
             ImmutableDictionary<string, string> requestHeaders,
+
+            string serviceAgentAuth,
 
             string uri,
 
@@ -75,10 +87,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
         {
             AllowedCaCerts = allowedCaCerts;
             HttpMethod = httpMethod;
+            OauthConfig = oauthConfig;
             ParameterMapping = parameterMapping;
             Password = password;
             RequestBody = requestBody;
             RequestHeaders = requestHeaders;
+            ServiceAgentAuth = serviceAgentAuth;
             Uri = uri;
             Username = username;
             WebhookType = webhookType;

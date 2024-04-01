@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
     [GoogleNativeResourceType("google-native:cloudfunctions/v1:Function")]
     public partial class Function : global::Pulumi.CustomResource
     {
+        [Output("automaticUpdatePolicy")]
+        public Output<Outputs.AutomaticUpdatePolicyResponse> AutomaticUpdatePolicy { get; private set; } = null!;
+
         /// <summary>
         /// The amount of memory in MB available for a function. Defaults to 256MB.
         /// </summary>
@@ -40,6 +43,12 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         public Output<string> BuildName { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. A service account the user provides for use with Cloud Build.
+        /// </summary>
+        [Output("buildServiceAccount")]
+        public Output<string> BuildServiceAccount { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
         /// </summary>
         [Output("buildWorkerPool")]
@@ -52,7 +61,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+        /// Docker Registry to use for this deployment. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
         /// </summary>
         [Output("dockerRegistry")]
         public Output<string> DockerRegistry { get; private set; } = null!;
@@ -131,6 +140,9 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
+
+        [Output("onDeployUpdatePolicy")]
+        public Output<Outputs.OnDeployUpdatePolicyResponse> OnDeployUpdatePolicy { get; private set; } = null!;
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -269,6 +281,9 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
 
     public sealed class FunctionArgs : global::Pulumi.ResourceArgs
     {
+        [Input("automaticUpdatePolicy")]
+        public Input<Inputs.AutomaticUpdatePolicyArgs>? AutomaticUpdatePolicy { get; set; }
+
         /// <summary>
         /// The amount of memory in MB available for a function. Defaults to 256MB.
         /// </summary>
@@ -288,6 +303,12 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         }
 
         /// <summary>
+        /// Optional. A service account the user provides for use with Cloud Build.
+        /// </summary>
+        [Input("buildServiceAccount")]
+        public Input<string>? BuildServiceAccount { get; set; }
+
+        /// <summary>
         /// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
         /// </summary>
         [Input("buildWorkerPool")]
@@ -300,7 +321,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+        /// Docker Registry to use for this deployment. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
         /// </summary>
         [Input("dockerRegistry")]
         public Input<Pulumi.GoogleNative.CloudFunctions.V1.FunctionDockerRegistry>? DockerRegistry { get; set; }
@@ -391,6 +412,9 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
+
+        [Input("onDeployUpdatePolicy")]
+        public Input<Inputs.OnDeployUpdatePolicyArgs>? OnDeployUpdatePolicy { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

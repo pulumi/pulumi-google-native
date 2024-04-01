@@ -90,46 +90,6 @@ export const KeyDataKeySpec = {
  */
 export type KeyDataKeySpec = (typeof KeyDataKeySpec)[keyof typeof KeyDataKeySpec];
 
-export const KeyKeyAlgorithm = {
-    /**
-     * An unspecified key algorithm.
-     */
-    KeyAlgUnspecified: "KEY_ALG_UNSPECIFIED",
-    /**
-     * 1k RSA Key.
-     */
-    KeyAlgRsa1024: "KEY_ALG_RSA_1024",
-    /**
-     * 2k RSA Key.
-     */
-    KeyAlgRsa2048: "KEY_ALG_RSA_2048",
-} as const;
-
-/**
- * Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
- */
-export type KeyKeyAlgorithm = (typeof KeyKeyAlgorithm)[keyof typeof KeyKeyAlgorithm];
-
-export const KeyPrivateKeyType = {
-    /**
-     * Unspecified. Equivalent to `TYPE_GOOGLE_CREDENTIALS_FILE`.
-     */
-    TypeUnspecified: "TYPE_UNSPECIFIED",
-    /**
-     * PKCS12 format. The password for the PKCS12 file is `notasecret`. For more information, see https://tools.ietf.org/html/rfc7292.
-     */
-    TypePkcs12File: "TYPE_PKCS12_FILE",
-    /**
-     * Google Credentials File format.
-     */
-    TypeGoogleCredentialsFile: "TYPE_GOOGLE_CREDENTIALS_FILE",
-} as const;
-
-/**
- * The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
- */
-export type KeyPrivateKeyType = (typeof KeyPrivateKeyType)[keyof typeof KeyPrivateKeyType];
-
 export const OrganizationRoleStage = {
     /**
      * The user has indicated this role is currently in an Alpha phase. If this launch stage is selected, the `stage` field will not be included when requesting the definition for a given role.

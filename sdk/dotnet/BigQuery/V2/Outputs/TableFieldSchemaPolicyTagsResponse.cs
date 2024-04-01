@@ -10,11 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Optional. The policy tags attached to this field, used for field-level access control. If not set, defaults to empty policy_tags.
+    /// </summary>
     [OutputType]
     public sealed class TableFieldSchemaPolicyTagsResponse
     {
         /// <summary>
-        /// A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
+        /// A list of policy tag resource names. For example, "projects/1/locations/eu/taxonomies/2/policyTags/3". At most 1 policy tag is currently allowed.
         /// </summary>
         public readonly ImmutableArray<string> Names;
 

@@ -10,13 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
+    /// <summary>
+    /// The TableConstraints defines the primary key and foreign key.
+    /// </summary>
     public sealed class TableConstraintsArgs : global::Pulumi.ResourceArgs
     {
         [Input("foreignKeys")]
         private InputList<Inputs.TableConstraintsForeignKeysItemArgs>? _foreignKeys;
 
         /// <summary>
-        /// [Optional] The foreign keys of the tables.
+        /// Optional. Present only if the table has a foreign key. The foreign key is not enforced.
         /// </summary>
         public InputList<Inputs.TableConstraintsForeignKeysItemArgs> ForeignKeys
         {
@@ -25,7 +28,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         }
 
         /// <summary>
-        /// [Optional] The primary key of the table.
+        /// Represents the primary key constraint on a table's columns.
         /// </summary>
         [Input("primaryKey")]
         public Input<Inputs.TableConstraintsPrimaryKeyArgs>? PrimaryKey { get; set; }

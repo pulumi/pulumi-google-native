@@ -11,7 +11,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
 {
     /// <summary>
     /// Creates a policy tag in a taxonomy.
-    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:datacatalog/v1:PolicyTag")]
     public partial class PolicyTag : global::Pulumi.CustomResource
@@ -38,7 +37,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name of this policy tag in the URL format. The policy tag manager generates unique taxonomy IDs and policy tag IDs.
+        /// Identifier. Resource name of this policy tag in the URL format. The policy tag manager generates unique taxonomy IDs and policy tag IDs.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -120,6 +119,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
 
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Identifier. Resource name of this policy tag in the URL format. The policy tag manager generates unique taxonomy IDs and policy tag IDs.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Resource name of this policy tag's parent policy tag. If empty, this is a top level tag. If not set, defaults to an empty string. For example, for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag, and, for "Geolocation", this field is empty.

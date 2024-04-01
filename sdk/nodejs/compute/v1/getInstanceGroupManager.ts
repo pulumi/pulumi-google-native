@@ -28,6 +28,10 @@ export interface GetInstanceGroupManagerArgs {
 
 export interface GetInstanceGroupManagerResult {
     /**
+     * Specifies configuration that overrides the instance template configuration for the group.
+     */
+    readonly allInstancesConfig: outputs.compute.v1.InstanceGroupManagerAllInstancesConfigResponse;
+    /**
      * The autohealing policy for this managed instance group. You can specify only one value.
      */
     readonly autoHealingPolicies: outputs.compute.v1.InstanceGroupManagerAutoHealingPolicyResponse[];

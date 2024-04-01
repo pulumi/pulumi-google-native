@@ -90,6 +90,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string DownloadBytes;
         /// <summary>
+        /// Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+        /// </summary>
+        public readonly bool EnableConfidentialCompute;
+        /// <summary>
         /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
         /// </summary>
         public readonly ImmutableArray<Outputs.GuestOsFeatureResponse> GuestOsFeatures;
@@ -124,6 +128,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// <summary>
         /// Reserved for future use.
         /// </summary>
+        public readonly bool SatisfiesPzi;
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
         public readonly bool SatisfiesPzs;
         /// <summary>
         /// Server-defined URL for the resource.
@@ -153,6 +161,18 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
         /// </summary>
         public readonly string SourceDiskId;
+        /// <summary>
+        /// The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+        /// </summary>
+        public readonly string SourceInstantSnapshot;
+        /// <summary>
+        /// Customer provided encryption key when creating Snapshot from Instant Snapshot.
+        /// </summary>
+        public readonly Outputs.CustomerEncryptionKeyResponse SourceInstantSnapshotEncryptionKey;
+        /// <summary>
+        /// The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.
+        /// </summary>
+        public readonly string SourceInstantSnapshotId;
         /// <summary>
         /// URL of the resource policy which created this scheduled snapshot.
         /// </summary>
@@ -196,6 +216,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string downloadBytes,
 
+            bool enableConfidentialCompute,
+
             ImmutableArray<Outputs.GuestOsFeatureResponse> guestOsFeatures,
 
             string kind,
@@ -212,6 +234,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string name,
 
+            bool satisfiesPzi,
+
             bool satisfiesPzs,
 
             string selfLink,
@@ -227,6 +251,12 @@ namespace Pulumi.GoogleNative.Compute.V1
             string sourceDiskForRecoveryCheckpoint,
 
             string sourceDiskId,
+
+            string sourceInstantSnapshot,
+
+            Outputs.CustomerEncryptionKeyResponse sourceInstantSnapshotEncryptionKey,
+
+            string sourceInstantSnapshotId,
 
             string sourceSnapshotSchedulePolicy,
 
@@ -248,6 +278,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             Description = description;
             DiskSizeGb = diskSizeGb;
             DownloadBytes = downloadBytes;
+            EnableConfidentialCompute = enableConfidentialCompute;
             GuestOsFeatures = guestOsFeatures;
             Kind = kind;
             LabelFingerprint = labelFingerprint;
@@ -256,6 +287,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             Licenses = licenses;
             LocationHint = locationHint;
             Name = name;
+            SatisfiesPzi = satisfiesPzi;
             SatisfiesPzs = satisfiesPzs;
             SelfLink = selfLink;
             SnapshotEncryptionKey = snapshotEncryptionKey;
@@ -264,6 +296,9 @@ namespace Pulumi.GoogleNative.Compute.V1
             SourceDiskEncryptionKey = sourceDiskEncryptionKey;
             SourceDiskForRecoveryCheckpoint = sourceDiskForRecoveryCheckpoint;
             SourceDiskId = sourceDiskId;
+            SourceInstantSnapshot = sourceInstantSnapshot;
+            SourceInstantSnapshotEncryptionKey = sourceInstantSnapshotEncryptionKey;
+            SourceInstantSnapshotId = sourceInstantSnapshotId;
             SourceSnapshotSchedulePolicy = sourceSnapshotSchedulePolicy;
             SourceSnapshotSchedulePolicyId = sourceSnapshotSchedulePolicyId;
             Status = status;

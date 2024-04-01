@@ -929,6 +929,8 @@ const (
 	CloudSqlSettingsDatabaseVersionMysql8033 = CloudSqlSettingsDatabaseVersion("MYSQL_8_0_33")
 	// The database major version is MySQL 8.0 and the minor version is 34.
 	CloudSqlSettingsDatabaseVersionMysql8034 = CloudSqlSettingsDatabaseVersion("MYSQL_8_0_34")
+	// The database major version is MySQL 8.0 and the minor version is 35.
+	CloudSqlSettingsDatabaseVersionMysql8035 = CloudSqlSettingsDatabaseVersion("MYSQL_8_0_35")
 	// PostgreSQL 9.6.
 	CloudSqlSettingsDatabaseVersionPostgres96 = CloudSqlSettingsDatabaseVersion("POSTGRES_9_6")
 	// PostgreSQL 11.
@@ -1080,6 +1082,7 @@ func (o CloudSqlSettingsDatabaseVersionPtrOutput) ToStringPtrOutputWithContext(c
 //	CloudSqlSettingsDatabaseVersionMysql8032
 //	CloudSqlSettingsDatabaseVersionMysql8033
 //	CloudSqlSettingsDatabaseVersionMysql8034
+//	CloudSqlSettingsDatabaseVersionMysql8035
 //	CloudSqlSettingsDatabaseVersionPostgres96
 //	CloudSqlSettingsDatabaseVersionPostgres11
 //	CloudSqlSettingsDatabaseVersionPostgres10
@@ -1308,15 +1311,15 @@ func (in *cloudSqlSettingsEditionPtr) ToOutput(ctx context.Context) pulumix.Outp
 type ConnectionProfileProvider string
 
 const (
-	// The database provider is unknown.
+	// Use this value for on-premise source database instances.
 	ConnectionProfileProviderDatabaseProviderUnspecified = ConnectionProfileProvider("DATABASE_PROVIDER_UNSPECIFIED")
-	// CloudSQL runs the database.
+	// Cloud SQL is the source instance provider.
 	ConnectionProfileProviderCloudsql = ConnectionProfileProvider("CLOUDSQL")
-	// RDS runs the database.
+	// Amazon RDS is the source instance provider.
 	ConnectionProfileProviderRds = ConnectionProfileProvider("RDS")
-	// Amazon Aurora.
+	// Amazon Aurora is the source instance provider.
 	ConnectionProfileProviderAurora = ConnectionProfileProvider("AURORA")
-	// AlloyDB.
+	// AlloyDB for PostgreSQL is the source instance provider.
 	ConnectionProfileProviderAlloydb = ConnectionProfileProvider("ALLOYDB")
 )
 
@@ -1689,6 +1692,8 @@ const (
 	DatabaseEngineInfoEngineMysql = DatabaseEngineInfoEngine("MYSQL")
 	// The source engine is PostgreSQL.
 	DatabaseEngineInfoEnginePostgresql = DatabaseEngineInfoEngine("POSTGRESQL")
+	// The source engine is SQL Server.
+	DatabaseEngineInfoEngineSqlserver = DatabaseEngineInfoEngine("SQLSERVER")
 	// The source engine is Oracle.
 	DatabaseEngineInfoEngineOracle = DatabaseEngineInfoEngine("ORACLE")
 )
@@ -1818,6 +1823,7 @@ func (o DatabaseEngineInfoEnginePtrOutput) ToStringPtrOutputWithContext(ctx cont
 //	DatabaseEngineInfoEngineDatabaseEngineUnspecified
 //	DatabaseEngineInfoEngineMysql
 //	DatabaseEngineInfoEnginePostgresql
+//	DatabaseEngineInfoEngineSqlserver
 //	DatabaseEngineInfoEngineOracle
 type DatabaseEngineInfoEngineInput interface {
 	pulumi.Input
@@ -1869,6 +1875,8 @@ const (
 	DatabaseTypeEngineMysql = DatabaseTypeEngine("MYSQL")
 	// The source engine is PostgreSQL.
 	DatabaseTypeEnginePostgresql = DatabaseTypeEngine("POSTGRESQL")
+	// The source engine is SQL Server.
+	DatabaseTypeEngineSqlserver = DatabaseTypeEngine("SQLSERVER")
 	// The source engine is Oracle.
 	DatabaseTypeEngineOracle = DatabaseTypeEngine("ORACLE")
 )
@@ -1998,6 +2006,7 @@ func (o DatabaseTypeEnginePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 //	DatabaseTypeEngineDatabaseEngineUnspecified
 //	DatabaseTypeEngineMysql
 //	DatabaseTypeEnginePostgresql
+//	DatabaseTypeEngineSqlserver
 //	DatabaseTypeEngineOracle
 type DatabaseTypeEngineInput interface {
 	pulumi.Input
@@ -2043,15 +2052,15 @@ func (in *databaseTypeEnginePtr) ToOutput(ctx context.Context) pulumix.Output[*D
 type DatabaseTypeProvider string
 
 const (
-	// The database provider is unknown.
+	// Use this value for on-premise source database instances.
 	DatabaseTypeProviderDatabaseProviderUnspecified = DatabaseTypeProvider("DATABASE_PROVIDER_UNSPECIFIED")
-	// CloudSQL runs the database.
+	// Cloud SQL is the source instance provider.
 	DatabaseTypeProviderCloudsql = DatabaseTypeProvider("CLOUDSQL")
-	// RDS runs the database.
+	// Amazon RDS is the source instance provider.
 	DatabaseTypeProviderRds = DatabaseTypeProvider("RDS")
-	// Amazon Aurora.
+	// Amazon Aurora is the source instance provider.
 	DatabaseTypeProviderAurora = DatabaseTypeProvider("AURORA")
-	// AlloyDB.
+	// AlloyDB for PostgreSQL is the source instance provider.
 	DatabaseTypeProviderAlloydb = DatabaseTypeProvider("ALLOYDB")
 )
 

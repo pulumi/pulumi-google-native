@@ -11,7 +11,6 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
 {
     /// <summary>
     /// Creates a new FeatureView in a given FeatureOnlineStore.
-    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:aiplatform/v1:FeatureView")]
     public partial class FeatureView : global::Pulumi.CustomResource
@@ -50,6 +49,12 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
         public Output<string> FeatureViewId { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Configuration for index preparation for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+        /// </summary>
+        [Output("indexConfig")]
+        public Output<Outputs.GoogleCloudAiplatformV1FeatureViewIndexConfigResponse> IndexConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. The labels with user-defined metadata to organize your FeatureViews. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
         /// </summary>
         [Output("labels")]
@@ -59,7 +64,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+        /// Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -164,6 +169,12 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
         [Input("featureViewId", required: true)]
         public Input<string> FeatureViewId { get; set; } = null!;
 
+        /// <summary>
+        /// Optional. Configuration for index preparation for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+        /// </summary>
+        [Input("indexConfig")]
+        public Input<Inputs.GoogleCloudAiplatformV1FeatureViewIndexConfigArgs>? IndexConfig { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -178,6 +189,12 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
 
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

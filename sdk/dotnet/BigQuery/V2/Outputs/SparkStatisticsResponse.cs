@@ -10,29 +10,44 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// Statistics for a BigSpark query. Populated as part of JobStatistics2
+    /// </summary>
     [OutputType]
     public sealed class SparkStatisticsResponse
     {
         /// <summary>
-        /// Endpoints generated for the Spark job.
+        /// Endpoints returned from Dataproc. Key list: - history_server_endpoint: A link to Spark job UI.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Endpoints;
+        /// <summary>
+        /// The Google Cloud Storage bucket that is used as the default file system by the Spark application. This field is only filled when the Spark procedure uses the invoker security mode. The `gcsStagingBucket` bucket is inferred from the `@@spark_proc_properties.staging_bucket` system variable (if it is provided). Otherwise, BigQuery creates a default staging bucket for the job and returns the bucket name in this field. Example: * `gs://[bucket_name]`
+        /// </summary>
+        public readonly string GcsStagingBucket;
+        /// <summary>
+        /// The Cloud KMS encryption key that is used to protect the resources created by the Spark job. If the Spark procedure uses the invoker security mode, the Cloud KMS encryption key is either inferred from the provided system variable, `@@spark_proc_properties.kms_key_name`, or the default key of the BigQuery job's project (if the CMEK organization policy is enforced). Otherwise, the Cloud KMS key is either inferred from the Spark connection associated with the procedure (if it is provided), or from the default key of the Spark connection's project if the CMEK organization policy is enforced. Example: * `projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]`
+        /// </summary>
+        public readonly string KmsKeyName;
         /// <summary>
         /// Logging info is used to generate a link to Cloud Logging.
         /// </summary>
         public readonly Outputs.SparkLoggingInfoResponse LoggingInfo;
         /// <summary>
-        /// Spark job id if a Spark job is created successfully.
+        /// Spark job ID if a Spark job is created successfully.
         /// </summary>
         public readonly string SparkJobId;
         /// <summary>
-        /// Location where the Spark job is executed.
+        /// Location where the Spark job is executed. A location is selected by BigQueury for jobs configured to run in a multi-region.
         /// </summary>
         public readonly string SparkJobLocation;
 
         [OutputConstructor]
         private SparkStatisticsResponse(
             ImmutableDictionary<string, string> endpoints,
+
+            string gcsStagingBucket,
+
+            string kmsKeyName,
 
             Outputs.SparkLoggingInfoResponse loggingInfo,
 
@@ -41,6 +56,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             string sparkJobLocation)
         {
             Endpoints = endpoints;
+            GcsStagingBucket = gcsStagingBucket;
+            KmsKeyName = kmsKeyName;
             LoggingInfo = loggingInfo;
             SparkJobId = sparkJobId;
             SparkJobLocation = sparkJobLocation;

@@ -39,6 +39,10 @@ export class ConnectivityTest extends pulumi.CustomResource {
     }
 
     /**
+     * Whether the test should skip firewall checking. If not provided, we assume false.
+     */
+    public readonly bypassFirewallChecks!: pulumi.Output<boolean>;
+    /**
      * The time the test was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -115,6 +119,7 @@ export class ConnectivityTest extends pulumi.CustomResource {
             if ((!args || args.testId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'testId'");
             }
+            resourceInputs["bypassFirewallChecks"] = args ? args.bypassFirewallChecks : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["destination"] = args ? args.destination : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -130,6 +135,7 @@ export class ConnectivityTest extends pulumi.CustomResource {
             resourceInputs["reachabilityDetails"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["bypassFirewallChecks"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["destination"] = undefined /*out*/;
@@ -156,6 +162,10 @@ export class ConnectivityTest extends pulumi.CustomResource {
  * The set of arguments for constructing a ConnectivityTest resource.
  */
 export interface ConnectivityTestArgs {
+    /**
+     * Whether the test should skip firewall checking. If not provided, we assume false.
+     */
+    bypassFirewallChecks?: pulumi.Input<boolean>;
     /**
      * The user-supplied description of the Connectivity Test. Maximum of 512 characters.
      */

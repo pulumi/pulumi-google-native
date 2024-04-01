@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1.Outputs
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// A set of findings that applies to all machines in the input.
+        /// A set of findings that applies to all virtual machines in the input. Only present for virtual machines.
         /// </summary>
         public readonly Outputs.ReportSummaryMachineFindingResponse MachineFinding;
         /// <summary>
@@ -37,11 +37,11 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1.Outputs
         /// </summary>
         public readonly Outputs.MoneyResponse MonthlyCostCompute;
         /// <summary>
-        /// Network Egress monthly cost for this preference set.
+        /// Network Egress monthly cost for this preference set. Only present for virtual machines.
         /// </summary>
         public readonly Outputs.MoneyResponse MonthlyCostNetworkEgress;
         /// <summary>
-        /// Licensing monthly cost for this preference set.
+        /// Operating system licensing monthly cost for this preference set. Only present for virtual machines.
         /// </summary>
         public readonly Outputs.MoneyResponse MonthlyCostOsLicense;
         /// <summary>
@@ -65,7 +65,7 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1.Outputs
         /// </summary>
         public readonly string PricingTrack;
         /// <summary>
-        /// A set of findings that applies to Stole-Tenant machines in the input.
+        /// A set of findings that applies to Stole-Tenant machines in the input. Only present for virtual machines.
         /// </summary>
         public readonly Outputs.ReportSummarySoleTenantFindingResponse SoleTenantFinding;
         /// <summary>
@@ -73,7 +73,7 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1.Outputs
         /// </summary>
         public readonly string TopPriority;
         /// <summary>
-        /// A set of findings that applies to VMWare machines in the input.
+        /// A set of findings that applies to VMWare machines in the input. Only present for virtual machines.
         /// </summary>
         public readonly Outputs.ReportSummaryVMWareEngineFindingResponse VmwareEngineFinding;
 

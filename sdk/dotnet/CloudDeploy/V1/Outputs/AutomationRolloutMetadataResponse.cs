@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AdvanceAutomationRuns;
         /// <summary>
+        /// The current AutomationRun repairing the rollout.
+        /// </summary>
+        public readonly string CurrentRepairAutomationRun;
+        /// <summary>
         /// The ID of the AutomationRun initiated by a promote release rule.
         /// </summary>
         public readonly string PromoteAutomationRun;
@@ -33,11 +37,14 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         private AutomationRolloutMetadataResponse(
             ImmutableArray<string> advanceAutomationRuns,
 
+            string currentRepairAutomationRun,
+
             string promoteAutomationRun,
 
             ImmutableArray<string> repairAutomationRuns)
         {
             AdvanceAutomationRuns = advanceAutomationRuns;
+            CurrentRepairAutomationRun = currentRepairAutomationRun;
             PromoteAutomationRun = promoteAutomationRun;
             RepairAutomationRuns = repairAutomationRuns;
         }

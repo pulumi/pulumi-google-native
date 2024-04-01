@@ -13,6 +13,168 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+// An accelerator card attached to the instance.
+type Accelerator struct {
+	// Optional. Number of accelerator cards exposed to the instance.
+	Count *int `pulumi:"count"`
+	// Optional. Type of accelerator resource to attach to the instance, for example, `"nvidia-tesla-p100"`.
+	Type *string `pulumi:"type"`
+}
+
+// AcceleratorInput is an input type that accepts AcceleratorArgs and AcceleratorOutput values.
+// You can construct a concrete instance of `AcceleratorInput` via:
+//
+//	AcceleratorArgs{...}
+type AcceleratorInput interface {
+	pulumi.Input
+
+	ToAcceleratorOutput() AcceleratorOutput
+	ToAcceleratorOutputWithContext(context.Context) AcceleratorOutput
+}
+
+// An accelerator card attached to the instance.
+type AcceleratorArgs struct {
+	// Optional. Number of accelerator cards exposed to the instance.
+	Count pulumi.IntPtrInput `pulumi:"count"`
+	// Optional. Type of accelerator resource to attach to the instance, for example, `"nvidia-tesla-p100"`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (AcceleratorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Accelerator)(nil)).Elem()
+}
+
+func (i AcceleratorArgs) ToAcceleratorOutput() AcceleratorOutput {
+	return i.ToAcceleratorOutputWithContext(context.Background())
+}
+
+func (i AcceleratorArgs) ToAcceleratorOutputWithContext(ctx context.Context) AcceleratorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorOutput)
+}
+
+// AcceleratorArrayInput is an input type that accepts AcceleratorArray and AcceleratorArrayOutput values.
+// You can construct a concrete instance of `AcceleratorArrayInput` via:
+//
+//	AcceleratorArray{ AcceleratorArgs{...} }
+type AcceleratorArrayInput interface {
+	pulumi.Input
+
+	ToAcceleratorArrayOutput() AcceleratorArrayOutput
+	ToAcceleratorArrayOutputWithContext(context.Context) AcceleratorArrayOutput
+}
+
+type AcceleratorArray []AcceleratorInput
+
+func (AcceleratorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Accelerator)(nil)).Elem()
+}
+
+func (i AcceleratorArray) ToAcceleratorArrayOutput() AcceleratorArrayOutput {
+	return i.ToAcceleratorArrayOutputWithContext(context.Background())
+}
+
+func (i AcceleratorArray) ToAcceleratorArrayOutputWithContext(ctx context.Context) AcceleratorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorArrayOutput)
+}
+
+// An accelerator card attached to the instance.
+type AcceleratorOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Accelerator)(nil)).Elem()
+}
+
+func (o AcceleratorOutput) ToAcceleratorOutput() AcceleratorOutput {
+	return o
+}
+
+func (o AcceleratorOutput) ToAcceleratorOutputWithContext(ctx context.Context) AcceleratorOutput {
+	return o
+}
+
+// Optional. Number of accelerator cards exposed to the instance.
+func (o AcceleratorOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Accelerator) *int { return v.Count }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Type of accelerator resource to attach to the instance, for example, `"nvidia-tesla-p100"`.
+func (o AcceleratorOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Accelerator) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type AcceleratorArrayOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Accelerator)(nil)).Elem()
+}
+
+func (o AcceleratorArrayOutput) ToAcceleratorArrayOutput() AcceleratorArrayOutput {
+	return o
+}
+
+func (o AcceleratorArrayOutput) ToAcceleratorArrayOutputWithContext(ctx context.Context) AcceleratorArrayOutput {
+	return o
+}
+
+func (o AcceleratorArrayOutput) Index(i pulumi.IntInput) AcceleratorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Accelerator {
+		return vs[0].([]Accelerator)[vs[1].(int)]
+	}).(AcceleratorOutput)
+}
+
+// An accelerator card attached to the instance.
+type AcceleratorResponse struct {
+	// Optional. Number of accelerator cards exposed to the instance.
+	Count int `pulumi:"count"`
+	// Optional. Type of accelerator resource to attach to the instance, for example, `"nvidia-tesla-p100"`.
+	Type string `pulumi:"type"`
+}
+
+// An accelerator card attached to the instance.
+type AcceleratorResponseOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorResponse)(nil)).Elem()
+}
+
+func (o AcceleratorResponseOutput) ToAcceleratorResponseOutput() AcceleratorResponseOutput {
+	return o
+}
+
+func (o AcceleratorResponseOutput) ToAcceleratorResponseOutputWithContext(ctx context.Context) AcceleratorResponseOutput {
+	return o
+}
+
+// Optional. Number of accelerator cards exposed to the instance.
+func (o AcceleratorResponseOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v AcceleratorResponse) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// Optional. Type of accelerator resource to attach to the instance, for example, `"nvidia-tesla-p100"`.
+func (o AcceleratorResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AcceleratorResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AcceleratorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AcceleratorResponse)(nil)).Elem()
+}
+
+func (o AcceleratorResponseArrayOutput) ToAcceleratorResponseArrayOutput() AcceleratorResponseArrayOutput {
+	return o
+}
+
+func (o AcceleratorResponseArrayOutput) ToAcceleratorResponseArrayOutputWithContext(ctx context.Context) AcceleratorResponseArrayOutput {
+	return o
+}
+
+func (o AcceleratorResponseArrayOutput) Index(i pulumi.IntInput) AcceleratorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AcceleratorResponse {
+		return vs[0].([]AcceleratorResponse)[vs[1].(int)]
+	}).(AcceleratorResponseOutput)
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfig struct {
 	// The configuration for logging of each type of permission.
@@ -341,9 +503,9 @@ func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConf
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role *string `pulumi:"role"`
 }
 
@@ -362,9 +524,9 @@ type BindingInput interface {
 type BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -425,12 +587,12 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -459,9 +621,9 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role string `pulumi:"role"`
 }
 
@@ -485,12 +647,12 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -1003,6 +1165,334 @@ func (o CustomerEncryptionKeyResponseOutput) KmsKeyServiceAccount() pulumi.Strin
 	return o.ApplyT(func(v CustomerEncryptionKeyResponse) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
 }
 
+// Configuration options for a custom domain.
+type DomainConfig struct {
+	// Immutable. Domain used by Workstations for HTTP ingress.
+	Domain *string `pulumi:"domain"`
+}
+
+// DomainConfigInput is an input type that accepts DomainConfigArgs and DomainConfigOutput values.
+// You can construct a concrete instance of `DomainConfigInput` via:
+//
+//	DomainConfigArgs{...}
+type DomainConfigInput interface {
+	pulumi.Input
+
+	ToDomainConfigOutput() DomainConfigOutput
+	ToDomainConfigOutputWithContext(context.Context) DomainConfigOutput
+}
+
+// Configuration options for a custom domain.
+type DomainConfigArgs struct {
+	// Immutable. Domain used by Workstations for HTTP ingress.
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+}
+
+func (DomainConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainConfig)(nil)).Elem()
+}
+
+func (i DomainConfigArgs) ToDomainConfigOutput() DomainConfigOutput {
+	return i.ToDomainConfigOutputWithContext(context.Background())
+}
+
+func (i DomainConfigArgs) ToDomainConfigOutputWithContext(ctx context.Context) DomainConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigOutput)
+}
+
+func (i DomainConfigArgs) ToDomainConfigPtrOutput() DomainConfigPtrOutput {
+	return i.ToDomainConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DomainConfigArgs) ToDomainConfigPtrOutputWithContext(ctx context.Context) DomainConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigOutput).ToDomainConfigPtrOutputWithContext(ctx)
+}
+
+// DomainConfigPtrInput is an input type that accepts DomainConfigArgs, DomainConfigPtr and DomainConfigPtrOutput values.
+// You can construct a concrete instance of `DomainConfigPtrInput` via:
+//
+//	        DomainConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DomainConfigPtrInput interface {
+	pulumi.Input
+
+	ToDomainConfigPtrOutput() DomainConfigPtrOutput
+	ToDomainConfigPtrOutputWithContext(context.Context) DomainConfigPtrOutput
+}
+
+type domainConfigPtrType DomainConfigArgs
+
+func DomainConfigPtr(v *DomainConfigArgs) DomainConfigPtrInput {
+	return (*domainConfigPtrType)(v)
+}
+
+func (*domainConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainConfig)(nil)).Elem()
+}
+
+func (i *domainConfigPtrType) ToDomainConfigPtrOutput() DomainConfigPtrOutput {
+	return i.ToDomainConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *domainConfigPtrType) ToDomainConfigPtrOutputWithContext(ctx context.Context) DomainConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainConfigPtrOutput)
+}
+
+// Configuration options for a custom domain.
+type DomainConfigOutput struct{ *pulumi.OutputState }
+
+func (DomainConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainConfig)(nil)).Elem()
+}
+
+func (o DomainConfigOutput) ToDomainConfigOutput() DomainConfigOutput {
+	return o
+}
+
+func (o DomainConfigOutput) ToDomainConfigOutputWithContext(ctx context.Context) DomainConfigOutput {
+	return o
+}
+
+func (o DomainConfigOutput) ToDomainConfigPtrOutput() DomainConfigPtrOutput {
+	return o.ToDomainConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DomainConfigOutput) ToDomainConfigPtrOutputWithContext(ctx context.Context) DomainConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainConfig) *DomainConfig {
+		return &v
+	}).(DomainConfigPtrOutput)
+}
+
+// Immutable. Domain used by Workstations for HTTP ingress.
+func (o DomainConfigOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainConfig) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+type DomainConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DomainConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainConfig)(nil)).Elem()
+}
+
+func (o DomainConfigPtrOutput) ToDomainConfigPtrOutput() DomainConfigPtrOutput {
+	return o
+}
+
+func (o DomainConfigPtrOutput) ToDomainConfigPtrOutputWithContext(ctx context.Context) DomainConfigPtrOutput {
+	return o
+}
+
+func (o DomainConfigPtrOutput) Elem() DomainConfigOutput {
+	return o.ApplyT(func(v *DomainConfig) DomainConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DomainConfig
+		return ret
+	}).(DomainConfigOutput)
+}
+
+// Immutable. Domain used by Workstations for HTTP ingress.
+func (o DomainConfigPtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Domain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration options for a custom domain.
+type DomainConfigResponse struct {
+	// Immutable. Domain used by Workstations for HTTP ingress.
+	Domain string `pulumi:"domain"`
+}
+
+// Configuration options for a custom domain.
+type DomainConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DomainConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainConfigResponse)(nil)).Elem()
+}
+
+func (o DomainConfigResponseOutput) ToDomainConfigResponseOutput() DomainConfigResponseOutput {
+	return o
+}
+
+func (o DomainConfigResponseOutput) ToDomainConfigResponseOutputWithContext(ctx context.Context) DomainConfigResponseOutput {
+	return o
+}
+
+// Immutable. Domain used by Workstations for HTTP ingress.
+func (o DomainConfigResponseOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v DomainConfigResponse) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// An ephemeral directory which won't persist across workstation sessions. It is freshly created on every workstation start operation.
+type EphemeralDirectory struct {
+	// An EphemeralDirectory backed by a Compute Engine persistent disk.
+	GcePd *GcePersistentDisk `pulumi:"gcePd"`
+	// Location of this directory in the running workstation.
+	MountPath string `pulumi:"mountPath"`
+}
+
+// EphemeralDirectoryInput is an input type that accepts EphemeralDirectoryArgs and EphemeralDirectoryOutput values.
+// You can construct a concrete instance of `EphemeralDirectoryInput` via:
+//
+//	EphemeralDirectoryArgs{...}
+type EphemeralDirectoryInput interface {
+	pulumi.Input
+
+	ToEphemeralDirectoryOutput() EphemeralDirectoryOutput
+	ToEphemeralDirectoryOutputWithContext(context.Context) EphemeralDirectoryOutput
+}
+
+// An ephemeral directory which won't persist across workstation sessions. It is freshly created on every workstation start operation.
+type EphemeralDirectoryArgs struct {
+	// An EphemeralDirectory backed by a Compute Engine persistent disk.
+	GcePd GcePersistentDiskPtrInput `pulumi:"gcePd"`
+	// Location of this directory in the running workstation.
+	MountPath pulumi.StringInput `pulumi:"mountPath"`
+}
+
+func (EphemeralDirectoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EphemeralDirectory)(nil)).Elem()
+}
+
+func (i EphemeralDirectoryArgs) ToEphemeralDirectoryOutput() EphemeralDirectoryOutput {
+	return i.ToEphemeralDirectoryOutputWithContext(context.Background())
+}
+
+func (i EphemeralDirectoryArgs) ToEphemeralDirectoryOutputWithContext(ctx context.Context) EphemeralDirectoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EphemeralDirectoryOutput)
+}
+
+// EphemeralDirectoryArrayInput is an input type that accepts EphemeralDirectoryArray and EphemeralDirectoryArrayOutput values.
+// You can construct a concrete instance of `EphemeralDirectoryArrayInput` via:
+//
+//	EphemeralDirectoryArray{ EphemeralDirectoryArgs{...} }
+type EphemeralDirectoryArrayInput interface {
+	pulumi.Input
+
+	ToEphemeralDirectoryArrayOutput() EphemeralDirectoryArrayOutput
+	ToEphemeralDirectoryArrayOutputWithContext(context.Context) EphemeralDirectoryArrayOutput
+}
+
+type EphemeralDirectoryArray []EphemeralDirectoryInput
+
+func (EphemeralDirectoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EphemeralDirectory)(nil)).Elem()
+}
+
+func (i EphemeralDirectoryArray) ToEphemeralDirectoryArrayOutput() EphemeralDirectoryArrayOutput {
+	return i.ToEphemeralDirectoryArrayOutputWithContext(context.Background())
+}
+
+func (i EphemeralDirectoryArray) ToEphemeralDirectoryArrayOutputWithContext(ctx context.Context) EphemeralDirectoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EphemeralDirectoryArrayOutput)
+}
+
+// An ephemeral directory which won't persist across workstation sessions. It is freshly created on every workstation start operation.
+type EphemeralDirectoryOutput struct{ *pulumi.OutputState }
+
+func (EphemeralDirectoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EphemeralDirectory)(nil)).Elem()
+}
+
+func (o EphemeralDirectoryOutput) ToEphemeralDirectoryOutput() EphemeralDirectoryOutput {
+	return o
+}
+
+func (o EphemeralDirectoryOutput) ToEphemeralDirectoryOutputWithContext(ctx context.Context) EphemeralDirectoryOutput {
+	return o
+}
+
+// An EphemeralDirectory backed by a Compute Engine persistent disk.
+func (o EphemeralDirectoryOutput) GcePd() GcePersistentDiskPtrOutput {
+	return o.ApplyT(func(v EphemeralDirectory) *GcePersistentDisk { return v.GcePd }).(GcePersistentDiskPtrOutput)
+}
+
+// Location of this directory in the running workstation.
+func (o EphemeralDirectoryOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v EphemeralDirectory) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+type EphemeralDirectoryArrayOutput struct{ *pulumi.OutputState }
+
+func (EphemeralDirectoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EphemeralDirectory)(nil)).Elem()
+}
+
+func (o EphemeralDirectoryArrayOutput) ToEphemeralDirectoryArrayOutput() EphemeralDirectoryArrayOutput {
+	return o
+}
+
+func (o EphemeralDirectoryArrayOutput) ToEphemeralDirectoryArrayOutputWithContext(ctx context.Context) EphemeralDirectoryArrayOutput {
+	return o
+}
+
+func (o EphemeralDirectoryArrayOutput) Index(i pulumi.IntInput) EphemeralDirectoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EphemeralDirectory {
+		return vs[0].([]EphemeralDirectory)[vs[1].(int)]
+	}).(EphemeralDirectoryOutput)
+}
+
+// An ephemeral directory which won't persist across workstation sessions. It is freshly created on every workstation start operation.
+type EphemeralDirectoryResponse struct {
+	// An EphemeralDirectory backed by a Compute Engine persistent disk.
+	GcePd GcePersistentDiskResponse `pulumi:"gcePd"`
+	// Location of this directory in the running workstation.
+	MountPath string `pulumi:"mountPath"`
+}
+
+// An ephemeral directory which won't persist across workstation sessions. It is freshly created on every workstation start operation.
+type EphemeralDirectoryResponseOutput struct{ *pulumi.OutputState }
+
+func (EphemeralDirectoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EphemeralDirectoryResponse)(nil)).Elem()
+}
+
+func (o EphemeralDirectoryResponseOutput) ToEphemeralDirectoryResponseOutput() EphemeralDirectoryResponseOutput {
+	return o
+}
+
+func (o EphemeralDirectoryResponseOutput) ToEphemeralDirectoryResponseOutputWithContext(ctx context.Context) EphemeralDirectoryResponseOutput {
+	return o
+}
+
+// An EphemeralDirectory backed by a Compute Engine persistent disk.
+func (o EphemeralDirectoryResponseOutput) GcePd() GcePersistentDiskResponseOutput {
+	return o.ApplyT(func(v EphemeralDirectoryResponse) GcePersistentDiskResponse { return v.GcePd }).(GcePersistentDiskResponseOutput)
+}
+
+// Location of this directory in the running workstation.
+func (o EphemeralDirectoryResponseOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v EphemeralDirectoryResponse) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+type EphemeralDirectoryResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EphemeralDirectoryResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EphemeralDirectoryResponse)(nil)).Elem()
+}
+
+func (o EphemeralDirectoryResponseArrayOutput) ToEphemeralDirectoryResponseArrayOutput() EphemeralDirectoryResponseArrayOutput {
+	return o
+}
+
+func (o EphemeralDirectoryResponseArrayOutput) ToEphemeralDirectoryResponseArrayOutputWithContext(ctx context.Context) EphemeralDirectoryResponseArrayOutput {
+	return o
+}
+
+func (o EphemeralDirectoryResponseArrayOutput) Index(i pulumi.IntInput) EphemeralDirectoryResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EphemeralDirectoryResponse {
+		return vs[0].([]EphemeralDirectoryResponse)[vs[1].(int)]
+	}).(EphemeralDirectoryResponseOutput)
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type Expr struct {
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1415,13 +1905,17 @@ func (o GceConfidentialInstanceConfigResponseOutput) EnableConfidentialCompute()
 
 // A runtime using a Compute Engine instance.
 type GceInstance struct {
+	// Optional. A list of the type and count of accelerator cards attached to the instance.
+	Accelerators []Accelerator `pulumi:"accelerators"`
 	// Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk size is `30` GB. Defaults to `50` GB.
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
 	// Optional. A set of Compute Engine Confidential VM instance options.
 	ConfidentialInstanceConfig *GceConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// Optional. When set to true, disables public IP addresses for VMs. If you disable public IP addresses, you must set up Private Google Access or Cloud NAT on your network. If you use Private Google Access and you use `private.googleapis.com` or `restricted.googleapis.com` for Container Registry and Artifact Registry, make sure that you set up DNS records for domains `*.gcr.io` and `*.pkg.dev`. Defaults to false (VMs have public IP addresses).
 	DisablePublicIpAddresses *bool `pulumi:"disablePublicIpAddresses"`
-	// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created under this workstation configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
+	// Optional. Whether to disable SSH access to the VM.
+	DisableSsh *bool `pulumi:"disableSsh"`
+	// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created using this workstation configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
 	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
 	// Optional. The type of machine to use for VM instances—for example, `"e2-standard-4"`. For more information about machine types that Cloud Workstations supports, see the list of [available machine types](https://cloud.google.com/workstations/docs/available-machine-types).
 	MachineType *string `pulumi:"machineType"`
@@ -1450,13 +1944,17 @@ type GceInstanceInput interface {
 
 // A runtime using a Compute Engine instance.
 type GceInstanceArgs struct {
+	// Optional. A list of the type and count of accelerator cards attached to the instance.
+	Accelerators AcceleratorArrayInput `pulumi:"accelerators"`
 	// Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk size is `30` GB. Defaults to `50` GB.
 	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
 	// Optional. A set of Compute Engine Confidential VM instance options.
 	ConfidentialInstanceConfig GceConfidentialInstanceConfigPtrInput `pulumi:"confidentialInstanceConfig"`
 	// Optional. When set to true, disables public IP addresses for VMs. If you disable public IP addresses, you must set up Private Google Access or Cloud NAT on your network. If you use Private Google Access and you use `private.googleapis.com` or `restricted.googleapis.com` for Container Registry and Artifact Registry, make sure that you set up DNS records for domains `*.gcr.io` and `*.pkg.dev`. Defaults to false (VMs have public IP addresses).
 	DisablePublicIpAddresses pulumi.BoolPtrInput `pulumi:"disablePublicIpAddresses"`
-	// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created under this workstation configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
+	// Optional. Whether to disable SSH access to the VM.
+	DisableSsh pulumi.BoolPtrInput `pulumi:"disableSsh"`
+	// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created using this workstation configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
 	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
 	// Optional. The type of machine to use for VM instances—for example, `"e2-standard-4"`. For more information about machine types that Cloud Workstations supports, see the list of [available machine types](https://cloud.google.com/workstations/docs/available-machine-types).
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
@@ -1550,6 +2048,11 @@ func (o GceInstanceOutput) ToGceInstancePtrOutputWithContext(ctx context.Context
 	}).(GceInstancePtrOutput)
 }
 
+// Optional. A list of the type and count of accelerator cards attached to the instance.
+func (o GceInstanceOutput) Accelerators() AcceleratorArrayOutput {
+	return o.ApplyT(func(v GceInstance) []Accelerator { return v.Accelerators }).(AcceleratorArrayOutput)
+}
+
 // Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk size is `30` GB. Defaults to `50` GB.
 func (o GceInstanceOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GceInstance) *int { return v.BootDiskSizeGb }).(pulumi.IntPtrOutput)
@@ -1565,7 +2068,12 @@ func (o GceInstanceOutput) DisablePublicIpAddresses() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GceInstance) *bool { return v.DisablePublicIpAddresses }).(pulumi.BoolPtrOutput)
 }
 
-// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created under this workstation configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
+// Optional. Whether to disable SSH access to the VM.
+func (o GceInstanceOutput) DisableSsh() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GceInstance) *bool { return v.DisableSsh }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created using this workstation configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
 func (o GceInstanceOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GceInstance) *bool { return v.EnableNestedVirtualization }).(pulumi.BoolPtrOutput)
 }
@@ -1624,6 +2132,16 @@ func (o GceInstancePtrOutput) Elem() GceInstanceOutput {
 	}).(GceInstanceOutput)
 }
 
+// Optional. A list of the type and count of accelerator cards attached to the instance.
+func (o GceInstancePtrOutput) Accelerators() AcceleratorArrayOutput {
+	return o.ApplyT(func(v *GceInstance) []Accelerator {
+		if v == nil {
+			return nil
+		}
+		return v.Accelerators
+	}).(AcceleratorArrayOutput)
+}
+
 // Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk size is `30` GB. Defaults to `50` GB.
 func (o GceInstancePtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GceInstance) *int {
@@ -1654,7 +2172,17 @@ func (o GceInstancePtrOutput) DisablePublicIpAddresses() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created under this workstation configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
+// Optional. Whether to disable SSH access to the VM.
+func (o GceInstancePtrOutput) DisableSsh() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GceInstance) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableSsh
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created using this workstation configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
 func (o GceInstancePtrOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GceInstance) *bool {
 		if v == nil {
@@ -1726,13 +2254,17 @@ func (o GceInstancePtrOutput) Tags() pulumi.StringArrayOutput {
 
 // A runtime using a Compute Engine instance.
 type GceInstanceResponse struct {
+	// Optional. A list of the type and count of accelerator cards attached to the instance.
+	Accelerators []AcceleratorResponse `pulumi:"accelerators"`
 	// Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk size is `30` GB. Defaults to `50` GB.
 	BootDiskSizeGb int `pulumi:"bootDiskSizeGb"`
 	// Optional. A set of Compute Engine Confidential VM instance options.
 	ConfidentialInstanceConfig GceConfidentialInstanceConfigResponse `pulumi:"confidentialInstanceConfig"`
 	// Optional. When set to true, disables public IP addresses for VMs. If you disable public IP addresses, you must set up Private Google Access or Cloud NAT on your network. If you use Private Google Access and you use `private.googleapis.com` or `restricted.googleapis.com` for Container Registry and Artifact Registry, make sure that you set up DNS records for domains `*.gcr.io` and `*.pkg.dev`. Defaults to false (VMs have public IP addresses).
 	DisablePublicIpAddresses bool `pulumi:"disablePublicIpAddresses"`
-	// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created under this workstation configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
+	// Optional. Whether to disable SSH access to the VM.
+	DisableSsh bool `pulumi:"disableSsh"`
+	// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created using this workstation configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
 	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
 	// Optional. The type of machine to use for VM instances—for example, `"e2-standard-4"`. For more information about machine types that Cloud Workstations supports, see the list of [available machine types](https://cloud.google.com/workstations/docs/available-machine-types).
 	MachineType string `pulumi:"machineType"`
@@ -1765,6 +2297,11 @@ func (o GceInstanceResponseOutput) ToGceInstanceResponseOutputWithContext(ctx co
 	return o
 }
 
+// Optional. A list of the type and count of accelerator cards attached to the instance.
+func (o GceInstanceResponseOutput) Accelerators() AcceleratorResponseArrayOutput {
+	return o.ApplyT(func(v GceInstanceResponse) []AcceleratorResponse { return v.Accelerators }).(AcceleratorResponseArrayOutput)
+}
+
 // Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk size is `30` GB. Defaults to `50` GB.
 func (o GceInstanceResponseOutput) BootDiskSizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v GceInstanceResponse) int { return v.BootDiskSizeGb }).(pulumi.IntOutput)
@@ -1780,7 +2317,12 @@ func (o GceInstanceResponseOutput) DisablePublicIpAddresses() pulumi.BoolOutput 
 	return o.ApplyT(func(v GceInstanceResponse) bool { return v.DisablePublicIpAddresses }).(pulumi.BoolOutput)
 }
 
-// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created under this workstation configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
+// Optional. Whether to disable SSH access to the VM.
+func (o GceInstanceResponseOutput) DisableSsh() pulumi.BoolOutput {
+	return o.ApplyT(func(v GceInstanceResponse) bool { return v.DisableSsh }).(pulumi.BoolOutput)
+}
+
+// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created using this workstation configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
 func (o GceInstanceResponseOutput) EnableNestedVirtualization() pulumi.BoolOutput {
 	return o.ApplyT(func(v GceInstanceResponse) bool { return v.EnableNestedVirtualization }).(pulumi.BoolOutput)
 }
@@ -1820,7 +2362,251 @@ func (o GceInstanceResponseOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GceInstanceResponse) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// A PersistentDirectory backed by a Compute Engine regional persistent disk. The persistent_directories field is repeated, but it may contain only one entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/persistent-disks) that mounts to the workstation VM at `/home` when the session starts and detaches when the session ends. If this field is empty, workstations created with this configuration do not have a persistent home directory.
+// An EphemeralDirectory is backed by a Compute Engine persistent disk.
+type GcePersistentDisk struct {
+	// Optional. Type of the disk to use. Defaults to `"pd-standard"`.
+	DiskType *string `pulumi:"diskType"`
+	// Optional. Whether the disk is read only. If true, the disk may be shared by multiple VMs and source_snapshot must be set.
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Optional. Name of the disk image to use as the source for the disk. Must be empty if source_snapshot is set. Updating source_image will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+	SourceImage *string `pulumi:"sourceImage"`
+	// Optional. Name of the snapshot to use as the source for the disk. Must be empty if source_image is set. Must be empty if read_only is false. Updating source_snapshot will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+	SourceSnapshot *string `pulumi:"sourceSnapshot"`
+}
+
+// GcePersistentDiskInput is an input type that accepts GcePersistentDiskArgs and GcePersistentDiskOutput values.
+// You can construct a concrete instance of `GcePersistentDiskInput` via:
+//
+//	GcePersistentDiskArgs{...}
+type GcePersistentDiskInput interface {
+	pulumi.Input
+
+	ToGcePersistentDiskOutput() GcePersistentDiskOutput
+	ToGcePersistentDiskOutputWithContext(context.Context) GcePersistentDiskOutput
+}
+
+// An EphemeralDirectory is backed by a Compute Engine persistent disk.
+type GcePersistentDiskArgs struct {
+	// Optional. Type of the disk to use. Defaults to `"pd-standard"`.
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Optional. Whether the disk is read only. If true, the disk may be shared by multiple VMs and source_snapshot must be set.
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+	// Optional. Name of the disk image to use as the source for the disk. Must be empty if source_snapshot is set. Updating source_image will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+	SourceImage pulumi.StringPtrInput `pulumi:"sourceImage"`
+	// Optional. Name of the snapshot to use as the source for the disk. Must be empty if source_image is set. Must be empty if read_only is false. Updating source_snapshot will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+	SourceSnapshot pulumi.StringPtrInput `pulumi:"sourceSnapshot"`
+}
+
+func (GcePersistentDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcePersistentDisk)(nil)).Elem()
+}
+
+func (i GcePersistentDiskArgs) ToGcePersistentDiskOutput() GcePersistentDiskOutput {
+	return i.ToGcePersistentDiskOutputWithContext(context.Background())
+}
+
+func (i GcePersistentDiskArgs) ToGcePersistentDiskOutputWithContext(ctx context.Context) GcePersistentDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcePersistentDiskOutput)
+}
+
+func (i GcePersistentDiskArgs) ToGcePersistentDiskPtrOutput() GcePersistentDiskPtrOutput {
+	return i.ToGcePersistentDiskPtrOutputWithContext(context.Background())
+}
+
+func (i GcePersistentDiskArgs) ToGcePersistentDiskPtrOutputWithContext(ctx context.Context) GcePersistentDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcePersistentDiskOutput).ToGcePersistentDiskPtrOutputWithContext(ctx)
+}
+
+// GcePersistentDiskPtrInput is an input type that accepts GcePersistentDiskArgs, GcePersistentDiskPtr and GcePersistentDiskPtrOutput values.
+// You can construct a concrete instance of `GcePersistentDiskPtrInput` via:
+//
+//	        GcePersistentDiskArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcePersistentDiskPtrInput interface {
+	pulumi.Input
+
+	ToGcePersistentDiskPtrOutput() GcePersistentDiskPtrOutput
+	ToGcePersistentDiskPtrOutputWithContext(context.Context) GcePersistentDiskPtrOutput
+}
+
+type gcePersistentDiskPtrType GcePersistentDiskArgs
+
+func GcePersistentDiskPtr(v *GcePersistentDiskArgs) GcePersistentDiskPtrInput {
+	return (*gcePersistentDiskPtrType)(v)
+}
+
+func (*gcePersistentDiskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcePersistentDisk)(nil)).Elem()
+}
+
+func (i *gcePersistentDiskPtrType) ToGcePersistentDiskPtrOutput() GcePersistentDiskPtrOutput {
+	return i.ToGcePersistentDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *gcePersistentDiskPtrType) ToGcePersistentDiskPtrOutputWithContext(ctx context.Context) GcePersistentDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcePersistentDiskPtrOutput)
+}
+
+// An EphemeralDirectory is backed by a Compute Engine persistent disk.
+type GcePersistentDiskOutput struct{ *pulumi.OutputState }
+
+func (GcePersistentDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcePersistentDisk)(nil)).Elem()
+}
+
+func (o GcePersistentDiskOutput) ToGcePersistentDiskOutput() GcePersistentDiskOutput {
+	return o
+}
+
+func (o GcePersistentDiskOutput) ToGcePersistentDiskOutputWithContext(ctx context.Context) GcePersistentDiskOutput {
+	return o
+}
+
+func (o GcePersistentDiskOutput) ToGcePersistentDiskPtrOutput() GcePersistentDiskPtrOutput {
+	return o.ToGcePersistentDiskPtrOutputWithContext(context.Background())
+}
+
+func (o GcePersistentDiskOutput) ToGcePersistentDiskPtrOutputWithContext(ctx context.Context) GcePersistentDiskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcePersistentDisk) *GcePersistentDisk {
+		return &v
+	}).(GcePersistentDiskPtrOutput)
+}
+
+// Optional. Type of the disk to use. Defaults to `"pd-standard"`.
+func (o GcePersistentDiskOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcePersistentDisk) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Whether the disk is read only. If true, the disk may be shared by multiple VMs and source_snapshot must be set.
+func (o GcePersistentDiskOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GcePersistentDisk) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Name of the disk image to use as the source for the disk. Must be empty if source_snapshot is set. Updating source_image will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+func (o GcePersistentDiskOutput) SourceImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcePersistentDisk) *string { return v.SourceImage }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Name of the snapshot to use as the source for the disk. Must be empty if source_image is set. Must be empty if read_only is false. Updating source_snapshot will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+func (o GcePersistentDiskOutput) SourceSnapshot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcePersistentDisk) *string { return v.SourceSnapshot }).(pulumi.StringPtrOutput)
+}
+
+type GcePersistentDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (GcePersistentDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcePersistentDisk)(nil)).Elem()
+}
+
+func (o GcePersistentDiskPtrOutput) ToGcePersistentDiskPtrOutput() GcePersistentDiskPtrOutput {
+	return o
+}
+
+func (o GcePersistentDiskPtrOutput) ToGcePersistentDiskPtrOutputWithContext(ctx context.Context) GcePersistentDiskPtrOutput {
+	return o
+}
+
+func (o GcePersistentDiskPtrOutput) Elem() GcePersistentDiskOutput {
+	return o.ApplyT(func(v *GcePersistentDisk) GcePersistentDisk {
+		if v != nil {
+			return *v
+		}
+		var ret GcePersistentDisk
+		return ret
+	}).(GcePersistentDiskOutput)
+}
+
+// Optional. Type of the disk to use. Defaults to `"pd-standard"`.
+func (o GcePersistentDiskPtrOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcePersistentDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Whether the disk is read only. If true, the disk may be shared by multiple VMs and source_snapshot must be set.
+func (o GcePersistentDiskPtrOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcePersistentDisk) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Name of the disk image to use as the source for the disk. Must be empty if source_snapshot is set. Updating source_image will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+func (o GcePersistentDiskPtrOutput) SourceImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcePersistentDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceImage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Name of the snapshot to use as the source for the disk. Must be empty if source_image is set. Must be empty if read_only is false. Updating source_snapshot will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+func (o GcePersistentDiskPtrOutput) SourceSnapshot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcePersistentDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceSnapshot
+	}).(pulumi.StringPtrOutput)
+}
+
+// An EphemeralDirectory is backed by a Compute Engine persistent disk.
+type GcePersistentDiskResponse struct {
+	// Optional. Type of the disk to use. Defaults to `"pd-standard"`.
+	DiskType string `pulumi:"diskType"`
+	// Optional. Whether the disk is read only. If true, the disk may be shared by multiple VMs and source_snapshot must be set.
+	ReadOnly bool `pulumi:"readOnly"`
+	// Optional. Name of the disk image to use as the source for the disk. Must be empty if source_snapshot is set. Updating source_image will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+	SourceImage string `pulumi:"sourceImage"`
+	// Optional. Name of the snapshot to use as the source for the disk. Must be empty if source_image is set. Must be empty if read_only is false. Updating source_snapshot will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+	SourceSnapshot string `pulumi:"sourceSnapshot"`
+}
+
+// An EphemeralDirectory is backed by a Compute Engine persistent disk.
+type GcePersistentDiskResponseOutput struct{ *pulumi.OutputState }
+
+func (GcePersistentDiskResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcePersistentDiskResponse)(nil)).Elem()
+}
+
+func (o GcePersistentDiskResponseOutput) ToGcePersistentDiskResponseOutput() GcePersistentDiskResponseOutput {
+	return o
+}
+
+func (o GcePersistentDiskResponseOutput) ToGcePersistentDiskResponseOutputWithContext(ctx context.Context) GcePersistentDiskResponseOutput {
+	return o
+}
+
+// Optional. Type of the disk to use. Defaults to `"pd-standard"`.
+func (o GcePersistentDiskResponseOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GcePersistentDiskResponse) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// Optional. Whether the disk is read only. If true, the disk may be shared by multiple VMs and source_snapshot must be set.
+func (o GcePersistentDiskResponseOutput) ReadOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GcePersistentDiskResponse) bool { return v.ReadOnly }).(pulumi.BoolOutput)
+}
+
+// Optional. Name of the disk image to use as the source for the disk. Must be empty if source_snapshot is set. Updating source_image will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+func (o GcePersistentDiskResponseOutput) SourceImage() pulumi.StringOutput {
+	return o.ApplyT(func(v GcePersistentDiskResponse) string { return v.SourceImage }).(pulumi.StringOutput)
+}
+
+// Optional. Name of the snapshot to use as the source for the disk. Must be empty if source_image is set. Must be empty if read_only is false. Updating source_snapshot will update content in the ephemeral directory after the workstation is restarted. This field is mutable.
+func (o GcePersistentDiskResponseOutput) SourceSnapshot() pulumi.StringOutput {
+	return o.ApplyT(func(v GcePersistentDiskResponse) string { return v.SourceSnapshot }).(pulumi.StringOutput)
+}
+
+// A Persistent Directory backed by a Compute Engine regional persistent disk. The persistent_directories field is repeated, but it may contain only one entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/persistent-disks) that mounts to the workstation VM at `/home` when the session starts and detaches when the session ends. If this field is empty, workstations created with this configuration do not have a persistent home directory.
 type GceRegionalPersistentDisk struct {
 	// Optional. The [type of the persistent disk](https://cloud.google.com/compute/docs/disks#disk-types) for the home directory. Defaults to `"pd-standard"`.
 	DiskType *string `pulumi:"diskType"`
@@ -1845,7 +2631,7 @@ type GceRegionalPersistentDiskInput interface {
 	ToGceRegionalPersistentDiskOutputWithContext(context.Context) GceRegionalPersistentDiskOutput
 }
 
-// A PersistentDirectory backed by a Compute Engine regional persistent disk. The persistent_directories field is repeated, but it may contain only one entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/persistent-disks) that mounts to the workstation VM at `/home` when the session starts and detaches when the session ends. If this field is empty, workstations created with this configuration do not have a persistent home directory.
+// A Persistent Directory backed by a Compute Engine regional persistent disk. The persistent_directories field is repeated, but it may contain only one entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/persistent-disks) that mounts to the workstation VM at `/home` when the session starts and detaches when the session ends. If this field is empty, workstations created with this configuration do not have a persistent home directory.
 type GceRegionalPersistentDiskArgs struct {
 	// Optional. The [type of the persistent disk](https://cloud.google.com/compute/docs/disks#disk-types) for the home directory. Defaults to `"pd-standard"`.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
@@ -1912,7 +2698,7 @@ func (i *gceRegionalPersistentDiskPtrType) ToGceRegionalPersistentDiskPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(GceRegionalPersistentDiskPtrOutput)
 }
 
-// A PersistentDirectory backed by a Compute Engine regional persistent disk. The persistent_directories field is repeated, but it may contain only one entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/persistent-disks) that mounts to the workstation VM at `/home` when the session starts and detaches when the session ends. If this field is empty, workstations created with this configuration do not have a persistent home directory.
+// A Persistent Directory backed by a Compute Engine regional persistent disk. The persistent_directories field is repeated, but it may contain only one entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/persistent-disks) that mounts to the workstation VM at `/home` when the session starts and detaches when the session ends. If this field is empty, workstations created with this configuration do not have a persistent home directory.
 type GceRegionalPersistentDiskOutput struct{ *pulumi.OutputState }
 
 func (GceRegionalPersistentDiskOutput) ElementType() reflect.Type {
@@ -2036,7 +2822,7 @@ func (o GceRegionalPersistentDiskPtrOutput) SourceSnapshot() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// A PersistentDirectory backed by a Compute Engine regional persistent disk. The persistent_directories field is repeated, but it may contain only one entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/persistent-disks) that mounts to the workstation VM at `/home` when the session starts and detaches when the session ends. If this field is empty, workstations created with this configuration do not have a persistent home directory.
+// A Persistent Directory backed by a Compute Engine regional persistent disk. The persistent_directories field is repeated, but it may contain only one entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/persistent-disks) that mounts to the workstation VM at `/home` when the session starts and detaches when the session ends. If this field is empty, workstations created with this configuration do not have a persistent home directory.
 type GceRegionalPersistentDiskResponse struct {
 	// Optional. The [type of the persistent disk](https://cloud.google.com/compute/docs/disks#disk-types) for the home directory. Defaults to `"pd-standard"`.
 	DiskType string `pulumi:"diskType"`
@@ -2050,7 +2836,7 @@ type GceRegionalPersistentDiskResponse struct {
 	SourceSnapshot string `pulumi:"sourceSnapshot"`
 }
 
-// A PersistentDirectory backed by a Compute Engine regional persistent disk. The persistent_directories field is repeated, but it may contain only one entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/persistent-disks) that mounts to the workstation VM at `/home` when the session starts and detaches when the session ends. If this field is empty, workstations created with this configuration do not have a persistent home directory.
+// A Persistent Directory backed by a Compute Engine regional persistent disk. The persistent_directories field is repeated, but it may contain only one entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/persistent-disks) that mounts to the workstation VM at `/home` when the session starts and detaches when the session ends. If this field is empty, workstations created with this configuration do not have a persistent home directory.
 type GceRegionalPersistentDiskResponseOutput struct{ *pulumi.OutputState }
 
 func (GceRegionalPersistentDiskResponseOutput) ElementType() reflect.Type {
@@ -3065,6 +3851,8 @@ func (o StatusResponseArrayOutput) Index(i pulumi.IntInput) StatusResponseOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorInput)(nil)).Elem(), AcceleratorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorArrayInput)(nil)).Elem(), AcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
@@ -3075,12 +3863,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerPtrInput)(nil)).Elem(), ContainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomerEncryptionKeyInput)(nil)).Elem(), CustomerEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomerEncryptionKeyPtrInput)(nil)).Elem(), CustomerEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainConfigInput)(nil)).Elem(), DomainConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainConfigPtrInput)(nil)).Elem(), DomainConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EphemeralDirectoryInput)(nil)).Elem(), EphemeralDirectoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EphemeralDirectoryArrayInput)(nil)).Elem(), EphemeralDirectoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GceConfidentialInstanceConfigInput)(nil)).Elem(), GceConfidentialInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GceConfidentialInstanceConfigPtrInput)(nil)).Elem(), GceConfidentialInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GceInstanceInput)(nil)).Elem(), GceInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GceInstancePtrInput)(nil)).Elem(), GceInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcePersistentDiskInput)(nil)).Elem(), GcePersistentDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcePersistentDiskPtrInput)(nil)).Elem(), GcePersistentDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GceRegionalPersistentDiskInput)(nil)).Elem(), GceRegionalPersistentDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GceRegionalPersistentDiskPtrInput)(nil)).Elem(), GceRegionalPersistentDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GceShieldedInstanceConfigInput)(nil)).Elem(), GceShieldedInstanceConfigArgs{})
@@ -3093,6 +3887,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigPtrInput)(nil)).Elem(), PrivateClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReadinessCheckInput)(nil)).Elem(), ReadinessCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReadinessCheckArrayInput)(nil)).Elem(), ReadinessCheckArray{})
+	pulumi.RegisterOutputType(AcceleratorOutput{})
+	pulumi.RegisterOutputType(AcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(AcceleratorResponseOutput{})
+	pulumi.RegisterOutputType(AcceleratorResponseArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -3111,6 +3909,13 @@ func init() {
 	pulumi.RegisterOutputType(CustomerEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(CustomerEncryptionKeyPtrOutput{})
 	pulumi.RegisterOutputType(CustomerEncryptionKeyResponseOutput{})
+	pulumi.RegisterOutputType(DomainConfigOutput{})
+	pulumi.RegisterOutputType(DomainConfigPtrOutput{})
+	pulumi.RegisterOutputType(DomainConfigResponseOutput{})
+	pulumi.RegisterOutputType(EphemeralDirectoryOutput{})
+	pulumi.RegisterOutputType(EphemeralDirectoryArrayOutput{})
+	pulumi.RegisterOutputType(EphemeralDirectoryResponseOutput{})
+	pulumi.RegisterOutputType(EphemeralDirectoryResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
@@ -3120,6 +3925,9 @@ func init() {
 	pulumi.RegisterOutputType(GceInstanceOutput{})
 	pulumi.RegisterOutputType(GceInstancePtrOutput{})
 	pulumi.RegisterOutputType(GceInstanceResponseOutput{})
+	pulumi.RegisterOutputType(GcePersistentDiskOutput{})
+	pulumi.RegisterOutputType(GcePersistentDiskPtrOutput{})
+	pulumi.RegisterOutputType(GcePersistentDiskResponseOutput{})
 	pulumi.RegisterOutputType(GceRegionalPersistentDiskOutput{})
 	pulumi.RegisterOutputType(GceRegionalPersistentDiskPtrOutput{})
 	pulumi.RegisterOutputType(GceRegionalPersistentDiskResponseOutput{})

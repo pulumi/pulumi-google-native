@@ -9,6 +9,7 @@ __all__ = [
     'ClusterDatabaseVersion',
     'InstanceAvailabilityType',
     'InstanceInstanceType',
+    'MaintenanceWindowDay',
     'SslConfigCaSource',
     'SslConfigSslMode',
     'UpdatePolicyMode',
@@ -98,6 +99,44 @@ class InstanceInstanceType(str, Enum):
     SECONDARY = "SECONDARY"
     """
     SECONDARY instances support read operations only. SECONDARY instance is a cross-region read replica
+    """
+
+
+class MaintenanceWindowDay(str, Enum):
+    """
+    Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+    """
+    DAY_OF_WEEK_UNSPECIFIED = "DAY_OF_WEEK_UNSPECIFIED"
+    """
+    The day of the week is unspecified.
+    """
+    MONDAY = "MONDAY"
+    """
+    Monday
+    """
+    TUESDAY = "TUESDAY"
+    """
+    Tuesday
+    """
+    WEDNESDAY = "WEDNESDAY"
+    """
+    Wednesday
+    """
+    THURSDAY = "THURSDAY"
+    """
+    Thursday
+    """
+    FRIDAY = "FRIDAY"
+    """
+    Friday
+    """
+    SATURDAY = "SATURDAY"
+    """
+    Saturday
+    """
+    SUNDAY = "SUNDAY"
+    """
+    Sunday
     """
 
 

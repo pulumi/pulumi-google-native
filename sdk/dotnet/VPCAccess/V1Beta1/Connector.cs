@@ -28,10 +28,22 @@ namespace Pulumi.GoogleNative.VPCAccess.V1Beta1
         public Output<string> ConnectorId { get; private set; } = null!;
 
         /// <summary>
+        /// The creation time of the connector.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
         /// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         /// </summary>
         [Output("ipCidrRange")]
         public Output<string> IpCidrRange { get; private set; } = null!;
+
+        /// <summary>
+        /// The last restart time of the connector.
+        /// </summary>
+        [Output("lastRestartTime")]
+        public Output<string> LastRestartTime { get; private set; } = null!;
 
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;

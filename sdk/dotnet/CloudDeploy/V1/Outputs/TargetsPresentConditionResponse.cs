@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
 {
 
     /// <summary>
-    /// TargetsPresentCondition contains information on any Targets defined in the Delivery Pipeline that do not actually exist.
+    /// `TargetsPresentCondition` contains information on any Targets referenced in the Delivery Pipeline that do not actually exist.
     /// </summary>
     [OutputType]
     public sealed class TargetsPresentConditionResponse

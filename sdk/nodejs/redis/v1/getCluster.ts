@@ -44,6 +44,18 @@ export interface GetClusterResult {
      */
     readonly name: string;
     /**
+     * Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node.
+     */
+    readonly nodeType: string;
+    /**
+     * Optional. Persistence config (RDB, AOF) for the cluster.
+     */
+    readonly persistenceConfig: outputs.redis.v1.ClusterPersistenceConfigResponse;
+    /**
+     * Precise value of redis memory size in GB for the entire cluster.
+     */
+    readonly preciseSizeGb: number;
+    /**
      * Each PscConfig configures the consumer network where IPs will be designated to the cluster for client access through Private Service Connect Automation. Currently, only one PscConfig is supported.
      */
     readonly pscConfigs: outputs.redis.v1.PscConfigResponse[];
@@ -51,6 +63,10 @@ export interface GetClusterResult {
      * PSC connections for discovery of the cluster topology and accessing the cluster.
      */
     readonly pscConnections: outputs.redis.v1.PscConnectionResponse[];
+    /**
+     * Optional. Key/Value pairs of customer overrides for mutable Redis Configs
+     */
+    readonly redisConfigs: {[key: string]: string};
     /**
      * Optional. The number of replica nodes per shard.
      */
@@ -60,7 +76,7 @@ export interface GetClusterResult {
      */
     readonly shardCount: number;
     /**
-     * Redis memory size in GB for the entire cluster.
+     * Redis memory size in GB for the entire cluster rounded up to the next integer.
      */
     readonly sizeGb: number;
     /**

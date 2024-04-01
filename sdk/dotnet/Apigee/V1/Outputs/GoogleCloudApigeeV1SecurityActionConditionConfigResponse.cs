@@ -11,28 +11,70 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
 {
 
     /// <summary>
-    /// The following are a list of conditions. A valid SecurityAction must contain at least one condition. Within a condition, each element is ORed. Across conditions elements are ANDed. For example if a SecurityAction has the following: api_keys: ["key1", "key2"] and developers: ["dev1", "dev2"] then this is interpreted as: enforce the action if the incoming request has ((api_key = "key1" OR api_key="key") AND (developer="dev1" OR developer="dev2"))
+    /// The following are a list of conditions. A valid SecurityAction must contain at least one condition. Within a condition, each element is ORed. Across conditions elements are ANDed. For example if a SecurityAction has the following: ip_address_ranges: ["ip1", "ip2"] and bot_reasons: ["Flooder", "Robot Abuser"] then this is interpreted as: enforce the action if the incoming request has ((ip_address_ranges = "ip1" OR ip_address_ranges = "ip2") AND (bot_reasons="Flooder" OR bot_reasons="Robot Abuser")). Conditions other than ip_address_ranges and bot_reasons cannot be ANDed.
     /// </summary>
     [OutputType]
     public sealed class GoogleCloudApigeeV1SecurityActionConditionConfigResponse
     {
         /// <summary>
-        /// Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection and Advanced API Scraper.
+        /// Optional. A list of access_tokens. Limit 1000 per action.
+        /// </summary>
+        public readonly ImmutableArray<string> AccessTokens;
+        /// <summary>
+        /// Optional. A list of API keys. Limit 1000 per action.
+        /// </summary>
+        public readonly ImmutableArray<string> ApiKeys;
+        /// <summary>
+        /// Optional. A list of API Products. Limit 1000 per action.
+        /// </summary>
+        public readonly ImmutableArray<string> ApiProducts;
+        /// <summary>
+        /// Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection, Advanced API Scraper, Search Engine Crawlers, Public Clouds, Public Cloud AWS, Public Cloud Azure, and Public Cloud Google.
         /// </summary>
         public readonly ImmutableArray<string> BotReasons;
+        /// <summary>
+        /// Optional. A list of developer apps. Limit 1000 per action.
+        /// </summary>
+        public readonly ImmutableArray<string> DeveloperApps;
+        /// <summary>
+        /// Optional. A list of developers. Limit 1000 per action.
+        /// </summary>
+        public readonly ImmutableArray<string> Developers;
         /// <summary>
         /// Optional. A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
         /// </summary>
         public readonly ImmutableArray<string> IpAddressRanges;
+        /// <summary>
+        /// Optional. A list of user agents to deny. We look for exact matches. Limit 50 per action.
+        /// </summary>
+        public readonly ImmutableArray<string> UserAgents;
 
         [OutputConstructor]
         private GoogleCloudApigeeV1SecurityActionConditionConfigResponse(
+            ImmutableArray<string> accessTokens,
+
+            ImmutableArray<string> apiKeys,
+
+            ImmutableArray<string> apiProducts,
+
             ImmutableArray<string> botReasons,
 
-            ImmutableArray<string> ipAddressRanges)
+            ImmutableArray<string> developerApps,
+
+            ImmutableArray<string> developers,
+
+            ImmutableArray<string> ipAddressRanges,
+
+            ImmutableArray<string> userAgents)
         {
+            AccessTokens = accessTokens;
+            ApiKeys = apiKeys;
+            ApiProducts = apiProducts;
             BotReasons = botReasons;
+            DeveloperApps = developerApps;
+            Developers = developers;
             IpAddressRanges = ipAddressRanges;
+            UserAgents = userAgents;
         }
     }
 }

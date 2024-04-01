@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Outputs
         /// </summary>
         public readonly string ImageUri;
         /// <summary>
+        /// Optional. Ray metrics configurations.
+        /// </summary>
+        public readonly Outputs.GoogleCloudAiplatformV1beta1RayMetricSpecResponse RayMetricSpec;
+        /// <summary>
         /// Optional. Required if image_uri isn't set. A map of resource_pool_id to prebuild Ray image if user need to use different images for different head/worker pools. This map needs to cover all the resource pool ids. Example: { "ray_head_node_pool": "head image" "ray_worker_node_pool1": "worker image" "ray_worker_node_pool2": "another worker image" }
         /// </summary>
         public readonly ImmutableDictionary<string, string> ResourcePoolImages;
@@ -35,10 +39,13 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Outputs
 
             string imageUri,
 
+            Outputs.GoogleCloudAiplatformV1beta1RayMetricSpecResponse rayMetricSpec,
+
             ImmutableDictionary<string, string> resourcePoolImages)
         {
             HeadNodeResourcePoolId = headNodeResourcePoolId;
             ImageUri = imageUri;
+            RayMetricSpec = rayMetricSpec;
             ResourcePoolImages = resourcePoolImages;
         }
     }

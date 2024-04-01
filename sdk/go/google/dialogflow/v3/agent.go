@@ -40,8 +40,10 @@ type Agent struct {
 	// Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
 	Locked pulumi.BoolOutput `pulumi:"locked"`
 	// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
-	Name    pulumi.StringOutput `pulumi:"name"`
-	Project pulumi.StringOutput `pulumi:"project"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional. Settings for end user personalization.
+	PersonalizationSettings GoogleCloudDialogflowCxV3AgentPersonalizationSettingsResponseOutput `pulumi:"personalizationSettings"`
+	Project                 pulumi.StringOutput                                                 `pulumi:"project"`
 	// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
 	SecuritySettings pulumi.StringOutput `pulumi:"securitySettings"`
 	// Speech recognition related settings.
@@ -134,8 +136,10 @@ type agentArgs struct {
 	// Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
 	Locked *bool `pulumi:"locked"`
 	// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
-	Name    *string `pulumi:"name"`
-	Project *string `pulumi:"project"`
+	Name *string `pulumi:"name"`
+	// Optional. Settings for end user personalization.
+	PersonalizationSettings *GoogleCloudDialogflowCxV3AgentPersonalizationSettings `pulumi:"personalizationSettings"`
+	Project                 *string                                                `pulumi:"project"`
 	// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
 	SecuritySettings *string `pulumi:"securitySettings"`
 	// Speech recognition related settings.
@@ -176,8 +180,10 @@ type AgentArgs struct {
 	// Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
 	Locked pulumi.BoolPtrInput
 	// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
-	Name    pulumi.StringPtrInput
-	Project pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Optional. Settings for end user personalization.
+	PersonalizationSettings GoogleCloudDialogflowCxV3AgentPersonalizationSettingsPtrInput
+	Project                 pulumi.StringPtrInput
 	// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
 	SecuritySettings pulumi.StringPtrInput
 	// Speech recognition related settings.
@@ -297,6 +303,13 @@ func (o AgentOutput) Locked() pulumi.BoolOutput {
 // The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
 func (o AgentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Agent) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Settings for end user personalization.
+func (o AgentOutput) PersonalizationSettings() GoogleCloudDialogflowCxV3AgentPersonalizationSettingsResponseOutput {
+	return o.ApplyT(func(v *Agent) GoogleCloudDialogflowCxV3AgentPersonalizationSettingsResponseOutput {
+		return v.PersonalizationSettings
+	}).(GoogleCloudDialogflowCxV3AgentPersonalizationSettingsResponseOutput)
 }
 
 func (o AgentOutput) Project() pulumi.StringOutput {

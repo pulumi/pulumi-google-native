@@ -6,10 +6,12 @@ from enum import Enum
 
 __all__ = [
     'AuditLogConfigLogType',
+    'FolderEventThreatDetectionSettingCustomModuleEnablementState',
     'FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState',
     'GoogleCloudSecuritycenterV1CustomConfigSeverity',
     'OrganizationEventThreatDetectionSettingCustomModuleEnablementState',
     'OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState',
+    'ProjectEventThreatDetectionSettingCustomModuleEnablementState',
     'ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState',
 ]
 
@@ -33,6 +35,28 @@ class AuditLogConfigLogType(str, Enum):
     DATA_READ = "DATA_READ"
     """
     Data reads. Example: CloudSQL Users list
+    """
+
+
+class FolderEventThreatDetectionSettingCustomModuleEnablementState(str, Enum):
+    """
+    The state of enablement for the module at the given level of the hierarchy.
+    """
+    ENABLEMENT_STATE_UNSPECIFIED = "ENABLEMENT_STATE_UNSPECIFIED"
+    """
+    Unspecified enablement state.
+    """
+    ENABLED = "ENABLED"
+    """
+    The module is enabled at the given level.
+    """
+    DISABLED = "DISABLED"
+    """
+    The module is disabled at the given level.
+    """
+    INHERITED = "INHERITED"
+    """
+    When the enablement state is inherited.
     """
 
 
@@ -100,6 +124,10 @@ class OrganizationEventThreatDetectionSettingCustomModuleEnablementState(str, En
     """
     The module is disabled at the given level.
     """
+    INHERITED = "INHERITED"
+    """
+    When the enablement state is inherited.
+    """
 
 
 class OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState(str, Enum):
@@ -121,6 +149,28 @@ class OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState(str,
     INHERITED = "INHERITED"
     """
     State is inherited from an ancestor module. The module will either be effectively ENABLED or DISABLED based on its closest non-inherited ancestor module in the CRM hierarchy.
+    """
+
+
+class ProjectEventThreatDetectionSettingCustomModuleEnablementState(str, Enum):
+    """
+    The state of enablement for the module at the given level of the hierarchy.
+    """
+    ENABLEMENT_STATE_UNSPECIFIED = "ENABLEMENT_STATE_UNSPECIFIED"
+    """
+    Unspecified enablement state.
+    """
+    ENABLED = "ENABLED"
+    """
+    The module is enabled at the given level.
+    """
+    DISABLED = "DISABLED"
+    """
+    The module is disabled at the given level.
+    """
+    INHERITED = "INHERITED"
+    """
+    When the enablement state is inherited.
     """
 
 

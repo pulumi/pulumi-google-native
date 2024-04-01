@@ -200,6 +200,59 @@ func (o CompositeFilterResponseOutput) SubFilters() FilterResponseArrayOutput {
 	return o.ApplyT(func(v CompositeFilterResponse) []FilterResponse { return v.SubFilters }).(FilterResponseArrayOutput)
 }
 
+// A named attribute associated with an item which can be used for influencing the ranking of the item based on the context in the request.
+type ContextAttributeResponse struct {
+	// The name of the attribute. It should not be empty. The maximum length is 32 characters. The name must start with a letter and can only contain letters (A-Z, a-z) or numbers (0-9). The name will be normalized (lower-cased) before being matched.
+	Name string `pulumi:"name"`
+	// Text values of the attribute. The maximum number of elements is 10. The maximum length of an element in the array is 32 characters. The value will be normalized (lower-cased) before being matched.
+	Values []string `pulumi:"values"`
+}
+
+// A named attribute associated with an item which can be used for influencing the ranking of the item based on the context in the request.
+type ContextAttributeResponseOutput struct{ *pulumi.OutputState }
+
+func (ContextAttributeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContextAttributeResponse)(nil)).Elem()
+}
+
+func (o ContextAttributeResponseOutput) ToContextAttributeResponseOutput() ContextAttributeResponseOutput {
+	return o
+}
+
+func (o ContextAttributeResponseOutput) ToContextAttributeResponseOutputWithContext(ctx context.Context) ContextAttributeResponseOutput {
+	return o
+}
+
+// The name of the attribute. It should not be empty. The maximum length is 32 characters. The name must start with a letter and can only contain letters (A-Z, a-z) or numbers (0-9). The name will be normalized (lower-cased) before being matched.
+func (o ContextAttributeResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ContextAttributeResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Text values of the attribute. The maximum number of elements is 10. The maximum length of an element in the array is 32 characters. The value will be normalized (lower-cased) before being matched.
+func (o ContextAttributeResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContextAttributeResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type ContextAttributeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ContextAttributeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContextAttributeResponse)(nil)).Elem()
+}
+
+func (o ContextAttributeResponseArrayOutput) ToContextAttributeResponseArrayOutput() ContextAttributeResponseArrayOutput {
+	return o
+}
+
+func (o ContextAttributeResponseArrayOutput) ToContextAttributeResponseArrayOutputWithContext(ctx context.Context) ContextAttributeResponseArrayOutput {
+	return o
+}
+
+func (o ContextAttributeResponseArrayOutput) Index(i pulumi.IntInput) ContextAttributeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContextAttributeResponse {
+		return vs[0].([]ContextAttributeResponse)[vs[1].(int)]
+	}).(ContextAttributeResponseOutput)
+}
+
 // Restriction on Datasource.
 type DataSourceRestriction struct {
 	// Filter options restricting the results. If multiple filters are present, they are grouped by object type before joining. Filters with the same object type are joined conjunctively, then the resulting expressions are joined disjunctively. The maximum number of elements is 20. NOTE: Suggest API supports only few filters at the moment: "objecttype", "type" and "mimetype". For now, schema specific filters cannot be used to filter suggestions.
@@ -580,6 +633,240 @@ func (o DateResponseOutput) Year() pulumi.IntOutput {
 	return o.ApplyT(func(v DateResponse) int { return v.Year }).(pulumi.IntOutput)
 }
 
+type DateResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DateResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DateResponse)(nil)).Elem()
+}
+
+func (o DateResponseArrayOutput) ToDateResponseArrayOutput() DateResponseArrayOutput {
+	return o
+}
+
+func (o DateResponseArrayOutput) ToDateResponseArrayOutputWithContext(ctx context.Context) DateResponseArrayOutput {
+	return o
+}
+
+func (o DateResponseArrayOutput) Index(i pulumi.IntInput) DateResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DateResponse {
+		return vs[0].([]DateResponse)[vs[1].(int)]
+	}).(DateResponseOutput)
+}
+
+// List of date values.
+type DateValuesResponse struct {
+	Values []DateResponse `pulumi:"values"`
+}
+
+// List of date values.
+type DateValuesResponseOutput struct{ *pulumi.OutputState }
+
+func (DateValuesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DateValuesResponse)(nil)).Elem()
+}
+
+func (o DateValuesResponseOutput) ToDateValuesResponseOutput() DateValuesResponseOutput {
+	return o
+}
+
+func (o DateValuesResponseOutput) ToDateValuesResponseOutputWithContext(ctx context.Context) DateValuesResponseOutput {
+	return o
+}
+
+func (o DateValuesResponseOutput) Values() DateResponseArrayOutput {
+	return o.ApplyT(func(v DateValuesResponse) []DateResponse { return v.Values }).(DateResponseArrayOutput)
+}
+
+// Shared request debug options for all cloudsearch RPC methods.
+type DebugOptions struct {
+	// If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field.
+	EnableDebugging *bool `pulumi:"enableDebugging"`
+}
+
+// DebugOptionsInput is an input type that accepts DebugOptionsArgs and DebugOptionsOutput values.
+// You can construct a concrete instance of `DebugOptionsInput` via:
+//
+//	DebugOptionsArgs{...}
+type DebugOptionsInput interface {
+	pulumi.Input
+
+	ToDebugOptionsOutput() DebugOptionsOutput
+	ToDebugOptionsOutputWithContext(context.Context) DebugOptionsOutput
+}
+
+// Shared request debug options for all cloudsearch RPC methods.
+type DebugOptionsArgs struct {
+	// If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field.
+	EnableDebugging pulumi.BoolPtrInput `pulumi:"enableDebugging"`
+}
+
+func (DebugOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DebugOptions)(nil)).Elem()
+}
+
+func (i DebugOptionsArgs) ToDebugOptionsOutput() DebugOptionsOutput {
+	return i.ToDebugOptionsOutputWithContext(context.Background())
+}
+
+func (i DebugOptionsArgs) ToDebugOptionsOutputWithContext(ctx context.Context) DebugOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DebugOptionsOutput)
+}
+
+func (i DebugOptionsArgs) ToDebugOptionsPtrOutput() DebugOptionsPtrOutput {
+	return i.ToDebugOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i DebugOptionsArgs) ToDebugOptionsPtrOutputWithContext(ctx context.Context) DebugOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DebugOptionsOutput).ToDebugOptionsPtrOutputWithContext(ctx)
+}
+
+// DebugOptionsPtrInput is an input type that accepts DebugOptionsArgs, DebugOptionsPtr and DebugOptionsPtrOutput values.
+// You can construct a concrete instance of `DebugOptionsPtrInput` via:
+//
+//	        DebugOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DebugOptionsPtrInput interface {
+	pulumi.Input
+
+	ToDebugOptionsPtrOutput() DebugOptionsPtrOutput
+	ToDebugOptionsPtrOutputWithContext(context.Context) DebugOptionsPtrOutput
+}
+
+type debugOptionsPtrType DebugOptionsArgs
+
+func DebugOptionsPtr(v *DebugOptionsArgs) DebugOptionsPtrInput {
+	return (*debugOptionsPtrType)(v)
+}
+
+func (*debugOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DebugOptions)(nil)).Elem()
+}
+
+func (i *debugOptionsPtrType) ToDebugOptionsPtrOutput() DebugOptionsPtrOutput {
+	return i.ToDebugOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *debugOptionsPtrType) ToDebugOptionsPtrOutputWithContext(ctx context.Context) DebugOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DebugOptionsPtrOutput)
+}
+
+// Shared request debug options for all cloudsearch RPC methods.
+type DebugOptionsOutput struct{ *pulumi.OutputState }
+
+func (DebugOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DebugOptions)(nil)).Elem()
+}
+
+func (o DebugOptionsOutput) ToDebugOptionsOutput() DebugOptionsOutput {
+	return o
+}
+
+func (o DebugOptionsOutput) ToDebugOptionsOutputWithContext(ctx context.Context) DebugOptionsOutput {
+	return o
+}
+
+func (o DebugOptionsOutput) ToDebugOptionsPtrOutput() DebugOptionsPtrOutput {
+	return o.ToDebugOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o DebugOptionsOutput) ToDebugOptionsPtrOutputWithContext(ctx context.Context) DebugOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DebugOptions) *DebugOptions {
+		return &v
+	}).(DebugOptionsPtrOutput)
+}
+
+// If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field.
+func (o DebugOptionsOutput) EnableDebugging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DebugOptions) *bool { return v.EnableDebugging }).(pulumi.BoolPtrOutput)
+}
+
+type DebugOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (DebugOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DebugOptions)(nil)).Elem()
+}
+
+func (o DebugOptionsPtrOutput) ToDebugOptionsPtrOutput() DebugOptionsPtrOutput {
+	return o
+}
+
+func (o DebugOptionsPtrOutput) ToDebugOptionsPtrOutputWithContext(ctx context.Context) DebugOptionsPtrOutput {
+	return o
+}
+
+func (o DebugOptionsPtrOutput) Elem() DebugOptionsOutput {
+	return o.ApplyT(func(v *DebugOptions) DebugOptions {
+		if v != nil {
+			return *v
+		}
+		var ret DebugOptions
+		return ret
+	}).(DebugOptionsOutput)
+}
+
+// If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field.
+func (o DebugOptionsPtrOutput) EnableDebugging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DebugOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableDebugging
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of double values.
+type DoubleValuesResponse struct {
+	Values []float64 `pulumi:"values"`
+}
+
+// List of double values.
+type DoubleValuesResponseOutput struct{ *pulumi.OutputState }
+
+func (DoubleValuesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DoubleValuesResponse)(nil)).Elem()
+}
+
+func (o DoubleValuesResponseOutput) ToDoubleValuesResponseOutput() DoubleValuesResponseOutput {
+	return o
+}
+
+func (o DoubleValuesResponseOutput) ToDoubleValuesResponseOutputWithContext(ctx context.Context) DoubleValuesResponseOutput {
+	return o
+}
+
+func (o DoubleValuesResponseOutput) Values() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v DoubleValuesResponse) []float64 { return v.Values }).(pulumi.Float64ArrayOutput)
+}
+
+// List of enum values.
+type EnumValuesResponse struct {
+	// The maximum allowable length for string values is 32 characters.
+	Values []string `pulumi:"values"`
+}
+
+// List of enum values.
+type EnumValuesResponseOutput struct{ *pulumi.OutputState }
+
+func (EnumValuesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnumValuesResponse)(nil)).Elem()
+}
+
+func (o EnumValuesResponseOutput) ToEnumValuesResponseOutput() EnumValuesResponseOutput {
+	return o
+}
+
+func (o EnumValuesResponseOutput) ToEnumValuesResponseOutputWithContext(ctx context.Context) EnumValuesResponseOutput {
+	return o
+}
+
+// The maximum allowable length for string values is 32 characters.
+func (o EnumValuesResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EnumValuesResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
 // Specifies operators to return facet results for. There will be one FacetResult for every source_name/object_type/operator_name combination.
 type FacetOptions struct {
 	// If set, describes integer faceting options for the given integer property. The corresponding integer property in the schema should be marked isFacetable. The number of buckets returned would be minimum of this and num_facet_buckets.
@@ -788,6 +1075,57 @@ func (o FacetOptionsResponseArrayOutput) Index(i pulumi.IntInput) FacetOptionsRe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FacetOptionsResponse {
 		return vs[0].([]FacetOptionsResponse)[vs[1].(int)]
 	}).(FacetOptionsResponseOutput)
+}
+
+type FieldViolationResponse struct {
+	// The description of the error.
+	Description string `pulumi:"description"`
+	// Path of field with violation.
+	Field string `pulumi:"field"`
+}
+
+type FieldViolationResponseOutput struct{ *pulumi.OutputState }
+
+func (FieldViolationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldViolationResponse)(nil)).Elem()
+}
+
+func (o FieldViolationResponseOutput) ToFieldViolationResponseOutput() FieldViolationResponseOutput {
+	return o
+}
+
+func (o FieldViolationResponseOutput) ToFieldViolationResponseOutputWithContext(ctx context.Context) FieldViolationResponseOutput {
+	return o
+}
+
+// The description of the error.
+func (o FieldViolationResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v FieldViolationResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Path of field with violation.
+func (o FieldViolationResponseOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func(v FieldViolationResponse) string { return v.Field }).(pulumi.StringOutput)
+}
+
+type FieldViolationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FieldViolationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FieldViolationResponse)(nil)).Elem()
+}
+
+func (o FieldViolationResponseArrayOutput) ToFieldViolationResponseArrayOutput() FieldViolationResponseArrayOutput {
+	return o
+}
+
+func (o FieldViolationResponseArrayOutput) ToFieldViolationResponseArrayOutputWithContext(ctx context.Context) FieldViolationResponseArrayOutput {
+	return o
+}
+
+func (o FieldViolationResponseArrayOutput) Index(i pulumi.IntInput) FieldViolationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FieldViolationResponse {
+		return vs[0].([]FieldViolationResponse)[vs[1].(int)]
+	}).(FieldViolationResponseOutput)
 }
 
 // A generic way of expressing filters in a query, which supports two approaches: **1. Setting a ValueFilter.** The name must match an operator_name defined in the schema for your data source. **2. Setting a CompositeFilter.** The filters are evaluated using the logical operator. The top-level operators can only be either an AND or a NOT. AND can appear only at the top-most level. OR can appear only under a top-level AND.
@@ -1370,6 +1708,32 @@ func (o GSuitePrincipalResponseArrayOutput) Index(i pulumi.IntInput) GSuitePrinc
 	}).(GSuitePrincipalResponseOutput)
 }
 
+// List of html values.
+type HtmlValuesResponse struct {
+	// The maximum allowable length for html values is 2048 characters.
+	Values []string `pulumi:"values"`
+}
+
+// List of html values.
+type HtmlValuesResponseOutput struct{ *pulumi.OutputState }
+
+func (HtmlValuesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HtmlValuesResponse)(nil)).Elem()
+}
+
+func (o HtmlValuesResponseOutput) ToHtmlValuesResponseOutput() HtmlValuesResponseOutput {
+	return o
+}
+
+func (o HtmlValuesResponseOutput) ToHtmlValuesResponseOutputWithContext(ctx context.Context) HtmlValuesResponseOutput {
+	return o
+}
+
+// The maximum allowable length for html values is 2048 characters.
+func (o HtmlValuesResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HtmlValuesResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
 // Used to specify integer faceting options.
 type IntegerFacetingOptions struct {
 	// Buckets for given integer values should be in strictly ascending order. For example, if values supplied are (1,5,10,100), the following facet buckets will be formed {<1, [1,5), [5-10), [10-100), >=100}.
@@ -1534,6 +1898,603 @@ func (o IntegerFacetingOptionsResponseOutput) ToIntegerFacetingOptionsResponseOu
 // Buckets for given integer values should be in strictly ascending order. For example, if values supplied are (1,5,10,100), the following facet buckets will be formed {<1, [1,5), [5-10), [10-100), >=100}.
 func (o IntegerFacetingOptionsResponseOutput) IntegerBuckets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v IntegerFacetingOptionsResponse) []string { return v.IntegerBuckets }).(pulumi.StringArrayOutput)
+}
+
+// List of integer values.
+type IntegerValuesResponse struct {
+	Values []string `pulumi:"values"`
+}
+
+// List of integer values.
+type IntegerValuesResponseOutput struct{ *pulumi.OutputState }
+
+func (IntegerValuesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegerValuesResponse)(nil)).Elem()
+}
+
+func (o IntegerValuesResponseOutput) ToIntegerValuesResponseOutput() IntegerValuesResponseOutput {
+	return o
+}
+
+func (o IntegerValuesResponseOutput) ToIntegerValuesResponseOutputWithContext(ctx context.Context) IntegerValuesResponseOutput {
+	return o
+}
+
+func (o IntegerValuesResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IntegerValuesResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+// Represents an interaction between a user and an item.
+type InteractionResponse struct {
+	// The time when the user acted on the item. If multiple actions of the same type exist for a single user, only the most recent action is recorded.
+	InteractionTime string `pulumi:"interactionTime"`
+	// The user that acted on the item.
+	Principal PrincipalResponse `pulumi:"principal"`
+	Type      string            `pulumi:"type"`
+}
+
+// Represents an interaction between a user and an item.
+type InteractionResponseOutput struct{ *pulumi.OutputState }
+
+func (InteractionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InteractionResponse)(nil)).Elem()
+}
+
+func (o InteractionResponseOutput) ToInteractionResponseOutput() InteractionResponseOutput {
+	return o
+}
+
+func (o InteractionResponseOutput) ToInteractionResponseOutputWithContext(ctx context.Context) InteractionResponseOutput {
+	return o
+}
+
+// The time when the user acted on the item. If multiple actions of the same type exist for a single user, only the most recent action is recorded.
+func (o InteractionResponseOutput) InteractionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v InteractionResponse) string { return v.InteractionTime }).(pulumi.StringOutput)
+}
+
+// The user that acted on the item.
+func (o InteractionResponseOutput) Principal() PrincipalResponseOutput {
+	return o.ApplyT(func(v InteractionResponse) PrincipalResponse { return v.Principal }).(PrincipalResponseOutput)
+}
+
+func (o InteractionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v InteractionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type InteractionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (InteractionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InteractionResponse)(nil)).Elem()
+}
+
+func (o InteractionResponseArrayOutput) ToInteractionResponseArrayOutput() InteractionResponseArrayOutput {
+	return o
+}
+
+func (o InteractionResponseArrayOutput) ToInteractionResponseArrayOutputWithContext(ctx context.Context) InteractionResponseArrayOutput {
+	return o
+}
+
+func (o InteractionResponseArrayOutput) Index(i pulumi.IntInput) InteractionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InteractionResponse {
+		return vs[0].([]InteractionResponse)[vs[1].(int)]
+	}).(InteractionResponseOutput)
+}
+
+// Access control list information for the item. For more information see [Map ACLs](https://developers.google.com/cloud-search/docs/guides/acls).
+type ItemAclResponse struct {
+	// Sets the type of access rules to apply when an item inherits its ACL from a parent. This should always be set in tandem with the inheritAclFrom field. Also, when the inheritAclFrom field is set, this field should be set to a valid AclInheritanceType.
+	AclInheritanceType string `pulumi:"aclInheritanceType"`
+	// List of principals who are explicitly denied access to the item in search results. While principals are denied access by default, use denied readers to handle exceptions and override the list allowed readers. The maximum number of elements is 100.
+	DeniedReaders []PrincipalResponse `pulumi:"deniedReaders"`
+	// The name of the item to inherit the Access Permission List (ACL) from. Note: ACL inheritance *only* provides access permissions to child items and does not define structural relationships, nor does it provide convenient ways to delete large groups of items. Deleting an ACL parent from the index only alters the access permissions of child items that reference the parent in the inheritAclFrom field. The item is still in the index, but may not visible in search results. By contrast, deletion of a container item also deletes all items that reference the container via the containerName field. The maximum length for this field is 1536 characters.
+	InheritAclFrom string `pulumi:"inheritAclFrom"`
+	// Optional. List of owners for the item. This field has no bearing on document access permissions. It does, however, offer a slight ranking boosts items where the querying user is an owner. The maximum number of elements is 5.
+	Owners []PrincipalResponse `pulumi:"owners"`
+	// List of principals who are allowed to see the item in search results. Optional if inheriting permissions from another item or if the item is not intended to be visible, such as virtual containers. The maximum number of elements is 1000.
+	Readers []PrincipalResponse `pulumi:"readers"`
+}
+
+// Access control list information for the item. For more information see [Map ACLs](https://developers.google.com/cloud-search/docs/guides/acls).
+type ItemAclResponseOutput struct{ *pulumi.OutputState }
+
+func (ItemAclResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ItemAclResponse)(nil)).Elem()
+}
+
+func (o ItemAclResponseOutput) ToItemAclResponseOutput() ItemAclResponseOutput {
+	return o
+}
+
+func (o ItemAclResponseOutput) ToItemAclResponseOutputWithContext(ctx context.Context) ItemAclResponseOutput {
+	return o
+}
+
+// Sets the type of access rules to apply when an item inherits its ACL from a parent. This should always be set in tandem with the inheritAclFrom field. Also, when the inheritAclFrom field is set, this field should be set to a valid AclInheritanceType.
+func (o ItemAclResponseOutput) AclInheritanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v ItemAclResponse) string { return v.AclInheritanceType }).(pulumi.StringOutput)
+}
+
+// List of principals who are explicitly denied access to the item in search results. While principals are denied access by default, use denied readers to handle exceptions and override the list allowed readers. The maximum number of elements is 100.
+func (o ItemAclResponseOutput) DeniedReaders() PrincipalResponseArrayOutput {
+	return o.ApplyT(func(v ItemAclResponse) []PrincipalResponse { return v.DeniedReaders }).(PrincipalResponseArrayOutput)
+}
+
+// The name of the item to inherit the Access Permission List (ACL) from. Note: ACL inheritance *only* provides access permissions to child items and does not define structural relationships, nor does it provide convenient ways to delete large groups of items. Deleting an ACL parent from the index only alters the access permissions of child items that reference the parent in the inheritAclFrom field. The item is still in the index, but may not visible in search results. By contrast, deletion of a container item also deletes all items that reference the container via the containerName field. The maximum length for this field is 1536 characters.
+func (o ItemAclResponseOutput) InheritAclFrom() pulumi.StringOutput {
+	return o.ApplyT(func(v ItemAclResponse) string { return v.InheritAclFrom }).(pulumi.StringOutput)
+}
+
+// Optional. List of owners for the item. This field has no bearing on document access permissions. It does, however, offer a slight ranking boosts items where the querying user is an owner. The maximum number of elements is 5.
+func (o ItemAclResponseOutput) Owners() PrincipalResponseArrayOutput {
+	return o.ApplyT(func(v ItemAclResponse) []PrincipalResponse { return v.Owners }).(PrincipalResponseArrayOutput)
+}
+
+// List of principals who are allowed to see the item in search results. Optional if inheriting permissions from another item or if the item is not intended to be visible, such as virtual containers. The maximum number of elements is 1000.
+func (o ItemAclResponseOutput) Readers() PrincipalResponseArrayOutput {
+	return o.ApplyT(func(v ItemAclResponse) []PrincipalResponse { return v.Readers }).(PrincipalResponseArrayOutput)
+}
+
+// Content of an item to be indexed and surfaced by Cloud Search. Only UTF-8 encoded strings are allowed as inlineContent. If the content is uploaded and not binary, it must be UTF-8 encoded.
+type ItemContentResponse struct {
+	// Upload reference ID of a previously uploaded content via write method.
+	ContentDataRef UploadItemRefResponse `pulumi:"contentDataRef"`
+	ContentFormat  string                `pulumi:"contentFormat"`
+	// Hashing info calculated and provided by the API client for content. Can be used with the items.push method to calculate modified state. The maximum length is 2048 characters.
+	Hash string `pulumi:"hash"`
+	// Content that is supplied inlined within the update method. The maximum length is 102400 bytes (100 KiB).
+	InlineContent string `pulumi:"inlineContent"`
+}
+
+// Content of an item to be indexed and surfaced by Cloud Search. Only UTF-8 encoded strings are allowed as inlineContent. If the content is uploaded and not binary, it must be UTF-8 encoded.
+type ItemContentResponseOutput struct{ *pulumi.OutputState }
+
+func (ItemContentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ItemContentResponse)(nil)).Elem()
+}
+
+func (o ItemContentResponseOutput) ToItemContentResponseOutput() ItemContentResponseOutput {
+	return o
+}
+
+func (o ItemContentResponseOutput) ToItemContentResponseOutputWithContext(ctx context.Context) ItemContentResponseOutput {
+	return o
+}
+
+// Upload reference ID of a previously uploaded content via write method.
+func (o ItemContentResponseOutput) ContentDataRef() UploadItemRefResponseOutput {
+	return o.ApplyT(func(v ItemContentResponse) UploadItemRefResponse { return v.ContentDataRef }).(UploadItemRefResponseOutput)
+}
+
+func (o ItemContentResponseOutput) ContentFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v ItemContentResponse) string { return v.ContentFormat }).(pulumi.StringOutput)
+}
+
+// Hashing info calculated and provided by the API client for content. Can be used with the items.push method to calculate modified state. The maximum length is 2048 characters.
+func (o ItemContentResponseOutput) Hash() pulumi.StringOutput {
+	return o.ApplyT(func(v ItemContentResponse) string { return v.Hash }).(pulumi.StringOutput)
+}
+
+// Content that is supplied inlined within the update method. The maximum length is 102400 bytes (100 KiB).
+func (o ItemContentResponseOutput) InlineContent() pulumi.StringOutput {
+	return o.ApplyT(func(v ItemContentResponse) string { return v.InlineContent }).(pulumi.StringOutput)
+}
+
+// Available metadata fields for the item.
+type ItemMetadataResponse struct {
+	// The name of the container for this item. Deletion of the container item leads to automatic deletion of this item. Note: ACLs are not inherited from a container item. To provide ACL inheritance for an item, use the inheritAclFrom field. The maximum length is 1536 characters.
+	ContainerName string `pulumi:"containerName"`
+	// The BCP-47 language code for the item, such as "en-US" or "sr-Latn". For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. The maximum length is 32 characters.
+	ContentLanguage string `pulumi:"contentLanguage"`
+	// A set of named attributes associated with the item. This can be used for influencing the ranking of the item based on the context in the request. The maximum number of elements is 10.
+	ContextAttributes []ContextAttributeResponse `pulumi:"contextAttributes"`
+	// The time when the item was created in the source repository.
+	CreateTime string `pulumi:"createTime"`
+	// Hashing value provided by the API caller. This can be used with the items.push method to calculate modified state. The maximum length is 2048 characters.
+	Hash string `pulumi:"hash"`
+	// A list of interactions for the item. Interactions are used to improve Search quality, but are not exposed to end users. The maximum number of elements is 1000.
+	Interactions []InteractionResponse `pulumi:"interactions"`
+	// Additional keywords or phrases that should match the item. Used internally for user generated content. The maximum number of elements is 100. The maximum length is 8192 characters.
+	Keywords []string `pulumi:"keywords"`
+	// The original mime-type of ItemContent.content in the source repository. The maximum length is 256 characters.
+	MimeType string `pulumi:"mimeType"`
+	// The type of the item. This should correspond to the name of an object definition in the schema registered for the data source. For example, if the schema for the data source contains an object definition with name 'document', then item indexing requests for objects of that type should set objectType to 'document'. The maximum length is 256 characters.
+	ObjectType string `pulumi:"objectType"`
+	// Additional search quality metadata of the item
+	SearchQualityMetadata SearchQualityMetadataResponse `pulumi:"searchQualityMetadata"`
+	// Link to the source repository serving the data. Seach results apply this link to the title. Whitespace or special characters may cause Cloud Seach result links to trigger a redirect notice; to avoid this, encode the URL. The maximum length is 2048 characters.
+	SourceRepositoryUrl string `pulumi:"sourceRepositoryUrl"`
+	// The title of the item. If given, this will be the displayed title of the Search result. The maximum length is 2048 characters.
+	Title string `pulumi:"title"`
+	// The time when the item was last modified in the source repository.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// Available metadata fields for the item.
+type ItemMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (ItemMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ItemMetadataResponse)(nil)).Elem()
+}
+
+func (o ItemMetadataResponseOutput) ToItemMetadataResponseOutput() ItemMetadataResponseOutput {
+	return o
+}
+
+func (o ItemMetadataResponseOutput) ToItemMetadataResponseOutputWithContext(ctx context.Context) ItemMetadataResponseOutput {
+	return o
+}
+
+// The name of the container for this item. Deletion of the container item leads to automatic deletion of this item. Note: ACLs are not inherited from a container item. To provide ACL inheritance for an item, use the inheritAclFrom field. The maximum length is 1536 characters.
+func (o ItemMetadataResponseOutput) ContainerName() pulumi.StringOutput {
+	return o.ApplyT(func(v ItemMetadataResponse) string { return v.ContainerName }).(pulumi.StringOutput)
+}
+
+// The BCP-47 language code for the item, such as "en-US" or "sr-Latn". For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. The maximum length is 32 characters.
+func (o ItemMetadataResponseOutput) ContentLanguage() pulumi.StringOutput {
+	return o.ApplyT(func(v ItemMetadataResponse) string { return v.ContentLanguage }).(pulumi.StringOutput)
+}
+
+// A set of named attributes associated with the item. This can be used for influencing the ranking of the item based on the context in the request. The maximum number of elements is 10.
+func (o ItemMetadataResponseOutput) ContextAttributes() ContextAttributeResponseArrayOutput {
+	return o.ApplyT(func(v ItemMetadataResponse) []ContextAttributeResponse { return v.ContextAttributes }).(ContextAttributeResponseArrayOutput)
+}
+
+// The time when the item was created in the source repository.
+func (o ItemMetadataResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ItemMetadataResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Hashing value provided by the API caller. This can be used with the items.push method to calculate modified state. The maximum length is 2048 characters.
+func (o ItemMetadataResponseOutput) Hash() pulumi.StringOutput {
+	return o.ApplyT(func(v ItemMetadataResponse) string { return v.Hash }).(pulumi.StringOutput)
+}
+
+// A list of interactions for the item. Interactions are used to improve Search quality, but are not exposed to end users. The maximum number of elements is 1000.
+func (o ItemMetadataResponseOutput) Interactions() InteractionResponseArrayOutput {
+	return o.ApplyT(func(v ItemMetadataResponse) []InteractionResponse { return v.Interactions }).(InteractionResponseArrayOutput)
+}
+
+// Additional keywords or phrases that should match the item. Used internally for user generated content. The maximum number of elements is 100. The maximum length is 8192 characters.
+func (o ItemMetadataResponseOutput) Keywords() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ItemMetadataResponse) []string { return v.Keywords }).(pulumi.StringArrayOutput)
+}
+
+// The original mime-type of ItemContent.content in the source repository. The maximum length is 256 characters.
+func (o ItemMetadataResponseOutput) MimeType() pulumi.StringOutput {
+	return o.ApplyT(func(v ItemMetadataResponse) string { return v.MimeType }).(pulumi.StringOutput)
+}
+
+// The type of the item. This should correspond to the name of an object definition in the schema registered for the data source. For example, if the schema for the data source contains an object definition with name 'document', then item indexing requests for objects of that type should set objectType to 'document'. The maximum length is 256 characters.
+func (o ItemMetadataResponseOutput) ObjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v ItemMetadataResponse) string { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+// Additional search quality metadata of the item
+func (o ItemMetadataResponseOutput) SearchQualityMetadata() SearchQualityMetadataResponseOutput {
+	return o.ApplyT(func(v ItemMetadataResponse) SearchQualityMetadataResponse { return v.SearchQualityMetadata }).(SearchQualityMetadataResponseOutput)
+}
+
+// Link to the source repository serving the data. Seach results apply this link to the title. Whitespace or special characters may cause Cloud Seach result links to trigger a redirect notice; to avoid this, encode the URL. The maximum length is 2048 characters.
+func (o ItemMetadataResponseOutput) SourceRepositoryUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ItemMetadataResponse) string { return v.SourceRepositoryUrl }).(pulumi.StringOutput)
+}
+
+// The title of the item. If given, this will be the displayed title of the Search result. The maximum length is 2048 characters.
+func (o ItemMetadataResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ItemMetadataResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// The time when the item was last modified in the source repository.
+func (o ItemMetadataResponseOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ItemMetadataResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// This contains item's status and any errors.
+type ItemStatusResponse struct {
+	// Status code.
+	Code string `pulumi:"code"`
+	// Error details in case the item is in ERROR state.
+	ProcessingErrors []ProcessingErrorResponse `pulumi:"processingErrors"`
+	// Repository error reported by connector.
+	RepositoryErrors []RepositoryErrorResponse `pulumi:"repositoryErrors"`
+}
+
+// This contains item's status and any errors.
+type ItemStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (ItemStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ItemStatusResponse)(nil)).Elem()
+}
+
+func (o ItemStatusResponseOutput) ToItemStatusResponseOutput() ItemStatusResponseOutput {
+	return o
+}
+
+func (o ItemStatusResponseOutput) ToItemStatusResponseOutputWithContext(ctx context.Context) ItemStatusResponseOutput {
+	return o
+}
+
+// Status code.
+func (o ItemStatusResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v ItemStatusResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Error details in case the item is in ERROR state.
+func (o ItemStatusResponseOutput) ProcessingErrors() ProcessingErrorResponseArrayOutput {
+	return o.ApplyT(func(v ItemStatusResponse) []ProcessingErrorResponse { return v.ProcessingErrors }).(ProcessingErrorResponseArrayOutput)
+}
+
+// Repository error reported by connector.
+func (o ItemStatusResponseOutput) RepositoryErrors() RepositoryErrorResponseArrayOutput {
+	return o.ApplyT(func(v ItemStatusResponse) []RepositoryErrorResponse { return v.RepositoryErrors }).(RepositoryErrorResponseArrayOutput)
+}
+
+// Available structured data fields for the item.
+type ItemStructuredDataResponse struct {
+	// Hashing value provided by the API caller. This can be used with the items.push method to calculate modified state. The maximum length is 2048 characters.
+	Hash string `pulumi:"hash"`
+	// The structured data object that should conform to a registered object definition in the schema for the data source.
+	Object StructuredDataObjectResponse `pulumi:"object"`
+}
+
+// Available structured data fields for the item.
+type ItemStructuredDataResponseOutput struct{ *pulumi.OutputState }
+
+func (ItemStructuredDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ItemStructuredDataResponse)(nil)).Elem()
+}
+
+func (o ItemStructuredDataResponseOutput) ToItemStructuredDataResponseOutput() ItemStructuredDataResponseOutput {
+	return o
+}
+
+func (o ItemStructuredDataResponseOutput) ToItemStructuredDataResponseOutputWithContext(ctx context.Context) ItemStructuredDataResponseOutput {
+	return o
+}
+
+// Hashing value provided by the API caller. This can be used with the items.push method to calculate modified state. The maximum length is 2048 characters.
+func (o ItemStructuredDataResponseOutput) Hash() pulumi.StringOutput {
+	return o.ApplyT(func(v ItemStructuredDataResponse) string { return v.Hash }).(pulumi.StringOutput)
+}
+
+// The structured data object that should conform to a registered object definition in the schema for the data source.
+func (o ItemStructuredDataResponseOutput) Object() StructuredDataObjectResponseOutput {
+	return o.ApplyT(func(v ItemStructuredDataResponse) StructuredDataObjectResponse { return v.Object }).(StructuredDataObjectResponseOutput)
+}
+
+// A typed name-value pair for structured data. The type of the value should be the same as the registered type for the `name` property in the object definition of `objectType`.
+type NamedPropertyResponse struct {
+	BooleanValue  bool                  `pulumi:"booleanValue"`
+	DateValues    DateValuesResponse    `pulumi:"dateValues"`
+	DoubleValues  DoubleValuesResponse  `pulumi:"doubleValues"`
+	EnumValues    EnumValuesResponse    `pulumi:"enumValues"`
+	HtmlValues    HtmlValuesResponse    `pulumi:"htmlValues"`
+	IntegerValues IntegerValuesResponse `pulumi:"integerValues"`
+	// The name of the property. This name should correspond to the name of the property that was registered for object definition in the schema. The maximum allowable length for this property is 256 characters.
+	Name            string                  `pulumi:"name"`
+	ObjectValues    ObjectValuesResponse    `pulumi:"objectValues"`
+	TextValues      TextValuesResponse      `pulumi:"textValues"`
+	TimestampValues TimestampValuesResponse `pulumi:"timestampValues"`
+}
+
+// A typed name-value pair for structured data. The type of the value should be the same as the registered type for the `name` property in the object definition of `objectType`.
+type NamedPropertyResponseOutput struct{ *pulumi.OutputState }
+
+func (NamedPropertyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamedPropertyResponse)(nil)).Elem()
+}
+
+func (o NamedPropertyResponseOutput) ToNamedPropertyResponseOutput() NamedPropertyResponseOutput {
+	return o
+}
+
+func (o NamedPropertyResponseOutput) ToNamedPropertyResponseOutputWithContext(ctx context.Context) NamedPropertyResponseOutput {
+	return o
+}
+
+func (o NamedPropertyResponseOutput) BooleanValue() pulumi.BoolOutput {
+	return o.ApplyT(func(v NamedPropertyResponse) bool { return v.BooleanValue }).(pulumi.BoolOutput)
+}
+
+func (o NamedPropertyResponseOutput) DateValues() DateValuesResponseOutput {
+	return o.ApplyT(func(v NamedPropertyResponse) DateValuesResponse { return v.DateValues }).(DateValuesResponseOutput)
+}
+
+func (o NamedPropertyResponseOutput) DoubleValues() DoubleValuesResponseOutput {
+	return o.ApplyT(func(v NamedPropertyResponse) DoubleValuesResponse { return v.DoubleValues }).(DoubleValuesResponseOutput)
+}
+
+func (o NamedPropertyResponseOutput) EnumValues() EnumValuesResponseOutput {
+	return o.ApplyT(func(v NamedPropertyResponse) EnumValuesResponse { return v.EnumValues }).(EnumValuesResponseOutput)
+}
+
+func (o NamedPropertyResponseOutput) HtmlValues() HtmlValuesResponseOutput {
+	return o.ApplyT(func(v NamedPropertyResponse) HtmlValuesResponse { return v.HtmlValues }).(HtmlValuesResponseOutput)
+}
+
+func (o NamedPropertyResponseOutput) IntegerValues() IntegerValuesResponseOutput {
+	return o.ApplyT(func(v NamedPropertyResponse) IntegerValuesResponse { return v.IntegerValues }).(IntegerValuesResponseOutput)
+}
+
+// The name of the property. This name should correspond to the name of the property that was registered for object definition in the schema. The maximum allowable length for this property is 256 characters.
+func (o NamedPropertyResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NamedPropertyResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o NamedPropertyResponseOutput) ObjectValues() ObjectValuesResponseOutput {
+	return o.ApplyT(func(v NamedPropertyResponse) ObjectValuesResponse { return v.ObjectValues }).(ObjectValuesResponseOutput)
+}
+
+func (o NamedPropertyResponseOutput) TextValues() TextValuesResponseOutput {
+	return o.ApplyT(func(v NamedPropertyResponse) TextValuesResponse { return v.TextValues }).(TextValuesResponseOutput)
+}
+
+func (o NamedPropertyResponseOutput) TimestampValues() TimestampValuesResponseOutput {
+	return o.ApplyT(func(v NamedPropertyResponse) TimestampValuesResponse { return v.TimestampValues }).(TimestampValuesResponseOutput)
+}
+
+type NamedPropertyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NamedPropertyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamedPropertyResponse)(nil)).Elem()
+}
+
+func (o NamedPropertyResponseArrayOutput) ToNamedPropertyResponseArrayOutput() NamedPropertyResponseArrayOutput {
+	return o
+}
+
+func (o NamedPropertyResponseArrayOutput) ToNamedPropertyResponseArrayOutputWithContext(ctx context.Context) NamedPropertyResponseArrayOutput {
+	return o
+}
+
+func (o NamedPropertyResponseArrayOutput) Index(i pulumi.IntInput) NamedPropertyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamedPropertyResponse {
+		return vs[0].([]NamedPropertyResponse)[vs[1].(int)]
+	}).(NamedPropertyResponseOutput)
+}
+
+// List of object values.
+type ObjectValuesResponse struct {
+	Values []StructuredDataObjectResponse `pulumi:"values"`
+}
+
+// List of object values.
+type ObjectValuesResponseOutput struct{ *pulumi.OutputState }
+
+func (ObjectValuesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObjectValuesResponse)(nil)).Elem()
+}
+
+func (o ObjectValuesResponseOutput) ToObjectValuesResponseOutput() ObjectValuesResponseOutput {
+	return o
+}
+
+func (o ObjectValuesResponseOutput) ToObjectValuesResponseOutputWithContext(ctx context.Context) ObjectValuesResponseOutput {
+	return o
+}
+
+func (o ObjectValuesResponseOutput) Values() StructuredDataObjectResponseArrayOutput {
+	return o.ApplyT(func(v ObjectValuesResponse) []StructuredDataObjectResponse { return v.Values }).(StructuredDataObjectResponseArrayOutput)
+}
+
+// Reference to a user, group, or domain.
+type PrincipalResponse struct {
+	// This principal is a group identified using an external identity. The name field must specify the group resource name with this format: identitysources/{source_id}/groups/{ID}
+	GroupResourceName string `pulumi:"groupResourceName"`
+	// This principal is a Google Workspace user, group or domain.
+	GsuitePrincipal GSuitePrincipalResponse `pulumi:"gsuitePrincipal"`
+	// This principal is a user identified using an external identity. The name field must specify the user resource name with this format: identitysources/{source_id}/users/{ID}
+	UserResourceName string `pulumi:"userResourceName"`
+}
+
+// Reference to a user, group, or domain.
+type PrincipalResponseOutput struct{ *pulumi.OutputState }
+
+func (PrincipalResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrincipalResponse)(nil)).Elem()
+}
+
+func (o PrincipalResponseOutput) ToPrincipalResponseOutput() PrincipalResponseOutput {
+	return o
+}
+
+func (o PrincipalResponseOutput) ToPrincipalResponseOutputWithContext(ctx context.Context) PrincipalResponseOutput {
+	return o
+}
+
+// This principal is a group identified using an external identity. The name field must specify the group resource name with this format: identitysources/{source_id}/groups/{ID}
+func (o PrincipalResponseOutput) GroupResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v PrincipalResponse) string { return v.GroupResourceName }).(pulumi.StringOutput)
+}
+
+// This principal is a Google Workspace user, group or domain.
+func (o PrincipalResponseOutput) GsuitePrincipal() GSuitePrincipalResponseOutput {
+	return o.ApplyT(func(v PrincipalResponse) GSuitePrincipalResponse { return v.GsuitePrincipal }).(GSuitePrincipalResponseOutput)
+}
+
+// This principal is a user identified using an external identity. The name field must specify the user resource name with this format: identitysources/{source_id}/users/{ID}
+func (o PrincipalResponseOutput) UserResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v PrincipalResponse) string { return v.UserResourceName }).(pulumi.StringOutput)
+}
+
+type PrincipalResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PrincipalResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrincipalResponse)(nil)).Elem()
+}
+
+func (o PrincipalResponseArrayOutput) ToPrincipalResponseArrayOutput() PrincipalResponseArrayOutput {
+	return o
+}
+
+func (o PrincipalResponseArrayOutput) ToPrincipalResponseArrayOutputWithContext(ctx context.Context) PrincipalResponseArrayOutput {
+	return o
+}
+
+func (o PrincipalResponseArrayOutput) Index(i pulumi.IntInput) PrincipalResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrincipalResponse {
+		return vs[0].([]PrincipalResponse)[vs[1].(int)]
+	}).(PrincipalResponseOutput)
+}
+
+type ProcessingErrorResponse struct {
+	// Error code indicating the nature of the error.
+	Code string `pulumi:"code"`
+	// The description of the error.
+	ErrorMessage string `pulumi:"errorMessage"`
+	// In case the item fields are invalid, this field contains the details about the validation errors.
+	FieldViolations []FieldViolationResponse `pulumi:"fieldViolations"`
+}
+
+type ProcessingErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (ProcessingErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProcessingErrorResponse)(nil)).Elem()
+}
+
+func (o ProcessingErrorResponseOutput) ToProcessingErrorResponseOutput() ProcessingErrorResponseOutput {
+	return o
+}
+
+func (o ProcessingErrorResponseOutput) ToProcessingErrorResponseOutputWithContext(ctx context.Context) ProcessingErrorResponseOutput {
+	return o
+}
+
+// Error code indicating the nature of the error.
+func (o ProcessingErrorResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v ProcessingErrorResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// The description of the error.
+func (o ProcessingErrorResponseOutput) ErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v ProcessingErrorResponse) string { return v.ErrorMessage }).(pulumi.StringOutput)
+}
+
+// In case the item fields are invalid, this field contains the details about the validation errors.
+func (o ProcessingErrorResponseOutput) FieldViolations() FieldViolationResponseArrayOutput {
+	return o.ApplyT(func(v ProcessingErrorResponse) []FieldViolationResponse { return v.FieldViolations }).(FieldViolationResponseArrayOutput)
+}
+
+type ProcessingErrorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ProcessingErrorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProcessingErrorResponse)(nil)).Elem()
+}
+
+func (o ProcessingErrorResponseArrayOutput) ToProcessingErrorResponseArrayOutput() ProcessingErrorResponseArrayOutput {
+	return o
+}
+
+func (o ProcessingErrorResponseArrayOutput) ToProcessingErrorResponseArrayOutputWithContext(ctx context.Context) ProcessingErrorResponseArrayOutput {
+	return o
+}
+
+func (o ProcessingErrorResponseArrayOutput) Index(i pulumi.IntInput) ProcessingErrorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProcessingErrorResponse {
+		return vs[0].([]ProcessingErrorResponse)[vs[1].(int)]
+	}).(ProcessingErrorResponseOutput)
 }
 
 // Default options to interpret user query.
@@ -1728,6 +2689,66 @@ func (o QueryInterpretationConfigResponseOutput) ForceVerbatimMode() pulumi.Bool
 	return o.ApplyT(func(v QueryInterpretationConfigResponse) bool { return v.ForceVerbatimMode }).(pulumi.BoolOutput)
 }
 
+// Errors when the connector is communicating to the source repository.
+type RepositoryErrorResponse struct {
+	// Message that describes the error. The maximum allowable length of the message is 8192 characters.
+	ErrorMessage string `pulumi:"errorMessage"`
+	// Error codes. Matches the definition of HTTP status codes.
+	HttpStatusCode int `pulumi:"httpStatusCode"`
+	// The type of error.
+	Type string `pulumi:"type"`
+}
+
+// Errors when the connector is communicating to the source repository.
+type RepositoryErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (RepositoryErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryErrorResponse)(nil)).Elem()
+}
+
+func (o RepositoryErrorResponseOutput) ToRepositoryErrorResponseOutput() RepositoryErrorResponseOutput {
+	return o
+}
+
+func (o RepositoryErrorResponseOutput) ToRepositoryErrorResponseOutputWithContext(ctx context.Context) RepositoryErrorResponseOutput {
+	return o
+}
+
+// Message that describes the error. The maximum allowable length of the message is 8192 characters.
+func (o RepositoryErrorResponseOutput) ErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v RepositoryErrorResponse) string { return v.ErrorMessage }).(pulumi.StringOutput)
+}
+
+// Error codes. Matches the definition of HTTP status codes.
+func (o RepositoryErrorResponseOutput) HttpStatusCode() pulumi.IntOutput {
+	return o.ApplyT(func(v RepositoryErrorResponse) int { return v.HttpStatusCode }).(pulumi.IntOutput)
+}
+
+// The type of error.
+func (o RepositoryErrorResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RepositoryErrorResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type RepositoryErrorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RepositoryErrorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepositoryErrorResponse)(nil)).Elem()
+}
+
+func (o RepositoryErrorResponseArrayOutput) ToRepositoryErrorResponseArrayOutput() RepositoryErrorResponseArrayOutput {
+	return o
+}
+
+func (o RepositoryErrorResponseArrayOutput) ToRepositoryErrorResponseArrayOutputWithContext(ctx context.Context) RepositoryErrorResponseArrayOutput {
+	return o
+}
+
+func (o RepositoryErrorResponseArrayOutput) Index(i pulumi.IntInput) RepositoryErrorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RepositoryErrorResponse {
+		return vs[0].([]RepositoryErrorResponse)[vs[1].(int)]
+	}).(RepositoryErrorResponseOutput)
+}
+
 // Scoring configurations for a source while processing a Search or Suggest request.
 type ScoringConfig struct {
 	// Whether to use freshness as a ranking signal. By default, freshness is used as a ranking signal. Note that this setting is not available in the Admin UI.
@@ -1918,6 +2939,32 @@ func (o ScoringConfigResponseOutput) DisableFreshness() pulumi.BoolOutput {
 // Whether to personalize the results. By default, personal signals will be used to boost results.
 func (o ScoringConfigResponseOutput) DisablePersonalization() pulumi.BoolOutput {
 	return o.ApplyT(func(v ScoringConfigResponse) bool { return v.DisablePersonalization }).(pulumi.BoolOutput)
+}
+
+// Additional search quality metadata of the item.
+type SearchQualityMetadataResponse struct {
+	// An indication of the quality of the item, used to influence search quality. Value should be between 0.0 (lowest quality) and 1.0 (highest quality). The default value is 0.0.
+	Quality float64 `pulumi:"quality"`
+}
+
+// Additional search quality metadata of the item.
+type SearchQualityMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (SearchQualityMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchQualityMetadataResponse)(nil)).Elem()
+}
+
+func (o SearchQualityMetadataResponseOutput) ToSearchQualityMetadataResponseOutput() SearchQualityMetadataResponseOutput {
+	return o
+}
+
+func (o SearchQualityMetadataResponseOutput) ToSearchQualityMetadataResponseOutputWithContext(ctx context.Context) SearchQualityMetadataResponseOutput {
+	return o
+}
+
+// An indication of the quality of the item, used to influence search quality. Value should be between 0.0 (lowest quality) and 1.0 (highest quality). The default value is 0.0.
+func (o SearchQualityMetadataResponseOutput) Quality() pulumi.Float64Output {
+	return o.ApplyT(func(v SearchQualityMetadataResponse) float64 { return v.Quality }).(pulumi.Float64Output)
 }
 
 type SortOptions struct {
@@ -2835,6 +3882,128 @@ func (o SourceScoringConfigResponseOutput) SourceImportance() pulumi.StringOutpu
 	return o.ApplyT(func(v SourceScoringConfigResponse) string { return v.SourceImportance }).(pulumi.StringOutput)
 }
 
+// A structured data object consisting of named properties.
+type StructuredDataObjectResponse struct {
+	// The properties for the object. The maximum number of elements is 1000.
+	Properties []NamedPropertyResponse `pulumi:"properties"`
+}
+
+// A structured data object consisting of named properties.
+type StructuredDataObjectResponseOutput struct{ *pulumi.OutputState }
+
+func (StructuredDataObjectResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StructuredDataObjectResponse)(nil)).Elem()
+}
+
+func (o StructuredDataObjectResponseOutput) ToStructuredDataObjectResponseOutput() StructuredDataObjectResponseOutput {
+	return o
+}
+
+func (o StructuredDataObjectResponseOutput) ToStructuredDataObjectResponseOutputWithContext(ctx context.Context) StructuredDataObjectResponseOutput {
+	return o
+}
+
+// The properties for the object. The maximum number of elements is 1000.
+func (o StructuredDataObjectResponseOutput) Properties() NamedPropertyResponseArrayOutput {
+	return o.ApplyT(func(v StructuredDataObjectResponse) []NamedPropertyResponse { return v.Properties }).(NamedPropertyResponseArrayOutput)
+}
+
+type StructuredDataObjectResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StructuredDataObjectResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StructuredDataObjectResponse)(nil)).Elem()
+}
+
+func (o StructuredDataObjectResponseArrayOutput) ToStructuredDataObjectResponseArrayOutput() StructuredDataObjectResponseArrayOutput {
+	return o
+}
+
+func (o StructuredDataObjectResponseArrayOutput) ToStructuredDataObjectResponseArrayOutputWithContext(ctx context.Context) StructuredDataObjectResponseArrayOutput {
+	return o
+}
+
+func (o StructuredDataObjectResponseArrayOutput) Index(i pulumi.IntInput) StructuredDataObjectResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StructuredDataObjectResponse {
+		return vs[0].([]StructuredDataObjectResponse)[vs[1].(int)]
+	}).(StructuredDataObjectResponseOutput)
+}
+
+// List of text values.
+type TextValuesResponse struct {
+	// The maximum allowable length for text values is 2048 characters.
+	Values []string `pulumi:"values"`
+}
+
+// List of text values.
+type TextValuesResponseOutput struct{ *pulumi.OutputState }
+
+func (TextValuesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextValuesResponse)(nil)).Elem()
+}
+
+func (o TextValuesResponseOutput) ToTextValuesResponseOutput() TextValuesResponseOutput {
+	return o
+}
+
+func (o TextValuesResponseOutput) ToTextValuesResponseOutputWithContext(ctx context.Context) TextValuesResponseOutput {
+	return o
+}
+
+// The maximum allowable length for text values is 2048 characters.
+func (o TextValuesResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TextValuesResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+// List of timestamp values.
+type TimestampValuesResponse struct {
+	Values []string `pulumi:"values"`
+}
+
+// List of timestamp values.
+type TimestampValuesResponseOutput struct{ *pulumi.OutputState }
+
+func (TimestampValuesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimestampValuesResponse)(nil)).Elem()
+}
+
+func (o TimestampValuesResponseOutput) ToTimestampValuesResponseOutput() TimestampValuesResponseOutput {
+	return o
+}
+
+func (o TimestampValuesResponseOutput) ToTimestampValuesResponseOutputWithContext(ctx context.Context) TimestampValuesResponseOutput {
+	return o
+}
+
+func (o TimestampValuesResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TimestampValuesResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+// Represents an upload session reference. This reference is created via upload method. This reference is valid for 30 days after its creation. Updating of item content may refer to this uploaded content via contentDataRef.
+type UploadItemRefResponse struct {
+	// The name of the content reference. The maximum length is 2048 characters.
+	Name string `pulumi:"name"`
+}
+
+// Represents an upload session reference. This reference is created via upload method. This reference is valid for 30 days after its creation. Updating of item content may refer to this uploaded content via contentDataRef.
+type UploadItemRefResponseOutput struct{ *pulumi.OutputState }
+
+func (UploadItemRefResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UploadItemRefResponse)(nil)).Elem()
+}
+
+func (o UploadItemRefResponseOutput) ToUploadItemRefResponseOutput() UploadItemRefResponseOutput {
+	return o
+}
+
+func (o UploadItemRefResponseOutput) ToUploadItemRefResponseOutputWithContext(ctx context.Context) UploadItemRefResponseOutput {
+	return o
+}
+
+// The name of the content reference. The maximum length is 2048 characters.
+func (o UploadItemRefResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v UploadItemRefResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
 // Definition of a single value with generic type.
 type Value struct {
 	BooleanValue   *bool    `pulumi:"booleanValue"`
@@ -3289,6 +4458,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataSourceRestrictionArrayInput)(nil)).Elem(), DataSourceRestrictionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DateInput)(nil)).Elem(), DateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatePtrInput)(nil)).Elem(), DateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DebugOptionsInput)(nil)).Elem(), DebugOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DebugOptionsPtrInput)(nil)).Elem(), DebugOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FacetOptionsInput)(nil)).Elem(), FacetOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FacetOptionsArrayInput)(nil)).Elem(), FacetOptionsArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterInput)(nil)).Elem(), FilterArgs{})
@@ -3321,6 +4492,8 @@ func init() {
 	pulumi.RegisterOutputType(CompositeFilterOutput{})
 	pulumi.RegisterOutputType(CompositeFilterPtrOutput{})
 	pulumi.RegisterOutputType(CompositeFilterResponseOutput{})
+	pulumi.RegisterOutputType(ContextAttributeResponseOutput{})
+	pulumi.RegisterOutputType(ContextAttributeResponseArrayOutput{})
 	pulumi.RegisterOutputType(DataSourceRestrictionOutput{})
 	pulumi.RegisterOutputType(DataSourceRestrictionArrayOutput{})
 	pulumi.RegisterOutputType(DataSourceRestrictionResponseOutput{})
@@ -3328,10 +4501,18 @@ func init() {
 	pulumi.RegisterOutputType(DateOutput{})
 	pulumi.RegisterOutputType(DatePtrOutput{})
 	pulumi.RegisterOutputType(DateResponseOutput{})
+	pulumi.RegisterOutputType(DateResponseArrayOutput{})
+	pulumi.RegisterOutputType(DateValuesResponseOutput{})
+	pulumi.RegisterOutputType(DebugOptionsOutput{})
+	pulumi.RegisterOutputType(DebugOptionsPtrOutput{})
+	pulumi.RegisterOutputType(DoubleValuesResponseOutput{})
+	pulumi.RegisterOutputType(EnumValuesResponseOutput{})
 	pulumi.RegisterOutputType(FacetOptionsOutput{})
 	pulumi.RegisterOutputType(FacetOptionsArrayOutput{})
 	pulumi.RegisterOutputType(FacetOptionsResponseOutput{})
 	pulumi.RegisterOutputType(FacetOptionsResponseArrayOutput{})
+	pulumi.RegisterOutputType(FieldViolationResponseOutput{})
+	pulumi.RegisterOutputType(FieldViolationResponseArrayOutput{})
 	pulumi.RegisterOutputType(FilterOutput{})
 	pulumi.RegisterOutputType(FilterPtrOutput{})
 	pulumi.RegisterOutputType(FilterArrayOutput{})
@@ -3345,15 +4526,34 @@ func init() {
 	pulumi.RegisterOutputType(GSuitePrincipalArrayOutput{})
 	pulumi.RegisterOutputType(GSuitePrincipalResponseOutput{})
 	pulumi.RegisterOutputType(GSuitePrincipalResponseArrayOutput{})
+	pulumi.RegisterOutputType(HtmlValuesResponseOutput{})
 	pulumi.RegisterOutputType(IntegerFacetingOptionsOutput{})
 	pulumi.RegisterOutputType(IntegerFacetingOptionsPtrOutput{})
 	pulumi.RegisterOutputType(IntegerFacetingOptionsResponseOutput{})
+	pulumi.RegisterOutputType(IntegerValuesResponseOutput{})
+	pulumi.RegisterOutputType(InteractionResponseOutput{})
+	pulumi.RegisterOutputType(InteractionResponseArrayOutput{})
+	pulumi.RegisterOutputType(ItemAclResponseOutput{})
+	pulumi.RegisterOutputType(ItemContentResponseOutput{})
+	pulumi.RegisterOutputType(ItemMetadataResponseOutput{})
+	pulumi.RegisterOutputType(ItemStatusResponseOutput{})
+	pulumi.RegisterOutputType(ItemStructuredDataResponseOutput{})
+	pulumi.RegisterOutputType(NamedPropertyResponseOutput{})
+	pulumi.RegisterOutputType(NamedPropertyResponseArrayOutput{})
+	pulumi.RegisterOutputType(ObjectValuesResponseOutput{})
+	pulumi.RegisterOutputType(PrincipalResponseOutput{})
+	pulumi.RegisterOutputType(PrincipalResponseArrayOutput{})
+	pulumi.RegisterOutputType(ProcessingErrorResponseOutput{})
+	pulumi.RegisterOutputType(ProcessingErrorResponseArrayOutput{})
 	pulumi.RegisterOutputType(QueryInterpretationConfigOutput{})
 	pulumi.RegisterOutputType(QueryInterpretationConfigPtrOutput{})
 	pulumi.RegisterOutputType(QueryInterpretationConfigResponseOutput{})
+	pulumi.RegisterOutputType(RepositoryErrorResponseOutput{})
+	pulumi.RegisterOutputType(RepositoryErrorResponseArrayOutput{})
 	pulumi.RegisterOutputType(ScoringConfigOutput{})
 	pulumi.RegisterOutputType(ScoringConfigPtrOutput{})
 	pulumi.RegisterOutputType(ScoringConfigResponseOutput{})
+	pulumi.RegisterOutputType(SearchQualityMetadataResponseOutput{})
 	pulumi.RegisterOutputType(SortOptionsOutput{})
 	pulumi.RegisterOutputType(SortOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SortOptionsResponseOutput{})
@@ -3370,6 +4570,11 @@ func init() {
 	pulumi.RegisterOutputType(SourceScoringConfigOutput{})
 	pulumi.RegisterOutputType(SourceScoringConfigPtrOutput{})
 	pulumi.RegisterOutputType(SourceScoringConfigResponseOutput{})
+	pulumi.RegisterOutputType(StructuredDataObjectResponseOutput{})
+	pulumi.RegisterOutputType(StructuredDataObjectResponseArrayOutput{})
+	pulumi.RegisterOutputType(TextValuesResponseOutput{})
+	pulumi.RegisterOutputType(TimestampValuesResponseOutput{})
+	pulumi.RegisterOutputType(UploadItemRefResponseOutput{})
 	pulumi.RegisterOutputType(ValueOutput{})
 	pulumi.RegisterOutputType(ValuePtrOutput{})
 	pulumi.RegisterOutputType(ValueFilterOutput{})

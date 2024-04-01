@@ -49,6 +49,14 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
         /// </summary>
         public readonly Outputs.ScorecardResponse Scorecard;
         /// <summary>
+        /// A widget that defines a section header for easier navigation of the dashboard.
+        /// </summary>
+        public readonly Outputs.SectionHeaderResponse SectionHeader;
+        /// <summary>
+        /// A widget that groups the other widgets by using a dropdown menu.
+        /// </summary>
+        public readonly Outputs.SingleViewGroupResponse SingleViewGroup;
+        /// <summary>
         /// A raw string or markdown displaying textual content.
         /// </summary>
         public readonly Outputs.TextResponse Text;
@@ -83,6 +91,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 
             Outputs.ScorecardResponse scorecard,
 
+            Outputs.SectionHeaderResponse sectionHeader,
+
+            Outputs.SingleViewGroupResponse singleViewGroup,
+
             Outputs.TextResponse text,
 
             Outputs.TimeSeriesTableResponse timeSeriesTable,
@@ -99,6 +111,8 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
             LogsPanel = logsPanel;
             PieChart = pieChart;
             Scorecard = scorecard;
+            SectionHeader = sectionHeader;
+            SingleViewGroup = singleViewGroup;
             Text = text;
             TimeSeriesTable = timeSeriesTable;
             Title = title;

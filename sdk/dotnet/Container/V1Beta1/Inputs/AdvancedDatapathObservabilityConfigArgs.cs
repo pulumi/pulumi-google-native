@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public Input<bool>? EnableMetrics { get; set; }
 
         /// <summary>
+        /// Enable Relay component
+        /// </summary>
+        [Input("enableRelay")]
+        public Input<bool>? EnableRelay { get; set; }
+
+        /// <summary>
         /// Method used to make Relay available
         /// </summary>
         [Input("relayMode")]

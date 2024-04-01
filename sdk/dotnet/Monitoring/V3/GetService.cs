@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// </summary>
         public readonly Outputs.MeshIstioResponse MeshIstio;
         /// <summary>
-        /// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
+        /// Identifier. Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
         /// </summary>
         public readonly string Name;
         /// <summary>

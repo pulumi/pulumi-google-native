@@ -179,13 +179,268 @@ func (o AvroConfigResponseOutput) WriteMetadata() pulumi.BoolOutput {
 	return o.ApplyT(func(v AvroConfigResponse) bool { return v.WriteMetadata }).(pulumi.BoolOutput)
 }
 
+// Ingestion settings for Amazon Kinesis Data Streams.
+type AwsKinesis struct {
+	// AWS role ARN to be used for Federated Identity authentication with Kinesis. Check the Pub/Sub docs for how to set up this role and the required permissions that need to be attached to it.
+	AwsRoleArn string `pulumi:"awsRoleArn"`
+	// The Kinesis consumer ARN to used for ingestion in Enhanced Fan-Out mode. The consumer must be already created and ready to be used.
+	ConsumerArn string `pulumi:"consumerArn"`
+	// The GCP service account to be used for Federated Identity authentication with Kinesis (via a `AssumeRoleWithWebIdentity` call for the provided role). The `aws_role_arn` must be set up with `accounts.google.com:sub` equals to this service account number.
+	GcpServiceAccount string `pulumi:"gcpServiceAccount"`
+	// The Kinesis stream ARN to ingest data from.
+	StreamArn string `pulumi:"streamArn"`
+}
+
+// AwsKinesisInput is an input type that accepts AwsKinesisArgs and AwsKinesisOutput values.
+// You can construct a concrete instance of `AwsKinesisInput` via:
+//
+//	AwsKinesisArgs{...}
+type AwsKinesisInput interface {
+	pulumi.Input
+
+	ToAwsKinesisOutput() AwsKinesisOutput
+	ToAwsKinesisOutputWithContext(context.Context) AwsKinesisOutput
+}
+
+// Ingestion settings for Amazon Kinesis Data Streams.
+type AwsKinesisArgs struct {
+	// AWS role ARN to be used for Federated Identity authentication with Kinesis. Check the Pub/Sub docs for how to set up this role and the required permissions that need to be attached to it.
+	AwsRoleArn pulumi.StringInput `pulumi:"awsRoleArn"`
+	// The Kinesis consumer ARN to used for ingestion in Enhanced Fan-Out mode. The consumer must be already created and ready to be used.
+	ConsumerArn pulumi.StringInput `pulumi:"consumerArn"`
+	// The GCP service account to be used for Federated Identity authentication with Kinesis (via a `AssumeRoleWithWebIdentity` call for the provided role). The `aws_role_arn` must be set up with `accounts.google.com:sub` equals to this service account number.
+	GcpServiceAccount pulumi.StringInput `pulumi:"gcpServiceAccount"`
+	// The Kinesis stream ARN to ingest data from.
+	StreamArn pulumi.StringInput `pulumi:"streamArn"`
+}
+
+func (AwsKinesisArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsKinesis)(nil)).Elem()
+}
+
+func (i AwsKinesisArgs) ToAwsKinesisOutput() AwsKinesisOutput {
+	return i.ToAwsKinesisOutputWithContext(context.Background())
+}
+
+func (i AwsKinesisArgs) ToAwsKinesisOutputWithContext(ctx context.Context) AwsKinesisOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsKinesisOutput)
+}
+
+func (i AwsKinesisArgs) ToAwsKinesisPtrOutput() AwsKinesisPtrOutput {
+	return i.ToAwsKinesisPtrOutputWithContext(context.Background())
+}
+
+func (i AwsKinesisArgs) ToAwsKinesisPtrOutputWithContext(ctx context.Context) AwsKinesisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsKinesisOutput).ToAwsKinesisPtrOutputWithContext(ctx)
+}
+
+// AwsKinesisPtrInput is an input type that accepts AwsKinesisArgs, AwsKinesisPtr and AwsKinesisPtrOutput values.
+// You can construct a concrete instance of `AwsKinesisPtrInput` via:
+//
+//	        AwsKinesisArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsKinesisPtrInput interface {
+	pulumi.Input
+
+	ToAwsKinesisPtrOutput() AwsKinesisPtrOutput
+	ToAwsKinesisPtrOutputWithContext(context.Context) AwsKinesisPtrOutput
+}
+
+type awsKinesisPtrType AwsKinesisArgs
+
+func AwsKinesisPtr(v *AwsKinesisArgs) AwsKinesisPtrInput {
+	return (*awsKinesisPtrType)(v)
+}
+
+func (*awsKinesisPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsKinesis)(nil)).Elem()
+}
+
+func (i *awsKinesisPtrType) ToAwsKinesisPtrOutput() AwsKinesisPtrOutput {
+	return i.ToAwsKinesisPtrOutputWithContext(context.Background())
+}
+
+func (i *awsKinesisPtrType) ToAwsKinesisPtrOutputWithContext(ctx context.Context) AwsKinesisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsKinesisPtrOutput)
+}
+
+// Ingestion settings for Amazon Kinesis Data Streams.
+type AwsKinesisOutput struct{ *pulumi.OutputState }
+
+func (AwsKinesisOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsKinesis)(nil)).Elem()
+}
+
+func (o AwsKinesisOutput) ToAwsKinesisOutput() AwsKinesisOutput {
+	return o
+}
+
+func (o AwsKinesisOutput) ToAwsKinesisOutputWithContext(ctx context.Context) AwsKinesisOutput {
+	return o
+}
+
+func (o AwsKinesisOutput) ToAwsKinesisPtrOutput() AwsKinesisPtrOutput {
+	return o.ToAwsKinesisPtrOutputWithContext(context.Background())
+}
+
+func (o AwsKinesisOutput) ToAwsKinesisPtrOutputWithContext(ctx context.Context) AwsKinesisPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsKinesis) *AwsKinesis {
+		return &v
+	}).(AwsKinesisPtrOutput)
+}
+
+// AWS role ARN to be used for Federated Identity authentication with Kinesis. Check the Pub/Sub docs for how to set up this role and the required permissions that need to be attached to it.
+func (o AwsKinesisOutput) AwsRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsKinesis) string { return v.AwsRoleArn }).(pulumi.StringOutput)
+}
+
+// The Kinesis consumer ARN to used for ingestion in Enhanced Fan-Out mode. The consumer must be already created and ready to be used.
+func (o AwsKinesisOutput) ConsumerArn() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsKinesis) string { return v.ConsumerArn }).(pulumi.StringOutput)
+}
+
+// The GCP service account to be used for Federated Identity authentication with Kinesis (via a `AssumeRoleWithWebIdentity` call for the provided role). The `aws_role_arn` must be set up with `accounts.google.com:sub` equals to this service account number.
+func (o AwsKinesisOutput) GcpServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsKinesis) string { return v.GcpServiceAccount }).(pulumi.StringOutput)
+}
+
+// The Kinesis stream ARN to ingest data from.
+func (o AwsKinesisOutput) StreamArn() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsKinesis) string { return v.StreamArn }).(pulumi.StringOutput)
+}
+
+type AwsKinesisPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsKinesisPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsKinesis)(nil)).Elem()
+}
+
+func (o AwsKinesisPtrOutput) ToAwsKinesisPtrOutput() AwsKinesisPtrOutput {
+	return o
+}
+
+func (o AwsKinesisPtrOutput) ToAwsKinesisPtrOutputWithContext(ctx context.Context) AwsKinesisPtrOutput {
+	return o
+}
+
+func (o AwsKinesisPtrOutput) Elem() AwsKinesisOutput {
+	return o.ApplyT(func(v *AwsKinesis) AwsKinesis {
+		if v != nil {
+			return *v
+		}
+		var ret AwsKinesis
+		return ret
+	}).(AwsKinesisOutput)
+}
+
+// AWS role ARN to be used for Federated Identity authentication with Kinesis. Check the Pub/Sub docs for how to set up this role and the required permissions that need to be attached to it.
+func (o AwsKinesisPtrOutput) AwsRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsKinesis) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AwsRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Kinesis consumer ARN to used for ingestion in Enhanced Fan-Out mode. The consumer must be already created and ready to be used.
+func (o AwsKinesisPtrOutput) ConsumerArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsKinesis) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConsumerArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The GCP service account to be used for Federated Identity authentication with Kinesis (via a `AssumeRoleWithWebIdentity` call for the provided role). The `aws_role_arn` must be set up with `accounts.google.com:sub` equals to this service account number.
+func (o AwsKinesisPtrOutput) GcpServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsKinesis) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GcpServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Kinesis stream ARN to ingest data from.
+func (o AwsKinesisPtrOutput) StreamArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsKinesis) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StreamArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Ingestion settings for Amazon Kinesis Data Streams.
+type AwsKinesisResponse struct {
+	// AWS role ARN to be used for Federated Identity authentication with Kinesis. Check the Pub/Sub docs for how to set up this role and the required permissions that need to be attached to it.
+	AwsRoleArn string `pulumi:"awsRoleArn"`
+	// The Kinesis consumer ARN to used for ingestion in Enhanced Fan-Out mode. The consumer must be already created and ready to be used.
+	ConsumerArn string `pulumi:"consumerArn"`
+	// The GCP service account to be used for Federated Identity authentication with Kinesis (via a `AssumeRoleWithWebIdentity` call for the provided role). The `aws_role_arn` must be set up with `accounts.google.com:sub` equals to this service account number.
+	GcpServiceAccount string `pulumi:"gcpServiceAccount"`
+	// An output-only field that indicates the state of the Kinesis ingestion source.
+	State string `pulumi:"state"`
+	// The Kinesis stream ARN to ingest data from.
+	StreamArn string `pulumi:"streamArn"`
+}
+
+// Ingestion settings for Amazon Kinesis Data Streams.
+type AwsKinesisResponseOutput struct{ *pulumi.OutputState }
+
+func (AwsKinesisResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsKinesisResponse)(nil)).Elem()
+}
+
+func (o AwsKinesisResponseOutput) ToAwsKinesisResponseOutput() AwsKinesisResponseOutput {
+	return o
+}
+
+func (o AwsKinesisResponseOutput) ToAwsKinesisResponseOutputWithContext(ctx context.Context) AwsKinesisResponseOutput {
+	return o
+}
+
+// AWS role ARN to be used for Federated Identity authentication with Kinesis. Check the Pub/Sub docs for how to set up this role and the required permissions that need to be attached to it.
+func (o AwsKinesisResponseOutput) AwsRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsKinesisResponse) string { return v.AwsRoleArn }).(pulumi.StringOutput)
+}
+
+// The Kinesis consumer ARN to used for ingestion in Enhanced Fan-Out mode. The consumer must be already created and ready to be used.
+func (o AwsKinesisResponseOutput) ConsumerArn() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsKinesisResponse) string { return v.ConsumerArn }).(pulumi.StringOutput)
+}
+
+// The GCP service account to be used for Federated Identity authentication with Kinesis (via a `AssumeRoleWithWebIdentity` call for the provided role). The `aws_role_arn` must be set up with `accounts.google.com:sub` equals to this service account number.
+func (o AwsKinesisResponseOutput) GcpServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsKinesisResponse) string { return v.GcpServiceAccount }).(pulumi.StringOutput)
+}
+
+// An output-only field that indicates the state of the Kinesis ingestion source.
+func (o AwsKinesisResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsKinesisResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The Kinesis stream ARN to ingest data from.
+func (o AwsKinesisResponseOutput) StreamArn() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsKinesisResponse) string { return v.StreamArn }).(pulumi.StringOutput)
+}
+
 // Configuration for a BigQuery subscription.
 type BigQueryConfig struct {
 	// Optional. When true and use_topic_schema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
 	DropUnknownFields *bool `pulumi:"dropUnknownFields"`
+	// Optional. The service account to use to write to BigQuery. The subscription creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// Optional. The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
 	Table *string `pulumi:"table"`
-	// Optional. When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+	// Optional. When true, use the BigQuery table's schema as the columns to write to in BigQuery. `use_table_schema` and `use_topic_schema` cannot be enabled at the same time.
+	UseTableSchema *bool `pulumi:"useTableSchema"`
+	// Optional. When true, use the topic's schema as the columns to write to in BigQuery, if it exists. `use_topic_schema` and `use_table_schema` cannot be enabled at the same time.
 	UseTopicSchema *bool `pulumi:"useTopicSchema"`
 	// Optional. When true, write the subscription name, message_id, publish_time, attributes, and ordering_key to additional columns in the table. The subscription name, message_id, and publish_time fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
 	WriteMetadata *bool `pulumi:"writeMetadata"`
@@ -206,9 +461,13 @@ type BigQueryConfigInput interface {
 type BigQueryConfigArgs struct {
 	// Optional. When true and use_topic_schema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
 	DropUnknownFields pulumi.BoolPtrInput `pulumi:"dropUnknownFields"`
+	// Optional. The service account to use to write to BigQuery. The subscription creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
 	// Optional. The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
 	Table pulumi.StringPtrInput `pulumi:"table"`
-	// Optional. When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+	// Optional. When true, use the BigQuery table's schema as the columns to write to in BigQuery. `use_table_schema` and `use_topic_schema` cannot be enabled at the same time.
+	UseTableSchema pulumi.BoolPtrInput `pulumi:"useTableSchema"`
+	// Optional. When true, use the topic's schema as the columns to write to in BigQuery, if it exists. `use_topic_schema` and `use_table_schema` cannot be enabled at the same time.
 	UseTopicSchema pulumi.BoolPtrInput `pulumi:"useTopicSchema"`
 	// Optional. When true, write the subscription name, message_id, publish_time, attributes, and ordering_key to additional columns in the table. The subscription name, message_id, and publish_time fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
 	WriteMetadata pulumi.BoolPtrInput `pulumi:"writeMetadata"`
@@ -297,12 +556,22 @@ func (o BigQueryConfigOutput) DropUnknownFields() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BigQueryConfig) *bool { return v.DropUnknownFields }).(pulumi.BoolPtrOutput)
 }
 
+// Optional. The service account to use to write to BigQuery. The subscription creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+func (o BigQueryConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigQueryConfig) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
+}
+
 // Optional. The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
 func (o BigQueryConfigOutput) Table() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BigQueryConfig) *string { return v.Table }).(pulumi.StringPtrOutput)
 }
 
-// Optional. When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+// Optional. When true, use the BigQuery table's schema as the columns to write to in BigQuery. `use_table_schema` and `use_topic_schema` cannot be enabled at the same time.
+func (o BigQueryConfigOutput) UseTableSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BigQueryConfig) *bool { return v.UseTableSchema }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. When true, use the topic's schema as the columns to write to in BigQuery, if it exists. `use_topic_schema` and `use_table_schema` cannot be enabled at the same time.
 func (o BigQueryConfigOutput) UseTopicSchema() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BigQueryConfig) *bool { return v.UseTopicSchema }).(pulumi.BoolPtrOutput)
 }
@@ -346,6 +615,16 @@ func (o BigQueryConfigPtrOutput) DropUnknownFields() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Optional. The service account to use to write to BigQuery. The subscription creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+func (o BigQueryConfigPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BigQueryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
 // Optional. The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
 func (o BigQueryConfigPtrOutput) Table() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BigQueryConfig) *string {
@@ -356,7 +635,17 @@ func (o BigQueryConfigPtrOutput) Table() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+// Optional. When true, use the BigQuery table's schema as the columns to write to in BigQuery. `use_table_schema` and `use_topic_schema` cannot be enabled at the same time.
+func (o BigQueryConfigPtrOutput) UseTableSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BigQueryConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseTableSchema
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. When true, use the topic's schema as the columns to write to in BigQuery, if it exists. `use_topic_schema` and `use_table_schema` cannot be enabled at the same time.
 func (o BigQueryConfigPtrOutput) UseTopicSchema() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BigQueryConfig) *bool {
 		if v == nil {
@@ -380,11 +669,15 @@ func (o BigQueryConfigPtrOutput) WriteMetadata() pulumi.BoolPtrOutput {
 type BigQueryConfigResponse struct {
 	// Optional. When true and use_topic_schema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
 	DropUnknownFields bool `pulumi:"dropUnknownFields"`
+	// Optional. The service account to use to write to BigQuery. The subscription creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
 	// An output-only field that indicates whether or not the subscription can receive messages.
 	State string `pulumi:"state"`
 	// Optional. The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
 	Table string `pulumi:"table"`
-	// Optional. When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+	// Optional. When true, use the BigQuery table's schema as the columns to write to in BigQuery. `use_table_schema` and `use_topic_schema` cannot be enabled at the same time.
+	UseTableSchema bool `pulumi:"useTableSchema"`
+	// Optional. When true, use the topic's schema as the columns to write to in BigQuery, if it exists. `use_topic_schema` and `use_table_schema` cannot be enabled at the same time.
 	UseTopicSchema bool `pulumi:"useTopicSchema"`
 	// Optional. When true, write the subscription name, message_id, publish_time, attributes, and ordering_key to additional columns in the table. The subscription name, message_id, and publish_time fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
 	WriteMetadata bool `pulumi:"writeMetadata"`
@@ -410,6 +703,11 @@ func (o BigQueryConfigResponseOutput) DropUnknownFields() pulumi.BoolOutput {
 	return o.ApplyT(func(v BigQueryConfigResponse) bool { return v.DropUnknownFields }).(pulumi.BoolOutput)
 }
 
+// Optional. The service account to use to write to BigQuery. The subscription creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+func (o BigQueryConfigResponseOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v BigQueryConfigResponse) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
 // An output-only field that indicates whether or not the subscription can receive messages.
 func (o BigQueryConfigResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v BigQueryConfigResponse) string { return v.State }).(pulumi.StringOutput)
@@ -420,7 +718,12 @@ func (o BigQueryConfigResponseOutput) Table() pulumi.StringOutput {
 	return o.ApplyT(func(v BigQueryConfigResponse) string { return v.Table }).(pulumi.StringOutput)
 }
 
-// Optional. When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+// Optional. When true, use the BigQuery table's schema as the columns to write to in BigQuery. `use_table_schema` and `use_topic_schema` cannot be enabled at the same time.
+func (o BigQueryConfigResponseOutput) UseTableSchema() pulumi.BoolOutput {
+	return o.ApplyT(func(v BigQueryConfigResponse) bool { return v.UseTableSchema }).(pulumi.BoolOutput)
+}
+
+// Optional. When true, use the topic's schema as the columns to write to in BigQuery, if it exists. `use_topic_schema` and `use_table_schema` cannot be enabled at the same time.
 func (o BigQueryConfigResponseOutput) UseTopicSchema() pulumi.BoolOutput {
 	return o.ApplyT(func(v BigQueryConfigResponse) bool { return v.UseTopicSchema }).(pulumi.BoolOutput)
 }
@@ -434,9 +737,9 @@ func (o BigQueryConfigResponseOutput) WriteMetadata() pulumi.BoolOutput {
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role *string `pulumi:"role"`
 }
 
@@ -455,9 +758,9 @@ type BindingInput interface {
 type BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -518,12 +821,12 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -552,9 +855,9 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role string `pulumi:"role"`
 }
 
@@ -578,12 +881,12 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -614,6 +917,8 @@ type CloudStorageConfig struct {
 	AvroConfig *AvroConfig `pulumi:"avroConfig"`
 	// User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://". See the [bucket naming requirements] (https://cloud.google.com/storage/docs/buckets#naming).
 	Bucket string `pulumi:"bucket"`
+	// Optional. User-provided format string specifying how to represent datetimes in Cloud Storage filenames. See the [datetime format guidance](https://cloud.google.com/pubsub/docs/create-cloudstorage-subscription#file_names).
+	FilenameDatetimeFormat *string `pulumi:"filenameDatetimeFormat"`
 	// Optional. User-provided prefix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
 	FilenamePrefix *string `pulumi:"filenamePrefix"`
 	// Optional. User-provided suffix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming). Must not end in "/".
@@ -622,6 +927,8 @@ type CloudStorageConfig struct {
 	MaxBytes *string `pulumi:"maxBytes"`
 	// Optional. The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline.
 	MaxDuration *string `pulumi:"maxDuration"`
+	// Optional. The service account to use to write to Cloud Storage. The subscription creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// Optional. If set, message data will be written to Cloud Storage in text format.
 	TextConfig *TextConfig `pulumi:"textConfig"`
 }
@@ -643,6 +950,8 @@ type CloudStorageConfigArgs struct {
 	AvroConfig AvroConfigPtrInput `pulumi:"avroConfig"`
 	// User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://". See the [bucket naming requirements] (https://cloud.google.com/storage/docs/buckets#naming).
 	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Optional. User-provided format string specifying how to represent datetimes in Cloud Storage filenames. See the [datetime format guidance](https://cloud.google.com/pubsub/docs/create-cloudstorage-subscription#file_names).
+	FilenameDatetimeFormat pulumi.StringPtrInput `pulumi:"filenameDatetimeFormat"`
 	// Optional. User-provided prefix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
 	FilenamePrefix pulumi.StringPtrInput `pulumi:"filenamePrefix"`
 	// Optional. User-provided suffix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming). Must not end in "/".
@@ -651,6 +960,8 @@ type CloudStorageConfigArgs struct {
 	MaxBytes pulumi.StringPtrInput `pulumi:"maxBytes"`
 	// Optional. The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline.
 	MaxDuration pulumi.StringPtrInput `pulumi:"maxDuration"`
+	// Optional. The service account to use to write to Cloud Storage. The subscription creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
 	// Optional. If set, message data will be written to Cloud Storage in text format.
 	TextConfig TextConfigPtrInput `pulumi:"textConfig"`
 }
@@ -743,6 +1054,11 @@ func (o CloudStorageConfigOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudStorageConfig) string { return v.Bucket }).(pulumi.StringOutput)
 }
 
+// Optional. User-provided format string specifying how to represent datetimes in Cloud Storage filenames. See the [datetime format guidance](https://cloud.google.com/pubsub/docs/create-cloudstorage-subscription#file_names).
+func (o CloudStorageConfigOutput) FilenameDatetimeFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageConfig) *string { return v.FilenameDatetimeFormat }).(pulumi.StringPtrOutput)
+}
+
 // Optional. User-provided prefix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
 func (o CloudStorageConfigOutput) FilenamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudStorageConfig) *string { return v.FilenamePrefix }).(pulumi.StringPtrOutput)
@@ -761,6 +1077,11 @@ func (o CloudStorageConfigOutput) MaxBytes() pulumi.StringPtrOutput {
 // Optional. The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline.
 func (o CloudStorageConfigOutput) MaxDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudStorageConfig) *string { return v.MaxDuration }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The service account to use to write to Cloud Storage. The subscription creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+func (o CloudStorageConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageConfig) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
 
 // Optional. If set, message data will be written to Cloud Storage in text format.
@@ -812,6 +1133,16 @@ func (o CloudStorageConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. User-provided format string specifying how to represent datetimes in Cloud Storage filenames. See the [datetime format guidance](https://cloud.google.com/pubsub/docs/create-cloudstorage-subscription#file_names).
+func (o CloudStorageConfigPtrOutput) FilenameDatetimeFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilenameDatetimeFormat
+	}).(pulumi.StringPtrOutput)
+}
+
 // Optional. User-provided prefix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
 func (o CloudStorageConfigPtrOutput) FilenamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudStorageConfig) *string {
@@ -852,6 +1183,16 @@ func (o CloudStorageConfigPtrOutput) MaxDuration() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. The service account to use to write to Cloud Storage. The subscription creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+func (o CloudStorageConfigPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
 // Optional. If set, message data will be written to Cloud Storage in text format.
 func (o CloudStorageConfigPtrOutput) TextConfig() TextConfigPtrOutput {
 	return o.ApplyT(func(v *CloudStorageConfig) *TextConfig {
@@ -868,6 +1209,8 @@ type CloudStorageConfigResponse struct {
 	AvroConfig AvroConfigResponse `pulumi:"avroConfig"`
 	// User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://". See the [bucket naming requirements] (https://cloud.google.com/storage/docs/buckets#naming).
 	Bucket string `pulumi:"bucket"`
+	// Optional. User-provided format string specifying how to represent datetimes in Cloud Storage filenames. See the [datetime format guidance](https://cloud.google.com/pubsub/docs/create-cloudstorage-subscription#file_names).
+	FilenameDatetimeFormat string `pulumi:"filenameDatetimeFormat"`
 	// Optional. User-provided prefix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
 	FilenamePrefix string `pulumi:"filenamePrefix"`
 	// Optional. User-provided suffix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming). Must not end in "/".
@@ -876,6 +1219,8 @@ type CloudStorageConfigResponse struct {
 	MaxBytes string `pulumi:"maxBytes"`
 	// Optional. The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline.
 	MaxDuration string `pulumi:"maxDuration"`
+	// Optional. The service account to use to write to Cloud Storage. The subscription creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
 	// An output-only field that indicates whether or not the subscription can receive messages.
 	State string `pulumi:"state"`
 	// Optional. If set, message data will be written to Cloud Storage in text format.
@@ -907,6 +1252,11 @@ func (o CloudStorageConfigResponseOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudStorageConfigResponse) string { return v.Bucket }).(pulumi.StringOutput)
 }
 
+// Optional. User-provided format string specifying how to represent datetimes in Cloud Storage filenames. See the [datetime format guidance](https://cloud.google.com/pubsub/docs/create-cloudstorage-subscription#file_names).
+func (o CloudStorageConfigResponseOutput) FilenameDatetimeFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudStorageConfigResponse) string { return v.FilenameDatetimeFormat }).(pulumi.StringOutput)
+}
+
 // Optional. User-provided prefix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
 func (o CloudStorageConfigResponseOutput) FilenamePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudStorageConfigResponse) string { return v.FilenamePrefix }).(pulumi.StringOutput)
@@ -925,6 +1275,11 @@ func (o CloudStorageConfigResponseOutput) MaxBytes() pulumi.StringOutput {
 // Optional. The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline.
 func (o CloudStorageConfigResponseOutput) MaxDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudStorageConfigResponse) string { return v.MaxDuration }).(pulumi.StringOutput)
+}
+
+// Optional. The service account to use to write to Cloud Storage. The subscription creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+func (o CloudStorageConfigResponseOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudStorageConfigResponse) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
 }
 
 // An output-only field that indicates whether or not the subscription can receive messages.
@@ -1537,6 +1892,172 @@ func (o ExprResponseOutput) Location() pulumi.StringOutput {
 // Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
 func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// Settings for an ingestion data source on a topic.
+type IngestionDataSourceSettings struct {
+	// Optional. Amazon Kinesis Data Streams.
+	AwsKinesis *AwsKinesis `pulumi:"awsKinesis"`
+}
+
+// IngestionDataSourceSettingsInput is an input type that accepts IngestionDataSourceSettingsArgs and IngestionDataSourceSettingsOutput values.
+// You can construct a concrete instance of `IngestionDataSourceSettingsInput` via:
+//
+//	IngestionDataSourceSettingsArgs{...}
+type IngestionDataSourceSettingsInput interface {
+	pulumi.Input
+
+	ToIngestionDataSourceSettingsOutput() IngestionDataSourceSettingsOutput
+	ToIngestionDataSourceSettingsOutputWithContext(context.Context) IngestionDataSourceSettingsOutput
+}
+
+// Settings for an ingestion data source on a topic.
+type IngestionDataSourceSettingsArgs struct {
+	// Optional. Amazon Kinesis Data Streams.
+	AwsKinesis AwsKinesisPtrInput `pulumi:"awsKinesis"`
+}
+
+func (IngestionDataSourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngestionDataSourceSettings)(nil)).Elem()
+}
+
+func (i IngestionDataSourceSettingsArgs) ToIngestionDataSourceSettingsOutput() IngestionDataSourceSettingsOutput {
+	return i.ToIngestionDataSourceSettingsOutputWithContext(context.Background())
+}
+
+func (i IngestionDataSourceSettingsArgs) ToIngestionDataSourceSettingsOutputWithContext(ctx context.Context) IngestionDataSourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IngestionDataSourceSettingsOutput)
+}
+
+func (i IngestionDataSourceSettingsArgs) ToIngestionDataSourceSettingsPtrOutput() IngestionDataSourceSettingsPtrOutput {
+	return i.ToIngestionDataSourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i IngestionDataSourceSettingsArgs) ToIngestionDataSourceSettingsPtrOutputWithContext(ctx context.Context) IngestionDataSourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IngestionDataSourceSettingsOutput).ToIngestionDataSourceSettingsPtrOutputWithContext(ctx)
+}
+
+// IngestionDataSourceSettingsPtrInput is an input type that accepts IngestionDataSourceSettingsArgs, IngestionDataSourceSettingsPtr and IngestionDataSourceSettingsPtrOutput values.
+// You can construct a concrete instance of `IngestionDataSourceSettingsPtrInput` via:
+//
+//	        IngestionDataSourceSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type IngestionDataSourceSettingsPtrInput interface {
+	pulumi.Input
+
+	ToIngestionDataSourceSettingsPtrOutput() IngestionDataSourceSettingsPtrOutput
+	ToIngestionDataSourceSettingsPtrOutputWithContext(context.Context) IngestionDataSourceSettingsPtrOutput
+}
+
+type ingestionDataSourceSettingsPtrType IngestionDataSourceSettingsArgs
+
+func IngestionDataSourceSettingsPtr(v *IngestionDataSourceSettingsArgs) IngestionDataSourceSettingsPtrInput {
+	return (*ingestionDataSourceSettingsPtrType)(v)
+}
+
+func (*ingestionDataSourceSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IngestionDataSourceSettings)(nil)).Elem()
+}
+
+func (i *ingestionDataSourceSettingsPtrType) ToIngestionDataSourceSettingsPtrOutput() IngestionDataSourceSettingsPtrOutput {
+	return i.ToIngestionDataSourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *ingestionDataSourceSettingsPtrType) ToIngestionDataSourceSettingsPtrOutputWithContext(ctx context.Context) IngestionDataSourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IngestionDataSourceSettingsPtrOutput)
+}
+
+// Settings for an ingestion data source on a topic.
+type IngestionDataSourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (IngestionDataSourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngestionDataSourceSettings)(nil)).Elem()
+}
+
+func (o IngestionDataSourceSettingsOutput) ToIngestionDataSourceSettingsOutput() IngestionDataSourceSettingsOutput {
+	return o
+}
+
+func (o IngestionDataSourceSettingsOutput) ToIngestionDataSourceSettingsOutputWithContext(ctx context.Context) IngestionDataSourceSettingsOutput {
+	return o
+}
+
+func (o IngestionDataSourceSettingsOutput) ToIngestionDataSourceSettingsPtrOutput() IngestionDataSourceSettingsPtrOutput {
+	return o.ToIngestionDataSourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o IngestionDataSourceSettingsOutput) ToIngestionDataSourceSettingsPtrOutputWithContext(ctx context.Context) IngestionDataSourceSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IngestionDataSourceSettings) *IngestionDataSourceSettings {
+		return &v
+	}).(IngestionDataSourceSettingsPtrOutput)
+}
+
+// Optional. Amazon Kinesis Data Streams.
+func (o IngestionDataSourceSettingsOutput) AwsKinesis() AwsKinesisPtrOutput {
+	return o.ApplyT(func(v IngestionDataSourceSettings) *AwsKinesis { return v.AwsKinesis }).(AwsKinesisPtrOutput)
+}
+
+type IngestionDataSourceSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (IngestionDataSourceSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IngestionDataSourceSettings)(nil)).Elem()
+}
+
+func (o IngestionDataSourceSettingsPtrOutput) ToIngestionDataSourceSettingsPtrOutput() IngestionDataSourceSettingsPtrOutput {
+	return o
+}
+
+func (o IngestionDataSourceSettingsPtrOutput) ToIngestionDataSourceSettingsPtrOutputWithContext(ctx context.Context) IngestionDataSourceSettingsPtrOutput {
+	return o
+}
+
+func (o IngestionDataSourceSettingsPtrOutput) Elem() IngestionDataSourceSettingsOutput {
+	return o.ApplyT(func(v *IngestionDataSourceSettings) IngestionDataSourceSettings {
+		if v != nil {
+			return *v
+		}
+		var ret IngestionDataSourceSettings
+		return ret
+	}).(IngestionDataSourceSettingsOutput)
+}
+
+// Optional. Amazon Kinesis Data Streams.
+func (o IngestionDataSourceSettingsPtrOutput) AwsKinesis() AwsKinesisPtrOutput {
+	return o.ApplyT(func(v *IngestionDataSourceSettings) *AwsKinesis {
+		if v == nil {
+			return nil
+		}
+		return v.AwsKinesis
+	}).(AwsKinesisPtrOutput)
+}
+
+// Settings for an ingestion data source on a topic.
+type IngestionDataSourceSettingsResponse struct {
+	// Optional. Amazon Kinesis Data Streams.
+	AwsKinesis AwsKinesisResponse `pulumi:"awsKinesis"`
+}
+
+// Settings for an ingestion data source on a topic.
+type IngestionDataSourceSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (IngestionDataSourceSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IngestionDataSourceSettingsResponse)(nil)).Elem()
+}
+
+func (o IngestionDataSourceSettingsResponseOutput) ToIngestionDataSourceSettingsResponseOutput() IngestionDataSourceSettingsResponseOutput {
+	return o
+}
+
+func (o IngestionDataSourceSettingsResponseOutput) ToIngestionDataSourceSettingsResponseOutputWithContext(ctx context.Context) IngestionDataSourceSettingsResponseOutput {
+	return o
+}
+
+// Optional. Amazon Kinesis Data Streams.
+func (o IngestionDataSourceSettingsResponseOutput) AwsKinesis() AwsKinesisResponseOutput {
+	return o.ApplyT(func(v IngestionDataSourceSettingsResponse) AwsKinesisResponse { return v.AwsKinesis }).(AwsKinesisResponseOutput)
 }
 
 // A policy constraining the storage of messages published to the topic.
@@ -3078,6 +3599,8 @@ func (o TextConfigResponseOutput) ToTextConfigResponseOutputWithContext(ctx cont
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AvroConfigInput)(nil)).Elem(), AvroConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AvroConfigPtrInput)(nil)).Elem(), AvroConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsKinesisInput)(nil)).Elem(), AwsKinesisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsKinesisPtrInput)(nil)).Elem(), AwsKinesisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryConfigInput)(nil)).Elem(), BigQueryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryConfigPtrInput)(nil)).Elem(), BigQueryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
@@ -3090,6 +3613,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExpirationPolicyPtrInput)(nil)).Elem(), ExpirationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IngestionDataSourceSettingsInput)(nil)).Elem(), IngestionDataSourceSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IngestionDataSourceSettingsPtrInput)(nil)).Elem(), IngestionDataSourceSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MessageStoragePolicyInput)(nil)).Elem(), MessageStoragePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MessageStoragePolicyPtrInput)(nil)).Elem(), MessageStoragePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NoWrapperInput)(nil)).Elem(), NoWrapperArgs{})
@@ -3109,6 +3634,9 @@ func init() {
 	pulumi.RegisterOutputType(AvroConfigOutput{})
 	pulumi.RegisterOutputType(AvroConfigPtrOutput{})
 	pulumi.RegisterOutputType(AvroConfigResponseOutput{})
+	pulumi.RegisterOutputType(AwsKinesisOutput{})
+	pulumi.RegisterOutputType(AwsKinesisPtrOutput{})
+	pulumi.RegisterOutputType(AwsKinesisResponseOutput{})
 	pulumi.RegisterOutputType(BigQueryConfigOutput{})
 	pulumi.RegisterOutputType(BigQueryConfigPtrOutput{})
 	pulumi.RegisterOutputType(BigQueryConfigResponseOutput{})
@@ -3128,6 +3656,9 @@ func init() {
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(IngestionDataSourceSettingsOutput{})
+	pulumi.RegisterOutputType(IngestionDataSourceSettingsPtrOutput{})
+	pulumi.RegisterOutputType(IngestionDataSourceSettingsResponseOutput{})
 	pulumi.RegisterOutputType(MessageStoragePolicyOutput{})
 	pulumi.RegisterOutputType(MessageStoragePolicyPtrOutput{})
 	pulumi.RegisterOutputType(MessageStoragePolicyResponseOutput{})

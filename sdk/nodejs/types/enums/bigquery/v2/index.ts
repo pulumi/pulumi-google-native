@@ -70,6 +70,38 @@ export const AuditLogConfigLogType = {
  */
 export type AuditLogConfigLogType = (typeof AuditLogConfigLogType)[keyof typeof AuditLogConfigLogType];
 
+export const BigLakeConfigurationFileFormat = {
+    /**
+     * Default Value.
+     */
+    FileFormatUnspecified: "FILE_FORMAT_UNSPECIFIED",
+    /**
+     * Apache Parquet format.
+     */
+    Parquet: "PARQUET",
+} as const;
+
+/**
+ * Required. The file format the table data is stored in.
+ */
+export type BigLakeConfigurationFileFormat = (typeof BigLakeConfigurationFileFormat)[keyof typeof BigLakeConfigurationFileFormat];
+
+export const BigLakeConfigurationTableFormat = {
+    /**
+     * Default Value.
+     */
+    TableFormatUnspecified: "TABLE_FORMAT_UNSPECIFIED",
+    /**
+     * Apache Iceberg format.
+     */
+    Iceberg: "ICEBERG",
+} as const;
+
+/**
+ * Required. The table format the metadata only snapshots are stored in.
+ */
+export type BigLakeConfigurationTableFormat = (typeof BigLakeConfigurationTableFormat)[keyof typeof BigLakeConfigurationTableFormat];
+
 export const DatasetAccessEntryTargetTypesItem = {
     /**
      * Do not use. You must set a target type explicitly.
@@ -86,6 +118,220 @@ export const DatasetAccessEntryTargetTypesItem = {
 } as const;
 
 export type DatasetAccessEntryTargetTypesItem = (typeof DatasetAccessEntryTargetTypesItem)[keyof typeof DatasetAccessEntryTargetTypesItem];
+
+export const DatasetDefaultRoundingMode = {
+    /**
+     * Unspecified will default to using ROUND_HALF_AWAY_FROM_ZERO.
+     */
+    RoundingModeUnspecified: "ROUNDING_MODE_UNSPECIFIED",
+    /**
+     * ROUND_HALF_AWAY_FROM_ZERO rounds half values away from zero when applying precision and scale upon writing of NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 => 1 1.5, 1.6, 1.7, 1.8, 1.9 => 2
+     */
+    RoundHalfAwayFromZero: "ROUND_HALF_AWAY_FROM_ZERO",
+    /**
+     * ROUND_HALF_EVEN rounds half values to the nearest even value when applying precision and scale upon writing of NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 => 1 1.5 => 2 1.6, 1.7, 1.8, 1.9 => 2 2.5 => 2
+     */
+    RoundHalfEven: "ROUND_HALF_EVEN",
+} as const;
+
+/**
+ * Optional. Defines the default rounding mode specification of new tables created within this dataset. During table creation, if this field is specified, the table within this dataset will inherit the default rounding mode of the dataset. Setting the default rounding mode on a table overrides this option. Existing tables in the dataset are unaffected. If columns are defined during that table creation, they will immediately inherit the table's default rounding mode, unless otherwise specified.
+ */
+export type DatasetDefaultRoundingMode = (typeof DatasetDefaultRoundingMode)[keyof typeof DatasetDefaultRoundingMode];
+
+export const DatasetStorageBillingModel = {
+    /**
+     * Value not set.
+     */
+    StorageBillingModelUnspecified: "STORAGE_BILLING_MODEL_UNSPECIFIED",
+    /**
+     * Billing for logical bytes.
+     */
+    Logical: "LOGICAL",
+    /**
+     * Billing for physical bytes.
+     */
+    Physical: "PHYSICAL",
+} as const;
+
+/**
+ * Optional. Updates storage_billing_model for the dataset.
+ */
+export type DatasetStorageBillingModel = (typeof DatasetStorageBillingModel)[keyof typeof DatasetStorageBillingModel];
+
+export const ExternalDataConfigurationDecimalTargetTypesItem = {
+    /**
+     * Invalid type.
+     */
+    DecimalTargetTypeUnspecified: "DECIMAL_TARGET_TYPE_UNSPECIFIED",
+    /**
+     * Decimal values could be converted to NUMERIC type.
+     */
+    Numeric: "NUMERIC",
+    /**
+     * Decimal values could be converted to BIGNUMERIC type.
+     */
+    Bignumeric: "BIGNUMERIC",
+    /**
+     * Decimal values could be converted to STRING type.
+     */
+    String: "STRING",
+} as const;
+
+export type ExternalDataConfigurationDecimalTargetTypesItem = (typeof ExternalDataConfigurationDecimalTargetTypesItem)[keyof typeof ExternalDataConfigurationDecimalTargetTypesItem];
+
+export const ExternalDataConfigurationFileSetSpecType = {
+    /**
+     * This option expands source URIs by listing files from the object store. It is the default behavior if FileSetSpecType is not set.
+     */
+    FileSetSpecTypeFileSystemMatch: "FILE_SET_SPEC_TYPE_FILE_SYSTEM_MATCH",
+    /**
+     * This option indicates that the provided URIs are newline-delimited manifest files, with one URI per line. Wildcard URIs are not supported.
+     */
+    FileSetSpecTypeNewLineDelimitedManifest: "FILE_SET_SPEC_TYPE_NEW_LINE_DELIMITED_MANIFEST",
+} as const;
+
+/**
+ * Optional. Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+ */
+export type ExternalDataConfigurationFileSetSpecType = (typeof ExternalDataConfigurationFileSetSpecType)[keyof typeof ExternalDataConfigurationFileSetSpecType];
+
+export const ExternalDataConfigurationJsonExtension = {
+    /**
+     * The default if provided value is not one included in the enum, or the value is not specified. The source formate is parsed without any modification.
+     */
+    JsonExtensionUnspecified: "JSON_EXTENSION_UNSPECIFIED",
+    /**
+     * Use GeoJSON variant of JSON. See https://tools.ietf.org/html/rfc7946.
+     */
+    Geojson: "GEOJSON",
+} as const;
+
+/**
+ * Optional. Load option to be used together with source_format newline-delimited JSON to indicate that a variant of JSON is being loaded. To load newline-delimited GeoJSON, specify GEOJSON (and source_format must be set to NEWLINE_DELIMITED_JSON).
+ */
+export type ExternalDataConfigurationJsonExtension = (typeof ExternalDataConfigurationJsonExtension)[keyof typeof ExternalDataConfigurationJsonExtension];
+
+export const ExternalDataConfigurationMetadataCacheMode = {
+    /**
+     * Unspecified metadata cache mode.
+     */
+    MetadataCacheModeUnspecified: "METADATA_CACHE_MODE_UNSPECIFIED",
+    /**
+     * Set this mode to trigger automatic background refresh of metadata cache from the external source. Queries will use the latest available cache version within the table's maxStaleness interval.
+     */
+    Automatic: "AUTOMATIC",
+    /**
+     * Set this mode to enable triggering manual refresh of the metadata cache from external source. Queries will use the latest manually triggered cache version within the table's maxStaleness interval.
+     */
+    Manual: "MANUAL",
+} as const;
+
+/**
+ * Optional. Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
+ */
+export type ExternalDataConfigurationMetadataCacheMode = (typeof ExternalDataConfigurationMetadataCacheMode)[keyof typeof ExternalDataConfigurationMetadataCacheMode];
+
+export const ExternalDataConfigurationObjectMetadata = {
+    /**
+     * Unspecified by default.
+     */
+    ObjectMetadataUnspecified: "OBJECT_METADATA_UNSPECIFIED",
+    /**
+     * A synonym for `SIMPLE`.
+     */
+    Directory: "DIRECTORY",
+    /**
+     * Directory listing of objects.
+     */
+    Simple: "SIMPLE",
+} as const;
+
+/**
+ * Optional. ObjectMetadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the source_uris. If ObjectMetadata is set, source_format should be omitted. Currently SIMPLE is the only supported Object Metadata type.
+ */
+export type ExternalDataConfigurationObjectMetadata = (typeof ExternalDataConfigurationObjectMetadata)[keyof typeof ExternalDataConfigurationObjectMetadata];
+
+export const JobConfigurationLoadDecimalTargetTypesItem = {
+    /**
+     * Invalid type.
+     */
+    DecimalTargetTypeUnspecified: "DECIMAL_TARGET_TYPE_UNSPECIFIED",
+    /**
+     * Decimal values could be converted to NUMERIC type.
+     */
+    Numeric: "NUMERIC",
+    /**
+     * Decimal values could be converted to BIGNUMERIC type.
+     */
+    Bignumeric: "BIGNUMERIC",
+    /**
+     * Decimal values could be converted to STRING type.
+     */
+    String: "STRING",
+} as const;
+
+export type JobConfigurationLoadDecimalTargetTypesItem = (typeof JobConfigurationLoadDecimalTargetTypesItem)[keyof typeof JobConfigurationLoadDecimalTargetTypesItem];
+
+export const JobConfigurationLoadFileSetSpecType = {
+    /**
+     * This option expands source URIs by listing files from the object store. It is the default behavior if FileSetSpecType is not set.
+     */
+    FileSetSpecTypeFileSystemMatch: "FILE_SET_SPEC_TYPE_FILE_SYSTEM_MATCH",
+    /**
+     * This option indicates that the provided URIs are newline-delimited manifest files, with one URI per line. Wildcard URIs are not supported.
+     */
+    FileSetSpecTypeNewLineDelimitedManifest: "FILE_SET_SPEC_TYPE_NEW_LINE_DELIMITED_MANIFEST",
+} as const;
+
+/**
+ * Optional. Specifies how source URIs are interpreted for constructing the file set to load. By default, source URIs are expanded against the underlying storage. You can also specify manifest files to control how the file set is constructed. This option is only applicable to object storage systems.
+ */
+export type JobConfigurationLoadFileSetSpecType = (typeof JobConfigurationLoadFileSetSpecType)[keyof typeof JobConfigurationLoadFileSetSpecType];
+
+export const JobConfigurationLoadJsonExtension = {
+    /**
+     * The default if provided value is not one included in the enum, or the value is not specified. The source formate is parsed without any modification.
+     */
+    JsonExtensionUnspecified: "JSON_EXTENSION_UNSPECIFIED",
+    /**
+     * Use GeoJSON variant of JSON. See https://tools.ietf.org/html/rfc7946.
+     */
+    Geojson: "GEOJSON",
+} as const;
+
+/**
+ * Optional. Load option to be used together with source_format newline-delimited JSON to indicate that a variant of JSON is being loaded. To load newline-delimited GeoJSON, specify GEOJSON (and source_format must be set to NEWLINE_DELIMITED_JSON).
+ */
+export type JobConfigurationLoadJsonExtension = (typeof JobConfigurationLoadJsonExtension)[keyof typeof JobConfigurationLoadJsonExtension];
+
+export const JobConfigurationTableCopyOperationType = {
+    /**
+     * Unspecified operation type.
+     */
+    OperationTypeUnspecified: "OPERATION_TYPE_UNSPECIFIED",
+    /**
+     * The source and destination table have the same table type.
+     */
+    Copy: "COPY",
+    /**
+     * The source table type is TABLE and the destination table type is SNAPSHOT.
+     */
+    Snapshot: "SNAPSHOT",
+    /**
+     * The source table type is SNAPSHOT and the destination table type is TABLE.
+     */
+    Restore: "RESTORE",
+    /**
+     * The source and destination table have the same table type, but only bill for unique data.
+     */
+    Clone: "CLONE",
+} as const;
+
+/**
+ * Optional. Supported operation types in table copy job.
+ */
+export type JobConfigurationTableCopyOperationType = (typeof JobConfigurationTableCopyOperationType)[keyof typeof JobConfigurationTableCopyOperationType];
 
 export const RoutineDataGovernanceType = {
     /**
@@ -203,6 +449,26 @@ export const RoutineSecurityMode = {
  */
 export type RoutineSecurityMode = (typeof RoutineSecurityMode)[keyof typeof RoutineSecurityMode];
 
+export const ScriptOptionsKeyResultStatement = {
+    /**
+     * Default value.
+     */
+    KeyResultStatementKindUnspecified: "KEY_RESULT_STATEMENT_KIND_UNSPECIFIED",
+    /**
+     * The last result determines the key result.
+     */
+    Last: "LAST",
+    /**
+     * The first SELECT statement determines the key result.
+     */
+    FirstSelect: "FIRST_SELECT",
+} as const;
+
+/**
+ * Determines which statement in the script represents the "key result", used to populate the schema and query results of the script job. Default is LAST.
+ */
+export type ScriptOptionsKeyResultStatement = (typeof ScriptOptionsKeyResultStatement)[keyof typeof ScriptOptionsKeyResultStatement];
+
 export const StandardSqlDataTypeTypeKind = {
     /**
      * Invalid type.
@@ -282,3 +548,43 @@ export const StandardSqlDataTypeTypeKind = {
  * Required. The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
  */
 export type StandardSqlDataTypeTypeKind = (typeof StandardSqlDataTypeTypeKind)[keyof typeof StandardSqlDataTypeTypeKind];
+
+export const TableDefaultRoundingMode = {
+    /**
+     * Unspecified will default to using ROUND_HALF_AWAY_FROM_ZERO.
+     */
+    RoundingModeUnspecified: "ROUNDING_MODE_UNSPECIFIED",
+    /**
+     * ROUND_HALF_AWAY_FROM_ZERO rounds half values away from zero when applying precision and scale upon writing of NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 => 1 1.5, 1.6, 1.7, 1.8, 1.9 => 2
+     */
+    RoundHalfAwayFromZero: "ROUND_HALF_AWAY_FROM_ZERO",
+    /**
+     * ROUND_HALF_EVEN rounds half values to the nearest even value when applying precision and scale upon writing of NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 => 1 1.5 => 2 1.6, 1.7, 1.8, 1.9 => 2 2.5 => 2
+     */
+    RoundHalfEven: "ROUND_HALF_EVEN",
+} as const;
+
+/**
+ * Optional. Defines the default rounding mode specification of new decimal fields (NUMERIC OR BIGNUMERIC) in the table. During table creation or update, if a decimal field is added to this table without an explicit rounding mode specified, then the field inherits the table default rounding mode. Changing this field doesn't affect existing fields.
+ */
+export type TableDefaultRoundingMode = (typeof TableDefaultRoundingMode)[keyof typeof TableDefaultRoundingMode];
+
+export const TableFieldSchemaRoundingMode = {
+    /**
+     * Unspecified will default to using ROUND_HALF_AWAY_FROM_ZERO.
+     */
+    RoundingModeUnspecified: "ROUNDING_MODE_UNSPECIFIED",
+    /**
+     * ROUND_HALF_AWAY_FROM_ZERO rounds half values away from zero when applying precision and scale upon writing of NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 => 1 1.5, 1.6, 1.7, 1.8, 1.9 => 2
+     */
+    RoundHalfAwayFromZero: "ROUND_HALF_AWAY_FROM_ZERO",
+    /**
+     * ROUND_HALF_EVEN rounds half values to the nearest even value when applying precision and scale upon writing of NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 => 1 1.5 => 2 1.6, 1.7, 1.8, 1.9 => 2 2.5 => 2
+     */
+    RoundHalfEven: "ROUND_HALF_EVEN",
+} as const;
+
+/**
+ * Optional. Specifies the rounding mode to be used when storing values of NUMERIC and BIGNUMERIC type.
+ */
+export type TableFieldSchemaRoundingMode = (typeof TableFieldSchemaRoundingMode)[keyof typeof TableFieldSchemaRoundingMode];

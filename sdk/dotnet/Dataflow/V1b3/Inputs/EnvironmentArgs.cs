@@ -100,6 +100,12 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         }
 
         /// <summary>
+        /// Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
+        /// </summary>
+        [Input("streamingMode")]
+        public Input<Pulumi.GoogleNative.Dataflow.V1b3.EnvironmentStreamingMode>? StreamingMode { get; set; }
+
+        /// <summary>
         /// The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
         /// </summary>
         [Input("tempStoragePrefix")]

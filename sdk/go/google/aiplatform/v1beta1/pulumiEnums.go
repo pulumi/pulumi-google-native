@@ -773,6 +773,183 @@ func (in *featureStoreFeatureValueTypePtr) ToOutput(ctx context.Context) pulumix
 	}
 }
 
+// Optional. Service agent type used during data sync. By default, the Vertex AI Service Agent is used. When using an IAM Policy to isolate this FeatureView within a project, a separate service account should be provisioned by setting this field to `SERVICE_AGENT_TYPE_FEATURE_VIEW`. This will generate a separate service account to access the BigQuery source table.
+type FeatureViewServiceAgentType string
+
+const (
+	// By default, the project-level Vertex AI Service Agent is enabled.
+	FeatureViewServiceAgentTypeServiceAgentTypeUnspecified = FeatureViewServiceAgentType("SERVICE_AGENT_TYPE_UNSPECIFIED")
+	// Indicates the project-level Vertex AI Service Agent (https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents) will be used during sync jobs.
+	FeatureViewServiceAgentTypeServiceAgentTypeProject = FeatureViewServiceAgentType("SERVICE_AGENT_TYPE_PROJECT")
+	// Enable a FeatureView service account to be created by Vertex AI and output in the field `service_account_email`. This service account will be used to read from the source BigQuery table during sync.
+	FeatureViewServiceAgentTypeServiceAgentTypeFeatureView = FeatureViewServiceAgentType("SERVICE_AGENT_TYPE_FEATURE_VIEW")
+)
+
+func (FeatureViewServiceAgentType) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureViewServiceAgentType)(nil)).Elem()
+}
+
+func (e FeatureViewServiceAgentType) ToFeatureViewServiceAgentTypeOutput() FeatureViewServiceAgentTypeOutput {
+	return pulumi.ToOutput(e).(FeatureViewServiceAgentTypeOutput)
+}
+
+func (e FeatureViewServiceAgentType) ToFeatureViewServiceAgentTypeOutputWithContext(ctx context.Context) FeatureViewServiceAgentTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(FeatureViewServiceAgentTypeOutput)
+}
+
+func (e FeatureViewServiceAgentType) ToFeatureViewServiceAgentTypePtrOutput() FeatureViewServiceAgentTypePtrOutput {
+	return e.ToFeatureViewServiceAgentTypePtrOutputWithContext(context.Background())
+}
+
+func (e FeatureViewServiceAgentType) ToFeatureViewServiceAgentTypePtrOutputWithContext(ctx context.Context) FeatureViewServiceAgentTypePtrOutput {
+	return FeatureViewServiceAgentType(e).ToFeatureViewServiceAgentTypeOutputWithContext(ctx).ToFeatureViewServiceAgentTypePtrOutputWithContext(ctx)
+}
+
+func (e FeatureViewServiceAgentType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FeatureViewServiceAgentType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FeatureViewServiceAgentType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e FeatureViewServiceAgentType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type FeatureViewServiceAgentTypeOutput struct{ *pulumi.OutputState }
+
+func (FeatureViewServiceAgentTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureViewServiceAgentType)(nil)).Elem()
+}
+
+func (o FeatureViewServiceAgentTypeOutput) ToFeatureViewServiceAgentTypeOutput() FeatureViewServiceAgentTypeOutput {
+	return o
+}
+
+func (o FeatureViewServiceAgentTypeOutput) ToFeatureViewServiceAgentTypeOutputWithContext(ctx context.Context) FeatureViewServiceAgentTypeOutput {
+	return o
+}
+
+func (o FeatureViewServiceAgentTypeOutput) ToFeatureViewServiceAgentTypePtrOutput() FeatureViewServiceAgentTypePtrOutput {
+	return o.ToFeatureViewServiceAgentTypePtrOutputWithContext(context.Background())
+}
+
+func (o FeatureViewServiceAgentTypeOutput) ToFeatureViewServiceAgentTypePtrOutputWithContext(ctx context.Context) FeatureViewServiceAgentTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureViewServiceAgentType) *FeatureViewServiceAgentType {
+		return &v
+	}).(FeatureViewServiceAgentTypePtrOutput)
+}
+
+func (o FeatureViewServiceAgentTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o FeatureViewServiceAgentTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FeatureViewServiceAgentType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o FeatureViewServiceAgentTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureViewServiceAgentTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FeatureViewServiceAgentType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureViewServiceAgentTypePtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureViewServiceAgentTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureViewServiceAgentType)(nil)).Elem()
+}
+
+func (o FeatureViewServiceAgentTypePtrOutput) ToFeatureViewServiceAgentTypePtrOutput() FeatureViewServiceAgentTypePtrOutput {
+	return o
+}
+
+func (o FeatureViewServiceAgentTypePtrOutput) ToFeatureViewServiceAgentTypePtrOutputWithContext(ctx context.Context) FeatureViewServiceAgentTypePtrOutput {
+	return o
+}
+
+func (o FeatureViewServiceAgentTypePtrOutput) Elem() FeatureViewServiceAgentTypeOutput {
+	return o.ApplyT(func(v *FeatureViewServiceAgentType) FeatureViewServiceAgentType {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureViewServiceAgentType
+		return ret
+	}).(FeatureViewServiceAgentTypeOutput)
+}
+
+func (o FeatureViewServiceAgentTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureViewServiceAgentTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FeatureViewServiceAgentType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// FeatureViewServiceAgentTypeInput is an input type that accepts values of the FeatureViewServiceAgentType enum
+// A concrete instance of `FeatureViewServiceAgentTypeInput` can be one of the following:
+//
+//	FeatureViewServiceAgentTypeServiceAgentTypeUnspecified
+//	FeatureViewServiceAgentTypeServiceAgentTypeProject
+//	FeatureViewServiceAgentTypeServiceAgentTypeFeatureView
+type FeatureViewServiceAgentTypeInput interface {
+	pulumi.Input
+
+	ToFeatureViewServiceAgentTypeOutput() FeatureViewServiceAgentTypeOutput
+	ToFeatureViewServiceAgentTypeOutputWithContext(context.Context) FeatureViewServiceAgentTypeOutput
+}
+
+var featureViewServiceAgentTypePtrType = reflect.TypeOf((**FeatureViewServiceAgentType)(nil)).Elem()
+
+type FeatureViewServiceAgentTypePtrInput interface {
+	pulumi.Input
+
+	ToFeatureViewServiceAgentTypePtrOutput() FeatureViewServiceAgentTypePtrOutput
+	ToFeatureViewServiceAgentTypePtrOutputWithContext(context.Context) FeatureViewServiceAgentTypePtrOutput
+}
+
+type featureViewServiceAgentTypePtr string
+
+func FeatureViewServiceAgentTypePtr(v string) FeatureViewServiceAgentTypePtrInput {
+	return (*featureViewServiceAgentTypePtr)(&v)
+}
+
+func (*featureViewServiceAgentTypePtr) ElementType() reflect.Type {
+	return featureViewServiceAgentTypePtrType
+}
+
+func (in *featureViewServiceAgentTypePtr) ToFeatureViewServiceAgentTypePtrOutput() FeatureViewServiceAgentTypePtrOutput {
+	return pulumi.ToOutput(in).(FeatureViewServiceAgentTypePtrOutput)
+}
+
+func (in *featureViewServiceAgentTypePtr) ToFeatureViewServiceAgentTypePtrOutputWithContext(ctx context.Context) FeatureViewServiceAgentTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(FeatureViewServiceAgentTypePtrOutput)
+}
+
+func (in *featureViewServiceAgentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FeatureViewServiceAgentType] {
+	return pulumix.Output[*FeatureViewServiceAgentType]{
+		OutputState: in.ToFeatureViewServiceAgentTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The format in which instances are given, if not specified, assume it's JSONL format. Currently only JSONL format is supported.
 type GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat string
 
@@ -944,6 +1121,186 @@ func (in *googleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatPtr) ToG
 func (in *googleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat] {
 	return pulumix.Output[*GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat]{
 		OutputState: in.ToGoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Optional. The distance measure used in nearest neighbor search.
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType string
+
+const (
+	// Should not be set.
+	GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeDistanceMeasureTypeUnspecified = GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType("DISTANCE_MEASURE_TYPE_UNSPECIFIED")
+	// Euclidean (L_2) Distance.
+	GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeSquaredL2Distance = GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType("SQUARED_L2_DISTANCE")
+	// Cosine Distance. Defined as 1 - cosine similarity. We strongly suggest using DOT_PRODUCT_DISTANCE + UNIT_L2_NORM instead of COSINE distance. Our algorithms have been more optimized for DOT_PRODUCT distance which, when combined with UNIT_L2_NORM, is mathematically equivalent to COSINE distance and results in the same ranking.
+	GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeCosineDistance = GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType("COSINE_DISTANCE")
+	// Dot Product Distance. Defined as a negative of the dot product.
+	GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeDotProductDistance = GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType("DOT_PRODUCT_DISTANCE")
+)
+
+func (GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType)(nil)).Elem()
+}
+
+func (e GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutput)
+}
+
+func (e GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutput)
+}
+
+func (e GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput {
+	return e.ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput {
+	return GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType(e).ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutputWithContext(ctx).ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput {
+	return o.ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType) *GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType {
+		return &v
+	}).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput)
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput) Elem() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType
+		return ret
+	}).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutput)
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeInput is an input type that accepts values of the GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType enum
+// A concrete instance of `GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeInput` can be one of the following:
+//
+//	GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeDistanceMeasureTypeUnspecified
+//	GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeSquaredL2Distance
+//	GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeCosineDistance
+//	GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeDotProductDistance
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutput
+	ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutput
+}
+
+var googleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrType = reflect.TypeOf((**GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType)(nil)).Elem()
+
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput
+	ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput
+}
+
+type googleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtr string
+
+func GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtr(v string) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrInput {
+	return (*googleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtr)(&v)
+}
+
+func (*googleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtr) ElementType() reflect.Type {
+	return googleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrType
+}
+
+func (in *googleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtr) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput)
+}
+
+func (in *googleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtr) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput)
+}
+
+func (in *googleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType] {
+	return pulumix.Output[*GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType]{
+		OutputState: in.ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -2408,6 +2765,186 @@ func (in *googleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTria
 func (in *googleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm] {
 	return pulumix.Output[*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm]{
 		OutputState: in.ToGoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Required. Specifies the type of reservation from which this instance can consume resources: RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE. See Consuming reserved instances for examples.
+type GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType string
+
+const (
+	// Default type.
+	GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeReservationAffinityTypeUnspecified = GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType("RESERVATION_AFFINITY_TYPE_UNSPECIFIED")
+	// Do not consume from any allocated capacity.
+	GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeReservationNone = GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType("RESERVATION_NONE")
+	// Consume any reservation available.
+	GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeReservationAny = GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType("RESERVATION_ANY")
+	// Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
+	GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeReservationSpecific = GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType("RESERVATION_SPECIFIC")
+)
+
+func (GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType)(nil)).Elem()
+}
+
+func (e GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput() GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput)
+}
+
+func (e GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput)
+}
+
+func (e GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput() GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput {
+	return e.ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput {
+	return GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType(e).ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutputWithContext(ctx).ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput() GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput() GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput {
+	return o.ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType) *GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType {
+		return &v
+	}).(GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput)
+}
+
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput() GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput) Elem() GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType) GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType
+		return ret
+	}).(GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput)
+}
+
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeInput is an input type that accepts values of the GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType enum
+// A concrete instance of `GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeInput` can be one of the following:
+//
+//	GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeReservationAffinityTypeUnspecified
+//	GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeReservationNone
+//	GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeReservationAny
+//	GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeReservationSpecific
+type GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput() GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput
+	ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput
+}
+
+var googleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrType = reflect.TypeOf((**GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType)(nil)).Elem()
+
+type GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput() GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput
+	ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput
+}
+
+type googleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtr string
+
+func GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtr(v string) GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrInput {
+	return (*googleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtr)(&v)
+}
+
+func (*googleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtr) ElementType() reflect.Type {
+	return googleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrType
+}
+
+func (in *googleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtr) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput() GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput)
+}
+
+func (in *googleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtr) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput)
+}
+
+func (in *googleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType] {
+	return pulumix.Output[*GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType]{
+		OutputState: in.ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -4727,8 +5264,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureGroupFeatureValueTypePtrInput)(nil)).Elem(), FeatureGroupFeatureValueType("VALUE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureStoreFeatureValueTypeInput)(nil)).Elem(), FeatureStoreFeatureValueType("VALUE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureStoreFeatureValueTypePtrInput)(nil)).Elem(), FeatureStoreFeatureValueType("VALUE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureViewServiceAgentTypeInput)(nil)).Elem(), FeatureViewServiceAgentType("SERVICE_AGENT_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureViewServiceAgentTypePtrInput)(nil)).Elem(), FeatureViewServiceAgentType("SERVICE_AGENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat("DATA_FORMAT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat("DATA_FORMAT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType("DISTANCE_MEASURE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType("DISTANCE_MEASURE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypeInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureType("DISTANCE_MEASURE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypePtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureType("DISTANCE_MEASURE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselineInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaseline("BASELINE_UNSPECIFIED"))
@@ -4745,6 +5286,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoalPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoal("GOAL_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm("MULTI_TRIAL_ALGORITHM_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm("MULTI_TRIAL_ALGORITHM_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType("RESERVATION_AFFINITY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType("RESERVATION_AFFINITY_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicy("PIPELINE_FAILURE_POLICY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicy("PIPELINE_FAILURE_POLICY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1PresetsModalityInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1PresetsModality("MODALITY_UNSPECIFIED"))
@@ -4779,8 +5322,12 @@ func init() {
 	pulumi.RegisterOutputType(FeatureGroupFeatureValueTypePtrOutput{})
 	pulumi.RegisterOutputType(FeatureStoreFeatureValueTypeOutput{})
 	pulumi.RegisterOutputType(FeatureStoreFeatureValueTypePtrOutput{})
+	pulumi.RegisterOutputType(FeatureViewServiceAgentTypeOutput{})
+	pulumi.RegisterOutputType(FeatureViewServiceAgentTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormatPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselineOutput{})
@@ -4797,6 +5344,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoalPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigFailurePolicyPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1PresetsModalityOutput{})

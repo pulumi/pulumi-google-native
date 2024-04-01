@@ -17,6 +17,14 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
     public sealed class PieChartDataSetResponse
     {
         /// <summary>
+        /// A dimension is a structured label, class, or category for a set of measurements in your data.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.DimensionResponse> Dimensions;
+        /// <summary>
+        /// A measure is a measured value of a property in your data. For example, rainfall in inches, number of units sold, revenue gained, etc.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.MeasureResponse> Measures;
+        /// <summary>
         /// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
         /// </summary>
         public readonly string MinAlignmentPeriod;
@@ -31,12 +39,18 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 
         [OutputConstructor]
         private PieChartDataSetResponse(
+            ImmutableArray<Outputs.DimensionResponse> dimensions,
+
+            ImmutableArray<Outputs.MeasureResponse> measures,
+
             string minAlignmentPeriod,
 
             string sliceNameTemplate,
 
             Outputs.TimeSeriesQueryResponse timeSeriesQuery)
         {
+            Dimensions = dimensions;
+            Measures = measures;
             MinAlignmentPeriod = minAlignmentPeriod;
             SliceNameTemplate = sliceNameTemplate;
             TimeSeriesQuery = timeSeriesQuery;

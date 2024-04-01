@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
     public partial class Table : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// If specified, automated backups are enabled for this table. Otherwise, automated backups are disabled.
+        /// </summary>
+        [Output("automatedBackupPolicy")]
+        public Output<Outputs.AutomatedBackupPolicyResponse> AutomatedBackupPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
         /// </summary>
         [Output("changeStreamConfig")]
@@ -119,6 +125,12 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
 
     public sealed class TableArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If specified, automated backups are enabled for this table. Otherwise, automated backups are disabled.
+        /// </summary>
+        [Input("automatedBackupPolicy")]
+        public Input<Inputs.AutomatedBackupPolicyArgs>? AutomatedBackupPolicy { get; set; }
+
         /// <summary>
         /// If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
         /// </summary>

@@ -58,6 +58,8 @@ type LookupConversationResult struct {
 	Name string `pulumi:"name"`
 	// Obfuscated user ID which the customer sent to us.
 	ObfuscatedUserId string `pulumi:"obfuscatedUserId"`
+	// Conversation metadata related to quality management.
+	QualityMetadata GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponse `pulumi:"qualityMetadata"`
 	// The annotations that were generated during the customer and agent interaction.
 	RuntimeAnnotations []GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse `pulumi:"runtimeAnnotations"`
 	// The time at which the conversation started.
@@ -186,6 +188,13 @@ func (o LookupConversationResultOutput) Name() pulumi.StringOutput {
 // Obfuscated user ID which the customer sent to us.
 func (o LookupConversationResultOutput) ObfuscatedUserId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConversationResult) string { return v.ObfuscatedUserId }).(pulumi.StringOutput)
+}
+
+// Conversation metadata related to quality management.
+func (o LookupConversationResultOutput) QualityMetadata() GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponseOutput {
+	return o.ApplyT(func(v LookupConversationResult) GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponse {
+		return v.QualityMetadata
+	}).(GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponseOutput)
 }
 
 // The annotations that were generated during the customer and agent interaction.

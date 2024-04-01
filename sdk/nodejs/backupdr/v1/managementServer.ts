@@ -64,7 +64,7 @@ export class ManagementServer extends pulumi.CustomResource {
      */
     public /*out*/ readonly managementUri!: pulumi.Output<outputs.backupdr.v1.ManagementURIResponse>;
     /**
-     * The resource name.
+     * Identifier. The resource name.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -85,7 +85,7 @@ export class ManagementServer extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * The type of the ManagementServer resource.
+     * Optional. The type of the ManagementServer resource.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -117,9 +117,6 @@ export class ManagementServer extends pulumi.CustomResource {
             }
             if ((!args || args.networks === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networks'");
-            }
-            if ((!args || args.type === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'type'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
@@ -195,7 +192,7 @@ export interface ManagementServerArgs {
      */
     requestId?: pulumi.Input<string>;
     /**
-     * The type of the ManagementServer resource.
+     * Optional. The type of the ManagementServer resource.
      */
-    type: pulumi.Input<enums.backupdr.v1.ManagementServerType>;
+    type?: pulumi.Input<enums.backupdr.v1.ManagementServerType>;
 }

@@ -19,6 +19,8 @@ type ComputeEnginePreferences struct {
 	LicenseType *ComputeEnginePreferencesLicenseType `pulumi:"licenseType"`
 	// Preferences concerning the machine types to consider on Compute Engine.
 	MachinePreferences *MachinePreferences `pulumi:"machinePreferences"`
+	// Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+	PersistentDiskType *ComputeEnginePreferencesPersistentDiskType `pulumi:"persistentDiskType"`
 }
 
 // ComputeEnginePreferencesInput is an input type that accepts ComputeEnginePreferencesArgs and ComputeEnginePreferencesOutput values.
@@ -38,6 +40,8 @@ type ComputeEnginePreferencesArgs struct {
 	LicenseType ComputeEnginePreferencesLicenseTypePtrInput `pulumi:"licenseType"`
 	// Preferences concerning the machine types to consider on Compute Engine.
 	MachinePreferences MachinePreferencesPtrInput `pulumi:"machinePreferences"`
+	// Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+	PersistentDiskType ComputeEnginePreferencesPersistentDiskTypePtrInput `pulumi:"persistentDiskType"`
 }
 
 func (ComputeEnginePreferencesArgs) ElementType() reflect.Type {
@@ -128,6 +132,13 @@ func (o ComputeEnginePreferencesOutput) MachinePreferences() MachinePreferencesP
 	return o.ApplyT(func(v ComputeEnginePreferences) *MachinePreferences { return v.MachinePreferences }).(MachinePreferencesPtrOutput)
 }
 
+// Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+func (o ComputeEnginePreferencesOutput) PersistentDiskType() ComputeEnginePreferencesPersistentDiskTypePtrOutput {
+	return o.ApplyT(func(v ComputeEnginePreferences) *ComputeEnginePreferencesPersistentDiskType {
+		return v.PersistentDiskType
+	}).(ComputeEnginePreferencesPersistentDiskTypePtrOutput)
+}
+
 type ComputeEnginePreferencesPtrOutput struct{ *pulumi.OutputState }
 
 func (ComputeEnginePreferencesPtrOutput) ElementType() reflect.Type {
@@ -172,12 +183,24 @@ func (o ComputeEnginePreferencesPtrOutput) MachinePreferences() MachinePreferenc
 	}).(MachinePreferencesPtrOutput)
 }
 
+// Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+func (o ComputeEnginePreferencesPtrOutput) PersistentDiskType() ComputeEnginePreferencesPersistentDiskTypePtrOutput {
+	return o.ApplyT(func(v *ComputeEnginePreferences) *ComputeEnginePreferencesPersistentDiskType {
+		if v == nil {
+			return nil
+		}
+		return v.PersistentDiskType
+	}).(ComputeEnginePreferencesPersistentDiskTypePtrOutput)
+}
+
 // The user preferences relating to Compute Engine target platform.
 type ComputeEnginePreferencesResponse struct {
 	// License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
 	LicenseType string `pulumi:"licenseType"`
 	// Preferences concerning the machine types to consider on Compute Engine.
 	MachinePreferences MachinePreferencesResponse `pulumi:"machinePreferences"`
+	// Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+	PersistentDiskType string `pulumi:"persistentDiskType"`
 }
 
 // The user preferences relating to Compute Engine target platform.
@@ -203,6 +226,11 @@ func (o ComputeEnginePreferencesResponseOutput) LicenseType() pulumi.StringOutpu
 // Preferences concerning the machine types to consider on Compute Engine.
 func (o ComputeEnginePreferencesResponseOutput) MachinePreferences() MachinePreferencesResponseOutput {
 	return o.ApplyT(func(v ComputeEnginePreferencesResponse) MachinePreferencesResponse { return v.MachinePreferences }).(MachinePreferencesResponseOutput)
+}
+
+// Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+func (o ComputeEnginePreferencesResponseOutput) PersistentDiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v ComputeEnginePreferencesResponse) string { return v.PersistentDiskType }).(pulumi.StringOutput)
 }
 
 // A resource that reports result of the import job execution.
@@ -1122,7 +1150,7 @@ type ReportSummaryAssetAggregateStatsResponse struct {
 	MemoryUtilizationChart ReportSummaryUtilizationChartDataResponse `pulumi:"memoryUtilizationChart"`
 	// Count of assets grouped by Operating System families.
 	OperatingSystem ReportSummaryChartDataResponse `pulumi:"operatingSystem"`
-	// Histogram showing a distribution of memory sizes.
+	// Histogram showing a distribution of storage sizes.
 	StorageBytesHistogram ReportSummaryHistogramChartDataResponse `pulumi:"storageBytesHistogram"`
 	// Total memory split into Used/Free buckets.
 	StorageUtilizationChart ReportSummaryUtilizationChartDataResponse `pulumi:"storageUtilizationChart"`
@@ -1179,7 +1207,7 @@ func (o ReportSummaryAssetAggregateStatsResponseOutput) OperatingSystem() Report
 	}).(ReportSummaryChartDataResponseOutput)
 }
 
-// Histogram showing a distribution of memory sizes.
+// Histogram showing a distribution of storage sizes.
 func (o ReportSummaryAssetAggregateStatsResponseOutput) StorageBytesHistogram() ReportSummaryHistogramChartDataResponseOutput {
 	return o.ApplyT(func(v ReportSummaryAssetAggregateStatsResponse) ReportSummaryHistogramChartDataResponse {
 		return v.StorageBytesHistogram
@@ -2385,6 +2413,66 @@ func (o SoleTenantNodeTypeResponseArrayOutput) Index(i pulumi.IntInput) SoleTena
 	}).(SoleTenantNodeTypeResponseOutput)
 }
 
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type StatusResponse struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code int `pulumi:"code"`
+	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+	Details []map[string]string `pulumi:"details"`
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message string `pulumi:"message"`
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type StatusResponseOutput struct{ *pulumi.OutputState }
+
+func (StatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
+}
+
+func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
+	return o
+}
+
+func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
+	return o
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o StatusResponseOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
+}
+
+// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v StatusResponse) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+}
+
+// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+func (o StatusResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type StatusResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StatusResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatusResponse)(nil)).Elem()
+}
+
+func (o StatusResponseArrayOutput) ToStatusResponseArrayOutput() StatusResponseArrayOutput {
+	return o
+}
+
+func (o StatusResponseArrayOutput) ToStatusResponseArrayOutputWithContext(ctx context.Context) StatusResponseArrayOutput {
+	return o
+}
+
+func (o StatusResponseArrayOutput) Index(i pulumi.IntInput) StatusResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatusResponse {
+		return vs[0].([]StatusResponse)[vs[1].(int)]
+	}).(StatusResponseOutput)
+}
+
 // A resource that contains a URI to which a data file can be uploaded.
 type UploadFileInfo struct {
 }
@@ -3229,6 +3317,8 @@ func init() {
 	pulumi.RegisterOutputType(SoleTenantNodeTypeArrayOutput{})
 	pulumi.RegisterOutputType(SoleTenantNodeTypeResponseOutput{})
 	pulumi.RegisterOutputType(SoleTenantNodeTypeResponseArrayOutput{})
+	pulumi.RegisterOutputType(StatusResponseOutput{})
+	pulumi.RegisterOutputType(StatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(UploadFileInfoOutput{})
 	pulumi.RegisterOutputType(UploadFileInfoPtrOutput{})
 	pulumi.RegisterOutputType(UploadFileInfoResponseOutput{})

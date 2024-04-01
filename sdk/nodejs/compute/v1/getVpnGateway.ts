@@ -36,6 +36,10 @@ export interface GetVpnGatewayResult {
      */
     readonly description: string;
     /**
+     * The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+     */
+    readonly gatewayIpVersion: string;
+    /**
      * Type of resource. Always compute#vpnGateway for VPN gateways.
      */
     readonly kind: string;

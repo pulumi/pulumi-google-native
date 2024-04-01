@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetEntryResult:
-    def __init__(__self__, bigquery_date_sharded_spec=None, bigquery_table_spec=None, business_context=None, cloud_bigtable_system_spec=None, data_source=None, data_source_connection_spec=None, database_table_spec=None, dataset_spec=None, description=None, display_name=None, fileset_spec=None, fully_qualified_name=None, gcs_fileset_spec=None, integrated_system=None, labels=None, linked_resource=None, looker_system_spec=None, model_spec=None, name=None, personal_details=None, routine_spec=None, schema=None, service_spec=None, source_system_timestamps=None, sql_database_system_spec=None, type=None, usage_signal=None, user_specified_system=None, user_specified_type=None):
+    def __init__(__self__, bigquery_date_sharded_spec=None, bigquery_table_spec=None, business_context=None, cloud_bigtable_system_spec=None, data_source=None, data_source_connection_spec=None, database_table_spec=None, dataset_spec=None, description=None, display_name=None, feature_online_store_spec=None, fileset_spec=None, fully_qualified_name=None, gcs_fileset_spec=None, integrated_system=None, labels=None, linked_resource=None, looker_system_spec=None, model_spec=None, name=None, personal_details=None, routine_spec=None, schema=None, service_spec=None, source_system_timestamps=None, sql_database_system_spec=None, type=None, usage_signal=None, user_specified_system=None, user_specified_type=None):
         if bigquery_date_sharded_spec and not isinstance(bigquery_date_sharded_spec, dict):
             raise TypeError("Expected argument 'bigquery_date_sharded_spec' to be a dict")
         pulumi.set(__self__, "bigquery_date_sharded_spec", bigquery_date_sharded_spec)
@@ -50,6 +50,9 @@ class GetEntryResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if feature_online_store_spec and not isinstance(feature_online_store_spec, dict):
+            raise TypeError("Expected argument 'feature_online_store_spec' to be a dict")
+        pulumi.set(__self__, "feature_online_store_spec", feature_online_store_spec)
         if fileset_spec and not isinstance(fileset_spec, dict):
             raise TypeError("Expected argument 'fileset_spec' to be a dict")
         pulumi.set(__self__, "fileset_spec", fileset_spec)
@@ -189,6 +192,14 @@ class GetEntryResult:
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="featureOnlineStoreSpec")
+    def feature_online_store_spec(self) -> 'outputs.GoogleCloudDatacatalogV1FeatureOnlineStoreSpecResponse':
+        """
+        FeatureonlineStore spec for Vertex AI Feature Store.
+        """
+        return pulumi.get(self, "feature_online_store_spec")
+
+    @property
     @pulumi.getter(name="filesetSpec")
     def fileset_spec(self) -> 'outputs.GoogleCloudDatacatalogV1FilesetSpecResponse':
         """
@@ -256,7 +267,7 @@ class GetEntryResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
+        Identifier. The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
         """
         return pulumi.get(self, "name")
 
@@ -357,6 +368,7 @@ class AwaitableGetEntryResult(GetEntryResult):
             dataset_spec=self.dataset_spec,
             description=self.description,
             display_name=self.display_name,
+            feature_online_store_spec=self.feature_online_store_spec,
             fileset_spec=self.fileset_spec,
             fully_qualified_name=self.fully_qualified_name,
             gcs_fileset_spec=self.gcs_fileset_spec,
@@ -405,6 +417,7 @@ def get_entry(entry_group_id: Optional[str] = None,
         dataset_spec=pulumi.get(__ret__, 'dataset_spec'),
         description=pulumi.get(__ret__, 'description'),
         display_name=pulumi.get(__ret__, 'display_name'),
+        feature_online_store_spec=pulumi.get(__ret__, 'feature_online_store_spec'),
         fileset_spec=pulumi.get(__ret__, 'fileset_spec'),
         fully_qualified_name=pulumi.get(__ret__, 'fully_qualified_name'),
         gcs_fileset_spec=pulumi.get(__ret__, 'gcs_fileset_spec'),

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Inputs
 {
 
     /// <summary>
-    /// The conversation source, which is a combination of transcript, audio, and metadata.
+    /// The conversation source, which is a combination of transcript and audio.
     /// </summary>
     public sealed class GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs : global::Pulumi.ResourceArgs
     {

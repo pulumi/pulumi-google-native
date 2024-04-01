@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// A list of packet mirroring rules that belong to this policy.
+        /// </summary>
+        [Output("packetMirroringRules")]
+        public Output<ImmutableArray<Outputs.FirewallPolicyRuleResponse>> PacketMirroringRules { get; private set; } = null!;
+
+        /// <summary>
         /// The parent of the firewall policy. This field is not applicable to network firewall policies.
         /// </summary>
         [Output("parent")]
@@ -191,6 +197,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("packetMirroringRules")]
+        private InputList<Inputs.FirewallPolicyRuleArgs>? _packetMirroringRules;
+
+        /// <summary>
+        /// A list of packet mirroring rules that belong to this policy.
+        /// </summary>
+        public InputList<Inputs.FirewallPolicyRuleArgs> PacketMirroringRules
+        {
+            get => _packetMirroringRules ?? (_packetMirroringRules = new InputList<Inputs.FirewallPolicyRuleArgs>());
+            set => _packetMirroringRules = value;
+        }
 
         /// <summary>
         /// Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization.

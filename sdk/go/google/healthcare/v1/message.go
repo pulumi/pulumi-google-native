@@ -13,6 +13,7 @@ import (
 )
 
 // Parses and stores an HL7v2 message. This method triggers an asynchronous notification to any Pub/Sub topic configured in Hl7V2Store.Hl7V2NotificationConfig, if the filtering matches the message. If an MLLP adapter is configured to listen to a Pub/Sub topic, the adapter transmits the message when a notification is received.
+// Auto-naming is currently not supported for this resource.
 type Message struct {
 	pulumi.CustomResourceState
 
@@ -49,6 +50,9 @@ func NewMessage(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Data == nil {
+		return nil, errors.New("invalid value for required argument 'Data'")
+	}
 	if args.DatasetId == nil {
 		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
@@ -96,16 +100,14 @@ func (MessageState) ElementType() reflect.Type {
 
 type messageArgs struct {
 	// Raw message bytes.
-	Data         *string `pulumi:"data"`
-	DatasetId    string  `pulumi:"datasetId"`
-	Hl7V2StoreId string  `pulumi:"hl7V2StoreId"`
+	Data         string `pulumi:"data"`
+	DatasetId    string `pulumi:"datasetId"`
+	Hl7V2StoreId string `pulumi:"hl7V2StoreId"`
 	// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
 	// The message type for this message. MSH-9.1.
 	MessageType *string `pulumi:"messageType"`
-	// Resource name of the Message, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
-	Name *string `pulumi:"name"`
 	// All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
 	PatientIds []PatientId `pulumi:"patientIds"`
 	Project    *string     `pulumi:"project"`
@@ -120,7 +122,7 @@ type messageArgs struct {
 // The set of arguments for constructing a Message resource.
 type MessageArgs struct {
 	// Raw message bytes.
-	Data         pulumi.StringPtrInput
+	Data         pulumi.StringInput
 	DatasetId    pulumi.StringInput
 	Hl7V2StoreId pulumi.StringInput
 	// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
@@ -128,8 +130,6 @@ type MessageArgs struct {
 	Location pulumi.StringPtrInput
 	// The message type for this message. MSH-9.1.
 	MessageType pulumi.StringPtrInput
-	// Resource name of the Message, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
-	Name pulumi.StringPtrInput
 	// All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
 	PatientIds PatientIdArrayInput
 	Project    pulumi.StringPtrInput

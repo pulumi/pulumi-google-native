@@ -283,7 +283,7 @@ class GetInstanceResult:
     @pulumi.getter
     def metadata(self) -> Mapping[str, str]:
         """
-        Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=``BUCKET''"`.
+        Custom metadata to apply to this instance. For example, to specify a Cloud Storage bucket for automatic backup, you can use the `gcs-data-bucket` metadata tag. Format: `"--metadata=gcs-data-bucket=BUCKET"`.
         """
         return pulumi.get(self, "metadata")
 

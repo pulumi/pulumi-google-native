@@ -42,6 +42,10 @@ export interface GetDocumentResult {
      */
     readonly derivedStructData: {[key: string]: string};
     /**
+     * The last time the document was indexed. If this field is set, the document could be returned in search results. This field is OUTPUT_ONLY. If this field is not populated, it means the document has never been indexed.
+     */
+    readonly indexTime: string;
+    /**
      * The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
      */
     readonly jsonData: string;

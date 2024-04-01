@@ -70,6 +70,18 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public Input<Inputs.ScorecardArgs>? Scorecard { get; set; }
 
         /// <summary>
+        /// A widget that defines a section header for easier navigation of the dashboard.
+        /// </summary>
+        [Input("sectionHeader")]
+        public Input<Inputs.SectionHeaderArgs>? SectionHeader { get; set; }
+
+        /// <summary>
+        /// A widget that groups the other widgets by using a dropdown menu.
+        /// </summary>
+        [Input("singleViewGroup")]
+        public Input<Inputs.SingleViewGroupArgs>? SingleViewGroup { get; set; }
+
+        /// <summary>
         /// A raw string or markdown displaying textual content.
         /// </summary>
         [Input("text")]

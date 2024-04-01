@@ -73,6 +73,10 @@ export interface GetInstanceConfigResult {
      * The current instance config state. Applicable only for USER_MANAGED configs.
      */
     readonly state: string;
+    /**
+     * The storage limit in bytes per processing unit.
+     */
+    readonly storageLimitPerProcessingUnit: string;
 }
 /**
  * Gets information about a particular instance configuration.

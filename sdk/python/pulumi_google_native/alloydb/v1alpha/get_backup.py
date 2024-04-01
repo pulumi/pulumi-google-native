@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBackupResult:
-    def __init__(__self__, annotations=None, cluster_name=None, cluster_uid=None, create_time=None, database_version=None, delete_time=None, description=None, display_name=None, encryption_config=None, encryption_info=None, etag=None, expiry_quantity=None, expiry_time=None, labels=None, name=None, reconciling=None, satisfies_pzs=None, size_bytes=None, state=None, type=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, cluster_name=None, cluster_uid=None, create_time=None, database_version=None, delete_time=None, description=None, display_name=None, encryption_config=None, encryption_info=None, etag=None, expiry_quantity=None, expiry_time=None, labels=None, name=None, reconciling=None, satisfies_pzi=None, satisfies_pzs=None, size_bytes=None, state=None, type=None, uid=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -68,6 +68,9 @@ class GetBackupResult:
         if reconciling and not isinstance(reconciling, bool):
             raise TypeError("Expected argument 'reconciling' to be a bool")
         pulumi.set(__self__, "reconciling", reconciling)
+        if satisfies_pzi and not isinstance(satisfies_pzi, bool):
+            raise TypeError("Expected argument 'satisfies_pzi' to be a bool")
+        pulumi.set(__self__, "satisfies_pzi", satisfies_pzi)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -216,6 +219,14 @@ class GetBackupResult:
         return pulumi.get(self, "reconciling")
 
     @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> bool:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzi")
+
+    @property
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> bool:
         """
@@ -286,6 +297,7 @@ class AwaitableGetBackupResult(GetBackupResult):
             labels=self.labels,
             name=self.name,
             reconciling=self.reconciling,
+            satisfies_pzi=self.satisfies_pzi,
             satisfies_pzs=self.satisfies_pzs,
             size_bytes=self.size_bytes,
             state=self.state,
@@ -325,6 +337,7 @@ def get_backup(backup_id: Optional[str] = None,
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         reconciling=pulumi.get(__ret__, 'reconciling'),
+        satisfies_pzi=pulumi.get(__ret__, 'satisfies_pzi'),
         satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         size_bytes=pulumi.get(__ret__, 'size_bytes'),
         state=pulumi.get(__ret__, 'state'),

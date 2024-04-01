@@ -11,12 +11,16 @@ namespace Pulumi.GoogleNative.WorkloadManager.V1
 {
     /// <summary>
     /// Creates a new Evaluation in a given project and location.
-    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:workloadmanager/v1:Evaluation")]
     public partial class Evaluation : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Optional. BigQuery destination
+        /// </summary>
+        [Output("bigQueryDestination")]
+        public Output<Outputs.BigQueryDestinationResponse> BigQueryDestination { get; private set; } = null!;
+
         /// <summary>
         /// [Output only] Create time stamp
         /// </summary>
@@ -152,6 +156,12 @@ namespace Pulumi.GoogleNative.WorkloadManager.V1
 
     public sealed class EvaluationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. BigQuery destination
+        /// </summary>
+        [Input("bigQueryDestination")]
+        public Input<Inputs.BigQueryDestinationArgs>? BigQueryDestination { get; set; }
+
         /// <summary>
         /// The Cloud Storage bucket name for custom rules.
         /// </summary>

@@ -27,16 +27,20 @@ __all__ = [
 class ComputeEnginePreferencesArgs:
     def __init__(__self__, *,
                  license_type: Optional[pulumi.Input['ComputeEnginePreferencesLicenseType']] = None,
-                 machine_preferences: Optional[pulumi.Input['MachinePreferencesArgs']] = None):
+                 machine_preferences: Optional[pulumi.Input['MachinePreferencesArgs']] = None,
+                 persistent_disk_type: Optional[pulumi.Input['ComputeEnginePreferencesPersistentDiskType']] = None):
         """
         The user preferences relating to Compute Engine target platform.
         :param pulumi.Input['ComputeEnginePreferencesLicenseType'] license_type: License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
         :param pulumi.Input['MachinePreferencesArgs'] machine_preferences: Preferences concerning the machine types to consider on Compute Engine.
+        :param pulumi.Input['ComputeEnginePreferencesPersistentDiskType'] persistent_disk_type: Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
         """
         if license_type is not None:
             pulumi.set(__self__, "license_type", license_type)
         if machine_preferences is not None:
             pulumi.set(__self__, "machine_preferences", machine_preferences)
+        if persistent_disk_type is not None:
+            pulumi.set(__self__, "persistent_disk_type", persistent_disk_type)
 
     @property
     @pulumi.getter(name="licenseType")
@@ -61,6 +65,18 @@ class ComputeEnginePreferencesArgs:
     @machine_preferences.setter
     def machine_preferences(self, value: Optional[pulumi.Input['MachinePreferencesArgs']]):
         pulumi.set(self, "machine_preferences", value)
+
+    @property
+    @pulumi.getter(name="persistentDiskType")
+    def persistent_disk_type(self) -> Optional[pulumi.Input['ComputeEnginePreferencesPersistentDiskType']]:
+        """
+        Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
+        """
+        return pulumi.get(self, "persistent_disk_type")
+
+    @persistent_disk_type.setter
+    def persistent_disk_type(self, value: Optional[pulumi.Input['ComputeEnginePreferencesPersistentDiskType']]):
+        pulumi.set(self, "persistent_disk_type", value)
 
 
 @pulumi.input_type

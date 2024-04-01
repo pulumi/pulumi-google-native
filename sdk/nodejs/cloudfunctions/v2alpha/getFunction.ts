@@ -17,6 +17,7 @@ export function getFunction(args: GetFunctionArgs, opts?: pulumi.InvokeOptions):
         "functionId": args.functionId,
         "location": args.location,
         "project": args.project,
+        "revision": args.revision,
     }, opts);
 }
 
@@ -24,6 +25,7 @@ export interface GetFunctionArgs {
     functionId: string;
     location: string;
     project?: string;
+    revision?: string;
 }
 
 export interface GetFunctionResult {
@@ -31,6 +33,10 @@ export interface GetFunctionResult {
      * Describes the Build step of the function that builds a container from the given source.
      */
     readonly buildConfig: outputs.cloudfunctions.v2alpha.BuildConfigResponse;
+    /**
+     * The create timestamp of a Cloud Function. This is only applicable to 2nd Gen functions.
+     */
+    readonly createTime: string;
     /**
      * User-provided description of a function.
      */
@@ -76,6 +82,10 @@ export interface GetFunctionResult {
      */
     readonly updateTime: string;
     /**
+     * UpgradeInfo for this Cloud Function
+     */
+    readonly upgradeInfo: outputs.cloudfunctions.v2alpha.UpgradeInfoResponse;
+    /**
      * The deployed url for the function.
      */
     readonly url: string;
@@ -91,4 +101,5 @@ export interface GetFunctionOutputArgs {
     functionId: pulumi.Input<string>;
     location: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    revision?: pulumi.Input<string>;
 }

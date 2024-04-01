@@ -63,7 +63,7 @@ class GetBillingAccountResult:
     @pulumi.getter
     def open(self) -> bool:
         """
-        True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it will be unable to use paid services.
+        True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it are unable to use paid services.
         """
         return pulumi.get(self, "open")
 
@@ -71,7 +71,7 @@ class GetBillingAccountResult:
     @pulumi.getter
     def parent(self) -> str:
         """
-        The billing account's parent resource identifier. Use the `MoveBillingAccount` method to update the account's parent resource if it is a organization. Format: - organizations/{organization_id}, for example: organizations/12345678 - billingAccounts/{billing_account_id}, for example: `billingAccounts/012345-567890-ABCDEF`
+        The billing account's parent resource identifier. Use the `MoveBillingAccount` method to update the account's parent resource if it is a organization. Format: - `organizations/{organization_id}`, for example, `organizations/12345678` - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF`
         """
         return pulumi.get(self, "parent")
 

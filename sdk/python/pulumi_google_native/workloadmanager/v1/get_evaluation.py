@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetEvaluationResult:
-    def __init__(__self__, create_time=None, custom_rules_bucket=None, description=None, labels=None, name=None, resource_filter=None, resource_status=None, rule_names=None, rule_versions=None, schedule=None, update_time=None):
+    def __init__(__self__, big_query_destination=None, create_time=None, custom_rules_bucket=None, description=None, labels=None, name=None, resource_filter=None, resource_status=None, rule_names=None, rule_versions=None, schedule=None, update_time=None):
+        if big_query_destination and not isinstance(big_query_destination, dict):
+            raise TypeError("Expected argument 'big_query_destination' to be a dict")
+        pulumi.set(__self__, "big_query_destination", big_query_destination)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -53,6 +56,14 @@ class GetEvaluationResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="bigQueryDestination")
+    def big_query_destination(self) -> 'outputs.BigQueryDestinationResponse':
+        """
+        Optional. BigQuery destination
+        """
+        return pulumi.get(self, "big_query_destination")
 
     @property
     @pulumi.getter(name="createTime")
@@ -149,6 +160,7 @@ class AwaitableGetEvaluationResult(GetEvaluationResult):
         if False:
             yield self
         return GetEvaluationResult(
+            big_query_destination=self.big_query_destination,
             create_time=self.create_time,
             custom_rules_bucket=self.custom_rules_bucket,
             description=self.description,
@@ -177,6 +189,7 @@ def get_evaluation(evaluation_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:workloadmanager/v1:getEvaluation', __args__, opts=opts, typ=GetEvaluationResult).value
 
     return AwaitableGetEvaluationResult(
+        big_query_destination=pulumi.get(__ret__, 'big_query_destination'),
         create_time=pulumi.get(__ret__, 'create_time'),
         custom_rules_bucket=pulumi.get(__ret__, 'custom_rules_bucket'),
         description=pulumi.get(__ret__, 'description'),

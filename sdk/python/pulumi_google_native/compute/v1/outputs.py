@@ -17,6 +17,9 @@ __all__ = [
     'AccessConfigResponse',
     'AdvancedMachineFeaturesResponse',
     'AliasIpRangeResponse',
+    'AllocationAggregateReservationReservedResourceInfoAcceleratorResponse',
+    'AllocationAggregateReservationReservedResourceInfoResponse',
+    'AllocationAggregateReservationResponse',
     'AllocationResourceStatusResponse',
     'AllocationResourceStatusSpecificSKUAllocationResponse',
     'AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponse',
@@ -69,6 +72,7 @@ __all__ = [
     'DistributionPolicyResponse',
     'DistributionPolicyZoneConfigurationResponse',
     'DurationResponse',
+    'ErrorInfoResponse',
     'ExprResponse',
     'ExternalVpnGatewayInterfaceResponse',
     'FileContentBufferResponse',
@@ -88,6 +92,8 @@ __all__ = [
     'HTTPHealthCheckResponse',
     'HTTPSHealthCheckResponse',
     'HealthCheckLogConfigResponse',
+    'HelpLinkResponse',
+    'HelpResponse',
     'HostRuleResponse',
     'HttpFaultAbortResponse',
     'HttpFaultDelayResponse',
@@ -104,8 +110,18 @@ __all__ = [
     'ImageRawDiskResponse',
     'InitialStateConfigResponse',
     'InstanceGroupManagerActionsSummaryResponse',
+    'InstanceGroupManagerAllInstancesConfigResponse',
     'InstanceGroupManagerAutoHealingPolicyResponse',
     'InstanceGroupManagerInstanceLifecyclePolicyResponse',
+    'InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse',
+    'InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse',
+    'InstanceGroupManagerResizeRequestStatusErrorResponse',
+    'InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponse',
+    'InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponse',
+    'InstanceGroupManagerResizeRequestStatusLastAttemptErrorResponse',
+    'InstanceGroupManagerResizeRequestStatusLastAttemptResponse',
+    'InstanceGroupManagerResizeRequestStatusResponse',
+    'InstanceGroupManagerStatusAllInstancesConfigResponse',
     'InstanceGroupManagerStatusResponse',
     'InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse',
     'InstanceGroupManagerStatusStatefulResponse',
@@ -113,7 +129,9 @@ __all__ = [
     'InstanceGroupManagerUpdatePolicyResponse',
     'InstanceGroupManagerVersionResponse',
     'InstanceParamsResponse',
+    'InstancePropertiesPatchResponse',
     'InstancePropertiesResponse',
+    'InstantSnapshotResourceStatusResponse',
     'Int64RangeMatchResponse',
     'InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse',
     'InterconnectAttachmentConfigurationConstraintsResponse',
@@ -126,6 +144,7 @@ __all__ = [
     'LicenseResourceCommitmentResponse',
     'LicenseResourceRequirementsResponse',
     'LocalDiskResponse',
+    'LocalizedMessageResponse',
     'LogConfigCloudAuditOptionsResponse',
     'LogConfigCounterOptionsCustomFieldResponse',
     'LogConfigCounterOptionsResponse',
@@ -160,6 +179,7 @@ __all__ = [
     'PathRuleResponse',
     'PublicAdvertisedPrefixPublicDelegatedPrefixResponse',
     'PublicDelegatedPrefixPublicDelegatedSubPrefixResponse',
+    'QuotaExceededInfoResponse',
     'RegionSslPolicyWarningsItemDataItemResponse',
     'RegionSslPolicyWarningsItemResponse',
     'RequestMirrorPolicyResponse',
@@ -212,6 +232,8 @@ __all__ = [
     'SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse',
     'SecurityPolicyRuleHttpHeaderActionResponse',
     'SecurityPolicyRuleMatcherConfigResponse',
+    'SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse',
+    'SecurityPolicyRuleMatcherExprOptionsResponse',
     'SecurityPolicyRuleMatcherResponse',
     'SecurityPolicyRuleNetworkMatcherResponse',
     'SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse',
@@ -241,6 +263,7 @@ __all__ = [
     'SslPolicyWarningsItemResponse',
     'StatefulPolicyPreservedStateResponse',
     'StatefulPolicyResponse',
+    'StoragePoolResourceStatusResponse',
     'SubnetworkLogConfigResponse',
     'SubnetworkSecondaryRangeResponse',
     'SubsettingResponse',
@@ -666,6 +689,150 @@ class AliasIpRangeResponse(dict):
 
 
 @pulumi.output_type
+class AllocationAggregateReservationReservedResourceInfoAcceleratorResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceleratorCount":
+            suggest = "accelerator_count"
+        elif key == "acceleratorType":
+            suggest = "accelerator_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AllocationAggregateReservationReservedResourceInfoAcceleratorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AllocationAggregateReservationReservedResourceInfoAcceleratorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AllocationAggregateReservationReservedResourceInfoAcceleratorResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 accelerator_count: int,
+                 accelerator_type: str):
+        """
+        :param int accelerator_count: Number of accelerators of specified type.
+        :param str accelerator_type: Full or partial URL to accelerator type. e.g. "projects/{PROJECT}/zones/{ZONE}/acceleratorTypes/ct4l"
+        """
+        pulumi.set(__self__, "accelerator_count", accelerator_count)
+        pulumi.set(__self__, "accelerator_type", accelerator_type)
+
+    @property
+    @pulumi.getter(name="acceleratorCount")
+    def accelerator_count(self) -> int:
+        """
+        Number of accelerators of specified type.
+        """
+        return pulumi.get(self, "accelerator_count")
+
+    @property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> str:
+        """
+        Full or partial URL to accelerator type. e.g. "projects/{PROJECT}/zones/{ZONE}/acceleratorTypes/ct4l"
+        """
+        return pulumi.get(self, "accelerator_type")
+
+
+@pulumi.output_type
+class AllocationAggregateReservationReservedResourceInfoResponse(dict):
+    def __init__(__self__, *,
+                 accelerator: 'outputs.AllocationAggregateReservationReservedResourceInfoAcceleratorResponse'):
+        """
+        :param 'AllocationAggregateReservationReservedResourceInfoAcceleratorResponse' accelerator: Properties of accelerator resources in this reservation.
+        """
+        pulumi.set(__self__, "accelerator", accelerator)
+
+    @property
+    @pulumi.getter
+    def accelerator(self) -> 'outputs.AllocationAggregateReservationReservedResourceInfoAcceleratorResponse':
+        """
+        Properties of accelerator resources in this reservation.
+        """
+        return pulumi.get(self, "accelerator")
+
+
+@pulumi.output_type
+class AllocationAggregateReservationResponse(dict):
+    """
+    This reservation type is specified by total resource amounts (e.g. total count of CPUs) and can account for multiple instance SKUs. In other words, one can create instances of varying shapes against this reservation.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inUseResources":
+            suggest = "in_use_resources"
+        elif key == "reservedResources":
+            suggest = "reserved_resources"
+        elif key == "vmFamily":
+            suggest = "vm_family"
+        elif key == "workloadType":
+            suggest = "workload_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AllocationAggregateReservationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AllocationAggregateReservationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AllocationAggregateReservationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 in_use_resources: Sequence['outputs.AllocationAggregateReservationReservedResourceInfoResponse'],
+                 reserved_resources: Sequence['outputs.AllocationAggregateReservationReservedResourceInfoResponse'],
+                 vm_family: str,
+                 workload_type: str):
+        """
+        This reservation type is specified by total resource amounts (e.g. total count of CPUs) and can account for multiple instance SKUs. In other words, one can create instances of varying shapes against this reservation.
+        :param Sequence['AllocationAggregateReservationReservedResourceInfoResponse'] in_use_resources: [Output only] List of resources currently in use.
+        :param Sequence['AllocationAggregateReservationReservedResourceInfoResponse'] reserved_resources: List of reserved resources (CPUs, memory, accelerators).
+        :param str vm_family: The VM family that all instances scheduled against this reservation must belong to.
+        :param str workload_type: The workload type of the instances that will target this reservation.
+        """
+        pulumi.set(__self__, "in_use_resources", in_use_resources)
+        pulumi.set(__self__, "reserved_resources", reserved_resources)
+        pulumi.set(__self__, "vm_family", vm_family)
+        pulumi.set(__self__, "workload_type", workload_type)
+
+    @property
+    @pulumi.getter(name="inUseResources")
+    def in_use_resources(self) -> Sequence['outputs.AllocationAggregateReservationReservedResourceInfoResponse']:
+        """
+        [Output only] List of resources currently in use.
+        """
+        return pulumi.get(self, "in_use_resources")
+
+    @property
+    @pulumi.getter(name="reservedResources")
+    def reserved_resources(self) -> Sequence['outputs.AllocationAggregateReservationReservedResourceInfoResponse']:
+        """
+        List of reserved resources (CPUs, memory, accelerators).
+        """
+        return pulumi.get(self, "reserved_resources")
+
+    @property
+    @pulumi.getter(name="vmFamily")
+    def vm_family(self) -> str:
+        """
+        The VM family that all instances scheduled against this reservation must belong to.
+        """
+        return pulumi.get(self, "vm_family")
+
+    @property
+    @pulumi.getter(name="workloadType")
+    def workload_type(self) -> str:
+        """
+        The workload type of the instances that will target this reservation.
+        """
+        return pulumi.get(self, "workload_type")
+
+
+@pulumi.output_type
 class AllocationResourceStatusResponse(dict):
     """
     [Output Only] Contains output only fields.
@@ -983,6 +1150,8 @@ class AttachedDiskInitializeParamsResponse(dict):
             suggest = "disk_size_gb"
         elif key == "diskType":
             suggest = "disk_type"
+        elif key == "enableConfidentialCompute":
+            suggest = "enable_confidential_compute"
         elif key == "onUpdateAction":
             suggest = "on_update_action"
         elif key == "provisionedIops":
@@ -1003,6 +1172,8 @@ class AttachedDiskInitializeParamsResponse(dict):
             suggest = "source_snapshot"
         elif key == "sourceSnapshotEncryptionKey":
             suggest = "source_snapshot_encryption_key"
+        elif key == "storagePool":
+            suggest = "storage_pool"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AttachedDiskInitializeParamsResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1021,6 +1192,7 @@ class AttachedDiskInitializeParamsResponse(dict):
                  disk_name: str,
                  disk_size_gb: str,
                  disk_type: str,
+                 enable_confidential_compute: bool,
                  labels: Mapping[str, str],
                  licenses: Sequence[str],
                  on_update_action: str,
@@ -1032,7 +1204,8 @@ class AttachedDiskInitializeParamsResponse(dict):
                  source_image: str,
                  source_image_encryption_key: 'outputs.CustomerEncryptionKeyResponse',
                  source_snapshot: str,
-                 source_snapshot_encryption_key: 'outputs.CustomerEncryptionKeyResponse'):
+                 source_snapshot_encryption_key: 'outputs.CustomerEncryptionKeyResponse',
+                 storage_pool: str):
         """
         [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This field is persisted and returned for instanceTemplate and not returned in the context of instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
         :param str architecture: The architecture of the attached disk. Valid values are arm64 or x86_64.
@@ -1040,11 +1213,12 @@ class AttachedDiskInitializeParamsResponse(dict):
         :param str disk_name: Specifies the disk name. If not specified, the default is to use the name of the instance. If a disk with the same name already exists in the given region, the existing disk is attached to the new instance and the new disk is not created.
         :param str disk_size_gb: Specifies the size of the disk in base-2 GB. The size must be at least 10 GB. If you specify a sourceImage, which is required for boot disks, the default size is the size of the sourceImage. If you do not specify a sourceImage, the default disk size is 500 GB.
         :param str disk_type: Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you specify this field when creating a VM, you can provide either the full or partial URL. For example, the following values are valid: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType If you specify this field when creating or updating an instance template or all-instances configuration, specify the type of the disk, not the URL. For example: pd-standard.
+        :param bool enable_confidential_compute: Whether this disk is using confidential compute mode.
         :param Mapping[str, str] labels: Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
         :param Sequence[str] licenses: A list of publicly visible licenses. Reserved for Google's use.
         :param str on_update_action: Specifies which action to take on instance update with this disk. Default is to use the existing disk.
         :param str provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
-        :param str provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        :param str provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must greater than or equal to 1.
         :param Sequence[str] replica_zones: Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone.
         :param Mapping[str, str] resource_manager_tags: Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
         :param Sequence[str] resource_policies: Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
@@ -1052,12 +1226,14 @@ class AttachedDiskInitializeParamsResponse(dict):
         :param 'CustomerEncryptionKeyResponse' source_image_encryption_key: The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. InstanceTemplate and InstancePropertiesPatch do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
         :param str source_snapshot: The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: global/snapshots/my-backup If the source snapshot is deleted later, this field will not be set.
         :param 'CustomerEncryptionKeyResponse' source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot.
+        :param str storage_pool: The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
         """
         pulumi.set(__self__, "architecture", architecture)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "disk_name", disk_name)
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "licenses", licenses)
         pulumi.set(__self__, "on_update_action", on_update_action)
@@ -1070,6 +1246,7 @@ class AttachedDiskInitializeParamsResponse(dict):
         pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
         pulumi.set(__self__, "source_snapshot", source_snapshot)
         pulumi.set(__self__, "source_snapshot_encryption_key", source_snapshot_encryption_key)
+        pulumi.set(__self__, "storage_pool", storage_pool)
 
     @property
     @pulumi.getter
@@ -1112,6 +1289,14 @@ class AttachedDiskInitializeParamsResponse(dict):
         return pulumi.get(self, "disk_type")
 
     @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> bool:
+        """
+        Whether this disk is using confidential compute mode.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
+
+    @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
@@ -1147,7 +1332,7 @@ class AttachedDiskInitializeParamsResponse(dict):
     @pulumi.getter(name="provisionedThroughput")
     def provisioned_throughput(self) -> str:
         """
-        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must greater than or equal to 1.
         """
         return pulumi.get(self, "provisioned_throughput")
 
@@ -1206,6 +1391,14 @@ class AttachedDiskInitializeParamsResponse(dict):
         The customer-supplied encryption key of the source snapshot.
         """
         return pulumi.get(self, "source_snapshot_encryption_key")
+
+    @property
+    @pulumi.getter(name="storagePool")
+    def storage_pool(self) -> str:
+        """
+        The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
+        """
+        return pulumi.get(self, "storage_pool")
 
 
 @pulumi.output_type
@@ -2369,7 +2562,8 @@ class BackendResponse(dict):
                  max_rate: int,
                  max_rate_per_endpoint: float,
                  max_rate_per_instance: float,
-                 max_utilization: float):
+                 max_utilization: float,
+                 preference: str):
         """
         Message containing information of one individual backend.
         :param str balancing_mode: Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
@@ -2384,6 +2578,7 @@ class BackendResponse(dict):
         :param float max_rate_per_endpoint: Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
         :param float max_rate_per_instance: Defines a maximum target for requests per second (RPS). For usage guidelines, see Rate balancing mode and Utilization balancing mode. Not available if the backend's balancingMode is CONNECTION.
         :param float max_utilization: Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
+        :param str preference: This field indicates whether this backend should be fully utilized before sending traffic to backends with default preference. The possible values are: - PREFERRED: Backends with this preference level will be filled up to their capacity limits first, based on RTT. - DEFAULT: If preferred backends don't have enough capacity, backends in this layer would be used and traffic would be assigned based on the load balancing algorithm you use. This is the default 
         """
         pulumi.set(__self__, "balancing_mode", balancing_mode)
         pulumi.set(__self__, "capacity_scaler", capacity_scaler)
@@ -2397,6 +2592,7 @@ class BackendResponse(dict):
         pulumi.set(__self__, "max_rate_per_endpoint", max_rate_per_endpoint)
         pulumi.set(__self__, "max_rate_per_instance", max_rate_per_instance)
         pulumi.set(__self__, "max_utilization", max_utilization)
+        pulumi.set(__self__, "preference", preference)
 
     @property
     @pulumi.getter(name="balancingMode")
@@ -2493,6 +2689,14 @@ class BackendResponse(dict):
         Optional parameter to define a target capacity for the UTILIZATION balancing mode. The valid range is [0.0, 1.0]. For usage guidelines, see Utilization balancing mode.
         """
         return pulumi.get(self, "max_utilization")
+
+    @property
+    @pulumi.getter
+    def preference(self) -> str:
+        """
+        This field indicates whether this backend should be fully utilized before sending traffic to backends with default preference. The possible values are: - PREFERRED: Backends with this preference level will be filled up to their capacity limits first, based on RTT. - DEFAULT: If preferred backends don't have enough capacity, backends in this layer would be used and traffic would be assigned based on the load balancing algorithm you use. This is the default 
+        """
+        return pulumi.get(self, "preference")
 
 
 @pulumi.output_type
@@ -2785,8 +2989,8 @@ class BackendServiceConnectionTrackingPolicyResponse(dict):
         """
         Connection Tracking configuration for this BackendService.
         :param str connection_persistence_on_unhealthy_backends: Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default. For more details, see [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence) and [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence).
-        :param bool enable_strong_affinity: Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
-        :param int idle_timeout_sec: Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For Network Load Balancer the default is 60 seconds. This option is not available publicly.
+        :param bool enable_strong_affinity: Enable Strong Session Affinity for external passthrough Network Load Balancers. This option is not available publicly.
+        :param int idle_timeout_sec: Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For internal passthrough Network Load Balancers: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For external passthrough Network Load Balancers the default is 60 seconds. This option is not available publicly.
         :param str tracking_mode: Specifies the key used for connection tracking. There are two options: - PER_CONNECTION: This is the default mode. The Connection Tracking is performed as per the Connection Key (default Hash Method) for the specific protocol. - PER_SESSION: The Connection Tracking is performed as per the configured Session Affinity. It matches the configured Session Affinity. For more details, see [Tracking Mode for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#tracking-mode) and [Tracking Mode for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#tracking-mode).
         """
         pulumi.set(__self__, "connection_persistence_on_unhealthy_backends", connection_persistence_on_unhealthy_backends)
@@ -2806,7 +3010,7 @@ class BackendServiceConnectionTrackingPolicyResponse(dict):
     @pulumi.getter(name="enableStrongAffinity")
     def enable_strong_affinity(self) -> bool:
         """
-        Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+        Enable Strong Session Affinity for external passthrough Network Load Balancers. This option is not available publicly.
         """
         return pulumi.get(self, "enable_strong_affinity")
 
@@ -2814,7 +3018,7 @@ class BackendServiceConnectionTrackingPolicyResponse(dict):
     @pulumi.getter(name="idleTimeoutSec")
     def idle_timeout_sec(self) -> int:
         """
-        Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For Internal TCP/UDP Load Balancing: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For Network Load Balancer the default is 60 seconds. This option is not available publicly.
+        Specifies how long to keep a Connection Tracking entry while there is no matching traffic (in seconds). For internal passthrough Network Load Balancers: - The minimum (default) is 10 minutes and the maximum is 16 hours. - It can be set only if Connection Tracking is less than 5-tuple (i.e. Session Affinity is CLIENT_IP_NO_DESTINATION, CLIENT_IP or CLIENT_IP_PROTO, and Tracking Mode is PER_SESSION). For external passthrough Network Load Balancers the default is 60 seconds. This option is not available publicly.
         """
         return pulumi.get(self, "idle_timeout_sec")
 
@@ -2830,7 +3034,7 @@ class BackendServiceConnectionTrackingPolicyResponse(dict):
 @pulumi.output_type
 class BackendServiceFailoverPolicyResponse(dict):
     """
-    For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
+    For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2858,9 +3062,9 @@ class BackendServiceFailoverPolicyResponse(dict):
                  drop_traffic_if_unhealthy: bool,
                  failover_ratio: float):
         """
-        For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
+        For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
         :param bool disable_connection_drain_on_failover: This can be set to true only if the protocol is TCP. The default is false.
-        :param bool drop_traffic_if_unhealthy: If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
+        :param bool drop_traffic_if_unhealthy: If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
         :param float failover_ratio: The value of the field must be in the range [0, 1]. If the value is 0, the load balancer performs a failover when the number of healthy primary VMs equals zero. For all other values, the load balancer performs a failover when the total number of healthy primary VMs is less than this ratio. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview).
         """
         pulumi.set(__self__, "disable_connection_drain_on_failover", disable_connection_drain_on_failover)
@@ -2879,7 +3083,7 @@ class BackendServiceFailoverPolicyResponse(dict):
     @pulumi.getter(name="dropTrafficIfUnhealthy")
     def drop_traffic_if_unhealthy(self) -> bool:
         """
-        If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
+        If set to true, connections to the load balancer are dropped when all primary and all backup backend VMs are unhealthy.If set to false, connections are distributed among all primary VMs when all primary and all backup backend VMs are unhealthy. For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). The default is false.
         """
         return pulumi.get(self, "drop_traffic_if_unhealthy")
 
@@ -3184,8 +3388,8 @@ class BindingResponse(dict):
         Associates `members`, or principals, with a `role`.
         :param str binding_id: This is deprecated and has no effect. Do not use.
         :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         pulumi.set(__self__, "binding_id", binding_id)
         pulumi.set(__self__, "condition", condition)
@@ -3212,7 +3416,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         """
         return pulumi.get(self, "members")
 
@@ -3220,7 +3424,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         return pulumi.get(self, "role")
 
@@ -3734,9 +3938,9 @@ class CorsPolicyResponse(dict):
         :param bool allow_credentials: In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header. Default is false.
         :param Sequence[str] allow_headers: Specifies the content for the Access-Control-Allow-Headers header.
         :param Sequence[str] allow_methods: Specifies the content for the Access-Control-Allow-Methods header.
-        :param Sequence[str] allow_origin_regexes: Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+        :param Sequence[str] allow_origin_regexes: Specifies a regular expression that matches allowed origins. For more information, see regular expression syntax . An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
         :param Sequence[str] allow_origins: Specifies the list of origins that is allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
-        :param bool disabled: If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+        :param bool disabled: If true, disables the CORS policy. The default value is false, which indicates that the CORS policy is in effect.
         :param Sequence[str] expose_headers: Specifies the content for the Access-Control-Expose-Headers header.
         :param int max_age: Specifies how long results of a preflight request can be cached in seconds. This field translates to the Access-Control-Max-Age header.
         """
@@ -3777,7 +3981,7 @@ class CorsPolicyResponse(dict):
     @pulumi.getter(name="allowOriginRegexes")
     def allow_origin_regexes(self) -> Sequence[str]:
         """
-        Specifies a regular expression that matches allowed origins. For more information about the regular expression syntax, see Syntax. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
+        Specifies a regular expression that matches allowed origins. For more information, see regular expression syntax . An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED.
         """
         return pulumi.get(self, "allow_origin_regexes")
 
@@ -3793,7 +3997,7 @@ class CorsPolicyResponse(dict):
     @pulumi.getter
     def disabled(self) -> bool:
         """
-        If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+        If true, disables the CORS policy. The default value is false, which indicates that the CORS policy is in effect.
         """
         return pulumi.get(self, "disabled")
 
@@ -4347,6 +4551,50 @@ class DurationResponse(dict):
 
 
 @pulumi.output_type
+class ErrorInfoResponse(dict):
+    """
+    Describes the cause of the error with structured details. Example of an error when contacting the "pubsub.googleapis.com" API when it is not enabled: { "reason": "API_DISABLED" "domain": "googleapis.com" "metadata": { "resource": "projects/123", "service": "pubsub.googleapis.com" } } This response indicates that the pubsub.googleapis.com API is not enabled. Example of an error that is returned when attempting to create a Spanner instance in a region that is out of stock: { "reason": "STOCKOUT" "domain": "spanner.googleapis.com", "metadata": { "availableRegions": "us-central1,us-east2" } }
+    """
+    def __init__(__self__, *,
+                 domain: str,
+                 metadatas: Mapping[str, str],
+                 reason: str):
+        """
+        Describes the cause of the error with structured details. Example of an error when contacting the "pubsub.googleapis.com" API when it is not enabled: { "reason": "API_DISABLED" "domain": "googleapis.com" "metadata": { "resource": "projects/123", "service": "pubsub.googleapis.com" } } This response indicates that the pubsub.googleapis.com API is not enabled. Example of an error that is returned when attempting to create a Spanner instance in a region that is out of stock: { "reason": "STOCKOUT" "domain": "spanner.googleapis.com", "metadata": { "availableRegions": "us-central1,us-east2" } }
+        :param str domain: The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
+        :param Mapping[str, str] metadatas: Additional structured details about this error. Keys must match /a-z+/ but should ideally be lowerCamelCase. Also they must be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
+        :param str reason: The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match a regular expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "metadatas", metadatas)
+        pulumi.set(__self__, "reason", reason)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
+    def metadatas(self) -> Mapping[str, str]:
+        """
+        Additional structured details about this error. Keys must match /a-z+/ but should ideally be lowerCamelCase. Also they must be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
+        """
+        return pulumi.get(self, "metadatas")
+
+    @property
+    @pulumi.getter
+    def reason(self) -> str:
+        """
+        The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match a regular expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.
+        """
+        return pulumi.get(self, "reason")
+
+
+@pulumi.output_type
 class ExprResponse(dict):
     """
     Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -4411,6 +4659,8 @@ class ExternalVpnGatewayInterfaceResponse(dict):
         suggest = None
         if key == "ipAddress":
             suggest = "ip_address"
+        elif key == "ipv6Address":
+            suggest = "ipv6_address"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ExternalVpnGatewayInterfaceResponse. Access the value via the '{suggest}' property getter instead.")
@@ -4424,12 +4674,15 @@ class ExternalVpnGatewayInterfaceResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 ip_address: str):
+                 ip_address: str,
+                 ipv6_address: str):
         """
         The interface for the external VPN gateway.
         :param str ip_address: IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine.
+        :param str ipv6_address: IPv6 address of the interface in the external VPN gateway. This IPv6 address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine. Must specify an IPv6 address (not IPV4-mapped) using any format described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
         """
         pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "ipv6_address", ipv6_address)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -4438,6 +4691,14 @@ class ExternalVpnGatewayInterfaceResponse(dict):
         IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine.
         """
         return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> str:
+        """
+        IPv6 address of the interface in the external VPN gateway. This IPv6 address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine. Must specify an IPv6 address (not IPV4-mapped) using any format described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+        """
+        return pulumi.get(self, "ipv6_address")
 
 
 @pulumi.output_type
@@ -4938,12 +5199,16 @@ class FirewallPolicyRuleResponse(dict):
             suggest = "rule_name"
         elif key == "ruleTupleCount":
             suggest = "rule_tuple_count"
+        elif key == "securityProfileGroup":
+            suggest = "security_profile_group"
         elif key == "targetResources":
             suggest = "target_resources"
         elif key == "targetSecureTags":
             suggest = "target_secure_tags"
         elif key == "targetServiceAccounts":
             suggest = "target_service_accounts"
+        elif key == "tlsInspect":
+            suggest = "tls_inspect"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in FirewallPolicyRuleResponse. Access the value via the '{suggest}' property getter instead.")
@@ -4967,9 +5232,11 @@ class FirewallPolicyRuleResponse(dict):
                  priority: int,
                  rule_name: str,
                  rule_tuple_count: int,
+                 security_profile_group: str,
                  target_resources: Sequence[str],
                  target_secure_tags: Sequence['outputs.FirewallPolicyRuleSecureTagResponse'],
-                 target_service_accounts: Sequence[str]):
+                 target_service_accounts: Sequence[str],
+                 tls_inspect: bool):
         """
         Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
         :param str action: The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
@@ -4982,9 +5249,11 @@ class FirewallPolicyRuleResponse(dict):
         :param int priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         :param str rule_name: An optional name for the rule. This field is not a unique identifier and can be updated.
         :param int rule_tuple_count: Calculation of the complexity of a single firewall policy rule.
+        :param str security_profile_group: A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
         :param Sequence[str] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
         :param Sequence['FirewallPolicyRuleSecureTagResponse'] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
         :param Sequence[str] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
+        :param bool tls_inspect: Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "description", description)
@@ -4996,9 +5265,11 @@ class FirewallPolicyRuleResponse(dict):
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "rule_name", rule_name)
         pulumi.set(__self__, "rule_tuple_count", rule_tuple_count)
+        pulumi.set(__self__, "security_profile_group", security_profile_group)
         pulumi.set(__self__, "target_resources", target_resources)
         pulumi.set(__self__, "target_secure_tags", target_secure_tags)
         pulumi.set(__self__, "target_service_accounts", target_service_accounts)
+        pulumi.set(__self__, "tls_inspect", tls_inspect)
 
     @property
     @pulumi.getter
@@ -5081,6 +5352,14 @@ class FirewallPolicyRuleResponse(dict):
         return pulumi.get(self, "rule_tuple_count")
 
     @property
+    @pulumi.getter(name="securityProfileGroup")
+    def security_profile_group(self) -> str:
+        """
+        A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+        """
+        return pulumi.get(self, "security_profile_group")
+
+    @property
     @pulumi.getter(name="targetResources")
     def target_resources(self) -> Sequence[str]:
         """
@@ -5103,6 +5382,14 @@ class FirewallPolicyRuleResponse(dict):
         A list of service accounts indicating the sets of instances that are applied with this rule.
         """
         return pulumi.get(self, "target_service_accounts")
+
+    @property
+    @pulumi.getter(name="tlsInspect")
+    def tls_inspect(self) -> bool:
+        """
+        Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+        """
+        return pulumi.get(self, "tls_inspect")
 
 
 @pulumi.output_type
@@ -5181,7 +5468,7 @@ class FixedOrPercentResponse(dict):
 @pulumi.output_type
 class ForwardingRuleServiceDirectoryRegistrationResponse(dict):
     """
-    Describes the auto-registration of the Forwarding Rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this Forwarding Rule.
+    Describes the auto-registration of the forwarding rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this forwarding rule.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -5205,10 +5492,10 @@ class ForwardingRuleServiceDirectoryRegistrationResponse(dict):
                  service: str,
                  service_directory_region: str):
         """
-        Describes the auto-registration of the Forwarding Rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this Forwarding Rule.
+        Describes the auto-registration of the forwarding rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this forwarding rule.
         :param str namespace: Service Directory namespace to register the forwarding rule under.
         :param str service: Service Directory service to register the forwarding rule under.
-        :param str service_directory_region: [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs Forwarding Rules on the same network should use the same Service Directory region.
+        :param str service_directory_region: [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs forwarding rules on the same network should use the same Service Directory region.
         """
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "service", service)
@@ -5234,7 +5521,7 @@ class ForwardingRuleServiceDirectoryRegistrationResponse(dict):
     @pulumi.getter(name="serviceDirectoryRegion")
     def service_directory_region(self) -> str:
         """
-        [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs Forwarding Rules on the same network should use the same Service Directory region.
+        [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs forwarding rules on the same network should use the same Service Directory region.
         """
         return pulumi.get(self, "service_directory_region")
 
@@ -5271,7 +5558,7 @@ class GRPCHealthCheckResponse(dict):
         :param str grpc_service_name: The gRPC service name for the health check. This field is optional. The value of grpc_service_name has the following meanings by convention: - Empty service_name means the overall status of all services at the backend. - Non-empty service_name means the health of that gRPC service, as defined by the owner of the service. The grpc_service_name can only be ASCII.
         :param int port: The TCP port number to which the health check prober sends packets. Valid values are 1 through 65535.
         :param str port_name: Not supported.
-        :param str port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        :param str port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         """
         pulumi.set(__self__, "grpc_service_name", grpc_service_name)
         pulumi.set(__self__, "port", port)
@@ -5306,7 +5593,7 @@ class GRPCHealthCheckResponse(dict):
     @pulumi.getter(name="portSpecification")
     def port_specification(self) -> str:
         """
-        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         """
         return pulumi.get(self, "port_specification")
 
@@ -5320,7 +5607,7 @@ class GuestOsFeatureResponse(dict):
                  type: str):
         """
         Guest OS features.
-        :param str type: The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+        :param str type: The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE_V2 - SEV_SNP_CAPABLE - TDX_CAPABLE - IDPF For more information, see Enabling guest operating system features.
         """
         pulumi.set(__self__, "type", type)
 
@@ -5328,7 +5615,7 @@ class GuestOsFeatureResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+        The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE_V2 - SEV_SNP_CAPABLE - TDX_CAPABLE - IDPF For more information, see Enabling guest operating system features.
         """
         return pulumi.get(self, "type")
 
@@ -5370,7 +5657,7 @@ class HTTP2HealthCheckResponse(dict):
         :param str host: The value of the host header in the HTTP/2 health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
         :param int port: The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
         :param str port_name: Not supported.
-        :param str port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        :param str port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         :param str request_path: The request path of the HTTP/2 health check request. The default value is /.
         :param str response: Creates a content-based HTTP/2 health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
@@ -5411,7 +5698,7 @@ class HTTP2HealthCheckResponse(dict):
     @pulumi.getter(name="portSpecification")
     def port_specification(self) -> str:
         """
-        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         """
         return pulumi.get(self, "port_specification")
 
@@ -5477,7 +5764,7 @@ class HTTPHealthCheckResponse(dict):
         :param str host: The value of the host header in the HTTP health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
         :param int port: The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
         :param str port_name: Not supported.
-        :param str port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        :param str port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         :param str request_path: The request path of the HTTP health check request. The default value is /.
         :param str response: Creates a content-based HTTP health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
@@ -5518,7 +5805,7 @@ class HTTPHealthCheckResponse(dict):
     @pulumi.getter(name="portSpecification")
     def port_specification(self) -> str:
         """
-        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         """
         return pulumi.get(self, "port_specification")
 
@@ -5584,7 +5871,7 @@ class HTTPSHealthCheckResponse(dict):
         :param str host: The value of the host header in the HTTPS health check request. If left empty (default value), the host header is set to the destination IP address to which health check packets are sent. The destination IP address depends on the type of load balancer. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#hc-packet-dest
         :param int port: The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
         :param str port_name: Not supported.
-        :param str port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        :param str port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         :param str request_path: The request path of the HTTPS health check request. The default value is /.
         :param str response: Creates a content-based HTTPS health check. In addition to the required HTTP 200 (OK) status code, you can configure the health check to pass only when the backend sends this specific ASCII response string within the first 1024 bytes of the HTTP response body. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-http
@@ -5625,7 +5912,7 @@ class HTTPSHealthCheckResponse(dict):
     @pulumi.getter(name="portSpecification")
     def port_specification(self) -> str:
         """
-        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         """
         return pulumi.get(self, "port_specification")
 
@@ -5674,6 +5961,61 @@ class HealthCheckLogConfigResponse(dict):
         Indicates whether or not to export logs. This is false by default, which means no health check logging will be done.
         """
         return pulumi.get(self, "enable")
+
+
+@pulumi.output_type
+class HelpLinkResponse(dict):
+    """
+    Describes a URL link.
+    """
+    def __init__(__self__, *,
+                 description: str,
+                 url: str):
+        """
+        Describes a URL link.
+        :param str description: Describes what the link offers.
+        :param str url: The URL of the link.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Describes what the link offers.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        The URL of the link.
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class HelpResponse(dict):
+    """
+    Provides links to documentation or for performing an out of band action. For example, if a quota check failed with an error indicating the calling project hasn't enabled the accessed service, this can contain a URL pointing directly to the right place in the developer console to flip the bit.
+    """
+    def __init__(__self__, *,
+                 links: Sequence['outputs.HelpLinkResponse']):
+        """
+        Provides links to documentation or for performing an out of band action. For example, if a quota check failed with an error indicating the calling project hasn't enabled the accessed service, this can contain a URL pointing directly to the right place in the developer console to flip the bit.
+        :param Sequence['HelpLinkResponse'] links: URL(s) pointing to additional information on handling the current error.
+        """
+        pulumi.set(__self__, "links", links)
+
+    @property
+    @pulumi.getter
+    def links(self) -> Sequence['outputs.HelpLinkResponse']:
+        """
+        URL(s) pointing to additional information on handling the current error.
+        """
+        return pulumi.get(self, "links")
 
 
 @pulumi.output_type
@@ -7040,6 +7382,24 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
 
 
 @pulumi.output_type
+class InstanceGroupManagerAllInstancesConfigResponse(dict):
+    def __init__(__self__, *,
+                 properties: 'outputs.InstancePropertiesPatchResponse'):
+        """
+        :param 'InstancePropertiesPatchResponse' properties: Properties to set on all instances in the group. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting allInstancesConfig on the group, you must update the group's instances to apply the configuration. To apply the configuration, set the group's updatePolicy.type field to use proactive updates or use the applyUpdatesToInstances method.
+        """
+        pulumi.set(__self__, "properties", properties)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> 'outputs.InstancePropertiesPatchResponse':
+        """
+        Properties to set on all instances in the group. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting allInstancesConfig on the group, you must update the group's instances to apply the configuration. To apply the configuration, set the group's updatePolicy.type field to use proactive updates or use the applyUpdatesToInstances method.
+        """
+        return pulumi.get(self, "properties")
+
+
+@pulumi.output_type
 class InstanceGroupManagerAutoHealingPolicyResponse(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -7092,7 +7452,9 @@ class InstanceGroupManagerInstanceLifecyclePolicyResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "forceUpdateOnRepair":
+        if key == "defaultActionOnFailure":
+            suggest = "default_action_on_failure"
+        elif key == "forceUpdateOnRepair":
             suggest = "force_update_on_repair"
 
         if suggest:
@@ -7107,11 +7469,22 @@ class InstanceGroupManagerInstanceLifecyclePolicyResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 default_action_on_failure: str,
                  force_update_on_repair: str):
         """
+        :param str default_action_on_failure: The action that a MIG performs on a failed or an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are - REPAIR (default): MIG automatically repairs a failed or an unhealthy VM by recreating it. For more information, see About repairing VMs in a MIG. - DO_NOTHING: MIG does not repair a failed or an unhealthy VM. 
         :param str force_update_on_repair: A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair. 
         """
+        pulumi.set(__self__, "default_action_on_failure", default_action_on_failure)
         pulumi.set(__self__, "force_update_on_repair", force_update_on_repair)
+
+    @property
+    @pulumi.getter(name="defaultActionOnFailure")
+    def default_action_on_failure(self) -> str:
+        """
+        The action that a MIG performs on a failed or an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are - REPAIR (default): MIG automatically repairs a failed or an unhealthy VM by recreating it. For more information, see About repairing VMs in a MIG. - DO_NOTHING: MIG does not repair a failed or an unhealthy VM. 
+        """
+        return pulumi.get(self, "default_action_on_failure")
 
     @property
     @pulumi.getter(name="forceUpdateOnRepair")
@@ -7123,11 +7496,411 @@ class InstanceGroupManagerInstanceLifecyclePolicyResponse(dict):
 
 
 @pulumi.output_type
+class InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorInfo":
+            suggest = "error_info"
+        elif key == "localizedMessage":
+            suggest = "localized_message"
+        elif key == "quotaInfo":
+            suggest = "quota_info"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error_info: 'outputs.ErrorInfoResponse',
+                 help: 'outputs.HelpResponse',
+                 localized_message: 'outputs.LocalizedMessageResponse',
+                 quota_info: 'outputs.QuotaExceededInfoResponse'):
+        pulumi.set(__self__, "error_info", error_info)
+        pulumi.set(__self__, "help", help)
+        pulumi.set(__self__, "localized_message", localized_message)
+        pulumi.set(__self__, "quota_info", quota_info)
+
+    @property
+    @pulumi.getter(name="errorInfo")
+    def error_info(self) -> 'outputs.ErrorInfoResponse':
+        return pulumi.get(self, "error_info")
+
+    @property
+    @pulumi.getter
+    def help(self) -> 'outputs.HelpResponse':
+        return pulumi.get(self, "help")
+
+    @property
+    @pulumi.getter(name="localizedMessage")
+    def localized_message(self) -> 'outputs.LocalizedMessageResponse':
+        return pulumi.get(self, "localized_message")
+
+    @property
+    @pulumi.getter(name="quotaInfo")
+    def quota_info(self) -> 'outputs.QuotaExceededInfoResponse':
+        return pulumi.get(self, "quota_info")
+
+
+@pulumi.output_type
+class InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorDetails":
+            suggest = "error_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 code: str,
+                 error_details: Sequence['outputs.InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse'],
+                 location: str,
+                 message: str):
+        """
+        :param str code: The error type identifier for this error.
+        :param Sequence['InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse'] error_details: An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+        :param str location: Indicates the field in the request that caused the error. This property is optional.
+        :param str message: An optional, human-readable error message.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "error_details", error_details)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        The error type identifier for this error.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter(name="errorDetails")
+    def error_details(self) -> Sequence['outputs.InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse']:
+        """
+        An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+        """
+        return pulumi.get(self, "error_details")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        Indicates the field in the request that caused the error. This property is optional.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        An optional, human-readable error message.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class InstanceGroupManagerResizeRequestStatusErrorResponse(dict):
+    """
+    [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the last_attempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+    """
+    def __init__(__self__, *,
+                 errors: Sequence['outputs.InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse']):
+        """
+        [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the last_attempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+        :param Sequence['InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse'] errors: The array of errors encountered while processing this operation.
+        """
+        pulumi.set(__self__, "errors", errors)
+
+    @property
+    @pulumi.getter
+    def errors(self) -> Sequence['outputs.InstanceGroupManagerResizeRequestStatusErrorErrorsItemResponse']:
+        """
+        The array of errors encountered while processing this operation.
+        """
+        return pulumi.get(self, "errors")
+
+
+@pulumi.output_type
+class InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorInfo":
+            suggest = "error_info"
+        elif key == "localizedMessage":
+            suggest = "localized_message"
+        elif key == "quotaInfo":
+            suggest = "quota_info"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error_info: 'outputs.ErrorInfoResponse',
+                 help: 'outputs.HelpResponse',
+                 localized_message: 'outputs.LocalizedMessageResponse',
+                 quota_info: 'outputs.QuotaExceededInfoResponse'):
+        pulumi.set(__self__, "error_info", error_info)
+        pulumi.set(__self__, "help", help)
+        pulumi.set(__self__, "localized_message", localized_message)
+        pulumi.set(__self__, "quota_info", quota_info)
+
+    @property
+    @pulumi.getter(name="errorInfo")
+    def error_info(self) -> 'outputs.ErrorInfoResponse':
+        return pulumi.get(self, "error_info")
+
+    @property
+    @pulumi.getter
+    def help(self) -> 'outputs.HelpResponse':
+        return pulumi.get(self, "help")
+
+    @property
+    @pulumi.getter(name="localizedMessage")
+    def localized_message(self) -> 'outputs.LocalizedMessageResponse':
+        return pulumi.get(self, "localized_message")
+
+    @property
+    @pulumi.getter(name="quotaInfo")
+    def quota_info(self) -> 'outputs.QuotaExceededInfoResponse':
+        return pulumi.get(self, "quota_info")
+
+
+@pulumi.output_type
+class InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorDetails":
+            suggest = "error_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 code: str,
+                 error_details: Sequence['outputs.InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponse'],
+                 location: str,
+                 message: str):
+        """
+        :param str code: The error type identifier for this error.
+        :param Sequence['InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponse'] error_details: An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+        :param str location: Indicates the field in the request that caused the error. This property is optional.
+        :param str message: An optional, human-readable error message.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "error_details", error_details)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        The error type identifier for this error.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter(name="errorDetails")
+    def error_details(self) -> Sequence['outputs.InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemResponse']:
+        """
+        An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+        """
+        return pulumi.get(self, "error_details")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        Indicates the field in the request that caused the error. This property is optional.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        An optional, human-readable error message.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class InstanceGroupManagerResizeRequestStatusLastAttemptErrorResponse(dict):
+    """
+    Errors that prevented the ResizeRequest to be fulfilled.
+    """
+    def __init__(__self__, *,
+                 errors: Sequence['outputs.InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponse']):
+        """
+        Errors that prevented the ResizeRequest to be fulfilled.
+        :param Sequence['InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponse'] errors: The array of errors encountered while processing this operation.
+        """
+        pulumi.set(__self__, "errors", errors)
+
+    @property
+    @pulumi.getter
+    def errors(self) -> Sequence['outputs.InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemResponse']:
+        """
+        The array of errors encountered while processing this operation.
+        """
+        return pulumi.get(self, "errors")
+
+
+@pulumi.output_type
+class InstanceGroupManagerResizeRequestStatusLastAttemptResponse(dict):
+    def __init__(__self__, *,
+                 error: 'outputs.InstanceGroupManagerResizeRequestStatusLastAttemptErrorResponse'):
+        """
+        :param 'InstanceGroupManagerResizeRequestStatusLastAttemptErrorResponse' error: Errors that prevented the ResizeRequest to be fulfilled.
+        """
+        pulumi.set(__self__, "error", error)
+
+    @property
+    @pulumi.getter
+    def error(self) -> 'outputs.InstanceGroupManagerResizeRequestStatusLastAttemptErrorResponse':
+        """
+        Errors that prevented the ResizeRequest to be fulfilled.
+        """
+        return pulumi.get(self, "error")
+
+
+@pulumi.output_type
+class InstanceGroupManagerResizeRequestStatusResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastAttempt":
+            suggest = "last_attempt"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerResizeRequestStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerResizeRequestStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerResizeRequestStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error: 'outputs.InstanceGroupManagerResizeRequestStatusErrorResponse',
+                 last_attempt: 'outputs.InstanceGroupManagerResizeRequestStatusLastAttemptResponse'):
+        """
+        :param 'InstanceGroupManagerResizeRequestStatusErrorResponse' error: [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the last_attempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+        :param 'InstanceGroupManagerResizeRequestStatusLastAttemptResponse' last_attempt: [Output only] Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it's still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the "error" field only.
+        """
+        pulumi.set(__self__, "error", error)
+        pulumi.set(__self__, "last_attempt", last_attempt)
+
+    @property
+    @pulumi.getter
+    def error(self) -> 'outputs.InstanceGroupManagerResizeRequestStatusErrorResponse':
+        """
+        [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the last_attempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+        """
+        return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter(name="lastAttempt")
+    def last_attempt(self) -> 'outputs.InstanceGroupManagerResizeRequestStatusLastAttemptResponse':
+        """
+        [Output only] Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it's still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the "error" field only.
+        """
+        return pulumi.get(self, "last_attempt")
+
+
+@pulumi.output_type
+class InstanceGroupManagerStatusAllInstancesConfigResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "currentRevision":
+            suggest = "current_revision"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerStatusAllInstancesConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerStatusAllInstancesConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerStatusAllInstancesConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 current_revision: str,
+                 effective: bool):
+        """
+        :param str current_revision: Current all-instances configuration revision. This value is in RFC3339 text format.
+        :param bool effective: A bit indicating whether this configuration has been applied to all managed instances in the group.
+        """
+        pulumi.set(__self__, "current_revision", current_revision)
+        pulumi.set(__self__, "effective", effective)
+
+    @property
+    @pulumi.getter(name="currentRevision")
+    def current_revision(self) -> str:
+        """
+        Current all-instances configuration revision. This value is in RFC3339 text format.
+        """
+        return pulumi.get(self, "current_revision")
+
+    @property
+    @pulumi.getter
+    def effective(self) -> bool:
+        """
+        A bit indicating whether this configuration has been applied to all managed instances in the group.
+        """
+        return pulumi.get(self, "effective")
+
+
+@pulumi.output_type
 class InstanceGroupManagerStatusResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "isStable":
+        if key == "allInstancesConfig":
+            suggest = "all_instances_config"
+        elif key == "isStable":
             suggest = "is_stable"
         elif key == "versionTarget":
             suggest = "version_target"
@@ -7144,20 +7917,31 @@ class InstanceGroupManagerStatusResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 all_instances_config: 'outputs.InstanceGroupManagerStatusAllInstancesConfigResponse',
                  autoscaler: str,
                  is_stable: bool,
                  stateful: 'outputs.InstanceGroupManagerStatusStatefulResponse',
                  version_target: 'outputs.InstanceGroupManagerStatusVersionTargetResponse'):
         """
+        :param 'InstanceGroupManagerStatusAllInstancesConfigResponse' all_instances_config: [Output only] Status of all-instances configuration on the group.
         :param str autoscaler: The URL of the Autoscaler that targets this instance group manager.
         :param bool is_stable: A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
         :param 'InstanceGroupManagerStatusStatefulResponse' stateful: Stateful status of the given Instance Group Manager.
         :param 'InstanceGroupManagerStatusVersionTargetResponse' version_target: A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
         """
+        pulumi.set(__self__, "all_instances_config", all_instances_config)
         pulumi.set(__self__, "autoscaler", autoscaler)
         pulumi.set(__self__, "is_stable", is_stable)
         pulumi.set(__self__, "stateful", stateful)
         pulumi.set(__self__, "version_target", version_target)
+
+    @property
+    @pulumi.getter(name="allInstancesConfig")
+    def all_instances_config(self) -> 'outputs.InstanceGroupManagerStatusAllInstancesConfigResponse':
+        """
+        [Output only] Status of all-instances configuration on the group.
+        """
+        return pulumi.get(self, "all_instances_config")
 
     @property
     @pulumi.getter
@@ -7253,7 +8037,7 @@ class InstanceGroupManagerStatusStatefulResponse(dict):
                  per_instance_configs: 'outputs.InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse'):
         """
         :param bool has_stateful_config: A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
-        :param 'InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse' per_instance_configs: Status of per-instance configurations on the instance.
+        :param 'InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse' per_instance_configs: Status of per-instance configurations on the instances.
         """
         pulumi.set(__self__, "has_stateful_config", has_stateful_config)
         pulumi.set(__self__, "per_instance_configs", per_instance_configs)
@@ -7270,7 +8054,7 @@ class InstanceGroupManagerStatusStatefulResponse(dict):
     @pulumi.getter(name="perInstanceConfigs")
     def per_instance_configs(self) -> 'outputs.InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse':
         """
-        Status of per-instance configurations on the instance.
+        Status of per-instance configurations on the instances.
         """
         return pulumi.get(self, "per_instance_configs")
 
@@ -7517,6 +8301,39 @@ class InstanceParamsResponse(dict):
         Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
         """
         return pulumi.get(self, "resource_manager_tags")
+
+
+@pulumi.output_type
+class InstancePropertiesPatchResponse(dict):
+    """
+    Represents the change that you want to make to the instance properties.
+    """
+    def __init__(__self__, *,
+                 labels: Mapping[str, str],
+                 metadata: Mapping[str, str]):
+        """
+        Represents the change that you want to make to the instance properties.
+        :param Mapping[str, str] labels: The label key-value pairs that you want to patch onto the instance.
+        :param Mapping[str, str] metadata: The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata.
+        """
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        The label key-value pairs that you want to patch onto the instance.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, str]:
+        """
+        The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata.
+        """
+        return pulumi.get(self, "metadata")
 
 
 @pulumi.output_type
@@ -7800,6 +8617,41 @@ class InstancePropertiesResponse(dict):
         A list of tags to apply to the instances that are created from these properties. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035.
         """
         return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class InstantSnapshotResourceStatusResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "storageSizeBytes":
+            suggest = "storage_size_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstantSnapshotResourceStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstantSnapshotResourceStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstantSnapshotResourceStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 storage_size_bytes: str):
+        """
+        :param str storage_size_bytes: The storage size of this instant snapshot.
+        """
+        pulumi.set(__self__, "storage_size_bytes", storage_size_bytes)
+
+    @property
+    @pulumi.getter(name="storageSizeBytes")
+    def storage_size_bytes(self) -> str:
+        """
+        The storage size of this instant snapshot.
+        """
+        return pulumi.get(self, "storage_size_bytes")
 
 
 @pulumi.output_type
@@ -8468,6 +9320,39 @@ class LocalDiskResponse(dict):
 
 
 @pulumi.output_type
+class LocalizedMessageResponse(dict):
+    """
+    Provides a localized error message that is safe to return to the user which can be attached to an RPC error.
+    """
+    def __init__(__self__, *,
+                 locale: str,
+                 message: str):
+        """
+        Provides a localized error message that is safe to return to the user which can be attached to an RPC error.
+        :param str locale: The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+        :param str message: The localized error message in the above locale.
+        """
+        pulumi.set(__self__, "locale", locale)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def locale(self) -> str:
+        """
+        The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+        """
+        return pulumi.get(self, "locale")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        The localized error message in the above locale.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
 class LogConfigCloudAuditOptionsResponse(dict):
     """
     This is deprecated and has no effect. Do not use.
@@ -9051,9 +9936,9 @@ class NetworkEndpointGroupAppEngineResponse(dict):
                  version: str):
         """
         Configuration for an App Engine network endpoint group (NEG). The service is optional, may be provided explicitly or in the URL mask. The version is optional and can only be provided explicitly or in the URL mask when service is present. Note: App Engine service must be in the same project and located in the same region as the Serverless NEG.
-        :param str service: Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: "default", "my-service".
-        :param str url_mask: A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "<service>-dot-appname.appspot.com/<version>". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
-        :param str version: Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: "v1", "v2".
+        :param str service: Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: default, my-service.
+        :param str url_mask: An URL mask is one of the main components of the Cloud Function. A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs foo1-dot-appname.appspot.com/v1 and foo1-dot-appname.appspot.com/v2 can be backed by the same Serverless NEG with URL mask <service>-dot-appname.appspot.com/<version>. The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+        :param str version: Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: v1, v2.
         """
         pulumi.set(__self__, "service", service)
         pulumi.set(__self__, "url_mask", url_mask)
@@ -9063,7 +9948,7 @@ class NetworkEndpointGroupAppEngineResponse(dict):
     @pulumi.getter
     def service(self) -> str:
         """
-        Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: "default", "my-service".
+        Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: default, my-service.
         """
         return pulumi.get(self, "service")
 
@@ -9071,7 +9956,7 @@ class NetworkEndpointGroupAppEngineResponse(dict):
     @pulumi.getter(name="urlMask")
     def url_mask(self) -> str:
         """
-        A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs "foo1-dot-appname.appspot.com/v1" and "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with URL mask "<service>-dot-appname.appspot.com/<version>". The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+        An URL mask is one of the main components of the Cloud Function. A template to parse service and version fields from a request URL. URL mask allows for routing to multiple App Engine services without having to create multiple Network Endpoint Groups and backend services. For example, the request URLs foo1-dot-appname.appspot.com/v1 and foo1-dot-appname.appspot.com/v2 can be backed by the same Serverless NEG with URL mask <service>-dot-appname.appspot.com/<version>. The URL mask will parse them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
         """
         return pulumi.get(self, "url_mask")
 
@@ -9079,7 +9964,7 @@ class NetworkEndpointGroupAppEngineResponse(dict):
     @pulumi.getter
     def version(self) -> str:
         """
-        Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: "v1", "v2".
+        Optional serving version. The version name is case-sensitive and must be 1-100 characters long. Example value: v1, v2.
         """
         return pulumi.get(self, "version")
 
@@ -9111,8 +9996,8 @@ class NetworkEndpointGroupCloudFunctionResponse(dict):
                  url_mask: str):
         """
         Configuration for a Cloud Function network endpoint group (NEG). The function must be provided explicitly or in the URL mask. Note: Cloud Function must be in the same project and located in the same region as the Serverless NEG.
-        :param str function: A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: "func1".
-        :param str url_mask: A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/<function>". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
+        :param str function: A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: func1.
+        :param str url_mask: An URL mask is one of the main components of the Cloud Function. A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs mydomain.com/function1 and mydomain.com/function2 can be backed by the same Serverless NEG with URL mask /<function>. The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
         """
         pulumi.set(__self__, "function", function)
         pulumi.set(__self__, "url_mask", url_mask)
@@ -9121,7 +10006,7 @@ class NetworkEndpointGroupCloudFunctionResponse(dict):
     @pulumi.getter
     def function(self) -> str:
         """
-        A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: "func1".
+        A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: func1.
         """
         return pulumi.get(self, "function")
 
@@ -9129,7 +10014,7 @@ class NetworkEndpointGroupCloudFunctionResponse(dict):
     @pulumi.getter(name="urlMask")
     def url_mask(self) -> str:
         """
-        A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs " mydomain.com/function1" and "mydomain.com/function2" can be backed by the same Serverless NEG with URL mask "/<function>". The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
+        An URL mask is one of the main components of the Cloud Function. A template to parse function field from a request URL. URL mask allows for routing to multiple Cloud Functions without having to create multiple Network Endpoint Groups and backend services. For example, request URLs mydomain.com/function1 and mydomain.com/function2 can be backed by the same Serverless NEG with URL mask /<function>. The URL mask will parse them to { function = "function1" } and { function = "function2" } respectively.
         """
         return pulumi.get(self, "url_mask")
 
@@ -9164,7 +10049,7 @@ class NetworkEndpointGroupCloudRunResponse(dict):
         Configuration for a Cloud Run network endpoint group (NEG). The service must be provided explicitly or in the URL mask. The tag is optional, may be provided explicitly or in the URL mask. Note: Cloud Run service must be in the same project and located in the same region as the Serverless NEG.
         :param str service: Cloud Run service is the main resource of Cloud Run. The service must be 1-63 characters long, and comply with RFC1035. Example value: "run-service".
         :param str tag: Optional Cloud Run tag represents the "named-revision" to provide additional fine-grained traffic routing information. The tag must be 1-63 characters long, and comply with RFC1035. Example value: "revision-0010".
-        :param str url_mask: A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<service>". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
+        :param str url_mask: An URL mask is one of the main components of the Cloud Function. A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs foo1.domain.com/bar1 and foo1.domain.com/bar2 can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask <tag>.domain.com/<service>. The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
         """
         pulumi.set(__self__, "service", service)
         pulumi.set(__self__, "tag", tag)
@@ -9190,7 +10075,7 @@ class NetworkEndpointGroupCloudRunResponse(dict):
     @pulumi.getter(name="urlMask")
     def url_mask(self) -> str:
         """
-        A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<service>". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
+        An URL mask is one of the main components of the Cloud Function. A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs foo1.domain.com/bar1 and foo1.domain.com/bar2 can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask <tag>.domain.com/<service>. The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
         """
         return pulumi.get(self, "url_mask")
 
@@ -10162,9 +11047,9 @@ class PacketMirroringFilterResponse(dict):
                  direction: str,
                  ip_protocols: Sequence[str]):
         """
-        :param Sequence[str] cidr_ranges: IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+        :param Sequence[str] cidr_ranges: One or more IPv4 or IPv6 CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. If no ranges are specified, all IPv4 traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored. To mirror all IPv4 and IPv6 traffic, use "0.0.0.0/0,::/0". Note: Support for IPv6 traffic is in preview.
         :param str direction: Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
-        :param Sequence[str] ip_protocols: Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+        :param Sequence[str] ip_protocols: Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored.
         """
         pulumi.set(__self__, "cidr_ranges", cidr_ranges)
         pulumi.set(__self__, "direction", direction)
@@ -10174,7 +11059,7 @@ class PacketMirroringFilterResponse(dict):
     @pulumi.getter(name="cidrRanges")
     def cidr_ranges(self) -> Sequence[str]:
         """
-        IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+        One or more IPv4 or IPv6 CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. If no ranges are specified, all IPv4 traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored. To mirror all IPv4 and IPv6 traffic, use "0.0.0.0/0,::/0". Note: Support for IPv6 traffic is in preview.
         """
         return pulumi.get(self, "cidr_ranges")
 
@@ -10190,7 +11075,7 @@ class PacketMirroringFilterResponse(dict):
     @pulumi.getter(name="ipProtocols")
     def ip_protocols(self) -> Sequence[str]:
         """
-        Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+        Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored.
         """
         return pulumi.get(self, "ip_protocols")
 
@@ -10812,6 +11697,106 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixResponse(dict):
 
 
 @pulumi.output_type
+class QuotaExceededInfoResponse(dict):
+    """
+    Additional details for quota exceeded error for resource quota.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "futureLimit":
+            suggest = "future_limit"
+        elif key == "limitName":
+            suggest = "limit_name"
+        elif key == "metricName":
+            suggest = "metric_name"
+        elif key == "rolloutStatus":
+            suggest = "rollout_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QuotaExceededInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QuotaExceededInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QuotaExceededInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dimensions: Mapping[str, str],
+                 future_limit: float,
+                 limit: float,
+                 limit_name: str,
+                 metric_name: str,
+                 rollout_status: str):
+        """
+        Additional details for quota exceeded error for resource quota.
+        :param Mapping[str, str] dimensions: The map holding related quota dimensions.
+        :param float future_limit: Future quota limit being rolled out. The limit's unit depends on the quota type or metric.
+        :param float limit: Current effective quota limit. The limit's unit depends on the quota type or metric.
+        :param str limit_name: The name of the quota limit.
+        :param str metric_name: The Compute Engine quota metric name.
+        :param str rollout_status: Rollout status of the future quota limit.
+        """
+        pulumi.set(__self__, "dimensions", dimensions)
+        pulumi.set(__self__, "future_limit", future_limit)
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "limit_name", limit_name)
+        pulumi.set(__self__, "metric_name", metric_name)
+        pulumi.set(__self__, "rollout_status", rollout_status)
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Mapping[str, str]:
+        """
+        The map holding related quota dimensions.
+        """
+        return pulumi.get(self, "dimensions")
+
+    @property
+    @pulumi.getter(name="futureLimit")
+    def future_limit(self) -> float:
+        """
+        Future quota limit being rolled out. The limit's unit depends on the quota type or metric.
+        """
+        return pulumi.get(self, "future_limit")
+
+    @property
+    @pulumi.getter
+    def limit(self) -> float:
+        """
+        Current effective quota limit. The limit's unit depends on the quota type or metric.
+        """
+        return pulumi.get(self, "limit")
+
+    @property
+    @pulumi.getter(name="limitName")
+    def limit_name(self) -> str:
+        """
+        The name of the quota limit.
+        """
+        return pulumi.get(self, "limit_name")
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> str:
+        """
+        The Compute Engine quota metric name.
+        """
+        return pulumi.get(self, "metric_name")
+
+    @property
+    @pulumi.getter(name="rolloutStatus")
+    def rollout_status(self) -> str:
+        """
+        Rollout status of the future quota limit.
+        """
+        return pulumi.get(self, "rollout_status")
+
+
+@pulumi.output_type
 class RegionSslPolicyWarningsItemDataItemResponse(dict):
     def __init__(__self__, *,
                  key: str,
@@ -10988,7 +11973,9 @@ class ReservationResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "creationTimestamp":
+        if key == "aggregateReservation":
+            suggest = "aggregate_reservation"
+        elif key == "creationTimestamp":
             suggest = "creation_timestamp"
         elif key == "resourcePolicies":
             suggest = "resource_policies"
@@ -11017,6 +12004,7 @@ class ReservationResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 aggregate_reservation: 'outputs.AllocationAggregateReservationResponse',
                  commitment: str,
                  creation_timestamp: str,
                  description: str,
@@ -11033,6 +12021,7 @@ class ReservationResponse(dict):
                  zone: str):
         """
         Represents a reservation resource. A reservation ensures that capacity is held in a specific zone even if the reserved VMs are not running. For more information, read Reserving zonal resources.
+        :param 'AllocationAggregateReservationResponse' aggregate_reservation: Reservation for aggregated resources, providing shape flexibility.
         :param str commitment: Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
         :param str creation_timestamp: Creation timestamp in RFC3339 text format.
         :param str description: An optional description of this resource. Provide this property when you create the resource.
@@ -11048,6 +12037,7 @@ class ReservationResponse(dict):
         :param str status: The status of the reservation.
         :param str zone: Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
         """
+        pulumi.set(__self__, "aggregate_reservation", aggregate_reservation)
         pulumi.set(__self__, "commitment", commitment)
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         pulumi.set(__self__, "description", description)
@@ -11062,6 +12052,14 @@ class ReservationResponse(dict):
         pulumi.set(__self__, "specific_reservation_required", specific_reservation_required)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="aggregateReservation")
+    def aggregate_reservation(self) -> 'outputs.AllocationAggregateReservationResponse':
+        """
+        Reservation for aggregated resources, providing shape flexibility.
+        """
+        return pulumi.get(self, "aggregate_reservation")
 
     @property
     @pulumi.getter
@@ -13417,7 +14415,7 @@ class SSLHealthCheckResponse(dict):
         """
         :param int port: The TCP port number to which the health check prober sends packets. The default value is 443. Valid values are 1 through 65535.
         :param str port_name: Not supported.
-        :param str port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        :param str port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         :param str request: Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection and SSL handshake.
         :param str response: Creates a content-based SSL health check. In addition to establishing a TCP connection and the TLS handshake, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
@@ -13449,7 +14447,7 @@ class SSLHealthCheckResponse(dict):
     @pulumi.getter(name="portSpecification")
     def port_specification(self) -> str:
         """
-        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         """
         return pulumi.get(self, "port_specification")
 
@@ -14423,6 +15421,89 @@ class SecurityPolicyRuleMatcherConfigResponse(dict):
 
 
 @pulumi.output_type
+class SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionTokenSiteKeys":
+            suggest = "action_token_site_keys"
+        elif key == "sessionTokenSiteKeys":
+            suggest = "session_token_site_keys"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action_token_site_keys: Sequence[str],
+                 session_token_site_keys: Sequence[str]):
+        """
+        :param Sequence[str] action_token_site_keys: A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+        :param Sequence[str] session_token_site_keys: A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+        """
+        pulumi.set(__self__, "action_token_site_keys", action_token_site_keys)
+        pulumi.set(__self__, "session_token_site_keys", session_token_site_keys)
+
+    @property
+    @pulumi.getter(name="actionTokenSiteKeys")
+    def action_token_site_keys(self) -> Sequence[str]:
+        """
+        A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+        """
+        return pulumi.get(self, "action_token_site_keys")
+
+    @property
+    @pulumi.getter(name="sessionTokenSiteKeys")
+    def session_token_site_keys(self) -> Sequence[str]:
+        """
+        A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+        """
+        return pulumi.get(self, "session_token_site_keys")
+
+
+@pulumi.output_type
+class SecurityPolicyRuleMatcherExprOptionsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "recaptchaOptions":
+            suggest = "recaptcha_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityPolicyRuleMatcherExprOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityPolicyRuleMatcherExprOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityPolicyRuleMatcherExprOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 recaptcha_options: 'outputs.SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse'):
+        """
+        :param 'SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse' recaptcha_options: reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
+        """
+        pulumi.set(__self__, "recaptcha_options", recaptcha_options)
+
+    @property
+    @pulumi.getter(name="recaptchaOptions")
+    def recaptcha_options(self) -> 'outputs.SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse':
+        """
+        reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.
+        """
+        return pulumi.get(self, "recaptcha_options")
+
+
+@pulumi.output_type
 class SecurityPolicyRuleMatcherResponse(dict):
     """
     Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
@@ -14430,7 +15511,9 @@ class SecurityPolicyRuleMatcherResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "versionedExpr":
+        if key == "exprOptions":
+            suggest = "expr_options"
+        elif key == "versionedExpr":
             suggest = "versioned_expr"
 
         if suggest:
@@ -14447,15 +15530,18 @@ class SecurityPolicyRuleMatcherResponse(dict):
     def __init__(__self__, *,
                  config: 'outputs.SecurityPolicyRuleMatcherConfigResponse',
                  expr: 'outputs.ExprResponse',
+                 expr_options: 'outputs.SecurityPolicyRuleMatcherExprOptionsResponse',
                  versioned_expr: str):
         """
         Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
         :param 'SecurityPolicyRuleMatcherConfigResponse' config: The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
         :param 'ExprResponse' expr: User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
+        :param 'SecurityPolicyRuleMatcherExprOptionsResponse' expr_options: The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
         :param str versioned_expr: Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
         """
         pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "expr", expr)
+        pulumi.set(__self__, "expr_options", expr_options)
         pulumi.set(__self__, "versioned_expr", versioned_expr)
 
     @property
@@ -14473,6 +15559,14 @@ class SecurityPolicyRuleMatcherResponse(dict):
         User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
         """
         return pulumi.get(self, "expr")
+
+    @property
+    @pulumi.getter(name="exprOptions")
+    def expr_options(self) -> 'outputs.SecurityPolicyRuleMatcherExprOptionsResponse':
+        """
+        The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+        """
+        return pulumi.get(self, "expr_options")
 
     @property
     @pulumi.getter(name="versionedExpr")
@@ -14815,7 +15909,7 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse(dict):
                  enforce_on_key_type: str):
         """
         :param str enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-        :param str enforce_on_key_type: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+        :param str enforce_on_key_type: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. 
         """
         pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
         pulumi.set(__self__, "enforce_on_key_type", enforce_on_key_type)
@@ -14832,7 +15926,7 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse(dict):
     @pulumi.getter(name="enforceOnKeyType")
     def enforce_on_key_type(self) -> str:
         """
-        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. 
         """
         return pulumi.get(self, "enforce_on_key_type")
 
@@ -14886,7 +15980,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
         :param int ban_duration_sec: Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
         :param 'SecurityPolicyRuleRateLimitOptionsThresholdResponse' ban_threshold: Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
         :param str conform_action: Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
-        :param str enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+        :param str enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. 
         :param Sequence['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse'] enforce_on_key_configs: If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
         :param str enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
         :param str exceed_action: Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
@@ -14931,7 +16025,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
     @pulumi.getter(name="enforceOnKey")
     def enforce_on_key(self) -> str:
         """
-        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. 
         """
         return pulumi.get(self, "enforce_on_key")
 
@@ -16227,6 +17321,162 @@ class StatefulPolicyResponse(dict):
 
 
 @pulumi.output_type
+class StoragePoolResourceStatusResponse(dict):
+    """
+    [Output Only] Contains output only fields.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskCount":
+            suggest = "disk_count"
+        elif key == "lastResizeTimestamp":
+            suggest = "last_resize_timestamp"
+        elif key == "maxTotalProvisionedDiskCapacityGb":
+            suggest = "max_total_provisioned_disk_capacity_gb"
+        elif key == "poolUsedCapacityBytes":
+            suggest = "pool_used_capacity_bytes"
+        elif key == "poolUsedIops":
+            suggest = "pool_used_iops"
+        elif key == "poolUsedThroughput":
+            suggest = "pool_used_throughput"
+        elif key == "poolUserWrittenBytes":
+            suggest = "pool_user_written_bytes"
+        elif key == "totalProvisionedDiskCapacityGb":
+            suggest = "total_provisioned_disk_capacity_gb"
+        elif key == "totalProvisionedDiskIops":
+            suggest = "total_provisioned_disk_iops"
+        elif key == "totalProvisionedDiskThroughput":
+            suggest = "total_provisioned_disk_throughput"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StoragePoolResourceStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StoragePoolResourceStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StoragePoolResourceStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_count: str,
+                 last_resize_timestamp: str,
+                 max_total_provisioned_disk_capacity_gb: str,
+                 pool_used_capacity_bytes: str,
+                 pool_used_iops: str,
+                 pool_used_throughput: str,
+                 pool_user_written_bytes: str,
+                 total_provisioned_disk_capacity_gb: str,
+                 total_provisioned_disk_iops: str,
+                 total_provisioned_disk_throughput: str):
+        """
+        [Output Only] Contains output only fields.
+        :param str disk_count: Number of disks used.
+        :param str last_resize_timestamp: Timestamp of the last successful resize in RFC3339 text format.
+        :param str max_total_provisioned_disk_capacity_gb: Maximum allowed aggregate disk size in gigabytes.
+        :param str pool_used_capacity_bytes: Space used by data stored in disks within the storage pool (in bytes). This will reflect the total number of bytes written to the disks in the pool, in contrast to the capacity of those disks.
+        :param str pool_used_iops: Sum of all the disks' provisioned IOPS, minus some amount that is allowed per disk that is not counted towards pool's IOPS capacity.
+        :param str pool_used_throughput: Sum of all the disks' provisioned throughput in MB/s.
+        :param str pool_user_written_bytes: Amount of data written into the pool, before it is compacted.
+        :param str total_provisioned_disk_capacity_gb: Sum of all the capacity provisioned in disks in this storage pool. A disk's provisioned capacity is the same as its total capacity.
+        :param str total_provisioned_disk_iops: Sum of all the disks' provisioned IOPS.
+        :param str total_provisioned_disk_throughput: Sum of all the disks' provisioned throughput in MB/s, minus some amount that is allowed per disk that is not counted towards pool's throughput capacity.
+        """
+        pulumi.set(__self__, "disk_count", disk_count)
+        pulumi.set(__self__, "last_resize_timestamp", last_resize_timestamp)
+        pulumi.set(__self__, "max_total_provisioned_disk_capacity_gb", max_total_provisioned_disk_capacity_gb)
+        pulumi.set(__self__, "pool_used_capacity_bytes", pool_used_capacity_bytes)
+        pulumi.set(__self__, "pool_used_iops", pool_used_iops)
+        pulumi.set(__self__, "pool_used_throughput", pool_used_throughput)
+        pulumi.set(__self__, "pool_user_written_bytes", pool_user_written_bytes)
+        pulumi.set(__self__, "total_provisioned_disk_capacity_gb", total_provisioned_disk_capacity_gb)
+        pulumi.set(__self__, "total_provisioned_disk_iops", total_provisioned_disk_iops)
+        pulumi.set(__self__, "total_provisioned_disk_throughput", total_provisioned_disk_throughput)
+
+    @property
+    @pulumi.getter(name="diskCount")
+    def disk_count(self) -> str:
+        """
+        Number of disks used.
+        """
+        return pulumi.get(self, "disk_count")
+
+    @property
+    @pulumi.getter(name="lastResizeTimestamp")
+    def last_resize_timestamp(self) -> str:
+        """
+        Timestamp of the last successful resize in RFC3339 text format.
+        """
+        return pulumi.get(self, "last_resize_timestamp")
+
+    @property
+    @pulumi.getter(name="maxTotalProvisionedDiskCapacityGb")
+    def max_total_provisioned_disk_capacity_gb(self) -> str:
+        """
+        Maximum allowed aggregate disk size in gigabytes.
+        """
+        return pulumi.get(self, "max_total_provisioned_disk_capacity_gb")
+
+    @property
+    @pulumi.getter(name="poolUsedCapacityBytes")
+    def pool_used_capacity_bytes(self) -> str:
+        """
+        Space used by data stored in disks within the storage pool (in bytes). This will reflect the total number of bytes written to the disks in the pool, in contrast to the capacity of those disks.
+        """
+        return pulumi.get(self, "pool_used_capacity_bytes")
+
+    @property
+    @pulumi.getter(name="poolUsedIops")
+    def pool_used_iops(self) -> str:
+        """
+        Sum of all the disks' provisioned IOPS, minus some amount that is allowed per disk that is not counted towards pool's IOPS capacity.
+        """
+        return pulumi.get(self, "pool_used_iops")
+
+    @property
+    @pulumi.getter(name="poolUsedThroughput")
+    def pool_used_throughput(self) -> str:
+        """
+        Sum of all the disks' provisioned throughput in MB/s.
+        """
+        return pulumi.get(self, "pool_used_throughput")
+
+    @property
+    @pulumi.getter(name="poolUserWrittenBytes")
+    def pool_user_written_bytes(self) -> str:
+        """
+        Amount of data written into the pool, before it is compacted.
+        """
+        return pulumi.get(self, "pool_user_written_bytes")
+
+    @property
+    @pulumi.getter(name="totalProvisionedDiskCapacityGb")
+    def total_provisioned_disk_capacity_gb(self) -> str:
+        """
+        Sum of all the capacity provisioned in disks in this storage pool. A disk's provisioned capacity is the same as its total capacity.
+        """
+        return pulumi.get(self, "total_provisioned_disk_capacity_gb")
+
+    @property
+    @pulumi.getter(name="totalProvisionedDiskIops")
+    def total_provisioned_disk_iops(self) -> str:
+        """
+        Sum of all the disks' provisioned IOPS.
+        """
+        return pulumi.get(self, "total_provisioned_disk_iops")
+
+    @property
+    @pulumi.getter(name="totalProvisionedDiskThroughput")
+    def total_provisioned_disk_throughput(self) -> str:
+        """
+        Sum of all the disks' provisioned throughput in MB/s, minus some amount that is allowed per disk that is not counted towards pool's throughput capacity.
+        """
+        return pulumi.get(self, "total_provisioned_disk_throughput")
+
+
+@pulumi.output_type
 class SubnetworkLogConfigResponse(dict):
     """
     The available logging options for this subnetwork.
@@ -16338,6 +17588,8 @@ class SubnetworkSecondaryRangeResponse(dict):
             suggest = "ip_cidr_range"
         elif key == "rangeName":
             suggest = "range_name"
+        elif key == "reservedInternalRange":
+            suggest = "reserved_internal_range"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SubnetworkSecondaryRangeResponse. Access the value via the '{suggest}' property getter instead.")
@@ -16352,14 +17604,17 @@ class SubnetworkSecondaryRangeResponse(dict):
 
     def __init__(__self__, *,
                  ip_cidr_range: str,
-                 range_name: str):
+                 range_name: str,
+                 reserved_internal_range: str):
         """
         Represents a secondary IP range of a subnetwork.
         :param str ip_cidr_range: The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. The range can be any range listed in the Valid ranges list.
         :param str range_name: The name associated with this subnetwork secondary range, used when adding an alias IP range to a VM instance. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the subnetwork.
+        :param str reserved_internal_range: The URL of the reserved internal range.
         """
         pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         pulumi.set(__self__, "range_name", range_name)
+        pulumi.set(__self__, "reserved_internal_range", reserved_internal_range)
 
     @property
     @pulumi.getter(name="ipCidrRange")
@@ -16376,6 +17631,14 @@ class SubnetworkSecondaryRangeResponse(dict):
         The name associated with this subnetwork secondary range, used when adding an alias IP range to a VM instance. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the subnetwork.
         """
         return pulumi.get(self, "range_name")
+
+    @property
+    @pulumi.getter(name="reservedInternalRange")
+    def reserved_internal_range(self) -> str:
+        """
+        The URL of the reserved internal range.
+        """
+        return pulumi.get(self, "reserved_internal_range")
 
 
 @pulumi.output_type
@@ -16429,7 +17692,7 @@ class TCPHealthCheckResponse(dict):
         """
         :param int port: The TCP port number to which the health check prober sends packets. The default value is 80. Valid values are 1 through 65535.
         :param str port_name: Not supported.
-        :param str port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        :param str port_specification: Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         :param str proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         :param str request: Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
         :param str response: Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
@@ -16461,7 +17724,7 @@ class TCPHealthCheckResponse(dict):
     @pulumi.getter(name="portSpecification")
     def port_specification(self) -> str:
         """
-        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+        Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
         """
         return pulumi.get(self, "port_specification")
 
@@ -16857,6 +18120,8 @@ class VpnGatewayVpnGatewayInterfaceResponse(dict):
             suggest = "interconnect_attachment"
         elif key == "ipAddress":
             suggest = "ip_address"
+        elif key == "ipv6Address":
+            suggest = "ipv6_address"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in VpnGatewayVpnGatewayInterfaceResponse. Access the value via the '{suggest}' property getter instead.")
@@ -16871,14 +18136,17 @@ class VpnGatewayVpnGatewayInterfaceResponse(dict):
 
     def __init__(__self__, *,
                  interconnect_attachment: str,
-                 ip_address: str):
+                 ip_address: str,
+                 ipv6_address: str):
         """
         A VPN gateway interface.
         :param str interconnect_attachment: URL of the VLAN attachment (interconnectAttachment) resource for this VPN gateway interface. When the value of this field is present, the VPN gateway is used for HA VPN over Cloud Interconnect; all egress or ingress traffic for this VPN gateway interface goes through the specified VLAN attachment resource.
         :param str ip_address: IP address for this VPN interface associated with the VPN gateway. The IP address could be either a regional external IP address or a regional internal IP address. The two IP addresses for a VPN gateway must be all regional external or regional internal IP addresses. There cannot be a mix of regional external IP addresses and regional internal IP addresses. For HA VPN over Cloud Interconnect, the IP addresses for both interfaces could either be regional internal IP addresses or regional external IP addresses. For regular (non HA VPN over Cloud Interconnect) HA VPN tunnels, the IP address must be a regional external IP address.
+        :param str ipv6_address: IPv6 address for this VPN interface associated with the VPN gateway. The IPv6 address must be a regional external IPv6 address. The format is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
         """
         pulumi.set(__self__, "interconnect_attachment", interconnect_attachment)
         pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "ipv6_address", ipv6_address)
 
     @property
     @pulumi.getter(name="interconnectAttachment")
@@ -16895,6 +18163,14 @@ class VpnGatewayVpnGatewayInterfaceResponse(dict):
         IP address for this VPN interface associated with the VPN gateway. The IP address could be either a regional external IP address or a regional internal IP address. The two IP addresses for a VPN gateway must be all regional external or regional internal IP addresses. There cannot be a mix of regional external IP addresses and regional internal IP addresses. For HA VPN over Cloud Interconnect, the IP addresses for both interfaces could either be regional internal IP addresses or regional external IP addresses. For regular (non HA VPN over Cloud Interconnect) HA VPN tunnels, the IP address must be a regional external IP address.
         """
         return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> str:
+        """
+        IPv6 address for this VPN interface associated with the VPN gateway. The IPv6 address must be a regional external IPv6 address. The format is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+        """
+        return pulumi.get(self, "ipv6_address")
 
 
 @pulumi.output_type

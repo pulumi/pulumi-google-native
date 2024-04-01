@@ -10,19 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// A job reference is a fully qualified identifier for referring to a job.
+    /// </summary>
     [OutputType]
     public sealed class JobReferenceResponse
     {
         /// <summary>
-        /// [Required] The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
+        /// The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         /// </summary>
         public readonly string JobId;
         /// <summary>
-        /// The geographic location of the job. See details at https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
+        /// Optional. The geographic location of the job. The default value is US. For more information about BigQuery locations, see: https://cloud.google.com/bigquery/docs/locations
         /// </summary>
         public readonly string Location;
         /// <summary>
-        /// [Required] The ID of the project containing this job.
+        /// The ID of the project containing this job.
         /// </summary>
         public readonly string Project;
 

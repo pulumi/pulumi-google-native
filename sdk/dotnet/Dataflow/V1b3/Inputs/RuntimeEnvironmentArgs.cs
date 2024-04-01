@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
 {
 
     /// <summary>
-    /// The environment values to set at runtime.
+    /// The environment values to set at runtime. LINT.IfChange
     /// </summary>
     public sealed class RuntimeEnvironmentArgs : global::Pulumi.ResourceArgs
     {
@@ -98,6 +98,12 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         /// </summary>
         [Input("serviceAccountEmail")]
         public Input<string>? ServiceAccountEmail { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more information, see [Set the pipeline streaming mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
+        /// </summary>
+        [Input("streamingMode")]
+        public Input<Pulumi.GoogleNative.Dataflow.V1b3.RuntimeEnvironmentStreamingMode>? StreamingMode { get; set; }
 
         /// <summary>
         /// Optional. Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.

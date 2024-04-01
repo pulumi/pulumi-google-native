@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         public Output<string> DeleteTime { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+        /// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections through a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain TCP connections, such as SSH. When enabled, all communication must occur over HTTPS or WSS.
         /// </summary>
         [Output("disableTcpConnections")]
         public Output<bool> DisableTcpConnections { get; private set; } = null!;
@@ -239,7 +239,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         public Input<Inputs.ContainerArgs>? Container { get; set; }
 
         /// <summary>
-        /// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+        /// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections through a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain TCP connections, such as SSH. When enabled, all communication must occur over HTTPS or WSS.
         /// </summary>
         [Input("disableTcpConnections")]
         public Input<bool>? DisableTcpConnections { get; set; }

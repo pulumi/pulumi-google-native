@@ -12,10 +12,704 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'GoogleCloudOrgpolicyV2AlternatePolicySpecResponse',
+    'GoogleCloudOrgpolicyV2CustomConstraintResponse',
+    'GoogleCloudOrgpolicyV2PolicyResponse',
+    'GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse',
+    'GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse',
+    'GoogleCloudOrgpolicyV2PolicySpecResponse',
+    'GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponse',
+    'GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponse',
+    'GoogleCloudPolicysimulatorV1OrgPolicyOverlayResponse',
+    'GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCountsResponse',
     'GoogleCloudPolicysimulatorV1ReplayConfigResponse',
     'GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponse',
     'GoogleTypeDateResponse',
+    'GoogleTypeExprResponse',
 ]
+
+@pulumi.output_type
+class GoogleCloudOrgpolicyV2AlternatePolicySpecResponse(dict):
+    """
+    Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for dry-run/darklaunch.
+    """
+    def __init__(__self__, *,
+                 launch: str,
+                 spec: 'outputs.GoogleCloudOrgpolicyV2PolicySpecResponse'):
+        """
+        Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for dry-run/darklaunch.
+        :param str launch: Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
+        :param 'GoogleCloudOrgpolicyV2PolicySpecResponse' spec: Specify constraint for configurations of Google Cloud resources.
+        """
+        pulumi.set(__self__, "launch", launch)
+        pulumi.set(__self__, "spec", spec)
+
+    @property
+    @pulumi.getter
+    def launch(self) -> str:
+        """
+        Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
+        """
+        return pulumi.get(self, "launch")
+
+    @property
+    @pulumi.getter
+    def spec(self) -> 'outputs.GoogleCloudOrgpolicyV2PolicySpecResponse':
+        """
+        Specify constraint for configurations of Google Cloud resources.
+        """
+        return pulumi.get(self, "spec")
+
+
+@pulumi.output_type
+class GoogleCloudOrgpolicyV2CustomConstraintResponse(dict):
+    """
+    A custom constraint defined by customers which can *only* be applied to the given resource types and organization. By creating a custom constraint, customers can apply policies of this custom constraint. *Creating a custom constraint itself does NOT apply any policy enforcement*.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionType":
+            suggest = "action_type"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "methodTypes":
+            suggest = "method_types"
+        elif key == "resourceTypes":
+            suggest = "resource_types"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudOrgpolicyV2CustomConstraintResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudOrgpolicyV2CustomConstraintResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudOrgpolicyV2CustomConstraintResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action_type: str,
+                 condition: str,
+                 description: str,
+                 display_name: str,
+                 method_types: Sequence[str],
+                 name: str,
+                 resource_types: Sequence[str],
+                 update_time: str):
+        """
+        A custom constraint defined by customers which can *only* be applied to the given resource types and organization. By creating a custom constraint, customers can apply policies of this custom constraint. *Creating a custom constraint itself does NOT apply any policy enforcement*.
+        :param str action_type: Allow or deny type.
+        :param str condition: Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\\d)+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+        :param str description: Detailed information about this custom policy constraint. The max length of the description is 2000 characters.
+        :param str display_name: One line display name for the UI. The max length of the display_name is 200 characters.
+        :param Sequence[str] method_types: All the operations being applied for this constraint.
+        :param str name: Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/` is not counted.
+        :param Sequence[str] resource_types: Immutable. The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`.
+        :param str update_time: The last time this custom constraint was updated. This represents the last time that the `CreateCustomConstraint` or `UpdateCustomConstraint` RPC was called
+        """
+        pulumi.set(__self__, "action_type", action_type)
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "method_types", method_types)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_types", resource_types)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="actionType")
+    def action_type(self) -> str:
+        """
+        Allow or deny type.
+        """
+        return pulumi.get(self, "action_type")
+
+    @property
+    @pulumi.getter
+    def condition(self) -> str:
+        """
+        Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\\d)+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Detailed information about this custom policy constraint. The max length of the description is 2000 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        One line display name for the UI. The max length of the display_name is 200 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="methodTypes")
+    def method_types(self) -> Sequence[str]:
+        """
+        All the operations being applied for this constraint.
+        """
+        return pulumi.get(self, "method_types")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/` is not counted.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceTypes")
+    def resource_types(self) -> Sequence[str]:
+        """
+        Immutable. The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`.
+        """
+        return pulumi.get(self, "resource_types")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The last time this custom constraint was updated. This represents the last time that the `CreateCustomConstraint` or `UpdateCustomConstraint` RPC was called
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class GoogleCloudOrgpolicyV2PolicyResponse(dict):
+    """
+    Defines an organization policy which is used to specify constraints for configurations of Google Cloud resources.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dryRunSpec":
+            suggest = "dry_run_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudOrgpolicyV2PolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudOrgpolicyV2PolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudOrgpolicyV2PolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alternate: 'outputs.GoogleCloudOrgpolicyV2AlternatePolicySpecResponse',
+                 dry_run_spec: 'outputs.GoogleCloudOrgpolicyV2PolicySpecResponse',
+                 etag: str,
+                 name: str,
+                 spec: 'outputs.GoogleCloudOrgpolicyV2PolicySpecResponse'):
+        """
+        Defines an organization policy which is used to specify constraints for configurations of Google Cloud resources.
+        :param 'GoogleCloudOrgpolicyV2AlternatePolicySpecResponse' alternate: Deprecated.
+        :param 'GoogleCloudOrgpolicyV2PolicySpecResponse' dry_run_spec: Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        :param str etag: Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        :param str name: Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
+        :param 'GoogleCloudOrgpolicyV2PolicySpecResponse' spec: Basic information about the Organization Policy.
+        """
+        pulumi.set(__self__, "alternate", alternate)
+        pulumi.set(__self__, "dry_run_spec", dry_run_spec)
+        pulumi.set(__self__, "etag", etag)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "spec", spec)
+
+    @property
+    @pulumi.getter
+    def alternate(self) -> 'outputs.GoogleCloudOrgpolicyV2AlternatePolicySpecResponse':
+        """
+        Deprecated.
+        """
+        warnings.warn("""Deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""alternate is deprecated: Deprecated.""")
+
+        return pulumi.get(self, "alternate")
+
+    @property
+    @pulumi.getter(name="dryRunSpec")
+    def dry_run_spec(self) -> 'outputs.GoogleCloudOrgpolicyV2PolicySpecResponse':
+        """
+        Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        """
+        return pulumi.get(self, "dry_run_spec")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This 'etag' is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def spec(self) -> 'outputs.GoogleCloudOrgpolicyV2PolicySpecResponse':
+        """
+        Basic information about the Organization Policy.
+        """
+        return pulumi.get(self, "spec")
+
+
+@pulumi.output_type
+class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse(dict):
+    """
+    A rule used to express this policy.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowAll":
+            suggest = "allow_all"
+        elif key == "denyAll":
+            suggest = "deny_all"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_all: bool,
+                 condition: 'outputs.GoogleTypeExprResponse',
+                 deny_all: bool,
+                 enforce: bool,
+                 values: 'outputs.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse'):
+        """
+        A rule used to express this policy.
+        :param bool allow_all: Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
+        :param 'GoogleTypeExprResponse' condition: A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
+        :param bool deny_all: Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
+        :param bool enforce: If `true`, then the policy is enforced. If `false`, then any configuration is acceptable. This field can be set only in policies for boolean constraints.
+        :param 'GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse' values: List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+        """
+        pulumi.set(__self__, "allow_all", allow_all)
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "deny_all", deny_all)
+        pulumi.set(__self__, "enforce", enforce)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="allowAll")
+    def allow_all(self) -> bool:
+        """
+        Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
+        """
+        return pulumi.get(self, "allow_all")
+
+    @property
+    @pulumi.getter
+    def condition(self) -> 'outputs.GoogleTypeExprResponse':
+        """
+        A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter(name="denyAll")
+    def deny_all(self) -> bool:
+        """
+        Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
+        """
+        return pulumi.get(self, "deny_all")
+
+    @property
+    @pulumi.getter
+    def enforce(self) -> bool:
+        """
+        If `true`, then the policy is enforced. If `false`, then any configuration is acceptable. This field can be set only in policies for boolean constraints.
+        """
+        return pulumi.get(self, "enforce")
+
+    @property
+    @pulumi.getter
+    def values(self) -> 'outputs.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse':
+        """
+        List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse(dict):
+    """
+    A message that holds specific allowed and denied values. This message can define specific values and subtrees of the Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - `projects/` (for example, `projects/tokyo-rain-123`) - `folders/` (for example, `folders/1234`) - `organizations/` (for example, `organizations/1234`) The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedValues":
+            suggest = "allowed_values"
+        elif key == "deniedValues":
+            suggest = "denied_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_values: Sequence[str],
+                 denied_values: Sequence[str]):
+        """
+        A message that holds specific allowed and denied values. This message can define specific values and subtrees of the Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - `projects/` (for example, `projects/tokyo-rain-123`) - `folders/` (for example, `folders/1234`) - `organizations/` (for example, `organizations/1234`) The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used.
+        :param Sequence[str] allowed_values: List of values allowed at this resource.
+        :param Sequence[str] denied_values: List of values denied at this resource.
+        """
+        pulumi.set(__self__, "allowed_values", allowed_values)
+        pulumi.set(__self__, "denied_values", denied_values)
+
+    @property
+    @pulumi.getter(name="allowedValues")
+    def allowed_values(self) -> Sequence[str]:
+        """
+        List of values allowed at this resource.
+        """
+        return pulumi.get(self, "allowed_values")
+
+    @property
+    @pulumi.getter(name="deniedValues")
+    def denied_values(self) -> Sequence[str]:
+        """
+        List of values denied at this resource.
+        """
+        return pulumi.get(self, "denied_values")
+
+
+@pulumi.output_type
+class GoogleCloudOrgpolicyV2PolicySpecResponse(dict):
+    """
+    Defines a Google Cloud policy specification which is used to specify constraints for configurations of Google Cloud resources.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inheritFromParent":
+            suggest = "inherit_from_parent"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudOrgpolicyV2PolicySpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudOrgpolicyV2PolicySpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudOrgpolicyV2PolicySpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 etag: str,
+                 inherit_from_parent: bool,
+                 reset: bool,
+                 rules: Sequence['outputs.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse'],
+                 update_time: str):
+        """
+        Defines a Google Cloud policy specification which is used to specify constraints for configurations of Google Cloud resources.
+        :param str etag: An opaque tag indicating the current version of the policySpec, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policySpec to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+        :param bool inherit_from_parent: Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
+        :param bool reset: Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
+        :param Sequence['GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse'] rules: In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+        :param str update_time: The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
+        """
+        pulumi.set(__self__, "etag", etag)
+        pulumi.set(__self__, "inherit_from_parent", inherit_from_parent)
+        pulumi.set(__self__, "reset", reset)
+        pulumi.set(__self__, "rules", rules)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        An opaque tag indicating the current version of the policySpec, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policySpec to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="inheritFromParent")
+    def inherit_from_parent(self) -> bool:
+        """
+        Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
+        """
+        return pulumi.get(self, "inherit_from_parent")
+
+    @property
+    @pulumi.getter
+    def reset(self) -> bool:
+        """
+        Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
+        """
+        return pulumi.get(self, "reset")
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse']:
+        """
+        In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+        """
+        return pulumi.get(self, "rules")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponse(dict):
+    """
+    A change to an OrgPolicy custom constraint.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customConstraint":
+            suggest = "custom_constraint"
+        elif key == "customConstraintParent":
+            suggest = "custom_constraint_parent"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_constraint: 'outputs.GoogleCloudOrgpolicyV2CustomConstraintResponse',
+                 custom_constraint_parent: str):
+        """
+        A change to an OrgPolicy custom constraint.
+        :param 'GoogleCloudOrgpolicyV2CustomConstraintResponse' custom_constraint: Optional. The new or updated custom constraint.
+        :param str custom_constraint_parent: Optional. Resource the constraint is attached to. Example: "organization/987654"
+        """
+        pulumi.set(__self__, "custom_constraint", custom_constraint)
+        pulumi.set(__self__, "custom_constraint_parent", custom_constraint_parent)
+
+    @property
+    @pulumi.getter(name="customConstraint")
+    def custom_constraint(self) -> 'outputs.GoogleCloudOrgpolicyV2CustomConstraintResponse':
+        """
+        Optional. The new or updated custom constraint.
+        """
+        return pulumi.get(self, "custom_constraint")
+
+    @property
+    @pulumi.getter(name="customConstraintParent")
+    def custom_constraint_parent(self) -> str:
+        """
+        Optional. Resource the constraint is attached to. Example: "organization/987654"
+        """
+        return pulumi.get(self, "custom_constraint_parent")
+
+
+@pulumi.output_type
+class GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponse(dict):
+    """
+    A change to an OrgPolicy.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "policyParent":
+            suggest = "policy_parent"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 policy: 'outputs.GoogleCloudOrgpolicyV2PolicyResponse',
+                 policy_parent: str):
+        """
+        A change to an OrgPolicy.
+        :param 'GoogleCloudOrgpolicyV2PolicyResponse' policy: Optional. The new or updated OrgPolicy.
+        :param str policy_parent: Optional. The parent of the policy we are attaching to. Example: "projects/123456"
+        """
+        pulumi.set(__self__, "policy", policy)
+        pulumi.set(__self__, "policy_parent", policy_parent)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> 'outputs.GoogleCloudOrgpolicyV2PolicyResponse':
+        """
+        Optional. The new or updated OrgPolicy.
+        """
+        return pulumi.get(self, "policy")
+
+    @property
+    @pulumi.getter(name="policyParent")
+    def policy_parent(self) -> str:
+        """
+        Optional. The parent of the policy we are attaching to. Example: "projects/123456"
+        """
+        return pulumi.get(self, "policy_parent")
+
+
+@pulumi.output_type
+class GoogleCloudPolicysimulatorV1OrgPolicyOverlayResponse(dict):
+    """
+    The proposed changes to OrgPolicy.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customConstraints":
+            suggest = "custom_constraints"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudPolicysimulatorV1OrgPolicyOverlayResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudPolicysimulatorV1OrgPolicyOverlayResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudPolicysimulatorV1OrgPolicyOverlayResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_constraints: Sequence['outputs.GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponse'],
+                 policies: Sequence['outputs.GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponse']):
+        """
+        The proposed changes to OrgPolicy.
+        :param Sequence['GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponse'] custom_constraints: Optional. The OrgPolicy CustomConstraint changes to preview violations for. Any existing CustomConstraints with the same name will be overridden in the simulation. That is, violations will be determined as if all custom constraints in the overlay were instantiated. Only a single custom_constraint is supported in the overlay at a time. For evaluating multiple constraints, multiple `GenerateOrgPolicyViolationsPreview` requests are made, where each request evaluates a single constraint.
+        :param Sequence['GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponse'] policies: Optional. The OrgPolicy changes to preview violations for. Any existing OrgPolicies with the same name will be overridden in the simulation. That is, violations will be determined as if all policies in the overlay were created or updated.
+        """
+        pulumi.set(__self__, "custom_constraints", custom_constraints)
+        pulumi.set(__self__, "policies", policies)
+
+    @property
+    @pulumi.getter(name="customConstraints")
+    def custom_constraints(self) -> Sequence['outputs.GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayResponse']:
+        """
+        Optional. The OrgPolicy CustomConstraint changes to preview violations for. Any existing CustomConstraints with the same name will be overridden in the simulation. That is, violations will be determined as if all custom constraints in the overlay were instantiated. Only a single custom_constraint is supported in the overlay at a time. For evaluating multiple constraints, multiple `GenerateOrgPolicyViolationsPreview` requests are made, where each request evaluates a single constraint.
+        """
+        return pulumi.get(self, "custom_constraints")
+
+    @property
+    @pulumi.getter
+    def policies(self) -> Sequence['outputs.GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayResponse']:
+        """
+        Optional. The OrgPolicy changes to preview violations for. Any existing OrgPolicies with the same name will be overridden in the simulation. That is, violations will be determined as if all policies in the overlay were created or updated.
+        """
+        return pulumi.get(self, "policies")
+
+
+@pulumi.output_type
+class GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCountsResponse(dict):
+    """
+    A summary of the state of all resources scanned for compliance with the changed OrgPolicy.
+    """
+    def __init__(__self__, *,
+                 compliant: int,
+                 errors: int,
+                 noncompliant: int,
+                 scanned: int,
+                 unenforced: int):
+        """
+        A summary of the state of all resources scanned for compliance with the changed OrgPolicy.
+        :param int compliant: Number of scanned resources with zero violations.
+        :param int errors: Number of resources that returned an error when scanned.
+        :param int noncompliant: Number of scanned resources with at least one violation.
+        :param int scanned: Number of resources checked for compliance. Must equal: unenforced + noncompliant + compliant + error
+        :param int unenforced: Number of resources where the constraint was not enforced, i.e. the Policy set `enforced: false` for that resource.
+        """
+        pulumi.set(__self__, "compliant", compliant)
+        pulumi.set(__self__, "errors", errors)
+        pulumi.set(__self__, "noncompliant", noncompliant)
+        pulumi.set(__self__, "scanned", scanned)
+        pulumi.set(__self__, "unenforced", unenforced)
+
+    @property
+    @pulumi.getter
+    def compliant(self) -> int:
+        """
+        Number of scanned resources with zero violations.
+        """
+        return pulumi.get(self, "compliant")
+
+    @property
+    @pulumi.getter
+    def errors(self) -> int:
+        """
+        Number of resources that returned an error when scanned.
+        """
+        return pulumi.get(self, "errors")
+
+    @property
+    @pulumi.getter
+    def noncompliant(self) -> int:
+        """
+        Number of scanned resources with at least one violation.
+        """
+        return pulumi.get(self, "noncompliant")
+
+    @property
+    @pulumi.getter
+    def scanned(self) -> int:
+        """
+        Number of resources checked for compliance. Must equal: unenforced + noncompliant + compliant + error
+        """
+        return pulumi.get(self, "scanned")
+
+    @property
+    @pulumi.getter
+    def unenforced(self) -> int:
+        """
+        Number of resources where the constraint was not enforced, i.e. the Policy set `enforced: false` for that resource.
+        """
+        return pulumi.get(self, "unenforced")
+
 
 @pulumi.output_type
 class GoogleCloudPolicysimulatorV1ReplayConfigResponse(dict):
@@ -215,5 +909,60 @@ class GoogleTypeDateResponse(dict):
         Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
         return pulumi.get(self, "year")
+
+
+@pulumi.output_type
+class GoogleTypeExprResponse(dict):
+    """
+    Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+    """
+    def __init__(__self__, *,
+                 description: str,
+                 expression: str,
+                 location: str,
+                 title: str):
+        """
+        Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+        :param str description: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str location: Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        :param str title: Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+        """
+        return pulumi.get(self, "title")
 
 

@@ -164,7 +164,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string ProvisionedIops;
         /// <summary>
-        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
         /// </summary>
         public readonly string ProvisionedThroughput;
         /// <summary>
@@ -183,6 +183,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Status information for the disk resource.
         /// </summary>
         public readonly Outputs.DiskResourceStatusResponse ResourceStatus;
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        public readonly bool SatisfiesPzi;
         /// <summary>
         /// Reserved for future use.
         /// </summary>
@@ -251,6 +255,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// The status of disk creation. - CREATING: Disk is provisioning. - RESTORING: Source data is being copied into the disk. - FAILED: Disk creation failed. - READY: Disk is ready for use. - DELETING: Disk is deleting. 
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
+        /// </summary>
+        public readonly string StoragePool;
         /// <summary>
         /// [Deprecated] Storage type of the persistent disk.
         /// </summary>
@@ -334,6 +342,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             Outputs.DiskResourceStatusResponse resourceStatus,
 
+            bool satisfiesPzi,
+
             bool satisfiesPzs,
 
             string selfLink,
@@ -367,6 +377,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
             string sourceStorageObject,
 
             string status,
+
+            string storagePool,
 
             string storageType,
 
@@ -408,6 +420,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             ReplicaZones = replicaZones;
             ResourcePolicies = resourcePolicies;
             ResourceStatus = resourceStatus;
+            SatisfiesPzi = satisfiesPzi;
             SatisfiesPzs = satisfiesPzs;
             SelfLink = selfLink;
             SizeGb = sizeGb;
@@ -425,6 +438,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             SourceSnapshotId = sourceSnapshotId;
             SourceStorageObject = sourceStorageObject;
             Status = status;
+            StoragePool = storagePool;
             StorageType = storageType;
             Type = type;
             UserLicenses = userLicenses;

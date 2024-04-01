@@ -19,14 +19,12 @@ class BucketViewArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a BucketView resource.
         :param pulumi.Input[str] view_id: Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
-        :param pulumi.Input[str] description: Describes this view.
-        :param pulumi.Input[str] filter: Filter that restricts which log entries in a bucket are visible in this view.Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
-        :param pulumi.Input[str] name: The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
+        :param pulumi.Input[str] description: Optional. Describes this view.
+        :param pulumi.Input[str] filter: Optional. Filter that restricts which log entries in a bucket are visible in this view.Filters must be logical conjunctions that use the AND operator, and they can use any of the following qualifiers: SOURCE(), which specifies a project, folder, organization, or billing account of origin. resource.type, which specifies the resource type. LOG_ID(), which identifies the log.They can also use the negations of these qualifiers with the NOT operator.For example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND NOT LOG_ID("stdout")
         """
         pulumi.set(__self__, "bucket_id", bucket_id)
         pulumi.set(__self__, "view_id", view_id)
@@ -36,8 +34,6 @@ class BucketViewArgs:
             pulumi.set(__self__, "filter", filter)
         if location is not None:
             pulumi.set(__self__, "location", location)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -66,7 +62,7 @@ class BucketViewArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Describes this view.
+        Optional. Describes this view.
         """
         return pulumi.get(self, "description")
 
@@ -78,7 +74,7 @@ class BucketViewArgs:
     @pulumi.getter
     def filter(self) -> Optional[pulumi.Input[str]]:
         """
-        Filter that restricts which log entries in a bucket are visible in this view.Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
+        Optional. Filter that restricts which log entries in a bucket are visible in this view.Filters must be logical conjunctions that use the AND operator, and they can use any of the following qualifiers: SOURCE(), which specifies a project, folder, organization, or billing account of origin. resource.type, which specifies the resource type. LOG_ID(), which identifies the log.They can also use the negations of these qualifiers with the NOT operator.For example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND NOT LOG_ID("stdout")
         """
         return pulumi.get(self, "filter")
 
@@ -94,18 +90,6 @@ class BucketViewArgs:
     @location.setter
     def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -126,18 +110,17 @@ class BucketView(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  view_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a view over log entries in a log bucket. A bucket may contain a maximum of 30 views.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Describes this view.
-        :param pulumi.Input[str] filter: Filter that restricts which log entries in a bucket are visible in this view.Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
-        :param pulumi.Input[str] name: The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
+        :param pulumi.Input[str] description: Optional. Describes this view.
+        :param pulumi.Input[str] filter: Optional. Filter that restricts which log entries in a bucket are visible in this view.Filters must be logical conjunctions that use the AND operator, and they can use any of the following qualifiers: SOURCE(), which specifies a project, folder, organization, or billing account of origin. resource.type, which specifies the resource type. LOG_ID(), which identifies the log.They can also use the negations of these qualifiers with the NOT operator.For example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND NOT LOG_ID("stdout")
         :param pulumi.Input[str] view_id: Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
         """
         ...
@@ -148,6 +131,7 @@ class BucketView(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a view over log entries in a log bucket. A bucket may contain a maximum of 30 views.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param BucketViewArgs args: The arguments to use to populate this resource's properties.
@@ -168,7 +152,6 @@ class BucketView(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  view_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -186,12 +169,12 @@ class BucketView(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["filter"] = filter
             __props__.__dict__["location"] = location
-            __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             if view_id is None and not opts.urn:
                 raise TypeError("Missing required property 'view_id'")
             __props__.__dict__["view_id"] = view_id
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["bucket_id", "location", "project", "view_id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -245,7 +228,7 @@ class BucketView(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        Describes this view.
+        Optional. Describes this view.
         """
         return pulumi.get(self, "description")
 
@@ -253,7 +236,7 @@ class BucketView(pulumi.CustomResource):
     @pulumi.getter
     def filter(self) -> pulumi.Output[str]:
         """
-        Filter that restricts which log entries in a bucket are visible in this view.Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
+        Optional. Filter that restricts which log entries in a bucket are visible in this view.Filters must be logical conjunctions that use the AND operator, and they can use any of the following qualifiers: SOURCE(), which specifies a project, folder, organization, or billing account of origin. resource.type, which specifies the resource type. LOG_ID(), which identifies the log.They can also use the negations of these qualifiers with the NOT operator.For example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND NOT LOG_ID("stdout")
         """
         return pulumi.get(self, "filter")
 

@@ -128,6 +128,10 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
         /// </summary>
         public readonly bool Reconciling;
         /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        public readonly bool SatisfiesPzs;
+        /// <summary>
         /// The size of the backup in bytes.
         /// </summary>
         public readonly string SizeBytes;
@@ -182,6 +186,8 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
 
             bool reconciling,
 
+            bool satisfiesPzs,
+
             string sizeBytes,
 
             string state,
@@ -208,6 +214,7 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Beta
             Labels = labels;
             Name = name;
             Reconciling = reconciling;
+            SatisfiesPzs = satisfiesPzs;
             SizeBytes = sizeBytes;
             State = state;
             Type = type;

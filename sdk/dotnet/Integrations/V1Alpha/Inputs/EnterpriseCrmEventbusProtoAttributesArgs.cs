@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
         public Input<Inputs.EnterpriseCrmEventbusProtoLogSettingsArgs>? LogSettings { get; set; }
 
         /// <summary>
+        /// True if this workflow parameter should be masked in the logs
+        /// </summary>
+        [Input("masked")]
+        public Input<bool>? Masked { get; set; }
+
+        /// <summary>
         /// Used to indicate if the ParameterEntry is a read only field or not.
         /// </summary>
         [Input("readOnly")]

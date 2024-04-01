@@ -76,7 +76,7 @@ export interface GetRegionCommitmentResult {
      */
     readonly region: string;
     /**
-     * List of create-on-create reseravtions for this commitment.
+     * List of create-on-create reservations for this commitment.
      */
     readonly reservations: outputs.compute.alpha.ReservationResponse[];
     /**

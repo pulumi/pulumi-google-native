@@ -16,9 +16,9 @@ __all__ = ['AnnotationArgs', 'Annotation']
 @pulumi.input_type
 class AnnotationArgs:
     def __init__(__self__, *,
+                 annotation_source: pulumi.Input['AnnotationSourceArgs'],
                  annotation_store_id: pulumi.Input[str],
                  dataset_id: pulumi.Input[str],
-                 annotation_source: Optional[pulumi.Input['AnnotationSourceArgs']] = None,
                  custom_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  image_annotation: Optional[pulumi.Input['ImageAnnotationArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -31,14 +31,13 @@ class AnnotationArgs:
         :param pulumi.Input['AnnotationSourceArgs'] annotation_source: Details of the source.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_data: Additional information for this annotation record, such as annotator and verifier information or study campaign.
         :param pulumi.Input['ImageAnnotationArgs'] image_annotation: Annotations for images. For example, bounding polygons.
-        :param pulumi.Input[str] name: Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
+        :param pulumi.Input[str] name: Identifier. Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
         :param pulumi.Input['ResourceAnnotationArgs'] resource_annotation: Annotations for resource. For example, classification tags.
         :param pulumi.Input['SensitiveTextAnnotationArgs'] text_annotation: Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
         """
+        pulumi.set(__self__, "annotation_source", annotation_source)
         pulumi.set(__self__, "annotation_store_id", annotation_store_id)
         pulumi.set(__self__, "dataset_id", dataset_id)
-        if annotation_source is not None:
-            pulumi.set(__self__, "annotation_source", annotation_source)
         if custom_data is not None:
             pulumi.set(__self__, "custom_data", custom_data)
         if image_annotation is not None:
@@ -53,6 +52,18 @@ class AnnotationArgs:
             pulumi.set(__self__, "resource_annotation", resource_annotation)
         if text_annotation is not None:
             pulumi.set(__self__, "text_annotation", text_annotation)
+
+    @property
+    @pulumi.getter(name="annotationSource")
+    def annotation_source(self) -> pulumi.Input['AnnotationSourceArgs']:
+        """
+        Details of the source.
+        """
+        return pulumi.get(self, "annotation_source")
+
+    @annotation_source.setter
+    def annotation_source(self, value: pulumi.Input['AnnotationSourceArgs']):
+        pulumi.set(self, "annotation_source", value)
 
     @property
     @pulumi.getter(name="annotationStoreId")
@@ -71,18 +82,6 @@ class AnnotationArgs:
     @dataset_id.setter
     def dataset_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "dataset_id", value)
-
-    @property
-    @pulumi.getter(name="annotationSource")
-    def annotation_source(self) -> Optional[pulumi.Input['AnnotationSourceArgs']]:
-        """
-        Details of the source.
-        """
-        return pulumi.get(self, "annotation_source")
-
-    @annotation_source.setter
-    def annotation_source(self, value: Optional[pulumi.Input['AnnotationSourceArgs']]):
-        pulumi.set(self, "annotation_source", value)
 
     @property
     @pulumi.getter(name="customData")
@@ -121,7 +120,7 @@ class AnnotationArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
+        Identifier. Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
         """
         return pulumi.get(self, "name")
 
@@ -187,7 +186,7 @@ class Annotation(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AnnotationSourceArgs']] annotation_source: Details of the source.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_data: Additional information for this annotation record, such as annotator and verifier information or study campaign.
         :param pulumi.Input[pulumi.InputType['ImageAnnotationArgs']] image_annotation: Annotations for images. For example, bounding polygons.
-        :param pulumi.Input[str] name: Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
+        :param pulumi.Input[str] name: Identifier. Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
         :param pulumi.Input[pulumi.InputType['ResourceAnnotationArgs']] resource_annotation: Annotations for resource. For example, classification tags.
         :param pulumi.Input[pulumi.InputType['SensitiveTextAnnotationArgs']] text_annotation: Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
         """
@@ -234,6 +233,8 @@ class Annotation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AnnotationArgs.__new__(AnnotationArgs)
 
+            if annotation_source is None and not opts.urn:
+                raise TypeError("Missing required property 'annotation_source'")
             __props__.__dict__["annotation_source"] = annotation_source
             if annotation_store_id is None and not opts.urn:
                 raise TypeError("Missing required property 'annotation_store_id'")
@@ -327,7 +328,7 @@ class Annotation(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
+        Identifier. Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
         """
         return pulumi.get(self, "name")
 

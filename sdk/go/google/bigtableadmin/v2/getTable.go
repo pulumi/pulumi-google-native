@@ -30,6 +30,8 @@ type LookupTableArgs struct {
 }
 
 type LookupTableResult struct {
+	// If specified, automated backups are enabled for this table. Otherwise, automated backups are disabled.
+	AutomatedBackupPolicy AutomatedBackupPolicyResponse `pulumi:"automatedBackupPolicy"`
 	// If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.
 	ChangeStreamConfig ChangeStreamConfigResponse `pulumi:"changeStreamConfig"`
 	// Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
@@ -84,6 +86,11 @@ func (o LookupTableResultOutput) ToLookupTableResultOutput() LookupTableResultOu
 
 func (o LookupTableResultOutput) ToLookupTableResultOutputWithContext(ctx context.Context) LookupTableResultOutput {
 	return o
+}
+
+// If specified, automated backups are enabled for this table. Otherwise, automated backups are disabled.
+func (o LookupTableResultOutput) AutomatedBackupPolicy() AutomatedBackupPolicyResponseOutput {
+	return o.ApplyT(func(v LookupTableResult) AutomatedBackupPolicyResponse { return v.AutomatedBackupPolicy }).(AutomatedBackupPolicyResponseOutput)
 }
 
 // If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the change stream is not retained.

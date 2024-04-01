@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a ServiceAccountKey.
+// Uploads the public key portion of a key pair that you manage, and associates the public key with a ServiceAccount. After you upload the public key, you can use the private key from the key pair as a service account key.
 // Auto-naming is currently not supported for this resource.
 type Key struct {
 	pulumi.CustomResourceState
@@ -89,21 +89,17 @@ func (KeyState) ElementType() reflect.Type {
 }
 
 type keyArgs struct {
-	// Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
-	KeyAlgorithm *KeyKeyAlgorithm `pulumi:"keyAlgorithm"`
-	// The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
-	PrivateKeyType   *KeyPrivateKeyType `pulumi:"privateKeyType"`
-	Project          *string            `pulumi:"project"`
-	ServiceAccountId string             `pulumi:"serviceAccountId"`
+	Project *string `pulumi:"project"`
+	// The public key to associate with the service account. Must be an RSA public key that is wrapped in an X.509 v3 certificate. Include the first line, `-----BEGIN CERTIFICATE-----`, and the last line, `-----END CERTIFICATE-----`.
+	PublicKeyData    *string `pulumi:"publicKeyData"`
+	ServiceAccountId string  `pulumi:"serviceAccountId"`
 }
 
 // The set of arguments for constructing a Key resource.
 type KeyArgs struct {
-	// Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
-	KeyAlgorithm KeyKeyAlgorithmPtrInput
-	// The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
-	PrivateKeyType   KeyPrivateKeyTypePtrInput
-	Project          pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// The public key to associate with the service account. Must be an RSA public key that is wrapped in an X.509 v3 certificate. Include the first line, `-----BEGIN CERTIFICATE-----`, and the last line, `-----END CERTIFICATE-----`.
+	PublicKeyData    pulumi.StringPtrInput
 	ServiceAccountId pulumi.StringInput
 }
 

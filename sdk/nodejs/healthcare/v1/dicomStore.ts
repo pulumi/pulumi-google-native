@@ -39,16 +39,16 @@ export class DicomStore extends pulumi.CustomResource {
 
     public readonly datasetId!: pulumi.Output<string>;
     /**
-     * The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
+     * Required. The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
      */
-    public readonly dicomStoreId!: pulumi.Output<string | undefined>;
+    public readonly dicomStoreId!: pulumi.Output<string>;
     /**
      * User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
+     * Identifier. Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -75,6 +75,9 @@ export class DicomStore extends pulumi.CustomResource {
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
+            if ((!args || args.dicomStoreId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'dicomStoreId'");
+            }
             resourceInputs["datasetId"] = args ? args.datasetId : undefined;
             resourceInputs["dicomStoreId"] = args ? args.dicomStoreId : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -94,7 +97,7 @@ export class DicomStore extends pulumi.CustomResource {
             resourceInputs["streamConfigs"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["datasetId", "location", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["datasetId", "dicomStoreId", "location", "project"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(DicomStore.__pulumiType, name, resourceInputs, opts);
     }
@@ -106,16 +109,16 @@ export class DicomStore extends pulumi.CustomResource {
 export interface DicomStoreArgs {
     datasetId: pulumi.Input<string>;
     /**
-     * The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
+     * Required. The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
      */
-    dicomStoreId?: pulumi.Input<string>;
+    dicomStoreId: pulumi.Input<string>;
     /**
      * User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
+     * Identifier. Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
      */
     name?: pulumi.Input<string>;
     /**

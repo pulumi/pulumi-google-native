@@ -17,6 +17,7 @@ __all__ = ['TrustConfigArgs', 'TrustConfig']
 class TrustConfigArgs:
     def __init__(__self__, *,
                  trust_config_id: pulumi.Input[str],
+                 allowlisted_certificates: Optional[pulumi.Input[Sequence[pulumi.Input['AllowlistedCertificateArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -27,6 +28,7 @@ class TrustConfigArgs:
         """
         The set of arguments for constructing a TrustConfig resource.
         :param pulumi.Input[str] trust_config_id: Required. A user-provided name of the TrustConfig. Must match the regexp `[a-z0-9-]{1,63}`.
+        :param pulumi.Input[Sequence[pulumi.Input['AllowlistedCertificateArgs']]] allowlisted_certificates: Optional. A certificate matching an allowlisted certificate is always considered valid as long as the certificate is parseable, proof of private key possession is established, and constraints on the certificate’s SAN field are met.
         :param pulumi.Input[str] description: One or more paragraphs of text description of a TrustConfig.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a TrustConfig.
@@ -34,6 +36,8 @@ class TrustConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['TrustStoreArgs']]] trust_stores: Set of trust stores to perform validation against. This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation. Only one TrustStore specified is currently allowed.
         """
         pulumi.set(__self__, "trust_config_id", trust_config_id)
+        if allowlisted_certificates is not None:
+            pulumi.set(__self__, "allowlisted_certificates", allowlisted_certificates)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if etag is not None:
@@ -60,6 +64,18 @@ class TrustConfigArgs:
     @trust_config_id.setter
     def trust_config_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "trust_config_id", value)
+
+    @property
+    @pulumi.getter(name="allowlistedCertificates")
+    def allowlisted_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AllowlistedCertificateArgs']]]]:
+        """
+        Optional. A certificate matching an allowlisted certificate is always considered valid as long as the certificate is parseable, proof of private key possession is established, and constraints on the certificate’s SAN field are met.
+        """
+        return pulumi.get(self, "allowlisted_certificates")
+
+    @allowlisted_certificates.setter
+    def allowlisted_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AllowlistedCertificateArgs']]]]):
+        pulumi.set(self, "allowlisted_certificates", value)
 
     @property
     @pulumi.getter
@@ -145,6 +161,7 @@ class TrustConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allowlisted_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AllowlistedCertificateArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -159,6 +176,7 @@ class TrustConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AllowlistedCertificateArgs']]]] allowlisted_certificates: Optional. A certificate matching an allowlisted certificate is always considered valid as long as the certificate is parseable, proof of private key possession is established, and constraints on the certificate’s SAN field are met.
         :param pulumi.Input[str] description: One or more paragraphs of text description of a TrustConfig.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a TrustConfig.
@@ -190,6 +208,7 @@ class TrustConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allowlisted_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AllowlistedCertificateArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -207,6 +226,7 @@ class TrustConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TrustConfigArgs.__new__(TrustConfigArgs)
 
+            __props__.__dict__["allowlisted_certificates"] = allowlisted_certificates
             __props__.__dict__["description"] = description
             __props__.__dict__["etag"] = etag
             __props__.__dict__["labels"] = labels
@@ -243,6 +263,7 @@ class TrustConfig(pulumi.CustomResource):
 
         __props__ = TrustConfigArgs.__new__(TrustConfigArgs)
 
+        __props__.__dict__["allowlisted_certificates"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["etag"] = None
@@ -254,6 +275,14 @@ class TrustConfig(pulumi.CustomResource):
         __props__.__dict__["trust_stores"] = None
         __props__.__dict__["update_time"] = None
         return TrustConfig(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="allowlistedCertificates")
+    def allowlisted_certificates(self) -> pulumi.Output[Sequence['outputs.AllowlistedCertificateResponse']]:
+        """
+        Optional. A certificate matching an allowlisted certificate is always considered valid as long as the certificate is parseable, proof of private key possession is established, and constraints on the certificate’s SAN field are met.
+        """
+        return pulumi.get(self, "allowlisted_certificates")
 
     @property
     @pulumi.getter(name="createTime")

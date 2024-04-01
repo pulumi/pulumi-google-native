@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
         /// </summary>
         public readonly string Key;
         /// <summary>
+        /// True if this parameter should be masked in the logs
+        /// </summary>
+        public readonly bool Masked;
+        /// <summary>
         /// Values for the defined keys. Each value can either be string, int, double or any proto message.
         /// </summary>
         public readonly Outputs.EnterpriseCrmEventbusProtoParameterValueTypeResponse Value;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
         private EnterpriseCrmEventbusProtoParameterEntryResponse(
             string key,
 
+            bool masked,
+
             Outputs.EnterpriseCrmEventbusProtoParameterValueTypeResponse value)
         {
             Key = key;
+            Masked = masked;
             Value = value;
         }
     }

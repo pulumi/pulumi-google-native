@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
         /// </summary>
         public readonly Outputs.AuthConfigResponse AuthConfig;
         /// <summary>
+        /// Optional. Dead letter configuration for eventing of a connection.
+        /// </summary>
+        public readonly Outputs.DeadLetterConfigResponse DeadLetterConfig;
+        /// <summary>
         /// Enrichment Enabled.
         /// </summary>
         public readonly bool EnrichmentEnabled;
@@ -41,6 +45,10 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
         /// </summary>
         public readonly bool PrivateConnectivityEnabled;
         /// <summary>
+        /// Optional. Proxy for Eventing auto-registration.
+        /// </summary>
+        public readonly Outputs.DestinationConfigResponse ProxyDestinationConfig;
+        /// <summary>
         /// Registration endpoint for auto registration.
         /// </summary>
         public readonly Outputs.DestinationConfigResponse RegistrationDestinationConfig;
@@ -51,6 +59,8 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
 
             Outputs.AuthConfigResponse authConfig,
 
+            Outputs.DeadLetterConfigResponse deadLetterConfig,
+
             bool enrichmentEnabled,
 
             string eventsListenerIngressEndpoint,
@@ -59,14 +69,18 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
 
             bool privateConnectivityEnabled,
 
+            Outputs.DestinationConfigResponse proxyDestinationConfig,
+
             Outputs.DestinationConfigResponse registrationDestinationConfig)
         {
             AdditionalVariables = additionalVariables;
             AuthConfig = authConfig;
+            DeadLetterConfig = deadLetterConfig;
             EnrichmentEnabled = enrichmentEnabled;
             EventsListenerIngressEndpoint = eventsListenerIngressEndpoint;
             ListenerAuthConfig = listenerAuthConfig;
             PrivateConnectivityEnabled = privateConnectivityEnabled;
+            ProxyDestinationConfig = proxyDestinationConfig;
             RegistrationDestinationConfig = registrationDestinationConfig;
         }
     }

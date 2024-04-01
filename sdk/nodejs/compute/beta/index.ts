@@ -560,6 +560,16 @@ export const getSslPolicy: typeof import("./getSslPolicy").getSslPolicy = null a
 export const getSslPolicyOutput: typeof import("./getSslPolicy").getSslPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getSslPolicy","getSslPolicyOutput"], () => require("./getSslPolicy"));
 
+export { GetStoragePoolArgs, GetStoragePoolResult, GetStoragePoolOutputArgs } from "./getStoragePool";
+export const getStoragePool: typeof import("./getStoragePool").getStoragePool = null as any;
+export const getStoragePoolOutput: typeof import("./getStoragePool").getStoragePoolOutput = null as any;
+utilities.lazyLoad(exports, ["getStoragePool","getStoragePoolOutput"], () => require("./getStoragePool"));
+
+export { GetStoragePoolIamPolicyArgs, GetStoragePoolIamPolicyResult, GetStoragePoolIamPolicyOutputArgs } from "./getStoragePoolIamPolicy";
+export const getStoragePoolIamPolicy: typeof import("./getStoragePoolIamPolicy").getStoragePoolIamPolicy = null as any;
+export const getStoragePoolIamPolicyOutput: typeof import("./getStoragePoolIamPolicy").getStoragePoolIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getStoragePoolIamPolicy","getStoragePoolIamPolicyOutput"], () => require("./getStoragePoolIamPolicy"));
+
 export { GetSubnetworkArgs, GetSubnetworkResult, GetSubnetworkOutputArgs } from "./getSubnetwork";
 export const getSubnetwork: typeof import("./getSubnetwork").getSubnetwork = null as any;
 export const getSubnetworkOutput: typeof import("./getSubnetwork").getSubnetworkOutput = null as any;
@@ -1180,6 +1190,26 @@ export type SslPolicy = import("./sslPolicy").SslPolicy;
 export const SslPolicy: typeof import("./sslPolicy").SslPolicy = null as any;
 utilities.lazyLoad(exports, ["SslPolicy"], () => require("./sslPolicy"));
 
+export { StoragePoolArgs } from "./storagePool";
+export type StoragePool = import("./storagePool").StoragePool;
+export const StoragePool: typeof import("./storagePool").StoragePool = null as any;
+utilities.lazyLoad(exports, ["StoragePool"], () => require("./storagePool"));
+
+export { StoragePoolIamBindingArgs } from "./storagePoolIamBinding";
+export type StoragePoolIamBinding = import("./storagePoolIamBinding").StoragePoolIamBinding;
+export const StoragePoolIamBinding: typeof import("./storagePoolIamBinding").StoragePoolIamBinding = null as any;
+utilities.lazyLoad(exports, ["StoragePoolIamBinding"], () => require("./storagePoolIamBinding"));
+
+export { StoragePoolIamMemberArgs } from "./storagePoolIamMember";
+export type StoragePoolIamMember = import("./storagePoolIamMember").StoragePoolIamMember;
+export const StoragePoolIamMember: typeof import("./storagePoolIamMember").StoragePoolIamMember = null as any;
+utilities.lazyLoad(exports, ["StoragePoolIamMember"], () => require("./storagePoolIamMember"));
+
+export { StoragePoolIamPolicyArgs } from "./storagePoolIamPolicy";
+export type StoragePoolIamPolicy = import("./storagePoolIamPolicy").StoragePoolIamPolicy;
+export const StoragePoolIamPolicy: typeof import("./storagePoolIamPolicy").StoragePoolIamPolicy = null as any;
+utilities.lazyLoad(exports, ["StoragePoolIamPolicy"], () => require("./storagePoolIamPolicy"));
+
 export { SubnetworkArgs } from "./subnetwork";
 export type Subnetwork = import("./subnetwork").Subnetwork;
 export const Subnetwork: typeof import("./subnetwork").Subnetwork = null as any;
@@ -1529,6 +1559,14 @@ const _module = {
                 return new SslCertificate(name, <any>undefined, { urn })
             case "google-native:compute/beta:SslPolicy":
                 return new SslPolicy(name, <any>undefined, { urn })
+            case "google-native:compute/beta:StoragePool":
+                return new StoragePool(name, <any>undefined, { urn })
+            case "google-native:compute/beta:StoragePoolIamBinding":
+                return new StoragePoolIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/beta:StoragePoolIamMember":
+                return new StoragePoolIamMember(name, <any>undefined, { urn })
+            case "google-native:compute/beta:StoragePoolIamPolicy":
+                return new StoragePoolIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/beta:Subnetwork":
                 return new Subnetwork(name, <any>undefined, { urn })
             case "google-native:compute/beta:SubnetworkIamBinding":

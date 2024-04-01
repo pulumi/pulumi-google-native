@@ -30,6 +30,7 @@ class AgentArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 personalization_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3AgentPersonalizationSettingsArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
                  speech_to_text_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs']] = None,
@@ -51,6 +52,7 @@ class AgentArgs:
         :param pulumi.Input['GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsArgs'] git_integration_settings: Git integration settings for this agent.
         :param pulumi.Input[bool] locked: Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
         :param pulumi.Input[str] name: The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3AgentPersonalizationSettingsArgs'] personalization_settings: Optional. Settings for end user personalization.
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
         :param pulumi.Input['GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs'] speech_to_text_settings: Speech recognition related settings.
         :param pulumi.Input[str] start_flow: Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
@@ -82,6 +84,8 @@ class AgentArgs:
             pulumi.set(__self__, "locked", locked)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if personalization_settings is not None:
+            pulumi.set(__self__, "personalization_settings", personalization_settings)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if security_settings is not None:
@@ -261,6 +265,18 @@ class AgentArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="personalizationSettings")
+    def personalization_settings(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3AgentPersonalizationSettingsArgs']]:
+        """
+        Optional. Settings for end user personalization.
+        """
+        return pulumi.get(self, "personalization_settings")
+
+    @personalization_settings.setter
+    def personalization_settings(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3AgentPersonalizationSettingsArgs']]):
+        pulumi.set(self, "personalization_settings", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -348,6 +364,7 @@ class Agent(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 personalization_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AgentPersonalizationSettingsArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
                  speech_to_text_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs']]] = None,
@@ -373,6 +390,7 @@ class Agent(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsArgs']] git_integration_settings: Git integration settings for this agent.
         :param pulumi.Input[bool] locked: Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
         :param pulumi.Input[str] name: The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AgentPersonalizationSettingsArgs']] personalization_settings: Optional. Settings for end user personalization.
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs']] speech_to_text_settings: Speech recognition related settings.
         :param pulumi.Input[str] start_flow: Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
@@ -417,6 +435,7 @@ class Agent(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 personalization_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3AgentPersonalizationSettingsArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
                  speech_to_text_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs']]] = None,
@@ -450,6 +469,7 @@ class Agent(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["locked"] = locked
             __props__.__dict__["name"] = name
+            __props__.__dict__["personalization_settings"] = personalization_settings
             __props__.__dict__["project"] = project
             __props__.__dict__["security_settings"] = security_settings
             __props__.__dict__["speech_to_text_settings"] = speech_to_text_settings
@@ -496,6 +516,7 @@ class Agent(pulumi.CustomResource):
         __props__.__dict__["location"] = None
         __props__.__dict__["locked"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["personalization_settings"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["security_settings"] = None
         __props__.__dict__["speech_to_text_settings"] = None
@@ -605,6 +626,14 @@ class Agent(pulumi.CustomResource):
         The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="personalizationSettings")
+    def personalization_settings(self) -> pulumi.Output['outputs.GoogleCloudDialogflowCxV3AgentPersonalizationSettingsResponse']:
+        """
+        Optional. Settings for end user personalization.
+        """
+        return pulumi.get(self, "personalization_settings")
 
     @property
     @pulumi.getter

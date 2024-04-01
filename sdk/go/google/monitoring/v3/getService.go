@@ -53,7 +53,7 @@ type LookupServiceResult struct {
 	IstioCanonicalService IstioCanonicalServiceResponse `pulumi:"istioCanonicalService"`
 	// Type used for Istio services scoped to an Istio mesh.
 	MeshIstio MeshIstioResponse `pulumi:"meshIstio"`
-	// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
+	// Identifier. Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
 	Name string `pulumi:"name"`
 	// Configuration for how to query telemetry on a Service.
 	Telemetry TelemetryResponse `pulumi:"telemetry"`
@@ -158,7 +158,7 @@ func (o LookupServiceResultOutput) MeshIstio() MeshIstioResponseOutput {
 	return o.ApplyT(func(v LookupServiceResult) MeshIstioResponse { return v.MeshIstio }).(MeshIstioResponseOutput)
 }
 
-// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
+// Identifier. Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
 func (o LookupServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }

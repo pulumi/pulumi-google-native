@@ -85,6 +85,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// </summary>
         public readonly string Edition;
         /// <summary>
+        /// Optional. When this parameter is set to true, Cloud SQL instances can connect to Vertex AI to pass requests for real-time predictions and insights to the AI. The default value is false. This applies only to Cloud SQL for PostgreSQL instances.
+        /// </summary>
+        public readonly bool EnableGoogleMlIntegration;
+        /// <summary>
         /// Insights configuration, for now relevant only for Postgres.
         /// </summary>
         public readonly Outputs.InsightsConfigResponse InsightsConfig;
@@ -181,6 +185,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
 
             string edition,
 
+            bool enableGoogleMlIntegration,
+
             Outputs.InsightsConfigResponse insightsConfig,
 
             Outputs.IpConfigurationResponse ipConfiguration,
@@ -228,6 +234,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
             DeletionProtectionEnabled = deletionProtectionEnabled;
             DenyMaintenancePeriods = denyMaintenancePeriods;
             Edition = edition;
+            EnableGoogleMlIntegration = enableGoogleMlIntegration;
             InsightsConfig = insightsConfig;
             IpConfiguration = ipConfiguration;
             Kind = kind;

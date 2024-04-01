@@ -32,7 +32,7 @@ type LookupAnnotationStoreArgs struct {
 type LookupAnnotationStoreResult struct {
 	// Optional. User-supplied key-value pairs used to organize Annotation stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels map[string]string `pulumi:"labels"`
-	// Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
+	// Identifier. Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
 	Name string `pulumi:"name"`
 }
 
@@ -79,7 +79,7 @@ func (o LookupAnnotationStoreResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAnnotationStoreResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
+// Identifier. Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
 func (o LookupAnnotationStoreResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAnnotationStoreResult) string { return v.Name }).(pulumi.StringOutput)
 }

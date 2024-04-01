@@ -51,6 +51,7 @@ export class SecretIamPolicy extends pulumi.CustomResource {
      * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
      */
     public readonly etag!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     public readonly secretId!: pulumi.Output<string>;
     /**
@@ -75,6 +76,7 @@ export class SecretIamPolicy extends pulumi.CustomResource {
             resourceInputs["auditConfigs"] = args ? args.auditConfigs : undefined;
             resourceInputs["bindings"] = args ? args.bindings : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["secretId"] = args ? args.secretId : undefined;
             resourceInputs["updateMask"] = args ? args.updateMask : undefined;
@@ -83,12 +85,13 @@ export class SecretIamPolicy extends pulumi.CustomResource {
             resourceInputs["auditConfigs"] = undefined /*out*/;
             resourceInputs["bindings"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["location"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["secretId"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["project", "secretId"] };
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "secretId"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(SecretIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
@@ -110,6 +113,7 @@ export interface SecretIamPolicyArgs {
      * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
      */
     etag?: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     secretId: pulumi.Input<string>;
     /**

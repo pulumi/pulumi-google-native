@@ -6,7 +6,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new Workspace in a given Repository.
- * Auto-naming is currently not supported for this resource.
  */
 export class Workspace extends pulumi.CustomResource {
     /**
@@ -37,9 +36,9 @@ export class Workspace extends pulumi.CustomResource {
 
     public readonly location!: pulumi.Output<string>;
     /**
-     * The workspace's name.
+     * Identifier. The workspace's name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     public readonly repositoryId!: pulumi.Output<string>;
     /**
@@ -65,10 +64,10 @@ export class Workspace extends pulumi.CustomResource {
                 throw new Error("Missing required property 'workspaceId'");
             }
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["repositoryId"] = args ? args.repositoryId : undefined;
             resourceInputs["workspaceId"] = args ? args.workspaceId : undefined;
-            resourceInputs["name"] = undefined /*out*/;
         } else {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -88,6 +87,10 @@ export class Workspace extends pulumi.CustomResource {
  */
 export interface WorkspaceArgs {
     location?: pulumi.Input<string>;
+    /**
+     * Identifier. The workspace's name.
+     */
+    name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     repositoryId: pulumi.Input<string>;
     /**

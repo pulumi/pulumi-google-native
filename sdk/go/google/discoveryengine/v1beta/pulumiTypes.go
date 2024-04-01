@@ -390,7 +390,7 @@ type GoogleCloudDiscoveryengineV1betaDocumentContent struct {
 	MimeType *string `pulumi:"mimeType"`
 	// The content represented as a stream of bytes. The maximum length is 1,000,000 bytes (1 MB / ~0.95 MiB). Note: As with all `bytes` fields, this field is represented as pure binary in Protocol Buffers and base64-encoded string in JSON. For example, `abc123!?$*&()'-=@~` should be represented as `YWJjMTIzIT8kKiYoKSctPUB+` in JSON. See https://developers.google.com/protocol-buffers/docs/proto3#json.
 	RawBytes *string `pulumi:"rawBytes"`
-	// The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The maximum file size is 100 MB.
+	// The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The maximum file size is 2.5 MB for text-based formats, 100 MB for other formats.
 	Uri *string `pulumi:"uri"`
 }
 
@@ -411,7 +411,7 @@ type GoogleCloudDiscoveryengineV1betaDocumentContentArgs struct {
 	MimeType pulumi.StringPtrInput `pulumi:"mimeType"`
 	// The content represented as a stream of bytes. The maximum length is 1,000,000 bytes (1 MB / ~0.95 MiB). Note: As with all `bytes` fields, this field is represented as pure binary in Protocol Buffers and base64-encoded string in JSON. For example, `abc123!?$*&()'-=@~` should be represented as `YWJjMTIzIT8kKiYoKSctPUB+` in JSON. See https://developers.google.com/protocol-buffers/docs/proto3#json.
 	RawBytes pulumi.StringPtrInput `pulumi:"rawBytes"`
-	// The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The maximum file size is 100 MB.
+	// The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The maximum file size is 2.5 MB for text-based formats, 100 MB for other formats.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
 
@@ -503,7 +503,7 @@ func (o GoogleCloudDiscoveryengineV1betaDocumentContentOutput) RawBytes() pulumi
 	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaDocumentContent) *string { return v.RawBytes }).(pulumi.StringPtrOutput)
 }
 
-// The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The maximum file size is 100 MB.
+// The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The maximum file size is 2.5 MB for text-based formats, 100 MB for other formats.
 func (o GoogleCloudDiscoveryengineV1betaDocumentContentOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaDocumentContent) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -552,7 +552,7 @@ func (o GoogleCloudDiscoveryengineV1betaDocumentContentPtrOutput) RawBytes() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The maximum file size is 100 MB.
+// The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The maximum file size is 2.5 MB for text-based formats, 100 MB for other formats.
 func (o GoogleCloudDiscoveryengineV1betaDocumentContentPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaDocumentContent) *string {
 		if v == nil {
@@ -568,7 +568,7 @@ type GoogleCloudDiscoveryengineV1betaDocumentContentResponse struct {
 	MimeType string `pulumi:"mimeType"`
 	// The content represented as a stream of bytes. The maximum length is 1,000,000 bytes (1 MB / ~0.95 MiB). Note: As with all `bytes` fields, this field is represented as pure binary in Protocol Buffers and base64-encoded string in JSON. For example, `abc123!?$*&()'-=@~` should be represented as `YWJjMTIzIT8kKiYoKSctPUB+` in JSON. See https://developers.google.com/protocol-buffers/docs/proto3#json.
 	RawBytes string `pulumi:"rawBytes"`
-	// The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The maximum file size is 100 MB.
+	// The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The maximum file size is 2.5 MB for text-based formats, 100 MB for other formats.
 	Uri string `pulumi:"uri"`
 }
 
@@ -597,9 +597,1625 @@ func (o GoogleCloudDiscoveryengineV1betaDocumentContentResponseOutput) RawBytes(
 	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaDocumentContentResponse) string { return v.RawBytes }).(pulumi.StringOutput)
 }
 
-// The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The maximum file size is 100 MB.
+// The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The maximum file size is 2.5 MB for text-based formats, 100 MB for other formats.
 func (o GoogleCloudDiscoveryengineV1betaDocumentContentResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaDocumentContentResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// A singleton resource of DataStore. It's empty when DataStore is created, which defaults to digital parser. The first call to DataStoreService.UpdateDocumentProcessingConfig method will initialize the config.
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig struct {
+	// Configurations for default Document parser. If not specified, we will configure it as default DigitalParsingConfig, and the default parsing config will be applied to all file types for Document parsing.
+	DefaultParsingConfig *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig `pulumi:"defaultParsingConfig"`
+	// The full resource name of the Document Processing Config. Format: `projects/*/locations/*/collections/*/dataStores/*/documentProcessingConfig`.
+	Name *string `pulumi:"name"`
+	// Map from file type to override the default parsing configuration based on the file type. Supported keys: * `pdf`: Override parsing config for PDF files, either digital parsing, ocr parsing or layout parsing is supported. * `html`: Override parsing config for HTML files, only digital parsing and or layout parsing are supported. * `docx`: Override parsing config for DOCX files, only digital parsing and or layout parsing are supported.
+	ParsingConfigOverrides map[string]string `pulumi:"parsingConfigOverrides"`
+}
+
+// GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigInput is an input type that accepts GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigArgs and GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigInput` via:
+//
+//	GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigArgs{...}
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutput
+	ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutput
+}
+
+// A singleton resource of DataStore. It's empty when DataStore is created, which defaults to digital parser. The first call to DataStoreService.UpdateDocumentProcessingConfig method will initialize the config.
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigArgs struct {
+	// Configurations for default Document parser. If not specified, we will configure it as default DigitalParsingConfig, and the default parsing config will be applied to all file types for Document parsing.
+	DefaultParsingConfig GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrInput `pulumi:"defaultParsingConfig"`
+	// The full resource name of the Document Processing Config. Format: `projects/*/locations/*/collections/*/dataStores/*/documentProcessingConfig`.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Map from file type to override the default parsing configuration based on the file type. Supported keys: * `pdf`: Override parsing config for PDF files, either digital parsing, ocr parsing or layout parsing is supported. * `html`: Override parsing config for HTML files, only digital parsing and or layout parsing are supported. * `docx`: Override parsing config for DOCX files, only digital parsing and or layout parsing are supported.
+	ParsingConfigOverrides pulumi.StringMapInput `pulumi:"parsingConfigOverrides"`
+}
+
+func (GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigArgs) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigArgs) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutput)
+}
+
+func (i GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigArgs) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigArgs) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutput).ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrInput is an input type that accepts GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigArgs, GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtr and GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrInput` via:
+//
+//	        GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput
+	ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput
+}
+
+type googleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrType GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigArgs
+
+func GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtr(v *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigArgs) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrInput {
+	return (*googleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrType)(v)
+}
+
+func (*googleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrType) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrType) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput)
+}
+
+// A singleton resource of DataStore. It's empty when DataStore is created, which defaults to digital parser. The first call to DataStoreService.UpdateDocumentProcessingConfig method will initialize the config.
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput {
+	return o.ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig) *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig {
+		return &v
+	}).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput)
+}
+
+// Configurations for default Document parser. If not specified, we will configure it as default DigitalParsingConfig, and the default parsing config will be applied to all file types for Document parsing.
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutput) DefaultParsingConfig() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig) *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig {
+		return v.DefaultParsingConfig
+	}).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput)
+}
+
+// The full resource name of the Document Processing Config. Format: `projects/*/locations/*/collections/*/dataStores/*/documentProcessingConfig`.
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Map from file type to override the default parsing configuration based on the file type. Supported keys: * `pdf`: Override parsing config for PDF files, either digital parsing, ocr parsing or layout parsing is supported. * `html`: Override parsing config for HTML files, only digital parsing and or layout parsing are supported. * `docx`: Override parsing config for DOCX files, only digital parsing and or layout parsing are supported.
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutput) ParsingConfigOverrides() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig) map[string]string {
+		return v.ParsingConfigOverrides
+	}).(pulumi.StringMapOutput)
+}
+
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput) Elem() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig
+		return ret
+	}).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutput)
+}
+
+// Configurations for default Document parser. If not specified, we will configure it as default DigitalParsingConfig, and the default parsing config will be applied to all file types for Document parsing.
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput) DefaultParsingConfig() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig) *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultParsingConfig
+	}).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput)
+}
+
+// The full resource name of the Document Processing Config. Format: `projects/*/locations/*/collections/*/dataStores/*/documentProcessingConfig`.
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Map from file type to override the default parsing configuration based on the file type. Supported keys: * `pdf`: Override parsing config for PDF files, either digital parsing, ocr parsing or layout parsing is supported. * `html`: Override parsing config for HTML files, only digital parsing and or layout parsing are supported. * `docx`: Override parsing config for DOCX files, only digital parsing and or layout parsing are supported.
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput) ParsingConfigOverrides() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ParsingConfigOverrides
+	}).(pulumi.StringMapOutput)
+}
+
+// Related configurations applied to a specific type of document parser.
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig struct {
+	// Configurations applied to digital parser.
+	DigitalParsingConfig *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig `pulumi:"digitalParsingConfig"`
+	// Configurations applied to OCR parser. Currently it only applies to PDFs.
+	OcrParsingConfig *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig `pulumi:"ocrParsingConfig"`
+}
+
+// GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigInput is an input type that accepts GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigArgs and GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigInput` via:
+//
+//	GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigArgs{...}
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutput
+	ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutput
+}
+
+// Related configurations applied to a specific type of document parser.
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigArgs struct {
+	// Configurations applied to digital parser.
+	DigitalParsingConfig GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrInput `pulumi:"digitalParsingConfig"`
+	// Configurations applied to OCR parser. Currently it only applies to PDFs.
+	OcrParsingConfig GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrInput `pulumi:"ocrParsingConfig"`
+}
+
+func (GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigArgs) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigArgs) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutput)
+}
+
+func (i GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigArgs) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigArgs) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutput).ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrInput is an input type that accepts GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigArgs, GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtr and GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrInput` via:
+//
+//	        GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput
+	ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput
+}
+
+type googleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrType GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigArgs
+
+func GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtr(v *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigArgs) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrInput {
+	return (*googleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrType)(v)
+}
+
+func (*googleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrType) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrType) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput)
+}
+
+// Related configurations applied to a specific type of document parser.
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput {
+	return o.ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig) *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig {
+		return &v
+	}).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput)
+}
+
+// Configurations applied to digital parser.
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutput) DigitalParsingConfig() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig) *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig {
+		return v.DigitalParsingConfig
+	}).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput)
+}
+
+// Configurations applied to OCR parser. Currently it only applies to PDFs.
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutput) OcrParsingConfig() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig) *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig {
+		return v.OcrParsingConfig
+	}).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput)
+}
+
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput) Elem() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig
+		return ret
+	}).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutput)
+}
+
+// Configurations applied to digital parser.
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput) DigitalParsingConfig() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig) *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DigitalParsingConfig
+	}).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput)
+}
+
+// Configurations applied to OCR parser. Currently it only applies to PDFs.
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput) OcrParsingConfig() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig) *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.OcrParsingConfig
+	}).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput)
+}
+
+// The digital parsing configurations for documents.
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig struct {
+}
+
+// GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigInput is an input type that accepts GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigArgs and GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigInput` via:
+//
+//	GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigArgs{...}
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutput
+	ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutput
+}
+
+// The digital parsing configurations for documents.
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigArgs struct {
+}
+
+func (GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigArgs) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigArgs) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutput)
+}
+
+func (i GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigArgs) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigArgs) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutput).ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrInput is an input type that accepts GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigArgs, GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtr and GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrInput` via:
+//
+//	        GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput
+	ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput
+}
+
+type googleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrType GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigArgs
+
+func GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtr(v *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigArgs) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrInput {
+	return (*googleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrType)(v)
+}
+
+func (*googleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrType) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrType) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput)
+}
+
+// The digital parsing configurations for documents.
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput {
+	return o.ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig) *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig {
+		return &v
+	}).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput)
+}
+
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput) Elem() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig
+		return ret
+	}).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutput)
+}
+
+// The digital parsing configurations for documents.
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigResponse struct {
+}
+
+// The digital parsing configurations for documents.
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigResponseOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigResponseOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigResponseOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigResponseOutput {
+	return o
+}
+
+// The OCR parsing configurations for documents.
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig struct {
+	// Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`: advanced table parsing model.
+	EnhancedDocumentElements []string `pulumi:"enhancedDocumentElements"`
+	// If true, will use native text instead of OCR text on pages containing native text.
+	UseNativeText *bool `pulumi:"useNativeText"`
+}
+
+// GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigInput is an input type that accepts GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigArgs and GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigInput` via:
+//
+//	GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigArgs{...}
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutput
+	ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutput
+}
+
+// The OCR parsing configurations for documents.
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigArgs struct {
+	// Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`: advanced table parsing model.
+	EnhancedDocumentElements pulumi.StringArrayInput `pulumi:"enhancedDocumentElements"`
+	// If true, will use native text instead of OCR text on pages containing native text.
+	UseNativeText pulumi.BoolPtrInput `pulumi:"useNativeText"`
+}
+
+func (GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigArgs) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigArgs) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutput)
+}
+
+func (i GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigArgs) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigArgs) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutput).ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrInput is an input type that accepts GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigArgs, GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtr and GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrInput` via:
+//
+//	        GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput
+	ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput
+}
+
+type googleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrType GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigArgs
+
+func GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtr(v *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigArgs) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrInput {
+	return (*googleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrType)(v)
+}
+
+func (*googleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrType) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrType) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput)
+}
+
+// The OCR parsing configurations for documents.
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput {
+	return o.ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig) *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig {
+		return &v
+	}).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput)
+}
+
+// Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`: advanced table parsing model.
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutput) EnhancedDocumentElements() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig) []string {
+		return v.EnhancedDocumentElements
+	}).(pulumi.StringArrayOutput)
+}
+
+// If true, will use native text instead of OCR text on pages containing native text.
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutput) UseNativeText() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig) *bool {
+		return v.UseNativeText
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput) Elem() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig
+		return ret
+	}).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutput)
+}
+
+// Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`: advanced table parsing model.
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput) EnhancedDocumentElements() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnhancedDocumentElements
+	}).(pulumi.StringArrayOutput)
+}
+
+// If true, will use native text instead of OCR text on pages containing native text.
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput) UseNativeText() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseNativeText
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The OCR parsing configurations for documents.
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigResponse struct {
+	// Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`: advanced table parsing model.
+	EnhancedDocumentElements []string `pulumi:"enhancedDocumentElements"`
+	// If true, will use native text instead of OCR text on pages containing native text.
+	UseNativeText bool `pulumi:"useNativeText"`
+}
+
+// The OCR parsing configurations for documents.
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigResponseOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigResponseOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigResponseOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigResponseOutput {
+	return o
+}
+
+// Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`: advanced table parsing model.
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigResponseOutput) EnhancedDocumentElements() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigResponse) []string {
+		return v.EnhancedDocumentElements
+	}).(pulumi.StringArrayOutput)
+}
+
+// If true, will use native text instead of OCR text on pages containing native text.
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigResponseOutput) UseNativeText() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigResponse) bool {
+		return v.UseNativeText
+	}).(pulumi.BoolOutput)
+}
+
+// Related configurations applied to a specific type of document parser.
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigResponse struct {
+	// Configurations applied to digital parser.
+	DigitalParsingConfig GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigResponse `pulumi:"digitalParsingConfig"`
+	// Configurations applied to OCR parser. Currently it only applies to PDFs.
+	OcrParsingConfig GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigResponse `pulumi:"ocrParsingConfig"`
+}
+
+// Related configurations applied to a specific type of document parser.
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigResponseOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigResponseOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigResponseOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigResponseOutput {
+	return o
+}
+
+// Configurations applied to digital parser.
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigResponseOutput) DigitalParsingConfig() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigResponse) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigResponse {
+		return v.DigitalParsingConfig
+	}).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigResponseOutput)
+}
+
+// Configurations applied to OCR parser. Currently it only applies to PDFs.
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigResponseOutput) OcrParsingConfig() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigResponse) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigResponse {
+		return v.OcrParsingConfig
+	}).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigResponseOutput)
+}
+
+// A singleton resource of DataStore. It's empty when DataStore is created, which defaults to digital parser. The first call to DataStoreService.UpdateDocumentProcessingConfig method will initialize the config.
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigResponse struct {
+	// Configurations for default Document parser. If not specified, we will configure it as default DigitalParsingConfig, and the default parsing config will be applied to all file types for Document parsing.
+	DefaultParsingConfig GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigResponse `pulumi:"defaultParsingConfig"`
+	// The full resource name of the Document Processing Config. Format: `projects/*/locations/*/collections/*/dataStores/*/documentProcessingConfig`.
+	Name string `pulumi:"name"`
+	// Map from file type to override the default parsing configuration based on the file type. Supported keys: * `pdf`: Override parsing config for PDF files, either digital parsing, ocr parsing or layout parsing is supported. * `html`: Override parsing config for HTML files, only digital parsing and or layout parsing are supported. * `docx`: Override parsing config for DOCX files, only digital parsing and or layout parsing are supported.
+	ParsingConfigOverrides map[string]string `pulumi:"parsingConfigOverrides"`
+}
+
+// A singleton resource of DataStore. It's empty when DataStore is created, which defaults to digital parser. The first call to DataStoreService.UpdateDocumentProcessingConfig method will initialize the config.
+type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigResponseOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigResponseOutput() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigResponseOutput) ToGoogleCloudDiscoveryengineV1betaDocumentProcessingConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigResponseOutput {
+	return o
+}
+
+// Configurations for default Document parser. If not specified, we will configure it as default DigitalParsingConfig, and the default parsing config will be applied to all file types for Document parsing.
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigResponseOutput) DefaultParsingConfig() GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigResponse) GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigResponse {
+		return v.DefaultParsingConfig
+	}).(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigResponseOutput)
+}
+
+// The full resource name of the Document Processing Config. Format: `projects/*/locations/*/collections/*/dataStores/*/documentProcessingConfig`.
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Map from file type to override the default parsing configuration based on the file type. Supported keys: * `pdf`: Override parsing config for PDF files, either digital parsing, ocr parsing or layout parsing is supported. * `html`: Override parsing config for HTML files, only digital parsing and or layout parsing are supported. * `docx`: Override parsing config for DOCX files, only digital parsing and or layout parsing are supported.
+func (o GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigResponseOutput) ParsingConfigOverrides() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigResponse) map[string]string {
+		return v.ParsingConfigOverrides
+	}).(pulumi.StringMapOutput)
+}
+
+// Configurations for a Chat Engine.
+type GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig struct {
+	// The configurationt generate the Dialogflow agent that is associated to this Engine. Note that these configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
+	AgentCreationConfig *GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig `pulumi:"agentCreationConfig"`
+	// The resource name of an exist Dialogflow agent to link to this Chat Engine. Customers can either provide `agent_creation_config` to create agent or provide an agent name that links the agent with the Chat engine. Format: `projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation. Please use ChatEngineMetadata.dialogflow_agent for actual agent association after Engine is created.
+	DialogflowAgentToLink *string `pulumi:"dialogflowAgentToLink"`
+}
+
+// GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigInput is an input type that accepts GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigArgs and GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigInput` via:
+//
+//	GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigArgs{...}
+type GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutput() GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutput
+	ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutput
+}
+
+// Configurations for a Chat Engine.
+type GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigArgs struct {
+	// The configurationt generate the Dialogflow agent that is associated to this Engine. Note that these configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
+	AgentCreationConfig GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrInput `pulumi:"agentCreationConfig"`
+	// The resource name of an exist Dialogflow agent to link to this Chat Engine. Customers can either provide `agent_creation_config` to create agent or provide an agent name that links the agent with the Chat engine. Format: `projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation. Please use ChatEngineMetadata.dialogflow_agent for actual agent association after Engine is created.
+	DialogflowAgentToLink pulumi.StringPtrInput `pulumi:"dialogflowAgentToLink"`
+}
+
+func (GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigArgs) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutput() GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigArgs) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutput)
+}
+
+func (i GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigArgs) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput() GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigArgs) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutput).ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrInput is an input type that accepts GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigArgs, GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtr and GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrInput` via:
+//
+//	        GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput() GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput
+	ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput
+}
+
+type googleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrType GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigArgs
+
+func GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtr(v *GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigArgs) GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrInput {
+	return (*googleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrType)(v)
+}
+
+func (*googleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrType) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput() GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrType) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput)
+}
+
+// Configurations for a Chat Engine.
+type GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutput) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutput() GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutput) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutput) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput() GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput {
+	return o.ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutput) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig) *GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig {
+		return &v
+	}).(GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput)
+}
+
+// The configurationt generate the Dialogflow agent that is associated to this Engine. Note that these configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutput) AgentCreationConfig() GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig) *GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig {
+		return v.AgentCreationConfig
+	}).(GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput)
+}
+
+// The resource name of an exist Dialogflow agent to link to this Chat Engine. Customers can either provide `agent_creation_config` to create agent or provide an agent name that links the agent with the Chat engine. Format: `projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation. Please use ChatEngineMetadata.dialogflow_agent for actual agent association after Engine is created.
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutput) DialogflowAgentToLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig) *string { return v.DialogflowAgentToLink }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput() GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput) Elem() GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig) GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig
+		return ret
+	}).(GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutput)
+}
+
+// The configurationt generate the Dialogflow agent that is associated to this Engine. Note that these configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput) AgentCreationConfig() GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig) *GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AgentCreationConfig
+	}).(GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput)
+}
+
+// The resource name of an exist Dialogflow agent to link to this Chat Engine. Customers can either provide `agent_creation_config` to create agent or provide an agent name that links the agent with the Chat engine. Format: `projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation. Please use ChatEngineMetadata.dialogflow_agent for actual agent association after Engine is created.
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput) DialogflowAgentToLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DialogflowAgentToLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configurations for generating a Dialogflow agent. Note that these configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
+type GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig struct {
+	// Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
+	Business *string `pulumi:"business"`
+	// The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes.
+	DefaultLanguageCode string `pulumi:"defaultLanguageCode"`
+	// Agent location for Agent creation, supported values: global/us/eu. If not provided, us Engine will create Agent using us-central-1 by default; eu Engine will create Agent using eu-west-1 by default.
+	Location *string `pulumi:"location"`
+	// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+	TimeZone string `pulumi:"timeZone"`
+}
+
+// GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigInput is an input type that accepts GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigArgs and GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigInput` via:
+//
+//	GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigArgs{...}
+type GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput() GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput
+	ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput
+}
+
+// Configurations for generating a Dialogflow agent. Note that these configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
+type GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigArgs struct {
+	// Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
+	Business pulumi.StringPtrInput `pulumi:"business"`
+	// The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes.
+	DefaultLanguageCode pulumi.StringInput `pulumi:"defaultLanguageCode"`
+	// Agent location for Agent creation, supported values: global/us/eu. If not provided, us Engine will create Agent using us-central-1 by default; eu Engine will create Agent using eu-west-1 by default.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+	TimeZone pulumi.StringInput `pulumi:"timeZone"`
+}
+
+func (GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigArgs) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput() GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigArgs) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput)
+}
+
+func (i GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigArgs) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput() GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigArgs) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput).ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrInput is an input type that accepts GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigArgs, GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtr and GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrInput` via:
+//
+//	        GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput() GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput
+	ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput
+}
+
+type googleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrType GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigArgs
+
+func GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtr(v *GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigArgs) GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrInput {
+	return (*googleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrType)(v)
+}
+
+func (*googleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrType) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput() GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrType) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput)
+}
+
+// Configurations for generating a Dialogflow agent. Note that these configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
+type GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput() GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput() GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput {
+	return o.ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig) *GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig {
+		return &v
+	}).(GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput)
+}
+
+// Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput) Business() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig) *string {
+		return v.Business
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes.
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput) DefaultLanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig) string {
+		return v.DefaultLanguageCode
+	}).(pulumi.StringOutput)
+}
+
+// Agent location for Agent creation, supported values: global/us/eu. If not provided, us Engine will create Agent using us-central-1 by default; eu Engine will create Agent using eu-west-1 by default.
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig) *string {
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig) string {
+		return v.TimeZone
+	}).(pulumi.StringOutput)
+}
+
+type GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput() GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput) Elem() GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig) GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig
+		return ret
+	}).(GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput)
+}
+
+// Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput) Business() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Business
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes.
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput) DefaultLanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DefaultLanguageCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Agent location for Agent creation, supported values: global/us/eu. If not provided, us Engine will create Agent using us-central-1 by default; eu Engine will create Agent using eu-west-1 by default.
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configurations for generating a Dialogflow agent. Note that these configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
+type GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigResponse struct {
+	// Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
+	Business string `pulumi:"business"`
+	// The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes.
+	DefaultLanguageCode string `pulumi:"defaultLanguageCode"`
+	// Agent location for Agent creation, supported values: global/us/eu. If not provided, us Engine will create Agent using us-central-1 by default; eu Engine will create Agent using eu-west-1 by default.
+	Location string `pulumi:"location"`
+	// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+	TimeZone string `pulumi:"timeZone"`
+}
+
+// Configurations for generating a Dialogflow agent. Note that these configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
+type GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigResponseOutput) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigResponseOutput() GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigResponseOutput) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigResponseOutput {
+	return o
+}
+
+// Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigResponseOutput) Business() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigResponse) string {
+		return v.Business
+	}).(pulumi.StringOutput)
+}
+
+// The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes.
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigResponseOutput) DefaultLanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigResponse) string {
+		return v.DefaultLanguageCode
+	}).(pulumi.StringOutput)
+}
+
+// Agent location for Agent creation, supported values: global/us/eu. If not provided, us Engine will create Agent using us-central-1 by default; eu Engine will create Agent using eu-west-1 by default.
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigResponse) string {
+		return v.Location
+	}).(pulumi.StringOutput)
+}
+
+// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigResponseOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigResponse) string {
+		return v.TimeZone
+	}).(pulumi.StringOutput)
+}
+
+// Configurations for a Chat Engine.
+type GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigResponse struct {
+	// The configurationt generate the Dialogflow agent that is associated to this Engine. Note that these configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
+	AgentCreationConfig GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigResponse `pulumi:"agentCreationConfig"`
+	// The resource name of an exist Dialogflow agent to link to this Chat Engine. Customers can either provide `agent_creation_config` to create agent or provide an agent name that links the agent with the Chat engine. Format: `projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation. Please use ChatEngineMetadata.dialogflow_agent for actual agent association after Engine is created.
+	DialogflowAgentToLink string `pulumi:"dialogflowAgentToLink"`
+}
+
+// Configurations for a Chat Engine.
+type GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigResponseOutput) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigResponseOutput() GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigResponseOutput) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigResponseOutput {
+	return o
+}
+
+// The configurationt generate the Dialogflow agent that is associated to this Engine. Note that these configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigResponseOutput) AgentCreationConfig() GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigResponse) GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigResponse {
+		return v.AgentCreationConfig
+	}).(GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigResponseOutput)
+}
+
+// The resource name of an exist Dialogflow agent to link to this Chat Engine. Customers can either provide `agent_creation_config` to create agent or provide an agent name that links the agent with the Chat engine. Format: `projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation. Please use ChatEngineMetadata.dialogflow_agent for actual agent association after Engine is created.
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigResponseOutput) DialogflowAgentToLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigResponse) string {
+		return v.DialogflowAgentToLink
+	}).(pulumi.StringOutput)
+}
+
+// Additional information of a Chat Engine. Fields in this message are output only.
+type GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadataResponse struct {
+	// The resource name of a Dialogflow agent, that this Chat Engine refers to. Format: `projects//locations//agents/`.
+	DialogflowAgent string `pulumi:"dialogflowAgent"`
+}
+
+// Additional information of a Chat Engine. Fields in this message are output only.
+type GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadataResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadataResponseOutput) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineMetadataResponseOutput() GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadataResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadataResponseOutput) ToGoogleCloudDiscoveryengineV1betaEngineChatEngineMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadataResponseOutput {
+	return o
+}
+
+// The resource name of a Dialogflow agent, that this Chat Engine refers to. Format: `projects//locations//agents/`.
+func (o GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadataResponseOutput) DialogflowAgent() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadataResponse) string {
+		return v.DialogflowAgent
+	}).(pulumi.StringOutput)
+}
+
+// Common configurations for an Engine.
+type GoogleCloudDiscoveryengineV1betaEngineCommonConfig struct {
+	// Immutable. The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
+	CompanyName *string `pulumi:"companyName"`
+}
+
+// GoogleCloudDiscoveryengineV1betaEngineCommonConfigInput is an input type that accepts GoogleCloudDiscoveryengineV1betaEngineCommonConfigArgs and GoogleCloudDiscoveryengineV1betaEngineCommonConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaEngineCommonConfigInput` via:
+//
+//	GoogleCloudDiscoveryengineV1betaEngineCommonConfigArgs{...}
+type GoogleCloudDiscoveryengineV1betaEngineCommonConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaEngineCommonConfigOutput() GoogleCloudDiscoveryengineV1betaEngineCommonConfigOutput
+	ToGoogleCloudDiscoveryengineV1betaEngineCommonConfigOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaEngineCommonConfigOutput
+}
+
+// Common configurations for an Engine.
+type GoogleCloudDiscoveryengineV1betaEngineCommonConfigArgs struct {
+	// Immutable. The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
+	CompanyName pulumi.StringPtrInput `pulumi:"companyName"`
+}
+
+func (GoogleCloudDiscoveryengineV1betaEngineCommonConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaEngineCommonConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDiscoveryengineV1betaEngineCommonConfigArgs) ToGoogleCloudDiscoveryengineV1betaEngineCommonConfigOutput() GoogleCloudDiscoveryengineV1betaEngineCommonConfigOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaEngineCommonConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaEngineCommonConfigArgs) ToGoogleCloudDiscoveryengineV1betaEngineCommonConfigOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineCommonConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaEngineCommonConfigOutput)
+}
+
+func (i GoogleCloudDiscoveryengineV1betaEngineCommonConfigArgs) ToGoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput() GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaEngineCommonConfigArgs) ToGoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaEngineCommonConfigOutput).ToGoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrInput is an input type that accepts GoogleCloudDiscoveryengineV1betaEngineCommonConfigArgs, GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtr and GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrInput` via:
+//
+//	        GoogleCloudDiscoveryengineV1betaEngineCommonConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput() GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput
+	ToGoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput
+}
+
+type googleCloudDiscoveryengineV1betaEngineCommonConfigPtrType GoogleCloudDiscoveryengineV1betaEngineCommonConfigArgs
+
+func GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtr(v *GoogleCloudDiscoveryengineV1betaEngineCommonConfigArgs) GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrInput {
+	return (*googleCloudDiscoveryengineV1betaEngineCommonConfigPtrType)(v)
+}
+
+func (*googleCloudDiscoveryengineV1betaEngineCommonConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDiscoveryengineV1betaEngineCommonConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDiscoveryengineV1betaEngineCommonConfigPtrType) ToGoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput() GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDiscoveryengineV1betaEngineCommonConfigPtrType) ToGoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput)
+}
+
+// Common configurations for an Engine.
+type GoogleCloudDiscoveryengineV1betaEngineCommonConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaEngineCommonConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaEngineCommonConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineCommonConfigOutput) ToGoogleCloudDiscoveryengineV1betaEngineCommonConfigOutput() GoogleCloudDiscoveryengineV1betaEngineCommonConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineCommonConfigOutput) ToGoogleCloudDiscoveryengineV1betaEngineCommonConfigOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineCommonConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineCommonConfigOutput) ToGoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput() GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput {
+	return o.ToGoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineCommonConfigOutput) ToGoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1betaEngineCommonConfig) *GoogleCloudDiscoveryengineV1betaEngineCommonConfig {
+		return &v
+	}).(GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput)
+}
+
+// Immutable. The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
+func (o GoogleCloudDiscoveryengineV1betaEngineCommonConfigOutput) CompanyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaEngineCommonConfig) *string { return v.CompanyName }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDiscoveryengineV1betaEngineCommonConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput) ToGoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput() GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput) ToGoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput) Elem() GoogleCloudDiscoveryengineV1betaEngineCommonConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaEngineCommonConfig) GoogleCloudDiscoveryengineV1betaEngineCommonConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDiscoveryengineV1betaEngineCommonConfig
+		return ret
+	}).(GoogleCloudDiscoveryengineV1betaEngineCommonConfigOutput)
+}
+
+// Immutable. The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
+func (o GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput) CompanyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaEngineCommonConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompanyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Common configurations for an Engine.
+type GoogleCloudDiscoveryengineV1betaEngineCommonConfigResponse struct {
+	// Immutable. The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
+	CompanyName string `pulumi:"companyName"`
+}
+
+// Common configurations for an Engine.
+type GoogleCloudDiscoveryengineV1betaEngineCommonConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaEngineCommonConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaEngineCommonConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineCommonConfigResponseOutput) ToGoogleCloudDiscoveryengineV1betaEngineCommonConfigResponseOutput() GoogleCloudDiscoveryengineV1betaEngineCommonConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineCommonConfigResponseOutput) ToGoogleCloudDiscoveryengineV1betaEngineCommonConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineCommonConfigResponseOutput {
+	return o
+}
+
+// Immutable. The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
+func (o GoogleCloudDiscoveryengineV1betaEngineCommonConfigResponseOutput) CompanyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaEngineCommonConfigResponse) string { return v.CompanyName }).(pulumi.StringOutput)
+}
+
+// Configurations for a Search Engine.
+type GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig struct {
+	// The add-on that this search engine enables.
+	SearchAddOns []GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem `pulumi:"searchAddOns"`
+	// The search feature tier of this engine. Different tiers might have different pricing. To learn more, please check the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
+	SearchTier *GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier `pulumi:"searchTier"`
+}
+
+// GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigInput is an input type that accepts GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigArgs and GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigInput` via:
+//
+//	GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigArgs{...}
+type GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutput() GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutput
+	ToGoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutput
+}
+
+// Configurations for a Search Engine.
+type GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigArgs struct {
+	// The add-on that this search engine enables.
+	SearchAddOns GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItemArrayInput `pulumi:"searchAddOns"`
+	// The search feature tier of this engine. Different tiers might have different pricing. To learn more, please check the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
+	SearchTier GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTierPtrInput `pulumi:"searchTier"`
+}
+
+func (GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigArgs) ToGoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutput() GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigArgs) ToGoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutput)
+}
+
+func (i GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigArgs) ToGoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput() GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigArgs) ToGoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutput).ToGoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrInput is an input type that accepts GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigArgs, GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtr and GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrInput` via:
+//
+//	        GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput() GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput
+	ToGoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput
+}
+
+type googleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrType GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigArgs
+
+func GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtr(v *GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigArgs) GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrInput {
+	return (*googleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrType)(v)
+}
+
+func (*googleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrType) ToGoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput() GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrType) ToGoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput)
+}
+
+// Configurations for a Search Engine.
+type GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutput) ToGoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutput() GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutput) ToGoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutput) ToGoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput() GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput {
+	return o.ToGoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutput) ToGoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig) *GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig {
+		return &v
+	}).(GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput)
+}
+
+// The add-on that this search engine enables.
+func (o GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutput) SearchAddOns() GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItemArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig) []GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem {
+		return v.SearchAddOns
+	}).(GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItemArrayOutput)
+}
+
+// The search feature tier of this engine. Different tiers might have different pricing. To learn more, please check the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
+func (o GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutput) SearchTier() GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTierPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig) *GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier {
+		return v.SearchTier
+	}).(GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTierPtrOutput)
+}
+
+type GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput) ToGoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput() GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput) ToGoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput) Elem() GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig) GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig
+		return ret
+	}).(GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutput)
+}
+
+// The add-on that this search engine enables.
+func (o GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput) SearchAddOns() GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItemArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig) []GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItem {
+		if v == nil {
+			return nil
+		}
+		return v.SearchAddOns
+	}).(GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItemArrayOutput)
+}
+
+// The search feature tier of this engine. Different tiers might have different pricing. To learn more, please check the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
+func (o GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput) SearchTier() GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTierPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig) *GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTier {
+		if v == nil {
+			return nil
+		}
+		return v.SearchTier
+	}).(GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTierPtrOutput)
+}
+
+// Configurations for a Search Engine.
+type GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigResponse struct {
+	// The add-on that this search engine enables.
+	SearchAddOns []string `pulumi:"searchAddOns"`
+	// The search feature tier of this engine. Different tiers might have different pricing. To learn more, please check the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
+	SearchTier string `pulumi:"searchTier"`
+}
+
+// Configurations for a Search Engine.
+type GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigResponseOutput) ToGoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigResponseOutput() GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigResponseOutput) ToGoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigResponseOutput {
+	return o
+}
+
+// The add-on that this search engine enables.
+func (o GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigResponseOutput) SearchAddOns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigResponse) []string {
+		return v.SearchAddOns
+	}).(pulumi.StringArrayOutput)
+}
+
+// The search feature tier of this engine. Different tiers might have different pricing. To learn more, please check the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
+func (o GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigResponseOutput) SearchTier() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigResponse) string { return v.SearchTier }).(pulumi.StringOutput)
 }
 
 // Defines a reply message to user.
@@ -1034,6 +2650,224 @@ func (o GoogleCloudDiscoveryengineV1betaReplyResponseOutput) Summary() GoogleClo
 	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryResponseOutput)
 }
 
+// Defines the structure and layout of a type of document data.
+type GoogleCloudDiscoveryengineV1betaSchema struct {
+	// The JSON representation of the schema.
+	JsonSchema *string `pulumi:"jsonSchema"`
+	// Immutable. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+	Name *string `pulumi:"name"`
+	// The structured representation of the schema.
+	StructSchema map[string]string `pulumi:"structSchema"`
+}
+
+// GoogleCloudDiscoveryengineV1betaSchemaInput is an input type that accepts GoogleCloudDiscoveryengineV1betaSchemaArgs and GoogleCloudDiscoveryengineV1betaSchemaOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaSchemaInput` via:
+//
+//	GoogleCloudDiscoveryengineV1betaSchemaArgs{...}
+type GoogleCloudDiscoveryengineV1betaSchemaInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaSchemaOutput() GoogleCloudDiscoveryengineV1betaSchemaOutput
+	ToGoogleCloudDiscoveryengineV1betaSchemaOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaSchemaOutput
+}
+
+// Defines the structure and layout of a type of document data.
+type GoogleCloudDiscoveryengineV1betaSchemaArgs struct {
+	// The JSON representation of the schema.
+	JsonSchema pulumi.StringPtrInput `pulumi:"jsonSchema"`
+	// Immutable. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The structured representation of the schema.
+	StructSchema pulumi.StringMapInput `pulumi:"structSchema"`
+}
+
+func (GoogleCloudDiscoveryengineV1betaSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSchema)(nil)).Elem()
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSchemaArgs) ToGoogleCloudDiscoveryengineV1betaSchemaOutput() GoogleCloudDiscoveryengineV1betaSchemaOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaSchemaOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSchemaArgs) ToGoogleCloudDiscoveryengineV1betaSchemaOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaSchemaOutput)
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSchemaArgs) ToGoogleCloudDiscoveryengineV1betaSchemaPtrOutput() GoogleCloudDiscoveryengineV1betaSchemaPtrOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaSchemaPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSchemaArgs) ToGoogleCloudDiscoveryengineV1betaSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaSchemaOutput).ToGoogleCloudDiscoveryengineV1betaSchemaPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDiscoveryengineV1betaSchemaPtrInput is an input type that accepts GoogleCloudDiscoveryengineV1betaSchemaArgs, GoogleCloudDiscoveryengineV1betaSchemaPtr and GoogleCloudDiscoveryengineV1betaSchemaPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaSchemaPtrInput` via:
+//
+//	        GoogleCloudDiscoveryengineV1betaSchemaArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDiscoveryengineV1betaSchemaPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaSchemaPtrOutput() GoogleCloudDiscoveryengineV1betaSchemaPtrOutput
+	ToGoogleCloudDiscoveryengineV1betaSchemaPtrOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaSchemaPtrOutput
+}
+
+type googleCloudDiscoveryengineV1betaSchemaPtrType GoogleCloudDiscoveryengineV1betaSchemaArgs
+
+func GoogleCloudDiscoveryengineV1betaSchemaPtr(v *GoogleCloudDiscoveryengineV1betaSchemaArgs) GoogleCloudDiscoveryengineV1betaSchemaPtrInput {
+	return (*googleCloudDiscoveryengineV1betaSchemaPtrType)(v)
+}
+
+func (*googleCloudDiscoveryengineV1betaSchemaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDiscoveryengineV1betaSchema)(nil)).Elem()
+}
+
+func (i *googleCloudDiscoveryengineV1betaSchemaPtrType) ToGoogleCloudDiscoveryengineV1betaSchemaPtrOutput() GoogleCloudDiscoveryengineV1betaSchemaPtrOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaSchemaPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDiscoveryengineV1betaSchemaPtrType) ToGoogleCloudDiscoveryengineV1betaSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaSchemaPtrOutput)
+}
+
+// Defines the structure and layout of a type of document data.
+type GoogleCloudDiscoveryengineV1betaSchemaOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSchema)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSchemaOutput) ToGoogleCloudDiscoveryengineV1betaSchemaOutput() GoogleCloudDiscoveryengineV1betaSchemaOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSchemaOutput) ToGoogleCloudDiscoveryengineV1betaSchemaOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSchemaOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSchemaOutput) ToGoogleCloudDiscoveryengineV1betaSchemaPtrOutput() GoogleCloudDiscoveryengineV1betaSchemaPtrOutput {
+	return o.ToGoogleCloudDiscoveryengineV1betaSchemaPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSchemaOutput) ToGoogleCloudDiscoveryengineV1betaSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSchemaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1betaSchema) *GoogleCloudDiscoveryengineV1betaSchema {
+		return &v
+	}).(GoogleCloudDiscoveryengineV1betaSchemaPtrOutput)
+}
+
+// The JSON representation of the schema.
+func (o GoogleCloudDiscoveryengineV1betaSchemaOutput) JsonSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSchema) *string { return v.JsonSchema }).(pulumi.StringPtrOutput)
+}
+
+// Immutable. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+func (o GoogleCloudDiscoveryengineV1betaSchemaOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSchema) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The structured representation of the schema.
+func (o GoogleCloudDiscoveryengineV1betaSchemaOutput) StructSchema() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSchema) map[string]string { return v.StructSchema }).(pulumi.StringMapOutput)
+}
+
+type GoogleCloudDiscoveryengineV1betaSchemaPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSchemaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDiscoveryengineV1betaSchema)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSchemaPtrOutput) ToGoogleCloudDiscoveryengineV1betaSchemaPtrOutput() GoogleCloudDiscoveryengineV1betaSchemaPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSchemaPtrOutput) ToGoogleCloudDiscoveryengineV1betaSchemaPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSchemaPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSchemaPtrOutput) Elem() GoogleCloudDiscoveryengineV1betaSchemaOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaSchema) GoogleCloudDiscoveryengineV1betaSchema {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDiscoveryengineV1betaSchema
+		return ret
+	}).(GoogleCloudDiscoveryengineV1betaSchemaOutput)
+}
+
+// The JSON representation of the schema.
+func (o GoogleCloudDiscoveryengineV1betaSchemaPtrOutput) JsonSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaSchema) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JsonSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+// Immutable. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+func (o GoogleCloudDiscoveryengineV1betaSchemaPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaSchema) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The structured representation of the schema.
+func (o GoogleCloudDiscoveryengineV1betaSchemaPtrOutput) StructSchema() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaSchema) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.StructSchema
+	}).(pulumi.StringMapOutput)
+}
+
+// Defines the structure and layout of a type of document data.
+type GoogleCloudDiscoveryengineV1betaSchemaResponse struct {
+	// The JSON representation of the schema.
+	JsonSchema string `pulumi:"jsonSchema"`
+	// Immutable. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+	Name string `pulumi:"name"`
+	// The structured representation of the schema.
+	StructSchema map[string]string `pulumi:"structSchema"`
+}
+
+// Defines the structure and layout of a type of document data.
+type GoogleCloudDiscoveryengineV1betaSchemaResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSchemaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSchemaResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSchemaResponseOutput) ToGoogleCloudDiscoveryengineV1betaSchemaResponseOutput() GoogleCloudDiscoveryengineV1betaSchemaResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSchemaResponseOutput) ToGoogleCloudDiscoveryengineV1betaSchemaResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSchemaResponseOutput {
+	return o
+}
+
+// The JSON representation of the schema.
+func (o GoogleCloudDiscoveryengineV1betaSchemaResponseOutput) JsonSchema() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSchemaResponse) string { return v.JsonSchema }).(pulumi.StringOutput)
+}
+
+// Immutable. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+func (o GoogleCloudDiscoveryengineV1betaSchemaResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSchemaResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The structured representation of the schema.
+func (o GoogleCloudDiscoveryengineV1betaSchemaResponseOutput) StructSchema() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSchemaResponse) map[string]string { return v.StructSchema }).(pulumi.StringMapOutput)
+}
+
 // Summary of the top N search result specified by the summary spec.
 type GoogleCloudDiscoveryengineV1betaSearchResponseSummary struct {
 	// A collection of Safety Attribute categories and their associated confidence scores.
@@ -1042,6 +2876,8 @@ type GoogleCloudDiscoveryengineV1betaSearchResponseSummary struct {
 	SummarySkippedReasons []GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItem `pulumi:"summarySkippedReasons"`
 	// The summary content.
 	SummaryText *string `pulumi:"summaryText"`
+	// Summary with metadata information.
+	SummaryWithMetadata *GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata `pulumi:"summaryWithMetadata"`
 }
 
 // GoogleCloudDiscoveryengineV1betaSearchResponseSummaryInput is an input type that accepts GoogleCloudDiscoveryengineV1betaSearchResponseSummaryArgs and GoogleCloudDiscoveryengineV1betaSearchResponseSummaryOutput values.
@@ -1063,6 +2899,8 @@ type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryArgs struct {
 	SummarySkippedReasons GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemArrayInput `pulumi:"summarySkippedReasons"`
 	// The summary content.
 	SummaryText pulumi.StringPtrInput `pulumi:"summaryText"`
+	// Summary with metadata information.
+	SummaryWithMetadata GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrInput `pulumi:"summaryWithMetadata"`
 }
 
 func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryArgs) ElementType() reflect.Type {
@@ -1162,6 +3000,13 @@ func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryOutput) SummaryText
 	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummary) *string { return v.SummaryText }).(pulumi.StringPtrOutput)
 }
 
+// Summary with metadata information.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryOutput) SummaryWithMetadata() GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummary) *GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata {
+		return v.SummaryWithMetadata
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput)
+}
+
 type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryPtrOutput) ElementType() reflect.Type {
@@ -1216,6 +3061,892 @@ func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryPtrOutput) SummaryT
 	}).(pulumi.StringPtrOutput)
 }
 
+// Summary with metadata information.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryPtrOutput) SummaryWithMetadata() GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaSearchResponseSummary) *GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata {
+		if v == nil {
+			return nil
+		}
+		return v.SummaryWithMetadata
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput)
+}
+
+// Citation info for a segment.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation struct {
+	// End of the attributed segment, exclusive.
+	EndIndex *string `pulumi:"endIndex"`
+	// Citation sources for the attributed segment.
+	Sources []GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource `pulumi:"sources"`
+	// Index indicates the start of the segment, measured in bytes/unicode.
+	StartIndex *string `pulumi:"startIndex"`
+}
+
+// GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationInput is an input type that accepts GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArgs and GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationInput` via:
+//
+//	GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArgs{...}
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutput
+	ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutput
+}
+
+// Citation info for a segment.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArgs struct {
+	// End of the attributed segment, exclusive.
+	EndIndex pulumi.StringPtrInput `pulumi:"endIndex"`
+	// Citation sources for the attributed segment.
+	Sources GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayInput `pulumi:"sources"`
+	// Index indicates the start of the segment, measured in bytes/unicode.
+	StartIndex pulumi.StringPtrInput `pulumi:"startIndex"`
+}
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation)(nil)).Elem()
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArgs) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArgs) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutput)
+}
+
+// GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayInput is an input type that accepts GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArray and GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayInput` via:
+//
+//	GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArray{ GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArgs{...} }
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutput
+	ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutput
+}
+
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArray []GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationInput
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation)(nil)).Elem()
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArray) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArray) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutput)
+}
+
+// Citation info for a segment.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutput {
+	return o
+}
+
+// End of the attributed segment, exclusive.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutput) EndIndex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation) *string { return v.EndIndex }).(pulumi.StringPtrOutput)
+}
+
+// Citation sources for the attributed segment.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutput) Sources() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation) []GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource {
+		return v.Sources
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayOutput)
+}
+
+// Index indicates the start of the segment, measured in bytes/unicode.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutput) StartIndex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation) *string { return v.StartIndex }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutput) Index(i pulumi.IntInput) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation {
+		return vs[0].([]GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation)[vs[1].(int)]
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutput)
+}
+
+// Citation metadata.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata struct {
+	// Citations for segments.
+	Citations []GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation `pulumi:"citations"`
+}
+
+// GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataInput is an input type that accepts GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataArgs and GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataInput` via:
+//
+//	GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataArgs{...}
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutput
+	ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutput
+}
+
+// Citation metadata.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataArgs struct {
+	// Citations for segments.
+	Citations GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayInput `pulumi:"citations"`
+}
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata)(nil)).Elem()
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataArgs) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataArgs) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutput)
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataArgs) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataArgs) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutput).ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrInput is an input type that accepts GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataArgs, GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtr and GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrInput` via:
+//
+//	        GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput
+	ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput
+}
+
+type googleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrType GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataArgs
+
+func GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtr(v *GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataArgs) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrInput {
+	return (*googleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrType)(v)
+}
+
+func (*googleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata)(nil)).Elem()
+}
+
+func (i *googleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrType) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrType) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput)
+}
+
+// Citation metadata.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput {
+	return o.ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata) *GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata {
+		return &v
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput)
+}
+
+// Citations for segments.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutput) Citations() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata) []GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation {
+		return v.Citations
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutput)
+}
+
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput) Elem() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata
+		return ret
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutput)
+}
+
+// Citations for segments.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput) Citations() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata) []GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation {
+		if v == nil {
+			return nil
+		}
+		return v.Citations
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutput)
+}
+
+// Citation metadata.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataResponse struct {
+	// Citations for segments.
+	Citations []GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponse `pulumi:"citations"`
+}
+
+// Citation metadata.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataResponseOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataResponseOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataResponseOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataResponseOutput {
+	return o
+}
+
+// Citations for segments.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataResponseOutput) Citations() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataResponse) []GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponse {
+		return v.Citations
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseArrayOutput)
+}
+
+// Citation info for a segment.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponse struct {
+	// End of the attributed segment, exclusive.
+	EndIndex string `pulumi:"endIndex"`
+	// Citation sources for the attributed segment.
+	Sources []GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponse `pulumi:"sources"`
+	// Index indicates the start of the segment, measured in bytes/unicode.
+	StartIndex string `pulumi:"startIndex"`
+}
+
+// Citation info for a segment.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseOutput {
+	return o
+}
+
+// End of the attributed segment, exclusive.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseOutput) EndIndex() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponse) string {
+		return v.EndIndex
+	}).(pulumi.StringOutput)
+}
+
+// Citation sources for the attributed segment.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseOutput) Sources() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponse) []GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponse {
+		return v.Sources
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponseArrayOutput)
+}
+
+// Index indicates the start of the segment, measured in bytes/unicode.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseOutput) StartIndex() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponse) string {
+		return v.StartIndex
+	}).(pulumi.StringOutput)
+}
+
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseArrayOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseArrayOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseArrayOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponse {
+		return vs[0].([]GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponse)[vs[1].(int)]
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseOutput)
+}
+
+// Citation source.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource struct {
+	// Document reference index from SummaryWithMetadata.references. It is 0-indexed and the value will be zero if the reference_index is not set explicitly.
+	ReferenceIndex *string `pulumi:"referenceIndex"`
+}
+
+// GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceInput is an input type that accepts GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArgs and GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceInput` via:
+//
+//	GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArgs{...}
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceOutput
+	ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceOutput
+}
+
+// Citation source.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArgs struct {
+	// Document reference index from SummaryWithMetadata.references. It is 0-indexed and the value will be zero if the reference_index is not set explicitly.
+	ReferenceIndex pulumi.StringPtrInput `pulumi:"referenceIndex"`
+}
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource)(nil)).Elem()
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArgs) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArgs) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceOutput)
+}
+
+// GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayInput is an input type that accepts GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArray and GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayInput` via:
+//
+//	GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArray{ GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArgs{...} }
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayOutput
+	ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayOutput
+}
+
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArray []GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceInput
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource)(nil)).Elem()
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArray) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArray) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayOutput)
+}
+
+// Citation source.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceOutput {
+	return o
+}
+
+// Document reference index from SummaryWithMetadata.references. It is 0-indexed and the value will be zero if the reference_index is not set explicitly.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceOutput) ReferenceIndex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource) *string {
+		return v.ReferenceIndex
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayOutput) Index(i pulumi.IntInput) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource {
+		return vs[0].([]GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource)[vs[1].(int)]
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceOutput)
+}
+
+// Citation source.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponse struct {
+	// Document reference index from SummaryWithMetadata.references. It is 0-indexed and the value will be zero if the reference_index is not set explicitly.
+	ReferenceIndex string `pulumi:"referenceIndex"`
+}
+
+// Citation source.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponseOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponseOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponseOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponseOutput {
+	return o
+}
+
+// Document reference index from SummaryWithMetadata.references. It is 0-indexed and the value will be zero if the reference_index is not set explicitly.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponseOutput) ReferenceIndex() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponse) string {
+		return v.ReferenceIndex
+	}).(pulumi.StringOutput)
+}
+
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponseArrayOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponseArrayOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponseArrayOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponse {
+		return vs[0].([]GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponse)[vs[1].(int)]
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponseOutput)
+}
+
+// Document reference.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference struct {
+	// List of cited chunk contents derived from document content.
+	ChunkContents []GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContent `pulumi:"chunkContents"`
+	// Document.name of the document. Full resource name of the referenced document, in the format `projects/*/locations/*/collections/*/dataStores/*/branches/*/documents/*`.
+	Document string `pulumi:"document"`
+	// Title of the document.
+	Title *string `pulumi:"title"`
+	// Cloud Storage or HTTP uri for the document.
+	Uri *string `pulumi:"uri"`
+}
+
+// GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceInput is an input type that accepts GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArgs and GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceInput` via:
+//
+//	GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArgs{...}
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutput
+	ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutput
+}
+
+// Document reference.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArgs struct {
+	// List of cited chunk contents derived from document content.
+	ChunkContents GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayInput `pulumi:"chunkContents"`
+	// Document.name of the document. Full resource name of the referenced document, in the format `projects/*/locations/*/collections/*/dataStores/*/branches/*/documents/*`.
+	Document pulumi.StringInput `pulumi:"document"`
+	// Title of the document.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+	// Cloud Storage or HTTP uri for the document.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference)(nil)).Elem()
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArgs) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArgs) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutput)
+}
+
+// GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayInput is an input type that accepts GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArray and GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayInput` via:
+//
+//	GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArray{ GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArgs{...} }
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutput
+	ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutput
+}
+
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArray []GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceInput
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference)(nil)).Elem()
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArray) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArray) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutput)
+}
+
+// Document reference.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutput {
+	return o
+}
+
+// List of cited chunk contents derived from document content.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutput) ChunkContents() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference) []GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContent {
+		return v.ChunkContents
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayOutput)
+}
+
+// Document.name of the document. Full resource name of the referenced document, in the format `projects/*/locations/*/collections/*/dataStores/*/branches/*/documents/*`.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutput) Document() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference) string { return v.Document }).(pulumi.StringOutput)
+}
+
+// Title of the document.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+// Cloud Storage or HTTP uri for the document.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutput) Index(i pulumi.IntInput) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference {
+		return vs[0].([]GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference)[vs[1].(int)]
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutput)
+}
+
+// Chunk content.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContent struct {
+	// Chunk textual content.
+	Content *string `pulumi:"content"`
+	// Page identifier.
+	PageIdentifier *string `pulumi:"pageIdentifier"`
+}
+
+// GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentInput is an input type that accepts GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArgs and GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentInput` via:
+//
+//	GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArgs{...}
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentOutput
+	ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentOutput
+}
+
+// Chunk content.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArgs struct {
+	// Chunk textual content.
+	Content pulumi.StringPtrInput `pulumi:"content"`
+	// Page identifier.
+	PageIdentifier pulumi.StringPtrInput `pulumi:"pageIdentifier"`
+}
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContent)(nil)).Elem()
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArgs) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArgs) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentOutput)
+}
+
+// GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayInput is an input type that accepts GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArray and GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayInput` via:
+//
+//	GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArray{ GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArgs{...} }
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayOutput
+	ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayOutput
+}
+
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArray []GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentInput
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContent)(nil)).Elem()
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArray) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArray) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayOutput)
+}
+
+// Chunk content.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContent)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentOutput {
+	return o
+}
+
+// Chunk textual content.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContent) *string {
+		return v.Content
+	}).(pulumi.StringPtrOutput)
+}
+
+// Page identifier.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentOutput) PageIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContent) *string {
+		return v.PageIdentifier
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContent)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayOutput) Index(i pulumi.IntInput) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContent {
+		return vs[0].([]GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContent)[vs[1].(int)]
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentOutput)
+}
+
+// Chunk content.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponse struct {
+	// Chunk textual content.
+	Content string `pulumi:"content"`
+	// Page identifier.
+	PageIdentifier string `pulumi:"pageIdentifier"`
+}
+
+// Chunk content.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseOutput {
+	return o
+}
+
+// Chunk textual content.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponse) string {
+		return v.Content
+	}).(pulumi.StringOutput)
+}
+
+// Page identifier.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseOutput) PageIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponse) string {
+		return v.PageIdentifier
+	}).(pulumi.StringOutput)
+}
+
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseArrayOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseArrayOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseArrayOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponse {
+		return vs[0].([]GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponse)[vs[1].(int)]
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseOutput)
+}
+
+// Document reference.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponse struct {
+	// List of cited chunk contents derived from document content.
+	ChunkContents []GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponse `pulumi:"chunkContents"`
+	// Document.name of the document. Full resource name of the referenced document, in the format `projects/*/locations/*/collections/*/dataStores/*/branches/*/documents/*`.
+	Document string `pulumi:"document"`
+	// Title of the document.
+	Title string `pulumi:"title"`
+	// Cloud Storage or HTTP uri for the document.
+	Uri string `pulumi:"uri"`
+}
+
+// Document reference.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseOutput {
+	return o
+}
+
+// List of cited chunk contents derived from document content.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseOutput) ChunkContents() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponse) []GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponse {
+		return v.ChunkContents
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseArrayOutput)
+}
+
+// Document.name of the document. Full resource name of the referenced document, in the format `projects/*/locations/*/collections/*/dataStores/*/branches/*/documents/*`.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseOutput) Document() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponse) string {
+		return v.Document
+	}).(pulumi.StringOutput)
+}
+
+// Title of the document.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// Cloud Storage or HTTP uri for the document.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseArrayOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseArrayOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseArrayOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponse {
+		return vs[0].([]GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponse)[vs[1].(int)]
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseOutput)
+}
+
 // Summary of the top N search result specified by the summary spec.
 type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryResponse struct {
 	// A collection of Safety Attribute categories and their associated confidence scores.
@@ -1224,6 +3955,8 @@ type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryResponse struct {
 	SummarySkippedReasons []string `pulumi:"summarySkippedReasons"`
 	// The summary content.
 	SummaryText string `pulumi:"summaryText"`
+	// Summary with metadata information.
+	SummaryWithMetadata GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataResponse `pulumi:"summaryWithMetadata"`
 }
 
 // Summary of the top N search result specified by the summary spec.
@@ -1258,6 +3991,13 @@ func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryResponseOutput) Sum
 // The summary content.
 func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryResponseOutput) SummaryText() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryResponse) string { return v.SummaryText }).(pulumi.StringOutput)
+}
+
+// Summary with metadata information.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummaryResponseOutput) SummaryWithMetadata() GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummaryResponse) GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataResponse {
+		return v.SummaryWithMetadata
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataResponseOutput)
 }
 
 // Safety Attribute categories and their associated confidence scores.
@@ -1458,6 +4198,327 @@ func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesRes
 	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesResponse) []float64 {
 		return v.Scores
 	}).(pulumi.Float64ArrayOutput)
+}
+
+// Summary with metadata information.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata struct {
+	// Citation metadata for given summary.
+	CitationMetadata *GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata `pulumi:"citationMetadata"`
+	// Document References.
+	References []GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference `pulumi:"references"`
+	// Summary text with no citation information.
+	Summary *string `pulumi:"summary"`
+}
+
+// GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataInput is an input type that accepts GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataArgs and GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataInput` via:
+//
+//	GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataArgs{...}
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutput
+	ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutput
+}
+
+// Summary with metadata information.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataArgs struct {
+	// Citation metadata for given summary.
+	CitationMetadata GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrInput `pulumi:"citationMetadata"`
+	// Document References.
+	References GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayInput `pulumi:"references"`
+	// Summary text with no citation information.
+	Summary pulumi.StringPtrInput `pulumi:"summary"`
+}
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata)(nil)).Elem()
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataArgs) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataArgs) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutput)
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataArgs) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataArgs) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutput).ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrInput is an input type that accepts GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataArgs, GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtr and GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrInput` via:
+//
+//	        GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput
+	ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutputWithContext(context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput
+}
+
+type googleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrType GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataArgs
+
+func GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtr(v *GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataArgs) GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrInput {
+	return (*googleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrType)(v)
+}
+
+func (*googleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata)(nil)).Elem()
+}
+
+func (i *googleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrType) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput {
+	return i.ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrType) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput)
+}
+
+// Summary with metadata information.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput {
+	return o.ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata) *GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata {
+		return &v
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput)
+}
+
+// Citation metadata for given summary.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutput) CitationMetadata() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata) *GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata {
+		return v.CitationMetadata
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput)
+}
+
+// Document References.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutput) References() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata) []GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference {
+		return v.References
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutput)
+}
+
+// Summary text with no citation information.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutput) Summary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata) *string {
+		return v.Summary
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput) Elem() GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata) GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata
+		return ret
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutput)
+}
+
+// Citation metadata for given summary.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput) CitationMetadata() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata) *GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata {
+		if v == nil {
+			return nil
+		}
+		return v.CitationMetadata
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput)
+}
+
+// Document References.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput) References() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata) []GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference {
+		if v == nil {
+			return nil
+		}
+		return v.References
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutput)
+}
+
+// Summary text with no citation information.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput) Summary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Summary
+	}).(pulumi.StringPtrOutput)
+}
+
+// Summary with metadata information.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataResponse struct {
+	// Citation metadata for given summary.
+	CitationMetadata GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataResponse `pulumi:"citationMetadata"`
+	// Document References.
+	References []GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponse `pulumi:"references"`
+	// Summary text with no citation information.
+	Summary string `pulumi:"summary"`
+}
+
+// Summary with metadata information.
+type GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataResponseOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataResponseOutput() GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataResponseOutput) ToGoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataResponseOutput {
+	return o
+}
+
+// Citation metadata for given summary.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataResponseOutput) CitationMetadata() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataResponse) GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataResponse {
+		return v.CitationMetadata
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataResponseOutput)
+}
+
+// Document References.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataResponseOutput) References() GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataResponse) []GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponse {
+		return v.References
+	}).(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseArrayOutput)
+}
+
+// Summary text with no citation information.
+func (o GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataResponseOutput) Summary() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataResponse) string {
+		return v.Summary
+	}).(pulumi.StringOutput)
+}
+
+// Verification information for target sites in advanced site search.
+type GoogleCloudDiscoveryengineV1betaSiteVerificationInfoResponse struct {
+	// Site verification state indicating the ownership and validity.
+	SiteVerificationState string `pulumi:"siteVerificationState"`
+	// Latest site verification time.
+	VerifyTime string `pulumi:"verifyTime"`
+}
+
+// Verification information for target sites in advanced site search.
+type GoogleCloudDiscoveryengineV1betaSiteVerificationInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaSiteVerificationInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSiteVerificationInfoResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSiteVerificationInfoResponseOutput) ToGoogleCloudDiscoveryengineV1betaSiteVerificationInfoResponseOutput() GoogleCloudDiscoveryengineV1betaSiteVerificationInfoResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaSiteVerificationInfoResponseOutput) ToGoogleCloudDiscoveryengineV1betaSiteVerificationInfoResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaSiteVerificationInfoResponseOutput {
+	return o
+}
+
+// Site verification state indicating the ownership and validity.
+func (o GoogleCloudDiscoveryengineV1betaSiteVerificationInfoResponseOutput) SiteVerificationState() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSiteVerificationInfoResponse) string {
+		return v.SiteVerificationState
+	}).(pulumi.StringOutput)
+}
+
+// Latest site verification time.
+func (o GoogleCloudDiscoveryengineV1betaSiteVerificationInfoResponseOutput) VerifyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaSiteVerificationInfoResponse) string { return v.VerifyTime }).(pulumi.StringOutput)
+}
+
+// Failed due to insufficient quota.
+type GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailureResponse struct {
+	// This number is an estimation on how much total quota this project needs to successfully complete indexing.
+	TotalRequiredQuota string `pulumi:"totalRequiredQuota"`
+}
+
+// Failed due to insufficient quota.
+type GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailureResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailureResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailureResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailureResponseOutput) ToGoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailureResponseOutput() GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailureResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailureResponseOutput) ToGoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailureResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailureResponseOutput {
+	return o
+}
+
+// This number is an estimation on how much total quota this project needs to successfully complete indexing.
+func (o GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailureResponseOutput) TotalRequiredQuota() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailureResponse) string {
+		return v.TotalRequiredQuota
+	}).(pulumi.StringOutput)
+}
+
+// Site search indexing failure reasons.
+type GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonResponse struct {
+	// Failed due to insufficient quota.
+	QuotaFailure GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailureResponse `pulumi:"quotaFailure"`
+}
+
+// Site search indexing failure reasons.
+type GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonResponseOutput) ToGoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonResponseOutput() GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonResponseOutput) ToGoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonResponseOutputWithContext(ctx context.Context) GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonResponseOutput {
+	return o
+}
+
+// Failed due to insufficient quota.
+func (o GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonResponseOutput) QuotaFailure() GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailureResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonResponse) GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailureResponse {
+		return v.QuotaFailure
+	}).(GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailureResponseOutput)
 }
 
 // Defines text input.
@@ -1663,14 +4724,44 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaConversationMessageArrayInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaConversationMessageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaDocumentContentInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaDocumentContentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaDocumentContentPtrInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaDocumentContentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaEngineCommonConfigInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaEngineCommonConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaEngineCommonConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaReplyInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaReplyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaReplyPtrInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaReplyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaReplyReferenceInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaReplyReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaReplyReferenceArrayInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaReplyReferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSchemaInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSchemaPtrInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaSearchResponseSummaryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryPtrInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaSearchResponseSummaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesPtrInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaTextInputInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaTextInputArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDiscoveryengineV1betaTextInputPtrInput)(nil)).Elem(), GoogleCloudDiscoveryengineV1betaTextInputArgs{})
 	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaConversationContextOutput{})
@@ -1683,6 +4774,31 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaDocumentContentOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaDocumentContentPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaDocumentContentResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadataResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaEngineCommonConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaEngineCommonConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaEngineCommonConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaReplyOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaReplyPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaReplyReferenceOutput{})
@@ -1690,12 +4806,40 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaReplyReferenceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaReplyReferenceResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaReplyResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSchemaOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSchemaPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSchemaResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadataResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadataResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaSiteVerificationInfoResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailureResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaTextInputOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaTextInputPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDiscoveryengineV1betaTextInputResponseOutput{})

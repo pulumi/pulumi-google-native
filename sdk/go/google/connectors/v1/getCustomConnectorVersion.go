@@ -29,22 +29,28 @@ type LookupCustomConnectorVersionArgs struct {
 }
 
 type LookupCustomConnectorVersionResult struct {
-	// Configuration for establishing the authentication to the connector destination.
+	// Optional. Authentication config for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
 	AuthConfig AuthConfigResponse `pulumi:"authConfig"`
+	// Optional. Backend variables config templates. This translates to additional variable templates in connection.
+	BackendVariableTemplates []ConfigVariableTemplateResponse `pulumi:"backendVariableTemplates"`
 	// Created time.
 	CreateTime string `pulumi:"createTime"`
-	// Configuration of the customConnector's destination.
-	DestinationConfig DestinationConfigResponse `pulumi:"destinationConfig"`
-	// Optional. Whether to enable backend destination config. This is the backend server that the connector connects to.
+	// Optional. Destination config(s) for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
+	DestinationConfigs []DestinationConfigResponse `pulumi:"destinationConfigs"`
+	// Optional. When enabled, the connector will be a facade/ proxy, and connects to the destination provided during connection creation.
 	EnableBackendDestinationConfig bool `pulumi:"enableBackendDestinationConfig"`
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels map[string]string `pulumi:"labels"`
 	// Identifier. Resource name of the Version. Format: projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}
 	Name string `pulumi:"name"`
-	// Service account needed for runtime plane to access Custom Connector secrets.
+	// Optional. Service account used by runtime plane to access auth config secrets.
 	ServiceAccount string `pulumi:"serviceAccount"`
-	// Optional. Location of the custom connector spec.
+	// Optional. Location of the custom connector spec. The location can be either a public url like `https://public-url.com/spec` Or a Google Cloud Storage location like `gs:///`
 	SpecLocation string `pulumi:"specLocation"`
+	// Server URLs parsed from the spec.
+	SpecServerUrls []string `pulumi:"specServerUrls"`
+	// State of the custom connector version.
+	State string `pulumi:"state"`
 	// Updated time.
 	UpdateTime string `pulumi:"updateTime"`
 }
@@ -86,9 +92,16 @@ func (o LookupCustomConnectorVersionResultOutput) ToLookupCustomConnectorVersion
 	return o
 }
 
-// Configuration for establishing the authentication to the connector destination.
+// Optional. Authentication config for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
 func (o LookupCustomConnectorVersionResultOutput) AuthConfig() AuthConfigResponseOutput {
 	return o.ApplyT(func(v LookupCustomConnectorVersionResult) AuthConfigResponse { return v.AuthConfig }).(AuthConfigResponseOutput)
+}
+
+// Optional. Backend variables config templates. This translates to additional variable templates in connection.
+func (o LookupCustomConnectorVersionResultOutput) BackendVariableTemplates() ConfigVariableTemplateResponseArrayOutput {
+	return o.ApplyT(func(v LookupCustomConnectorVersionResult) []ConfigVariableTemplateResponse {
+		return v.BackendVariableTemplates
+	}).(ConfigVariableTemplateResponseArrayOutput)
 }
 
 // Created time.
@@ -96,12 +109,12 @@ func (o LookupCustomConnectorVersionResultOutput) CreateTime() pulumi.StringOutp
 	return o.ApplyT(func(v LookupCustomConnectorVersionResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Configuration of the customConnector's destination.
-func (o LookupCustomConnectorVersionResultOutput) DestinationConfig() DestinationConfigResponseOutput {
-	return o.ApplyT(func(v LookupCustomConnectorVersionResult) DestinationConfigResponse { return v.DestinationConfig }).(DestinationConfigResponseOutput)
+// Optional. Destination config(s) for accessing connector facade/ proxy. This is used only when enable_backend_destination_config is true.
+func (o LookupCustomConnectorVersionResultOutput) DestinationConfigs() DestinationConfigResponseArrayOutput {
+	return o.ApplyT(func(v LookupCustomConnectorVersionResult) []DestinationConfigResponse { return v.DestinationConfigs }).(DestinationConfigResponseArrayOutput)
 }
 
-// Optional. Whether to enable backend destination config. This is the backend server that the connector connects to.
+// Optional. When enabled, the connector will be a facade/ proxy, and connects to the destination provided during connection creation.
 func (o LookupCustomConnectorVersionResultOutput) EnableBackendDestinationConfig() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupCustomConnectorVersionResult) bool { return v.EnableBackendDestinationConfig }).(pulumi.BoolOutput)
 }
@@ -116,14 +129,24 @@ func (o LookupCustomConnectorVersionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomConnectorVersionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Service account needed for runtime plane to access Custom Connector secrets.
+// Optional. Service account used by runtime plane to access auth config secrets.
 func (o LookupCustomConnectorVersionResultOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomConnectorVersionResult) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
-// Optional. Location of the custom connector spec.
+// Optional. Location of the custom connector spec. The location can be either a public url like `https://public-url.com/spec` Or a Google Cloud Storage location like `gs:///`
 func (o LookupCustomConnectorVersionResultOutput) SpecLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomConnectorVersionResult) string { return v.SpecLocation }).(pulumi.StringOutput)
+}
+
+// Server URLs parsed from the spec.
+func (o LookupCustomConnectorVersionResultOutput) SpecServerUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupCustomConnectorVersionResult) []string { return v.SpecServerUrls }).(pulumi.StringArrayOutput)
+}
+
+// State of the custom connector version.
+func (o LookupCustomConnectorVersionResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomConnectorVersionResult) string { return v.State }).(pulumi.StringOutput)
 }
 
 // Updated time.

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, annotations=None, availability_type=None, client_connection_config=None, create_time=None, database_flags=None, delete_time=None, display_name=None, etag=None, gce_zone=None, instance_type=None, ip_address=None, labels=None, machine_config=None, name=None, nodes=None, query_insights_config=None, read_pool_config=None, reconciling=None, state=None, uid=None, update_time=None, writable_node=None):
+    def __init__(__self__, annotations=None, availability_type=None, client_connection_config=None, create_time=None, database_flags=None, delete_time=None, display_name=None, etag=None, gce_zone=None, instance_type=None, ip_address=None, labels=None, machine_config=None, name=None, network_config=None, nodes=None, public_ip_address=None, query_insights_config=None, read_pool_config=None, reconciling=None, satisfies_pzs=None, state=None, uid=None, update_time=None, writable_node=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -62,9 +62,15 @@ class GetInstanceResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if network_config and not isinstance(network_config, dict):
+            raise TypeError("Expected argument 'network_config' to be a dict")
+        pulumi.set(__self__, "network_config", network_config)
         if nodes and not isinstance(nodes, list):
             raise TypeError("Expected argument 'nodes' to be a list")
         pulumi.set(__self__, "nodes", nodes)
+        if public_ip_address and not isinstance(public_ip_address, str):
+            raise TypeError("Expected argument 'public_ip_address' to be a str")
+        pulumi.set(__self__, "public_ip_address", public_ip_address)
         if query_insights_config and not isinstance(query_insights_config, dict):
             raise TypeError("Expected argument 'query_insights_config' to be a dict")
         pulumi.set(__self__, "query_insights_config", query_insights_config)
@@ -74,6 +80,9 @@ class GetInstanceResult:
         if reconciling and not isinstance(reconciling, bool):
             raise TypeError("Expected argument 'reconciling' to be a bool")
         pulumi.set(__self__, "reconciling", reconciling)
+        if satisfies_pzs and not isinstance(satisfies_pzs, bool):
+            raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
+        pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -200,12 +209,28 @@ class GetInstanceResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> 'outputs.InstanceNetworkConfigResponse':
+        """
+        Optional. Instance level network configuration.
+        """
+        return pulumi.get(self, "network_config")
+
+    @property
     @pulumi.getter
     def nodes(self) -> Sequence['outputs.NodeResponse']:
         """
         List of available read-only VMs in this instance, including the standby for a PRIMARY instance.
         """
         return pulumi.get(self, "nodes")
+
+    @property
+    @pulumi.getter(name="publicIpAddress")
+    def public_ip_address(self) -> str:
+        """
+        The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set. This is the connection endpoint for an end-user application.
+        """
+        return pulumi.get(self, "public_ip_address")
 
     @property
     @pulumi.getter(name="queryInsightsConfig")
@@ -230,6 +255,14 @@ class GetInstanceResult:
         Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
         """
         return pulumi.get(self, "reconciling")
+
+    @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> bool:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
 
     @property
     @pulumi.getter
@@ -284,10 +317,13 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             labels=self.labels,
             machine_config=self.machine_config,
             name=self.name,
+            network_config=self.network_config,
             nodes=self.nodes,
+            public_ip_address=self.public_ip_address,
             query_insights_config=self.query_insights_config,
             read_pool_config=self.read_pool_config,
             reconciling=self.reconciling,
+            satisfies_pzs=self.satisfies_pzs,
             state=self.state,
             uid=self.uid,
             update_time=self.update_time,
@@ -327,10 +363,13 @@ def get_instance(cluster_id: Optional[str] = None,
         labels=pulumi.get(__ret__, 'labels'),
         machine_config=pulumi.get(__ret__, 'machine_config'),
         name=pulumi.get(__ret__, 'name'),
+        network_config=pulumi.get(__ret__, 'network_config'),
         nodes=pulumi.get(__ret__, 'nodes'),
+        public_ip_address=pulumi.get(__ret__, 'public_ip_address'),
         query_insights_config=pulumi.get(__ret__, 'query_insights_config'),
         read_pool_config=pulumi.get(__ret__, 'read_pool_config'),
         reconciling=pulumi.get(__ret__, 'reconciling'),
+        satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         state=pulumi.get(__ret__, 'state'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'),

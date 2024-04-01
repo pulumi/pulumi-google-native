@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Outputs
         /// </summary>
         public readonly Outputs.ClusterUpgradeFleetSpecResponse Clusterupgrade;
         /// <summary>
+        /// DataplaneV2 feature spec.
+        /// </summary>
+        public readonly Outputs.DataplaneV2FeatureSpecResponse Dataplanev2;
+        /// <summary>
         /// FleetObservability feature spec.
         /// </summary>
         public readonly Outputs.FleetObservabilityFeatureSpecResponse Fleetobservability;
@@ -45,6 +49,8 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Outputs
 
             Outputs.ClusterUpgradeFleetSpecResponse clusterupgrade,
 
+            Outputs.DataplaneV2FeatureSpecResponse dataplanev2,
+
             Outputs.FleetObservabilityFeatureSpecResponse fleetobservability,
 
             Outputs.MultiClusterIngressFeatureSpecResponse multiclusteringress)
@@ -52,6 +58,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Outputs
             Anthosobservability = anthosobservability;
             Appdevexperience = appdevexperience;
             Clusterupgrade = clusterupgrade;
+            Dataplanev2 = dataplanev2;
             Fleetobservability = fleetobservability;
             Multiclusteringress = multiclusteringress;
         }

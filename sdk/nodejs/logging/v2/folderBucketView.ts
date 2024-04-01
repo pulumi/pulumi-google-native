@@ -41,11 +41,11 @@ export class FolderBucketView extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Describes this view.
+     * Optional. Describes this view.
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Filter that restricts which log entries in a bucket are visible in this view.Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
+     * Optional. Filter that restricts which log entries in a bucket are visible in this view.Filters must be logical conjunctions that use the AND operator, and they can use any of the following qualifiers: SOURCE(), which specifies a project, folder, organization, or billing account of origin. resource.type, which specifies the resource type. LOG_ID(), which identifies the log.They can also use the negations of these qualifiers with the NOT operator.For example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND NOT LOG_ID("stdout")
      */
     public readonly filter!: pulumi.Output<string>;
     public readonly folderId!: pulumi.Output<string>;
@@ -53,7 +53,7 @@ export class FolderBucketView extends pulumi.CustomResource {
     /**
      * The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The last update timestamp of the view.
      */
@@ -88,9 +88,9 @@ export class FolderBucketView extends pulumi.CustomResource {
             resourceInputs["filter"] = args ? args.filter : undefined;
             resourceInputs["folderId"] = args ? args.folderId : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["viewId"] = args ? args.viewId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["bucketId"] = undefined /*out*/;
@@ -116,19 +116,15 @@ export class FolderBucketView extends pulumi.CustomResource {
 export interface FolderBucketViewArgs {
     bucketId: pulumi.Input<string>;
     /**
-     * Describes this view.
+     * Optional. Describes this view.
      */
     description?: pulumi.Input<string>;
     /**
-     * Filter that restricts which log entries in a bucket are visible in this view.Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
+     * Optional. Filter that restricts which log entries in a bucket are visible in this view.Filters must be logical conjunctions that use the AND operator, and they can use any of the following qualifiers: SOURCE(), which specifies a project, folder, organization, or billing account of origin. resource.type, which specifies the resource type. LOG_ID(), which identifies the log.They can also use the negations of these qualifiers with the NOT operator.For example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND NOT LOG_ID("stdout")
      */
     filter?: pulumi.Input<string>;
     folderId: pulumi.Input<string>;
     location?: pulumi.Input<string>;
-    /**
-     * The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
-     */
-    name?: pulumi.Input<string>;
     /**
      * Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
      */

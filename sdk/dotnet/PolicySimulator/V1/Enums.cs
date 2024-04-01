@@ -8,6 +8,89 @@ using Pulumi;
 namespace Pulumi.GoogleNative.PolicySimulator.V1
 {
     /// <summary>
+    /// Allow or deny type.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudOrgpolicyV2CustomConstraintActionType : IEquatable<GoogleCloudOrgpolicyV2CustomConstraintActionType>
+    {
+        private readonly string _value;
+
+        private GoogleCloudOrgpolicyV2CustomConstraintActionType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified. Results in an error.
+        /// </summary>
+        public static GoogleCloudOrgpolicyV2CustomConstraintActionType ActionTypeUnspecified { get; } = new GoogleCloudOrgpolicyV2CustomConstraintActionType("ACTION_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Allowed action type.
+        /// </summary>
+        public static GoogleCloudOrgpolicyV2CustomConstraintActionType Allow { get; } = new GoogleCloudOrgpolicyV2CustomConstraintActionType("ALLOW");
+        /// <summary>
+        /// Deny action type.
+        /// </summary>
+        public static GoogleCloudOrgpolicyV2CustomConstraintActionType Deny { get; } = new GoogleCloudOrgpolicyV2CustomConstraintActionType("DENY");
+
+        public static bool operator ==(GoogleCloudOrgpolicyV2CustomConstraintActionType left, GoogleCloudOrgpolicyV2CustomConstraintActionType right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudOrgpolicyV2CustomConstraintActionType left, GoogleCloudOrgpolicyV2CustomConstraintActionType right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudOrgpolicyV2CustomConstraintActionType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudOrgpolicyV2CustomConstraintActionType other && Equals(other);
+        public bool Equals(GoogleCloudOrgpolicyV2CustomConstraintActionType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem : IEquatable<GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem>
+    {
+        private readonly string _value;
+
+        private GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified. Results in an error.
+        /// </summary>
+        public static GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem MethodTypeUnspecified { get; } = new GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem("METHOD_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Constraint applied when creating the resource.
+        /// </summary>
+        public static GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem Create { get; } = new GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem("CREATE");
+        /// <summary>
+        /// Constraint applied when updating the resource.
+        /// </summary>
+        public static GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem Update { get; } = new GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem("UPDATE");
+        /// <summary>
+        /// Constraint applied when deleting the resource. Not supported yet.
+        /// </summary>
+        public static GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem Delete { get; } = new GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem("DELETE");
+
+        public static bool operator ==(GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem left, GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem left, GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem other && Equals(other);
+        public bool Equals(GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The logs to use as input for the Replay.
     /// </summary>
     [EnumType]

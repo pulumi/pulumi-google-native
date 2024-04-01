@@ -54,6 +54,10 @@ export class Session extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Optional. If true, specifies a multiplexed session. A multiplexed session may be used for multiple, concurrent read-only operations but can not be used for read-write transactions, partitioned reads, or partitioned queries. Multiplexed sessions can be created via CreateSession but not via BatchCreateSessions. Multiplexed sessions may not be deleted nor listed.
+     */
+    public readonly multiplexed!: pulumi.Output<boolean>;
+    /**
      * The name of the session. This is always system-assigned.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -80,6 +84,7 @@ export class Session extends pulumi.CustomResource {
             resourceInputs["databaseId"] = args ? args.databaseId : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["multiplexed"] = args ? args.multiplexed : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["approximateLastUseTime"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -91,6 +96,7 @@ export class Session extends pulumi.CustomResource {
             resourceInputs["databaseId"] = undefined /*out*/;
             resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["multiplexed"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
         }
@@ -115,5 +121,9 @@ export interface SessionArgs {
      * The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Optional. If true, specifies a multiplexed session. A multiplexed session may be used for multiple, concurrent read-only operations but can not be used for read-write transactions, partitioned reads, or partitioned queries. Multiplexed sessions can be created via CreateSession but not via BatchCreateSessions. Multiplexed sessions may not be deleted nor listed.
+     */
+    multiplexed?: pulumi.Input<boolean>;
     project?: pulumi.Input<string>;
 }

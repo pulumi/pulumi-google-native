@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetRulesetResult:
-    def __init__(__self__, create_time=None, metadata=None, name=None, source=None):
+    def __init__(__self__, attachment_point=None, create_time=None, metadata=None, name=None, source=None):
+        if attachment_point and not isinstance(attachment_point, str):
+            raise TypeError("Expected argument 'attachment_point' to be a str")
+        pulumi.set(__self__, "attachment_point", attachment_point)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -32,6 +35,14 @@ class GetRulesetResult:
         if source and not isinstance(source, dict):
             raise TypeError("Expected argument 'source' to be a dict")
         pulumi.set(__self__, "source", source)
+
+    @property
+    @pulumi.getter(name="attachmentPoint")
+    def attachment_point(self) -> str:
+        """
+        Immutable. Intended resource to which this Ruleset should be released. May be left blank to signify the resource associated with the default release. Expected format: firestore.googleapis.com/projects//databases/
+        """
+        return pulumi.get(self, "attachment_point")
 
     @property
     @pulumi.getter(name="createTime")
@@ -72,6 +83,7 @@ class AwaitableGetRulesetResult(GetRulesetResult):
         if False:
             yield self
         return GetRulesetResult(
+            attachment_point=self.attachment_point,
             create_time=self.create_time,
             metadata=self.metadata,
             name=self.name,
@@ -91,6 +103,7 @@ def get_ruleset(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:firebaserules/v1:getRuleset', __args__, opts=opts, typ=GetRulesetResult).value
 
     return AwaitableGetRulesetResult(
+        attachment_point=pulumi.get(__ret__, 'attachment_point'),
         create_time=pulumi.get(__ret__, 'create_time'),
         metadata=pulumi.get(__ret__, 'metadata'),
         name=pulumi.get(__ret__, 'name'),

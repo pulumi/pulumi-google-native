@@ -35,9 +35,9 @@ export class AnnotationStore extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+     * Required. The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
      */
-    public readonly annotationStoreId!: pulumi.Output<string | undefined>;
+    public readonly annotationStoreId!: pulumi.Output<string>;
     public readonly datasetId!: pulumi.Output<string>;
     /**
      * Optional. User-supplied key-value pairs used to organize Annotation stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
@@ -45,7 +45,7 @@ export class AnnotationStore extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
+     * Identifier. Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -61,6 +61,9 @@ export class AnnotationStore extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.annotationStoreId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'annotationStoreId'");
+            }
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
@@ -79,7 +82,7 @@ export class AnnotationStore extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["datasetId", "location", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["annotationStoreId", "datasetId", "location", "project"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(AnnotationStore.__pulumiType, name, resourceInputs, opts);
     }
@@ -90,9 +93,9 @@ export class AnnotationStore extends pulumi.CustomResource {
  */
 export interface AnnotationStoreArgs {
     /**
-     * The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+     * Required. The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
      */
-    annotationStoreId?: pulumi.Input<string>;
+    annotationStoreId: pulumi.Input<string>;
     datasetId: pulumi.Input<string>;
     /**
      * Optional. User-supplied key-value pairs used to organize Annotation stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
@@ -100,7 +103,7 @@ export interface AnnotationStoreArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
+     * Identifier. Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

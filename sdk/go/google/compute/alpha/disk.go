@@ -70,7 +70,7 @@ type Disk struct {
 	Project                pulumi.StringOutput `pulumi:"project"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 	ProvisionedIops pulumi.StringOutput `pulumi:"provisionedIops"`
-	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
 	ProvisionedThroughput pulumi.StringOutput `pulumi:"provisionedThroughput"`
 	// URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -82,6 +82,8 @@ type Disk struct {
 	ResourcePolicies pulumi.StringArrayOutput `pulumi:"resourcePolicies"`
 	// Status information for the disk resource.
 	ResourceStatus DiskResourceStatusResponseOutput `pulumi:"resourceStatus"`
+	// Reserved for future use.
+	SatisfiesPzi pulumi.BoolOutput `pulumi:"satisfiesPzi"`
 	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// Server-defined fully-qualified URL for this resource.
@@ -219,7 +221,7 @@ type diskArgs struct {
 	Project                *string `pulumi:"project"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 	ProvisionedIops *string `pulumi:"provisionedIops"`
-	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
 	ProvisionedThroughput *string `pulumi:"provisionedThroughput"`
 	// URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
 	ReplicaZones []string `pulumi:"replicaZones"`
@@ -299,7 +301,7 @@ type DiskArgs struct {
 	Project                pulumi.StringPtrInput
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 	ProvisionedIops pulumi.StringPtrInput
-	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
 	ProvisionedThroughput pulumi.StringPtrInput
 	// URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
 	ReplicaZones pulumi.StringArrayInput
@@ -509,7 +511,7 @@ func (o DiskOutput) ProvisionedIops() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.ProvisionedIops }).(pulumi.StringOutput)
 }
 
-// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
 func (o DiskOutput) ProvisionedThroughput() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.ProvisionedThroughput }).(pulumi.StringOutput)
 }
@@ -537,6 +539,11 @@ func (o DiskOutput) ResourcePolicies() pulumi.StringArrayOutput {
 // Status information for the disk resource.
 func (o DiskOutput) ResourceStatus() DiskResourceStatusResponseOutput {
 	return o.ApplyT(func(v *Disk) DiskResourceStatusResponseOutput { return v.ResourceStatus }).(DiskResourceStatusResponseOutput)
+}
+
+// Reserved for future use.
+func (o DiskOutput) SatisfiesPzi() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Disk) pulumi.BoolOutput { return v.SatisfiesPzi }).(pulumi.BoolOutput)
 }
 
 // Reserved for future use.

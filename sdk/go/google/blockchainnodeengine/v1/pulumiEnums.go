@@ -547,7 +547,7 @@ const (
 	EthereumDetailsNetworkNetworkUnspecified = EthereumDetailsNetwork("NETWORK_UNSPECIFIED")
 	// The Ethereum Mainnet.
 	EthereumDetailsNetworkMainnet = EthereumDetailsNetwork("MAINNET")
-	// The Ethereum Testnet based on Goerli protocol.
+	// Deprecated: The Ethereum Testnet based on Goerli protocol. Holesky (TESTNET_HOLESKY) is the recommended testnet to replace Goerli.
 	EthereumDetailsNetworkTestnetGoerliPrater = EthereumDetailsNetwork("TESTNET_GOERLI_PRATER")
 	// The Ethereum Testnet based on Sepolia/Bepolia protocol. See https://github.com/eth-clients/sepolia.
 	EthereumDetailsNetworkTestnetSepolia = EthereumDetailsNetwork("TESTNET_SEPOLIA")

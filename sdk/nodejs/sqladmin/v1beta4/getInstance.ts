@@ -80,6 +80,10 @@ export interface GetInstanceResult {
      */
     readonly gceZone: string;
     /**
+     * Gemini instance configuration.
+     */
+    readonly geminiConfig: outputs.sqladmin.v1beta4.GeminiInstanceConfigResponse;
+    /**
      * The instance type.
      */
     readonly instanceType: string;
@@ -136,7 +140,7 @@ export interface GetInstanceResult {
      */
     readonly pscServiceAttachmentLink: string;
     /**
-     * The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
+     * The geographical region of the Cloud SQL instance. It can be one of the [regions](https://cloud.google.com/sql/docs/mysql/locations#location-r) where Cloud SQL operates: For example, `asia-east1`, `europe-west1`, and `us-central1`. The default value is `us-central1`.
      */
     readonly region: string;
     /**
@@ -147,6 +151,10 @@ export interface GetInstanceResult {
      * The replicas of the instance.
      */
     readonly replicaNames: string[];
+    /**
+     * The pair of a primary instance and disaster recovery (DR) replica. A DR replica is a cross-region replica that you designate for failover in the event that the primary instance has regional failure.
+     */
+    readonly replicationCluster: outputs.sqladmin.v1beta4.ReplicationClusterResponse;
     /**
      * Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
      */

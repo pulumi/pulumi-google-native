@@ -33,6 +33,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("project")]
         public string? Project { get; set; }
 
+        [Input("view")]
+        public string? View { get; set; }
+
         public GetInstanceTemplateArgs()
         {
         }
@@ -46,6 +49,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("view")]
+        public Input<string>? View { get; set; }
 
         public GetInstanceTemplateInvokeArgs()
         {

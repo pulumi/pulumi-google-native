@@ -39,7 +39,7 @@ export interface GetPolicyTagResult {
      */
     readonly displayName: string;
     /**
-     * Resource name of this policy tag, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
+     * Identifier. Resource name of this policy tag, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
      */
     readonly name: string;
     /**

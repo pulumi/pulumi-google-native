@@ -8,10 +8,17 @@ __all__ = [
     'AuditLogConfigLogType',
     'EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria',
     'EndpointPolicyType',
+    'ExtensionChainExtensionSupportedEventsItem',
+    'GatewayEnvoyHeaders',
+    'GatewayIpVersion',
     'GatewayType',
     'GrpcRouteHeaderMatchType',
     'GrpcRouteMethodMatchType',
     'HttpRouteRedirectResponseCode',
+    'LbRouteExtensionLoadBalancingScheme',
+    'LbTrafficExtensionLoadBalancingScheme',
+    'MeshEnvoyHeaders',
+    'ServiceLbPolicyLoadBalancingAlgorithm',
 ]
 
 
@@ -39,7 +46,7 @@ class AuditLogConfigLogType(str, Enum):
 
 class EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria(str, Enum):
     """
-    Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+    Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), pick up the one with older creation time.
     """
     METADATA_LABEL_MATCH_CRITERIA_UNSPECIFIED = "METADATA_LABEL_MATCH_CRITERIA_UNSPECIFIED"
     """
@@ -70,6 +77,73 @@ class EndpointPolicyType(str, Enum):
     GRPC_SERVER = "GRPC_SERVER"
     """
     Represents a proxyless gRPC backend.
+    """
+
+
+class ExtensionChainExtensionSupportedEventsItem(str, Enum):
+    EVENT_TYPE_UNSPECIFIED = "EVENT_TYPE_UNSPECIFIED"
+    """
+    Unspecified value. Do not use.
+    """
+    REQUEST_HEADERS = "REQUEST_HEADERS"
+    """
+    If included in `supported_events`, the extension is called when the HTTP request headers arrive.
+    """
+    REQUEST_BODY = "REQUEST_BODY"
+    """
+    If included in `supported_events`, the extension is called when the HTTP request body arrives.
+    """
+    RESPONSE_HEADERS = "RESPONSE_HEADERS"
+    """
+    If included in `supported_events`, the extension is called when the HTTP response headers arrive.
+    """
+    RESPONSE_BODY = "RESPONSE_BODY"
+    """
+    If included in `supported_events`, the extension is called when the HTTP response body arrives.
+    """
+    REQUEST_TRAILERS = "REQUEST_TRAILERS"
+    """
+    If included in `supported_events`, the extension is called when the HTTP request trailers arrives.
+    """
+    RESPONSE_TRAILERS = "RESPONSE_TRAILERS"
+    """
+    If included in `supported_events`, the extension is called when the HTTP response trailers arrives.
+    """
+
+
+class GatewayEnvoyHeaders(str, Enum):
+    """
+    Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+    """
+    ENVOY_HEADERS_UNSPECIFIED = "ENVOY_HEADERS_UNSPECIFIED"
+    """
+    Defaults to NONE.
+    """
+    NONE = "NONE"
+    """
+    Suppress envoy debug headers.
+    """
+    DEBUG_HEADERS = "DEBUG_HEADERS"
+    """
+    Envoy will insert default internal debug headers into upstream requests: x-envoy-attempt-count x-envoy-is-timeout-retry x-envoy-expected-rq-timeout-ms x-envoy-original-path x-envoy-upstream-stream-duration-ms
+    """
+
+
+class GatewayIpVersion(str, Enum):
+    """
+    Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+    """
+    IP_VERSION_UNSPECIFIED = "IP_VERSION_UNSPECIFIED"
+    """
+    The type when IP version is not specified. Defaults to IPV4.
+    """
+    IPV4 = "IPV4"
+    """
+    The type for IP version 4.
+    """
+    IPV6 = "IPV6"
+    """
+    The type for IP version 6.
     """
 
 
@@ -154,4 +228,84 @@ class HttpRouteRedirectResponseCode(str, Enum):
     PERMANENT_REDIRECT = "PERMANENT_REDIRECT"
     """
     Corresponds to 308. In this case, the request method will be retained.
+    """
+
+
+class LbRouteExtensionLoadBalancingScheme(str, Enum):
+    """
+    Required. All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
+    """
+    LOAD_BALANCING_SCHEME_UNSPECIFIED = "LOAD_BALANCING_SCHEME_UNSPECIFIED"
+    """
+    Default value. Do not use.
+    """
+    INTERNAL_MANAGED = "INTERNAL_MANAGED"
+    """
+    Signifies that this is used for Internal HTTP(S) Load Balancing.
+    """
+    EXTERNAL_MANAGED = "EXTERNAL_MANAGED"
+    """
+    Signifies that this is used for External Managed HTTP(S) Load Balancing.
+    """
+
+
+class LbTrafficExtensionLoadBalancingScheme(str, Enum):
+    """
+    Required. All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
+    """
+    LOAD_BALANCING_SCHEME_UNSPECIFIED = "LOAD_BALANCING_SCHEME_UNSPECIFIED"
+    """
+    Default value. Do not use.
+    """
+    INTERNAL_MANAGED = "INTERNAL_MANAGED"
+    """
+    Signifies that this is used for Internal HTTP(S) Load Balancing.
+    """
+    EXTERNAL_MANAGED = "EXTERNAL_MANAGED"
+    """
+    Signifies that this is used for External Managed HTTP(S) Load Balancing.
+    """
+
+
+class MeshEnvoyHeaders(str, Enum):
+    """
+    Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+    """
+    ENVOY_HEADERS_UNSPECIFIED = "ENVOY_HEADERS_UNSPECIFIED"
+    """
+    Defaults to NONE.
+    """
+    NONE = "NONE"
+    """
+    Suppress envoy debug headers.
+    """
+    DEBUG_HEADERS = "DEBUG_HEADERS"
+    """
+    Envoy will insert default internal debug headers into upstream requests: x-envoy-attempt-count x-envoy-is-timeout-retry x-envoy-expected-rq-timeout-ms x-envoy-original-path x-envoy-upstream-stream-duration-ms
+    """
+
+
+class ServiceLbPolicyLoadBalancingAlgorithm(str, Enum):
+    """
+    Optional. The type of load balancing algorithm to be used. The default behavior is WATERFALL_BY_REGION.
+    """
+    LOAD_BALANCING_ALGORITHM_UNSPECIFIED = "LOAD_BALANCING_ALGORITHM_UNSPECIFIED"
+    """
+    The type of the loadbalancing algorithm is unspecified.
+    """
+    SPRAY_TO_WORLD = "SPRAY_TO_WORLD"
+    """
+    Balance traffic across all backends across the world proportionally based on capacity.
+    """
+    SPRAY_TO_REGION = "SPRAY_TO_REGION"
+    """
+    Direct traffic to the nearest region with endpoints and capacity before spilling over to other regions and spread the traffic from each client to all the MIGs/NEGs in a region.
+    """
+    WATERFALL_BY_REGION = "WATERFALL_BY_REGION"
+    """
+    Direct traffic to the nearest region with endpoints and capacity before spilling over to other regions. All MIGs/NEGs within a region are evenly loaded but each client might not spread the traffic to all the MIGs/NEGs in the region.
+    """
+    WATERFALL_BY_ZONE = "WATERFALL_BY_ZONE"
+    """
+    Attempt to keep traffic in a single zone closest to the client, before spilling over to other zones.
     """

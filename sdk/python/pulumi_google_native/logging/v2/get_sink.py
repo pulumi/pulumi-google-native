@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSinkResult:
-    def __init__(__self__, bigquery_options=None, create_time=None, description=None, destination=None, disabled=None, exclusions=None, filter=None, include_children=None, name=None, output_version_format=None, update_time=None, writer_identity=None):
+    def __init__(__self__, bigquery_options=None, create_time=None, description=None, destination=None, disabled=None, exclusions=None, filter=None, include_children=None, intercept_children=None, name=None, output_version_format=None, resource_name=None, update_time=None, writer_identity=None):
         if bigquery_options and not isinstance(bigquery_options, dict):
             raise TypeError("Expected argument 'bigquery_options' to be a dict")
         pulumi.set(__self__, "bigquery_options", bigquery_options)
@@ -44,12 +44,18 @@ class GetSinkResult:
         if include_children and not isinstance(include_children, bool):
             raise TypeError("Expected argument 'include_children' to be a bool")
         pulumi.set(__self__, "include_children", include_children)
+        if intercept_children and not isinstance(intercept_children, bool):
+            raise TypeError("Expected argument 'intercept_children' to be a bool")
+        pulumi.set(__self__, "intercept_children", intercept_children)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
         if output_version_format and not isinstance(output_version_format, str):
             raise TypeError("Expected argument 'output_version_format' to be a str")
         pulumi.set(__self__, "output_version_format", output_version_format)
+        if resource_name and not isinstance(resource_name, str):
+            raise TypeError("Expected argument 'resource_name' to be a str")
+        pulumi.set(__self__, "resource_name", resource_name)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -122,10 +128,18 @@ class GetSinkResult:
         return pulumi.get(self, "include_children")
 
     @property
+    @pulumi.getter(name="interceptChildren")
+    def intercept_children(self) -> bool:
+        """
+        Optional. This field applies only to sinks owned by organizations and folders.When the value of 'intercept_children' is true, the following restrictions apply: The sink must have the include_children flag set to true. The sink destination must be a Cloud project.Also, the following behaviors apply: Any logs matched by the sink won't be included by non-_Required sinks owned by child resources. The sink appears in the results of a ListSinks call from a child resource if the value of the filter field in its request is either 'in_scope("ALL")' or 'in_scope("ANCESTOR")'.
+        """
+        return pulumi.get(self, "intercept_children")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
-        The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
+        The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub".Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, periods.First character has to be alphanumeric.
         """
         return pulumi.get(self, "name")
 
@@ -139,6 +153,14 @@ class GetSinkResult:
         pulumi.log.warn("""output_version_format is deprecated: Deprecated. This field is unused.""")
 
         return pulumi.get(self, "output_version_format")
+
+    @property
+    @pulumi.getter(name="resourceName")
+    def resource_name(self) -> str:
+        """
+        The resource name of the sink. "projects/[PROJECT_ID]/sinks/[SINK_NAME] "organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME] "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME] "folders/[FOLDER_ID]/sinks/[SINK_NAME] For example: projects/my_project/sinks/SINK_NAME
+        """
+        return pulumi.get(self, "resource_name")
 
     @property
     @pulumi.getter(name="updateTime")
@@ -171,8 +193,10 @@ class AwaitableGetSinkResult(GetSinkResult):
             exclusions=self.exclusions,
             filter=self.filter,
             include_children=self.include_children,
+            intercept_children=self.intercept_children,
             name=self.name,
             output_version_format=self.output_version_format,
+            resource_name=self.resource_name,
             update_time=self.update_time,
             writer_identity=self.writer_identity)
 
@@ -198,8 +222,10 @@ def get_sink(project: Optional[str] = None,
         exclusions=pulumi.get(__ret__, 'exclusions'),
         filter=pulumi.get(__ret__, 'filter'),
         include_children=pulumi.get(__ret__, 'include_children'),
+        intercept_children=pulumi.get(__ret__, 'intercept_children'),
         name=pulumi.get(__ret__, 'name'),
         output_version_format=pulumi.get(__ret__, 'output_version_format'),
+        resource_name=pulumi.get(__ret__, 'resource_name'),
         update_time=pulumi.get(__ret__, 'update_time'),
         writer_identity=pulumi.get(__ret__, 'writer_identity'))
 

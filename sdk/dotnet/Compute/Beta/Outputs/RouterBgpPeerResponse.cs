@@ -54,6 +54,14 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly bool EnableIpv6;
         /// <summary>
+        /// List of export policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
+        /// </summary>
+        public readonly ImmutableArray<string> ExportPolicies;
+        /// <summary>
+        /// List of import policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
+        /// </summary>
+        public readonly ImmutableArray<string> ImportPolicies;
+        /// <summary>
         /// Name of the interface the BGP peer is associated with.
         /// </summary>
         public readonly string InterfaceName;
@@ -124,6 +132,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             bool enableIpv6,
 
+            ImmutableArray<string> exportPolicies,
+
+            ImmutableArray<string> importPolicies,
+
             string interfaceName,
 
             string ipAddress,
@@ -158,6 +170,8 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
             Enable = enable;
             EnableIpv4 = enableIpv4;
             EnableIpv6 = enableIpv6;
+            ExportPolicies = exportPolicies;
+            ImportPolicies = importPolicies;
             InterfaceName = interfaceName;
             IpAddress = ipAddress;
             Ipv4NexthopAddress = ipv4NexthopAddress;

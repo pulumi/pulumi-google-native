@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 
 __all__ = ['DnsAuthorizationArgs', 'DnsAuthorization']
 
@@ -21,7 +22,8 @@ class DnsAuthorizationArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['DnsAuthorizationType']] = None):
         """
         The set of arguments for constructing a DnsAuthorization resource.
         :param pulumi.Input[str] dns_authorization_id: Required. A user-provided name of the dns authorization.
@@ -29,6 +31,7 @@ class DnsAuthorizationArgs:
         :param pulumi.Input[str] description: One or more paragraphs of text description of a DnsAuthorization.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a DnsAuthorization.
         :param pulumi.Input[str] name: A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
+        :param pulumi.Input['DnsAuthorizationType'] type: Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: - in location global: FIXED_RECORD.
         """
         pulumi.set(__self__, "dns_authorization_id", dns_authorization_id)
         pulumi.set(__self__, "domain", domain)
@@ -42,6 +45,8 @@ class DnsAuthorizationArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="dnsAuthorizationId")
@@ -121,6 +126,18 @@ class DnsAuthorizationArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input['DnsAuthorizationType']]:
+        """
+        Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: - in location global: FIXED_RECORD.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input['DnsAuthorizationType']]):
+        pulumi.set(self, "type", value)
+
 
 class DnsAuthorization(pulumi.CustomResource):
     @overload
@@ -134,6 +151,7 @@ class DnsAuthorization(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['DnsAuthorizationType']] = None,
                  __props__=None):
         """
         Creates a new DnsAuthorization in a given project and location.
@@ -145,6 +163,7 @@ class DnsAuthorization(pulumi.CustomResource):
         :param pulumi.Input[str] domain: Immutable. A domain that is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a DnsAuthorization.
         :param pulumi.Input[str] name: A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
+        :param pulumi.Input['DnsAuthorizationType'] type: Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: - in location global: FIXED_RECORD.
         """
         ...
     @overload
@@ -177,6 +196,7 @@ class DnsAuthorization(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['DnsAuthorizationType']] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -197,6 +217,7 @@ class DnsAuthorization(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["type"] = type
             __props__.__dict__["create_time"] = None
             __props__.__dict__["dns_resource_record"] = None
             __props__.__dict__["update_time"] = None
@@ -233,6 +254,7 @@ class DnsAuthorization(pulumi.CustomResource):
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["type"] = None
         __props__.__dict__["update_time"] = None
         return DnsAuthorization(resource_name, opts=opts, __props__=__props__)
 
@@ -301,6 +323,14 @@ class DnsAuthorization(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: - in location global: FIXED_RECORD.
+        """
+        return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="updateTime")

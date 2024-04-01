@@ -33,6 +33,10 @@ export interface GetMeshResult {
      */
     readonly description: string;
     /**
+     * Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+     */
+    readonly envoyHeaders: string;
+    /**
      * Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to be redirected to this port regardless of its actual ip:port destination. If unset, a port '15001' is used as the interception port. This is applicable only for sidecar proxy deployments.
      */
     readonly interceptionPort: number;

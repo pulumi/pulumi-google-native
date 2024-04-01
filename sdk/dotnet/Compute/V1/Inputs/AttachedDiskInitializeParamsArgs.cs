@@ -45,6 +45,12 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
+        /// <summary>
+        /// Whether this disk is using confidential compute mode.
+        /// </summary>
+        [Input("enableConfidentialCompute")]
+        public Input<bool>? EnableConfidentialCompute { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -82,7 +88,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public Input<string>? ProvisionedIops { get; set; }
 
         /// <summary>
-        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must greater than or equal to 1.
         /// </summary>
         [Input("provisionedThroughput")]
         public Input<string>? ProvisionedThroughput { get; set; }
@@ -146,6 +152,12 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         /// </summary>
         [Input("sourceSnapshotEncryptionKey")]
         public Input<Inputs.CustomerEncryptionKeyArgs>? SourceSnapshotEncryptionKey { get; set; }
+
+        /// <summary>
+        /// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
+        /// </summary>
+        [Input("storagePool")]
+        public Input<string>? StoragePool { get; set; }
 
         public AttachedDiskInitializeParamsArgs()
         {

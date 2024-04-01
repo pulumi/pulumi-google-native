@@ -32,6 +32,14 @@ export interface GetConnectionResult {
      */
     readonly annotations: {[key: string]: string};
     /**
+     * Configuration for connections to Bitbucket Cloud.
+     */
+    readonly bitbucketCloudConfig: outputs.cloudbuild.v2.BitbucketCloudConfigResponse;
+    /**
+     * Configuration for connections to Bitbucket Data Center.
+     */
+    readonly bitbucketDataCenterConfig: outputs.cloudbuild.v2.BitbucketDataCenterConfigResponse;
+    /**
      * Server assigned timestamp for when the connection was created.
      */
     readonly createTime: string;

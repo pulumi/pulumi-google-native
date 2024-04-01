@@ -76,6 +76,10 @@ export interface GetAgentResult {
      */
     readonly name: string;
     /**
+     * Optional. Settings for end user personalization.
+     */
+    readonly personalizationSettings: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3AgentPersonalizationSettingsResponse;
+    /**
      * Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
      */
     readonly securitySettings: string;

@@ -1463,6 +1463,8 @@ const (
 	RepositoryModeVirtualRepository = RepositoryMode("VIRTUAL_REPOSITORY")
 	// A remote repository to serve artifacts from a remote source.
 	RepositoryModeRemoteRepository = RepositoryMode("REMOTE_REPOSITORY")
+	// An AOSS repository provides artifacts from AOSS upstreams.
+	RepositoryModeAossRepository = RepositoryMode("AOSS_REPOSITORY")
 )
 
 func (RepositoryMode) ElementType() reflect.Type {
@@ -1591,6 +1593,7 @@ func (o RepositoryModePtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 //	RepositoryModeStandardRepository
 //	RepositoryModeVirtualRepository
 //	RepositoryModeRemoteRepository
+//	RepositoryModeAossRepository
 type RepositoryModeInput interface {
 	pulumi.Input
 

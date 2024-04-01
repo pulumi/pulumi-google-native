@@ -19,6 +19,7 @@ class WorkstationClusterArgs:
                  workstation_cluster_id: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 domain_config: Optional[pulumi.Input['DomainConfigArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -32,6 +33,7 @@ class WorkstationClusterArgs:
         :param pulumi.Input[str] workstation_cluster_id: Required. ID to use for the workstation cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Client-specified annotations.
         :param pulumi.Input[str] display_name: Optional. Human-readable name for this workstation cluster.
+        :param pulumi.Input['DomainConfigArgs'] domain_config: Optional. Configuration options for a custom domain.
         :param pulumi.Input[str] etag: Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] name: Identifier. Full name of this workstation cluster.
@@ -44,6 +46,8 @@ class WorkstationClusterArgs:
             pulumi.set(__self__, "annotations", annotations)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if domain_config is not None:
+            pulumi.set(__self__, "domain_config", domain_config)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if labels is not None:
@@ -96,6 +100,18 @@ class WorkstationClusterArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="domainConfig")
+    def domain_config(self) -> Optional[pulumi.Input['DomainConfigArgs']]:
+        """
+        Optional. Configuration options for a custom domain.
+        """
+        return pulumi.get(self, "domain_config")
+
+    @domain_config.setter
+    def domain_config(self, value: Optional[pulumi.Input['DomainConfigArgs']]):
+        pulumi.set(self, "domain_config", value)
 
     @property
     @pulumi.getter
@@ -195,6 +211,7 @@ class WorkstationCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 domain_config: Optional[pulumi.Input[pulumi.InputType['DomainConfigArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -212,6 +229,7 @@ class WorkstationCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Client-specified annotations.
         :param pulumi.Input[str] display_name: Optional. Human-readable name for this workstation cluster.
+        :param pulumi.Input[pulumi.InputType['DomainConfigArgs']] domain_config: Optional. Configuration options for a custom domain.
         :param pulumi.Input[str] etag: Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation cluster and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] name: Identifier. Full name of this workstation cluster.
@@ -246,6 +264,7 @@ class WorkstationCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 domain_config: Optional[pulumi.Input[pulumi.InputType['DomainConfigArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -266,6 +285,7 @@ class WorkstationCluster(pulumi.CustomResource):
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["domain_config"] = domain_config
             __props__.__dict__["etag"] = etag
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
@@ -316,6 +336,7 @@ class WorkstationCluster(pulumi.CustomResource):
         __props__.__dict__["degraded"] = None
         __props__.__dict__["delete_time"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["domain_config"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
@@ -385,6 +406,14 @@ class WorkstationCluster(pulumi.CustomResource):
         Optional. Human-readable name for this workstation cluster.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="domainConfig")
+    def domain_config(self) -> pulumi.Output['outputs.DomainConfigResponse']:
+        """
+        Optional. Configuration options for a custom domain.
+        """
+        return pulumi.get(self, "domain_config")
 
     @property
     @pulumi.getter

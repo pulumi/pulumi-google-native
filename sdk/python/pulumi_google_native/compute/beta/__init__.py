@@ -117,6 +117,8 @@ from .get_snapshot import *
 from .get_snapshot_iam_policy import *
 from .get_ssl_certificate import *
 from .get_ssl_policy import *
+from .get_storage_pool import *
+from .get_storage_pool_iam_policy import *
 from .get_subnetwork import *
 from .get_subnetwork_iam_policy import *
 from .get_target_grpc_proxy import *
@@ -241,6 +243,10 @@ from .snapshot_iam_member import *
 from .snapshot_iam_policy import *
 from .ssl_certificate import *
 from .ssl_policy import *
+from .storage_pool import *
+from .storage_pool_iam_binding import *
+from .storage_pool_iam_member import *
+from .storage_pool_iam_policy import *
 from .subnetwork import *
 from .subnetwork_iam_binding import *
 from .subnetwork_iam_member import *

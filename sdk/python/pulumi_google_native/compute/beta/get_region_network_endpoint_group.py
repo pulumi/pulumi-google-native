@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionNetworkEndpointGroupResult:
-    def __init__(__self__, annotations=None, app_engine=None, cloud_function=None, cloud_run=None, creation_timestamp=None, default_port=None, description=None, kind=None, load_balancer=None, name=None, network=None, network_endpoint_type=None, psc_data=None, psc_target_service=None, region=None, self_link=None, serverless_deployment=None, size=None, subnetwork=None, zone=None):
+    def __init__(__self__, annotations=None, app_engine=None, client_port_mapping_mode=None, cloud_function=None, cloud_run=None, creation_timestamp=None, default_port=None, description=None, kind=None, load_balancer=None, name=None, network=None, network_endpoint_type=None, psc_data=None, psc_target_service=None, region=None, self_link=None, serverless_deployment=None, size=None, subnetwork=None, zone=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
         if app_engine and not isinstance(app_engine, dict):
             raise TypeError("Expected argument 'app_engine' to be a dict")
         pulumi.set(__self__, "app_engine", app_engine)
+        if client_port_mapping_mode and not isinstance(client_port_mapping_mode, str):
+            raise TypeError("Expected argument 'client_port_mapping_mode' to be a str")
+        pulumi.set(__self__, "client_port_mapping_mode", client_port_mapping_mode)
         if cloud_function and not isinstance(cloud_function, dict):
             raise TypeError("Expected argument 'cloud_function' to be a dict")
         pulumi.set(__self__, "cloud_function", cloud_function)
@@ -93,15 +96,23 @@ class GetRegionNetworkEndpointGroupResult:
     @pulumi.getter(name="appEngine")
     def app_engine(self) -> 'outputs.NetworkEndpointGroupAppEngineResponse':
         """
-        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
         """
         return pulumi.get(self, "app_engine")
+
+    @property
+    @pulumi.getter(name="clientPortMappingMode")
+    def client_port_mapping_mode(self) -> str:
+        """
+        Only valid when networkEndpointType is GCE_VM_IP_PORT and the NEG is regional.
+        """
+        return pulumi.get(self, "client_port_mapping_mode")
 
     @property
     @pulumi.getter(name="cloudFunction")
     def cloud_function(self) -> 'outputs.NetworkEndpointGroupCloudFunctionResponse':
         """
-        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
         """
         return pulumi.get(self, "cloud_function")
 
@@ -109,7 +120,7 @@ class GetRegionNetworkEndpointGroupResult:
     @pulumi.getter(name="cloudRun")
     def cloud_run(self) -> 'outputs.NetworkEndpointGroupCloudRunResponse':
         """
-        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
         """
         return pulumi.get(self, "cloud_run")
 
@@ -125,7 +136,7 @@ class GetRegionNetworkEndpointGroupResult:
     @pulumi.getter(name="defaultPort")
     def default_port(self) -> int:
         """
-        The default port used if the port number is not specified in the network endpoint.
+        The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified.
         """
         return pulumi.get(self, "default_port")
 
@@ -168,7 +179,7 @@ class GetRegionNetworkEndpointGroupResult:
     @pulumi.getter
     def network(self) -> str:
         """
-        The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+        The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified.
         """
         return pulumi.get(self, "network")
 
@@ -189,7 +200,7 @@ class GetRegionNetworkEndpointGroupResult:
     @pulumi.getter(name="pscTargetService")
     def psc_target_service(self) -> str:
         """
-        The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: asia-northeast3-cloudkms.googleapis.com
         """
         return pulumi.get(self, "psc_target_service")
 
@@ -213,7 +224,7 @@ class GetRegionNetworkEndpointGroupResult:
     @pulumi.getter(name="serverlessDeployment")
     def serverless_deployment(self) -> 'outputs.NetworkEndpointGroupServerlessDeploymentResponse':
         """
-        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+        Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
         """
         return pulumi.get(self, "serverless_deployment")
 
@@ -250,6 +261,7 @@ class AwaitableGetRegionNetworkEndpointGroupResult(GetRegionNetworkEndpointGroup
         return GetRegionNetworkEndpointGroupResult(
             annotations=self.annotations,
             app_engine=self.app_engine,
+            client_port_mapping_mode=self.client_port_mapping_mode,
             cloud_function=self.cloud_function,
             cloud_run=self.cloud_run,
             creation_timestamp=self.creation_timestamp,
@@ -287,6 +299,7 @@ def get_region_network_endpoint_group(network_endpoint_group: Optional[str] = No
     return AwaitableGetRegionNetworkEndpointGroupResult(
         annotations=pulumi.get(__ret__, 'annotations'),
         app_engine=pulumi.get(__ret__, 'app_engine'),
+        client_port_mapping_mode=pulumi.get(__ret__, 'client_port_mapping_mode'),
         cloud_function=pulumi.get(__ret__, 'cloud_function'),
         cloud_run=pulumi.get(__ret__, 'cloud_run'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),

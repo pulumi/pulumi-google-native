@@ -72,6 +72,10 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// Optional. The dedicated serving endpoint for this FeatureOnlineStore, which is different from common Vertex service endpoint.
+        /// </summary>
+        public readonly Outputs.GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpointResponse DedicatedServingEndpoint;
+        /// <summary>
         /// Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         /// </summary>
         public readonly string Etag;
@@ -80,9 +84,13 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+        /// Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.
+        /// </summary>
+        public readonly Outputs.GoogleCloudAiplatformV1FeatureOnlineStoreOptimizedResponse Optimized;
         /// <summary>
         /// State of the featureOnlineStore.
         /// </summary>
@@ -98,11 +106,15 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
 
             string createTime,
 
+            Outputs.GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpointResponse dedicatedServingEndpoint,
+
             string etag,
 
             ImmutableDictionary<string, string> labels,
 
             string name,
+
+            Outputs.GoogleCloudAiplatformV1FeatureOnlineStoreOptimizedResponse optimized,
 
             string state,
 
@@ -110,9 +122,11 @@ namespace Pulumi.GoogleNative.Aiplatform.V1
         {
             Bigtable = bigtable;
             CreateTime = createTime;
+            DedicatedServingEndpoint = dedicatedServingEndpoint;
             Etag = etag;
             Labels = labels;
             Name = name;
+            Optimized = optimized;
             State = state;
             UpdateTime = updateTime;
         }

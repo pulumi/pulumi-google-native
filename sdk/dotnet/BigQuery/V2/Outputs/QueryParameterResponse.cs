@@ -10,19 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// A parameter given to a query.
+    /// </summary>
     [OutputType]
     public sealed class QueryParameterResponse
     {
         /// <summary>
-        /// [Optional] If unset, this is a positional parameter. Otherwise, should be unique within a query.
+        /// Optional. If unset, this is a positional parameter. Otherwise, should be unique within a query.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// [Required] The type of this parameter.
+        /// The type of this parameter.
         /// </summary>
         public readonly Outputs.QueryParameterTypeResponse ParameterType;
         /// <summary>
-        /// [Required] The value of this parameter.
+        /// The value of this parameter.
         /// </summary>
         public readonly Outputs.QueryParameterValueResponse ParameterValue;
 

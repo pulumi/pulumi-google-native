@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSnapshotResult:
-    def __init__(__self__, architecture=None, auto_created=None, chain_name=None, creation_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, download_bytes=None, guest_os_features=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, location_hint=None, name=None, satisfies_pzs=None, self_link=None, snapshot_encryption_key=None, snapshot_type=None, source_disk=None, source_disk_encryption_key=None, source_disk_for_recovery_checkpoint=None, source_disk_id=None, source_snapshot_schedule_policy=None, source_snapshot_schedule_policy_id=None, status=None, storage_bytes=None, storage_bytes_status=None, storage_locations=None):
+    def __init__(__self__, architecture=None, auto_created=None, chain_name=None, creation_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, download_bytes=None, enable_confidential_compute=None, guest_os_features=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, location_hint=None, name=None, satisfies_pzi=None, satisfies_pzs=None, self_link=None, snapshot_encryption_key=None, snapshot_type=None, source_disk=None, source_disk_encryption_key=None, source_disk_for_recovery_checkpoint=None, source_disk_id=None, source_instant_snapshot=None, source_instant_snapshot_encryption_key=None, source_instant_snapshot_id=None, source_snapshot_schedule_policy=None, source_snapshot_schedule_policy_id=None, status=None, storage_bytes=None, storage_bytes_status=None, storage_locations=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         pulumi.set(__self__, "architecture", architecture)
@@ -44,6 +44,9 @@ class GetSnapshotResult:
         if download_bytes and not isinstance(download_bytes, str):
             raise TypeError("Expected argument 'download_bytes' to be a str")
         pulumi.set(__self__, "download_bytes", download_bytes)
+        if enable_confidential_compute and not isinstance(enable_confidential_compute, bool):
+            raise TypeError("Expected argument 'enable_confidential_compute' to be a bool")
+        pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         if guest_os_features and not isinstance(guest_os_features, list):
             raise TypeError("Expected argument 'guest_os_features' to be a list")
         pulumi.set(__self__, "guest_os_features", guest_os_features)
@@ -68,6 +71,9 @@ class GetSnapshotResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if satisfies_pzi and not isinstance(satisfies_pzi, bool):
+            raise TypeError("Expected argument 'satisfies_pzi' to be a bool")
+        pulumi.set(__self__, "satisfies_pzi", satisfies_pzi)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -92,6 +98,15 @@ class GetSnapshotResult:
         if source_disk_id and not isinstance(source_disk_id, str):
             raise TypeError("Expected argument 'source_disk_id' to be a str")
         pulumi.set(__self__, "source_disk_id", source_disk_id)
+        if source_instant_snapshot and not isinstance(source_instant_snapshot, str):
+            raise TypeError("Expected argument 'source_instant_snapshot' to be a str")
+        pulumi.set(__self__, "source_instant_snapshot", source_instant_snapshot)
+        if source_instant_snapshot_encryption_key and not isinstance(source_instant_snapshot_encryption_key, dict):
+            raise TypeError("Expected argument 'source_instant_snapshot_encryption_key' to be a dict")
+        pulumi.set(__self__, "source_instant_snapshot_encryption_key", source_instant_snapshot_encryption_key)
+        if source_instant_snapshot_id and not isinstance(source_instant_snapshot_id, str):
+            raise TypeError("Expected argument 'source_instant_snapshot_id' to be a str")
+        pulumi.set(__self__, "source_instant_snapshot_id", source_instant_snapshot_id)
         if source_snapshot_schedule_policy and not isinstance(source_snapshot_schedule_policy, str):
             raise TypeError("Expected argument 'source_snapshot_schedule_policy' to be a str")
         pulumi.set(__self__, "source_snapshot_schedule_policy", source_snapshot_schedule_policy)
@@ -176,6 +191,14 @@ class GetSnapshotResult:
         return pulumi.get(self, "download_bytes")
 
     @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> bool:
+        """
+        Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This field is not set by user, but from source disk.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
+
+    @property
     @pulumi.getter(name="guestOsFeatures")
     def guest_os_features(self) -> Sequence['outputs.GuestOsFeatureResponse']:
         """
@@ -238,6 +261,14 @@ class GetSnapshotResult:
         Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="satisfiesPzi")
+    def satisfies_pzi(self) -> bool:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzi")
 
     @property
     @pulumi.getter(name="satisfiesPzs")
@@ -304,6 +335,30 @@ class GetSnapshotResult:
         return pulumi.get(self, "source_disk_id")
 
     @property
+    @pulumi.getter(name="sourceInstantSnapshot")
+    def source_instant_snapshot(self) -> str:
+        """
+        The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+        """
+        return pulumi.get(self, "source_instant_snapshot")
+
+    @property
+    @pulumi.getter(name="sourceInstantSnapshotEncryptionKey")
+    def source_instant_snapshot_encryption_key(self) -> 'outputs.CustomerEncryptionKeyResponse':
+        """
+        Customer provided encryption key when creating Snapshot from Instant Snapshot.
+        """
+        return pulumi.get(self, "source_instant_snapshot_encryption_key")
+
+    @property
+    @pulumi.getter(name="sourceInstantSnapshotId")
+    def source_instant_snapshot_id(self) -> str:
+        """
+        The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.
+        """
+        return pulumi.get(self, "source_instant_snapshot_id")
+
+    @property
     @pulumi.getter(name="sourceSnapshotSchedulePolicy")
     def source_snapshot_schedule_policy(self) -> str:
         """
@@ -366,6 +421,7 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             description=self.description,
             disk_size_gb=self.disk_size_gb,
             download_bytes=self.download_bytes,
+            enable_confidential_compute=self.enable_confidential_compute,
             guest_os_features=self.guest_os_features,
             kind=self.kind,
             label_fingerprint=self.label_fingerprint,
@@ -374,6 +430,7 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             licenses=self.licenses,
             location_hint=self.location_hint,
             name=self.name,
+            satisfies_pzi=self.satisfies_pzi,
             satisfies_pzs=self.satisfies_pzs,
             self_link=self.self_link,
             snapshot_encryption_key=self.snapshot_encryption_key,
@@ -382,6 +439,9 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             source_disk_encryption_key=self.source_disk_encryption_key,
             source_disk_for_recovery_checkpoint=self.source_disk_for_recovery_checkpoint,
             source_disk_id=self.source_disk_id,
+            source_instant_snapshot=self.source_instant_snapshot,
+            source_instant_snapshot_encryption_key=self.source_instant_snapshot_encryption_key,
+            source_instant_snapshot_id=self.source_instant_snapshot_id,
             source_snapshot_schedule_policy=self.source_snapshot_schedule_policy,
             source_snapshot_schedule_policy_id=self.source_snapshot_schedule_policy_id,
             status=self.status,
@@ -411,6 +471,7 @@ def get_snapshot(project: Optional[str] = None,
         description=pulumi.get(__ret__, 'description'),
         disk_size_gb=pulumi.get(__ret__, 'disk_size_gb'),
         download_bytes=pulumi.get(__ret__, 'download_bytes'),
+        enable_confidential_compute=pulumi.get(__ret__, 'enable_confidential_compute'),
         guest_os_features=pulumi.get(__ret__, 'guest_os_features'),
         kind=pulumi.get(__ret__, 'kind'),
         label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
@@ -419,6 +480,7 @@ def get_snapshot(project: Optional[str] = None,
         licenses=pulumi.get(__ret__, 'licenses'),
         location_hint=pulumi.get(__ret__, 'location_hint'),
         name=pulumi.get(__ret__, 'name'),
+        satisfies_pzi=pulumi.get(__ret__, 'satisfies_pzi'),
         satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         self_link=pulumi.get(__ret__, 'self_link'),
         snapshot_encryption_key=pulumi.get(__ret__, 'snapshot_encryption_key'),
@@ -427,6 +489,9 @@ def get_snapshot(project: Optional[str] = None,
         source_disk_encryption_key=pulumi.get(__ret__, 'source_disk_encryption_key'),
         source_disk_for_recovery_checkpoint=pulumi.get(__ret__, 'source_disk_for_recovery_checkpoint'),
         source_disk_id=pulumi.get(__ret__, 'source_disk_id'),
+        source_instant_snapshot=pulumi.get(__ret__, 'source_instant_snapshot'),
+        source_instant_snapshot_encryption_key=pulumi.get(__ret__, 'source_instant_snapshot_encryption_key'),
+        source_instant_snapshot_id=pulumi.get(__ret__, 'source_instant_snapshot_id'),
         source_snapshot_schedule_policy=pulumi.get(__ret__, 'source_snapshot_schedule_policy'),
         source_snapshot_schedule_policy_id=pulumi.get(__ret__, 'source_snapshot_schedule_policy_id'),
         status=pulumi.get(__ret__, 'status'),

@@ -33,7 +33,7 @@ class ServiceLevelObjectiveArgs:
         :param pulumi.Input['ServiceLevelObjectiveCalendarPeriod'] calendar_period: A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this SLO.
         :param pulumi.Input[float] goal: The fraction of service that must be good in order for this objective to be met. 0 < goal <= 0.999.
-        :param pulumi.Input[str] name: Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
+        :param pulumi.Input[str] name: Identifier. Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
         :param pulumi.Input[str] rolling_period: A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger than 30 days.
         :param pulumi.Input['ServiceLevelIndicatorArgs'] service_level_indicator: The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
         :param pulumi.Input[str] service_level_objective_id: Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern ^[a-zA-Z0-9-_:.]+$
@@ -126,7 +126,7 @@ class ServiceLevelObjectiveArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
+        Identifier. Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
         """
         return pulumi.get(self, "name")
 
@@ -209,7 +209,7 @@ class ServiceLevelObjective(pulumi.CustomResource):
         :param pulumi.Input['ServiceLevelObjectiveCalendarPeriod'] calendar_period: A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this SLO.
         :param pulumi.Input[float] goal: The fraction of service that must be good in order for this objective to be met. 0 < goal <= 0.999.
-        :param pulumi.Input[str] name: Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
+        :param pulumi.Input[str] name: Identifier. Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
         :param pulumi.Input[str] rolling_period: A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger than 30 days.
         :param pulumi.Input[pulumi.InputType['ServiceLevelIndicatorArgs']] service_level_indicator: The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
         :param pulumi.Input[str] service_level_objective_id: Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern ^[a-zA-Z0-9-_:.]+$
@@ -342,7 +342,7 @@ class ServiceLevelObjective(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
+        Identifier. Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
         """
         return pulumi.get(self, "name")
 

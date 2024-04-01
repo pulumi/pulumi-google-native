@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Outputs
     public sealed class EgressFromResponse
     {
         /// <summary>
-        /// A list of identities that are allowed access through this [EgressPolicy]. Should be in the format of email address. The email address should represent individual user or service account only.
+        /// A list of identities that are allowed access through this [EgressPolicy], in the format of `user:{email_id}` or `serviceAccount:{email_id}`.
         /// </summary>
         public readonly ImmutableArray<string> Identities;
         /// <summary>

@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.DNS.V1.Outputs
     public sealed class RRSetRoutingPolicyResponse
     {
         public readonly Outputs.RRSetRoutingPolicyGeoPolicyResponse Geo;
+        /// <summary>
+        /// The selfLink attribute of the HealthCheck resource to use for this RRSetRoutingPolicy. https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks
+        /// </summary>
+        public readonly string HealthCheck;
         public readonly string Kind;
         public readonly Outputs.RRSetRoutingPolicyPrimaryBackupPolicyResponse PrimaryBackup;
         public readonly Outputs.RRSetRoutingPolicyWrrPolicyResponse Wrr;
@@ -25,6 +29,8 @@ namespace Pulumi.GoogleNative.DNS.V1.Outputs
         private RRSetRoutingPolicyResponse(
             Outputs.RRSetRoutingPolicyGeoPolicyResponse geo,
 
+            string healthCheck,
+
             string kind,
 
             Outputs.RRSetRoutingPolicyPrimaryBackupPolicyResponse primaryBackup,
@@ -32,6 +38,7 @@ namespace Pulumi.GoogleNative.DNS.V1.Outputs
             Outputs.RRSetRoutingPolicyWrrPolicyResponse wrr)
         {
             Geo = geo;
+            HealthCheck = healthCheck;
             Kind = kind;
             PrimaryBackup = primaryBackup;
             Wrr = wrr;

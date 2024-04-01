@@ -11,7 +11,6 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
 {
     /// <summary>
     /// Creates a new WorkflowConfig in a given Repository.
-    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataform/v1beta1:WorkflowConfig")]
     public partial class WorkflowConfig : global::Pulumi.CustomResource
@@ -32,7 +31,7 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The workflow config's name.
+        /// Identifier. The workflow config's name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -133,6 +132,12 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
 
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Identifier. The workflow config's name.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

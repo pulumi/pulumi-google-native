@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// Optional. If set, results will be exported to the provided BigQuery table.
         /// </summary>
         public readonly Outputs.GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse BigqueryExport;
+        /// <summary>
+        /// Optional. If set, results will be sent to the provided notification receipts upon triggers.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponse NotificationReport;
 
         [OutputConstructor]
-        private GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse(Outputs.GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse bigqueryExport)
+        private GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse(
+            Outputs.GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse bigqueryExport,
+
+            Outputs.GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportResponse notificationReport)
         {
             BigqueryExport = bigqueryExport;
+            NotificationReport = notificationReport;
         }
     }
 }

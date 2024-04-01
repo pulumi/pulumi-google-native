@@ -29,6 +29,10 @@ export interface GetFirewallEndpointAssociationResult {
      */
     readonly createTime: string;
     /**
+     * Optional. Whether the association is disabled. True indicates that traffic won't be intercepted
+     */
+    readonly disabled: boolean;
+    /**
      * The URL of the FirewallEndpoint that is being associated.
      */
     readonly firewallEndpoint: string;
@@ -37,7 +41,7 @@ export interface GetFirewallEndpointAssociationResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * name of resource
+     * Immutable. Identifier. name of resource
      */
     readonly name: string;
     /**

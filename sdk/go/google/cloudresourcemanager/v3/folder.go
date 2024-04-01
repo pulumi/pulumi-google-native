@@ -31,6 +31,8 @@ type Folder struct {
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// The lifecycle state of the folder. Updates to the state must be performed using DeleteFolder and UndeleteFolder.
 	State pulumi.StringOutput `pulumi:"state"`
+	// Optional. Input only. Immutable. Tag keys/values directly bound to this folder. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Timestamp when the folder was last modified.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -82,6 +84,8 @@ type folderArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
 	Parent string `pulumi:"parent"`
+	// Optional. Input only. Immutable. Tag keys/values directly bound to this folder. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Folder resource.
@@ -90,6 +94,8 @@ type FolderArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
 	Parent pulumi.StringInput
+	// Optional. Input only. Immutable. Tag keys/values directly bound to this folder. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+	Tags pulumi.StringMapInput
 }
 
 func (FolderArgs) ElementType() reflect.Type {
@@ -162,6 +168,11 @@ func (o FolderOutput) Parent() pulumi.StringOutput {
 // The lifecycle state of the folder. Updates to the state must be performed using DeleteFolder and UndeleteFolder.
 func (o FolderOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Optional. Input only. Immutable. Tag keys/values directly bound to this folder. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+func (o FolderOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Timestamp when the folder was last modified.

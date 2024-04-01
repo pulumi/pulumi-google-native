@@ -68,7 +68,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// </summary>
         public readonly bool AnalyticsEnabled;
         /// <summary>
-        /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
+        /// Optional. The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
         /// </summary>
         public readonly Outputs.CmekSettingsResponse CmekSettings;
         /// <summary>
@@ -76,11 +76,11 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Describes this bucket.
+        /// Optional. Describes this bucket.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// A list of indexed fields and related configuration data.
+        /// Optional. A list of indexed fields and related configuration data.
         /// </summary>
         public readonly ImmutableArray<Outputs.IndexConfigResponse> IndexConfigs;
         /// <summary>
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// </summary>
         public readonly string LifecycleState;
         /// <summary>
-        /// Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+        /// Optional. Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
         /// </summary>
         public readonly bool Locked;
         /// <summary>
@@ -96,11 +96,11 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
+        /// Optional. Log entry field paths that are denied access in this bucket.The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block foo.bar.baz)
         /// </summary>
         public readonly ImmutableArray<string> RestrictedFields;
         /// <summary>
-        /// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+        /// Optional. Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
         /// </summary>
         public readonly int RetentionDays;
         /// <summary>

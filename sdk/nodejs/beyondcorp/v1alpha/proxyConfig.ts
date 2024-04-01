@@ -69,7 +69,7 @@ export class ProxyConfig extends pulumi.CustomResource {
      */
     public readonly routingInfo!: pulumi.Output<outputs.beyondcorp.v1alpha.GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse>;
     /**
-     * Transport layer information to verify for the proxy server.
+     * Optional. Transport layer information to verify for the proxy server.
      */
     public readonly transportInfo!: pulumi.Output<outputs.beyondcorp.v1alpha.GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse>;
     /**
@@ -99,9 +99,6 @@ export class ProxyConfig extends pulumi.CustomResource {
             }
             if ((!args || args.routingInfo === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'routingInfo'");
-            }
-            if ((!args || args.transportInfo === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'transportInfo'");
             }
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["encryptionInfo"] = args ? args.encryptionInfo : undefined;
@@ -161,7 +158,7 @@ export interface ProxyConfigArgs {
      */
     routingInfo: pulumi.Input<inputs.beyondcorp.v1alpha.GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs>;
     /**
-     * Transport layer information to verify for the proxy server.
+     * Optional. Transport layer information to verify for the proxy server.
      */
-    transportInfo: pulumi.Input<inputs.beyondcorp.v1alpha.GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs>;
+    transportInfo?: pulumi.Input<inputs.beyondcorp.v1alpha.GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs>;
 }

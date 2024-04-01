@@ -82,6 +82,10 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
     public sealed class GetDocumentResult
     {
         /// <summary>
+        /// Access control information for the document.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDiscoveryengineV1alphaDocumentAclInfoResponse AclInfo;
+        /// <summary>
         /// The unstructured data linked to this document. Content must be set if this document is under a `CONTENT_REQUIRED` data store.
         /// </summary>
         public readonly Outputs.GoogleCloudDiscoveryengineV1alphaDocumentContentResponse Content;
@@ -89,6 +93,10 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         /// This field is OUTPUT_ONLY. It contains derived data that are not in the original input document.
         /// </summary>
         public readonly ImmutableDictionary<string, string> DerivedStructData;
+        /// <summary>
+        /// The last time the document was indexed. If this field is set, the document could be returned in search results. This field is OUTPUT_ONLY. If this field is not populated, it means the document has never been indexed.
+        /// </summary>
+        public readonly string IndexTime;
         /// <summary>
         /// The JSON string representation of the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
         /// </summary>
@@ -112,9 +120,13 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
 
         [OutputConstructor]
         private GetDocumentResult(
+            Outputs.GoogleCloudDiscoveryengineV1alphaDocumentAclInfoResponse aclInfo,
+
             Outputs.GoogleCloudDiscoveryengineV1alphaDocumentContentResponse content,
 
             ImmutableDictionary<string, string> derivedStructData,
+
+            string indexTime,
 
             string jsonData,
 
@@ -126,8 +138,10 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
 
             ImmutableDictionary<string, string> structData)
         {
+            AclInfo = aclInfo;
             Content = content;
             DerivedStructData = derivedStructData;
+            IndexTime = indexTime;
             JsonData = jsonData;
             Name = name;
             ParentDocumentId = parentDocumentId;

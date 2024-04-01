@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2.Inputs
         public Input<bool>? AllTrafficOnLatestRevision { get; set; }
 
         /// <summary>
-        /// [Preview] The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
+        /// The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
         /// </summary>
         [Input("availableCpu")]
         public Input<string>? AvailableCpu { get; set; }
@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2.Inputs
         public Input<int>? MaxInstanceCount { get; set; }
 
         /// <summary>
-        /// [Preview] Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+        /// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
         /// </summary>
         [Input("maxInstanceRequestConcurrency")]
         public Input<int>? MaxInstanceRequestConcurrency { get; set; }

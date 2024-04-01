@@ -13,6 +13,198 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+// Message describing big query destination
+type BigQueryDestination struct {
+	// Optional. determine if results will be saved in a new table
+	CreateNewResultsTable *bool `pulumi:"createNewResultsTable"`
+	// Optional. destination dataset to save evaluation results
+	DestinationDataset *string `pulumi:"destinationDataset"`
+}
+
+// BigQueryDestinationInput is an input type that accepts BigQueryDestinationArgs and BigQueryDestinationOutput values.
+// You can construct a concrete instance of `BigQueryDestinationInput` via:
+//
+//	BigQueryDestinationArgs{...}
+type BigQueryDestinationInput interface {
+	pulumi.Input
+
+	ToBigQueryDestinationOutput() BigQueryDestinationOutput
+	ToBigQueryDestinationOutputWithContext(context.Context) BigQueryDestinationOutput
+}
+
+// Message describing big query destination
+type BigQueryDestinationArgs struct {
+	// Optional. determine if results will be saved in a new table
+	CreateNewResultsTable pulumi.BoolPtrInput `pulumi:"createNewResultsTable"`
+	// Optional. destination dataset to save evaluation results
+	DestinationDataset pulumi.StringPtrInput `pulumi:"destinationDataset"`
+}
+
+func (BigQueryDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryDestination)(nil)).Elem()
+}
+
+func (i BigQueryDestinationArgs) ToBigQueryDestinationOutput() BigQueryDestinationOutput {
+	return i.ToBigQueryDestinationOutputWithContext(context.Background())
+}
+
+func (i BigQueryDestinationArgs) ToBigQueryDestinationOutputWithContext(ctx context.Context) BigQueryDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryDestinationOutput)
+}
+
+func (i BigQueryDestinationArgs) ToBigQueryDestinationPtrOutput() BigQueryDestinationPtrOutput {
+	return i.ToBigQueryDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i BigQueryDestinationArgs) ToBigQueryDestinationPtrOutputWithContext(ctx context.Context) BigQueryDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryDestinationOutput).ToBigQueryDestinationPtrOutputWithContext(ctx)
+}
+
+// BigQueryDestinationPtrInput is an input type that accepts BigQueryDestinationArgs, BigQueryDestinationPtr and BigQueryDestinationPtrOutput values.
+// You can construct a concrete instance of `BigQueryDestinationPtrInput` via:
+//
+//	        BigQueryDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type BigQueryDestinationPtrInput interface {
+	pulumi.Input
+
+	ToBigQueryDestinationPtrOutput() BigQueryDestinationPtrOutput
+	ToBigQueryDestinationPtrOutputWithContext(context.Context) BigQueryDestinationPtrOutput
+}
+
+type bigQueryDestinationPtrType BigQueryDestinationArgs
+
+func BigQueryDestinationPtr(v *BigQueryDestinationArgs) BigQueryDestinationPtrInput {
+	return (*bigQueryDestinationPtrType)(v)
+}
+
+func (*bigQueryDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigQueryDestination)(nil)).Elem()
+}
+
+func (i *bigQueryDestinationPtrType) ToBigQueryDestinationPtrOutput() BigQueryDestinationPtrOutput {
+	return i.ToBigQueryDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *bigQueryDestinationPtrType) ToBigQueryDestinationPtrOutputWithContext(ctx context.Context) BigQueryDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryDestinationPtrOutput)
+}
+
+// Message describing big query destination
+type BigQueryDestinationOutput struct{ *pulumi.OutputState }
+
+func (BigQueryDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryDestination)(nil)).Elem()
+}
+
+func (o BigQueryDestinationOutput) ToBigQueryDestinationOutput() BigQueryDestinationOutput {
+	return o
+}
+
+func (o BigQueryDestinationOutput) ToBigQueryDestinationOutputWithContext(ctx context.Context) BigQueryDestinationOutput {
+	return o
+}
+
+func (o BigQueryDestinationOutput) ToBigQueryDestinationPtrOutput() BigQueryDestinationPtrOutput {
+	return o.ToBigQueryDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o BigQueryDestinationOutput) ToBigQueryDestinationPtrOutputWithContext(ctx context.Context) BigQueryDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigQueryDestination) *BigQueryDestination {
+		return &v
+	}).(BigQueryDestinationPtrOutput)
+}
+
+// Optional. determine if results will be saved in a new table
+func (o BigQueryDestinationOutput) CreateNewResultsTable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BigQueryDestination) *bool { return v.CreateNewResultsTable }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. destination dataset to save evaluation results
+func (o BigQueryDestinationOutput) DestinationDataset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigQueryDestination) *string { return v.DestinationDataset }).(pulumi.StringPtrOutput)
+}
+
+type BigQueryDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (BigQueryDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigQueryDestination)(nil)).Elem()
+}
+
+func (o BigQueryDestinationPtrOutput) ToBigQueryDestinationPtrOutput() BigQueryDestinationPtrOutput {
+	return o
+}
+
+func (o BigQueryDestinationPtrOutput) ToBigQueryDestinationPtrOutputWithContext(ctx context.Context) BigQueryDestinationPtrOutput {
+	return o
+}
+
+func (o BigQueryDestinationPtrOutput) Elem() BigQueryDestinationOutput {
+	return o.ApplyT(func(v *BigQueryDestination) BigQueryDestination {
+		if v != nil {
+			return *v
+		}
+		var ret BigQueryDestination
+		return ret
+	}).(BigQueryDestinationOutput)
+}
+
+// Optional. determine if results will be saved in a new table
+func (o BigQueryDestinationPtrOutput) CreateNewResultsTable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BigQueryDestination) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CreateNewResultsTable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. destination dataset to save evaluation results
+func (o BigQueryDestinationPtrOutput) DestinationDataset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BigQueryDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationDataset
+	}).(pulumi.StringPtrOutput)
+}
+
+// Message describing big query destination
+type BigQueryDestinationResponse struct {
+	// Optional. determine if results will be saved in a new table
+	CreateNewResultsTable bool `pulumi:"createNewResultsTable"`
+	// Optional. destination dataset to save evaluation results
+	DestinationDataset string `pulumi:"destinationDataset"`
+}
+
+// Message describing big query destination
+type BigQueryDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (BigQueryDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryDestinationResponse)(nil)).Elem()
+}
+
+func (o BigQueryDestinationResponseOutput) ToBigQueryDestinationResponseOutput() BigQueryDestinationResponseOutput {
+	return o
+}
+
+func (o BigQueryDestinationResponseOutput) ToBigQueryDestinationResponseOutputWithContext(ctx context.Context) BigQueryDestinationResponseOutput {
+	return o
+}
+
+// Optional. determine if results will be saved in a new table
+func (o BigQueryDestinationResponseOutput) CreateNewResultsTable() pulumi.BoolOutput {
+	return o.ApplyT(func(v BigQueryDestinationResponse) bool { return v.CreateNewResultsTable }).(pulumi.BoolOutput)
+}
+
+// Optional. destination dataset to save evaluation results
+func (o BigQueryDestinationResponseOutput) DestinationDataset() pulumi.StringOutput {
+	return o.ApplyT(func(v BigQueryDestinationResponse) string { return v.DestinationDataset }).(pulumi.StringOutput)
+}
+
 // Message describing compute engine instance filter
 type GceInstanceFilter struct {
 	// Service account of compute engine
@@ -457,10 +649,15 @@ func (o ResourceStatusResponseOutput) State() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryDestinationInput)(nil)).Elem(), BigQueryDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryDestinationPtrInput)(nil)).Elem(), BigQueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GceInstanceFilterInput)(nil)).Elem(), GceInstanceFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GceInstanceFilterPtrInput)(nil)).Elem(), GceInstanceFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceFilterInput)(nil)).Elem(), ResourceFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceFilterPtrInput)(nil)).Elem(), ResourceFilterArgs{})
+	pulumi.RegisterOutputType(BigQueryDestinationOutput{})
+	pulumi.RegisterOutputType(BigQueryDestinationPtrOutput{})
+	pulumi.RegisterOutputType(BigQueryDestinationResponseOutput{})
 	pulumi.RegisterOutputType(GceInstanceFilterOutput{})
 	pulumi.RegisterOutputType(GceInstanceFilterPtrOutput{})
 	pulumi.RegisterOutputType(GceInstanceFilterResponseOutput{})

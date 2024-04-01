@@ -19,115 +19,121 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<bool>? Autodetect { get; set; }
 
         /// <summary>
-        /// Additional properties to set if sourceFormat is set to Avro.
+        /// Optional. Additional properties to set if sourceFormat is set to AVRO.
         /// </summary>
         [Input("avroOptions")]
         public Input<Inputs.AvroOptionsArgs>? AvroOptions { get; set; }
 
         /// <summary>
-        /// [Optional] Additional options if sourceFormat is set to BIGTABLE.
+        /// Optional. Additional options if sourceFormat is set to BIGTABLE.
         /// </summary>
         [Input("bigtableOptions")]
         public Input<Inputs.BigtableOptionsArgs>? BigtableOptions { get; set; }
 
         /// <summary>
-        /// [Optional] The compression type of the data source. Possible values include GZIP and NONE. The default value is NONE. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
+        /// Optional. The compression type of the data source. Possible values include GZIP and NONE. The default value is NONE. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups, Avro, ORC and Parquet formats. An empty string is an invalid value.
         /// </summary>
         [Input("compression")]
         public Input<string>? Compression { get; set; }
 
         /// <summary>
-        /// [Optional, Trusted Tester] Connection for external data source.
+        /// Optional. The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection_id can have the form "&lt;project\_id&gt;.&lt;location\_id&gt;.&lt;connection\_id&gt;" or "projects/&lt;project\_id&gt;/locations/&lt;location\_id&gt;/connections/&lt;connection\_id&gt;".
         /// </summary>
         [Input("connectionId")]
         public Input<string>? ConnectionId { get; set; }
 
         /// <summary>
-        /// Additional properties to set if sourceFormat is set to CSV.
+        /// Optional. Additional properties to set if sourceFormat is set to CSV.
         /// </summary>
         [Input("csvOptions")]
         public Input<Inputs.CsvOptionsArgs>? CsvOptions { get; set; }
 
         [Input("decimalTargetTypes")]
-        private InputList<string>? _decimalTargetTypes;
+        private InputList<Pulumi.GoogleNative.BigQuery.V2.ExternalDataConfigurationDecimalTargetTypesItem>? _decimalTargetTypes;
 
         /// <summary>
-        /// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -&gt; NUMERIC; (39,9) -&gt; BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -&gt; BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -&gt; BIGNUMERIC; (77,38) -&gt; BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+        /// Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) -&gt; NUMERIC; * (39,9) -&gt; BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -&gt; BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -&gt; BIGNUMERIC; * (77,38) -&gt; BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
         /// </summary>
-        public InputList<string> DecimalTargetTypes
+        public InputList<Pulumi.GoogleNative.BigQuery.V2.ExternalDataConfigurationDecimalTargetTypesItem> DecimalTargetTypes
         {
-            get => _decimalTargetTypes ?? (_decimalTargetTypes = new InputList<string>());
+            get => _decimalTargetTypes ?? (_decimalTargetTypes = new InputList<Pulumi.GoogleNative.BigQuery.V2.ExternalDataConfigurationDecimalTargetTypesItem>());
             set => _decimalTargetTypes = value;
         }
 
         /// <summary>
-        /// [Optional] Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
+        /// Optional. Specifies how source URIs are interpreted for constructing the file set to load. By default source URIs are expanded against the underlying storage. Other options include specifying manifest files. Only applicable to object storage systems.
         /// </summary>
         [Input("fileSetSpecType")]
-        public Input<string>? FileSetSpecType { get; set; }
+        public Input<Pulumi.GoogleNative.BigQuery.V2.ExternalDataConfigurationFileSetSpecType>? FileSetSpecType { get; set; }
 
         /// <summary>
-        /// [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
+        /// Optional. Additional options if sourceFormat is set to GOOGLE_SHEETS.
         /// </summary>
         [Input("googleSheetsOptions")]
         public Input<Inputs.GoogleSheetsOptionsArgs>? GoogleSheetsOptions { get; set; }
 
         /// <summary>
-        /// [Optional] Options to configure hive partitioning support.
+        /// Optional. When set, configures hive partitioning support. Not all storage formats support hive partitioning -- requesting hive partitioning on an unsupported format will lead to an error, as will providing an invalid specification.
         /// </summary>
         [Input("hivePartitioningOptions")]
         public Input<Inputs.HivePartitioningOptionsArgs>? HivePartitioningOptions { get; set; }
 
         /// <summary>
-        /// [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored.
+        /// Optional. Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored. ORC: This setting is ignored. Parquet: This setting is ignored.
         /// </summary>
         [Input("ignoreUnknownValues")]
         public Input<bool>? IgnoreUnknownValues { get; set; }
 
         /// <summary>
-        /// Additional properties to set if `sourceFormat` is set to `NEWLINE_DELIMITED_JSON`.
+        /// Optional. Load option to be used together with source_format newline-delimited JSON to indicate that a variant of JSON is being loaded. To load newline-delimited GeoJSON, specify GEOJSON (and source_format must be set to NEWLINE_DELIMITED_JSON).
+        /// </summary>
+        [Input("jsonExtension")]
+        public Input<Pulumi.GoogleNative.BigQuery.V2.ExternalDataConfigurationJsonExtension>? JsonExtension { get; set; }
+
+        /// <summary>
+        /// Optional. Additional properties to set if sourceFormat is set to JSON.
         /// </summary>
         [Input("jsonOptions")]
         public Input<Inputs.JsonOptionsArgs>? JsonOptions { get; set; }
 
         /// <summary>
-        /// [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
+        /// Optional. The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups, Avro, ORC and Parquet formats.
         /// </summary>
         [Input("maxBadRecords")]
         public Input<int>? MaxBadRecords { get; set; }
 
         /// <summary>
-        /// [Optional] Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
+        /// Optional. Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
         /// </summary>
         [Input("metadataCacheMode")]
-        public Input<string>? MetadataCacheMode { get; set; }
+        public Input<Pulumi.GoogleNative.BigQuery.V2.ExternalDataConfigurationMetadataCacheMode>? MetadataCacheMode { get; set; }
 
         /// <summary>
-        /// ObjectMetadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the source_uris. If ObjectMetadata is set, source_format should be omitted. Currently SIMPLE is the only supported Object Metadata type.
+        /// Optional. ObjectMetadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the source_uris. If ObjectMetadata is set, source_format should be omitted. Currently SIMPLE is the only supported Object Metadata type.
         /// </summary>
         [Input("objectMetadata")]
-        public Input<string>? ObjectMetadata { get; set; }
+        public Input<Pulumi.GoogleNative.BigQuery.V2.ExternalDataConfigurationObjectMetadata>? ObjectMetadata { get; set; }
 
         /// <summary>
-        /// Additional properties to set if sourceFormat is set to Parquet.
+        /// Optional. Additional properties to set if sourceFormat is set to PARQUET.
         /// </summary>
         [Input("parquetOptions")]
         public Input<Inputs.ParquetOptionsArgs>? ParquetOptions { get; set; }
 
         /// <summary>
-        /// [Optional] Provide a referencing file with the expected table schema. Enabled for the format: AVRO, PARQUET, ORC.
+        /// Optional. When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
         /// </summary>
         [Input("referenceFileSchemaUri")]
         public Input<string>? ReferenceFileSchemaUri { get; set; }
 
         /// <summary>
-        /// [Optional] The schema for the data. Schema is required for CSV and JSON formats. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.
+        /// Optional. The schema for the data. Schema is required for CSV and JSON formats if autodetect is not on. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
         /// </summary>
         [Input("schema")]
         public Input<Inputs.TableSchemaArgs>? Schema { get; set; }
 
         /// <summary>
-        /// [Required] The data format. For CSV files, specify "CSV". For Google sheets, specify "GOOGLE_SHEETS". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud Datastore backups, specify "DATASTORE_BACKUP". [Beta] For Google Cloud Bigtable, specify "BIGTABLE".
+        /// [Required] The data format. For CSV files, specify "CSV". For Google sheets, specify "GOOGLE_SHEETS". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud Datastore backups, specify "DATASTORE_BACKUP". For Apache Iceberg tables, specify "ICEBERG". For ORC files, specify "ORC". For Parquet files, specify "PARQUET". [Beta] For Google Cloud Bigtable, specify "BIGTABLE".
         /// </summary>
         [Input("sourceFormat")]
         public Input<string>? SourceFormat { get; set; }

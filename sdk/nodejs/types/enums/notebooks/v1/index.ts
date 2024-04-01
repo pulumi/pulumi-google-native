@@ -36,6 +36,10 @@ export const AcceleratorConfigType = {
      */
     NvidiaL4: "NVIDIA_L4",
     /**
+     * Accelerator type is Nvidia Tesla A100 80GB.
+     */
+    NvidiaA10080gb: "NVIDIA_A100_80GB",
+    /**
      * Accelerator type is NVIDIA Tesla T4 Virtual Workstations.
      */
     NvidiaTeslaT4Vws: "NVIDIA_TESLA_T4_VWS",

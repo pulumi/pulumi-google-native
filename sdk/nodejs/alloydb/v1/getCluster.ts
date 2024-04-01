@@ -98,9 +98,9 @@ export interface GetClusterResult {
      */
     readonly name: string;
     /**
-     * The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+     * The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
      *
-     * @deprecated Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+     * @deprecated Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
      */
     readonly network: string;
     readonly networkConfig: outputs.alloydb.v1.NetworkConfigResponse;
@@ -112,6 +112,10 @@ export interface GetClusterResult {
      * Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
      */
     readonly reconciling: boolean;
+    /**
+     * Reserved for future use.
+     */
+    readonly satisfiesPzs: boolean;
     /**
      * Cross Region replication config specific to SECONDARY cluster.
      */

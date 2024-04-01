@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// </summary>
     public sealed class NetworkEndpointGroupPscDataArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The psc producer port is used to connect PSC NEG with specific port on the PSC Producer side; should only be used for the PRIVATE_SERVICE_CONNECT NEG type
+        /// </summary>
+        [Input("producerPort")]
+        public Input<int>? ProducerPort { get; set; }
+
         public NetworkEndpointGroupPscDataArgs()
         {
         }

@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Outputs
     public sealed class MethodSelectorResponse
     {
         /// <summary>
-        /// Value for `method` should be a valid method name for the corresponding `service_name` in ApiOperation. If `*` used as value for `method`, then ALL methods and permissions are allowed.
+        /// A valid method name for the corresponding `service_name` in ApiOperation. If `*` is used as the value for the `method`, then ALL methods and permissions are allowed.
         /// </summary>
         public readonly string Method;
         /// <summary>
-        /// Value for `permission` should be a valid Cloud IAM permission for the corresponding `service_name` in ApiOperation.
+        /// A valid Cloud IAM permission for the corresponding `service_name` in ApiOperation.
         /// </summary>
         public readonly string Permission;
 

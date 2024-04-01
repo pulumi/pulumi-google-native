@@ -31,6 +31,10 @@ __all__ = [
     'CloudRunMetadataResponse',
     'CreateChildRolloutJobResponse',
     'CustomCanaryDeploymentResponse',
+    'CustomMetadataResponse',
+    'CustomTargetResponse',
+    'CustomTargetSkaffoldActionsResponse',
+    'CustomTargetTypeResponse',
     'DefaultPoolResponse',
     'DeliveryPipelineResponse',
     'DeployJobResponse',
@@ -63,6 +67,9 @@ __all__ = [
     'RuntimeConfigResponse',
     'SerialPipelineResponse',
     'ServiceNetworkingResponse',
+    'SkaffoldGCSSourceResponse',
+    'SkaffoldGitSourceResponse',
+    'SkaffoldModulesResponse',
     'SkaffoldSupportedConditionResponse',
     'StageResponse',
     'StandardResponse',
@@ -303,6 +310,8 @@ class AutomationRolloutMetadataResponse(dict):
         suggest = None
         if key == "advanceAutomationRuns":
             suggest = "advance_automation_runs"
+        elif key == "currentRepairAutomationRun":
+            suggest = "current_repair_automation_run"
         elif key == "promoteAutomationRun":
             suggest = "promote_automation_run"
         elif key == "repairAutomationRuns":
@@ -321,15 +330,18 @@ class AutomationRolloutMetadataResponse(dict):
 
     def __init__(__self__, *,
                  advance_automation_runs: Sequence[str],
+                 current_repair_automation_run: str,
                  promote_automation_run: str,
                  repair_automation_runs: Sequence[str]):
         """
         AutomationRolloutMetadata contains Automation-related actions that were performed on a rollout.
         :param Sequence[str] advance_automation_runs: The IDs of the AutomationRuns initiated by an advance rollout rule.
+        :param str current_repair_automation_run: The current AutomationRun repairing the rollout.
         :param str promote_automation_run: The ID of the AutomationRun initiated by a promote release rule.
         :param Sequence[str] repair_automation_runs: The IDs of the AutomationRuns initiated by a repair rollout rule.
         """
         pulumi.set(__self__, "advance_automation_runs", advance_automation_runs)
+        pulumi.set(__self__, "current_repair_automation_run", current_repair_automation_run)
         pulumi.set(__self__, "promote_automation_run", promote_automation_run)
         pulumi.set(__self__, "repair_automation_runs", repair_automation_runs)
 
@@ -340,6 +352,14 @@ class AutomationRolloutMetadataResponse(dict):
         The IDs of the AutomationRuns initiated by an advance rollout rule.
         """
         return pulumi.get(self, "advance_automation_runs")
+
+    @property
+    @pulumi.getter(name="currentRepairAutomationRun")
+    def current_repair_automation_run(self) -> str:
+        """
+        The current AutomationRun repairing the rollout.
+        """
+        return pulumi.get(self, "current_repair_automation_run")
 
     @property
     @pulumi.getter(name="promoteAutomationRun")
@@ -474,8 +494,8 @@ class BindingResponse(dict):
         """
         Associates `members`, or principals, with a `role`.
         :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "members", members)
@@ -493,7 +513,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         """
         return pulumi.get(self, "members")
 
@@ -501,7 +521,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def role(self) -> str:
         """
-        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         """
         return pulumi.get(self, "role")
 
@@ -721,6 +741,12 @@ class CloudRunConfigResponse(dict):
         suggest = None
         if key == "automaticTrafficControl":
             suggest = "automatic_traffic_control"
+        elif key == "canaryRevisionTags":
+            suggest = "canary_revision_tags"
+        elif key == "priorRevisionTags":
+            suggest = "prior_revision_tags"
+        elif key == "stableRevisionTags":
+            suggest = "stable_revision_tags"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in CloudRunConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -734,12 +760,21 @@ class CloudRunConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 automatic_traffic_control: bool):
+                 automatic_traffic_control: bool,
+                 canary_revision_tags: Sequence[str],
+                 prior_revision_tags: Sequence[str],
+                 stable_revision_tags: Sequence[str]):
         """
         CloudRunConfig contains the Cloud Run runtime configuration.
         :param bool automatic_traffic_control: Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
+        :param Sequence[str] canary_revision_tags: Optional. A list of tags that are added to the canary revision while the canary phase is in progress.
+        :param Sequence[str] prior_revision_tags: Optional. A list of tags that are added to the prior revision while the canary phase is in progress.
+        :param Sequence[str] stable_revision_tags: Optional. A list of tags that are added to the final stable revision when the stable phase is applied.
         """
         pulumi.set(__self__, "automatic_traffic_control", automatic_traffic_control)
+        pulumi.set(__self__, "canary_revision_tags", canary_revision_tags)
+        pulumi.set(__self__, "prior_revision_tags", prior_revision_tags)
+        pulumi.set(__self__, "stable_revision_tags", stable_revision_tags)
 
     @property
     @pulumi.getter(name="automaticTrafficControl")
@@ -748,6 +783,30 @@ class CloudRunConfigResponse(dict):
         Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
         """
         return pulumi.get(self, "automatic_traffic_control")
+
+    @property
+    @pulumi.getter(name="canaryRevisionTags")
+    def canary_revision_tags(self) -> Sequence[str]:
+        """
+        Optional. A list of tags that are added to the canary revision while the canary phase is in progress.
+        """
+        return pulumi.get(self, "canary_revision_tags")
+
+    @property
+    @pulumi.getter(name="priorRevisionTags")
+    def prior_revision_tags(self) -> Sequence[str]:
+        """
+        Optional. A list of tags that are added to the prior revision while the canary phase is in progress.
+        """
+        return pulumi.get(self, "prior_revision_tags")
+
+    @property
+    @pulumi.getter(name="stableRevisionTags")
+    def stable_revision_tags(self) -> Sequence[str]:
+        """
+        Optional. A list of tags that are added to the final stable revision when the stable phase is applied.
+        """
+        return pulumi.get(self, "stable_revision_tags")
 
 
 @pulumi.output_type
@@ -893,6 +952,276 @@ class CustomCanaryDeploymentResponse(dict):
         Configuration for each phase in the canary deployment in the order executed.
         """
         return pulumi.get(self, "phase_configs")
+
+
+@pulumi.output_type
+class CustomMetadataResponse(dict):
+    """
+    CustomMetadata contains information from a user-defined operation.
+    """
+    def __init__(__self__, *,
+                 values: Mapping[str, str]):
+        """
+        CustomMetadata contains information from a user-defined operation.
+        :param Mapping[str, str] values: Key-value pairs provided by the user-defined operation.
+        """
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Mapping[str, str]:
+        """
+        Key-value pairs provided by the user-defined operation.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class CustomTargetResponse(dict):
+    """
+    Information specifying a Custom Target.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customTargetType":
+            suggest = "custom_target_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomTargetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomTargetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomTargetResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_target_type: str):
+        """
+        Information specifying a Custom Target.
+        :param str custom_target_type: The name of the CustomTargetType. Format must be `projects/{project}/locations/{location}/customTargetTypes/{custom_target_type}`.
+        """
+        pulumi.set(__self__, "custom_target_type", custom_target_type)
+
+    @property
+    @pulumi.getter(name="customTargetType")
+    def custom_target_type(self) -> str:
+        """
+        The name of the CustomTargetType. Format must be `projects/{project}/locations/{location}/customTargetTypes/{custom_target_type}`.
+        """
+        return pulumi.get(self, "custom_target_type")
+
+
+@pulumi.output_type
+class CustomTargetSkaffoldActionsResponse(dict):
+    """
+    CustomTargetSkaffoldActions represents the `CustomTargetType` configuration using Skaffold custom actions.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deployAction":
+            suggest = "deploy_action"
+        elif key == "includeSkaffoldModules":
+            suggest = "include_skaffold_modules"
+        elif key == "renderAction":
+            suggest = "render_action"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomTargetSkaffoldActionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomTargetSkaffoldActionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomTargetSkaffoldActionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 deploy_action: str,
+                 include_skaffold_modules: Sequence['outputs.SkaffoldModulesResponse'],
+                 render_action: str):
+        """
+        CustomTargetSkaffoldActions represents the `CustomTargetType` configuration using Skaffold custom actions.
+        :param str deploy_action: The Skaffold custom action responsible for deploy operations.
+        :param Sequence['SkaffoldModulesResponse'] include_skaffold_modules: Optional. List of Skaffold modules Cloud Deploy will include in the Skaffold Config as required before performing diagnose.
+        :param str render_action: Optional. The Skaffold custom action responsible for render operations. If not provided then Cloud Deploy will perform the render operations via `skaffold render`.
+        """
+        pulumi.set(__self__, "deploy_action", deploy_action)
+        pulumi.set(__self__, "include_skaffold_modules", include_skaffold_modules)
+        pulumi.set(__self__, "render_action", render_action)
+
+    @property
+    @pulumi.getter(name="deployAction")
+    def deploy_action(self) -> str:
+        """
+        The Skaffold custom action responsible for deploy operations.
+        """
+        return pulumi.get(self, "deploy_action")
+
+    @property
+    @pulumi.getter(name="includeSkaffoldModules")
+    def include_skaffold_modules(self) -> Sequence['outputs.SkaffoldModulesResponse']:
+        """
+        Optional. List of Skaffold modules Cloud Deploy will include in the Skaffold Config as required before performing diagnose.
+        """
+        return pulumi.get(self, "include_skaffold_modules")
+
+    @property
+    @pulumi.getter(name="renderAction")
+    def render_action(self) -> str:
+        """
+        Optional. The Skaffold custom action responsible for render operations. If not provided then Cloud Deploy will perform the render operations via `skaffold render`.
+        """
+        return pulumi.get(self, "render_action")
+
+
+@pulumi.output_type
+class CustomTargetTypeResponse(dict):
+    """
+    A `CustomTargetType` resource in the Cloud Deploy API. A `CustomTargetType` defines a type of custom target that can be referenced in a `Target` in order to facilitate deploying to other systems besides the supported runtimes.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "customActions":
+            suggest = "custom_actions"
+        elif key == "customTargetTypeId":
+            suggest = "custom_target_type_id"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomTargetTypeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomTargetTypeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomTargetTypeResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 annotations: Mapping[str, str],
+                 create_time: str,
+                 custom_actions: 'outputs.CustomTargetSkaffoldActionsResponse',
+                 custom_target_type_id: str,
+                 description: str,
+                 etag: str,
+                 labels: Mapping[str, str],
+                 name: str,
+                 uid: str,
+                 update_time: str):
+        """
+        A `CustomTargetType` resource in the Cloud Deploy API. A `CustomTargetType` defines a type of custom target that can be referenced in a `Target` in order to facilitate deploying to other systems besides the supported runtimes.
+        :param Mapping[str, str] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        :param str create_time: Time at which the `CustomTargetType` was created.
+        :param 'CustomTargetSkaffoldActionsResponse' custom_actions: Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
+        :param str custom_target_type_id: Resource id of the `CustomTargetType`.
+        :param str description: Optional. Description of the `CustomTargetType`. Max length is 255 characters.
+        :param str etag: Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        :param Mapping[str, str] labels: Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+        :param str name: Optional. Name of the `CustomTargetType`. Format is `projects/{project}/locations/{location}/customTargetTypes/a-z{0,62}`.
+        :param str uid: Unique identifier of the `CustomTargetType`.
+        :param str update_time: Most recent time at which the `CustomTargetType` was updated.
+        """
+        pulumi.set(__self__, "annotations", annotations)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "custom_actions", custom_actions)
+        pulumi.set(__self__, "custom_target_type_id", custom_target_type_id)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "etag", etag)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "uid", uid)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, str]:
+        """
+        Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        """
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Time at which the `CustomTargetType` was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="customActions")
+    def custom_actions(self) -> 'outputs.CustomTargetSkaffoldActionsResponse':
+        """
+        Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
+        """
+        return pulumi.get(self, "custom_actions")
+
+    @property
+    @pulumi.getter(name="customTargetTypeId")
+    def custom_target_type_id(self) -> str:
+        """
+        Resource id of the `CustomTargetType`.
+        """
+        return pulumi.get(self, "custom_target_type_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Optional. Description of the `CustomTargetType`. Max length is 255 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Optional. Name of the `CustomTargetType`. Format is `projects/{project}/locations/{location}/customTargetTypes/a-z{0,62}`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> str:
+        """
+        Unique identifier of the `CustomTargetType`.
+        """
+        return pulumi.get(self, "uid")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        Most recent time at which the `CustomTargetType` was updated.
+        """
+        return pulumi.get(self, "update_time")
 
 
 @pulumi.output_type
@@ -1422,6 +1751,8 @@ class GatewayServiceMeshResponse(dict):
             suggest = "http_route"
         elif key == "routeUpdateWaitTime":
             suggest = "route_update_wait_time"
+        elif key == "stableCutbackDuration":
+            suggest = "stable_cutback_duration"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GatewayServiceMeshResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1438,18 +1769,21 @@ class GatewayServiceMeshResponse(dict):
                  deployment: str,
                  http_route: str,
                  route_update_wait_time: str,
-                 service: str):
+                 service: str,
+                 stable_cutback_duration: str):
         """
         Information about the Kubernetes Gateway API service mesh configuration.
         :param str deployment: Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
         :param str http_route: Name of the Gateway API HTTPRoute.
         :param str route_update_wait_time: Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
         :param str service: Name of the Kubernetes Service.
+        :param str stable_cutback_duration: Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
         """
         pulumi.set(__self__, "deployment", deployment)
         pulumi.set(__self__, "http_route", http_route)
         pulumi.set(__self__, "route_update_wait_time", route_update_wait_time)
         pulumi.set(__self__, "service", service)
+        pulumi.set(__self__, "stable_cutback_duration", stable_cutback_duration)
 
     @property
     @pulumi.getter
@@ -1482,6 +1816,14 @@ class GatewayServiceMeshResponse(dict):
         Name of the Kubernetes Service.
         """
         return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter(name="stableCutbackDuration")
+    def stable_cutback_duration(self) -> str:
+        """
+        Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
+        """
+        return pulumi.get(self, "stable_cutback_duration")
 
 
 @pulumi.output_type
@@ -1751,14 +2093,17 @@ class MetadataResponse(dict):
 
     def __init__(__self__, *,
                  automation: 'outputs.AutomationRolloutMetadataResponse',
-                 cloud_run: 'outputs.CloudRunMetadataResponse'):
+                 cloud_run: 'outputs.CloudRunMetadataResponse',
+                 custom: 'outputs.CustomMetadataResponse'):
         """
         Metadata includes information associated with a `Rollout`.
         :param 'AutomationRolloutMetadataResponse' automation: AutomationRolloutMetadata contains the information about the interactions between Automation service and this rollout.
         :param 'CloudRunMetadataResponse' cloud_run: The name of the Cloud Run Service that is associated with a `Rollout`.
+        :param 'CustomMetadataResponse' custom: Custom metadata provided by user-defined `Rollout` operations.
         """
         pulumi.set(__self__, "automation", automation)
         pulumi.set(__self__, "cloud_run", cloud_run)
+        pulumi.set(__self__, "custom", custom)
 
     @property
     @pulumi.getter
@@ -1775,6 +2120,14 @@ class MetadataResponse(dict):
         The name of the Cloud Run Service that is associated with a `Rollout`.
         """
         return pulumi.get(self, "cloud_run")
+
+    @property
+    @pulumi.getter
+    def custom(self) -> 'outputs.CustomMetadataResponse':
+        """
+        Custom metadata provided by user-defined `Rollout` operations.
+        """
+        return pulumi.get(self, "custom")
 
 
 @pulumi.output_type
@@ -2358,7 +2711,7 @@ class ReleaseConditionResponse(dict):
         """
         ReleaseCondition contains all conditions relevant to a Release.
         :param 'ReleaseReadyConditionResponse' release_ready_condition: Details around the Releases's overall status.
-        :param 'SkaffoldSupportedConditionResponse' skaffold_supported_condition: Details around the support state of the release's skaffold version.
+        :param 'SkaffoldSupportedConditionResponse' skaffold_supported_condition: Details around the support state of the release's Skaffold version.
         """
         pulumi.set(__self__, "release_ready_condition", release_ready_condition)
         pulumi.set(__self__, "skaffold_supported_condition", skaffold_supported_condition)
@@ -2375,7 +2728,7 @@ class ReleaseConditionResponse(dict):
     @pulumi.getter(name="skaffoldSupportedCondition")
     def skaffold_supported_condition(self) -> 'outputs.SkaffoldSupportedConditionResponse':
         """
-        Details around the support state of the release's skaffold version.
+        Details around the support state of the release's Skaffold version.
         """
         return pulumi.get(self, "skaffold_supported_condition")
 
@@ -2537,7 +2890,7 @@ class RetryResponse(dict):
                  wait: str):
         """
         Retries the failed job.
-        :param str attempts: Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+        :param str attempts: Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum value is 10.
         :param str backoff_mode: Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if `wait` is 0.
         :param str wait: Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d.
         """
@@ -2549,7 +2902,7 @@ class RetryResponse(dict):
     @pulumi.getter
     def attempts(self) -> str:
         """
-        Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum value is 10.
+        Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum value is 10.
         """
         return pulumi.get(self, "attempts")
 
@@ -2743,9 +3096,147 @@ class ServiceNetworkingResponse(dict):
 
 
 @pulumi.output_type
+class SkaffoldGCSSourceResponse(dict):
+    """
+    Cloud Storage bucket containing Skaffold Config modules.
+    """
+    def __init__(__self__, *,
+                 path: str,
+                 source: str):
+        """
+        Cloud Storage bucket containing Skaffold Config modules.
+        :param str path: Optional. Relative path from the source to the Skaffold file.
+        :param str source: Cloud Storage source paths to copy recursively. For example, providing "gs://my-bucket/dir/configs/*" will result in Skaffold copying all files within the "dir/configs" directory in the bucket "my-bucket".
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "source", source)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        Optional. Relative path from the source to the Skaffold file.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def source(self) -> str:
+        """
+        Cloud Storage source paths to copy recursively. For example, providing "gs://my-bucket/dir/configs/*" will result in Skaffold copying all files within the "dir/configs" directory in the bucket "my-bucket".
+        """
+        return pulumi.get(self, "source")
+
+
+@pulumi.output_type
+class SkaffoldGitSourceResponse(dict):
+    """
+    Git repository containing Skaffold Config modules.
+    """
+    def __init__(__self__, *,
+                 path: str,
+                 ref: str,
+                 repo: str):
+        """
+        Git repository containing Skaffold Config modules.
+        :param str path: Optional. Relative path from the repository root to the Skaffold file.
+        :param str ref: Optional. Git ref the package should be cloned from.
+        :param str repo: Git repository the package should be cloned from.
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "ref", ref)
+        pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        Optional. Relative path from the repository root to the Skaffold file.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def ref(self) -> str:
+        """
+        Optional. Git ref the package should be cloned from.
+        """
+        return pulumi.get(self, "ref")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> str:
+        """
+        Git repository the package should be cloned from.
+        """
+        return pulumi.get(self, "repo")
+
+
+@pulumi.output_type
+class SkaffoldModulesResponse(dict):
+    """
+    Skaffold Config modules and their remote source.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "googleCloudStorage":
+            suggest = "google_cloud_storage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SkaffoldModulesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SkaffoldModulesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SkaffoldModulesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 configs: Sequence[str],
+                 git: 'outputs.SkaffoldGitSourceResponse',
+                 google_cloud_storage: 'outputs.SkaffoldGCSSourceResponse'):
+        """
+        Skaffold Config modules and their remote source.
+        :param Sequence[str] configs: Optional. The Skaffold Config modules to use from the specified source.
+        :param 'SkaffoldGitSourceResponse' git: Remote git repository containing the Skaffold Config modules.
+        :param 'SkaffoldGCSSourceResponse' google_cloud_storage: Cloud Storage bucket containing the Skaffold Config modules.
+        """
+        pulumi.set(__self__, "configs", configs)
+        pulumi.set(__self__, "git", git)
+        pulumi.set(__self__, "google_cloud_storage", google_cloud_storage)
+
+    @property
+    @pulumi.getter
+    def configs(self) -> Sequence[str]:
+        """
+        Optional. The Skaffold Config modules to use from the specified source.
+        """
+        return pulumi.get(self, "configs")
+
+    @property
+    @pulumi.getter
+    def git(self) -> 'outputs.SkaffoldGitSourceResponse':
+        """
+        Remote git repository containing the Skaffold Config modules.
+        """
+        return pulumi.get(self, "git")
+
+    @property
+    @pulumi.getter(name="googleCloudStorage")
+    def google_cloud_storage(self) -> 'outputs.SkaffoldGCSSourceResponse':
+        """
+        Cloud Storage bucket containing the Skaffold Config modules.
+        """
+        return pulumi.get(self, "google_cloud_storage")
+
+
+@pulumi.output_type
 class SkaffoldSupportedConditionResponse(dict):
     """
-    SkaffoldSupportedCondition contains information about when support for the release's version of skaffold ends.
+    SkaffoldSupportedCondition contains information about when support for the release's version of Skaffold ends.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2774,11 +3265,11 @@ class SkaffoldSupportedConditionResponse(dict):
                  status: bool,
                  support_expiration_time: str):
         """
-        SkaffoldSupportedCondition contains information about when support for the release's version of skaffold ends.
-        :param str maintenance_mode_time: The time at which this release's version of skaffold will enter maintenance mode.
-        :param str skaffold_support_state: The skaffold support state for this release's version of skaffold.
-        :param bool status: True if the version of skaffold used by this release is supported.
-        :param str support_expiration_time: The time at which this release's version of skaffold will no longer be supported.
+        SkaffoldSupportedCondition contains information about when support for the release's version of Skaffold ends.
+        :param str maintenance_mode_time: The time at which this release's version of Skaffold will enter maintenance mode.
+        :param str skaffold_support_state: The Skaffold support state for this release's version of Skaffold.
+        :param bool status: True if the version of Skaffold used by this release is supported.
+        :param str support_expiration_time: The time at which this release's version of Skaffold will no longer be supported.
         """
         pulumi.set(__self__, "maintenance_mode_time", maintenance_mode_time)
         pulumi.set(__self__, "skaffold_support_state", skaffold_support_state)
@@ -2789,7 +3280,7 @@ class SkaffoldSupportedConditionResponse(dict):
     @pulumi.getter(name="maintenanceModeTime")
     def maintenance_mode_time(self) -> str:
         """
-        The time at which this release's version of skaffold will enter maintenance mode.
+        The time at which this release's version of Skaffold will enter maintenance mode.
         """
         return pulumi.get(self, "maintenance_mode_time")
 
@@ -2797,7 +3288,7 @@ class SkaffoldSupportedConditionResponse(dict):
     @pulumi.getter(name="skaffoldSupportState")
     def skaffold_support_state(self) -> str:
         """
-        The skaffold support state for this release's version of skaffold.
+        The Skaffold support state for this release's version of Skaffold.
         """
         return pulumi.get(self, "skaffold_support_state")
 
@@ -2805,7 +3296,7 @@ class SkaffoldSupportedConditionResponse(dict):
     @pulumi.getter
     def status(self) -> bool:
         """
-        True if the version of skaffold used by this release is supported.
+        True if the version of Skaffold used by this release is supported.
         """
         return pulumi.get(self, "status")
 
@@ -2813,7 +3304,7 @@ class SkaffoldSupportedConditionResponse(dict):
     @pulumi.getter(name="supportExpirationTime")
     def support_expiration_time(self) -> str:
         """
-        The time at which this release's version of skaffold will no longer be supported.
+        The time at which this release's version of Skaffold will no longer be supported.
         """
         return pulumi.get(self, "support_expiration_time")
 
@@ -2972,12 +3463,12 @@ class StrategyResponse(dict):
 @pulumi.output_type
 class TargetAttributeResponse(dict):
     """
-    Contains criteria for selecting Targets. Attributes provided must match the target resource in order for policy restrictions to apply. E.g. if id "prod" and labels "foo: bar" are given the target resource must match both that id and have that label in order to be selected.
+    Contains criteria for selecting Targets.
     """
     def __init__(__self__, *,
                  labels: Mapping[str, str]):
         """
-        Contains criteria for selecting Targets. Attributes provided must match the target resource in order for policy restrictions to apply. E.g. if id "prod" and labels "foo: bar" are given the target resource must match both that id and have that label in order to be selected.
+        Contains criteria for selecting Targets.
         :param Mapping[str, str] labels: Target labels.
         """
         pulumi.set(__self__, "labels", labels)
@@ -3003,6 +3494,8 @@ class TargetResponse(dict):
             suggest = "anthos_cluster"
         elif key == "createTime":
             suggest = "create_time"
+        elif key == "customTarget":
+            suggest = "custom_target"
         elif key == "deployParameters":
             suggest = "deploy_parameters"
         elif key == "executionConfigs":
@@ -3031,6 +3524,7 @@ class TargetResponse(dict):
                  annotations: Mapping[str, str],
                  anthos_cluster: 'outputs.AnthosClusterResponse',
                  create_time: str,
+                 custom_target: 'outputs.CustomTargetResponse',
                  deploy_parameters: Mapping[str, str],
                  description: str,
                  etag: str,
@@ -3049,6 +3543,7 @@ class TargetResponse(dict):
         :param Mapping[str, str] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         :param 'AnthosClusterResponse' anthos_cluster: Optional. Information specifying an Anthos Cluster.
         :param str create_time: Time at which the `Target` was created.
+        :param 'CustomTargetResponse' custom_target: Optional. Information specifying a Custom Target.
         :param Mapping[str, str] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param str description: Optional. Description of the `Target`. Max length is 255 characters.
         :param str etag: Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -3066,6 +3561,7 @@ class TargetResponse(dict):
         pulumi.set(__self__, "annotations", annotations)
         pulumi.set(__self__, "anthos_cluster", anthos_cluster)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "custom_target", custom_target)
         pulumi.set(__self__, "deploy_parameters", deploy_parameters)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "etag", etag)
@@ -3103,6 +3599,14 @@ class TargetResponse(dict):
         Time at which the `Target` was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="customTarget")
+    def custom_target(self) -> 'outputs.CustomTargetResponse':
+        """
+        Optional. Information specifying a Custom Target.
+        """
+        return pulumi.get(self, "custom_target")
 
     @property
     @pulumi.getter(name="deployParameters")
@@ -3212,7 +3716,7 @@ class TargetResponse(dict):
 @pulumi.output_type
 class TargetsPresentConditionResponse(dict):
     """
-    TargetsPresentCondition contains information on any Targets defined in the Delivery Pipeline that do not actually exist.
+    `TargetsPresentCondition` contains information on any Targets referenced in the Delivery Pipeline that do not actually exist.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -3238,7 +3742,7 @@ class TargetsPresentConditionResponse(dict):
                  status: bool,
                  update_time: str):
         """
-        TargetsPresentCondition contains information on any Targets defined in the Delivery Pipeline that do not actually exist.
+        `TargetsPresentCondition` contains information on any Targets referenced in the Delivery Pipeline that do not actually exist.
         :param Sequence[str] missing_targets: The list of Target names that do not exist. For example, `projects/{project_id}/locations/{location_name}/targets/{target_name}`.
         :param bool status: True if there aren't any missing Targets.
         :param str update_time: Last time the condition was updated.

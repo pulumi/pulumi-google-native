@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetReleaseResult:
-    def __init__(__self__, abandoned=None, annotations=None, build_artifacts=None, condition=None, create_time=None, delivery_pipeline_snapshot=None, deploy_parameters=None, description=None, etag=None, labels=None, name=None, render_end_time=None, render_start_time=None, render_state=None, skaffold_config_path=None, skaffold_config_uri=None, skaffold_version=None, target_artifacts=None, target_renders=None, target_snapshots=None, uid=None):
+    def __init__(__self__, abandoned=None, annotations=None, build_artifacts=None, condition=None, create_time=None, custom_target_type_snapshots=None, delivery_pipeline_snapshot=None, deploy_parameters=None, description=None, etag=None, labels=None, name=None, render_end_time=None, render_start_time=None, render_state=None, skaffold_config_path=None, skaffold_config_uri=None, skaffold_version=None, target_artifacts=None, target_renders=None, target_snapshots=None, uid=None):
         if abandoned and not isinstance(abandoned, bool):
             raise TypeError("Expected argument 'abandoned' to be a bool")
         pulumi.set(__self__, "abandoned", abandoned)
@@ -35,6 +35,9 @@ class GetReleaseResult:
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if custom_target_type_snapshots and not isinstance(custom_target_type_snapshots, list):
+            raise TypeError("Expected argument 'custom_target_type_snapshots' to be a list")
+        pulumi.set(__self__, "custom_target_type_snapshots", custom_target_type_snapshots)
         if delivery_pipeline_snapshot and not isinstance(delivery_pipeline_snapshot, dict):
             raise TypeError("Expected argument 'delivery_pipeline_snapshot' to be a dict")
         pulumi.set(__self__, "delivery_pipeline_snapshot", delivery_pipeline_snapshot)
@@ -123,6 +126,14 @@ class GetReleaseResult:
         Time at which the `Release` was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="customTargetTypeSnapshots")
+    def custom_target_type_snapshots(self) -> Sequence['outputs.CustomTargetTypeResponse']:
+        """
+        Snapshot of the custom target types referenced by the targets taken at release creation time.
+        """
+        return pulumi.get(self, "custom_target_type_snapshots")
 
     @property
     @pulumi.getter(name="deliveryPipelineSnapshot")
@@ -264,6 +275,7 @@ class AwaitableGetReleaseResult(GetReleaseResult):
             build_artifacts=self.build_artifacts,
             condition=self.condition,
             create_time=self.create_time,
+            custom_target_type_snapshots=self.custom_target_type_snapshots,
             delivery_pipeline_snapshot=self.delivery_pipeline_snapshot,
             deploy_parameters=self.deploy_parameters,
             description=self.description,
@@ -304,6 +316,7 @@ def get_release(delivery_pipeline_id: Optional[str] = None,
         build_artifacts=pulumi.get(__ret__, 'build_artifacts'),
         condition=pulumi.get(__ret__, 'condition'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        custom_target_type_snapshots=pulumi.get(__ret__, 'custom_target_type_snapshots'),
         delivery_pipeline_snapshot=pulumi.get(__ret__, 'delivery_pipeline_snapshot'),
         deploy_parameters=pulumi.get(__ret__, 'deploy_parameters'),
         description=pulumi.get(__ret__, 'description'),

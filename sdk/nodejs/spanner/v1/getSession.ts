@@ -43,6 +43,10 @@ export interface GetSessionResult {
      */
     readonly labels: {[key: string]: string};
     /**
+     * Optional. If true, specifies a multiplexed session. A multiplexed session may be used for multiple, concurrent read-only operations but can not be used for read-write transactions, partitioned reads, or partitioned queries. Multiplexed sessions can be created via CreateSession but not via BatchCreateSessions. Multiplexed sessions may not be deleted nor listed.
+     */
+    readonly multiplexed: boolean;
+    /**
      * The name of the session. This is always system-assigned.
      */
     readonly name: string;

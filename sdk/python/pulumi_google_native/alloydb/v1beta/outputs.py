@@ -12,19 +12,31 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AuthorizedNetworkResponse',
     'AutomatedBackupPolicyResponse',
     'BackupSourceResponse',
     'ClientConnectionConfigResponse',
     'ContinuousBackupConfigResponse',
     'ContinuousBackupInfoResponse',
+    'DenyMaintenancePeriodResponse',
     'EncryptionConfigResponse',
     'EncryptionInfoResponse',
+    'GeminiClusterConfigResponse',
+    'GeminiInstanceConfigResponse',
+    'GoogleTypeDateResponse',
     'GoogleTypeTimeOfDayResponse',
+    'InstanceNetworkConfigResponse',
     'MachineConfigResponse',
+    'MaintenanceScheduleResponse',
+    'MaintenanceUpdatePolicyResponse',
+    'MaintenanceWindowResponse',
     'MigrationSourceResponse',
     'NetworkConfigResponse',
     'NodeResponse',
+    'ObservabilityInstanceConfigResponse',
     'PrimaryConfigResponse',
+    'PscConfigResponse',
+    'PscInstanceConfigResponse',
     'QuantityBasedExpiryResponse',
     'QuantityBasedRetentionResponse',
     'QueryInsightsInstanceConfigResponse',
@@ -36,6 +48,45 @@ __all__ = [
     'UserPasswordResponse',
     'WeeklyScheduleResponse',
 ]
+
+@pulumi.output_type
+class AuthorizedNetworkResponse(dict):
+    """
+    AuthorizedNetwork contains metadata for an authorized network.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cidrRange":
+            suggest = "cidr_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthorizedNetworkResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthorizedNetworkResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthorizedNetworkResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cidr_range: str):
+        """
+        AuthorizedNetwork contains metadata for an authorized network.
+        :param str cidr_range: CIDR range for one authorzied network of the instance.
+        """
+        pulumi.set(__self__, "cidr_range", cidr_range)
+
+    @property
+    @pulumi.getter(name="cidrRange")
+    def cidr_range(self) -> str:
+        """
+        CIDR range for one authorzied network of the instance.
+        """
+        return pulumi.get(self, "cidr_range")
+
 
 @pulumi.output_type
 class AutomatedBackupPolicyResponse(dict):
@@ -405,6 +456,69 @@ class ContinuousBackupInfoResponse(dict):
 
 
 @pulumi.output_type
+class DenyMaintenancePeriodResponse(dict):
+    """
+    DenyMaintenancePeriod definition. Excepting emergencies, maintenance will not be scheduled to start within this deny period. The start_date must be less than the end_date.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endDate":
+            suggest = "end_date"
+        elif key == "startDate":
+            suggest = "start_date"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DenyMaintenancePeriodResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DenyMaintenancePeriodResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DenyMaintenancePeriodResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_date: 'outputs.GoogleTypeDateResponse',
+                 start_date: 'outputs.GoogleTypeDateResponse',
+                 time: 'outputs.GoogleTypeTimeOfDayResponse'):
+        """
+        DenyMaintenancePeriod definition. Excepting emergencies, maintenance will not be scheduled to start within this deny period. The start_date must be less than the end_date.
+        :param 'GoogleTypeDateResponse' end_date: Deny period end date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year for recurring. Date matching this period will have to be before the end.
+        :param 'GoogleTypeDateResponse' start_date: Deny period start date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year for recurring. Date matching this period will have to be the same or after the start.
+        :param 'GoogleTypeTimeOfDayResponse' time: Time in UTC when the deny period starts on start_date and ends on end_date. This can be: * Full time. * All zeros for 00:00:00 UTC
+        """
+        pulumi.set(__self__, "end_date", end_date)
+        pulumi.set(__self__, "start_date", start_date)
+        pulumi.set(__self__, "time", time)
+
+    @property
+    @pulumi.getter(name="endDate")
+    def end_date(self) -> 'outputs.GoogleTypeDateResponse':
+        """
+        Deny period end date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year for recurring. Date matching this period will have to be before the end.
+        """
+        return pulumi.get(self, "end_date")
+
+    @property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> 'outputs.GoogleTypeDateResponse':
+        """
+        Deny period start date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year for recurring. Date matching this period will have to be the same or after the start.
+        """
+        return pulumi.get(self, "start_date")
+
+    @property
+    @pulumi.getter
+    def time(self) -> 'outputs.GoogleTypeTimeOfDayResponse':
+        """
+        Time in UTC when the deny period starts on start_date and ends on end_date. This can be: * Full time. * All zeros for 00:00:00 UTC
+        """
+        return pulumi.get(self, "time")
+
+
+@pulumi.output_type
 class EncryptionConfigResponse(dict):
     """
     EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
@@ -496,6 +610,94 @@ class EncryptionInfoResponse(dict):
 
 
 @pulumi.output_type
+class GeminiClusterConfigResponse(dict):
+    """
+    Cluster level configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+    """
+    def __init__(__self__, *,
+                 entitled: bool):
+        """
+        Cluster level configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+        :param bool entitled: Whether the Gemini in Databases add-on is enabled for the cluster. It will be true only if the add-on has been enabled for the billing account corresponding to the cluster. Its status is toggled from the Admin Control Center (ACC) and cannot be toggled using AlloyDB's APIs.
+        """
+        pulumi.set(__self__, "entitled", entitled)
+
+    @property
+    @pulumi.getter
+    def entitled(self) -> bool:
+        """
+        Whether the Gemini in Databases add-on is enabled for the cluster. It will be true only if the add-on has been enabled for the billing account corresponding to the cluster. Its status is toggled from the Admin Control Center (ACC) and cannot be toggled using AlloyDB's APIs.
+        """
+        return pulumi.get(self, "entitled")
+
+
+@pulumi.output_type
+class GeminiInstanceConfigResponse(dict):
+    """
+    Instance level configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+    """
+    def __init__(__self__, *,
+                 entitled: bool):
+        """
+        Instance level configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+        :param bool entitled: Whether the Gemini in Databases add-on is enabled for the instance. It will be true only if the add-on has been enabled for the billing account corresponding to the instance. Its status is toggled from the Admin Control Center (ACC) and cannot be toggled using AlloyDB's APIs.
+        """
+        pulumi.set(__self__, "entitled", entitled)
+
+    @property
+    @pulumi.getter
+    def entitled(self) -> bool:
+        """
+        Whether the Gemini in Databases add-on is enabled for the instance. It will be true only if the add-on has been enabled for the billing account corresponding to the instance. Its status is toggled from the Admin Control Center (ACC) and cannot be toggled using AlloyDB's APIs.
+        """
+        return pulumi.get(self, "entitled")
+
+
+@pulumi.output_type
+class GoogleTypeDateResponse(dict):
+    """
+    Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+    """
+    def __init__(__self__, *,
+                 day: int,
+                 month: int,
+                 year: int):
+        """
+        Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        :param int day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        :param int month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        :param int year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "month", month)
+        pulumi.set(__self__, "year", year)
+
+    @property
+    @pulumi.getter
+    def day(self) -> int:
+        """
+        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        """
+        return pulumi.get(self, "day")
+
+    @property
+    @pulumi.getter
+    def month(self) -> int:
+        """
+        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        """
+        return pulumi.get(self, "month")
+
+    @property
+    @pulumi.getter
+    def year(self) -> int:
+        """
+        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        return pulumi.get(self, "year")
+
+
+@pulumi.output_type
 class GoogleTypeTimeOfDayResponse(dict):
     """
     Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
@@ -551,6 +753,58 @@ class GoogleTypeTimeOfDayResponse(dict):
 
 
 @pulumi.output_type
+class InstanceNetworkConfigResponse(dict):
+    """
+    Metadata related to instance level network configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorizedExternalNetworks":
+            suggest = "authorized_external_networks"
+        elif key == "enablePublicIp":
+            suggest = "enable_public_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceNetworkConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceNetworkConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceNetworkConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authorized_external_networks: Sequence['outputs.AuthorizedNetworkResponse'],
+                 enable_public_ip: bool):
+        """
+        Metadata related to instance level network configuration.
+        :param Sequence['AuthorizedNetworkResponse'] authorized_external_networks: Optional. A list of external network authorized to access this instance.
+        :param bool enable_public_ip: Optional. Enabling public ip for the instance.
+        """
+        pulumi.set(__self__, "authorized_external_networks", authorized_external_networks)
+        pulumi.set(__self__, "enable_public_ip", enable_public_ip)
+
+    @property
+    @pulumi.getter(name="authorizedExternalNetworks")
+    def authorized_external_networks(self) -> Sequence['outputs.AuthorizedNetworkResponse']:
+        """
+        Optional. A list of external network authorized to access this instance.
+        """
+        return pulumi.get(self, "authorized_external_networks")
+
+    @property
+    @pulumi.getter(name="enablePublicIp")
+    def enable_public_ip(self) -> bool:
+        """
+        Optional. Enabling public ip for the instance.
+        """
+        return pulumi.get(self, "enable_public_ip")
+
+
+@pulumi.output_type
 class MachineConfigResponse(dict):
     """
     MachineConfig describes the configuration of a machine.
@@ -587,6 +841,147 @@ class MachineConfigResponse(dict):
         The number of CPU's in the VM instance.
         """
         return pulumi.get(self, "cpu_count")
+
+
+@pulumi.output_type
+class MaintenanceScheduleResponse(dict):
+    """
+    MaintenanceSchedule stores the maintenance schedule generated from the MaintenanceUpdatePolicy, once a maintenance rollout is triggered, if MaintenanceWindow is set, and if there is no conflicting DenyPeriod. The schedule is cleared once the update takes place. This field cannot be manually changed; modify the MaintenanceUpdatePolicy instead.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MaintenanceScheduleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MaintenanceScheduleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MaintenanceScheduleResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 start_time: str):
+        """
+        MaintenanceSchedule stores the maintenance schedule generated from the MaintenanceUpdatePolicy, once a maintenance rollout is triggered, if MaintenanceWindow is set, and if there is no conflicting DenyPeriod. The schedule is cleared once the update takes place. This field cannot be manually changed; modify the MaintenanceUpdatePolicy instead.
+        :param str start_time: The scheduled start time for the maintenance.
+        """
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        The scheduled start time for the maintenance.
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class MaintenanceUpdatePolicyResponse(dict):
+    """
+    MaintenanceUpdatePolicy defines the policy for system updates.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "denyMaintenancePeriods":
+            suggest = "deny_maintenance_periods"
+        elif key == "maintenanceWindows":
+            suggest = "maintenance_windows"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MaintenanceUpdatePolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MaintenanceUpdatePolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MaintenanceUpdatePolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 deny_maintenance_periods: Sequence['outputs.DenyMaintenancePeriodResponse'],
+                 maintenance_windows: Sequence['outputs.MaintenanceWindowResponse']):
+        """
+        MaintenanceUpdatePolicy defines the policy for system updates.
+        :param Sequence['DenyMaintenancePeriodResponse'] deny_maintenance_periods: Periods to deny maintenance. Currently limited to 1.
+        :param Sequence['MaintenanceWindowResponse'] maintenance_windows: Preferred windows to perform maintenance. Currently limited to 1.
+        """
+        pulumi.set(__self__, "deny_maintenance_periods", deny_maintenance_periods)
+        pulumi.set(__self__, "maintenance_windows", maintenance_windows)
+
+    @property
+    @pulumi.getter(name="denyMaintenancePeriods")
+    def deny_maintenance_periods(self) -> Sequence['outputs.DenyMaintenancePeriodResponse']:
+        """
+        Periods to deny maintenance. Currently limited to 1.
+        """
+        return pulumi.get(self, "deny_maintenance_periods")
+
+    @property
+    @pulumi.getter(name="maintenanceWindows")
+    def maintenance_windows(self) -> Sequence['outputs.MaintenanceWindowResponse']:
+        """
+        Preferred windows to perform maintenance. Currently limited to 1.
+        """
+        return pulumi.get(self, "maintenance_windows")
+
+
+@pulumi.output_type
+class MaintenanceWindowResponse(dict):
+    """
+    MaintenanceWindow specifies a preferred day and time for maintenance.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MaintenanceWindowResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MaintenanceWindowResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MaintenanceWindowResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 day: str,
+                 start_time: 'outputs.GoogleTypeTimeOfDayResponse'):
+        """
+        MaintenanceWindow specifies a preferred day and time for maintenance.
+        :param str day: Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+        :param 'GoogleTypeTimeOfDayResponse' start_time: Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.
+        """
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter
+    def day(self) -> str:
+        """
+        Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+        """
+        return pulumi.get(self, "day")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> 'outputs.GoogleTypeTimeOfDayResponse':
+        """
+        Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.
+        """
+        return pulumi.get(self, "start_time")
 
 
 @pulumi.output_type
@@ -682,7 +1077,7 @@ class NetworkConfigResponse(dict):
         """
         Metadata related to network configuration.
         :param str allocated_ip_range: Optional. Name of the allocated IP range for the private IP AlloyDB cluster, for example: "google-managed-services-default". If set, the instance IPs for this cluster will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. Field name is intended to be consistent with Cloud SQL.
-        :param str network: Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+        :param str network: Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project_number}/global/networks/{network_id}`. This is required to create a cluster.
         """
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "network", network)
@@ -699,7 +1094,7 @@ class NetworkConfigResponse(dict):
     @pulumi.getter
     def network(self) -> str:
         """
-        Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+        Optional. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project_number}/global/networks/{network_id}`. This is required to create a cluster.
         """
         return pulumi.get(self, "network")
 
@@ -749,6 +1144,134 @@ class NodeResponse(dict):
 
 
 @pulumi.output_type
+class ObservabilityInstanceConfigResponse(dict):
+    """
+    Observability Instance specific configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxQueryStringLength":
+            suggest = "max_query_string_length"
+        elif key == "preserveComments":
+            suggest = "preserve_comments"
+        elif key == "queryPlansPerMinute":
+            suggest = "query_plans_per_minute"
+        elif key == "recordApplicationTags":
+            suggest = "record_application_tags"
+        elif key == "trackActiveQueries":
+            suggest = "track_active_queries"
+        elif key == "trackWaitEventTypes":
+            suggest = "track_wait_event_types"
+        elif key == "trackWaitEvents":
+            suggest = "track_wait_events"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ObservabilityInstanceConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ObservabilityInstanceConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ObservabilityInstanceConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 max_query_string_length: int,
+                 preserve_comments: bool,
+                 query_plans_per_minute: int,
+                 record_application_tags: bool,
+                 track_active_queries: bool,
+                 track_wait_event_types: bool,
+                 track_wait_events: bool):
+        """
+        Observability Instance specific configuration.
+        :param bool enabled: Observability feature status for an instance. This is a read-only flag and modifiable only by producer API. This flag is turned "off" by default.
+        :param int max_query_string_length: Query string length. The default value is 10k.
+        :param bool preserve_comments: Preserve comments in query string for an instance. This flag is turned "off" by default.
+        :param int query_plans_per_minute: Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 to 20 is considered valid.
+        :param bool record_application_tags: Record application tags for an instance. This flag is turned "off" by default.
+        :param bool track_active_queries: Track actively running queries on the instance. If not set, this flag is "off" by default.
+        :param bool track_wait_event_types: Track wait event types during query execution for an instance. This flag is turned "on" by default but tracking is enabled only after observability enabled flag is also turned on. This is read-only flag and only modifiable by producer API.
+        :param bool track_wait_events: Track wait events during query execution for an instance. This flag is turned "on" by default but tracking is enabled only after observability enabled flag is also turned on.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "max_query_string_length", max_query_string_length)
+        pulumi.set(__self__, "preserve_comments", preserve_comments)
+        pulumi.set(__self__, "query_plans_per_minute", query_plans_per_minute)
+        pulumi.set(__self__, "record_application_tags", record_application_tags)
+        pulumi.set(__self__, "track_active_queries", track_active_queries)
+        pulumi.set(__self__, "track_wait_event_types", track_wait_event_types)
+        pulumi.set(__self__, "track_wait_events", track_wait_events)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Observability feature status for an instance. This is a read-only flag and modifiable only by producer API. This flag is turned "off" by default.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="maxQueryStringLength")
+    def max_query_string_length(self) -> int:
+        """
+        Query string length. The default value is 10k.
+        """
+        return pulumi.get(self, "max_query_string_length")
+
+    @property
+    @pulumi.getter(name="preserveComments")
+    def preserve_comments(self) -> bool:
+        """
+        Preserve comments in query string for an instance. This flag is turned "off" by default.
+        """
+        return pulumi.get(self, "preserve_comments")
+
+    @property
+    @pulumi.getter(name="queryPlansPerMinute")
+    def query_plans_per_minute(self) -> int:
+        """
+        Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 to 20 is considered valid.
+        """
+        return pulumi.get(self, "query_plans_per_minute")
+
+    @property
+    @pulumi.getter(name="recordApplicationTags")
+    def record_application_tags(self) -> bool:
+        """
+        Record application tags for an instance. This flag is turned "off" by default.
+        """
+        return pulumi.get(self, "record_application_tags")
+
+    @property
+    @pulumi.getter(name="trackActiveQueries")
+    def track_active_queries(self) -> bool:
+        """
+        Track actively running queries on the instance. If not set, this flag is "off" by default.
+        """
+        return pulumi.get(self, "track_active_queries")
+
+    @property
+    @pulumi.getter(name="trackWaitEventTypes")
+    def track_wait_event_types(self) -> bool:
+        """
+        Track wait event types during query execution for an instance. This flag is turned "on" by default but tracking is enabled only after observability enabled flag is also turned on. This is read-only flag and only modifiable by producer API.
+        """
+        return pulumi.get(self, "track_wait_event_types")
+
+    @property
+    @pulumi.getter(name="trackWaitEvents")
+    def track_wait_events(self) -> bool:
+        """
+        Track wait events during query execution for an instance. This flag is turned "on" by default but tracking is enabled only after observability enabled flag is also turned on.
+        """
+        return pulumi.get(self, "track_wait_events")
+
+
+@pulumi.output_type
 class PrimaryConfigResponse(dict):
     """
     Configuration for the primary cluster. It has the list of clusters that are replicating from this cluster. This should be set if and only if the cluster is of type PRIMARY.
@@ -785,6 +1308,110 @@ class PrimaryConfigResponse(dict):
         Names of the clusters that are replicating from this cluster.
         """
         return pulumi.get(self, "secondary_cluster_names")
+
+
+@pulumi.output_type
+class PscConfigResponse(dict):
+    """
+    PscConfig contains PSC related configuration at a cluster level.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pscEnabled":
+            suggest = "psc_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PscConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PscConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PscConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 psc_enabled: bool):
+        """
+        PscConfig contains PSC related configuration at a cluster level.
+        :param bool psc_enabled: Optional. Create an instance that allows connections from Private Service Connect endpoints to the instance.
+        """
+        pulumi.set(__self__, "psc_enabled", psc_enabled)
+
+    @property
+    @pulumi.getter(name="pscEnabled")
+    def psc_enabled(self) -> bool:
+        """
+        Optional. Create an instance that allows connections from Private Service Connect endpoints to the instance.
+        """
+        return pulumi.get(self, "psc_enabled")
+
+
+@pulumi.output_type
+class PscInstanceConfigResponse(dict):
+    """
+    PscInstanceConfig contains PSC related configuration at an instance level.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedConsumerProjects":
+            suggest = "allowed_consumer_projects"
+        elif key == "pscDnsName":
+            suggest = "psc_dns_name"
+        elif key == "serviceAttachmentLink":
+            suggest = "service_attachment_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PscInstanceConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PscInstanceConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PscInstanceConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_consumer_projects: Sequence[str],
+                 psc_dns_name: str,
+                 service_attachment_link: str):
+        """
+        PscInstanceConfig contains PSC related configuration at an instance level.
+        :param Sequence[str] allowed_consumer_projects: Optional. List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
+        :param str psc_dns_name: The DNS name of the instance for PSC connectivity. Name convention: ...alloydb-psc.goog
+        :param str service_attachment_link: The service attachment created when Private Service Connect (PSC) is enabled for the instance. The name of the resource will be in the format of `projects//regions//serviceAttachments/`
+        """
+        pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
+        pulumi.set(__self__, "psc_dns_name", psc_dns_name)
+        pulumi.set(__self__, "service_attachment_link", service_attachment_link)
+
+    @property
+    @pulumi.getter(name="allowedConsumerProjects")
+    def allowed_consumer_projects(self) -> Sequence[str]:
+        """
+        Optional. List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
+        """
+        return pulumi.get(self, "allowed_consumer_projects")
+
+    @property
+    @pulumi.getter(name="pscDnsName")
+    def psc_dns_name(self) -> str:
+        """
+        The DNS name of the instance for PSC connectivity. Name convention: ...alloydb-psc.goog
+        """
+        return pulumi.get(self, "psc_dns_name")
+
+    @property
+    @pulumi.getter(name="serviceAttachmentLink")
+    def service_attachment_link(self) -> str:
+        """
+        The service attachment created when Private Service Connect (PSC) is enabled for the instance. The name of the resource will be in the format of `projects//regions//serviceAttachments/`
+        """
+        return pulumi.get(self, "service_attachment_link")
 
 
 @pulumi.output_type

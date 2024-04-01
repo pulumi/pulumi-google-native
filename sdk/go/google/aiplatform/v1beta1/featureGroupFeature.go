@@ -40,13 +40,15 @@ type FeatureGroupFeature struct {
 	// Only applicable for Vertex AI Feature Store (Legacy). The list of historical stats and anomalies with specified objectives.
 	MonitoringStatsAnomalies GoogleCloudAiplatformV1beta1FeatureMonitoringStatsAnomalyResponseArrayOutput `pulumi:"monitoringStatsAnomalies"`
 	// Immutable. Name of the Feature. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}` `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}` The last part feature is assigned by the client. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
-	Name    pulumi.StringOutput `pulumi:"name"`
-	Project pulumi.StringOutput `pulumi:"project"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Entity responsible for maintaining this feature. Can be comma separated list of email addresses or URIs.
+	PointOfContact pulumi.StringOutput `pulumi:"pointOfContact"`
+	Project        pulumi.StringOutput `pulumi:"project"`
 	// Only applicable for Vertex AI Feature Store (Legacy). Timestamp when this EntityType was most recently updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Immutable. Only applicable for Vertex AI Feature Store (Legacy). Type of Feature value.
 	ValueType pulumi.StringOutput `pulumi:"valueType"`
-	// Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for this version. If no value is provided, will use feature_id.
+	// Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use feature_id.
 	VersionColumnName pulumi.StringOutput `pulumi:"versionColumnName"`
 }
 
@@ -120,11 +122,13 @@ type featureGroupFeatureArgs struct {
 	// Deprecated: Optional. Only applicable for Vertex AI Feature Store (Legacy). Deprecated: The custom monitoring configuration for this Feature, if not set, use the monitoring_config defined for the EntityType this Feature belongs to. Only Features with type (Feature.ValueType) BOOL, STRING, DOUBLE or INT64 can enable monitoring. If this is populated with FeaturestoreMonitoringConfig.disabled = true, snapshot analysis monitoring is disabled; if FeaturestoreMonitoringConfig.monitoring_interval specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring config is same as the EntityType's this Feature belongs to.
 	MonitoringConfig *GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfig `pulumi:"monitoringConfig"`
 	// Immutable. Name of the Feature. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}` `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}` The last part feature is assigned by the client. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
-	Name    *string `pulumi:"name"`
-	Project *string `pulumi:"project"`
+	Name *string `pulumi:"name"`
+	// Entity responsible for maintaining this feature. Can be comma separated list of email addresses or URIs.
+	PointOfContact *string `pulumi:"pointOfContact"`
+	Project        *string `pulumi:"project"`
 	// Immutable. Only applicable for Vertex AI Feature Store (Legacy). Type of Feature value.
 	ValueType *FeatureGroupFeatureValueType `pulumi:"valueType"`
-	// Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for this version. If no value is provided, will use feature_id.
+	// Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use feature_id.
 	VersionColumnName *string `pulumi:"versionColumnName"`
 }
 
@@ -147,11 +151,13 @@ type FeatureGroupFeatureArgs struct {
 	// Deprecated: Optional. Only applicable for Vertex AI Feature Store (Legacy). Deprecated: The custom monitoring configuration for this Feature, if not set, use the monitoring_config defined for the EntityType this Feature belongs to. Only Features with type (Feature.ValueType) BOOL, STRING, DOUBLE or INT64 can enable monitoring. If this is populated with FeaturestoreMonitoringConfig.disabled = true, snapshot analysis monitoring is disabled; if FeaturestoreMonitoringConfig.monitoring_interval specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring config is same as the EntityType's this Feature belongs to.
 	MonitoringConfig GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigPtrInput
 	// Immutable. Name of the Feature. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}` `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}` The last part feature is assigned by the client. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
-	Name    pulumi.StringPtrInput
-	Project pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Entity responsible for maintaining this feature. Can be comma separated list of email addresses or URIs.
+	PointOfContact pulumi.StringPtrInput
+	Project        pulumi.StringPtrInput
 	// Immutable. Only applicable for Vertex AI Feature Store (Legacy). Type of Feature value.
 	ValueType FeatureGroupFeatureValueTypePtrInput
-	// Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for this version. If no value is provided, will use feature_id.
+	// Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use feature_id.
 	VersionColumnName pulumi.StringPtrInput
 }
 
@@ -258,6 +264,11 @@ func (o FeatureGroupFeatureOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureGroupFeature) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Entity responsible for maintaining this feature. Can be comma separated list of email addresses or URIs.
+func (o FeatureGroupFeatureOutput) PointOfContact() pulumi.StringOutput {
+	return o.ApplyT(func(v *FeatureGroupFeature) pulumi.StringOutput { return v.PointOfContact }).(pulumi.StringOutput)
+}
+
 func (o FeatureGroupFeatureOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureGroupFeature) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -272,7 +283,7 @@ func (o FeatureGroupFeatureOutput) ValueType() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureGroupFeature) pulumi.StringOutput { return v.ValueType }).(pulumi.StringOutput)
 }
 
-// Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for this version. If no value is provided, will use feature_id.
+// Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use feature_id.
 func (o FeatureGroupFeatureOutput) VersionColumnName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureGroupFeature) pulumi.StringOutput { return v.VersionColumnName }).(pulumi.StringOutput)
 }

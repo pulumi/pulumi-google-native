@@ -54,13 +54,25 @@ export interface GetWorkstationConfigResult {
      */
     readonly deleteTime: string;
     /**
+     * Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP connections through a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain TCP connections, such as SSH. When enabled, all communication must occur over HTTPS or WSS.
+     */
+    readonly disableTcpConnections: boolean;
+    /**
      * Optional. Human-readable name for this workstation configuration.
      */
     readonly displayName: string;
     /**
+     * Optional. Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+     */
+    readonly enableAuditAgent: boolean;
+    /**
      * Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key (CMEK). If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk might be lost. If the encryption key is revoked, the workstation session automatically stops within 7 hours. Immutable after the workstation configuration is created.
      */
     readonly encryptionKey: outputs.workstations.v1.CustomerEncryptionKeyResponse;
+    /**
+     * Optional. Ephemeral directories which won't persist across workstation sessions.
+     */
+    readonly ephemeralDirectories: outputs.workstations.v1.EphemeralDirectoryResponse[];
     /**
      * Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
      */

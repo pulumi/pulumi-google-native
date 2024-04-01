@@ -86,6 +86,10 @@ export class Agent extends pulumi.CustomResource {
      * The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Optional. Settings for end user personalization.
+     */
+    public readonly personalizationSettings!: pulumi.Output<outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1AgentPersonalizationSettingsResponse>;
     public readonly project!: pulumi.Output<string>;
     /**
      * Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
@@ -145,6 +149,7 @@ export class Agent extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["locked"] = args ? args.locked : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["personalizationSettings"] = args ? args.personalizationSettings : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["securitySettings"] = args ? args.securitySettings : undefined;
             resourceInputs["speechToTextSettings"] = args ? args.speechToTextSettings : undefined;
@@ -166,6 +171,7 @@ export class Agent extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["locked"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["personalizationSettings"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["securitySettings"] = undefined /*out*/;
             resourceInputs["speechToTextSettings"] = undefined /*out*/;
@@ -234,6 +240,10 @@ export interface AgentArgs {
      * The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Optional. Settings for end user personalization.
+     */
+    personalizationSettings?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1AgentPersonalizationSettingsArgs>;
     project?: pulumi.Input<string>;
     /**
      * Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.

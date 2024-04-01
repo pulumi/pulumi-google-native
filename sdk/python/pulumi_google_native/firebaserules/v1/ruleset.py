@@ -17,12 +17,16 @@ __all__ = ['RulesetArgs', 'Ruleset']
 class RulesetArgs:
     def __init__(__self__, *,
                  source: pulumi.Input['SourceArgs'],
+                 attachment_point: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Ruleset resource.
         :param pulumi.Input['SourceArgs'] source: `Source` for the `Ruleset`.
+        :param pulumi.Input[str] attachment_point: Immutable. Intended resource to which this Ruleset should be released. May be left blank to signify the resource associated with the default release. Expected format: firestore.googleapis.com/projects//databases/
         """
         pulumi.set(__self__, "source", source)
+        if attachment_point is not None:
+            pulumi.set(__self__, "attachment_point", attachment_point)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -39,6 +43,18 @@ class RulesetArgs:
         pulumi.set(self, "source", value)
 
     @property
+    @pulumi.getter(name="attachmentPoint")
+    def attachment_point(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. Intended resource to which this Ruleset should be released. May be left blank to signify the resource associated with the default release. Expected format: firestore.googleapis.com/projects//databases/
+        """
+        return pulumi.get(self, "attachment_point")
+
+    @attachment_point.setter
+    def attachment_point(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "attachment_point", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -53,6 +69,7 @@ class Ruleset(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 attachment_point: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[pulumi.InputType['SourceArgs']]] = None,
                  __props__=None):
@@ -62,6 +79,7 @@ class Ruleset(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] attachment_point: Immutable. Intended resource to which this Ruleset should be released. May be left blank to signify the resource associated with the default release. Expected format: firestore.googleapis.com/projects//databases/
         :param pulumi.Input[pulumi.InputType['SourceArgs']] source: `Source` for the `Ruleset`.
         """
         ...
@@ -89,6 +107,7 @@ class Ruleset(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 attachment_point: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[pulumi.InputType['SourceArgs']]] = None,
                  __props__=None):
@@ -100,6 +119,7 @@ class Ruleset(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RulesetArgs.__new__(RulesetArgs)
 
+            __props__.__dict__["attachment_point"] = attachment_point
             __props__.__dict__["project"] = project
             if source is None and not opts.urn:
                 raise TypeError("Missing required property 'source'")
@@ -131,12 +151,21 @@ class Ruleset(pulumi.CustomResource):
 
         __props__ = RulesetArgs.__new__(RulesetArgs)
 
+        __props__.__dict__["attachment_point"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["metadata"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["source"] = None
         return Ruleset(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="attachmentPoint")
+    def attachment_point(self) -> pulumi.Output[str]:
+        """
+        Immutable. Intended resource to which this Ruleset should be released. May be left blank to signify the resource associated with the default release. Expected format: firestore.googleapis.com/projects//databases/
+        """
+        return pulumi.get(self, "attachment_point")
 
     @property
     @pulumi.getter(name="createTime")

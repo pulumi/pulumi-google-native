@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetJobResult:
-    def __init__(__self__, configuration=None, etag=None, job_creation_reason=None, job_reference=None, kind=None, self_link=None, statistics=None, status=None, user_email=None):
+    def __init__(__self__, configuration=None, etag=None, job_creation_reason=None, job_reference=None, kind=None, principal_subject=None, self_link=None, statistics=None, status=None, user_email=None):
         if configuration and not isinstance(configuration, dict):
             raise TypeError("Expected argument 'configuration' to be a dict")
         pulumi.set(__self__, "configuration", configuration)
@@ -35,6 +35,9 @@ class GetJobResult:
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
+        if principal_subject and not isinstance(principal_subject, str):
+            raise TypeError("Expected argument 'principal_subject' to be a str")
+        pulumi.set(__self__, "principal_subject", principal_subject)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -52,7 +55,7 @@ class GetJobResult:
     @pulumi.getter
     def configuration(self) -> 'outputs.JobConfigurationResponse':
         """
-        [Required] Describes the job configuration.
+        Describes the job configuration.
         """
         return pulumi.get(self, "configuration")
 
@@ -66,7 +69,7 @@ class GetJobResult:
 
     @property
     @pulumi.getter(name="jobCreationReason")
-    def job_creation_reason(self) -> Any:
+    def job_creation_reason(self) -> 'outputs.JobCreationReasonResponse':
         """
         If set, it provides the reason why a Job was created. If not set, it should be treated as the default: REQUESTED. This feature is not yet available. Jobs will always be created.
         """
@@ -76,7 +79,7 @@ class GetJobResult:
     @pulumi.getter(name="jobReference")
     def job_reference(self) -> 'outputs.JobReferenceResponse':
         """
-        [Optional] Reference describing the unique-per-user name of the job.
+        Optional. Reference describing the unique-per-user name of the job.
         """
         return pulumi.get(self, "job_reference")
 
@@ -89,10 +92,18 @@ class GetJobResult:
         return pulumi.get(self, "kind")
 
     @property
+    @pulumi.getter(name="principalSubject")
+    def principal_subject(self) -> str:
+        """
+        [Full-projection-only] String representation of identity of requesting party. Populated for both first- and third-party identities. Only present for APIs that support third-party identities.
+        """
+        return pulumi.get(self, "principal_subject")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        A URL that can be used to access this resource again.
+        A URL that can be used to access the resource again.
         """
         return pulumi.get(self, "self_link")
 
@@ -132,6 +143,7 @@ class AwaitableGetJobResult(GetJobResult):
             job_creation_reason=self.job_creation_reason,
             job_reference=self.job_reference,
             kind=self.kind,
+            principal_subject=self.principal_subject,
             self_link=self.self_link,
             statistics=self.statistics,
             status=self.status,
@@ -158,6 +170,7 @@ def get_job(job_id: Optional[str] = None,
         job_creation_reason=pulumi.get(__ret__, 'job_creation_reason'),
         job_reference=pulumi.get(__ret__, 'job_reference'),
         kind=pulumi.get(__ret__, 'kind'),
+        principal_subject=pulumi.get(__ret__, 'principal_subject'),
         self_link=pulumi.get(__ret__, 'self_link'),
         statistics=pulumi.get(__ret__, 'statistics'),
         status=pulumi.get(__ret__, 'status'),

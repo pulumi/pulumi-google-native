@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Inputs
 {
 
     /// <summary>
-    /// Configuration for vector search.
+    /// Deprecated. Use IndexConfig instead.
     /// </summary>
     public sealed class GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigArgs : global::Pulumi.ResourceArgs
     {
@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Aiplatform.V1Beta1.Inputs
         public Input<Inputs.GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigArgs>? BruteForceConfig { get; set; }
 
         /// <summary>
-        /// Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by nearest neighbor search requiring that no more than some value k' of the k neighbors returned have the same value of crowding_attribute.
+        /// Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by FeatureOnlineStoreService.SearchNearestEntities to diversify search results. If NearestNeighborQuery.per_crowding_attribute_neighbor_count is set to K in SearchNearestEntitiesRequest, it's guaranteed that no more than K entities of the same crowding attribute are returned in the response.
         /// </summary>
         [Input("crowdingColumn")]
         public Input<string>? CrowdingColumn { get; set; }

@@ -5308,7 +5308,7 @@ func (in *backendServiceConnectionTrackingPolicyTrackingModePtr) ToOutput(ctx co
 	}
 }
 
-// Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED).
+// Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced global external Application Load Balancer (load balancing scheme EXTERNAL_MANAGED), - Regional external Application Load Balancer, - Internal proxy Network Load Balancer (load balancing scheme INTERNAL_MANAGED), - Regional internal Application Load Balancer (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED).
 type BackendServiceIpAddressSelectionPolicy string
 
 const (
@@ -5492,13 +5492,13 @@ func (in *backendServiceIpAddressSelectionPolicyPtr) ToOutput(ctx context.Contex
 type BackendServiceLoadBalancingScheme string
 
 const (
-	// Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
+	// Signifies that this will be used for classic Application Load Balancers, global external proxy Network Load Balancers, or external passthrough Network Load Balancers.
 	BackendServiceLoadBalancingSchemeExternal = BackendServiceLoadBalancingScheme("EXTERNAL")
-	// Signifies that this will be used for External Managed HTTP(S) Load Balancing.
+	// Signifies that this will be used for global external Application Load Balancers, regional external Application Load Balancers, or regional external proxy Network Load Balancers.
 	BackendServiceLoadBalancingSchemeExternalManaged = BackendServiceLoadBalancingScheme("EXTERNAL_MANAGED")
-	// Signifies that this will be used for Internal TCP/UDP Load Balancing.
+	// Signifies that this will be used for internal passthrough Network Load Balancers.
 	BackendServiceLoadBalancingSchemeInternal = BackendServiceLoadBalancingScheme("INTERNAL")
-	// Signifies that this will be used for Internal HTTP(S) Load Balancing.
+	// Signifies that this will be used for internal Application Load Balancers.
 	BackendServiceLoadBalancingSchemeInternalManaged = BackendServiceLoadBalancingScheme("INTERNAL_MANAGED")
 	// Signifies that this will be used by Traffic Director.
 	BackendServiceLoadBalancingSchemeInternalSelfManaged        = BackendServiceLoadBalancingScheme("INTERNAL_SELF_MANAGED")
@@ -7185,6 +7185,8 @@ const (
 	ConfidentialInstanceConfigConfidentialInstanceTypeSev = ConfidentialInstanceConfigConfidentialInstanceType("SEV")
 	// AMD Secure Encrypted Virtualization - Secure Nested Paging.
 	ConfidentialInstanceConfigConfidentialInstanceTypeSevSnp = ConfidentialInstanceConfigConfidentialInstanceType("SEV_SNP")
+	// Intel Trust Domain eXtension.
+	ConfidentialInstanceConfigConfidentialInstanceTypeTdx = ConfidentialInstanceConfigConfidentialInstanceType("TDX")
 )
 
 func (ConfidentialInstanceConfigConfidentialInstanceType) ElementType() reflect.Type {
@@ -7312,6 +7314,7 @@ func (o ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput) ToStringPtr
 //	ConfidentialInstanceConfigConfidentialInstanceTypeConfidentialInstanceTypeUnspecified
 //	ConfidentialInstanceConfigConfidentialInstanceTypeSev
 //	ConfidentialInstanceConfigConfidentialInstanceTypeSevSnp
+//	ConfidentialInstanceConfigConfidentialInstanceTypeTdx
 type ConfidentialInstanceConfigConfidentialInstanceTypeInput interface {
 	pulumi.Input
 
@@ -10365,7 +10368,7 @@ func (in *futureReservationPlanningStatusPtr) ToOutput(ctx context.Context) pulu
 	}
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 type GRPCHealthCheckPortSpecification string
 
 const (
@@ -12338,6 +12341,180 @@ func (in *globalForwardingRulePscConnectionStatusPtr) ToOutput(ctx context.Conte
 	}
 }
 
+// Only valid when networkEndpointType is GCE_VM_IP_PORT and the NEG is regional.
+type GlobalNetworkEndpointGroupClientPortMappingMode string
+
+const (
+	// For each endpoint there is exactly one client port.
+	GlobalNetworkEndpointGroupClientPortMappingModeClientPortPerEndpoint = GlobalNetworkEndpointGroupClientPortMappingMode("CLIENT_PORT_PER_ENDPOINT")
+	// NEG should not be used for mapping client port to destination.
+	GlobalNetworkEndpointGroupClientPortMappingModePortMappingDisabled = GlobalNetworkEndpointGroupClientPortMappingMode("PORT_MAPPING_DISABLED")
+)
+
+func (GlobalNetworkEndpointGroupClientPortMappingMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalNetworkEndpointGroupClientPortMappingMode)(nil)).Elem()
+}
+
+func (e GlobalNetworkEndpointGroupClientPortMappingMode) ToGlobalNetworkEndpointGroupClientPortMappingModeOutput() GlobalNetworkEndpointGroupClientPortMappingModeOutput {
+	return pulumi.ToOutput(e).(GlobalNetworkEndpointGroupClientPortMappingModeOutput)
+}
+
+func (e GlobalNetworkEndpointGroupClientPortMappingMode) ToGlobalNetworkEndpointGroupClientPortMappingModeOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupClientPortMappingModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GlobalNetworkEndpointGroupClientPortMappingModeOutput)
+}
+
+func (e GlobalNetworkEndpointGroupClientPortMappingMode) ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutput() GlobalNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return e.ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(context.Background())
+}
+
+func (e GlobalNetworkEndpointGroupClientPortMappingMode) ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return GlobalNetworkEndpointGroupClientPortMappingMode(e).ToGlobalNetworkEndpointGroupClientPortMappingModeOutputWithContext(ctx).ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx)
+}
+
+func (e GlobalNetworkEndpointGroupClientPortMappingMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GlobalNetworkEndpointGroupClientPortMappingMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GlobalNetworkEndpointGroupClientPortMappingMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GlobalNetworkEndpointGroupClientPortMappingMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GlobalNetworkEndpointGroupClientPortMappingModeOutput struct{ *pulumi.OutputState }
+
+func (GlobalNetworkEndpointGroupClientPortMappingModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalNetworkEndpointGroupClientPortMappingMode)(nil)).Elem()
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModeOutput) ToGlobalNetworkEndpointGroupClientPortMappingModeOutput() GlobalNetworkEndpointGroupClientPortMappingModeOutput {
+	return o
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModeOutput) ToGlobalNetworkEndpointGroupClientPortMappingModeOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupClientPortMappingModeOutput {
+	return o
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModeOutput) ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutput() GlobalNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return o.ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(context.Background())
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModeOutput) ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalNetworkEndpointGroupClientPortMappingMode) *GlobalNetworkEndpointGroupClientPortMappingMode {
+		return &v
+	}).(GlobalNetworkEndpointGroupClientPortMappingModePtrOutput)
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GlobalNetworkEndpointGroupClientPortMappingMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GlobalNetworkEndpointGroupClientPortMappingMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GlobalNetworkEndpointGroupClientPortMappingModePtrOutput struct{ *pulumi.OutputState }
+
+func (GlobalNetworkEndpointGroupClientPortMappingModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalNetworkEndpointGroupClientPortMappingMode)(nil)).Elem()
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModePtrOutput) ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutput() GlobalNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return o
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModePtrOutput) ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return o
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModePtrOutput) Elem() GlobalNetworkEndpointGroupClientPortMappingModeOutput {
+	return o.ApplyT(func(v *GlobalNetworkEndpointGroupClientPortMappingMode) GlobalNetworkEndpointGroupClientPortMappingMode {
+		if v != nil {
+			return *v
+		}
+		var ret GlobalNetworkEndpointGroupClientPortMappingMode
+		return ret
+	}).(GlobalNetworkEndpointGroupClientPortMappingModeOutput)
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GlobalNetworkEndpointGroupClientPortMappingModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GlobalNetworkEndpointGroupClientPortMappingMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GlobalNetworkEndpointGroupClientPortMappingModeInput is an input type that accepts values of the GlobalNetworkEndpointGroupClientPortMappingMode enum
+// A concrete instance of `GlobalNetworkEndpointGroupClientPortMappingModeInput` can be one of the following:
+//
+//	GlobalNetworkEndpointGroupClientPortMappingModeClientPortPerEndpoint
+//	GlobalNetworkEndpointGroupClientPortMappingModePortMappingDisabled
+type GlobalNetworkEndpointGroupClientPortMappingModeInput interface {
+	pulumi.Input
+
+	ToGlobalNetworkEndpointGroupClientPortMappingModeOutput() GlobalNetworkEndpointGroupClientPortMappingModeOutput
+	ToGlobalNetworkEndpointGroupClientPortMappingModeOutputWithContext(context.Context) GlobalNetworkEndpointGroupClientPortMappingModeOutput
+}
+
+var globalNetworkEndpointGroupClientPortMappingModePtrType = reflect.TypeOf((**GlobalNetworkEndpointGroupClientPortMappingMode)(nil)).Elem()
+
+type GlobalNetworkEndpointGroupClientPortMappingModePtrInput interface {
+	pulumi.Input
+
+	ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutput() GlobalNetworkEndpointGroupClientPortMappingModePtrOutput
+	ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(context.Context) GlobalNetworkEndpointGroupClientPortMappingModePtrOutput
+}
+
+type globalNetworkEndpointGroupClientPortMappingModePtr string
+
+func GlobalNetworkEndpointGroupClientPortMappingModePtr(v string) GlobalNetworkEndpointGroupClientPortMappingModePtrInput {
+	return (*globalNetworkEndpointGroupClientPortMappingModePtr)(&v)
+}
+
+func (*globalNetworkEndpointGroupClientPortMappingModePtr) ElementType() reflect.Type {
+	return globalNetworkEndpointGroupClientPortMappingModePtrType
+}
+
+func (in *globalNetworkEndpointGroupClientPortMappingModePtr) ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutput() GlobalNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return pulumi.ToOutput(in).(GlobalNetworkEndpointGroupClientPortMappingModePtrOutput)
+}
+
+func (in *globalNetworkEndpointGroupClientPortMappingModePtr) ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GlobalNetworkEndpointGroupClientPortMappingModePtrOutput)
+}
+
+func (in *globalNetworkEndpointGroupClientPortMappingModePtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalNetworkEndpointGroupClientPortMappingMode] {
+	return pulumix.Output[*GlobalNetworkEndpointGroupClientPortMappingMode]{
+		OutputState: in.ToGlobalNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 type GlobalNetworkEndpointGroupNetworkEndpointType string
 
@@ -12527,18 +12704,20 @@ func (in *globalNetworkEndpointGroupNetworkEndpointTypePtr) ToOutput(ctx context
 	}
 }
 
-// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE_V2 - SEV_SNP_CAPABLE - TDX_CAPABLE - IDPF For more information, see Enabling guest operating system features.
 type GuestOsFeatureType string
 
 const (
 	GuestOsFeatureTypeFeatureTypeUnspecified = GuestOsFeatureType("FEATURE_TYPE_UNSPECIFIED")
 	GuestOsFeatureTypeGvnic                  = GuestOsFeatureType("GVNIC")
+	GuestOsFeatureTypeIdpf                   = GuestOsFeatureType("IDPF")
 	GuestOsFeatureTypeMultiIpSubnet          = GuestOsFeatureType("MULTI_IP_SUBNET")
 	GuestOsFeatureTypeSecureBoot             = GuestOsFeatureType("SECURE_BOOT")
 	GuestOsFeatureTypeSevCapable             = GuestOsFeatureType("SEV_CAPABLE")
 	GuestOsFeatureTypeSevLiveMigratable      = GuestOsFeatureType("SEV_LIVE_MIGRATABLE")
 	GuestOsFeatureTypeSevLiveMigratableV2    = GuestOsFeatureType("SEV_LIVE_MIGRATABLE_V2")
 	GuestOsFeatureTypeSevSnpCapable          = GuestOsFeatureType("SEV_SNP_CAPABLE")
+	GuestOsFeatureTypeTdxCapable             = GuestOsFeatureType("TDX_CAPABLE")
 	GuestOsFeatureTypeUefiCompatible         = GuestOsFeatureType("UEFI_COMPATIBLE")
 	GuestOsFeatureTypeVirtioScsiMultiqueue   = GuestOsFeatureType("VIRTIO_SCSI_MULTIQUEUE")
 	GuestOsFeatureTypeWindows                = GuestOsFeatureType("WINDOWS")
@@ -12668,12 +12847,14 @@ func (o GuestOsFeatureTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 //
 //	GuestOsFeatureTypeFeatureTypeUnspecified
 //	GuestOsFeatureTypeGvnic
+//	GuestOsFeatureTypeIdpf
 //	GuestOsFeatureTypeMultiIpSubnet
 //	GuestOsFeatureTypeSecureBoot
 //	GuestOsFeatureTypeSevCapable
 //	GuestOsFeatureTypeSevLiveMigratable
 //	GuestOsFeatureTypeSevLiveMigratableV2
 //	GuestOsFeatureTypeSevSnpCapable
+//	GuestOsFeatureTypeTdxCapable
 //	GuestOsFeatureTypeUefiCompatible
 //	GuestOsFeatureTypeVirtioScsiMultiqueue
 //	GuestOsFeatureTypeWindows
@@ -12717,7 +12898,7 @@ func (in *guestOsFeatureTypePtr) ToOutput(ctx context.Context) pulumix.Output[*G
 	}
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 type HTTP2HealthCheckPortSpecification string
 
 const (
@@ -13066,7 +13247,7 @@ func (in *http2healthCheckProxyHeaderPtr) ToOutput(ctx context.Context) pulumix.
 	}
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Also supported in legacy HTTP health checks for target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 type HTTPHealthCheckPortSpecification string
 
 const (
@@ -13415,7 +13596,7 @@ func (in *httphealthCheckProxyHeaderPtr) ToOutput(ctx context.Context) pulumix.O
 	}
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 type HTTPSHealthCheckPortSpecification string
 
 const (
@@ -15341,13 +15522,13 @@ func (in *instanceGroupManagerListManagedInstancesResultsPtr) ToOutput(ctx conte
 	}
 }
 
-// Defines behaviour of using instances from standby pool to resize MIG.
+// Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is `MANUAL`.
 type InstanceGroupManagerStandbyPolicyMode string
 
 const (
-	// MIG does not automatically stop/start or suspend/resume VMs.
+	// MIG does not automatically resume or start VMs in the standby pool when the group scales out.
 	InstanceGroupManagerStandbyPolicyModeManual = InstanceGroupManagerStandbyPolicyMode("MANUAL")
-	// MIG automatically resumes and starts VMs when it scales out, and replenishes the standby pool afterwards.
+	// MIG automatically resumes or starts VMs in the standby pool when the group scales out, and replenishes the standby pool afterwards.
 	InstanceGroupManagerStandbyPolicyModeScaleOutPool = InstanceGroupManagerStandbyPolicyMode("SCALE_OUT_POOL")
 )
 
@@ -19629,6 +19810,180 @@ func (in *networkAttachmentConnectionPreferencePtr) ToOutput(ctx context.Context
 	}
 }
 
+// Only valid when networkEndpointType is GCE_VM_IP_PORT and the NEG is regional.
+type NetworkEndpointGroupClientPortMappingMode string
+
+const (
+	// For each endpoint there is exactly one client port.
+	NetworkEndpointGroupClientPortMappingModeClientPortPerEndpoint = NetworkEndpointGroupClientPortMappingMode("CLIENT_PORT_PER_ENDPOINT")
+	// NEG should not be used for mapping client port to destination.
+	NetworkEndpointGroupClientPortMappingModePortMappingDisabled = NetworkEndpointGroupClientPortMappingMode("PORT_MAPPING_DISABLED")
+)
+
+func (NetworkEndpointGroupClientPortMappingMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEndpointGroupClientPortMappingMode)(nil)).Elem()
+}
+
+func (e NetworkEndpointGroupClientPortMappingMode) ToNetworkEndpointGroupClientPortMappingModeOutput() NetworkEndpointGroupClientPortMappingModeOutput {
+	return pulumi.ToOutput(e).(NetworkEndpointGroupClientPortMappingModeOutput)
+}
+
+func (e NetworkEndpointGroupClientPortMappingMode) ToNetworkEndpointGroupClientPortMappingModeOutputWithContext(ctx context.Context) NetworkEndpointGroupClientPortMappingModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NetworkEndpointGroupClientPortMappingModeOutput)
+}
+
+func (e NetworkEndpointGroupClientPortMappingMode) ToNetworkEndpointGroupClientPortMappingModePtrOutput() NetworkEndpointGroupClientPortMappingModePtrOutput {
+	return e.ToNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(context.Background())
+}
+
+func (e NetworkEndpointGroupClientPortMappingMode) ToNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx context.Context) NetworkEndpointGroupClientPortMappingModePtrOutput {
+	return NetworkEndpointGroupClientPortMappingMode(e).ToNetworkEndpointGroupClientPortMappingModeOutputWithContext(ctx).ToNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx)
+}
+
+func (e NetworkEndpointGroupClientPortMappingMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkEndpointGroupClientPortMappingMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkEndpointGroupClientPortMappingMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkEndpointGroupClientPortMappingMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NetworkEndpointGroupClientPortMappingModeOutput struct{ *pulumi.OutputState }
+
+func (NetworkEndpointGroupClientPortMappingModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEndpointGroupClientPortMappingMode)(nil)).Elem()
+}
+
+func (o NetworkEndpointGroupClientPortMappingModeOutput) ToNetworkEndpointGroupClientPortMappingModeOutput() NetworkEndpointGroupClientPortMappingModeOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupClientPortMappingModeOutput) ToNetworkEndpointGroupClientPortMappingModeOutputWithContext(ctx context.Context) NetworkEndpointGroupClientPortMappingModeOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupClientPortMappingModeOutput) ToNetworkEndpointGroupClientPortMappingModePtrOutput() NetworkEndpointGroupClientPortMappingModePtrOutput {
+	return o.ToNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(context.Background())
+}
+
+func (o NetworkEndpointGroupClientPortMappingModeOutput) ToNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx context.Context) NetworkEndpointGroupClientPortMappingModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkEndpointGroupClientPortMappingMode) *NetworkEndpointGroupClientPortMappingMode {
+		return &v
+	}).(NetworkEndpointGroupClientPortMappingModePtrOutput)
+}
+
+func (o NetworkEndpointGroupClientPortMappingModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NetworkEndpointGroupClientPortMappingModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkEndpointGroupClientPortMappingMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NetworkEndpointGroupClientPortMappingModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkEndpointGroupClientPortMappingModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkEndpointGroupClientPortMappingMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetworkEndpointGroupClientPortMappingModePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkEndpointGroupClientPortMappingModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkEndpointGroupClientPortMappingMode)(nil)).Elem()
+}
+
+func (o NetworkEndpointGroupClientPortMappingModePtrOutput) ToNetworkEndpointGroupClientPortMappingModePtrOutput() NetworkEndpointGroupClientPortMappingModePtrOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupClientPortMappingModePtrOutput) ToNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx context.Context) NetworkEndpointGroupClientPortMappingModePtrOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupClientPortMappingModePtrOutput) Elem() NetworkEndpointGroupClientPortMappingModeOutput {
+	return o.ApplyT(func(v *NetworkEndpointGroupClientPortMappingMode) NetworkEndpointGroupClientPortMappingMode {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkEndpointGroupClientPortMappingMode
+		return ret
+	}).(NetworkEndpointGroupClientPortMappingModeOutput)
+}
+
+func (o NetworkEndpointGroupClientPortMappingModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkEndpointGroupClientPortMappingModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NetworkEndpointGroupClientPortMappingMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NetworkEndpointGroupClientPortMappingModeInput is an input type that accepts values of the NetworkEndpointGroupClientPortMappingMode enum
+// A concrete instance of `NetworkEndpointGroupClientPortMappingModeInput` can be one of the following:
+//
+//	NetworkEndpointGroupClientPortMappingModeClientPortPerEndpoint
+//	NetworkEndpointGroupClientPortMappingModePortMappingDisabled
+type NetworkEndpointGroupClientPortMappingModeInput interface {
+	pulumi.Input
+
+	ToNetworkEndpointGroupClientPortMappingModeOutput() NetworkEndpointGroupClientPortMappingModeOutput
+	ToNetworkEndpointGroupClientPortMappingModeOutputWithContext(context.Context) NetworkEndpointGroupClientPortMappingModeOutput
+}
+
+var networkEndpointGroupClientPortMappingModePtrType = reflect.TypeOf((**NetworkEndpointGroupClientPortMappingMode)(nil)).Elem()
+
+type NetworkEndpointGroupClientPortMappingModePtrInput interface {
+	pulumi.Input
+
+	ToNetworkEndpointGroupClientPortMappingModePtrOutput() NetworkEndpointGroupClientPortMappingModePtrOutput
+	ToNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(context.Context) NetworkEndpointGroupClientPortMappingModePtrOutput
+}
+
+type networkEndpointGroupClientPortMappingModePtr string
+
+func NetworkEndpointGroupClientPortMappingModePtr(v string) NetworkEndpointGroupClientPortMappingModePtrInput {
+	return (*networkEndpointGroupClientPortMappingModePtr)(&v)
+}
+
+func (*networkEndpointGroupClientPortMappingModePtr) ElementType() reflect.Type {
+	return networkEndpointGroupClientPortMappingModePtrType
+}
+
+func (in *networkEndpointGroupClientPortMappingModePtr) ToNetworkEndpointGroupClientPortMappingModePtrOutput() NetworkEndpointGroupClientPortMappingModePtrOutput {
+	return pulumi.ToOutput(in).(NetworkEndpointGroupClientPortMappingModePtrOutput)
+}
+
+func (in *networkEndpointGroupClientPortMappingModePtr) ToNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx context.Context) NetworkEndpointGroupClientPortMappingModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NetworkEndpointGroupClientPortMappingModePtrOutput)
+}
+
+func (in *networkEndpointGroupClientPortMappingModePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkEndpointGroupClientPortMappingMode] {
+	return pulumix.Output[*NetworkEndpointGroupClientPortMappingMode]{
+		OutputState: in.ToNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 type NetworkEndpointGroupNetworkEndpointType string
 
@@ -22473,7 +22828,7 @@ func (in *regionBackendServiceCompressionModePtr) ToOutput(ctx context.Context) 
 	}
 }
 
-// Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED).
+// Specifies a preference for traffic sent from the proxy to the backend (or from the client to the backend for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv4 health checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoint's IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the backend service (Instance Group, Managed Instance Group, Network Endpoint Group), regardless of traffic from the client to the proxy. Only IPv6 health checks are used to check the health of the backends. This field is applicable to either: - Advanced global external Application Load Balancer (load balancing scheme EXTERNAL_MANAGED), - Regional external Application Load Balancer, - Internal proxy Network Load Balancer (load balancing scheme INTERNAL_MANAGED), - Regional internal Application Load Balancer (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED).
 type RegionBackendServiceIpAddressSelectionPolicy string
 
 const (
@@ -22657,13 +23012,13 @@ func (in *regionBackendServiceIpAddressSelectionPolicyPtr) ToOutput(ctx context.
 type RegionBackendServiceLoadBalancingScheme string
 
 const (
-	// Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
+	// Signifies that this will be used for classic Application Load Balancers, global external proxy Network Load Balancers, or external passthrough Network Load Balancers.
 	RegionBackendServiceLoadBalancingSchemeExternal = RegionBackendServiceLoadBalancingScheme("EXTERNAL")
-	// Signifies that this will be used for External Managed HTTP(S) Load Balancing.
+	// Signifies that this will be used for global external Application Load Balancers, regional external Application Load Balancers, or regional external proxy Network Load Balancers.
 	RegionBackendServiceLoadBalancingSchemeExternalManaged = RegionBackendServiceLoadBalancingScheme("EXTERNAL_MANAGED")
-	// Signifies that this will be used for Internal TCP/UDP Load Balancing.
+	// Signifies that this will be used for internal passthrough Network Load Balancers.
 	RegionBackendServiceLoadBalancingSchemeInternal = RegionBackendServiceLoadBalancingScheme("INTERNAL")
-	// Signifies that this will be used for Internal HTTP(S) Load Balancing.
+	// Signifies that this will be used for internal Application Load Balancers.
 	RegionBackendServiceLoadBalancingSchemeInternalManaged = RegionBackendServiceLoadBalancingScheme("INTERNAL_MANAGED")
 	// Signifies that this will be used by Traffic Director.
 	RegionBackendServiceLoadBalancingSchemeInternalSelfManaged        = RegionBackendServiceLoadBalancingScheme("INTERNAL_SELF_MANAGED")
@@ -23774,10 +24129,12 @@ const (
 	RegionCommitmentTypeGeneralPurposeE2       = RegionCommitmentType("GENERAL_PURPOSE_E2")
 	RegionCommitmentTypeGeneralPurposeN2       = RegionCommitmentType("GENERAL_PURPOSE_N2")
 	RegionCommitmentTypeGeneralPurposeN2d      = RegionCommitmentType("GENERAL_PURPOSE_N2D")
+	RegionCommitmentTypeGeneralPurposeN4       = RegionCommitmentType("GENERAL_PURPOSE_N4")
 	RegionCommitmentTypeGeneralPurposeT2d      = RegionCommitmentType("GENERAL_PURPOSE_T2D")
 	RegionCommitmentTypeGraphicsOptimized      = RegionCommitmentType("GRAPHICS_OPTIMIZED")
 	RegionCommitmentTypeMemoryOptimized        = RegionCommitmentType("MEMORY_OPTIMIZED")
 	RegionCommitmentTypeMemoryOptimizedM3      = RegionCommitmentType("MEMORY_OPTIMIZED_M3")
+	RegionCommitmentTypeStorageOptimizedZ3     = RegionCommitmentType("STORAGE_OPTIMIZED_Z3")
 	RegionCommitmentTypeTypeUnspecified        = RegionCommitmentType("TYPE_UNSPECIFIED")
 )
 
@@ -23914,10 +24271,12 @@ func (o RegionCommitmentTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 //	RegionCommitmentTypeGeneralPurposeE2
 //	RegionCommitmentTypeGeneralPurposeN2
 //	RegionCommitmentTypeGeneralPurposeN2d
+//	RegionCommitmentTypeGeneralPurposeN4
 //	RegionCommitmentTypeGeneralPurposeT2d
 //	RegionCommitmentTypeGraphicsOptimized
 //	RegionCommitmentTypeMemoryOptimized
 //	RegionCommitmentTypeMemoryOptimizedM3
+//	RegionCommitmentTypeStorageOptimizedZ3
 //	RegionCommitmentTypeTypeUnspecified
 type RegionCommitmentTypeInput interface {
 	pulumi.Input
@@ -25358,6 +25717,180 @@ func (in *regionInstanceGroupManagerListManagedInstancesResultsPtr) ToOutput(ctx
 	}
 }
 
+// Only valid when networkEndpointType is GCE_VM_IP_PORT and the NEG is regional.
+type RegionNetworkEndpointGroupClientPortMappingMode string
+
+const (
+	// For each endpoint there is exactly one client port.
+	RegionNetworkEndpointGroupClientPortMappingModeClientPortPerEndpoint = RegionNetworkEndpointGroupClientPortMappingMode("CLIENT_PORT_PER_ENDPOINT")
+	// NEG should not be used for mapping client port to destination.
+	RegionNetworkEndpointGroupClientPortMappingModePortMappingDisabled = RegionNetworkEndpointGroupClientPortMappingMode("PORT_MAPPING_DISABLED")
+)
+
+func (RegionNetworkEndpointGroupClientPortMappingMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkEndpointGroupClientPortMappingMode)(nil)).Elem()
+}
+
+func (e RegionNetworkEndpointGroupClientPortMappingMode) ToRegionNetworkEndpointGroupClientPortMappingModeOutput() RegionNetworkEndpointGroupClientPortMappingModeOutput {
+	return pulumi.ToOutput(e).(RegionNetworkEndpointGroupClientPortMappingModeOutput)
+}
+
+func (e RegionNetworkEndpointGroupClientPortMappingMode) ToRegionNetworkEndpointGroupClientPortMappingModeOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupClientPortMappingModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RegionNetworkEndpointGroupClientPortMappingModeOutput)
+}
+
+func (e RegionNetworkEndpointGroupClientPortMappingMode) ToRegionNetworkEndpointGroupClientPortMappingModePtrOutput() RegionNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return e.ToRegionNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(context.Background())
+}
+
+func (e RegionNetworkEndpointGroupClientPortMappingMode) ToRegionNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return RegionNetworkEndpointGroupClientPortMappingMode(e).ToRegionNetworkEndpointGroupClientPortMappingModeOutputWithContext(ctx).ToRegionNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx)
+}
+
+func (e RegionNetworkEndpointGroupClientPortMappingMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionNetworkEndpointGroupClientPortMappingMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionNetworkEndpointGroupClientPortMappingMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RegionNetworkEndpointGroupClientPortMappingMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RegionNetworkEndpointGroupClientPortMappingModeOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkEndpointGroupClientPortMappingModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkEndpointGroupClientPortMappingMode)(nil)).Elem()
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModeOutput) ToRegionNetworkEndpointGroupClientPortMappingModeOutput() RegionNetworkEndpointGroupClientPortMappingModeOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModeOutput) ToRegionNetworkEndpointGroupClientPortMappingModeOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupClientPortMappingModeOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModeOutput) ToRegionNetworkEndpointGroupClientPortMappingModePtrOutput() RegionNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return o.ToRegionNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(context.Background())
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModeOutput) ToRegionNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionNetworkEndpointGroupClientPortMappingMode) *RegionNetworkEndpointGroupClientPortMappingMode {
+		return &v
+	}).(RegionNetworkEndpointGroupClientPortMappingModePtrOutput)
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionNetworkEndpointGroupClientPortMappingMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionNetworkEndpointGroupClientPortMappingMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionNetworkEndpointGroupClientPortMappingModePtrOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkEndpointGroupClientPortMappingModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionNetworkEndpointGroupClientPortMappingMode)(nil)).Elem()
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModePtrOutput) ToRegionNetworkEndpointGroupClientPortMappingModePtrOutput() RegionNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModePtrOutput) ToRegionNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModePtrOutput) Elem() RegionNetworkEndpointGroupClientPortMappingModeOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroupClientPortMappingMode) RegionNetworkEndpointGroupClientPortMappingMode {
+		if v != nil {
+			return *v
+		}
+		var ret RegionNetworkEndpointGroupClientPortMappingMode
+		return ret
+	}).(RegionNetworkEndpointGroupClientPortMappingModeOutput)
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionNetworkEndpointGroupClientPortMappingModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegionNetworkEndpointGroupClientPortMappingMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegionNetworkEndpointGroupClientPortMappingModeInput is an input type that accepts values of the RegionNetworkEndpointGroupClientPortMappingMode enum
+// A concrete instance of `RegionNetworkEndpointGroupClientPortMappingModeInput` can be one of the following:
+//
+//	RegionNetworkEndpointGroupClientPortMappingModeClientPortPerEndpoint
+//	RegionNetworkEndpointGroupClientPortMappingModePortMappingDisabled
+type RegionNetworkEndpointGroupClientPortMappingModeInput interface {
+	pulumi.Input
+
+	ToRegionNetworkEndpointGroupClientPortMappingModeOutput() RegionNetworkEndpointGroupClientPortMappingModeOutput
+	ToRegionNetworkEndpointGroupClientPortMappingModeOutputWithContext(context.Context) RegionNetworkEndpointGroupClientPortMappingModeOutput
+}
+
+var regionNetworkEndpointGroupClientPortMappingModePtrType = reflect.TypeOf((**RegionNetworkEndpointGroupClientPortMappingMode)(nil)).Elem()
+
+type RegionNetworkEndpointGroupClientPortMappingModePtrInput interface {
+	pulumi.Input
+
+	ToRegionNetworkEndpointGroupClientPortMappingModePtrOutput() RegionNetworkEndpointGroupClientPortMappingModePtrOutput
+	ToRegionNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(context.Context) RegionNetworkEndpointGroupClientPortMappingModePtrOutput
+}
+
+type regionNetworkEndpointGroupClientPortMappingModePtr string
+
+func RegionNetworkEndpointGroupClientPortMappingModePtr(v string) RegionNetworkEndpointGroupClientPortMappingModePtrInput {
+	return (*regionNetworkEndpointGroupClientPortMappingModePtr)(&v)
+}
+
+func (*regionNetworkEndpointGroupClientPortMappingModePtr) ElementType() reflect.Type {
+	return regionNetworkEndpointGroupClientPortMappingModePtrType
+}
+
+func (in *regionNetworkEndpointGroupClientPortMappingModePtr) ToRegionNetworkEndpointGroupClientPortMappingModePtrOutput() RegionNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return pulumi.ToOutput(in).(RegionNetworkEndpointGroupClientPortMappingModePtrOutput)
+}
+
+func (in *regionNetworkEndpointGroupClientPortMappingModePtr) ToRegionNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupClientPortMappingModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RegionNetworkEndpointGroupClientPortMappingModePtrOutput)
+}
+
+func (in *regionNetworkEndpointGroupClientPortMappingModePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionNetworkEndpointGroupClientPortMappingMode] {
+	return pulumix.Output[*RegionNetworkEndpointGroupClientPortMappingMode]{
+		OutputState: in.ToRegionNetworkEndpointGroupClientPortMappingModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 type RegionNetworkEndpointGroupNetworkEndpointType string
 
@@ -26430,6 +26963,183 @@ func (in *regionTargetHttpsProxyQuicOverridePtr) ToRegionTargetHttpsProxyQuicOve
 func (in *regionTargetHttpsProxyQuicOverridePtr) ToOutput(ctx context.Context) pulumix.Output[*RegionTargetHttpsProxyQuicOverride] {
 	return pulumix.Output[*RegionTargetHttpsProxyQuicOverride]{
 		OutputState: in.ToRegionTargetHttpsProxyQuicOverridePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Specifies whether TLS 1.3 0-RTT Data ("Early Data") should be accepted for this service. Early Data allows a TLS resumption handshake to include the initial application payload (a HTTP request) alongside the handshake, reducing the effective round trips to "zero". This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3). This can improve application performance, especially on networks where interruptions may be common, such as on mobile. Requests with Early Data will have the "Early-Data" HTTP header set on the request, with a value of "1", to allow the backend to determine whether Early Data was included. Note: TLS Early Data may allow requests to be replayed, as the data is sent to the backend before the handshake has fully completed. Applications that allow idempotent HTTP methods to make non-idempotent changes, such as a GET request updating a database, should not accept Early Data on those requests, and reject requests with the "Early-Data: 1" HTTP header by returning a HTTP 425 (Too Early) status code, in order to remain RFC compliant. The default value is DISABLED.
+type RegionTargetHttpsProxyTlsEarlyData string
+
+const (
+	// TLS 1.3 Early Data is not advertised, and any (invalid) attempts to send Early Data will be rejected by closing the connection.
+	RegionTargetHttpsProxyTlsEarlyDataDisabled = RegionTargetHttpsProxyTlsEarlyData("DISABLED")
+	// This enables TLS 1.3 0-RTT, and only allows Early Data to be included on requests with safe HTTP methods (GET, HEAD, OPTIONS, TRACE). This mode does not enforce any other limitations for requests with Early Data. The application owner should validate that Early Data is acceptable for a given request path.
+	RegionTargetHttpsProxyTlsEarlyDataPermissive = RegionTargetHttpsProxyTlsEarlyData("PERMISSIVE")
+	// This enables TLS 1.3 0-RTT, and only allows Early Data to be included on requests with safe HTTP methods (GET, HEAD, OPTIONS, TRACE) without query parameters. Requests that send Early Data with non-idempotent HTTP methods or with query parameters will be rejected with a HTTP 425.
+	RegionTargetHttpsProxyTlsEarlyDataStrict = RegionTargetHttpsProxyTlsEarlyData("STRICT")
+)
+
+func (RegionTargetHttpsProxyTlsEarlyData) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionTargetHttpsProxyTlsEarlyData)(nil)).Elem()
+}
+
+func (e RegionTargetHttpsProxyTlsEarlyData) ToRegionTargetHttpsProxyTlsEarlyDataOutput() RegionTargetHttpsProxyTlsEarlyDataOutput {
+	return pulumi.ToOutput(e).(RegionTargetHttpsProxyTlsEarlyDataOutput)
+}
+
+func (e RegionTargetHttpsProxyTlsEarlyData) ToRegionTargetHttpsProxyTlsEarlyDataOutputWithContext(ctx context.Context) RegionTargetHttpsProxyTlsEarlyDataOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RegionTargetHttpsProxyTlsEarlyDataOutput)
+}
+
+func (e RegionTargetHttpsProxyTlsEarlyData) ToRegionTargetHttpsProxyTlsEarlyDataPtrOutput() RegionTargetHttpsProxyTlsEarlyDataPtrOutput {
+	return e.ToRegionTargetHttpsProxyTlsEarlyDataPtrOutputWithContext(context.Background())
+}
+
+func (e RegionTargetHttpsProxyTlsEarlyData) ToRegionTargetHttpsProxyTlsEarlyDataPtrOutputWithContext(ctx context.Context) RegionTargetHttpsProxyTlsEarlyDataPtrOutput {
+	return RegionTargetHttpsProxyTlsEarlyData(e).ToRegionTargetHttpsProxyTlsEarlyDataOutputWithContext(ctx).ToRegionTargetHttpsProxyTlsEarlyDataPtrOutputWithContext(ctx)
+}
+
+func (e RegionTargetHttpsProxyTlsEarlyData) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionTargetHttpsProxyTlsEarlyData) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionTargetHttpsProxyTlsEarlyData) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RegionTargetHttpsProxyTlsEarlyData) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RegionTargetHttpsProxyTlsEarlyDataOutput struct{ *pulumi.OutputState }
+
+func (RegionTargetHttpsProxyTlsEarlyDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionTargetHttpsProxyTlsEarlyData)(nil)).Elem()
+}
+
+func (o RegionTargetHttpsProxyTlsEarlyDataOutput) ToRegionTargetHttpsProxyTlsEarlyDataOutput() RegionTargetHttpsProxyTlsEarlyDataOutput {
+	return o
+}
+
+func (o RegionTargetHttpsProxyTlsEarlyDataOutput) ToRegionTargetHttpsProxyTlsEarlyDataOutputWithContext(ctx context.Context) RegionTargetHttpsProxyTlsEarlyDataOutput {
+	return o
+}
+
+func (o RegionTargetHttpsProxyTlsEarlyDataOutput) ToRegionTargetHttpsProxyTlsEarlyDataPtrOutput() RegionTargetHttpsProxyTlsEarlyDataPtrOutput {
+	return o.ToRegionTargetHttpsProxyTlsEarlyDataPtrOutputWithContext(context.Background())
+}
+
+func (o RegionTargetHttpsProxyTlsEarlyDataOutput) ToRegionTargetHttpsProxyTlsEarlyDataPtrOutputWithContext(ctx context.Context) RegionTargetHttpsProxyTlsEarlyDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionTargetHttpsProxyTlsEarlyData) *RegionTargetHttpsProxyTlsEarlyData {
+		return &v
+	}).(RegionTargetHttpsProxyTlsEarlyDataPtrOutput)
+}
+
+func (o RegionTargetHttpsProxyTlsEarlyDataOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RegionTargetHttpsProxyTlsEarlyDataOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionTargetHttpsProxyTlsEarlyData) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RegionTargetHttpsProxyTlsEarlyDataOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionTargetHttpsProxyTlsEarlyDataOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionTargetHttpsProxyTlsEarlyData) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionTargetHttpsProxyTlsEarlyDataPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionTargetHttpsProxyTlsEarlyDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionTargetHttpsProxyTlsEarlyData)(nil)).Elem()
+}
+
+func (o RegionTargetHttpsProxyTlsEarlyDataPtrOutput) ToRegionTargetHttpsProxyTlsEarlyDataPtrOutput() RegionTargetHttpsProxyTlsEarlyDataPtrOutput {
+	return o
+}
+
+func (o RegionTargetHttpsProxyTlsEarlyDataPtrOutput) ToRegionTargetHttpsProxyTlsEarlyDataPtrOutputWithContext(ctx context.Context) RegionTargetHttpsProxyTlsEarlyDataPtrOutput {
+	return o
+}
+
+func (o RegionTargetHttpsProxyTlsEarlyDataPtrOutput) Elem() RegionTargetHttpsProxyTlsEarlyDataOutput {
+	return o.ApplyT(func(v *RegionTargetHttpsProxyTlsEarlyData) RegionTargetHttpsProxyTlsEarlyData {
+		if v != nil {
+			return *v
+		}
+		var ret RegionTargetHttpsProxyTlsEarlyData
+		return ret
+	}).(RegionTargetHttpsProxyTlsEarlyDataOutput)
+}
+
+func (o RegionTargetHttpsProxyTlsEarlyDataPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionTargetHttpsProxyTlsEarlyDataPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegionTargetHttpsProxyTlsEarlyData) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegionTargetHttpsProxyTlsEarlyDataInput is an input type that accepts values of the RegionTargetHttpsProxyTlsEarlyData enum
+// A concrete instance of `RegionTargetHttpsProxyTlsEarlyDataInput` can be one of the following:
+//
+//	RegionTargetHttpsProxyTlsEarlyDataDisabled
+//	RegionTargetHttpsProxyTlsEarlyDataPermissive
+//	RegionTargetHttpsProxyTlsEarlyDataStrict
+type RegionTargetHttpsProxyTlsEarlyDataInput interface {
+	pulumi.Input
+
+	ToRegionTargetHttpsProxyTlsEarlyDataOutput() RegionTargetHttpsProxyTlsEarlyDataOutput
+	ToRegionTargetHttpsProxyTlsEarlyDataOutputWithContext(context.Context) RegionTargetHttpsProxyTlsEarlyDataOutput
+}
+
+var regionTargetHttpsProxyTlsEarlyDataPtrType = reflect.TypeOf((**RegionTargetHttpsProxyTlsEarlyData)(nil)).Elem()
+
+type RegionTargetHttpsProxyTlsEarlyDataPtrInput interface {
+	pulumi.Input
+
+	ToRegionTargetHttpsProxyTlsEarlyDataPtrOutput() RegionTargetHttpsProxyTlsEarlyDataPtrOutput
+	ToRegionTargetHttpsProxyTlsEarlyDataPtrOutputWithContext(context.Context) RegionTargetHttpsProxyTlsEarlyDataPtrOutput
+}
+
+type regionTargetHttpsProxyTlsEarlyDataPtr string
+
+func RegionTargetHttpsProxyTlsEarlyDataPtr(v string) RegionTargetHttpsProxyTlsEarlyDataPtrInput {
+	return (*regionTargetHttpsProxyTlsEarlyDataPtr)(&v)
+}
+
+func (*regionTargetHttpsProxyTlsEarlyDataPtr) ElementType() reflect.Type {
+	return regionTargetHttpsProxyTlsEarlyDataPtrType
+}
+
+func (in *regionTargetHttpsProxyTlsEarlyDataPtr) ToRegionTargetHttpsProxyTlsEarlyDataPtrOutput() RegionTargetHttpsProxyTlsEarlyDataPtrOutput {
+	return pulumi.ToOutput(in).(RegionTargetHttpsProxyTlsEarlyDataPtrOutput)
+}
+
+func (in *regionTargetHttpsProxyTlsEarlyDataPtr) ToRegionTargetHttpsProxyTlsEarlyDataPtrOutputWithContext(ctx context.Context) RegionTargetHttpsProxyTlsEarlyDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RegionTargetHttpsProxyTlsEarlyDataPtrOutput)
+}
+
+func (in *regionTargetHttpsProxyTlsEarlyDataPtr) ToOutput(ctx context.Context) pulumix.Output[*RegionTargetHttpsProxyTlsEarlyData] {
+	return pulumix.Output[*RegionTargetHttpsProxyTlsEarlyData]{
+		OutputState: in.ToRegionTargetHttpsProxyTlsEarlyDataPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -30300,7 +31010,7 @@ func (in *ruleActionPtr) ToOutput(ctx context.Context) pulumix.Output[*RuleActio
 	}
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 type SSLHealthCheckPortSpecification string
 
 const (
@@ -31699,6 +32409,180 @@ func (in *securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisib
 	}
 }
 
+// Type of this configuration.
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType string
+
+const (
+	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeHttpHeaderHost  = SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType("HTTP_HEADER_HOST")
+	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeHttpPath        = SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType("HTTP_PATH")
+	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeUnspecifiedType = SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType("UNSPECIFIED_TYPE")
+)
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType)(nil)).Elem()
+}
+
+func (e SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutput {
+	return pulumi.ToOutput(e).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutput)
+}
+
+func (e SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutput)
+}
+
+func (e SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput {
+	return e.ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput {
+	return SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType(e).ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutputWithContext(ctx).ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutputWithContext(ctx)
+}
+
+func (e SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput {
+	return o.ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType) *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType {
+		return &v
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput)
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput) Elem() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType
+		return ret
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutput)
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeInput is an input type that accepts values of the SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType enum
+// A concrete instance of `SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeInput` can be one of the following:
+//
+//	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeHttpHeaderHost
+//	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeHttpPath
+//	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeUnspecifiedType
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutput
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutput
+}
+
+var securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrType = reflect.TypeOf((**SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType)(nil)).Elem()
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput
+}
+
+type securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtr string
+
+func SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtr(v string) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrInput {
+	return (*securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtr)(&v)
+}
+
+func (*securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtr) ElementType() reflect.Type {
+	return securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrType
+}
+
+func (in *securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtr) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput {
+	return pulumi.ToOutput(in).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput)
+}
+
+func (in *securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtr) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput)
+}
+
+func (in *securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType] {
+	return pulumix.Output[*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType]{
+		OutputState: in.ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecurityPolicyAdvancedOptionsConfigJsonParsing string
 
 const (
@@ -32744,19 +33628,21 @@ func (in *securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr) ToO
 	}
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 type SecurityPolicyRuleRateLimitOptionsEnforceOnKey string
 
 const (
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyAll        = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("ALL")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyAllIps     = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("ALL_IPS")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyHttpCookie = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_COOKIE")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyHttpHeader = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_HEADER")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyHttpPath   = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_PATH")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyIp         = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("IP")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyRegionCode = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("REGION_CODE")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeySni        = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("SNI")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyXffIp      = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("XFF_IP")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyAll               = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("ALL")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyAllIps            = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("ALL_IPS")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyHttpCookie        = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_COOKIE")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyHttpHeader        = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_HEADER")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyHttpPath          = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("HTTP_PATH")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyIp                = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("IP")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyRegionCode        = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("REGION_CODE")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeySni               = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("SNI")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyTlsJa3Fingerprint = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("TLS_JA3_FINGERPRINT")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyUserIp            = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("USER_IP")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyXffIp             = SecurityPolicyRuleRateLimitOptionsEnforceOnKey("XFF_IP")
 )
 
 func (SecurityPolicyRuleRateLimitOptionsEnforceOnKey) ElementType() reflect.Type {
@@ -32889,6 +33775,8 @@ func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput) ToStringPtrOutp
 //	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyIp
 //	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyRegionCode
 //	SecurityPolicyRuleRateLimitOptionsEnforceOnKeySni
+//	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyTlsJa3Fingerprint
+//	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyUserIp
 //	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyXffIp
 type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyInput interface {
 	pulumi.Input
@@ -32930,19 +33818,21 @@ func (in *securityPolicyRuleRateLimitOptionsEnforceOnKeyPtr) ToOutput(ctx contex
 	}
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP.
 type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType string
 
 const (
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeAll        = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("ALL")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeAllIps     = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("ALL_IPS")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeHttpCookie = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("HTTP_COOKIE")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeHttpHeader = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("HTTP_HEADER")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeHttpPath   = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("HTTP_PATH")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeIp         = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("IP")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeRegionCode = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("REGION_CODE")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeSni        = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("SNI")
-	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeXffIp      = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("XFF_IP")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeAll               = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("ALL")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeAllIps            = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("ALL_IPS")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeHttpCookie        = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("HTTP_COOKIE")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeHttpHeader        = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("HTTP_HEADER")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeHttpPath          = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("HTTP_PATH")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeIp                = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("IP")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeRegionCode        = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("REGION_CODE")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeSni               = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("SNI")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeTlsJa3Fingerprint = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("TLS_JA3_FINGERPRINT")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeUserIp            = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("USER_IP")
+	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeXffIp             = SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("XFF_IP")
 )
 
 func (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType) ElementType() reflect.Type {
@@ -33075,6 +33965,8 @@ func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrO
 //	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeIp
 //	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeRegionCode
 //	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeSni
+//	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeTlsJa3Fingerprint
+//	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeUserIp
 //	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeXffIp
 type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeInput interface {
 	pulumi.Input
@@ -35223,6 +36115,358 @@ func (in *sslPolicyProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*Ssl
 	}
 }
 
+// Provisioning type of the byte capacity of the pool.
+type StoragePoolCapacityProvisioningType string
+
+const (
+	// Advanced provisioning "thinly" allocates the related resource.
+	StoragePoolCapacityProvisioningTypeAdvanced = StoragePoolCapacityProvisioningType("ADVANCED")
+	// Standard provisioning allocates the related resource for the pool disks' exclusive use.
+	StoragePoolCapacityProvisioningTypeStandard    = StoragePoolCapacityProvisioningType("STANDARD")
+	StoragePoolCapacityProvisioningTypeUnspecified = StoragePoolCapacityProvisioningType("UNSPECIFIED")
+)
+
+func (StoragePoolCapacityProvisioningType) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoragePoolCapacityProvisioningType)(nil)).Elem()
+}
+
+func (e StoragePoolCapacityProvisioningType) ToStoragePoolCapacityProvisioningTypeOutput() StoragePoolCapacityProvisioningTypeOutput {
+	return pulumi.ToOutput(e).(StoragePoolCapacityProvisioningTypeOutput)
+}
+
+func (e StoragePoolCapacityProvisioningType) ToStoragePoolCapacityProvisioningTypeOutputWithContext(ctx context.Context) StoragePoolCapacityProvisioningTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(StoragePoolCapacityProvisioningTypeOutput)
+}
+
+func (e StoragePoolCapacityProvisioningType) ToStoragePoolCapacityProvisioningTypePtrOutput() StoragePoolCapacityProvisioningTypePtrOutput {
+	return e.ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(context.Background())
+}
+
+func (e StoragePoolCapacityProvisioningType) ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(ctx context.Context) StoragePoolCapacityProvisioningTypePtrOutput {
+	return StoragePoolCapacityProvisioningType(e).ToStoragePoolCapacityProvisioningTypeOutputWithContext(ctx).ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(ctx)
+}
+
+func (e StoragePoolCapacityProvisioningType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StoragePoolCapacityProvisioningType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StoragePoolCapacityProvisioningType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e StoragePoolCapacityProvisioningType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type StoragePoolCapacityProvisioningTypeOutput struct{ *pulumi.OutputState }
+
+func (StoragePoolCapacityProvisioningTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoragePoolCapacityProvisioningType)(nil)).Elem()
+}
+
+func (o StoragePoolCapacityProvisioningTypeOutput) ToStoragePoolCapacityProvisioningTypeOutput() StoragePoolCapacityProvisioningTypeOutput {
+	return o
+}
+
+func (o StoragePoolCapacityProvisioningTypeOutput) ToStoragePoolCapacityProvisioningTypeOutputWithContext(ctx context.Context) StoragePoolCapacityProvisioningTypeOutput {
+	return o
+}
+
+func (o StoragePoolCapacityProvisioningTypeOutput) ToStoragePoolCapacityProvisioningTypePtrOutput() StoragePoolCapacityProvisioningTypePtrOutput {
+	return o.ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(context.Background())
+}
+
+func (o StoragePoolCapacityProvisioningTypeOutput) ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(ctx context.Context) StoragePoolCapacityProvisioningTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StoragePoolCapacityProvisioningType) *StoragePoolCapacityProvisioningType {
+		return &v
+	}).(StoragePoolCapacityProvisioningTypePtrOutput)
+}
+
+func (o StoragePoolCapacityProvisioningTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o StoragePoolCapacityProvisioningTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StoragePoolCapacityProvisioningType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o StoragePoolCapacityProvisioningTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StoragePoolCapacityProvisioningTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StoragePoolCapacityProvisioningType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type StoragePoolCapacityProvisioningTypePtrOutput struct{ *pulumi.OutputState }
+
+func (StoragePoolCapacityProvisioningTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StoragePoolCapacityProvisioningType)(nil)).Elem()
+}
+
+func (o StoragePoolCapacityProvisioningTypePtrOutput) ToStoragePoolCapacityProvisioningTypePtrOutput() StoragePoolCapacityProvisioningTypePtrOutput {
+	return o
+}
+
+func (o StoragePoolCapacityProvisioningTypePtrOutput) ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(ctx context.Context) StoragePoolCapacityProvisioningTypePtrOutput {
+	return o
+}
+
+func (o StoragePoolCapacityProvisioningTypePtrOutput) Elem() StoragePoolCapacityProvisioningTypeOutput {
+	return o.ApplyT(func(v *StoragePoolCapacityProvisioningType) StoragePoolCapacityProvisioningType {
+		if v != nil {
+			return *v
+		}
+		var ret StoragePoolCapacityProvisioningType
+		return ret
+	}).(StoragePoolCapacityProvisioningTypeOutput)
+}
+
+func (o StoragePoolCapacityProvisioningTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StoragePoolCapacityProvisioningTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *StoragePoolCapacityProvisioningType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// StoragePoolCapacityProvisioningTypeInput is an input type that accepts values of the StoragePoolCapacityProvisioningType enum
+// A concrete instance of `StoragePoolCapacityProvisioningTypeInput` can be one of the following:
+//
+//	StoragePoolCapacityProvisioningTypeAdvanced
+//	StoragePoolCapacityProvisioningTypeStandard
+//	StoragePoolCapacityProvisioningTypeUnspecified
+type StoragePoolCapacityProvisioningTypeInput interface {
+	pulumi.Input
+
+	ToStoragePoolCapacityProvisioningTypeOutput() StoragePoolCapacityProvisioningTypeOutput
+	ToStoragePoolCapacityProvisioningTypeOutputWithContext(context.Context) StoragePoolCapacityProvisioningTypeOutput
+}
+
+var storagePoolCapacityProvisioningTypePtrType = reflect.TypeOf((**StoragePoolCapacityProvisioningType)(nil)).Elem()
+
+type StoragePoolCapacityProvisioningTypePtrInput interface {
+	pulumi.Input
+
+	ToStoragePoolCapacityProvisioningTypePtrOutput() StoragePoolCapacityProvisioningTypePtrOutput
+	ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(context.Context) StoragePoolCapacityProvisioningTypePtrOutput
+}
+
+type storagePoolCapacityProvisioningTypePtr string
+
+func StoragePoolCapacityProvisioningTypePtr(v string) StoragePoolCapacityProvisioningTypePtrInput {
+	return (*storagePoolCapacityProvisioningTypePtr)(&v)
+}
+
+func (*storagePoolCapacityProvisioningTypePtr) ElementType() reflect.Type {
+	return storagePoolCapacityProvisioningTypePtrType
+}
+
+func (in *storagePoolCapacityProvisioningTypePtr) ToStoragePoolCapacityProvisioningTypePtrOutput() StoragePoolCapacityProvisioningTypePtrOutput {
+	return pulumi.ToOutput(in).(StoragePoolCapacityProvisioningTypePtrOutput)
+}
+
+func (in *storagePoolCapacityProvisioningTypePtr) ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(ctx context.Context) StoragePoolCapacityProvisioningTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(StoragePoolCapacityProvisioningTypePtrOutput)
+}
+
+func (in *storagePoolCapacityProvisioningTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StoragePoolCapacityProvisioningType] {
+	return pulumix.Output[*StoragePoolCapacityProvisioningType]{
+		OutputState: in.ToStoragePoolCapacityProvisioningTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Provisioning type of the performance-related parameters of the pool, such as throughput and IOPS.
+type StoragePoolPerformanceProvisioningType string
+
+const (
+	// Advanced provisioning "thinly" allocates the related resource.
+	StoragePoolPerformanceProvisioningTypeAdvanced = StoragePoolPerformanceProvisioningType("ADVANCED")
+	// Standard provisioning allocates the related resource for the pool disks' exclusive use.
+	StoragePoolPerformanceProvisioningTypeStandard    = StoragePoolPerformanceProvisioningType("STANDARD")
+	StoragePoolPerformanceProvisioningTypeUnspecified = StoragePoolPerformanceProvisioningType("UNSPECIFIED")
+)
+
+func (StoragePoolPerformanceProvisioningType) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoragePoolPerformanceProvisioningType)(nil)).Elem()
+}
+
+func (e StoragePoolPerformanceProvisioningType) ToStoragePoolPerformanceProvisioningTypeOutput() StoragePoolPerformanceProvisioningTypeOutput {
+	return pulumi.ToOutput(e).(StoragePoolPerformanceProvisioningTypeOutput)
+}
+
+func (e StoragePoolPerformanceProvisioningType) ToStoragePoolPerformanceProvisioningTypeOutputWithContext(ctx context.Context) StoragePoolPerformanceProvisioningTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(StoragePoolPerformanceProvisioningTypeOutput)
+}
+
+func (e StoragePoolPerformanceProvisioningType) ToStoragePoolPerformanceProvisioningTypePtrOutput() StoragePoolPerformanceProvisioningTypePtrOutput {
+	return e.ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(context.Background())
+}
+
+func (e StoragePoolPerformanceProvisioningType) ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(ctx context.Context) StoragePoolPerformanceProvisioningTypePtrOutput {
+	return StoragePoolPerformanceProvisioningType(e).ToStoragePoolPerformanceProvisioningTypeOutputWithContext(ctx).ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(ctx)
+}
+
+func (e StoragePoolPerformanceProvisioningType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StoragePoolPerformanceProvisioningType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StoragePoolPerformanceProvisioningType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e StoragePoolPerformanceProvisioningType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type StoragePoolPerformanceProvisioningTypeOutput struct{ *pulumi.OutputState }
+
+func (StoragePoolPerformanceProvisioningTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoragePoolPerformanceProvisioningType)(nil)).Elem()
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToStoragePoolPerformanceProvisioningTypeOutput() StoragePoolPerformanceProvisioningTypeOutput {
+	return o
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToStoragePoolPerformanceProvisioningTypeOutputWithContext(ctx context.Context) StoragePoolPerformanceProvisioningTypeOutput {
+	return o
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToStoragePoolPerformanceProvisioningTypePtrOutput() StoragePoolPerformanceProvisioningTypePtrOutput {
+	return o.ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(context.Background())
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(ctx context.Context) StoragePoolPerformanceProvisioningTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StoragePoolPerformanceProvisioningType) *StoragePoolPerformanceProvisioningType {
+		return &v
+	}).(StoragePoolPerformanceProvisioningTypePtrOutput)
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StoragePoolPerformanceProvisioningType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StoragePoolPerformanceProvisioningTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StoragePoolPerformanceProvisioningType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type StoragePoolPerformanceProvisioningTypePtrOutput struct{ *pulumi.OutputState }
+
+func (StoragePoolPerformanceProvisioningTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StoragePoolPerformanceProvisioningType)(nil)).Elem()
+}
+
+func (o StoragePoolPerformanceProvisioningTypePtrOutput) ToStoragePoolPerformanceProvisioningTypePtrOutput() StoragePoolPerformanceProvisioningTypePtrOutput {
+	return o
+}
+
+func (o StoragePoolPerformanceProvisioningTypePtrOutput) ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(ctx context.Context) StoragePoolPerformanceProvisioningTypePtrOutput {
+	return o
+}
+
+func (o StoragePoolPerformanceProvisioningTypePtrOutput) Elem() StoragePoolPerformanceProvisioningTypeOutput {
+	return o.ApplyT(func(v *StoragePoolPerformanceProvisioningType) StoragePoolPerformanceProvisioningType {
+		if v != nil {
+			return *v
+		}
+		var ret StoragePoolPerformanceProvisioningType
+		return ret
+	}).(StoragePoolPerformanceProvisioningTypeOutput)
+}
+
+func (o StoragePoolPerformanceProvisioningTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StoragePoolPerformanceProvisioningTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *StoragePoolPerformanceProvisioningType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// StoragePoolPerformanceProvisioningTypeInput is an input type that accepts values of the StoragePoolPerformanceProvisioningType enum
+// A concrete instance of `StoragePoolPerformanceProvisioningTypeInput` can be one of the following:
+//
+//	StoragePoolPerformanceProvisioningTypeAdvanced
+//	StoragePoolPerformanceProvisioningTypeStandard
+//	StoragePoolPerformanceProvisioningTypeUnspecified
+type StoragePoolPerformanceProvisioningTypeInput interface {
+	pulumi.Input
+
+	ToStoragePoolPerformanceProvisioningTypeOutput() StoragePoolPerformanceProvisioningTypeOutput
+	ToStoragePoolPerformanceProvisioningTypeOutputWithContext(context.Context) StoragePoolPerformanceProvisioningTypeOutput
+}
+
+var storagePoolPerformanceProvisioningTypePtrType = reflect.TypeOf((**StoragePoolPerformanceProvisioningType)(nil)).Elem()
+
+type StoragePoolPerformanceProvisioningTypePtrInput interface {
+	pulumi.Input
+
+	ToStoragePoolPerformanceProvisioningTypePtrOutput() StoragePoolPerformanceProvisioningTypePtrOutput
+	ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(context.Context) StoragePoolPerformanceProvisioningTypePtrOutput
+}
+
+type storagePoolPerformanceProvisioningTypePtr string
+
+func StoragePoolPerformanceProvisioningTypePtr(v string) StoragePoolPerformanceProvisioningTypePtrInput {
+	return (*storagePoolPerformanceProvisioningTypePtr)(&v)
+}
+
+func (*storagePoolPerformanceProvisioningTypePtr) ElementType() reflect.Type {
+	return storagePoolPerformanceProvisioningTypePtrType
+}
+
+func (in *storagePoolPerformanceProvisioningTypePtr) ToStoragePoolPerformanceProvisioningTypePtrOutput() StoragePoolPerformanceProvisioningTypePtrOutput {
+	return pulumi.ToOutput(in).(StoragePoolPerformanceProvisioningTypePtrOutput)
+}
+
+func (in *storagePoolPerformanceProvisioningTypePtr) ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(ctx context.Context) StoragePoolPerformanceProvisioningTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(StoragePoolPerformanceProvisioningTypePtrOutput)
+}
+
+func (in *storagePoolPerformanceProvisioningTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StoragePoolPerformanceProvisioningType] {
+	return pulumix.Output[*StoragePoolPerformanceProvisioningType]{
+		OutputState: in.ToStoragePoolPerformanceProvisioningTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack.
 type SubnetworkIpv6AccessType string
 
@@ -35928,13 +37172,13 @@ func (in *subnetworkPrivateIpv6GoogleAccessPtr) ToOutput(ctx context.Context) pu
 	}
 }
 
-// The purpose of the resource. This field can be either PRIVATE, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or INTERNAL_HTTPS_LOAD_BALANCER. PRIVATE is the default purpose for user-created subnets or subnets that are automatically created in auto mode networks. A subnet with purpose set to REGIONAL_MANAGED_PROXY is a user-created subnetwork that is reserved for regional Envoy-based load balancers. A subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using Private Service Connect. A subnet with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a proxy-only subnet that can be used only by regional internal HTTP(S) load balancers. Note that REGIONAL_MANAGED_PROXY is the preferred setting for all regional Envoy load balancers. If unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
+// The purpose of the resource. This field can be either PRIVATE, GLOBAL_MANAGED_PROXY, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or PRIVATE is the default purpose for user-created subnets or subnets that are automatically created in auto mode networks. Subnets with purpose set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY are user-created subnetworks that are reserved for Envoy-based load balancers. A subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using Private Service Connect. If unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported if the subnet purpose field is set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY.
 type SubnetworkPurpose string
 
 const (
 	// Subnet reserved for Global Envoy-based Load Balancing.
 	SubnetworkPurposeGlobalManagedProxy = SubnetworkPurpose("GLOBAL_MANAGED_PROXY")
-	// Subnet reserved for Internal HTTP(S) Load Balancing.
+	// Subnet reserved for Internal HTTP(S) Load Balancing. This is a legacy purpose, please use REGIONAL_MANAGED_PROXY instead.
 	SubnetworkPurposeInternalHttpsLoadBalancer = SubnetworkPurpose("INTERNAL_HTTPS_LOAD_BALANCER")
 	// Regular user created or automatically created subnet.
 	SubnetworkPurposePrivate = SubnetworkPurpose("PRIVATE")
@@ -36117,7 +37361,7 @@ func (in *subnetworkPurposePtr) ToOutput(ctx context.Context) pulumix.Output[*Su
 	}
 }
 
-// The role of subnetwork. Currently, this field is only used when purpose = REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Envoy-based load balancers in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
+// The role of subnetwork. Currently, this field is only used when purpose is set to GLOBAL_MANAGED_PROXY or REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Envoy-based load balancers in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
 type SubnetworkRole string
 
 const (
@@ -36638,7 +37882,7 @@ func (in *subsettingPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*Sub
 	}
 }
 
-// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for pass-through load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for pass-through load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
+// Specifies how a port is selected for health checking. Can be one of the following values: USE_FIXED_PORT: Specifies a port number explicitly using the port field in the health check. Supported by backend services for passthrough load balancers and backend services for proxy load balancers. Not supported by target pools. The health check supports all backends supported by the backend service provided the backend can be health checked. For example, GCE_VM_IP network endpoint groups, GCE_VM_IP_PORT network endpoint groups, and instance group backends. USE_NAMED_PORT: Not supported. USE_SERVING_PORT: Provides an indirect method of specifying the health check port by referring to the backend service. Only supported by backend services for proxy load balancers. Not supported by target pools. Not supported by backend services for passthrough load balancers. Supports all backends that can be health checked; for example, GCE_VM_IP_PORT network endpoint groups and instance group backends. For GCE_VM_IP_PORT network endpoint group backends, the health check uses the port number specified for each endpoint in the network endpoint group. For instance group backends, the health check uses the port number determined by looking up the backend service's named port in the instance group's list of named ports.
 type TCPHealthCheckPortSpecification string
 
 const (
@@ -37161,6 +38405,183 @@ func (in *targetHttpsProxyQuicOverridePtr) ToTargetHttpsProxyQuicOverridePtrOutp
 func (in *targetHttpsProxyQuicOverridePtr) ToOutput(ctx context.Context) pulumix.Output[*TargetHttpsProxyQuicOverride] {
 	return pulumix.Output[*TargetHttpsProxyQuicOverride]{
 		OutputState: in.ToTargetHttpsProxyQuicOverridePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+// Specifies whether TLS 1.3 0-RTT Data ("Early Data") should be accepted for this service. Early Data allows a TLS resumption handshake to include the initial application payload (a HTTP request) alongside the handshake, reducing the effective round trips to "zero". This applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3). This can improve application performance, especially on networks where interruptions may be common, such as on mobile. Requests with Early Data will have the "Early-Data" HTTP header set on the request, with a value of "1", to allow the backend to determine whether Early Data was included. Note: TLS Early Data may allow requests to be replayed, as the data is sent to the backend before the handshake has fully completed. Applications that allow idempotent HTTP methods to make non-idempotent changes, such as a GET request updating a database, should not accept Early Data on those requests, and reject requests with the "Early-Data: 1" HTTP header by returning a HTTP 425 (Too Early) status code, in order to remain RFC compliant. The default value is DISABLED.
+type TargetHttpsProxyTlsEarlyData string
+
+const (
+	// TLS 1.3 Early Data is not advertised, and any (invalid) attempts to send Early Data will be rejected by closing the connection.
+	TargetHttpsProxyTlsEarlyDataDisabled = TargetHttpsProxyTlsEarlyData("DISABLED")
+	// This enables TLS 1.3 0-RTT, and only allows Early Data to be included on requests with safe HTTP methods (GET, HEAD, OPTIONS, TRACE). This mode does not enforce any other limitations for requests with Early Data. The application owner should validate that Early Data is acceptable for a given request path.
+	TargetHttpsProxyTlsEarlyDataPermissive = TargetHttpsProxyTlsEarlyData("PERMISSIVE")
+	// This enables TLS 1.3 0-RTT, and only allows Early Data to be included on requests with safe HTTP methods (GET, HEAD, OPTIONS, TRACE) without query parameters. Requests that send Early Data with non-idempotent HTTP methods or with query parameters will be rejected with a HTTP 425.
+	TargetHttpsProxyTlsEarlyDataStrict = TargetHttpsProxyTlsEarlyData("STRICT")
+)
+
+func (TargetHttpsProxyTlsEarlyData) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetHttpsProxyTlsEarlyData)(nil)).Elem()
+}
+
+func (e TargetHttpsProxyTlsEarlyData) ToTargetHttpsProxyTlsEarlyDataOutput() TargetHttpsProxyTlsEarlyDataOutput {
+	return pulumi.ToOutput(e).(TargetHttpsProxyTlsEarlyDataOutput)
+}
+
+func (e TargetHttpsProxyTlsEarlyData) ToTargetHttpsProxyTlsEarlyDataOutputWithContext(ctx context.Context) TargetHttpsProxyTlsEarlyDataOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TargetHttpsProxyTlsEarlyDataOutput)
+}
+
+func (e TargetHttpsProxyTlsEarlyData) ToTargetHttpsProxyTlsEarlyDataPtrOutput() TargetHttpsProxyTlsEarlyDataPtrOutput {
+	return e.ToTargetHttpsProxyTlsEarlyDataPtrOutputWithContext(context.Background())
+}
+
+func (e TargetHttpsProxyTlsEarlyData) ToTargetHttpsProxyTlsEarlyDataPtrOutputWithContext(ctx context.Context) TargetHttpsProxyTlsEarlyDataPtrOutput {
+	return TargetHttpsProxyTlsEarlyData(e).ToTargetHttpsProxyTlsEarlyDataOutputWithContext(ctx).ToTargetHttpsProxyTlsEarlyDataPtrOutputWithContext(ctx)
+}
+
+func (e TargetHttpsProxyTlsEarlyData) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TargetHttpsProxyTlsEarlyData) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TargetHttpsProxyTlsEarlyData) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TargetHttpsProxyTlsEarlyData) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TargetHttpsProxyTlsEarlyDataOutput struct{ *pulumi.OutputState }
+
+func (TargetHttpsProxyTlsEarlyDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetHttpsProxyTlsEarlyData)(nil)).Elem()
+}
+
+func (o TargetHttpsProxyTlsEarlyDataOutput) ToTargetHttpsProxyTlsEarlyDataOutput() TargetHttpsProxyTlsEarlyDataOutput {
+	return o
+}
+
+func (o TargetHttpsProxyTlsEarlyDataOutput) ToTargetHttpsProxyTlsEarlyDataOutputWithContext(ctx context.Context) TargetHttpsProxyTlsEarlyDataOutput {
+	return o
+}
+
+func (o TargetHttpsProxyTlsEarlyDataOutput) ToTargetHttpsProxyTlsEarlyDataPtrOutput() TargetHttpsProxyTlsEarlyDataPtrOutput {
+	return o.ToTargetHttpsProxyTlsEarlyDataPtrOutputWithContext(context.Background())
+}
+
+func (o TargetHttpsProxyTlsEarlyDataOutput) ToTargetHttpsProxyTlsEarlyDataPtrOutputWithContext(ctx context.Context) TargetHttpsProxyTlsEarlyDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetHttpsProxyTlsEarlyData) *TargetHttpsProxyTlsEarlyData {
+		return &v
+	}).(TargetHttpsProxyTlsEarlyDataPtrOutput)
+}
+
+func (o TargetHttpsProxyTlsEarlyDataOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TargetHttpsProxyTlsEarlyDataOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TargetHttpsProxyTlsEarlyData) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TargetHttpsProxyTlsEarlyDataOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TargetHttpsProxyTlsEarlyDataOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TargetHttpsProxyTlsEarlyData) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TargetHttpsProxyTlsEarlyDataPtrOutput struct{ *pulumi.OutputState }
+
+func (TargetHttpsProxyTlsEarlyDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetHttpsProxyTlsEarlyData)(nil)).Elem()
+}
+
+func (o TargetHttpsProxyTlsEarlyDataPtrOutput) ToTargetHttpsProxyTlsEarlyDataPtrOutput() TargetHttpsProxyTlsEarlyDataPtrOutput {
+	return o
+}
+
+func (o TargetHttpsProxyTlsEarlyDataPtrOutput) ToTargetHttpsProxyTlsEarlyDataPtrOutputWithContext(ctx context.Context) TargetHttpsProxyTlsEarlyDataPtrOutput {
+	return o
+}
+
+func (o TargetHttpsProxyTlsEarlyDataPtrOutput) Elem() TargetHttpsProxyTlsEarlyDataOutput {
+	return o.ApplyT(func(v *TargetHttpsProxyTlsEarlyData) TargetHttpsProxyTlsEarlyData {
+		if v != nil {
+			return *v
+		}
+		var ret TargetHttpsProxyTlsEarlyData
+		return ret
+	}).(TargetHttpsProxyTlsEarlyDataOutput)
+}
+
+func (o TargetHttpsProxyTlsEarlyDataPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TargetHttpsProxyTlsEarlyDataPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TargetHttpsProxyTlsEarlyData) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TargetHttpsProxyTlsEarlyDataInput is an input type that accepts values of the TargetHttpsProxyTlsEarlyData enum
+// A concrete instance of `TargetHttpsProxyTlsEarlyDataInput` can be one of the following:
+//
+//	TargetHttpsProxyTlsEarlyDataDisabled
+//	TargetHttpsProxyTlsEarlyDataPermissive
+//	TargetHttpsProxyTlsEarlyDataStrict
+type TargetHttpsProxyTlsEarlyDataInput interface {
+	pulumi.Input
+
+	ToTargetHttpsProxyTlsEarlyDataOutput() TargetHttpsProxyTlsEarlyDataOutput
+	ToTargetHttpsProxyTlsEarlyDataOutputWithContext(context.Context) TargetHttpsProxyTlsEarlyDataOutput
+}
+
+var targetHttpsProxyTlsEarlyDataPtrType = reflect.TypeOf((**TargetHttpsProxyTlsEarlyData)(nil)).Elem()
+
+type TargetHttpsProxyTlsEarlyDataPtrInput interface {
+	pulumi.Input
+
+	ToTargetHttpsProxyTlsEarlyDataPtrOutput() TargetHttpsProxyTlsEarlyDataPtrOutput
+	ToTargetHttpsProxyTlsEarlyDataPtrOutputWithContext(context.Context) TargetHttpsProxyTlsEarlyDataPtrOutput
+}
+
+type targetHttpsProxyTlsEarlyDataPtr string
+
+func TargetHttpsProxyTlsEarlyDataPtr(v string) TargetHttpsProxyTlsEarlyDataPtrInput {
+	return (*targetHttpsProxyTlsEarlyDataPtr)(&v)
+}
+
+func (*targetHttpsProxyTlsEarlyDataPtr) ElementType() reflect.Type {
+	return targetHttpsProxyTlsEarlyDataPtrType
+}
+
+func (in *targetHttpsProxyTlsEarlyDataPtr) ToTargetHttpsProxyTlsEarlyDataPtrOutput() TargetHttpsProxyTlsEarlyDataPtrOutput {
+	return pulumi.ToOutput(in).(TargetHttpsProxyTlsEarlyDataPtrOutput)
+}
+
+func (in *targetHttpsProxyTlsEarlyDataPtr) ToTargetHttpsProxyTlsEarlyDataPtrOutputWithContext(ctx context.Context) TargetHttpsProxyTlsEarlyDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TargetHttpsProxyTlsEarlyDataPtrOutput)
+}
+
+func (in *targetHttpsProxyTlsEarlyDataPtr) ToOutput(ctx context.Context) pulumix.Output[*TargetHttpsProxyTlsEarlyData] {
+	return pulumix.Output[*TargetHttpsProxyTlsEarlyData]{
+		OutputState: in.ToTargetHttpsProxyTlsEarlyDataPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -38053,6 +39474,8 @@ const (
 	VpnGatewayStackTypeIpv4Ipv6 = VpnGatewayStackType("IPV4_IPV6")
 	// Enable VPN gateway with only IPv4 protocol.
 	VpnGatewayStackTypeIpv4Only = VpnGatewayStackType("IPV4_ONLY")
+	// Enable VPN gateway with only IPv6 protocol.
+	VpnGatewayStackTypeIpv6Only = VpnGatewayStackType("IPV6_ONLY")
 )
 
 func (VpnGatewayStackType) ElementType() reflect.Type {
@@ -38179,6 +39602,7 @@ func (o VpnGatewayStackTypePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 //
 //	VpnGatewayStackTypeIpv4Ipv6
 //	VpnGatewayStackTypeIpv4Only
+//	VpnGatewayStackTypeIpv6Only
 type VpnGatewayStackTypeInput interface {
 	pulumi.Input
 
@@ -38358,6 +39782,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalForwardingRuleNetworkTierPtrInput)(nil)).Elem(), GlobalForwardingRuleNetworkTier("FIXED_STANDARD"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalForwardingRulePscConnectionStatusInput)(nil)).Elem(), GlobalForwardingRulePscConnectionStatus("ACCEPTED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalForwardingRulePscConnectionStatusPtrInput)(nil)).Elem(), GlobalForwardingRulePscConnectionStatus("ACCEPTED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalNetworkEndpointGroupClientPortMappingModeInput)(nil)).Elem(), GlobalNetworkEndpointGroupClientPortMappingMode("CLIENT_PORT_PER_ENDPOINT"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GlobalNetworkEndpointGroupClientPortMappingModePtrInput)(nil)).Elem(), GlobalNetworkEndpointGroupClientPortMappingMode("CLIENT_PORT_PER_ENDPOINT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalNetworkEndpointGroupNetworkEndpointTypeInput)(nil)).Elem(), GlobalNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalNetworkEndpointGroupNetworkEndpointTypePtrInput)(nil)).Elem(), GlobalNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GuestOsFeatureTypeInput)(nil)).Elem(), GuestOsFeatureType("FEATURE_TYPE_UNSPECIFIED"))
@@ -38441,6 +39867,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataFilterFilterMatchCriteriaPtrInput)(nil)).Elem(), MetadataFilterFilterMatchCriteria("MATCH_ALL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAttachmentConnectionPreferenceInput)(nil)).Elem(), NetworkAttachmentConnectionPreference("ACCEPT_AUTOMATIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAttachmentConnectionPreferencePtrInput)(nil)).Elem(), NetworkAttachmentConnectionPreference("ACCEPT_AUTOMATIC"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupClientPortMappingModeInput)(nil)).Elem(), NetworkEndpointGroupClientPortMappingMode("CLIENT_PORT_PER_ENDPOINT"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupClientPortMappingModePtrInput)(nil)).Elem(), NetworkEndpointGroupClientPortMappingMode("CLIENT_PORT_PER_ENDPOINT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupNetworkEndpointTypeInput)(nil)).Elem(), NetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupNetworkEndpointTypePtrInput)(nil)).Elem(), NetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceNicTypeInput)(nil)).Elem(), NetworkInterfaceNicType("GVNIC"))
@@ -38505,6 +39933,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerFailoverActionPtrInput)(nil)).Elem(), RegionInstanceGroupManagerFailoverAction("NO_FAILOVER"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerListManagedInstancesResultsInput)(nil)).Elem(), RegionInstanceGroupManagerListManagedInstancesResults("PAGELESS"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerListManagedInstancesResultsPtrInput)(nil)).Elem(), RegionInstanceGroupManagerListManagedInstancesResults("PAGELESS"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupClientPortMappingModeInput)(nil)).Elem(), RegionNetworkEndpointGroupClientPortMappingMode("CLIENT_PORT_PER_ENDPOINT"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupClientPortMappingModePtrInput)(nil)).Elem(), RegionNetworkEndpointGroupClientPortMappingMode("CLIENT_PORT_PER_ENDPOINT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupNetworkEndpointTypeInput)(nil)).Elem(), RegionNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupNetworkEndpointTypePtrInput)(nil)).Elem(), RegionNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSecurityPolicyTypeInput)(nil)).Elem(), RegionSecurityPolicyType("CLOUD_ARMOR"))
@@ -38517,6 +39947,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSslPolicyProfilePtrInput)(nil)).Elem(), RegionSslPolicyProfile("COMPATIBLE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionTargetHttpsProxyQuicOverrideInput)(nil)).Elem(), RegionTargetHttpsProxyQuicOverride("DISABLE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionTargetHttpsProxyQuicOverridePtrInput)(nil)).Elem(), RegionTargetHttpsProxyQuicOverride("DISABLE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionTargetHttpsProxyTlsEarlyDataInput)(nil)).Elem(), RegionTargetHttpsProxyTlsEarlyData("DISABLED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionTargetHttpsProxyTlsEarlyDataPtrInput)(nil)).Elem(), RegionTargetHttpsProxyTlsEarlyData("DISABLED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionTargetTcpProxyProxyHeaderInput)(nil)).Elem(), RegionTargetTcpProxyProxyHeader("NONE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionTargetTcpProxyProxyHeaderPtrInput)(nil)).Elem(), RegionTargetTcpProxyProxyHeader("NONE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityConsumeReservationTypeInput)(nil)).Elem(), ReservationAffinityConsumeReservationType("ANY_RESERVATION"))
@@ -38579,6 +40011,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingProvisioningModelPtrInput)(nil)).Elem(), SchedulingProvisioningModel("SPOT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility("PREMIUM"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility("PREMIUM"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType("HTTP_HEADER_HOST"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigType("HTTP_HEADER_HOST"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigJsonParsingInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigJsonParsing("DISABLED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigJsonParsingPtrInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigJsonParsing("DISABLED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigLogLevelInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigLogLevel("NORMAL"))
@@ -38619,6 +40053,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SslPolicyMinTlsVersionPtrInput)(nil)).Elem(), SslPolicyMinTlsVersion("TLS_1_0"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SslPolicyProfileInput)(nil)).Elem(), SslPolicyProfile("COMPATIBLE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SslPolicyProfilePtrInput)(nil)).Elem(), SslPolicyProfile("COMPATIBLE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StoragePoolCapacityProvisioningTypeInput)(nil)).Elem(), StoragePoolCapacityProvisioningType("ADVANCED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StoragePoolCapacityProvisioningTypePtrInput)(nil)).Elem(), StoragePoolCapacityProvisioningType("ADVANCED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StoragePoolPerformanceProvisioningTypeInput)(nil)).Elem(), StoragePoolPerformanceProvisioningType("ADVANCED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StoragePoolPerformanceProvisioningTypePtrInput)(nil)).Elem(), StoragePoolPerformanceProvisioningType("ADVANCED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkIpv6AccessTypeInput)(nil)).Elem(), SubnetworkIpv6AccessType("EXTERNAL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkIpv6AccessTypePtrInput)(nil)).Elem(), SubnetworkIpv6AccessType("EXTERNAL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkLogConfigAggregationIntervalInput)(nil)).Elem(), SubnetworkLogConfigAggregationInterval("INTERVAL_10_MIN"))
@@ -38641,6 +40079,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TCPHealthCheckProxyHeaderPtrInput)(nil)).Elem(), TCPHealthCheckProxyHeader("NONE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetHttpsProxyQuicOverrideInput)(nil)).Elem(), TargetHttpsProxyQuicOverride("DISABLE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetHttpsProxyQuicOverridePtrInput)(nil)).Elem(), TargetHttpsProxyQuicOverride("DISABLE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetHttpsProxyTlsEarlyDataInput)(nil)).Elem(), TargetHttpsProxyTlsEarlyData("DISABLED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetHttpsProxyTlsEarlyDataPtrInput)(nil)).Elem(), TargetHttpsProxyTlsEarlyData("DISABLED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetInstanceNatPolicyInput)(nil)).Elem(), TargetInstanceNatPolicy("NO_NAT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetInstanceNatPolicyPtrInput)(nil)).Elem(), TargetInstanceNatPolicy("NO_NAT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetPoolSessionAffinityInput)(nil)).Elem(), TargetPoolSessionAffinity("CLIENT_IP"))
@@ -38791,6 +40231,8 @@ func init() {
 	pulumi.RegisterOutputType(GlobalForwardingRuleNetworkTierPtrOutput{})
 	pulumi.RegisterOutputType(GlobalForwardingRulePscConnectionStatusOutput{})
 	pulumi.RegisterOutputType(GlobalForwardingRulePscConnectionStatusPtrOutput{})
+	pulumi.RegisterOutputType(GlobalNetworkEndpointGroupClientPortMappingModeOutput{})
+	pulumi.RegisterOutputType(GlobalNetworkEndpointGroupClientPortMappingModePtrOutput{})
 	pulumi.RegisterOutputType(GlobalNetworkEndpointGroupNetworkEndpointTypeOutput{})
 	pulumi.RegisterOutputType(GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput{})
 	pulumi.RegisterOutputType(GuestOsFeatureTypeOutput{})
@@ -38874,6 +40316,8 @@ func init() {
 	pulumi.RegisterOutputType(MetadataFilterFilterMatchCriteriaPtrOutput{})
 	pulumi.RegisterOutputType(NetworkAttachmentConnectionPreferenceOutput{})
 	pulumi.RegisterOutputType(NetworkAttachmentConnectionPreferencePtrOutput{})
+	pulumi.RegisterOutputType(NetworkEndpointGroupClientPortMappingModeOutput{})
+	pulumi.RegisterOutputType(NetworkEndpointGroupClientPortMappingModePtrOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupNetworkEndpointTypeOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupNetworkEndpointTypePtrOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceNicTypeOutput{})
@@ -38938,6 +40382,8 @@ func init() {
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerFailoverActionPtrOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerListManagedInstancesResultsOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput{})
+	pulumi.RegisterOutputType(RegionNetworkEndpointGroupClientPortMappingModeOutput{})
+	pulumi.RegisterOutputType(RegionNetworkEndpointGroupClientPortMappingModePtrOutput{})
 	pulumi.RegisterOutputType(RegionNetworkEndpointGroupNetworkEndpointTypeOutput{})
 	pulumi.RegisterOutputType(RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput{})
 	pulumi.RegisterOutputType(RegionSecurityPolicyTypeOutput{})
@@ -38950,6 +40396,8 @@ func init() {
 	pulumi.RegisterOutputType(RegionSslPolicyProfilePtrOutput{})
 	pulumi.RegisterOutputType(RegionTargetHttpsProxyQuicOverrideOutput{})
 	pulumi.RegisterOutputType(RegionTargetHttpsProxyQuicOverridePtrOutput{})
+	pulumi.RegisterOutputType(RegionTargetHttpsProxyTlsEarlyDataOutput{})
+	pulumi.RegisterOutputType(RegionTargetHttpsProxyTlsEarlyDataPtrOutput{})
 	pulumi.RegisterOutputType(RegionTargetTcpProxyProxyHeaderOutput{})
 	pulumi.RegisterOutputType(RegionTargetTcpProxyProxyHeaderPtrOutput{})
 	pulumi.RegisterOutputType(ReservationAffinityConsumeReservationTypeOutput{})
@@ -39012,6 +40460,8 @@ func init() {
 	pulumi.RegisterOutputType(SchedulingProvisioningModelPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypePtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigJsonParsingOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigLogLevelOutput{})
@@ -39052,6 +40502,10 @@ func init() {
 	pulumi.RegisterOutputType(SslPolicyMinTlsVersionPtrOutput{})
 	pulumi.RegisterOutputType(SslPolicyProfileOutput{})
 	pulumi.RegisterOutputType(SslPolicyProfilePtrOutput{})
+	pulumi.RegisterOutputType(StoragePoolCapacityProvisioningTypeOutput{})
+	pulumi.RegisterOutputType(StoragePoolCapacityProvisioningTypePtrOutput{})
+	pulumi.RegisterOutputType(StoragePoolPerformanceProvisioningTypeOutput{})
+	pulumi.RegisterOutputType(StoragePoolPerformanceProvisioningTypePtrOutput{})
 	pulumi.RegisterOutputType(SubnetworkIpv6AccessTypeOutput{})
 	pulumi.RegisterOutputType(SubnetworkIpv6AccessTypePtrOutput{})
 	pulumi.RegisterOutputType(SubnetworkLogConfigAggregationIntervalOutput{})
@@ -39074,6 +40528,8 @@ func init() {
 	pulumi.RegisterOutputType(TCPHealthCheckProxyHeaderPtrOutput{})
 	pulumi.RegisterOutputType(TargetHttpsProxyQuicOverrideOutput{})
 	pulumi.RegisterOutputType(TargetHttpsProxyQuicOverridePtrOutput{})
+	pulumi.RegisterOutputType(TargetHttpsProxyTlsEarlyDataOutput{})
+	pulumi.RegisterOutputType(TargetHttpsProxyTlsEarlyDataPtrOutput{})
 	pulumi.RegisterOutputType(TargetInstanceNatPolicyOutput{})
 	pulumi.RegisterOutputType(TargetInstanceNatPolicyPtrOutput{})
 	pulumi.RegisterOutputType(TargetPoolSessionAffinityOutput{})

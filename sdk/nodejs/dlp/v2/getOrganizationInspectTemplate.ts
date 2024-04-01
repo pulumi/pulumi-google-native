@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+ * Gets an InspectTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
  */
 export function getOrganizationInspectTemplate(args: GetOrganizationInspectTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationInspectTemplateResult> {
 
@@ -53,7 +53,7 @@ export interface GetOrganizationInspectTemplateResult {
     readonly updateTime: string;
 }
 /**
- * Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+ * Gets an InspectTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
  */
 export function getOrganizationInspectTemplateOutput(args: GetOrganizationInspectTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationInspectTemplateResult> {
     return pulumi.output(args).apply((a: any) => getOrganizationInspectTemplate(a, opts))

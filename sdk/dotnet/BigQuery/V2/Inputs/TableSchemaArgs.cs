@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
+    /// <summary>
+    /// Schema of a table
+    /// </summary>
     public sealed class TableSchemaArgs : global::Pulumi.ResourceArgs
     {
         [Input("fields")]

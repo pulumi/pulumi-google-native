@@ -2,6 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../../types/input";
+import * as outputs from "../../types/output";
+import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
@@ -42,6 +45,10 @@ export class Mesh extends pulumi.CustomResource {
      * Optional. A free-text description of the resource. Max length 1024 characters.
      */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+     */
+    public readonly envoyHeaders!: pulumi.Output<string>;
     /**
      * Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to be redirected to this port regardless of its actual ip:port destination. If unset, a port '15001' is used as the interception port. This is applicable only for sidecar proxy deployments.
      */
@@ -84,6 +91,7 @@ export class Mesh extends pulumi.CustomResource {
                 throw new Error("Missing required property 'meshId'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["envoyHeaders"] = args ? args.envoyHeaders : undefined;
             resourceInputs["interceptionPort"] = args ? args.interceptionPort : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -96,6 +104,7 @@ export class Mesh extends pulumi.CustomResource {
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["envoyHeaders"] = undefined /*out*/;
             resourceInputs["interceptionPort"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -120,6 +129,10 @@ export interface MeshArgs {
      * Optional. A free-text description of the resource. Max length 1024 characters.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+     */
+    envoyHeaders?: pulumi.Input<enums.networkservices.v1.MeshEnvoyHeaders>;
     /**
      * Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to be redirected to this port regardless of its actual ip:port destination. If unset, a port '15001' is used as the interception port. This is applicable only for sidecar proxy deployments.
      */

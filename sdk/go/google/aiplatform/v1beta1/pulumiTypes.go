@@ -807,9 +807,9 @@ func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInputConfigResponseOutput)
 
 // Configuration defining how to transform batch prediction input instances to the instances that the Model accepts.
 type GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfig struct {
-	// Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
+	// Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord.
 	ExcludedFields []string `pulumi:"excludedFields"`
-	// Fields that will be included in the prediction instance that is sent to the Model. If instance_type is `array`, the order of field names in included_fields also determines the order of the values in the array. When included_fields is populated, excluded_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
+	// Fields that will be included in the prediction instance that is sent to the Model. If instance_type is `array`, the order of field names in included_fields also determines the order of the values in the array. When included_fields is populated, excluded_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord.
 	IncludedFields []string `pulumi:"includedFields"`
 	// The format of the instance that the Model accepts. Vertex AI will convert compatible batch prediction input instance formats to the specified format. Supported values are: * `object`: Each input is converted to JSON object format. * For `bigquery`, each row is converted to an object. * For `jsonl`, each line of the JSONL input must be an object. * Does not apply to `csv`, `file-list`, `tf-record`, or `tf-record-gzip`. * `array`: Each input is converted to JSON array format. * For `bigquery`, each row is converted to an array. The order of columns is determined by the BigQuery column order, unless included_fields is populated. included_fields must be populated for specifying field orders. * For `jsonl`, if each line of the JSONL input is an object, included_fields must be populated for specifying field orders. * Does not apply to `csv`, `file-list`, `tf-record`, or `tf-record-gzip`. If not specified, Vertex AI converts the batch prediction input as follows: * For `bigquery` and `csv`, the behavior is the same as `array`. The order of columns is the same as defined in the file or table, unless included_fields is populated. * For `jsonl`, the prediction instance format is determined by each line of the input. * For `tf-record`/`tf-record-gzip`, each record will be converted to an object in the format of `{"b64": }`, where ``is the Base64-encoded string of the content of the record. * For `file-list`, each file in the list will be converted to an object in the format of `{"b64": }`, where`` is the Base64-encoded string of the content of the file.
 	InstanceType *string `pulumi:"instanceType"`
@@ -830,9 +830,9 @@ type GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigInput interface
 
 // Configuration defining how to transform batch prediction input instances to the instances that the Model accepts.
 type GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigArgs struct {
-	// Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
+	// Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord.
 	ExcludedFields pulumi.StringArrayInput `pulumi:"excludedFields"`
-	// Fields that will be included in the prediction instance that is sent to the Model. If instance_type is `array`, the order of field names in included_fields also determines the order of the values in the array. When included_fields is populated, excluded_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
+	// Fields that will be included in the prediction instance that is sent to the Model. If instance_type is `array`, the order of field names in included_fields also determines the order of the values in the array. When included_fields is populated, excluded_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord.
 	IncludedFields pulumi.StringArrayInput `pulumi:"includedFields"`
 	// The format of the instance that the Model accepts. Vertex AI will convert compatible batch prediction input instance formats to the specified format. Supported values are: * `object`: Each input is converted to JSON object format. * For `bigquery`, each row is converted to an object. * For `jsonl`, each line of the JSONL input must be an object. * Does not apply to `csv`, `file-list`, `tf-record`, or `tf-record-gzip`. * `array`: Each input is converted to JSON array format. * For `bigquery`, each row is converted to an array. The order of columns is determined by the BigQuery column order, unless included_fields is populated. included_fields must be populated for specifying field orders. * For `jsonl`, if each line of the JSONL input is an object, included_fields must be populated for specifying field orders. * Does not apply to `csv`, `file-list`, `tf-record`, or `tf-record-gzip`. If not specified, Vertex AI converts the batch prediction input as follows: * For `bigquery` and `csv`, the behavior is the same as `array`. The order of columns is the same as defined in the file or table, unless included_fields is populated. * For `jsonl`, the prediction instance format is determined by each line of the input. * For `tf-record`/`tf-record-gzip`, each record will be converted to an object in the format of `{"b64": }`, where ``is the Base64-encoded string of the content of the record. * For `file-list`, each file in the list will be converted to an object in the format of `{"b64": }`, where`` is the Base64-encoded string of the content of the file.
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
@@ -918,12 +918,12 @@ func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigOutput) ToGo
 	}).(GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigPtrOutput)
 }
 
-// Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
+// Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord.
 func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigOutput) ExcludedFields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfig) []string { return v.ExcludedFields }).(pulumi.StringArrayOutput)
 }
 
-// Fields that will be included in the prediction instance that is sent to the Model. If instance_type is `array`, the order of field names in included_fields also determines the order of the values in the array. When included_fields is populated, excluded_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
+// Fields that will be included in the prediction instance that is sent to the Model. If instance_type is `array`, the order of field names in included_fields also determines the order of the values in the array. When included_fields is populated, excluded_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord.
 func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigOutput) IncludedFields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfig) []string { return v.IncludedFields }).(pulumi.StringArrayOutput)
 }
@@ -962,7 +962,7 @@ func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigPtrOutput) E
 	}).(GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigOutput)
 }
 
-// Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
+// Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord.
 func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigPtrOutput) ExcludedFields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfig) []string {
 		if v == nil {
@@ -972,7 +972,7 @@ func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigPtrOutput) E
 	}).(pulumi.StringArrayOutput)
 }
 
-// Fields that will be included in the prediction instance that is sent to the Model. If instance_type is `array`, the order of field names in included_fields also determines the order of the values in the array. When included_fields is populated, excluded_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
+// Fields that will be included in the prediction instance that is sent to the Model. If instance_type is `array`, the order of field names in included_fields also determines the order of the values in the array. When included_fields is populated, excluded_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord.
 func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigPtrOutput) IncludedFields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfig) []string {
 		if v == nil {
@@ -1004,9 +1004,9 @@ func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigPtrOutput) K
 
 // Configuration defining how to transform batch prediction input instances to the instances that the Model accepts.
 type GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigResponse struct {
-	// Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
+	// Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord.
 	ExcludedFields []string `pulumi:"excludedFields"`
-	// Fields that will be included in the prediction instance that is sent to the Model. If instance_type is `array`, the order of field names in included_fields also determines the order of the values in the array. When included_fields is populated, excluded_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
+	// Fields that will be included in the prediction instance that is sent to the Model. If instance_type is `array`, the order of field names in included_fields also determines the order of the values in the array. When included_fields is populated, excluded_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord.
 	IncludedFields []string `pulumi:"includedFields"`
 	// The format of the instance that the Model accepts. Vertex AI will convert compatible batch prediction input instance formats to the specified format. Supported values are: * `object`: Each input is converted to JSON object format. * For `bigquery`, each row is converted to an object. * For `jsonl`, each line of the JSONL input must be an object. * Does not apply to `csv`, `file-list`, `tf-record`, or `tf-record-gzip`. * `array`: Each input is converted to JSON array format. * For `bigquery`, each row is converted to an array. The order of columns is determined by the BigQuery column order, unless included_fields is populated. included_fields must be populated for specifying field orders. * For `jsonl`, if each line of the JSONL input is an object, included_fields must be populated for specifying field orders. * Does not apply to `csv`, `file-list`, `tf-record`, or `tf-record-gzip`. If not specified, Vertex AI converts the batch prediction input as follows: * For `bigquery` and `csv`, the behavior is the same as `array`. The order of columns is the same as defined in the file or table, unless included_fields is populated. * For `jsonl`, the prediction instance format is determined by each line of the input. * For `tf-record`/`tf-record-gzip`, each record will be converted to an object in the format of `{"b64": }`, where ``is the Base64-encoded string of the content of the record. * For `file-list`, each file in the list will be converted to an object in the format of `{"b64": }`, where`` is the Base64-encoded string of the content of the file.
 	InstanceType string `pulumi:"instanceType"`
@@ -1029,14 +1029,14 @@ func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigResponseOutp
 	return o
 }
 
-// Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
+// Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord.
 func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigResponseOutput) ExcludedFields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigResponse) []string {
 		return v.ExcludedFields
 	}).(pulumi.StringArrayOutput)
 }
 
-// Fields that will be included in the prediction instance that is sent to the Model. If instance_type is `array`, the order of field names in included_fields also determines the order of the values in the array. When included_fields is populated, excluded_fields must be empty. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord.
+// Fields that will be included in the prediction instance that is sent to the Model. If instance_type is `array`, the order of field names in included_fields also determines the order of the values in the array. When included_fields is populated, excluded_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord.
 func (o GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigResponseOutput) IncludedFields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1BatchPredictionJobInstanceConfigResponse) []string {
 		return v.IncludedFields
@@ -2347,6 +2347,8 @@ type GoogleCloudAiplatformV1beta1CustomJobSpec struct {
 	Experiment *string `pulumi:"experiment"`
 	// Optional. The Experiment Run associated with this job. Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}`
 	ExperimentRun *string `pulumi:"experimentRun"`
+	// Optional. The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs. Format: `projects/{project}/locations/{location}/models/{model}` In order to retrieve a specific version of the model, also provide the version ID or version alias. Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden` If no version ID or alias is specified, the "default" version will be returned. The "default" version alias is created for the first version of the model, and can be moved to other versions later on. There will be exactly one default version.
+	Models []string `pulumi:"models"`
 	// Optional. The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. To specify this field, you must have already [configured VPC Network Peering for Vertex AI](https://cloud.google.com/vertex-ai/docs/general/vpc-peering). If this field is left unspecified, the job is not peered with any network.
 	Network *string `pulumi:"network"`
 	// Optional. The ID of the PersistentResource in the same Project and Location which to run If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines. The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
@@ -2388,6 +2390,8 @@ type GoogleCloudAiplatformV1beta1CustomJobSpecArgs struct {
 	Experiment pulumi.StringPtrInput `pulumi:"experiment"`
 	// Optional. The Experiment Run associated with this job. Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}`
 	ExperimentRun pulumi.StringPtrInput `pulumi:"experimentRun"`
+	// Optional. The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs. Format: `projects/{project}/locations/{location}/models/{model}` In order to retrieve a specific version of the model, also provide the version ID or version alias. Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden` If no version ID or alias is specified, the "default" version will be returned. The "default" version alias is created for the first version of the model, and can be moved to other versions later on. There will be exactly one default version.
+	Models pulumi.StringArrayInput `pulumi:"models"`
 	// Optional. The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. To specify this field, you must have already [configured VPC Network Peering for Vertex AI](https://cloud.google.com/vertex-ai/docs/general/vpc-peering). If this field is left unspecified, the job is not peered with any network.
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// Optional. The ID of the PersistentResource in the same Project and Location which to run If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines. The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
@@ -2511,6 +2515,11 @@ func (o GoogleCloudAiplatformV1beta1CustomJobSpecOutput) ExperimentRun() pulumi.
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1CustomJobSpec) *string { return v.ExperimentRun }).(pulumi.StringPtrOutput)
 }
 
+// Optional. The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs. Format: `projects/{project}/locations/{location}/models/{model}` In order to retrieve a specific version of the model, also provide the version ID or version alias. Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden` If no version ID or alias is specified, the "default" version will be returned. The "default" version alias is created for the first version of the model, and can be moved to other versions later on. There will be exactly one default version.
+func (o GoogleCloudAiplatformV1beta1CustomJobSpecOutput) Models() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1CustomJobSpec) []string { return v.Models }).(pulumi.StringArrayOutput)
+}
+
 // Optional. The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. To specify this field, you must have already [configured VPC Network Peering for Vertex AI](https://cloud.google.com/vertex-ai/docs/general/vpc-peering). If this field is left unspecified, the job is not peered with any network.
 func (o GoogleCloudAiplatformV1beta1CustomJobSpecOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1CustomJobSpec) *string { return v.Network }).(pulumi.StringPtrOutput)
@@ -2629,6 +2638,16 @@ func (o GoogleCloudAiplatformV1beta1CustomJobSpecPtrOutput) ExperimentRun() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs. Format: `projects/{project}/locations/{location}/models/{model}` In order to retrieve a specific version of the model, also provide the version ID or version alias. Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden` If no version ID or alias is specified, the "default" version will be returned. The "default" version alias is created for the first version of the model, and can be moved to other versions later on. There will be exactly one default version.
+func (o GoogleCloudAiplatformV1beta1CustomJobSpecPtrOutput) Models() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1CustomJobSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Models
+	}).(pulumi.StringArrayOutput)
+}
+
 // Optional. The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. To specify this field, you must have already [configured VPC Network Peering for Vertex AI](https://cloud.google.com/vertex-ai/docs/general/vpc-peering). If this field is left unspecified, the job is not peered with any network.
 func (o GoogleCloudAiplatformV1beta1CustomJobSpecPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1CustomJobSpec) *string {
@@ -2721,6 +2740,8 @@ type GoogleCloudAiplatformV1beta1CustomJobSpecResponse struct {
 	Experiment string `pulumi:"experiment"`
 	// Optional. The Experiment Run associated with this job. Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}`
 	ExperimentRun string `pulumi:"experimentRun"`
+	// Optional. The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs. Format: `projects/{project}/locations/{location}/models/{model}` In order to retrieve a specific version of the model, also provide the version ID or version alias. Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden` If no version ID or alias is specified, the "default" version will be returned. The "default" version alias is created for the first version of the model, and can be moved to other versions later on. There will be exactly one default version.
+	Models []string `pulumi:"models"`
 	// Optional. The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. To specify this field, you must have already [configured VPC Network Peering for Vertex AI](https://cloud.google.com/vertex-ai/docs/general/vpc-peering). If this field is left unspecified, the job is not peered with any network.
 	Network string `pulumi:"network"`
 	// Optional. The ID of the PersistentResource in the same Project and Location which to run If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines. The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected.
@@ -2779,6 +2800,11 @@ func (o GoogleCloudAiplatformV1beta1CustomJobSpecResponseOutput) Experiment() pu
 // Optional. The Experiment Run associated with this job. Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}`
 func (o GoogleCloudAiplatformV1beta1CustomJobSpecResponseOutput) ExperimentRun() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1CustomJobSpecResponse) string { return v.ExperimentRun }).(pulumi.StringOutput)
+}
+
+// Optional. The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs. Format: `projects/{project}/locations/{location}/models/{model}` In order to retrieve a specific version of the model, also provide the version ID or version alias. Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden` If no version ID or alias is specified, the "default" version will be returned. The "default" version alias is created for the first version of the model, and can be moved to other versions later on. There will be exactly one default version.
+func (o GoogleCloudAiplatformV1beta1CustomJobSpecResponseOutput) Models() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1CustomJobSpecResponse) []string { return v.Models }).(pulumi.StringArrayOutput)
 }
 
 // Optional. The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the Job should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. To specify this field, you must have already [configured VPC Network Peering for Vertex AI](https://cloud.google.com/vertex-ai/docs/general/vpc-peering). If this field is left unspecified, the job is not peered with any network.
@@ -3031,6 +3057,8 @@ func (o GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigResponseOutput) AuthP
 type GoogleCloudAiplatformV1beta1DeployedIndexRefResponse struct {
 	// Immutable. The ID of the DeployedIndex in the above IndexEndpoint.
 	DeployedIndexId string `pulumi:"deployedIndexId"`
+	// The display name of the DeployedIndex.
+	DisplayName string `pulumi:"displayName"`
 	// Immutable. A resource name of the IndexEndpoint.
 	IndexEndpoint string `pulumi:"indexEndpoint"`
 }
@@ -3053,6 +3081,11 @@ func (o GoogleCloudAiplatformV1beta1DeployedIndexRefResponseOutput) ToGoogleClou
 // Immutable. The ID of the DeployedIndex in the above IndexEndpoint.
 func (o GoogleCloudAiplatformV1beta1DeployedIndexRefResponseOutput) DeployedIndexId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1DeployedIndexRefResponse) string { return v.DeployedIndexId }).(pulumi.StringOutput)
+}
+
+// The display name of the DeployedIndex.
+func (o GoogleCloudAiplatformV1beta1DeployedIndexRefResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1DeployedIndexRefResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // Immutable. A resource name of the IndexEndpoint.
@@ -5253,7 +5286,7 @@ func (o GoogleCloudAiplatformV1beta1ExplanationSpecResponseOutput) Parameters() 
 type GoogleCloudAiplatformV1beta1FeatureGroupBigQuery struct {
 	// Immutable. The BigQuery source URI that points to either a BigQuery Table or View.
 	BigQuerySource GoogleCloudAiplatformV1beta1BigQuerySource `pulumi:"bigQuerySource"`
-	// Optional. Columns to construct entity_id / row keys. Currently only supports 1 entity_id_column. If not provided defaults to `entity_id`.
+	// Optional. Columns to construct entity_id / row keys. If not provided defaults to `entity_id`.
 	EntityIdColumns []string `pulumi:"entityIdColumns"`
 }
 
@@ -5272,7 +5305,7 @@ type GoogleCloudAiplatformV1beta1FeatureGroupBigQueryInput interface {
 type GoogleCloudAiplatformV1beta1FeatureGroupBigQueryArgs struct {
 	// Immutable. The BigQuery source URI that points to either a BigQuery Table or View.
 	BigQuerySource GoogleCloudAiplatformV1beta1BigQuerySourceInput `pulumi:"bigQuerySource"`
-	// Optional. Columns to construct entity_id / row keys. Currently only supports 1 entity_id_column. If not provided defaults to `entity_id`.
+	// Optional. Columns to construct entity_id / row keys. If not provided defaults to `entity_id`.
 	EntityIdColumns pulumi.StringArrayInput `pulumi:"entityIdColumns"`
 }
 
@@ -5361,7 +5394,7 @@ func (o GoogleCloudAiplatformV1beta1FeatureGroupBigQueryOutput) BigQuerySource()
 	}).(GoogleCloudAiplatformV1beta1BigQuerySourceOutput)
 }
 
-// Optional. Columns to construct entity_id / row keys. Currently only supports 1 entity_id_column. If not provided defaults to `entity_id`.
+// Optional. Columns to construct entity_id / row keys. If not provided defaults to `entity_id`.
 func (o GoogleCloudAiplatformV1beta1FeatureGroupBigQueryOutput) EntityIdColumns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureGroupBigQuery) []string { return v.EntityIdColumns }).(pulumi.StringArrayOutput)
 }
@@ -5400,7 +5433,7 @@ func (o GoogleCloudAiplatformV1beta1FeatureGroupBigQueryPtrOutput) BigQuerySourc
 	}).(GoogleCloudAiplatformV1beta1BigQuerySourcePtrOutput)
 }
 
-// Optional. Columns to construct entity_id / row keys. Currently only supports 1 entity_id_column. If not provided defaults to `entity_id`.
+// Optional. Columns to construct entity_id / row keys. If not provided defaults to `entity_id`.
 func (o GoogleCloudAiplatformV1beta1FeatureGroupBigQueryPtrOutput) EntityIdColumns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1FeatureGroupBigQuery) []string {
 		if v == nil {
@@ -5414,7 +5447,7 @@ func (o GoogleCloudAiplatformV1beta1FeatureGroupBigQueryPtrOutput) EntityIdColum
 type GoogleCloudAiplatformV1beta1FeatureGroupBigQueryResponse struct {
 	// Immutable. The BigQuery source URI that points to either a BigQuery Table or View.
 	BigQuerySource GoogleCloudAiplatformV1beta1BigQuerySourceResponse `pulumi:"bigQuerySource"`
-	// Optional. Columns to construct entity_id / row keys. Currently only supports 1 entity_id_column. If not provided defaults to `entity_id`.
+	// Optional. Columns to construct entity_id / row keys. If not provided defaults to `entity_id`.
 	EntityIdColumns []string `pulumi:"entityIdColumns"`
 }
 
@@ -5440,7 +5473,7 @@ func (o GoogleCloudAiplatformV1beta1FeatureGroupBigQueryResponseOutput) BigQuery
 	}).(GoogleCloudAiplatformV1beta1BigQuerySourceResponseOutput)
 }
 
-// Optional. Columns to construct entity_id / row keys. Currently only supports 1 entity_id_column. If not provided defaults to `entity_id`.
+// Optional. Columns to construct entity_id / row keys. If not provided defaults to `entity_id`.
 func (o GoogleCloudAiplatformV1beta1FeatureGroupBigQueryResponseOutput) EntityIdColumns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureGroupBigQueryResponse) []string { return v.EntityIdColumns }).(pulumi.StringArrayOutput)
 }
@@ -6222,9 +6255,9 @@ func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableResponseOutput) Au
 	}).(GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScalingResponseOutput)
 }
 
-// The dedicated serving endpoint for this FeatureOnlineStore. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+// The dedicated serving endpoint for this FeatureOnlineStore. Only need to set when you choose Optimized storage type. Public endpoint is provisioned by default.
 type GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint struct {
-	// Optional. Private service connect config. If PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
+	// Optional. Private service connect config. The private service connection is available only for Optimized storage type, not for embedding management now. If PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
 	PrivateServiceConnectConfig *GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig `pulumi:"privateServiceConnectConfig"`
 }
 
@@ -6239,9 +6272,9 @@ type GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointInput
 	ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointOutput
 }
 
-// The dedicated serving endpoint for this FeatureOnlineStore. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+// The dedicated serving endpoint for this FeatureOnlineStore. Only need to set when you choose Optimized storage type. Public endpoint is provisioned by default.
 type GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointArgs struct {
-	// Optional. Private service connect config. If PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
+	// Optional. Private service connect config. The private service connection is available only for Optimized storage type, not for embedding management now. If PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
 	PrivateServiceConnectConfig GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigPtrInput `pulumi:"privateServiceConnectConfig"`
 }
 
@@ -6298,7 +6331,7 @@ func (i *googleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointP
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointPtrOutput)
 }
 
-// The dedicated serving endpoint for this FeatureOnlineStore. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+// The dedicated serving endpoint for this FeatureOnlineStore. Only need to set when you choose Optimized storage type. Public endpoint is provisioned by default.
 type GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointOutput) ElementType() reflect.Type {
@@ -6323,7 +6356,7 @@ func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointOu
 	}).(GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointPtrOutput)
 }
 
-// Optional. Private service connect config. If PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
+// Optional. Private service connect config. The private service connection is available only for Optimized storage type, not for embedding management now. If PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
 func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointOutput) PrivateServiceConnectConfig() GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint) *GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig {
 		return v.PrivateServiceConnectConfig
@@ -6354,7 +6387,7 @@ func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointPt
 	}).(GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointOutput)
 }
 
-// Optional. Private service connect config. If PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
+// Optional. Private service connect config. The private service connection is available only for Optimized storage type, not for embedding management now. If PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
 func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointPtrOutput) PrivateServiceConnectConfig() GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint) *GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig {
 		if v == nil {
@@ -6364,9 +6397,9 @@ func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointPt
 	}).(GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigPtrOutput)
 }
 
-// The dedicated serving endpoint for this FeatureOnlineStore. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+// The dedicated serving endpoint for this FeatureOnlineStore. Only need to set when you choose Optimized storage type. Public endpoint is provisioned by default.
 type GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse struct {
-	// Optional. Private service connect config. If PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
+	// Optional. Private service connect config. The private service connection is available only for Optimized storage type, not for embedding management now. If PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
 	PrivateServiceConnectConfig GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponse `pulumi:"privateServiceConnectConfig"`
 	// This field will be populated with the domain name to use for this FeatureOnlineStore
 	PublicEndpointDomainName string `pulumi:"publicEndpointDomainName"`
@@ -6374,7 +6407,7 @@ type GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointRespo
 	ServiceAttachment string `pulumi:"serviceAttachment"`
 }
 
-// The dedicated serving endpoint for this FeatureOnlineStore. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+// The dedicated serving endpoint for this FeatureOnlineStore. Only need to set when you choose Optimized storage type. Public endpoint is provisioned by default.
 type GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponseOutput) ElementType() reflect.Type {
@@ -6389,7 +6422,7 @@ func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointRe
 	return o
 }
 
-// Optional. Private service connect config. If PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
+// Optional. Private service connect config. The private service connection is available only for Optimized storage type, not for embedding management now. If PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
 func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponseOutput) PrivateServiceConnectConfig() GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse) GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponse {
 		return v.PrivateServiceConnectConfig
@@ -6410,7 +6443,7 @@ func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointRe
 	}).(pulumi.StringOutput)
 }
 
-// Contains settings for embedding management.
+// Deprecated: This sub message is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type. Contains settings for embedding management.
 type GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement struct {
 	// Optional. Immutable. Whether to enable embedding management in this FeatureOnlineStore. It's immutable after creation to ensure the FeatureOnlineStore availability.
 	Enabled *bool `pulumi:"enabled"`
@@ -6427,7 +6460,7 @@ type GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementInput inte
 	ToGoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementOutput
 }
 
-// Contains settings for embedding management.
+// Deprecated: This sub message is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type. Contains settings for embedding management.
 type GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementArgs struct {
 	// Optional. Immutable. Whether to enable embedding management in this FeatureOnlineStore. It's immutable after creation to ensure the FeatureOnlineStore availability.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -6486,7 +6519,7 @@ func (i *googleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementPtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementPtrOutput)
 }
 
-// Contains settings for embedding management.
+// Deprecated: This sub message is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type. Contains settings for embedding management.
 type GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementOutput) ElementType() reflect.Type {
@@ -6550,13 +6583,13 @@ func (o GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Contains settings for embedding management.
+// Deprecated: This sub message is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type. Contains settings for embedding management.
 type GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse struct {
 	// Optional. Immutable. Whether to enable embedding management in this FeatureOnlineStore. It's immutable after creation to ensure the FeatureOnlineStore availability.
 	Enabled bool `pulumi:"enabled"`
 }
 
-// Contains settings for embedding management.
+// Deprecated: This sub message is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type. Contains settings for embedding management.
 type GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponseOutput) ElementType() reflect.Type {
@@ -7110,7 +7143,7 @@ func (o GoogleCloudAiplatformV1beta1FeatureStatsAnomalyResponseArrayOutput) Inde
 }
 
 type GoogleCloudAiplatformV1beta1FeatureViewBigQuerySource struct {
-	// Columns to construct entity_id / row keys. Start by supporting 1 only.
+	// Columns to construct entity_id / row keys.
 	EntityIdColumns []string `pulumi:"entityIdColumns"`
 	// The BigQuery view URI that will be materialized on each sync trigger based on FeatureView.SyncConfig.
 	Uri string `pulumi:"uri"`
@@ -7128,7 +7161,7 @@ type GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceInput interface {
 }
 
 type GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceArgs struct {
-	// Columns to construct entity_id / row keys. Start by supporting 1 only.
+	// Columns to construct entity_id / row keys.
 	EntityIdColumns pulumi.StringArrayInput `pulumi:"entityIdColumns"`
 	// The BigQuery view URI that will be materialized on each sync trigger based on FeatureView.SyncConfig.
 	Uri pulumi.StringInput `pulumi:"uri"`
@@ -7211,7 +7244,7 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceOutput) ToGoogleClo
 	}).(GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourcePtrOutput)
 }
 
-// Columns to construct entity_id / row keys. Start by supporting 1 only.
+// Columns to construct entity_id / row keys.
 func (o GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceOutput) EntityIdColumns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewBigQuerySource) []string { return v.EntityIdColumns }).(pulumi.StringArrayOutput)
 }
@@ -7245,7 +7278,7 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourcePtrOutput) Elem() G
 	}).(GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceOutput)
 }
 
-// Columns to construct entity_id / row keys. Start by supporting 1 only.
+// Columns to construct entity_id / row keys.
 func (o GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourcePtrOutput) EntityIdColumns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1FeatureViewBigQuerySource) []string {
 		if v == nil {
@@ -7266,7 +7299,7 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourcePtrOutput) Uri() pu
 }
 
 type GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponse struct {
-	// Columns to construct entity_id / row keys. Start by supporting 1 only.
+	// Columns to construct entity_id / row keys.
 	EntityIdColumns []string `pulumi:"entityIdColumns"`
 	// The BigQuery view URI that will be materialized on each sync trigger based on FeatureView.SyncConfig.
 	Uri string `pulumi:"uri"`
@@ -7286,7 +7319,7 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponseOutput) ToG
 	return o
 }
 
-// Columns to construct entity_id / row keys. Start by supporting 1 only.
+// Columns to construct entity_id / row keys.
 func (o GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponseOutput) EntityIdColumns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponse) []string {
 		return v.EntityIdColumns
@@ -7302,6 +7335,8 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponseOutput) Uri
 type GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySource struct {
 	// List of features that need to be synced to Online Store.
 	FeatureGroups []GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup `pulumi:"featureGroups"`
+	// Optional. The project number of the parent project of the Feature Groups.
+	ProjectNumber *string `pulumi:"projectNumber"`
 }
 
 // GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceInput is an input type that accepts GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceArgs and GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceOutput values.
@@ -7319,6 +7354,8 @@ type GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceInput interface
 type GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceArgs struct {
 	// List of features that need to be synced to Online Store.
 	FeatureGroups GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupArrayInput `pulumi:"featureGroups"`
+	// Optional. The project number of the parent project of the Feature Groups.
+	ProjectNumber pulumi.StringPtrInput `pulumi:"projectNumber"`
 }
 
 func (GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceArgs) ElementType() reflect.Type {
@@ -7406,6 +7443,11 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceOutput) Feat
 	}).(GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupArrayOutput)
 }
 
+// Optional. The project number of the parent project of the Feature Groups.
+func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceOutput) ProjectNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySource) *string { return v.ProjectNumber }).(pulumi.StringPtrOutput)
+}
+
 type GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourcePtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourcePtrOutput) ElementType() reflect.Type {
@@ -7438,6 +7480,16 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourcePtrOutput) F
 		}
 		return v.FeatureGroups
 	}).(GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupArrayOutput)
+}
+
+// Optional. The project number of the parent project of the Feature Groups.
+func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourcePtrOutput) ProjectNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectNumber
+	}).(pulumi.StringPtrOutput)
 }
 
 // Features belonging to a single feature group that will be synced to Online Store.
@@ -7614,6 +7666,8 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup
 type GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponse struct {
 	// List of features that need to be synced to Online Store.
 	FeatureGroups []GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupResponse `pulumi:"featureGroups"`
+	// Optional. The project number of the parent project of the Feature Groups.
+	ProjectNumber string `pulumi:"projectNumber"`
 }
 
 // A Feature Registry source for features that need to be synced to Online Store.
@@ -7638,6 +7692,658 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponseOutp
 	}).(GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupResponseArrayOutput)
 }
 
+// Optional. The project number of the parent project of the Feature Groups.
+func (o GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponseOutput) ProjectNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponse) string {
+		return v.ProjectNumber
+	}).(pulumi.StringOutput)
+}
+
+// Configuration for vector indexing.
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfig struct {
+	// Optional. Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
+	BruteForceConfig *GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfig `pulumi:"bruteForceConfig"`
+	// Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by FeatureOnlineStoreService.SearchNearestEntities to diversify search results. If NearestNeighborQuery.per_crowding_attribute_neighbor_count is set to K in SearchNearestEntitiesRequest, it's guaranteed that no more than K entities of the same crowding attribute are returned in the response.
+	CrowdingColumn *string `pulumi:"crowdingColumn"`
+	// Optional. The distance measure used in nearest neighbor search.
+	DistanceMeasureType *GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType `pulumi:"distanceMeasureType"`
+	// Optional. Column of embedding. This column contains the source data to create index for vector search. embedding_column must be set when using vector search.
+	EmbeddingColumn *string `pulumi:"embeddingColumn"`
+	// Optional. The number of dimensions of the input embedding.
+	EmbeddingDimension *int `pulumi:"embeddingDimension"`
+	// Optional. Columns of features that're used to filter vector search results.
+	FilterColumns []string `pulumi:"filterColumns"`
+	// Optional. Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+	TreeAhConfig *GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfig `pulumi:"treeAhConfig"`
+}
+
+// GoogleCloudAiplatformV1beta1FeatureViewIndexConfigInput is an input type that accepts GoogleCloudAiplatformV1beta1FeatureViewIndexConfigArgs and GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1FeatureViewIndexConfigInput` via:
+//
+//	GoogleCloudAiplatformV1beta1FeatureViewIndexConfigArgs{...}
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput
+	ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput
+}
+
+// Configuration for vector indexing.
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigArgs struct {
+	// Optional. Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
+	BruteForceConfig GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrInput `pulumi:"bruteForceConfig"`
+	// Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by FeatureOnlineStoreService.SearchNearestEntities to diversify search results. If NearestNeighborQuery.per_crowding_attribute_neighbor_count is set to K in SearchNearestEntitiesRequest, it's guaranteed that no more than K entities of the same crowding attribute are returned in the response.
+	CrowdingColumn pulumi.StringPtrInput `pulumi:"crowdingColumn"`
+	// Optional. The distance measure used in nearest neighbor search.
+	DistanceMeasureType GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrInput `pulumi:"distanceMeasureType"`
+	// Optional. Column of embedding. This column contains the source data to create index for vector search. embedding_column must be set when using vector search.
+	EmbeddingColumn pulumi.StringPtrInput `pulumi:"embeddingColumn"`
+	// Optional. The number of dimensions of the input embedding.
+	EmbeddingDimension pulumi.IntPtrInput `pulumi:"embeddingDimension"`
+	// Optional. Columns of features that're used to filter vector search results.
+	FilterColumns pulumi.StringArrayInput `pulumi:"filterColumns"`
+	// Optional. Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+	TreeAhConfig GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrInput `pulumi:"treeAhConfig"`
+}
+
+func (GoogleCloudAiplatformV1beta1FeatureViewIndexConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewIndexConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudAiplatformV1beta1FeatureViewIndexConfigArgs) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput {
+	return i.ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1beta1FeatureViewIndexConfigArgs) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput)
+}
+
+func (i GoogleCloudAiplatformV1beta1FeatureViewIndexConfigArgs) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput {
+	return i.ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1beta1FeatureViewIndexConfigArgs) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput).ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrInput is an input type that accepts GoogleCloudAiplatformV1beta1FeatureViewIndexConfigArgs, GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtr and GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrInput` via:
+//
+//	        GoogleCloudAiplatformV1beta1FeatureViewIndexConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput
+	ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput
+}
+
+type googleCloudAiplatformV1beta1FeatureViewIndexConfigPtrType GoogleCloudAiplatformV1beta1FeatureViewIndexConfigArgs
+
+func GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtr(v *GoogleCloudAiplatformV1beta1FeatureViewIndexConfigArgs) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrInput {
+	return (*googleCloudAiplatformV1beta1FeatureViewIndexConfigPtrType)(v)
+}
+
+func (*googleCloudAiplatformV1beta1FeatureViewIndexConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1beta1FeatureViewIndexConfig)(nil)).Elem()
+}
+
+func (i *googleCloudAiplatformV1beta1FeatureViewIndexConfigPtrType) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput {
+	return i.ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudAiplatformV1beta1FeatureViewIndexConfigPtrType) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput)
+}
+
+// Configuration for vector indexing.
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewIndexConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput {
+	return o.ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1FeatureViewIndexConfig) *GoogleCloudAiplatformV1beta1FeatureViewIndexConfig {
+		return &v
+	}).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput)
+}
+
+// Optional. Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput) BruteForceConfig() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewIndexConfig) *GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfig {
+		return v.BruteForceConfig
+	}).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput)
+}
+
+// Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by FeatureOnlineStoreService.SearchNearestEntities to diversify search results. If NearestNeighborQuery.per_crowding_attribute_neighbor_count is set to K in SearchNearestEntitiesRequest, it's guaranteed that no more than K entities of the same crowding attribute are returned in the response.
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput) CrowdingColumn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewIndexConfig) *string { return v.CrowdingColumn }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The distance measure used in nearest neighbor search.
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput) DistanceMeasureType() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewIndexConfig) *GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType {
+		return v.DistanceMeasureType
+	}).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput)
+}
+
+// Optional. Column of embedding. This column contains the source data to create index for vector search. embedding_column must be set when using vector search.
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput) EmbeddingColumn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewIndexConfig) *string { return v.EmbeddingColumn }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The number of dimensions of the input embedding.
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput) EmbeddingDimension() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewIndexConfig) *int { return v.EmbeddingDimension }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Columns of features that're used to filter vector search results.
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput) FilterColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewIndexConfig) []string { return v.FilterColumns }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput) TreeAhConfig() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewIndexConfig) *GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfig {
+		return v.TreeAhConfig
+	}).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput)
+}
+
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1beta1FeatureViewIndexConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1FeatureViewIndexConfig) GoogleCloudAiplatformV1beta1FeatureViewIndexConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAiplatformV1beta1FeatureViewIndexConfig
+		return ret
+	}).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput)
+}
+
+// Optional. Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput) BruteForceConfig() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1FeatureViewIndexConfig) *GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.BruteForceConfig
+	}).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput)
+}
+
+// Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by FeatureOnlineStoreService.SearchNearestEntities to diversify search results. If NearestNeighborQuery.per_crowding_attribute_neighbor_count is set to K in SearchNearestEntitiesRequest, it's guaranteed that no more than K entities of the same crowding attribute are returned in the response.
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput) CrowdingColumn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1FeatureViewIndexConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CrowdingColumn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The distance measure used in nearest neighbor search.
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput) DistanceMeasureType() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1FeatureViewIndexConfig) *GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureType {
+		if v == nil {
+			return nil
+		}
+		return v.DistanceMeasureType
+	}).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigDistanceMeasureTypePtrOutput)
+}
+
+// Optional. Column of embedding. This column contains the source data to create index for vector search. embedding_column must be set when using vector search.
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput) EmbeddingColumn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1FeatureViewIndexConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmbeddingColumn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The number of dimensions of the input embedding.
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput) EmbeddingDimension() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1FeatureViewIndexConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EmbeddingDimension
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Columns of features that're used to filter vector search results.
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput) FilterColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1FeatureViewIndexConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FilterColumns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput) TreeAhConfig() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1FeatureViewIndexConfig) *GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfig {
+		if v == nil {
+			return nil
+		}
+		return v.TreeAhConfig
+	}).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput)
+}
+
+// Configuration options for using brute force search.
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfig struct {
+}
+
+// GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigInput is an input type that accepts GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigArgs and GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigInput` via:
+//
+//	GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigArgs{...}
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutput
+	ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutput
+}
+
+// Configuration options for using brute force search.
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigArgs struct {
+}
+
+func (GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigArgs) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutput {
+	return i.ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigArgs) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutput)
+}
+
+func (i GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigArgs) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput {
+	return i.ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigArgs) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutput).ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrInput is an input type that accepts GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigArgs, GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtr and GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrInput` via:
+//
+//	        GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput
+	ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput
+}
+
+type googleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrType GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigArgs
+
+func GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtr(v *GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigArgs) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrInput {
+	return (*googleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrType)(v)
+}
+
+func (*googleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfig)(nil)).Elem()
+}
+
+func (i *googleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrType) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput {
+	return i.ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrType) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput)
+}
+
+// Configuration options for using brute force search.
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput {
+	return o.ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfig) *GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfig {
+		return &v
+	}).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput)
+}
+
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfig) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfig
+		return ret
+	}).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutput)
+}
+
+// Configuration options for using brute force search.
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigResponse struct {
+}
+
+// Configuration options for using brute force search.
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigResponseOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigResponseOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigResponseOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigResponseOutput {
+	return o
+}
+
+// Configuration for vector indexing.
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponse struct {
+	// Optional. Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
+	BruteForceConfig GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigResponse `pulumi:"bruteForceConfig"`
+	// Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by FeatureOnlineStoreService.SearchNearestEntities to diversify search results. If NearestNeighborQuery.per_crowding_attribute_neighbor_count is set to K in SearchNearestEntitiesRequest, it's guaranteed that no more than K entities of the same crowding attribute are returned in the response.
+	CrowdingColumn string `pulumi:"crowdingColumn"`
+	// Optional. The distance measure used in nearest neighbor search.
+	DistanceMeasureType string `pulumi:"distanceMeasureType"`
+	// Optional. Column of embedding. This column contains the source data to create index for vector search. embedding_column must be set when using vector search.
+	EmbeddingColumn string `pulumi:"embeddingColumn"`
+	// Optional. The number of dimensions of the input embedding.
+	EmbeddingDimension int `pulumi:"embeddingDimension"`
+	// Optional. Columns of features that're used to filter vector search results.
+	FilterColumns []string `pulumi:"filterColumns"`
+	// Optional. Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+	TreeAhConfig GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponse `pulumi:"treeAhConfig"`
+}
+
+// Configuration for vector indexing.
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponseOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponseOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponseOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponseOutput {
+	return o
+}
+
+// Optional. Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponseOutput) BruteForceConfig() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponse) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigResponse {
+		return v.BruteForceConfig
+	}).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigResponseOutput)
+}
+
+// Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by FeatureOnlineStoreService.SearchNearestEntities to diversify search results. If NearestNeighborQuery.per_crowding_attribute_neighbor_count is set to K in SearchNearestEntitiesRequest, it's guaranteed that no more than K entities of the same crowding attribute are returned in the response.
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponseOutput) CrowdingColumn() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponse) string { return v.CrowdingColumn }).(pulumi.StringOutput)
+}
+
+// Optional. The distance measure used in nearest neighbor search.
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponseOutput) DistanceMeasureType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponse) string {
+		return v.DistanceMeasureType
+	}).(pulumi.StringOutput)
+}
+
+// Optional. Column of embedding. This column contains the source data to create index for vector search. embedding_column must be set when using vector search.
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponseOutput) EmbeddingColumn() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponse) string { return v.EmbeddingColumn }).(pulumi.StringOutput)
+}
+
+// Optional. The number of dimensions of the input embedding.
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponseOutput) EmbeddingDimension() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponse) int { return v.EmbeddingDimension }).(pulumi.IntOutput)
+}
+
+// Optional. Columns of features that're used to filter vector search results.
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponseOutput) FilterColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponse) []string { return v.FilterColumns }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponseOutput) TreeAhConfig() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponse) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponse {
+		return v.TreeAhConfig
+	}).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponseOutput)
+}
+
+// Configuration options for the tree-AH algorithm.
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfig struct {
+	// Optional. Number of embeddings on each leaf node. The default value is 1000 if not set.
+	LeafNodeEmbeddingCount *string `pulumi:"leafNodeEmbeddingCount"`
+}
+
+// GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigInput is an input type that accepts GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigArgs and GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigInput` via:
+//
+//	GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigArgs{...}
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutput
+	ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutput
+}
+
+// Configuration options for the tree-AH algorithm.
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigArgs struct {
+	// Optional. Number of embeddings on each leaf node. The default value is 1000 if not set.
+	LeafNodeEmbeddingCount pulumi.StringPtrInput `pulumi:"leafNodeEmbeddingCount"`
+}
+
+func (GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigArgs) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutput {
+	return i.ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigArgs) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutput)
+}
+
+func (i GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigArgs) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput {
+	return i.ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigArgs) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutput).ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrInput is an input type that accepts GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigArgs, GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtr and GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrInput` via:
+//
+//	        GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput
+	ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput
+}
+
+type googleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrType GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigArgs
+
+func GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtr(v *GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigArgs) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrInput {
+	return (*googleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrType)(v)
+}
+
+func (*googleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfig)(nil)).Elem()
+}
+
+func (i *googleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrType) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput {
+	return i.ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrType) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput)
+}
+
+// Configuration options for the tree-AH algorithm.
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput {
+	return o.ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfig) *GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfig {
+		return &v
+	}).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput)
+}
+
+// Optional. Number of embeddings on each leaf node. The default value is 1000 if not set.
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutput) LeafNodeEmbeddingCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfig) *string {
+		return v.LeafNodeEmbeddingCount
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfig) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfig
+		return ret
+	}).(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutput)
+}
+
+// Optional. Number of embeddings on each leaf node. The default value is 1000 if not set.
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput) LeafNodeEmbeddingCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LeafNodeEmbeddingCount
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration options for the tree-AH algorithm.
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponse struct {
+	// Optional. Number of embeddings on each leaf node. The default value is 1000 if not set.
+	LeafNodeEmbeddingCount string `pulumi:"leafNodeEmbeddingCount"`
+}
+
+// Configuration options for the tree-AH algorithm.
+type GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponseOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponseOutput() GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponseOutput) ToGoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponseOutput {
+	return o
+}
+
+// Optional. Number of embeddings on each leaf node. The default value is 1000 if not set.
+func (o GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponseOutput) LeafNodeEmbeddingCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponse) string {
+		return v.LeafNodeEmbeddingCount
+	}).(pulumi.StringOutput)
+}
+
+// Configuration for Sync. Only one option is set.
 type GoogleCloudAiplatformV1beta1FeatureViewSyncConfig struct {
 	// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
 	Cron *string `pulumi:"cron"`
@@ -7654,6 +8360,7 @@ type GoogleCloudAiplatformV1beta1FeatureViewSyncConfigInput interface {
 	ToGoogleCloudAiplatformV1beta1FeatureViewSyncConfigOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1FeatureViewSyncConfigOutput
 }
 
+// Configuration for Sync. Only one option is set.
 type GoogleCloudAiplatformV1beta1FeatureViewSyncConfigArgs struct {
 	// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
 	Cron pulumi.StringPtrInput `pulumi:"cron"`
@@ -7712,6 +8419,7 @@ func (i *googleCloudAiplatformV1beta1FeatureViewSyncConfigPtrType) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewSyncConfigPtrOutput)
 }
 
+// Configuration for Sync. Only one option is set.
 type GoogleCloudAiplatformV1beta1FeatureViewSyncConfigOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAiplatformV1beta1FeatureViewSyncConfigOutput) ElementType() reflect.Type {
@@ -7775,11 +8483,13 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewSyncConfigPtrOutput) Cron() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+// Configuration for Sync. Only one option is set.
 type GoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponse struct {
 	// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
 	Cron string `pulumi:"cron"`
 }
 
+// Configuration for Sync. Only one option is set.
 type GoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponseOutput) ElementType() reflect.Type {
@@ -7799,11 +8509,11 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponseOutput) Cron() 
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponse) string { return v.Cron }).(pulumi.StringOutput)
 }
 
-// Configuration for vector search.
+// Deprecated. Use IndexConfig instead.
 type GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfig struct {
 	// Optional. Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
 	BruteForceConfig *GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfig `pulumi:"bruteForceConfig"`
-	// Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by nearest neighbor search requiring that no more than some value k' of the k neighbors returned have the same value of crowding_attribute.
+	// Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by FeatureOnlineStoreService.SearchNearestEntities to diversify search results. If NearestNeighborQuery.per_crowding_attribute_neighbor_count is set to K in SearchNearestEntitiesRequest, it's guaranteed that no more than K entities of the same crowding attribute are returned in the response.
 	CrowdingColumn *string `pulumi:"crowdingColumn"`
 	// Optional. The distance measure used in nearest neighbor search.
 	DistanceMeasureType *GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureType `pulumi:"distanceMeasureType"`
@@ -7828,11 +8538,11 @@ type GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigInput interface {
 	ToGoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigOutput
 }
 
-// Configuration for vector search.
+// Deprecated. Use IndexConfig instead.
 type GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigArgs struct {
 	// Optional. Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
 	BruteForceConfig GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigPtrInput `pulumi:"bruteForceConfig"`
-	// Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by nearest neighbor search requiring that no more than some value k' of the k neighbors returned have the same value of crowding_attribute.
+	// Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by FeatureOnlineStoreService.SearchNearestEntities to diversify search results. If NearestNeighborQuery.per_crowding_attribute_neighbor_count is set to K in SearchNearestEntitiesRequest, it's guaranteed that no more than K entities of the same crowding attribute are returned in the response.
 	CrowdingColumn pulumi.StringPtrInput `pulumi:"crowdingColumn"`
 	// Optional. The distance measure used in nearest neighbor search.
 	DistanceMeasureType GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigDistanceMeasureTypePtrInput `pulumi:"distanceMeasureType"`
@@ -7899,7 +8609,7 @@ func (i *googleCloudAiplatformV1beta1FeatureViewVectorSearchConfigPtrType) ToGoo
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigPtrOutput)
 }
 
-// Configuration for vector search.
+// Deprecated. Use IndexConfig instead.
 type GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigOutput) ElementType() reflect.Type {
@@ -7931,7 +8641,7 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigOutput) BruteFo
 	}).(GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigPtrOutput)
 }
 
-// Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by nearest neighbor search requiring that no more than some value k' of the k neighbors returned have the same value of crowding_attribute.
+// Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by FeatureOnlineStoreService.SearchNearestEntities to diversify search results. If NearestNeighborQuery.per_crowding_attribute_neighbor_count is set to K in SearchNearestEntitiesRequest, it's guaranteed that no more than K entities of the same crowding attribute are returned in the response.
 func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigOutput) CrowdingColumn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfig) *string { return v.CrowdingColumn }).(pulumi.StringPtrOutput)
 }
@@ -7999,7 +8709,7 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigPtrOutput) Brut
 	}).(GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigPtrOutput)
 }
 
-// Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by nearest neighbor search requiring that no more than some value k' of the k neighbors returned have the same value of crowding_attribute.
+// Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by FeatureOnlineStoreService.SearchNearestEntities to diversify search results. If NearestNeighborQuery.per_crowding_attribute_neighbor_count is set to K in SearchNearestEntitiesRequest, it's guaranteed that no more than K entities of the same crowding attribute are returned in the response.
 func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigPtrOutput) CrowdingColumn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfig) *string {
 		if v == nil {
@@ -8194,11 +8904,11 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfi
 	return o
 }
 
-// Configuration for vector search.
+// Deprecated. Use IndexConfig instead.
 type GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponse struct {
 	// Optional. Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
 	BruteForceConfig GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigResponse `pulumi:"bruteForceConfig"`
-	// Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by nearest neighbor search requiring that no more than some value k' of the k neighbors returned have the same value of crowding_attribute.
+	// Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by FeatureOnlineStoreService.SearchNearestEntities to diversify search results. If NearestNeighborQuery.per_crowding_attribute_neighbor_count is set to K in SearchNearestEntitiesRequest, it's guaranteed that no more than K entities of the same crowding attribute are returned in the response.
 	CrowdingColumn string `pulumi:"crowdingColumn"`
 	// Optional. The distance measure used in nearest neighbor search.
 	DistanceMeasureType string `pulumi:"distanceMeasureType"`
@@ -8212,7 +8922,7 @@ type GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponse struct {
 	TreeAhConfig GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfigResponse `pulumi:"treeAhConfig"`
 }
 
-// Configuration for vector search.
+// Deprecated. Use IndexConfig instead.
 type GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponseOutput) ElementType() reflect.Type {
@@ -8234,7 +8944,7 @@ func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponseOutput)
 	}).(GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigBruteForceConfigResponseOutput)
 }
 
-// Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by nearest neighbor search requiring that no more than some value k' of the k neighbors returned have the same value of crowding_attribute.
+// Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by FeatureOnlineStoreService.SearchNearestEntities to diversify search results. If NearestNeighborQuery.per_crowding_attribute_neighbor_count is set to K in SearchNearestEntitiesRequest, it's guaranteed that no more than K entities of the same crowding attribute are returned in the response.
 func (o GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponseOutput) CrowdingColumn() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponse) string {
 		return v.CrowdingColumn
@@ -10523,10 +11233,178 @@ func (o GoogleCloudAiplatformV1beta1GcsSourceResponseOutput) Uris() pulumi.Strin
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1GcsSourceResponse) []string { return v.Uris }).(pulumi.StringArrayOutput)
 }
 
+// Contains information about the source of the models generated from Generative AI Studio.
+type GoogleCloudAiplatformV1beta1GenieSource struct {
+	// The public base model URI.
+	BaseModelUri string `pulumi:"baseModelUri"`
+}
+
+// GoogleCloudAiplatformV1beta1GenieSourceInput is an input type that accepts GoogleCloudAiplatformV1beta1GenieSourceArgs and GoogleCloudAiplatformV1beta1GenieSourceOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1GenieSourceInput` via:
+//
+//	GoogleCloudAiplatformV1beta1GenieSourceArgs{...}
+type GoogleCloudAiplatformV1beta1GenieSourceInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1beta1GenieSourceOutput() GoogleCloudAiplatformV1beta1GenieSourceOutput
+	ToGoogleCloudAiplatformV1beta1GenieSourceOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1GenieSourceOutput
+}
+
+// Contains information about the source of the models generated from Generative AI Studio.
+type GoogleCloudAiplatformV1beta1GenieSourceArgs struct {
+	// The public base model URI.
+	BaseModelUri pulumi.StringInput `pulumi:"baseModelUri"`
+}
+
+func (GoogleCloudAiplatformV1beta1GenieSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1GenieSource)(nil)).Elem()
+}
+
+func (i GoogleCloudAiplatformV1beta1GenieSourceArgs) ToGoogleCloudAiplatformV1beta1GenieSourceOutput() GoogleCloudAiplatformV1beta1GenieSourceOutput {
+	return i.ToGoogleCloudAiplatformV1beta1GenieSourceOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1beta1GenieSourceArgs) ToGoogleCloudAiplatformV1beta1GenieSourceOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1GenieSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1GenieSourceOutput)
+}
+
+func (i GoogleCloudAiplatformV1beta1GenieSourceArgs) ToGoogleCloudAiplatformV1beta1GenieSourcePtrOutput() GoogleCloudAiplatformV1beta1GenieSourcePtrOutput {
+	return i.ToGoogleCloudAiplatformV1beta1GenieSourcePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1beta1GenieSourceArgs) ToGoogleCloudAiplatformV1beta1GenieSourcePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1GenieSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1GenieSourceOutput).ToGoogleCloudAiplatformV1beta1GenieSourcePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudAiplatformV1beta1GenieSourcePtrInput is an input type that accepts GoogleCloudAiplatformV1beta1GenieSourceArgs, GoogleCloudAiplatformV1beta1GenieSourcePtr and GoogleCloudAiplatformV1beta1GenieSourcePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1GenieSourcePtrInput` via:
+//
+//	        GoogleCloudAiplatformV1beta1GenieSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudAiplatformV1beta1GenieSourcePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1beta1GenieSourcePtrOutput() GoogleCloudAiplatformV1beta1GenieSourcePtrOutput
+	ToGoogleCloudAiplatformV1beta1GenieSourcePtrOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1GenieSourcePtrOutput
+}
+
+type googleCloudAiplatformV1beta1GenieSourcePtrType GoogleCloudAiplatformV1beta1GenieSourceArgs
+
+func GoogleCloudAiplatformV1beta1GenieSourcePtr(v *GoogleCloudAiplatformV1beta1GenieSourceArgs) GoogleCloudAiplatformV1beta1GenieSourcePtrInput {
+	return (*googleCloudAiplatformV1beta1GenieSourcePtrType)(v)
+}
+
+func (*googleCloudAiplatformV1beta1GenieSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1beta1GenieSource)(nil)).Elem()
+}
+
+func (i *googleCloudAiplatformV1beta1GenieSourcePtrType) ToGoogleCloudAiplatformV1beta1GenieSourcePtrOutput() GoogleCloudAiplatformV1beta1GenieSourcePtrOutput {
+	return i.ToGoogleCloudAiplatformV1beta1GenieSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudAiplatformV1beta1GenieSourcePtrType) ToGoogleCloudAiplatformV1beta1GenieSourcePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1GenieSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1GenieSourcePtrOutput)
+}
+
+// Contains information about the source of the models generated from Generative AI Studio.
+type GoogleCloudAiplatformV1beta1GenieSourceOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1GenieSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1GenieSource)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1GenieSourceOutput) ToGoogleCloudAiplatformV1beta1GenieSourceOutput() GoogleCloudAiplatformV1beta1GenieSourceOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1GenieSourceOutput) ToGoogleCloudAiplatformV1beta1GenieSourceOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1GenieSourceOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1GenieSourceOutput) ToGoogleCloudAiplatformV1beta1GenieSourcePtrOutput() GoogleCloudAiplatformV1beta1GenieSourcePtrOutput {
+	return o.ToGoogleCloudAiplatformV1beta1GenieSourcePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1beta1GenieSourceOutput) ToGoogleCloudAiplatformV1beta1GenieSourcePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1GenieSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1GenieSource) *GoogleCloudAiplatformV1beta1GenieSource {
+		return &v
+	}).(GoogleCloudAiplatformV1beta1GenieSourcePtrOutput)
+}
+
+// The public base model URI.
+func (o GoogleCloudAiplatformV1beta1GenieSourceOutput) BaseModelUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1GenieSource) string { return v.BaseModelUri }).(pulumi.StringOutput)
+}
+
+type GoogleCloudAiplatformV1beta1GenieSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1GenieSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1beta1GenieSource)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1GenieSourcePtrOutput) ToGoogleCloudAiplatformV1beta1GenieSourcePtrOutput() GoogleCloudAiplatformV1beta1GenieSourcePtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1GenieSourcePtrOutput) ToGoogleCloudAiplatformV1beta1GenieSourcePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1GenieSourcePtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1GenieSourcePtrOutput) Elem() GoogleCloudAiplatformV1beta1GenieSourceOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1GenieSource) GoogleCloudAiplatformV1beta1GenieSource {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAiplatformV1beta1GenieSource
+		return ret
+	}).(GoogleCloudAiplatformV1beta1GenieSourceOutput)
+}
+
+// The public base model URI.
+func (o GoogleCloudAiplatformV1beta1GenieSourcePtrOutput) BaseModelUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1GenieSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BaseModelUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Contains information about the source of the models generated from Generative AI Studio.
+type GoogleCloudAiplatformV1beta1GenieSourceResponse struct {
+	// The public base model URI.
+	BaseModelUri string `pulumi:"baseModelUri"`
+}
+
+// Contains information about the source of the models generated from Generative AI Studio.
+type GoogleCloudAiplatformV1beta1GenieSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1GenieSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1GenieSourceResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1GenieSourceResponseOutput) ToGoogleCloudAiplatformV1beta1GenieSourceResponseOutput() GoogleCloudAiplatformV1beta1GenieSourceResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1GenieSourceResponseOutput) ToGoogleCloudAiplatformV1beta1GenieSourceResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1GenieSourceResponseOutput {
+	return o
+}
+
+// The public base model URI.
+func (o GoogleCloudAiplatformV1beta1GenieSourceResponseOutput) BaseModelUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1GenieSourceResponse) string { return v.BaseModelUri }).(pulumi.StringOutput)
+}
+
 // IndexPrivateEndpoints proto is used to provide paths for users to send requests via private endpoints (e.g. private service access, private service connect). To send request via private service access, use match_grpc_address. To send request via private service connect, use service_attachment.
 type GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponse struct {
 	// The ip address used to send match gRPC requests.
 	MatchGrpcAddress string `pulumi:"matchGrpcAddress"`
+	// PscAutomatedEndpoints is populated if private service connect is enabled if PscAutomatedConfig is set.
+	PscAutomatedEndpoints []GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponse `pulumi:"pscAutomatedEndpoints"`
 	// The name of the service attachment resource. Populated if private service connect is enabled.
 	ServiceAttachment string `pulumi:"serviceAttachment"`
 }
@@ -10549,6 +11427,13 @@ func (o GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponseOutput) ToGoogl
 // The ip address used to send match gRPC requests.
 func (o GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponseOutput) MatchGrpcAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponse) string { return v.MatchGrpcAddress }).(pulumi.StringOutput)
+}
+
+// PscAutomatedEndpoints is populated if private service connect is enabled if PscAutomatedConfig is set.
+func (o GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponseOutput) PscAutomatedEndpoints() GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponse) []GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponse {
+		return v.PscAutomatedEndpoints
+	}).(GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseArrayOutput)
 }
 
 // The name of the service attachment resource. Populated if private service connect is enabled.
@@ -11852,9 +12737,11 @@ func (o GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponseOutpu
 
 // A trained machine learning Model.
 type GoogleCloudAiplatformV1beta1Model struct {
-	// Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not present for AutoML Models or Large Models.
+	// Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not required for AutoML Models.
 	ArtifactUri *string `pulumi:"artifactUri"`
-	// Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not present for AutoML Models or Large Models.
+	// Optional. User input field to specify the base model source. Currently it only supports specifing the Model Garden models and Genie models.
+	BaseModelSource *GoogleCloudAiplatformV1beta1ModelBaseModelSource `pulumi:"baseModelSource"`
+	// Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not required for AutoML Models.
 	ContainerSpec *GoogleCloudAiplatformV1beta1ModelContainerSpec `pulumi:"containerSpec"`
 	// The description of the Model.
 	Description *string `pulumi:"description"`
@@ -11895,9 +12782,11 @@ type GoogleCloudAiplatformV1beta1ModelInput interface {
 
 // A trained machine learning Model.
 type GoogleCloudAiplatformV1beta1ModelArgs struct {
-	// Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not present for AutoML Models or Large Models.
+	// Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not required for AutoML Models.
 	ArtifactUri pulumi.StringPtrInput `pulumi:"artifactUri"`
-	// Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not present for AutoML Models or Large Models.
+	// Optional. User input field to specify the base model source. Currently it only supports specifing the Model Garden models and Genie models.
+	BaseModelSource GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrInput `pulumi:"baseModelSource"`
+	// Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not required for AutoML Models.
 	ContainerSpec GoogleCloudAiplatformV1beta1ModelContainerSpecPtrInput `pulumi:"containerSpec"`
 	// The description of the Model.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -12003,12 +12892,19 @@ func (o GoogleCloudAiplatformV1beta1ModelOutput) ToGoogleCloudAiplatformV1beta1M
 	}).(GoogleCloudAiplatformV1beta1ModelPtrOutput)
 }
 
-// Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not present for AutoML Models or Large Models.
+// Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not required for AutoML Models.
 func (o GoogleCloudAiplatformV1beta1ModelOutput) ArtifactUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1Model) *string { return v.ArtifactUri }).(pulumi.StringPtrOutput)
 }
 
-// Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not present for AutoML Models or Large Models.
+// Optional. User input field to specify the base model source. Currently it only supports specifing the Model Garden models and Genie models.
+func (o GoogleCloudAiplatformV1beta1ModelOutput) BaseModelSource() GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1Model) *GoogleCloudAiplatformV1beta1ModelBaseModelSource {
+		return v.BaseModelSource
+	}).(GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput)
+}
+
+// Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not required for AutoML Models.
 func (o GoogleCloudAiplatformV1beta1ModelOutput) ContainerSpec() GoogleCloudAiplatformV1beta1ModelContainerSpecPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1Model) *GoogleCloudAiplatformV1beta1ModelContainerSpec {
 		return v.ContainerSpec
@@ -12105,7 +13001,7 @@ func (o GoogleCloudAiplatformV1beta1ModelPtrOutput) Elem() GoogleCloudAiplatform
 	}).(GoogleCloudAiplatformV1beta1ModelOutput)
 }
 
-// Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not present for AutoML Models or Large Models.
+// Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not required for AutoML Models.
 func (o GoogleCloudAiplatformV1beta1ModelPtrOutput) ArtifactUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1Model) *string {
 		if v == nil {
@@ -12115,7 +13011,17 @@ func (o GoogleCloudAiplatformV1beta1ModelPtrOutput) ArtifactUri() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not present for AutoML Models or Large Models.
+// Optional. User input field to specify the base model source. Currently it only supports specifing the Model Garden models and Genie models.
+func (o GoogleCloudAiplatformV1beta1ModelPtrOutput) BaseModelSource() GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1Model) *GoogleCloudAiplatformV1beta1ModelBaseModelSource {
+		if v == nil {
+			return nil
+		}
+		return v.BaseModelSource
+	}).(GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput)
+}
+
+// Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not required for AutoML Models.
 func (o GoogleCloudAiplatformV1beta1ModelPtrOutput) ContainerSpec() GoogleCloudAiplatformV1beta1ModelContainerSpecPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1Model) *GoogleCloudAiplatformV1beta1ModelContainerSpec {
 		if v == nil {
@@ -12245,17 +13151,219 @@ func (o GoogleCloudAiplatformV1beta1ModelPtrOutput) VersionDescription() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// User input field to specify the base model source. Currently it only supports specifing the Model Garden models and Genie models.
+type GoogleCloudAiplatformV1beta1ModelBaseModelSource struct {
+	// Information about the base model of Genie models.
+	GenieSource *GoogleCloudAiplatformV1beta1GenieSource `pulumi:"genieSource"`
+	// Source information of Model Garden models.
+	ModelGardenSource *GoogleCloudAiplatformV1beta1ModelGardenSource `pulumi:"modelGardenSource"`
+}
+
+// GoogleCloudAiplatformV1beta1ModelBaseModelSourceInput is an input type that accepts GoogleCloudAiplatformV1beta1ModelBaseModelSourceArgs and GoogleCloudAiplatformV1beta1ModelBaseModelSourceOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1ModelBaseModelSourceInput` via:
+//
+//	GoogleCloudAiplatformV1beta1ModelBaseModelSourceArgs{...}
+type GoogleCloudAiplatformV1beta1ModelBaseModelSourceInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1beta1ModelBaseModelSourceOutput() GoogleCloudAiplatformV1beta1ModelBaseModelSourceOutput
+	ToGoogleCloudAiplatformV1beta1ModelBaseModelSourceOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1ModelBaseModelSourceOutput
+}
+
+// User input field to specify the base model source. Currently it only supports specifing the Model Garden models and Genie models.
+type GoogleCloudAiplatformV1beta1ModelBaseModelSourceArgs struct {
+	// Information about the base model of Genie models.
+	GenieSource GoogleCloudAiplatformV1beta1GenieSourcePtrInput `pulumi:"genieSource"`
+	// Source information of Model Garden models.
+	ModelGardenSource GoogleCloudAiplatformV1beta1ModelGardenSourcePtrInput `pulumi:"modelGardenSource"`
+}
+
+func (GoogleCloudAiplatformV1beta1ModelBaseModelSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1ModelBaseModelSource)(nil)).Elem()
+}
+
+func (i GoogleCloudAiplatformV1beta1ModelBaseModelSourceArgs) ToGoogleCloudAiplatformV1beta1ModelBaseModelSourceOutput() GoogleCloudAiplatformV1beta1ModelBaseModelSourceOutput {
+	return i.ToGoogleCloudAiplatformV1beta1ModelBaseModelSourceOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1beta1ModelBaseModelSourceArgs) ToGoogleCloudAiplatformV1beta1ModelBaseModelSourceOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelBaseModelSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelBaseModelSourceOutput)
+}
+
+func (i GoogleCloudAiplatformV1beta1ModelBaseModelSourceArgs) ToGoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput() GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput {
+	return i.ToGoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1beta1ModelBaseModelSourceArgs) ToGoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelBaseModelSourceOutput).ToGoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrInput is an input type that accepts GoogleCloudAiplatformV1beta1ModelBaseModelSourceArgs, GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtr and GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrInput` via:
+//
+//	        GoogleCloudAiplatformV1beta1ModelBaseModelSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput() GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput
+	ToGoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput
+}
+
+type googleCloudAiplatformV1beta1ModelBaseModelSourcePtrType GoogleCloudAiplatformV1beta1ModelBaseModelSourceArgs
+
+func GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtr(v *GoogleCloudAiplatformV1beta1ModelBaseModelSourceArgs) GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrInput {
+	return (*googleCloudAiplatformV1beta1ModelBaseModelSourcePtrType)(v)
+}
+
+func (*googleCloudAiplatformV1beta1ModelBaseModelSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1beta1ModelBaseModelSource)(nil)).Elem()
+}
+
+func (i *googleCloudAiplatformV1beta1ModelBaseModelSourcePtrType) ToGoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput() GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput {
+	return i.ToGoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudAiplatformV1beta1ModelBaseModelSourcePtrType) ToGoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput)
+}
+
+// User input field to specify the base model source. Currently it only supports specifing the Model Garden models and Genie models.
+type GoogleCloudAiplatformV1beta1ModelBaseModelSourceOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1ModelBaseModelSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1ModelBaseModelSource)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1ModelBaseModelSourceOutput) ToGoogleCloudAiplatformV1beta1ModelBaseModelSourceOutput() GoogleCloudAiplatformV1beta1ModelBaseModelSourceOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1ModelBaseModelSourceOutput) ToGoogleCloudAiplatformV1beta1ModelBaseModelSourceOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelBaseModelSourceOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1ModelBaseModelSourceOutput) ToGoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput() GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput {
+	return o.ToGoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1beta1ModelBaseModelSourceOutput) ToGoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1ModelBaseModelSource) *GoogleCloudAiplatformV1beta1ModelBaseModelSource {
+		return &v
+	}).(GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput)
+}
+
+// Information about the base model of Genie models.
+func (o GoogleCloudAiplatformV1beta1ModelBaseModelSourceOutput) GenieSource() GoogleCloudAiplatformV1beta1GenieSourcePtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelBaseModelSource) *GoogleCloudAiplatformV1beta1GenieSource {
+		return v.GenieSource
+	}).(GoogleCloudAiplatformV1beta1GenieSourcePtrOutput)
+}
+
+// Source information of Model Garden models.
+func (o GoogleCloudAiplatformV1beta1ModelBaseModelSourceOutput) ModelGardenSource() GoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelBaseModelSource) *GoogleCloudAiplatformV1beta1ModelGardenSource {
+		return v.ModelGardenSource
+	}).(GoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput)
+}
+
+type GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1beta1ModelBaseModelSource)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput) ToGoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput() GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput) ToGoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput) Elem() GoogleCloudAiplatformV1beta1ModelBaseModelSourceOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1ModelBaseModelSource) GoogleCloudAiplatformV1beta1ModelBaseModelSource {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAiplatformV1beta1ModelBaseModelSource
+		return ret
+	}).(GoogleCloudAiplatformV1beta1ModelBaseModelSourceOutput)
+}
+
+// Information about the base model of Genie models.
+func (o GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput) GenieSource() GoogleCloudAiplatformV1beta1GenieSourcePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1ModelBaseModelSource) *GoogleCloudAiplatformV1beta1GenieSource {
+		if v == nil {
+			return nil
+		}
+		return v.GenieSource
+	}).(GoogleCloudAiplatformV1beta1GenieSourcePtrOutput)
+}
+
+// Source information of Model Garden models.
+func (o GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput) ModelGardenSource() GoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1ModelBaseModelSource) *GoogleCloudAiplatformV1beta1ModelGardenSource {
+		if v == nil {
+			return nil
+		}
+		return v.ModelGardenSource
+	}).(GoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput)
+}
+
+// User input field to specify the base model source. Currently it only supports specifing the Model Garden models and Genie models.
+type GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponse struct {
+	// Information about the base model of Genie models.
+	GenieSource GoogleCloudAiplatformV1beta1GenieSourceResponse `pulumi:"genieSource"`
+	// Source information of Model Garden models.
+	ModelGardenSource GoogleCloudAiplatformV1beta1ModelGardenSourceResponse `pulumi:"modelGardenSource"`
+}
+
+// User input field to specify the base model source. Currently it only supports specifing the Model Garden models and Genie models.
+type GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponseOutput) ToGoogleCloudAiplatformV1beta1ModelBaseModelSourceResponseOutput() GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponseOutput) ToGoogleCloudAiplatformV1beta1ModelBaseModelSourceResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponseOutput {
+	return o
+}
+
+// Information about the base model of Genie models.
+func (o GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponseOutput) GenieSource() GoogleCloudAiplatformV1beta1GenieSourceResponseOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponse) GoogleCloudAiplatformV1beta1GenieSourceResponse {
+		return v.GenieSource
+	}).(GoogleCloudAiplatformV1beta1GenieSourceResponseOutput)
+}
+
+// Source information of Model Garden models.
+func (o GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponseOutput) ModelGardenSource() GoogleCloudAiplatformV1beta1ModelGardenSourceResponseOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponse) GoogleCloudAiplatformV1beta1ModelGardenSourceResponse {
+		return v.ModelGardenSource
+	}).(GoogleCloudAiplatformV1beta1ModelGardenSourceResponseOutput)
+}
+
 // Specification of a container for serving predictions. Some fields in this message correspond to fields in the [Kubernetes Container v1 core specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
 type GoogleCloudAiplatformV1beta1ModelContainerSpec struct {
 	// Immutable. Specifies arguments for the command that runs when the container starts. This overrides the container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd). Specify this field as an array of executable and arguments, similar to a Docker `CMD`'s "default parameters" form. If you don't specify this field but do specify the command field, then the command from the `command` field runs without any additional arguments. See the [Kubernetes documentation about how the `command` and `args` fields interact with a container's `ENTRYPOINT` and `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes). If you don't specify this field and don't specify the `command` field, then the container's [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#cmd) and `CMD` determine what runs based on their default behavior. See the Docker documentation about [how `CMD` and `ENTRYPOINT` interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact). In this field, you can reference [environment variables set by Vertex AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables) and environment variables set in the env field. You cannot reference environment variables set in the Docker image. In order for environment variables to be expanded, reference them by using the following syntax: $( VARIABLE_NAME) Note that this differs from Bash variable expansion, which does not use parentheses. If a variable cannot be resolved, the reference in the input string is used unchanged. To avoid variable expansion, you can escape this syntax with `$$`; for example: $$(VARIABLE_NAME) This field corresponds to the `args` field of the Kubernetes Containers [v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
 	Args []string `pulumi:"args"`
 	// Immutable. Specifies the command that runs when the container starts. This overrides the container's [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#entrypoint). Specify this field as an array of executable and arguments, similar to a Docker `ENTRYPOINT`'s "exec" form, not its "shell" form. If you do not specify this field, then the container's `ENTRYPOINT` runs, in conjunction with the args field or the container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd), if either exists. If this field is not specified and the container does not have an `ENTRYPOINT`, then refer to the Docker documentation about [how `CMD` and `ENTRYPOINT` interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact). If you specify this field, then you can also specify the `args` field to provide additional arguments for this command. However, if you specify this field, then the container's `CMD` is ignored. See the [Kubernetes documentation about how the `command` and `args` fields interact with a container's `ENTRYPOINT` and `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes). In this field, you can reference [environment variables set by Vertex AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables) and environment variables set in the env field. You cannot reference environment variables set in the Docker image. In order for environment variables to be expanded, reference them by using the following syntax: $( VARIABLE_NAME) Note that this differs from Bash variable expansion, which does not use parentheses. If a variable cannot be resolved, the reference in the input string is used unchanged. To avoid variable expansion, you can escape this syntax with `$$`; for example: $$(VARIABLE_NAME) This field corresponds to the `command` field of the Kubernetes Containers [v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
 	Command []string `pulumi:"command"`
-	// Immutable. Deployment timeout. TODO (b/306244185): Revise documentation before exposing.
+	// Immutable. Deployment timeout. Limit for deployment timeout is 2 hours.
 	DeploymentTimeout *string `pulumi:"deploymentTimeout"`
 	// Immutable. List of environment variables to set in the container. After the container starts running, code running in the container can read these environment variables. Additionally, the command and args fields can reference these variables. Later entries in this list can also reference earlier entries. For example, the following example sets the variable `VAR_2` to have the value `foo bar`: ``` json [ { "name": "VAR_1", "value": "foo" }, { "name": "VAR_2", "value": "$(VAR_1) bar" } ]  ``` If you switch the order of the variables in the example, then the expansion does not occur. This field corresponds to the `env` field of the Kubernetes Containers [v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
 	Env []GoogleCloudAiplatformV1beta1EnvVar `pulumi:"env"`
-	// Immutable. Specification for Kubernetes readiness probe. TODO (b/306244185): Revise documentation before exposing.
+	// Immutable. List of ports to expose from the container. Vertex AI sends gRPC prediction requests that it receives to the first port on this list. Vertex AI also sends liveness and health checks to this port. If you do not specify this field, gRPC requests to the container will be disabled. Vertex AI does not use ports other than the first one listed. This field corresponds to the `ports` field of the Kubernetes Containers v1 core API.
+	GrpcPorts []GoogleCloudAiplatformV1beta1Port `pulumi:"grpcPorts"`
+	// Immutable. Specification for Kubernetes readiness probe.
 	HealthProbe *GoogleCloudAiplatformV1beta1Probe `pulumi:"healthProbe"`
 	// Immutable. HTTP path on the container to send health checks to. Vertex AI intermittently sends GET requests to this path on the container's IP address and port to check that the container is healthy. Read more about [health checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#health). For example, if you set this field to `/bar`, then Vertex AI intermittently sends a GET request to the `/bar` path on the port of your container specified by the first value of this `ModelContainerSpec`'s ports field. If you don't specify this field, it defaults to the following value when you deploy this Model to an Endpoint: /v1/endpoints/ENDPOINT/deployedModels/ DEPLOYED_MODEL:predict The placeholders in this value are replaced as follows: * ENDPOINT: The last segment (following `endpoints/`)of the Endpoint.name][] field of the Endpoint where this Model has been deployed. (Vertex AI makes this value available to your container code as the [`AIP_ENDPOINT_ID` environment variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).) * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`. (Vertex AI makes this value available to your container code as the [`AIP_DEPLOYED_MODEL_ID` environment variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
 	HealthRoute *string `pulumi:"healthRoute"`
@@ -12265,9 +13373,9 @@ type GoogleCloudAiplatformV1beta1ModelContainerSpec struct {
 	Ports []GoogleCloudAiplatformV1beta1Port `pulumi:"ports"`
 	// Immutable. HTTP path on the container to send prediction requests to. Vertex AI forwards requests sent using projects.locations.endpoints.predict to this path on the container's IP address and port. Vertex AI then returns the container's response in the API response. For example, if you set this field to `/foo`, then when Vertex AI receives a prediction request, it forwards the request body in a POST request to the `/foo` path on the port of your container specified by the first value of this `ModelContainerSpec`'s ports field. If you don't specify this field, it defaults to the following value when you deploy this Model to an Endpoint: /v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict The placeholders in this value are replaced as follows: * ENDPOINT: The last segment (following `endpoints/`)of the Endpoint.name][] field of the Endpoint where this Model has been deployed. (Vertex AI makes this value available to your container code as the [`AIP_ENDPOINT_ID` environment variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).) * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`. (Vertex AI makes this value available to your container code as the [`AIP_DEPLOYED_MODEL_ID` environment variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
 	PredictRoute *string `pulumi:"predictRoute"`
-	// Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes. TODO (b/306244185): Revise documentation before exposing.
+	// Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes.
 	SharedMemorySizeMb *string `pulumi:"sharedMemorySizeMb"`
-	// Immutable. Specification for Kubernetes startup probe. TODO (b/306244185): Revise documentation before exposing.
+	// Immutable. Specification for Kubernetes startup probe.
 	StartupProbe *GoogleCloudAiplatformV1beta1Probe `pulumi:"startupProbe"`
 }
 
@@ -12288,11 +13396,13 @@ type GoogleCloudAiplatformV1beta1ModelContainerSpecArgs struct {
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// Immutable. Specifies the command that runs when the container starts. This overrides the container's [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#entrypoint). Specify this field as an array of executable and arguments, similar to a Docker `ENTRYPOINT`'s "exec" form, not its "shell" form. If you do not specify this field, then the container's `ENTRYPOINT` runs, in conjunction with the args field or the container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd), if either exists. If this field is not specified and the container does not have an `ENTRYPOINT`, then refer to the Docker documentation about [how `CMD` and `ENTRYPOINT` interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact). If you specify this field, then you can also specify the `args` field to provide additional arguments for this command. However, if you specify this field, then the container's `CMD` is ignored. See the [Kubernetes documentation about how the `command` and `args` fields interact with a container's `ENTRYPOINT` and `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes). In this field, you can reference [environment variables set by Vertex AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables) and environment variables set in the env field. You cannot reference environment variables set in the Docker image. In order for environment variables to be expanded, reference them by using the following syntax: $( VARIABLE_NAME) Note that this differs from Bash variable expansion, which does not use parentheses. If a variable cannot be resolved, the reference in the input string is used unchanged. To avoid variable expansion, you can escape this syntax with `$$`; for example: $$(VARIABLE_NAME) This field corresponds to the `command` field of the Kubernetes Containers [v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
 	Command pulumi.StringArrayInput `pulumi:"command"`
-	// Immutable. Deployment timeout. TODO (b/306244185): Revise documentation before exposing.
+	// Immutable. Deployment timeout. Limit for deployment timeout is 2 hours.
 	DeploymentTimeout pulumi.StringPtrInput `pulumi:"deploymentTimeout"`
 	// Immutable. List of environment variables to set in the container. After the container starts running, code running in the container can read these environment variables. Additionally, the command and args fields can reference these variables. Later entries in this list can also reference earlier entries. For example, the following example sets the variable `VAR_2` to have the value `foo bar`: ``` json [ { "name": "VAR_1", "value": "foo" }, { "name": "VAR_2", "value": "$(VAR_1) bar" } ]  ``` If you switch the order of the variables in the example, then the expansion does not occur. This field corresponds to the `env` field of the Kubernetes Containers [v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
 	Env GoogleCloudAiplatformV1beta1EnvVarArrayInput `pulumi:"env"`
-	// Immutable. Specification for Kubernetes readiness probe. TODO (b/306244185): Revise documentation before exposing.
+	// Immutable. List of ports to expose from the container. Vertex AI sends gRPC prediction requests that it receives to the first port on this list. Vertex AI also sends liveness and health checks to this port. If you do not specify this field, gRPC requests to the container will be disabled. Vertex AI does not use ports other than the first one listed. This field corresponds to the `ports` field of the Kubernetes Containers v1 core API.
+	GrpcPorts GoogleCloudAiplatformV1beta1PortArrayInput `pulumi:"grpcPorts"`
+	// Immutable. Specification for Kubernetes readiness probe.
 	HealthProbe GoogleCloudAiplatformV1beta1ProbePtrInput `pulumi:"healthProbe"`
 	// Immutable. HTTP path on the container to send health checks to. Vertex AI intermittently sends GET requests to this path on the container's IP address and port to check that the container is healthy. Read more about [health checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#health). For example, if you set this field to `/bar`, then Vertex AI intermittently sends a GET request to the `/bar` path on the port of your container specified by the first value of this `ModelContainerSpec`'s ports field. If you don't specify this field, it defaults to the following value when you deploy this Model to an Endpoint: /v1/endpoints/ENDPOINT/deployedModels/ DEPLOYED_MODEL:predict The placeholders in this value are replaced as follows: * ENDPOINT: The last segment (following `endpoints/`)of the Endpoint.name][] field of the Endpoint where this Model has been deployed. (Vertex AI makes this value available to your container code as the [`AIP_ENDPOINT_ID` environment variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).) * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`. (Vertex AI makes this value available to your container code as the [`AIP_DEPLOYED_MODEL_ID` environment variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
 	HealthRoute pulumi.StringPtrInput `pulumi:"healthRoute"`
@@ -12302,9 +13412,9 @@ type GoogleCloudAiplatformV1beta1ModelContainerSpecArgs struct {
 	Ports GoogleCloudAiplatformV1beta1PortArrayInput `pulumi:"ports"`
 	// Immutable. HTTP path on the container to send prediction requests to. Vertex AI forwards requests sent using projects.locations.endpoints.predict to this path on the container's IP address and port. Vertex AI then returns the container's response in the API response. For example, if you set this field to `/foo`, then when Vertex AI receives a prediction request, it forwards the request body in a POST request to the `/foo` path on the port of your container specified by the first value of this `ModelContainerSpec`'s ports field. If you don't specify this field, it defaults to the following value when you deploy this Model to an Endpoint: /v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict The placeholders in this value are replaced as follows: * ENDPOINT: The last segment (following `endpoints/`)of the Endpoint.name][] field of the Endpoint where this Model has been deployed. (Vertex AI makes this value available to your container code as the [`AIP_ENDPOINT_ID` environment variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).) * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`. (Vertex AI makes this value available to your container code as the [`AIP_DEPLOYED_MODEL_ID` environment variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
 	PredictRoute pulumi.StringPtrInput `pulumi:"predictRoute"`
-	// Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes. TODO (b/306244185): Revise documentation before exposing.
+	// Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes.
 	SharedMemorySizeMb pulumi.StringPtrInput `pulumi:"sharedMemorySizeMb"`
-	// Immutable. Specification for Kubernetes startup probe. TODO (b/306244185): Revise documentation before exposing.
+	// Immutable. Specification for Kubernetes startup probe.
 	StartupProbe GoogleCloudAiplatformV1beta1ProbePtrInput `pulumi:"startupProbe"`
 }
 
@@ -12396,7 +13506,7 @@ func (o GoogleCloudAiplatformV1beta1ModelContainerSpecOutput) Command() pulumi.S
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelContainerSpec) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
 
-// Immutable. Deployment timeout. TODO (b/306244185): Revise documentation before exposing.
+// Immutable. Deployment timeout. Limit for deployment timeout is 2 hours.
 func (o GoogleCloudAiplatformV1beta1ModelContainerSpecOutput) DeploymentTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelContainerSpec) *string { return v.DeploymentTimeout }).(pulumi.StringPtrOutput)
 }
@@ -12408,7 +13518,14 @@ func (o GoogleCloudAiplatformV1beta1ModelContainerSpecOutput) Env() GoogleCloudA
 	}).(GoogleCloudAiplatformV1beta1EnvVarArrayOutput)
 }
 
-// Immutable. Specification for Kubernetes readiness probe. TODO (b/306244185): Revise documentation before exposing.
+// Immutable. List of ports to expose from the container. Vertex AI sends gRPC prediction requests that it receives to the first port on this list. Vertex AI also sends liveness and health checks to this port. If you do not specify this field, gRPC requests to the container will be disabled. Vertex AI does not use ports other than the first one listed. This field corresponds to the `ports` field of the Kubernetes Containers v1 core API.
+func (o GoogleCloudAiplatformV1beta1ModelContainerSpecOutput) GrpcPorts() GoogleCloudAiplatformV1beta1PortArrayOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelContainerSpec) []GoogleCloudAiplatformV1beta1Port {
+		return v.GrpcPorts
+	}).(GoogleCloudAiplatformV1beta1PortArrayOutput)
+}
+
+// Immutable. Specification for Kubernetes readiness probe.
 func (o GoogleCloudAiplatformV1beta1ModelContainerSpecOutput) HealthProbe() GoogleCloudAiplatformV1beta1ProbePtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelContainerSpec) *GoogleCloudAiplatformV1beta1Probe {
 		return v.HealthProbe
@@ -12437,12 +13554,12 @@ func (o GoogleCloudAiplatformV1beta1ModelContainerSpecOutput) PredictRoute() pul
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelContainerSpec) *string { return v.PredictRoute }).(pulumi.StringPtrOutput)
 }
 
-// Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes. TODO (b/306244185): Revise documentation before exposing.
+// Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes.
 func (o GoogleCloudAiplatformV1beta1ModelContainerSpecOutput) SharedMemorySizeMb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelContainerSpec) *string { return v.SharedMemorySizeMb }).(pulumi.StringPtrOutput)
 }
 
-// Immutable. Specification for Kubernetes startup probe. TODO (b/306244185): Revise documentation before exposing.
+// Immutable. Specification for Kubernetes startup probe.
 func (o GoogleCloudAiplatformV1beta1ModelContainerSpecOutput) StartupProbe() GoogleCloudAiplatformV1beta1ProbePtrOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelContainerSpec) *GoogleCloudAiplatformV1beta1Probe {
 		return v.StartupProbe
@@ -12493,7 +13610,7 @@ func (o GoogleCloudAiplatformV1beta1ModelContainerSpecPtrOutput) Command() pulum
 	}).(pulumi.StringArrayOutput)
 }
 
-// Immutable. Deployment timeout. TODO (b/306244185): Revise documentation before exposing.
+// Immutable. Deployment timeout. Limit for deployment timeout is 2 hours.
 func (o GoogleCloudAiplatformV1beta1ModelContainerSpecPtrOutput) DeploymentTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1ModelContainerSpec) *string {
 		if v == nil {
@@ -12513,7 +13630,17 @@ func (o GoogleCloudAiplatformV1beta1ModelContainerSpecPtrOutput) Env() GoogleClo
 	}).(GoogleCloudAiplatformV1beta1EnvVarArrayOutput)
 }
 
-// Immutable. Specification for Kubernetes readiness probe. TODO (b/306244185): Revise documentation before exposing.
+// Immutable. List of ports to expose from the container. Vertex AI sends gRPC prediction requests that it receives to the first port on this list. Vertex AI also sends liveness and health checks to this port. If you do not specify this field, gRPC requests to the container will be disabled. Vertex AI does not use ports other than the first one listed. This field corresponds to the `ports` field of the Kubernetes Containers v1 core API.
+func (o GoogleCloudAiplatformV1beta1ModelContainerSpecPtrOutput) GrpcPorts() GoogleCloudAiplatformV1beta1PortArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1ModelContainerSpec) []GoogleCloudAiplatformV1beta1Port {
+		if v == nil {
+			return nil
+		}
+		return v.GrpcPorts
+	}).(GoogleCloudAiplatformV1beta1PortArrayOutput)
+}
+
+// Immutable. Specification for Kubernetes readiness probe.
 func (o GoogleCloudAiplatformV1beta1ModelContainerSpecPtrOutput) HealthProbe() GoogleCloudAiplatformV1beta1ProbePtrOutput {
 	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1ModelContainerSpec) *GoogleCloudAiplatformV1beta1Probe {
 		if v == nil {
@@ -12563,7 +13690,7 @@ func (o GoogleCloudAiplatformV1beta1ModelContainerSpecPtrOutput) PredictRoute() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes. TODO (b/306244185): Revise documentation before exposing.
+// Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes.
 func (o GoogleCloudAiplatformV1beta1ModelContainerSpecPtrOutput) SharedMemorySizeMb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1ModelContainerSpec) *string {
 		if v == nil {
@@ -12573,7 +13700,7 @@ func (o GoogleCloudAiplatformV1beta1ModelContainerSpecPtrOutput) SharedMemorySiz
 	}).(pulumi.StringPtrOutput)
 }
 
-// Immutable. Specification for Kubernetes startup probe. TODO (b/306244185): Revise documentation before exposing.
+// Immutable. Specification for Kubernetes startup probe.
 func (o GoogleCloudAiplatformV1beta1ModelContainerSpecPtrOutput) StartupProbe() GoogleCloudAiplatformV1beta1ProbePtrOutput {
 	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1ModelContainerSpec) *GoogleCloudAiplatformV1beta1Probe {
 		if v == nil {
@@ -12589,11 +13716,13 @@ type GoogleCloudAiplatformV1beta1ModelContainerSpecResponse struct {
 	Args []string `pulumi:"args"`
 	// Immutable. Specifies the command that runs when the container starts. This overrides the container's [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#entrypoint). Specify this field as an array of executable and arguments, similar to a Docker `ENTRYPOINT`'s "exec" form, not its "shell" form. If you do not specify this field, then the container's `ENTRYPOINT` runs, in conjunction with the args field or the container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd), if either exists. If this field is not specified and the container does not have an `ENTRYPOINT`, then refer to the Docker documentation about [how `CMD` and `ENTRYPOINT` interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact). If you specify this field, then you can also specify the `args` field to provide additional arguments for this command. However, if you specify this field, then the container's `CMD` is ignored. See the [Kubernetes documentation about how the `command` and `args` fields interact with a container's `ENTRYPOINT` and `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes). In this field, you can reference [environment variables set by Vertex AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables) and environment variables set in the env field. You cannot reference environment variables set in the Docker image. In order for environment variables to be expanded, reference them by using the following syntax: $( VARIABLE_NAME) Note that this differs from Bash variable expansion, which does not use parentheses. If a variable cannot be resolved, the reference in the input string is used unchanged. To avoid variable expansion, you can escape this syntax with `$$`; for example: $$(VARIABLE_NAME) This field corresponds to the `command` field of the Kubernetes Containers [v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
 	Command []string `pulumi:"command"`
-	// Immutable. Deployment timeout. TODO (b/306244185): Revise documentation before exposing.
+	// Immutable. Deployment timeout. Limit for deployment timeout is 2 hours.
 	DeploymentTimeout string `pulumi:"deploymentTimeout"`
 	// Immutable. List of environment variables to set in the container. After the container starts running, code running in the container can read these environment variables. Additionally, the command and args fields can reference these variables. Later entries in this list can also reference earlier entries. For example, the following example sets the variable `VAR_2` to have the value `foo bar`: ``` json [ { "name": "VAR_1", "value": "foo" }, { "name": "VAR_2", "value": "$(VAR_1) bar" } ]  ``` If you switch the order of the variables in the example, then the expansion does not occur. This field corresponds to the `env` field of the Kubernetes Containers [v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
 	Env []GoogleCloudAiplatformV1beta1EnvVarResponse `pulumi:"env"`
-	// Immutable. Specification for Kubernetes readiness probe. TODO (b/306244185): Revise documentation before exposing.
+	// Immutable. List of ports to expose from the container. Vertex AI sends gRPC prediction requests that it receives to the first port on this list. Vertex AI also sends liveness and health checks to this port. If you do not specify this field, gRPC requests to the container will be disabled. Vertex AI does not use ports other than the first one listed. This field corresponds to the `ports` field of the Kubernetes Containers v1 core API.
+	GrpcPorts []GoogleCloudAiplatformV1beta1PortResponse `pulumi:"grpcPorts"`
+	// Immutable. Specification for Kubernetes readiness probe.
 	HealthProbe GoogleCloudAiplatformV1beta1ProbeResponse `pulumi:"healthProbe"`
 	// Immutable. HTTP path on the container to send health checks to. Vertex AI intermittently sends GET requests to this path on the container's IP address and port to check that the container is healthy. Read more about [health checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#health). For example, if you set this field to `/bar`, then Vertex AI intermittently sends a GET request to the `/bar` path on the port of your container specified by the first value of this `ModelContainerSpec`'s ports field. If you don't specify this field, it defaults to the following value when you deploy this Model to an Endpoint: /v1/endpoints/ENDPOINT/deployedModels/ DEPLOYED_MODEL:predict The placeholders in this value are replaced as follows: * ENDPOINT: The last segment (following `endpoints/`)of the Endpoint.name][] field of the Endpoint where this Model has been deployed. (Vertex AI makes this value available to your container code as the [`AIP_ENDPOINT_ID` environment variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).) * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`. (Vertex AI makes this value available to your container code as the [`AIP_DEPLOYED_MODEL_ID` environment variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
 	HealthRoute string `pulumi:"healthRoute"`
@@ -12603,9 +13732,9 @@ type GoogleCloudAiplatformV1beta1ModelContainerSpecResponse struct {
 	Ports []GoogleCloudAiplatformV1beta1PortResponse `pulumi:"ports"`
 	// Immutable. HTTP path on the container to send prediction requests to. Vertex AI forwards requests sent using projects.locations.endpoints.predict to this path on the container's IP address and port. Vertex AI then returns the container's response in the API response. For example, if you set this field to `/foo`, then when Vertex AI receives a prediction request, it forwards the request body in a POST request to the `/foo` path on the port of your container specified by the first value of this `ModelContainerSpec`'s ports field. If you don't specify this field, it defaults to the following value when you deploy this Model to an Endpoint: /v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict The placeholders in this value are replaced as follows: * ENDPOINT: The last segment (following `endpoints/`)of the Endpoint.name][] field of the Endpoint where this Model has been deployed. (Vertex AI makes this value available to your container code as the [`AIP_ENDPOINT_ID` environment variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).) * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`. (Vertex AI makes this value available to your container code as the [`AIP_DEPLOYED_MODEL_ID` environment variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
 	PredictRoute string `pulumi:"predictRoute"`
-	// Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes. TODO (b/306244185): Revise documentation before exposing.
+	// Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes.
 	SharedMemorySizeMb string `pulumi:"sharedMemorySizeMb"`
-	// Immutable. Specification for Kubernetes startup probe. TODO (b/306244185): Revise documentation before exposing.
+	// Immutable. Specification for Kubernetes startup probe.
 	StartupProbe GoogleCloudAiplatformV1beta1ProbeResponse `pulumi:"startupProbe"`
 }
 
@@ -12634,7 +13763,7 @@ func (o GoogleCloudAiplatformV1beta1ModelContainerSpecResponseOutput) Command() 
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelContainerSpecResponse) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
 
-// Immutable. Deployment timeout. TODO (b/306244185): Revise documentation before exposing.
+// Immutable. Deployment timeout. Limit for deployment timeout is 2 hours.
 func (o GoogleCloudAiplatformV1beta1ModelContainerSpecResponseOutput) DeploymentTimeout() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelContainerSpecResponse) string { return v.DeploymentTimeout }).(pulumi.StringOutput)
 }
@@ -12646,7 +13775,14 @@ func (o GoogleCloudAiplatformV1beta1ModelContainerSpecResponseOutput) Env() Goog
 	}).(GoogleCloudAiplatformV1beta1EnvVarResponseArrayOutput)
 }
 
-// Immutable. Specification for Kubernetes readiness probe. TODO (b/306244185): Revise documentation before exposing.
+// Immutable. List of ports to expose from the container. Vertex AI sends gRPC prediction requests that it receives to the first port on this list. Vertex AI also sends liveness and health checks to this port. If you do not specify this field, gRPC requests to the container will be disabled. Vertex AI does not use ports other than the first one listed. This field corresponds to the `ports` field of the Kubernetes Containers v1 core API.
+func (o GoogleCloudAiplatformV1beta1ModelContainerSpecResponseOutput) GrpcPorts() GoogleCloudAiplatformV1beta1PortResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelContainerSpecResponse) []GoogleCloudAiplatformV1beta1PortResponse {
+		return v.GrpcPorts
+	}).(GoogleCloudAiplatformV1beta1PortResponseArrayOutput)
+}
+
+// Immutable. Specification for Kubernetes readiness probe.
 func (o GoogleCloudAiplatformV1beta1ModelContainerSpecResponseOutput) HealthProbe() GoogleCloudAiplatformV1beta1ProbeResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelContainerSpecResponse) GoogleCloudAiplatformV1beta1ProbeResponse {
 		return v.HealthProbe
@@ -12675,12 +13811,12 @@ func (o GoogleCloudAiplatformV1beta1ModelContainerSpecResponseOutput) PredictRou
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelContainerSpecResponse) string { return v.PredictRoute }).(pulumi.StringOutput)
 }
 
-// Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes. TODO (b/306244185): Revise documentation before exposing.
+// Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes.
 func (o GoogleCloudAiplatformV1beta1ModelContainerSpecResponseOutput) SharedMemorySizeMb() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelContainerSpecResponse) string { return v.SharedMemorySizeMb }).(pulumi.StringOutput)
 }
 
-// Immutable. Specification for Kubernetes startup probe. TODO (b/306244185): Revise documentation before exposing.
+// Immutable. Specification for Kubernetes startup probe.
 func (o GoogleCloudAiplatformV1beta1ModelContainerSpecResponseOutput) StartupProbe() GoogleCloudAiplatformV1beta1ProbeResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelContainerSpecResponse) GoogleCloudAiplatformV1beta1ProbeResponse {
 		return v.StartupProbe
@@ -12695,6 +13831,8 @@ type GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse 
 	LogSource string `pulumi:"logSource"`
 	// The type of log.
 	LogType string `pulumi:"logType"`
+	// The schema version of the request/response logging BigQuery table. Default to v1 if unset.
+	RequestResponseLoggingSchemaVersion string `pulumi:"requestResponseLoggingSchemaVersion"`
 }
 
 // ModelDeploymentMonitoringBigQueryTable specifies the BigQuery table name as well as some information of the logs stored in this table.
@@ -12730,6 +13868,13 @@ func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableRespon
 func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponseOutput) LogType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse) string {
 		return v.LogType
+	}).(pulumi.StringOutput)
+}
+
+// The schema version of the request/response logging BigQuery table. Default to v1 if unset.
+func (o GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponseOutput) RequestResponseLoggingSchemaVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringBigQueryTableResponse) string {
+		return v.RequestResponseLoggingSchemaVersion
 	}).(pulumi.StringOutput)
 }
 
@@ -13111,6 +14256,173 @@ func (o GoogleCloudAiplatformV1beta1ModelExportFormatResponseArrayOutput) Index(
 	}).(GoogleCloudAiplatformV1beta1ModelExportFormatResponseOutput)
 }
 
+// Contains information about the source of the models generated from Model Garden.
+type GoogleCloudAiplatformV1beta1ModelGardenSource struct {
+	// The model garden source model resource name.
+	PublicModelName string `pulumi:"publicModelName"`
+}
+
+// GoogleCloudAiplatformV1beta1ModelGardenSourceInput is an input type that accepts GoogleCloudAiplatformV1beta1ModelGardenSourceArgs and GoogleCloudAiplatformV1beta1ModelGardenSourceOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1ModelGardenSourceInput` via:
+//
+//	GoogleCloudAiplatformV1beta1ModelGardenSourceArgs{...}
+type GoogleCloudAiplatformV1beta1ModelGardenSourceInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1beta1ModelGardenSourceOutput() GoogleCloudAiplatformV1beta1ModelGardenSourceOutput
+	ToGoogleCloudAiplatformV1beta1ModelGardenSourceOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1ModelGardenSourceOutput
+}
+
+// Contains information about the source of the models generated from Model Garden.
+type GoogleCloudAiplatformV1beta1ModelGardenSourceArgs struct {
+	// The model garden source model resource name.
+	PublicModelName pulumi.StringInput `pulumi:"publicModelName"`
+}
+
+func (GoogleCloudAiplatformV1beta1ModelGardenSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1ModelGardenSource)(nil)).Elem()
+}
+
+func (i GoogleCloudAiplatformV1beta1ModelGardenSourceArgs) ToGoogleCloudAiplatformV1beta1ModelGardenSourceOutput() GoogleCloudAiplatformV1beta1ModelGardenSourceOutput {
+	return i.ToGoogleCloudAiplatformV1beta1ModelGardenSourceOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1beta1ModelGardenSourceArgs) ToGoogleCloudAiplatformV1beta1ModelGardenSourceOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelGardenSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelGardenSourceOutput)
+}
+
+func (i GoogleCloudAiplatformV1beta1ModelGardenSourceArgs) ToGoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput() GoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput {
+	return i.ToGoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1beta1ModelGardenSourceArgs) ToGoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelGardenSourceOutput).ToGoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudAiplatformV1beta1ModelGardenSourcePtrInput is an input type that accepts GoogleCloudAiplatformV1beta1ModelGardenSourceArgs, GoogleCloudAiplatformV1beta1ModelGardenSourcePtr and GoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1ModelGardenSourcePtrInput` via:
+//
+//	        GoogleCloudAiplatformV1beta1ModelGardenSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudAiplatformV1beta1ModelGardenSourcePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput() GoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput
+	ToGoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput
+}
+
+type googleCloudAiplatformV1beta1ModelGardenSourcePtrType GoogleCloudAiplatformV1beta1ModelGardenSourceArgs
+
+func GoogleCloudAiplatformV1beta1ModelGardenSourcePtr(v *GoogleCloudAiplatformV1beta1ModelGardenSourceArgs) GoogleCloudAiplatformV1beta1ModelGardenSourcePtrInput {
+	return (*googleCloudAiplatformV1beta1ModelGardenSourcePtrType)(v)
+}
+
+func (*googleCloudAiplatformV1beta1ModelGardenSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1beta1ModelGardenSource)(nil)).Elem()
+}
+
+func (i *googleCloudAiplatformV1beta1ModelGardenSourcePtrType) ToGoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput() GoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput {
+	return i.ToGoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudAiplatformV1beta1ModelGardenSourcePtrType) ToGoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput)
+}
+
+// Contains information about the source of the models generated from Model Garden.
+type GoogleCloudAiplatformV1beta1ModelGardenSourceOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1ModelGardenSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1ModelGardenSource)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1ModelGardenSourceOutput) ToGoogleCloudAiplatformV1beta1ModelGardenSourceOutput() GoogleCloudAiplatformV1beta1ModelGardenSourceOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1ModelGardenSourceOutput) ToGoogleCloudAiplatformV1beta1ModelGardenSourceOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelGardenSourceOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1ModelGardenSourceOutput) ToGoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput() GoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput {
+	return o.ToGoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1beta1ModelGardenSourceOutput) ToGoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1ModelGardenSource) *GoogleCloudAiplatformV1beta1ModelGardenSource {
+		return &v
+	}).(GoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput)
+}
+
+// The model garden source model resource name.
+func (o GoogleCloudAiplatformV1beta1ModelGardenSourceOutput) PublicModelName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelGardenSource) string { return v.PublicModelName }).(pulumi.StringOutput)
+}
+
+type GoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1beta1ModelGardenSource)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput) ToGoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput() GoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput) ToGoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput) Elem() GoogleCloudAiplatformV1beta1ModelGardenSourceOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1ModelGardenSource) GoogleCloudAiplatformV1beta1ModelGardenSource {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAiplatformV1beta1ModelGardenSource
+		return ret
+	}).(GoogleCloudAiplatformV1beta1ModelGardenSourceOutput)
+}
+
+// The model garden source model resource name.
+func (o GoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput) PublicModelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1ModelGardenSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PublicModelName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Contains information about the source of the models generated from Model Garden.
+type GoogleCloudAiplatformV1beta1ModelGardenSourceResponse struct {
+	// The model garden source model resource name.
+	PublicModelName string `pulumi:"publicModelName"`
+}
+
+// Contains information about the source of the models generated from Model Garden.
+type GoogleCloudAiplatformV1beta1ModelGardenSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1ModelGardenSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1ModelGardenSourceResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1ModelGardenSourceResponseOutput) ToGoogleCloudAiplatformV1beta1ModelGardenSourceResponseOutput() GoogleCloudAiplatformV1beta1ModelGardenSourceResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1ModelGardenSourceResponseOutput) ToGoogleCloudAiplatformV1beta1ModelGardenSourceResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ModelGardenSourceResponseOutput {
+	return o
+}
+
+// The model garden source model resource name.
+func (o GoogleCloudAiplatformV1beta1ModelGardenSourceResponseOutput) PublicModelName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelGardenSourceResponse) string { return v.PublicModelName }).(pulumi.StringOutput)
+}
+
+// The alert config for model monitoring.
 type GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfig struct {
 	// Email alert config.
 	EmailAlertConfig *GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfig `pulumi:"emailAlertConfig"`
@@ -13131,6 +14443,7 @@ type GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigInput interface {
 	ToGoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigOutput
 }
 
+// The alert config for model monitoring.
 type GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigArgs struct {
 	// Email alert config.
 	EmailAlertConfig GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigPtrInput `pulumi:"emailAlertConfig"`
@@ -13193,6 +14506,7 @@ func (i *googleCloudAiplatformV1beta1ModelMonitoringAlertConfigPtrType) ToGoogle
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigPtrOutput)
 }
 
+// The alert config for model monitoring.
 type GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigOutput) ElementType() reflect.Type {
@@ -13458,6 +14772,7 @@ func (o GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigRe
 	}).(pulumi.StringArrayOutput)
 }
 
+// The alert config for model monitoring.
 type GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponse struct {
 	// Email alert config.
 	EmailAlertConfig GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigResponse `pulumi:"emailAlertConfig"`
@@ -13467,6 +14782,7 @@ type GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponse struct {
 	NotificationChannels []string `pulumi:"notificationChannels"`
 }
 
+// The alert config for model monitoring.
 type GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigResponseOutput) ElementType() reflect.Type {
@@ -15733,9 +17049,11 @@ func (o GoogleCloudAiplatformV1beta1ModelOriginalModelInfoResponseOutput) Model(
 
 // A trained machine learning Model.
 type GoogleCloudAiplatformV1beta1ModelResponse struct {
-	// Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not present for AutoML Models or Large Models.
+	// Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not required for AutoML Models.
 	ArtifactUri string `pulumi:"artifactUri"`
-	// Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not present for AutoML Models or Large Models.
+	// Optional. User input field to specify the base model source. Currently it only supports specifing the Model Garden models and Genie models.
+	BaseModelSource GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponse `pulumi:"baseModelSource"`
+	// Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not required for AutoML Models.
 	ContainerSpec GoogleCloudAiplatformV1beta1ModelContainerSpecResponse `pulumi:"containerSpec"`
 	// Timestamp when this Model was uploaded into Vertex AI.
 	CreateTime string `pulumi:"createTime"`
@@ -15759,7 +17077,7 @@ type GoogleCloudAiplatformV1beta1ModelResponse struct {
 	MetadataArtifact string `pulumi:"metadataArtifact"`
 	// Immutable. Points to a YAML file stored on Google Cloud Storage describing additional information about the Model, that is specific to it. Unset if the Model does not have any additional information. The schema is defined as an OpenAPI 3.0.2 [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject). AutoML Models always have this field populated by Vertex AI, if no additional metadata is needed, this field is set to an empty string. Note: The URI given on output will be immutable and probably different, including the URI scheme, than the one given on input. The output URI will point to a location where the user only has a read access.
 	MetadataSchemaUri string `pulumi:"metadataSchemaUri"`
-	// Source of a model. It can either be automl training pipeline, custom training pipeline, BigQuery ML, or existing Vertex AI Model.
+	// Source of a model. It can either be automl training pipeline, custom training pipeline, BigQuery ML, or saved and tuned from Genie or Model Garden.
 	ModelSourceInfo GoogleCloudAiplatformV1beta1ModelSourceInfoResponse `pulumi:"modelSourceInfo"`
 	// The resource name of the Model.
 	Name string `pulumi:"name"`
@@ -15806,12 +17124,19 @@ func (o GoogleCloudAiplatformV1beta1ModelResponseOutput) ToGoogleCloudAiplatform
 	return o
 }
 
-// Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not present for AutoML Models or Large Models.
+// Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not required for AutoML Models.
 func (o GoogleCloudAiplatformV1beta1ModelResponseOutput) ArtifactUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelResponse) string { return v.ArtifactUri }).(pulumi.StringOutput)
 }
 
-// Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not present for AutoML Models or Large Models.
+// Optional. User input field to specify the base model source. Currently it only supports specifing the Model Garden models and Genie models.
+func (o GoogleCloudAiplatformV1beta1ModelResponseOutput) BaseModelSource() GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponseOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelResponse) GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponse {
+		return v.BaseModelSource
+	}).(GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponseOutput)
+}
+
+// Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not required for AutoML Models.
 func (o GoogleCloudAiplatformV1beta1ModelResponseOutput) ContainerSpec() GoogleCloudAiplatformV1beta1ModelContainerSpecResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelResponse) GoogleCloudAiplatformV1beta1ModelContainerSpecResponse {
 		return v.ContainerSpec
@@ -15879,7 +17204,7 @@ func (o GoogleCloudAiplatformV1beta1ModelResponseOutput) MetadataSchemaUri() pul
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelResponse) string { return v.MetadataSchemaUri }).(pulumi.StringOutput)
 }
 
-// Source of a model. It can either be automl training pipeline, custom training pipeline, BigQuery ML, or existing Vertex AI Model.
+// Source of a model. It can either be automl training pipeline, custom training pipeline, BigQuery ML, or saved and tuned from Genie or Model Garden.
 func (o GoogleCloudAiplatformV1beta1ModelResponseOutput) ModelSourceInfo() GoogleCloudAiplatformV1beta1ModelSourceInfoResponseOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ModelResponse) GoogleCloudAiplatformV1beta1ModelSourceInfoResponse {
 		return v.ModelSourceInfo
@@ -17959,6 +19284,228 @@ func (o GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigResponseOutput) Id
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigResponse) string { return v.IdleTimeout }).(pulumi.StringOutput)
 }
 
+// Notebook Reservation Affinity for consuming Zonal reservation.
+type GoogleCloudAiplatformV1beta1NotebookReservationAffinity struct {
+	// Specifies the type of reservation from which this instance can consume resources: RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE. See Consuming reserved instances for examples.
+	ConsumeReservationType GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType `pulumi:"consumeReservationType"`
+	// Optional. Corresponds to the label key of a reservation resource. To target a RESERVATION_SPECIFIC by name, use compute.googleapis.com/reservation-name as the key and specify the name of your reservation as its value.
+	Key *string `pulumi:"key"`
+	// Optional. Corresponds to the label values of a reservation resource. This must be the full path name of Reservation.
+	Values []string `pulumi:"values"`
+}
+
+// GoogleCloudAiplatformV1beta1NotebookReservationAffinityInput is an input type that accepts GoogleCloudAiplatformV1beta1NotebookReservationAffinityArgs and GoogleCloudAiplatformV1beta1NotebookReservationAffinityOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1NotebookReservationAffinityInput` via:
+//
+//	GoogleCloudAiplatformV1beta1NotebookReservationAffinityArgs{...}
+type GoogleCloudAiplatformV1beta1NotebookReservationAffinityInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityOutput() GoogleCloudAiplatformV1beta1NotebookReservationAffinityOutput
+	ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1NotebookReservationAffinityOutput
+}
+
+// Notebook Reservation Affinity for consuming Zonal reservation.
+type GoogleCloudAiplatformV1beta1NotebookReservationAffinityArgs struct {
+	// Specifies the type of reservation from which this instance can consume resources: RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE. See Consuming reserved instances for examples.
+	ConsumeReservationType GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeInput `pulumi:"consumeReservationType"`
+	// Optional. Corresponds to the label key of a reservation resource. To target a RESERVATION_SPECIFIC by name, use compute.googleapis.com/reservation-name as the key and specify the name of your reservation as its value.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Optional. Corresponds to the label values of a reservation resource. This must be the full path name of Reservation.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GoogleCloudAiplatformV1beta1NotebookReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1NotebookReservationAffinity)(nil)).Elem()
+}
+
+func (i GoogleCloudAiplatformV1beta1NotebookReservationAffinityArgs) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityOutput() GoogleCloudAiplatformV1beta1NotebookReservationAffinityOutput {
+	return i.ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1beta1NotebookReservationAffinityArgs) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NotebookReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1NotebookReservationAffinityOutput)
+}
+
+func (i GoogleCloudAiplatformV1beta1NotebookReservationAffinityArgs) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput() GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput {
+	return i.ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1beta1NotebookReservationAffinityArgs) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1NotebookReservationAffinityOutput).ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrInput is an input type that accepts GoogleCloudAiplatformV1beta1NotebookReservationAffinityArgs, GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtr and GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrInput` via:
+//
+//	        GoogleCloudAiplatformV1beta1NotebookReservationAffinityArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput() GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput
+	ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput
+}
+
+type googleCloudAiplatformV1beta1NotebookReservationAffinityPtrType GoogleCloudAiplatformV1beta1NotebookReservationAffinityArgs
+
+func GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtr(v *GoogleCloudAiplatformV1beta1NotebookReservationAffinityArgs) GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrInput {
+	return (*googleCloudAiplatformV1beta1NotebookReservationAffinityPtrType)(v)
+}
+
+func (*googleCloudAiplatformV1beta1NotebookReservationAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1beta1NotebookReservationAffinity)(nil)).Elem()
+}
+
+func (i *googleCloudAiplatformV1beta1NotebookReservationAffinityPtrType) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput() GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput {
+	return i.ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudAiplatformV1beta1NotebookReservationAffinityPtrType) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput)
+}
+
+// Notebook Reservation Affinity for consuming Zonal reservation.
+type GoogleCloudAiplatformV1beta1NotebookReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1NotebookReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1NotebookReservationAffinity)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityOutput) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityOutput() GoogleCloudAiplatformV1beta1NotebookReservationAffinityOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityOutput) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NotebookReservationAffinityOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityOutput) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput() GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput {
+	return o.ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityOutput) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1NotebookReservationAffinity) *GoogleCloudAiplatformV1beta1NotebookReservationAffinity {
+		return &v
+	}).(GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput)
+}
+
+// Specifies the type of reservation from which this instance can consume resources: RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE. See Consuming reserved instances for examples.
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityOutput) ConsumeReservationType() GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1NotebookReservationAffinity) GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType {
+		return v.ConsumeReservationType
+	}).(GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypeOutput)
+}
+
+// Optional. Corresponds to the label key of a reservation resource. To target a RESERVATION_SPECIFIC by name, use compute.googleapis.com/reservation-name as the key and specify the name of your reservation as its value.
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1NotebookReservationAffinity) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Corresponds to the label values of a reservation resource. This must be the full path name of Reservation.
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1NotebookReservationAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1beta1NotebookReservationAffinity)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput() GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput) Elem() GoogleCloudAiplatformV1beta1NotebookReservationAffinityOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1NotebookReservationAffinity) GoogleCloudAiplatformV1beta1NotebookReservationAffinity {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAiplatformV1beta1NotebookReservationAffinity
+		return ret
+	}).(GoogleCloudAiplatformV1beta1NotebookReservationAffinityOutput)
+}
+
+// Specifies the type of reservation from which this instance can consume resources: RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE. See Consuming reserved instances for examples.
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput) ConsumeReservationType() GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1NotebookReservationAffinity) *GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationType {
+		if v == nil {
+			return nil
+		}
+		return &v.ConsumeReservationType
+	}).(GoogleCloudAiplatformV1beta1NotebookReservationAffinityConsumeReservationTypePtrOutput)
+}
+
+// Optional. Corresponds to the label key of a reservation resource. To target a RESERVATION_SPECIFIC by name, use compute.googleapis.com/reservation-name as the key and specify the name of your reservation as its value.
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1NotebookReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Corresponds to the label values of a reservation resource. This must be the full path name of Reservation.
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1NotebookReservationAffinity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+// Notebook Reservation Affinity for consuming Zonal reservation.
+type GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponse struct {
+	// Specifies the type of reservation from which this instance can consume resources: RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE. See Consuming reserved instances for examples.
+	ConsumeReservationType string `pulumi:"consumeReservationType"`
+	// Optional. Corresponds to the label key of a reservation resource. To target a RESERVATION_SPECIFIC by name, use compute.googleapis.com/reservation-name as the key and specify the name of your reservation as its value.
+	Key string `pulumi:"key"`
+	// Optional. Corresponds to the label values of a reservation resource. This must be the full path name of Reservation.
+	Values []string `pulumi:"values"`
+}
+
+// Notebook Reservation Affinity for consuming Zonal reservation.
+type GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponseOutput) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityResponseOutput() GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponseOutput) ToGoogleCloudAiplatformV1beta1NotebookReservationAffinityResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponseOutput {
+	return o
+}
+
+// Specifies the type of reservation from which this instance can consume resources: RESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE. See Consuming reserved instances for examples.
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponseOutput) ConsumeReservationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponse) string {
+		return v.ConsumeReservationType
+	}).(pulumi.StringOutput)
+}
+
+// Optional. Corresponds to the label key of a reservation resource. To target a RESERVATION_SPECIFIC by name, use compute.googleapis.com/reservation-name as the key and specify the name of your reservation as its value.
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Optional. Corresponds to the label values of a reservation resource. This must be the full path name of Reservation.
+func (o GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
 // Represents the spec of persistent disk options.
 type GoogleCloudAiplatformV1beta1PersistentDiskSpec struct {
 	// Size in GB of the disk (default is 100GB).
@@ -18163,6 +19710,8 @@ type GoogleCloudAiplatformV1beta1PipelineJob struct {
 	Network *string `pulumi:"network"`
 	// The spec of the pipeline.
 	PipelineSpec map[string]string `pulumi:"pipelineSpec"`
+	// Optional. Whether to do component level validations before job creation.
+	PreflightValidations *bool `pulumi:"preflightValidations"`
 	// A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
 	ReservedIpRanges []string `pulumi:"reservedIpRanges"`
 	// Runtime config of the pipeline.
@@ -18196,6 +19745,8 @@ type GoogleCloudAiplatformV1beta1PipelineJobArgs struct {
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// The spec of the pipeline.
 	PipelineSpec pulumi.StringMapInput `pulumi:"pipelineSpec"`
+	// Optional. Whether to do component level validations before job creation.
+	PreflightValidations pulumi.BoolPtrInput `pulumi:"preflightValidations"`
 	// A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
 	ReservedIpRanges pulumi.StringArrayInput `pulumi:"reservedIpRanges"`
 	// Runtime config of the pipeline.
@@ -18311,6 +19862,11 @@ func (o GoogleCloudAiplatformV1beta1PipelineJobOutput) PipelineSpec() pulumi.Str
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1PipelineJob) map[string]string { return v.PipelineSpec }).(pulumi.StringMapOutput)
 }
 
+// Optional. Whether to do component level validations before job creation.
+func (o GoogleCloudAiplatformV1beta1PipelineJobOutput) PreflightValidations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1PipelineJob) *bool { return v.PreflightValidations }).(pulumi.BoolPtrOutput)
+}
+
 // A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
 func (o GoogleCloudAiplatformV1beta1PipelineJobOutput) ReservedIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1PipelineJob) []string { return v.ReservedIpRanges }).(pulumi.StringArrayOutput)
@@ -18405,6 +19961,16 @@ func (o GoogleCloudAiplatformV1beta1PipelineJobPtrOutput) PipelineSpec() pulumi.
 		}
 		return v.PipelineSpec
 	}).(pulumi.StringMapOutput)
+}
+
+// Optional. Whether to do component level validations before job creation.
+func (o GoogleCloudAiplatformV1beta1PipelineJobPtrOutput) PreflightValidations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1PipelineJob) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PreflightValidations
+	}).(pulumi.BoolPtrOutput)
 }
 
 // A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
@@ -18515,6 +20081,8 @@ type GoogleCloudAiplatformV1beta1PipelineJobResponse struct {
 	Network string `pulumi:"network"`
 	// The spec of the pipeline.
 	PipelineSpec map[string]string `pulumi:"pipelineSpec"`
+	// Optional. Whether to do component level validations before job creation.
+	PreflightValidations bool `pulumi:"preflightValidations"`
 	// A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
 	ReservedIpRanges []string `pulumi:"reservedIpRanges"`
 	// Runtime config of the pipeline.
@@ -18602,6 +20170,11 @@ func (o GoogleCloudAiplatformV1beta1PipelineJobResponseOutput) Network() pulumi.
 // The spec of the pipeline.
 func (o GoogleCloudAiplatformV1beta1PipelineJobResponseOutput) PipelineSpec() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1PipelineJobResponse) map[string]string { return v.PipelineSpec }).(pulumi.StringMapOutput)
+}
+
+// Optional. Whether to do component level validations before job creation.
+func (o GoogleCloudAiplatformV1beta1PipelineJobResponseOutput) PreflightValidations() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1PipelineJobResponse) bool { return v.PreflightValidations }).(pulumi.BoolOutput)
 }
 
 // A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
@@ -20887,6 +22460,66 @@ func (o GoogleCloudAiplatformV1beta1ProbeResponseOutput) TimeoutSeconds() pulumi
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ProbeResponse) int { return v.TimeoutSeconds }).(pulumi.IntOutput)
 }
 
+// PscAutomatedEndpoints defines the output of the forwarding rule automatically created by each PscAutomationConfig.
+type GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponse struct {
+	// Ip Address created by the automated forwarding rule.
+	MatchAddress string `pulumi:"matchAddress"`
+	// Corresponding network in pscAutomationConfigs.
+	Network string `pulumi:"network"`
+	// Corresponding project_id in pscAutomationConfigs
+	Project string `pulumi:"project"`
+}
+
+// PscAutomatedEndpoints defines the output of the forwarding rule automatically created by each PscAutomationConfig.
+type GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseOutput) ToGoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseOutput() GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseOutput) ToGoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseOutput {
+	return o
+}
+
+// Ip Address created by the automated forwarding rule.
+func (o GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseOutput) MatchAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponse) string { return v.MatchAddress }).(pulumi.StringOutput)
+}
+
+// Corresponding network in pscAutomationConfigs.
+func (o GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponse) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Corresponding project_id in pscAutomationConfigs
+func (o GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
+type GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseArrayOutput) ToGoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseArrayOutput() GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseArrayOutput) ToGoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseArrayOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponse {
+		return vs[0].([]GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponse)[vs[1].(int)]
+	}).(GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseOutput)
+}
+
 // The spec of a Python packaged code.
 type GoogleCloudAiplatformV1beta1PythonPackageSpec struct {
 	// Command line arguments to be passed to the Python task.
@@ -21161,12 +22794,180 @@ func (o GoogleCloudAiplatformV1beta1PythonPackageSpecResponseOutput) PythonModul
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1PythonPackageSpecResponse) string { return v.PythonModule }).(pulumi.StringOutput)
 }
 
+// Configuration for the Ray metrics.
+type GoogleCloudAiplatformV1beta1RayMetricSpec struct {
+	// Optional. Flag to disable the Ray metrics collection.
+	Disabled *bool `pulumi:"disabled"`
+}
+
+// GoogleCloudAiplatformV1beta1RayMetricSpecInput is an input type that accepts GoogleCloudAiplatformV1beta1RayMetricSpecArgs and GoogleCloudAiplatformV1beta1RayMetricSpecOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1RayMetricSpecInput` via:
+//
+//	GoogleCloudAiplatformV1beta1RayMetricSpecArgs{...}
+type GoogleCloudAiplatformV1beta1RayMetricSpecInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1beta1RayMetricSpecOutput() GoogleCloudAiplatformV1beta1RayMetricSpecOutput
+	ToGoogleCloudAiplatformV1beta1RayMetricSpecOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1RayMetricSpecOutput
+}
+
+// Configuration for the Ray metrics.
+type GoogleCloudAiplatformV1beta1RayMetricSpecArgs struct {
+	// Optional. Flag to disable the Ray metrics collection.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+}
+
+func (GoogleCloudAiplatformV1beta1RayMetricSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1RayMetricSpec)(nil)).Elem()
+}
+
+func (i GoogleCloudAiplatformV1beta1RayMetricSpecArgs) ToGoogleCloudAiplatformV1beta1RayMetricSpecOutput() GoogleCloudAiplatformV1beta1RayMetricSpecOutput {
+	return i.ToGoogleCloudAiplatformV1beta1RayMetricSpecOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1beta1RayMetricSpecArgs) ToGoogleCloudAiplatformV1beta1RayMetricSpecOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1RayMetricSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1RayMetricSpecOutput)
+}
+
+func (i GoogleCloudAiplatformV1beta1RayMetricSpecArgs) ToGoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput() GoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput {
+	return i.ToGoogleCloudAiplatformV1beta1RayMetricSpecPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1beta1RayMetricSpecArgs) ToGoogleCloudAiplatformV1beta1RayMetricSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1RayMetricSpecOutput).ToGoogleCloudAiplatformV1beta1RayMetricSpecPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudAiplatformV1beta1RayMetricSpecPtrInput is an input type that accepts GoogleCloudAiplatformV1beta1RayMetricSpecArgs, GoogleCloudAiplatformV1beta1RayMetricSpecPtr and GoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1RayMetricSpecPtrInput` via:
+//
+//	        GoogleCloudAiplatformV1beta1RayMetricSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudAiplatformV1beta1RayMetricSpecPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput() GoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput
+	ToGoogleCloudAiplatformV1beta1RayMetricSpecPtrOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput
+}
+
+type googleCloudAiplatformV1beta1RayMetricSpecPtrType GoogleCloudAiplatformV1beta1RayMetricSpecArgs
+
+func GoogleCloudAiplatformV1beta1RayMetricSpecPtr(v *GoogleCloudAiplatformV1beta1RayMetricSpecArgs) GoogleCloudAiplatformV1beta1RayMetricSpecPtrInput {
+	return (*googleCloudAiplatformV1beta1RayMetricSpecPtrType)(v)
+}
+
+func (*googleCloudAiplatformV1beta1RayMetricSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1beta1RayMetricSpec)(nil)).Elem()
+}
+
+func (i *googleCloudAiplatformV1beta1RayMetricSpecPtrType) ToGoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput() GoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput {
+	return i.ToGoogleCloudAiplatformV1beta1RayMetricSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudAiplatformV1beta1RayMetricSpecPtrType) ToGoogleCloudAiplatformV1beta1RayMetricSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput)
+}
+
+// Configuration for the Ray metrics.
+type GoogleCloudAiplatformV1beta1RayMetricSpecOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1RayMetricSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1RayMetricSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1RayMetricSpecOutput) ToGoogleCloudAiplatformV1beta1RayMetricSpecOutput() GoogleCloudAiplatformV1beta1RayMetricSpecOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1RayMetricSpecOutput) ToGoogleCloudAiplatformV1beta1RayMetricSpecOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1RayMetricSpecOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1RayMetricSpecOutput) ToGoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput() GoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput {
+	return o.ToGoogleCloudAiplatformV1beta1RayMetricSpecPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1beta1RayMetricSpecOutput) ToGoogleCloudAiplatformV1beta1RayMetricSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1RayMetricSpec) *GoogleCloudAiplatformV1beta1RayMetricSpec {
+		return &v
+	}).(GoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput)
+}
+
+// Optional. Flag to disable the Ray metrics collection.
+func (o GoogleCloudAiplatformV1beta1RayMetricSpecOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1RayMetricSpec) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1beta1RayMetricSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput) ToGoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput() GoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput) ToGoogleCloudAiplatformV1beta1RayMetricSpecPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput) Elem() GoogleCloudAiplatformV1beta1RayMetricSpecOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1RayMetricSpec) GoogleCloudAiplatformV1beta1RayMetricSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAiplatformV1beta1RayMetricSpec
+		return ret
+	}).(GoogleCloudAiplatformV1beta1RayMetricSpecOutput)
+}
+
+// Optional. Flag to disable the Ray metrics collection.
+func (o GoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1RayMetricSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for the Ray metrics.
+type GoogleCloudAiplatformV1beta1RayMetricSpecResponse struct {
+	// Optional. Flag to disable the Ray metrics collection.
+	Disabled bool `pulumi:"disabled"`
+}
+
+// Configuration for the Ray metrics.
+type GoogleCloudAiplatformV1beta1RayMetricSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1RayMetricSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1RayMetricSpecResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1RayMetricSpecResponseOutput) ToGoogleCloudAiplatformV1beta1RayMetricSpecResponseOutput() GoogleCloudAiplatformV1beta1RayMetricSpecResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1RayMetricSpecResponseOutput) ToGoogleCloudAiplatformV1beta1RayMetricSpecResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1RayMetricSpecResponseOutput {
+	return o
+}
+
+// Optional. Flag to disable the Ray metrics collection.
+func (o GoogleCloudAiplatformV1beta1RayMetricSpecResponseOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1RayMetricSpecResponse) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
 // Configuration information for the Ray cluster. For experimental launch, Ray cluster creation and Persistent cluster creation are 1:1 mapping: We will provision all the nodes within the Persistent cluster as Ray nodes.
 type GoogleCloudAiplatformV1beta1RaySpec struct {
 	// Optional. This will be used to indicate which resource pool will serve as the Ray head node(the first node within that pool). Will use the machine from the first workerpool as the head node by default if this field isn't set.
 	HeadNodeResourcePoolId *string `pulumi:"headNodeResourcePoolId"`
 	// Optional. Default image for user to choose a preferred ML framework (for example, TensorFlow or Pytorch) by choosing from [Vertex prebuilt images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers). Either this or the resource_pool_images is required. Use this field if you need all the resource pools to have the same Ray image. Otherwise, use the {@code resource_pool_images} field.
 	ImageUri *string `pulumi:"imageUri"`
+	// Optional. Ray metrics configurations.
+	RayMetricSpec *GoogleCloudAiplatformV1beta1RayMetricSpec `pulumi:"rayMetricSpec"`
 	// Optional. Required if image_uri isn't set. A map of resource_pool_id to prebuild Ray image if user need to use different images for different head/worker pools. This map needs to cover all the resource pool ids. Example: { "ray_head_node_pool": "head image" "ray_worker_node_pool1": "worker image" "ray_worker_node_pool2": "another worker image" }
 	ResourcePoolImages map[string]string `pulumi:"resourcePoolImages"`
 }
@@ -21188,6 +22989,8 @@ type GoogleCloudAiplatformV1beta1RaySpecArgs struct {
 	HeadNodeResourcePoolId pulumi.StringPtrInput `pulumi:"headNodeResourcePoolId"`
 	// Optional. Default image for user to choose a preferred ML framework (for example, TensorFlow or Pytorch) by choosing from [Vertex prebuilt images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers). Either this or the resource_pool_images is required. Use this field if you need all the resource pools to have the same Ray image. Otherwise, use the {@code resource_pool_images} field.
 	ImageUri pulumi.StringPtrInput `pulumi:"imageUri"`
+	// Optional. Ray metrics configurations.
+	RayMetricSpec GoogleCloudAiplatformV1beta1RayMetricSpecPtrInput `pulumi:"rayMetricSpec"`
 	// Optional. Required if image_uri isn't set. A map of resource_pool_id to prebuild Ray image if user need to use different images for different head/worker pools. This map needs to cover all the resource pool ids. Example: { "ray_head_node_pool": "head image" "ray_worker_node_pool1": "worker image" "ray_worker_node_pool2": "another worker image" }
 	ResourcePoolImages pulumi.StringMapInput `pulumi:"resourcePoolImages"`
 }
@@ -21280,6 +23083,13 @@ func (o GoogleCloudAiplatformV1beta1RaySpecOutput) ImageUri() pulumi.StringPtrOu
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1RaySpec) *string { return v.ImageUri }).(pulumi.StringPtrOutput)
 }
 
+// Optional. Ray metrics configurations.
+func (o GoogleCloudAiplatformV1beta1RaySpecOutput) RayMetricSpec() GoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1RaySpec) *GoogleCloudAiplatformV1beta1RayMetricSpec {
+		return v.RayMetricSpec
+	}).(GoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput)
+}
+
 // Optional. Required if image_uri isn't set. A map of resource_pool_id to prebuild Ray image if user need to use different images for different head/worker pools. This map needs to cover all the resource pool ids. Example: { "ray_head_node_pool": "head image" "ray_worker_node_pool1": "worker image" "ray_worker_node_pool2": "another worker image" }
 func (o GoogleCloudAiplatformV1beta1RaySpecOutput) ResourcePoolImages() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1RaySpec) map[string]string { return v.ResourcePoolImages }).(pulumi.StringMapOutput)
@@ -21329,6 +23139,16 @@ func (o GoogleCloudAiplatformV1beta1RaySpecPtrOutput) ImageUri() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. Ray metrics configurations.
+func (o GoogleCloudAiplatformV1beta1RaySpecPtrOutput) RayMetricSpec() GoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1RaySpec) *GoogleCloudAiplatformV1beta1RayMetricSpec {
+		if v == nil {
+			return nil
+		}
+		return v.RayMetricSpec
+	}).(GoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput)
+}
+
 // Optional. Required if image_uri isn't set. A map of resource_pool_id to prebuild Ray image if user need to use different images for different head/worker pools. This map needs to cover all the resource pool ids. Example: { "ray_head_node_pool": "head image" "ray_worker_node_pool1": "worker image" "ray_worker_node_pool2": "another worker image" }
 func (o GoogleCloudAiplatformV1beta1RaySpecPtrOutput) ResourcePoolImages() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1RaySpec) map[string]string {
@@ -21345,6 +23165,8 @@ type GoogleCloudAiplatformV1beta1RaySpecResponse struct {
 	HeadNodeResourcePoolId string `pulumi:"headNodeResourcePoolId"`
 	// Optional. Default image for user to choose a preferred ML framework (for example, TensorFlow or Pytorch) by choosing from [Vertex prebuilt images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers). Either this or the resource_pool_images is required. Use this field if you need all the resource pools to have the same Ray image. Otherwise, use the {@code resource_pool_images} field.
 	ImageUri string `pulumi:"imageUri"`
+	// Optional. Ray metrics configurations.
+	RayMetricSpec GoogleCloudAiplatformV1beta1RayMetricSpecResponse `pulumi:"rayMetricSpec"`
 	// Optional. Required if image_uri isn't set. A map of resource_pool_id to prebuild Ray image if user need to use different images for different head/worker pools. This map needs to cover all the resource pool ids. Example: { "ray_head_node_pool": "head image" "ray_worker_node_pool1": "worker image" "ray_worker_node_pool2": "another worker image" }
 	ResourcePoolImages map[string]string `pulumi:"resourcePoolImages"`
 }
@@ -21374,9 +23196,262 @@ func (o GoogleCloudAiplatformV1beta1RaySpecResponseOutput) ImageUri() pulumi.Str
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1RaySpecResponse) string { return v.ImageUri }).(pulumi.StringOutput)
 }
 
+// Optional. Ray metrics configurations.
+func (o GoogleCloudAiplatformV1beta1RaySpecResponseOutput) RayMetricSpec() GoogleCloudAiplatformV1beta1RayMetricSpecResponseOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1RaySpecResponse) GoogleCloudAiplatformV1beta1RayMetricSpecResponse {
+		return v.RayMetricSpec
+	}).(GoogleCloudAiplatformV1beta1RayMetricSpecResponseOutput)
+}
+
 // Optional. Required if image_uri isn't set. A map of resource_pool_id to prebuild Ray image if user need to use different images for different head/worker pools. This map needs to cover all the resource pool ids. Example: { "ray_head_node_pool": "head image" "ray_worker_node_pool1": "worker image" "ray_worker_node_pool2": "another worker image" }
 func (o GoogleCloudAiplatformV1beta1RaySpecResponseOutput) ResourcePoolImages() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1RaySpecResponse) map[string]string { return v.ResourcePoolImages }).(pulumi.StringMapOutput)
+}
+
+// ReasoningEngine configurations
+type GoogleCloudAiplatformV1beta1ReasoningEngineSpec struct {
+	// Optional. Declarations for object class methods.
+	ClassMethods []map[string]string `pulumi:"classMethods"`
+	// User provided package spec of the ReasoningEngine.
+	PackageSpec GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpec `pulumi:"packageSpec"`
+}
+
+// GoogleCloudAiplatformV1beta1ReasoningEngineSpecInput is an input type that accepts GoogleCloudAiplatformV1beta1ReasoningEngineSpecArgs and GoogleCloudAiplatformV1beta1ReasoningEngineSpecOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1ReasoningEngineSpecInput` via:
+//
+//	GoogleCloudAiplatformV1beta1ReasoningEngineSpecArgs{...}
+type GoogleCloudAiplatformV1beta1ReasoningEngineSpecInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1beta1ReasoningEngineSpecOutput() GoogleCloudAiplatformV1beta1ReasoningEngineSpecOutput
+	ToGoogleCloudAiplatformV1beta1ReasoningEngineSpecOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1ReasoningEngineSpecOutput
+}
+
+// ReasoningEngine configurations
+type GoogleCloudAiplatformV1beta1ReasoningEngineSpecArgs struct {
+	// Optional. Declarations for object class methods.
+	ClassMethods pulumi.StringMapArrayInput `pulumi:"classMethods"`
+	// User provided package spec of the ReasoningEngine.
+	PackageSpec GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecInput `pulumi:"packageSpec"`
+}
+
+func (GoogleCloudAiplatformV1beta1ReasoningEngineSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1ReasoningEngineSpec)(nil)).Elem()
+}
+
+func (i GoogleCloudAiplatformV1beta1ReasoningEngineSpecArgs) ToGoogleCloudAiplatformV1beta1ReasoningEngineSpecOutput() GoogleCloudAiplatformV1beta1ReasoningEngineSpecOutput {
+	return i.ToGoogleCloudAiplatformV1beta1ReasoningEngineSpecOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1beta1ReasoningEngineSpecArgs) ToGoogleCloudAiplatformV1beta1ReasoningEngineSpecOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ReasoningEngineSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ReasoningEngineSpecOutput)
+}
+
+// ReasoningEngine configurations
+type GoogleCloudAiplatformV1beta1ReasoningEngineSpecOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1ReasoningEngineSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1ReasoningEngineSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1ReasoningEngineSpecOutput) ToGoogleCloudAiplatformV1beta1ReasoningEngineSpecOutput() GoogleCloudAiplatformV1beta1ReasoningEngineSpecOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1ReasoningEngineSpecOutput) ToGoogleCloudAiplatformV1beta1ReasoningEngineSpecOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ReasoningEngineSpecOutput {
+	return o
+}
+
+// Optional. Declarations for object class methods.
+func (o GoogleCloudAiplatformV1beta1ReasoningEngineSpecOutput) ClassMethods() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ReasoningEngineSpec) []map[string]string { return v.ClassMethods }).(pulumi.StringMapArrayOutput)
+}
+
+// User provided package spec of the ReasoningEngine.
+func (o GoogleCloudAiplatformV1beta1ReasoningEngineSpecOutput) PackageSpec() GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ReasoningEngineSpec) GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpec {
+		return v.PackageSpec
+	}).(GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutput)
+}
+
+// User provided package spec like pickled object and package requirements.
+type GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpec struct {
+	// Optional. The Cloud Storage URI of the dependency files in tar.gz format.
+	DependencyFilesGcsUri *string `pulumi:"dependencyFilesGcsUri"`
+	// Optional. The Cloud Storage URI of the pickled python object.
+	PickleObjectGcsUri *string `pulumi:"pickleObjectGcsUri"`
+	// Optional. The Python version. Currently support 3.8, 3.9, 3.10, 3.11. If not specified, default value is 3.10.
+	PythonVersion *string `pulumi:"pythonVersion"`
+	// Optional. The Cloud Storage URI of the `requirements.txt` file
+	RequirementsGcsUri *string `pulumi:"requirementsGcsUri"`
+}
+
+// GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecInput is an input type that accepts GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecArgs and GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecInput` via:
+//
+//	GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecArgs{...}
+type GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutput() GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutput
+	ToGoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutput
+}
+
+// User provided package spec like pickled object and package requirements.
+type GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecArgs struct {
+	// Optional. The Cloud Storage URI of the dependency files in tar.gz format.
+	DependencyFilesGcsUri pulumi.StringPtrInput `pulumi:"dependencyFilesGcsUri"`
+	// Optional. The Cloud Storage URI of the pickled python object.
+	PickleObjectGcsUri pulumi.StringPtrInput `pulumi:"pickleObjectGcsUri"`
+	// Optional. The Python version. Currently support 3.8, 3.9, 3.10, 3.11. If not specified, default value is 3.10.
+	PythonVersion pulumi.StringPtrInput `pulumi:"pythonVersion"`
+	// Optional. The Cloud Storage URI of the `requirements.txt` file
+	RequirementsGcsUri pulumi.StringPtrInput `pulumi:"requirementsGcsUri"`
+}
+
+func (GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpec)(nil)).Elem()
+}
+
+func (i GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecArgs) ToGoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutput() GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutput {
+	return i.ToGoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecArgs) ToGoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutput)
+}
+
+// User provided package spec like pickled object and package requirements.
+type GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutput) ToGoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutput() GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutput) ToGoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutput {
+	return o
+}
+
+// Optional. The Cloud Storage URI of the dependency files in tar.gz format.
+func (o GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutput) DependencyFilesGcsUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpec) *string {
+		return v.DependencyFilesGcsUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of the pickled python object.
+func (o GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutput) PickleObjectGcsUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpec) *string {
+		return v.PickleObjectGcsUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Python version. Currently support 3.8, 3.9, 3.10, 3.11. If not specified, default value is 3.10.
+func (o GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutput) PythonVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpec) *string { return v.PythonVersion }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of the `requirements.txt` file
+func (o GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutput) RequirementsGcsUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpec) *string {
+		return v.RequirementsGcsUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// User provided package spec like pickled object and package requirements.
+type GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponse struct {
+	// Optional. The Cloud Storage URI of the dependency files in tar.gz format.
+	DependencyFilesGcsUri string `pulumi:"dependencyFilesGcsUri"`
+	// Optional. The Cloud Storage URI of the pickled python object.
+	PickleObjectGcsUri string `pulumi:"pickleObjectGcsUri"`
+	// Optional. The Python version. Currently support 3.8, 3.9, 3.10, 3.11. If not specified, default value is 3.10.
+	PythonVersion string `pulumi:"pythonVersion"`
+	// Optional. The Cloud Storage URI of the `requirements.txt` file
+	RequirementsGcsUri string `pulumi:"requirementsGcsUri"`
+}
+
+// User provided package spec like pickled object and package requirements.
+type GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponseOutput) ToGoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponseOutput() GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponseOutput) ToGoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponseOutput {
+	return o
+}
+
+// Optional. The Cloud Storage URI of the dependency files in tar.gz format.
+func (o GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponseOutput) DependencyFilesGcsUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponse) string {
+		return v.DependencyFilesGcsUri
+	}).(pulumi.StringOutput)
+}
+
+// Optional. The Cloud Storage URI of the pickled python object.
+func (o GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponseOutput) PickleObjectGcsUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponse) string {
+		return v.PickleObjectGcsUri
+	}).(pulumi.StringOutput)
+}
+
+// Optional. The Python version. Currently support 3.8, 3.9, 3.10, 3.11. If not specified, default value is 3.10.
+func (o GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponseOutput) PythonVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponse) string {
+		return v.PythonVersion
+	}).(pulumi.StringOutput)
+}
+
+// Optional. The Cloud Storage URI of the `requirements.txt` file
+func (o GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponseOutput) RequirementsGcsUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponse) string {
+		return v.RequirementsGcsUri
+	}).(pulumi.StringOutput)
+}
+
+// ReasoningEngine configurations
+type GoogleCloudAiplatformV1beta1ReasoningEngineSpecResponse struct {
+	// Optional. Declarations for object class methods.
+	ClassMethods []map[string]string `pulumi:"classMethods"`
+	// User provided package spec of the ReasoningEngine.
+	PackageSpec GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponse `pulumi:"packageSpec"`
+}
+
+// ReasoningEngine configurations
+type GoogleCloudAiplatformV1beta1ReasoningEngineSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1ReasoningEngineSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1ReasoningEngineSpecResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1ReasoningEngineSpecResponseOutput) ToGoogleCloudAiplatformV1beta1ReasoningEngineSpecResponseOutput() GoogleCloudAiplatformV1beta1ReasoningEngineSpecResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1ReasoningEngineSpecResponseOutput) ToGoogleCloudAiplatformV1beta1ReasoningEngineSpecResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ReasoningEngineSpecResponseOutput {
+	return o
+}
+
+// Optional. Declarations for object class methods.
+func (o GoogleCloudAiplatformV1beta1ReasoningEngineSpecResponseOutput) ClassMethods() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ReasoningEngineSpecResponse) []map[string]string {
+		return v.ClassMethods
+	}).(pulumi.StringMapArrayOutput)
+}
+
+// User provided package spec of the ReasoningEngine.
+func (o GoogleCloudAiplatformV1beta1ReasoningEngineSpecResponseOutput) PackageSpec() GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponseOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ReasoningEngineSpecResponse) GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponse {
+		return v.PackageSpec
+	}).(GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponseOutput)
 }
 
 // Represents the spec of a group of resources of the same type, for example machine type, disk, and accelerators, in a PersistentResource.
@@ -23459,6 +25534,172 @@ func (o GoogleCloudAiplatformV1beta1ServiceAccountSpecResponseOutput) EnableCust
 // Optional. Default service account that this PersistentResource's workloads run as. The workloads include: * Any runtime specified via `ResourceRuntimeSpec` on creation time, for example, Ray. * Jobs submitted to PersistentResource, if no other service account specified in the job specs. Only works when custom service account is enabled and users have the `iam.serviceAccounts.actAs` permission on this service account. Required if any containers are specified in `ResourceRuntimeSpec`.
 func (o GoogleCloudAiplatformV1beta1ServiceAccountSpecResponseOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ServiceAccountSpecResponse) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+type GoogleCloudAiplatformV1beta1ShieldedVmConfig struct {
+	// Defines whether the instance has [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.
+	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
+}
+
+// GoogleCloudAiplatformV1beta1ShieldedVmConfigInput is an input type that accepts GoogleCloudAiplatformV1beta1ShieldedVmConfigArgs and GoogleCloudAiplatformV1beta1ShieldedVmConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1ShieldedVmConfigInput` via:
+//
+//	GoogleCloudAiplatformV1beta1ShieldedVmConfigArgs{...}
+type GoogleCloudAiplatformV1beta1ShieldedVmConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1beta1ShieldedVmConfigOutput() GoogleCloudAiplatformV1beta1ShieldedVmConfigOutput
+	ToGoogleCloudAiplatformV1beta1ShieldedVmConfigOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1ShieldedVmConfigOutput
+}
+
+// A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+type GoogleCloudAiplatformV1beta1ShieldedVmConfigArgs struct {
+	// Defines whether the instance has [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.
+	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
+}
+
+func (GoogleCloudAiplatformV1beta1ShieldedVmConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1ShieldedVmConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudAiplatformV1beta1ShieldedVmConfigArgs) ToGoogleCloudAiplatformV1beta1ShieldedVmConfigOutput() GoogleCloudAiplatformV1beta1ShieldedVmConfigOutput {
+	return i.ToGoogleCloudAiplatformV1beta1ShieldedVmConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1beta1ShieldedVmConfigArgs) ToGoogleCloudAiplatformV1beta1ShieldedVmConfigOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ShieldedVmConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ShieldedVmConfigOutput)
+}
+
+func (i GoogleCloudAiplatformV1beta1ShieldedVmConfigArgs) ToGoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput() GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput {
+	return i.ToGoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAiplatformV1beta1ShieldedVmConfigArgs) ToGoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ShieldedVmConfigOutput).ToGoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrInput is an input type that accepts GoogleCloudAiplatformV1beta1ShieldedVmConfigArgs, GoogleCloudAiplatformV1beta1ShieldedVmConfigPtr and GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrInput` via:
+//
+//	        GoogleCloudAiplatformV1beta1ShieldedVmConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput() GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput
+	ToGoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutputWithContext(context.Context) GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput
+}
+
+type googleCloudAiplatformV1beta1ShieldedVmConfigPtrType GoogleCloudAiplatformV1beta1ShieldedVmConfigArgs
+
+func GoogleCloudAiplatformV1beta1ShieldedVmConfigPtr(v *GoogleCloudAiplatformV1beta1ShieldedVmConfigArgs) GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrInput {
+	return (*googleCloudAiplatformV1beta1ShieldedVmConfigPtrType)(v)
+}
+
+func (*googleCloudAiplatformV1beta1ShieldedVmConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1beta1ShieldedVmConfig)(nil)).Elem()
+}
+
+func (i *googleCloudAiplatformV1beta1ShieldedVmConfigPtrType) ToGoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput() GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput {
+	return i.ToGoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudAiplatformV1beta1ShieldedVmConfigPtrType) ToGoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput)
+}
+
+// A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+type GoogleCloudAiplatformV1beta1ShieldedVmConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1ShieldedVmConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1ShieldedVmConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1ShieldedVmConfigOutput) ToGoogleCloudAiplatformV1beta1ShieldedVmConfigOutput() GoogleCloudAiplatformV1beta1ShieldedVmConfigOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1ShieldedVmConfigOutput) ToGoogleCloudAiplatformV1beta1ShieldedVmConfigOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ShieldedVmConfigOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1ShieldedVmConfigOutput) ToGoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput() GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput {
+	return o.ToGoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAiplatformV1beta1ShieldedVmConfigOutput) ToGoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAiplatformV1beta1ShieldedVmConfig) *GoogleCloudAiplatformV1beta1ShieldedVmConfig {
+		return &v
+	}).(GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput)
+}
+
+// Defines whether the instance has [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.
+func (o GoogleCloudAiplatformV1beta1ShieldedVmConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ShieldedVmConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAiplatformV1beta1ShieldedVmConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput) ToGoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput() GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput) ToGoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput) Elem() GoogleCloudAiplatformV1beta1ShieldedVmConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1ShieldedVmConfig) GoogleCloudAiplatformV1beta1ShieldedVmConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAiplatformV1beta1ShieldedVmConfig
+		return ret
+	}).(GoogleCloudAiplatformV1beta1ShieldedVmConfigOutput)
+}
+
+// Defines whether the instance has [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.
+func (o GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAiplatformV1beta1ShieldedVmConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSecureBoot
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+type GoogleCloudAiplatformV1beta1ShieldedVmConfigResponse struct {
+	// Defines whether the instance has [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.
+	EnableSecureBoot bool `pulumi:"enableSecureBoot"`
+}
+
+// A set of Shielded Instance options. See [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+type GoogleCloudAiplatformV1beta1ShieldedVmConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAiplatformV1beta1ShieldedVmConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAiplatformV1beta1ShieldedVmConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAiplatformV1beta1ShieldedVmConfigResponseOutput) ToGoogleCloudAiplatformV1beta1ShieldedVmConfigResponseOutput() GoogleCloudAiplatformV1beta1ShieldedVmConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAiplatformV1beta1ShieldedVmConfigResponseOutput) ToGoogleCloudAiplatformV1beta1ShieldedVmConfigResponseOutputWithContext(ctx context.Context) GoogleCloudAiplatformV1beta1ShieldedVmConfigResponseOutput {
+	return o
+}
+
+// Defines whether the instance has [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.
+func (o GoogleCloudAiplatformV1beta1ShieldedVmConfigResponseOutput) EnableSecureBoot() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudAiplatformV1beta1ShieldedVmConfigResponse) bool { return v.EnableSecureBoot }).(pulumi.BoolOutput)
 }
 
 // Config for SmoothGrad approximation of gradients. When enabled, the gradients are approximated by averaging the gradients from noisy samples in the vicinity of the inputs. Adding noise can help improve the computed gradients. Refer to this paper for more details: https://arxiv.org/pdf/1706.03825.pdf
@@ -29572,9 +31813,9 @@ func (o GoogleCloudAiplatformV1beta1XraiAttributionResponseOutput) StepCount() p
 type GoogleIamV1Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *GoogleTypeExpr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role *string `pulumi:"role"`
 }
 
@@ -29593,9 +31834,9 @@ type GoogleIamV1BindingInput interface {
 type GoogleIamV1BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition GoogleTypeExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -29656,12 +31897,12 @@ func (o GoogleIamV1BindingOutput) Condition() GoogleTypeExprPtrOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) *GoogleTypeExpr { return v.Condition }).(GoogleTypeExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o GoogleIamV1BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o GoogleIamV1BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -29690,9 +31931,9 @@ func (o GoogleIamV1BindingArrayOutput) Index(i pulumi.IntInput) GoogleIamV1Bindi
 type GoogleIamV1BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition GoogleTypeExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role string `pulumi:"role"`
 }
 
@@ -29716,12 +31957,12 @@ func (o GoogleIamV1BindingResponseOutput) Condition() GoogleTypeExprResponseOutp
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) GoogleTypeExprResponse { return v.Condition }).(GoogleTypeExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o GoogleIamV1BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o GoogleIamV1BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -30155,6 +32396,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourcePtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupArrayInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewIndexConfigInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1FeatureViewIndexConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1FeatureViewIndexConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewSyncConfigInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1FeatureViewSyncConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewSyncConfigPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1FeatureViewSyncConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigArgs{})
@@ -30183,6 +32430,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1GcsDestinationPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1GcsDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1GcsSourceInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1GcsSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1GcsSourcePtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1GcsSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1GenieSourceInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1GenieSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1GenieSourcePtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1GenieSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1InputDataConfigInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1InputDataConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1InputDataConfigPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1InputDataConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionArgs{})
@@ -30193,11 +32442,15 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ManualBatchTuningParametersPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ManualBatchTuningParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ModelInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ModelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ModelPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ModelBaseModelSourceInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ModelBaseModelSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ModelBaseModelSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ModelContainerSpecInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ModelContainerSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ModelContainerSpecPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ModelContainerSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArrayInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ModelGardenSourceInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ModelGardenSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ModelGardenSourcePtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ModelGardenSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigArgs{})
@@ -30238,6 +32491,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1NotebookEucConfigPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1NotebookEucConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1NotebookReservationAffinityInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1NotebookReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1NotebookReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1PersistentDiskSpecInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1PersistentDiskSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1PersistentDiskSpecPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1PersistentDiskSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1PipelineJobInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1PipelineJobArgs{})
@@ -30262,8 +32517,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ProbeExecActionPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ProbeExecActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1PythonPackageSpecInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1PythonPackageSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1PythonPackageSpecPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1PythonPackageSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1RayMetricSpecInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1RayMetricSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1RayMetricSpecPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1RayMetricSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1RaySpecInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1RaySpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1RaySpecPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1RaySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ReasoningEngineSpecInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ReasoningEngineSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ResourcePoolInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ResourcePoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ResourcePoolArrayInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ResourcePoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecArgs{})
@@ -30284,6 +32543,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1SchedulingPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1SchedulingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ServiceAccountSpecInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ServiceAccountSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ServiceAccountSpecPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ServiceAccountSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ShieldedVmConfigInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ShieldedVmConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1ShieldedVmConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1SmoothGradConfigInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1SmoothGradConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1SmoothGradConfigPtrInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1SmoothGradConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAiplatformV1beta1StratifiedSplitInput)(nil)).Elem(), GoogleCloudAiplatformV1beta1StratifiedSplitArgs{})
@@ -30460,6 +32721,15 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroupResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigBruteForceConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1FeatureViewIndexConfigTreeAHConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1FeatureViewSyncConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1FeatureViewSyncConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponseOutput{})
@@ -30502,6 +32772,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1GcsSourceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1GcsSourcePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1GcsSourceResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1GenieSourceOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1GenieSourcePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1GenieSourceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1IndexPrivateEndpointsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1IndexStatsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1InputDataConfigOutput{})
@@ -30523,6 +32796,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ModelOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ModelPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ModelBaseModelSourceOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ModelBaseModelSourcePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ModelBaseModelSourceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ModelContainerSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ModelContainerSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ModelContainerSpecResponseOutput{})
@@ -30537,6 +32813,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringScheduleConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ModelExportFormatResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ModelExportFormatResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ModelGardenSourceOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ModelGardenSourcePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ModelGardenSourceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfigOutput{})
@@ -30608,6 +32887,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1NotebookReservationAffinityOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1NotebookReservationAffinityPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1NotebookReservationAffinityResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1PersistentDiskSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1PersistentDiskSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1PersistentDiskSpecResponseOutput{})
@@ -30652,12 +32934,21 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ProbeExecActionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ProbeExecActionResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ProbeResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1PscAutomatedEndpointsResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1PythonPackageSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1PythonPackageSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1PythonPackageSpecResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1RayMetricSpecOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1RayMetricSpecPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1RayMetricSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1RaySpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1RaySpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1RaySpecResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ReasoningEngineSpecOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ReasoningEngineSpecPackageSpecResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ReasoningEngineSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ResourcePoolOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ResourcePoolArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecOutput{})
@@ -30693,6 +32984,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ServiceAccountSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ServiceAccountSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ServiceAccountSpecResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ShieldedVmConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ShieldedVmConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1ShieldedVmConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1SmoothGradConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1SmoothGradConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAiplatformV1beta1SmoothGradConfigResponseOutput{})

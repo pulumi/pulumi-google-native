@@ -27,7 +27,7 @@ class CompilationResultArgs:
         The set of arguments for constructing a CompilationResult resource.
         :param pulumi.Input['CodeCompilationConfigArgs'] code_compilation_config: Immutable. If set, fields of `code_compilation_config` override the default compilation settings that are specified in dataform.json.
         :param pulumi.Input[str] git_commitish: Immutable. Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository. Examples: - a commit SHA: `12ade345` - a tag: `tag1` - a branch name: `branch1`
-        :param pulumi.Input[str] release_config: Immutable. The name of the release config to compile. The release config's 'current_compilation_result' field will be updated to this compilation result. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
+        :param pulumi.Input[str] release_config: Immutable. The name of the release config to compile. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
         :param pulumi.Input[str] workspace: Immutable. The name of the workspace to compile. Must be in the format `projects/*/locations/*/repositories/*/workspaces/*`.
         """
         pulumi.set(__self__, "repository_id", repository_id)
@@ -99,7 +99,7 @@ class CompilationResultArgs:
     @pulumi.getter(name="releaseConfig")
     def release_config(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. The name of the release config to compile. The release config's 'current_compilation_result' field will be updated to this compilation result. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
+        Immutable. The name of the release config to compile. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
         """
         return pulumi.get(self, "release_config")
 
@@ -143,7 +143,7 @@ class CompilationResult(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['CodeCompilationConfigArgs']] code_compilation_config: Immutable. If set, fields of `code_compilation_config` override the default compilation settings that are specified in dataform.json.
         :param pulumi.Input[str] git_commitish: Immutable. Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository. Examples: - a commit SHA: `12ade345` - a tag: `tag1` - a branch name: `branch1`
-        :param pulumi.Input[str] release_config: Immutable. The name of the release config to compile. The release config's 'current_compilation_result' field will be updated to this compilation result. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
+        :param pulumi.Input[str] release_config: Immutable. The name of the release config to compile. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
         :param pulumi.Input[str] workspace: Immutable. The name of the workspace to compile. Must be in the format `projects/*/locations/*/repositories/*/workspaces/*`.
         """
         ...
@@ -293,7 +293,7 @@ class CompilationResult(pulumi.CustomResource):
     @pulumi.getter(name="releaseConfig")
     def release_config(self) -> pulumi.Output[str]:
         """
-        Immutable. The name of the release config to compile. The release config's 'current_compilation_result' field will be updated to this compilation result. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
+        Immutable. The name of the release config to compile. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
         """
         return pulumi.get(self, "release_config")
 

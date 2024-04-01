@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:composer/v1:Environment":
 		r = &Environment{}
+	case "google-native:composer/v1:UserWorkloadsConfigMap":
+		r = &UserWorkloadsConfigMap{}
+	case "google-native:composer/v1:UserWorkloadsSecret":
+		r = &UserWorkloadsSecret{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

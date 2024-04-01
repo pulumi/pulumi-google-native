@@ -14,21 +14,20 @@ __all__ = ['AnnotationStoreArgs', 'AnnotationStore']
 @pulumi.input_type
 class AnnotationStoreArgs:
     def __init__(__self__, *,
+                 annotation_store_id: pulumi.Input[str],
                  dataset_id: pulumi.Input[str],
-                 annotation_store_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AnnotationStore resource.
-        :param pulumi.Input[str] annotation_store_id: The ID of the Annotation store that is being created. The string must match the following regex: `[\\p{L}\\p{N}_\\-\\.]{1,256}`.
+        :param pulumi.Input[str] annotation_store_id: Required. The ID of the Annotation store that is being created. The string must match the following regex: `[\\p{L}\\p{N}_\\-\\.]{1,256}`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-supplied key-value pairs used to organize Annotation stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \\p{Ll}\\p{Lo}{0,62} Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-        :param pulumi.Input[str] name: Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
+        :param pulumi.Input[str] name: Identifier. Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
         """
+        pulumi.set(__self__, "annotation_store_id", annotation_store_id)
         pulumi.set(__self__, "dataset_id", dataset_id)
-        if annotation_store_id is not None:
-            pulumi.set(__self__, "annotation_store_id", annotation_store_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -39,6 +38,18 @@ class AnnotationStoreArgs:
             pulumi.set(__self__, "project", project)
 
     @property
+    @pulumi.getter(name="annotationStoreId")
+    def annotation_store_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID of the Annotation store that is being created. The string must match the following regex: `[\\p{L}\\p{N}_\\-\\.]{1,256}`.
+        """
+        return pulumi.get(self, "annotation_store_id")
+
+    @annotation_store_id.setter
+    def annotation_store_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "annotation_store_id", value)
+
+    @property
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "dataset_id")
@@ -46,18 +57,6 @@ class AnnotationStoreArgs:
     @dataset_id.setter
     def dataset_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "dataset_id", value)
-
-    @property
-    @pulumi.getter(name="annotationStoreId")
-    def annotation_store_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the Annotation store that is being created. The string must match the following regex: `[\\p{L}\\p{N}_\\-\\.]{1,256}`.
-        """
-        return pulumi.get(self, "annotation_store_id")
-
-    @annotation_store_id.setter
-    def annotation_store_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "annotation_store_id", value)
 
     @property
     @pulumi.getter
@@ -84,7 +83,7 @@ class AnnotationStoreArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
+        Identifier. Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
         """
         return pulumi.get(self, "name")
 
@@ -119,9 +118,9 @@ class AnnotationStore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] annotation_store_id: The ID of the Annotation store that is being created. The string must match the following regex: `[\\p{L}\\p{N}_\\-\\.]{1,256}`.
+        :param pulumi.Input[str] annotation_store_id: Required. The ID of the Annotation store that is being created. The string must match the following regex: `[\\p{L}\\p{N}_\\-\\.]{1,256}`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-supplied key-value pairs used to organize Annotation stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \\p{Ll}\\p{Lo}{0,62} Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-        :param pulumi.Input[str] name: Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
+        :param pulumi.Input[str] name: Identifier. Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
         """
         ...
     @overload
@@ -162,6 +161,8 @@ class AnnotationStore(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AnnotationStoreArgs.__new__(AnnotationStoreArgs)
 
+            if annotation_store_id is None and not opts.urn:
+                raise TypeError("Missing required property 'annotation_store_id'")
             __props__.__dict__["annotation_store_id"] = annotation_store_id
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
@@ -170,7 +171,7 @@ class AnnotationStore(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["dataset_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["annotation_store_id", "dataset_id", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(AnnotationStore, __self__).__init__(
             'google-native:healthcare/v1beta1:AnnotationStore',
@@ -204,9 +205,9 @@ class AnnotationStore(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="annotationStoreId")
-    def annotation_store_id(self) -> pulumi.Output[Optional[str]]:
+    def annotation_store_id(self) -> pulumi.Output[str]:
         """
-        The ID of the Annotation store that is being created. The string must match the following regex: `[\\p{L}\\p{N}_\\-\\.]{1,256}`.
+        Required. The ID of the Annotation store that is being created. The string must match the following regex: `[\\p{L}\\p{N}_\\-\\.]{1,256}`.
         """
         return pulumi.get(self, "annotation_store_id")
 
@@ -232,7 +233,7 @@ class AnnotationStore(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
+        Identifier. Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
         """
         return pulumi.get(self, "name")
 

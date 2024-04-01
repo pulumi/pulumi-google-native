@@ -17,6 +17,7 @@ export function getRegionInstanceTemplate(args: GetRegionInstanceTemplateArgs, o
         "instanceTemplate": args.instanceTemplate,
         "project": args.project,
         "region": args.region,
+        "view": args.view,
     }, opts);
 }
 
@@ -24,6 +25,7 @@ export interface GetRegionInstanceTemplateArgs {
     instanceTemplate: string;
     project?: string;
     region: string;
+    view?: string;
 }
 
 export interface GetRegionInstanceTemplateResult {
@@ -75,4 +77,5 @@ export interface GetRegionInstanceTemplateOutputArgs {
     instanceTemplate: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     region: pulumi.Input<string>;
+    view?: pulumi.Input<string>;
 }

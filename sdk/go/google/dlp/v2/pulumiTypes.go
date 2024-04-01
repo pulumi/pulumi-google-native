@@ -13,7 +13,7 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-// A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
+// A task to execute on the completion of a job. See https://cloud.google.com/sensitive-data-protection/docs/concepts-actions to learn more.
 type GooglePrivacyDlpV2Action struct {
 	// Create a de-identified copy of the input data.
 	Deidentify *GooglePrivacyDlpV2Deidentify `pulumi:"deidentify"`
@@ -42,7 +42,7 @@ type GooglePrivacyDlpV2ActionInput interface {
 	ToGooglePrivacyDlpV2ActionOutputWithContext(context.Context) GooglePrivacyDlpV2ActionOutput
 }
 
-// A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
+// A task to execute on the completion of a job. See https://cloud.google.com/sensitive-data-protection/docs/concepts-actions to learn more.
 type GooglePrivacyDlpV2ActionArgs struct {
 	// Create a de-identified copy of the input data.
 	Deidentify GooglePrivacyDlpV2DeidentifyPtrInput `pulumi:"deidentify"`
@@ -97,7 +97,7 @@ func (i GooglePrivacyDlpV2ActionArray) ToGooglePrivacyDlpV2ActionArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ActionArrayOutput)
 }
 
-// A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
+// A task to execute on the completion of a job. See https://cloud.google.com/sensitive-data-protection/docs/concepts-actions to learn more.
 type GooglePrivacyDlpV2ActionOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2ActionOutput) ElementType() reflect.Type {
@@ -223,7 +223,7 @@ func (o GooglePrivacyDlpV2ActionDetailsResponseArrayOutput) Index(i pulumi.IntIn
 	}).(GooglePrivacyDlpV2ActionDetailsResponseOutput)
 }
 
-// A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
+// A task to execute on the completion of a job. See https://cloud.google.com/sensitive-data-protection/docs/concepts-actions to learn more.
 type GooglePrivacyDlpV2ActionResponse struct {
 	// Create a de-identified copy of the input data.
 	Deidentify GooglePrivacyDlpV2DeidentifyResponse `pulumi:"deidentify"`
@@ -241,7 +241,7 @@ type GooglePrivacyDlpV2ActionResponse struct {
 	SaveFindings GooglePrivacyDlpV2SaveFindingsResponse `pulumi:"saveFindings"`
 }
 
-// A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
+// A task to execute on the completion of a job. See https://cloud.google.com/sensitive-data-protection/docs/concepts-actions to learn more.
 type GooglePrivacyDlpV2ActionResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2ActionResponseOutput) ElementType() reflect.Type {
@@ -1485,9 +1485,10 @@ type GooglePrivacyDlpV2BigQueryOptions struct {
 	IncludedFields []GooglePrivacyDlpV2FieldId `pulumi:"includedFields"`
 	// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
 	RowsLimit *string `pulumi:"rowsLimit"`
-	// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
-	RowsLimitPercent *int                                           `pulumi:"rowsLimitPercent"`
-	SampleMethod     *GooglePrivacyDlpV2BigQueryOptionsSampleMethod `pulumi:"sampleMethod"`
+	// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
+	RowsLimitPercent *int `pulumi:"rowsLimitPercent"`
+	// How to sample the data.
+	SampleMethod *GooglePrivacyDlpV2BigQueryOptionsSampleMethod `pulumi:"sampleMethod"`
 	// Complete BigQuery table reference.
 	TableReference *GooglePrivacyDlpV2BigQueryTable `pulumi:"tableReference"`
 }
@@ -1513,9 +1514,10 @@ type GooglePrivacyDlpV2BigQueryOptionsArgs struct {
 	IncludedFields GooglePrivacyDlpV2FieldIdArrayInput `pulumi:"includedFields"`
 	// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
 	RowsLimit pulumi.StringPtrInput `pulumi:"rowsLimit"`
-	// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
-	RowsLimitPercent pulumi.IntPtrInput                                    `pulumi:"rowsLimitPercent"`
-	SampleMethod     GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrInput `pulumi:"sampleMethod"`
+	// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
+	RowsLimitPercent pulumi.IntPtrInput `pulumi:"rowsLimitPercent"`
+	// How to sample the data.
+	SampleMethod GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrInput `pulumi:"sampleMethod"`
 	// Complete BigQuery table reference.
 	TableReference GooglePrivacyDlpV2BigQueryTablePtrInput `pulumi:"tableReference"`
 }
@@ -1618,11 +1620,12 @@ func (o GooglePrivacyDlpV2BigQueryOptionsOutput) RowsLimit() pulumi.StringPtrOut
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryOptions) *string { return v.RowsLimit }).(pulumi.StringPtrOutput)
 }
 
-// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
+// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
 func (o GooglePrivacyDlpV2BigQueryOptionsOutput) RowsLimitPercent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryOptions) *int { return v.RowsLimitPercent }).(pulumi.IntPtrOutput)
 }
 
+// How to sample the data.
 func (o GooglePrivacyDlpV2BigQueryOptionsOutput) SampleMethod() GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryOptions) *GooglePrivacyDlpV2BigQueryOptionsSampleMethod {
 		return v.SampleMethod
@@ -1698,7 +1701,7 @@ func (o GooglePrivacyDlpV2BigQueryOptionsPtrOutput) RowsLimit() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
+// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
 func (o GooglePrivacyDlpV2BigQueryOptionsPtrOutput) RowsLimitPercent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryOptions) *int {
 		if v == nil {
@@ -1708,6 +1711,7 @@ func (o GooglePrivacyDlpV2BigQueryOptionsPtrOutput) RowsLimitPercent() pulumi.In
 	}).(pulumi.IntPtrOutput)
 }
 
+// How to sample the data.
 func (o GooglePrivacyDlpV2BigQueryOptionsPtrOutput) SampleMethod() GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryOptions) *GooglePrivacyDlpV2BigQueryOptionsSampleMethod {
 		if v == nil {
@@ -1737,9 +1741,10 @@ type GooglePrivacyDlpV2BigQueryOptionsResponse struct {
 	IncludedFields []GooglePrivacyDlpV2FieldIdResponse `pulumi:"includedFields"`
 	// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig.
 	RowsLimit string `pulumi:"rowsLimit"`
-	// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
-	RowsLimitPercent int    `pulumi:"rowsLimitPercent"`
-	SampleMethod     string `pulumi:"sampleMethod"`
+	// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
+	RowsLimitPercent int `pulumi:"rowsLimitPercent"`
+	// How to sample the data.
+	SampleMethod string `pulumi:"sampleMethod"`
 	// Complete BigQuery table reference.
 	TableReference GooglePrivacyDlpV2BigQueryTableResponse `pulumi:"tableReference"`
 }
@@ -1785,11 +1790,12 @@ func (o GooglePrivacyDlpV2BigQueryOptionsResponseOutput) RowsLimit() pulumi.Stri
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryOptionsResponse) string { return v.RowsLimit }).(pulumi.StringOutput)
 }
 
-// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
+// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
 func (o GooglePrivacyDlpV2BigQueryOptionsResponseOutput) RowsLimitPercent() pulumi.IntOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryOptionsResponse) int { return v.RowsLimitPercent }).(pulumi.IntOutput)
 }
 
+// How to sample the data.
 func (o GooglePrivacyDlpV2BigQueryOptionsResponseOutput) SampleMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryOptionsResponse) string { return v.SampleMethod }).(pulumi.StringOutput)
 }
@@ -2881,7 +2887,7 @@ func (o GooglePrivacyDlpV2BucketResponseArrayOutput) Index(i pulumi.IntInput) Go
 	}).(GooglePrivacyDlpV2BucketResponseOutput)
 }
 
-// Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH This can be used on data of type: number, long, string, timestamp. If the bound `Value` type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+// Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH This can be used on data of type: number, long, string, timestamp. If the bound `Value` type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/sensitive-data-protection/docs/concepts-bucketing to learn more.
 type GooglePrivacyDlpV2BucketingConfig struct {
 	// Set of buckets. Ranges must be non-overlapping.
 	Buckets []GooglePrivacyDlpV2Bucket `pulumi:"buckets"`
@@ -2898,7 +2904,7 @@ type GooglePrivacyDlpV2BucketingConfigInput interface {
 	ToGooglePrivacyDlpV2BucketingConfigOutputWithContext(context.Context) GooglePrivacyDlpV2BucketingConfigOutput
 }
 
-// Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH This can be used on data of type: number, long, string, timestamp. If the bound `Value` type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+// Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH This can be used on data of type: number, long, string, timestamp. If the bound `Value` type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/sensitive-data-protection/docs/concepts-bucketing to learn more.
 type GooglePrivacyDlpV2BucketingConfigArgs struct {
 	// Set of buckets. Ranges must be non-overlapping.
 	Buckets GooglePrivacyDlpV2BucketArrayInput `pulumi:"buckets"`
@@ -2957,7 +2963,7 @@ func (i *googlePrivacyDlpV2BucketingConfigPtrType) ToGooglePrivacyDlpV2Bucketing
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2BucketingConfigPtrOutput)
 }
 
-// Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH This can be used on data of type: number, long, string, timestamp. If the bound `Value` type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+// Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH This can be used on data of type: number, long, string, timestamp. If the bound `Value` type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/sensitive-data-protection/docs/concepts-bucketing to learn more.
 type GooglePrivacyDlpV2BucketingConfigOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2BucketingConfigOutput) ElementType() reflect.Type {
@@ -3021,13 +3027,13 @@ func (o GooglePrivacyDlpV2BucketingConfigPtrOutput) Buckets() GooglePrivacyDlpV2
 	}).(GooglePrivacyDlpV2BucketArrayOutput)
 }
 
-// Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH This can be used on data of type: number, long, string, timestamp. If the bound `Value` type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+// Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH This can be used on data of type: number, long, string, timestamp. If the bound `Value` type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/sensitive-data-protection/docs/concepts-bucketing to learn more.
 type GooglePrivacyDlpV2BucketingConfigResponse struct {
 	// Set of buckets. Ranges must be non-overlapping.
 	Buckets []GooglePrivacyDlpV2BucketResponse `pulumi:"buckets"`
 }
 
-// Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH This can be used on data of type: number, long, string, timestamp. If the bound `Value` type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+// Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH This can be used on data of type: number, long, string, timestamp. If the bound `Value` type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/sensitive-data-protection/docs/concepts-bucketing to learn more.
 type GooglePrivacyDlpV2BucketingConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2BucketingConfigResponseOutput) ElementType() reflect.Type {
@@ -3903,17 +3909,18 @@ func (o GooglePrivacyDlpV2CloudStorageFileSetResponseOutput) Url() pulumi.String
 
 // Options defining a file or a set of files within a Cloud Storage bucket.
 type GooglePrivacyDlpV2CloudStorageOptions struct {
-	// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
+	// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/sensitive-data-protection/docs/supported-file-types#max-byte-size-per-file).
 	BytesLimitPerFile *string `pulumi:"bytesLimitPerFile"`
-	// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
+	// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/sensitive-data-protection/docs/supported-file-types#max-byte-size-per-file).
 	BytesLimitPerFilePercent *int `pulumi:"bytesLimitPerFilePercent"`
 	// The set of one or more files to scan.
 	FileSet *GooglePrivacyDlpV2FileSet `pulumi:"fileSet"`
 	// List of file type groups to include in the scan. If empty, all files are scanned and available data format processors are applied. In addition, the binary content of the selected files is always scanned as well. Images are scanned only as binary if the specified region does not support image inspection and no file_types were specified. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
 	FileTypes []GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem `pulumi:"fileTypes"`
 	// Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0.
-	FilesLimitPercent *int                                               `pulumi:"filesLimitPercent"`
-	SampleMethod      *GooglePrivacyDlpV2CloudStorageOptionsSampleMethod `pulumi:"sampleMethod"`
+	FilesLimitPercent *int `pulumi:"filesLimitPercent"`
+	// How to sample the data.
+	SampleMethod *GooglePrivacyDlpV2CloudStorageOptionsSampleMethod `pulumi:"sampleMethod"`
 }
 
 // GooglePrivacyDlpV2CloudStorageOptionsInput is an input type that accepts GooglePrivacyDlpV2CloudStorageOptionsArgs and GooglePrivacyDlpV2CloudStorageOptionsOutput values.
@@ -3929,17 +3936,18 @@ type GooglePrivacyDlpV2CloudStorageOptionsInput interface {
 
 // Options defining a file or a set of files within a Cloud Storage bucket.
 type GooglePrivacyDlpV2CloudStorageOptionsArgs struct {
-	// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
+	// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/sensitive-data-protection/docs/supported-file-types#max-byte-size-per-file).
 	BytesLimitPerFile pulumi.StringPtrInput `pulumi:"bytesLimitPerFile"`
-	// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
+	// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/sensitive-data-protection/docs/supported-file-types#max-byte-size-per-file).
 	BytesLimitPerFilePercent pulumi.IntPtrInput `pulumi:"bytesLimitPerFilePercent"`
 	// The set of one or more files to scan.
 	FileSet GooglePrivacyDlpV2FileSetPtrInput `pulumi:"fileSet"`
 	// List of file type groups to include in the scan. If empty, all files are scanned and available data format processors are applied. In addition, the binary content of the selected files is always scanned as well. Images are scanned only as binary if the specified region does not support image inspection and no file_types were specified. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
 	FileTypes GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArrayInput `pulumi:"fileTypes"`
 	// Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0.
-	FilesLimitPercent pulumi.IntPtrInput                                        `pulumi:"filesLimitPercent"`
-	SampleMethod      GooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrInput `pulumi:"sampleMethod"`
+	FilesLimitPercent pulumi.IntPtrInput `pulumi:"filesLimitPercent"`
+	// How to sample the data.
+	SampleMethod GooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrInput `pulumi:"sampleMethod"`
 }
 
 func (GooglePrivacyDlpV2CloudStorageOptionsArgs) ElementType() reflect.Type {
@@ -4020,12 +4028,12 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsOutput) ToGooglePrivacyDlpV2CloudSt
 	}).(GooglePrivacyDlpV2CloudStorageOptionsPtrOutput)
 }
 
-// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
+// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/sensitive-data-protection/docs/supported-file-types#max-byte-size-per-file).
 func (o GooglePrivacyDlpV2CloudStorageOptionsOutput) BytesLimitPerFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageOptions) *string { return v.BytesLimitPerFile }).(pulumi.StringPtrOutput)
 }
 
-// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
+// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/sensitive-data-protection/docs/supported-file-types#max-byte-size-per-file).
 func (o GooglePrivacyDlpV2CloudStorageOptionsOutput) BytesLimitPerFilePercent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageOptions) *int { return v.BytesLimitPerFilePercent }).(pulumi.IntPtrOutput)
 }
@@ -4047,6 +4055,7 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsOutput) FilesLimitPercent() pulumi.
 	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageOptions) *int { return v.FilesLimitPercent }).(pulumi.IntPtrOutput)
 }
 
+// How to sample the data.
 func (o GooglePrivacyDlpV2CloudStorageOptionsOutput) SampleMethod() GooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageOptions) *GooglePrivacyDlpV2CloudStorageOptionsSampleMethod {
 		return v.SampleMethod
@@ -4077,7 +4086,7 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsPtrOutput) Elem() GooglePrivacyDlpV
 	}).(GooglePrivacyDlpV2CloudStorageOptionsOutput)
 }
 
-// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
+// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/sensitive-data-protection/docs/supported-file-types#max-byte-size-per-file).
 func (o GooglePrivacyDlpV2CloudStorageOptionsPtrOutput) BytesLimitPerFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageOptions) *string {
 		if v == nil {
@@ -4087,7 +4096,7 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsPtrOutput) BytesLimitPerFile() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
+// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/sensitive-data-protection/docs/supported-file-types#max-byte-size-per-file).
 func (o GooglePrivacyDlpV2CloudStorageOptionsPtrOutput) BytesLimitPerFilePercent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageOptions) *int {
 		if v == nil {
@@ -4127,6 +4136,7 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsPtrOutput) FilesLimitPercent() pulu
 	}).(pulumi.IntPtrOutput)
 }
 
+// How to sample the data.
 func (o GooglePrivacyDlpV2CloudStorageOptionsPtrOutput) SampleMethod() GooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStorageOptions) *GooglePrivacyDlpV2CloudStorageOptionsSampleMethod {
 		if v == nil {
@@ -4138,17 +4148,18 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsPtrOutput) SampleMethod() GooglePri
 
 // Options defining a file or a set of files within a Cloud Storage bucket.
 type GooglePrivacyDlpV2CloudStorageOptionsResponse struct {
-	// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
+	// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/sensitive-data-protection/docs/supported-file-types#max-byte-size-per-file).
 	BytesLimitPerFile string `pulumi:"bytesLimitPerFile"`
-	// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
+	// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/sensitive-data-protection/docs/supported-file-types#max-byte-size-per-file).
 	BytesLimitPerFilePercent int `pulumi:"bytesLimitPerFilePercent"`
 	// The set of one or more files to scan.
 	FileSet GooglePrivacyDlpV2FileSetResponse `pulumi:"fileSet"`
 	// List of file type groups to include in the scan. If empty, all files are scanned and available data format processors are applied. In addition, the binary content of the selected files is always scanned as well. Images are scanned only as binary if the specified region does not support image inspection and no file_types were specified. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
 	FileTypes []string `pulumi:"fileTypes"`
 	// Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0.
-	FilesLimitPercent int    `pulumi:"filesLimitPercent"`
-	SampleMethod      string `pulumi:"sampleMethod"`
+	FilesLimitPercent int `pulumi:"filesLimitPercent"`
+	// How to sample the data.
+	SampleMethod string `pulumi:"sampleMethod"`
 }
 
 // Options defining a file or a set of files within a Cloud Storage bucket.
@@ -4166,12 +4177,12 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsResponseOutput) ToGooglePrivacyDlpV
 	return o
 }
 
-// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
+// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/sensitive-data-protection/docs/supported-file-types#max-byte-size-per-file).
 func (o GooglePrivacyDlpV2CloudStorageOptionsResponseOutput) BytesLimitPerFile() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageOptionsResponse) string { return v.BytesLimitPerFile }).(pulumi.StringOutput)
 }
 
-// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
+// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/sensitive-data-protection/docs/supported-file-types#max-byte-size-per-file).
 func (o GooglePrivacyDlpV2CloudStorageOptionsResponseOutput) BytesLimitPerFilePercent() pulumi.IntOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageOptionsResponse) int { return v.BytesLimitPerFilePercent }).(pulumi.IntOutput)
 }
@@ -4193,13 +4204,14 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsResponseOutput) FilesLimitPercent()
 	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageOptionsResponse) int { return v.FilesLimitPercent }).(pulumi.IntOutput)
 }
 
+// How to sample the data.
 func (o GooglePrivacyDlpV2CloudStorageOptionsResponseOutput) SampleMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageOptionsResponse) string { return v.SampleMethod }).(pulumi.StringOutput)
 }
 
 // Message representing a single file or path in Cloud Storage.
 type GooglePrivacyDlpV2CloudStoragePath struct {
-	// A url representing a file or path (no wildcards) in Cloud Storage. Example: gs://[BUCKET_NAME]/dictionary.txt
+	// A URL representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
 	Path *string `pulumi:"path"`
 }
 
@@ -4216,7 +4228,7 @@ type GooglePrivacyDlpV2CloudStoragePathInput interface {
 
 // Message representing a single file or path in Cloud Storage.
 type GooglePrivacyDlpV2CloudStoragePathArgs struct {
-	// A url representing a file or path (no wildcards) in Cloud Storage. Example: gs://[BUCKET_NAME]/dictionary.txt
+	// A URL representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
 	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
@@ -4298,7 +4310,7 @@ func (o GooglePrivacyDlpV2CloudStoragePathOutput) ToGooglePrivacyDlpV2CloudStora
 	}).(GooglePrivacyDlpV2CloudStoragePathPtrOutput)
 }
 
-// A url representing a file or path (no wildcards) in Cloud Storage. Example: gs://[BUCKET_NAME]/dictionary.txt
+// A URL representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
 func (o GooglePrivacyDlpV2CloudStoragePathOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStoragePath) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -4327,7 +4339,7 @@ func (o GooglePrivacyDlpV2CloudStoragePathPtrOutput) Elem() GooglePrivacyDlpV2Cl
 	}).(GooglePrivacyDlpV2CloudStoragePathOutput)
 }
 
-// A url representing a file or path (no wildcards) in Cloud Storage. Example: gs://[BUCKET_NAME]/dictionary.txt
+// A URL representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
 func (o GooglePrivacyDlpV2CloudStoragePathPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CloudStoragePath) *string {
 		if v == nil {
@@ -4339,7 +4351,7 @@ func (o GooglePrivacyDlpV2CloudStoragePathPtrOutput) Path() pulumi.StringPtrOutp
 
 // Message representing a single file or path in Cloud Storage.
 type GooglePrivacyDlpV2CloudStoragePathResponse struct {
-	// A url representing a file or path (no wildcards) in Cloud Storage. Example: gs://[BUCKET_NAME]/dictionary.txt
+	// A URL representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
 	Path string `pulumi:"path"`
 }
 
@@ -4358,7 +4370,7 @@ func (o GooglePrivacyDlpV2CloudStoragePathResponseOutput) ToGooglePrivacyDlpV2Cl
 	return o
 }
 
-// A url representing a file or path (no wildcards) in Cloud Storage. Example: gs://[BUCKET_NAME]/dictionary.txt
+// A URL representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
 func (o GooglePrivacyDlpV2CloudStoragePathResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStoragePathResponse) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -5371,7 +5383,7 @@ func (o GooglePrivacyDlpV2CryptoDeterministicConfigResponseOutput) SurrogateInfo
 	}).(GooglePrivacyDlpV2InfoTypeResponseOutput)
 }
 
-// Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes. Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=). Currently, only string and integer values can be hashed. See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+// Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes. Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=). Currently, only string and integer values can be hashed. See https://cloud.google.com/sensitive-data-protection/docs/pseudonymization to learn more.
 type GooglePrivacyDlpV2CryptoHashConfig struct {
 	// The key used by the hash function.
 	CryptoKey *GooglePrivacyDlpV2CryptoKey `pulumi:"cryptoKey"`
@@ -5388,7 +5400,7 @@ type GooglePrivacyDlpV2CryptoHashConfigInput interface {
 	ToGooglePrivacyDlpV2CryptoHashConfigOutputWithContext(context.Context) GooglePrivacyDlpV2CryptoHashConfigOutput
 }
 
-// Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes. Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=). Currently, only string and integer values can be hashed. See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+// Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes. Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=). Currently, only string and integer values can be hashed. See https://cloud.google.com/sensitive-data-protection/docs/pseudonymization to learn more.
 type GooglePrivacyDlpV2CryptoHashConfigArgs struct {
 	// The key used by the hash function.
 	CryptoKey GooglePrivacyDlpV2CryptoKeyPtrInput `pulumi:"cryptoKey"`
@@ -5447,7 +5459,7 @@ func (i *googlePrivacyDlpV2CryptoHashConfigPtrType) ToGooglePrivacyDlpV2CryptoHa
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CryptoHashConfigPtrOutput)
 }
 
-// Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes. Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=). Currently, only string and integer values can be hashed. See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+// Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes. Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=). Currently, only string and integer values can be hashed. See https://cloud.google.com/sensitive-data-protection/docs/pseudonymization to learn more.
 type GooglePrivacyDlpV2CryptoHashConfigOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2CryptoHashConfigOutput) ElementType() reflect.Type {
@@ -5511,13 +5523,13 @@ func (o GooglePrivacyDlpV2CryptoHashConfigPtrOutput) CryptoKey() GooglePrivacyDl
 	}).(GooglePrivacyDlpV2CryptoKeyPtrOutput)
 }
 
-// Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes. Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=). Currently, only string and integer values can be hashed. See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+// Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes. Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=). Currently, only string and integer values can be hashed. See https://cloud.google.com/sensitive-data-protection/docs/pseudonymization to learn more.
 type GooglePrivacyDlpV2CryptoHashConfigResponse struct {
 	// The key used by the hash function.
 	CryptoKey GooglePrivacyDlpV2CryptoKeyResponse `pulumi:"cryptoKey"`
 }
 
-// Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes. Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=). Currently, only string and integer values can be hashed. See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+// Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes. Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=). Currently, only string and integer values can be hashed. See https://cloud.google.com/sensitive-data-protection/docs/pseudonymization to learn more.
 type GooglePrivacyDlpV2CryptoHashConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2CryptoHashConfigResponseOutput) ElementType() reflect.Type {
@@ -5763,7 +5775,7 @@ func (o GooglePrivacyDlpV2CryptoKeyResponseOutput) Unwrapped() GooglePrivacyDlpV
 	}).(GooglePrivacyDlpV2UnwrappedCryptoKeyResponseOutput)
 }
 
-// Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `ReidentifyContent` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See https://cloud.google.com/dlp/docs/pseudonymization to learn more. Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
+// Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `ReidentifyContent` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See https://cloud.google.com/sensitive-data-protection/docs/pseudonymization to learn more. Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
 type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig struct {
 	// Common alphabets.
 	CommonAlphabet *GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet `pulumi:"commonAlphabet"`
@@ -5775,7 +5787,7 @@ type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig struct {
 	CustomAlphabet *string `pulumi:"customAlphabet"`
 	// The native way to select the alphabet. Must be in the range [2, 95].
 	Radix *int `pulumi:"radix"`
-	// The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE
+	// The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE
 	SurrogateInfoType *GooglePrivacyDlpV2InfoType `pulumi:"surrogateInfoType"`
 }
 
@@ -5790,7 +5802,7 @@ type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigInput interface {
 	ToGooglePrivacyDlpV2CryptoReplaceFfxFpeConfigOutputWithContext(context.Context) GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigOutput
 }
 
-// Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `ReidentifyContent` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See https://cloud.google.com/dlp/docs/pseudonymization to learn more. Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
+// Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `ReidentifyContent` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See https://cloud.google.com/sensitive-data-protection/docs/pseudonymization to learn more. Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
 type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigArgs struct {
 	// Common alphabets.
 	CommonAlphabet GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrInput `pulumi:"commonAlphabet"`
@@ -5802,7 +5814,7 @@ type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigArgs struct {
 	CustomAlphabet pulumi.StringPtrInput `pulumi:"customAlphabet"`
 	// The native way to select the alphabet. Must be in the range [2, 95].
 	Radix pulumi.IntPtrInput `pulumi:"radix"`
-	// The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE
+	// The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE
 	SurrogateInfoType GooglePrivacyDlpV2InfoTypePtrInput `pulumi:"surrogateInfoType"`
 }
 
@@ -5859,7 +5871,7 @@ func (i *googlePrivacyDlpV2CryptoReplaceFfxFpeConfigPtrType) ToGooglePrivacyDlpV
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigPtrOutput)
 }
 
-// Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `ReidentifyContent` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See https://cloud.google.com/dlp/docs/pseudonymization to learn more. Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
+// Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `ReidentifyContent` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See https://cloud.google.com/sensitive-data-protection/docs/pseudonymization to learn more. Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
 type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigOutput) ElementType() reflect.Type {
@@ -5911,7 +5923,7 @@ func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigOutput) Radix() pulumi.IntPtr
 	return o.ApplyT(func(v GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig) *int { return v.Radix }).(pulumi.IntPtrOutput)
 }
 
-// The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE
+// The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE
 func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigOutput) SurrogateInfoType() GooglePrivacyDlpV2InfoTypePtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig) *GooglePrivacyDlpV2InfoType {
 		return v.SurrogateInfoType
@@ -5992,7 +6004,7 @@ func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigPtrOutput) Radix() pulumi.Int
 	}).(pulumi.IntPtrOutput)
 }
 
-// The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE
+// The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE
 func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigPtrOutput) SurrogateInfoType() GooglePrivacyDlpV2InfoTypePtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig) *GooglePrivacyDlpV2InfoType {
 		if v == nil {
@@ -6002,7 +6014,7 @@ func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigPtrOutput) SurrogateInfoType(
 	}).(GooglePrivacyDlpV2InfoTypePtrOutput)
 }
 
-// Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `ReidentifyContent` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See https://cloud.google.com/dlp/docs/pseudonymization to learn more. Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
+// Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `ReidentifyContent` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See https://cloud.google.com/sensitive-data-protection/docs/pseudonymization to learn more. Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
 type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse struct {
 	// Common alphabets.
 	CommonAlphabet string `pulumi:"commonAlphabet"`
@@ -6014,11 +6026,11 @@ type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse struct {
 	CustomAlphabet string `pulumi:"customAlphabet"`
 	// The native way to select the alphabet. Must be in the range [2, 95].
 	Radix int `pulumi:"radix"`
-	// The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE
+	// The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE
 	SurrogateInfoType GooglePrivacyDlpV2InfoTypeResponse `pulumi:"surrogateInfoType"`
 }
 
-// Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `ReidentifyContent` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See https://cloud.google.com/dlp/docs/pseudonymization to learn more. Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
+// Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `ReidentifyContent` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See https://cloud.google.com/sensitive-data-protection/docs/pseudonymization to learn more. Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
 type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseOutput) ElementType() reflect.Type {
@@ -6062,7 +6074,7 @@ func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseOutput) Radix() pulum
 	return o.ApplyT(func(v GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse) int { return v.Radix }).(pulumi.IntOutput)
 }
 
-// The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE
+// The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE
 func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseOutput) SurrogateInfoType() GooglePrivacyDlpV2InfoTypeResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse) GooglePrivacyDlpV2InfoTypeResponse {
 		return v.SurrogateInfoType
@@ -6893,7 +6905,7 @@ func (o GooglePrivacyDlpV2DatastoreOptionsResponseOutput) PartitionId() GooglePr
 	}).(GooglePrivacyDlpV2PartitionIdResponseOutput)
 }
 
-// Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+// Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/sensitive-data-protection/docs/concepts-date-shifting to learn more.
 type GooglePrivacyDlpV2DateShiftConfig struct {
 	// Points to the field that contains the context, for example, an entity id. If set, must also set cryptoKey. If set, shift will be consistent for the given context.
 	Context *GooglePrivacyDlpV2FieldId `pulumi:"context"`
@@ -6916,7 +6928,7 @@ type GooglePrivacyDlpV2DateShiftConfigInput interface {
 	ToGooglePrivacyDlpV2DateShiftConfigOutputWithContext(context.Context) GooglePrivacyDlpV2DateShiftConfigOutput
 }
 
-// Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+// Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/sensitive-data-protection/docs/concepts-date-shifting to learn more.
 type GooglePrivacyDlpV2DateShiftConfigArgs struct {
 	// Points to the field that contains the context, for example, an entity id. If set, must also set cryptoKey. If set, shift will be consistent for the given context.
 	Context GooglePrivacyDlpV2FieldIdPtrInput `pulumi:"context"`
@@ -6981,7 +6993,7 @@ func (i *googlePrivacyDlpV2DateShiftConfigPtrType) ToGooglePrivacyDlpV2DateShift
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DateShiftConfigPtrOutput)
 }
 
-// Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+// Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/sensitive-data-protection/docs/concepts-date-shifting to learn more.
 type GooglePrivacyDlpV2DateShiftConfigOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2DateShiftConfigOutput) ElementType() reflect.Type {
@@ -7090,7 +7102,7 @@ func (o GooglePrivacyDlpV2DateShiftConfigPtrOutput) UpperBoundDays() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
-// Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+// Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/sensitive-data-protection/docs/concepts-date-shifting to learn more.
 type GooglePrivacyDlpV2DateShiftConfigResponse struct {
 	// Points to the field that contains the context, for example, an entity id. If set, must also set cryptoKey. If set, shift will be consistent for the given context.
 	Context GooglePrivacyDlpV2FieldIdResponse `pulumi:"context"`
@@ -7102,7 +7114,7 @@ type GooglePrivacyDlpV2DateShiftConfigResponse struct {
 	UpperBoundDays int `pulumi:"upperBoundDays"`
 }
 
-// Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+// Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/sensitive-data-protection/docs/concepts-date-shifting to learn more.
 type GooglePrivacyDlpV2DateShiftConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2DateShiftConfigResponseOutput) ElementType() reflect.Type {
@@ -7730,7 +7742,7 @@ func (o GooglePrivacyDlpV2DeidentifyResponseOutput) TransformationDetailsStorage
 	}).(GooglePrivacyDlpV2TransformationDetailsStorageConfigResponseOutput)
 }
 
-// DeidentifyTemplates contains instructions on how to de-identify content. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
+// DeidentifyTemplates contains instructions on how to de-identify content. See https://cloud.google.com/sensitive-data-protection/docs/concepts-templates to learn more.
 type GooglePrivacyDlpV2DeidentifyTemplateResponse struct {
 	// The creation timestamp of an inspectTemplate.
 	CreateTime string `pulumi:"createTime"`
@@ -7746,7 +7758,7 @@ type GooglePrivacyDlpV2DeidentifyTemplateResponse struct {
 	UpdateTime string `pulumi:"updateTime"`
 }
 
-// DeidentifyTemplates contains instructions on how to de-identify content. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
+// DeidentifyTemplates contains instructions on how to de-identify content. See https://cloud.google.com/sensitive-data-protection/docs/concepts-templates to learn more.
 type GooglePrivacyDlpV2DeidentifyTemplateResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2DeidentifyTemplateResponseOutput) ElementType() reflect.Type {
@@ -8332,7 +8344,7 @@ func (o GooglePrivacyDlpV2DetectionRuleResponseArrayOutput) Index(i pulumi.IntIn
 	}).(GooglePrivacyDlpV2DetectionRuleResponseOutput)
 }
 
-// Custom information type based on a dictionary of words or phrases. This can be used to match sensitive information specific to the data, such as a list of employee IDs or job titles. Dictionary words are case-insensitive and all characters other than letters and digits in the unicode [Basic Multilingual Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#Basic_Multilingual_Plane) will be replaced with whitespace when scanning for matches, so the dictionary phrase "Sam Johnson" will match all three phrases "sam johnson", "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters surrounding any match must be of a different type than the adjacent characters within the word, so letters must be next to non-letters and digits next to non-digits. For example, the dictionary word "jen" will match the first three letters of the text "jen123" but will return no matches for "jennifer". Dictionary words containing a large number of characters that are not letters or digits may result in unexpected findings because such characters are treated as whitespace. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries. For dictionaries that do not fit within these constraints, consider using `LargeCustomDictionaryConfig` in the `StoredInfoType` API.
+// Custom information type based on a dictionary of words or phrases. This can be used to match sensitive information specific to the data, such as a list of employee IDs or job titles. Dictionary words are case-insensitive and all characters other than letters and digits in the unicode [Basic Multilingual Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#Basic_Multilingual_Plane) will be replaced with whitespace when scanning for matches, so the dictionary phrase "Sam Johnson" will match all three phrases "sam johnson", "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters surrounding any match must be of a different type than the adjacent characters within the word, so letters must be next to non-letters and digits next to non-digits. For example, the dictionary word "jen" will match the first three letters of the text "jen123" but will return no matches for "jennifer". Dictionary words containing a large number of characters that are not letters or digits may result in unexpected findings because such characters are treated as whitespace. The [limits](https://cloud.google.com/sensitive-data-protection/limits) page contains details about the size limits of dictionaries. For dictionaries that do not fit within these constraints, consider using `LargeCustomDictionaryConfig` in the `StoredInfoType` API.
 type GooglePrivacyDlpV2Dictionary struct {
 	// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
 	CloudStoragePath *GooglePrivacyDlpV2CloudStoragePath `pulumi:"cloudStoragePath"`
@@ -8351,7 +8363,7 @@ type GooglePrivacyDlpV2DictionaryInput interface {
 	ToGooglePrivacyDlpV2DictionaryOutputWithContext(context.Context) GooglePrivacyDlpV2DictionaryOutput
 }
 
-// Custom information type based on a dictionary of words or phrases. This can be used to match sensitive information specific to the data, such as a list of employee IDs or job titles. Dictionary words are case-insensitive and all characters other than letters and digits in the unicode [Basic Multilingual Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#Basic_Multilingual_Plane) will be replaced with whitespace when scanning for matches, so the dictionary phrase "Sam Johnson" will match all three phrases "sam johnson", "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters surrounding any match must be of a different type than the adjacent characters within the word, so letters must be next to non-letters and digits next to non-digits. For example, the dictionary word "jen" will match the first three letters of the text "jen123" but will return no matches for "jennifer". Dictionary words containing a large number of characters that are not letters or digits may result in unexpected findings because such characters are treated as whitespace. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries. For dictionaries that do not fit within these constraints, consider using `LargeCustomDictionaryConfig` in the `StoredInfoType` API.
+// Custom information type based on a dictionary of words or phrases. This can be used to match sensitive information specific to the data, such as a list of employee IDs or job titles. Dictionary words are case-insensitive and all characters other than letters and digits in the unicode [Basic Multilingual Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#Basic_Multilingual_Plane) will be replaced with whitespace when scanning for matches, so the dictionary phrase "Sam Johnson" will match all three phrases "sam johnson", "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters surrounding any match must be of a different type than the adjacent characters within the word, so letters must be next to non-letters and digits next to non-digits. For example, the dictionary word "jen" will match the first three letters of the text "jen123" but will return no matches for "jennifer". Dictionary words containing a large number of characters that are not letters or digits may result in unexpected findings because such characters are treated as whitespace. The [limits](https://cloud.google.com/sensitive-data-protection/limits) page contains details about the size limits of dictionaries. For dictionaries that do not fit within these constraints, consider using `LargeCustomDictionaryConfig` in the `StoredInfoType` API.
 type GooglePrivacyDlpV2DictionaryArgs struct {
 	// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
 	CloudStoragePath GooglePrivacyDlpV2CloudStoragePathPtrInput `pulumi:"cloudStoragePath"`
@@ -8412,7 +8424,7 @@ func (i *googlePrivacyDlpV2DictionaryPtrType) ToGooglePrivacyDlpV2DictionaryPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DictionaryPtrOutput)
 }
 
-// Custom information type based on a dictionary of words or phrases. This can be used to match sensitive information specific to the data, such as a list of employee IDs or job titles. Dictionary words are case-insensitive and all characters other than letters and digits in the unicode [Basic Multilingual Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#Basic_Multilingual_Plane) will be replaced with whitespace when scanning for matches, so the dictionary phrase "Sam Johnson" will match all three phrases "sam johnson", "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters surrounding any match must be of a different type than the adjacent characters within the word, so letters must be next to non-letters and digits next to non-digits. For example, the dictionary word "jen" will match the first three letters of the text "jen123" but will return no matches for "jennifer". Dictionary words containing a large number of characters that are not letters or digits may result in unexpected findings because such characters are treated as whitespace. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries. For dictionaries that do not fit within these constraints, consider using `LargeCustomDictionaryConfig` in the `StoredInfoType` API.
+// Custom information type based on a dictionary of words or phrases. This can be used to match sensitive information specific to the data, such as a list of employee IDs or job titles. Dictionary words are case-insensitive and all characters other than letters and digits in the unicode [Basic Multilingual Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#Basic_Multilingual_Plane) will be replaced with whitespace when scanning for matches, so the dictionary phrase "Sam Johnson" will match all three phrases "sam johnson", "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters surrounding any match must be of a different type than the adjacent characters within the word, so letters must be next to non-letters and digits next to non-digits. For example, the dictionary word "jen" will match the first three letters of the text "jen123" but will return no matches for "jennifer". Dictionary words containing a large number of characters that are not letters or digits may result in unexpected findings because such characters are treated as whitespace. The [limits](https://cloud.google.com/sensitive-data-protection/limits) page contains details about the size limits of dictionaries. For dictionaries that do not fit within these constraints, consider using `LargeCustomDictionaryConfig` in the `StoredInfoType` API.
 type GooglePrivacyDlpV2DictionaryOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2DictionaryOutput) ElementType() reflect.Type {
@@ -8491,7 +8503,7 @@ func (o GooglePrivacyDlpV2DictionaryPtrOutput) WordList() GooglePrivacyDlpV2Word
 	}).(GooglePrivacyDlpV2WordListPtrOutput)
 }
 
-// Custom information type based on a dictionary of words or phrases. This can be used to match sensitive information specific to the data, such as a list of employee IDs or job titles. Dictionary words are case-insensitive and all characters other than letters and digits in the unicode [Basic Multilingual Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#Basic_Multilingual_Plane) will be replaced with whitespace when scanning for matches, so the dictionary phrase "Sam Johnson" will match all three phrases "sam johnson", "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters surrounding any match must be of a different type than the adjacent characters within the word, so letters must be next to non-letters and digits next to non-digits. For example, the dictionary word "jen" will match the first three letters of the text "jen123" but will return no matches for "jennifer". Dictionary words containing a large number of characters that are not letters or digits may result in unexpected findings because such characters are treated as whitespace. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries. For dictionaries that do not fit within these constraints, consider using `LargeCustomDictionaryConfig` in the `StoredInfoType` API.
+// Custom information type based on a dictionary of words or phrases. This can be used to match sensitive information specific to the data, such as a list of employee IDs or job titles. Dictionary words are case-insensitive and all characters other than letters and digits in the unicode [Basic Multilingual Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#Basic_Multilingual_Plane) will be replaced with whitespace when scanning for matches, so the dictionary phrase "Sam Johnson" will match all three phrases "sam johnson", "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters surrounding any match must be of a different type than the adjacent characters within the word, so letters must be next to non-letters and digits next to non-digits. For example, the dictionary word "jen" will match the first three letters of the text "jen123" but will return no matches for "jennifer". Dictionary words containing a large number of characters that are not letters or digits may result in unexpected findings because such characters are treated as whitespace. The [limits](https://cloud.google.com/sensitive-data-protection/limits) page contains details about the size limits of dictionaries. For dictionaries that do not fit within these constraints, consider using `LargeCustomDictionaryConfig` in the `StoredInfoType` API.
 type GooglePrivacyDlpV2DictionaryResponse struct {
 	// Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
 	CloudStoragePath GooglePrivacyDlpV2CloudStoragePathResponse `pulumi:"cloudStoragePath"`
@@ -8499,7 +8511,7 @@ type GooglePrivacyDlpV2DictionaryResponse struct {
 	WordList GooglePrivacyDlpV2WordListResponse `pulumi:"wordList"`
 }
 
-// Custom information type based on a dictionary of words or phrases. This can be used to match sensitive information specific to the data, such as a list of employee IDs or job titles. Dictionary words are case-insensitive and all characters other than letters and digits in the unicode [Basic Multilingual Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#Basic_Multilingual_Plane) will be replaced with whitespace when scanning for matches, so the dictionary phrase "Sam Johnson" will match all three phrases "sam johnson", "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters surrounding any match must be of a different type than the adjacent characters within the word, so letters must be next to non-letters and digits next to non-digits. For example, the dictionary word "jen" will match the first three letters of the text "jen123" but will return no matches for "jennifer". Dictionary words containing a large number of characters that are not letters or digits may result in unexpected findings because such characters are treated as whitespace. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries. For dictionaries that do not fit within these constraints, consider using `LargeCustomDictionaryConfig` in the `StoredInfoType` API.
+// Custom information type based on a dictionary of words or phrases. This can be used to match sensitive information specific to the data, such as a list of employee IDs or job titles. Dictionary words are case-insensitive and all characters other than letters and digits in the unicode [Basic Multilingual Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#Basic_Multilingual_Plane) will be replaced with whitespace when scanning for matches, so the dictionary phrase "Sam Johnson" will match all three phrases "sam johnson", "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters surrounding any match must be of a different type than the adjacent characters within the word, so letters must be next to non-letters and digits next to non-digits. For example, the dictionary word "jen" will match the first three letters of the text "jen123" but will return no matches for "jennifer". Dictionary words containing a large number of characters that are not letters or digits may result in unexpected findings because such characters are treated as whitespace. The [limits](https://cloud.google.com/sensitive-data-protection/limits) page contains details about the size limits of dictionaries. For dictionaries that do not fit within these constraints, consider using `LargeCustomDictionaryConfig` in the `StoredInfoType` API.
 type GooglePrivacyDlpV2DictionaryResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2DictionaryResponseOutput) ElementType() reflect.Type {
@@ -12132,7 +12144,7 @@ func (o GooglePrivacyDlpV2FindingLimitsResponseOutput) MaxFindingsPerRequest() p
 	return o.ApplyT(func(v GooglePrivacyDlpV2FindingLimitsResponse) int { return v.MaxFindingsPerRequest }).(pulumi.IntOutput)
 }
 
-// Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+// Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/sensitive-data-protection/docs/concepts-bucketing to learn more.
 type GooglePrivacyDlpV2FixedSizeBucketingConfig struct {
 	// Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
 	BucketSize float64 `pulumi:"bucketSize"`
@@ -12153,7 +12165,7 @@ type GooglePrivacyDlpV2FixedSizeBucketingConfigInput interface {
 	ToGooglePrivacyDlpV2FixedSizeBucketingConfigOutputWithContext(context.Context) GooglePrivacyDlpV2FixedSizeBucketingConfigOutput
 }
 
-// Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+// Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/sensitive-data-protection/docs/concepts-bucketing to learn more.
 type GooglePrivacyDlpV2FixedSizeBucketingConfigArgs struct {
 	// Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
 	BucketSize pulumi.Float64Input `pulumi:"bucketSize"`
@@ -12216,7 +12228,7 @@ func (i *googlePrivacyDlpV2FixedSizeBucketingConfigPtrType) ToGooglePrivacyDlpV2
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2FixedSizeBucketingConfigPtrOutput)
 }
 
-// Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+// Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/sensitive-data-protection/docs/concepts-bucketing to learn more.
 type GooglePrivacyDlpV2FixedSizeBucketingConfigOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2FixedSizeBucketingConfigOutput) ElementType() reflect.Type {
@@ -12310,7 +12322,7 @@ func (o GooglePrivacyDlpV2FixedSizeBucketingConfigPtrOutput) UpperBound() Google
 	}).(GooglePrivacyDlpV2ValuePtrOutput)
 }
 
-// Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+// Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/sensitive-data-protection/docs/concepts-bucketing to learn more.
 type GooglePrivacyDlpV2FixedSizeBucketingConfigResponse struct {
 	// Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
 	BucketSize float64 `pulumi:"bucketSize"`
@@ -12320,7 +12332,7 @@ type GooglePrivacyDlpV2FixedSizeBucketingConfigResponse struct {
 	UpperBound GooglePrivacyDlpV2ValueResponse `pulumi:"upperBound"`
 }
 
-// Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+// Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/sensitive-data-protection/docs/concepts-bucketing to learn more.
 type GooglePrivacyDlpV2FixedSizeBucketingConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2FixedSizeBucketingConfigResponseOutput) ElementType() reflect.Type {
@@ -12360,7 +12372,7 @@ type GooglePrivacyDlpV2HotwordRule struct {
 	HotwordRegex *GooglePrivacyDlpV2Regex `pulumi:"hotwordRegex"`
 	// Likelihood adjustment to apply to all matching findings.
 	LikelihoodAdjustment *GooglePrivacyDlpV2LikelihoodAdjustment `pulumi:"likelihoodAdjustment"`
-	// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\(\d{3}\) \d{3}-\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\(xxx\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
+	// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\(\d{3}\) \d{3}-\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\(xxx\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes-likelihood#match-column-values).
 	Proximity *GooglePrivacyDlpV2Proximity `pulumi:"proximity"`
 }
 
@@ -12381,7 +12393,7 @@ type GooglePrivacyDlpV2HotwordRuleArgs struct {
 	HotwordRegex GooglePrivacyDlpV2RegexPtrInput `pulumi:"hotwordRegex"`
 	// Likelihood adjustment to apply to all matching findings.
 	LikelihoodAdjustment GooglePrivacyDlpV2LikelihoodAdjustmentPtrInput `pulumi:"likelihoodAdjustment"`
-	// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\(\d{3}\) \d{3}-\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\(xxx\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
+	// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\(\d{3}\) \d{3}-\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\(xxx\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes-likelihood#match-column-values).
 	Proximity GooglePrivacyDlpV2ProximityPtrInput `pulumi:"proximity"`
 }
 
@@ -12475,7 +12487,7 @@ func (o GooglePrivacyDlpV2HotwordRuleOutput) LikelihoodAdjustment() GooglePrivac
 	}).(GooglePrivacyDlpV2LikelihoodAdjustmentPtrOutput)
 }
 
-// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\(\d{3}\) \d{3}-\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\(xxx\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
+// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\(\d{3}\) \d{3}-\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\(xxx\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes-likelihood#match-column-values).
 func (o GooglePrivacyDlpV2HotwordRuleOutput) Proximity() GooglePrivacyDlpV2ProximityPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2HotwordRule) *GooglePrivacyDlpV2Proximity { return v.Proximity }).(GooglePrivacyDlpV2ProximityPtrOutput)
 }
@@ -12524,7 +12536,7 @@ func (o GooglePrivacyDlpV2HotwordRulePtrOutput) LikelihoodAdjustment() GooglePri
 	}).(GooglePrivacyDlpV2LikelihoodAdjustmentPtrOutput)
 }
 
-// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\(\d{3}\) \d{3}-\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\(xxx\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
+// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\(\d{3}\) \d{3}-\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\(xxx\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes-likelihood#match-column-values).
 func (o GooglePrivacyDlpV2HotwordRulePtrOutput) Proximity() GooglePrivacyDlpV2ProximityPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2HotwordRule) *GooglePrivacyDlpV2Proximity {
 		if v == nil {
@@ -12540,7 +12552,7 @@ type GooglePrivacyDlpV2HotwordRuleResponse struct {
 	HotwordRegex GooglePrivacyDlpV2RegexResponse `pulumi:"hotwordRegex"`
 	// Likelihood adjustment to apply to all matching findings.
 	LikelihoodAdjustment GooglePrivacyDlpV2LikelihoodAdjustmentResponse `pulumi:"likelihoodAdjustment"`
-	// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\(\d{3}\) \d{3}-\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\(xxx\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
+	// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\(\d{3}\) \d{3}-\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\(xxx\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes-likelihood#match-column-values).
 	Proximity GooglePrivacyDlpV2ProximityResponse `pulumi:"proximity"`
 }
 
@@ -12571,7 +12583,7 @@ func (o GooglePrivacyDlpV2HotwordRuleResponseOutput) LikelihoodAdjustment() Goog
 	}).(GooglePrivacyDlpV2LikelihoodAdjustmentResponseOutput)
 }
 
-// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\(\d{3}\) \d{3}-\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\(xxx\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
+// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The finding itself will be included in the window, so that hotwords can be used to match substrings of the finding itself. Suppose you want Cloud DLP to promote the likelihood of the phone number regex "\(\d{3}\) \d{3}-\d{4}" if the area code is known to be the area code of a company's office. In this case, use the hotword regex "\(xxx\)", where "xxx" is the area code in question. For tabular data, if you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes-likelihood#match-column-values).
 func (o GooglePrivacyDlpV2HotwordRuleResponseOutput) Proximity() GooglePrivacyDlpV2ProximityResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2HotwordRuleResponse) GooglePrivacyDlpV2ProximityResponse { return v.Proximity }).(GooglePrivacyDlpV2ProximityResponseOutput)
 }
@@ -13068,6 +13080,7 @@ func (o GooglePrivacyDlpV2ImageTransformationResponseArrayOutput) Index(i pulumi
 
 // A type of transformation that is applied over images.
 type GooglePrivacyDlpV2ImageTransformations struct {
+	// List of transforms to make.
 	Transforms []GooglePrivacyDlpV2ImageTransformation `pulumi:"transforms"`
 }
 
@@ -13084,6 +13097,7 @@ type GooglePrivacyDlpV2ImageTransformationsInput interface {
 
 // A type of transformation that is applied over images.
 type GooglePrivacyDlpV2ImageTransformationsArgs struct {
+	// List of transforms to make.
 	Transforms GooglePrivacyDlpV2ImageTransformationArrayInput `pulumi:"transforms"`
 }
 
@@ -13165,6 +13179,7 @@ func (o GooglePrivacyDlpV2ImageTransformationsOutput) ToGooglePrivacyDlpV2ImageT
 	}).(GooglePrivacyDlpV2ImageTransformationsPtrOutput)
 }
 
+// List of transforms to make.
 func (o GooglePrivacyDlpV2ImageTransformationsOutput) Transforms() GooglePrivacyDlpV2ImageTransformationArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2ImageTransformations) []GooglePrivacyDlpV2ImageTransformation {
 		return v.Transforms
@@ -13195,6 +13210,7 @@ func (o GooglePrivacyDlpV2ImageTransformationsPtrOutput) Elem() GooglePrivacyDlp
 	}).(GooglePrivacyDlpV2ImageTransformationsOutput)
 }
 
+// List of transforms to make.
 func (o GooglePrivacyDlpV2ImageTransformationsPtrOutput) Transforms() GooglePrivacyDlpV2ImageTransformationArrayOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2ImageTransformations) []GooglePrivacyDlpV2ImageTransformation {
 		if v == nil {
@@ -13206,6 +13222,7 @@ func (o GooglePrivacyDlpV2ImageTransformationsPtrOutput) Transforms() GooglePriv
 
 // A type of transformation that is applied over images.
 type GooglePrivacyDlpV2ImageTransformationsResponse struct {
+	// List of transforms to make.
 	Transforms []GooglePrivacyDlpV2ImageTransformationResponse `pulumi:"transforms"`
 }
 
@@ -13224,6 +13241,7 @@ func (o GooglePrivacyDlpV2ImageTransformationsResponseOutput) ToGooglePrivacyDlp
 	return o
 }
 
+// List of transforms to make.
 func (o GooglePrivacyDlpV2ImageTransformationsResponseOutput) Transforms() GooglePrivacyDlpV2ImageTransformationResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2ImageTransformationsResponse) []GooglePrivacyDlpV2ImageTransformationResponse {
 		return v.Transforms
@@ -13232,7 +13250,7 @@ func (o GooglePrivacyDlpV2ImageTransformationsResponseOutput) Transforms() Googl
 
 // Type of information detected by the API.
 type GooglePrivacyDlpV2InfoType struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
 	Name *string `pulumi:"name"`
 	// Optional custom sensitivity for this InfoType. This only applies to data profiling.
 	SensitivityScore *GooglePrivacyDlpV2SensitivityScore `pulumi:"sensitivityScore"`
@@ -13253,7 +13271,7 @@ type GooglePrivacyDlpV2InfoTypeInput interface {
 
 // Type of information detected by the API.
 type GooglePrivacyDlpV2InfoTypeArgs struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Optional custom sensitivity for this InfoType. This only applies to data profiling.
 	SensitivityScore GooglePrivacyDlpV2SensitivityScorePtrInput `pulumi:"sensitivityScore"`
@@ -13364,7 +13382,7 @@ func (o GooglePrivacyDlpV2InfoTypeOutput) ToGooglePrivacyDlpV2InfoTypePtrOutputW
 	}).(GooglePrivacyDlpV2InfoTypePtrOutput)
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
 func (o GooglePrivacyDlpV2InfoTypeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InfoType) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -13403,7 +13421,7 @@ func (o GooglePrivacyDlpV2InfoTypePtrOutput) Elem() GooglePrivacyDlpV2InfoTypeOu
 	}).(GooglePrivacyDlpV2InfoTypeOutput)
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
 func (o GooglePrivacyDlpV2InfoTypePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2InfoType) *string {
 		if v == nil {
@@ -13783,7 +13801,7 @@ func (o GooglePrivacyDlpV2InfoTypeLimitResponseArrayOutput) Index(i pulumi.IntIn
 
 // Type of information detected by the API.
 type GooglePrivacyDlpV2InfoTypeResponse struct {
-	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
 	Name string `pulumi:"name"`
 	// Optional custom sensitivity for this InfoType. This only applies to data profiling.
 	SensitivityScore GooglePrivacyDlpV2SensitivityScoreResponse `pulumi:"sensitivityScore"`
@@ -13806,7 +13824,7 @@ func (o GooglePrivacyDlpV2InfoTypeResponseOutput) ToGooglePrivacyDlpV2InfoTypeRe
 	return o
 }
 
-// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
 func (o GooglePrivacyDlpV2InfoTypeResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InfoTypeResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -14240,17 +14258,17 @@ type GooglePrivacyDlpV2InspectConfig struct {
 	//
 	// Deprecated: Deprecated and unused.
 	ContentOptions []GooglePrivacyDlpV2InspectConfigContentOptionsItem `pulumi:"contentOptions"`
-	// CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+	// CustomInfoTypes provided by the user. See https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes to learn more.
 	CustomInfoTypes []GooglePrivacyDlpV2CustomInfoType `pulumi:"customInfoTypes"`
 	// When true, excludes type information of the findings. This is not used for data profiling.
 	ExcludeInfoTypes *bool `pulumi:"excludeInfoTypes"`
 	// When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling.
 	IncludeQuote *bool `pulumi:"includeQuote"`
-	// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
+	// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
 	InfoTypes []GooglePrivacyDlpV2InfoType `pulumi:"infoTypes"`
 	// Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error. When set within an InspectJobConfig, the specified maximum values aren't hard limits. If an inspection job reaches these limits, the job ends gradually, not abruptly. Therefore, the actual number of findings that Cloud DLP returns can be multiple times higher than these maximum values.
 	Limits *GooglePrivacyDlpV2FindingLimits `pulumi:"limits"`
-	// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
+	// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/sensitive-data-protection/docs/likelihood).
 	MinLikelihood *GooglePrivacyDlpV2InspectConfigMinLikelihood `pulumi:"minLikelihood"`
 	// Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood. The system only returns a finding if its likelihood is above this threshold. If this field is not set, the system uses the InspectConfig min_likelihood.
 	MinLikelihoodPerInfoType []GooglePrivacyDlpV2InfoTypeLikelihood `pulumi:"minLikelihoodPerInfoType"`
@@ -14275,17 +14293,17 @@ type GooglePrivacyDlpV2InspectConfigArgs struct {
 	//
 	// Deprecated: Deprecated and unused.
 	ContentOptions GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayInput `pulumi:"contentOptions"`
-	// CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+	// CustomInfoTypes provided by the user. See https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes to learn more.
 	CustomInfoTypes GooglePrivacyDlpV2CustomInfoTypeArrayInput `pulumi:"customInfoTypes"`
 	// When true, excludes type information of the findings. This is not used for data profiling.
 	ExcludeInfoTypes pulumi.BoolPtrInput `pulumi:"excludeInfoTypes"`
 	// When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling.
 	IncludeQuote pulumi.BoolPtrInput `pulumi:"includeQuote"`
-	// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
+	// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
 	InfoTypes GooglePrivacyDlpV2InfoTypeArrayInput `pulumi:"infoTypes"`
 	// Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error. When set within an InspectJobConfig, the specified maximum values aren't hard limits. If an inspection job reaches these limits, the job ends gradually, not abruptly. Therefore, the actual number of findings that Cloud DLP returns can be multiple times higher than these maximum values.
 	Limits GooglePrivacyDlpV2FindingLimitsPtrInput `pulumi:"limits"`
-	// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
+	// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/sensitive-data-protection/docs/likelihood).
 	MinLikelihood GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrInput `pulumi:"minLikelihood"`
 	// Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood. The system only returns a finding if its likelihood is above this threshold. If this field is not set, the system uses the InspectConfig min_likelihood.
 	MinLikelihoodPerInfoType GooglePrivacyDlpV2InfoTypeLikelihoodArrayInput `pulumi:"minLikelihoodPerInfoType"`
@@ -14380,7 +14398,7 @@ func (o GooglePrivacyDlpV2InspectConfigOutput) ContentOptions() GooglePrivacyDlp
 	}).(GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutput)
 }
 
-// CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+// CustomInfoTypes provided by the user. See https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes to learn more.
 func (o GooglePrivacyDlpV2InspectConfigOutput) CustomInfoTypes() GooglePrivacyDlpV2CustomInfoTypeArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfig) []GooglePrivacyDlpV2CustomInfoType { return v.CustomInfoTypes }).(GooglePrivacyDlpV2CustomInfoTypeArrayOutput)
 }
@@ -14395,7 +14413,7 @@ func (o GooglePrivacyDlpV2InspectConfigOutput) IncludeQuote() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfig) *bool { return v.IncludeQuote }).(pulumi.BoolPtrOutput)
 }
 
-// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
+// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
 func (o GooglePrivacyDlpV2InspectConfigOutput) InfoTypes() GooglePrivacyDlpV2InfoTypeArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfig) []GooglePrivacyDlpV2InfoType { return v.InfoTypes }).(GooglePrivacyDlpV2InfoTypeArrayOutput)
 }
@@ -14405,7 +14423,7 @@ func (o GooglePrivacyDlpV2InspectConfigOutput) Limits() GooglePrivacyDlpV2Findin
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfig) *GooglePrivacyDlpV2FindingLimits { return v.Limits }).(GooglePrivacyDlpV2FindingLimitsPtrOutput)
 }
 
-// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
+// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/sensitive-data-protection/docs/likelihood).
 func (o GooglePrivacyDlpV2InspectConfigOutput) MinLikelihood() GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfig) *GooglePrivacyDlpV2InspectConfigMinLikelihood {
 		return v.MinLikelihood
@@ -14460,7 +14478,7 @@ func (o GooglePrivacyDlpV2InspectConfigPtrOutput) ContentOptions() GooglePrivacy
 	}).(GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutput)
 }
 
-// CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+// CustomInfoTypes provided by the user. See https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes to learn more.
 func (o GooglePrivacyDlpV2InspectConfigPtrOutput) CustomInfoTypes() GooglePrivacyDlpV2CustomInfoTypeArrayOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfig) []GooglePrivacyDlpV2CustomInfoType {
 		if v == nil {
@@ -14490,7 +14508,7 @@ func (o GooglePrivacyDlpV2InspectConfigPtrOutput) IncludeQuote() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
+// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
 func (o GooglePrivacyDlpV2InspectConfigPtrOutput) InfoTypes() GooglePrivacyDlpV2InfoTypeArrayOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfig) []GooglePrivacyDlpV2InfoType {
 		if v == nil {
@@ -14510,7 +14528,7 @@ func (o GooglePrivacyDlpV2InspectConfigPtrOutput) Limits() GooglePrivacyDlpV2Fin
 	}).(GooglePrivacyDlpV2FindingLimitsPtrOutput)
 }
 
-// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
+// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/sensitive-data-protection/docs/likelihood).
 func (o GooglePrivacyDlpV2InspectConfigPtrOutput) MinLikelihood() GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfig) *GooglePrivacyDlpV2InspectConfigMinLikelihood {
 		if v == nil {
@@ -14546,17 +14564,17 @@ type GooglePrivacyDlpV2InspectConfigResponse struct {
 	//
 	// Deprecated: Deprecated and unused.
 	ContentOptions []string `pulumi:"contentOptions"`
-	// CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+	// CustomInfoTypes provided by the user. See https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes to learn more.
 	CustomInfoTypes []GooglePrivacyDlpV2CustomInfoTypeResponse `pulumi:"customInfoTypes"`
 	// When true, excludes type information of the findings. This is not used for data profiling.
 	ExcludeInfoTypes bool `pulumi:"excludeInfoTypes"`
 	// When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling.
 	IncludeQuote bool `pulumi:"includeQuote"`
-	// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
+	// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
 	InfoTypes []GooglePrivacyDlpV2InfoTypeResponse `pulumi:"infoTypes"`
 	// Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error. When set within an InspectJobConfig, the specified maximum values aren't hard limits. If an inspection job reaches these limits, the job ends gradually, not abruptly. Therefore, the actual number of findings that Cloud DLP returns can be multiple times higher than these maximum values.
 	Limits GooglePrivacyDlpV2FindingLimitsResponse `pulumi:"limits"`
-	// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
+	// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/sensitive-data-protection/docs/likelihood).
 	MinLikelihood string `pulumi:"minLikelihood"`
 	// Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood. The system only returns a finding if its likelihood is above this threshold. If this field is not set, the system uses the InspectConfig min_likelihood.
 	MinLikelihoodPerInfoType []GooglePrivacyDlpV2InfoTypeLikelihoodResponse `pulumi:"minLikelihoodPerInfoType"`
@@ -14586,7 +14604,7 @@ func (o GooglePrivacyDlpV2InspectConfigResponseOutput) ContentOptions() pulumi.S
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfigResponse) []string { return v.ContentOptions }).(pulumi.StringArrayOutput)
 }
 
-// CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+// CustomInfoTypes provided by the user. See https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes to learn more.
 func (o GooglePrivacyDlpV2InspectConfigResponseOutput) CustomInfoTypes() GooglePrivacyDlpV2CustomInfoTypeResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfigResponse) []GooglePrivacyDlpV2CustomInfoTypeResponse {
 		return v.CustomInfoTypes
@@ -14603,7 +14621,7 @@ func (o GooglePrivacyDlpV2InspectConfigResponseOutput) IncludeQuote() pulumi.Boo
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfigResponse) bool { return v.IncludeQuote }).(pulumi.BoolOutput)
 }
 
-// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
+// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
 func (o GooglePrivacyDlpV2InspectConfigResponseOutput) InfoTypes() GooglePrivacyDlpV2InfoTypeResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfigResponse) []GooglePrivacyDlpV2InfoTypeResponse {
 		return v.InfoTypes
@@ -14617,7 +14635,7 @@ func (o GooglePrivacyDlpV2InspectConfigResponseOutput) Limits() GooglePrivacyDlp
 	}).(GooglePrivacyDlpV2FindingLimitsResponseOutput)
 }
 
-// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
+// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/sensitive-data-protection/docs/likelihood).
 func (o GooglePrivacyDlpV2InspectConfigResponseOutput) MinLikelihood() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfigResponse) string { return v.MinLikelihood }).(pulumi.StringOutput)
 }
@@ -14923,7 +14941,7 @@ func (o GooglePrivacyDlpV2InspectJobConfigResponseOutput) StorageConfig() Google
 	}).(GooglePrivacyDlpV2StorageConfigResponseOutput)
 }
 
-// The inspectTemplate contains a configuration (set of types of sensitive data to be detected) to be used anywhere you otherwise would normally specify InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
+// The inspectTemplate contains a configuration (set of types of sensitive data to be detected) to be used anywhere you otherwise would normally specify InspectConfig. See https://cloud.google.com/sensitive-data-protection/docs/concepts-templates to learn more.
 type GooglePrivacyDlpV2InspectTemplateResponse struct {
 	// The creation timestamp of an inspectTemplate.
 	CreateTime string `pulumi:"createTime"`
@@ -14939,7 +14957,7 @@ type GooglePrivacyDlpV2InspectTemplateResponse struct {
 	UpdateTime string `pulumi:"updateTime"`
 }
 
-// The inspectTemplate contains a configuration (set of types of sensitive data to be detected) to be used anywhere you otherwise would normally specify InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
+// The inspectTemplate contains a configuration (set of types of sensitive data to be detected) to be used anywhere you otherwise would normally specify InspectConfig. See https://cloud.google.com/sensitive-data-protection/docs/concepts-templates to learn more.
 type GooglePrivacyDlpV2InspectTemplateResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2InspectTemplateResponseOutput) ElementType() reflect.Type {
@@ -16366,7 +16384,7 @@ func (o GooglePrivacyDlpV2KindExpressionResponseOutput) Name() pulumi.StringOutp
 	return o.ApplyT(func(v GooglePrivacyDlpV2KindExpressionResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
+// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/sensitive-data-protection/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
 type GooglePrivacyDlpV2KmsWrappedCryptoKey struct {
 	// The resource name of the KMS CryptoKey to use for unwrapping.
 	CryptoKeyName string `pulumi:"cryptoKeyName"`
@@ -16385,7 +16403,7 @@ type GooglePrivacyDlpV2KmsWrappedCryptoKeyInput interface {
 	ToGooglePrivacyDlpV2KmsWrappedCryptoKeyOutputWithContext(context.Context) GooglePrivacyDlpV2KmsWrappedCryptoKeyOutput
 }
 
-// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
+// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/sensitive-data-protection/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
 type GooglePrivacyDlpV2KmsWrappedCryptoKeyArgs struct {
 	// The resource name of the KMS CryptoKey to use for unwrapping.
 	CryptoKeyName pulumi.StringInput `pulumi:"cryptoKeyName"`
@@ -16446,7 +16464,7 @@ func (i *googlePrivacyDlpV2KmsWrappedCryptoKeyPtrType) ToGooglePrivacyDlpV2KmsWr
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrOutput)
 }
 
-// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
+// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/sensitive-data-protection/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
 type GooglePrivacyDlpV2KmsWrappedCryptoKeyOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2KmsWrappedCryptoKeyOutput) ElementType() reflect.Type {
@@ -16525,7 +16543,7 @@ func (o GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrOutput) WrappedKey() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
+// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/sensitive-data-protection/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
 type GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse struct {
 	// The resource name of the KMS CryptoKey to use for unwrapping.
 	CryptoKeyName string `pulumi:"cryptoKeyName"`
@@ -16533,7 +16551,7 @@ type GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse struct {
 	WrappedKey string `pulumi:"wrappedKey"`
 }
 
-// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
+// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key] (https://cloud.google.com/sensitive-data-protection/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
 type GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutput) ElementType() reflect.Type {
@@ -16935,7 +16953,7 @@ func (o GooglePrivacyDlpV2LDiversityResultResponseOutput) SensitiveValueFrequenc
 	}).(GooglePrivacyDlpV2LDiversityHistogramBucketResponseArrayOutput)
 }
 
-// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
+// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/sensitive-data-protection/limits) page. The artifacts of dictionary creation are stored in the specified Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
 type GooglePrivacyDlpV2LargeCustomDictionaryConfig struct {
 	// Field in a BigQuery table where each cell represents a dictionary phrase.
 	BigQueryField *GooglePrivacyDlpV2BigQueryField `pulumi:"bigQueryField"`
@@ -16956,7 +16974,7 @@ type GooglePrivacyDlpV2LargeCustomDictionaryConfigInput interface {
 	ToGooglePrivacyDlpV2LargeCustomDictionaryConfigOutputWithContext(context.Context) GooglePrivacyDlpV2LargeCustomDictionaryConfigOutput
 }
 
-// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
+// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/sensitive-data-protection/limits) page. The artifacts of dictionary creation are stored in the specified Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
 type GooglePrivacyDlpV2LargeCustomDictionaryConfigArgs struct {
 	// Field in a BigQuery table where each cell represents a dictionary phrase.
 	BigQueryField GooglePrivacyDlpV2BigQueryFieldPtrInput `pulumi:"bigQueryField"`
@@ -17019,7 +17037,7 @@ func (i *googlePrivacyDlpV2LargeCustomDictionaryConfigPtrType) ToGooglePrivacyDl
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2LargeCustomDictionaryConfigPtrOutput)
 }
 
-// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
+// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/sensitive-data-protection/limits) page. The artifacts of dictionary creation are stored in the specified Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
 type GooglePrivacyDlpV2LargeCustomDictionaryConfigOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2LargeCustomDictionaryConfigOutput) ElementType() reflect.Type {
@@ -17119,7 +17137,7 @@ func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigPtrOutput) OutputPath() Goo
 	}).(GooglePrivacyDlpV2CloudStoragePathPtrOutput)
 }
 
-// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
+// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/sensitive-data-protection/limits) page. The artifacts of dictionary creation are stored in the specified Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
 type GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse struct {
 	// Field in a BigQuery table where each cell represents a dictionary phrase.
 	BigQueryField GooglePrivacyDlpV2BigQueryFieldResponse `pulumi:"bigQueryField"`
@@ -17129,7 +17147,7 @@ type GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse struct {
 	OutputPath GooglePrivacyDlpV2CloudStoragePathResponse `pulumi:"outputPath"`
 }
 
-// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
+// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/sensitive-data-protection/limits) page. The artifacts of dictionary creation are stored in the specified Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
 type GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput) ElementType() reflect.Type {
@@ -19473,7 +19491,7 @@ func (o GooglePrivacyDlpV2PrivacyMetricResponseOutput) NumericalStatsConfig() Go
 type GooglePrivacyDlpV2Proximity struct {
 	// Number of characters after the finding to consider.
 	WindowAfter *int `pulumi:"windowAfter"`
-	// Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
+	// Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes-likelihood#match-column-values).
 	WindowBefore *int `pulumi:"windowBefore"`
 }
 
@@ -19492,7 +19510,7 @@ type GooglePrivacyDlpV2ProximityInput interface {
 type GooglePrivacyDlpV2ProximityArgs struct {
 	// Number of characters after the finding to consider.
 	WindowAfter pulumi.IntPtrInput `pulumi:"windowAfter"`
-	// Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
+	// Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes-likelihood#match-column-values).
 	WindowBefore pulumi.IntPtrInput `pulumi:"windowBefore"`
 }
 
@@ -19579,7 +19597,7 @@ func (o GooglePrivacyDlpV2ProximityOutput) WindowAfter() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2Proximity) *int { return v.WindowAfter }).(pulumi.IntPtrOutput)
 }
 
-// Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
+// Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes-likelihood#match-column-values).
 func (o GooglePrivacyDlpV2ProximityOutput) WindowBefore() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2Proximity) *int { return v.WindowBefore }).(pulumi.IntPtrOutput)
 }
@@ -19618,7 +19636,7 @@ func (o GooglePrivacyDlpV2ProximityPtrOutput) WindowAfter() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
-// Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
+// Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes-likelihood#match-column-values).
 func (o GooglePrivacyDlpV2ProximityPtrOutput) WindowBefore() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2Proximity) *int {
 		if v == nil {
@@ -19632,7 +19650,7 @@ func (o GooglePrivacyDlpV2ProximityPtrOutput) WindowBefore() pulumi.IntPtrOutput
 type GooglePrivacyDlpV2ProximityResponse struct {
 	// Number of characters after the finding to consider.
 	WindowAfter int `pulumi:"windowAfter"`
-	// Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
+	// Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes-likelihood#match-column-values).
 	WindowBefore int `pulumi:"windowBefore"`
 }
 
@@ -19656,7 +19674,7 @@ func (o GooglePrivacyDlpV2ProximityResponseOutput) WindowAfter() pulumi.IntOutpu
 	return o.ApplyT(func(v GooglePrivacyDlpV2ProximityResponse) int { return v.WindowAfter }).(pulumi.IntOutput)
 }
 
-// Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
+// Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes-likelihood#match-column-values).
 func (o GooglePrivacyDlpV2ProximityResponseOutput) WindowBefore() pulumi.IntOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2ProximityResponse) int { return v.WindowBefore }).(pulumi.IntOutput)
 }
@@ -20555,7 +20573,7 @@ func (o GooglePrivacyDlpV2PublishSummaryToCsccResponseOutput) ToGooglePrivacyDlp
 	return o
 }
 
-// Publish a message into a given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
+// Publish a message into a given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
 type GooglePrivacyDlpV2PublishToPubSub struct {
 	// Cloud Pub/Sub topic to send notifications to. The topic must have given publishing access rights to the DLP API service account executing the long running DlpJob sending the notifications. Format is projects/{project}/topics/{topic}.
 	Topic *string `pulumi:"topic"`
@@ -20572,7 +20590,7 @@ type GooglePrivacyDlpV2PublishToPubSubInput interface {
 	ToGooglePrivacyDlpV2PublishToPubSubOutputWithContext(context.Context) GooglePrivacyDlpV2PublishToPubSubOutput
 }
 
-// Publish a message into a given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
+// Publish a message into a given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
 type GooglePrivacyDlpV2PublishToPubSubArgs struct {
 	// Cloud Pub/Sub topic to send notifications to. The topic must have given publishing access rights to the DLP API service account executing the long running DlpJob sending the notifications. Format is projects/{project}/topics/{topic}.
 	Topic pulumi.StringPtrInput `pulumi:"topic"`
@@ -20631,7 +20649,7 @@ func (i *googlePrivacyDlpV2PublishToPubSubPtrType) ToGooglePrivacyDlpV2PublishTo
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PublishToPubSubPtrOutput)
 }
 
-// Publish a message into a given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
+// Publish a message into a given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
 type GooglePrivacyDlpV2PublishToPubSubOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2PublishToPubSubOutput) ElementType() reflect.Type {
@@ -20695,13 +20713,13 @@ func (o GooglePrivacyDlpV2PublishToPubSubPtrOutput) Topic() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Publish a message into a given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
+// Publish a message into a given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
 type GooglePrivacyDlpV2PublishToPubSubResponse struct {
 	// Cloud Pub/Sub topic to send notifications to. The topic must have given publishing access rights to the DLP API service account executing the long running DlpJob sending the notifications. Format is projects/{project}/topics/{topic}.
 	Topic string `pulumi:"topic"`
 }
 
-// Publish a message into a given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
+// Publish a message into a given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
 type GooglePrivacyDlpV2PublishToPubSubResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2PublishToPubSubResponseOutput) ElementType() reflect.Type {
@@ -22231,7 +22249,7 @@ func (o GooglePrivacyDlpV2RegexResponseOutput) Pattern() pulumi.StringOutput {
 
 // Replace each input value with a value randomly selected from the dictionary.
 type GooglePrivacyDlpV2ReplaceDictionaryConfig struct {
-	// A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+	// A list of words to select from for random replacement. The [limits](https://cloud.google.com/sensitive-data-protection/limits) page contains details about the size limits of dictionaries.
 	WordList *GooglePrivacyDlpV2WordList `pulumi:"wordList"`
 }
 
@@ -22248,7 +22266,7 @@ type GooglePrivacyDlpV2ReplaceDictionaryConfigInput interface {
 
 // Replace each input value with a value randomly selected from the dictionary.
 type GooglePrivacyDlpV2ReplaceDictionaryConfigArgs struct {
-	// A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+	// A list of words to select from for random replacement. The [limits](https://cloud.google.com/sensitive-data-protection/limits) page contains details about the size limits of dictionaries.
 	WordList GooglePrivacyDlpV2WordListPtrInput `pulumi:"wordList"`
 }
 
@@ -22330,7 +22348,7 @@ func (o GooglePrivacyDlpV2ReplaceDictionaryConfigOutput) ToGooglePrivacyDlpV2Rep
 	}).(GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput)
 }
 
-// A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+// A list of words to select from for random replacement. The [limits](https://cloud.google.com/sensitive-data-protection/limits) page contains details about the size limits of dictionaries.
 func (o GooglePrivacyDlpV2ReplaceDictionaryConfigOutput) WordList() GooglePrivacyDlpV2WordListPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2ReplaceDictionaryConfig) *GooglePrivacyDlpV2WordList { return v.WordList }).(GooglePrivacyDlpV2WordListPtrOutput)
 }
@@ -22359,7 +22377,7 @@ func (o GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput) Elem() GooglePrivacy
 	}).(GooglePrivacyDlpV2ReplaceDictionaryConfigOutput)
 }
 
-// A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+// A list of words to select from for random replacement. The [limits](https://cloud.google.com/sensitive-data-protection/limits) page contains details about the size limits of dictionaries.
 func (o GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput) WordList() GooglePrivacyDlpV2WordListPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2ReplaceDictionaryConfig) *GooglePrivacyDlpV2WordList {
 		if v == nil {
@@ -22371,7 +22389,7 @@ func (o GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput) WordList() GooglePri
 
 // Replace each input value with a value randomly selected from the dictionary.
 type GooglePrivacyDlpV2ReplaceDictionaryConfigResponse struct {
-	// A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+	// A list of words to select from for random replacement. The [limits](https://cloud.google.com/sensitive-data-protection/limits) page contains details about the size limits of dictionaries.
 	WordList GooglePrivacyDlpV2WordListResponse `pulumi:"wordList"`
 }
 
@@ -22390,7 +22408,7 @@ func (o GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput) ToGooglePrivacy
 	return o
 }
 
-// A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+// A list of words to select from for random replacement. The [limits](https://cloud.google.com/sensitive-data-protection/limits) page contains details about the size limits of dictionaries.
 func (o GooglePrivacyDlpV2ReplaceDictionaryConfigResponseOutput) WordList() GooglePrivacyDlpV2WordListResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2ReplaceDictionaryConfigResponse) GooglePrivacyDlpV2WordListResponse {
 		return v.WordList
@@ -22867,7 +22885,7 @@ func (o GooglePrivacyDlpV2ResultResponseOutput) TotalEstimatedBytes() pulumi.Str
 	return o.ApplyT(func(v GooglePrivacyDlpV2ResultResponse) string { return v.TotalEstimatedBytes }).(pulumi.StringOutput)
 }
 
-// Configuration for a risk analysis job. See https://cloud.google.com/dlp/docs/concepts-risk-analysis to learn more.
+// Configuration for a risk analysis job. See https://cloud.google.com/sensitive-data-protection/docs/concepts-risk-analysis to learn more.
 type GooglePrivacyDlpV2RiskAnalysisJobConfig struct {
 	// Actions to execute at the completion of the job. Are executed in the order provided.
 	Actions []GooglePrivacyDlpV2Action `pulumi:"actions"`
@@ -22888,7 +22906,7 @@ type GooglePrivacyDlpV2RiskAnalysisJobConfigInput interface {
 	ToGooglePrivacyDlpV2RiskAnalysisJobConfigOutputWithContext(context.Context) GooglePrivacyDlpV2RiskAnalysisJobConfigOutput
 }
 
-// Configuration for a risk analysis job. See https://cloud.google.com/dlp/docs/concepts-risk-analysis to learn more.
+// Configuration for a risk analysis job. See https://cloud.google.com/sensitive-data-protection/docs/concepts-risk-analysis to learn more.
 type GooglePrivacyDlpV2RiskAnalysisJobConfigArgs struct {
 	// Actions to execute at the completion of the job. Are executed in the order provided.
 	Actions GooglePrivacyDlpV2ActionArrayInput `pulumi:"actions"`
@@ -22951,7 +22969,7 @@ func (i *googlePrivacyDlpV2RiskAnalysisJobConfigPtrType) ToGooglePrivacyDlpV2Ris
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2RiskAnalysisJobConfigPtrOutput)
 }
 
-// Configuration for a risk analysis job. See https://cloud.google.com/dlp/docs/concepts-risk-analysis to learn more.
+// Configuration for a risk analysis job. See https://cloud.google.com/sensitive-data-protection/docs/concepts-risk-analysis to learn more.
 type GooglePrivacyDlpV2RiskAnalysisJobConfigOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2RiskAnalysisJobConfigOutput) ElementType() reflect.Type {
@@ -23047,7 +23065,7 @@ func (o GooglePrivacyDlpV2RiskAnalysisJobConfigPtrOutput) SourceTable() GooglePr
 	}).(GooglePrivacyDlpV2BigQueryTablePtrOutput)
 }
 
-// Configuration for a risk analysis job. See https://cloud.google.com/dlp/docs/concepts-risk-analysis to learn more.
+// Configuration for a risk analysis job. See https://cloud.google.com/sensitive-data-protection/docs/concepts-risk-analysis to learn more.
 type GooglePrivacyDlpV2RiskAnalysisJobConfigResponse struct {
 	// Actions to execute at the completion of the job. Are executed in the order provided.
 	Actions []GooglePrivacyDlpV2ActionResponse `pulumi:"actions"`
@@ -23057,7 +23075,7 @@ type GooglePrivacyDlpV2RiskAnalysisJobConfigResponse struct {
 	SourceTable GooglePrivacyDlpV2BigQueryTableResponse `pulumi:"sourceTable"`
 }
 
-// Configuration for a risk analysis job. See https://cloud.google.com/dlp/docs/concepts-risk-analysis to learn more.
+// Configuration for a risk analysis job. See https://cloud.google.com/sensitive-data-protection/docs/concepts-risk-analysis to learn more.
 type GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2RiskAnalysisJobConfigResponseOutput) ElementType() reflect.Type {
@@ -23954,7 +23972,8 @@ type GooglePrivacyDlpV2StorageConfig struct {
 	// Google Cloud Datastore options.
 	DatastoreOptions *GooglePrivacyDlpV2DatastoreOptions `pulumi:"datastoreOptions"`
 	// Hybrid inspection options.
-	HybridOptions  *GooglePrivacyDlpV2HybridOptions  `pulumi:"hybridOptions"`
+	HybridOptions *GooglePrivacyDlpV2HybridOptions `pulumi:"hybridOptions"`
+	// Configuration of the timespan of the items to include in scanning.
 	TimespanConfig *GooglePrivacyDlpV2TimespanConfig `pulumi:"timespanConfig"`
 }
 
@@ -23978,7 +23997,8 @@ type GooglePrivacyDlpV2StorageConfigArgs struct {
 	// Google Cloud Datastore options.
 	DatastoreOptions GooglePrivacyDlpV2DatastoreOptionsPtrInput `pulumi:"datastoreOptions"`
 	// Hybrid inspection options.
-	HybridOptions  GooglePrivacyDlpV2HybridOptionsPtrInput  `pulumi:"hybridOptions"`
+	HybridOptions GooglePrivacyDlpV2HybridOptionsPtrInput `pulumi:"hybridOptions"`
+	// Configuration of the timespan of the items to include in scanning.
 	TimespanConfig GooglePrivacyDlpV2TimespanConfigPtrInput `pulumi:"timespanConfig"`
 }
 
@@ -24082,6 +24102,7 @@ func (o GooglePrivacyDlpV2StorageConfigOutput) HybridOptions() GooglePrivacyDlpV
 	return o.ApplyT(func(v GooglePrivacyDlpV2StorageConfig) *GooglePrivacyDlpV2HybridOptions { return v.HybridOptions }).(GooglePrivacyDlpV2HybridOptionsPtrOutput)
 }
 
+// Configuration of the timespan of the items to include in scanning.
 func (o GooglePrivacyDlpV2StorageConfigOutput) TimespanConfig() GooglePrivacyDlpV2TimespanConfigPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2StorageConfig) *GooglePrivacyDlpV2TimespanConfig { return v.TimespanConfig }).(GooglePrivacyDlpV2TimespanConfigPtrOutput)
 }
@@ -24150,6 +24171,7 @@ func (o GooglePrivacyDlpV2StorageConfigPtrOutput) HybridOptions() GooglePrivacyD
 	}).(GooglePrivacyDlpV2HybridOptionsPtrOutput)
 }
 
+// Configuration of the timespan of the items to include in scanning.
 func (o GooglePrivacyDlpV2StorageConfigPtrOutput) TimespanConfig() GooglePrivacyDlpV2TimespanConfigPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2StorageConfig) *GooglePrivacyDlpV2TimespanConfig {
 		if v == nil {
@@ -24168,7 +24190,8 @@ type GooglePrivacyDlpV2StorageConfigResponse struct {
 	// Google Cloud Datastore options.
 	DatastoreOptions GooglePrivacyDlpV2DatastoreOptionsResponse `pulumi:"datastoreOptions"`
 	// Hybrid inspection options.
-	HybridOptions  GooglePrivacyDlpV2HybridOptionsResponse  `pulumi:"hybridOptions"`
+	HybridOptions GooglePrivacyDlpV2HybridOptionsResponse `pulumi:"hybridOptions"`
+	// Configuration of the timespan of the items to include in scanning.
 	TimespanConfig GooglePrivacyDlpV2TimespanConfigResponse `pulumi:"timespanConfig"`
 }
 
@@ -24215,13 +24238,14 @@ func (o GooglePrivacyDlpV2StorageConfigResponseOutput) HybridOptions() GooglePri
 	}).(GooglePrivacyDlpV2HybridOptionsResponseOutput)
 }
 
+// Configuration of the timespan of the items to include in scanning.
 func (o GooglePrivacyDlpV2StorageConfigResponseOutput) TimespanConfig() GooglePrivacyDlpV2TimespanConfigResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2StorageConfigResponse) GooglePrivacyDlpV2TimespanConfigResponse {
 		return v.TimespanConfig
 	}).(GooglePrivacyDlpV2TimespanConfigResponseOutput)
 }
 
-// Configuration for stored infoTypes. All fields and subfield are provided by the user. For more information, see https://cloud.google.com/dlp/docs/creating-custom-infotypes.
+// Configuration for stored infoTypes. All fields and subfield are provided by the user. For more information, see https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes.
 type GooglePrivacyDlpV2StoredInfoTypeConfig struct {
 	// Description of the StoredInfoType (max 256 characters).
 	Description *string `pulumi:"description"`
@@ -24246,7 +24270,7 @@ type GooglePrivacyDlpV2StoredInfoTypeConfigInput interface {
 	ToGooglePrivacyDlpV2StoredInfoTypeConfigOutputWithContext(context.Context) GooglePrivacyDlpV2StoredInfoTypeConfigOutput
 }
 
-// Configuration for stored infoTypes. All fields and subfield are provided by the user. For more information, see https://cloud.google.com/dlp/docs/creating-custom-infotypes.
+// Configuration for stored infoTypes. All fields and subfield are provided by the user. For more information, see https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes.
 type GooglePrivacyDlpV2StoredInfoTypeConfigArgs struct {
 	// Description of the StoredInfoType (max 256 characters).
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -24272,7 +24296,7 @@ func (i GooglePrivacyDlpV2StoredInfoTypeConfigArgs) ToGooglePrivacyDlpV2StoredIn
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2StoredInfoTypeConfigOutput)
 }
 
-// Configuration for stored infoTypes. All fields and subfield are provided by the user. For more information, see https://cloud.google.com/dlp/docs/creating-custom-infotypes.
+// Configuration for stored infoTypes. All fields and subfield are provided by the user. For more information, see https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes.
 type GooglePrivacyDlpV2StoredInfoTypeConfigOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2StoredInfoTypeConfigOutput) ElementType() reflect.Type {
@@ -24314,7 +24338,7 @@ func (o GooglePrivacyDlpV2StoredInfoTypeConfigOutput) Regex() GooglePrivacyDlpV2
 	return o.ApplyT(func(v GooglePrivacyDlpV2StoredInfoTypeConfig) *GooglePrivacyDlpV2Regex { return v.Regex }).(GooglePrivacyDlpV2RegexPtrOutput)
 }
 
-// Configuration for stored infoTypes. All fields and subfield are provided by the user. For more information, see https://cloud.google.com/dlp/docs/creating-custom-infotypes.
+// Configuration for stored infoTypes. All fields and subfield are provided by the user. For more information, see https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes.
 type GooglePrivacyDlpV2StoredInfoTypeConfigResponse struct {
 	// Description of the StoredInfoType (max 256 characters).
 	Description string `pulumi:"description"`
@@ -24328,7 +24352,7 @@ type GooglePrivacyDlpV2StoredInfoTypeConfigResponse struct {
 	Regex GooglePrivacyDlpV2RegexResponse `pulumi:"regex"`
 }
 
-// Configuration for stored infoTypes. All fields and subfield are provided by the user. For more information, see https://cloud.google.com/dlp/docs/creating-custom-infotypes.
+// Configuration for stored infoTypes. All fields and subfield are provided by the user. For more information, see https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes.
 type GooglePrivacyDlpV2StoredInfoTypeConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2StoredInfoTypeConfigResponseOutput) ElementType() reflect.Type {
@@ -24672,7 +24696,7 @@ func (o GooglePrivacyDlpV2StoredTypeResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2StoredTypeResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Message for detecting output from deidentification transformations such as [`CryptoReplaceFfxFpeConfig`](https://cloud.google.com/dlp/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig). These types of transformations are those that perform pseudonymization, thereby producing a "surrogate" as output. This should be used in conjunction with a field on the transformation such as `surrogate_info_type`. This CustomInfoType does not support the use of `detection_rules`.
+// Message for detecting output from deidentification transformations such as [`CryptoReplaceFfxFpeConfig`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig). These types of transformations are those that perform pseudonymization, thereby producing a "surrogate" as output. This should be used in conjunction with a field on the transformation such as `surrogate_info_type`. This CustomInfoType does not support the use of `detection_rules`.
 type GooglePrivacyDlpV2SurrogateType struct {
 }
 
@@ -24687,7 +24711,7 @@ type GooglePrivacyDlpV2SurrogateTypeInput interface {
 	ToGooglePrivacyDlpV2SurrogateTypeOutputWithContext(context.Context) GooglePrivacyDlpV2SurrogateTypeOutput
 }
 
-// Message for detecting output from deidentification transformations such as [`CryptoReplaceFfxFpeConfig`](https://cloud.google.com/dlp/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig). These types of transformations are those that perform pseudonymization, thereby producing a "surrogate" as output. This should be used in conjunction with a field on the transformation such as `surrogate_info_type`. This CustomInfoType does not support the use of `detection_rules`.
+// Message for detecting output from deidentification transformations such as [`CryptoReplaceFfxFpeConfig`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig). These types of transformations are those that perform pseudonymization, thereby producing a "surrogate" as output. This should be used in conjunction with a field on the transformation such as `surrogate_info_type`. This CustomInfoType does not support the use of `detection_rules`.
 type GooglePrivacyDlpV2SurrogateTypeArgs struct {
 }
 
@@ -24744,7 +24768,7 @@ func (i *googlePrivacyDlpV2SurrogateTypePtrType) ToGooglePrivacyDlpV2SurrogateTy
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2SurrogateTypePtrOutput)
 }
 
-// Message for detecting output from deidentification transformations such as [`CryptoReplaceFfxFpeConfig`](https://cloud.google.com/dlp/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig). These types of transformations are those that perform pseudonymization, thereby producing a "surrogate" as output. This should be used in conjunction with a field on the transformation such as `surrogate_info_type`. This CustomInfoType does not support the use of `detection_rules`.
+// Message for detecting output from deidentification transformations such as [`CryptoReplaceFfxFpeConfig`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig). These types of transformations are those that perform pseudonymization, thereby producing a "surrogate" as output. This should be used in conjunction with a field on the transformation such as `surrogate_info_type`. This CustomInfoType does not support the use of `detection_rules`.
 type GooglePrivacyDlpV2SurrogateTypeOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2SurrogateTypeOutput) ElementType() reflect.Type {
@@ -24793,11 +24817,11 @@ func (o GooglePrivacyDlpV2SurrogateTypePtrOutput) Elem() GooglePrivacyDlpV2Surro
 	}).(GooglePrivacyDlpV2SurrogateTypeOutput)
 }
 
-// Message for detecting output from deidentification transformations such as [`CryptoReplaceFfxFpeConfig`](https://cloud.google.com/dlp/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig). These types of transformations are those that perform pseudonymization, thereby producing a "surrogate" as output. This should be used in conjunction with a field on the transformation such as `surrogate_info_type`. This CustomInfoType does not support the use of `detection_rules`.
+// Message for detecting output from deidentification transformations such as [`CryptoReplaceFfxFpeConfig`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig). These types of transformations are those that perform pseudonymization, thereby producing a "surrogate" as output. This should be used in conjunction with a field on the transformation such as `surrogate_info_type`. This CustomInfoType does not support the use of `detection_rules`.
 type GooglePrivacyDlpV2SurrogateTypeResponse struct {
 }
 
-// Message for detecting output from deidentification transformations such as [`CryptoReplaceFfxFpeConfig`](https://cloud.google.com/dlp/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig). These types of transformations are those that perform pseudonymization, thereby producing a "surrogate" as output. This should be used in conjunction with a field on the transformation such as `surrogate_info_type`. This CustomInfoType does not support the use of `detection_rules`.
+// Message for detecting output from deidentification transformations such as [`CryptoReplaceFfxFpeConfig`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig). These types of transformations are those that perform pseudonymization, thereby producing a "surrogate" as output. This should be used in conjunction with a field on the transformation such as `surrogate_info_type`. This CustomInfoType does not support the use of `detection_rules`.
 type GooglePrivacyDlpV2SurrogateTypeResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2SurrogateTypeResponseOutput) ElementType() reflect.Type {
@@ -25490,7 +25514,7 @@ type GooglePrivacyDlpV2TimespanConfig struct {
 	EndTime *string `pulumi:"endTime"`
 	// Exclude files, tables, or rows older than this value. If not set, no lower time limit is applied.
 	StartTime *string `pulumi:"startTime"`
-	// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-timespan) related to this operation.
+	// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-timespan) related to this operation.
 	TimestampField *GooglePrivacyDlpV2FieldId `pulumi:"timestampField"`
 }
 
@@ -25513,7 +25537,7 @@ type GooglePrivacyDlpV2TimespanConfigArgs struct {
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
 	// Exclude files, tables, or rows older than this value. If not set, no lower time limit is applied.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-timespan) related to this operation.
+	// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-timespan) related to this operation.
 	TimestampField GooglePrivacyDlpV2FieldIdPtrInput `pulumi:"timestampField"`
 }
 
@@ -25610,7 +25634,7 @@ func (o GooglePrivacyDlpV2TimespanConfigOutput) StartTime() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GooglePrivacyDlpV2TimespanConfig) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
-// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-timespan) related to this operation.
+// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-timespan) related to this operation.
 func (o GooglePrivacyDlpV2TimespanConfigOutput) TimestampField() GooglePrivacyDlpV2FieldIdPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2TimespanConfig) *GooglePrivacyDlpV2FieldId { return v.TimestampField }).(GooglePrivacyDlpV2FieldIdPtrOutput)
 }
@@ -25669,7 +25693,7 @@ func (o GooglePrivacyDlpV2TimespanConfigPtrOutput) StartTime() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-timespan) related to this operation.
+// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-timespan) related to this operation.
 func (o GooglePrivacyDlpV2TimespanConfigPtrOutput) TimestampField() GooglePrivacyDlpV2FieldIdPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2TimespanConfig) *GooglePrivacyDlpV2FieldId {
 		if v == nil {
@@ -25687,7 +25711,7 @@ type GooglePrivacyDlpV2TimespanConfigResponse struct {
 	EndTime string `pulumi:"endTime"`
 	// Exclude files, tables, or rows older than this value. If not set, no lower time limit is applied.
 	StartTime string `pulumi:"startTime"`
-	// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-timespan) related to this operation.
+	// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-timespan) related to this operation.
 	TimestampField GooglePrivacyDlpV2FieldIdResponse `pulumi:"timestampField"`
 }
 
@@ -25721,7 +25745,7 @@ func (o GooglePrivacyDlpV2TimespanConfigResponseOutput) StartTime() pulumi.Strin
 	return o.ApplyT(func(v GooglePrivacyDlpV2TimespanConfigResponse) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
-// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-timespan) related to this operation.
+// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-timespan) related to this operation.
 func (o GooglePrivacyDlpV2TimespanConfigResponseOutput) TimestampField() GooglePrivacyDlpV2FieldIdResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2TimespanConfigResponse) GooglePrivacyDlpV2FieldIdResponse {
 		return v.TimestampField

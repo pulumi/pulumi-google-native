@@ -27,7 +27,7 @@ export interface GetWorkspaceArgs {
 
 export interface GetWorkspaceResult {
     /**
-     * The workspace's name.
+     * Identifier. The workspace's name.
      */
     readonly name: string;
 }

@@ -30,7 +30,7 @@ type Dashboard struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
 	MosaicLayout MosaicLayoutResponseOutput `pulumi:"mosaicLayout"`
-	// Immutable. The resource name of the dashboard.
+	// Identifier. The resource name of the dashboard.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The content is divided into equally spaced rows and the widgets are arranged horizontally.
@@ -98,7 +98,7 @@ type dashboardArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
 	MosaicLayout *MosaicLayout `pulumi:"mosaicLayout"`
-	// Immutable. The resource name of the dashboard.
+	// Identifier. The resource name of the dashboard.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The content is divided into equally spaced rows and the widgets are arranged horizontally.
@@ -121,7 +121,7 @@ type DashboardArgs struct {
 	Labels pulumi.StringMapInput
 	// The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
 	MosaicLayout MosaicLayoutPtrInput
-	// Immutable. The resource name of the dashboard.
+	// Identifier. The resource name of the dashboard.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The content is divided into equally spaced rows and the widgets are arranged horizontally.
@@ -200,7 +200,7 @@ func (o DashboardOutput) MosaicLayout() MosaicLayoutResponseOutput {
 	return o.ApplyT(func(v *Dashboard) MosaicLayoutResponseOutput { return v.MosaicLayout }).(MosaicLayoutResponseOutput)
 }
 
-// Immutable. The resource name of the dashboard.
+// Identifier. The resource name of the dashboard.
 func (o DashboardOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

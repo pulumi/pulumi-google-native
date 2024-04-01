@@ -248,6 +248,22 @@ export const InstanceDatabaseVersion = {
      */
     Mysql8036: "MYSQL_8_0_36",
     /**
+     * The database major version is MySQL 8.0 and the minor version is 37.
+     */
+    Mysql8037: "MYSQL_8_0_37",
+    /**
+     * The database major version is MySQL 8.0 and the minor version is 38.
+     */
+    Mysql8038: "MYSQL_8_0_38",
+    /**
+     * The database major version is MySQL 8.0 and the minor version is 39.
+     */
+    Mysql8039: "MYSQL_8_0_39",
+    /**
+     * The database major version is MySQL 8.0 and the minor version is 40.
+     */
+    Mysql8040: "MYSQL_8_0_40",
+    /**
      * The database version is SQL Server 2019 Standard.
      */
     Sqlserver2019Standard: "SQLSERVER_2019_STANDARD",
@@ -313,11 +329,11 @@ export type InstanceInstanceType = (typeof InstanceInstanceType)[keyof typeof In
 export const InstanceSqlNetworkArchitecture = {
     SqlNetworkArchitectureUnspecified: "SQL_NETWORK_ARCHITECTURE_UNSPECIFIED",
     /**
-     * Instance is a Tenancy Unit (TU) instance.
+     * The instance uses the new network architecture.
      */
     NewNetworkArchitecture: "NEW_NETWORK_ARCHITECTURE",
     /**
-     * Instance is an Umbrella instance.
+     * The instance uses the old network architecture.
      */
     OldNetworkArchitecture: "OLD_NETWORK_ARCHITECTURE",
 } as const;
@@ -406,13 +422,13 @@ export const IpConfigurationSslMode = {
      */
     EncryptedOnly: "ENCRYPTED_ONLY",
     /**
-     * Only allow connections encrypted with SSL/TLS and with valid client certificates. When this value is used, the legacy `require_ssl` flag must be true or cleared to avoid the conflict between values of two flags.
+     * Only allow connections encrypted with SSL/TLS and with valid client certificates. When this value is used, the legacy `require_ssl` flag must be true or cleared to avoid the conflict between values of two flags. PostgreSQL clients or users that connect using IAM database authentication must use either the [Cloud SQL Auth Proxy](https://cloud.google.com/sql/docs/postgres/connect-auth-proxy) or [Cloud SQL Connectors](https://cloud.google.com/sql/docs/postgres/connect-connectors) to enforce client identity verification. This value is not applicable to SQL Server.
      */
     TrustedClientCertificateRequired: "TRUSTED_CLIENT_CERTIFICATE_REQUIRED",
 } as const;
 
 /**
- * Specify how SSL/TLS is enforced in database connections. This flag is supported only for PostgreSQL. Use the legacy `require_ssl` flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL, use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid the conflict between those flags in PostgreSQL, only the following value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note that the value of `ssl_mode` gets priority over the value of the legacy `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY, require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL connection", while the `require_ssl=false` means "both non-SSL and SSL connections are allowed". The database respects `ssl_mode` in this case and only accepts SSL connections.
+ * Specify how SSL/TLS is enforced in database connections. If you must use the `require_ssl` flag for backward compatibility, then only the following value pairs are valid: For PostgreSQL and MySQL: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` For SQL Server: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=true` The value of `ssl_mode` gets priority over the value of `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means only accept SSL connections, while the `require_ssl=false` means accept both non-SSL and SSL connections. MySQL and PostgreSQL databases respect `ssl_mode` in this case and accept only SSL connections.
  */
 export type IpConfigurationSslMode = (typeof IpConfigurationSslMode)[keyof typeof IpConfigurationSslMode];
 
@@ -690,15 +706,15 @@ export const UserType = {
      */
     CloudIamServiceAccount: "CLOUD_IAM_SERVICE_ACCOUNT",
     /**
-     * Cloud IAM Group non-login user.
+     * Cloud IAM group non-login user.
      */
     CloudIamGroup: "CLOUD_IAM_GROUP",
     /**
-     * Cloud IAM Group login user.
+     * Cloud IAM group login user.
      */
     CloudIamGroupUser: "CLOUD_IAM_GROUP_USER",
     /**
-     * Cloud IAM Group service account.
+     * Cloud IAM group service account.
      */
     CloudIamGroupServiceAccount: "CLOUD_IAM_GROUP_SERVICE_ACCOUNT",
 } as const;

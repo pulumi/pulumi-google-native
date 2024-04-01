@@ -37,6 +37,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DatasetConsentStoreIamMember{}
 	case "google-native:healthcare/v1:DatasetConsentStoreIamPolicy":
 		r = &DatasetConsentStoreIamPolicy{}
+	case "google-native:healthcare/v1:DatasetDataMapperWorkspaceIamBinding":
+		r = &DatasetDataMapperWorkspaceIamBinding{}
+	case "google-native:healthcare/v1:DatasetDataMapperWorkspaceIamMember":
+		r = &DatasetDataMapperWorkspaceIamMember{}
+	case "google-native:healthcare/v1:DatasetDataMapperWorkspaceIamPolicy":
+		r = &DatasetDataMapperWorkspaceIamPolicy{}
 	case "google-native:healthcare/v1:DatasetDicomStoreIamBinding":
 		r = &DatasetDicomStoreIamBinding{}
 	case "google-native:healthcare/v1:DatasetDicomStoreIamMember":

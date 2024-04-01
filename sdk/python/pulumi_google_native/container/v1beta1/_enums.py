@@ -45,6 +45,7 @@ __all__ = [
     'ReleaseChannelChannel',
     'ReservationAffinityConsumeReservationType',
     'SandboxConfigType',
+    'SecondaryBootDiskMode',
     'SecurityPostureConfigMode',
     'SecurityPostureConfigVulnerabilityMode',
     'StatusConditionCanonicalCode',
@@ -97,11 +98,11 @@ class BinaryAuthorizationEvaluationMode(str, Enum):
     """
     POLICY_BINDINGS = "POLICY_BINDINGS"
     """
-    Use Binary Authorization with the policies specified in policy_bindings.
+    Use Binary Authorization Continuous Validation with the policies specified in policy_bindings.
     """
     POLICY_BINDINGS_AND_PROJECT_SINGLETON_POLICY_ENFORCE = "POLICY_BINDINGS_AND_PROJECT_SINGLETON_POLICY_ENFORCE"
     """
-    Use Binary Authorization with the policies specified in policy_bindings, and also with the project's singleton policy in enforcement mode.
+    Use Binary Authorization Continuous Validation with the policies specified in policy_bindings and enforce Kubernetes admission requests with Binary Authorization using the project's singleton policy.
     """
 
 
@@ -833,6 +834,20 @@ class SandboxConfigType(str, Enum):
     GVISOR = "GVISOR"
     """
     Run sandbox using gvisor.
+    """
+
+
+class SecondaryBootDiskMode(str, Enum):
+    """
+    Disk mode (container image cache, etc.)
+    """
+    MODE_UNSPECIFIED = "MODE_UNSPECIFIED"
+    """
+    MODE_UNSPECIFIED is when mode is not set.
+    """
+    CONTAINER_IMAGE_CACHE = "CONTAINER_IMAGE_CACHE"
+    """
+    CONTAINER_IMAGE_CACHE is for using the secondary boot disk as a container image cache.
     """
 
 

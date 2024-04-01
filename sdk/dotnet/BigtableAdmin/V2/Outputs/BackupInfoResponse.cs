@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2.Outputs
         /// </summary>
         public readonly string EndTime;
         /// <summary>
-        /// Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//backups/.
+        /// Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//clusters//backups/
         /// </summary>
         public readonly string SourceBackup;
         /// <summary>

@@ -101,6 +101,12 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         public Output<string> EncryptionState { get; private set; } = null!;
 
         /// <summary>
+        /// Attributes specific to [Endpoint Verification](https://cloud.google.com/endpoint-verification/docs/overview) devices.
+        /// </summary>
+        [Output("endpointVerificationSpecificAttributes")]
+        public Output<Outputs.GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponse> EndpointVerificationSpecificAttributes { get; private set; } = null!;
+
+        /// <summary>
         /// Host name of the device.
         /// </summary>
         [Output("hostname")]

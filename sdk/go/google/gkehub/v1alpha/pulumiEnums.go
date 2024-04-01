@@ -368,6 +368,183 @@ func (in *binaryAuthorizationConfigEvaluationModePtr) ToOutput(ctx context.Conte
 	}
 }
 
+// Enables automatic Feature management.
+type ConfigManagementMembershipSpecManagement string
+
+const (
+	// Unspecified
+	ConfigManagementMembershipSpecManagementManagementUnspecified = ConfigManagementMembershipSpecManagement("MANAGEMENT_UNSPECIFIED")
+	// Google will manage the Feature for the cluster.
+	ConfigManagementMembershipSpecManagementManagementAutomatic = ConfigManagementMembershipSpecManagement("MANAGEMENT_AUTOMATIC")
+	// User will manually manage the Feature for the cluster.
+	ConfigManagementMembershipSpecManagementManagementManual = ConfigManagementMembershipSpecManagement("MANAGEMENT_MANUAL")
+)
+
+func (ConfigManagementMembershipSpecManagement) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigManagementMembershipSpecManagement)(nil)).Elem()
+}
+
+func (e ConfigManagementMembershipSpecManagement) ToConfigManagementMembershipSpecManagementOutput() ConfigManagementMembershipSpecManagementOutput {
+	return pulumi.ToOutput(e).(ConfigManagementMembershipSpecManagementOutput)
+}
+
+func (e ConfigManagementMembershipSpecManagement) ToConfigManagementMembershipSpecManagementOutputWithContext(ctx context.Context) ConfigManagementMembershipSpecManagementOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ConfigManagementMembershipSpecManagementOutput)
+}
+
+func (e ConfigManagementMembershipSpecManagement) ToConfigManagementMembershipSpecManagementPtrOutput() ConfigManagementMembershipSpecManagementPtrOutput {
+	return e.ToConfigManagementMembershipSpecManagementPtrOutputWithContext(context.Background())
+}
+
+func (e ConfigManagementMembershipSpecManagement) ToConfigManagementMembershipSpecManagementPtrOutputWithContext(ctx context.Context) ConfigManagementMembershipSpecManagementPtrOutput {
+	return ConfigManagementMembershipSpecManagement(e).ToConfigManagementMembershipSpecManagementOutputWithContext(ctx).ToConfigManagementMembershipSpecManagementPtrOutputWithContext(ctx)
+}
+
+func (e ConfigManagementMembershipSpecManagement) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConfigManagementMembershipSpecManagement) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConfigManagementMembershipSpecManagement) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ConfigManagementMembershipSpecManagement) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ConfigManagementMembershipSpecManagementOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementMembershipSpecManagementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigManagementMembershipSpecManagement)(nil)).Elem()
+}
+
+func (o ConfigManagementMembershipSpecManagementOutput) ToConfigManagementMembershipSpecManagementOutput() ConfigManagementMembershipSpecManagementOutput {
+	return o
+}
+
+func (o ConfigManagementMembershipSpecManagementOutput) ToConfigManagementMembershipSpecManagementOutputWithContext(ctx context.Context) ConfigManagementMembershipSpecManagementOutput {
+	return o
+}
+
+func (o ConfigManagementMembershipSpecManagementOutput) ToConfigManagementMembershipSpecManagementPtrOutput() ConfigManagementMembershipSpecManagementPtrOutput {
+	return o.ToConfigManagementMembershipSpecManagementPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigManagementMembershipSpecManagementOutput) ToConfigManagementMembershipSpecManagementPtrOutputWithContext(ctx context.Context) ConfigManagementMembershipSpecManagementPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigManagementMembershipSpecManagement) *ConfigManagementMembershipSpecManagement {
+		return &v
+	}).(ConfigManagementMembershipSpecManagementPtrOutput)
+}
+
+func (o ConfigManagementMembershipSpecManagementOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ConfigManagementMembershipSpecManagementOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConfigManagementMembershipSpecManagement) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ConfigManagementMembershipSpecManagementOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigManagementMembershipSpecManagementOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConfigManagementMembershipSpecManagement) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConfigManagementMembershipSpecManagementPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigManagementMembershipSpecManagementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigManagementMembershipSpecManagement)(nil)).Elem()
+}
+
+func (o ConfigManagementMembershipSpecManagementPtrOutput) ToConfigManagementMembershipSpecManagementPtrOutput() ConfigManagementMembershipSpecManagementPtrOutput {
+	return o
+}
+
+func (o ConfigManagementMembershipSpecManagementPtrOutput) ToConfigManagementMembershipSpecManagementPtrOutputWithContext(ctx context.Context) ConfigManagementMembershipSpecManagementPtrOutput {
+	return o
+}
+
+func (o ConfigManagementMembershipSpecManagementPtrOutput) Elem() ConfigManagementMembershipSpecManagementOutput {
+	return o.ApplyT(func(v *ConfigManagementMembershipSpecManagement) ConfigManagementMembershipSpecManagement {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigManagementMembershipSpecManagement
+		return ret
+	}).(ConfigManagementMembershipSpecManagementOutput)
+}
+
+func (o ConfigManagementMembershipSpecManagementPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigManagementMembershipSpecManagementPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ConfigManagementMembershipSpecManagement) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ConfigManagementMembershipSpecManagementInput is an input type that accepts values of the ConfigManagementMembershipSpecManagement enum
+// A concrete instance of `ConfigManagementMembershipSpecManagementInput` can be one of the following:
+//
+//	ConfigManagementMembershipSpecManagementManagementUnspecified
+//	ConfigManagementMembershipSpecManagementManagementAutomatic
+//	ConfigManagementMembershipSpecManagementManagementManual
+type ConfigManagementMembershipSpecManagementInput interface {
+	pulumi.Input
+
+	ToConfigManagementMembershipSpecManagementOutput() ConfigManagementMembershipSpecManagementOutput
+	ToConfigManagementMembershipSpecManagementOutputWithContext(context.Context) ConfigManagementMembershipSpecManagementOutput
+}
+
+var configManagementMembershipSpecManagementPtrType = reflect.TypeOf((**ConfigManagementMembershipSpecManagement)(nil)).Elem()
+
+type ConfigManagementMembershipSpecManagementPtrInput interface {
+	pulumi.Input
+
+	ToConfigManagementMembershipSpecManagementPtrOutput() ConfigManagementMembershipSpecManagementPtrOutput
+	ToConfigManagementMembershipSpecManagementPtrOutputWithContext(context.Context) ConfigManagementMembershipSpecManagementPtrOutput
+}
+
+type configManagementMembershipSpecManagementPtr string
+
+func ConfigManagementMembershipSpecManagementPtr(v string) ConfigManagementMembershipSpecManagementPtrInput {
+	return (*configManagementMembershipSpecManagementPtr)(&v)
+}
+
+func (*configManagementMembershipSpecManagementPtr) ElementType() reflect.Type {
+	return configManagementMembershipSpecManagementPtrType
+}
+
+func (in *configManagementMembershipSpecManagementPtr) ToConfigManagementMembershipSpecManagementPtrOutput() ConfigManagementMembershipSpecManagementPtrOutput {
+	return pulumi.ToOutput(in).(ConfigManagementMembershipSpecManagementPtrOutput)
+}
+
+func (in *configManagementMembershipSpecManagementPtr) ToConfigManagementMembershipSpecManagementPtrOutputWithContext(ctx context.Context) ConfigManagementMembershipSpecManagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ConfigManagementMembershipSpecManagementPtrOutput)
+}
+
+func (in *configManagementMembershipSpecManagementPtr) ToOutput(ctx context.Context) pulumix.Output[*ConfigManagementMembershipSpecManagement] {
+	return pulumix.Output[*ConfigManagementMembershipSpecManagement]{
+		OutputState: in.ToConfigManagementMembershipSpecManagementPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConfigManagementPolicyControllerMonitoringBackendsItem string
 
 const (
@@ -3323,6 +3500,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BinaryAuthorizationConfigEvaluationModeInput)(nil)).Elem(), BinaryAuthorizationConfigEvaluationMode("EVALUATION_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BinaryAuthorizationConfigEvaluationModePtrInput)(nil)).Elem(), BinaryAuthorizationConfigEvaluationMode("EVALUATION_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigManagementMembershipSpecManagementInput)(nil)).Elem(), ConfigManagementMembershipSpecManagement("MANAGEMENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigManagementMembershipSpecManagementPtrInput)(nil)).Elem(), ConfigManagementMembershipSpecManagement("MANAGEMENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigManagementPolicyControllerMonitoringBackendsItemInput)(nil)).Elem(), ConfigManagementPolicyControllerMonitoringBackendsItem("MONITORING_BACKEND_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigManagementPolicyControllerMonitoringBackendsItemPtrInput)(nil)).Elem(), ConfigManagementPolicyControllerMonitoringBackendsItem("MONITORING_BACKEND_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigManagementPolicyControllerMonitoringBackendsItemArrayInput)(nil)).Elem(), ConfigManagementPolicyControllerMonitoringBackendsItemArray{})
@@ -3361,6 +3540,8 @@ func init() {
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(BinaryAuthorizationConfigEvaluationModeOutput{})
 	pulumi.RegisterOutputType(BinaryAuthorizationConfigEvaluationModePtrOutput{})
+	pulumi.RegisterOutputType(ConfigManagementMembershipSpecManagementOutput{})
+	pulumi.RegisterOutputType(ConfigManagementMembershipSpecManagementPtrOutput{})
 	pulumi.RegisterOutputType(ConfigManagementPolicyControllerMonitoringBackendsItemOutput{})
 	pulumi.RegisterOutputType(ConfigManagementPolicyControllerMonitoringBackendsItemPtrOutput{})
 	pulumi.RegisterOutputType(ConfigManagementPolicyControllerMonitoringBackendsItemArrayOutput{})

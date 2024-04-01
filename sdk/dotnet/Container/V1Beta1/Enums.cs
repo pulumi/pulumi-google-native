@@ -78,11 +78,11 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         public static BinaryAuthorizationEvaluationMode ProjectSingletonPolicyEnforce { get; } = new BinaryAuthorizationEvaluationMode("PROJECT_SINGLETON_POLICY_ENFORCE");
         /// <summary>
-        /// Use Binary Authorization with the policies specified in policy_bindings.
+        /// Use Binary Authorization Continuous Validation with the policies specified in policy_bindings.
         /// </summary>
         public static BinaryAuthorizationEvaluationMode PolicyBindings { get; } = new BinaryAuthorizationEvaluationMode("POLICY_BINDINGS");
         /// <summary>
-        /// Use Binary Authorization with the policies specified in policy_bindings, and also with the project's singleton policy in enforcement mode.
+        /// Use Binary Authorization Continuous Validation with the policies specified in policy_bindings and enforce Kubernetes admission requests with Binary Authorization using the project's singleton policy.
         /// </summary>
         public static BinaryAuthorizationEvaluationMode PolicyBindingsAndProjectSingletonPolicyEnforce { get; } = new BinaryAuthorizationEvaluationMode("POLICY_BINDINGS_AND_PROJECT_SINGLETON_POLICY_ENFORCE");
 
@@ -1699,6 +1699,43 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is SandboxConfigType other && Equals(other);
         public bool Equals(SandboxConfigType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Disk mode (container image cache, etc.)
+    /// </summary>
+    [EnumType]
+    public readonly struct SecondaryBootDiskMode : IEquatable<SecondaryBootDiskMode>
+    {
+        private readonly string _value;
+
+        private SecondaryBootDiskMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// MODE_UNSPECIFIED is when mode is not set.
+        /// </summary>
+        public static SecondaryBootDiskMode ModeUnspecified { get; } = new SecondaryBootDiskMode("MODE_UNSPECIFIED");
+        /// <summary>
+        /// CONTAINER_IMAGE_CACHE is for using the secondary boot disk as a container image cache.
+        /// </summary>
+        public static SecondaryBootDiskMode ContainerImageCache { get; } = new SecondaryBootDiskMode("CONTAINER_IMAGE_CACHE");
+
+        public static bool operator ==(SecondaryBootDiskMode left, SecondaryBootDiskMode right) => left.Equals(right);
+        public static bool operator !=(SecondaryBootDiskMode left, SecondaryBootDiskMode right) => !left.Equals(right);
+
+        public static explicit operator string(SecondaryBootDiskMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SecondaryBootDiskMode other && Equals(other);
+        public bool Equals(SecondaryBootDiskMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

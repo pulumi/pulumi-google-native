@@ -44,6 +44,10 @@ export interface GetTemplatesVersionResult {
      */
     readonly description: string;
     /**
+     * Optional. True if variable masking feature should be turned on for generated workflows
+     */
+    readonly enableVariableMasking: boolean;
+    /**
      * Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
      */
     readonly errorCatcherConfigs: outputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse[];

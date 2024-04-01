@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export { DiscoveryClientArgs } from "./discoveryClient";
+export type DiscoveryClient = import("./discoveryClient").DiscoveryClient;
+export const DiscoveryClient: typeof import("./discoveryClient").DiscoveryClient = null as any;
+utilities.lazyLoad(exports, ["DiscoveryClient"], () => require("./discoveryClient"));
+
+export { GetDiscoveryClientArgs, GetDiscoveryClientResult, GetDiscoveryClientOutputArgs } from "./getDiscoveryClient";
+export const getDiscoveryClient: typeof import("./getDiscoveryClient").getDiscoveryClient = null as any;
+export const getDiscoveryClientOutput: typeof import("./getDiscoveryClient").getDiscoveryClientOutput = null as any;
+utilities.lazyLoad(exports, ["getDiscoveryClient","getDiscoveryClientOutput"], () => require("./getDiscoveryClient"));
+
 export { GetGroupArgs, GetGroupResult, GetGroupOutputArgs } from "./getGroup";
 export const getGroup: typeof import("./getGroup").getGroup = null as any;
 export const getGroupOutput: typeof import("./getGroup").getGroupOutput = null as any;
@@ -83,6 +93,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:migrationcenter/v1alpha1:DiscoveryClient":
+                return new DiscoveryClient(name, <any>undefined, { urn })
             case "google-native:migrationcenter/v1alpha1:Group":
                 return new Group(name, <any>undefined, { urn })
             case "google-native:migrationcenter/v1alpha1:ImportDataFile":

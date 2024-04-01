@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
     public sealed class GoogleCloudIntegrationsV1alphaIntegrationParameterResponse
     {
         /// <summary>
+        /// Indicates whether this variable contains large data and need to be uploaded to Cloud Storage.
+        /// </summary>
+        public readonly bool ContainsLargeData;
+        /// <summary>
         /// Type of the parameter.
         /// </summary>
         public readonly string DataType;
@@ -45,6 +49,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
         /// </summary>
         public readonly string Key;
         /// <summary>
+        /// True if this parameter should be masked in the logs
+        /// </summary>
+        public readonly bool Masked;
+        /// <summary>
         /// The identifier of the node (TaskConfig/TriggerConfig) this parameter was produced by, if it is a transient param or a copy of an input param.
         /// </summary>
         public readonly string Producer;
@@ -55,6 +63,8 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
 
         [OutputConstructor]
         private GoogleCloudIntegrationsV1alphaIntegrationParameterResponse(
+            bool containsLargeData,
+
             string dataType,
 
             Outputs.GoogleCloudIntegrationsV1alphaValueTypeResponse defaultValue,
@@ -69,10 +79,13 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
 
             string key,
 
+            bool masked,
+
             string producer,
 
             bool searchable)
         {
+            ContainsLargeData = containsLargeData;
             DataType = dataType;
             DefaultValue = defaultValue;
             DisplayName = displayName;
@@ -80,6 +93,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
             IsTransient = isTransient;
             JsonSchema = jsonSchema;
             Key = key;
+            Masked = masked;
             Producer = producer;
             Searchable = searchable;
         }

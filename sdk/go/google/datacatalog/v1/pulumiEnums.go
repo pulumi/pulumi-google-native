@@ -47,6 +47,12 @@ const (
 	EntryTypeExplore = EntryType("EXPLORE")
 	// A Looker Look. For more information, see [Looker Look API] (https://developers.looker.com/api/explorer/4.0/methods/Look).
 	EntryTypeLook = EntryType("LOOK")
+	// Feature Online Store resource in Vertex AI Feature Store.
+	EntryTypeFeatureOnlineStore = EntryType("FEATURE_ONLINE_STORE")
+	// Feature View resource in Vertex AI Feature Store.
+	EntryTypeFeatureView = EntryType("FEATURE_VIEW")
+	// Feature Group resource in Vertex AI Feature Store.
+	EntryTypeFeatureGroup = EntryType("FEATURE_GROUP")
 )
 
 func (EntryType) ElementType() reflect.Type {
@@ -187,6 +193,9 @@ func (o EntryTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 //	EntryTypeDashboard
 //	EntryTypeExplore
 //	EntryTypeLook
+//	EntryTypeFeatureOnlineStore
+//	EntryTypeFeatureView
+//	EntryTypeFeatureGroup
 type EntryTypeInput interface {
 	pulumi.Input
 
@@ -1697,6 +1706,180 @@ func (in *googleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtr) ToOutput(c
 	}
 }
 
+// Optional. Transfer status of the TagTemplate
+type TagTemplateDataplexTransferStatus string
+
+const (
+	// Default value. TagTemplate and its tags are only visible and editable in DataCatalog.
+	TagTemplateDataplexTransferStatusDataplexTransferStatusUnspecified = TagTemplateDataplexTransferStatus("DATAPLEX_TRANSFER_STATUS_UNSPECIFIED")
+	// TagTemplate and its tags are auto-copied to Dataplex service. Visible in both services. Editable in DataCatalog, read-only in Dataplex.
+	TagTemplateDataplexTransferStatusMigrated = TagTemplateDataplexTransferStatus("MIGRATED")
+)
+
+func (TagTemplateDataplexTransferStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagTemplateDataplexTransferStatus)(nil)).Elem()
+}
+
+func (e TagTemplateDataplexTransferStatus) ToTagTemplateDataplexTransferStatusOutput() TagTemplateDataplexTransferStatusOutput {
+	return pulumi.ToOutput(e).(TagTemplateDataplexTransferStatusOutput)
+}
+
+func (e TagTemplateDataplexTransferStatus) ToTagTemplateDataplexTransferStatusOutputWithContext(ctx context.Context) TagTemplateDataplexTransferStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TagTemplateDataplexTransferStatusOutput)
+}
+
+func (e TagTemplateDataplexTransferStatus) ToTagTemplateDataplexTransferStatusPtrOutput() TagTemplateDataplexTransferStatusPtrOutput {
+	return e.ToTagTemplateDataplexTransferStatusPtrOutputWithContext(context.Background())
+}
+
+func (e TagTemplateDataplexTransferStatus) ToTagTemplateDataplexTransferStatusPtrOutputWithContext(ctx context.Context) TagTemplateDataplexTransferStatusPtrOutput {
+	return TagTemplateDataplexTransferStatus(e).ToTagTemplateDataplexTransferStatusOutputWithContext(ctx).ToTagTemplateDataplexTransferStatusPtrOutputWithContext(ctx)
+}
+
+func (e TagTemplateDataplexTransferStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TagTemplateDataplexTransferStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TagTemplateDataplexTransferStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TagTemplateDataplexTransferStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TagTemplateDataplexTransferStatusOutput struct{ *pulumi.OutputState }
+
+func (TagTemplateDataplexTransferStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagTemplateDataplexTransferStatus)(nil)).Elem()
+}
+
+func (o TagTemplateDataplexTransferStatusOutput) ToTagTemplateDataplexTransferStatusOutput() TagTemplateDataplexTransferStatusOutput {
+	return o
+}
+
+func (o TagTemplateDataplexTransferStatusOutput) ToTagTemplateDataplexTransferStatusOutputWithContext(ctx context.Context) TagTemplateDataplexTransferStatusOutput {
+	return o
+}
+
+func (o TagTemplateDataplexTransferStatusOutput) ToTagTemplateDataplexTransferStatusPtrOutput() TagTemplateDataplexTransferStatusPtrOutput {
+	return o.ToTagTemplateDataplexTransferStatusPtrOutputWithContext(context.Background())
+}
+
+func (o TagTemplateDataplexTransferStatusOutput) ToTagTemplateDataplexTransferStatusPtrOutputWithContext(ctx context.Context) TagTemplateDataplexTransferStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagTemplateDataplexTransferStatus) *TagTemplateDataplexTransferStatus {
+		return &v
+	}).(TagTemplateDataplexTransferStatusPtrOutput)
+}
+
+func (o TagTemplateDataplexTransferStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TagTemplateDataplexTransferStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TagTemplateDataplexTransferStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TagTemplateDataplexTransferStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TagTemplateDataplexTransferStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TagTemplateDataplexTransferStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TagTemplateDataplexTransferStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (TagTemplateDataplexTransferStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TagTemplateDataplexTransferStatus)(nil)).Elem()
+}
+
+func (o TagTemplateDataplexTransferStatusPtrOutput) ToTagTemplateDataplexTransferStatusPtrOutput() TagTemplateDataplexTransferStatusPtrOutput {
+	return o
+}
+
+func (o TagTemplateDataplexTransferStatusPtrOutput) ToTagTemplateDataplexTransferStatusPtrOutputWithContext(ctx context.Context) TagTemplateDataplexTransferStatusPtrOutput {
+	return o
+}
+
+func (o TagTemplateDataplexTransferStatusPtrOutput) Elem() TagTemplateDataplexTransferStatusOutput {
+	return o.ApplyT(func(v *TagTemplateDataplexTransferStatus) TagTemplateDataplexTransferStatus {
+		if v != nil {
+			return *v
+		}
+		var ret TagTemplateDataplexTransferStatus
+		return ret
+	}).(TagTemplateDataplexTransferStatusOutput)
+}
+
+func (o TagTemplateDataplexTransferStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TagTemplateDataplexTransferStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TagTemplateDataplexTransferStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TagTemplateDataplexTransferStatusInput is an input type that accepts values of the TagTemplateDataplexTransferStatus enum
+// A concrete instance of `TagTemplateDataplexTransferStatusInput` can be one of the following:
+//
+//	TagTemplateDataplexTransferStatusDataplexTransferStatusUnspecified
+//	TagTemplateDataplexTransferStatusMigrated
+type TagTemplateDataplexTransferStatusInput interface {
+	pulumi.Input
+
+	ToTagTemplateDataplexTransferStatusOutput() TagTemplateDataplexTransferStatusOutput
+	ToTagTemplateDataplexTransferStatusOutputWithContext(context.Context) TagTemplateDataplexTransferStatusOutput
+}
+
+var tagTemplateDataplexTransferStatusPtrType = reflect.TypeOf((**TagTemplateDataplexTransferStatus)(nil)).Elem()
+
+type TagTemplateDataplexTransferStatusPtrInput interface {
+	pulumi.Input
+
+	ToTagTemplateDataplexTransferStatusPtrOutput() TagTemplateDataplexTransferStatusPtrOutput
+	ToTagTemplateDataplexTransferStatusPtrOutputWithContext(context.Context) TagTemplateDataplexTransferStatusPtrOutput
+}
+
+type tagTemplateDataplexTransferStatusPtr string
+
+func TagTemplateDataplexTransferStatusPtr(v string) TagTemplateDataplexTransferStatusPtrInput {
+	return (*tagTemplateDataplexTransferStatusPtr)(&v)
+}
+
+func (*tagTemplateDataplexTransferStatusPtr) ElementType() reflect.Type {
+	return tagTemplateDataplexTransferStatusPtrType
+}
+
+func (in *tagTemplateDataplexTransferStatusPtr) ToTagTemplateDataplexTransferStatusPtrOutput() TagTemplateDataplexTransferStatusPtrOutput {
+	return pulumi.ToOutput(in).(TagTemplateDataplexTransferStatusPtrOutput)
+}
+
+func (in *tagTemplateDataplexTransferStatusPtr) ToTagTemplateDataplexTransferStatusPtrOutputWithContext(ctx context.Context) TagTemplateDataplexTransferStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TagTemplateDataplexTransferStatusPtrOutput)
+}
+
+func (in *tagTemplateDataplexTransferStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*TagTemplateDataplexTransferStatus] {
+	return pulumix.Output[*TagTemplateDataplexTransferStatus]{
+		OutputState: in.ToTagTemplateDataplexTransferStatusPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TaxonomyActivatedPolicyTypesItem string
 
 const (
@@ -1934,6 +2117,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1VertexDatasetSpecDataType("DATA_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeInput)(nil)).Elem(), GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType("MODEL_SOURCE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType("MODEL_SOURCE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TagTemplateDataplexTransferStatusInput)(nil)).Elem(), TagTemplateDataplexTransferStatus("DATAPLEX_TRANSFER_STATUS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TagTemplateDataplexTransferStatusPtrInput)(nil)).Elem(), TagTemplateDataplexTransferStatus("DATAPLEX_TRANSFER_STATUS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyActivatedPolicyTypesItemInput)(nil)).Elem(), TaxonomyActivatedPolicyTypesItem("POLICY_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyActivatedPolicyTypesItemPtrInput)(nil)).Elem(), TaxonomyActivatedPolicyTypesItem("POLICY_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyActivatedPolicyTypesItemArrayInput)(nil)).Elem(), TaxonomyActivatedPolicyTypesItemArray{})
@@ -1955,6 +2140,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1VertexDatasetSpecDataTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypePtrOutput{})
+	pulumi.RegisterOutputType(TagTemplateDataplexTransferStatusOutput{})
+	pulumi.RegisterOutputType(TagTemplateDataplexTransferStatusPtrOutput{})
 	pulumi.RegisterOutputType(TaxonomyActivatedPolicyTypesItemOutput{})
 	pulumi.RegisterOutputType(TaxonomyActivatedPolicyTypesItemPtrOutput{})
 	pulumi.RegisterOutputType(TaxonomyActivatedPolicyTypesItemArrayOutput{})

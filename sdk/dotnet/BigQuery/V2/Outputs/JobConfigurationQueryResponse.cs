@@ -10,19 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 {
 
+    /// <summary>
+    /// JobConfigurationQuery configures a BigQuery query job.
+    /// </summary>
     [OutputType]
     public sealed class JobConfigurationQueryResponse
     {
         /// <summary>
-        /// [Optional] If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance. Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed. However, you must still set destinationTable when result size exceeds the allowed maximum response size.
+        /// Optional. If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance. Requires destinationTable to be set. For GoogleSQL queries, this flag is ignored and large results are always allowed. However, you must still set destinationTable when result size exceeds the allowed maximum response size.
         /// </summary>
         public readonly bool AllowLargeResults;
         /// <summary>
-        /// [Beta] Clustering specification for the destination table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
+        /// Clustering specification for the destination table.
         /// </summary>
         public readonly Outputs.ClusteringResponse Clustering;
         /// <summary>
-        /// Connection properties.
+        /// Connection properties which can modify the query behavior.
         /// </summary>
         public readonly ImmutableArray<Outputs.ConnectionPropertyResponse> ConnectionProperties;
         /// <summary>
@@ -30,39 +33,39 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly bool Continuous;
         /// <summary>
-        /// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
+        /// Optional. Specifies whether the job is allowed to create new tables. The following values are supported: * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
         /// </summary>
         public readonly string CreateDisposition;
         /// <summary>
-        /// If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs query in non-session mode.
+        /// If this property is true, the job creates a new session using a randomly generated session_id. To continue using a created session with subsequent queries, pass the existing session identifier as a `ConnectionProperty` value. The session identifier is returned as part of the `SessionInfo` message within the query statistics. The new session's location will be set to `Job.JobReference.location` if it is present, otherwise it's set to the default location based on existing routing logic.
         /// </summary>
         public readonly bool CreateSession;
         /// <summary>
-        /// [Optional] Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
+        /// Optional. Specifies the default dataset to use for unqualified table names in the query. This setting does not alter behavior of unqualified dataset names. Setting the system variable `@@dataset_id` achieves the same behavior. See https://cloud.google.com/bigquery/docs/reference/system-variables for more information on system variables.
         /// </summary>
         public readonly Outputs.DatasetReferenceResponse DefaultDataset;
         /// <summary>
-        /// Custom encryption configuration (e.g., Cloud KMS keys).
+        /// Custom encryption configuration (e.g., Cloud KMS keys)
         /// </summary>
         public readonly Outputs.EncryptionConfigurationResponse DestinationEncryptionConfiguration;
         /// <summary>
-        /// [Optional] Describes the table where the query results should be stored. If not present, a new table will be created to store the results. This property must be set for large results that exceed the maximum response size.
+        /// Optional. Describes the table where the query results should be stored. This property must be set for large results that exceed the maximum response size. For queries that produce anonymous (cached) results, this field will be populated by BigQuery.
         /// </summary>
         public readonly Outputs.TableReferenceResponse DestinationTable;
         /// <summary>
-        /// [Optional] If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results. allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.
+        /// Optional. If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results. allowLargeResults must be true if this is set to false. For GoogleSQL queries, this flag is ignored and results are never flattened.
         /// </summary>
         public readonly bool FlattenResults;
         /// <summary>
-        /// [Optional] Limits the billing tier for this job. Queries that have resource usage beyond this tier will fail (without incurring a charge). If unspecified, this will be set to your project default.
+        /// Optional. [Deprecated] Maximum billing tier allowed for this query. The billing tier controls the amount of compute resources allotted to the query, and multiplies the on-demand cost of the query accordingly. A query that runs within its allotted resources will succeed and indicate its billing tier in statistics.query.billingTier, but if the query exceeds its allotted resources, it will fail with billingTierLimitExceeded. WARNING: The billed byte amount can be multiplied by an amount up to this number! Most users should not need to alter this setting, and we recommend that you avoid introducing new uses of it.
         /// </summary>
         public readonly int MaximumBillingTier;
         /// <summary>
-        /// [Optional] Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge). If unspecified, this will be set to your project default.
+        /// Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge). If unspecified, this will be set to your project default.
         /// </summary>
         public readonly string MaximumBytesBilled;
         /// <summary>
-        /// Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
+        /// GoogleSQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
         /// </summary>
         public readonly string ParameterMode;
         /// <summary>
@@ -70,27 +73,35 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly bool PreserveNulls;
         /// <summary>
-        /// [Optional] Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
+        /// Optional. Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
         /// </summary>
         public readonly string Priority;
         /// <summary>
-        /// [Required] SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+        /// [Required] SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or GoogleSQL.
         /// </summary>
         public readonly string Query;
         /// <summary>
-        /// Query parameters for standard SQL queries.
+        /// Query parameters for GoogleSQL queries.
         /// </summary>
         public readonly ImmutableArray<Outputs.QueryParameterResponse> QueryParameters;
         /// <summary>
-        /// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+        /// Range partitioning specification for the destination table. Only one of timePartitioning and rangePartitioning should be specified.
         /// </summary>
         public readonly Outputs.RangePartitioningResponse RangePartitioning;
         /// <summary>
-        /// Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
+        /// Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: * ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. * ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
         /// </summary>
         public readonly ImmutableArray<string> SchemaUpdateOptions;
         /// <summary>
-        /// [Optional] If querying an external data source outside of BigQuery, describes the data format, location and other properties of the data source. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
+        /// Options controlling the execution of scripts.
+        /// </summary>
+        public readonly Outputs.ScriptOptionsResponse ScriptOptions;
+        /// <summary>
+        /// System variables for GoogleSQL queries. A system variable is output if the variable is settable and its value differs from the system default. "@@" prefix is not included in the name of the System variables.
+        /// </summary>
+        public readonly Outputs.SystemVariablesResponse SystemVariables;
+        /// <summary>
+        /// Optional. You can specify external table definitions, which operate as ephemeral tables that can be queried. These definitions are configured using a JSON map, where the string key represents the table identifier, and the value is the corresponding external data configuration object.
         /// </summary>
         public readonly ImmutableDictionary<string, string> TableDefinitions;
         /// <summary>
@@ -98,11 +109,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly Outputs.TimePartitioningResponse TimePartitioning;
         /// <summary>
-        /// Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.
+        /// Optional. Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's GoogleSQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.
         /// </summary>
         public readonly bool UseLegacySql;
         /// <summary>
-        /// [Optional] Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified. The default value is true.
+        /// Optional. Whether to look for the result in the query cache. The query cache is a best-effort cache that will be flushed whenever tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified. The default value is true.
         /// </summary>
         public readonly bool UseQueryCache;
         /// <summary>
@@ -110,7 +121,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.UserDefinedFunctionResourceResponse> UserDefinedFunctionResources;
         /// <summary>
-        /// [Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the schema from the query result. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
+        /// Optional. Specifies the action that occurs if the destination table already exists. The following values are supported: * WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the data, removes the constraints, and uses the schema from the query result. * WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. * WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.
         /// </summary>
         public readonly string WriteDisposition;
 
@@ -154,6 +165,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             ImmutableArray<string> schemaUpdateOptions,
 
+            Outputs.ScriptOptionsResponse scriptOptions,
+
+            Outputs.SystemVariablesResponse systemVariables,
+
             ImmutableDictionary<string, string> tableDefinitions,
 
             Outputs.TimePartitioningResponse timePartitioning,
@@ -185,6 +200,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             QueryParameters = queryParameters;
             RangePartitioning = rangePartitioning;
             SchemaUpdateOptions = schemaUpdateOptions;
+            ScriptOptions = scriptOptions;
+            SystemVariables = systemVariables;
             TableDefinitions = tableDefinitions;
             TimePartitioning = timePartitioning;
             UseLegacySql = useLegacySql;

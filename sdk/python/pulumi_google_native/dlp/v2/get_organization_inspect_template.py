@@ -107,7 +107,7 @@ def get_organization_inspect_template(inspect_template_id: Optional[str] = None,
                                       organization_id: Optional[str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationInspectTemplateResult:
     """
-    Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+    Gets an InspectTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
     """
     __args__ = dict()
     __args__['inspectTemplateId'] = inspect_template_id
@@ -131,6 +131,6 @@ def get_organization_inspect_template_output(inspect_template_id: Optional[pulum
                                              organization_id: Optional[pulumi.Input[str]] = None,
                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationInspectTemplateResult]:
     """
-    Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+    Gets an InspectTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
     """
     ...

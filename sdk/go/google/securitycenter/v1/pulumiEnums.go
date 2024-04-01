@@ -191,6 +191,186 @@ func (in *auditLogConfigLogTypePtr) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
+// The state of enablement for the module at the given level of the hierarchy.
+type FolderEventThreatDetectionSettingCustomModuleEnablementState string
+
+const (
+	// Unspecified enablement state.
+	FolderEventThreatDetectionSettingCustomModuleEnablementStateEnablementStateUnspecified = FolderEventThreatDetectionSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED")
+	// The module is enabled at the given level.
+	FolderEventThreatDetectionSettingCustomModuleEnablementStateEnabled = FolderEventThreatDetectionSettingCustomModuleEnablementState("ENABLED")
+	// The module is disabled at the given level.
+	FolderEventThreatDetectionSettingCustomModuleEnablementStateDisabled = FolderEventThreatDetectionSettingCustomModuleEnablementState("DISABLED")
+	// When the enablement state is inherited.
+	FolderEventThreatDetectionSettingCustomModuleEnablementStateInherited = FolderEventThreatDetectionSettingCustomModuleEnablementState("INHERITED")
+)
+
+func (FolderEventThreatDetectionSettingCustomModuleEnablementState) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderEventThreatDetectionSettingCustomModuleEnablementState)(nil)).Elem()
+}
+
+func (e FolderEventThreatDetectionSettingCustomModuleEnablementState) ToFolderEventThreatDetectionSettingCustomModuleEnablementStateOutput() FolderEventThreatDetectionSettingCustomModuleEnablementStateOutput {
+	return pulumi.ToOutput(e).(FolderEventThreatDetectionSettingCustomModuleEnablementStateOutput)
+}
+
+func (e FolderEventThreatDetectionSettingCustomModuleEnablementState) ToFolderEventThreatDetectionSettingCustomModuleEnablementStateOutputWithContext(ctx context.Context) FolderEventThreatDetectionSettingCustomModuleEnablementStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(FolderEventThreatDetectionSettingCustomModuleEnablementStateOutput)
+}
+
+func (e FolderEventThreatDetectionSettingCustomModuleEnablementState) ToFolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput() FolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
+	return e.ToFolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(context.Background())
+}
+
+func (e FolderEventThreatDetectionSettingCustomModuleEnablementState) ToFolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) FolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
+	return FolderEventThreatDetectionSettingCustomModuleEnablementState(e).ToFolderEventThreatDetectionSettingCustomModuleEnablementStateOutputWithContext(ctx).ToFolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(ctx)
+}
+
+func (e FolderEventThreatDetectionSettingCustomModuleEnablementState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FolderEventThreatDetectionSettingCustomModuleEnablementState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FolderEventThreatDetectionSettingCustomModuleEnablementState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e FolderEventThreatDetectionSettingCustomModuleEnablementState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type FolderEventThreatDetectionSettingCustomModuleEnablementStateOutput struct{ *pulumi.OutputState }
+
+func (FolderEventThreatDetectionSettingCustomModuleEnablementStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderEventThreatDetectionSettingCustomModuleEnablementState)(nil)).Elem()
+}
+
+func (o FolderEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToFolderEventThreatDetectionSettingCustomModuleEnablementStateOutput() FolderEventThreatDetectionSettingCustomModuleEnablementStateOutput {
+	return o
+}
+
+func (o FolderEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToFolderEventThreatDetectionSettingCustomModuleEnablementStateOutputWithContext(ctx context.Context) FolderEventThreatDetectionSettingCustomModuleEnablementStateOutput {
+	return o
+}
+
+func (o FolderEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToFolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput() FolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
+	return o.ToFolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(context.Background())
+}
+
+func (o FolderEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToFolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) FolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderEventThreatDetectionSettingCustomModuleEnablementState) *FolderEventThreatDetectionSettingCustomModuleEnablementState {
+		return &v
+	}).(FolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput)
+}
+
+func (o FolderEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o FolderEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FolderEventThreatDetectionSettingCustomModuleEnablementState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o FolderEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FolderEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FolderEventThreatDetectionSettingCustomModuleEnablementState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type FolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput struct{ *pulumi.OutputState }
+
+func (FolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FolderEventThreatDetectionSettingCustomModuleEnablementState)(nil)).Elem()
+}
+
+func (o FolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput) ToFolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput() FolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
+	return o
+}
+
+func (o FolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput) ToFolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) FolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
+	return o
+}
+
+func (o FolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput) Elem() FolderEventThreatDetectionSettingCustomModuleEnablementStateOutput {
+	return o.ApplyT(func(v *FolderEventThreatDetectionSettingCustomModuleEnablementState) FolderEventThreatDetectionSettingCustomModuleEnablementState {
+		if v != nil {
+			return *v
+		}
+		var ret FolderEventThreatDetectionSettingCustomModuleEnablementState
+		return ret
+	}).(FolderEventThreatDetectionSettingCustomModuleEnablementStateOutput)
+}
+
+func (o FolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FolderEventThreatDetectionSettingCustomModuleEnablementState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// FolderEventThreatDetectionSettingCustomModuleEnablementStateInput is an input type that accepts values of the FolderEventThreatDetectionSettingCustomModuleEnablementState enum
+// A concrete instance of `FolderEventThreatDetectionSettingCustomModuleEnablementStateInput` can be one of the following:
+//
+//	FolderEventThreatDetectionSettingCustomModuleEnablementStateEnablementStateUnspecified
+//	FolderEventThreatDetectionSettingCustomModuleEnablementStateEnabled
+//	FolderEventThreatDetectionSettingCustomModuleEnablementStateDisabled
+//	FolderEventThreatDetectionSettingCustomModuleEnablementStateInherited
+type FolderEventThreatDetectionSettingCustomModuleEnablementStateInput interface {
+	pulumi.Input
+
+	ToFolderEventThreatDetectionSettingCustomModuleEnablementStateOutput() FolderEventThreatDetectionSettingCustomModuleEnablementStateOutput
+	ToFolderEventThreatDetectionSettingCustomModuleEnablementStateOutputWithContext(context.Context) FolderEventThreatDetectionSettingCustomModuleEnablementStateOutput
+}
+
+var folderEventThreatDetectionSettingCustomModuleEnablementStatePtrType = reflect.TypeOf((**FolderEventThreatDetectionSettingCustomModuleEnablementState)(nil)).Elem()
+
+type FolderEventThreatDetectionSettingCustomModuleEnablementStatePtrInput interface {
+	pulumi.Input
+
+	ToFolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput() FolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput
+	ToFolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(context.Context) FolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput
+}
+
+type folderEventThreatDetectionSettingCustomModuleEnablementStatePtr string
+
+func FolderEventThreatDetectionSettingCustomModuleEnablementStatePtr(v string) FolderEventThreatDetectionSettingCustomModuleEnablementStatePtrInput {
+	return (*folderEventThreatDetectionSettingCustomModuleEnablementStatePtr)(&v)
+}
+
+func (*folderEventThreatDetectionSettingCustomModuleEnablementStatePtr) ElementType() reflect.Type {
+	return folderEventThreatDetectionSettingCustomModuleEnablementStatePtrType
+}
+
+func (in *folderEventThreatDetectionSettingCustomModuleEnablementStatePtr) ToFolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput() FolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
+	return pulumi.ToOutput(in).(FolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput)
+}
+
+func (in *folderEventThreatDetectionSettingCustomModuleEnablementStatePtr) ToFolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) FolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(FolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput)
+}
+
+func (in *folderEventThreatDetectionSettingCustomModuleEnablementStatePtr) ToOutput(ctx context.Context) pulumix.Output[*FolderEventThreatDetectionSettingCustomModuleEnablementState] {
+	return pulumix.Output[*FolderEventThreatDetectionSettingCustomModuleEnablementState]{
+		OutputState: in.ToFolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The enablement state of the custom module.
 type FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState string
 
@@ -564,6 +744,8 @@ const (
 	OrganizationEventThreatDetectionSettingCustomModuleEnablementStateEnabled = OrganizationEventThreatDetectionSettingCustomModuleEnablementState("ENABLED")
 	// The module is disabled at the given level.
 	OrganizationEventThreatDetectionSettingCustomModuleEnablementStateDisabled = OrganizationEventThreatDetectionSettingCustomModuleEnablementState("DISABLED")
+	// When the enablement state is inherited.
+	OrganizationEventThreatDetectionSettingCustomModuleEnablementStateInherited = OrganizationEventThreatDetectionSettingCustomModuleEnablementState("INHERITED")
 )
 
 func (OrganizationEventThreatDetectionSettingCustomModuleEnablementState) ElementType() reflect.Type {
@@ -691,6 +873,7 @@ func (o OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOut
 //	OrganizationEventThreatDetectionSettingCustomModuleEnablementStateEnablementStateUnspecified
 //	OrganizationEventThreatDetectionSettingCustomModuleEnablementStateEnabled
 //	OrganizationEventThreatDetectionSettingCustomModuleEnablementStateDisabled
+//	OrganizationEventThreatDetectionSettingCustomModuleEnablementStateInherited
 type OrganizationEventThreatDetectionSettingCustomModuleEnablementStateInput interface {
 	pulumi.Input
 
@@ -911,6 +1094,186 @@ func (in *organizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateP
 	}
 }
 
+// The state of enablement for the module at the given level of the hierarchy.
+type ProjectEventThreatDetectionSettingCustomModuleEnablementState string
+
+const (
+	// Unspecified enablement state.
+	ProjectEventThreatDetectionSettingCustomModuleEnablementStateEnablementStateUnspecified = ProjectEventThreatDetectionSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED")
+	// The module is enabled at the given level.
+	ProjectEventThreatDetectionSettingCustomModuleEnablementStateEnabled = ProjectEventThreatDetectionSettingCustomModuleEnablementState("ENABLED")
+	// The module is disabled at the given level.
+	ProjectEventThreatDetectionSettingCustomModuleEnablementStateDisabled = ProjectEventThreatDetectionSettingCustomModuleEnablementState("DISABLED")
+	// When the enablement state is inherited.
+	ProjectEventThreatDetectionSettingCustomModuleEnablementStateInherited = ProjectEventThreatDetectionSettingCustomModuleEnablementState("INHERITED")
+)
+
+func (ProjectEventThreatDetectionSettingCustomModuleEnablementState) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectEventThreatDetectionSettingCustomModuleEnablementState)(nil)).Elem()
+}
+
+func (e ProjectEventThreatDetectionSettingCustomModuleEnablementState) ToProjectEventThreatDetectionSettingCustomModuleEnablementStateOutput() ProjectEventThreatDetectionSettingCustomModuleEnablementStateOutput {
+	return pulumi.ToOutput(e).(ProjectEventThreatDetectionSettingCustomModuleEnablementStateOutput)
+}
+
+func (e ProjectEventThreatDetectionSettingCustomModuleEnablementState) ToProjectEventThreatDetectionSettingCustomModuleEnablementStateOutputWithContext(ctx context.Context) ProjectEventThreatDetectionSettingCustomModuleEnablementStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ProjectEventThreatDetectionSettingCustomModuleEnablementStateOutput)
+}
+
+func (e ProjectEventThreatDetectionSettingCustomModuleEnablementState) ToProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput() ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
+	return e.ToProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(context.Background())
+}
+
+func (e ProjectEventThreatDetectionSettingCustomModuleEnablementState) ToProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
+	return ProjectEventThreatDetectionSettingCustomModuleEnablementState(e).ToProjectEventThreatDetectionSettingCustomModuleEnablementStateOutputWithContext(ctx).ToProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(ctx)
+}
+
+func (e ProjectEventThreatDetectionSettingCustomModuleEnablementState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ProjectEventThreatDetectionSettingCustomModuleEnablementState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ProjectEventThreatDetectionSettingCustomModuleEnablementState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ProjectEventThreatDetectionSettingCustomModuleEnablementState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ProjectEventThreatDetectionSettingCustomModuleEnablementStateOutput struct{ *pulumi.OutputState }
+
+func (ProjectEventThreatDetectionSettingCustomModuleEnablementStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectEventThreatDetectionSettingCustomModuleEnablementState)(nil)).Elem()
+}
+
+func (o ProjectEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToProjectEventThreatDetectionSettingCustomModuleEnablementStateOutput() ProjectEventThreatDetectionSettingCustomModuleEnablementStateOutput {
+	return o
+}
+
+func (o ProjectEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToProjectEventThreatDetectionSettingCustomModuleEnablementStateOutputWithContext(ctx context.Context) ProjectEventThreatDetectionSettingCustomModuleEnablementStateOutput {
+	return o
+}
+
+func (o ProjectEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput() ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
+	return o.ToProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(context.Background())
+}
+
+func (o ProjectEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectEventThreatDetectionSettingCustomModuleEnablementState) *ProjectEventThreatDetectionSettingCustomModuleEnablementState {
+		return &v
+	}).(ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput)
+}
+
+func (o ProjectEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ProjectEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ProjectEventThreatDetectionSettingCustomModuleEnablementState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ProjectEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectEventThreatDetectionSettingCustomModuleEnablementStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ProjectEventThreatDetectionSettingCustomModuleEnablementState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput struct{ *pulumi.OutputState }
+
+func (ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectEventThreatDetectionSettingCustomModuleEnablementState)(nil)).Elem()
+}
+
+func (o ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput) ToProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput() ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
+	return o
+}
+
+func (o ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput) ToProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
+	return o
+}
+
+func (o ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput) Elem() ProjectEventThreatDetectionSettingCustomModuleEnablementStateOutput {
+	return o.ApplyT(func(v *ProjectEventThreatDetectionSettingCustomModuleEnablementState) ProjectEventThreatDetectionSettingCustomModuleEnablementState {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectEventThreatDetectionSettingCustomModuleEnablementState
+		return ret
+	}).(ProjectEventThreatDetectionSettingCustomModuleEnablementStateOutput)
+}
+
+func (o ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ProjectEventThreatDetectionSettingCustomModuleEnablementState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ProjectEventThreatDetectionSettingCustomModuleEnablementStateInput is an input type that accepts values of the ProjectEventThreatDetectionSettingCustomModuleEnablementState enum
+// A concrete instance of `ProjectEventThreatDetectionSettingCustomModuleEnablementStateInput` can be one of the following:
+//
+//	ProjectEventThreatDetectionSettingCustomModuleEnablementStateEnablementStateUnspecified
+//	ProjectEventThreatDetectionSettingCustomModuleEnablementStateEnabled
+//	ProjectEventThreatDetectionSettingCustomModuleEnablementStateDisabled
+//	ProjectEventThreatDetectionSettingCustomModuleEnablementStateInherited
+type ProjectEventThreatDetectionSettingCustomModuleEnablementStateInput interface {
+	pulumi.Input
+
+	ToProjectEventThreatDetectionSettingCustomModuleEnablementStateOutput() ProjectEventThreatDetectionSettingCustomModuleEnablementStateOutput
+	ToProjectEventThreatDetectionSettingCustomModuleEnablementStateOutputWithContext(context.Context) ProjectEventThreatDetectionSettingCustomModuleEnablementStateOutput
+}
+
+var projectEventThreatDetectionSettingCustomModuleEnablementStatePtrType = reflect.TypeOf((**ProjectEventThreatDetectionSettingCustomModuleEnablementState)(nil)).Elem()
+
+type ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrInput interface {
+	pulumi.Input
+
+	ToProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput() ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput
+	ToProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(context.Context) ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput
+}
+
+type projectEventThreatDetectionSettingCustomModuleEnablementStatePtr string
+
+func ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtr(v string) ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrInput {
+	return (*projectEventThreatDetectionSettingCustomModuleEnablementStatePtr)(&v)
+}
+
+func (*projectEventThreatDetectionSettingCustomModuleEnablementStatePtr) ElementType() reflect.Type {
+	return projectEventThreatDetectionSettingCustomModuleEnablementStatePtrType
+}
+
+func (in *projectEventThreatDetectionSettingCustomModuleEnablementStatePtr) ToProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput() ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
+	return pulumi.ToOutput(in).(ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput)
+}
+
+func (in *projectEventThreatDetectionSettingCustomModuleEnablementStatePtr) ToProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput)
+}
+
+func (in *projectEventThreatDetectionSettingCustomModuleEnablementStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ProjectEventThreatDetectionSettingCustomModuleEnablementState] {
+	return pulumix.Output[*ProjectEventThreatDetectionSettingCustomModuleEnablementState]{
+		OutputState: in.ToProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The enablement state of the custom module.
 type ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState string
 
@@ -1094,6 +1457,8 @@ func (in *projectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtr) T
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderEventThreatDetectionSettingCustomModuleEnablementStateInput)(nil)).Elem(), FolderEventThreatDetectionSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderEventThreatDetectionSettingCustomModuleEnablementStatePtrInput)(nil)).Elem(), FolderEventThreatDetectionSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput)(nil)).Elem(), FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrInput)(nil)).Elem(), FolderSecurityHealthAnalyticsSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudSecuritycenterV1CustomConfigSeverityInput)(nil)).Elem(), GoogleCloudSecuritycenterV1CustomConfigSeverity("SEVERITY_UNSPECIFIED"))
@@ -1102,10 +1467,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrInput)(nil)).Elem(), OrganizationEventThreatDetectionSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput)(nil)).Elem(), OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrInput)(nil)).Elem(), OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectEventThreatDetectionSettingCustomModuleEnablementStateInput)(nil)).Elem(), ProjectEventThreatDetectionSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrInput)(nil)).Elem(), ProjectEventThreatDetectionSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateInput)(nil)).Elem(), ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrInput)(nil)).Elem(), ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(FolderEventThreatDetectionSettingCustomModuleEnablementStateOutput{})
+	pulumi.RegisterOutputType(FolderEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput{})
 	pulumi.RegisterOutputType(FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput{})
 	pulumi.RegisterOutputType(FolderSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudSecuritycenterV1CustomConfigSeverityOutput{})
@@ -1114,6 +1483,8 @@ func init() {
 	pulumi.RegisterOutputType(OrganizationEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput{})
 	pulumi.RegisterOutputType(OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput{})
 	pulumi.RegisterOutputType(OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput{})
+	pulumi.RegisterOutputType(ProjectEventThreatDetectionSettingCustomModuleEnablementStateOutput{})
+	pulumi.RegisterOutputType(ProjectEventThreatDetectionSettingCustomModuleEnablementStatePtrOutput{})
 	pulumi.RegisterOutputType(ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStateOutput{})
 	pulumi.RegisterOutputType(ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementStatePtrOutput{})
 }

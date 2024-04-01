@@ -184,6 +184,67 @@ namespace Pulumi.GoogleNative.AlloyDB.V1Alpha
     }
 
     /// <summary>
+    /// Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+    /// </summary>
+    [EnumType]
+    public readonly struct MaintenanceWindowDay : IEquatable<MaintenanceWindowDay>
+    {
+        private readonly string _value;
+
+        private MaintenanceWindowDay(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The day of the week is unspecified.
+        /// </summary>
+        public static MaintenanceWindowDay DayOfWeekUnspecified { get; } = new MaintenanceWindowDay("DAY_OF_WEEK_UNSPECIFIED");
+        /// <summary>
+        /// Monday
+        /// </summary>
+        public static MaintenanceWindowDay Monday { get; } = new MaintenanceWindowDay("MONDAY");
+        /// <summary>
+        /// Tuesday
+        /// </summary>
+        public static MaintenanceWindowDay Tuesday { get; } = new MaintenanceWindowDay("TUESDAY");
+        /// <summary>
+        /// Wednesday
+        /// </summary>
+        public static MaintenanceWindowDay Wednesday { get; } = new MaintenanceWindowDay("WEDNESDAY");
+        /// <summary>
+        /// Thursday
+        /// </summary>
+        public static MaintenanceWindowDay Thursday { get; } = new MaintenanceWindowDay("THURSDAY");
+        /// <summary>
+        /// Friday
+        /// </summary>
+        public static MaintenanceWindowDay Friday { get; } = new MaintenanceWindowDay("FRIDAY");
+        /// <summary>
+        /// Saturday
+        /// </summary>
+        public static MaintenanceWindowDay Saturday { get; } = new MaintenanceWindowDay("SATURDAY");
+        /// <summary>
+        /// Sunday
+        /// </summary>
+        public static MaintenanceWindowDay Sunday { get; } = new MaintenanceWindowDay("SUNDAY");
+
+        public static bool operator ==(MaintenanceWindowDay left, MaintenanceWindowDay right) => left.Equals(right);
+        public static bool operator !=(MaintenanceWindowDay left, MaintenanceWindowDay right) => !left.Equals(right);
+
+        public static explicit operator string(MaintenanceWindowDay value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MaintenanceWindowDay other && Equals(other);
+        public bool Equals(MaintenanceWindowDay other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Optional. Certificate Authority (CA) source. Only CA_SOURCE_MANAGED is supported currently, and is the default value.
     /// </summary>
     [EnumType]

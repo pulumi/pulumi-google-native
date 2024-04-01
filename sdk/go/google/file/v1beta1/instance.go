@@ -25,7 +25,7 @@ type Instance struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The description of the instance (2048 characters or less).
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
+	// Optional. Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
 	DirectoryServices DirectoryServicesConfigResponseOutput `pulumi:"directoryServices"`
 	// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -118,7 +118,7 @@ type instanceArgs struct {
 	CapacityGb *string `pulumi:"capacityGb"`
 	// The description of the instance (2048 characters or less).
 	Description *string `pulumi:"description"`
-	// Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
+	// Optional. Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
 	DirectoryServices *DirectoryServicesConfig `pulumi:"directoryServices"`
 	// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
 	Etag *string `pulumi:"etag"`
@@ -150,7 +150,7 @@ type InstanceArgs struct {
 	CapacityGb pulumi.StringPtrInput
 	// The description of the instance (2048 characters or less).
 	Description pulumi.StringPtrInput
-	// Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
+	// Optional. Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
 	DirectoryServices DirectoryServicesConfigPtrInput
 	// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
 	Etag pulumi.StringPtrInput
@@ -233,7 +233,7 @@ func (o InstanceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
+// Optional. Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
 func (o InstanceOutput) DirectoryServices() DirectoryServicesConfigResponseOutput {
 	return o.ApplyT(func(v *Instance) DirectoryServicesConfigResponseOutput { return v.DirectoryServices }).(DirectoryServicesConfigResponseOutput)
 }

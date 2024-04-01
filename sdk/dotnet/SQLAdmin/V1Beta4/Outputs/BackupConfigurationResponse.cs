@@ -52,6 +52,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// The number of days of transaction logs we retain for point in time restore, from 1-7.
         /// </summary>
         public readonly int TransactionLogRetentionDays;
+        /// <summary>
+        /// This value contains the storage location of transactional logs for the database for point-in-time recovery.
+        /// </summary>
+        public readonly string TransactionalLogStorageState;
 
         [OutputConstructor]
         private BackupConfigurationResponse(
@@ -71,7 +75,9 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
 
             string startTime,
 
-            int transactionLogRetentionDays)
+            int transactionLogRetentionDays,
+
+            string transactionalLogStorageState)
         {
             BackupRetentionSettings = backupRetentionSettings;
             BinaryLogEnabled = binaryLogEnabled;
@@ -82,6 +88,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
             ReplicationLogArchivingEnabled = replicationLogArchivingEnabled;
             StartTime = startTime;
             TransactionLogRetentionDays = transactionLogRetentionDays;
+            TransactionalLogStorageState = transactionalLogStorageState;
         }
     }
 }

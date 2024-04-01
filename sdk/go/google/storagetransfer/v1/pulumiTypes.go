@@ -481,9 +481,9 @@ type AwsS3Data struct {
 	AwsAccessKey *AwsAccessKey `pulumi:"awsAccessKey"`
 	// S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
 	BucketName string `pulumi:"bucketName"`
-	// Optional. Cloudfront domain name pointing to this bucket (as origin), to use when fetching. Format: `https://{id}.cloudfront.net` or any valid custom domain `https://...`
+	// Optional. The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: `https://{id}.cloudfront.net` or any valid custom domain. Must begin with `https://`.
 	CloudfrontDomain *string `pulumi:"cloudfrontDomain"`
-	// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+	// Optional. The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format: { "access_key_id": "ACCESS_KEY_ID", "secret_access_key": "SECRET_ACCESS_KEY" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Amazon S3] (https://cloud.google.com/storage-transfer/docs/source-amazon-s3#secret_manager) for more information. If `credentials_secret` is specified, do not specify role_arn or aws_access_key. Format: `projects/{project_number}/secrets/{secret_name}`
 	CredentialsSecret *string `pulumi:"credentialsSecret"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path *string `pulumi:"path"`
@@ -508,9 +508,9 @@ type AwsS3DataArgs struct {
 	AwsAccessKey AwsAccessKeyPtrInput `pulumi:"awsAccessKey"`
 	// S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
-	// Optional. Cloudfront domain name pointing to this bucket (as origin), to use when fetching. Format: `https://{id}.cloudfront.net` or any valid custom domain `https://...`
+	// Optional. The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: `https://{id}.cloudfront.net` or any valid custom domain. Must begin with `https://`.
 	CloudfrontDomain pulumi.StringPtrInput `pulumi:"cloudfrontDomain"`
-	// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+	// Optional. The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format: { "access_key_id": "ACCESS_KEY_ID", "secret_access_key": "SECRET_ACCESS_KEY" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Amazon S3] (https://cloud.google.com/storage-transfer/docs/source-amazon-s3#secret_manager) for more information. If `credentials_secret` is specified, do not specify role_arn or aws_access_key. Format: `projects/{project_number}/secrets/{secret_name}`
 	CredentialsSecret pulumi.StringPtrInput `pulumi:"credentialsSecret"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
@@ -606,12 +606,12 @@ func (o AwsS3DataOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsS3Data) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
-// Optional. Cloudfront domain name pointing to this bucket (as origin), to use when fetching. Format: `https://{id}.cloudfront.net` or any valid custom domain `https://...`
+// Optional. The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: `https://{id}.cloudfront.net` or any valid custom domain. Must begin with `https://`.
 func (o AwsS3DataOutput) CloudfrontDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsS3Data) *string { return v.CloudfrontDomain }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+// Optional. The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format: { "access_key_id": "ACCESS_KEY_ID", "secret_access_key": "SECRET_ACCESS_KEY" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Amazon S3] (https://cloud.google.com/storage-transfer/docs/source-amazon-s3#secret_manager) for more information. If `credentials_secret` is specified, do not specify role_arn or aws_access_key. Format: `projects/{project_number}/secrets/{secret_name}`
 func (o AwsS3DataOutput) CredentialsSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsS3Data) *string { return v.CredentialsSecret }).(pulumi.StringPtrOutput)
 }
@@ -670,7 +670,7 @@ func (o AwsS3DataPtrOutput) BucketName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. Cloudfront domain name pointing to this bucket (as origin), to use when fetching. Format: `https://{id}.cloudfront.net` or any valid custom domain `https://...`
+// Optional. The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: `https://{id}.cloudfront.net` or any valid custom domain. Must begin with `https://`.
 func (o AwsS3DataPtrOutput) CloudfrontDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsS3Data) *string {
 		if v == nil {
@@ -680,7 +680,7 @@ func (o AwsS3DataPtrOutput) CloudfrontDomain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+// Optional. The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format: { "access_key_id": "ACCESS_KEY_ID", "secret_access_key": "SECRET_ACCESS_KEY" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Amazon S3] (https://cloud.google.com/storage-transfer/docs/source-amazon-s3#secret_manager) for more information. If `credentials_secret` is specified, do not specify role_arn or aws_access_key. Format: `projects/{project_number}/secrets/{secret_name}`
 func (o AwsS3DataPtrOutput) CredentialsSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsS3Data) *string {
 		if v == nil {
@@ -716,9 +716,9 @@ type AwsS3DataResponse struct {
 	AwsAccessKey AwsAccessKeyResponse `pulumi:"awsAccessKey"`
 	// S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
 	BucketName string `pulumi:"bucketName"`
-	// Optional. Cloudfront domain name pointing to this bucket (as origin), to use when fetching. Format: `https://{id}.cloudfront.net` or any valid custom domain `https://...`
+	// Optional. The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: `https://{id}.cloudfront.net` or any valid custom domain. Must begin with `https://`.
 	CloudfrontDomain string `pulumi:"cloudfrontDomain"`
-	// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+	// Optional. The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format: { "access_key_id": "ACCESS_KEY_ID", "secret_access_key": "SECRET_ACCESS_KEY" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Amazon S3] (https://cloud.google.com/storage-transfer/docs/source-amazon-s3#secret_manager) for more information. If `credentials_secret` is specified, do not specify role_arn or aws_access_key. Format: `projects/{project_number}/secrets/{secret_name}`
 	CredentialsSecret string `pulumi:"credentialsSecret"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path string `pulumi:"path"`
@@ -751,12 +751,12 @@ func (o AwsS3DataResponseOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsS3DataResponse) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
-// Optional. Cloudfront domain name pointing to this bucket (as origin), to use when fetching. Format: `https://{id}.cloudfront.net` or any valid custom domain `https://...`
+// Optional. The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: `https://{id}.cloudfront.net` or any valid custom domain. Must begin with `https://`.
 func (o AwsS3DataResponseOutput) CloudfrontDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsS3DataResponse) string { return v.CloudfrontDomain }).(pulumi.StringOutput)
 }
 
-// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+// Optional. The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format: { "access_key_id": "ACCESS_KEY_ID", "secret_access_key": "SECRET_ACCESS_KEY" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Amazon S3] (https://cloud.google.com/storage-transfer/docs/source-amazon-s3#secret_manager) for more information. If `credentials_secret` is specified, do not specify role_arn or aws_access_key. Format: `projects/{project_number}/secrets/{secret_name}`
 func (o AwsS3DataResponseOutput) CredentialsSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsS3DataResponse) string { return v.CredentialsSecret }).(pulumi.StringOutput)
 }
@@ -777,7 +777,7 @@ type AzureBlobStorageData struct {
 	AzureCredentials AzureCredentials `pulumi:"azureCredentials"`
 	// The container to transfer from the Azure Storage account.
 	Container string `pulumi:"container"`
-	// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+	// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. Format: `projects/{project_number}/secrets/{secret_name}`
 	CredentialsSecret *string `pulumi:"credentialsSecret"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path *string `pulumi:"path"`
@@ -802,7 +802,7 @@ type AzureBlobStorageDataArgs struct {
 	AzureCredentials AzureCredentialsInput `pulumi:"azureCredentials"`
 	// The container to transfer from the Azure Storage account.
 	Container pulumi.StringInput `pulumi:"container"`
-	// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+	// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. Format: `projects/{project_number}/secrets/{secret_name}`
 	CredentialsSecret pulumi.StringPtrInput `pulumi:"credentialsSecret"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
@@ -898,7 +898,7 @@ func (o AzureBlobStorageDataOutput) Container() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureBlobStorageData) string { return v.Container }).(pulumi.StringOutput)
 }
 
-// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. Format: `projects/{project_number}/secrets/{secret_name}`
 func (o AzureBlobStorageDataOutput) CredentialsSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureBlobStorageData) *string { return v.CredentialsSecret }).(pulumi.StringPtrOutput)
 }
@@ -957,7 +957,7 @@ func (o AzureBlobStorageDataPtrOutput) Container() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. Format: `projects/{project_number}/secrets/{secret_name}`
 func (o AzureBlobStorageDataPtrOutput) CredentialsSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureBlobStorageData) *string {
 		if v == nil {
@@ -993,7 +993,7 @@ type AzureBlobStorageDataResponse struct {
 	AzureCredentials AzureCredentialsResponse `pulumi:"azureCredentials"`
 	// The container to transfer from the Azure Storage account.
 	Container string `pulumi:"container"`
-	// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+	// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. Format: `projects/{project_number}/secrets/{secret_name}`
 	CredentialsSecret string `pulumi:"credentialsSecret"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path string `pulumi:"path"`
@@ -1026,7 +1026,7 @@ func (o AzureBlobStorageDataResponseOutput) Container() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureBlobStorageDataResponse) string { return v.Container }).(pulumi.StringOutput)
 }
 
-// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. Format: `projects/{project_number}/secrets/{secret_name}`
 func (o AzureBlobStorageDataResponseOutput) CredentialsSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureBlobStorageDataResponse) string { return v.CredentialsSecret }).(pulumi.StringOutput)
 }
@@ -1813,6 +1813,8 @@ func (o EventStreamResponseOutput) Name() pulumi.StringOutput {
 type GcsData struct {
 	// Cloud Storage bucket name. Must meet [Bucket Name Requirements](/storage/docs/naming#requirements).
 	BucketName string `pulumi:"bucketName"`
+	// Preview. Enables the transfer of managed folders between Cloud Storage buckets. Set this option on the gcs_data_source. If set to true: - Managed folders in the source bucket are transferred to the destination bucket. - Managed folders in the destination bucket are overwritten. Other OVERWRITE options are not supported. See [Transfer Cloud Storage managed folders](/storage-transfer/docs/managed-folders).
+	ManagedFolderTransferEnabled *bool `pulumi:"managedFolderTransferEnabled"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. The root path value must meet [Object Name Requirements](/storage/docs/naming#objectnames).
 	Path *string `pulumi:"path"`
 }
@@ -1832,6 +1834,8 @@ type GcsDataInput interface {
 type GcsDataArgs struct {
 	// Cloud Storage bucket name. Must meet [Bucket Name Requirements](/storage/docs/naming#requirements).
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// Preview. Enables the transfer of managed folders between Cloud Storage buckets. Set this option on the gcs_data_source. If set to true: - Managed folders in the source bucket are transferred to the destination bucket. - Managed folders in the destination bucket are overwritten. Other OVERWRITE options are not supported. See [Transfer Cloud Storage managed folders](/storage-transfer/docs/managed-folders).
+	ManagedFolderTransferEnabled pulumi.BoolPtrInput `pulumi:"managedFolderTransferEnabled"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. The root path value must meet [Object Name Requirements](/storage/docs/naming#objectnames).
 	Path pulumi.StringPtrInput `pulumi:"path"`
 }
@@ -1919,6 +1923,11 @@ func (o GcsDataOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v GcsData) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
+// Preview. Enables the transfer of managed folders between Cloud Storage buckets. Set this option on the gcs_data_source. If set to true: - Managed folders in the source bucket are transferred to the destination bucket. - Managed folders in the destination bucket are overwritten. Other OVERWRITE options are not supported. See [Transfer Cloud Storage managed folders](/storage-transfer/docs/managed-folders).
+func (o GcsDataOutput) ManagedFolderTransferEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GcsData) *bool { return v.ManagedFolderTransferEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. The root path value must meet [Object Name Requirements](/storage/docs/naming#objectnames).
 func (o GcsDataOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GcsData) *string { return v.Path }).(pulumi.StringPtrOutput)
@@ -1958,6 +1967,16 @@ func (o GcsDataPtrOutput) BucketName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Preview. Enables the transfer of managed folders between Cloud Storage buckets. Set this option on the gcs_data_source. If set to true: - Managed folders in the source bucket are transferred to the destination bucket. - Managed folders in the destination bucket are overwritten. Other OVERWRITE options are not supported. See [Transfer Cloud Storage managed folders](/storage-transfer/docs/managed-folders).
+func (o GcsDataPtrOutput) ManagedFolderTransferEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcsData) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedFolderTransferEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. The root path value must meet [Object Name Requirements](/storage/docs/naming#objectnames).
 func (o GcsDataPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GcsData) *string {
@@ -1972,6 +1991,8 @@ func (o GcsDataPtrOutput) Path() pulumi.StringPtrOutput {
 type GcsDataResponse struct {
 	// Cloud Storage bucket name. Must meet [Bucket Name Requirements](/storage/docs/naming#requirements).
 	BucketName string `pulumi:"bucketName"`
+	// Preview. Enables the transfer of managed folders between Cloud Storage buckets. Set this option on the gcs_data_source. If set to true: - Managed folders in the source bucket are transferred to the destination bucket. - Managed folders in the destination bucket are overwritten. Other OVERWRITE options are not supported. See [Transfer Cloud Storage managed folders](/storage-transfer/docs/managed-folders).
+	ManagedFolderTransferEnabled bool `pulumi:"managedFolderTransferEnabled"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. The root path value must meet [Object Name Requirements](/storage/docs/naming#objectnames).
 	Path string `pulumi:"path"`
 }
@@ -1996,9 +2017,180 @@ func (o GcsDataResponseOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v GcsDataResponse) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
+// Preview. Enables the transfer of managed folders between Cloud Storage buckets. Set this option on the gcs_data_source. If set to true: - Managed folders in the source bucket are transferred to the destination bucket. - Managed folders in the destination bucket are overwritten. Other OVERWRITE options are not supported. See [Transfer Cloud Storage managed folders](/storage-transfer/docs/managed-folders).
+func (o GcsDataResponseOutput) ManagedFolderTransferEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GcsDataResponse) bool { return v.ManagedFolderTransferEnabled }).(pulumi.BoolOutput)
+}
+
 // Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. The root path value must meet [Object Name Requirements](/storage/docs/naming#objectnames).
 func (o GcsDataResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GcsDataResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// An HdfsData resource specifies a path within an HDFS entity (e.g. a cluster). All cluster-specific settings, such as namenodes and ports, are configured on the transfer agents servicing requests, so HdfsData only contains the root path to the data in our transfer.
+type HdfsData struct {
+	// Root path to transfer files.
+	Path *string `pulumi:"path"`
+}
+
+// HdfsDataInput is an input type that accepts HdfsDataArgs and HdfsDataOutput values.
+// You can construct a concrete instance of `HdfsDataInput` via:
+//
+//	HdfsDataArgs{...}
+type HdfsDataInput interface {
+	pulumi.Input
+
+	ToHdfsDataOutput() HdfsDataOutput
+	ToHdfsDataOutputWithContext(context.Context) HdfsDataOutput
+}
+
+// An HdfsData resource specifies a path within an HDFS entity (e.g. a cluster). All cluster-specific settings, such as namenodes and ports, are configured on the transfer agents servicing requests, so HdfsData only contains the root path to the data in our transfer.
+type HdfsDataArgs struct {
+	// Root path to transfer files.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (HdfsDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HdfsData)(nil)).Elem()
+}
+
+func (i HdfsDataArgs) ToHdfsDataOutput() HdfsDataOutput {
+	return i.ToHdfsDataOutputWithContext(context.Background())
+}
+
+func (i HdfsDataArgs) ToHdfsDataOutputWithContext(ctx context.Context) HdfsDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HdfsDataOutput)
+}
+
+func (i HdfsDataArgs) ToHdfsDataPtrOutput() HdfsDataPtrOutput {
+	return i.ToHdfsDataPtrOutputWithContext(context.Background())
+}
+
+func (i HdfsDataArgs) ToHdfsDataPtrOutputWithContext(ctx context.Context) HdfsDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HdfsDataOutput).ToHdfsDataPtrOutputWithContext(ctx)
+}
+
+// HdfsDataPtrInput is an input type that accepts HdfsDataArgs, HdfsDataPtr and HdfsDataPtrOutput values.
+// You can construct a concrete instance of `HdfsDataPtrInput` via:
+//
+//	        HdfsDataArgs{...}
+//
+//	or:
+//
+//	        nil
+type HdfsDataPtrInput interface {
+	pulumi.Input
+
+	ToHdfsDataPtrOutput() HdfsDataPtrOutput
+	ToHdfsDataPtrOutputWithContext(context.Context) HdfsDataPtrOutput
+}
+
+type hdfsDataPtrType HdfsDataArgs
+
+func HdfsDataPtr(v *HdfsDataArgs) HdfsDataPtrInput {
+	return (*hdfsDataPtrType)(v)
+}
+
+func (*hdfsDataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HdfsData)(nil)).Elem()
+}
+
+func (i *hdfsDataPtrType) ToHdfsDataPtrOutput() HdfsDataPtrOutput {
+	return i.ToHdfsDataPtrOutputWithContext(context.Background())
+}
+
+func (i *hdfsDataPtrType) ToHdfsDataPtrOutputWithContext(ctx context.Context) HdfsDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HdfsDataPtrOutput)
+}
+
+// An HdfsData resource specifies a path within an HDFS entity (e.g. a cluster). All cluster-specific settings, such as namenodes and ports, are configured on the transfer agents servicing requests, so HdfsData only contains the root path to the data in our transfer.
+type HdfsDataOutput struct{ *pulumi.OutputState }
+
+func (HdfsDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HdfsData)(nil)).Elem()
+}
+
+func (o HdfsDataOutput) ToHdfsDataOutput() HdfsDataOutput {
+	return o
+}
+
+func (o HdfsDataOutput) ToHdfsDataOutputWithContext(ctx context.Context) HdfsDataOutput {
+	return o
+}
+
+func (o HdfsDataOutput) ToHdfsDataPtrOutput() HdfsDataPtrOutput {
+	return o.ToHdfsDataPtrOutputWithContext(context.Background())
+}
+
+func (o HdfsDataOutput) ToHdfsDataPtrOutputWithContext(ctx context.Context) HdfsDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HdfsData) *HdfsData {
+		return &v
+	}).(HdfsDataPtrOutput)
+}
+
+// Root path to transfer files.
+func (o HdfsDataOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HdfsData) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type HdfsDataPtrOutput struct{ *pulumi.OutputState }
+
+func (HdfsDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HdfsData)(nil)).Elem()
+}
+
+func (o HdfsDataPtrOutput) ToHdfsDataPtrOutput() HdfsDataPtrOutput {
+	return o
+}
+
+func (o HdfsDataPtrOutput) ToHdfsDataPtrOutputWithContext(ctx context.Context) HdfsDataPtrOutput {
+	return o
+}
+
+func (o HdfsDataPtrOutput) Elem() HdfsDataOutput {
+	return o.ApplyT(func(v *HdfsData) HdfsData {
+		if v != nil {
+			return *v
+		}
+		var ret HdfsData
+		return ret
+	}).(HdfsDataOutput)
+}
+
+// Root path to transfer files.
+func (o HdfsDataPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HdfsData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// An HdfsData resource specifies a path within an HDFS entity (e.g. a cluster). All cluster-specific settings, such as namenodes and ports, are configured on the transfer agents servicing requests, so HdfsData only contains the root path to the data in our transfer.
+type HdfsDataResponse struct {
+	// Root path to transfer files.
+	Path string `pulumi:"path"`
+}
+
+// An HdfsData resource specifies a path within an HDFS entity (e.g. a cluster). All cluster-specific settings, such as namenodes and ports, are configured on the transfer agents servicing requests, so HdfsData only contains the root path to the data in our transfer.
+type HdfsDataResponseOutput struct{ *pulumi.OutputState }
+
+func (HdfsDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HdfsDataResponse)(nil)).Elem()
+}
+
+func (o HdfsDataResponseOutput) ToHdfsDataResponseOutput() HdfsDataResponseOutput {
+	return o
+}
+
+func (o HdfsDataResponseOutput) ToHdfsDataResponseOutputWithContext(ctx context.Context) HdfsDataResponseOutput {
+	return o
+}
+
+// Root path to transfer files.
+func (o HdfsDataResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v HdfsDataResponse) string { return v.Path }).(pulumi.StringOutput)
 }
 
 // An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The information of the objects to be transferred is contained in a file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the information of the list of objects, one object per list entry. Each entry has the following tab-delimited fields: * **HTTP URL** — The location of the object. * **Length** — The size of the object in bytes. * **MD5** — The base64-encoded MD5 hash of the object. For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When transferring data based on a URL list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match the actual size of the object fetched, the object is not transferred. * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer fails. * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly] (/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to transfer.
@@ -2401,7 +2593,7 @@ type MetadataOptions struct {
 	Symlink *MetadataOptionsSymlink `pulumi:"symlink"`
 	// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
 	TemporaryHold *MetadataOptionsTemporaryHold `pulumi:"temporaryHold"`
-	// Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+	// Specifies how each object's `timeCreated` metadata is preserved for transfers. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
 	TimeCreated *MetadataOptionsTimeCreated `pulumi:"timeCreated"`
 	// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
 	Uid *MetadataOptionsUid `pulumi:"uid"`
@@ -2434,7 +2626,7 @@ type MetadataOptionsArgs struct {
 	Symlink MetadataOptionsSymlinkPtrInput `pulumi:"symlink"`
 	// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
 	TemporaryHold MetadataOptionsTemporaryHoldPtrInput `pulumi:"temporaryHold"`
-	// Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+	// Specifies how each object's `timeCreated` metadata is preserved for transfers. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
 	TimeCreated MetadataOptionsTimeCreatedPtrInput `pulumi:"timeCreated"`
 	// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
 	Uid MetadataOptionsUidPtrInput `pulumi:"uid"`
@@ -2553,7 +2745,7 @@ func (o MetadataOptionsOutput) TemporaryHold() MetadataOptionsTemporaryHoldPtrOu
 	return o.ApplyT(func(v MetadataOptions) *MetadataOptionsTemporaryHold { return v.TemporaryHold }).(MetadataOptionsTemporaryHoldPtrOutput)
 }
 
-// Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+// Specifies how each object's `timeCreated` metadata is preserved for transfers. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
 func (o MetadataOptionsOutput) TimeCreated() MetadataOptionsTimeCreatedPtrOutput {
 	return o.ApplyT(func(v MetadataOptions) *MetadataOptionsTimeCreated { return v.TimeCreated }).(MetadataOptionsTimeCreatedPtrOutput)
 }
@@ -2657,7 +2849,7 @@ func (o MetadataOptionsPtrOutput) TemporaryHold() MetadataOptionsTemporaryHoldPt
 	}).(MetadataOptionsTemporaryHoldPtrOutput)
 }
 
-// Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+// Specifies how each object's `timeCreated` metadata is preserved for transfers. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
 func (o MetadataOptionsPtrOutput) TimeCreated() MetadataOptionsTimeCreatedPtrOutput {
 	return o.ApplyT(func(v *MetadataOptions) *MetadataOptionsTimeCreated {
 		if v == nil {
@@ -2693,7 +2885,7 @@ type MetadataOptionsResponse struct {
 	Symlink string `pulumi:"symlink"`
 	// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
 	TemporaryHold string `pulumi:"temporaryHold"`
-	// Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+	// Specifies how each object's `timeCreated` metadata is preserved for transfers. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
 	TimeCreated string `pulumi:"timeCreated"`
 	// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
 	Uid string `pulumi:"uid"`
@@ -2749,7 +2941,7 @@ func (o MetadataOptionsResponseOutput) TemporaryHold() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataOptionsResponse) string { return v.TemporaryHold }).(pulumi.StringOutput)
 }
 
-// Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+// Specifies how each object's `timeCreated` metadata is preserved for transfers. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
 func (o MetadataOptionsResponseOutput) TimeCreated() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataOptionsResponse) string { return v.TimeCreated }).(pulumi.StringOutput)
 }
@@ -3437,6 +3629,250 @@ func (o PosixFilesystemResponseOutput) ToPosixFilesystemResponseOutputWithContex
 // Root directory path to the filesystem.
 func (o PosixFilesystemResponseOutput) RootDirectory() pulumi.StringOutput {
 	return o.ApplyT(func(v PosixFilesystemResponse) string { return v.RootDirectory }).(pulumi.StringOutput)
+}
+
+// Specifies the configuration for running a replication job.
+type ReplicationSpec struct {
+	// Specifies cloud Storage data sink.
+	GcsDataSink *GcsData `pulumi:"gcsDataSink"`
+	// Specifies cloud Storage data source.
+	GcsDataSource *GcsData `pulumi:"gcsDataSource"`
+	// Specifies the object conditions to only include objects that satisfy these conditions in the set of data source objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
+	ObjectConditions *ObjectConditions `pulumi:"objectConditions"`
+	// Specifies the actions to be performed on the object during replication. Delete options are not supported for replication and when specified, the request fails with an INVALID_ARGUMENT error.
+	TransferOptions *TransferOptions `pulumi:"transferOptions"`
+}
+
+// ReplicationSpecInput is an input type that accepts ReplicationSpecArgs and ReplicationSpecOutput values.
+// You can construct a concrete instance of `ReplicationSpecInput` via:
+//
+//	ReplicationSpecArgs{...}
+type ReplicationSpecInput interface {
+	pulumi.Input
+
+	ToReplicationSpecOutput() ReplicationSpecOutput
+	ToReplicationSpecOutputWithContext(context.Context) ReplicationSpecOutput
+}
+
+// Specifies the configuration for running a replication job.
+type ReplicationSpecArgs struct {
+	// Specifies cloud Storage data sink.
+	GcsDataSink GcsDataPtrInput `pulumi:"gcsDataSink"`
+	// Specifies cloud Storage data source.
+	GcsDataSource GcsDataPtrInput `pulumi:"gcsDataSource"`
+	// Specifies the object conditions to only include objects that satisfy these conditions in the set of data source objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
+	ObjectConditions ObjectConditionsPtrInput `pulumi:"objectConditions"`
+	// Specifies the actions to be performed on the object during replication. Delete options are not supported for replication and when specified, the request fails with an INVALID_ARGUMENT error.
+	TransferOptions TransferOptionsPtrInput `pulumi:"transferOptions"`
+}
+
+func (ReplicationSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationSpec)(nil)).Elem()
+}
+
+func (i ReplicationSpecArgs) ToReplicationSpecOutput() ReplicationSpecOutput {
+	return i.ToReplicationSpecOutputWithContext(context.Background())
+}
+
+func (i ReplicationSpecArgs) ToReplicationSpecOutputWithContext(ctx context.Context) ReplicationSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicationSpecOutput)
+}
+
+func (i ReplicationSpecArgs) ToReplicationSpecPtrOutput() ReplicationSpecPtrOutput {
+	return i.ToReplicationSpecPtrOutputWithContext(context.Background())
+}
+
+func (i ReplicationSpecArgs) ToReplicationSpecPtrOutputWithContext(ctx context.Context) ReplicationSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicationSpecOutput).ToReplicationSpecPtrOutputWithContext(ctx)
+}
+
+// ReplicationSpecPtrInput is an input type that accepts ReplicationSpecArgs, ReplicationSpecPtr and ReplicationSpecPtrOutput values.
+// You can construct a concrete instance of `ReplicationSpecPtrInput` via:
+//
+//	        ReplicationSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReplicationSpecPtrInput interface {
+	pulumi.Input
+
+	ToReplicationSpecPtrOutput() ReplicationSpecPtrOutput
+	ToReplicationSpecPtrOutputWithContext(context.Context) ReplicationSpecPtrOutput
+}
+
+type replicationSpecPtrType ReplicationSpecArgs
+
+func ReplicationSpecPtr(v *ReplicationSpecArgs) ReplicationSpecPtrInput {
+	return (*replicationSpecPtrType)(v)
+}
+
+func (*replicationSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReplicationSpec)(nil)).Elem()
+}
+
+func (i *replicationSpecPtrType) ToReplicationSpecPtrOutput() ReplicationSpecPtrOutput {
+	return i.ToReplicationSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *replicationSpecPtrType) ToReplicationSpecPtrOutputWithContext(ctx context.Context) ReplicationSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicationSpecPtrOutput)
+}
+
+// Specifies the configuration for running a replication job.
+type ReplicationSpecOutput struct{ *pulumi.OutputState }
+
+func (ReplicationSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationSpec)(nil)).Elem()
+}
+
+func (o ReplicationSpecOutput) ToReplicationSpecOutput() ReplicationSpecOutput {
+	return o
+}
+
+func (o ReplicationSpecOutput) ToReplicationSpecOutputWithContext(ctx context.Context) ReplicationSpecOutput {
+	return o
+}
+
+func (o ReplicationSpecOutput) ToReplicationSpecPtrOutput() ReplicationSpecPtrOutput {
+	return o.ToReplicationSpecPtrOutputWithContext(context.Background())
+}
+
+func (o ReplicationSpecOutput) ToReplicationSpecPtrOutputWithContext(ctx context.Context) ReplicationSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReplicationSpec) *ReplicationSpec {
+		return &v
+	}).(ReplicationSpecPtrOutput)
+}
+
+// Specifies cloud Storage data sink.
+func (o ReplicationSpecOutput) GcsDataSink() GcsDataPtrOutput {
+	return o.ApplyT(func(v ReplicationSpec) *GcsData { return v.GcsDataSink }).(GcsDataPtrOutput)
+}
+
+// Specifies cloud Storage data source.
+func (o ReplicationSpecOutput) GcsDataSource() GcsDataPtrOutput {
+	return o.ApplyT(func(v ReplicationSpec) *GcsData { return v.GcsDataSource }).(GcsDataPtrOutput)
+}
+
+// Specifies the object conditions to only include objects that satisfy these conditions in the set of data source objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
+func (o ReplicationSpecOutput) ObjectConditions() ObjectConditionsPtrOutput {
+	return o.ApplyT(func(v ReplicationSpec) *ObjectConditions { return v.ObjectConditions }).(ObjectConditionsPtrOutput)
+}
+
+// Specifies the actions to be performed on the object during replication. Delete options are not supported for replication and when specified, the request fails with an INVALID_ARGUMENT error.
+func (o ReplicationSpecOutput) TransferOptions() TransferOptionsPtrOutput {
+	return o.ApplyT(func(v ReplicationSpec) *TransferOptions { return v.TransferOptions }).(TransferOptionsPtrOutput)
+}
+
+type ReplicationSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (ReplicationSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReplicationSpec)(nil)).Elem()
+}
+
+func (o ReplicationSpecPtrOutput) ToReplicationSpecPtrOutput() ReplicationSpecPtrOutput {
+	return o
+}
+
+func (o ReplicationSpecPtrOutput) ToReplicationSpecPtrOutputWithContext(ctx context.Context) ReplicationSpecPtrOutput {
+	return o
+}
+
+func (o ReplicationSpecPtrOutput) Elem() ReplicationSpecOutput {
+	return o.ApplyT(func(v *ReplicationSpec) ReplicationSpec {
+		if v != nil {
+			return *v
+		}
+		var ret ReplicationSpec
+		return ret
+	}).(ReplicationSpecOutput)
+}
+
+// Specifies cloud Storage data sink.
+func (o ReplicationSpecPtrOutput) GcsDataSink() GcsDataPtrOutput {
+	return o.ApplyT(func(v *ReplicationSpec) *GcsData {
+		if v == nil {
+			return nil
+		}
+		return v.GcsDataSink
+	}).(GcsDataPtrOutput)
+}
+
+// Specifies cloud Storage data source.
+func (o ReplicationSpecPtrOutput) GcsDataSource() GcsDataPtrOutput {
+	return o.ApplyT(func(v *ReplicationSpec) *GcsData {
+		if v == nil {
+			return nil
+		}
+		return v.GcsDataSource
+	}).(GcsDataPtrOutput)
+}
+
+// Specifies the object conditions to only include objects that satisfy these conditions in the set of data source objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
+func (o ReplicationSpecPtrOutput) ObjectConditions() ObjectConditionsPtrOutput {
+	return o.ApplyT(func(v *ReplicationSpec) *ObjectConditions {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectConditions
+	}).(ObjectConditionsPtrOutput)
+}
+
+// Specifies the actions to be performed on the object during replication. Delete options are not supported for replication and when specified, the request fails with an INVALID_ARGUMENT error.
+func (o ReplicationSpecPtrOutput) TransferOptions() TransferOptionsPtrOutput {
+	return o.ApplyT(func(v *ReplicationSpec) *TransferOptions {
+		if v == nil {
+			return nil
+		}
+		return v.TransferOptions
+	}).(TransferOptionsPtrOutput)
+}
+
+// Specifies the configuration for running a replication job.
+type ReplicationSpecResponse struct {
+	// Specifies cloud Storage data sink.
+	GcsDataSink GcsDataResponse `pulumi:"gcsDataSink"`
+	// Specifies cloud Storage data source.
+	GcsDataSource GcsDataResponse `pulumi:"gcsDataSource"`
+	// Specifies the object conditions to only include objects that satisfy these conditions in the set of data source objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
+	ObjectConditions ObjectConditionsResponse `pulumi:"objectConditions"`
+	// Specifies the actions to be performed on the object during replication. Delete options are not supported for replication and when specified, the request fails with an INVALID_ARGUMENT error.
+	TransferOptions TransferOptionsResponse `pulumi:"transferOptions"`
+}
+
+// Specifies the configuration for running a replication job.
+type ReplicationSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (ReplicationSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationSpecResponse)(nil)).Elem()
+}
+
+func (o ReplicationSpecResponseOutput) ToReplicationSpecResponseOutput() ReplicationSpecResponseOutput {
+	return o
+}
+
+func (o ReplicationSpecResponseOutput) ToReplicationSpecResponseOutputWithContext(ctx context.Context) ReplicationSpecResponseOutput {
+	return o
+}
+
+// Specifies cloud Storage data sink.
+func (o ReplicationSpecResponseOutput) GcsDataSink() GcsDataResponseOutput {
+	return o.ApplyT(func(v ReplicationSpecResponse) GcsDataResponse { return v.GcsDataSink }).(GcsDataResponseOutput)
+}
+
+// Specifies cloud Storage data source.
+func (o ReplicationSpecResponseOutput) GcsDataSource() GcsDataResponseOutput {
+	return o.ApplyT(func(v ReplicationSpecResponse) GcsDataResponse { return v.GcsDataSource }).(GcsDataResponseOutput)
+}
+
+// Specifies the object conditions to only include objects that satisfy these conditions in the set of data source objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
+func (o ReplicationSpecResponseOutput) ObjectConditions() ObjectConditionsResponseOutput {
+	return o.ApplyT(func(v ReplicationSpecResponse) ObjectConditionsResponse { return v.ObjectConditions }).(ObjectConditionsResponseOutput)
+}
+
+// Specifies the actions to be performed on the object during replication. Delete options are not supported for replication and when specified, the request fails with an INVALID_ARGUMENT error.
+func (o ReplicationSpecResponseOutput) TransferOptions() TransferOptionsResponseOutput {
+	return o.ApplyT(func(v ReplicationSpecResponse) TransferOptionsResponse { return v.TransferOptions }).(TransferOptionsResponseOutput)
 }
 
 // S3CompatibleMetadata contains the metadata fields that apply to the basic types of S3-compatible data providers.
@@ -4647,6 +5083,8 @@ type TransferSpec struct {
 	GcsDataSource *GcsData `pulumi:"gcsDataSource"`
 	// For transfers between file systems, specifies a Cloud Storage bucket to be used as an intermediate location through which to transfer data. See [Transfer data between file systems](https://cloud.google.com/storage-transfer/docs/file-to-file) for more information.
 	GcsIntermediateDataLocation *GcsData `pulumi:"gcsIntermediateDataLocation"`
+	// An HDFS cluster data source.
+	HdfsDataSource *HdfsData `pulumi:"hdfsDataSource"`
 	// An HTTP URL data source.
 	HttpDataSource *HttpData `pulumi:"httpDataSource"`
 	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
@@ -4690,6 +5128,8 @@ type TransferSpecArgs struct {
 	GcsDataSource GcsDataPtrInput `pulumi:"gcsDataSource"`
 	// For transfers between file systems, specifies a Cloud Storage bucket to be used as an intermediate location through which to transfer data. See [Transfer data between file systems](https://cloud.google.com/storage-transfer/docs/file-to-file) for more information.
 	GcsIntermediateDataLocation GcsDataPtrInput `pulumi:"gcsIntermediateDataLocation"`
+	// An HDFS cluster data source.
+	HdfsDataSource HdfsDataPtrInput `pulumi:"hdfsDataSource"`
 	// An HTTP URL data source.
 	HttpDataSource HttpDataPtrInput `pulumi:"httpDataSource"`
 	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
@@ -4816,6 +5256,11 @@ func (o TransferSpecOutput) GcsIntermediateDataLocation() GcsDataPtrOutput {
 	return o.ApplyT(func(v TransferSpec) *GcsData { return v.GcsIntermediateDataLocation }).(GcsDataPtrOutput)
 }
 
+// An HDFS cluster data source.
+func (o TransferSpecOutput) HdfsDataSource() HdfsDataPtrOutput {
+	return o.ApplyT(func(v TransferSpec) *HdfsData { return v.HdfsDataSource }).(HdfsDataPtrOutput)
+}
+
 // An HTTP URL data source.
 func (o TransferSpecOutput) HttpDataSource() HttpDataPtrOutput {
 	return o.ApplyT(func(v TransferSpec) *HttpData { return v.HttpDataSource }).(HttpDataPtrOutput)
@@ -4940,6 +5385,16 @@ func (o TransferSpecPtrOutput) GcsIntermediateDataLocation() GcsDataPtrOutput {
 	}).(GcsDataPtrOutput)
 }
 
+// An HDFS cluster data source.
+func (o TransferSpecPtrOutput) HdfsDataSource() HdfsDataPtrOutput {
+	return o.ApplyT(func(v *TransferSpec) *HdfsData {
+		if v == nil {
+			return nil
+		}
+		return v.HdfsDataSource
+	}).(HdfsDataPtrOutput)
+}
+
 // An HTTP URL data source.
 func (o TransferSpecPtrOutput) HttpDataSource() HttpDataPtrOutput {
 	return o.ApplyT(func(v *TransferSpec) *HttpData {
@@ -5034,6 +5489,8 @@ type TransferSpecResponse struct {
 	GcsDataSource GcsDataResponse `pulumi:"gcsDataSource"`
 	// For transfers between file systems, specifies a Cloud Storage bucket to be used as an intermediate location through which to transfer data. See [Transfer data between file systems](https://cloud.google.com/storage-transfer/docs/file-to-file) for more information.
 	GcsIntermediateDataLocation GcsDataResponse `pulumi:"gcsIntermediateDataLocation"`
+	// An HDFS cluster data source.
+	HdfsDataSource HdfsDataResponse `pulumi:"hdfsDataSource"`
 	// An HTTP URL data source.
 	HttpDataSource HttpDataResponse `pulumi:"httpDataSource"`
 	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
@@ -5097,6 +5554,11 @@ func (o TransferSpecResponseOutput) GcsIntermediateDataLocation() GcsDataRespons
 	return o.ApplyT(func(v TransferSpecResponse) GcsDataResponse { return v.GcsIntermediateDataLocation }).(GcsDataResponseOutput)
 }
 
+// An HDFS cluster data source.
+func (o TransferSpecResponseOutput) HdfsDataSource() HdfsDataResponseOutput {
+	return o.ApplyT(func(v TransferSpecResponse) HdfsDataResponse { return v.HdfsDataSource }).(HdfsDataResponseOutput)
+}
+
 // An HTTP URL data source.
 func (o TransferSpecResponseOutput) HttpDataSource() HttpDataResponseOutput {
 	return o.ApplyT(func(v TransferSpecResponse) HttpDataResponse { return v.HttpDataSource }).(HttpDataResponseOutput)
@@ -5156,6 +5618,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EventStreamPtrInput)(nil)).Elem(), EventStreamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcsDataInput)(nil)).Elem(), GcsDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcsDataPtrInput)(nil)).Elem(), GcsDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HdfsDataInput)(nil)).Elem(), HdfsDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HdfsDataPtrInput)(nil)).Elem(), HdfsDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpDataInput)(nil)).Elem(), HttpDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpDataPtrInput)(nil)).Elem(), HttpDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigInput)(nil)).Elem(), LoggingConfigArgs{})
@@ -5168,6 +5632,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectConditionsPtrInput)(nil)).Elem(), ObjectConditionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PosixFilesystemInput)(nil)).Elem(), PosixFilesystemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PosixFilesystemPtrInput)(nil)).Elem(), PosixFilesystemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReplicationSpecInput)(nil)).Elem(), ReplicationSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReplicationSpecPtrInput)(nil)).Elem(), ReplicationSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3CompatibleMetadataInput)(nil)).Elem(), S3CompatibleMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3CompatibleMetadataPtrInput)(nil)).Elem(), S3CompatibleMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleInput)(nil)).Elem(), ScheduleArgs{})
@@ -5207,6 +5673,9 @@ func init() {
 	pulumi.RegisterOutputType(GcsDataOutput{})
 	pulumi.RegisterOutputType(GcsDataPtrOutput{})
 	pulumi.RegisterOutputType(GcsDataResponseOutput{})
+	pulumi.RegisterOutputType(HdfsDataOutput{})
+	pulumi.RegisterOutputType(HdfsDataPtrOutput{})
+	pulumi.RegisterOutputType(HdfsDataResponseOutput{})
 	pulumi.RegisterOutputType(HttpDataOutput{})
 	pulumi.RegisterOutputType(HttpDataPtrOutput{})
 	pulumi.RegisterOutputType(HttpDataResponseOutput{})
@@ -5225,6 +5694,9 @@ func init() {
 	pulumi.RegisterOutputType(PosixFilesystemOutput{})
 	pulumi.RegisterOutputType(PosixFilesystemPtrOutput{})
 	pulumi.RegisterOutputType(PosixFilesystemResponseOutput{})
+	pulumi.RegisterOutputType(ReplicationSpecOutput{})
+	pulumi.RegisterOutputType(ReplicationSpecPtrOutput{})
+	pulumi.RegisterOutputType(ReplicationSpecResponseOutput{})
 	pulumi.RegisterOutputType(S3CompatibleMetadataOutput{})
 	pulumi.RegisterOutputType(S3CompatibleMetadataPtrOutput{})
 	pulumi.RegisterOutputType(S3CompatibleMetadataResponseOutput{})

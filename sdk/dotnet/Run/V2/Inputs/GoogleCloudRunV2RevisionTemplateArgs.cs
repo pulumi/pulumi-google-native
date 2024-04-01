@@ -51,6 +51,12 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         [Input("executionEnvironment")]
         public Input<Pulumi.GoogleNative.Run.V2.GoogleCloudRunV2RevisionTemplateExecutionEnvironment>? ExecutionEnvironment { get; set; }
 
+        /// <summary>
+        /// Optional. Disables health checking containers during deployment.
+        /// </summary>
+        [Input("healthCheckDisabled")]
+        public Input<bool>? HealthCheckDisabled { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -88,7 +94,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
-        /// Enable session affinity.
+        /// Optional. Enable session affinity.
         /// </summary>
         [Input("sessionAffinity")]
         public Input<bool>? SessionAffinity { get; set; }

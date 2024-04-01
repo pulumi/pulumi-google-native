@@ -15,6 +15,19 @@ export const getDebugToken: typeof import("./getDebugToken").getDebugToken = nul
 export const getDebugTokenOutput: typeof import("./getDebugToken").getDebugTokenOutput = null as any;
 utilities.lazyLoad(exports, ["getDebugToken","getDebugTokenOutput"], () => require("./getDebugToken"));
 
+export { GetResourcePolicyArgs, GetResourcePolicyResult, GetResourcePolicyOutputArgs } from "./getResourcePolicy";
+export const getResourcePolicy: typeof import("./getResourcePolicy").getResourcePolicy = null as any;
+export const getResourcePolicyOutput: typeof import("./getResourcePolicy").getResourcePolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getResourcePolicy","getResourcePolicyOutput"], () => require("./getResourcePolicy"));
+
+export { ResourcePolicyArgs } from "./resourcePolicy";
+export type ResourcePolicy = import("./resourcePolicy").ResourcePolicy;
+export const ResourcePolicy: typeof import("./resourcePolicy").ResourcePolicy = null as any;
+utilities.lazyLoad(exports, ["ResourcePolicy"], () => require("./resourcePolicy"));
+
+
+// Export enums:
+export * from "../../types/enums/firebaseappcheck/v1beta";
 
 const _module = {
     version: utilities.getVersion(),
@@ -22,6 +35,8 @@ const _module = {
         switch (type) {
             case "google-native:firebaseappcheck/v1beta:DebugToken":
                 return new DebugToken(name, <any>undefined, { urn })
+            case "google-native:firebaseappcheck/v1beta:ResourcePolicy":
+                return new ResourcePolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

@@ -55,7 +55,7 @@ export class EntryGroup extends pulumi.CustomResource {
     public readonly entryGroupId!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
+     * Identifier. The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -115,7 +115,7 @@ export interface EntryGroupArgs {
     entryGroupId: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     /**
-     * The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
+     * Identifier. The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

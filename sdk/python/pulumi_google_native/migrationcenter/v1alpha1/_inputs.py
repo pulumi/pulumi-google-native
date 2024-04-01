@@ -36,7 +36,7 @@ class ComputeEnginePreferencesArgs:
                  persistent_disk_type: Optional[pulumi.Input['ComputeEnginePreferencesPersistentDiskType']] = None):
         """
         The user preferences relating to Compute Engine target platform.
-        :param pulumi.Input['ComputeEnginePreferencesLicenseType'] license_type: License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
+        :param pulumi.Input['ComputeEnginePreferencesLicenseType'] license_type: Overridden by os_pricing_preferences if specified. License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
         :param pulumi.Input['MachinePreferencesArgs'] machine_preferences: Preferences concerning the machine types to consider on Compute Engine.
         :param pulumi.Input['ComputeEnginePreferencesPersistentDiskType'] persistent_disk_type: Persistent disk type to use. If unspecified (default), all types are considered, based on available usage data.
         """
@@ -51,7 +51,7 @@ class ComputeEnginePreferencesArgs:
     @pulumi.getter(name="licenseType")
     def license_type(self) -> Optional[pulumi.Input['ComputeEnginePreferencesLicenseType']]:
         """
-        License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
+        Overridden by os_pricing_preferences if specified. License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
         """
         return pulumi.get(self, "license_type")
 

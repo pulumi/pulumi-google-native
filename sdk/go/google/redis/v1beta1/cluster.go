@@ -26,19 +26,27 @@ type Cluster struct {
 	DiscoveryEndpoints DiscoveryEndpointResponseArrayOutput `pulumi:"discoveryEndpoints"`
 	Location           pulumi.StringOutput                  `pulumi:"location"`
 	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
-	Name    pulumi.StringOutput `pulumi:"name"`
-	Project pulumi.StringOutput `pulumi:"project"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node.
+	NodeType pulumi.StringOutput `pulumi:"nodeType"`
+	// Optional. Persistence config (RDB, AOF) for the cluster.
+	PersistenceConfig ClusterPersistenceConfigResponseOutput `pulumi:"persistenceConfig"`
+	// Precise value of redis memory size in GB for the entire cluster.
+	PreciseSizeGb pulumi.Float64Output `pulumi:"preciseSizeGb"`
+	Project       pulumi.StringOutput  `pulumi:"project"`
 	// Each PscConfig configures the consumer network where IPs will be designated to the cluster for client access through Private Service Connect Automation. Currently, only one PscConfig is supported.
 	PscConfigs PscConfigResponseArrayOutput `pulumi:"pscConfigs"`
 	// PSC connections for discovery of the cluster topology and accessing the cluster.
 	PscConnections PscConnectionResponseArrayOutput `pulumi:"pscConnections"`
+	// Optional. Key/Value pairs of customer overrides for mutable Redis Configs
+	RedisConfigs pulumi.StringMapOutput `pulumi:"redisConfigs"`
 	// Optional. The number of replica nodes per shard.
 	ReplicaCount pulumi.IntOutput `pulumi:"replicaCount"`
 	// Idempotent request UUID.
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Number of shards for the Redis cluster.
 	ShardCount pulumi.IntOutput `pulumi:"shardCount"`
-	// Redis memory size in GB for the entire cluster.
+	// Redis memory size in GB for the entire cluster rounded up to the next integer.
 	SizeGb pulumi.IntOutput `pulumi:"sizeGb"`
 	// The current state of this cluster. Can be CREATING, READY, UPDATING, DELETING and SUSPENDED
 	State pulumi.StringOutput `pulumi:"state"`
@@ -111,10 +119,16 @@ type clusterArgs struct {
 	ClusterId string  `pulumi:"clusterId"`
 	Location  *string `pulumi:"location"`
 	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
-	Name    *string `pulumi:"name"`
-	Project *string `pulumi:"project"`
+	Name *string `pulumi:"name"`
+	// Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node.
+	NodeType *ClusterNodeType `pulumi:"nodeType"`
+	// Optional. Persistence config (RDB, AOF) for the cluster.
+	PersistenceConfig *ClusterPersistenceConfig `pulumi:"persistenceConfig"`
+	Project           *string                   `pulumi:"project"`
 	// Each PscConfig configures the consumer network where IPs will be designated to the cluster for client access through Private Service Connect Automation. Currently, only one PscConfig is supported.
 	PscConfigs []PscConfig `pulumi:"pscConfigs"`
+	// Optional. Key/Value pairs of customer overrides for mutable Redis Configs
+	RedisConfigs map[string]string `pulumi:"redisConfigs"`
 	// Optional. The number of replica nodes per shard.
 	ReplicaCount *int `pulumi:"replicaCount"`
 	// Idempotent request UUID.
@@ -133,10 +147,16 @@ type ClusterArgs struct {
 	ClusterId pulumi.StringInput
 	Location  pulumi.StringPtrInput
 	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
-	Name    pulumi.StringPtrInput
-	Project pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node.
+	NodeType ClusterNodeTypePtrInput
+	// Optional. Persistence config (RDB, AOF) for the cluster.
+	PersistenceConfig ClusterPersistenceConfigPtrInput
+	Project           pulumi.StringPtrInput
 	// Each PscConfig configures the consumer network where IPs will be designated to the cluster for client access through Private Service Connect Automation. Currently, only one PscConfig is supported.
 	PscConfigs PscConfigArrayInput
+	// Optional. Key/Value pairs of customer overrides for mutable Redis Configs
+	RedisConfigs pulumi.StringMapInput
 	// Optional. The number of replica nodes per shard.
 	ReplicaCount pulumi.IntPtrInput
 	// Idempotent request UUID.
@@ -213,6 +233,21 @@ func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node.
+func (o ClusterOutput) NodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.NodeType }).(pulumi.StringOutput)
+}
+
+// Optional. Persistence config (RDB, AOF) for the cluster.
+func (o ClusterOutput) PersistenceConfig() ClusterPersistenceConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) ClusterPersistenceConfigResponseOutput { return v.PersistenceConfig }).(ClusterPersistenceConfigResponseOutput)
+}
+
+// Precise value of redis memory size in GB for the entire cluster.
+func (o ClusterOutput) PreciseSizeGb() pulumi.Float64Output {
+	return o.ApplyT(func(v *Cluster) pulumi.Float64Output { return v.PreciseSizeGb }).(pulumi.Float64Output)
+}
+
 func (o ClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -225,6 +260,11 @@ func (o ClusterOutput) PscConfigs() PscConfigResponseArrayOutput {
 // PSC connections for discovery of the cluster topology and accessing the cluster.
 func (o ClusterOutput) PscConnections() PscConnectionResponseArrayOutput {
 	return o.ApplyT(func(v *Cluster) PscConnectionResponseArrayOutput { return v.PscConnections }).(PscConnectionResponseArrayOutput)
+}
+
+// Optional. Key/Value pairs of customer overrides for mutable Redis Configs
+func (o ClusterOutput) RedisConfigs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.RedisConfigs }).(pulumi.StringMapOutput)
 }
 
 // Optional. The number of replica nodes per shard.
@@ -242,7 +282,7 @@ func (o ClusterOutput) ShardCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.ShardCount }).(pulumi.IntOutput)
 }
 
-// Redis memory size in GB for the entire cluster.
+// Redis memory size in GB for the entire cluster rounded up to the next integer.
 func (o ClusterOutput) SizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.SizeGb }).(pulumi.IntOutput)
 }

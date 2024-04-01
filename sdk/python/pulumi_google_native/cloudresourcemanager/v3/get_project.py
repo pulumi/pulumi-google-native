@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetProjectResult:
-    def __init__(__self__, create_time=None, delete_time=None, display_name=None, etag=None, labels=None, name=None, parent=None, project_id=None, state=None, update_time=None):
+    def __init__(__self__, create_time=None, delete_time=None, display_name=None, etag=None, labels=None, name=None, parent=None, project_id=None, state=None, tags=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -46,6 +46,9 @@ class GetProjectResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -123,6 +126,14 @@ class GetProjectResult:
         return pulumi.get(self, "state")
 
     @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, str]:
+        """
+        Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
@@ -146,6 +157,7 @@ class AwaitableGetProjectResult(GetProjectResult):
             parent=self.parent,
             project_id=self.project_id,
             state=self.state,
+            tags=self.tags,
             update_time=self.update_time)
 
 
@@ -169,6 +181,7 @@ def get_project(project: Optional[str] = None,
         parent=pulumi.get(__ret__, 'parent'),
         project_id=pulumi.get(__ret__, 'project_id'),
         state=pulumi.get(__ret__, 'state'),
+        tags=pulumi.get(__ret__, 'tags'),
         update_time=pulumi.get(__ret__, 'update_time'))
 
 

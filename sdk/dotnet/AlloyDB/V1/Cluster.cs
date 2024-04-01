@@ -128,7 +128,7 @@ namespace Pulumi.GoogleNative.AlloyDB.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+        /// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -156,6 +156,12 @@ namespace Pulumi.GoogleNative.AlloyDB.V1
         /// </summary>
         [Output("requestId")]
         public Output<string?> RequestId { get; private set; } = null!;
+
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        [Output("satisfiesPzs")]
+        public Output<bool> SatisfiesPzs { get; private set; } = null!;
 
         /// <summary>
         /// Cross Region replication config specific to SECONDARY cluster.
@@ -314,7 +320,7 @@ namespace Pulumi.GoogleNative.AlloyDB.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+        /// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;

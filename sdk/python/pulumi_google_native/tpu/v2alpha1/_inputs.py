@@ -306,12 +306,14 @@ class NetworkConfigArgs:
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
                  enable_external_ips: Optional[pulumi.Input[bool]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 queue_count: Optional[pulumi.Input[int]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None):
         """
         Network related configurations.
         :param pulumi.Input[bool] can_ip_forward: Allows the TPU node to send and receive packets with non-matching destination or source IPs. This is required if you plan to use the TPU workers to forward routes.
         :param pulumi.Input[bool] enable_external_ips: Indicates that external IP addresses would be associated with the TPU workers. If set to false, the specified subnetwork or network should have Private Google Access enabled.
         :param pulumi.Input[str] network: The name of the network for the TPU node. It must be a preexisting Google Compute Engine network. If none is provided, "default" will be used.
+        :param pulumi.Input[int] queue_count: Optional. Specifies networking queue count for TPU VM instance's network interface.
         :param pulumi.Input[str] subnetwork: The name of the subnetwork for the TPU node. It must be a preexisting Google Compute Engine subnetwork. If none is provided, "default" will be used.
         """
         if can_ip_forward is not None:
@@ -320,6 +322,8 @@ class NetworkConfigArgs:
             pulumi.set(__self__, "enable_external_ips", enable_external_ips)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if queue_count is not None:
+            pulumi.set(__self__, "queue_count", queue_count)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
 
@@ -358,6 +362,18 @@ class NetworkConfigArgs:
     @network.setter
     def network(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="queueCount")
+    def queue_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. Specifies networking queue count for TPU VM instance's network interface.
+        """
+        return pulumi.get(self, "queue_count")
+
+    @queue_count.setter
+    def queue_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "queue_count", value)
 
     @property
     @pulumi.getter
@@ -797,16 +813,20 @@ class QueueingPolicyArgs:
 class SchedulingConfigArgs:
     def __init__(__self__, *,
                  preemptible: Optional[pulumi.Input[bool]] = None,
-                 reserved: Optional[pulumi.Input[bool]] = None):
+                 reserved: Optional[pulumi.Input[bool]] = None,
+                 spot: Optional[pulumi.Input[bool]] = None):
         """
         Sets the scheduling options for this node.
         :param pulumi.Input[bool] preemptible: Defines whether the node is preemptible.
         :param pulumi.Input[bool] reserved: Whether the node is created under a reservation.
+        :param pulumi.Input[bool] spot: Optional. Defines whether the node is Spot VM.
         """
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
         if reserved is not None:
             pulumi.set(__self__, "reserved", reserved)
+        if spot is not None:
+            pulumi.set(__self__, "spot", spot)
 
     @property
     @pulumi.getter
@@ -831,6 +851,18 @@ class SchedulingConfigArgs:
     @reserved.setter
     def reserved(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "reserved", value)
+
+    @property
+    @pulumi.getter
+    def spot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Defines whether the node is Spot VM.
+        """
+        return pulumi.get(self, "spot")
+
+    @spot.setter
+    def spot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "spot", value)
 
 
 @pulumi.input_type

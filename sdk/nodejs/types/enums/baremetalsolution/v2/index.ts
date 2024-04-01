@@ -195,6 +195,10 @@ export const VolumeConfigPerformanceTier = {
      * High throughput aggregates.
      */
     VolumePerformanceTierHt: "VOLUME_PERFORMANCE_TIER_HT",
+    /**
+     * QoS 2.0 high performance storage.
+     */
+    VolumePerformanceTierQos2Performance: "VOLUME_PERFORMANCE_TIER_QOS2_PERFORMANCE",
 } as const;
 
 /**

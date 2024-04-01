@@ -94,6 +94,46 @@ export const InstanceInstanceType = {
  */
 export type InstanceInstanceType = (typeof InstanceInstanceType)[keyof typeof InstanceInstanceType];
 
+export const MaintenanceWindowDay = {
+    /**
+     * The day of the week is unspecified.
+     */
+    DayOfWeekUnspecified: "DAY_OF_WEEK_UNSPECIFIED",
+    /**
+     * Monday
+     */
+    Monday: "MONDAY",
+    /**
+     * Tuesday
+     */
+    Tuesday: "TUESDAY",
+    /**
+     * Wednesday
+     */
+    Wednesday: "WEDNESDAY",
+    /**
+     * Thursday
+     */
+    Thursday: "THURSDAY",
+    /**
+     * Friday
+     */
+    Friday: "FRIDAY",
+    /**
+     * Saturday
+     */
+    Saturday: "SATURDAY",
+    /**
+     * Sunday
+     */
+    Sunday: "SUNDAY",
+} as const;
+
+/**
+ * Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.
+ */
+export type MaintenanceWindowDay = (typeof MaintenanceWindowDay)[keyof typeof MaintenanceWindowDay];
+
 export const SslConfigCaSource = {
     /**
      * Certificate Authority (CA) source not specified. Defaults to CA_SOURCE_MANAGED.

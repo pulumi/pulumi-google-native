@@ -19,10 +19,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Output<string> DatasetId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
+        /// Required. The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
         /// </summary>
         [Output("dicomStoreId")]
-        public Output<string?> DicomStoreId { get; private set; } = null!;
+        public Output<string> DicomStoreId { get; private set; } = null!;
 
         /// <summary>
         /// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
+        /// Identifier. Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -80,6 +80,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
                 ReplaceOnChanges =
                 {
                     "datasetId",
+                    "dicomStoreId",
                     "location",
                     "project",
                 },
@@ -109,10 +110,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Input<string> DatasetId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
+        /// Required. The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
         /// </summary>
-        [Input("dicomStoreId")]
-        public Input<string>? DicomStoreId { get; set; }
+        [Input("dicomStoreId", required: true)]
+        public Input<string> DicomStoreId { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -130,7 +131,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
+        /// Identifier. Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

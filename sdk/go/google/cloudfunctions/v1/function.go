@@ -15,6 +15,7 @@ import (
 type Function struct {
 	pulumi.CustomResourceState
 
+	AutomaticUpdatePolicy AutomaticUpdatePolicyResponseOutput `pulumi:"automaticUpdatePolicy"`
 	// The amount of memory in MB available for a function. Defaults to 256MB.
 	AvailableMemoryMb pulumi.IntOutput `pulumi:"availableMemoryMb"`
 	// Build environment variables that shall be available during build time.
@@ -23,11 +24,13 @@ type Function struct {
 	BuildId pulumi.StringOutput `pulumi:"buildId"`
 	// The Cloud Build Name of the function deployment. `projects//locations//builds/`.
 	BuildName pulumi.StringOutput `pulumi:"buildName"`
+	// Optional. A service account the user provides for use with Cloud Build.
+	BuildServiceAccount pulumi.StringOutput `pulumi:"buildServiceAccount"`
 	// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
 	BuildWorkerPool pulumi.StringOutput `pulumi:"buildWorkerPool"`
 	// User-provided description of a function.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+	// Docker Registry to use for this deployment. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
 	DockerRegistry pulumi.StringOutput `pulumi:"dockerRegistry"`
 	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
 	DockerRepository pulumi.StringOutput `pulumi:"dockerRepository"`
@@ -55,8 +58,9 @@ type Function struct {
 	// Deprecated: use vpc_connector
 	//
 	// Deprecated: Deprecated: use vpc_connector
-	Network pulumi.StringOutput `pulumi:"network"`
-	Project pulumi.StringOutput `pulumi:"project"`
+	Network              pulumi.StringOutput                `pulumi:"network"`
+	OnDeployUpdatePolicy OnDeployUpdatePolicyResponseOutput `pulumi:"onDeployUpdatePolicy"`
+	Project              pulumi.StringOutput                `pulumi:"project"`
 	// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
 	// Secret environment variables configuration.
@@ -132,15 +136,18 @@ func (FunctionState) ElementType() reflect.Type {
 }
 
 type functionArgs struct {
+	AutomaticUpdatePolicy *AutomaticUpdatePolicy `pulumi:"automaticUpdatePolicy"`
 	// The amount of memory in MB available for a function. Defaults to 256MB.
 	AvailableMemoryMb *int `pulumi:"availableMemoryMb"`
 	// Build environment variables that shall be available during build time.
 	BuildEnvironmentVariables map[string]string `pulumi:"buildEnvironmentVariables"`
+	// Optional. A service account the user provides for use with Cloud Build.
+	BuildServiceAccount *string `pulumi:"buildServiceAccount"`
 	// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
 	BuildWorkerPool *string `pulumi:"buildWorkerPool"`
 	// User-provided description of a function.
 	Description *string `pulumi:"description"`
-	// Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+	// Docker Registry to use for this deployment. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
 	DockerRegistry *FunctionDockerRegistry `pulumi:"dockerRegistry"`
 	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
 	DockerRepository *string `pulumi:"dockerRepository"`
@@ -168,8 +175,9 @@ type functionArgs struct {
 	// Deprecated: use vpc_connector
 	//
 	// Deprecated: Deprecated: use vpc_connector
-	Network *string `pulumi:"network"`
-	Project *string `pulumi:"project"`
+	Network              *string               `pulumi:"network"`
+	OnDeployUpdatePolicy *OnDeployUpdatePolicy `pulumi:"onDeployUpdatePolicy"`
+	Project              *string               `pulumi:"project"`
 	// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
 	Runtime *string `pulumi:"runtime"`
 	// Secret environment variables configuration.
@@ -196,15 +204,18 @@ type functionArgs struct {
 
 // The set of arguments for constructing a Function resource.
 type FunctionArgs struct {
+	AutomaticUpdatePolicy AutomaticUpdatePolicyPtrInput
 	// The amount of memory in MB available for a function. Defaults to 256MB.
 	AvailableMemoryMb pulumi.IntPtrInput
 	// Build environment variables that shall be available during build time.
 	BuildEnvironmentVariables pulumi.StringMapInput
+	// Optional. A service account the user provides for use with Cloud Build.
+	BuildServiceAccount pulumi.StringPtrInput
 	// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
 	BuildWorkerPool pulumi.StringPtrInput
 	// User-provided description of a function.
 	Description pulumi.StringPtrInput
-	// Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+	// Docker Registry to use for this deployment. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
 	DockerRegistry FunctionDockerRegistryPtrInput
 	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
 	DockerRepository pulumi.StringPtrInput
@@ -232,8 +243,9 @@ type FunctionArgs struct {
 	// Deprecated: use vpc_connector
 	//
 	// Deprecated: Deprecated: use vpc_connector
-	Network pulumi.StringPtrInput
-	Project pulumi.StringPtrInput
+	Network              pulumi.StringPtrInput
+	OnDeployUpdatePolicy OnDeployUpdatePolicyPtrInput
+	Project              pulumi.StringPtrInput
 	// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
 	Runtime pulumi.StringPtrInput
 	// Secret environment variables configuration.
@@ -295,6 +307,10 @@ func (o FunctionOutput) ToFunctionOutputWithContext(ctx context.Context) Functio
 	return o
 }
 
+func (o FunctionOutput) AutomaticUpdatePolicy() AutomaticUpdatePolicyResponseOutput {
+	return o.ApplyT(func(v *Function) AutomaticUpdatePolicyResponseOutput { return v.AutomaticUpdatePolicy }).(AutomaticUpdatePolicyResponseOutput)
+}
+
 // The amount of memory in MB available for a function. Defaults to 256MB.
 func (o FunctionOutput) AvailableMemoryMb() pulumi.IntOutput {
 	return o.ApplyT(func(v *Function) pulumi.IntOutput { return v.AvailableMemoryMb }).(pulumi.IntOutput)
@@ -315,6 +331,11 @@ func (o FunctionOutput) BuildName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.BuildName }).(pulumi.StringOutput)
 }
 
+// Optional. A service account the user provides for use with Cloud Build.
+func (o FunctionOutput) BuildServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.BuildServiceAccount }).(pulumi.StringOutput)
+}
+
 // Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
 func (o FunctionOutput) BuildWorkerPool() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.BuildWorkerPool }).(pulumi.StringOutput)
@@ -325,7 +346,7 @@ func (o FunctionOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+// Docker Registry to use for this deployment. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If `docker_repository` field is specified, this field should either be left unspecified or set to `ARTIFACT_REGISTRY`.
 func (o FunctionOutput) DockerRegistry() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.DockerRegistry }).(pulumi.StringOutput)
 }
@@ -394,6 +415,10 @@ func (o FunctionOutput) Name() pulumi.StringOutput {
 // Deprecated: Deprecated: use vpc_connector
 func (o FunctionOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o FunctionOutput) OnDeployUpdatePolicy() OnDeployUpdatePolicyResponseOutput {
+	return o.ApplyT(func(v *Function) OnDeployUpdatePolicyResponseOutput { return v.OnDeployUpdatePolicy }).(OnDeployUpdatePolicyResponseOutput)
 }
 
 func (o FunctionOutput) Project() pulumi.StringOutput {

@@ -40,6 +40,8 @@ type LookupReleaseResult struct {
 	Condition ReleaseConditionResponse `pulumi:"condition"`
 	// Time at which the `Release` was created.
 	CreateTime string `pulumi:"createTime"`
+	// Snapshot of the custom target types referenced by the targets taken at release creation time.
+	CustomTargetTypeSnapshots []CustomTargetTypeResponse `pulumi:"customTargetTypeSnapshots"`
 	// Snapshot of the parent pipeline taken at release creation time.
 	DeliveryPipelineSnapshot DeliveryPipelineResponse `pulumi:"deliveryPipelineSnapshot"`
 	// Optional. The deploy parameters to use for all targets in this release.
@@ -135,6 +137,11 @@ func (o LookupReleaseResultOutput) Condition() ReleaseConditionResponseOutput {
 // Time at which the `Release` was created.
 func (o LookupReleaseResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReleaseResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Snapshot of the custom target types referenced by the targets taken at release creation time.
+func (o LookupReleaseResultOutput) CustomTargetTypeSnapshots() CustomTargetTypeResponseArrayOutput {
+	return o.ApplyT(func(v LookupReleaseResult) []CustomTargetTypeResponse { return v.CustomTargetTypeSnapshots }).(CustomTargetTypeResponseArrayOutput)
 }
 
 // Snapshot of the parent pipeline taken at release creation time.

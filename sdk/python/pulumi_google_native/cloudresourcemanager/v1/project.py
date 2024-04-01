@@ -23,7 +23,8 @@ class ProjectArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input['ResourceIdArgs']] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 project_number: Optional[pulumi.Input[str]] = None):
+                 project_number: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Project resource.
         :param pulumi.Input[str] create_time: Creation time. Read-only.
@@ -33,6 +34,7 @@ class ProjectArgs:
         :param pulumi.Input['ResourceIdArgs'] parent: An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent.
         :param pulumi.Input[str] project_id: The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
         :param pulumi.Input[str] project_number: The number uniquely identifying the project. Example: `415104041262` Read-only.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -48,6 +50,8 @@ class ProjectArgs:
             pulumi.set(__self__, "project_id", project_id)
         if project_number is not None:
             pulumi.set(__self__, "project_number", project_number)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="createTime")
@@ -133,6 +137,18 @@ class ProjectArgs:
     def project_number(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_number", value)
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 class Project(pulumi.CustomResource):
     @overload
@@ -146,6 +162,7 @@ class Project(pulumi.CustomResource):
                  parent: Optional[pulumi.Input[pulumi.InputType['ResourceIdArgs']]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Request that a new Project be created. The result is an Operation which can be used to track the creation process. This process usually takes a few seconds, but can sometimes take much longer. The tracking Operation is automatically deleted after a few hours, so there is no need to call DeleteOperation. Authorization requires the Google IAM permission `resourcemanager.projects.create` on the specified parent for the new project. The parent is identified by a specified ResourceId, which must include both an ID and a type, such as organization. This method does not associate the new project with a billing account. You can set or update the billing account associated with a project using the [`projects.updateBillingInfo`] (/billing/reference/rest/v1/projects/updateBillingInfo) method.
@@ -159,6 +176,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ResourceIdArgs']] parent: An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent.
         :param pulumi.Input[str] project_id: The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
         :param pulumi.Input[str] project_number: The number uniquely identifying the project. Example: `415104041262` Read-only.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
         """
         ...
     @overload
@@ -191,6 +209,7 @@ class Project(pulumi.CustomResource):
                  parent: Optional[pulumi.Input[pulumi.InputType['ResourceIdArgs']]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -207,6 +226,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["parent"] = parent
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["project_number"] = project_number
+            __props__.__dict__["tags"] = tags
         super(Project, __self__).__init__(
             'google-native:cloudresourcemanager/v1:Project',
             resource_name,
@@ -236,6 +256,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["parent"] = None
         __props__.__dict__["project_id"] = None
         __props__.__dict__["project_number"] = None
+        __props__.__dict__["tags"] = None
         return Project(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -293,4 +314,12 @@ class Project(pulumi.CustomResource):
         The number uniquely identifying the project. Example: `415104041262` Read-only.
         """
         return pulumi.get(self, "project_number")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note: Currently this field is in Preview.
+        """
+        return pulumi.get(self, "tags")
 

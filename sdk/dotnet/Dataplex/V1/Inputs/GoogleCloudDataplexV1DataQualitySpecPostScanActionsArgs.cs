@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         [Input("bigqueryExport")]
         public Input<Inputs.GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportArgs>? BigqueryExport { get; set; }
 
+        /// <summary>
+        /// Optional. If set, results will be sent to the provided notification receipts upon triggers.
+        /// </summary>
+        [Input("notificationReport")]
+        public Input<Inputs.GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReportArgs>? NotificationReport { get; set; }
+
         public GoogleCloudDataplexV1DataQualitySpecPostScanActionsArgs()
         {
         }

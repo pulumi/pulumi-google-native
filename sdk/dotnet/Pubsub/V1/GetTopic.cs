@@ -58,6 +58,10 @@ namespace Pulumi.GoogleNative.Pubsub.V1
     public sealed class GetTopicResult
     {
         /// <summary>
+        /// Optional. Settings for ingestion from a data source into this topic.
+        /// </summary>
+        public readonly Outputs.IngestionDataSourceSettingsResponse IngestionDataSourceSettings;
+        /// <summary>
         /// Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         /// </summary>
         public readonly string KmsKeyName;
@@ -85,9 +89,15 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         /// Optional. Settings for validating messages published against a schema.
         /// </summary>
         public readonly Outputs.SchemaSettingsResponse SchemaSettings;
+        /// <summary>
+        /// An output-only field indicating the state of the topic.
+        /// </summary>
+        public readonly string State;
 
         [OutputConstructor]
         private GetTopicResult(
+            Outputs.IngestionDataSourceSettingsResponse ingestionDataSourceSettings,
+
             string kmsKeyName,
 
             ImmutableDictionary<string, string> labels,
@@ -100,8 +110,11 @@ namespace Pulumi.GoogleNative.Pubsub.V1
 
             bool satisfiesPzs,
 
-            Outputs.SchemaSettingsResponse schemaSettings)
+            Outputs.SchemaSettingsResponse schemaSettings,
+
+            string state)
         {
+            IngestionDataSourceSettings = ingestionDataSourceSettings;
             KmsKeyName = kmsKeyName;
             Labels = labels;
             MessageRetentionDuration = messageRetentionDuration;
@@ -109,6 +122,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
             Name = name;
             SatisfiesPzs = satisfiesPzs;
             SchemaSettings = schemaSettings;
+            State = state;
         }
     }
 }

@@ -16,13 +16,12 @@ __all__ = ['MessageArgs', 'Message']
 @pulumi.input_type
 class MessageArgs:
     def __init__(__self__, *,
+                 data: pulumi.Input[str],
                  dataset_id: pulumi.Input[str],
                  hl7_v2_store_id: pulumi.Input[str],
-                 data: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  message_type: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  patient_ids: Optional[pulumi.Input[Sequence[pulumi.Input['PatientIdArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schematized_data: Optional[pulumi.Input['SchematizedDataArgs']] = None,
@@ -33,24 +32,20 @@ class MessageArgs:
         :param pulumi.Input[str] data: Raw message bytes.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \\p{Ll}\\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
         :param pulumi.Input[str] message_type: The message type for this message. MSH-9.1.
-        :param pulumi.Input[str] name: Resource name of the Message, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
         :param pulumi.Input[Sequence[pulumi.Input['PatientIdArgs']]] patient_ids: All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
         :param pulumi.Input['SchematizedDataArgs'] schematized_data: The parsed version of the raw message data schematized according to this store's schemas and type definitions.
         :param pulumi.Input[str] send_facility: The hospital that this message came from. MSH-4.
         :param pulumi.Input[str] send_time: The datetime the sending application sent this message. MSH-7.
         """
+        pulumi.set(__self__, "data", data)
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "hl7_v2_store_id", hl7_v2_store_id)
-        if data is not None:
-            pulumi.set(__self__, "data", data)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if message_type is not None:
             pulumi.set(__self__, "message_type", message_type)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if patient_ids is not None:
             pulumi.set(__self__, "patient_ids", patient_ids)
         if project is not None:
@@ -61,6 +56,18 @@ class MessageArgs:
             pulumi.set(__self__, "send_facility", send_facility)
         if send_time is not None:
             pulumi.set(__self__, "send_time", send_time)
+
+    @property
+    @pulumi.getter
+    def data(self) -> pulumi.Input[str]:
+        """
+        Raw message bytes.
+        """
+        return pulumi.get(self, "data")
+
+    @data.setter
+    def data(self, value: pulumi.Input[str]):
+        pulumi.set(self, "data", value)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -79,18 +86,6 @@ class MessageArgs:
     @hl7_v2_store_id.setter
     def hl7_v2_store_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "hl7_v2_store_id", value)
-
-    @property
-    @pulumi.getter
-    def data(self) -> Optional[pulumi.Input[str]]:
-        """
-        Raw message bytes.
-        """
-        return pulumi.get(self, "data")
-
-    @data.setter
-    def data(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "data", value)
 
     @property
     @pulumi.getter
@@ -124,18 +119,6 @@ class MessageArgs:
     @message_type.setter
     def message_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "message_type", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Resource name of the Message, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="patientIds")
@@ -206,7 +189,6 @@ class Message(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  message_type: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  patient_ids: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PatientIdArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schematized_data: Optional[pulumi.Input[pulumi.InputType['SchematizedDataArgs']]] = None,
@@ -215,13 +197,13 @@ class Message(pulumi.CustomResource):
                  __props__=None):
         """
         Parses and stores an HL7v2 message. This method triggers an asynchronous notification to any Pub/Sub topic configured in Hl7V2Store.Hl7V2NotificationConfig, if the filtering matches the message. If an MLLP adapter is configured to listen to a Pub/Sub topic, the adapter transmits the message when a notification is received.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] data: Raw message bytes.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \\p{Ll}\\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
         :param pulumi.Input[str] message_type: The message type for this message. MSH-9.1.
-        :param pulumi.Input[str] name: Resource name of the Message, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PatientIdArgs']]]] patient_ids: All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
         :param pulumi.Input[pulumi.InputType['SchematizedDataArgs']] schematized_data: The parsed version of the raw message data schematized according to this store's schemas and type definitions.
         :param pulumi.Input[str] send_facility: The hospital that this message came from. MSH-4.
@@ -235,6 +217,7 @@ class Message(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Parses and stores an HL7v2 message. This method triggers an asynchronous notification to any Pub/Sub topic configured in Hl7V2Store.Hl7V2NotificationConfig, if the filtering matches the message. If an MLLP adapter is configured to listen to a Pub/Sub topic, the adapter transmits the message when a notification is received.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param MessageArgs args: The arguments to use to populate this resource's properties.
@@ -257,7 +240,6 @@ class Message(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  message_type: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  patient_ids: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PatientIdArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  schematized_data: Optional[pulumi.Input[pulumi.InputType['SchematizedDataArgs']]] = None,
@@ -272,6 +254,8 @@ class Message(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MessageArgs.__new__(MessageArgs)
 
+            if data is None and not opts.urn:
+                raise TypeError("Missing required property 'data'")
             __props__.__dict__["data"] = data
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
@@ -282,13 +266,13 @@ class Message(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["message_type"] = message_type
-            __props__.__dict__["name"] = name
             __props__.__dict__["patient_ids"] = patient_ids
             __props__.__dict__["project"] = project
             __props__.__dict__["schematized_data"] = schematized_data
             __props__.__dict__["send_facility"] = send_facility
             __props__.__dict__["send_time"] = send_time
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["name"] = None
             __props__.__dict__["parsed_data"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["dataset_id", "hl7_v2_store_id", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)

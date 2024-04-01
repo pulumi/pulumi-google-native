@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         public Output<Outputs.MosaicLayoutResponse> MosaicLayout { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The resource name of the dashboard.
+        /// Identifier. The resource name of the dashboard.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         public Input<Inputs.MosaicLayoutArgs>? MosaicLayout { get; set; }
 
         /// <summary>
-        /// Immutable. The resource name of the dashboard.
+        /// Identifier. The resource name of the dashboard.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

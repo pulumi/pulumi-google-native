@@ -337,6 +337,198 @@ func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConf
 	}).(AuditLogConfigResponseOutput)
 }
 
+// Defines an automated backup policy for a table
+type AutomatedBackupPolicy struct {
+	// How frequently automated backups should occur. The only supported value at this time is 24 hours.
+	Frequency string `pulumi:"frequency"`
+	// How long the automated backups should be retained. The only supported value at this time is 3 days.
+	RetentionPeriod string `pulumi:"retentionPeriod"`
+}
+
+// AutomatedBackupPolicyInput is an input type that accepts AutomatedBackupPolicyArgs and AutomatedBackupPolicyOutput values.
+// You can construct a concrete instance of `AutomatedBackupPolicyInput` via:
+//
+//	AutomatedBackupPolicyArgs{...}
+type AutomatedBackupPolicyInput interface {
+	pulumi.Input
+
+	ToAutomatedBackupPolicyOutput() AutomatedBackupPolicyOutput
+	ToAutomatedBackupPolicyOutputWithContext(context.Context) AutomatedBackupPolicyOutput
+}
+
+// Defines an automated backup policy for a table
+type AutomatedBackupPolicyArgs struct {
+	// How frequently automated backups should occur. The only supported value at this time is 24 hours.
+	Frequency pulumi.StringInput `pulumi:"frequency"`
+	// How long the automated backups should be retained. The only supported value at this time is 3 days.
+	RetentionPeriod pulumi.StringInput `pulumi:"retentionPeriod"`
+}
+
+func (AutomatedBackupPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomatedBackupPolicy)(nil)).Elem()
+}
+
+func (i AutomatedBackupPolicyArgs) ToAutomatedBackupPolicyOutput() AutomatedBackupPolicyOutput {
+	return i.ToAutomatedBackupPolicyOutputWithContext(context.Background())
+}
+
+func (i AutomatedBackupPolicyArgs) ToAutomatedBackupPolicyOutputWithContext(ctx context.Context) AutomatedBackupPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomatedBackupPolicyOutput)
+}
+
+func (i AutomatedBackupPolicyArgs) ToAutomatedBackupPolicyPtrOutput() AutomatedBackupPolicyPtrOutput {
+	return i.ToAutomatedBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i AutomatedBackupPolicyArgs) ToAutomatedBackupPolicyPtrOutputWithContext(ctx context.Context) AutomatedBackupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomatedBackupPolicyOutput).ToAutomatedBackupPolicyPtrOutputWithContext(ctx)
+}
+
+// AutomatedBackupPolicyPtrInput is an input type that accepts AutomatedBackupPolicyArgs, AutomatedBackupPolicyPtr and AutomatedBackupPolicyPtrOutput values.
+// You can construct a concrete instance of `AutomatedBackupPolicyPtrInput` via:
+//
+//	        AutomatedBackupPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type AutomatedBackupPolicyPtrInput interface {
+	pulumi.Input
+
+	ToAutomatedBackupPolicyPtrOutput() AutomatedBackupPolicyPtrOutput
+	ToAutomatedBackupPolicyPtrOutputWithContext(context.Context) AutomatedBackupPolicyPtrOutput
+}
+
+type automatedBackupPolicyPtrType AutomatedBackupPolicyArgs
+
+func AutomatedBackupPolicyPtr(v *AutomatedBackupPolicyArgs) AutomatedBackupPolicyPtrInput {
+	return (*automatedBackupPolicyPtrType)(v)
+}
+
+func (*automatedBackupPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomatedBackupPolicy)(nil)).Elem()
+}
+
+func (i *automatedBackupPolicyPtrType) ToAutomatedBackupPolicyPtrOutput() AutomatedBackupPolicyPtrOutput {
+	return i.ToAutomatedBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *automatedBackupPolicyPtrType) ToAutomatedBackupPolicyPtrOutputWithContext(ctx context.Context) AutomatedBackupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomatedBackupPolicyPtrOutput)
+}
+
+// Defines an automated backup policy for a table
+type AutomatedBackupPolicyOutput struct{ *pulumi.OutputState }
+
+func (AutomatedBackupPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomatedBackupPolicy)(nil)).Elem()
+}
+
+func (o AutomatedBackupPolicyOutput) ToAutomatedBackupPolicyOutput() AutomatedBackupPolicyOutput {
+	return o
+}
+
+func (o AutomatedBackupPolicyOutput) ToAutomatedBackupPolicyOutputWithContext(ctx context.Context) AutomatedBackupPolicyOutput {
+	return o
+}
+
+func (o AutomatedBackupPolicyOutput) ToAutomatedBackupPolicyPtrOutput() AutomatedBackupPolicyPtrOutput {
+	return o.ToAutomatedBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o AutomatedBackupPolicyOutput) ToAutomatedBackupPolicyPtrOutputWithContext(ctx context.Context) AutomatedBackupPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutomatedBackupPolicy) *AutomatedBackupPolicy {
+		return &v
+	}).(AutomatedBackupPolicyPtrOutput)
+}
+
+// How frequently automated backups should occur. The only supported value at this time is 24 hours.
+func (o AutomatedBackupPolicyOutput) Frequency() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomatedBackupPolicy) string { return v.Frequency }).(pulumi.StringOutput)
+}
+
+// How long the automated backups should be retained. The only supported value at this time is 3 days.
+func (o AutomatedBackupPolicyOutput) RetentionPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomatedBackupPolicy) string { return v.RetentionPeriod }).(pulumi.StringOutput)
+}
+
+type AutomatedBackupPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (AutomatedBackupPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomatedBackupPolicy)(nil)).Elem()
+}
+
+func (o AutomatedBackupPolicyPtrOutput) ToAutomatedBackupPolicyPtrOutput() AutomatedBackupPolicyPtrOutput {
+	return o
+}
+
+func (o AutomatedBackupPolicyPtrOutput) ToAutomatedBackupPolicyPtrOutputWithContext(ctx context.Context) AutomatedBackupPolicyPtrOutput {
+	return o
+}
+
+func (o AutomatedBackupPolicyPtrOutput) Elem() AutomatedBackupPolicyOutput {
+	return o.ApplyT(func(v *AutomatedBackupPolicy) AutomatedBackupPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret AutomatedBackupPolicy
+		return ret
+	}).(AutomatedBackupPolicyOutput)
+}
+
+// How frequently automated backups should occur. The only supported value at this time is 24 hours.
+func (o AutomatedBackupPolicyPtrOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomatedBackupPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Frequency
+	}).(pulumi.StringPtrOutput)
+}
+
+// How long the automated backups should be retained. The only supported value at this time is 3 days.
+func (o AutomatedBackupPolicyPtrOutput) RetentionPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomatedBackupPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RetentionPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines an automated backup policy for a table
+type AutomatedBackupPolicyResponse struct {
+	// How frequently automated backups should occur. The only supported value at this time is 24 hours.
+	Frequency string `pulumi:"frequency"`
+	// How long the automated backups should be retained. The only supported value at this time is 3 days.
+	RetentionPeriod string `pulumi:"retentionPeriod"`
+}
+
+// Defines an automated backup policy for a table
+type AutomatedBackupPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (AutomatedBackupPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomatedBackupPolicyResponse)(nil)).Elem()
+}
+
+func (o AutomatedBackupPolicyResponseOutput) ToAutomatedBackupPolicyResponseOutput() AutomatedBackupPolicyResponseOutput {
+	return o
+}
+
+func (o AutomatedBackupPolicyResponseOutput) ToAutomatedBackupPolicyResponseOutputWithContext(ctx context.Context) AutomatedBackupPolicyResponseOutput {
+	return o
+}
+
+// How frequently automated backups should occur. The only supported value at this time is 24 hours.
+func (o AutomatedBackupPolicyResponseOutput) Frequency() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomatedBackupPolicyResponse) string { return v.Frequency }).(pulumi.StringOutput)
+}
+
+// How long the automated backups should be retained. The only supported value at this time is 3 days.
+func (o AutomatedBackupPolicyResponseOutput) RetentionPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomatedBackupPolicyResponse) string { return v.RetentionPeriod }).(pulumi.StringOutput)
+}
+
 // Limits for the number of nodes a Cluster can autoscale up/down to.
 type AutoscalingLimits struct {
 	// Maximum number of nodes to scale up to.
@@ -727,7 +919,7 @@ type BackupInfoResponse struct {
 	Backup string `pulumi:"backup"`
 	// This time that the backup was finished. Row data in the backup will be no newer than this timestamp.
 	EndTime string `pulumi:"endTime"`
-	// Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//backups/.
+	// Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//clusters//backups/
 	SourceBackup string `pulumi:"sourceBackup"`
 	// Name of the table the backup was created from.
 	SourceTable string `pulumi:"sourceTable"`
@@ -760,7 +952,7 @@ func (o BackupInfoResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v BackupInfoResponse) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//backups/.
+// Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//clusters//backups/
 func (o BackupInfoResponseOutput) SourceBackup() pulumi.StringOutput {
 	return o.ApplyT(func(v BackupInfoResponse) string { return v.SourceBackup }).(pulumi.StringOutput)
 }
@@ -779,9 +971,9 @@ func (o BackupInfoResponseOutput) StartTime() pulumi.StringOutput {
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role *string `pulumi:"role"`
 }
 
@@ -800,9 +992,9 @@ type BindingInput interface {
 type BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -863,12 +1055,12 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -897,9 +1089,9 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 	Role string `pulumi:"role"`
 }
 
@@ -923,12 +1115,12 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
 func (o BindingResponseOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -1477,6 +1669,174 @@ func (o ClusterConfigResponseOutput) ClusterAutoscalingConfig() ClusterAutoscali
 	return o.ApplyT(func(v ClusterConfigResponse) ClusterAutoscalingConfigResponse { return v.ClusterAutoscalingConfig }).(ClusterAutoscalingConfigResponseOutput)
 }
 
+// Data Boost is a serverless compute capability that lets you run high-throughput read jobs on your Bigtable data, without impacting the performance of the clusters that handle your application traffic. Currently, Data Boost exclusively supports read-only use-cases with single-cluster routing. Data Boost reads are only guaranteed to see the results of writes that were written at least 30 minutes ago. This means newly written values may not become visible for up to 30m, and also means that old values may remain visible for up to 30m after being deleted or overwritten. To mitigate the staleness of the data, users may either wait 30m, or use CheckConsistency.
+type DataBoostIsolationReadOnly struct {
+	// The Compute Billing Owner for this Data Boost App Profile.
+	ComputeBillingOwner *DataBoostIsolationReadOnlyComputeBillingOwner `pulumi:"computeBillingOwner"`
+}
+
+// DataBoostIsolationReadOnlyInput is an input type that accepts DataBoostIsolationReadOnlyArgs and DataBoostIsolationReadOnlyOutput values.
+// You can construct a concrete instance of `DataBoostIsolationReadOnlyInput` via:
+//
+//	DataBoostIsolationReadOnlyArgs{...}
+type DataBoostIsolationReadOnlyInput interface {
+	pulumi.Input
+
+	ToDataBoostIsolationReadOnlyOutput() DataBoostIsolationReadOnlyOutput
+	ToDataBoostIsolationReadOnlyOutputWithContext(context.Context) DataBoostIsolationReadOnlyOutput
+}
+
+// Data Boost is a serverless compute capability that lets you run high-throughput read jobs on your Bigtable data, without impacting the performance of the clusters that handle your application traffic. Currently, Data Boost exclusively supports read-only use-cases with single-cluster routing. Data Boost reads are only guaranteed to see the results of writes that were written at least 30 minutes ago. This means newly written values may not become visible for up to 30m, and also means that old values may remain visible for up to 30m after being deleted or overwritten. To mitigate the staleness of the data, users may either wait 30m, or use CheckConsistency.
+type DataBoostIsolationReadOnlyArgs struct {
+	// The Compute Billing Owner for this Data Boost App Profile.
+	ComputeBillingOwner DataBoostIsolationReadOnlyComputeBillingOwnerPtrInput `pulumi:"computeBillingOwner"`
+}
+
+func (DataBoostIsolationReadOnlyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataBoostIsolationReadOnly)(nil)).Elem()
+}
+
+func (i DataBoostIsolationReadOnlyArgs) ToDataBoostIsolationReadOnlyOutput() DataBoostIsolationReadOnlyOutput {
+	return i.ToDataBoostIsolationReadOnlyOutputWithContext(context.Background())
+}
+
+func (i DataBoostIsolationReadOnlyArgs) ToDataBoostIsolationReadOnlyOutputWithContext(ctx context.Context) DataBoostIsolationReadOnlyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataBoostIsolationReadOnlyOutput)
+}
+
+func (i DataBoostIsolationReadOnlyArgs) ToDataBoostIsolationReadOnlyPtrOutput() DataBoostIsolationReadOnlyPtrOutput {
+	return i.ToDataBoostIsolationReadOnlyPtrOutputWithContext(context.Background())
+}
+
+func (i DataBoostIsolationReadOnlyArgs) ToDataBoostIsolationReadOnlyPtrOutputWithContext(ctx context.Context) DataBoostIsolationReadOnlyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataBoostIsolationReadOnlyOutput).ToDataBoostIsolationReadOnlyPtrOutputWithContext(ctx)
+}
+
+// DataBoostIsolationReadOnlyPtrInput is an input type that accepts DataBoostIsolationReadOnlyArgs, DataBoostIsolationReadOnlyPtr and DataBoostIsolationReadOnlyPtrOutput values.
+// You can construct a concrete instance of `DataBoostIsolationReadOnlyPtrInput` via:
+//
+//	        DataBoostIsolationReadOnlyArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataBoostIsolationReadOnlyPtrInput interface {
+	pulumi.Input
+
+	ToDataBoostIsolationReadOnlyPtrOutput() DataBoostIsolationReadOnlyPtrOutput
+	ToDataBoostIsolationReadOnlyPtrOutputWithContext(context.Context) DataBoostIsolationReadOnlyPtrOutput
+}
+
+type dataBoostIsolationReadOnlyPtrType DataBoostIsolationReadOnlyArgs
+
+func DataBoostIsolationReadOnlyPtr(v *DataBoostIsolationReadOnlyArgs) DataBoostIsolationReadOnlyPtrInput {
+	return (*dataBoostIsolationReadOnlyPtrType)(v)
+}
+
+func (*dataBoostIsolationReadOnlyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataBoostIsolationReadOnly)(nil)).Elem()
+}
+
+func (i *dataBoostIsolationReadOnlyPtrType) ToDataBoostIsolationReadOnlyPtrOutput() DataBoostIsolationReadOnlyPtrOutput {
+	return i.ToDataBoostIsolationReadOnlyPtrOutputWithContext(context.Background())
+}
+
+func (i *dataBoostIsolationReadOnlyPtrType) ToDataBoostIsolationReadOnlyPtrOutputWithContext(ctx context.Context) DataBoostIsolationReadOnlyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataBoostIsolationReadOnlyPtrOutput)
+}
+
+// Data Boost is a serverless compute capability that lets you run high-throughput read jobs on your Bigtable data, without impacting the performance of the clusters that handle your application traffic. Currently, Data Boost exclusively supports read-only use-cases with single-cluster routing. Data Boost reads are only guaranteed to see the results of writes that were written at least 30 minutes ago. This means newly written values may not become visible for up to 30m, and also means that old values may remain visible for up to 30m after being deleted or overwritten. To mitigate the staleness of the data, users may either wait 30m, or use CheckConsistency.
+type DataBoostIsolationReadOnlyOutput struct{ *pulumi.OutputState }
+
+func (DataBoostIsolationReadOnlyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataBoostIsolationReadOnly)(nil)).Elem()
+}
+
+func (o DataBoostIsolationReadOnlyOutput) ToDataBoostIsolationReadOnlyOutput() DataBoostIsolationReadOnlyOutput {
+	return o
+}
+
+func (o DataBoostIsolationReadOnlyOutput) ToDataBoostIsolationReadOnlyOutputWithContext(ctx context.Context) DataBoostIsolationReadOnlyOutput {
+	return o
+}
+
+func (o DataBoostIsolationReadOnlyOutput) ToDataBoostIsolationReadOnlyPtrOutput() DataBoostIsolationReadOnlyPtrOutput {
+	return o.ToDataBoostIsolationReadOnlyPtrOutputWithContext(context.Background())
+}
+
+func (o DataBoostIsolationReadOnlyOutput) ToDataBoostIsolationReadOnlyPtrOutputWithContext(ctx context.Context) DataBoostIsolationReadOnlyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataBoostIsolationReadOnly) *DataBoostIsolationReadOnly {
+		return &v
+	}).(DataBoostIsolationReadOnlyPtrOutput)
+}
+
+// The Compute Billing Owner for this Data Boost App Profile.
+func (o DataBoostIsolationReadOnlyOutput) ComputeBillingOwner() DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput {
+	return o.ApplyT(func(v DataBoostIsolationReadOnly) *DataBoostIsolationReadOnlyComputeBillingOwner {
+		return v.ComputeBillingOwner
+	}).(DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput)
+}
+
+type DataBoostIsolationReadOnlyPtrOutput struct{ *pulumi.OutputState }
+
+func (DataBoostIsolationReadOnlyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataBoostIsolationReadOnly)(nil)).Elem()
+}
+
+func (o DataBoostIsolationReadOnlyPtrOutput) ToDataBoostIsolationReadOnlyPtrOutput() DataBoostIsolationReadOnlyPtrOutput {
+	return o
+}
+
+func (o DataBoostIsolationReadOnlyPtrOutput) ToDataBoostIsolationReadOnlyPtrOutputWithContext(ctx context.Context) DataBoostIsolationReadOnlyPtrOutput {
+	return o
+}
+
+func (o DataBoostIsolationReadOnlyPtrOutput) Elem() DataBoostIsolationReadOnlyOutput {
+	return o.ApplyT(func(v *DataBoostIsolationReadOnly) DataBoostIsolationReadOnly {
+		if v != nil {
+			return *v
+		}
+		var ret DataBoostIsolationReadOnly
+		return ret
+	}).(DataBoostIsolationReadOnlyOutput)
+}
+
+// The Compute Billing Owner for this Data Boost App Profile.
+func (o DataBoostIsolationReadOnlyPtrOutput) ComputeBillingOwner() DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput {
+	return o.ApplyT(func(v *DataBoostIsolationReadOnly) *DataBoostIsolationReadOnlyComputeBillingOwner {
+		if v == nil {
+			return nil
+		}
+		return v.ComputeBillingOwner
+	}).(DataBoostIsolationReadOnlyComputeBillingOwnerPtrOutput)
+}
+
+// Data Boost is a serverless compute capability that lets you run high-throughput read jobs on your Bigtable data, without impacting the performance of the clusters that handle your application traffic. Currently, Data Boost exclusively supports read-only use-cases with single-cluster routing. Data Boost reads are only guaranteed to see the results of writes that were written at least 30 minutes ago. This means newly written values may not become visible for up to 30m, and also means that old values may remain visible for up to 30m after being deleted or overwritten. To mitigate the staleness of the data, users may either wait 30m, or use CheckConsistency.
+type DataBoostIsolationReadOnlyResponse struct {
+	// The Compute Billing Owner for this Data Boost App Profile.
+	ComputeBillingOwner string `pulumi:"computeBillingOwner"`
+}
+
+// Data Boost is a serverless compute capability that lets you run high-throughput read jobs on your Bigtable data, without impacting the performance of the clusters that handle your application traffic. Currently, Data Boost exclusively supports read-only use-cases with single-cluster routing. Data Boost reads are only guaranteed to see the results of writes that were written at least 30 minutes ago. This means newly written values may not become visible for up to 30m, and also means that old values may remain visible for up to 30m after being deleted or overwritten. To mitigate the staleness of the data, users may either wait 30m, or use CheckConsistency.
+type DataBoostIsolationReadOnlyResponseOutput struct{ *pulumi.OutputState }
+
+func (DataBoostIsolationReadOnlyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataBoostIsolationReadOnlyResponse)(nil)).Elem()
+}
+
+func (o DataBoostIsolationReadOnlyResponseOutput) ToDataBoostIsolationReadOnlyResponseOutput() DataBoostIsolationReadOnlyResponseOutput {
+	return o
+}
+
+func (o DataBoostIsolationReadOnlyResponseOutput) ToDataBoostIsolationReadOnlyResponseOutputWithContext(ctx context.Context) DataBoostIsolationReadOnlyResponseOutput {
+	return o
+}
+
+// The Compute Billing Owner for this Data Boost App Profile.
+func (o DataBoostIsolationReadOnlyResponseOutput) ComputeBillingOwner() pulumi.StringOutput {
+	return o.ApplyT(func(v DataBoostIsolationReadOnlyResponse) string { return v.ComputeBillingOwner }).(pulumi.StringOutput)
+}
+
 // Cloud Key Management Service (Cloud KMS) settings for a CMEK-protected cluster.
 type EncryptionConfig struct {
 	// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
@@ -1925,6 +2285,200 @@ func (o ExprResponseOutput) Location() pulumi.StringOutput {
 // Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
 func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// Defines a simple AuthorizedView that is a subset of the underlying Table.
+type GoogleBigtableAdminV2AuthorizedViewSubsetView struct {
+	// Map from column family name to the columns in this family to be included in the AuthorizedView.
+	FamilySubsets map[string]string `pulumi:"familySubsets"`
+	// Row prefixes to be included in the AuthorizedView. To provide access to all rows, include the empty string as a prefix ("").
+	RowPrefixes []string `pulumi:"rowPrefixes"`
+}
+
+// GoogleBigtableAdminV2AuthorizedViewSubsetViewInput is an input type that accepts GoogleBigtableAdminV2AuthorizedViewSubsetViewArgs and GoogleBigtableAdminV2AuthorizedViewSubsetViewOutput values.
+// You can construct a concrete instance of `GoogleBigtableAdminV2AuthorizedViewSubsetViewInput` via:
+//
+//	GoogleBigtableAdminV2AuthorizedViewSubsetViewArgs{...}
+type GoogleBigtableAdminV2AuthorizedViewSubsetViewInput interface {
+	pulumi.Input
+
+	ToGoogleBigtableAdminV2AuthorizedViewSubsetViewOutput() GoogleBigtableAdminV2AuthorizedViewSubsetViewOutput
+	ToGoogleBigtableAdminV2AuthorizedViewSubsetViewOutputWithContext(context.Context) GoogleBigtableAdminV2AuthorizedViewSubsetViewOutput
+}
+
+// Defines a simple AuthorizedView that is a subset of the underlying Table.
+type GoogleBigtableAdminV2AuthorizedViewSubsetViewArgs struct {
+	// Map from column family name to the columns in this family to be included in the AuthorizedView.
+	FamilySubsets pulumi.StringMapInput `pulumi:"familySubsets"`
+	// Row prefixes to be included in the AuthorizedView. To provide access to all rows, include the empty string as a prefix ("").
+	RowPrefixes pulumi.StringArrayInput `pulumi:"rowPrefixes"`
+}
+
+func (GoogleBigtableAdminV2AuthorizedViewSubsetViewArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleBigtableAdminV2AuthorizedViewSubsetView)(nil)).Elem()
+}
+
+func (i GoogleBigtableAdminV2AuthorizedViewSubsetViewArgs) ToGoogleBigtableAdminV2AuthorizedViewSubsetViewOutput() GoogleBigtableAdminV2AuthorizedViewSubsetViewOutput {
+	return i.ToGoogleBigtableAdminV2AuthorizedViewSubsetViewOutputWithContext(context.Background())
+}
+
+func (i GoogleBigtableAdminV2AuthorizedViewSubsetViewArgs) ToGoogleBigtableAdminV2AuthorizedViewSubsetViewOutputWithContext(ctx context.Context) GoogleBigtableAdminV2AuthorizedViewSubsetViewOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleBigtableAdminV2AuthorizedViewSubsetViewOutput)
+}
+
+func (i GoogleBigtableAdminV2AuthorizedViewSubsetViewArgs) ToGoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput() GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput {
+	return i.ToGoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleBigtableAdminV2AuthorizedViewSubsetViewArgs) ToGoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutputWithContext(ctx context.Context) GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleBigtableAdminV2AuthorizedViewSubsetViewOutput).ToGoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutputWithContext(ctx)
+}
+
+// GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrInput is an input type that accepts GoogleBigtableAdminV2AuthorizedViewSubsetViewArgs, GoogleBigtableAdminV2AuthorizedViewSubsetViewPtr and GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput values.
+// You can construct a concrete instance of `GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrInput` via:
+//
+//	        GoogleBigtableAdminV2AuthorizedViewSubsetViewArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrInput interface {
+	pulumi.Input
+
+	ToGoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput() GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput
+	ToGoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutputWithContext(context.Context) GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput
+}
+
+type googleBigtableAdminV2AuthorizedViewSubsetViewPtrType GoogleBigtableAdminV2AuthorizedViewSubsetViewArgs
+
+func GoogleBigtableAdminV2AuthorizedViewSubsetViewPtr(v *GoogleBigtableAdminV2AuthorizedViewSubsetViewArgs) GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrInput {
+	return (*googleBigtableAdminV2AuthorizedViewSubsetViewPtrType)(v)
+}
+
+func (*googleBigtableAdminV2AuthorizedViewSubsetViewPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleBigtableAdminV2AuthorizedViewSubsetView)(nil)).Elem()
+}
+
+func (i *googleBigtableAdminV2AuthorizedViewSubsetViewPtrType) ToGoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput() GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput {
+	return i.ToGoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutputWithContext(context.Background())
+}
+
+func (i *googleBigtableAdminV2AuthorizedViewSubsetViewPtrType) ToGoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutputWithContext(ctx context.Context) GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput)
+}
+
+// Defines a simple AuthorizedView that is a subset of the underlying Table.
+type GoogleBigtableAdminV2AuthorizedViewSubsetViewOutput struct{ *pulumi.OutputState }
+
+func (GoogleBigtableAdminV2AuthorizedViewSubsetViewOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleBigtableAdminV2AuthorizedViewSubsetView)(nil)).Elem()
+}
+
+func (o GoogleBigtableAdminV2AuthorizedViewSubsetViewOutput) ToGoogleBigtableAdminV2AuthorizedViewSubsetViewOutput() GoogleBigtableAdminV2AuthorizedViewSubsetViewOutput {
+	return o
+}
+
+func (o GoogleBigtableAdminV2AuthorizedViewSubsetViewOutput) ToGoogleBigtableAdminV2AuthorizedViewSubsetViewOutputWithContext(ctx context.Context) GoogleBigtableAdminV2AuthorizedViewSubsetViewOutput {
+	return o
+}
+
+func (o GoogleBigtableAdminV2AuthorizedViewSubsetViewOutput) ToGoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput() GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput {
+	return o.ToGoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleBigtableAdminV2AuthorizedViewSubsetViewOutput) ToGoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutputWithContext(ctx context.Context) GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleBigtableAdminV2AuthorizedViewSubsetView) *GoogleBigtableAdminV2AuthorizedViewSubsetView {
+		return &v
+	}).(GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput)
+}
+
+// Map from column family name to the columns in this family to be included in the AuthorizedView.
+func (o GoogleBigtableAdminV2AuthorizedViewSubsetViewOutput) FamilySubsets() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleBigtableAdminV2AuthorizedViewSubsetView) map[string]string { return v.FamilySubsets }).(pulumi.StringMapOutput)
+}
+
+// Row prefixes to be included in the AuthorizedView. To provide access to all rows, include the empty string as a prefix ("").
+func (o GoogleBigtableAdminV2AuthorizedViewSubsetViewOutput) RowPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleBigtableAdminV2AuthorizedViewSubsetView) []string { return v.RowPrefixes }).(pulumi.StringArrayOutput)
+}
+
+type GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleBigtableAdminV2AuthorizedViewSubsetView)(nil)).Elem()
+}
+
+func (o GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput) ToGoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput() GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput {
+	return o
+}
+
+func (o GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput) ToGoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutputWithContext(ctx context.Context) GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput {
+	return o
+}
+
+func (o GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput) Elem() GoogleBigtableAdminV2AuthorizedViewSubsetViewOutput {
+	return o.ApplyT(func(v *GoogleBigtableAdminV2AuthorizedViewSubsetView) GoogleBigtableAdminV2AuthorizedViewSubsetView {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleBigtableAdminV2AuthorizedViewSubsetView
+		return ret
+	}).(GoogleBigtableAdminV2AuthorizedViewSubsetViewOutput)
+}
+
+// Map from column family name to the columns in this family to be included in the AuthorizedView.
+func (o GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput) FamilySubsets() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GoogleBigtableAdminV2AuthorizedViewSubsetView) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.FamilySubsets
+	}).(pulumi.StringMapOutput)
+}
+
+// Row prefixes to be included in the AuthorizedView. To provide access to all rows, include the empty string as a prefix ("").
+func (o GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput) RowPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleBigtableAdminV2AuthorizedViewSubsetView) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RowPrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Defines a simple AuthorizedView that is a subset of the underlying Table.
+type GoogleBigtableAdminV2AuthorizedViewSubsetViewResponse struct {
+	// Map from column family name to the columns in this family to be included in the AuthorizedView.
+	FamilySubsets map[string]string `pulumi:"familySubsets"`
+	// Row prefixes to be included in the AuthorizedView. To provide access to all rows, include the empty string as a prefix ("").
+	RowPrefixes []string `pulumi:"rowPrefixes"`
+}
+
+// Defines a simple AuthorizedView that is a subset of the underlying Table.
+type GoogleBigtableAdminV2AuthorizedViewSubsetViewResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleBigtableAdminV2AuthorizedViewSubsetViewResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleBigtableAdminV2AuthorizedViewSubsetViewResponse)(nil)).Elem()
+}
+
+func (o GoogleBigtableAdminV2AuthorizedViewSubsetViewResponseOutput) ToGoogleBigtableAdminV2AuthorizedViewSubsetViewResponseOutput() GoogleBigtableAdminV2AuthorizedViewSubsetViewResponseOutput {
+	return o
+}
+
+func (o GoogleBigtableAdminV2AuthorizedViewSubsetViewResponseOutput) ToGoogleBigtableAdminV2AuthorizedViewSubsetViewResponseOutputWithContext(ctx context.Context) GoogleBigtableAdminV2AuthorizedViewSubsetViewResponseOutput {
+	return o
+}
+
+// Map from column family name to the columns in this family to be included in the AuthorizedView.
+func (o GoogleBigtableAdminV2AuthorizedViewSubsetViewResponseOutput) FamilySubsets() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleBigtableAdminV2AuthorizedViewSubsetViewResponse) map[string]string {
+		return v.FamilySubsets
+	}).(pulumi.StringMapOutput)
+}
+
+// Row prefixes to be included in the AuthorizedView. To provide access to all rows, include the empty string as a prefix ("").
+func (o GoogleBigtableAdminV2AuthorizedViewSubsetViewResponseOutput) RowPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleBigtableAdminV2AuthorizedViewSubsetViewResponse) []string { return v.RowPrefixes }).(pulumi.StringArrayOutput)
 }
 
 // Read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes consistency to improve availability.
@@ -2676,6 +3230,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomatedBackupPolicyInput)(nil)).Elem(), AutomatedBackupPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomatedBackupPolicyPtrInput)(nil)).Elem(), AutomatedBackupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingLimitsInput)(nil)).Elem(), AutoscalingLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingLimitsPtrInput)(nil)).Elem(), AutoscalingLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingTargetsInput)(nil)).Elem(), AutoscalingTargetsArgs{})
@@ -2688,10 +3244,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingConfigPtrInput)(nil)).Elem(), ClusterAutoscalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterConfigInput)(nil)).Elem(), ClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterConfigPtrInput)(nil)).Elem(), ClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataBoostIsolationReadOnlyInput)(nil)).Elem(), DataBoostIsolationReadOnlyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataBoostIsolationReadOnlyPtrInput)(nil)).Elem(), DataBoostIsolationReadOnlyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigInput)(nil)).Elem(), EncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigPtrInput)(nil)).Elem(), EncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleBigtableAdminV2AuthorizedViewSubsetViewInput)(nil)).Elem(), GoogleBigtableAdminV2AuthorizedViewSubsetViewArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrInput)(nil)).Elem(), GoogleBigtableAdminV2AuthorizedViewSubsetViewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterRoutingUseAnyInput)(nil)).Elem(), MultiClusterRoutingUseAnyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterRoutingUseAnyPtrInput)(nil)).Elem(), MultiClusterRoutingUseAnyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SingleClusterRoutingInput)(nil)).Elem(), SingleClusterRoutingArgs{})
@@ -2708,6 +3268,9 @@ func init() {
 	pulumi.RegisterOutputType(AuditLogConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigResponseOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(AutomatedBackupPolicyOutput{})
+	pulumi.RegisterOutputType(AutomatedBackupPolicyPtrOutput{})
+	pulumi.RegisterOutputType(AutomatedBackupPolicyResponseOutput{})
 	pulumi.RegisterOutputType(AutoscalingLimitsOutput{})
 	pulumi.RegisterOutputType(AutoscalingLimitsPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalingLimitsResponseOutput{})
@@ -2728,6 +3291,9 @@ func init() {
 	pulumi.RegisterOutputType(ClusterConfigOutput{})
 	pulumi.RegisterOutputType(ClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterConfigResponseOutput{})
+	pulumi.RegisterOutputType(DataBoostIsolationReadOnlyOutput{})
+	pulumi.RegisterOutputType(DataBoostIsolationReadOnlyPtrOutput{})
+	pulumi.RegisterOutputType(DataBoostIsolationReadOnlyResponseOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigResponseOutput{})
@@ -2735,6 +3301,9 @@ func init() {
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(GoogleBigtableAdminV2AuthorizedViewSubsetViewOutput{})
+	pulumi.RegisterOutputType(GoogleBigtableAdminV2AuthorizedViewSubsetViewPtrOutput{})
+	pulumi.RegisterOutputType(GoogleBigtableAdminV2AuthorizedViewSubsetViewResponseOutput{})
 	pulumi.RegisterOutputType(MultiClusterRoutingUseAnyOutput{})
 	pulumi.RegisterOutputType(MultiClusterRoutingUseAnyPtrOutput{})
 	pulumi.RegisterOutputType(MultiClusterRoutingUseAnyResponseOutput{})

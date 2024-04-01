@@ -42,15 +42,19 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+     * Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
      */
     public readonly appEngine!: pulumi.Output<outputs.compute.beta.NetworkEndpointGroupAppEngineResponse>;
     /**
-     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+     * Only valid when networkEndpointType is GCE_VM_IP_PORT and the NEG is regional.
+     */
+    public readonly clientPortMappingMode!: pulumi.Output<string>;
+    /**
+     * Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
      */
     public readonly cloudFunction!: pulumi.Output<outputs.compute.beta.NetworkEndpointGroupCloudFunctionResponse>;
     /**
-     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+     * Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
      */
     public readonly cloudRun!: pulumi.Output<outputs.compute.beta.NetworkEndpointGroupCloudRunResponse>;
     /**
@@ -58,7 +62,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
-     * The default port used if the port number is not specified in the network endpoint.
+     * The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified.
      */
     public readonly defaultPort!: pulumi.Output<number>;
     /**
@@ -80,7 +84,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+     * The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified.
      */
     public readonly network!: pulumi.Output<string>;
     /**
@@ -90,7 +94,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     public readonly pscData!: pulumi.Output<outputs.compute.beta.NetworkEndpointGroupPscDataResponse>;
     /**
-     * The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+     * The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: asia-northeast3-cloudkms.googleapis.com
      */
     public readonly pscTargetService!: pulumi.Output<string>;
     public readonly region!: pulumi.Output<string>;
@@ -103,7 +107,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+     * Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
      */
     public readonly serverlessDeployment!: pulumi.Output<outputs.compute.beta.NetworkEndpointGroupServerlessDeploymentResponse>;
     /**
@@ -135,6 +139,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
             }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["appEngine"] = args ? args.appEngine : undefined;
+            resourceInputs["clientPortMappingMode"] = args ? args.clientPortMappingMode : undefined;
             resourceInputs["cloudFunction"] = args ? args.cloudFunction : undefined;
             resourceInputs["cloudRun"] = args ? args.cloudRun : undefined;
             resourceInputs["defaultPort"] = args ? args.defaultPort : undefined;
@@ -158,6 +163,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
         } else {
             resourceInputs["annotations"] = undefined /*out*/;
             resourceInputs["appEngine"] = undefined /*out*/;
+            resourceInputs["clientPortMappingMode"] = undefined /*out*/;
             resourceInputs["cloudFunction"] = undefined /*out*/;
             resourceInputs["cloudRun"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -195,19 +201,23 @@ export interface RegionNetworkEndpointGroupArgs {
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+     * Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
      */
     appEngine?: pulumi.Input<inputs.compute.beta.NetworkEndpointGroupAppEngineArgs>;
     /**
-     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+     * Only valid when networkEndpointType is GCE_VM_IP_PORT and the NEG is regional.
+     */
+    clientPortMappingMode?: pulumi.Input<enums.compute.beta.RegionNetworkEndpointGroupClientPortMappingMode>;
+    /**
+     * Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
      */
     cloudFunction?: pulumi.Input<inputs.compute.beta.NetworkEndpointGroupCloudFunctionArgs>;
     /**
-     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+     * Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine or cloudFunction may be set.
      */
     cloudRun?: pulumi.Input<inputs.compute.beta.NetworkEndpointGroupCloudRunArgs>;
     /**
-     * The default port used if the port number is not specified in the network endpoint.
+     * The default port used if the port number is not specified in the network endpoint. If the network endpoint type is either GCE_VM_IP, SERVERLESS or PRIVATE_SERVICE_CONNECT, this field must not be specified.
      */
     defaultPort?: pulumi.Input<number>;
     /**
@@ -225,7 +235,7 @@ export interface RegionNetworkEndpointGroupArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+     * The URL of the network to which all network endpoints in the NEG belong. Uses default project network if unspecified.
      */
     network?: pulumi.Input<string>;
     /**
@@ -235,7 +245,7 @@ export interface RegionNetworkEndpointGroupArgs {
     project?: pulumi.Input<string>;
     pscData?: pulumi.Input<inputs.compute.beta.NetworkEndpointGroupPscDataArgs>;
     /**
-     * The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+     * The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: asia-northeast3-cloudkms.googleapis.com
      */
     pscTargetService?: pulumi.Input<string>;
     region: pulumi.Input<string>;
@@ -244,7 +254,7 @@ export interface RegionNetworkEndpointGroupArgs {
      */
     requestId?: pulumi.Input<string>;
     /**
-     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+     * Only valid when networkEndpointType is SERVERLESS. Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
      */
     serverlessDeployment?: pulumi.Input<inputs.compute.beta.NetworkEndpointGroupServerlessDeploymentArgs>;
     /**

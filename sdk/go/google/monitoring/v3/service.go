@@ -41,7 +41,7 @@ type Service struct {
 	IstioCanonicalService IstioCanonicalServiceResponseOutput `pulumi:"istioCanonicalService"`
 	// Type used for Istio services scoped to an Istio mesh.
 	MeshIstio MeshIstioResponseOutput `pulumi:"meshIstio"`
-	// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
+	// Identifier. Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. The Service id to use for this Service. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
 	ServiceId pulumi.StringPtrOutput `pulumi:"serviceId"`
@@ -128,7 +128,7 @@ type serviceArgs struct {
 	IstioCanonicalService *IstioCanonicalService `pulumi:"istioCanonicalService"`
 	// Type used for Istio services scoped to an Istio mesh.
 	MeshIstio *MeshIstio `pulumi:"meshIstio"`
-	// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
+	// Identifier. Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
 	Name *string `pulumi:"name"`
 	// Optional. The Service id to use for this Service. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
 	ServiceId *string `pulumi:"serviceId"`
@@ -166,7 +166,7 @@ type ServiceArgs struct {
 	IstioCanonicalService IstioCanonicalServicePtrInput
 	// Type used for Istio services scoped to an Istio mesh.
 	MeshIstio MeshIstioPtrInput
-	// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
+	// Identifier. Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
 	Name pulumi.StringPtrInput
 	// Optional. The Service id to use for this Service. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
 	ServiceId pulumi.StringPtrInput
@@ -275,7 +275,7 @@ func (o ServiceOutput) MeshIstio() MeshIstioResponseOutput {
 	return o.ApplyT(func(v *Service) MeshIstioResponseOutput { return v.MeshIstio }).(MeshIstioResponseOutput)
 }
 
-// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
+// Identifier. Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
 func (o ServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -37,15 +37,23 @@ type LookupClusterResult struct {
 	DiscoveryEndpoints []DiscoveryEndpointResponse `pulumi:"discoveryEndpoints"`
 	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
 	Name string `pulumi:"name"`
+	// Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node.
+	NodeType string `pulumi:"nodeType"`
+	// Optional. Persistence config (RDB, AOF) for the cluster.
+	PersistenceConfig ClusterPersistenceConfigResponse `pulumi:"persistenceConfig"`
+	// Precise value of redis memory size in GB for the entire cluster.
+	PreciseSizeGb float64 `pulumi:"preciseSizeGb"`
 	// Each PscConfig configures the consumer network where IPs will be designated to the cluster for client access through Private Service Connect Automation. Currently, only one PscConfig is supported.
 	PscConfigs []PscConfigResponse `pulumi:"pscConfigs"`
 	// PSC connections for discovery of the cluster topology and accessing the cluster.
 	PscConnections []PscConnectionResponse `pulumi:"pscConnections"`
+	// Optional. Key/Value pairs of customer overrides for mutable Redis Configs
+	RedisConfigs map[string]string `pulumi:"redisConfigs"`
 	// Optional. The number of replica nodes per shard.
 	ReplicaCount int `pulumi:"replicaCount"`
 	// Number of shards for the Redis cluster.
 	ShardCount int `pulumi:"shardCount"`
-	// Redis memory size in GB for the entire cluster.
+	// Redis memory size in GB for the entire cluster rounded up to the next integer.
 	SizeGb int `pulumi:"sizeGb"`
 	// The current state of this cluster. Can be CREATING, READY, UPDATING, DELETING and SUSPENDED
 	State string `pulumi:"state"`
@@ -114,6 +122,21 @@ func (o LookupClusterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node.
+func (o LookupClusterResultOutput) NodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.NodeType }).(pulumi.StringOutput)
+}
+
+// Optional. Persistence config (RDB, AOF) for the cluster.
+func (o LookupClusterResultOutput) PersistenceConfig() ClusterPersistenceConfigResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) ClusterPersistenceConfigResponse { return v.PersistenceConfig }).(ClusterPersistenceConfigResponseOutput)
+}
+
+// Precise value of redis memory size in GB for the entire cluster.
+func (o LookupClusterResultOutput) PreciseSizeGb() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupClusterResult) float64 { return v.PreciseSizeGb }).(pulumi.Float64Output)
+}
+
 // Each PscConfig configures the consumer network where IPs will be designated to the cluster for client access through Private Service Connect Automation. Currently, only one PscConfig is supported.
 func (o LookupClusterResultOutput) PscConfigs() PscConfigResponseArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []PscConfigResponse { return v.PscConfigs }).(PscConfigResponseArrayOutput)
@@ -122,6 +145,11 @@ func (o LookupClusterResultOutput) PscConfigs() PscConfigResponseArrayOutput {
 // PSC connections for discovery of the cluster topology and accessing the cluster.
 func (o LookupClusterResultOutput) PscConnections() PscConnectionResponseArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []PscConnectionResponse { return v.PscConnections }).(PscConnectionResponseArrayOutput)
+}
+
+// Optional. Key/Value pairs of customer overrides for mutable Redis Configs
+func (o LookupClusterResultOutput) RedisConfigs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterResult) map[string]string { return v.RedisConfigs }).(pulumi.StringMapOutput)
 }
 
 // Optional. The number of replica nodes per shard.
@@ -134,7 +162,7 @@ func (o LookupClusterResultOutput) ShardCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupClusterResult) int { return v.ShardCount }).(pulumi.IntOutput)
 }
 
-// Redis memory size in GB for the entire cluster.
+// Redis memory size in GB for the entire cluster rounded up to the next integer.
 func (o LookupClusterResultOutput) SizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupClusterResult) int { return v.SizeGb }).(pulumi.IntOutput)
 }

@@ -52,6 +52,10 @@ export interface GetDnsAuthorizationResult {
      */
     readonly name: string;
     /**
+     * Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: - in location global: FIXED_RECORD.
+     */
+    readonly type: string;
+    /**
      * The last update timestamp of a DnsAuthorization.
      */
     readonly updateTime: string;

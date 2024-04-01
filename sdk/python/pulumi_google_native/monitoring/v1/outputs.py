@@ -30,6 +30,7 @@ __all__ = [
     'GaugeViewResponse',
     'GridLayoutResponse',
     'IncidentListResponse',
+    'IntervalResponse',
     'LogsPanelResponse',
     'MeasureResponse',
     'MonitoredResourceResponse',
@@ -43,6 +44,8 @@ __all__ = [
     'RowLayoutResponse',
     'RowResponse',
     'ScorecardResponse',
+    'SectionHeaderResponse',
+    'SingleViewGroupResponse',
     'SparkChartViewResponse',
     'StatisticalTimeSeriesFilterResponse',
     'TableDataSetResponse',
@@ -664,7 +667,7 @@ class DataSetResponse(dict):
 @pulumi.output_type
 class DimensionResponse(dict):
     """
-    Preview: A chart dimension for an SQL query. This is applied over the x-axis. This is a preview feature and may be subject to change before final release.
+    A chart dimension. Dimensions are a structured label, class, or category for a set of measurements in your data.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -705,7 +708,7 @@ class DimensionResponse(dict):
                  sort_order: str,
                  time_bin_size: str):
         """
-        Preview: A chart dimension for an SQL query. This is applied over the x-axis. This is a preview feature and may be subject to change before final release.
+        A chart dimension. Dimensions are a structured label, class, or category for a set of measurements in your data.
         :param str column: The name of the column in the source SQL query that is used to chart the dimension.
         :param str column_type: Optional. The type of the dimension column. This is relevant only if one of the bin_size fields is set. If it is empty, the type TIMESTAMP or INT64 will be assumed based on which bin_size field is set. If populated, this should be set to one of the following types: DATE, TIME, DATETIME, TIMESTAMP, BIGNUMERIC, INT64, NUMERIC, FLOAT64.
         :param float float_bin_size: Optional. float_bin_size is used when the column type used for a dimension is a floating point numeric column.
@@ -1000,6 +1003,58 @@ class IncidentListResponse(dict):
 
 
 @pulumi.output_type
+class IntervalResponse(dict):
+    """
+    Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive).The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IntervalResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IntervalResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IntervalResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_time: str,
+                 start_time: str):
+        """
+        Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive).The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time.
+        :param str end_time: Optional. Exclusive end of the interval.If specified, a Timestamp matching this interval will have to be before the end.
+        :param str start_time: Optional. Inclusive start of the interval.If specified, a Timestamp matching this interval will have to be the same or after the start.
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        Optional. Exclusive end of the interval.If specified, a Timestamp matching this interval will have to be before the end.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        Optional. Inclusive start of the interval.If specified, a Timestamp matching this interval will have to be the same or after the start.
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
 class LogsPanelResponse(dict):
     """
     A widget that displays a stream of log.
@@ -1052,7 +1107,7 @@ class LogsPanelResponse(dict):
 @pulumi.output_type
 class MeasureResponse(dict):
     """
-    Preview: A chart measure for an SQL query. This is applied over the y-axis. This is a preview feature and may be subject to change before final release.
+    A chart measure. Measures represent a measured property in your chart data such as rainfall in inches, number of units sold, revenue gained, etc.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1075,7 +1130,7 @@ class MeasureResponse(dict):
                  aggregation_function: 'outputs.AggregationFunctionResponse',
                  column: str):
         """
-        Preview: A chart measure for an SQL query. This is applied over the y-axis. This is a preview feature and may be subject to change before final release.
+        A chart measure. Measures represent a measured property in your chart data such as rainfall in inches, number of units sold, revenue gained, etc.
         :param 'AggregationFunctionResponse' aggregation_function: The aggregation function applied to the input column. This must not be set to "none" unless binning is disabled on the dimension. The aggregation function is used to group points on the dimension bins.
         :param str column: The column name within in the dataset used for the measure.
         """
@@ -1265,15 +1320,18 @@ class PickTimeSeriesFilterResponse(dict):
 
     def __init__(__self__, *,
                  direction: str,
+                 interval: 'outputs.IntervalResponse',
                  num_time_series: int,
                  ranking_method: str):
         """
         Describes a ranking-based time series filter. Each input time series is ranked with an aligner. The filter will allow up to num_time_series time series to pass through it, selecting them based on the relative ranking.For example, if ranking_method is METHOD_MEAN,direction is BOTTOM, and num_time_series is 3, then the 3 times series with the lowest mean values will pass through the filter.
         :param str direction: How to use the ranking to select time series that pass through the filter.
+        :param 'IntervalResponse' interval: Select the top N streams/time series within this time interval
         :param int num_time_series: How many time series to allow to pass through the filter.
         :param str ranking_method: ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
         """
         pulumi.set(__self__, "direction", direction)
+        pulumi.set(__self__, "interval", interval)
         pulumi.set(__self__, "num_time_series", num_time_series)
         pulumi.set(__self__, "ranking_method", ranking_method)
 
@@ -1284,6 +1342,14 @@ class PickTimeSeriesFilterResponse(dict):
         How to use the ranking to select time series that pass through the filter.
         """
         return pulumi.get(self, "direction")
+
+    @property
+    @pulumi.getter
+    def interval(self) -> 'outputs.IntervalResponse':
+        """
+        Select the top N streams/time series within this time interval
+        """
+        return pulumi.get(self, "interval")
 
     @property
     @pulumi.getter(name="numTimeSeries")
@@ -1329,18 +1395,40 @@ class PieChartDataSetResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 dimensions: Sequence['outputs.DimensionResponse'],
+                 measures: Sequence['outputs.MeasureResponse'],
                  min_alignment_period: str,
                  slice_name_template: str,
                  time_series_query: 'outputs.TimeSeriesQueryResponse'):
         """
         Groups a time series query definition.
+        :param Sequence['DimensionResponse'] dimensions: A dimension is a structured label, class, or category for a set of measurements in your data.
+        :param Sequence['MeasureResponse'] measures: A measure is a measured value of a property in your data. For example, rainfall in inches, number of units sold, revenue gained, etc.
         :param str min_alignment_period: Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
         :param str slice_name_template: Optional. A template for the name of the slice. This name will be displayed in the legend and the tooltip of the pie chart. It replaces the auto-generated names for the slices. For example, if the template is set to ${resource.labels.zone}, the zone's value will be used for the name instead of the default name.
         :param 'TimeSeriesQueryResponse' time_series_query: The query for the PieChart. See, google.monitoring.dashboard.v1.TimeSeriesQuery.
         """
+        pulumi.set(__self__, "dimensions", dimensions)
+        pulumi.set(__self__, "measures", measures)
         pulumi.set(__self__, "min_alignment_period", min_alignment_period)
         pulumi.set(__self__, "slice_name_template", slice_name_template)
         pulumi.set(__self__, "time_series_query", time_series_query)
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Sequence['outputs.DimensionResponse']:
+        """
+        A dimension is a structured label, class, or category for a set of measurements in your data.
+        """
+        return pulumi.get(self, "dimensions")
+
+    @property
+    @pulumi.getter
+    def measures(self) -> Sequence['outputs.MeasureResponse']:
+        """
+        A measure is a measured value of a property in your data. For example, rainfall in inches, number of units sold, revenue gained, etc.
+        """
+        return pulumi.get(self, "measures")
 
     @property
     @pulumi.getter(name="minAlignmentPeriod")
@@ -1607,6 +1695,68 @@ class ScorecardResponse(dict):
         Fields for querying time series data from the Stackdriver metrics API.
         """
         return pulumi.get(self, "time_series_query")
+
+
+@pulumi.output_type
+class SectionHeaderResponse(dict):
+    """
+    A widget that defines a new section header. Sections populate a table of contents and allow easier navigation of long-form content.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dividerBelow":
+            suggest = "divider_below"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SectionHeaderResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SectionHeaderResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SectionHeaderResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 divider_below: bool,
+                 subtitle: str):
+        """
+        A widget that defines a new section header. Sections populate a table of contents and allow easier navigation of long-form content.
+        :param bool divider_below: Whether to insert a divider below the section in the table of contents
+        :param str subtitle: The subtitle of the section
+        """
+        pulumi.set(__self__, "divider_below", divider_below)
+        pulumi.set(__self__, "subtitle", subtitle)
+
+    @property
+    @pulumi.getter(name="dividerBelow")
+    def divider_below(self) -> bool:
+        """
+        Whether to insert a divider below the section in the table of contents
+        """
+        return pulumi.get(self, "divider_below")
+
+    @property
+    @pulumi.getter
+    def subtitle(self) -> str:
+        """
+        The subtitle of the section
+        """
+        return pulumi.get(self, "subtitle")
+
+
+@pulumi.output_type
+class SingleViewGroupResponse(dict):
+    """
+    A widget that groups the other widgets by using a dropdown menu. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+    """
+    def __init__(__self__):
+        """
+        A widget that groups the other widgets by using a dropdown menu. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+        """
+        pass
 
 
 @pulumi.output_type
@@ -2539,6 +2689,10 @@ class WidgetResponse(dict):
             suggest = "logs_panel"
         elif key == "pieChart":
             suggest = "pie_chart"
+        elif key == "sectionHeader":
+            suggest = "section_header"
+        elif key == "singleViewGroup":
+            suggest = "single_view_group"
         elif key == "timeSeriesTable":
             suggest = "time_series_table"
         elif key == "xyChart":
@@ -2564,6 +2718,8 @@ class WidgetResponse(dict):
                  logs_panel: 'outputs.LogsPanelResponse',
                  pie_chart: 'outputs.PieChartResponse',
                  scorecard: 'outputs.ScorecardResponse',
+                 section_header: 'outputs.SectionHeaderResponse',
+                 single_view_group: 'outputs.SingleViewGroupResponse',
                  text: 'outputs.TextResponse',
                  time_series_table: 'outputs.TimeSeriesTableResponse',
                  title: str,
@@ -2578,6 +2734,8 @@ class WidgetResponse(dict):
         :param 'LogsPanelResponse' logs_panel: A widget that shows a stream of logs.
         :param 'PieChartResponse' pie_chart: A widget that displays timeseries data as a pie chart.
         :param 'ScorecardResponse' scorecard: A scorecard summarizing time series data.
+        :param 'SectionHeaderResponse' section_header: A widget that defines a section header for easier navigation of the dashboard.
+        :param 'SingleViewGroupResponse' single_view_group: A widget that groups the other widgets by using a dropdown menu.
         :param 'TextResponse' text: A raw string or markdown displaying textual content.
         :param 'TimeSeriesTableResponse' time_series_table: A widget that displays time series data in a tabular format.
         :param str title: Optional. The title of the widget.
@@ -2591,6 +2749,8 @@ class WidgetResponse(dict):
         pulumi.set(__self__, "logs_panel", logs_panel)
         pulumi.set(__self__, "pie_chart", pie_chart)
         pulumi.set(__self__, "scorecard", scorecard)
+        pulumi.set(__self__, "section_header", section_header)
+        pulumi.set(__self__, "single_view_group", single_view_group)
         pulumi.set(__self__, "text", text)
         pulumi.set(__self__, "time_series_table", time_series_table)
         pulumi.set(__self__, "title", title)
@@ -2659,6 +2819,22 @@ class WidgetResponse(dict):
         A scorecard summarizing time series data.
         """
         return pulumi.get(self, "scorecard")
+
+    @property
+    @pulumi.getter(name="sectionHeader")
+    def section_header(self) -> 'outputs.SectionHeaderResponse':
+        """
+        A widget that defines a section header for easier navigation of the dashboard.
+        """
+        return pulumi.get(self, "section_header")
+
+    @property
+    @pulumi.getter(name="singleViewGroup")
+    def single_view_group(self) -> 'outputs.SingleViewGroupResponse':
+        """
+        A widget that groups the other widgets by using a dropdown menu.
+        """
+        return pulumi.get(self, "single_view_group")
 
     @property
     @pulumi.getter

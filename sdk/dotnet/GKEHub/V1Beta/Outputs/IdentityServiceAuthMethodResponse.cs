@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Outputs
         /// </summary>
         public readonly Outputs.IdentityServiceGoogleConfigResponse GoogleConfig;
         /// <summary>
+        /// LDAP specific configuration.
+        /// </summary>
+        public readonly Outputs.IdentityServiceLdapConfigResponse LdapConfig;
+        /// <summary>
         /// Identifier for auth config.
         /// </summary>
         public readonly string Name;
@@ -36,6 +40,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Outputs
         /// Proxy server address to use for auth method.
         /// </summary>
         public readonly string Proxy;
+        /// <summary>
+        /// SAML specific configuration.
+        /// </summary>
+        public readonly Outputs.IdentityServiceSamlConfigResponse SamlConfig;
 
         [OutputConstructor]
         private IdentityServiceAuthMethodResponse(
@@ -43,17 +51,23 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Outputs
 
             Outputs.IdentityServiceGoogleConfigResponse googleConfig,
 
+            Outputs.IdentityServiceLdapConfigResponse ldapConfig,
+
             string name,
 
             Outputs.IdentityServiceOidcConfigResponse oidcConfig,
 
-            string proxy)
+            string proxy,
+
+            Outputs.IdentityServiceSamlConfigResponse samlConfig)
         {
             AzureadConfig = azureadConfig;
             GoogleConfig = googleConfig;
+            LdapConfig = ldapConfig;
             Name = name;
             OidcConfig = oidcConfig;
             Proxy = proxy;
+            SamlConfig = samlConfig;
         }
     }
 }

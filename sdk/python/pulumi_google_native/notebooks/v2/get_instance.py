@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, create_time=None, creator=None, disable_proxy_access=None, gce_setup=None, health_info=None, health_state=None, instance_owners=None, labels=None, name=None, proxy_uri=None, state=None, update_time=None, upgrade_history=None):
+    def __init__(__self__, create_time=None, creator=None, disable_proxy_access=None, gce_setup=None, health_info=None, health_state=None, instance_owners=None, labels=None, name=None, proxy_uri=None, state=None, third_party_proxy_url=None, update_time=None, upgrade_history=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -53,6 +53,9 @@ class GetInstanceResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if third_party_proxy_url and not isinstance(third_party_proxy_url, str):
+            raise TypeError("Expected argument 'third_party_proxy_url' to be a str")
+        pulumi.set(__self__, "third_party_proxy_url", third_party_proxy_url)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -149,6 +152,14 @@ class GetInstanceResult:
         return pulumi.get(self, "state")
 
     @property
+    @pulumi.getter(name="thirdPartyProxyUrl")
+    def third_party_proxy_url(self) -> str:
+        """
+        The workforce pools proxy endpoint that is used to access the Jupyter notebook.
+        """
+        return pulumi.get(self, "third_party_proxy_url")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
@@ -182,6 +193,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             name=self.name,
             proxy_uri=self.proxy_uri,
             state=self.state,
+            third_party_proxy_url=self.third_party_proxy_url,
             update_time=self.update_time,
             upgrade_history=self.upgrade_history)
 
@@ -212,6 +224,7 @@ def get_instance(instance_id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         proxy_uri=pulumi.get(__ret__, 'proxy_uri'),
         state=pulumi.get(__ret__, 'state'),
+        third_party_proxy_url=pulumi.get(__ret__, 'third_party_proxy_url'),
         update_time=pulumi.get(__ret__, 'update_time'),
         upgrade_history=pulumi.get(__ret__, 'upgrade_history'))
 

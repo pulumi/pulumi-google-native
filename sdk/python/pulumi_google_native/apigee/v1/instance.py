@@ -8,7 +8,9 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 from ._enums import *
+from ._inputs import *
 
 __all__ = ['InstanceArgs', 'Instance']
 
@@ -16,6 +18,7 @@ __all__ = ['InstanceArgs', 'Instance']
 class InstanceArgs:
     def __init__(__self__, *,
                  organization_id: pulumi.Input[str],
+                 access_logging_config: Optional[pulumi.Input['GoogleCloudApigeeV1AccessLoggingConfigArgs']] = None,
                  consumer_accept_list: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_name: Optional[pulumi.Input[str]] = None,
@@ -26,6 +29,7 @@ class InstanceArgs:
                  peering_cidr_range: Optional[pulumi.Input['InstancePeeringCidrRange']] = None):
         """
         The set of arguments for constructing a Instance resource.
+        :param pulumi.Input['GoogleCloudApigeeV1AccessLoggingConfigArgs'] access_logging_config: Optional. Access logging configuration enables the access logging feature at the instance. Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] consumer_accept_list: Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
         :param pulumi.Input[str] description: Optional. Description of the instance.
         :param pulumi.Input[str] disk_encryption_key_name: Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only. Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
@@ -36,6 +40,8 @@ class InstanceArgs:
         :param pulumi.Input['InstancePeeringCidrRange'] peering_cidr_range: Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
         """
         pulumi.set(__self__, "organization_id", organization_id)
+        if access_logging_config is not None:
+            pulumi.set(__self__, "access_logging_config", access_logging_config)
         if consumer_accept_list is not None:
             pulumi.set(__self__, "consumer_accept_list", consumer_accept_list)
         if description is not None:
@@ -61,6 +67,18 @@ class InstanceArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
+
+    @property
+    @pulumi.getter(name="accessLoggingConfig")
+    def access_logging_config(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1AccessLoggingConfigArgs']]:
+        """
+        Optional. Access logging configuration enables the access logging feature at the instance. Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+        """
+        return pulumi.get(self, "access_logging_config")
+
+    @access_logging_config.setter
+    def access_logging_config(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1AccessLoggingConfigArgs']]):
+        pulumi.set(self, "access_logging_config", value)
 
     @property
     @pulumi.getter(name="consumerAcceptList")
@@ -164,6 +182,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_logging_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AccessLoggingConfigArgs']]] = None,
                  consumer_accept_list: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_name: Optional[pulumi.Input[str]] = None,
@@ -179,6 +198,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AccessLoggingConfigArgs']] access_logging_config: Optional. Access logging configuration enables the access logging feature at the instance. Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] consumer_accept_list: Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
         :param pulumi.Input[str] description: Optional. Description of the instance.
         :param pulumi.Input[str] disk_encryption_key_name: Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only. Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
@@ -212,6 +232,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_logging_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AccessLoggingConfigArgs']]] = None,
                  consumer_accept_list: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_name: Optional[pulumi.Input[str]] = None,
@@ -230,6 +251,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["access_logging_config"] = access_logging_config
             __props__.__dict__["consumer_accept_list"] = consumer_accept_list
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_encryption_key_name"] = disk_encryption_key_name
@@ -272,6 +294,7 @@ class Instance(pulumi.CustomResource):
 
         __props__ = InstanceArgs.__new__(InstanceArgs)
 
+        __props__.__dict__["access_logging_config"] = None
         __props__.__dict__["consumer_accept_list"] = None
         __props__.__dict__["created_at"] = None
         __props__.__dict__["description"] = None
@@ -289,6 +312,14 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["service_attachment"] = None
         __props__.__dict__["state"] = None
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accessLoggingConfig")
+    def access_logging_config(self) -> pulumi.Output['outputs.GoogleCloudApigeeV1AccessLoggingConfigResponse']:
+        """
+        Optional. Access logging configuration enables the access logging feature at the instance. Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+        """
+        return pulumi.get(self, "access_logging_config")
 
     @property
     @pulumi.getter(name="consumerAcceptList")

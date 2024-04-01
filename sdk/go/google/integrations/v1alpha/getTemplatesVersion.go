@@ -37,6 +37,8 @@ type LookupTemplatesVersionResult struct {
 	DatabasePersistencePolicy string `pulumi:"databasePersistencePolicy"`
 	// Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
 	Description string `pulumi:"description"`
+	// Optional. True if variable masking feature should be turned on for generated workflows
+	EnableVariableMasking bool `pulumi:"enableVariableMasking"`
 	// Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
 	ErrorCatcherConfigs []GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse `pulumi:"errorCatcherConfigs"`
 	// Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
@@ -115,6 +117,11 @@ func (o LookupTemplatesVersionResultOutput) DatabasePersistencePolicy() pulumi.S
 // Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
 func (o LookupTemplatesVersionResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTemplatesVersionResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. True if variable masking feature should be turned on for generated workflows
+func (o LookupTemplatesVersionResultOutput) EnableVariableMasking() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupTemplatesVersionResult) bool { return v.EnableVariableMasking }).(pulumi.BoolOutput)
 }
 
 // Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.

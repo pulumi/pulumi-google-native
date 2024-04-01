@@ -10,16 +10,26 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
+    /// <summary>
+    /// Represents a foreign key constraint on a table's columns.
+    /// </summary>
     public sealed class TableConstraintsForeignKeysItemArgs : global::Pulumi.ResourceArgs
     {
-        [Input("columnReferences")]
+        [Input("columnReferences", required: true)]
         private InputList<Inputs.TableConstraintsForeignKeysItemColumnReferencesItemArgs>? _columnReferences;
+
+        /// <summary>
+        /// The columns that compose the foreign key.
+        /// </summary>
         public InputList<Inputs.TableConstraintsForeignKeysItemColumnReferencesItemArgs> ColumnReferences
         {
             get => _columnReferences ?? (_columnReferences = new InputList<Inputs.TableConstraintsForeignKeysItemColumnReferencesItemArgs>());
             set => _columnReferences = value;
         }
 
+        /// <summary>
+        /// Optional. Set only if the foreign key constraint is named.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

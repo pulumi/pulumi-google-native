@@ -8,12 +8,15 @@ __all__ = [
     'AuditLogConfigLogType',
     'EndpointPolicyType',
     'ExtensionChainExtensionSupportedEventsItem',
+    'GatewayEnvoyHeaders',
+    'GatewayIpVersion',
     'GatewayType',
     'GrpcRouteHeaderMatchType',
     'GrpcRouteMethodMatchType',
     'HttpRouteRedirectResponseCode',
     'LbRouteExtensionLoadBalancingScheme',
     'LbTrafficExtensionLoadBalancingScheme',
+    'MeshEnvoyHeaders',
     'MetadataLabelMatcherMetadataLabelMatchCriteria',
     'ServiceLbPolicyLoadBalancingAlgorithm',
 ]
@@ -79,6 +82,50 @@ class ExtensionChainExtensionSupportedEventsItem(str, Enum):
     RESPONSE_BODY = "RESPONSE_BODY"
     """
     If included in `supported_events`, the extension is called when the HTTP response body arrives.
+    """
+    REQUEST_TRAILERS = "REQUEST_TRAILERS"
+    """
+    If included in `supported_events`, the extension is called when the HTTP request trailers arrives.
+    """
+    RESPONSE_TRAILERS = "RESPONSE_TRAILERS"
+    """
+    If included in `supported_events`, the extension is called when the HTTP response trailers arrives.
+    """
+
+
+class GatewayEnvoyHeaders(str, Enum):
+    """
+    Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+    """
+    ENVOY_HEADERS_UNSPECIFIED = "ENVOY_HEADERS_UNSPECIFIED"
+    """
+    Defaults to NONE.
+    """
+    NONE = "NONE"
+    """
+    Suppress envoy debug headers.
+    """
+    DEBUG_HEADERS = "DEBUG_HEADERS"
+    """
+    Envoy will insert default internal debug headers into upstream requests: x-envoy-attempt-count x-envoy-is-timeout-retry x-envoy-expected-rq-timeout-ms x-envoy-original-path x-envoy-upstream-stream-duration-ms
+    """
+
+
+class GatewayIpVersion(str, Enum):
+    """
+    Optional. The IP Version that will be used by this gateway. Valid options are IPV4 or IPV6. Default is IPV4.
+    """
+    IP_VERSION_UNSPECIFIED = "IP_VERSION_UNSPECIFIED"
+    """
+    The type when IP version is not specified. Defaults to IPV4.
+    """
+    IPV4 = "IPV4"
+    """
+    The type for IP version 4.
+    """
+    IPV6 = "IPV6"
+    """
+    The type for IP version 6.
     """
 
 
@@ -202,9 +249,27 @@ class LbTrafficExtensionLoadBalancingScheme(str, Enum):
     """
 
 
+class MeshEnvoyHeaders(str, Enum):
+    """
+    Optional. Determines if envoy will insert internal debug headers into upstream requests. Other Envoy headers may still be injected. By default, envoy will not insert any debug headers.
+    """
+    ENVOY_HEADERS_UNSPECIFIED = "ENVOY_HEADERS_UNSPECIFIED"
+    """
+    Defaults to NONE.
+    """
+    NONE = "NONE"
+    """
+    Suppress envoy debug headers.
+    """
+    DEBUG_HEADERS = "DEBUG_HEADERS"
+    """
+    Envoy will insert default internal debug headers into upstream requests: x-envoy-attempt-count x-envoy-is-timeout-retry x-envoy-expected-rq-timeout-ms x-envoy-original-path x-envoy-upstream-stream-duration-ms
+    """
+
+
 class MetadataLabelMatcherMetadataLabelMatchCriteria(str, Enum):
     """
-    Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+    Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), pick up the one with older creation time.
     """
     METADATA_LABEL_MATCH_CRITERIA_UNSPECIFIED = "METADATA_LABEL_MATCH_CRITERIA_UNSPECIFIED"
     """

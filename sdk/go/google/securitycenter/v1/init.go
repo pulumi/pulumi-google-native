@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:securitycenter/v1:FolderBigQueryExport":
 		r = &FolderBigQueryExport{}
+	case "google-native:securitycenter/v1:FolderEventThreatDetectionSettingCustomModule":
+		r = &FolderEventThreatDetectionSettingCustomModule{}
 	case "google-native:securitycenter/v1:FolderNotificationConfig":
 		r = &FolderNotificationConfig{}
 	case "google-native:securitycenter/v1:FolderSecurityHealthAnalyticsSettingCustomModule":
@@ -49,6 +51,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OrganizationSourceIamPolicy{}
 	case "google-native:securitycenter/v1:ProjectBigQueryExport":
 		r = &ProjectBigQueryExport{}
+	case "google-native:securitycenter/v1:ProjectEventThreatDetectionSettingCustomModule":
+		r = &ProjectEventThreatDetectionSettingCustomModule{}
 	case "google-native:securitycenter/v1:ProjectSecurityHealthAnalyticsSettingCustomModule":
 		r = &ProjectSecurityHealthAnalyticsSettingCustomModule{}
 	case "google-native:securitycenter/v1:Source":

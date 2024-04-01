@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public Input<string>? DiskType { get; set; }
 
         /// <summary>
+        /// Optional. Reserved for future use.
+        /// </summary>
+        [Input("enableConfidentialStorage")]
+        public Input<bool>? EnableConfidentialStorage { get; set; }
+
+        /// <summary>
         /// Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by the boot disk.
         /// </summary>
         [Input("ephemeralStorageLocalSsdConfig")]
@@ -206,6 +212,24 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         /// </summary>
         [Input("sandboxConfig")]
         public Input<Inputs.SandboxConfigArgs>? SandboxConfig { get; set; }
+
+        /// <summary>
+        /// Secondary boot disk update strategy.
+        /// </summary>
+        [Input("secondaryBootDiskUpdateStrategy")]
+        public Input<Inputs.SecondaryBootDiskUpdateStrategyArgs>? SecondaryBootDiskUpdateStrategy { get; set; }
+
+        [Input("secondaryBootDisks")]
+        private InputList<Inputs.SecondaryBootDiskArgs>? _secondaryBootDisks;
+
+        /// <summary>
+        /// List of secondary boot disks attached to the nodes.
+        /// </summary>
+        public InputList<Inputs.SecondaryBootDiskArgs> SecondaryBootDisks
+        {
+            get => _secondaryBootDisks ?? (_secondaryBootDisks = new InputList<Inputs.SecondaryBootDiskArgs>());
+            set => _secondaryBootDisks = value;
+        }
 
         /// <summary>
         /// The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.

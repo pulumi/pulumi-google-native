@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetClusterResult:
-    def __init__(__self__, annotations=None, automated_backup_policy=None, backup_source=None, cluster_type=None, continuous_backup_config=None, continuous_backup_info=None, create_time=None, database_version=None, delete_time=None, display_name=None, encryption_config=None, encryption_info=None, etag=None, initial_user=None, labels=None, migration_source=None, name=None, network=None, network_config=None, primary_config=None, reconciling=None, secondary_config=None, ssl_config=None, state=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, automated_backup_policy=None, backup_source=None, cluster_type=None, continuous_backup_config=None, continuous_backup_info=None, create_time=None, database_version=None, delete_time=None, display_name=None, encryption_config=None, encryption_info=None, etag=None, gemini_config=None, initial_user=None, labels=None, maintenance_schedule=None, maintenance_update_policy=None, migration_source=None, name=None, network=None, network_config=None, primary_config=None, psc_config=None, reconciling=None, satisfies_pzs=None, secondary_config=None, ssl_config=None, state=None, uid=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -59,12 +59,21 @@ class GetClusterResult:
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
+        if gemini_config and not isinstance(gemini_config, dict):
+            raise TypeError("Expected argument 'gemini_config' to be a dict")
+        pulumi.set(__self__, "gemini_config", gemini_config)
         if initial_user and not isinstance(initial_user, dict):
             raise TypeError("Expected argument 'initial_user' to be a dict")
         pulumi.set(__self__, "initial_user", initial_user)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
+        if maintenance_schedule and not isinstance(maintenance_schedule, dict):
+            raise TypeError("Expected argument 'maintenance_schedule' to be a dict")
+        pulumi.set(__self__, "maintenance_schedule", maintenance_schedule)
+        if maintenance_update_policy and not isinstance(maintenance_update_policy, dict):
+            raise TypeError("Expected argument 'maintenance_update_policy' to be a dict")
+        pulumi.set(__self__, "maintenance_update_policy", maintenance_update_policy)
         if migration_source and not isinstance(migration_source, dict):
             raise TypeError("Expected argument 'migration_source' to be a dict")
         pulumi.set(__self__, "migration_source", migration_source)
@@ -80,9 +89,15 @@ class GetClusterResult:
         if primary_config and not isinstance(primary_config, dict):
             raise TypeError("Expected argument 'primary_config' to be a dict")
         pulumi.set(__self__, "primary_config", primary_config)
+        if psc_config and not isinstance(psc_config, dict):
+            raise TypeError("Expected argument 'psc_config' to be a dict")
+        pulumi.set(__self__, "psc_config", psc_config)
         if reconciling and not isinstance(reconciling, bool):
             raise TypeError("Expected argument 'reconciling' to be a bool")
         pulumi.set(__self__, "reconciling", reconciling)
+        if satisfies_pzs and not isinstance(satisfies_pzs, bool):
+            raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
+        pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if secondary_config and not isinstance(secondary_config, dict):
             raise TypeError("Expected argument 'secondary_config' to be a dict")
         pulumi.set(__self__, "secondary_config", secondary_config)
@@ -204,6 +219,14 @@ class GetClusterResult:
         return pulumi.get(self, "etag")
 
     @property
+    @pulumi.getter(name="geminiConfig")
+    def gemini_config(self) -> 'outputs.GeminiClusterConfigResponse':
+        """
+        Optional. Configuration parameters related to the Gemini in Databases add-on. See go/prd-enable-duet-ai-databases for more details.
+        """
+        return pulumi.get(self, "gemini_config")
+
+    @property
     @pulumi.getter(name="initialUser")
     def initial_user(self) -> 'outputs.UserPasswordResponse':
         """
@@ -218,6 +241,22 @@ class GetClusterResult:
         Labels as key value pairs
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="maintenanceSchedule")
+    def maintenance_schedule(self) -> 'outputs.MaintenanceScheduleResponse':
+        """
+        The maintenance schedule for the cluster, generated for a specific rollout if a maintenance window is set.
+        """
+        return pulumi.get(self, "maintenance_schedule")
+
+    @property
+    @pulumi.getter(name="maintenanceUpdatePolicy")
+    def maintenance_update_policy(self) -> 'outputs.MaintenanceUpdatePolicyResponse':
+        """
+        Optional. The maintenance update policy determines when to allow or deny updates.
+        """
+        return pulumi.get(self, "maintenance_update_policy")
 
     @property
     @pulumi.getter(name="migrationSource")
@@ -239,10 +278,10 @@ class GetClusterResult:
     @pulumi.getter
     def network(self) -> str:
         """
-        The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster. Deprecated, use network_config.network instead.
+        The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.
         """
-        warnings.warn("""Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: \"projects/{project}/global/networks/{network_id}\". This is required to create a cluster. Deprecated, use network_config.network instead.""", DeprecationWarning)
-        pulumi.log.warn("""network is deprecated: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: \"projects/{project}/global/networks/{network_id}\". This is required to create a cluster. Deprecated, use network_config.network instead.""")
+        warnings.warn("""Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.""", DeprecationWarning)
+        pulumi.log.warn("""network is deprecated: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster. Deprecated, use network_config.network instead.""")
 
         return pulumi.get(self, "network")
 
@@ -260,12 +299,28 @@ class GetClusterResult:
         return pulumi.get(self, "primary_config")
 
     @property
+    @pulumi.getter(name="pscConfig")
+    def psc_config(self) -> 'outputs.PscConfigResponse':
+        """
+        Optional. The configuration for Private Service Connect (PSC) for the cluster.
+        """
+        return pulumi.get(self, "psc_config")
+
+    @property
     @pulumi.getter
     def reconciling(self) -> bool:
         """
         Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
         """
         return pulumi.get(self, "reconciling")
+
+    @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> bool:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
 
     @property
     @pulumi.getter(name="secondaryConfig")
@@ -327,14 +382,19 @@ class AwaitableGetClusterResult(GetClusterResult):
             encryption_config=self.encryption_config,
             encryption_info=self.encryption_info,
             etag=self.etag,
+            gemini_config=self.gemini_config,
             initial_user=self.initial_user,
             labels=self.labels,
+            maintenance_schedule=self.maintenance_schedule,
+            maintenance_update_policy=self.maintenance_update_policy,
             migration_source=self.migration_source,
             name=self.name,
             network=self.network,
             network_config=self.network_config,
             primary_config=self.primary_config,
+            psc_config=self.psc_config,
             reconciling=self.reconciling,
+            satisfies_pzs=self.satisfies_pzs,
             secondary_config=self.secondary_config,
             ssl_config=self.ssl_config,
             state=self.state,
@@ -372,14 +432,19 @@ def get_cluster(cluster_id: Optional[str] = None,
         encryption_config=pulumi.get(__ret__, 'encryption_config'),
         encryption_info=pulumi.get(__ret__, 'encryption_info'),
         etag=pulumi.get(__ret__, 'etag'),
+        gemini_config=pulumi.get(__ret__, 'gemini_config'),
         initial_user=pulumi.get(__ret__, 'initial_user'),
         labels=pulumi.get(__ret__, 'labels'),
+        maintenance_schedule=pulumi.get(__ret__, 'maintenance_schedule'),
+        maintenance_update_policy=pulumi.get(__ret__, 'maintenance_update_policy'),
         migration_source=pulumi.get(__ret__, 'migration_source'),
         name=pulumi.get(__ret__, 'name'),
         network=pulumi.get(__ret__, 'network'),
         network_config=pulumi.get(__ret__, 'network_config'),
         primary_config=pulumi.get(__ret__, 'primary_config'),
+        psc_config=pulumi.get(__ret__, 'psc_config'),
         reconciling=pulumi.get(__ret__, 'reconciling'),
+        satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
         secondary_config=pulumi.get(__ret__, 'secondary_config'),
         ssl_config=pulumi.get(__ret__, 'ssl_config'),
         state=pulumi.get(__ret__, 'state'),

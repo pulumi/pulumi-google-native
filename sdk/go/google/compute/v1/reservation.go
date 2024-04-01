@@ -15,6 +15,8 @@ import (
 type Reservation struct {
 	pulumi.CustomResourceState
 
+	// Reservation for aggregated resources, providing shape flexibility.
+	AggregateReservation AllocationAggregateReservationResponseOutput `pulumi:"aggregateReservation"`
 	// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
 	Commitment pulumi.StringOutput `pulumi:"commitment"`
 	// Creation timestamp in RFC3339 text format.
@@ -92,6 +94,8 @@ func (ReservationState) ElementType() reflect.Type {
 }
 
 type reservationArgs struct {
+	// Reservation for aggregated resources, providing shape flexibility.
+	AggregateReservation *AllocationAggregateReservation `pulumi:"aggregateReservation"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -113,6 +117,8 @@ type reservationArgs struct {
 
 // The set of arguments for constructing a Reservation resource.
 type ReservationArgs struct {
+	// Reservation for aggregated resources, providing shape flexibility.
+	AggregateReservation AllocationAggregateReservationPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -167,6 +173,11 @@ func (o ReservationOutput) ToReservationOutput() ReservationOutput {
 
 func (o ReservationOutput) ToReservationOutputWithContext(ctx context.Context) ReservationOutput {
 	return o
+}
+
+// Reservation for aggregated resources, providing shape flexibility.
+func (o ReservationOutput) AggregateReservation() AllocationAggregateReservationResponseOutput {
+	return o.ApplyT(func(v *Reservation) AllocationAggregateReservationResponseOutput { return v.AggregateReservation }).(AllocationAggregateReservationResponseOutput)
 }
 
 // Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.

@@ -25,6 +25,7 @@ func LookupInstance(ctx *pulumi.Context, args *LookupInstanceArgs, opts ...pulum
 type LookupInstanceArgs struct {
 	Instance string  `pulumi:"instance"`
 	Project  *string `pulumi:"project"`
+	View     *string `pulumi:"view"`
 	Zone     string  `pulumi:"zone"`
 }
 
@@ -83,6 +84,8 @@ type LookupInstanceResult struct {
 	NetworkPerformanceConfig NetworkPerformanceConfigResponse `pulumi:"networkPerformanceConfig"`
 	// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
 	Params InstanceParamsResponse `pulumi:"params"`
+	// Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+	PartnerMetadata map[string]string `pulumi:"partnerMetadata"`
 	// PostKeyRevocationActionType of the instance.
 	PostKeyRevocationActionType string `pulumi:"postKeyRevocationActionType"`
 	// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
@@ -93,6 +96,8 @@ type LookupInstanceResult struct {
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
 	ResourceStatus ResourceStatusResponse `pulumi:"resourceStatus"`
+	// Reserved for future use.
+	SatisfiesPzi bool `pulumi:"satisfiesPzi"`
 	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Sets the scheduling options for this instance.
@@ -139,6 +144,7 @@ func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, op
 type LookupInstanceOutputArgs struct {
 	Instance pulumi.StringInput    `pulumi:"instance"`
 	Project  pulumi.StringPtrInput `pulumi:"project"`
+	View     pulumi.StringPtrInput `pulumi:"view"`
 	Zone     pulumi.StringInput    `pulumi:"zone"`
 }
 
@@ -298,6 +304,11 @@ func (o LookupInstanceResultOutput) Params() InstanceParamsResponseOutput {
 	return o.ApplyT(func(v LookupInstanceResult) InstanceParamsResponse { return v.Params }).(InstanceParamsResponseOutput)
 }
 
+// Partner Metadata assigned to the instance. A map from a subdomain (namespace) to entries map.
+func (o LookupInstanceResultOutput) PartnerMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.PartnerMetadata }).(pulumi.StringMapOutput)
+}
+
 // PostKeyRevocationActionType of the instance.
 func (o LookupInstanceResultOutput) PostKeyRevocationActionType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.PostKeyRevocationActionType }).(pulumi.StringOutput)
@@ -321,6 +332,11 @@ func (o LookupInstanceResultOutput) ResourcePolicies() pulumi.StringArrayOutput 
 // Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
 func (o LookupInstanceResultOutput) ResourceStatus() ResourceStatusResponseOutput {
 	return o.ApplyT(func(v LookupInstanceResult) ResourceStatusResponse { return v.ResourceStatus }).(ResourceStatusResponseOutput)
+}
+
+// Reserved for future use.
+func (o LookupInstanceResultOutput) SatisfiesPzi() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceResult) bool { return v.SatisfiesPzi }).(pulumi.BoolOutput)
 }
 
 // Reserved for future use.

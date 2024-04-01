@@ -10,25 +10,28 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
+    /// <summary>
+    /// A parameter given to a query.
+    /// </summary>
     public sealed class QueryParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Optional] If unset, this is a positional parameter. Otherwise, should be unique within a query.
+        /// Optional. If unset, this is a positional parameter. Otherwise, should be unique within a query.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// [Required] The type of this parameter.
+        /// The type of this parameter.
         /// </summary>
-        [Input("parameterType")]
-        public Input<Inputs.QueryParameterTypeArgs>? ParameterType { get; set; }
+        [Input("parameterType", required: true)]
+        public Input<Inputs.QueryParameterTypeArgs> ParameterType { get; set; } = null!;
 
         /// <summary>
-        /// [Required] The value of this parameter.
+        /// The value of this parameter.
         /// </summary>
-        [Input("parameterValue")]
-        public Input<Inputs.QueryParameterValueArgs>? ParameterValue { get; set; }
+        [Input("parameterValue", required: true)]
+        public Input<Inputs.QueryParameterValueArgs> ParameterValue { get; set; } = null!;
 
         public QueryParameterArgs()
         {

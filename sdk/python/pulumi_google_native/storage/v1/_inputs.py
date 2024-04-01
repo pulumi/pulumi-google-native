@@ -17,6 +17,7 @@ __all__ = [
     'BucketCorsItemArgs',
     'BucketCustomPlacementConfigArgs',
     'BucketEncryptionArgs',
+    'BucketHierarchicalNamespaceArgs',
     'BucketIamConfigurationBucketPolicyOnlyArgs',
     'BucketIamConfigurationUniformBucketLevelAccessArgs',
     'BucketIamConfigurationArgs',
@@ -36,6 +37,7 @@ __all__ = [
     'BucketWebsiteArgs',
     'DefaultObjectAccessControlProjectTeamArgs',
     'ExprArgs',
+    'FolderPendingRenameInfoArgs',
     'ManagedFolderIamPolicyBindingsItemArgs',
     'ObjectAccessControlProjectTeamArgs',
     'ObjectAccessControlArgs',
@@ -501,6 +503,30 @@ class BucketEncryptionArgs:
     @default_kms_key_name.setter
     def default_kms_key_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "default_kms_key_name", value)
+
+
+@pulumi.input_type
+class BucketHierarchicalNamespaceArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        The bucket's hierarchical namespace configuration.
+        :param pulumi.Input[bool] enabled: When set to true, hierarchical namespace is enabled for this bucket.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to true, hierarchical namespace is enabled for this bucket.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type
@@ -1505,6 +1531,30 @@ class ExprArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class FolderPendingRenameInfoArgs:
+    def __init__(__self__, *,
+                 operation_id: Optional[pulumi.Input[str]] = None):
+        """
+        Only present if the folder is part of an ongoing rename folder operation. Contains information which can be used to query the operation status.
+        :param pulumi.Input[str] operation_id: The ID of the rename folder operation.
+        """
+        if operation_id is not None:
+            pulumi.set(__self__, "operation_id", operation_id)
+
+    @property
+    @pulumi.getter(name="operationId")
+    def operation_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the rename folder operation.
+        """
+        return pulumi.get(self, "operation_id")
+
+    @operation_id.setter
+    def operation_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operation_id", value)
 
 
 @pulumi.input_type

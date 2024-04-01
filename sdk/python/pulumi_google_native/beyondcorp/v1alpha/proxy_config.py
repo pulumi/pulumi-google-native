@@ -20,30 +20,31 @@ class ProxyConfigArgs:
                  partner_tenant_id: pulumi.Input[str],
                  proxy_uri: pulumi.Input[str],
                  routing_info: pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs'],
-                 transport_info: pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs'],
                  display_name: Optional[pulumi.Input[str]] = None,
                  encryption_info: Optional[pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs']] = None,
-                 request_id: Optional[pulumi.Input[str]] = None):
+                 request_id: Optional[pulumi.Input[str]] = None,
+                 transport_info: Optional[pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs']] = None):
         """
         The set of arguments for constructing a ProxyConfig resource.
         :param pulumi.Input[str] proxy_uri: The URI of the proxy server.
         :param pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs'] routing_info: Routing info to direct traffic to the proxy server.
-        :param pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs'] transport_info: Transport layer information to verify for the proxy server.
         :param pulumi.Input[str] display_name: Optional. An arbitrary caller-provided name for the ProxyConfig. Cannot exceed 64 characters.
         :param pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfoArgs'] encryption_info: Optional. Information to encrypt JWT for the proxy server.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs'] transport_info: Optional. Transport layer information to verify for the proxy server.
         """
         pulumi.set(__self__, "organization_id", organization_id)
         pulumi.set(__self__, "partner_tenant_id", partner_tenant_id)
         pulumi.set(__self__, "proxy_uri", proxy_uri)
         pulumi.set(__self__, "routing_info", routing_info)
-        pulumi.set(__self__, "transport_info", transport_info)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if encryption_info is not None:
             pulumi.set(__self__, "encryption_info", encryption_info)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if transport_info is not None:
+            pulumi.set(__self__, "transport_info", transport_info)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -88,18 +89,6 @@ class ProxyConfigArgs:
         pulumi.set(self, "routing_info", value)
 
     @property
-    @pulumi.getter(name="transportInfo")
-    def transport_info(self) -> pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs']:
-        """
-        Transport layer information to verify for the proxy server.
-        """
-        return pulumi.get(self, "transport_info")
-
-    @transport_info.setter
-    def transport_info(self, value: pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs']):
-        pulumi.set(self, "transport_info", value)
-
-    @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -135,6 +124,18 @@ class ProxyConfigArgs:
     def request_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "request_id", value)
 
+    @property
+    @pulumi.getter(name="transportInfo")
+    def transport_info(self) -> Optional[pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs']]:
+        """
+        Optional. Transport layer information to verify for the proxy server.
+        """
+        return pulumi.get(self, "transport_info")
+
+    @transport_info.setter
+    def transport_info(self, value: Optional[pulumi.Input['GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs']]):
+        pulumi.set(self, "transport_info", value)
+
 
 class ProxyConfig(pulumi.CustomResource):
     @overload
@@ -161,7 +162,7 @@ class ProxyConfig(pulumi.CustomResource):
         :param pulumi.Input[str] proxy_uri: The URI of the proxy server.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs']] routing_info: Routing info to direct traffic to the proxy server.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs']] transport_info: Transport layer information to verify for the proxy server.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs']] transport_info: Optional. Transport layer information to verify for the proxy server.
         """
         ...
     @overload
@@ -220,8 +221,6 @@ class ProxyConfig(pulumi.CustomResource):
             if routing_info is None and not opts.urn:
                 raise TypeError("Missing required property 'routing_info'")
             __props__.__dict__["routing_info"] = routing_info
-            if transport_info is None and not opts.urn:
-                raise TypeError("Missing required property 'transport_info'")
             __props__.__dict__["transport_info"] = transport_info
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
@@ -333,7 +332,7 @@ class ProxyConfig(pulumi.CustomResource):
     @pulumi.getter(name="transportInfo")
     def transport_info(self) -> pulumi.Output['outputs.GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse']:
         """
-        Transport layer information to verify for the proxy server.
+        Optional. Transport layer information to verify for the proxy server.
         """
         return pulumi.get(self, "transport_info")
 

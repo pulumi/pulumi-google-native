@@ -59,7 +59,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly cryptoKeyConfig!: pulumi.Output<outputs.datafusion.v1beta1.CryptoKeyConfigResponse>;
     /**
-     * Optional. Reserved for future use.
+     * Optional. Option to enable the Dataplex Lineage Integration feature.
      */
     public readonly dataplexDataLineageIntegrationEnabled!: pulumi.Output<boolean>;
     /**
@@ -103,7 +103,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly gcsBucket!: pulumi.Output<string>;
     /**
-     * Required. The name of the instance to create.
+     * Required. The name of the instance to create. Instance name can only contain lowercase alphanumeric characters and hyphens. It must start with a letter and must not end with a hyphen. It can have a maximum of 30 characters.
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
@@ -292,7 +292,7 @@ export interface InstanceArgs {
      */
     cryptoKeyConfig?: pulumi.Input<inputs.datafusion.v1beta1.CryptoKeyConfigArgs>;
     /**
-     * Optional. Reserved for future use.
+     * Optional. Option to enable the Dataplex Lineage Integration feature.
      */
     dataplexDataLineageIntegrationEnabled?: pulumi.Input<boolean>;
     /**
@@ -328,7 +328,7 @@ export interface InstanceArgs {
      */
     eventPublishConfig?: pulumi.Input<inputs.datafusion.v1beta1.EventPublishConfigArgs>;
     /**
-     * Required. The name of the instance to create.
+     * Required. The name of the instance to create. Instance name can only contain lowercase alphanumeric characters and hyphens. It must start with a letter and must not end with a hyphen. It can have a maximum of 30 characters.
      */
     instanceId: pulumi.Input<string>;
     /**

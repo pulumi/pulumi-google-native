@@ -23,6 +23,7 @@ class FeatureOnlineStoreArgs:
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  optimized: Optional[pulumi.Input['GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -30,9 +31,10 @@ class FeatureOnlineStoreArgs:
         :param pulumi.Input[str] feature_online_store_id: Required. The ID to use for this FeatureOnlineStore, which will become the final component of the FeatureOnlineStore's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within the project and location.
         :param pulumi.Input['GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableArgs'] bigtable: Contains settings for the Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
         :param pulumi.Input['GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointArgs'] dedicated_serving_endpoint: Optional. The dedicated serving endpoint for this FeatureOnlineStore, which is different from common Vertex service endpoint.
-        :param pulumi.Input['GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementArgs'] embedding_management: Optional. The settings for embedding management in FeatureOnlineStore.
+        :param pulumi.Input['GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementArgs'] embedding_management: Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.
         :param pulumi.Input[str] etag: Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels with user-defined metadata to organize your FeatureOnlineStore. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
+        :param pulumi.Input[str] name: Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
         :param pulumi.Input['GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedArgs'] optimized: Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.
         """
         pulumi.set(__self__, "feature_online_store_id", feature_online_store_id)
@@ -41,6 +43,9 @@ class FeatureOnlineStoreArgs:
         if dedicated_serving_endpoint is not None:
             pulumi.set(__self__, "dedicated_serving_endpoint", dedicated_serving_endpoint)
         if embedding_management is not None:
+            warnings.warn("""Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.""", DeprecationWarning)
+            pulumi.log.warn("""embedding_management is deprecated: Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.""")
+        if embedding_management is not None:
             pulumi.set(__self__, "embedding_management", embedding_management)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
@@ -48,6 +53,8 @@ class FeatureOnlineStoreArgs:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if optimized is not None:
             pulumi.set(__self__, "optimized", optimized)
         if project is not None:
@@ -93,8 +100,11 @@ class FeatureOnlineStoreArgs:
     @pulumi.getter(name="embeddingManagement")
     def embedding_management(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementArgs']]:
         """
-        Optional. The settings for embedding management in FeatureOnlineStore.
+        Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.
         """
+        warnings.warn("""Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.""", DeprecationWarning)
+        pulumi.log.warn("""embedding_management is deprecated: Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.""")
+
         return pulumi.get(self, "embedding_management")
 
     @embedding_management.setter
@@ -136,6 +146,18 @@ class FeatureOnlineStoreArgs:
 
     @property
     @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
     def optimized(self) -> Optional[pulumi.Input['GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedArgs']]:
         """
         Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.
@@ -168,21 +190,22 @@ class FeatureOnlineStore(pulumi.CustomResource):
                  feature_online_store_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  optimized: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new FeatureOnlineStore in a given project and location.
-        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableArgs']] bigtable: Contains settings for the Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
         :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointArgs']] dedicated_serving_endpoint: Optional. The dedicated serving endpoint for this FeatureOnlineStore, which is different from common Vertex service endpoint.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementArgs']] embedding_management: Optional. The settings for embedding management in FeatureOnlineStore.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementArgs']] embedding_management: Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.
         :param pulumi.Input[str] etag: Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input[str] feature_online_store_id: Required. The ID to use for this FeatureOnlineStore, which will become the final component of the FeatureOnlineStore's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within the project and location.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels with user-defined metadata to organize your FeatureOnlineStore. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
+        :param pulumi.Input[str] name: Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
         :param pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedArgs']] optimized: Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.
         """
         ...
@@ -193,7 +216,6 @@ class FeatureOnlineStore(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new FeatureOnlineStore in a given project and location.
-        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param FeatureOnlineStoreArgs args: The arguments to use to populate this resource's properties.
@@ -217,6 +239,7 @@ class FeatureOnlineStore(pulumi.CustomResource):
                  feature_online_store_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  optimized: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAiplatformV1beta1FeatureOnlineStoreOptimizedArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -237,10 +260,10 @@ class FeatureOnlineStore(pulumi.CustomResource):
             __props__.__dict__["feature_online_store_id"] = feature_online_store_id
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
+            __props__.__dict__["name"] = name
             __props__.__dict__["optimized"] = optimized
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
-            __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["feature_online_store_id", "location", "project"])
@@ -310,8 +333,11 @@ class FeatureOnlineStore(pulumi.CustomResource):
     @pulumi.getter(name="embeddingManagement")
     def embedding_management(self) -> pulumi.Output['outputs.GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse']:
         """
-        Optional. The settings for embedding management in FeatureOnlineStore.
+        Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.
         """
+        warnings.warn("""Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.""", DeprecationWarning)
+        pulumi.log.warn("""embedding_management is deprecated: Optional. Deprecated: This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type.""")
+
         return pulumi.get(self, "embedding_management")
 
     @property
@@ -347,7 +373,7 @@ class FeatureOnlineStore(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+        Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
         """
         return pulumi.get(self, "name")
 

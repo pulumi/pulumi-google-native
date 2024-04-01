@@ -32,8 +32,8 @@ class FutureReservationArgs:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a FutureReservation resource.
-        :param pulumi.Input[str] auto_created_reservations_delete_time: Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
-        :param pulumi.Input['DurationArgs'] auto_created_reservations_duration: Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+        :param pulumi.Input[str] auto_created_reservations_delete_time: Future timestamp when the FR auto-created reservations will be deleted by Compute Engine. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+        :param pulumi.Input['DurationArgs'] auto_created_reservations_duration: Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
         :param pulumi.Input[bool] auto_delete_auto_created_reservations: Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [auto_created_reservations_delete_time, auto_created_reservations_duration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the future reservation.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -75,7 +75,7 @@ class FutureReservationArgs:
     @pulumi.getter(name="autoCreatedReservationsDeleteTime")
     def auto_created_reservations_delete_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+        Future timestamp when the FR auto-created reservations will be deleted by Compute Engine. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
         """
         return pulumi.get(self, "auto_created_reservations_delete_time")
 
@@ -87,7 +87,7 @@ class FutureReservationArgs:
     @pulumi.getter(name="autoCreatedReservationsDuration")
     def auto_created_reservations_duration(self) -> Optional[pulumi.Input['DurationArgs']]:
         """
-        Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+        Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
         """
         return pulumi.get(self, "auto_created_reservations_duration")
 
@@ -246,8 +246,8 @@ class FutureReservation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] auto_created_reservations_delete_time: Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
-        :param pulumi.Input[pulumi.InputType['DurationArgs']] auto_created_reservations_duration: Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+        :param pulumi.Input[str] auto_created_reservations_delete_time: Future timestamp when the FR auto-created reservations will be deleted by Compute Engine. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+        :param pulumi.Input[pulumi.InputType['DurationArgs']] auto_created_reservations_duration: Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
         :param pulumi.Input[bool] auto_delete_auto_created_reservations: Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [auto_created_reservations_delete_time, auto_created_reservations_duration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the future reservation.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -370,7 +370,7 @@ class FutureReservation(pulumi.CustomResource):
     @pulumi.getter(name="autoCreatedReservationsDeleteTime")
     def auto_created_reservations_delete_time(self) -> pulumi.Output[str]:
         """
-        Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+        Future timestamp when the FR auto-created reservations will be deleted by Compute Engine. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
         """
         return pulumi.get(self, "auto_created_reservations_delete_time")
 
@@ -378,7 +378,7 @@ class FutureReservation(pulumi.CustomResource):
     @pulumi.getter(name="autoCreatedReservationsDuration")
     def auto_created_reservations_duration(self) -> pulumi.Output['outputs.DurationResponse']:
         """
-        Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+        Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
         """
         return pulumi.get(self, "auto_created_reservations_duration")
 

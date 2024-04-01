@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetFeatureOnlineStoreResult:
-    def __init__(__self__, bigtable=None, create_time=None, etag=None, labels=None, name=None, state=None, update_time=None):
+    def __init__(__self__, bigtable=None, create_time=None, dedicated_serving_endpoint=None, etag=None, labels=None, name=None, optimized=None, state=None, update_time=None):
         if bigtable and not isinstance(bigtable, dict):
             raise TypeError("Expected argument 'bigtable' to be a dict")
         pulumi.set(__self__, "bigtable", bigtable)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if dedicated_serving_endpoint and not isinstance(dedicated_serving_endpoint, dict):
+            raise TypeError("Expected argument 'dedicated_serving_endpoint' to be a dict")
+        pulumi.set(__self__, "dedicated_serving_endpoint", dedicated_serving_endpoint)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
@@ -35,6 +38,9 @@ class GetFeatureOnlineStoreResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if optimized and not isinstance(optimized, dict):
+            raise TypeError("Expected argument 'optimized' to be a dict")
+        pulumi.set(__self__, "optimized", optimized)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -59,6 +65,14 @@ class GetFeatureOnlineStoreResult:
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter(name="dedicatedServingEndpoint")
+    def dedicated_serving_endpoint(self) -> 'outputs.GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpointResponse':
+        """
+        Optional. The dedicated serving endpoint for this FeatureOnlineStore, which is different from common Vertex service endpoint.
+        """
+        return pulumi.get(self, "dedicated_serving_endpoint")
+
+    @property
     @pulumi.getter
     def etag(self) -> str:
         """
@@ -78,9 +92,17 @@ class GetFeatureOnlineStoreResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+        Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def optimized(self) -> 'outputs.GoogleCloudAiplatformV1FeatureOnlineStoreOptimizedResponse':
+        """
+        Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore. When choose Optimized storage type, need to set PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use public endpoint by default.
+        """
+        return pulumi.get(self, "optimized")
 
     @property
     @pulumi.getter
@@ -107,9 +129,11 @@ class AwaitableGetFeatureOnlineStoreResult(GetFeatureOnlineStoreResult):
         return GetFeatureOnlineStoreResult(
             bigtable=self.bigtable,
             create_time=self.create_time,
+            dedicated_serving_endpoint=self.dedicated_serving_endpoint,
             etag=self.etag,
             labels=self.labels,
             name=self.name,
+            optimized=self.optimized,
             state=self.state,
             update_time=self.update_time)
 
@@ -131,9 +155,11 @@ def get_feature_online_store(feature_online_store_id: Optional[str] = None,
     return AwaitableGetFeatureOnlineStoreResult(
         bigtable=pulumi.get(__ret__, 'bigtable'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        dedicated_serving_endpoint=pulumi.get(__ret__, 'dedicated_serving_endpoint'),
         etag=pulumi.get(__ret__, 'etag'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
+        optimized=pulumi.get(__ret__, 'optimized'),
         state=pulumi.get(__ret__, 'state'),
         update_time=pulumi.get(__ret__, 'update_time'))
 

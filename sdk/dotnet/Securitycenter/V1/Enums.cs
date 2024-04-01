@@ -53,6 +53,51 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
     }
 
     /// <summary>
+    /// The state of enablement for the module at the given level of the hierarchy.
+    /// </summary>
+    [EnumType]
+    public readonly struct FolderEventThreatDetectionSettingCustomModuleEnablementState : IEquatable<FolderEventThreatDetectionSettingCustomModuleEnablementState>
+    {
+        private readonly string _value;
+
+        private FolderEventThreatDetectionSettingCustomModuleEnablementState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified enablement state.
+        /// </summary>
+        public static FolderEventThreatDetectionSettingCustomModuleEnablementState EnablementStateUnspecified { get; } = new FolderEventThreatDetectionSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED");
+        /// <summary>
+        /// The module is enabled at the given level.
+        /// </summary>
+        public static FolderEventThreatDetectionSettingCustomModuleEnablementState Enabled { get; } = new FolderEventThreatDetectionSettingCustomModuleEnablementState("ENABLED");
+        /// <summary>
+        /// The module is disabled at the given level.
+        /// </summary>
+        public static FolderEventThreatDetectionSettingCustomModuleEnablementState Disabled { get; } = new FolderEventThreatDetectionSettingCustomModuleEnablementState("DISABLED");
+        /// <summary>
+        /// When the enablement state is inherited.
+        /// </summary>
+        public static FolderEventThreatDetectionSettingCustomModuleEnablementState Inherited { get; } = new FolderEventThreatDetectionSettingCustomModuleEnablementState("INHERITED");
+
+        public static bool operator ==(FolderEventThreatDetectionSettingCustomModuleEnablementState left, FolderEventThreatDetectionSettingCustomModuleEnablementState right) => left.Equals(right);
+        public static bool operator !=(FolderEventThreatDetectionSettingCustomModuleEnablementState left, FolderEventThreatDetectionSettingCustomModuleEnablementState right) => !left.Equals(right);
+
+        public static explicit operator string(FolderEventThreatDetectionSettingCustomModuleEnablementState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is FolderEventThreatDetectionSettingCustomModuleEnablementState other && Equals(other);
+        public bool Equals(FolderEventThreatDetectionSettingCustomModuleEnablementState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The enablement state of the custom module.
     /// </summary>
     [EnumType]
@@ -171,6 +216,10 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         /// The module is disabled at the given level.
         /// </summary>
         public static OrganizationEventThreatDetectionSettingCustomModuleEnablementState Disabled { get; } = new OrganizationEventThreatDetectionSettingCustomModuleEnablementState("DISABLED");
+        /// <summary>
+        /// When the enablement state is inherited.
+        /// </summary>
+        public static OrganizationEventThreatDetectionSettingCustomModuleEnablementState Inherited { get; } = new OrganizationEventThreatDetectionSettingCustomModuleEnablementState("INHERITED");
 
         public static bool operator ==(OrganizationEventThreatDetectionSettingCustomModuleEnablementState left, OrganizationEventThreatDetectionSettingCustomModuleEnablementState right) => left.Equals(right);
         public static bool operator !=(OrganizationEventThreatDetectionSettingCustomModuleEnablementState left, OrganizationEventThreatDetectionSettingCustomModuleEnablementState right) => !left.Equals(right);
@@ -225,6 +274,51 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState other && Equals(other);
         public bool Equals(OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The state of enablement for the module at the given level of the hierarchy.
+    /// </summary>
+    [EnumType]
+    public readonly struct ProjectEventThreatDetectionSettingCustomModuleEnablementState : IEquatable<ProjectEventThreatDetectionSettingCustomModuleEnablementState>
+    {
+        private readonly string _value;
+
+        private ProjectEventThreatDetectionSettingCustomModuleEnablementState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified enablement state.
+        /// </summary>
+        public static ProjectEventThreatDetectionSettingCustomModuleEnablementState EnablementStateUnspecified { get; } = new ProjectEventThreatDetectionSettingCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED");
+        /// <summary>
+        /// The module is enabled at the given level.
+        /// </summary>
+        public static ProjectEventThreatDetectionSettingCustomModuleEnablementState Enabled { get; } = new ProjectEventThreatDetectionSettingCustomModuleEnablementState("ENABLED");
+        /// <summary>
+        /// The module is disabled at the given level.
+        /// </summary>
+        public static ProjectEventThreatDetectionSettingCustomModuleEnablementState Disabled { get; } = new ProjectEventThreatDetectionSettingCustomModuleEnablementState("DISABLED");
+        /// <summary>
+        /// When the enablement state is inherited.
+        /// </summary>
+        public static ProjectEventThreatDetectionSettingCustomModuleEnablementState Inherited { get; } = new ProjectEventThreatDetectionSettingCustomModuleEnablementState("INHERITED");
+
+        public static bool operator ==(ProjectEventThreatDetectionSettingCustomModuleEnablementState left, ProjectEventThreatDetectionSettingCustomModuleEnablementState right) => left.Equals(right);
+        public static bool operator !=(ProjectEventThreatDetectionSettingCustomModuleEnablementState left, ProjectEventThreatDetectionSettingCustomModuleEnablementState right) => !left.Equals(right);
+
+        public static explicit operator string(ProjectEventThreatDetectionSettingCustomModuleEnablementState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ProjectEventThreatDetectionSettingCustomModuleEnablementState other && Equals(other);
+        public bool Equals(ProjectEventThreatDetectionSettingCustomModuleEnablementState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

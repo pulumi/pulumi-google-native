@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 {
     /// <summary>
     /// Parses and stores an HL7v2 message. This method triggers an asynchronous notification to any Pub/Sub topic configured in Hl7V2Store.Hl7V2NotificationConfig, if the filtering matches the message. If an MLLP adapter is configured to listen to a Pub/Sub topic, the adapter transmits the message when a notification is received.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:healthcare/v1beta1:Message")]
     public partial class Message : global::Pulumi.CustomResource
@@ -142,8 +143,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// <summary>
         /// Raw message bytes.
         /// </summary>
-        [Input("data")]
-        public Input<string>? Data { get; set; }
+        [Input("data", required: true)]
+        public Input<string> Data { get; set; } = null!;
 
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
@@ -171,12 +172,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         [Input("messageType")]
         public Input<string>? MessageType { get; set; }
-
-        /// <summary>
-        /// Resource name of the Message, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         [Input("patientIds")]
         private InputList<Inputs.PatientIdArgs>? _patientIds;

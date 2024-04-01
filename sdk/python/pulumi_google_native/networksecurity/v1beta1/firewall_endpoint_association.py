@@ -16,9 +16,11 @@ class FirewallEndpointAssociationArgs:
     def __init__(__self__, *,
                  firewall_endpoint: pulumi.Input[str],
                  network: pulumi.Input[str],
+                 disabled: Optional[pulumi.Input[bool]] = None,
                  firewall_endpoint_association_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  tls_inspection_policy: Optional[pulumi.Input[str]] = None):
@@ -26,19 +28,25 @@ class FirewallEndpointAssociationArgs:
         The set of arguments for constructing a FirewallEndpointAssociation resource.
         :param pulumi.Input[str] firewall_endpoint: The URL of the FirewallEndpoint that is being associated.
         :param pulumi.Input[str] network: The URL of the network that is being associated.
+        :param pulumi.Input[bool] disabled: Optional. Whether the association is disabled. True indicates that traffic won't be intercepted
         :param pulumi.Input[str] firewall_endpoint_association_id: Optional. Id of the requesting object. If auto-generating Id server-side, remove this field and firewall_endpoint_association_id from the method_signature of Create RPC.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs
+        :param pulumi.Input[str] name: Immutable. Identifier. name of resource
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] tls_inspection_policy: Optional. The URL of the TlsInspectionPolicy that is being associated.
         """
         pulumi.set(__self__, "firewall_endpoint", firewall_endpoint)
         pulumi.set(__self__, "network", network)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
         if firewall_endpoint_association_id is not None:
             pulumi.set(__self__, "firewall_endpoint_association_id", firewall_endpoint_association_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
@@ -69,6 +77,18 @@ class FirewallEndpointAssociationArgs:
     @network.setter
     def network(self, value: pulumi.Input[str]):
         pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Whether the association is disabled. True indicates that traffic won't be intercepted
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
 
     @property
     @pulumi.getter(name="firewallEndpointAssociationId")
@@ -102,6 +122,18 @@ class FirewallEndpointAssociationArgs:
     @location.setter
     def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. Identifier. name of resource
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -142,10 +174,12 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
                  firewall_endpoint: Optional[pulumi.Input[str]] = None,
                  firewall_endpoint_association_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -153,13 +187,14 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a new FirewallEndpointAssociation in a given project and location.
-        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] disabled: Optional. Whether the association is disabled. True indicates that traffic won't be intercepted
         :param pulumi.Input[str] firewall_endpoint: The URL of the FirewallEndpoint that is being associated.
         :param pulumi.Input[str] firewall_endpoint_association_id: Optional. Id of the requesting object. If auto-generating Id server-side, remove this field and firewall_endpoint_association_id from the method_signature of Create RPC.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs
+        :param pulumi.Input[str] name: Immutable. Identifier. name of resource
         :param pulumi.Input[str] network: The URL of the network that is being associated.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] tls_inspection_policy: Optional. The URL of the TlsInspectionPolicy that is being associated.
@@ -172,7 +207,6 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new FirewallEndpointAssociation in a given project and location.
-        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param FirewallEndpointAssociationArgs args: The arguments to use to populate this resource's properties.
@@ -189,10 +223,12 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
                  firewall_endpoint: Optional[pulumi.Input[str]] = None,
                  firewall_endpoint_association_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -206,12 +242,14 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FirewallEndpointAssociationArgs.__new__(FirewallEndpointAssociationArgs)
 
+            __props__.__dict__["disabled"] = disabled
             if firewall_endpoint is None and not opts.urn:
                 raise TypeError("Missing required property 'firewall_endpoint'")
             __props__.__dict__["firewall_endpoint"] = firewall_endpoint
             __props__.__dict__["firewall_endpoint_association_id"] = firewall_endpoint_association_id
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
+            __props__.__dict__["name"] = name
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network
@@ -219,7 +257,6 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["tls_inspection_policy"] = tls_inspection_policy
             __props__.__dict__["create_time"] = None
-            __props__.__dict__["name"] = None
             __props__.__dict__["reconciling"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["update_time"] = None
@@ -248,6 +285,7 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
         __props__ = FirewallEndpointAssociationArgs.__new__(FirewallEndpointAssociationArgs)
 
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["disabled"] = None
         __props__.__dict__["firewall_endpoint"] = None
         __props__.__dict__["firewall_endpoint_association_id"] = None
         __props__.__dict__["labels"] = None
@@ -269,6 +307,14 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
         Create time stamp
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> pulumi.Output[bool]:
+        """
+        Optional. Whether the association is disabled. True indicates that traffic won't be intercepted
+        """
+        return pulumi.get(self, "disabled")
 
     @property
     @pulumi.getter(name="firewallEndpoint")
@@ -303,7 +349,7 @@ class FirewallEndpointAssociation(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        name of resource
+        Immutable. Identifier. name of resource
         """
         return pulumi.get(self, "name")
 

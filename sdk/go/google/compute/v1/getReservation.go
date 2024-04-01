@@ -29,6 +29,8 @@ type LookupReservationArgs struct {
 }
 
 type LookupReservationResult struct {
+	// Reservation for aggregated resources, providing shape flexibility.
+	AggregateReservation AllocationAggregateReservationResponse `pulumi:"aggregateReservation"`
 	// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
 	Commitment string `pulumi:"commitment"`
 	// Creation timestamp in RFC3339 text format.
@@ -94,6 +96,11 @@ func (o LookupReservationResultOutput) ToLookupReservationResultOutput() LookupR
 
 func (o LookupReservationResultOutput) ToLookupReservationResultOutputWithContext(ctx context.Context) LookupReservationResultOutput {
 	return o
+}
+
+// Reservation for aggregated resources, providing shape flexibility.
+func (o LookupReservationResultOutput) AggregateReservation() AllocationAggregateReservationResponseOutput {
+	return o.ApplyT(func(v LookupReservationResult) AllocationAggregateReservationResponse { return v.AggregateReservation }).(AllocationAggregateReservationResponseOutput)
 }
 
 // Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.

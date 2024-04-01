@@ -40,7 +40,7 @@ type LookupCompilationResultResult struct {
 	GitCommitish string `pulumi:"gitCommitish"`
 	// The compilation result's name.
 	Name string `pulumi:"name"`
-	// Immutable. The name of the release config to compile. The release config's 'current_compilation_result' field will be updated to this compilation result. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
+	// Immutable. The name of the release config to compile. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
 	ReleaseConfig string `pulumi:"releaseConfig"`
 	// The fully resolved Git commit SHA of the code that was compiled. Not set for compilation results whose source is a workspace.
 	ResolvedGitCommitSha string `pulumi:"resolvedGitCommitSha"`
@@ -111,7 +111,7 @@ func (o LookupCompilationResultResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCompilationResultResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Immutable. The name of the release config to compile. The release config's 'current_compilation_result' field will be updated to this compilation result. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
+// Immutable. The name of the release config to compile. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
 func (o LookupCompilationResultResultOutput) ReleaseConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCompilationResultResult) string { return v.ReleaseConfig }).(pulumi.StringOutput)
 }

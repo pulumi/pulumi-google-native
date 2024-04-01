@@ -30,6 +30,7 @@ class InstanceArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  machine_config: Optional[pulumi.Input['MachineConfigArgs']] = None,
+                 network_config: Optional[pulumi.Input['InstanceNetworkConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  query_insights_config: Optional[pulumi.Input['QueryInsightsInstanceConfigArgs']] = None,
                  read_pool_config: Optional[pulumi.Input['ReadPoolConfigArgs']] = None,
@@ -47,6 +48,7 @@ class InstanceArgs:
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs
         :param pulumi.Input['MachineConfigArgs'] machine_config: Configurations for the machines that host the underlying database engine.
+        :param pulumi.Input['InstanceNetworkConfigArgs'] network_config: Optional. Instance level network configuration.
         :param pulumi.Input['QueryInsightsInstanceConfigArgs'] query_insights_config: Configuration for query insights.
         :param pulumi.Input['ReadPoolConfigArgs'] read_pool_config: Read pool instance configuration. This is required if the value of instanceType is READ_POOL.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -74,6 +76,8 @@ class InstanceArgs:
             pulumi.set(__self__, "location", location)
         if machine_config is not None:
             pulumi.set(__self__, "machine_config", machine_config)
+        if network_config is not None:
+            pulumi.set(__self__, "network_config", network_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if query_insights_config is not None:
@@ -234,6 +238,18 @@ class InstanceArgs:
         pulumi.set(self, "machine_config", value)
 
     @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> Optional[pulumi.Input['InstanceNetworkConfigArgs']]:
+        """
+        Optional. Instance level network configuration.
+        """
+        return pulumi.get(self, "network_config")
+
+    @network_config.setter
+    def network_config(self, value: Optional[pulumi.Input['InstanceNetworkConfigArgs']]):
+        pulumi.set(self, "network_config", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -297,6 +313,7 @@ class Instance(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  machine_config: Optional[pulumi.Input[pulumi.InputType['MachineConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  query_insights_config: Optional[pulumi.Input[pulumi.InputType['QueryInsightsInstanceConfigArgs']]] = None,
                  read_pool_config: Optional[pulumi.Input[pulumi.InputType['ReadPoolConfigArgs']]] = None,
@@ -319,6 +336,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input['InstanceInstanceType'] instance_type: The type of the instance. Specified at creation time.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs
         :param pulumi.Input[pulumi.InputType['MachineConfigArgs']] machine_config: Configurations for the machines that host the underlying database engine.
+        :param pulumi.Input[pulumi.InputType['InstanceNetworkConfigArgs']] network_config: Optional. Instance level network configuration.
         :param pulumi.Input[pulumi.InputType['QueryInsightsInstanceConfigArgs']] query_insights_config: Configuration for query insights.
         :param pulumi.Input[pulumi.InputType['ReadPoolConfigArgs']] read_pool_config: Read pool instance configuration. This is required if the value of instanceType is READ_POOL.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -361,6 +379,7 @@ class Instance(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  machine_config: Optional[pulumi.Input[pulumi.InputType['MachineConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  query_insights_config: Optional[pulumi.Input[pulumi.InputType['QueryInsightsInstanceConfigArgs']]] = None,
                  read_pool_config: Optional[pulumi.Input[pulumi.InputType['ReadPoolConfigArgs']]] = None,
@@ -393,6 +412,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["machine_config"] = machine_config
+            __props__.__dict__["network_config"] = network_config
             __props__.__dict__["project"] = project
             __props__.__dict__["query_insights_config"] = query_insights_config
             __props__.__dict__["read_pool_config"] = read_pool_config
@@ -402,7 +422,9 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["ip_address"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["nodes"] = None
+            __props__.__dict__["public_ip_address"] = None
             __props__.__dict__["reconciling"] = None
+            __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
@@ -448,12 +470,15 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["location"] = None
         __props__.__dict__["machine_config"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["network_config"] = None
         __props__.__dict__["nodes"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["public_ip_address"] = None
         __props__.__dict__["query_insights_config"] = None
         __props__.__dict__["read_pool_config"] = None
         __props__.__dict__["reconciling"] = None
         __props__.__dict__["request_id"] = None
+        __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
@@ -591,6 +616,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> pulumi.Output['outputs.InstanceNetworkConfigResponse']:
+        """
+        Optional. Instance level network configuration.
+        """
+        return pulumi.get(self, "network_config")
+
+    @property
     @pulumi.getter
     def nodes(self) -> pulumi.Output[Sequence['outputs.NodeResponse']]:
         """
@@ -602,6 +635,14 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="publicIpAddress")
+    def public_ip_address(self) -> pulumi.Output[str]:
+        """
+        The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set. This is the connection endpoint for an end-user application.
+        """
+        return pulumi.get(self, "public_ip_address")
 
     @property
     @pulumi.getter(name="queryInsightsConfig")
@@ -634,6 +675,14 @@ class Instance(pulumi.CustomResource):
         Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         return pulumi.get(self, "request_id")
+
+    @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> pulumi.Output[bool]:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
 
     @property
     @pulumi.getter

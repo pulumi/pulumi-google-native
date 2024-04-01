@@ -94,6 +94,47 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
     }
 
     /// <summary>
+    /// The state of the Conversation.
+    /// </summary>
+    [EnumType]
+    public readonly struct DataStoreConversationState : IEquatable<DataStoreConversationState>
+    {
+        private readonly string _value;
+
+        private DataStoreConversationState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unknown.
+        /// </summary>
+        public static DataStoreConversationState StateUnspecified { get; } = new DataStoreConversationState("STATE_UNSPECIFIED");
+        /// <summary>
+        /// Conversation is currently open.
+        /// </summary>
+        public static DataStoreConversationState InProgress { get; } = new DataStoreConversationState("IN_PROGRESS");
+        /// <summary>
+        /// Conversation has been completed.
+        /// </summary>
+        public static DataStoreConversationState Completed { get; } = new DataStoreConversationState("COMPLETED");
+
+        public static bool operator ==(DataStoreConversationState left, DataStoreConversationState right) => left.Equals(right);
+        public static bool operator !=(DataStoreConversationState left, DataStoreConversationState right) => !left.Equals(right);
+
+        public static explicit operator string(DataStoreConversationState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DataStoreConversationState other && Equals(other);
+        public bool Equals(DataStoreConversationState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Immutable. The industry vertical that the data store registers.
     /// </summary>
     [EnumType]
@@ -118,6 +159,10 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         /// The media industry vertical.
         /// </summary>
         public static DataStoreIndustryVertical Media { get; } = new DataStoreIndustryVertical("MEDIA");
+        /// <summary>
+        /// The healthcare FHIR vertical.
+        /// </summary>
+        public static DataStoreIndustryVertical HealthcareFhir { get; } = new DataStoreIndustryVertical("HEALTHCARE_FHIR");
 
         public static bool operator ==(DataStoreIndustryVertical left, DataStoreIndustryVertical right) => left.Equals(right);
         public static bool operator !=(DataStoreIndustryVertical left, DataStoreIndustryVertical right) => !left.Equals(right);
@@ -160,6 +205,10 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         /// Used for use cases related to the Generative AI agent.
         /// </summary>
         public static DataStoreSolutionTypesItem SolutionTypeChat { get; } = new DataStoreSolutionTypesItem("SOLUTION_TYPE_CHAT");
+        /// <summary>
+        /// Used for use cases related to the Generative Chat agent. It's used for Generative chat engine only, the associated data stores must enrolled with `SOLUTION_TYPE_CHAT` solution.
+        /// </summary>
+        public static DataStoreSolutionTypesItem SolutionTypeGenerativeChat { get; } = new DataStoreSolutionTypesItem("SOLUTION_TYPE_GENERATIVE_CHAT");
 
         public static bool operator ==(DataStoreSolutionTypesItem left, DataStoreSolutionTypesItem right) => left.Equals(right);
         public static bool operator !=(DataStoreSolutionTypesItem left, DataStoreSolutionTypesItem right) => !left.Equals(right);
@@ -169,6 +218,47 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is DataStoreSolutionTypesItem other && Equals(other);
         public bool Equals(DataStoreSolutionTypesItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The state of the Conversation.
+    /// </summary>
+    [EnumType]
+    public readonly struct EngineConversationState : IEquatable<EngineConversationState>
+    {
+        private readonly string _value;
+
+        private EngineConversationState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unknown.
+        /// </summary>
+        public static EngineConversationState StateUnspecified { get; } = new EngineConversationState("STATE_UNSPECIFIED");
+        /// <summary>
+        /// Conversation is currently open.
+        /// </summary>
+        public static EngineConversationState InProgress { get; } = new EngineConversationState("IN_PROGRESS");
+        /// <summary>
+        /// Conversation has been completed.
+        /// </summary>
+        public static EngineConversationState Completed { get; } = new EngineConversationState("COMPLETED");
+
+        public static bool operator ==(EngineConversationState left, EngineConversationState right) => left.Equals(right);
+        public static bool operator !=(EngineConversationState left, EngineConversationState right) => !left.Equals(right);
+
+        public static explicit operator string(EngineConversationState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is EngineConversationState other && Equals(other);
+        public bool Equals(EngineConversationState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -201,6 +291,10 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         /// The media industry vertical.
         /// </summary>
         public static EngineIndustryVertical Media { get; } = new EngineIndustryVertical("MEDIA");
+        /// <summary>
+        /// The healthcare FHIR vertical.
+        /// </summary>
+        public static EngineIndustryVertical HealthcareFhir { get; } = new EngineIndustryVertical("HEALTHCARE_FHIR");
 
         public static bool operator ==(EngineIndustryVertical left, EngineIndustryVertical right) => left.Equals(right);
         public static bool operator !=(EngineIndustryVertical left, EngineIndustryVertical right) => !left.Equals(right);
@@ -246,6 +340,10 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         /// Used for use cases related to the Generative AI agent.
         /// </summary>
         public static EngineSolutionType SolutionTypeChat { get; } = new EngineSolutionType("SOLUTION_TYPE_CHAT");
+        /// <summary>
+        /// Used for use cases related to the Generative Chat agent. It's used for Generative chat engine only, the associated data stores must enrolled with `SOLUTION_TYPE_CHAT` solution.
+        /// </summary>
+        public static EngineSolutionType SolutionTypeGenerativeChat { get; } = new EngineSolutionType("SOLUTION_TYPE_GENERATIVE_CHAT");
 
         public static bool operator ==(EngineSolutionType left, EngineSolutionType right) => left.Equals(right);
         public static bool operator !=(EngineSolutionType left, EngineSolutionType right) => !left.Equals(right);
@@ -421,6 +519,47 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem other && Equals(other);
         public bool Equals(GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The type of the target site, e.g., whether the site is to be included or excluded.
+    /// </summary>
+    [EnumType]
+    public readonly struct TargetSiteType : IEquatable<TargetSiteType>
+    {
+        private readonly string _value;
+
+        private TargetSiteType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// This value is unused. In this case, server behavior defaults to Type.INCLUDE.
+        /// </summary>
+        public static TargetSiteType TypeUnspecified { get; } = new TargetSiteType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Include the target site.
+        /// </summary>
+        public static TargetSiteType Include { get; } = new TargetSiteType("INCLUDE");
+        /// <summary>
+        /// Exclude the target site.
+        /// </summary>
+        public static TargetSiteType Exclude { get; } = new TargetSiteType("EXCLUDE");
+
+        public static bool operator ==(TargetSiteType left, TargetSiteType right) => left.Equals(right);
+        public static bool operator !=(TargetSiteType left, TargetSiteType right) => !left.Equals(right);
+
+        public static explicit operator string(TargetSiteType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TargetSiteType other && Equals(other);
+        public bool Equals(TargetSiteType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

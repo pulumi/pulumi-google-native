@@ -40,11 +40,6 @@ export const getTemplatesVersion: typeof import("./getTemplatesVersion").getTemp
 export const getTemplatesVersionOutput: typeof import("./getTemplatesVersion").getTemplatesVersionOutput = null as any;
 utilities.lazyLoad(exports, ["getTemplatesVersion","getTemplatesVersionOutput"], () => require("./getTemplatesVersion"));
 
-export { GetTestCaseArgs, GetTestCaseResult, GetTestCaseOutputArgs } from "./getTestCase";
-export const getTestCase: typeof import("./getTestCase").getTestCase = null as any;
-export const getTestCaseOutput: typeof import("./getTestCase").getTestCaseOutput = null as any;
-utilities.lazyLoad(exports, ["getTestCase","getTestCaseOutput"], () => require("./getTestCase"));
-
 export { GetVersionArgs, GetVersionResult, GetVersionOutputArgs } from "./getVersion";
 export const getVersion: typeof import("./getVersion").getVersion = null as any;
 export const getVersionOutput: typeof import("./getVersion").getVersionOutput = null as any;
@@ -64,11 +59,6 @@ export { TemplatesVersionArgs } from "./templatesVersion";
 export type TemplatesVersion = import("./templatesVersion").TemplatesVersion;
 export const TemplatesVersion: typeof import("./templatesVersion").TemplatesVersion = null as any;
 utilities.lazyLoad(exports, ["TemplatesVersion"], () => require("./templatesVersion"));
-
-export { TestCaseArgs } from "./testCase";
-export type TestCase = import("./testCase").TestCase;
-export const TestCase: typeof import("./testCase").TestCase = null as any;
-utilities.lazyLoad(exports, ["TestCase"], () => require("./testCase"));
 
 export { VersionArgs } from "./version";
 export type Version = import("./version").Version;
@@ -93,8 +83,6 @@ const _module = {
                 return new SfdcInstance(name, <any>undefined, { urn })
             case "google-native:integrations/v1alpha:TemplatesVersion":
                 return new TemplatesVersion(name, <any>undefined, { urn })
-            case "google-native:integrations/v1alpha:TestCase":
-                return new TestCase(name, <any>undefined, { urn })
             case "google-native:integrations/v1alpha:Version":
                 return new Version(name, <any>undefined, { urn })
             default:

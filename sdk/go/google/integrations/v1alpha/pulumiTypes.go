@@ -27,6 +27,8 @@ type EnterpriseCrmEventbusProtoAttributes struct {
 	IsSearchable *bool `pulumi:"isSearchable"`
 	// See
 	LogSettings *EnterpriseCrmEventbusProtoLogSettings `pulumi:"logSettings"`
+	// True if this workflow parameter should be masked in the logs
+	Masked *bool `pulumi:"masked"`
 	// Used to indicate if the ParameterEntry is a read only field or not.
 	ReadOnly   *bool                                           `pulumi:"readOnly"`
 	Searchable *EnterpriseCrmEventbusProtoAttributesSearchable `pulumi:"searchable"`
@@ -59,6 +61,8 @@ type EnterpriseCrmEventbusProtoAttributesArgs struct {
 	IsSearchable pulumi.BoolPtrInput `pulumi:"isSearchable"`
 	// See
 	LogSettings EnterpriseCrmEventbusProtoLogSettingsPtrInput `pulumi:"logSettings"`
+	// True if this workflow parameter should be masked in the logs
+	Masked pulumi.BoolPtrInput `pulumi:"masked"`
 	// Used to indicate if the ParameterEntry is a read only field or not.
 	ReadOnly   pulumi.BoolPtrInput                                    `pulumi:"readOnly"`
 	Searchable EnterpriseCrmEventbusProtoAttributesSearchablePtrInput `pulumi:"searchable"`
@@ -177,6 +181,11 @@ func (o EnterpriseCrmEventbusProtoAttributesOutput) LogSettings() EnterpriseCrmE
 	}).(EnterpriseCrmEventbusProtoLogSettingsPtrOutput)
 }
 
+// True if this workflow parameter should be masked in the logs
+func (o EnterpriseCrmEventbusProtoAttributesOutput) Masked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EnterpriseCrmEventbusProtoAttributes) *bool { return v.Masked }).(pulumi.BoolPtrOutput)
+}
+
 // Used to indicate if the ParameterEntry is a read only field or not.
 func (o EnterpriseCrmEventbusProtoAttributesOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoAttributes) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
@@ -269,6 +278,16 @@ func (o EnterpriseCrmEventbusProtoAttributesPtrOutput) LogSettings() EnterpriseC
 	}).(EnterpriseCrmEventbusProtoLogSettingsPtrOutput)
 }
 
+// True if this workflow parameter should be masked in the logs
+func (o EnterpriseCrmEventbusProtoAttributesPtrOutput) Masked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnterpriseCrmEventbusProtoAttributes) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Masked
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Used to indicate if the ParameterEntry is a read only field or not.
 func (o EnterpriseCrmEventbusProtoAttributesPtrOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EnterpriseCrmEventbusProtoAttributes) *bool {
@@ -312,6 +331,8 @@ type EnterpriseCrmEventbusProtoAttributesResponse struct {
 	IsSearchable bool `pulumi:"isSearchable"`
 	// See
 	LogSettings EnterpriseCrmEventbusProtoLogSettingsResponse `pulumi:"logSettings"`
+	// True if this workflow parameter should be masked in the logs
+	Masked bool `pulumi:"masked"`
 	// Used to indicate if the ParameterEntry is a read only field or not.
 	ReadOnly   bool   `pulumi:"readOnly"`
 	Searchable string `pulumi:"searchable"`
@@ -363,6 +384,11 @@ func (o EnterpriseCrmEventbusProtoAttributesResponseOutput) LogSettings() Enterp
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoAttributesResponse) EnterpriseCrmEventbusProtoLogSettingsResponse {
 		return v.LogSettings
 	}).(EnterpriseCrmEventbusProtoLogSettingsResponseOutput)
+}
+
+// True if this workflow parameter should be masked in the logs
+func (o EnterpriseCrmEventbusProtoAttributesResponseOutput) Masked() pulumi.BoolOutput {
+	return o.ApplyT(func(v EnterpriseCrmEventbusProtoAttributesResponse) bool { return v.Masked }).(pulumi.BoolOutput)
 }
 
 // Used to indicate if the ParameterEntry is a read only field or not.
@@ -5045,6 +5071,8 @@ func (o EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexRespons
 type EnterpriseCrmEventbusProtoParameterEntry struct {
 	// Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
 	Key *string `pulumi:"key"`
+	// True if this parameter should be masked in the logs
+	Masked *bool `pulumi:"masked"`
 	// Values for the defined keys. Each value can either be string, int, double or any proto message.
 	Value *EnterpriseCrmEventbusProtoParameterValueType `pulumi:"value"`
 }
@@ -5064,6 +5092,8 @@ type EnterpriseCrmEventbusProtoParameterEntryInput interface {
 type EnterpriseCrmEventbusProtoParameterEntryArgs struct {
 	// Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
 	Key pulumi.StringPtrInput `pulumi:"key"`
+	// True if this parameter should be masked in the logs
+	Masked pulumi.BoolPtrInput `pulumi:"masked"`
 	// Values for the defined keys. Each value can either be string, int, double or any proto message.
 	Value EnterpriseCrmEventbusProtoParameterValueTypePtrInput `pulumi:"value"`
 }
@@ -5125,6 +5155,11 @@ func (o EnterpriseCrmEventbusProtoParameterEntryOutput) Key() pulumi.StringPtrOu
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoParameterEntry) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// True if this parameter should be masked in the logs
+func (o EnterpriseCrmEventbusProtoParameterEntryOutput) Masked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EnterpriseCrmEventbusProtoParameterEntry) *bool { return v.Masked }).(pulumi.BoolPtrOutput)
+}
+
 // Values for the defined keys. Each value can either be string, int, double or any proto message.
 func (o EnterpriseCrmEventbusProtoParameterEntryOutput) Value() EnterpriseCrmEventbusProtoParameterValueTypePtrOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoParameterEntry) *EnterpriseCrmEventbusProtoParameterValueType {
@@ -5156,6 +5191,8 @@ func (o EnterpriseCrmEventbusProtoParameterEntryArrayOutput) Index(i pulumi.IntI
 type EnterpriseCrmEventbusProtoParameterEntryResponse struct {
 	// Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
 	Key string `pulumi:"key"`
+	// True if this parameter should be masked in the logs
+	Masked bool `pulumi:"masked"`
 	// Values for the defined keys. Each value can either be string, int, double or any proto message.
 	Value EnterpriseCrmEventbusProtoParameterValueTypeResponse `pulumi:"value"`
 }
@@ -5178,6 +5215,11 @@ func (o EnterpriseCrmEventbusProtoParameterEntryResponseOutput) ToEnterpriseCrmE
 // Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
 func (o EnterpriseCrmEventbusProtoParameterEntryResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoParameterEntryResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// True if this parameter should be masked in the logs
+func (o EnterpriseCrmEventbusProtoParameterEntryResponseOutput) Masked() pulumi.BoolOutput {
+	return o.ApplyT(func(v EnterpriseCrmEventbusProtoParameterEntryResponse) bool { return v.Masked }).(pulumi.BoolOutput)
 }
 
 // Values for the defined keys. Each value can either be string, int, double or any proto message.
@@ -11094,6 +11136,8 @@ type EnterpriseCrmFrontendsEventbusProtoParameterEntry struct {
 	DataType *EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType `pulumi:"dataType"`
 	// Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the workflow definition.
 	Key *string `pulumi:"key"`
+	// True if this parameter should be masked in the logs
+	Masked *bool `pulumi:"masked"`
 	// Values for the defined keys. Each value can either be string, int, double or any proto message.
 	Value *EnterpriseCrmFrontendsEventbusProtoParameterValueType `pulumi:"value"`
 }
@@ -11115,6 +11159,8 @@ type EnterpriseCrmFrontendsEventbusProtoParameterEntryArgs struct {
 	DataType EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypePtrInput `pulumi:"dataType"`
 	// Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the workflow definition.
 	Key pulumi.StringPtrInput `pulumi:"key"`
+	// True if this parameter should be masked in the logs
+	Masked pulumi.BoolPtrInput `pulumi:"masked"`
 	// Values for the defined keys. Each value can either be string, int, double or any proto message.
 	Value EnterpriseCrmFrontendsEventbusProtoParameterValueTypePtrInput `pulumi:"value"`
 }
@@ -11183,6 +11229,11 @@ func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryOutput) Key() pulumi.St
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoParameterEntry) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// True if this parameter should be masked in the logs
+func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryOutput) Masked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoParameterEntry) *bool { return v.Masked }).(pulumi.BoolPtrOutput)
+}
+
 // Values for the defined keys. Each value can either be string, int, double or any proto message.
 func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryOutput) Value() EnterpriseCrmFrontendsEventbusProtoParameterValueTypePtrOutput {
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoParameterEntry) *EnterpriseCrmFrontendsEventbusProtoParameterValueType {
@@ -11216,6 +11267,8 @@ type EnterpriseCrmFrontendsEventbusProtoParameterEntryResponse struct {
 	DataType string `pulumi:"dataType"`
 	// Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the workflow definition.
 	Key string `pulumi:"key"`
+	// True if this parameter should be masked in the logs
+	Masked bool `pulumi:"masked"`
 	// Values for the defined keys. Each value can either be string, int, double or any proto message.
 	Value EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse `pulumi:"value"`
 }
@@ -11243,6 +11296,11 @@ func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseOutput) DataTyp
 // Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the workflow definition.
 func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoParameterEntryResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// True if this parameter should be masked in the logs
+func (o EnterpriseCrmFrontendsEventbusProtoParameterEntryResponseOutput) Masked() pulumi.BoolOutput {
+	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoParameterEntryResponse) bool { return v.Masked }).(pulumi.BoolOutput)
 }
 
 // Values for the defined keys. Each value can either be string, int, double or any proto message.
@@ -13733,6 +13791,8 @@ type EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry struct {
 	Attributes *EnterpriseCrmEventbusProtoAttributes `pulumi:"attributes"`
 	// Child parameters nested within this parameter. This field only applies to protobuf parameters
 	Children []EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry `pulumi:"children"`
+	// Indicates whether this variable contains large data and need to be uploaded to Cloud Storage.
+	ContainsLargeData *bool `pulumi:"containsLargeData"`
 	// The data type of the parameter.
 	DataType *EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType `pulumi:"dataType"`
 	// Default values for the defined keys. Each value can either be string, int, double or any proto message or a serialized object.
@@ -13774,6 +13834,8 @@ type EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArgs struct {
 	Attributes EnterpriseCrmEventbusProtoAttributesPtrInput `pulumi:"attributes"`
 	// Child parameters nested within this parameter. This field only applies to protobuf parameters
 	Children EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArrayInput `pulumi:"children"`
+	// Indicates whether this variable contains large data and need to be uploaded to Cloud Storage.
+	ContainsLargeData pulumi.BoolPtrInput `pulumi:"containsLargeData"`
 	// The data type of the parameter.
 	DataType EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypePtrInput `pulumi:"dataType"`
 	// Default values for the defined keys. Each value can either be string, int, double or any proto message or a serialized object.
@@ -13862,6 +13924,11 @@ func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryOutput) Childre
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry) []EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry {
 		return v.Children
 	}).(EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArrayOutput)
+}
+
+// Indicates whether this variable contains large data and need to be uploaded to Cloud Storage.
+func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryOutput) ContainsLargeData() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry) *bool { return v.ContainsLargeData }).(pulumi.BoolPtrOutput)
 }
 
 // The data type of the parameter.
@@ -13956,6 +14023,8 @@ type EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse struct {
 	Attributes EnterpriseCrmEventbusProtoAttributesResponse `pulumi:"attributes"`
 	// Child parameters nested within this parameter. This field only applies to protobuf parameters
 	Children []EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse `pulumi:"children"`
+	// Indicates whether this variable contains large data and need to be uploaded to Cloud Storage.
+	ContainsLargeData bool `pulumi:"containsLargeData"`
 	// The data type of the parameter.
 	DataType string `pulumi:"dataType"`
 	// Default values for the defined keys. Each value can either be string, int, double or any proto message or a serialized object.
@@ -14007,6 +14076,13 @@ func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponseOutput)
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse) []EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse {
 		return v.Children
 	}).(EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponseArrayOutput)
+}
+
+// Indicates whether this variable contains large data and need to be uploaded to Cloud Storage.
+func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponseOutput) ContainsLargeData() pulumi.BoolOutput {
+	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse) bool {
+		return v.ContainsLargeData
+	}).(pulumi.BoolOutput)
 }
 
 // The data type of the parameter.
@@ -15038,206 +15114,6 @@ func (o GoogleCloudIntegrationsV1alphaAccessTokenResponseOutput) TokenType() pul
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaAccessTokenResponse) string { return v.TokenType }).(pulumi.StringOutput)
 }
 
-// An assertion which will check for a condition over task execution status or an expression for task output variables Next available id: 5
-type GoogleCloudIntegrationsV1alphaAssertion struct {
-	// The type of assertion to perform.
-	AssertionStrategy *GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy `pulumi:"assertionStrategy"`
-	// Optional. Standard filter expression for ASSERT_CONDITION to succeed
-	Condition *string `pulumi:"condition"`
-	// Optional. Key-value pair for ASSERT_EQUALS, ASSERT_NOT_EQUALS, ASSERT_CONTAINS to succeed
-	Parameter *GoogleCloudIntegrationsV1alphaEventParameter `pulumi:"parameter"`
-	// Number of times given task should be retried in case of ASSERT_FAILED_EXECUTION
-	RetryCount *int `pulumi:"retryCount"`
-}
-
-// GoogleCloudIntegrationsV1alphaAssertionInput is an input type that accepts GoogleCloudIntegrationsV1alphaAssertionArgs and GoogleCloudIntegrationsV1alphaAssertionOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaAssertionInput` via:
-//
-//	GoogleCloudIntegrationsV1alphaAssertionArgs{...}
-type GoogleCloudIntegrationsV1alphaAssertionInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaAssertionOutput() GoogleCloudIntegrationsV1alphaAssertionOutput
-	ToGoogleCloudIntegrationsV1alphaAssertionOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaAssertionOutput
-}
-
-// An assertion which will check for a condition over task execution status or an expression for task output variables Next available id: 5
-type GoogleCloudIntegrationsV1alphaAssertionArgs struct {
-	// The type of assertion to perform.
-	AssertionStrategy GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrInput `pulumi:"assertionStrategy"`
-	// Optional. Standard filter expression for ASSERT_CONDITION to succeed
-	Condition pulumi.StringPtrInput `pulumi:"condition"`
-	// Optional. Key-value pair for ASSERT_EQUALS, ASSERT_NOT_EQUALS, ASSERT_CONTAINS to succeed
-	Parameter GoogleCloudIntegrationsV1alphaEventParameterPtrInput `pulumi:"parameter"`
-	// Number of times given task should be retried in case of ASSERT_FAILED_EXECUTION
-	RetryCount pulumi.IntPtrInput `pulumi:"retryCount"`
-}
-
-func (GoogleCloudIntegrationsV1alphaAssertionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaAssertion)(nil)).Elem()
-}
-
-func (i GoogleCloudIntegrationsV1alphaAssertionArgs) ToGoogleCloudIntegrationsV1alphaAssertionOutput() GoogleCloudIntegrationsV1alphaAssertionOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaAssertionOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaAssertionArgs) ToGoogleCloudIntegrationsV1alphaAssertionOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaAssertionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaAssertionOutput)
-}
-
-// GoogleCloudIntegrationsV1alphaAssertionArrayInput is an input type that accepts GoogleCloudIntegrationsV1alphaAssertionArray and GoogleCloudIntegrationsV1alphaAssertionArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaAssertionArrayInput` via:
-//
-//	GoogleCloudIntegrationsV1alphaAssertionArray{ GoogleCloudIntegrationsV1alphaAssertionArgs{...} }
-type GoogleCloudIntegrationsV1alphaAssertionArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaAssertionArrayOutput() GoogleCloudIntegrationsV1alphaAssertionArrayOutput
-	ToGoogleCloudIntegrationsV1alphaAssertionArrayOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaAssertionArrayOutput
-}
-
-type GoogleCloudIntegrationsV1alphaAssertionArray []GoogleCloudIntegrationsV1alphaAssertionInput
-
-func (GoogleCloudIntegrationsV1alphaAssertionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudIntegrationsV1alphaAssertion)(nil)).Elem()
-}
-
-func (i GoogleCloudIntegrationsV1alphaAssertionArray) ToGoogleCloudIntegrationsV1alphaAssertionArrayOutput() GoogleCloudIntegrationsV1alphaAssertionArrayOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaAssertionArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaAssertionArray) ToGoogleCloudIntegrationsV1alphaAssertionArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaAssertionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaAssertionArrayOutput)
-}
-
-// An assertion which will check for a condition over task execution status or an expression for task output variables Next available id: 5
-type GoogleCloudIntegrationsV1alphaAssertionOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaAssertionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaAssertion)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaAssertionOutput) ToGoogleCloudIntegrationsV1alphaAssertionOutput() GoogleCloudIntegrationsV1alphaAssertionOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaAssertionOutput) ToGoogleCloudIntegrationsV1alphaAssertionOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaAssertionOutput {
-	return o
-}
-
-// The type of assertion to perform.
-func (o GoogleCloudIntegrationsV1alphaAssertionOutput) AssertionStrategy() GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaAssertion) *GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy {
-		return v.AssertionStrategy
-	}).(GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyPtrOutput)
-}
-
-// Optional. Standard filter expression for ASSERT_CONDITION to succeed
-func (o GoogleCloudIntegrationsV1alphaAssertionOutput) Condition() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaAssertion) *string { return v.Condition }).(pulumi.StringPtrOutput)
-}
-
-// Optional. Key-value pair for ASSERT_EQUALS, ASSERT_NOT_EQUALS, ASSERT_CONTAINS to succeed
-func (o GoogleCloudIntegrationsV1alphaAssertionOutput) Parameter() GoogleCloudIntegrationsV1alphaEventParameterPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaAssertion) *GoogleCloudIntegrationsV1alphaEventParameter {
-		return v.Parameter
-	}).(GoogleCloudIntegrationsV1alphaEventParameterPtrOutput)
-}
-
-// Number of times given task should be retried in case of ASSERT_FAILED_EXECUTION
-func (o GoogleCloudIntegrationsV1alphaAssertionOutput) RetryCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaAssertion) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
-}
-
-type GoogleCloudIntegrationsV1alphaAssertionArrayOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaAssertionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudIntegrationsV1alphaAssertion)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaAssertionArrayOutput) ToGoogleCloudIntegrationsV1alphaAssertionArrayOutput() GoogleCloudIntegrationsV1alphaAssertionArrayOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaAssertionArrayOutput) ToGoogleCloudIntegrationsV1alphaAssertionArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaAssertionArrayOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaAssertionArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaAssertionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaAssertion {
-		return vs[0].([]GoogleCloudIntegrationsV1alphaAssertion)[vs[1].(int)]
-	}).(GoogleCloudIntegrationsV1alphaAssertionOutput)
-}
-
-// An assertion which will check for a condition over task execution status or an expression for task output variables Next available id: 5
-type GoogleCloudIntegrationsV1alphaAssertionResponse struct {
-	// The type of assertion to perform.
-	AssertionStrategy string `pulumi:"assertionStrategy"`
-	// Optional. Standard filter expression for ASSERT_CONDITION to succeed
-	Condition string `pulumi:"condition"`
-	// Optional. Key-value pair for ASSERT_EQUALS, ASSERT_NOT_EQUALS, ASSERT_CONTAINS to succeed
-	Parameter GoogleCloudIntegrationsV1alphaEventParameterResponse `pulumi:"parameter"`
-	// Number of times given task should be retried in case of ASSERT_FAILED_EXECUTION
-	RetryCount int `pulumi:"retryCount"`
-}
-
-// An assertion which will check for a condition over task execution status or an expression for task output variables Next available id: 5
-type GoogleCloudIntegrationsV1alphaAssertionResponseOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaAssertionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaAssertionResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaAssertionResponseOutput) ToGoogleCloudIntegrationsV1alphaAssertionResponseOutput() GoogleCloudIntegrationsV1alphaAssertionResponseOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaAssertionResponseOutput) ToGoogleCloudIntegrationsV1alphaAssertionResponseOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaAssertionResponseOutput {
-	return o
-}
-
-// The type of assertion to perform.
-func (o GoogleCloudIntegrationsV1alphaAssertionResponseOutput) AssertionStrategy() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaAssertionResponse) string { return v.AssertionStrategy }).(pulumi.StringOutput)
-}
-
-// Optional. Standard filter expression for ASSERT_CONDITION to succeed
-func (o GoogleCloudIntegrationsV1alphaAssertionResponseOutput) Condition() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaAssertionResponse) string { return v.Condition }).(pulumi.StringOutput)
-}
-
-// Optional. Key-value pair for ASSERT_EQUALS, ASSERT_NOT_EQUALS, ASSERT_CONTAINS to succeed
-func (o GoogleCloudIntegrationsV1alphaAssertionResponseOutput) Parameter() GoogleCloudIntegrationsV1alphaEventParameterResponseOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaAssertionResponse) GoogleCloudIntegrationsV1alphaEventParameterResponse {
-		return v.Parameter
-	}).(GoogleCloudIntegrationsV1alphaEventParameterResponseOutput)
-}
-
-// Number of times given task should be retried in case of ASSERT_FAILED_EXECUTION
-func (o GoogleCloudIntegrationsV1alphaAssertionResponseOutput) RetryCount() pulumi.IntOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaAssertionResponse) int { return v.RetryCount }).(pulumi.IntOutput)
-}
-
-type GoogleCloudIntegrationsV1alphaAssertionResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaAssertionResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudIntegrationsV1alphaAssertionResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaAssertionResponseArrayOutput) ToGoogleCloudIntegrationsV1alphaAssertionResponseArrayOutput() GoogleCloudIntegrationsV1alphaAssertionResponseArrayOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaAssertionResponseArrayOutput) ToGoogleCloudIntegrationsV1alphaAssertionResponseArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaAssertionResponseArrayOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaAssertionResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaAssertionResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaAssertionResponse {
-		return vs[0].([]GoogleCloudIntegrationsV1alphaAssertionResponse)[vs[1].(int)]
-	}).(GoogleCloudIntegrationsV1alphaAssertionResponseOutput)
-}
-
 // The credentials to authenticate a user agent with a server that is put in HTTP Authorization request header.
 type GoogleCloudIntegrationsV1alphaAuthToken struct {
 	// The token for the auth type.
@@ -15822,159 +15698,6 @@ type GoogleCloudIntegrationsV1alphaCloudLoggingDetails struct {
 	EnableCloudLogging *bool `pulumi:"enableCloudLogging"`
 }
 
-// GoogleCloudIntegrationsV1alphaCloudLoggingDetailsInput is an input type that accepts GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs and GoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaCloudLoggingDetailsInput` via:
-//
-//	GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs{...}
-type GoogleCloudIntegrationsV1alphaCloudLoggingDetailsInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutput() GoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutput
-	ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutput
-}
-
-// Cloud Logging details for execution info
-type GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs struct {
-	// Optional. Severity selected by the customer for the logs to be sent to Cloud Logging, for the integration version getting executed.
-	CloudLoggingSeverity GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrInput `pulumi:"cloudLoggingSeverity"`
-	// Optional. Status of whether Cloud Logging is enabled or not for the integration version getting executed.
-	EnableCloudLogging pulumi.BoolPtrInput `pulumi:"enableCloudLogging"`
-}
-
-func (GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCloudLoggingDetails)(nil)).Elem()
-}
-
-func (i GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutput() GoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutput)
-}
-
-func (i GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput() GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutput).ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrInput is an input type that accepts GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs, GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtr and GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrInput` via:
-//
-//	        GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs{...}
-//
-//	or:
-//
-//	        nil
-type GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput() GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput
-	ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput
-}
-
-type googleCloudIntegrationsV1alphaCloudLoggingDetailsPtrType GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs
-
-func GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtr(v *GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs) GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrInput {
-	return (*googleCloudIntegrationsV1alphaCloudLoggingDetailsPtrType)(v)
-}
-
-func (*googleCloudIntegrationsV1alphaCloudLoggingDetailsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudIntegrationsV1alphaCloudLoggingDetails)(nil)).Elem()
-}
-
-func (i *googleCloudIntegrationsV1alphaCloudLoggingDetailsPtrType) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput() GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudIntegrationsV1alphaCloudLoggingDetailsPtrType) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput)
-}
-
-// Cloud Logging details for execution info
-type GoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCloudLoggingDetails)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutput) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutput() GoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutput) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutput) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput() GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput {
-	return o.ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutput) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaCloudLoggingDetails) *GoogleCloudIntegrationsV1alphaCloudLoggingDetails {
-		return &v
-	}).(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput)
-}
-
-// Optional. Severity selected by the customer for the logs to be sent to Cloud Logging, for the integration version getting executed.
-func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutput) CloudLoggingSeverity() GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaCloudLoggingDetails) *GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity {
-		return v.CloudLoggingSeverity
-	}).(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput)
-}
-
-// Optional. Status of whether Cloud Logging is enabled or not for the integration version getting executed.
-func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutput) EnableCloudLogging() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaCloudLoggingDetails) *bool { return v.EnableCloudLogging }).(pulumi.BoolPtrOutput)
-}
-
-type GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudIntegrationsV1alphaCloudLoggingDetails)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput() GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput) ToGoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput) Elem() GoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutput {
-	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaCloudLoggingDetails) GoogleCloudIntegrationsV1alphaCloudLoggingDetails {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudIntegrationsV1alphaCloudLoggingDetails
-		return ret
-	}).(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutput)
-}
-
-// Optional. Severity selected by the customer for the logs to be sent to Cloud Logging, for the integration version getting executed.
-func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput) CloudLoggingSeverity() GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaCloudLoggingDetails) *GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverity {
-		if v == nil {
-			return nil
-		}
-		return v.CloudLoggingSeverity
-	}).(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityPtrOutput)
-}
-
-// Optional. Status of whether Cloud Logging is enabled or not for the integration version getting executed.
-func (o GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput) EnableCloudLogging() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaCloudLoggingDetails) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableCloudLogging
-	}).(pulumi.BoolPtrOutput)
-}
-
 // Cloud Logging details for execution info
 type GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse struct {
 	// Optional. Severity selected by the customer for the logs to be sent to Cloud Logging, for the integration version getting executed.
@@ -16020,191 +15743,6 @@ type GoogleCloudIntegrationsV1alphaCloudSchedulerConfig struct {
 	Location string `pulumi:"location"`
 	// Service account used by Cloud Scheduler to trigger the integration at scheduled time
 	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
-}
-
-// GoogleCloudIntegrationsV1alphaCloudSchedulerConfigInput is an input type that accepts GoogleCloudIntegrationsV1alphaCloudSchedulerConfigArgs and GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaCloudSchedulerConfigInput` via:
-//
-//	GoogleCloudIntegrationsV1alphaCloudSchedulerConfigArgs{...}
-type GoogleCloudIntegrationsV1alphaCloudSchedulerConfigInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput() GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput
-	ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput
-}
-
-// Cloud Scheduler Trigger configuration
-type GoogleCloudIntegrationsV1alphaCloudSchedulerConfigArgs struct {
-	// The cron tab of cloud scheduler trigger.
-	CronTab pulumi.StringInput `pulumi:"cronTab"`
-	// Optional. When the job was deleted from Pantheon UI, error_message will be populated when Get/List integrations
-	ErrorMessage pulumi.StringPtrInput `pulumi:"errorMessage"`
-	// The location where associated cloud scheduler job will be created
-	Location pulumi.StringInput `pulumi:"location"`
-	// Service account used by Cloud Scheduler to trigger the integration at scheduled time
-	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
-}
-
-func (GoogleCloudIntegrationsV1alphaCloudSchedulerConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCloudSchedulerConfig)(nil)).Elem()
-}
-
-func (i GoogleCloudIntegrationsV1alphaCloudSchedulerConfigArgs) ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput() GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaCloudSchedulerConfigArgs) ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput)
-}
-
-func (i GoogleCloudIntegrationsV1alphaCloudSchedulerConfigArgs) ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput() GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaCloudSchedulerConfigArgs) ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput).ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrInput is an input type that accepts GoogleCloudIntegrationsV1alphaCloudSchedulerConfigArgs, GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtr and GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrInput` via:
-//
-//	        GoogleCloudIntegrationsV1alphaCloudSchedulerConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput() GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput
-	ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput
-}
-
-type googleCloudIntegrationsV1alphaCloudSchedulerConfigPtrType GoogleCloudIntegrationsV1alphaCloudSchedulerConfigArgs
-
-func GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtr(v *GoogleCloudIntegrationsV1alphaCloudSchedulerConfigArgs) GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrInput {
-	return (*googleCloudIntegrationsV1alphaCloudSchedulerConfigPtrType)(v)
-}
-
-func (*googleCloudIntegrationsV1alphaCloudSchedulerConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudIntegrationsV1alphaCloudSchedulerConfig)(nil)).Elem()
-}
-
-func (i *googleCloudIntegrationsV1alphaCloudSchedulerConfigPtrType) ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput() GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudIntegrationsV1alphaCloudSchedulerConfigPtrType) ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput)
-}
-
-// Cloud Scheduler Trigger configuration
-type GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCloudSchedulerConfig)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput) ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput() GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput) ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput) ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput() GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput {
-	return o.ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput) ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaCloudSchedulerConfig) *GoogleCloudIntegrationsV1alphaCloudSchedulerConfig {
-		return &v
-	}).(GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput)
-}
-
-// The cron tab of cloud scheduler trigger.
-func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput) CronTab() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaCloudSchedulerConfig) string { return v.CronTab }).(pulumi.StringOutput)
-}
-
-// Optional. When the job was deleted from Pantheon UI, error_message will be populated when Get/List integrations
-func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput) ErrorMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaCloudSchedulerConfig) *string { return v.ErrorMessage }).(pulumi.StringPtrOutput)
-}
-
-// The location where associated cloud scheduler job will be created
-func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaCloudSchedulerConfig) string { return v.Location }).(pulumi.StringOutput)
-}
-
-// Service account used by Cloud Scheduler to trigger the integration at scheduled time
-func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput) ServiceAccountEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaCloudSchedulerConfig) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
-}
-
-type GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudIntegrationsV1alphaCloudSchedulerConfig)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput) ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput() GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput) ToGoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput) Elem() GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput {
-	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaCloudSchedulerConfig) GoogleCloudIntegrationsV1alphaCloudSchedulerConfig {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudIntegrationsV1alphaCloudSchedulerConfig
-		return ret
-	}).(GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput)
-}
-
-// The cron tab of cloud scheduler trigger.
-func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput) CronTab() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaCloudSchedulerConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CronTab
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. When the job was deleted from Pantheon UI, error_message will be populated when Get/List integrations
-func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput) ErrorMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaCloudSchedulerConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ErrorMessage
-	}).(pulumi.StringPtrOutput)
-}
-
-// The location where associated cloud scheduler job will be created
-func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaCloudSchedulerConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Location
-	}).(pulumi.StringPtrOutput)
-}
-
-// Service account used by Cloud Scheduler to trigger the integration at scheduled time
-func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaCloudSchedulerConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ServiceAccountEmail
-	}).(pulumi.StringPtrOutput)
 }
 
 // Cloud Scheduler Trigger configuration
@@ -17254,267 +16792,6 @@ func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput) Ind
 	}).(GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutput)
 }
 
-// This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus.
-type GoogleCloudIntegrationsV1alphaEventParameter struct {
-	// Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
-	Key *string `pulumi:"key"`
-	// Values for the defined keys. Each value can either be string, int, double or any proto message.
-	Value *GoogleCloudIntegrationsV1alphaValueType `pulumi:"value"`
-}
-
-// GoogleCloudIntegrationsV1alphaEventParameterInput is an input type that accepts GoogleCloudIntegrationsV1alphaEventParameterArgs and GoogleCloudIntegrationsV1alphaEventParameterOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaEventParameterInput` via:
-//
-//	GoogleCloudIntegrationsV1alphaEventParameterArgs{...}
-type GoogleCloudIntegrationsV1alphaEventParameterInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaEventParameterOutput() GoogleCloudIntegrationsV1alphaEventParameterOutput
-	ToGoogleCloudIntegrationsV1alphaEventParameterOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaEventParameterOutput
-}
-
-// This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus.
-type GoogleCloudIntegrationsV1alphaEventParameterArgs struct {
-	// Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Values for the defined keys. Each value can either be string, int, double or any proto message.
-	Value GoogleCloudIntegrationsV1alphaValueTypePtrInput `pulumi:"value"`
-}
-
-func (GoogleCloudIntegrationsV1alphaEventParameterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaEventParameter)(nil)).Elem()
-}
-
-func (i GoogleCloudIntegrationsV1alphaEventParameterArgs) ToGoogleCloudIntegrationsV1alphaEventParameterOutput() GoogleCloudIntegrationsV1alphaEventParameterOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaEventParameterOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaEventParameterArgs) ToGoogleCloudIntegrationsV1alphaEventParameterOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaEventParameterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaEventParameterOutput)
-}
-
-func (i GoogleCloudIntegrationsV1alphaEventParameterArgs) ToGoogleCloudIntegrationsV1alphaEventParameterPtrOutput() GoogleCloudIntegrationsV1alphaEventParameterPtrOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaEventParameterPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaEventParameterArgs) ToGoogleCloudIntegrationsV1alphaEventParameterPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaEventParameterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaEventParameterOutput).ToGoogleCloudIntegrationsV1alphaEventParameterPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudIntegrationsV1alphaEventParameterPtrInput is an input type that accepts GoogleCloudIntegrationsV1alphaEventParameterArgs, GoogleCloudIntegrationsV1alphaEventParameterPtr and GoogleCloudIntegrationsV1alphaEventParameterPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaEventParameterPtrInput` via:
-//
-//	        GoogleCloudIntegrationsV1alphaEventParameterArgs{...}
-//
-//	or:
-//
-//	        nil
-type GoogleCloudIntegrationsV1alphaEventParameterPtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaEventParameterPtrOutput() GoogleCloudIntegrationsV1alphaEventParameterPtrOutput
-	ToGoogleCloudIntegrationsV1alphaEventParameterPtrOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaEventParameterPtrOutput
-}
-
-type googleCloudIntegrationsV1alphaEventParameterPtrType GoogleCloudIntegrationsV1alphaEventParameterArgs
-
-func GoogleCloudIntegrationsV1alphaEventParameterPtr(v *GoogleCloudIntegrationsV1alphaEventParameterArgs) GoogleCloudIntegrationsV1alphaEventParameterPtrInput {
-	return (*googleCloudIntegrationsV1alphaEventParameterPtrType)(v)
-}
-
-func (*googleCloudIntegrationsV1alphaEventParameterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudIntegrationsV1alphaEventParameter)(nil)).Elem()
-}
-
-func (i *googleCloudIntegrationsV1alphaEventParameterPtrType) ToGoogleCloudIntegrationsV1alphaEventParameterPtrOutput() GoogleCloudIntegrationsV1alphaEventParameterPtrOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaEventParameterPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudIntegrationsV1alphaEventParameterPtrType) ToGoogleCloudIntegrationsV1alphaEventParameterPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaEventParameterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaEventParameterPtrOutput)
-}
-
-// GoogleCloudIntegrationsV1alphaEventParameterArrayInput is an input type that accepts GoogleCloudIntegrationsV1alphaEventParameterArray and GoogleCloudIntegrationsV1alphaEventParameterArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaEventParameterArrayInput` via:
-//
-//	GoogleCloudIntegrationsV1alphaEventParameterArray{ GoogleCloudIntegrationsV1alphaEventParameterArgs{...} }
-type GoogleCloudIntegrationsV1alphaEventParameterArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaEventParameterArrayOutput() GoogleCloudIntegrationsV1alphaEventParameterArrayOutput
-	ToGoogleCloudIntegrationsV1alphaEventParameterArrayOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaEventParameterArrayOutput
-}
-
-type GoogleCloudIntegrationsV1alphaEventParameterArray []GoogleCloudIntegrationsV1alphaEventParameterInput
-
-func (GoogleCloudIntegrationsV1alphaEventParameterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudIntegrationsV1alphaEventParameter)(nil)).Elem()
-}
-
-func (i GoogleCloudIntegrationsV1alphaEventParameterArray) ToGoogleCloudIntegrationsV1alphaEventParameterArrayOutput() GoogleCloudIntegrationsV1alphaEventParameterArrayOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaEventParameterArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaEventParameterArray) ToGoogleCloudIntegrationsV1alphaEventParameterArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaEventParameterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaEventParameterArrayOutput)
-}
-
-// This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus.
-type GoogleCloudIntegrationsV1alphaEventParameterOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaEventParameterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaEventParameter)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaEventParameterOutput) ToGoogleCloudIntegrationsV1alphaEventParameterOutput() GoogleCloudIntegrationsV1alphaEventParameterOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaEventParameterOutput) ToGoogleCloudIntegrationsV1alphaEventParameterOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaEventParameterOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaEventParameterOutput) ToGoogleCloudIntegrationsV1alphaEventParameterPtrOutput() GoogleCloudIntegrationsV1alphaEventParameterPtrOutput {
-	return o.ToGoogleCloudIntegrationsV1alphaEventParameterPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudIntegrationsV1alphaEventParameterOutput) ToGoogleCloudIntegrationsV1alphaEventParameterPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaEventParameterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaEventParameter) *GoogleCloudIntegrationsV1alphaEventParameter {
-		return &v
-	}).(GoogleCloudIntegrationsV1alphaEventParameterPtrOutput)
-}
-
-// Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
-func (o GoogleCloudIntegrationsV1alphaEventParameterOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaEventParameter) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-// Values for the defined keys. Each value can either be string, int, double or any proto message.
-func (o GoogleCloudIntegrationsV1alphaEventParameterOutput) Value() GoogleCloudIntegrationsV1alphaValueTypePtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaEventParameter) *GoogleCloudIntegrationsV1alphaValueType {
-		return v.Value
-	}).(GoogleCloudIntegrationsV1alphaValueTypePtrOutput)
-}
-
-type GoogleCloudIntegrationsV1alphaEventParameterPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaEventParameterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudIntegrationsV1alphaEventParameter)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaEventParameterPtrOutput) ToGoogleCloudIntegrationsV1alphaEventParameterPtrOutput() GoogleCloudIntegrationsV1alphaEventParameterPtrOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaEventParameterPtrOutput) ToGoogleCloudIntegrationsV1alphaEventParameterPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaEventParameterPtrOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaEventParameterPtrOutput) Elem() GoogleCloudIntegrationsV1alphaEventParameterOutput {
-	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaEventParameter) GoogleCloudIntegrationsV1alphaEventParameter {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudIntegrationsV1alphaEventParameter
-		return ret
-	}).(GoogleCloudIntegrationsV1alphaEventParameterOutput)
-}
-
-// Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
-func (o GoogleCloudIntegrationsV1alphaEventParameterPtrOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaEventParameter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Key
-	}).(pulumi.StringPtrOutput)
-}
-
-// Values for the defined keys. Each value can either be string, int, double or any proto message.
-func (o GoogleCloudIntegrationsV1alphaEventParameterPtrOutput) Value() GoogleCloudIntegrationsV1alphaValueTypePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaEventParameter) *GoogleCloudIntegrationsV1alphaValueType {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(GoogleCloudIntegrationsV1alphaValueTypePtrOutput)
-}
-
-type GoogleCloudIntegrationsV1alphaEventParameterArrayOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaEventParameterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudIntegrationsV1alphaEventParameter)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaEventParameterArrayOutput) ToGoogleCloudIntegrationsV1alphaEventParameterArrayOutput() GoogleCloudIntegrationsV1alphaEventParameterArrayOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaEventParameterArrayOutput) ToGoogleCloudIntegrationsV1alphaEventParameterArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaEventParameterArrayOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaEventParameterArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaEventParameterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaEventParameter {
-		return vs[0].([]GoogleCloudIntegrationsV1alphaEventParameter)[vs[1].(int)]
-	}).(GoogleCloudIntegrationsV1alphaEventParameterOutput)
-}
-
-// This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus.
-type GoogleCloudIntegrationsV1alphaEventParameterResponse struct {
-	// Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
-	Key string `pulumi:"key"`
-	// Values for the defined keys. Each value can either be string, int, double or any proto message.
-	Value GoogleCloudIntegrationsV1alphaValueTypeResponse `pulumi:"value"`
-}
-
-// This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus.
-type GoogleCloudIntegrationsV1alphaEventParameterResponseOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaEventParameterResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaEventParameterResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaEventParameterResponseOutput) ToGoogleCloudIntegrationsV1alphaEventParameterResponseOutput() GoogleCloudIntegrationsV1alphaEventParameterResponseOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaEventParameterResponseOutput) ToGoogleCloudIntegrationsV1alphaEventParameterResponseOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaEventParameterResponseOutput {
-	return o
-}
-
-// Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
-func (o GoogleCloudIntegrationsV1alphaEventParameterResponseOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaEventParameterResponse) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// Values for the defined keys. Each value can either be string, int, double or any proto message.
-func (o GoogleCloudIntegrationsV1alphaEventParameterResponseOutput) Value() GoogleCloudIntegrationsV1alphaValueTypeResponseOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaEventParameterResponse) GoogleCloudIntegrationsV1alphaValueTypeResponse {
-		return v.Value
-	}).(GoogleCloudIntegrationsV1alphaValueTypeResponseOutput)
-}
-
-type GoogleCloudIntegrationsV1alphaEventParameterResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaEventParameterResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudIntegrationsV1alphaEventParameterResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaEventParameterResponseArrayOutput) ToGoogleCloudIntegrationsV1alphaEventParameterResponseArrayOutput() GoogleCloudIntegrationsV1alphaEventParameterResponseArrayOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaEventParameterResponseArrayOutput) ToGoogleCloudIntegrationsV1alphaEventParameterResponseArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaEventParameterResponseArrayOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaEventParameterResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaEventParameterResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaEventParameterResponse {
-		return vs[0].([]GoogleCloudIntegrationsV1alphaEventParameterResponse)[vs[1].(int)]
-	}).(GoogleCloudIntegrationsV1alphaEventParameterResponseOutput)
-}
-
 // Policy that defines the task retry logic and failure type. If no FailurePolicy is defined for a task, all its dependent tasks will not be executed (i.e, a `retry_strategy` of NONE will be applied).
 type GoogleCloudIntegrationsV1alphaFailurePolicy struct {
 	// Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_INTEGRATION_WITH_BACKOFF. Defines the initial interval in seconds for backoff.
@@ -17523,176 +16800,6 @@ type GoogleCloudIntegrationsV1alphaFailurePolicy struct {
 	MaxRetries *int `pulumi:"maxRetries"`
 	// Defines what happens to the task upon failure.
 	RetryStrategy *GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy `pulumi:"retryStrategy"`
-}
-
-// GoogleCloudIntegrationsV1alphaFailurePolicyInput is an input type that accepts GoogleCloudIntegrationsV1alphaFailurePolicyArgs and GoogleCloudIntegrationsV1alphaFailurePolicyOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaFailurePolicyInput` via:
-//
-//	GoogleCloudIntegrationsV1alphaFailurePolicyArgs{...}
-type GoogleCloudIntegrationsV1alphaFailurePolicyInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaFailurePolicyOutput() GoogleCloudIntegrationsV1alphaFailurePolicyOutput
-	ToGoogleCloudIntegrationsV1alphaFailurePolicyOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaFailurePolicyOutput
-}
-
-// Policy that defines the task retry logic and failure type. If no FailurePolicy is defined for a task, all its dependent tasks will not be executed (i.e, a `retry_strategy` of NONE will be applied).
-type GoogleCloudIntegrationsV1alphaFailurePolicyArgs struct {
-	// Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_INTEGRATION_WITH_BACKOFF. Defines the initial interval in seconds for backoff.
-	IntervalTime pulumi.StringPtrInput `pulumi:"intervalTime"`
-	// Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_INTEGRATION_WITH_BACKOFF. Defines the number of times the task will be retried if failed.
-	MaxRetries pulumi.IntPtrInput `pulumi:"maxRetries"`
-	// Defines what happens to the task upon failure.
-	RetryStrategy GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyPtrInput `pulumi:"retryStrategy"`
-}
-
-func (GoogleCloudIntegrationsV1alphaFailurePolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaFailurePolicy)(nil)).Elem()
-}
-
-func (i GoogleCloudIntegrationsV1alphaFailurePolicyArgs) ToGoogleCloudIntegrationsV1alphaFailurePolicyOutput() GoogleCloudIntegrationsV1alphaFailurePolicyOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaFailurePolicyOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaFailurePolicyArgs) ToGoogleCloudIntegrationsV1alphaFailurePolicyOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaFailurePolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaFailurePolicyOutput)
-}
-
-func (i GoogleCloudIntegrationsV1alphaFailurePolicyArgs) ToGoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput() GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaFailurePolicyPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaFailurePolicyArgs) ToGoogleCloudIntegrationsV1alphaFailurePolicyPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaFailurePolicyOutput).ToGoogleCloudIntegrationsV1alphaFailurePolicyPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudIntegrationsV1alphaFailurePolicyPtrInput is an input type that accepts GoogleCloudIntegrationsV1alphaFailurePolicyArgs, GoogleCloudIntegrationsV1alphaFailurePolicyPtr and GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaFailurePolicyPtrInput` via:
-//
-//	        GoogleCloudIntegrationsV1alphaFailurePolicyArgs{...}
-//
-//	or:
-//
-//	        nil
-type GoogleCloudIntegrationsV1alphaFailurePolicyPtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput() GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput
-	ToGoogleCloudIntegrationsV1alphaFailurePolicyPtrOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput
-}
-
-type googleCloudIntegrationsV1alphaFailurePolicyPtrType GoogleCloudIntegrationsV1alphaFailurePolicyArgs
-
-func GoogleCloudIntegrationsV1alphaFailurePolicyPtr(v *GoogleCloudIntegrationsV1alphaFailurePolicyArgs) GoogleCloudIntegrationsV1alphaFailurePolicyPtrInput {
-	return (*googleCloudIntegrationsV1alphaFailurePolicyPtrType)(v)
-}
-
-func (*googleCloudIntegrationsV1alphaFailurePolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudIntegrationsV1alphaFailurePolicy)(nil)).Elem()
-}
-
-func (i *googleCloudIntegrationsV1alphaFailurePolicyPtrType) ToGoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput() GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaFailurePolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudIntegrationsV1alphaFailurePolicyPtrType) ToGoogleCloudIntegrationsV1alphaFailurePolicyPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput)
-}
-
-// Policy that defines the task retry logic and failure type. If no FailurePolicy is defined for a task, all its dependent tasks will not be executed (i.e, a `retry_strategy` of NONE will be applied).
-type GoogleCloudIntegrationsV1alphaFailurePolicyOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaFailurePolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaFailurePolicy)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaFailurePolicyOutput) ToGoogleCloudIntegrationsV1alphaFailurePolicyOutput() GoogleCloudIntegrationsV1alphaFailurePolicyOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaFailurePolicyOutput) ToGoogleCloudIntegrationsV1alphaFailurePolicyOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaFailurePolicyOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaFailurePolicyOutput) ToGoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput() GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput {
-	return o.ToGoogleCloudIntegrationsV1alphaFailurePolicyPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudIntegrationsV1alphaFailurePolicyOutput) ToGoogleCloudIntegrationsV1alphaFailurePolicyPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaFailurePolicy) *GoogleCloudIntegrationsV1alphaFailurePolicy {
-		return &v
-	}).(GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput)
-}
-
-// Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_INTEGRATION_WITH_BACKOFF. Defines the initial interval in seconds for backoff.
-func (o GoogleCloudIntegrationsV1alphaFailurePolicyOutput) IntervalTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaFailurePolicy) *string { return v.IntervalTime }).(pulumi.StringPtrOutput)
-}
-
-// Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_INTEGRATION_WITH_BACKOFF. Defines the number of times the task will be retried if failed.
-func (o GoogleCloudIntegrationsV1alphaFailurePolicyOutput) MaxRetries() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaFailurePolicy) *int { return v.MaxRetries }).(pulumi.IntPtrOutput)
-}
-
-// Defines what happens to the task upon failure.
-func (o GoogleCloudIntegrationsV1alphaFailurePolicyOutput) RetryStrategy() GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaFailurePolicy) *GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy {
-		return v.RetryStrategy
-	}).(GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyPtrOutput)
-}
-
-type GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudIntegrationsV1alphaFailurePolicy)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput) ToGoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput() GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput) ToGoogleCloudIntegrationsV1alphaFailurePolicyPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput) Elem() GoogleCloudIntegrationsV1alphaFailurePolicyOutput {
-	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaFailurePolicy) GoogleCloudIntegrationsV1alphaFailurePolicy {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudIntegrationsV1alphaFailurePolicy
-		return ret
-	}).(GoogleCloudIntegrationsV1alphaFailurePolicyOutput)
-}
-
-// Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_INTEGRATION_WITH_BACKOFF. Defines the initial interval in seconds for backoff.
-func (o GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput) IntervalTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaFailurePolicy) *string {
-		if v == nil {
-			return nil
-		}
-		return v.IntervalTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_INTEGRATION_WITH_BACKOFF. Defines the number of times the task will be retried if failed.
-func (o GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput) MaxRetries() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaFailurePolicy) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxRetries
-	}).(pulumi.IntPtrOutput)
-}
-
-// Defines what happens to the task upon failure.
-func (o GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput) RetryStrategy() GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaFailurePolicy) *GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategy {
-		if v == nil {
-			return nil
-		}
-		return v.RetryStrategy
-	}).(GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyPtrOutput)
 }
 
 // Policy that defines the task retry logic and failure type. If no FailurePolicy is defined for a task, all its dependent tasks will not be executed (i.e, a `retry_strategy` of NONE will be applied).
@@ -17923,162 +17030,6 @@ type GoogleCloudIntegrationsV1alphaIntegrationAlertConfig struct {
 	ThresholdValue *GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue `pulumi:"thresholdValue"`
 }
 
-// GoogleCloudIntegrationsV1alphaIntegrationAlertConfigInput is an input type that accepts GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArgs and GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaIntegrationAlertConfigInput` via:
-//
-//	GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArgs{...}
-type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput() GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput
-	ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput
-}
-
-// Message to be used to configure custom alerting in the {@code EventConfig} protos for an event.
-type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArgs struct {
-	// The period over which the metric value should be aggregated and evaluated. Format is , where integer should be a positive integer and unit should be one of (s,m,h,d,w) meaning (second, minute, hour, day, week). For an EXPECTED_MIN threshold, this aggregation_period must be lesser than 24 hours.
-	AggregationPeriod pulumi.StringPtrInput `pulumi:"aggregationPeriod"`
-	// For how many contiguous aggregation periods should the expected min or max be violated for the alert to be fired.
-	AlertThreshold pulumi.IntPtrInput `pulumi:"alertThreshold"`
-	// Set to false by default. When set to true, the metrics are not aggregated or pushed to Monarch for this integration alert.
-	DisableAlert pulumi.BoolPtrInput `pulumi:"disableAlert"`
-	// Name of the alert. This will be displayed in the alert subject. If set, this name should be unique within the scope of the integration.
-	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Should be specified only for *AVERAGE_DURATION and *PERCENTILE_DURATION metrics. This member should be used to specify what duration value the metrics should exceed for the alert to trigger.
-	DurationThreshold pulumi.StringPtrInput `pulumi:"durationThreshold"`
-	// The type of metric.
-	MetricType GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypePtrInput `pulumi:"metricType"`
-	// For either events or tasks, depending on the type of alert, count only final attempts, not retries.
-	OnlyFinalAttempt pulumi.BoolPtrInput `pulumi:"onlyFinalAttempt"`
-	// The threshold type, whether lower(expected_min) or upper(expected_max), for which this alert is being configured. If value falls below expected_min or exceeds expected_max, an alert will be fired.
-	ThresholdType GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypePtrInput `pulumi:"thresholdType"`
-	// The metric value, above or below which the alert should be triggered.
-	ThresholdValue GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrInput `pulumi:"thresholdValue"`
-}
-
-func (GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaIntegrationAlertConfig)(nil)).Elem()
-}
-
-func (i GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArgs) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput() GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArgs) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput)
-}
-
-// GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayInput is an input type that accepts GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArray and GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayInput` via:
-//
-//	GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArray{ GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArgs{...} }
-type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutput() GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutput
-	ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutput
-}
-
-type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArray []GoogleCloudIntegrationsV1alphaIntegrationAlertConfigInput
-
-func (GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudIntegrationsV1alphaIntegrationAlertConfig)(nil)).Elem()
-}
-
-func (i GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArray) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutput() GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArray) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutput)
-}
-
-// Message to be used to configure custom alerting in the {@code EventConfig} protos for an event.
-type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaIntegrationAlertConfig)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput() GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput {
-	return o
-}
-
-// The period over which the metric value should be aggregated and evaluated. Format is , where integer should be a positive integer and unit should be one of (s,m,h,d,w) meaning (second, minute, hour, day, week). For an EXPECTED_MIN threshold, this aggregation_period must be lesser than 24 hours.
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput) AggregationPeriod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationAlertConfig) *string { return v.AggregationPeriod }).(pulumi.StringPtrOutput)
-}
-
-// For how many contiguous aggregation periods should the expected min or max be violated for the alert to be fired.
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput) AlertThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationAlertConfig) *int { return v.AlertThreshold }).(pulumi.IntPtrOutput)
-}
-
-// Set to false by default. When set to true, the metrics are not aggregated or pushed to Monarch for this integration alert.
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput) DisableAlert() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationAlertConfig) *bool { return v.DisableAlert }).(pulumi.BoolPtrOutput)
-}
-
-// Name of the alert. This will be displayed in the alert subject. If set, this name should be unique within the scope of the integration.
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationAlertConfig) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// Should be specified only for *AVERAGE_DURATION and *PERCENTILE_DURATION metrics. This member should be used to specify what duration value the metrics should exceed for the alert to trigger.
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput) DurationThreshold() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationAlertConfig) *string { return v.DurationThreshold }).(pulumi.StringPtrOutput)
-}
-
-// The type of metric.
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput) MetricType() GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypePtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationAlertConfig) *GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricType {
-		return v.MetricType
-	}).(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypePtrOutput)
-}
-
-// For either events or tasks, depending on the type of alert, count only final attempts, not retries.
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput) OnlyFinalAttempt() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationAlertConfig) *bool { return v.OnlyFinalAttempt }).(pulumi.BoolPtrOutput)
-}
-
-// The threshold type, whether lower(expected_min) or upper(expected_max), for which this alert is being configured. If value falls below expected_min or exceeds expected_max, an alert will be fired.
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput) ThresholdType() GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypePtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationAlertConfig) *GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdType {
-		return v.ThresholdType
-	}).(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypePtrOutput)
-}
-
-// The metric value, above or below which the alert should be triggered.
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput) ThresholdValue() GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationAlertConfig) *GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue {
-		return v.ThresholdValue
-	}).(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput)
-}
-
-type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudIntegrationsV1alphaIntegrationAlertConfig)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutput) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutput() GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutput) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaIntegrationAlertConfig {
-		return vs[0].([]GoogleCloudIntegrationsV1alphaIntegrationAlertConfig)[vs[1].(int)]
-	}).(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput)
-}
-
 // Message to be used to configure custom alerting in the {@code EventConfig} protos for an event.
 type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponse struct {
 	// The period over which the metric value should be aggregated and evaluated. Format is , where integer should be a positive integer and unit should be one of (s,m,h,d,w) meaning (second, minute, hour, day, week). For an EXPECTED_MIN threshold, this aggregation_period must be lesser than 24 hours.
@@ -18195,157 +17146,6 @@ type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue struct {
 	Percentage *int `pulumi:"percentage"`
 }
 
-// GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueInput is an input type that accepts GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueArgs and GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueInput` via:
-//
-//	GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueArgs{...}
-type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput() GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput
-	ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput
-}
-
-// The threshold value of the metric, above or below which the alert should be triggered. See EventAlertConfig or TaskAlertConfig for the different alert metric types in each case. For the *RATE metrics, one or both of these fields may be set. Zero is the default value and can be left at that. For *PERCENTILE_DURATION metrics, one or both of these fields may be set, and also, the duration threshold value should be specified in the threshold_duration_ms member below. For *AVERAGE_DURATION metrics, these fields should not be set at all. A different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig.
-type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueArgs struct {
-	// Absolute value threshold.
-	Absolute pulumi.StringPtrInput `pulumi:"absolute"`
-	// Percentage threshold.
-	Percentage pulumi.IntPtrInput `pulumi:"percentage"`
-}
-
-func (GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue)(nil)).Elem()
-}
-
-func (i GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueArgs) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput() GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueArgs) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput)
-}
-
-func (i GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueArgs) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput() GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueArgs) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput).ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutputWithContext(ctx)
-}
-
-// GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrInput is an input type that accepts GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueArgs, GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtr and GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrInput` via:
-//
-//	        GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueArgs{...}
-//
-//	or:
-//
-//	        nil
-type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput() GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput
-	ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput
-}
-
-type googleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrType GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueArgs
-
-func GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtr(v *GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueArgs) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrInput {
-	return (*googleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrType)(v)
-}
-
-func (*googleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue)(nil)).Elem()
-}
-
-func (i *googleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrType) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput() GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrType) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput)
-}
-
-// The threshold value of the metric, above or below which the alert should be triggered. See EventAlertConfig or TaskAlertConfig for the different alert metric types in each case. For the *RATE metrics, one or both of these fields may be set. Zero is the default value and can be left at that. For *PERCENTILE_DURATION metrics, one or both of these fields may be set, and also, the duration threshold value should be specified in the threshold_duration_ms member below. For *AVERAGE_DURATION metrics, these fields should not be set at all. A different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig.
-type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput() GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput() GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput {
-	return o.ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue) *GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue {
-		return &v
-	}).(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput)
-}
-
-// Absolute value threshold.
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput) Absolute() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue) *string { return v.Absolute }).(pulumi.StringPtrOutput)
-}
-
-// Percentage threshold.
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput) Percentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue) *int { return v.Percentage }).(pulumi.IntPtrOutput)
-}
-
-type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput() GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput) ToGoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput) Elem() GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput {
-	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue) GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue
-		return ret
-	}).(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput)
-}
-
-// Absolute value threshold.
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput) Absolute() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Absolute
-	}).(pulumi.StringPtrOutput)
-}
-
-// Percentage threshold.
-func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput) Percentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Percentage
-	}).(pulumi.IntPtrOutput)
-}
-
 // The threshold value of the metric, above or below which the alert should be triggered. See EventAlertConfig or TaskAlertConfig for the different alert metric types in each case. For the *RATE metrics, one or both of these fields may be set. Zero is the default value and can be left at that. For *PERCENTILE_DURATION metrics, one or both of these fields may be set, and also, the duration threshold value should be specified in the threshold_duration_ms member below. For *AVERAGE_DURATION metrics, these fields should not be set at all. A different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig.
 type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueResponse struct {
 	// Absolute value threshold.
@@ -18383,8 +17183,75 @@ func (o GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueRespon
 	}).(pulumi.IntOutput)
 }
 
+// Integration Config Parameter is defined in the integration config and are used to provide external configuration for integration. It provide information about data types of the expected parameters and provide any default values or value. They can also be used to add custom attributes.
+type GoogleCloudIntegrationsV1alphaIntegrationConfigParameter struct {
+	// Optional. Integration Parameter to provide the default value, data type and attributes required for the Integration config variables.
+	Parameter *GoogleCloudIntegrationsV1alphaIntegrationParameter `pulumi:"parameter"`
+	// Values for the defined keys. Each value can either be string, int, double or any proto message or a serialized object.
+	Value *GoogleCloudIntegrationsV1alphaValueType `pulumi:"value"`
+}
+
+// Integration Config Parameter is defined in the integration config and are used to provide external configuration for integration. It provide information about data types of the expected parameters and provide any default values or value. They can also be used to add custom attributes.
+type GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponse struct {
+	// Optional. Integration Parameter to provide the default value, data type and attributes required for the Integration config variables.
+	Parameter GoogleCloudIntegrationsV1alphaIntegrationParameterResponse `pulumi:"parameter"`
+	// Values for the defined keys. Each value can either be string, int, double or any proto message or a serialized object.
+	Value GoogleCloudIntegrationsV1alphaValueTypeResponse `pulumi:"value"`
+}
+
+// Integration Config Parameter is defined in the integration config and are used to provide external configuration for integration. It provide information about data types of the expected parameters and provide any default values or value. They can also be used to add custom attributes.
+type GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseOutput) ToGoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseOutput() GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseOutput) ToGoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseOutput {
+	return o
+}
+
+// Optional. Integration Parameter to provide the default value, data type and attributes required for the Integration config variables.
+func (o GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseOutput) Parameter() GoogleCloudIntegrationsV1alphaIntegrationParameterResponseOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponse) GoogleCloudIntegrationsV1alphaIntegrationParameterResponse {
+		return v.Parameter
+	}).(GoogleCloudIntegrationsV1alphaIntegrationParameterResponseOutput)
+}
+
+// Values for the defined keys. Each value can either be string, int, double or any proto message or a serialized object.
+func (o GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseOutput) Value() GoogleCloudIntegrationsV1alphaValueTypeResponseOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponse) GoogleCloudIntegrationsV1alphaValueTypeResponse {
+		return v.Value
+	}).(GoogleCloudIntegrationsV1alphaValueTypeResponseOutput)
+}
+
+type GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseArrayOutput) ToGoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseArrayOutput() GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseArrayOutput) ToGoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponse {
+		return vs[0].([]GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponse)[vs[1].(int)]
+	}).(GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseOutput)
+}
+
 // Integration Parameter is defined in the integration config and are used to provide information about data types of the expected parameters and provide any default values if needed. They can also be used to add custom attributes. These are static in nature and should not be used for dynamic event definition.
 type GoogleCloudIntegrationsV1alphaIntegrationParameter struct {
+	// Indicates whether this variable contains large data and need to be uploaded to Cloud Storage.
+	ContainsLargeData *bool `pulumi:"containsLargeData"`
 	// Type of the parameter.
 	DataType *GoogleCloudIntegrationsV1alphaIntegrationParameterDataType `pulumi:"dataType"`
 	// Default values for the defined keys. Each value can either be string, int, double or any proto message or a serialized object.
@@ -18399,170 +17266,18 @@ type GoogleCloudIntegrationsV1alphaIntegrationParameter struct {
 	JsonSchema *string `pulumi:"jsonSchema"`
 	// Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
 	Key *string `pulumi:"key"`
+	// True if this parameter should be masked in the logs
+	Masked *bool `pulumi:"masked"`
 	// The identifier of the node (TaskConfig/TriggerConfig) this parameter was produced by, if it is a transient param or a copy of an input param.
 	Producer *string `pulumi:"producer"`
 	// Searchable in the execution log or not.
 	Searchable *bool `pulumi:"searchable"`
 }
 
-// GoogleCloudIntegrationsV1alphaIntegrationParameterInput is an input type that accepts GoogleCloudIntegrationsV1alphaIntegrationParameterArgs and GoogleCloudIntegrationsV1alphaIntegrationParameterOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaIntegrationParameterInput` via:
-//
-//	GoogleCloudIntegrationsV1alphaIntegrationParameterArgs{...}
-type GoogleCloudIntegrationsV1alphaIntegrationParameterInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaIntegrationParameterOutput() GoogleCloudIntegrationsV1alphaIntegrationParameterOutput
-	ToGoogleCloudIntegrationsV1alphaIntegrationParameterOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaIntegrationParameterOutput
-}
-
-// Integration Parameter is defined in the integration config and are used to provide information about data types of the expected parameters and provide any default values if needed. They can also be used to add custom attributes. These are static in nature and should not be used for dynamic event definition.
-type GoogleCloudIntegrationsV1alphaIntegrationParameterArgs struct {
-	// Type of the parameter.
-	DataType GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypePtrInput `pulumi:"dataType"`
-	// Default values for the defined keys. Each value can either be string, int, double or any proto message or a serialized object.
-	DefaultValue GoogleCloudIntegrationsV1alphaValueTypePtrInput `pulumi:"defaultValue"`
-	// The name (without prefix) to be displayed in the UI for this parameter. E.g. if the key is "foo.bar.myName", then the name would be "myName".
-	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Specifies the input/output type for the parameter.
-	InputOutputType GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypePtrInput `pulumi:"inputOutputType"`
-	// Whether this parameter is a transient parameter.
-	IsTransient pulumi.BoolPtrInput `pulumi:"isTransient"`
-	// This schema will be used to validate runtime JSON-typed values of this parameter.
-	JsonSchema pulumi.StringPtrInput `pulumi:"jsonSchema"`
-	// Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The identifier of the node (TaskConfig/TriggerConfig) this parameter was produced by, if it is a transient param or a copy of an input param.
-	Producer pulumi.StringPtrInput `pulumi:"producer"`
-	// Searchable in the execution log or not.
-	Searchable pulumi.BoolPtrInput `pulumi:"searchable"`
-}
-
-func (GoogleCloudIntegrationsV1alphaIntegrationParameterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaIntegrationParameter)(nil)).Elem()
-}
-
-func (i GoogleCloudIntegrationsV1alphaIntegrationParameterArgs) ToGoogleCloudIntegrationsV1alphaIntegrationParameterOutput() GoogleCloudIntegrationsV1alphaIntegrationParameterOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaIntegrationParameterOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaIntegrationParameterArgs) ToGoogleCloudIntegrationsV1alphaIntegrationParameterOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationParameterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaIntegrationParameterOutput)
-}
-
-// GoogleCloudIntegrationsV1alphaIntegrationParameterArrayInput is an input type that accepts GoogleCloudIntegrationsV1alphaIntegrationParameterArray and GoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaIntegrationParameterArrayInput` via:
-//
-//	GoogleCloudIntegrationsV1alphaIntegrationParameterArray{ GoogleCloudIntegrationsV1alphaIntegrationParameterArgs{...} }
-type GoogleCloudIntegrationsV1alphaIntegrationParameterArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutput() GoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutput
-	ToGoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutput
-}
-
-type GoogleCloudIntegrationsV1alphaIntegrationParameterArray []GoogleCloudIntegrationsV1alphaIntegrationParameterInput
-
-func (GoogleCloudIntegrationsV1alphaIntegrationParameterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudIntegrationsV1alphaIntegrationParameter)(nil)).Elem()
-}
-
-func (i GoogleCloudIntegrationsV1alphaIntegrationParameterArray) ToGoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutput() GoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaIntegrationParameterArray) ToGoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutput)
-}
-
-// Integration Parameter is defined in the integration config and are used to provide information about data types of the expected parameters and provide any default values if needed. They can also be used to add custom attributes. These are static in nature and should not be used for dynamic event definition.
-type GoogleCloudIntegrationsV1alphaIntegrationParameterOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaIntegrationParameterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaIntegrationParameter)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaIntegrationParameterOutput) ToGoogleCloudIntegrationsV1alphaIntegrationParameterOutput() GoogleCloudIntegrationsV1alphaIntegrationParameterOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaIntegrationParameterOutput) ToGoogleCloudIntegrationsV1alphaIntegrationParameterOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationParameterOutput {
-	return o
-}
-
-// Type of the parameter.
-func (o GoogleCloudIntegrationsV1alphaIntegrationParameterOutput) DataType() GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypePtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationParameter) *GoogleCloudIntegrationsV1alphaIntegrationParameterDataType {
-		return v.DataType
-	}).(GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypePtrOutput)
-}
-
-// Default values for the defined keys. Each value can either be string, int, double or any proto message or a serialized object.
-func (o GoogleCloudIntegrationsV1alphaIntegrationParameterOutput) DefaultValue() GoogleCloudIntegrationsV1alphaValueTypePtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationParameter) *GoogleCloudIntegrationsV1alphaValueType {
-		return v.DefaultValue
-	}).(GoogleCloudIntegrationsV1alphaValueTypePtrOutput)
-}
-
-// The name (without prefix) to be displayed in the UI for this parameter. E.g. if the key is "foo.bar.myName", then the name would be "myName".
-func (o GoogleCloudIntegrationsV1alphaIntegrationParameterOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationParameter) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the input/output type for the parameter.
-func (o GoogleCloudIntegrationsV1alphaIntegrationParameterOutput) InputOutputType() GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypePtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationParameter) *GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputType {
-		return v.InputOutputType
-	}).(GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypePtrOutput)
-}
-
-// Whether this parameter is a transient parameter.
-func (o GoogleCloudIntegrationsV1alphaIntegrationParameterOutput) IsTransient() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationParameter) *bool { return v.IsTransient }).(pulumi.BoolPtrOutput)
-}
-
-// This schema will be used to validate runtime JSON-typed values of this parameter.
-func (o GoogleCloudIntegrationsV1alphaIntegrationParameterOutput) JsonSchema() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationParameter) *string { return v.JsonSchema }).(pulumi.StringPtrOutput)
-}
-
-// Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
-func (o GoogleCloudIntegrationsV1alphaIntegrationParameterOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationParameter) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-// The identifier of the node (TaskConfig/TriggerConfig) this parameter was produced by, if it is a transient param or a copy of an input param.
-func (o GoogleCloudIntegrationsV1alphaIntegrationParameterOutput) Producer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationParameter) *string { return v.Producer }).(pulumi.StringPtrOutput)
-}
-
-// Searchable in the execution log or not.
-func (o GoogleCloudIntegrationsV1alphaIntegrationParameterOutput) Searchable() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationParameter) *bool { return v.Searchable }).(pulumi.BoolPtrOutput)
-}
-
-type GoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudIntegrationsV1alphaIntegrationParameter)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutput) ToGoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutput() GoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutput) ToGoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaIntegrationParameterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaIntegrationParameter {
-		return vs[0].([]GoogleCloudIntegrationsV1alphaIntegrationParameter)[vs[1].(int)]
-	}).(GoogleCloudIntegrationsV1alphaIntegrationParameterOutput)
-}
-
 // Integration Parameter is defined in the integration config and are used to provide information about data types of the expected parameters and provide any default values if needed. They can also be used to add custom attributes. These are static in nature and should not be used for dynamic event definition.
 type GoogleCloudIntegrationsV1alphaIntegrationParameterResponse struct {
+	// Indicates whether this variable contains large data and need to be uploaded to Cloud Storage.
+	ContainsLargeData bool `pulumi:"containsLargeData"`
 	// Type of the parameter.
 	DataType string `pulumi:"dataType"`
 	// Default values for the defined keys. Each value can either be string, int, double or any proto message or a serialized object.
@@ -18577,6 +17292,8 @@ type GoogleCloudIntegrationsV1alphaIntegrationParameterResponse struct {
 	JsonSchema string `pulumi:"jsonSchema"`
 	// Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
 	Key string `pulumi:"key"`
+	// True if this parameter should be masked in the logs
+	Masked bool `pulumi:"masked"`
 	// The identifier of the node (TaskConfig/TriggerConfig) this parameter was produced by, if it is a transient param or a copy of an input param.
 	Producer string `pulumi:"producer"`
 	// Searchable in the execution log or not.
@@ -18596,6 +17313,11 @@ func (o GoogleCloudIntegrationsV1alphaIntegrationParameterResponseOutput) ToGoog
 
 func (o GoogleCloudIntegrationsV1alphaIntegrationParameterResponseOutput) ToGoogleCloudIntegrationsV1alphaIntegrationParameterResponseOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaIntegrationParameterResponseOutput {
 	return o
+}
+
+// Indicates whether this variable contains large data and need to be uploaded to Cloud Storage.
+func (o GoogleCloudIntegrationsV1alphaIntegrationParameterResponseOutput) ContainsLargeData() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationParameterResponse) bool { return v.ContainsLargeData }).(pulumi.BoolOutput)
 }
 
 // Type of the parameter.
@@ -18633,6 +17355,11 @@ func (o GoogleCloudIntegrationsV1alphaIntegrationParameterResponseOutput) JsonSc
 // Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
 func (o GoogleCloudIntegrationsV1alphaIntegrationParameterResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationParameterResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// True if this parameter should be masked in the logs
+func (o GoogleCloudIntegrationsV1alphaIntegrationParameterResponseOutput) Masked() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaIntegrationParameterResponse) bool { return v.Masked }).(pulumi.BoolOutput)
 }
 
 // The identifier of the node (TaskConfig/TriggerConfig) this parameter was produced by, if it is a transient param or a copy of an input param.
@@ -18907,230 +17634,6 @@ func (o GoogleCloudIntegrationsV1alphaJwtResponseOutput) JwtPayload() pulumi.Str
 // User's pre-shared secret to sign the token.
 func (o GoogleCloudIntegrationsV1alphaJwtResponseOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaJwtResponse) string { return v.Secret }).(pulumi.StringOutput)
-}
-
-// The configuration for mocking of a task during test execution Next available id: 4
-type GoogleCloudIntegrationsV1alphaMockConfig struct {
-	// Optional. Number of times the given task should fail for failure mock strategy
-	FailedExecutions *string `pulumi:"failedExecutions"`
-	// Mockstrategy defines how the particular task should be mocked during test execution
-	MockStrategy *GoogleCloudIntegrationsV1alphaMockConfigMockStrategy `pulumi:"mockStrategy"`
-	// Optional. List of key-value pairs for specific mock strategy
-	Parameters []GoogleCloudIntegrationsV1alphaEventParameter `pulumi:"parameters"`
-}
-
-// GoogleCloudIntegrationsV1alphaMockConfigInput is an input type that accepts GoogleCloudIntegrationsV1alphaMockConfigArgs and GoogleCloudIntegrationsV1alphaMockConfigOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaMockConfigInput` via:
-//
-//	GoogleCloudIntegrationsV1alphaMockConfigArgs{...}
-type GoogleCloudIntegrationsV1alphaMockConfigInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaMockConfigOutput() GoogleCloudIntegrationsV1alphaMockConfigOutput
-	ToGoogleCloudIntegrationsV1alphaMockConfigOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaMockConfigOutput
-}
-
-// The configuration for mocking of a task during test execution Next available id: 4
-type GoogleCloudIntegrationsV1alphaMockConfigArgs struct {
-	// Optional. Number of times the given task should fail for failure mock strategy
-	FailedExecutions pulumi.StringPtrInput `pulumi:"failedExecutions"`
-	// Mockstrategy defines how the particular task should be mocked during test execution
-	MockStrategy GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrInput `pulumi:"mockStrategy"`
-	// Optional. List of key-value pairs for specific mock strategy
-	Parameters GoogleCloudIntegrationsV1alphaEventParameterArrayInput `pulumi:"parameters"`
-}
-
-func (GoogleCloudIntegrationsV1alphaMockConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaMockConfig)(nil)).Elem()
-}
-
-func (i GoogleCloudIntegrationsV1alphaMockConfigArgs) ToGoogleCloudIntegrationsV1alphaMockConfigOutput() GoogleCloudIntegrationsV1alphaMockConfigOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaMockConfigOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaMockConfigArgs) ToGoogleCloudIntegrationsV1alphaMockConfigOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaMockConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaMockConfigOutput)
-}
-
-func (i GoogleCloudIntegrationsV1alphaMockConfigArgs) ToGoogleCloudIntegrationsV1alphaMockConfigPtrOutput() GoogleCloudIntegrationsV1alphaMockConfigPtrOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaMockConfigPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaMockConfigArgs) ToGoogleCloudIntegrationsV1alphaMockConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaMockConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaMockConfigOutput).ToGoogleCloudIntegrationsV1alphaMockConfigPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudIntegrationsV1alphaMockConfigPtrInput is an input type that accepts GoogleCloudIntegrationsV1alphaMockConfigArgs, GoogleCloudIntegrationsV1alphaMockConfigPtr and GoogleCloudIntegrationsV1alphaMockConfigPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaMockConfigPtrInput` via:
-//
-//	        GoogleCloudIntegrationsV1alphaMockConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type GoogleCloudIntegrationsV1alphaMockConfigPtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaMockConfigPtrOutput() GoogleCloudIntegrationsV1alphaMockConfigPtrOutput
-	ToGoogleCloudIntegrationsV1alphaMockConfigPtrOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaMockConfigPtrOutput
-}
-
-type googleCloudIntegrationsV1alphaMockConfigPtrType GoogleCloudIntegrationsV1alphaMockConfigArgs
-
-func GoogleCloudIntegrationsV1alphaMockConfigPtr(v *GoogleCloudIntegrationsV1alphaMockConfigArgs) GoogleCloudIntegrationsV1alphaMockConfigPtrInput {
-	return (*googleCloudIntegrationsV1alphaMockConfigPtrType)(v)
-}
-
-func (*googleCloudIntegrationsV1alphaMockConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudIntegrationsV1alphaMockConfig)(nil)).Elem()
-}
-
-func (i *googleCloudIntegrationsV1alphaMockConfigPtrType) ToGoogleCloudIntegrationsV1alphaMockConfigPtrOutput() GoogleCloudIntegrationsV1alphaMockConfigPtrOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaMockConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudIntegrationsV1alphaMockConfigPtrType) ToGoogleCloudIntegrationsV1alphaMockConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaMockConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaMockConfigPtrOutput)
-}
-
-// The configuration for mocking of a task during test execution Next available id: 4
-type GoogleCloudIntegrationsV1alphaMockConfigOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaMockConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaMockConfig)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaMockConfigOutput) ToGoogleCloudIntegrationsV1alphaMockConfigOutput() GoogleCloudIntegrationsV1alphaMockConfigOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaMockConfigOutput) ToGoogleCloudIntegrationsV1alphaMockConfigOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaMockConfigOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaMockConfigOutput) ToGoogleCloudIntegrationsV1alphaMockConfigPtrOutput() GoogleCloudIntegrationsV1alphaMockConfigPtrOutput {
-	return o.ToGoogleCloudIntegrationsV1alphaMockConfigPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudIntegrationsV1alphaMockConfigOutput) ToGoogleCloudIntegrationsV1alphaMockConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaMockConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaMockConfig) *GoogleCloudIntegrationsV1alphaMockConfig {
-		return &v
-	}).(GoogleCloudIntegrationsV1alphaMockConfigPtrOutput)
-}
-
-// Optional. Number of times the given task should fail for failure mock strategy
-func (o GoogleCloudIntegrationsV1alphaMockConfigOutput) FailedExecutions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaMockConfig) *string { return v.FailedExecutions }).(pulumi.StringPtrOutput)
-}
-
-// Mockstrategy defines how the particular task should be mocked during test execution
-func (o GoogleCloudIntegrationsV1alphaMockConfigOutput) MockStrategy() GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaMockConfig) *GoogleCloudIntegrationsV1alphaMockConfigMockStrategy {
-		return v.MockStrategy
-	}).(GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput)
-}
-
-// Optional. List of key-value pairs for specific mock strategy
-func (o GoogleCloudIntegrationsV1alphaMockConfigOutput) Parameters() GoogleCloudIntegrationsV1alphaEventParameterArrayOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaMockConfig) []GoogleCloudIntegrationsV1alphaEventParameter {
-		return v.Parameters
-	}).(GoogleCloudIntegrationsV1alphaEventParameterArrayOutput)
-}
-
-type GoogleCloudIntegrationsV1alphaMockConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaMockConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudIntegrationsV1alphaMockConfig)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaMockConfigPtrOutput) ToGoogleCloudIntegrationsV1alphaMockConfigPtrOutput() GoogleCloudIntegrationsV1alphaMockConfigPtrOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaMockConfigPtrOutput) ToGoogleCloudIntegrationsV1alphaMockConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaMockConfigPtrOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaMockConfigPtrOutput) Elem() GoogleCloudIntegrationsV1alphaMockConfigOutput {
-	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaMockConfig) GoogleCloudIntegrationsV1alphaMockConfig {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudIntegrationsV1alphaMockConfig
-		return ret
-	}).(GoogleCloudIntegrationsV1alphaMockConfigOutput)
-}
-
-// Optional. Number of times the given task should fail for failure mock strategy
-func (o GoogleCloudIntegrationsV1alphaMockConfigPtrOutput) FailedExecutions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaMockConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.FailedExecutions
-	}).(pulumi.StringPtrOutput)
-}
-
-// Mockstrategy defines how the particular task should be mocked during test execution
-func (o GoogleCloudIntegrationsV1alphaMockConfigPtrOutput) MockStrategy() GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaMockConfig) *GoogleCloudIntegrationsV1alphaMockConfigMockStrategy {
-		if v == nil {
-			return nil
-		}
-		return v.MockStrategy
-	}).(GoogleCloudIntegrationsV1alphaMockConfigMockStrategyPtrOutput)
-}
-
-// Optional. List of key-value pairs for specific mock strategy
-func (o GoogleCloudIntegrationsV1alphaMockConfigPtrOutput) Parameters() GoogleCloudIntegrationsV1alphaEventParameterArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaMockConfig) []GoogleCloudIntegrationsV1alphaEventParameter {
-		if v == nil {
-			return nil
-		}
-		return v.Parameters
-	}).(GoogleCloudIntegrationsV1alphaEventParameterArrayOutput)
-}
-
-// The configuration for mocking of a task during test execution Next available id: 4
-type GoogleCloudIntegrationsV1alphaMockConfigResponse struct {
-	// Optional. Number of times the given task should fail for failure mock strategy
-	FailedExecutions string `pulumi:"failedExecutions"`
-	// Mockstrategy defines how the particular task should be mocked during test execution
-	MockStrategy string `pulumi:"mockStrategy"`
-	// Optional. List of key-value pairs for specific mock strategy
-	Parameters []GoogleCloudIntegrationsV1alphaEventParameterResponse `pulumi:"parameters"`
-}
-
-// The configuration for mocking of a task during test execution Next available id: 4
-type GoogleCloudIntegrationsV1alphaMockConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaMockConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaMockConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaMockConfigResponseOutput) ToGoogleCloudIntegrationsV1alphaMockConfigResponseOutput() GoogleCloudIntegrationsV1alphaMockConfigResponseOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaMockConfigResponseOutput) ToGoogleCloudIntegrationsV1alphaMockConfigResponseOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaMockConfigResponseOutput {
-	return o
-}
-
-// Optional. Number of times the given task should fail for failure mock strategy
-func (o GoogleCloudIntegrationsV1alphaMockConfigResponseOutput) FailedExecutions() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaMockConfigResponse) string { return v.FailedExecutions }).(pulumi.StringOutput)
-}
-
-// Mockstrategy defines how the particular task should be mocked during test execution
-func (o GoogleCloudIntegrationsV1alphaMockConfigResponseOutput) MockStrategy() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaMockConfigResponse) string { return v.MockStrategy }).(pulumi.StringOutput)
-}
-
-// Optional. List of key-value pairs for specific mock strategy
-func (o GoogleCloudIntegrationsV1alphaMockConfigResponseOutput) Parameters() GoogleCloudIntegrationsV1alphaEventParameterResponseArrayOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaMockConfigResponse) []GoogleCloudIntegrationsV1alphaEventParameterResponse {
-		return v.Parameters
-	}).(GoogleCloudIntegrationsV1alphaEventParameterResponseArrayOutput)
 }
 
 // The task that is next in line to be executed, if the condition specified evaluated to true.
@@ -21707,142 +20210,6 @@ type GoogleCloudIntegrationsV1alphaSuccessPolicy struct {
 	FinalState *GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState `pulumi:"finalState"`
 }
 
-// GoogleCloudIntegrationsV1alphaSuccessPolicyInput is an input type that accepts GoogleCloudIntegrationsV1alphaSuccessPolicyArgs and GoogleCloudIntegrationsV1alphaSuccessPolicyOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaSuccessPolicyInput` via:
-//
-//	GoogleCloudIntegrationsV1alphaSuccessPolicyArgs{...}
-type GoogleCloudIntegrationsV1alphaSuccessPolicyInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaSuccessPolicyOutput() GoogleCloudIntegrationsV1alphaSuccessPolicyOutput
-	ToGoogleCloudIntegrationsV1alphaSuccessPolicyOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaSuccessPolicyOutput
-}
-
-// Policy that dictates the behavior for the task after it completes successfully.
-type GoogleCloudIntegrationsV1alphaSuccessPolicyArgs struct {
-	// State to which the execution snapshot status will be set if the task succeeds.
-	FinalState GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStatePtrInput `pulumi:"finalState"`
-}
-
-func (GoogleCloudIntegrationsV1alphaSuccessPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaSuccessPolicy)(nil)).Elem()
-}
-
-func (i GoogleCloudIntegrationsV1alphaSuccessPolicyArgs) ToGoogleCloudIntegrationsV1alphaSuccessPolicyOutput() GoogleCloudIntegrationsV1alphaSuccessPolicyOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaSuccessPolicyOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaSuccessPolicyArgs) ToGoogleCloudIntegrationsV1alphaSuccessPolicyOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaSuccessPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaSuccessPolicyOutput)
-}
-
-func (i GoogleCloudIntegrationsV1alphaSuccessPolicyArgs) ToGoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput() GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaSuccessPolicyArgs) ToGoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaSuccessPolicyOutput).ToGoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudIntegrationsV1alphaSuccessPolicyPtrInput is an input type that accepts GoogleCloudIntegrationsV1alphaSuccessPolicyArgs, GoogleCloudIntegrationsV1alphaSuccessPolicyPtr and GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaSuccessPolicyPtrInput` via:
-//
-//	        GoogleCloudIntegrationsV1alphaSuccessPolicyArgs{...}
-//
-//	or:
-//
-//	        nil
-type GoogleCloudIntegrationsV1alphaSuccessPolicyPtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput() GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput
-	ToGoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput
-}
-
-type googleCloudIntegrationsV1alphaSuccessPolicyPtrType GoogleCloudIntegrationsV1alphaSuccessPolicyArgs
-
-func GoogleCloudIntegrationsV1alphaSuccessPolicyPtr(v *GoogleCloudIntegrationsV1alphaSuccessPolicyArgs) GoogleCloudIntegrationsV1alphaSuccessPolicyPtrInput {
-	return (*googleCloudIntegrationsV1alphaSuccessPolicyPtrType)(v)
-}
-
-func (*googleCloudIntegrationsV1alphaSuccessPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudIntegrationsV1alphaSuccessPolicy)(nil)).Elem()
-}
-
-func (i *googleCloudIntegrationsV1alphaSuccessPolicyPtrType) ToGoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput() GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudIntegrationsV1alphaSuccessPolicyPtrType) ToGoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput)
-}
-
-// Policy that dictates the behavior for the task after it completes successfully.
-type GoogleCloudIntegrationsV1alphaSuccessPolicyOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaSuccessPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaSuccessPolicy)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaSuccessPolicyOutput) ToGoogleCloudIntegrationsV1alphaSuccessPolicyOutput() GoogleCloudIntegrationsV1alphaSuccessPolicyOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaSuccessPolicyOutput) ToGoogleCloudIntegrationsV1alphaSuccessPolicyOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaSuccessPolicyOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaSuccessPolicyOutput) ToGoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput() GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput {
-	return o.ToGoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudIntegrationsV1alphaSuccessPolicyOutput) ToGoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaSuccessPolicy) *GoogleCloudIntegrationsV1alphaSuccessPolicy {
-		return &v
-	}).(GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput)
-}
-
-// State to which the execution snapshot status will be set if the task succeeds.
-func (o GoogleCloudIntegrationsV1alphaSuccessPolicyOutput) FinalState() GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStatePtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaSuccessPolicy) *GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState {
-		return v.FinalState
-	}).(GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStatePtrOutput)
-}
-
-type GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudIntegrationsV1alphaSuccessPolicy)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput) ToGoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput() GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput) ToGoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput) Elem() GoogleCloudIntegrationsV1alphaSuccessPolicyOutput {
-	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaSuccessPolicy) GoogleCloudIntegrationsV1alphaSuccessPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudIntegrationsV1alphaSuccessPolicy
-		return ret
-	}).(GoogleCloudIntegrationsV1alphaSuccessPolicyOutput)
-}
-
-// State to which the execution snapshot status will be set if the task succeeds.
-func (o GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput) FinalState() GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStatePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaSuccessPolicy) *GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState {
-		if v == nil {
-			return nil
-		}
-		return v.FinalState
-	}).(GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStatePtrOutput)
-}
-
 // Policy that dictates the behavior for the task after it completes successfully.
 type GoogleCloudIntegrationsV1alphaSuccessPolicyResponse struct {
 	// State to which the execution snapshot status will be set if the task succeeds.
@@ -21903,223 +20270,6 @@ type GoogleCloudIntegrationsV1alphaTaskConfig struct {
 	TaskId string `pulumi:"taskId"`
 	// Optional. Used to define task-template name if task is of type task-template
 	TaskTemplate *string `pulumi:"taskTemplate"`
-}
-
-// GoogleCloudIntegrationsV1alphaTaskConfigInput is an input type that accepts GoogleCloudIntegrationsV1alphaTaskConfigArgs and GoogleCloudIntegrationsV1alphaTaskConfigOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaTaskConfigInput` via:
-//
-//	GoogleCloudIntegrationsV1alphaTaskConfigArgs{...}
-type GoogleCloudIntegrationsV1alphaTaskConfigInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaTaskConfigOutput() GoogleCloudIntegrationsV1alphaTaskConfigOutput
-	ToGoogleCloudIntegrationsV1alphaTaskConfigOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaTaskConfigOutput
-}
-
-// The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task.
-type GoogleCloudIntegrationsV1alphaTaskConfigArgs struct {
-	// Optional. User-provided description intended to give additional business context about the task.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Optional. User-provided label that is attached to this TaskConfig in the UI.
-	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
-	ErrorCatcherId pulumi.StringPtrInput `pulumi:"errorCatcherId"`
-	// Optional. External task type of the task
-	ExternalTaskType GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrInput `pulumi:"externalTaskType"`
-	// Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for asynchronous calls to Eventbus alone (Post To Queue, Schedule etc.).
-	FailurePolicy GoogleCloudIntegrationsV1alphaFailurePolicyPtrInput `pulumi:"failurePolicy"`
-	// Optional. If set, overrides the option configured in the Task implementation class.
-	JsonValidationOption GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionPtrInput `pulumi:"jsonValidationOption"`
-	// Optional. The set of tasks that are next in line to be executed as per the execution graph defined for the parent event, specified by `event_config_id`. Each of these next tasks are executed only if the condition associated with them evaluates to true.
-	NextTasks GoogleCloudIntegrationsV1alphaNextTaskArrayInput `pulumi:"nextTasks"`
-	// Optional. The policy dictating the execution of the next set of tasks for the current task.
-	NextTasksExecutionPolicy GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyPtrInput `pulumi:"nextTasksExecutionPolicy"`
-	// Optional. The customized parameters the user can pass to this task.
-	Parameters pulumi.StringMapInput `pulumi:"parameters"`
-	// Optional. Informs the front-end application where to draw this error catcher config on the UI.
-	Position GoogleCloudIntegrationsV1alphaCoordinatePtrInput `pulumi:"position"`
-	// Optional. Determines what action to take upon successful task completion.
-	SuccessPolicy GoogleCloudIntegrationsV1alphaSuccessPolicyPtrInput `pulumi:"successPolicy"`
-	// Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for synchronous calls to Eventbus alone (Post).
-	SynchronousCallFailurePolicy GoogleCloudIntegrationsV1alphaFailurePolicyPtrInput `pulumi:"synchronousCallFailurePolicy"`
-	// Optional. The name for the task.
-	Task pulumi.StringPtrInput `pulumi:"task"`
-	// Optional. The policy dictating the execution strategy of this task.
-	TaskExecutionStrategy GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyPtrInput `pulumi:"taskExecutionStrategy"`
-	// The identifier of this task within its parent event config, specified by the client. This should be unique among all the tasks belong to the same event config. We use this field as the identifier to find next tasks (via field `next_tasks.task_id`).
-	TaskId pulumi.StringInput `pulumi:"taskId"`
-	// Optional. Used to define task-template name if task is of type task-template
-	TaskTemplate pulumi.StringPtrInput `pulumi:"taskTemplate"`
-}
-
-func (GoogleCloudIntegrationsV1alphaTaskConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaTaskConfig)(nil)).Elem()
-}
-
-func (i GoogleCloudIntegrationsV1alphaTaskConfigArgs) ToGoogleCloudIntegrationsV1alphaTaskConfigOutput() GoogleCloudIntegrationsV1alphaTaskConfigOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaTaskConfigOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaTaskConfigArgs) ToGoogleCloudIntegrationsV1alphaTaskConfigOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTaskConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaTaskConfigOutput)
-}
-
-// GoogleCloudIntegrationsV1alphaTaskConfigArrayInput is an input type that accepts GoogleCloudIntegrationsV1alphaTaskConfigArray and GoogleCloudIntegrationsV1alphaTaskConfigArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaTaskConfigArrayInput` via:
-//
-//	GoogleCloudIntegrationsV1alphaTaskConfigArray{ GoogleCloudIntegrationsV1alphaTaskConfigArgs{...} }
-type GoogleCloudIntegrationsV1alphaTaskConfigArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaTaskConfigArrayOutput() GoogleCloudIntegrationsV1alphaTaskConfigArrayOutput
-	ToGoogleCloudIntegrationsV1alphaTaskConfigArrayOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaTaskConfigArrayOutput
-}
-
-type GoogleCloudIntegrationsV1alphaTaskConfigArray []GoogleCloudIntegrationsV1alphaTaskConfigInput
-
-func (GoogleCloudIntegrationsV1alphaTaskConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudIntegrationsV1alphaTaskConfig)(nil)).Elem()
-}
-
-func (i GoogleCloudIntegrationsV1alphaTaskConfigArray) ToGoogleCloudIntegrationsV1alphaTaskConfigArrayOutput() GoogleCloudIntegrationsV1alphaTaskConfigArrayOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaTaskConfigArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaTaskConfigArray) ToGoogleCloudIntegrationsV1alphaTaskConfigArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTaskConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaTaskConfigArrayOutput)
-}
-
-// The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task.
-type GoogleCloudIntegrationsV1alphaTaskConfigOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaTaskConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaTaskConfig)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) ToGoogleCloudIntegrationsV1alphaTaskConfigOutput() GoogleCloudIntegrationsV1alphaTaskConfigOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) ToGoogleCloudIntegrationsV1alphaTaskConfigOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTaskConfigOutput {
-	return o
-}
-
-// Optional. User-provided description intended to give additional business context about the task.
-func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Optional. User-provided label that is attached to this TaskConfig in the UI.
-func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfig) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
-func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) ErrorCatcherId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfig) *string { return v.ErrorCatcherId }).(pulumi.StringPtrOutput)
-}
-
-// Optional. External task type of the task
-func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) ExternalTaskType() GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfig) *GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType {
-		return v.ExternalTaskType
-	}).(GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput)
-}
-
-// Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for asynchronous calls to Eventbus alone (Post To Queue, Schedule etc.).
-func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) FailurePolicy() GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfig) *GoogleCloudIntegrationsV1alphaFailurePolicy {
-		return v.FailurePolicy
-	}).(GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput)
-}
-
-// Optional. If set, overrides the option configured in the Task implementation class.
-func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) JsonValidationOption() GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfig) *GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOption {
-		return v.JsonValidationOption
-	}).(GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionPtrOutput)
-}
-
-// Optional. The set of tasks that are next in line to be executed as per the execution graph defined for the parent event, specified by `event_config_id`. Each of these next tasks are executed only if the condition associated with them evaluates to true.
-func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) NextTasks() GoogleCloudIntegrationsV1alphaNextTaskArrayOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfig) []GoogleCloudIntegrationsV1alphaNextTask {
-		return v.NextTasks
-	}).(GoogleCloudIntegrationsV1alphaNextTaskArrayOutput)
-}
-
-// Optional. The policy dictating the execution of the next set of tasks for the current task.
-func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) NextTasksExecutionPolicy() GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfig) *GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicy {
-		return v.NextTasksExecutionPolicy
-	}).(GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyPtrOutput)
-}
-
-// Optional. The customized parameters the user can pass to this task.
-func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) Parameters() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfig) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
-}
-
-// Optional. Informs the front-end application where to draw this error catcher config on the UI.
-func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) Position() GoogleCloudIntegrationsV1alphaCoordinatePtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfig) *GoogleCloudIntegrationsV1alphaCoordinate {
-		return v.Position
-	}).(GoogleCloudIntegrationsV1alphaCoordinatePtrOutput)
-}
-
-// Optional. Determines what action to take upon successful task completion.
-func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) SuccessPolicy() GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfig) *GoogleCloudIntegrationsV1alphaSuccessPolicy {
-		return v.SuccessPolicy
-	}).(GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput)
-}
-
-// Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for synchronous calls to Eventbus alone (Post).
-func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) SynchronousCallFailurePolicy() GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfig) *GoogleCloudIntegrationsV1alphaFailurePolicy {
-		return v.SynchronousCallFailurePolicy
-	}).(GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput)
-}
-
-// Optional. The name for the task.
-func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) Task() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfig) *string { return v.Task }).(pulumi.StringPtrOutput)
-}
-
-// Optional. The policy dictating the execution strategy of this task.
-func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) TaskExecutionStrategy() GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfig) *GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategy {
-		return v.TaskExecutionStrategy
-	}).(GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyPtrOutput)
-}
-
-// The identifier of this task within its parent event config, specified by the client. This should be unique among all the tasks belong to the same event config. We use this field as the identifier to find next tasks (via field `next_tasks.task_id`).
-func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) TaskId() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfig) string { return v.TaskId }).(pulumi.StringOutput)
-}
-
-// Optional. Used to define task-template name if task is of type task-template
-func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) TaskTemplate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfig) *string { return v.TaskTemplate }).(pulumi.StringPtrOutput)
-}
-
-type GoogleCloudIntegrationsV1alphaTaskConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaTaskConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudIntegrationsV1alphaTaskConfig)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaTaskConfigArrayOutput) ToGoogleCloudIntegrationsV1alphaTaskConfigArrayOutput() GoogleCloudIntegrationsV1alphaTaskConfigArrayOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaTaskConfigArrayOutput) ToGoogleCloudIntegrationsV1alphaTaskConfigArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTaskConfigArrayOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaTaskConfigArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaTaskConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaTaskConfig {
-		return vs[0].([]GoogleCloudIntegrationsV1alphaTaskConfig)[vs[1].(int)]
-	}).(GoogleCloudIntegrationsV1alphaTaskConfigOutput)
 }
 
 // The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task.
@@ -22283,208 +20433,6 @@ func (o GoogleCloudIntegrationsV1alphaTaskConfigResponseArrayOutput) Index(i pul
 	}).(GoogleCloudIntegrationsV1alphaTaskConfigResponseOutput)
 }
 
-// The task mock configuration details and assertions for functional tests. Next available id: 5
-type GoogleCloudIntegrationsV1alphaTestTaskConfig struct {
-	// Optional. List of conditions or expressions which should be evaluated to true unless there is a bug/problem in the integration. These are evaluated one the task execution is completed as per the mock strategy in test case
-	Assertions []GoogleCloudIntegrationsV1alphaAssertion `pulumi:"assertions"`
-	// Optional. Defines how to mock the given task during test execution
-	MockConfig *GoogleCloudIntegrationsV1alphaMockConfig `pulumi:"mockConfig"`
-	// This defines in the test case, the task name in integration which will be mocked by this test task config
-	Task string `pulumi:"task"`
-	// This defines in the test case, the task in integration which will be mocked by this test task config
-	TaskNumber string `pulumi:"taskNumber"`
-}
-
-// GoogleCloudIntegrationsV1alphaTestTaskConfigInput is an input type that accepts GoogleCloudIntegrationsV1alphaTestTaskConfigArgs and GoogleCloudIntegrationsV1alphaTestTaskConfigOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaTestTaskConfigInput` via:
-//
-//	GoogleCloudIntegrationsV1alphaTestTaskConfigArgs{...}
-type GoogleCloudIntegrationsV1alphaTestTaskConfigInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaTestTaskConfigOutput() GoogleCloudIntegrationsV1alphaTestTaskConfigOutput
-	ToGoogleCloudIntegrationsV1alphaTestTaskConfigOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaTestTaskConfigOutput
-}
-
-// The task mock configuration details and assertions for functional tests. Next available id: 5
-type GoogleCloudIntegrationsV1alphaTestTaskConfigArgs struct {
-	// Optional. List of conditions or expressions which should be evaluated to true unless there is a bug/problem in the integration. These are evaluated one the task execution is completed as per the mock strategy in test case
-	Assertions GoogleCloudIntegrationsV1alphaAssertionArrayInput `pulumi:"assertions"`
-	// Optional. Defines how to mock the given task during test execution
-	MockConfig GoogleCloudIntegrationsV1alphaMockConfigPtrInput `pulumi:"mockConfig"`
-	// This defines in the test case, the task name in integration which will be mocked by this test task config
-	Task pulumi.StringInput `pulumi:"task"`
-	// This defines in the test case, the task in integration which will be mocked by this test task config
-	TaskNumber pulumi.StringInput `pulumi:"taskNumber"`
-}
-
-func (GoogleCloudIntegrationsV1alphaTestTaskConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaTestTaskConfig)(nil)).Elem()
-}
-
-func (i GoogleCloudIntegrationsV1alphaTestTaskConfigArgs) ToGoogleCloudIntegrationsV1alphaTestTaskConfigOutput() GoogleCloudIntegrationsV1alphaTestTaskConfigOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaTestTaskConfigOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaTestTaskConfigArgs) ToGoogleCloudIntegrationsV1alphaTestTaskConfigOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTestTaskConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaTestTaskConfigOutput)
-}
-
-// GoogleCloudIntegrationsV1alphaTestTaskConfigArrayInput is an input type that accepts GoogleCloudIntegrationsV1alphaTestTaskConfigArray and GoogleCloudIntegrationsV1alphaTestTaskConfigArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaTestTaskConfigArrayInput` via:
-//
-//	GoogleCloudIntegrationsV1alphaTestTaskConfigArray{ GoogleCloudIntegrationsV1alphaTestTaskConfigArgs{...} }
-type GoogleCloudIntegrationsV1alphaTestTaskConfigArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaTestTaskConfigArrayOutput() GoogleCloudIntegrationsV1alphaTestTaskConfigArrayOutput
-	ToGoogleCloudIntegrationsV1alphaTestTaskConfigArrayOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaTestTaskConfigArrayOutput
-}
-
-type GoogleCloudIntegrationsV1alphaTestTaskConfigArray []GoogleCloudIntegrationsV1alphaTestTaskConfigInput
-
-func (GoogleCloudIntegrationsV1alphaTestTaskConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudIntegrationsV1alphaTestTaskConfig)(nil)).Elem()
-}
-
-func (i GoogleCloudIntegrationsV1alphaTestTaskConfigArray) ToGoogleCloudIntegrationsV1alphaTestTaskConfigArrayOutput() GoogleCloudIntegrationsV1alphaTestTaskConfigArrayOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaTestTaskConfigArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaTestTaskConfigArray) ToGoogleCloudIntegrationsV1alphaTestTaskConfigArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTestTaskConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaTestTaskConfigArrayOutput)
-}
-
-// The task mock configuration details and assertions for functional tests. Next available id: 5
-type GoogleCloudIntegrationsV1alphaTestTaskConfigOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaTestTaskConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaTestTaskConfig)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaTestTaskConfigOutput) ToGoogleCloudIntegrationsV1alphaTestTaskConfigOutput() GoogleCloudIntegrationsV1alphaTestTaskConfigOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaTestTaskConfigOutput) ToGoogleCloudIntegrationsV1alphaTestTaskConfigOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTestTaskConfigOutput {
-	return o
-}
-
-// Optional. List of conditions or expressions which should be evaluated to true unless there is a bug/problem in the integration. These are evaluated one the task execution is completed as per the mock strategy in test case
-func (o GoogleCloudIntegrationsV1alphaTestTaskConfigOutput) Assertions() GoogleCloudIntegrationsV1alphaAssertionArrayOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTestTaskConfig) []GoogleCloudIntegrationsV1alphaAssertion {
-		return v.Assertions
-	}).(GoogleCloudIntegrationsV1alphaAssertionArrayOutput)
-}
-
-// Optional. Defines how to mock the given task during test execution
-func (o GoogleCloudIntegrationsV1alphaTestTaskConfigOutput) MockConfig() GoogleCloudIntegrationsV1alphaMockConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTestTaskConfig) *GoogleCloudIntegrationsV1alphaMockConfig {
-		return v.MockConfig
-	}).(GoogleCloudIntegrationsV1alphaMockConfigPtrOutput)
-}
-
-// This defines in the test case, the task name in integration which will be mocked by this test task config
-func (o GoogleCloudIntegrationsV1alphaTestTaskConfigOutput) Task() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTestTaskConfig) string { return v.Task }).(pulumi.StringOutput)
-}
-
-// This defines in the test case, the task in integration which will be mocked by this test task config
-func (o GoogleCloudIntegrationsV1alphaTestTaskConfigOutput) TaskNumber() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTestTaskConfig) string { return v.TaskNumber }).(pulumi.StringOutput)
-}
-
-type GoogleCloudIntegrationsV1alphaTestTaskConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaTestTaskConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudIntegrationsV1alphaTestTaskConfig)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaTestTaskConfigArrayOutput) ToGoogleCloudIntegrationsV1alphaTestTaskConfigArrayOutput() GoogleCloudIntegrationsV1alphaTestTaskConfigArrayOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaTestTaskConfigArrayOutput) ToGoogleCloudIntegrationsV1alphaTestTaskConfigArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTestTaskConfigArrayOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaTestTaskConfigArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaTestTaskConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaTestTaskConfig {
-		return vs[0].([]GoogleCloudIntegrationsV1alphaTestTaskConfig)[vs[1].(int)]
-	}).(GoogleCloudIntegrationsV1alphaTestTaskConfigOutput)
-}
-
-// The task mock configuration details and assertions for functional tests. Next available id: 5
-type GoogleCloudIntegrationsV1alphaTestTaskConfigResponse struct {
-	// Optional. List of conditions or expressions which should be evaluated to true unless there is a bug/problem in the integration. These are evaluated one the task execution is completed as per the mock strategy in test case
-	Assertions []GoogleCloudIntegrationsV1alphaAssertionResponse `pulumi:"assertions"`
-	// Optional. Defines how to mock the given task during test execution
-	MockConfig GoogleCloudIntegrationsV1alphaMockConfigResponse `pulumi:"mockConfig"`
-	// This defines in the test case, the task name in integration which will be mocked by this test task config
-	Task string `pulumi:"task"`
-	// This defines in the test case, the task in integration which will be mocked by this test task config
-	TaskNumber string `pulumi:"taskNumber"`
-}
-
-// The task mock configuration details and assertions for functional tests. Next available id: 5
-type GoogleCloudIntegrationsV1alphaTestTaskConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaTestTaskConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaTestTaskConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaTestTaskConfigResponseOutput) ToGoogleCloudIntegrationsV1alphaTestTaskConfigResponseOutput() GoogleCloudIntegrationsV1alphaTestTaskConfigResponseOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaTestTaskConfigResponseOutput) ToGoogleCloudIntegrationsV1alphaTestTaskConfigResponseOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTestTaskConfigResponseOutput {
-	return o
-}
-
-// Optional. List of conditions or expressions which should be evaluated to true unless there is a bug/problem in the integration. These are evaluated one the task execution is completed as per the mock strategy in test case
-func (o GoogleCloudIntegrationsV1alphaTestTaskConfigResponseOutput) Assertions() GoogleCloudIntegrationsV1alphaAssertionResponseArrayOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTestTaskConfigResponse) []GoogleCloudIntegrationsV1alphaAssertionResponse {
-		return v.Assertions
-	}).(GoogleCloudIntegrationsV1alphaAssertionResponseArrayOutput)
-}
-
-// Optional. Defines how to mock the given task during test execution
-func (o GoogleCloudIntegrationsV1alphaTestTaskConfigResponseOutput) MockConfig() GoogleCloudIntegrationsV1alphaMockConfigResponseOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTestTaskConfigResponse) GoogleCloudIntegrationsV1alphaMockConfigResponse {
-		return v.MockConfig
-	}).(GoogleCloudIntegrationsV1alphaMockConfigResponseOutput)
-}
-
-// This defines in the test case, the task name in integration which will be mocked by this test task config
-func (o GoogleCloudIntegrationsV1alphaTestTaskConfigResponseOutput) Task() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTestTaskConfigResponse) string { return v.Task }).(pulumi.StringOutput)
-}
-
-// This defines in the test case, the task in integration which will be mocked by this test task config
-func (o GoogleCloudIntegrationsV1alphaTestTaskConfigResponseOutput) TaskNumber() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTestTaskConfigResponse) string { return v.TaskNumber }).(pulumi.StringOutput)
-}
-
-type GoogleCloudIntegrationsV1alphaTestTaskConfigResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaTestTaskConfigResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudIntegrationsV1alphaTestTaskConfigResponse)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaTestTaskConfigResponseArrayOutput) ToGoogleCloudIntegrationsV1alphaTestTaskConfigResponseArrayOutput() GoogleCloudIntegrationsV1alphaTestTaskConfigResponseArrayOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaTestTaskConfigResponseArrayOutput) ToGoogleCloudIntegrationsV1alphaTestTaskConfigResponseArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTestTaskConfigResponseArrayOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaTestTaskConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaTestTaskConfigResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaTestTaskConfigResponse {
-		return vs[0].([]GoogleCloudIntegrationsV1alphaTestTaskConfigResponse)[vs[1].(int)]
-	}).(GoogleCloudIntegrationsV1alphaTestTaskConfigResponseOutput)
-}
-
 // Configuration detail of a trigger.
 type GoogleCloudIntegrationsV1alphaTriggerConfig struct {
 	// Optional. An alert threshold configuration for the [trigger + client + integration] tuple. If these values are not specified in the trigger config, default values will be populated by the system. Note that there must be exactly one alert threshold configured per [client + trigger + integration] when published.
@@ -22513,196 +20461,6 @@ type GoogleCloudIntegrationsV1alphaTriggerConfig struct {
 	TriggerNumber string `pulumi:"triggerNumber"`
 	// Optional. Type of trigger
 	TriggerType *GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType `pulumi:"triggerType"`
-}
-
-// GoogleCloudIntegrationsV1alphaTriggerConfigInput is an input type that accepts GoogleCloudIntegrationsV1alphaTriggerConfigArgs and GoogleCloudIntegrationsV1alphaTriggerConfigOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaTriggerConfigInput` via:
-//
-//	GoogleCloudIntegrationsV1alphaTriggerConfigArgs{...}
-type GoogleCloudIntegrationsV1alphaTriggerConfigInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaTriggerConfigOutput() GoogleCloudIntegrationsV1alphaTriggerConfigOutput
-	ToGoogleCloudIntegrationsV1alphaTriggerConfigOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaTriggerConfigOutput
-}
-
-// Configuration detail of a trigger.
-type GoogleCloudIntegrationsV1alphaTriggerConfigArgs struct {
-	// Optional. An alert threshold configuration for the [trigger + client + integration] tuple. If these values are not specified in the trigger config, default values will be populated by the system. Note that there must be exactly one alert threshold configured per [client + trigger + integration] when published.
-	AlertConfig GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayInput `pulumi:"alertConfig"`
-	// Optional. Cloud Scheduler Trigger related metadata
-	CloudSchedulerConfig GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrInput `pulumi:"cloudSchedulerConfig"`
-	// Optional. User-provided description intended to give additional business context about the task.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
-	ErrorCatcherId pulumi.StringPtrInput `pulumi:"errorCatcherId"`
-	// Optional. The user created label for a particular trigger.
-	Label pulumi.StringPtrInput `pulumi:"label"`
-	// Optional. Dictates how next tasks will be executed.
-	NextTasksExecutionPolicy GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyPtrInput `pulumi:"nextTasksExecutionPolicy"`
-	// Optional. Informs the front-end application where to draw this error catcher config on the UI.
-	Position GoogleCloudIntegrationsV1alphaCoordinatePtrInput `pulumi:"position"`
-	// Optional. Configurable properties of the trigger, not to be confused with integration parameters. E.g. "name" is a property for API triggers and "subscription" is a property for Pub/sub triggers.
-	Properties pulumi.StringMapInput `pulumi:"properties"`
-	// Optional. Set of tasks numbers from where the integration execution is started by this trigger. If this is empty, then integration is executed with default start tasks. In the list of start tasks, none of two tasks can have direct ancestor-descendant relationships (i.e. in a same integration execution graph).
-	StartTasks GoogleCloudIntegrationsV1alphaNextTaskArrayInput `pulumi:"startTasks"`
-	// Optional. Name of the trigger. Example: "API Trigger", "Cloud Pub Sub Trigger" When set will be sent out to monitoring dashabord for tracking purpose.
-	Trigger pulumi.StringPtrInput `pulumi:"trigger"`
-	// Optional. The backend trigger ID.
-	TriggerId pulumi.StringPtrInput `pulumi:"triggerId"`
-	// A number to uniquely identify each trigger config within the integration on UI.
-	TriggerNumber pulumi.StringInput `pulumi:"triggerNumber"`
-	// Optional. Type of trigger
-	TriggerType GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypePtrInput `pulumi:"triggerType"`
-}
-
-func (GoogleCloudIntegrationsV1alphaTriggerConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaTriggerConfig)(nil)).Elem()
-}
-
-func (i GoogleCloudIntegrationsV1alphaTriggerConfigArgs) ToGoogleCloudIntegrationsV1alphaTriggerConfigOutput() GoogleCloudIntegrationsV1alphaTriggerConfigOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaTriggerConfigOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaTriggerConfigArgs) ToGoogleCloudIntegrationsV1alphaTriggerConfigOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTriggerConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaTriggerConfigOutput)
-}
-
-// GoogleCloudIntegrationsV1alphaTriggerConfigArrayInput is an input type that accepts GoogleCloudIntegrationsV1alphaTriggerConfigArray and GoogleCloudIntegrationsV1alphaTriggerConfigArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaTriggerConfigArrayInput` via:
-//
-//	GoogleCloudIntegrationsV1alphaTriggerConfigArray{ GoogleCloudIntegrationsV1alphaTriggerConfigArgs{...} }
-type GoogleCloudIntegrationsV1alphaTriggerConfigArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudIntegrationsV1alphaTriggerConfigArrayOutput() GoogleCloudIntegrationsV1alphaTriggerConfigArrayOutput
-	ToGoogleCloudIntegrationsV1alphaTriggerConfigArrayOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaTriggerConfigArrayOutput
-}
-
-type GoogleCloudIntegrationsV1alphaTriggerConfigArray []GoogleCloudIntegrationsV1alphaTriggerConfigInput
-
-func (GoogleCloudIntegrationsV1alphaTriggerConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudIntegrationsV1alphaTriggerConfig)(nil)).Elem()
-}
-
-func (i GoogleCloudIntegrationsV1alphaTriggerConfigArray) ToGoogleCloudIntegrationsV1alphaTriggerConfigArrayOutput() GoogleCloudIntegrationsV1alphaTriggerConfigArrayOutput {
-	return i.ToGoogleCloudIntegrationsV1alphaTriggerConfigArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudIntegrationsV1alphaTriggerConfigArray) ToGoogleCloudIntegrationsV1alphaTriggerConfigArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTriggerConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaTriggerConfigArrayOutput)
-}
-
-// Configuration detail of a trigger.
-type GoogleCloudIntegrationsV1alphaTriggerConfigOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaTriggerConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaTriggerConfig)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaTriggerConfigOutput) ToGoogleCloudIntegrationsV1alphaTriggerConfigOutput() GoogleCloudIntegrationsV1alphaTriggerConfigOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaTriggerConfigOutput) ToGoogleCloudIntegrationsV1alphaTriggerConfigOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTriggerConfigOutput {
-	return o
-}
-
-// Optional. An alert threshold configuration for the [trigger + client + integration] tuple. If these values are not specified in the trigger config, default values will be populated by the system. Note that there must be exactly one alert threshold configured per [client + trigger + integration] when published.
-func (o GoogleCloudIntegrationsV1alphaTriggerConfigOutput) AlertConfig() GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTriggerConfig) []GoogleCloudIntegrationsV1alphaIntegrationAlertConfig {
-		return v.AlertConfig
-	}).(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutput)
-}
-
-// Optional. Cloud Scheduler Trigger related metadata
-func (o GoogleCloudIntegrationsV1alphaTriggerConfigOutput) CloudSchedulerConfig() GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTriggerConfig) *GoogleCloudIntegrationsV1alphaCloudSchedulerConfig {
-		return v.CloudSchedulerConfig
-	}).(GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput)
-}
-
-// Optional. User-provided description intended to give additional business context about the task.
-func (o GoogleCloudIntegrationsV1alphaTriggerConfigOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTriggerConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
-func (o GoogleCloudIntegrationsV1alphaTriggerConfigOutput) ErrorCatcherId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTriggerConfig) *string { return v.ErrorCatcherId }).(pulumi.StringPtrOutput)
-}
-
-// Optional. The user created label for a particular trigger.
-func (o GoogleCloudIntegrationsV1alphaTriggerConfigOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTriggerConfig) *string { return v.Label }).(pulumi.StringPtrOutput)
-}
-
-// Optional. Dictates how next tasks will be executed.
-func (o GoogleCloudIntegrationsV1alphaTriggerConfigOutput) NextTasksExecutionPolicy() GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTriggerConfig) *GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicy {
-		return v.NextTasksExecutionPolicy
-	}).(GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyPtrOutput)
-}
-
-// Optional. Informs the front-end application where to draw this error catcher config on the UI.
-func (o GoogleCloudIntegrationsV1alphaTriggerConfigOutput) Position() GoogleCloudIntegrationsV1alphaCoordinatePtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTriggerConfig) *GoogleCloudIntegrationsV1alphaCoordinate {
-		return v.Position
-	}).(GoogleCloudIntegrationsV1alphaCoordinatePtrOutput)
-}
-
-// Optional. Configurable properties of the trigger, not to be confused with integration parameters. E.g. "name" is a property for API triggers and "subscription" is a property for Pub/sub triggers.
-func (o GoogleCloudIntegrationsV1alphaTriggerConfigOutput) Properties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTriggerConfig) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
-}
-
-// Optional. Set of tasks numbers from where the integration execution is started by this trigger. If this is empty, then integration is executed with default start tasks. In the list of start tasks, none of two tasks can have direct ancestor-descendant relationships (i.e. in a same integration execution graph).
-func (o GoogleCloudIntegrationsV1alphaTriggerConfigOutput) StartTasks() GoogleCloudIntegrationsV1alphaNextTaskArrayOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTriggerConfig) []GoogleCloudIntegrationsV1alphaNextTask {
-		return v.StartTasks
-	}).(GoogleCloudIntegrationsV1alphaNextTaskArrayOutput)
-}
-
-// Optional. Name of the trigger. Example: "API Trigger", "Cloud Pub Sub Trigger" When set will be sent out to monitoring dashabord for tracking purpose.
-func (o GoogleCloudIntegrationsV1alphaTriggerConfigOutput) Trigger() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTriggerConfig) *string { return v.Trigger }).(pulumi.StringPtrOutput)
-}
-
-// Optional. The backend trigger ID.
-func (o GoogleCloudIntegrationsV1alphaTriggerConfigOutput) TriggerId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTriggerConfig) *string { return v.TriggerId }).(pulumi.StringPtrOutput)
-}
-
-// A number to uniquely identify each trigger config within the integration on UI.
-func (o GoogleCloudIntegrationsV1alphaTriggerConfigOutput) TriggerNumber() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTriggerConfig) string { return v.TriggerNumber }).(pulumi.StringOutput)
-}
-
-// Optional. Type of trigger
-func (o GoogleCloudIntegrationsV1alphaTriggerConfigOutput) TriggerType() GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypePtrOutput {
-	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTriggerConfig) *GoogleCloudIntegrationsV1alphaTriggerConfigTriggerType {
-		return v.TriggerType
-	}).(GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypePtrOutput)
-}
-
-type GoogleCloudIntegrationsV1alphaTriggerConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudIntegrationsV1alphaTriggerConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudIntegrationsV1alphaTriggerConfig)(nil)).Elem()
-}
-
-func (o GoogleCloudIntegrationsV1alphaTriggerConfigArrayOutput) ToGoogleCloudIntegrationsV1alphaTriggerConfigArrayOutput() GoogleCloudIntegrationsV1alphaTriggerConfigArrayOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaTriggerConfigArrayOutput) ToGoogleCloudIntegrationsV1alphaTriggerConfigArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTriggerConfigArrayOutput {
-	return o
-}
-
-func (o GoogleCloudIntegrationsV1alphaTriggerConfigArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaTriggerConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaTriggerConfig {
-		return vs[0].([]GoogleCloudIntegrationsV1alphaTriggerConfig)[vs[1].(int)]
-	}).(GoogleCloudIntegrationsV1alphaTriggerConfigOutput)
 }
 
 // Configuration detail of a trigger.
@@ -23556,18 +21314,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseCrmLoggingGwsSanitizeOptionsPtrInput)(nil)).Elem(), EnterpriseCrmLoggingGwsSanitizeOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaAccessTokenInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaAccessTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaAccessTokenPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaAccessTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaAssertionInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaAssertionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaAssertionArrayInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaAssertionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaAuthTokenInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaAuthTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaAuthTokenPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaAuthTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaBooleanParameterArrayInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaBooleanParameterArrayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaBooleanParameterArrayPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaBooleanParameterArrayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaClientCertificateInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaClientCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaClientCertificatePtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaClientCertificateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCloudLoggingDetailsInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaCloudLoggingDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCloudSchedulerConfigInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaCloudSchedulerConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaCloudSchedulerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCoordinateInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaCoordinateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCoordinatePtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaCoordinateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCredentialInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaCredentialArgs{})
@@ -23576,23 +21328,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaDoubleParameterArrayPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaDoubleParameterArrayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaErrorCatcherConfigInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaErrorCatcherConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaEventParameterInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaEventParameterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaEventParameterPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaEventParameterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaEventParameterArrayInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaEventParameterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaFailurePolicyInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaFailurePolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaFailurePolicyPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaFailurePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaIntParameterArrayInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaIntParameterArrayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaIntParameterArrayPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaIntParameterArrayArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaIntegrationAlertConfigInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaIntegrationParameterInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaIntegrationParameterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaIntegrationParameterArrayInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaIntegrationParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaJwtInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaJwtArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaJwtPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaJwtArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaMockConfigInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaMockConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaMockConfigPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaMockConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaNextTaskInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaNextTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaNextTaskArrayInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaNextTaskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeArgs{})
@@ -23613,14 +21352,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaServiceAccountCredentialsPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaServiceAccountCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaStringParameterArrayInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaStringParameterArrayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaStringParameterArrayPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaStringParameterArrayArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaSuccessPolicyInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaSuccessPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaSuccessPolicyPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaSuccessPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaTaskConfigInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaTaskConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaTaskConfigArrayInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaTaskConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaTestTaskConfigInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaTestTaskConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaTestTaskConfigArrayInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaTestTaskConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaTriggerConfigInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaTriggerConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaTriggerConfigArrayInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaTriggerConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaUsernameAndPasswordInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaUsernameAndPasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaUsernameAndPasswordPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaUsernameAndPasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaValueTypeInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaValueTypeArgs{})
@@ -23835,10 +21566,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaAccessTokenOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaAccessTokenPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaAccessTokenResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaAssertionOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaAssertionArrayOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaAssertionResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaAssertionResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaAuthTokenOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaAuthTokenPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaAuthTokenResponseOutput{})
@@ -23848,11 +21575,7 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaClientCertificateOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaClientCertificatePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaClientCertificateResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaCloudSchedulerConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaCoordinateOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaCoordinatePtrOutput{})
@@ -23867,34 +21590,20 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaEventParameterOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaEventParameterPtrOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaEventParameterArrayOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaEventParameterResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaEventParameterResponseArrayOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaFailurePolicyOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaFailurePolicyResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaIntParameterArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaIntParameterArrayPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaIntParameterArrayResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigResponseArrayOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValuePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaIntegrationParameterOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaIntegrationParameterArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaIntegrationConfigParameterResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaIntegrationParameterResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaIntegrationParameterResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaJwtOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaJwtPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaJwtResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaMockConfigOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaMockConfigPtrOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaMockConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaNextTaskOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaNextTaskArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaNextTaskResponseOutput{})
@@ -23927,19 +21636,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaStringParameterArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaStringParameterArrayPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaStringParameterArrayResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaSuccessPolicyOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaSuccessPolicyPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaSuccessPolicyResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaTaskConfigOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaTaskConfigArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaTaskConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaTaskConfigResponseArrayOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaTestTaskConfigOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaTestTaskConfigArrayOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaTestTaskConfigResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaTestTaskConfigResponseArrayOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaTriggerConfigOutput{})
-	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaTriggerConfigArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaTriggerConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaTriggerConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaUsernameAndPasswordOutput{})

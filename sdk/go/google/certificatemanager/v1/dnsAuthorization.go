@@ -32,6 +32,8 @@ type DnsAuthorization struct {
 	// A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: - in location global: FIXED_RECORD.
+	Type pulumi.StringOutput `pulumi:"type"`
 	// The last update timestamp of a DnsAuthorization.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -100,6 +102,8 @@ type dnsAuthorizationArgs struct {
 	// A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
+	// Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: - in location global: FIXED_RECORD.
+	Type *DnsAuthorizationType `pulumi:"type"`
 }
 
 // The set of arguments for constructing a DnsAuthorization resource.
@@ -116,6 +120,8 @@ type DnsAuthorizationArgs struct {
 	// A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
+	// Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: - in location global: FIXED_RECORD.
+	Type DnsAuthorizationTypePtrInput
 }
 
 func (DnsAuthorizationArgs) ElementType() reflect.Type {
@@ -196,6 +202,11 @@ func (o DnsAuthorizationOutput) Name() pulumi.StringOutput {
 
 func (o DnsAuthorizationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: - in location global: FIXED_RECORD.
+func (o DnsAuthorizationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 // The last update timestamp of a DnsAuthorization.

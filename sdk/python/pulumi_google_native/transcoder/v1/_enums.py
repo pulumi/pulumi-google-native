@@ -7,9 +7,12 @@ from enum import Enum
 __all__ = [
     'AnimationFadeFadeType',
     'DashConfigSegmentReferenceScheme',
+    'H264CodecSettingsFrameRateConversionStrategy',
+    'H265CodecSettingsFrameRateConversionStrategy',
     'JobMode',
     'JobOptimization',
     'ManifestType',
+    'Vp9CodecSettingsFrameRateConversionStrategy',
 ]
 
 
@@ -46,6 +49,42 @@ class DashConfigSegmentReferenceScheme(str, Enum):
     SEGMENT_TEMPLATE_NUMBER = "SEGMENT_TEMPLATE_NUMBER"
     """
     SegmentSettings.individual_segments must be set to `true` to use this segment reference scheme. Uses the DASH specification `` tag to determine the URLs of media files for each segment. For example: ```xml ... ```
+    """
+
+
+class H264CodecSettingsFrameRateConversionStrategy(str, Enum):
+    """
+    Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+    """
+    FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED = "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED"
+    """
+    Unspecified frame rate conversion strategy.
+    """
+    DOWNSAMPLE = "DOWNSAMPLE"
+    """
+    Selectively retain frames to reduce the output frame rate. Every _n_ th frame is kept, where `n = ceil(input frame rate / target frame rate)`. When _n_ = 1 (that is, the target frame rate is greater than the input frame rate), the output frame rate matches the input frame rate. When _n_ > 1, frames are dropped and the output frame rate is equal to `(input frame rate / n)`. For more information, see [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate).
+    """
+    DROP_DUPLICATE = "DROP_DUPLICATE"
+    """
+    Drop or duplicate frames to match the specified frame rate.
+    """
+
+
+class H265CodecSettingsFrameRateConversionStrategy(str, Enum):
+    """
+    Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+    """
+    FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED = "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED"
+    """
+    Unspecified frame rate conversion strategy.
+    """
+    DOWNSAMPLE = "DOWNSAMPLE"
+    """
+    Selectively retain frames to reduce the output frame rate. Every _n_ th frame is kept, where `n = ceil(input frame rate / target frame rate)`. When _n_ = 1 (that is, the target frame rate is greater than the input frame rate), the output frame rate matches the input frame rate. When _n_ > 1, frames are dropped and the output frame rate is equal to `(input frame rate / n)`. For more information, see [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate).
+    """
+    DROP_DUPLICATE = "DROP_DUPLICATE"
+    """
+    Drop or duplicate frames to match the specified frame rate.
     """
 
 
@@ -100,4 +139,22 @@ class ManifestType(str, Enum):
     DASH = "DASH"
     """
     Create an MPEG-DASH manifest. The corresponding file extension is `.mpd`.
+    """
+
+
+class Vp9CodecSettingsFrameRateConversionStrategy(str, Enum):
+    """
+    Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+    """
+    FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED = "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED"
+    """
+    Unspecified frame rate conversion strategy.
+    """
+    DOWNSAMPLE = "DOWNSAMPLE"
+    """
+    Selectively retain frames to reduce the output frame rate. Every _n_ th frame is kept, where `n = ceil(input frame rate / target frame rate)`. When _n_ = 1 (that is, the target frame rate is greater than the input frame rate), the output frame rate matches the input frame rate. When _n_ > 1, frames are dropped and the output frame rate is equal to `(input frame rate / n)`. For more information, see [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate).
+    """
+    DROP_DUPLICATE = "DROP_DUPLICATE"
+    """
+    Drop or duplicate frames to match the specified frame rate.
     """

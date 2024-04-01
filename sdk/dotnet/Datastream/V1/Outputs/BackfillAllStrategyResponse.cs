@@ -28,6 +28,10 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
         /// PostgreSQL data source objects to avoid backfilling.
         /// </summary>
         public readonly Outputs.PostgresqlRdbmsResponse PostgresqlExcludedObjects;
+        /// <summary>
+        /// SQLServer data source objects to avoid backfilling
+        /// </summary>
+        public readonly Outputs.SqlServerRdbmsResponse SqlServerExcludedObjects;
 
         [OutputConstructor]
         private BackfillAllStrategyResponse(
@@ -35,11 +39,14 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
 
             Outputs.OracleRdbmsResponse oracleExcludedObjects,
 
-            Outputs.PostgresqlRdbmsResponse postgresqlExcludedObjects)
+            Outputs.PostgresqlRdbmsResponse postgresqlExcludedObjects,
+
+            Outputs.SqlServerRdbmsResponse sqlServerExcludedObjects)
         {
             MysqlExcludedObjects = mysqlExcludedObjects;
             OracleExcludedObjects = oracleExcludedObjects;
             PostgresqlExcludedObjects = postgresqlExcludedObjects;
+            SqlServerExcludedObjects = sqlServerExcludedObjects;
         }
     }
 }

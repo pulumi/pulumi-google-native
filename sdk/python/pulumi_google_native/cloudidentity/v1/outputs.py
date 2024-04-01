@@ -18,6 +18,11 @@ __all__ = [
     'EntityKeyResponse',
     'ExpiryDetailResponse',
     'GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse',
+    'GoogleAppsCloudidentityDevicesV1BrowserAttributesResponse',
+    'GoogleAppsCloudidentityDevicesV1BrowserInfoResponse',
+    'GoogleAppsCloudidentityDevicesV1CertificateAttributesResponse',
+    'GoogleAppsCloudidentityDevicesV1CertificateTemplateResponse',
+    'GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponse',
     'MembershipRoleResponse',
     'MembershipRoleRestrictionEvaluationResponse',
     'RestrictionEvaluationsResponse',
@@ -37,7 +42,7 @@ class DynamicGroupMetadataResponse(dict):
                  status: 'outputs.DynamicGroupStatusResponse'):
         """
         Dynamic group metadata like queries and status.
-        :param Sequence['DynamicGroupQueryResponse'] queries: Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+        :param Sequence['DynamicGroupQueryResponse'] queries: Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 500 dynamic groups.
         :param 'DynamicGroupStatusResponse' status: Status of the dynamic group.
         """
         pulumi.set(__self__, "queries", queries)
@@ -47,7 +52,7 @@ class DynamicGroupMetadataResponse(dict):
     @pulumi.getter
     def queries(self) -> Sequence['outputs.DynamicGroupQueryResponse']:
         """
-        Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+        Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 500 dynamic groups.
         """
         return pulumi.get(self, "queries")
 
@@ -349,6 +354,531 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse(dict):
         Whether Google Play Protect Verify Apps is enabled.
         """
         return pulumi.get(self, "verify_apps_enabled")
+
+
+@pulumi.output_type
+class GoogleAppsCloudidentityDevicesV1BrowserAttributesResponse(dict):
+    """
+    Contains information about browser profiles reported by the [Endpoint Verification extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "chromeBrowserInfo":
+            suggest = "chrome_browser_info"
+        elif key == "chromeProfileId":
+            suggest = "chrome_profile_id"
+        elif key == "lastProfileSyncTime":
+            suggest = "last_profile_sync_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleAppsCloudidentityDevicesV1BrowserAttributesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleAppsCloudidentityDevicesV1BrowserAttributesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleAppsCloudidentityDevicesV1BrowserAttributesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 chrome_browser_info: 'outputs.GoogleAppsCloudidentityDevicesV1BrowserInfoResponse',
+                 chrome_profile_id: str,
+                 last_profile_sync_time: str):
+        """
+        Contains information about browser profiles reported by the [Endpoint Verification extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
+        :param 'GoogleAppsCloudidentityDevicesV1BrowserInfoResponse' chrome_browser_info: Represents the current state of the [Chrome browser attributes](https://cloud.google.com/access-context-manager/docs/browser-attributes) sent by the [Endpoint Verification extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
+        :param str chrome_profile_id: Chrome profile ID that is exposed by the Chrome API. It is unique for each device.
+        :param str last_profile_sync_time: Timestamp in milliseconds since Epoch when the profile/gcm id was last synced.
+        """
+        pulumi.set(__self__, "chrome_browser_info", chrome_browser_info)
+        pulumi.set(__self__, "chrome_profile_id", chrome_profile_id)
+        pulumi.set(__self__, "last_profile_sync_time", last_profile_sync_time)
+
+    @property
+    @pulumi.getter(name="chromeBrowserInfo")
+    def chrome_browser_info(self) -> 'outputs.GoogleAppsCloudidentityDevicesV1BrowserInfoResponse':
+        """
+        Represents the current state of the [Chrome browser attributes](https://cloud.google.com/access-context-manager/docs/browser-attributes) sent by the [Endpoint Verification extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
+        """
+        return pulumi.get(self, "chrome_browser_info")
+
+    @property
+    @pulumi.getter(name="chromeProfileId")
+    def chrome_profile_id(self) -> str:
+        """
+        Chrome profile ID that is exposed by the Chrome API. It is unique for each device.
+        """
+        return pulumi.get(self, "chrome_profile_id")
+
+    @property
+    @pulumi.getter(name="lastProfileSyncTime")
+    def last_profile_sync_time(self) -> str:
+        """
+        Timestamp in milliseconds since Epoch when the profile/gcm id was last synced.
+        """
+        return pulumi.get(self, "last_profile_sync_time")
+
+
+@pulumi.output_type
+class GoogleAppsCloudidentityDevicesV1BrowserInfoResponse(dict):
+    """
+    Browser-specific fields reported by the [Endpoint Verification extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1). LINT.IfChange
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "browserManagementState":
+            suggest = "browser_management_state"
+        elif key == "browserVersion":
+            suggest = "browser_version"
+        elif key == "isBuiltInDnsClientEnabled":
+            suggest = "is_built_in_dns_client_enabled"
+        elif key == "isBulkDataEntryAnalysisEnabled":
+            suggest = "is_bulk_data_entry_analysis_enabled"
+        elif key == "isChromeCleanupEnabled":
+            suggest = "is_chrome_cleanup_enabled"
+        elif key == "isChromeRemoteDesktopAppBlocked":
+            suggest = "is_chrome_remote_desktop_app_blocked"
+        elif key == "isFileDownloadAnalysisEnabled":
+            suggest = "is_file_download_analysis_enabled"
+        elif key == "isFileUploadAnalysisEnabled":
+            suggest = "is_file_upload_analysis_enabled"
+        elif key == "isRealtimeUrlCheckEnabled":
+            suggest = "is_realtime_url_check_enabled"
+        elif key == "isSecurityEventAnalysisEnabled":
+            suggest = "is_security_event_analysis_enabled"
+        elif key == "isSiteIsolationEnabled":
+            suggest = "is_site_isolation_enabled"
+        elif key == "isThirdPartyBlockingEnabled":
+            suggest = "is_third_party_blocking_enabled"
+        elif key == "passwordProtectionWarningTrigger":
+            suggest = "password_protection_warning_trigger"
+        elif key == "safeBrowsingProtectionLevel":
+            suggest = "safe_browsing_protection_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleAppsCloudidentityDevicesV1BrowserInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleAppsCloudidentityDevicesV1BrowserInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleAppsCloudidentityDevicesV1BrowserInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 browser_management_state: str,
+                 browser_version: str,
+                 is_built_in_dns_client_enabled: bool,
+                 is_bulk_data_entry_analysis_enabled: bool,
+                 is_chrome_cleanup_enabled: bool,
+                 is_chrome_remote_desktop_app_blocked: bool,
+                 is_file_download_analysis_enabled: bool,
+                 is_file_upload_analysis_enabled: bool,
+                 is_realtime_url_check_enabled: bool,
+                 is_security_event_analysis_enabled: bool,
+                 is_site_isolation_enabled: bool,
+                 is_third_party_blocking_enabled: bool,
+                 password_protection_warning_trigger: str,
+                 safe_browsing_protection_level: str):
+        """
+        Browser-specific fields reported by the [Endpoint Verification extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1). LINT.IfChange
+        :param str browser_management_state: Browser's management state.
+        :param str browser_version: Version of the request initiating browser.
+        :param bool is_built_in_dns_client_enabled: Current state of [built-in DNS client](https://chromeenterprise.google/policies/#BuiltInDnsClientEnabled).
+        :param bool is_bulk_data_entry_analysis_enabled: Current state of [bulk data analysis](https://chromeenterprise.google/policies/#OnBulkDataEntryEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+        :param bool is_chrome_cleanup_enabled: Current state of [Chrome Cleanup](https://chromeenterprise.google/policies/#ChromeCleanupEnabled).
+        :param bool is_chrome_remote_desktop_app_blocked: Current state of [Chrome Remote Desktop app](https://chromeenterprise.google/policies/#URLBlocklist).
+        :param bool is_file_download_analysis_enabled: Current state of [file download analysis](https://chromeenterprise.google/policies/#OnFileDownloadedEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+        :param bool is_file_upload_analysis_enabled: Current state of [file upload analysis](https://chromeenterprise.google/policies/#OnFileAttachedEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+        :param bool is_realtime_url_check_enabled: Current state of [real-time URL check](https://chromeenterprise.google/policies/#EnterpriseRealTimeUrlCheckMode). Set to true if provider list from Chrome is non-empty.
+        :param bool is_security_event_analysis_enabled: Current state of [security event analysis](https://chromeenterprise.google/policies/#OnSecurityEventEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+        :param bool is_site_isolation_enabled: Current state of [site isolation](https://chromeenterprise.google/policies/?policy=IsolateOrigins).
+        :param bool is_third_party_blocking_enabled: Current state of [third-party blocking](https://chromeenterprise.google/policies/#ThirdPartyBlockingEnabled).
+        :param str password_protection_warning_trigger: Current state of [password protection trigger](https://chromeenterprise.google/policies/#PasswordProtectionWarningTrigger).
+        :param str safe_browsing_protection_level: Current state of [Safe Browsing protection level](https://chromeenterprise.google/policies/#SafeBrowsingProtectionLevel).
+        """
+        pulumi.set(__self__, "browser_management_state", browser_management_state)
+        pulumi.set(__self__, "browser_version", browser_version)
+        pulumi.set(__self__, "is_built_in_dns_client_enabled", is_built_in_dns_client_enabled)
+        pulumi.set(__self__, "is_bulk_data_entry_analysis_enabled", is_bulk_data_entry_analysis_enabled)
+        pulumi.set(__self__, "is_chrome_cleanup_enabled", is_chrome_cleanup_enabled)
+        pulumi.set(__self__, "is_chrome_remote_desktop_app_blocked", is_chrome_remote_desktop_app_blocked)
+        pulumi.set(__self__, "is_file_download_analysis_enabled", is_file_download_analysis_enabled)
+        pulumi.set(__self__, "is_file_upload_analysis_enabled", is_file_upload_analysis_enabled)
+        pulumi.set(__self__, "is_realtime_url_check_enabled", is_realtime_url_check_enabled)
+        pulumi.set(__self__, "is_security_event_analysis_enabled", is_security_event_analysis_enabled)
+        pulumi.set(__self__, "is_site_isolation_enabled", is_site_isolation_enabled)
+        pulumi.set(__self__, "is_third_party_blocking_enabled", is_third_party_blocking_enabled)
+        pulumi.set(__self__, "password_protection_warning_trigger", password_protection_warning_trigger)
+        pulumi.set(__self__, "safe_browsing_protection_level", safe_browsing_protection_level)
+
+    @property
+    @pulumi.getter(name="browserManagementState")
+    def browser_management_state(self) -> str:
+        """
+        Browser's management state.
+        """
+        return pulumi.get(self, "browser_management_state")
+
+    @property
+    @pulumi.getter(name="browserVersion")
+    def browser_version(self) -> str:
+        """
+        Version of the request initiating browser.
+        """
+        return pulumi.get(self, "browser_version")
+
+    @property
+    @pulumi.getter(name="isBuiltInDnsClientEnabled")
+    def is_built_in_dns_client_enabled(self) -> bool:
+        """
+        Current state of [built-in DNS client](https://chromeenterprise.google/policies/#BuiltInDnsClientEnabled).
+        """
+        return pulumi.get(self, "is_built_in_dns_client_enabled")
+
+    @property
+    @pulumi.getter(name="isBulkDataEntryAnalysisEnabled")
+    def is_bulk_data_entry_analysis_enabled(self) -> bool:
+        """
+        Current state of [bulk data analysis](https://chromeenterprise.google/policies/#OnBulkDataEntryEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+        """
+        return pulumi.get(self, "is_bulk_data_entry_analysis_enabled")
+
+    @property
+    @pulumi.getter(name="isChromeCleanupEnabled")
+    def is_chrome_cleanup_enabled(self) -> bool:
+        """
+        Current state of [Chrome Cleanup](https://chromeenterprise.google/policies/#ChromeCleanupEnabled).
+        """
+        return pulumi.get(self, "is_chrome_cleanup_enabled")
+
+    @property
+    @pulumi.getter(name="isChromeRemoteDesktopAppBlocked")
+    def is_chrome_remote_desktop_app_blocked(self) -> bool:
+        """
+        Current state of [Chrome Remote Desktop app](https://chromeenterprise.google/policies/#URLBlocklist).
+        """
+        return pulumi.get(self, "is_chrome_remote_desktop_app_blocked")
+
+    @property
+    @pulumi.getter(name="isFileDownloadAnalysisEnabled")
+    def is_file_download_analysis_enabled(self) -> bool:
+        """
+        Current state of [file download analysis](https://chromeenterprise.google/policies/#OnFileDownloadedEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+        """
+        return pulumi.get(self, "is_file_download_analysis_enabled")
+
+    @property
+    @pulumi.getter(name="isFileUploadAnalysisEnabled")
+    def is_file_upload_analysis_enabled(self) -> bool:
+        """
+        Current state of [file upload analysis](https://chromeenterprise.google/policies/#OnFileAttachedEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+        """
+        return pulumi.get(self, "is_file_upload_analysis_enabled")
+
+    @property
+    @pulumi.getter(name="isRealtimeUrlCheckEnabled")
+    def is_realtime_url_check_enabled(self) -> bool:
+        """
+        Current state of [real-time URL check](https://chromeenterprise.google/policies/#EnterpriseRealTimeUrlCheckMode). Set to true if provider list from Chrome is non-empty.
+        """
+        return pulumi.get(self, "is_realtime_url_check_enabled")
+
+    @property
+    @pulumi.getter(name="isSecurityEventAnalysisEnabled")
+    def is_security_event_analysis_enabled(self) -> bool:
+        """
+        Current state of [security event analysis](https://chromeenterprise.google/policies/#OnSecurityEventEnterpriseConnector). Set to true if provider list from Chrome is non-empty.
+        """
+        return pulumi.get(self, "is_security_event_analysis_enabled")
+
+    @property
+    @pulumi.getter(name="isSiteIsolationEnabled")
+    def is_site_isolation_enabled(self) -> bool:
+        """
+        Current state of [site isolation](https://chromeenterprise.google/policies/?policy=IsolateOrigins).
+        """
+        return pulumi.get(self, "is_site_isolation_enabled")
+
+    @property
+    @pulumi.getter(name="isThirdPartyBlockingEnabled")
+    def is_third_party_blocking_enabled(self) -> bool:
+        """
+        Current state of [third-party blocking](https://chromeenterprise.google/policies/#ThirdPartyBlockingEnabled).
+        """
+        return pulumi.get(self, "is_third_party_blocking_enabled")
+
+    @property
+    @pulumi.getter(name="passwordProtectionWarningTrigger")
+    def password_protection_warning_trigger(self) -> str:
+        """
+        Current state of [password protection trigger](https://chromeenterprise.google/policies/#PasswordProtectionWarningTrigger).
+        """
+        return pulumi.get(self, "password_protection_warning_trigger")
+
+    @property
+    @pulumi.getter(name="safeBrowsingProtectionLevel")
+    def safe_browsing_protection_level(self) -> str:
+        """
+        Current state of [Safe Browsing protection level](https://chromeenterprise.google/policies/#SafeBrowsingProtectionLevel).
+        """
+        return pulumi.get(self, "safe_browsing_protection_level")
+
+
+@pulumi.output_type
+class GoogleAppsCloudidentityDevicesV1CertificateAttributesResponse(dict):
+    """
+    Stores information about a certificate.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateTemplate":
+            suggest = "certificate_template"
+        elif key == "serialNumber":
+            suggest = "serial_number"
+        elif key == "validationState":
+            suggest = "validation_state"
+        elif key == "validityExpirationTime":
+            suggest = "validity_expiration_time"
+        elif key == "validityStartTime":
+            suggest = "validity_start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleAppsCloudidentityDevicesV1CertificateAttributesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleAppsCloudidentityDevicesV1CertificateAttributesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleAppsCloudidentityDevicesV1CertificateAttributesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 certificate_template: 'outputs.GoogleAppsCloudidentityDevicesV1CertificateTemplateResponse',
+                 fingerprint: str,
+                 issuer: str,
+                 serial_number: str,
+                 subject: str,
+                 thumbprint: str,
+                 validation_state: str,
+                 validity_expiration_time: str,
+                 validity_start_time: str):
+        """
+        Stores information about a certificate.
+        :param 'GoogleAppsCloudidentityDevicesV1CertificateTemplateResponse' certificate_template: The X.509 extension for CertificateTemplate.
+        :param str fingerprint: The encoded certificate fingerprint.
+        :param str issuer: The name of the issuer of this certificate.
+        :param str serial_number: Serial number of the certificate, Example: "123456789".
+        :param str subject: The subject name of this certificate.
+        :param str thumbprint: The certificate thumbprint.
+        :param str validation_state: Validation state of this certificate.
+        :param str validity_expiration_time: Certificate not valid at or after this timestamp.
+        :param str validity_start_time: Certificate not valid before this timestamp.
+        """
+        pulumi.set(__self__, "certificate_template", certificate_template)
+        pulumi.set(__self__, "fingerprint", fingerprint)
+        pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "serial_number", serial_number)
+        pulumi.set(__self__, "subject", subject)
+        pulumi.set(__self__, "thumbprint", thumbprint)
+        pulumi.set(__self__, "validation_state", validation_state)
+        pulumi.set(__self__, "validity_expiration_time", validity_expiration_time)
+        pulumi.set(__self__, "validity_start_time", validity_start_time)
+
+    @property
+    @pulumi.getter(name="certificateTemplate")
+    def certificate_template(self) -> 'outputs.GoogleAppsCloudidentityDevicesV1CertificateTemplateResponse':
+        """
+        The X.509 extension for CertificateTemplate.
+        """
+        return pulumi.get(self, "certificate_template")
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> str:
+        """
+        The encoded certificate fingerprint.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> str:
+        """
+        The name of the issuer of this certificate.
+        """
+        return pulumi.get(self, "issuer")
+
+    @property
+    @pulumi.getter(name="serialNumber")
+    def serial_number(self) -> str:
+        """
+        Serial number of the certificate, Example: "123456789".
+        """
+        return pulumi.get(self, "serial_number")
+
+    @property
+    @pulumi.getter
+    def subject(self) -> str:
+        """
+        The subject name of this certificate.
+        """
+        return pulumi.get(self, "subject")
+
+    @property
+    @pulumi.getter
+    def thumbprint(self) -> str:
+        """
+        The certificate thumbprint.
+        """
+        return pulumi.get(self, "thumbprint")
+
+    @property
+    @pulumi.getter(name="validationState")
+    def validation_state(self) -> str:
+        """
+        Validation state of this certificate.
+        """
+        return pulumi.get(self, "validation_state")
+
+    @property
+    @pulumi.getter(name="validityExpirationTime")
+    def validity_expiration_time(self) -> str:
+        """
+        Certificate not valid at or after this timestamp.
+        """
+        return pulumi.get(self, "validity_expiration_time")
+
+    @property
+    @pulumi.getter(name="validityStartTime")
+    def validity_start_time(self) -> str:
+        """
+        Certificate not valid before this timestamp.
+        """
+        return pulumi.get(self, "validity_start_time")
+
+
+@pulumi.output_type
+class GoogleAppsCloudidentityDevicesV1CertificateTemplateResponse(dict):
+    """
+    CertificateTemplate (v3 Extension in X.509).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "majorVersion":
+            suggest = "major_version"
+        elif key == "minorVersion":
+            suggest = "minor_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleAppsCloudidentityDevicesV1CertificateTemplateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleAppsCloudidentityDevicesV1CertificateTemplateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleAppsCloudidentityDevicesV1CertificateTemplateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 major_version: int,
+                 minor_version: int):
+        """
+        CertificateTemplate (v3 Extension in X.509).
+        :param int major_version: The Major version of the template. Example: 100.
+        :param int minor_version: The minor version of the template. Example: 12.
+        """
+        pulumi.set(__self__, "major_version", major_version)
+        pulumi.set(__self__, "minor_version", minor_version)
+
+    @property
+    @pulumi.getter(name="majorVersion")
+    def major_version(self) -> int:
+        """
+        The Major version of the template. Example: 100.
+        """
+        return pulumi.get(self, "major_version")
+
+    @property
+    @pulumi.getter(name="minorVersion")
+    def minor_version(self) -> int:
+        """
+        The minor version of the template. Example: 12.
+        """
+        return pulumi.get(self, "minor_version")
+
+
+@pulumi.output_type
+class GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponse(dict):
+    """
+    Resource representing the [Endpoint Verification-specific attributes](https://cloud.google.com/endpoint-verification/docs/device-information) of a device.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalSignals":
+            suggest = "additional_signals"
+        elif key == "browserAttributes":
+            suggest = "browser_attributes"
+        elif key == "certificateAttributes":
+            suggest = "certificate_attributes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 additional_signals: Mapping[str, str],
+                 browser_attributes: Sequence['outputs.GoogleAppsCloudidentityDevicesV1BrowserAttributesResponse'],
+                 certificate_attributes: Sequence['outputs.GoogleAppsCloudidentityDevicesV1CertificateAttributesResponse']):
+        """
+        Resource representing the [Endpoint Verification-specific attributes](https://cloud.google.com/endpoint-verification/docs/device-information) of a device.
+        :param Mapping[str, str] additional_signals: Additional signals reported by Endpoint Verification. It includes the following attributes: 1. Non-configurable attributes: hotfixes, av_installed, av_enabled, windows_domain_name, is_os_native_firewall_enabled, and is_secure_boot_enabled. 2. [Configurable attributes](https://cloud.google.com/endpoint-verification/docs/collect-config-attributes): file, folder, and binary attributes; registry entries; and properties in a plist.
+        :param Sequence['GoogleAppsCloudidentityDevicesV1BrowserAttributesResponse'] browser_attributes: Details of browser profiles reported by Endpoint Verification.
+        :param Sequence['GoogleAppsCloudidentityDevicesV1CertificateAttributesResponse'] certificate_attributes: Details of certificates.
+        """
+        pulumi.set(__self__, "additional_signals", additional_signals)
+        pulumi.set(__self__, "browser_attributes", browser_attributes)
+        pulumi.set(__self__, "certificate_attributes", certificate_attributes)
+
+    @property
+    @pulumi.getter(name="additionalSignals")
+    def additional_signals(self) -> Mapping[str, str]:
+        """
+        Additional signals reported by Endpoint Verification. It includes the following attributes: 1. Non-configurable attributes: hotfixes, av_installed, av_enabled, windows_domain_name, is_os_native_firewall_enabled, and is_secure_boot_enabled. 2. [Configurable attributes](https://cloud.google.com/endpoint-verification/docs/collect-config-attributes): file, folder, and binary attributes; registry entries; and properties in a plist.
+        """
+        return pulumi.get(self, "additional_signals")
+
+    @property
+    @pulumi.getter(name="browserAttributes")
+    def browser_attributes(self) -> Sequence['outputs.GoogleAppsCloudidentityDevicesV1BrowserAttributesResponse']:
+        """
+        Details of browser profiles reported by Endpoint Verification.
+        """
+        return pulumi.get(self, "browser_attributes")
+
+    @property
+    @pulumi.getter(name="certificateAttributes")
+    def certificate_attributes(self) -> Sequence['outputs.GoogleAppsCloudidentityDevicesV1CertificateAttributesResponse']:
+        """
+        Details of certificates.
+        """
+        return pulumi.get(self, "certificate_attributes")
 
 
 @pulumi.output_type

@@ -38,11 +38,11 @@ export class FutureReservation extends pulumi.CustomResource {
     }
 
     /**
-     * Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+     * Future timestamp when the FR auto-created reservations will be deleted by Compute Engine. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
      */
     public readonly autoCreatedReservationsDeleteTime!: pulumi.Output<string>;
     /**
-     * Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+     * Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
      */
     public readonly autoCreatedReservationsDuration!: pulumi.Output<outputs.compute.beta.DurationResponse>;
     /**
@@ -165,11 +165,11 @@ export class FutureReservation extends pulumi.CustomResource {
  */
 export interface FutureReservationArgs {
     /**
-     * Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
+     * Future timestamp when the FR auto-created reservations will be deleted by Compute Engine. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
      */
     autoCreatedReservationsDeleteTime?: pulumi.Input<string>;
     /**
-     * Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
+     * Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by Compute Engine. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
      */
     autoCreatedReservationsDuration?: pulumi.Input<inputs.compute.beta.DurationArgs>;
     /**

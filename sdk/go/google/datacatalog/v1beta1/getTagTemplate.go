@@ -29,11 +29,13 @@ type LookupTagTemplateArgs struct {
 }
 
 type LookupTagTemplateResult struct {
+	// Transfer status of the TagTemplate
+	DataplexTransferStatus string `pulumi:"dataplexTransferStatus"`
 	// The display name for this template. Defaults to an empty string.
 	DisplayName string `pulumi:"displayName"`
 	// Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
 	Fields map[string]string `pulumi:"fields"`
-	// The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
+	// Identifier. The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
 	Name string `pulumi:"name"`
 }
 
@@ -74,6 +76,11 @@ func (o LookupTagTemplateResultOutput) ToLookupTagTemplateResultOutputWithContex
 	return o
 }
 
+// Transfer status of the TagTemplate
+func (o LookupTagTemplateResultOutput) DataplexTransferStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagTemplateResult) string { return v.DataplexTransferStatus }).(pulumi.StringOutput)
+}
+
 // The display name for this template. Defaults to an empty string.
 func (o LookupTagTemplateResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagTemplateResult) string { return v.DisplayName }).(pulumi.StringOutput)
@@ -84,7 +91,7 @@ func (o LookupTagTemplateResultOutput) Fields() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupTagTemplateResult) map[string]string { return v.Fields }).(pulumi.StringMapOutput)
 }
 
-// The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
+// Identifier. The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
 func (o LookupTagTemplateResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagTemplateResult) string { return v.Name }).(pulumi.StringOutput)
 }

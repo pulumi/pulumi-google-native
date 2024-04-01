@@ -52,6 +52,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<Outputs.CustomerEncryptionKeyResponse> DiskEncryptionKey { get; private set; } = null!;
 
         /// <summary>
+        /// Whether this disk is using confidential compute mode.
+        /// </summary>
+        [Output("enableConfidentialCompute")]
+        public Output<bool> EnableConfidentialCompute { get; private set; } = null!;
+
+        /// <summary>
         /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
         /// </summary>
         [Output("guestOsFeatures")]
@@ -139,7 +145,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> ProvisionedIops { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
         /// </summary>
         [Output("provisionedThroughput")]
         public Output<string> ProvisionedThroughput { get; private set; } = null!;
@@ -173,6 +179,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Output("resourceStatus")]
         public Output<Outputs.DiskResourceStatusResponse> ResourceStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        [Output("satisfiesPzi")]
+        public Output<bool> SatisfiesPzi { get; private set; } = null!;
 
         /// <summary>
         /// Reserved for future use.
@@ -235,6 +247,18 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> SourceImageId { get; private set; } = null!;
 
         /// <summary>
+        /// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+        /// </summary>
+        [Output("sourceInstantSnapshot")]
+        public Output<string> SourceInstantSnapshot { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique ID of the instant snapshot used to create this disk. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact version of the instant snapshot that was used.
+        /// </summary>
+        [Output("sourceInstantSnapshotId")]
+        public Output<string> SourceInstantSnapshotId { get; private set; } = null!;
+
+        /// <summary>
         /// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot 
         /// </summary>
         [Output("sourceSnapshot")]
@@ -263,6 +287,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
+        /// </summary>
+        [Output("storagePool")]
+        public Output<string> StoragePool { get; private set; } = null!;
 
         /// <summary>
         /// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
@@ -353,6 +383,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("diskEncryptionKey")]
         public Input<Inputs.CustomerEncryptionKeyArgs>? DiskEncryptionKey { get; set; }
 
+        /// <summary>
+        /// Whether this disk is using confidential compute mode.
+        /// </summary>
+        [Input("enableConfidentialCompute")]
+        public Input<bool>? EnableConfidentialCompute { get; set; }
+
         [Input("guestOsFeatures")]
         private InputList<Inputs.GuestOsFeatureArgs>? _guestOsFeatures;
 
@@ -441,7 +477,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? ProvisionedIops { get; set; }
 
         /// <summary>
-        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1.
         /// </summary>
         [Input("provisionedThroughput")]
         public Input<string>? ProvisionedThroughput { get; set; }
@@ -501,6 +537,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<Inputs.CustomerEncryptionKeyArgs>? SourceImageEncryptionKey { get; set; }
 
         /// <summary>
+        /// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+        /// </summary>
+        [Input("sourceInstantSnapshot")]
+        public Input<string>? SourceInstantSnapshot { get; set; }
+
+        /// <summary>
         /// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot 
         /// </summary>
         [Input("sourceSnapshot")]
@@ -517,6 +559,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Input("sourceStorageObject")]
         public Input<string>? SourceStorageObject { get; set; }
+
+        /// <summary>
+        /// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
+        /// </summary>
+        [Input("storagePool")]
+        public Input<string>? StoragePool { get; set; }
 
         /// <summary>
         /// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.

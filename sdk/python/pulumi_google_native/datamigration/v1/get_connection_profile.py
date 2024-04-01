@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetConnectionProfileResult:
-    def __init__(__self__, alloydb=None, cloudsql=None, create_time=None, display_name=None, error=None, labels=None, mysql=None, name=None, oracle=None, postgresql=None, provider=None, state=None, update_time=None):
+    def __init__(__self__, alloydb=None, cloudsql=None, create_time=None, display_name=None, error=None, labels=None, mysql=None, name=None, oracle=None, postgresql=None, provider=None, sqlserver=None, state=None, update_time=None):
         if alloydb and not isinstance(alloydb, dict):
             raise TypeError("Expected argument 'alloydb' to be a dict")
         pulumi.set(__self__, "alloydb", alloydb)
@@ -53,6 +53,9 @@ class GetConnectionProfileResult:
         if provider and not isinstance(provider, str):
             raise TypeError("Expected argument 'provider' to be a str")
         pulumi.set(__self__, "provider", provider)
+        if sqlserver and not isinstance(sqlserver, dict):
+            raise TypeError("Expected argument 'sqlserver' to be a dict")
+        pulumi.set(__self__, "sqlserver", sqlserver)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -150,6 +153,14 @@ class GetConnectionProfileResult:
 
     @property
     @pulumi.getter
+    def sqlserver(self) -> 'outputs.SqlServerConnectionProfileResponse':
+        """
+        Connection profile for a SQL Server data source.
+        """
+        return pulumi.get(self, "sqlserver")
+
+    @property
+    @pulumi.getter
     def state(self) -> str:
         """
         The current connection profile state (e.g. DRAFT, READY, or FAILED).
@@ -182,6 +193,7 @@ class AwaitableGetConnectionProfileResult(GetConnectionProfileResult):
             oracle=self.oracle,
             postgresql=self.postgresql,
             provider=self.provider,
+            sqlserver=self.sqlserver,
             state=self.state,
             update_time=self.update_time)
 
@@ -212,6 +224,7 @@ def get_connection_profile(connection_profile_id: Optional[str] = None,
         oracle=pulumi.get(__ret__, 'oracle'),
         postgresql=pulumi.get(__ret__, 'postgresql'),
         provider=pulumi.get(__ret__, 'provider'),
+        sqlserver=pulumi.get(__ret__, 'sqlserver'),
         state=pulumi.get(__ret__, 'state'),
         update_time=pulumi.get(__ret__, 'update_time'))
 

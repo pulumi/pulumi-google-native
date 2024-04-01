@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Contactcenterinsights.V1
 {
     /// <summary>
-    /// Creates a conversation.
+    /// Create a longrunning conversation upload operation. This method differs from CreateConversation by allowing audio transcription and optional DLP redaction.
     /// </summary>
     [GoogleNativeResourceType("google-native:contactcenterinsights/v1:Conversation")]
     public partial class Conversation : global::Pulumi.CustomResource
@@ -26,12 +26,6 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// </summary>
         [Output("callMetadata")]
         public Output<Outputs.GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse> CallMetadata { get; private set; } = null!;
-
-        /// <summary>
-        /// A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
-        /// </summary>
-        [Output("conversationId")]
-        public Output<string?> ConversationId { get; private set; } = null!;
 
         /// <summary>
         /// The time at which the conversation was created.
@@ -112,6 +106,12 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Conversation metadata related to quality management.
+        /// </summary>
+        [Output("qualityMetadata")]
+        public Output<Outputs.GoogleCloudContactcenterinsightsV1ConversationQualityMetadataResponse> QualityMetadata { get; private set; } = null!;
+
+        /// <summary>
         /// The annotations that were generated during the customer and agent interaction.
         /// </summary>
         [Output("runtimeAnnotations")]
@@ -155,7 +155,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Conversation(string name, ConversationArgs? args = null, CustomResourceOptions? options = null)
+        public Conversation(string name, ConversationArgs args, CustomResourceOptions? options = null)
             : base("google-native:contactcenterinsights/v1:Conversation", name, args ?? new ConversationArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -210,7 +210,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         public Input<Inputs.GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs>? CallMetadata { get; set; }
 
         /// <summary>
-        /// A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
+        /// Optional. A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
         /// </summary>
         [Input("conversationId")]
         public Input<string>? ConversationId { get; set; }
@@ -266,8 +266,32 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         [Input("obfuscatedUserId")]
         public Input<string>? ObfuscatedUserId { get; set; }
 
+        /// <summary>
+        /// The parent resource of the conversation.
+        /// </summary>
+        [Input("parent", required: true)]
+        public Input<string> Parent { get; set; } = null!;
+
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Conversation metadata related to quality management.
+        /// </summary>
+        [Input("qualityMetadata")]
+        public Input<Inputs.GoogleCloudContactcenterinsightsV1ConversationQualityMetadataArgs>? QualityMetadata { get; set; }
+
+        /// <summary>
+        /// Optional. DLP settings for transcript redaction. Will default to the config specified in Settings.
+        /// </summary>
+        [Input("redactionConfig")]
+        public Input<Inputs.GoogleCloudContactcenterinsightsV1RedactionConfigArgs>? RedactionConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Speech-to-Text configuration. Will default to the config specified in Settings.
+        /// </summary>
+        [Input("speechConfig")]
+        public Input<Inputs.GoogleCloudContactcenterinsightsV1SpeechConfigArgs>? SpeechConfig { get; set; }
 
         /// <summary>
         /// The time at which the conversation started.

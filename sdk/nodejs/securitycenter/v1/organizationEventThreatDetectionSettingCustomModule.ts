@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Creates an Event Threat Detection custom module.
+ * Creates a resident Event Threat Detection custom module at the scope of the given Resource Manager parent, and also creates inherited custom modules for all descendants of the given parent. These modules are enabled by default.
  * Auto-naming is currently not supported for this resource.
  */
 export class OrganizationEventThreatDetectionSettingCustomModule extends pulumi.CustomResource {
@@ -38,6 +38,10 @@ export class OrganizationEventThreatDetectionSettingCustomModule extends pulumi.
         return obj['__pulumiType'] === OrganizationEventThreatDetectionSettingCustomModule.__pulumiType;
     }
 
+    /**
+     * The closest ancestor module that this module inherits the enablement state from. The format is the same as the EventThreatDetectionCustomModule resource name.
+     */
+    public /*out*/ readonly ancestorModule!: pulumi.Output<string>;
     /**
      * Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
      */
@@ -93,9 +97,11 @@ export class OrganizationEventThreatDetectionSettingCustomModule extends pulumi.
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["ancestorModule"] = undefined /*out*/;
             resourceInputs["lastEditor"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["ancestorModule"] = undefined /*out*/;
             resourceInputs["config"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;

@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.Workstations.V1
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Configuration options for a custom domain.
+        /// </summary>
+        [Output("domainConfig")]
+        public Output<Outputs.DomainConfigResponse> DomainConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         /// </summary>
         [Output("etag")]
@@ -191,6 +197,12 @@ namespace Pulumi.GoogleNative.Workstations.V1
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration options for a custom domain.
+        /// </summary>
+        [Input("domainConfig")]
+        public Input<Inputs.DomainConfigArgs>? DomainConfig { get; set; }
 
         /// <summary>
         /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.

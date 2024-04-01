@@ -360,7 +360,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         public static GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant SpeechModelVariantUnspecified { get; } = new GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant("SPEECH_MODEL_VARIANT_UNSPECIFIED");
         /// <summary>
-        /// Use the best available variant of the Speech model that the caller is eligible for. Please see the [Dialogflow docs](https://cloud.google.com/dialogflow/docs/data-logging) for how to make your project eligible for enhanced models.
+        /// Use the best available variant of the Speech model that the caller is eligible for.
         /// </summary>
         public static GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant UseBestAvailable { get; } = new GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant("USE_BEST_AVAILABLE");
         /// <summary>
@@ -368,7 +368,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         public static GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant UseStandard { get; } = new GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant("USE_STANDARD");
         /// <summary>
-        /// Use an enhanced model variant: * If an enhanced variant does not exist for the given model and request language, Dialogflow falls back to the standard variant. The [Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models) describes which models have enhanced variants. * If the API caller isn't eligible for enhanced models, Dialogflow returns an error. Please see the [Dialogflow docs](https://cloud.google.com/dialogflow/docs/data-logging) for how to make your project eligible.
+        /// Use an enhanced model variant: * If an enhanced variant does not exist for the given model and request language, Dialogflow falls back to the standard variant. The [Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models) describes which models have enhanced variants.
         /// </summary>
         public static GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant UseEnhanced { get; } = new GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant("USE_ENHANCED");
 
@@ -609,6 +609,51 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod other && Equals(other);
         public bool Equals(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Indicate the auth token type generated from the [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent). The generated token is sent in the Authorization header.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth : IEquatable<GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth>
+    {
+        private readonly string _value;
+
+        private GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Service agent auth type unspecified. Default to ID_TOKEN.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth ServiceAgentAuthUnspecified { get; } = new GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth("SERVICE_AGENT_AUTH_UNSPECIFIED");
+        /// <summary>
+        /// No token used.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth None { get; } = new GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth("NONE");
+        /// <summary>
+        /// Use [ID token](https://cloud.google.com/docs/authentication/token-types#id) generated from service agent. This can be used to access Cloud Function and Cloud Run after you grant Invoker role to `service-@gcp-sa-dialogflow.iam.gserviceaccount.com`.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth IdToken { get; } = new GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth("ID_TOKEN");
+        /// <summary>
+        /// Use [access token](https://cloud.google.com/docs/authentication/token-types#access) generated from service agent. This can be used to access other Google Cloud APIs after you grant required roles to `service-@gcp-sa-dialogflow.iam.gserviceaccount.com`.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth AccessToken { get; } = new GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth("ACCESS_TOKEN");
+
+        public static bool operator ==(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth left, GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth left, GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth other && Equals(other);
+        public bool Equals(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceServiceAgentAuth other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

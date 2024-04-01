@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 
 __all__ = [
     'GetDataStoreResult',
@@ -18,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetDataStoreResult:
-    def __init__(__self__, content_config=None, create_time=None, default_schema_id=None, display_name=None, industry_vertical=None, name=None, solution_types=None):
+    def __init__(__self__, acl_enabled=None, content_config=None, create_time=None, default_schema_id=None, display_name=None, document_processing_config=None, idp_config=None, industry_vertical=None, name=None, solution_types=None, starting_schema=None):
+        if acl_enabled and not isinstance(acl_enabled, bool):
+            raise TypeError("Expected argument 'acl_enabled' to be a bool")
+        pulumi.set(__self__, "acl_enabled", acl_enabled)
         if content_config and not isinstance(content_config, str):
             raise TypeError("Expected argument 'content_config' to be a str")
         pulumi.set(__self__, "content_config", content_config)
@@ -31,6 +35,12 @@ class GetDataStoreResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if document_processing_config and not isinstance(document_processing_config, dict):
+            raise TypeError("Expected argument 'document_processing_config' to be a dict")
+        pulumi.set(__self__, "document_processing_config", document_processing_config)
+        if idp_config and not isinstance(idp_config, dict):
+            raise TypeError("Expected argument 'idp_config' to be a dict")
+        pulumi.set(__self__, "idp_config", idp_config)
         if industry_vertical and not isinstance(industry_vertical, str):
             raise TypeError("Expected argument 'industry_vertical' to be a str")
         pulumi.set(__self__, "industry_vertical", industry_vertical)
@@ -40,6 +50,17 @@ class GetDataStoreResult:
         if solution_types and not isinstance(solution_types, list):
             raise TypeError("Expected argument 'solution_types' to be a list")
         pulumi.set(__self__, "solution_types", solution_types)
+        if starting_schema and not isinstance(starting_schema, dict):
+            raise TypeError("Expected argument 'starting_schema' to be a dict")
+        pulumi.set(__self__, "starting_schema", starting_schema)
+
+    @property
+    @pulumi.getter(name="aclEnabled")
+    def acl_enabled(self) -> bool:
+        """
+        Immutable. Whether data in the DataStore has ACL information. If set to `true`, the source data must have ACL. ACL will be ingested when data is ingested by DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore, Document can't be accessed by calling DocumentService.GetDocument or DocumentService.ListDocuments. Currently ACL is only supported in `GENERIC` industry vertical with non-`PUBLIC_WEBSITE` content config.
+        """
+        return pulumi.get(self, "acl_enabled")
 
     @property
     @pulumi.getter(name="contentConfig")
@@ -74,6 +95,22 @@ class GetDataStoreResult:
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="documentProcessingConfig")
+    def document_processing_config(self) -> 'outputs.GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigResponse':
+        """
+        Configuration for Document understanding and enrichment.
+        """
+        return pulumi.get(self, "document_processing_config")
+
+    @property
+    @pulumi.getter(name="idpConfig")
+    def idp_config(self) -> 'outputs.GoogleCloudDiscoveryengineV1alphaIdpConfigResponse':
+        """
+        Data store level identity provider config.
+        """
+        return pulumi.get(self, "idp_config")
+
+    @property
     @pulumi.getter(name="industryVertical")
     def industry_vertical(self) -> str:
         """
@@ -97,6 +134,14 @@ class GetDataStoreResult:
         """
         return pulumi.get(self, "solution_types")
 
+    @property
+    @pulumi.getter(name="startingSchema")
+    def starting_schema(self) -> 'outputs.GoogleCloudDiscoveryengineV1alphaSchemaResponse':
+        """
+        The start schema to use for this DataStore when provisioning it. If unset, a default vertical specialized schema will be used. This field is only used by CreateDataStore API, and will be ignored if used in other APIs. This field will be omitted from all API responses including CreateDataStore API. To retrieve a schema of a DataStore, use SchemaService.GetSchema API instead. The provided schema will be validated against certain rules on schema. Learn more from [this doc](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema).
+        """
+        return pulumi.get(self, "starting_schema")
+
 
 class AwaitableGetDataStoreResult(GetDataStoreResult):
     # pylint: disable=using-constant-test
@@ -104,13 +149,17 @@ class AwaitableGetDataStoreResult(GetDataStoreResult):
         if False:
             yield self
         return GetDataStoreResult(
+            acl_enabled=self.acl_enabled,
             content_config=self.content_config,
             create_time=self.create_time,
             default_schema_id=self.default_schema_id,
             display_name=self.display_name,
+            document_processing_config=self.document_processing_config,
+            idp_config=self.idp_config,
             industry_vertical=self.industry_vertical,
             name=self.name,
-            solution_types=self.solution_types)
+            solution_types=self.solution_types,
+            starting_schema=self.starting_schema)
 
 
 def get_data_store(collection_id: Optional[str] = None,
@@ -130,13 +179,17 @@ def get_data_store(collection_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:discoveryengine/v1alpha:getDataStore', __args__, opts=opts, typ=GetDataStoreResult).value
 
     return AwaitableGetDataStoreResult(
+        acl_enabled=pulumi.get(__ret__, 'acl_enabled'),
         content_config=pulumi.get(__ret__, 'content_config'),
         create_time=pulumi.get(__ret__, 'create_time'),
         default_schema_id=pulumi.get(__ret__, 'default_schema_id'),
         display_name=pulumi.get(__ret__, 'display_name'),
+        document_processing_config=pulumi.get(__ret__, 'document_processing_config'),
+        idp_config=pulumi.get(__ret__, 'idp_config'),
         industry_vertical=pulumi.get(__ret__, 'industry_vertical'),
         name=pulumi.get(__ret__, 'name'),
-        solution_types=pulumi.get(__ret__, 'solution_types'))
+        solution_types=pulumi.get(__ret__, 'solution_types'),
+        starting_schema=pulumi.get(__ret__, 'starting_schema'))
 
 
 @_utilities.lift_output_func(get_data_store)
